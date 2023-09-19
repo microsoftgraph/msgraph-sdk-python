@@ -47,7 +47,7 @@ class AuthoredNoteItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AuthoredNoteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthoredNote]:
         """
-        List of notes associcated with the request.
+        List of notes associated with the request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthoredNote]
         """
@@ -107,7 +107,7 @@ class AuthoredNoteItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AuthoredNoteItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of notes associcated with the request.
+        List of notes associated with the request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -165,7 +165,7 @@ class AuthoredNoteItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthoredNoteItemRequestBuilderGetQueryParameters():
         """
-        List of notes associcated with the request.
+        List of notes associated with the request.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

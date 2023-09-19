@@ -14,9 +14,9 @@ class SignInLocation(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Provides the city where the sign-in originated. This is calculated using latitude/longitude information from the sign-in activity.
+    # Provides the city where the sign-in originated and is determined using latitude/longitude information from the sign-in activity.
     city: Optional[str] = None
-    # Provides the country code info (2 letter code) where the sign-in originated.  This is calculated using latitude/longitude information from the sign-in activity.
+    # Provides the country code info (two letter code) where the sign-in originated.  This is calculated using latitude/longitude information from the sign-in activity.
     country_or_region: Optional[str] = None
     # Provides the latitude, longitude and altitude where the sign-in originated.
     geo_coordinates: Optional[GeoCoordinates] = None

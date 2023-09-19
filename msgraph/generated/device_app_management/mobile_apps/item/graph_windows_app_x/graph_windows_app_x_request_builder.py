@@ -11,25 +11,26 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
+    from .....models.windows_app_x import WindowsAppX
 
-class CountRequestBuilder(BaseRequestBuilder):
+class GraphWindowsAppXRequestBuilder(BaseRequestBuilder):
     """
-    Provides operations to count the resources in the collection.
+    Casts the previous resource to windowsAppX.
     """
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
-        Instantiates a new CountRequestBuilder and sets the default values.
+        Instantiates a new GraphWindowsAppXRequestBuilder and sets the default values.
         param path_parameters: The raw url or the Url template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/mobileApps/graph.mobileLobApp/$count{?%24search,%24filter}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/mobileApps/{mobileApp%2Did}/graph.windowsAppX{?%24select,%24expand}", path_parameters)
     
-    async def get(self,request_configuration: Optional[CountRequestBuilderGetRequestConfiguration] = None) -> Optional[int]:
+    async def get(self,request_configuration: Optional[GraphWindowsAppXRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsAppX]:
         """
-        Get the number of the resource
+        Get the item of type microsoft.graph.mobileApp as microsoft.graph.windowsAppX
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[int]
+        Returns: Optional[WindowsAppX]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -42,11 +43,13 @@ class CountRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "int", error_mapping)
+        from .....models.windows_app_x import WindowsAppX
+
+        return await self.request_adapter.send_async(request_info, WindowsAppX, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[CountRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GraphWindowsAppXRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the number of the resource
+        Get the item of type microsoft.graph.mobileApp as microsoft.graph.windowsAppX
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -54,27 +57,27 @@ class CountRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["text/plain"]
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> CountRequestBuilder:
+    def with_url(self,raw_url: Optional[str] = None) -> GraphWindowsAppXRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
-        Returns: CountRequestBuilder
+        Returns: GraphWindowsAppXRequestBuilder
         """
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
-        return CountRequestBuilder(raw_url, self.request_adapter)
+        return GraphWindowsAppXRequestBuilder(raw_url, self.request_adapter)
     
     @dataclass
-    class CountRequestBuilderGetQueryParameters():
+    class GraphWindowsAppXRequestBuilderGetQueryParameters():
         """
-        Get the number of the resource
+        Get the item of type microsoft.graph.mobileApp as microsoft.graph.windowsAppX
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -84,30 +87,30 @@ class CountRequestBuilder(BaseRequestBuilder):
             """
             if not original_name:
                 raise TypeError("original_name cannot be null.")
-            if original_name == "filter":
-                return "%24filter"
-            if original_name == "search":
-                return "%24search"
+            if original_name == "expand":
+                return "%24expand"
+            if original_name == "select":
+                return "%24select"
             return original_name
         
-        # Filter items by property values
-        filter: Optional[str] = None
+        # Expand related entities
+        expand: Optional[List[str]] = None
 
-        # Search items by search phrases
-        search: Optional[str] = None
+        # Select properties to be returned
+        select: Optional[List[str]] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
     @dataclass
-    class CountRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+    class GraphWindowsAppXRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request query parameters
-        query_parameters: Optional[CountRequestBuilder.CountRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GraphWindowsAppXRequestBuilder.GraphWindowsAppXRequestBuilderGetQueryParameters] = None
 
     
 

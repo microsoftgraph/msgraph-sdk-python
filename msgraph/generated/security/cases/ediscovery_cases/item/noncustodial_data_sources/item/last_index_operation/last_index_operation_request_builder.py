@@ -28,7 +28,7 @@ class LastIndexOperationRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[LastIndexOperationRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryIndexOperation]:
         """
-        Operation entity that represents the latest indexing for the non-custodial data source.
+        Operation entity that represents the latest indexing for the noncustodial data source.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryIndexOperation]
         """
@@ -49,7 +49,7 @@ class LastIndexOperationRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[LastIndexOperationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Operation entity that represents the latest indexing for the non-custodial data source.
+        Operation entity that represents the latest indexing for the noncustodial data source.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -77,7 +77,7 @@ class LastIndexOperationRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LastIndexOperationRequestBuilderGetQueryParameters():
         """
-        Operation entity that represents the latest indexing for the non-custodial data source.
+        Operation entity that represents the latest indexing for the noncustodial data source.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

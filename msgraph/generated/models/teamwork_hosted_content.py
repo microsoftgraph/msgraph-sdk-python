@@ -13,7 +13,7 @@ from .entity import Entity
 class TeamworkHostedContent(Entity):
     # Write only. Bytes for the hosted content (such as images).
     content_bytes: Optional[bytes] = None
-    # Write only. Content type. sicj as image/png, image/jpg.
+    # Write only. Content type. such as image/png, image/jpg.
     content_type: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

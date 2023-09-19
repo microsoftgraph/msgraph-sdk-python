@@ -48,7 +48,7 @@ class AccessReviewHistoryInstanceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AccessReviewHistoryInstanceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessReviewHistoryInstance]:
         """
-        If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that does not recur will have exactly one instance.
+        If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that doesn't recur will have exactly one instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewHistoryInstance]
         """
@@ -108,7 +108,7 @@ class AccessReviewHistoryInstanceItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AccessReviewHistoryInstanceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that does not recur will have exactly one instance.
+        If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that doesn't recur will have exactly one instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -175,7 +175,7 @@ class AccessReviewHistoryInstanceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessReviewHistoryInstanceItemRequestBuilderGetQueryParameters():
         """
-        If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that does not recur will have exactly one instance.
+        If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that doesn't recur will have exactly one instance.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

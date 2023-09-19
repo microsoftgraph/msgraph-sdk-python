@@ -27,7 +27,7 @@ class DeviceEvidence(AlertEvidence):
     device_dns_name: Optional[str] = None
     # The date and time when the device was first seen.
     first_seen_date_time: Optional[datetime.datetime] = None
-    # The health state of the device.The possible values are: active, inactive, impairedCommunication, noSensorData, noSensorDataImpairedCommunication, unknown, unknownFutureValue.
+    # The health state of the device. The possible values are: active, inactive, impairedCommunication, noSensorData, noSensorDataImpairedCommunication, unknown, unknownFutureValue.
     health_status: Optional[DeviceHealthStatus] = None
     # Ip interfaces of the device during the time of the alert.
     ip_interfaces: Optional[List[str]] = None
@@ -35,7 +35,7 @@ class DeviceEvidence(AlertEvidence):
     logged_on_users: Optional[List[LoggedOnUser]] = None
     # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
     mde_device_id: Optional[str] = None
-    # The status of the machine onboarding to Microsoft Defender for Endpoint.The possible values are: insufficientInfo, onboarded, canBeOnboarded, unsupported, unknownFutureValue.
+    # The status of the machine onboarding to Microsoft Defender for Endpoint. The possible values are: insufficientInfo, onboarded, canBeOnboarded, unsupported, unknownFutureValue.
     onboarding_status: Optional[OnboardingStatus] = None
     # The build version for the operating system the device is running.
     os_build: Optional[int] = None

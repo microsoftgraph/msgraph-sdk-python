@@ -29,7 +29,7 @@ class AddRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookWorksheet]:
         """
-        Adds a new worksheet to the workbook. The worksheet will be added at the end of existing worksheets. If you wish to activate the newly added worksheet, call .activate() on it.
+        Adds a new worksheet to the workbook. The worksheet is added at the end of existing worksheets. If you wish to activate the newly added worksheet, call.activate() on it.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookWorksheet]
@@ -54,7 +54,7 @@ class AddRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Adds a new worksheet to the workbook. The worksheet will be added at the end of existing worksheets. If you wish to activate the newly added worksheet, call .activate() on it.
+        Adds a new worksheet to the workbook. The worksheet is added at the end of existing worksheets. If you wish to activate the newly added worksheet, call.activate() on it.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

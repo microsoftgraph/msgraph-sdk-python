@@ -16,7 +16,7 @@ class FileAttachment(Attachment):
     content_bytes: Optional[bytes] = None
     # The ID of the attachment in the Exchange store.
     content_id: Optional[str] = None
-    # Do not use this property as it is not supported.
+    # Don't use this property as it isn't supported.
     content_location: Optional[str] = None
     
     @staticmethod

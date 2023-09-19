@@ -29,7 +29,7 @@ class LastModifiedByRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[LastModifiedByRequestBuilderGetRequestConfiguration] = None) -> Optional[User]:
         """
-        The unique identifier of the AAD identity that last modified the workflow.
+        The unique identifier of the Azure Active Directory identity that last modified the workflow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
         """
@@ -50,7 +50,7 @@ class LastModifiedByRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[LastModifiedByRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The unique identifier of the AAD identity that last modified the workflow.
+        The unique identifier of the Azure Active Directory identity that last modified the workflow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -87,7 +87,7 @@ class LastModifiedByRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LastModifiedByRequestBuilderGetQueryParameters():
         """
-        The unique identifier of the AAD identity that last modified the workflow.
+        The unique identifier of the Azure Active Directory identity that last modified the workflow.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

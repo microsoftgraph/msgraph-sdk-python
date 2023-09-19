@@ -18,7 +18,7 @@ class PermissionScope(AdditionalDataHolder, BackedModel, Parsable):
     admin_consent_display_name: Optional[str] = None
     # Unique delegated permission identifier inside the collection of delegated permissions defined for a resource application.
     id: Optional[UUID] = None
-    # When creating or updating a permission, this property must be set to true (which is the default). To delete a permission, this property must first be set to false.  At that point, in a subsequent call, the permission may be removed.
+    # When you create or update a permission, this property must be set to true (which is the default). To delete a permission, this property must first be set to false.  At that point, in a subsequent call, the permission may be removed.
     is_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -30,7 +30,7 @@ class PermissionScope(AdditionalDataHolder, BackedModel, Parsable):
     user_consent_description: Optional[str] = None
     # A title for the permission, intended to be read by a user granting the permission on their own behalf. This text appears in consent experiences where the user is consenting only on behalf of themselves.
     user_consent_display_name: Optional[str] = None
-    # Specifies the value to include in the scp (scope) claim in access tokens. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
+    # Specifies the value to include in the scp (scope) claim in access tokens. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, and characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, aren't allowed. May not begin with ..
     value: Optional[str] = None
     
     @staticmethod

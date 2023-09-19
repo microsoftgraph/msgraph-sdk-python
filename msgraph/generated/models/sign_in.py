@@ -20,7 +20,7 @@ from .entity import Entity
 
 @dataclass
 class SignIn(Entity):
-    # App name displayed in the Azure Portal.  Supports $filter (eq, startsWith).
+    # App name displayed in the Azure portal.  Supports $filter (eq, startsWith).
     app_display_name: Optional[str] = None
     # Unique GUID representing the app ID in the Azure Active Directory.  Supports $filter (eq).
     app_id: Optional[str] = None
@@ -54,13 +54,13 @@ class SignIn(Entity):
     risk_event_types: Optional[List[RiskEventType]] = None
     # The list of risk event types associated with the sign-in. Possible values: unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence,  generic, or unknownFutureValue.  Supports $filter (eq, startsWith).
     risk_event_types_v2: Optional[List[str]] = None
-    # Aggregated risk level. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in was not enabled for Azure AD Identity Protection.  Supports $filter (eq).  Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers will be returned hidden.
+    # Aggregated risk level. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Azure AD Identity Protection.  Supports $filter (eq).  Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers are returned hidden.
     risk_level_aggregated: Optional[RiskLevel] = None
-    # Risk level during sign-in. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in was not enabled for Azure AD Identity Protection.  Supports $filter (eq).  Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers will be returned hidden.
+    # Risk level during sign-in. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Azure AD Identity Protection.  Supports $filter (eq).  Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers are returned hidden.
     risk_level_during_sign_in: Optional[RiskLevel] = None
     # Reports status of the risky user, sign-in, or a risk event. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.  Supports $filter (eq).
     risk_state: Optional[RiskState] = None
-    # Sign-in status. Includes the error code and description of the error (in case of a sign-in failure).  Supports $filter (eq) on errorCode property.
+    # Sign-in status. Includes the error code and description of the error (if there's a sign-in failure).  Supports $filter (eq) on errorCode property.
     status: Optional[SignInStatus] = None
     # Display name of the user that initiated the sign-in.  Supports $filter (eq, startsWith).
     user_display_name: Optional[str] = None

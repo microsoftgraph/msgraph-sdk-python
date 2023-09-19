@@ -15,7 +15,7 @@ class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, BackedModel, 
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The tenant IDs of the selected types of external users. Either all B2B tenant or a collection of tenant IDs. External tenants can be specified only when the property guestOrExternalUserTypes is not null or an empty String.
+    # The tenant IDs of the selected types of external users. Either all B2B tenant or a collection of tenant IDs. External tenants can be specified only when the property guestOrExternalUserTypes isn't null or an empty String.
     external_tenants: Optional[ConditionalAccessExternalTenants] = None
     # The guestOrExternalUserTypes property
     guest_or_external_user_types: Optional[ConditionalAccessGuestOrExternalUserTypes] = None

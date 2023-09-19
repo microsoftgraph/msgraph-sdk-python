@@ -15,7 +15,7 @@ class ProvisioningStatusInfo(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # If status is not success/ skipped details for the error are contained in this.
+    # If status isn't success/ skipped details for the error are contained in this.
     error_information: Optional[ProvisioningErrorInfo] = None
     # The OdataType property
     odata_type: Optional[str] = None

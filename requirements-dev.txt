@@ -76,7 +76,7 @@ cffi==1.15.1
 
 charset-normalizer==3.2.0 ; python_version >= '3.7'
 
-cryptography==41.0.3 ; python_version >= '3.7'
+cryptography==41.0.4 ; python_version >= '3.7'
 
 frozenlist==1.4.0 ; python_version >= '3.8'
 

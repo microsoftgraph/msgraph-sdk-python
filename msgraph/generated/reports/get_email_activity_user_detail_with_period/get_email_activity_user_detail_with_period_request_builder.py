@@ -24,6 +24,8 @@ class GetEmailActivityUserDetailWithPeriodRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['period'] = str(period)
         super().__init__(request_adapter, "{+baseurl}/reports/getEmailActivityUserDetail(period='{period}')", path_parameters)
     
     async def get(self,request_configuration: Optional[GetEmailActivityUserDetailWithPeriodRequestBuilderGetRequestConfiguration] = None) -> bytes:

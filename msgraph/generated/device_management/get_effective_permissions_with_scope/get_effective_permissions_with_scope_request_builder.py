@@ -25,6 +25,8 @@ class GetEffectivePermissionsWithScopeRequestBuilder(BaseRequestBuilder):
         param scope: Usage: scope='{scope}'
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['scope'] = str(scope)
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/getEffectivePermissions(scope='{scope}'){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
     
     async def get(self,request_configuration: Optional[GetEffectivePermissionsWithScopeRequestBuilderGetRequestConfiguration] = None) -> Optional[GetEffectivePermissionsWithScopeResponse]:

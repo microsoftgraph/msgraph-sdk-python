@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from .member_of.member_of_request_builder import MemberOfRequestBuilder
     from .restore.restore_request_builder import RestoreRequestBuilder
     from .retry_service_provisioning.retry_service_provisioning_request_builder import RetryServiceProvisioningRequestBuilder
+    from .service_provisioning_errors.service_provisioning_errors_request_builder import ServiceProvisioningErrorsRequestBuilder
     from .transitive_member_of.transitive_member_of_request_builder import TransitiveMemberOfRequestBuilder
 
 class OrgContactItemRequestBuilder(BaseRequestBuilder):
@@ -243,6 +244,15 @@ class OrgContactItemRequestBuilder(BaseRequestBuilder):
         from .retry_service_provisioning.retry_service_provisioning_request_builder import RetryServiceProvisioningRequestBuilder
 
         return RetryServiceProvisioningRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def service_provisioning_errors(self) -> ServiceProvisioningErrorsRequestBuilder:
+        """
+        The serviceProvisioningErrors property
+        """
+        from .service_provisioning_errors.service_provisioning_errors_request_builder import ServiceProvisioningErrorsRequestBuilder
+
+        return ServiceProvisioningErrorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def transitive_member_of(self) -> TransitiveMemberOfRequestBuilder:

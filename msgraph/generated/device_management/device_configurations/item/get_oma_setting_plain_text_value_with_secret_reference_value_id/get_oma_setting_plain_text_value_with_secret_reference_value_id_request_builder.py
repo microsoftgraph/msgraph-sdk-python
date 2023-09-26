@@ -25,6 +25,8 @@ class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(BaseRe
         param secret_reference_value_id: Usage: secretReferenceValueId='{secretReferenceValueId}'
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['secretReferenceValueId'] = str(secret_reference_value_id)
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/deviceConfigurations/{deviceConfiguration%2Did}/getOmaSettingPlainTextValue(secretReferenceValueId='{secretReferenceValueId}')", path_parameters)
     
     async def get(self,request_configuration: Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilderGetRequestConfiguration] = None) -> Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdResponse]:

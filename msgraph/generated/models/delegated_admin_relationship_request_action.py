@@ -5,4 +5,5 @@ class DelegatedAdminRelationshipRequestAction(str, Enum):
     Approve = "approve",
     Terminate = "terminate",
     UnknownFutureValue = "unknownFutureValue",
+    Reject = "reject",
 

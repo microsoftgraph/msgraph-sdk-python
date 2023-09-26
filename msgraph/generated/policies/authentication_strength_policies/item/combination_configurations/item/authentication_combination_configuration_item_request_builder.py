@@ -70,7 +70,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder(BaseRequestBuilde
     
     async def patch(self,body: Optional[AuthenticationCombinationConfiguration] = None, request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AuthenticationCombinationConfiguration]:
         """
-        Update the properties of an authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be updated as they are the only type of authenticationCombinationConfiguration that may be created.
+        Update the properties of an authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be updated as they're the only type of authenticationCombinationConfiguration that may be created.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationCombinationConfiguration]
@@ -127,7 +127,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder(BaseRequestBuilde
     
     def to_patch_request_information(self,body: Optional[AuthenticationCombinationConfiguration] = None, request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be updated as they are the only type of authenticationCombinationConfiguration that may be created.
+        Update the properties of an authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be updated as they're the only type of authenticationCombinationConfiguration that may be created.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

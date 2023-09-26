@@ -13,7 +13,7 @@ class AppIdentity(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Refers to the Unique GUID representing Application Id in the Azure Active Directory.
     app_id: Optional[str] = None
-    # Refers to the Application Name displayed in the Azure Portal.
+    # Refers to the application name displayed in the Microsoft Entra admin center.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

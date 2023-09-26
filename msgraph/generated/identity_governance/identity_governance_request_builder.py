@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .app_consent.app_consent_request_builder import AppConsentRequestBuilder
     from .entitlement_management.entitlement_management_request_builder import EntitlementManagementRequestBuilder
     from .lifecycle_workflows.lifecycle_workflows_request_builder import LifecycleWorkflowsRequestBuilder
+    from .privileged_access.privileged_access_request_builder import PrivilegedAccessRequestBuilder
     from .terms_of_use.terms_of_use_request_builder import TermsOfUseRequestBuilder
 
 class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
@@ -158,6 +159,15 @@ class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
         from .lifecycle_workflows.lifecycle_workflows_request_builder import LifecycleWorkflowsRequestBuilder
 
         return LifecycleWorkflowsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def privileged_access(self) -> PrivilegedAccessRequestBuilder:
+        """
+        Provides operations to manage the privilegedAccess property of the microsoft.graph.identityGovernance entity.
+        """
+        from .privileged_access.privileged_access_request_builder import PrivilegedAccessRequestBuilder
+
+        return PrivilegedAccessRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def terms_of_use(self) -> TermsOfUseRequestBuilder:

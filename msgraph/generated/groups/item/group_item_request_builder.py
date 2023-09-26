@@ -45,6 +45,7 @@ if TYPE_CHECKING:
     from .reset_unseen_count.reset_unseen_count_request_builder import ResetUnseenCountRequestBuilder
     from .restore.restore_request_builder import RestoreRequestBuilder
     from .retry_service_provisioning.retry_service_provisioning_request_builder import RetryServiceProvisioningRequestBuilder
+    from .service_provisioning_errors.service_provisioning_errors_request_builder import ServiceProvisioningErrorsRequestBuilder
     from .settings.settings_request_builder import SettingsRequestBuilder
     from .sites.sites_request_builder import SitesRequestBuilder
     from .subscribe_by_mail.subscribe_by_mail_request_builder import SubscribeByMailRequestBuilder
@@ -493,6 +494,15 @@ class GroupItemRequestBuilder(BaseRequestBuilder):
         from .retry_service_provisioning.retry_service_provisioning_request_builder import RetryServiceProvisioningRequestBuilder
 
         return RetryServiceProvisioningRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def service_provisioning_errors(self) -> ServiceProvisioningErrorsRequestBuilder:
+        """
+        The serviceProvisioningErrors property
+        """
+        from .service_provisioning_errors.service_provisioning_errors_request_builder import ServiceProvisioningErrorsRequestBuilder
+
+        return ServiceProvisioningErrorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def settings(self) -> SettingsRequestBuilder:

@@ -27,6 +27,10 @@ class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequest
         param start_date_time: Usage: startDateTime='{startDateTime}'
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['endDateTime'] = str(end_date_time)
+            path_parameters['interval'] = str(interval)
+            path_parameters['startDateTime'] = str(start_date_time)
         super().__init__(request_adapter, "{+baseurl}/shares/{sharedDriveItem%2Did}/list/items/{listItem%2Did}/getActivitiesByInterval(startDateTime='{startDateTime}',endDateTime='{endDateTime}',interval='{interval}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
     async def get(self,request_configuration: Optional[GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilderGetRequestConfiguration] = None) -> Optional[GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalResponse]:

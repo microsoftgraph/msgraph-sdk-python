@@ -25,6 +25,8 @@ class SearchWithQRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['q'] = str(q)
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/search(q='{q}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
     async def get(self,request_configuration: Optional[SearchWithQRequestBuilderGetRequestConfiguration] = None) -> Optional[SearchWithQResponse]:

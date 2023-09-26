@@ -23,7 +23,7 @@ class HostSecurityState(AdditionalDataHolder, BackedModel, Parsable):
     net_bios_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Host Operating System. (For example, Windows10, MacOS, RHEL, etc.).
+    # Host Operating System. (For example, Windows 10, macOS, RHEL, etc.).
     os: Optional[str] = None
     # Private (not routable) IPv4 or IPv6 address (see RFC 1918) at the time of the alert.
     private_ip_address: Optional[str] = None

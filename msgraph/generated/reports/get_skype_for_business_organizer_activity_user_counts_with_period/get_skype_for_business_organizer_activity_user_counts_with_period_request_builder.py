@@ -24,6 +24,8 @@ class GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder(Bas
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['period'] = str(period)
         super().__init__(request_adapter, "{+baseurl}/reports/getSkypeForBusinessOrganizerActivityUserCounts(period='{period}')", path_parameters)
     
     async def get(self,request_configuration: Optional[GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilderGetRequestConfiguration] = None) -> bytes:

@@ -473,6 +473,17 @@ if TYPE_CHECKING:
     from .print_usage import PrintUsage
     from .print_usage_by_printer import PrintUsageByPrinter
     from .print_usage_by_user import PrintUsageByUser
+    from .privileged_access_group import PrivilegedAccessGroup
+    from .privileged_access_group_assignment_schedule import PrivilegedAccessGroupAssignmentSchedule
+    from .privileged_access_group_assignment_schedule_instance import PrivilegedAccessGroupAssignmentScheduleInstance
+    from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
+    from .privileged_access_group_eligibility_schedule import PrivilegedAccessGroupEligibilitySchedule
+    from .privileged_access_group_eligibility_schedule_instance import PrivilegedAccessGroupEligibilityScheduleInstance
+    from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+    from .privileged_access_root import PrivilegedAccessRoot
+    from .privileged_access_schedule import PrivilegedAccessSchedule
+    from .privileged_access_schedule_instance import PrivilegedAccessScheduleInstance
+    from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
     from .profile_photo import ProfilePhoto
     from .provisioning_object_summary import ProvisioningObjectSummary
     from .rbac_application import RbacApplication
@@ -480,6 +491,7 @@ if TYPE_CHECKING:
     from .reference_attachment import ReferenceAttachment
     from .remote_assistance_partner import RemoteAssistancePartner
     from .request import Request
+    from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
     from .resource_operation import ResourceOperation
     from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
     from .rich_long_running_operation import RichLongRunningOperation
@@ -2683,6 +2695,50 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .print_usage_by_user import PrintUsageByUser
 
             return PrintUsageByUser()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroup".casefold():
+            from .privileged_access_group import PrivilegedAccessGroup
+
+            return PrivilegedAccessGroup()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupAssignmentSchedule".casefold():
+            from .privileged_access_group_assignment_schedule import PrivilegedAccessGroupAssignmentSchedule
+
+            return PrivilegedAccessGroupAssignmentSchedule()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupAssignmentScheduleInstance".casefold():
+            from .privileged_access_group_assignment_schedule_instance import PrivilegedAccessGroupAssignmentScheduleInstance
+
+            return PrivilegedAccessGroupAssignmentScheduleInstance()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupAssignmentScheduleRequest".casefold():
+            from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
+
+            return PrivilegedAccessGroupAssignmentScheduleRequest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupEligibilitySchedule".casefold():
+            from .privileged_access_group_eligibility_schedule import PrivilegedAccessGroupEligibilitySchedule
+
+            return PrivilegedAccessGroupEligibilitySchedule()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupEligibilityScheduleInstance".casefold():
+            from .privileged_access_group_eligibility_schedule_instance import PrivilegedAccessGroupEligibilityScheduleInstance
+
+            return PrivilegedAccessGroupEligibilityScheduleInstance()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupEligibilityScheduleRequest".casefold():
+            from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+
+            return PrivilegedAccessGroupEligibilityScheduleRequest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessRoot".casefold():
+            from .privileged_access_root import PrivilegedAccessRoot
+
+            return PrivilegedAccessRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessSchedule".casefold():
+            from .privileged_access_schedule import PrivilegedAccessSchedule
+
+            return PrivilegedAccessSchedule()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessScheduleInstance".casefold():
+            from .privileged_access_schedule_instance import PrivilegedAccessScheduleInstance
+
+            return PrivilegedAccessScheduleInstance()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessScheduleRequest".casefold():
+            from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
+
+            return PrivilegedAccessScheduleRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.profilePhoto".casefold():
             from .profile_photo import ProfilePhoto
 
@@ -2711,6 +2767,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .request import Request
 
             return Request()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.resellerDelegatedAdminRelationship".casefold():
+            from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
+
+            return ResellerDelegatedAdminRelationship()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.resourceOperation".casefold():
             from .resource_operation import ResourceOperation
 
@@ -4400,6 +4460,17 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .print_usage import PrintUsage
         from .print_usage_by_printer import PrintUsageByPrinter
         from .print_usage_by_user import PrintUsageByUser
+        from .privileged_access_group import PrivilegedAccessGroup
+        from .privileged_access_group_assignment_schedule import PrivilegedAccessGroupAssignmentSchedule
+        from .privileged_access_group_assignment_schedule_instance import PrivilegedAccessGroupAssignmentScheduleInstance
+        from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
+        from .privileged_access_group_eligibility_schedule import PrivilegedAccessGroupEligibilitySchedule
+        from .privileged_access_group_eligibility_schedule_instance import PrivilegedAccessGroupEligibilityScheduleInstance
+        from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+        from .privileged_access_root import PrivilegedAccessRoot
+        from .privileged_access_schedule import PrivilegedAccessSchedule
+        from .privileged_access_schedule_instance import PrivilegedAccessScheduleInstance
+        from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
         from .profile_photo import ProfilePhoto
         from .provisioning_object_summary import ProvisioningObjectSummary
         from .rbac_application import RbacApplication
@@ -4407,6 +4478,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .reference_attachment import ReferenceAttachment
         from .remote_assistance_partner import RemoteAssistancePartner
         from .request import Request
+        from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
         from .resource_operation import ResourceOperation
         from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
         from .rich_long_running_operation import RichLongRunningOperation
@@ -5179,6 +5251,17 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .print_usage import PrintUsage
         from .print_usage_by_printer import PrintUsageByPrinter
         from .print_usage_by_user import PrintUsageByUser
+        from .privileged_access_group import PrivilegedAccessGroup
+        from .privileged_access_group_assignment_schedule import PrivilegedAccessGroupAssignmentSchedule
+        from .privileged_access_group_assignment_schedule_instance import PrivilegedAccessGroupAssignmentScheduleInstance
+        from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
+        from .privileged_access_group_eligibility_schedule import PrivilegedAccessGroupEligibilitySchedule
+        from .privileged_access_group_eligibility_schedule_instance import PrivilegedAccessGroupEligibilityScheduleInstance
+        from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+        from .privileged_access_root import PrivilegedAccessRoot
+        from .privileged_access_schedule import PrivilegedAccessSchedule
+        from .privileged_access_schedule_instance import PrivilegedAccessScheduleInstance
+        from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
         from .profile_photo import ProfilePhoto
         from .provisioning_object_summary import ProvisioningObjectSummary
         from .rbac_application import RbacApplication
@@ -5186,6 +5269,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .reference_attachment import ReferenceAttachment
         from .remote_assistance_partner import RemoteAssistancePartner
         from .request import Request
+        from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
         from .resource_operation import ResourceOperation
         from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
         from .rich_long_running_operation import RichLongRunningOperation

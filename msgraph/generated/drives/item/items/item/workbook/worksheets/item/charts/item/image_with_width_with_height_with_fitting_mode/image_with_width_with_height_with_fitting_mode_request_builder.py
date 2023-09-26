@@ -27,6 +27,10 @@ class ImageWithWidthWithHeightWithFittingModeRequestBuilder(BaseRequestBuilder):
         param width: Usage: width={width}
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['fittingMode'] = str(fitting_mode)
+            path_parameters['height'] = str(height)
+            path_parameters['width'] = str(width)
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}/image(width={width},height={height},fittingMode='{fittingMode}')", path_parameters)
     
     async def get(self,request_configuration: Optional[ImageWithWidthWithHeightWithFittingModeRequestBuilderGetRequestConfiguration] = None) -> Optional[ImageWithWidthWithHeightWithFittingModeResponse]:

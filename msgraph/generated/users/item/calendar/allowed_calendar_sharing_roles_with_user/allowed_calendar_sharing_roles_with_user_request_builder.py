@@ -25,6 +25,8 @@ class AllowedCalendarSharingRolesWithUserRequestBuilder(BaseRequestBuilder):
         param user: Usage: User='{User}'
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['User'] = str(user)
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendar/allowedCalendarSharingRoles(User='{User}'){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
     
     async def get(self,request_configuration: Optional[AllowedCalendarSharingRolesWithUserRequestBuilderGetRequestConfiguration] = None) -> Optional[AllowedCalendarSharingRolesWithUserResponse]:

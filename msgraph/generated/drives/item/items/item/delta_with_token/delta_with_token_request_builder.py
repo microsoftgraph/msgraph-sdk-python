@@ -25,6 +25,8 @@ class DeltaWithTokenRequestBuilder(BaseRequestBuilder):
         param token: Usage: token='{token}'
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['token'] = str(token)
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/delta(token='{token}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
     async def get(self,request_configuration: Optional[DeltaWithTokenRequestBuilderGetRequestConfiguration] = None) -> Optional[DeltaWithTokenResponse]:

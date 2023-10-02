@@ -34,7 +34,7 @@ pathlib2==2.3.7.post1
 
 platformdirs==3.10.0 ; python_version >= '3.7'
 
-pylint==2.17.6
+pylint==2.17.7
 
 pyproject-hooks==1.0.0 ; python_version >= '3.7'
 
@@ -104,7 +104,7 @@ microsoft-kiota-serialization-json==0.4.1
 
 microsoft-kiota-serialization-text==0.2.1
 
-msal==1.24.0
+msal==1.24.1
 
 msal-extensions==1.0.0
 

@@ -28,7 +28,7 @@ class RangeRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RangeRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookRange]:
         """
-        Get the range object associated with the entire table.
+        Get the range object associated with the entire table. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookRange]
         Find more info here: https://learn.microsoft.com/graph/api/table-range?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class RangeRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RangeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the range object associated with the entire table.
+        Get the range object associated with the entire table. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

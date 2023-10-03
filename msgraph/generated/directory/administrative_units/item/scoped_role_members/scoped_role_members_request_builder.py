@@ -45,7 +45,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ScopedRoleMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[ScopedRoleMembershipCollectionResponse]:
         """
-        List Azure Active Directory (Azure AD) role assignments with administrative unit scope.
+        List Azure Active Directory (Azure AD) role assignments with administrative unit scope. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ScopedRoleMembershipCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-list-scopedrolemembers?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembersRequestBuilderPostRequestConfiguration] = None) -> Optional[ScopedRoleMembership]:
         """
-        Assign an Azure Active Directory (Azure AD) role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Azure AD roles with administrative unit scope.
+        Assign an Azure Active Directory (Azure AD) role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Azure AD roles with administrative unit scope. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ScopedRoleMembership]
@@ -92,7 +92,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ScopedRoleMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List Azure Active Directory (Azure AD) role assignments with administrative unit scope.
+        List Azure Active Directory (Azure AD) role assignments with administrative unit scope. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Assign an Azure Active Directory (Azure AD) role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Azure AD roles with administrative unit scope.
+        Assign an Azure Active Directory (Azure AD) role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Azure AD roles with administrative unit scope. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ScopedRoleMembersRequestBuilderGetQueryParameters():
         """
-        List Azure Active Directory (Azure AD) role assignments with administrative unit scope.
+        List Azure Active Directory (Azure AD) role assignments with administrative unit scope. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

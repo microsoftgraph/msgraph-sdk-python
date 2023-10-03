@@ -52,7 +52,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
         List properties and relationships of the user objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-user-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

@@ -29,7 +29,7 @@ class PlannerBucketItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[PlannerBucketItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete plannerBucket.
+        Delete plannerBucket. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/plannerbucket-delete?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class PlannerBucketItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PlannerBucketItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerBucket]:
         """
-        Retrieve the properties and relationships of a plannerBucket object.
+        Retrieve the properties and relationships of a plannerBucket object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerBucket]
         Find more info here: https://learn.microsoft.com/graph/api/plannerbucket-get?view=graph-rest-1.0
@@ -96,7 +96,7 @@ class PlannerBucketItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[PlannerBucketItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete plannerBucket.
+        Delete plannerBucket. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class PlannerBucketItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PlannerBucketItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a plannerBucket object.
+        Retrieve the properties and relationships of a plannerBucket object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -178,7 +178,7 @@ class PlannerBucketItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PlannerBucketItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a plannerBucket object.
+        Retrieve the properties and relationships of a plannerBucket object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

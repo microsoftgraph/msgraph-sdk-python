@@ -33,7 +33,7 @@ class B2xIdentityUserFlowItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a b2xIdentityUserFlow object.
+        Delete a b2xIdentityUserFlow object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/b2xidentityuserflow-delete?view=graph-rest-1.0
@@ -53,7 +53,7 @@ class B2xIdentityUserFlowItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderGetRequestConfiguration] = None) -> Optional[B2xIdentityUserFlow]:
         """
-        Retrieve the properties and relationships of a b2xIdentityUserFlow object.
+        Retrieve the properties and relationships of a b2xIdentityUserFlow object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[B2xIdentityUserFlow]
         Find more info here: https://learn.microsoft.com/graph/api/b2xidentityuserflow-get?view=graph-rest-1.0
@@ -99,7 +99,7 @@ class B2xIdentityUserFlowItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a b2xIdentityUserFlow object.
+        Delete a b2xIdentityUserFlow object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +114,7 @@ class B2xIdentityUserFlowItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a b2xIdentityUserFlow object.
+        Retrieve the properties and relationships of a b2xIdentityUserFlow object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -217,7 +217,7 @@ class B2xIdentityUserFlowItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class B2xIdentityUserFlowItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a b2xIdentityUserFlow object.
+        Retrieve the properties and relationships of a b2xIdentityUserFlow object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

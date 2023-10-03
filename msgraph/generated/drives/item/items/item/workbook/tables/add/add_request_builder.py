@@ -29,10 +29,11 @@ class AddRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookTable]:
         """
-        Invoke action add
+        Create a new table. The range source address determines the worksheet under which the table will be added. If the table can't be added (for example, because the address is invalid, or the table would overlap with another table), an error is generated. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTable]
+        Find more info here: https://learn.microsoft.com/graph/api/tablecollection-add?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -53,7 +54,7 @@ class AddRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action add
+        Create a new table. The range source address determines the worksheet under which the table will be added. If the table can't be added (for example, because the address is invalid, or the table would overlap with another table), an error is generated. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

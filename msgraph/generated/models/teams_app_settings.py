@@ -10,7 +10,7 @@ from .entity import Entity
 
 @dataclass
 class TeamsAppSettings(Entity):
-    # The allowUserRequestsForAppAccess property
+    # Indicates whether users are allowed to request access to the unavailable Teams apps.
     allow_user_requests_for_app_access: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

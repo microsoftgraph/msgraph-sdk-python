@@ -45,7 +45,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TasksRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerTaskCollectionResponse]:
         """
-        Retrieve a list of plannertask objects assigned to a User.
+        Retrieve a list of plannertask objects assigned to a User. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerTaskCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/planneruser-list-tasks?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TasksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of plannertask objects assigned to a User.
+        Retrieve a list of plannertask objects assigned to a User. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class TasksRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TasksRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of plannertask objects assigned to a User.
+        Retrieve a list of plannertask objects assigned to a User. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

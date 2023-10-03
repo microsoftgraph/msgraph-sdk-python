@@ -20,7 +20,7 @@ from .entity import Entity
 
 @dataclass
 class SignIn(Entity):
-    # App name displayed in the Azure portal.  Supports $filter (eq, startsWith).
+    # App name displayed in the Microsoft Entra admin center.  Supports $filter (eq, startsWith).
     app_display_name: Optional[str] = None
     # Unique GUID representing the app ID in the Azure Active Directory.  Supports $filter (eq).
     app_id: Optional[str] = None

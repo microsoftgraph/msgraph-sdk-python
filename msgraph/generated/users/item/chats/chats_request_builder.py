@@ -46,7 +46,7 @@ class ChatsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ChatsRequestBuilderGetRequestConfiguration] = None) -> Optional[ChatCollectionResponse]:
         """
-        Retrieve the list of chats that the user is part of. This method supports federation. When a user ID is provided, the calling application must belong to the same tenant that the user belongs to.
+        Retrieve the list of chats that the user is part of. This method supports federation. When a user ID is provided, the calling application must belong to the same tenant that the user belongs to. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChatCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/chat-list?view=graph-rest-1.0
@@ -92,7 +92,7 @@ class ChatsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ChatsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of chats that the user is part of. This method supports federation. When a user ID is provided, the calling application must belong to the same tenant that the user belongs to.
+        Retrieve the list of chats that the user is part of. This method supports federation. When a user ID is provided, the calling application must belong to the same tenant that the user belongs to. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -158,7 +158,7 @@ class ChatsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ChatsRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of chats that the user is part of. This method supports federation. When a user ID is provided, the calling application must belong to the same tenant that the user belongs to.
+        Retrieve the list of chats that the user is part of. This method supports federation. When a user ID is provided, the calling application must belong to the same tenant that the user belongs to. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

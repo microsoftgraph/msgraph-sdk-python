@@ -29,7 +29,7 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a featureRolloutPolicy object.
+        Delete a featureRolloutPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/featurerolloutpolicy-delete?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[FeatureRolloutPolicy]:
         """
-        Retrieve the properties and relationships of a featureRolloutPolicy object.
+        Retrieve the properties and relationships of a featureRolloutPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FeatureRolloutPolicy]
         Find more info here: https://learn.microsoft.com/graph/api/featurerolloutpolicy-get?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[FeatureRolloutPolicy] = None, request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[FeatureRolloutPolicy]:
         """
-        Update the properties of featureRolloutPolicy object.
+        Update the properties of featureRolloutPolicy object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FeatureRolloutPolicy]
@@ -96,7 +96,7 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a featureRolloutPolicy object.
+        Delete a featureRolloutPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a featureRolloutPolicy object.
+        Retrieve the properties and relationships of a featureRolloutPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -128,7 +128,7 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[FeatureRolloutPolicy] = None, request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of featureRolloutPolicy object.
+        Update the properties of featureRolloutPolicy object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -178,7 +178,7 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FeatureRolloutPolicyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a featureRolloutPolicy object.
+        Retrieve the properties and relationships of a featureRolloutPolicy object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

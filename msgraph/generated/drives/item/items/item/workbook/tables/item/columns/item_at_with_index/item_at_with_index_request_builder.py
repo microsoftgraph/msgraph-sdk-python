@@ -25,6 +25,8 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['index'] = str(index)
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/tables/{workbookTable%2Did}/columns/itemAt(index={index})", path_parameters)
     
     async def get(self,request_configuration: Optional[ItemAtWithIndexRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookTableColumn]:
@@ -32,7 +34,6 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
         Invoke function itemAt
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumn]
-        Find more info here: https://learn.microsoft.com/graph/api/tablecolumncollection-itemat?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

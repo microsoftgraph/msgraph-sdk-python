@@ -30,7 +30,7 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ConnectedOrganizationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a connectedOrganization object.
+        Delete a connectedOrganization object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/connectedorganization-delete?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ConnectedOrganizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ConnectedOrganization]:
         """
-        Retrieve the properties and relationships of a connectedOrganization object.
+        Retrieve the properties and relationships of a connectedOrganization object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConnectedOrganization]
         Find more info here: https://learn.microsoft.com/graph/api/connectedorganization-get?view=graph-rest-1.0
@@ -72,7 +72,7 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ConnectedOrganization] = None, request_configuration: Optional[ConnectedOrganizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ConnectedOrganization]:
         """
-        Update a connectedOrganization object to change one or more of its properties.
+        Update a connectedOrganization object to change one or more of its properties. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConnectedOrganization]
@@ -97,7 +97,7 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ConnectedOrganizationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a connectedOrganization object.
+        Delete a connectedOrganization object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +112,7 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ConnectedOrganizationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a connectedOrganization object.
+        Retrieve the properties and relationships of a connectedOrganization object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -129,7 +129,7 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ConnectedOrganization] = None, request_configuration: Optional[ConnectedOrganizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update a connectedOrganization object to change one or more of its properties.
+        Update a connectedOrganization object to change one or more of its properties. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -188,7 +188,7 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConnectedOrganizationItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a connectedOrganization object.
+        Retrieve the properties and relationships of a connectedOrganization object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

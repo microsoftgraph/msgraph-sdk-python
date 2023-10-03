@@ -28,7 +28,7 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[BrowserSiteItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a browserSite from a browserSiteList.
+        Delete a browserSite from a browserSiteList. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/browsersitelist-delete-sites?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[BrowserSiteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[BrowserSite]:
         """
-        Get a browserSite that resides on a browserSiteList.
+        Get a browserSite that resides on a browserSiteList. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowserSite]
         Find more info here: https://learn.microsoft.com/graph/api/browsersite-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[BrowserSite] = None, request_configuration: Optional[BrowserSiteItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[BrowserSite]:
         """
-        Update the properties of a browserSite object.
+        Update the properties of a browserSite object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowserSite]
@@ -95,7 +95,7 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[BrowserSiteItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a browserSite from a browserSiteList.
+        Delete a browserSite from a browserSiteList. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[BrowserSiteItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a browserSite that resides on a browserSiteList.
+        Get a browserSite that resides on a browserSiteList. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[BrowserSite] = None, request_configuration: Optional[BrowserSiteItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a browserSite object.
+        Update the properties of a browserSite object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BrowserSiteItemRequestBuilderGetQueryParameters():
         """
-        Get a browserSite that resides on a browserSiteList.
+        Get a browserSite that resides on a browserSiteList. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

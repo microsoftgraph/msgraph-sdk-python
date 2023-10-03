@@ -46,7 +46,7 @@ class UserProcessingResultsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserProcessingResultsRequestBuilderGetRequestConfiguration] = None) -> Optional[UserProcessingResultCollectionResponse]:
         """
-        Get user processing results of a workflow run object.
+        Get user processing results of a workflow run object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserProcessingResultCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-run-list-userprocessingresults?view=graph-rest-1.0
@@ -83,7 +83,7 @@ class UserProcessingResultsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserProcessingResultsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get user processing results of a workflow run object.
+        Get user processing results of a workflow run object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +120,7 @@ class UserProcessingResultsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserProcessingResultsRequestBuilderGetQueryParameters():
         """
-        Get user processing results of a workflow run object.
+        Get user processing results of a workflow run object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

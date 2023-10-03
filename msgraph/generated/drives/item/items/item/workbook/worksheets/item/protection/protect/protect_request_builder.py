@@ -28,7 +28,7 @@ class ProtectRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ProtectPostRequestBody] = None, request_configuration: Optional[ProtectRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Protect a worksheet. It throws if the worksheet has been protected.
+        Protect a worksheet. It throws if the worksheet has been protected. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class ProtectRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ProtectPostRequestBody] = None, request_configuration: Optional[ProtectRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Protect a worksheet. It throws if the worksheet has been protected.
+        Protect a worksheet. It throws if the worksheet has been protected. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

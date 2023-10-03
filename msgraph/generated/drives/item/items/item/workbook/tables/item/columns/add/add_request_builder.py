@@ -29,7 +29,7 @@ class AddRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookTableColumn]:
         """
-        Adds a new column to the table.
+        Adds a new column to the table. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumn]
@@ -54,7 +54,7 @@ class AddRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Adds a new column to the table.
+        Adds a new column to the table. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

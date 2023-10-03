@@ -52,7 +52,7 @@ class OnenoteSectionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OnenoteSectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OnenoteSection]:
         """
-        Retrieve the properties and relationships of a onenoteSection object.
+        Retrieve the properties and relationships of a onenoteSection object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenoteSection]
         Find more info here: https://learn.microsoft.com/graph/api/section-get?view=graph-rest-1.0
@@ -113,7 +113,7 @@ class OnenoteSectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OnenoteSectionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a onenoteSection object.
+        Retrieve the properties and relationships of a onenoteSection object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -216,7 +216,7 @@ class OnenoteSectionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OnenoteSectionItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a onenoteSection object.
+        Retrieve the properties and relationships of a onenoteSection object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

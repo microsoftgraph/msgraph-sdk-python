@@ -45,7 +45,7 @@ class ConnectedOrganizationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ConnectedOrganizationsRequestBuilderGetRequestConfiguration] = None) -> Optional[ConnectedOrganizationCollectionResponse]:
         """
-        Retrieve a list of connectedOrganization objects.
+        Retrieve a list of connectedOrganization objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConnectedOrganizationCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/entitlementmanagement-list-connectedorganizations?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ConnectedOrganizationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ConnectedOrganization] = None, request_configuration: Optional[ConnectedOrganizationsRequestBuilderPostRequestConfiguration] = None) -> Optional[ConnectedOrganization]:
         """
-        Create a new connectedOrganization object.
+        Create a new connectedOrganization object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConnectedOrganization]
@@ -92,7 +92,7 @@ class ConnectedOrganizationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ConnectedOrganizationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of connectedOrganization objects.
+        Retrieve a list of connectedOrganization objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class ConnectedOrganizationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ConnectedOrganization] = None, request_configuration: Optional[ConnectedOrganizationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new connectedOrganization object.
+        Create a new connectedOrganization object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class ConnectedOrganizationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConnectedOrganizationsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of connectedOrganization objects.
+        Retrieve a list of connectedOrganization objects. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

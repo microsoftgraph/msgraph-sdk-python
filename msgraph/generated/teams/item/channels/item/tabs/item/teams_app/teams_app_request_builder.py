@@ -28,7 +28,7 @@ class TeamsAppRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TeamsAppRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsApp]:
         """
-        The application that is linked to the tab. This cannot be changed after tab creation.
+        The application that is linked to the tab. This can't be changed after tab creation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsApp]
         """
@@ -49,7 +49,7 @@ class TeamsAppRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TeamsAppRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The application that is linked to the tab. This cannot be changed after tab creation.
+        The application that is linked to the tab. This can't be changed after tab creation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -77,7 +77,7 @@ class TeamsAppRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TeamsAppRequestBuilderGetQueryParameters():
         """
-        The application that is linked to the tab. This cannot be changed after tab creation.
+        The application that is linked to the tab. This can't be changed after tab creation.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

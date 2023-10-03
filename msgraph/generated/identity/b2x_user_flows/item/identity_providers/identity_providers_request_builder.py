@@ -44,7 +44,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityProviderCollectionResponse]:
         """
-        Get the identity providers in a b2xIdentityUserFlow object.
+        Get the identity providers in a b2xIdentityUserFlow object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityProviderCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/b2xidentityuserflow-list-identityproviders?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the identity providers in a b2xIdentityUserFlow object.
+        Get the identity providers in a b2xIdentityUserFlow object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +103,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IdentityProvidersRequestBuilderGetQueryParameters():
         """
-        Get the identity providers in a b2xIdentityUserFlow object.
+        Get the identity providers in a b2xIdentityUserFlow object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

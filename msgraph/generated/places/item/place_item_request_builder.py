@@ -49,7 +49,7 @@ class PlaceItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Place] = None, request_configuration: Optional[PlaceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Place]:
         """
-        Update the properties of place object, which can be a room or roomList. You can identify the room or roomList by specifying the id or emailAddress property.
+        Update the properties of place object, which can be a room or roomList. You can identify the room or roomList by specifying the id or emailAddress property. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Place]
@@ -89,7 +89,7 @@ class PlaceItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Place] = None, request_configuration: Optional[PlaceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of place object, which can be a room or roomList. You can identify the room or roomList by specifying the id or emailAddress property.
+        Update the properties of place object, which can be a room or roomList. You can identify the room or roomList by specifying the id or emailAddress property. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

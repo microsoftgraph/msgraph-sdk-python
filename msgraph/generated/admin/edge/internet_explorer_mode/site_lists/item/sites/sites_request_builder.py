@@ -45,7 +45,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> Optional[BrowserSiteCollectionResponse]:
         """
-        Get a list of the browserSite objects and their properties.
+        Get a list of the browserSite objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowserSiteCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/browsersitelist-list-sites?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[BrowserSite] = None, request_configuration: Optional[SitesRequestBuilderPostRequestConfiguration] = None) -> Optional[BrowserSite]:
         """
-        Create a new browserSite object in a browserSiteList.
+        Create a new browserSite object in a browserSiteList. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowserSite]
@@ -92,7 +92,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the browserSite objects and their properties.
+        Get a list of the browserSite objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[BrowserSite] = None, request_configuration: Optional[SitesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new browserSite object in a browserSiteList.
+        Create a new browserSite object in a browserSiteList. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SitesRequestBuilderGetQueryParameters():
         """
-        Get a list of the browserSite objects and their properties.
+        Get a list of the browserSite objects and their properties. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

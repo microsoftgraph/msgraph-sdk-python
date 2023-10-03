@@ -29,7 +29,7 @@ class IdentityApiConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[IdentityApiConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an identityApiConnector object.
+        Delete an identityApiConnector object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/identityapiconnector-delete?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class IdentityApiConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IdentityApiConnectorItemRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityApiConnector]:
         """
-        Read the properties of an identityApiConnector object.
+        Read the properties of an identityApiConnector object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityApiConnector]
         Find more info here: https://learn.microsoft.com/graph/api/identityapiconnector-get?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class IdentityApiConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[IdentityApiConnector] = None, request_configuration: Optional[IdentityApiConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[IdentityApiConnector]:
         """
-        Update the properties of an identityApiConnector object.
+        Update the properties of an identityApiConnector object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityApiConnector]
@@ -96,7 +96,7 @@ class IdentityApiConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityApiConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an identityApiConnector object.
+        Delete an identityApiConnector object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class IdentityApiConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IdentityApiConnectorItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties of an identityApiConnector object.
+        Read the properties of an identityApiConnector object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -128,7 +128,7 @@ class IdentityApiConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[IdentityApiConnector] = None, request_configuration: Optional[IdentityApiConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an identityApiConnector object.
+        Update the properties of an identityApiConnector object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -178,7 +178,7 @@ class IdentityApiConnectorItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IdentityApiConnectorItemRequestBuilderGetQueryParameters():
         """
-        Read the properties of an identityApiConnector object.
+        Read the properties of an identityApiConnector object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

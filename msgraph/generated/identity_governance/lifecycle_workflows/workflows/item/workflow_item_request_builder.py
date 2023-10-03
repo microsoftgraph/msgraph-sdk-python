@@ -39,7 +39,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[WorkflowItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a workflow object and its associated tasks, taskProcessingResults and versions. You can restore a deleted workflow and its associated objects within 30 days of deletion.
+        Delete a workflow object and its associated tasks, taskProcessingResults and versions. You can restore a deleted workflow and its associated objects within 30 days of deletion. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-workflow-delete?view=graph-rest-1.0
@@ -59,7 +59,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[WorkflowItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Workflow]:
         """
-        Read the properties and relationships of a workflow object.
+        Read the properties and relationships of a workflow object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Workflow]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-workflow-get?view=graph-rest-1.0
@@ -81,7 +81,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Workflow] = None, request_configuration: Optional[WorkflowItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Workflow]:
         """
-        Update the properties of a workflow object. Only the properties listed in the request body table can be updated. To update any other workflow properties, see workflow: createNewVersion.
+        Update the properties of a workflow object. Only the properties listed in the request body table can be updated. To update any other workflow properties, see workflow: createNewVersion. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Workflow]
@@ -106,7 +106,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[WorkflowItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a workflow object and its associated tasks, taskProcessingResults and versions. You can restore a deleted workflow and its associated objects within 30 days of deletion.
+        Delete a workflow object and its associated tasks, taskProcessingResults and versions. You can restore a deleted workflow and its associated objects within 30 days of deletion. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -121,7 +121,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[WorkflowItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a workflow object.
+        Read the properties and relationships of a workflow object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +138,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Workflow] = None, request_configuration: Optional[WorkflowItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a workflow object. Only the properties listed in the request body table can be updated. To update any other workflow properties, see workflow: createNewVersion.
+        Update the properties of a workflow object. Only the properties listed in the request body table can be updated. To update any other workflow properties, see workflow: createNewVersion. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -278,7 +278,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkflowItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a workflow object.
+        Read the properties and relationships of a workflow object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

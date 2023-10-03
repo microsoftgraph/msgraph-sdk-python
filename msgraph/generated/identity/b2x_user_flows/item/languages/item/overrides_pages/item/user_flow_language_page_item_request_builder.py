@@ -48,7 +48,7 @@ class UserFlowLanguagePageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserFlowLanguagePageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UserFlowLanguagePage]:
         """
-        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
+        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows you to modify the content of the page, any other modification isn't allowed (creation or deletion of pages).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserFlowLanguagePage]
         """
@@ -108,7 +108,7 @@ class UserFlowLanguagePageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserFlowLanguagePageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
+        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows you to modify the content of the page, any other modification isn't allowed (creation or deletion of pages).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -175,7 +175,7 @@ class UserFlowLanguagePageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserFlowLanguagePageItemRequestBuilderGetQueryParameters():
         """
-        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
+        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows you to modify the content of the page, any other modification isn't allowed (creation or deletion of pages).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -58,7 +58,7 @@ class RoleEligibilityScheduleRequestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RoleEligibilityScheduleRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleEligibilityScheduleRequestCollectionResponse]:
         """
-        In PIM, retrieve the requests for role eligibilities for principals made through the unifiedRoleEligibilityScheduleRequest object.
+        In PIM, retrieve the requests for role eligibilities for principals made through the unifiedRoleEligibilityScheduleRequest object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleEligibilityScheduleRequestCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/rbacapplication-list-roleeligibilityschedulerequests?view=graph-rest-1.0
@@ -80,7 +80,7 @@ class RoleEligibilityScheduleRequestsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[UnifiedRoleEligibilityScheduleRequest] = None, request_configuration: Optional[RoleEligibilityScheduleRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[UnifiedRoleEligibilityScheduleRequest]:
         """
-        In PIM, request for a role eligibility for a principal through the unifiedRoleEligibilityScheduleRequest object. This operation allows both admins and eligible users to add, revoke, or extend eligible assignments.
+        In PIM, request for a role eligibility for a principal through the unifiedRoleEligibilityScheduleRequest object. This operation allows both admins and eligible users to add, revoke, or extend eligible assignments. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleEligibilityScheduleRequest]
@@ -105,7 +105,7 @@ class RoleEligibilityScheduleRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RoleEligibilityScheduleRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        In PIM, retrieve the requests for role eligibilities for principals made through the unifiedRoleEligibilityScheduleRequest object.
+        In PIM, retrieve the requests for role eligibilities for principals made through the unifiedRoleEligibilityScheduleRequest object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -122,7 +122,7 @@ class RoleEligibilityScheduleRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[UnifiedRoleEligibilityScheduleRequest] = None, request_configuration: Optional[RoleEligibilityScheduleRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        In PIM, request for a role eligibility for a principal through the unifiedRoleEligibilityScheduleRequest object. This operation allows both admins and eligible users to add, revoke, or extend eligible assignments.
+        In PIM, request for a role eligibility for a principal through the unifiedRoleEligibilityScheduleRequest object. This operation allows both admins and eligible users to add, revoke, or extend eligible assignments. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -162,7 +162,7 @@ class RoleEligibilityScheduleRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleEligibilityScheduleRequestsRequestBuilderGetQueryParameters():
         """
-        In PIM, retrieve the requests for role eligibilities for principals made through the unifiedRoleEligibilityScheduleRequest object.
+        In PIM, retrieve the requests for role eligibilities for principals made through the unifiedRoleEligibilityScheduleRequest object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

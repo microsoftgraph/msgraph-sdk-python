@@ -46,7 +46,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> Optional[OAuth2PermissionGrantCollectionResponse]:
         """
-        Retrieve a list of oAuth2PermissionGrant objects, representing delegated permissions which have been granted for client applications to access APIs on behalf of signed-in users.
+        Retrieve a list of oAuth2PermissionGrant objects, representing delegated permissions which have been granted for client applications to access APIs on behalf of signed-in users. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OAuth2PermissionGrantCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/oauth2permissiongrant-list?view=graph-rest-1.0
@@ -68,7 +68,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[OAuth2PermissionGrant] = None, request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderPostRequestConfiguration] = None) -> Optional[OAuth2PermissionGrant]:
         """
-        Create a delegated permission grant represented by an oAuth2PermissionGrant object. A delegated permission grant authorizes a client service principal (representing a client application) to access a resource service principal (representing an API), on behalf of a signed-in user, for the level of access limited by the delegated permissions which were granted.
+        Create a delegated permission grant represented by an oAuth2PermissionGrant object. A delegated permission grant authorizes a client service principal (representing a client application) to access a resource service principal (representing an API), on behalf of a signed-in user, for the level of access limited by the delegated permissions which were granted. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OAuth2PermissionGrant]
@@ -93,7 +93,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of oAuth2PermissionGrant objects, representing delegated permissions which have been granted for client applications to access APIs on behalf of signed-in users.
+        Retrieve a list of oAuth2PermissionGrant objects, representing delegated permissions which have been granted for client applications to access APIs on behalf of signed-in users. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[OAuth2PermissionGrant] = None, request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a delegated permission grant represented by an oAuth2PermissionGrant object. A delegated permission grant authorizes a client service principal (representing a client application) to access a resource service principal (representing an API), on behalf of a signed-in user, for the level of access limited by the delegated permissions which were granted.
+        Create a delegated permission grant represented by an oAuth2PermissionGrant object. A delegated permission grant authorizes a client service principal (representing a client application) to access a resource service principal (representing an API), on behalf of a signed-in user, for the level of access limited by the delegated permissions which were granted. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -159,7 +159,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class Oauth2PermissionGrantsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of oAuth2PermissionGrant objects, representing delegated permissions which have been granted for client applications to access APIs on behalf of signed-in users.
+        Retrieve a list of oAuth2PermissionGrant objects, representing delegated permissions which have been granted for client applications to access APIs on behalf of signed-in users. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

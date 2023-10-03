@@ -44,7 +44,7 @@ class ApplicationTemplatesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ApplicationTemplatesRequestBuilderGetRequestConfiguration] = None) -> Optional[ApplicationTemplateCollectionResponse]:
         """
-        Retrieve a list of applicationTemplate objects from the Azure AD application gallery.
+        Retrieve a list of applicationTemplate objects from the Azure AD application gallery. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ApplicationTemplateCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class ApplicationTemplatesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ApplicationTemplatesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of applicationTemplate objects from the Azure AD application gallery.
+        Retrieve a list of applicationTemplate objects from the Azure AD application gallery. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +103,7 @@ class ApplicationTemplatesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ApplicationTemplatesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of applicationTemplate objects from the Azure AD application gallery.
+        Retrieve a list of applicationTemplate objects from the Azure AD application gallery. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

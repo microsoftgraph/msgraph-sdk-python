@@ -49,7 +49,7 @@ class ProtectionRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ProtectionRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookWorksheetProtection]:
         """
-        Retrieve the properties and relationships of worksheetprotection object.
+        Retrieve the properties and relationships of worksheetprotection object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookWorksheetProtection]
         Find more info here: https://learn.microsoft.com/graph/api/worksheetprotection-get?view=graph-rest-1.0
@@ -110,7 +110,7 @@ class ProtectionRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ProtectionRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of worksheetprotection object.
+        Retrieve the properties and relationships of worksheetprotection object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -186,7 +186,7 @@ class ProtectionRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ProtectionRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of worksheetprotection object.
+        Retrieve the properties and relationships of worksheetprotection object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

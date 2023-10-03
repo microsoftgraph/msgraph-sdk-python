@@ -26,6 +26,9 @@ class CellWithRowWithColumnRequestBuilder(BaseRequestBuilder):
         param row: Usage: row={row}
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['column'] = str(column)
+            path_parameters['row'] = str(row)
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/cell(row={row},column={column})", path_parameters)
     
     async def get(self,request_configuration: Optional[CellWithRowWithColumnRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookRange]:

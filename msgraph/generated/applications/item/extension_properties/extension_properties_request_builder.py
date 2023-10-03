@@ -45,7 +45,7 @@ class ExtensionPropertiesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ExtensionPropertiesRequestBuilderGetRequestConfiguration] = None) -> Optional[ExtensionPropertyCollectionResponse]:
         """
-        Retrieve the list of directory extension definitions, represented by extensionProperty objects on an application.
+        Retrieve the list of directory extension definitions, represented by extensionProperty objects on an application. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExtensionPropertyCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/application-list-extensionproperty?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ExtensionPropertiesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertiesRequestBuilderPostRequestConfiguration] = None) -> Optional[ExtensionProperty]:
         """
-        Create a new directory extension definition, represented by an extensionProperty object.
+        Create a new directory extension definition, represented by an extensionProperty object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExtensionProperty]
@@ -92,7 +92,7 @@ class ExtensionPropertiesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ExtensionPropertiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of directory extension definitions, represented by extensionProperty objects on an application.
+        Retrieve the list of directory extension definitions, represented by extensionProperty objects on an application. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class ExtensionPropertiesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new directory extension definition, represented by an extensionProperty object.
+        Create a new directory extension definition, represented by an extensionProperty object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class ExtensionPropertiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExtensionPropertiesRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of directory extension definitions, represented by extensionProperty objects on an application.
+        Retrieve the list of directory extension definitions, represented by extensionProperty objects on an application. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -49,7 +49,7 @@ class FillRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[FillRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartFill]:
         """
-        Represents the fill format of a chart series, which includes background formating information. Read-only.
+        Represents the fill format of a chart series, which includes background formatting information. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartFill]
         """
@@ -109,7 +109,7 @@ class FillRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[FillRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents the fill format of a chart series, which includes background formating information. Read-only.
+        Represents the fill format of a chart series, which includes background formatting information. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -185,7 +185,7 @@ class FillRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FillRequestBuilderGetQueryParameters():
         """
-        Represents the fill format of a chart series, which includes background formating information. Read-only.
+        Represents the fill format of a chart series, which includes background formatting information. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

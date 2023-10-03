@@ -30,7 +30,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AccessPackageResourceRoleScopeItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove a accessPackageResourceRoleScope from an accessPackage list of resource role scopes.
+        Remove a accessPackageResourceRoleScope from an accessPackage list of resource role scopes. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/accesspackage-delete-resourcerolescopes?view=graph-rest-1.0
@@ -95,7 +95,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AccessPackageResourceRoleScopeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a accessPackageResourceRoleScope from an accessPackage list of resource role scopes.
+        Remove a accessPackageResourceRoleScope from an accessPackage list of resource role scopes. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

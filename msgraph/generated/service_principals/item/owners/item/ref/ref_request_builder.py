@@ -27,7 +27,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove an owner from a servicePrincipal object. As a recommended best practice, service principals should have at least two owners.
+        Remove an owner from a servicePrincipal object. As a recommended best practice, service principals should have at least two owners. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-delete-owners?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove an owner from a servicePrincipal object. As a recommended best practice, service principals should have at least two owners.
+        Remove an owner from a servicePrincipal object. As a recommended best practice, service principals should have at least two owners. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():
         """
-        Remove an owner from a servicePrincipal object. As a recommended best practice, service principals should have at least two owners.
+        Remove an owner from a servicePrincipal object. As a recommended best practice, service principals should have at least two owners. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

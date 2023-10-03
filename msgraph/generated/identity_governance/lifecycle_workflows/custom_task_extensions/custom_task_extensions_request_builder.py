@@ -45,7 +45,7 @@ class CustomTaskExtensionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CustomTaskExtensionsRequestBuilderGetRequestConfiguration] = None) -> Optional[CustomTaskExtensionCollectionResponse]:
         """
-        Get a list of the customTaskExtension objects and their properties.
+        Get a list of the customTaskExtension objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomTaskExtensionCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-lifecycleworkflowscontainer-list-customtaskextensions?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class CustomTaskExtensionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CustomTaskExtension] = None, request_configuration: Optional[CustomTaskExtensionsRequestBuilderPostRequestConfiguration] = None) -> Optional[CustomTaskExtension]:
         """
-        Create a new customTaskExtension object.
+        Create a new customTaskExtension object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomTaskExtension]
@@ -92,7 +92,7 @@ class CustomTaskExtensionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CustomTaskExtensionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the customTaskExtension objects and their properties.
+        Get a list of the customTaskExtension objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class CustomTaskExtensionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CustomTaskExtension] = None, request_configuration: Optional[CustomTaskExtensionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new customTaskExtension object.
+        Create a new customTaskExtension object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class CustomTaskExtensionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CustomTaskExtensionsRequestBuilderGetQueryParameters():
         """
-        Get a list of the customTaskExtension objects and their properties.
+        Get a list of the customTaskExtension objects and their properties. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

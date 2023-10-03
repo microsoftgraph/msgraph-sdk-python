@@ -45,7 +45,7 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PermissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[PermissionCollectionResponse]:
         """
-        List the effective sharing permissions on a driveItem.
+        List the effective sharing permissions on a driveItem. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PermissionCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/driveitem-list-permissions?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PermissionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List the effective sharing permissions on a driveItem.
+        List the effective sharing permissions on a driveItem. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PermissionsRequestBuilderGetQueryParameters():
         """
-        List the effective sharing permissions on a driveItem.
+        List the effective sharing permissions on a driveItem. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

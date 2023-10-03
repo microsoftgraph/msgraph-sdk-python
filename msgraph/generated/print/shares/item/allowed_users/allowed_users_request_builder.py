@@ -45,7 +45,7 @@ class AllowedUsersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AllowedUsersRequestBuilderGetRequestConfiguration] = None) -> Optional[UserCollectionResponse]:
         """
-        Retrieve a list of users who have been granted access to submit print jobs to the associated printerShare.
+        Retrieve a list of users who have been granted access to submit print jobs to the associated printerShare. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/printershare-list-allowedusers?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class AllowedUsersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AllowedUsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of users who have been granted access to submit print jobs to the associated printerShare.
+        Retrieve a list of users who have been granted access to submit print jobs to the associated printerShare. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,7 +113,7 @@ class AllowedUsersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AllowedUsersRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of users who have been granted access to submit print jobs to the associated printerShare.
+        Retrieve a list of users who have been granted access to submit print jobs to the associated printerShare. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -28,7 +28,7 @@ class CopyToDefaultContentLocationRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CopyToDefaultContentLocationPostRequestBody] = None, request_configuration: Optional[CopyToDefaultContentLocationRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Copy a file to a default content location in a [content type][contentType]. The file can then be added as a default file or template via a POST operation.
+        Copy a file to a default content location in a content type][contentType]. The file can then be added as a default file or template via a POST operation. This API is supported in the following [national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class CopyToDefaultContentLocationRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CopyToDefaultContentLocationPostRequestBody] = None, request_configuration: Optional[CopyToDefaultContentLocationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Copy a file to a default content location in a [content type][contentType]. The file can then be added as a default file or template via a POST operation.
+        Copy a file to a default content location in a content type][contentType]. The file can then be added as a default file or template via a POST operation. This API is supported in the following [national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

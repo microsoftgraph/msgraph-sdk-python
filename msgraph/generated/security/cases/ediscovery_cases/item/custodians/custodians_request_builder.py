@@ -47,7 +47,7 @@ class CustodiansRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CustodiansRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryCustodianCollectionResponse]:
         """
-        Get a list of the custodian objects and their properties.
+        Get a list of the custodian objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryCustodianCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycase-list-custodians?view=graph-rest-1.0
@@ -69,7 +69,7 @@ class CustodiansRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[EdiscoveryCustodian] = None, request_configuration: Optional[CustodiansRequestBuilderPostRequestConfiguration] = None) -> Optional[EdiscoveryCustodian]:
         """
-        Create a new ediscoveryCustodian object.After the custodian object is created, you will need to create the custodian's userSource to reference their mailbox and OneDrive for Business site.
+        Create a new ediscoveryCustodian object.After the custodian object is created, you will need to create the custodian's userSource to reference their mailbox and OneDrive for Business site. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryCustodian]
@@ -94,7 +94,7 @@ class CustodiansRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CustodiansRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the custodian objects and their properties.
+        Get a list of the custodian objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class CustodiansRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[EdiscoveryCustodian] = None, request_configuration: Optional[CustodiansRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new ediscoveryCustodian object.After the custodian object is created, you will need to create the custodian's userSource to reference their mailbox and OneDrive for Business site.
+        Create a new ediscoveryCustodian object.After the custodian object is created, you will need to create the custodian's userSource to reference their mailbox and OneDrive for Business site. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -169,7 +169,7 @@ class CustodiansRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CustodiansRequestBuilderGetQueryParameters():
         """
-        Get a list of the custodian objects and their properties.
+        Get a list of the custodian objects and their properties. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

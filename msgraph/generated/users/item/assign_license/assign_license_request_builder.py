@@ -29,7 +29,7 @@ class AssignLicenseRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AssignLicensePostRequestBody] = None, request_configuration: Optional[AssignLicenseRequestBuilderPostRequestConfiguration] = None) -> Optional[User]:
         """
-        Add or remove subscriptions for the user. You can also enable and disable specific plans associated with a subscription.
+        Add or remove subscriptions for the user. You can also enable and disable specific plans associated with a subscription. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
@@ -54,7 +54,7 @@ class AssignLicenseRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AssignLicensePostRequestBody] = None, request_configuration: Optional[AssignLicenseRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add or remove subscriptions for the user. You can also enable and disable specific plans associated with a subscription.
+        Add or remove subscriptions for the user. You can also enable and disable specific plans associated with a subscription. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -45,7 +45,7 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[LearningCourseActivitiesRequestBuilderGetRequestConfiguration] = None) -> Optional[LearningCourseActivityCollectionResponse]:
         """
-        Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user.
+        Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningCourseActivityCollectionResponse]
         """
@@ -90,7 +90,7 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[LearningCourseActivitiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user.
+        Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LearningCourseActivitiesRequestBuilderGetQueryParameters():
         """
-        Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user.
+        Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

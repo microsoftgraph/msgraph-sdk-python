@@ -79,7 +79,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Event] = None, request_configuration: Optional[EventItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Event]:
         """
-        Update an event object.
+        Update an event object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Event]
@@ -136,7 +136,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Event] = None, request_configuration: Optional[EventItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update an event object.
+        Update an event object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

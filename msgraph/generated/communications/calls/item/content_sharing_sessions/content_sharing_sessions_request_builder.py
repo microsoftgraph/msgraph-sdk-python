@@ -45,7 +45,7 @@ class ContentSharingSessionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ContentSharingSessionsRequestBuilderGetRequestConfiguration] = None) -> Optional[ContentSharingSessionCollectionResponse]:
         """
-        Retrieve a list of contentSharingSession objects in a call.
+        Retrieve a list of contentSharingSession objects in a call. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContentSharingSessionCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/call-list-contentsharingsessions?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class ContentSharingSessionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ContentSharingSessionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of contentSharingSession objects in a call.
+        Retrieve a list of contentSharingSession objects in a call. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class ContentSharingSessionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ContentSharingSessionsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of contentSharingSession objects in a call.
+        Retrieve a list of contentSharingSession objects in a call. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

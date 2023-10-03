@@ -34,7 +34,7 @@ class EducationUserItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[EducationUserItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a user.
+        Delete a user. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/educationuser-delete?view=graph-rest-1.0
@@ -54,7 +54,7 @@ class EducationUserItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[EducationUserItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationUser]:
         """
-        Read the properties and relationships of an educationUser object.
+        Read the properties and relationships of an educationUser object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationUser]
         Find more info here: https://learn.microsoft.com/graph/api/educationuser-get?view=graph-rest-1.0
@@ -76,7 +76,7 @@ class EducationUserItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EducationUser] = None, request_configuration: Optional[EducationUserItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationUser]:
         """
-        Update the properties of an educationUser object.
+        Update the properties of an educationUser object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationUser]
@@ -101,7 +101,7 @@ class EducationUserItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[EducationUserItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a user.
+        Delete a user. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +116,7 @@ class EducationUserItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[EducationUserItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an educationUser object.
+        Read the properties and relationships of an educationUser object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -133,7 +133,7 @@ class EducationUserItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EducationUser] = None, request_configuration: Optional[EducationUserItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an educationUser object.
+        Update the properties of an educationUser object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -228,7 +228,7 @@ class EducationUserItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EducationUserItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an educationUser object.
+        Read the properties and relationships of an educationUser object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

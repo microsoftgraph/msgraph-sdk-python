@@ -45,10 +45,10 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceEnrollmentConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceEnrollmentConfigurationCollectionResponse]:
         """
-        List properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration objects.
+        List properties and relationships of the deviceEnrollmentLimitConfiguration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceEnrollmentConfigurationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentwindowshelloforbusinessconfiguration-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentlimitconfiguration-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +92,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceEnrollmentConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration objects.
+        List properties and relationships of the deviceEnrollmentLimitConfiguration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -149,7 +149,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceEnrollmentConfigurationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration objects.
+        List properties and relationships of the deviceEnrollmentLimitConfiguration objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

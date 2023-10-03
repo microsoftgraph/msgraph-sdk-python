@@ -45,7 +45,7 @@ class UserRegistrationDetailsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserRegistrationDetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[UserRegistrationDetailsCollectionResponse]:
         """
-        Get a list of the authentication methods registered for a user as defined in the userRegistrationDetails object.
+        Get a list of the authentication methods registered for a user as defined in the userRegistrationDetails object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserRegistrationDetailsCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/authenticationmethodsroot-list-userregistrationdetails?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class UserRegistrationDetailsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserRegistrationDetailsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the authentication methods registered for a user as defined in the userRegistrationDetails object.
+        Get a list of the authentication methods registered for a user as defined in the userRegistrationDetails object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class UserRegistrationDetailsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserRegistrationDetailsRequestBuilderGetQueryParameters():
         """
-        Get a list of the authentication methods registered for a user as defined in the userRegistrationDetails object.
+        Get a list of the authentication methods registered for a user as defined in the userRegistrationDetails object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

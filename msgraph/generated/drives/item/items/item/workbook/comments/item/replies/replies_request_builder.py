@@ -45,7 +45,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookCommentReplyCollectionResponse]:
         """
-        Retrieve the properties and relationships of workbookCommentReply object.
+        Retrieve the properties and relationships of workbookCommentReply object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookCommentReplyCollectionResponse]
         """
@@ -90,7 +90,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of workbookCommentReply object.
+        Retrieve the properties and relationships of workbookCommentReply object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RepliesRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of workbookCommentReply object.
+        Retrieve the properties and relationships of workbookCommentReply object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

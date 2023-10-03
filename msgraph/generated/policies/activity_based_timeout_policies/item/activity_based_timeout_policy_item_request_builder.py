@@ -29,7 +29,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ActivityBasedTimeoutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an activityBasedTimeoutPolicy object.
+        Delete an activityBasedTimeoutPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/activitybasedtimeoutpolicy-delete?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ActivityBasedTimeoutPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ActivityBasedTimeoutPolicy]:
         """
-        Get the properties of an activityBasedTimeoutPolicy object.
+        Get the properties of an activityBasedTimeoutPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ActivityBasedTimeoutPolicy]
         Find more info here: https://learn.microsoft.com/graph/api/activitybasedtimeoutpolicy-get?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ActivityBasedTimeoutPolicy] = None, request_configuration: Optional[ActivityBasedTimeoutPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ActivityBasedTimeoutPolicy]:
         """
-        Update the properties of an activityBasedTimeoutPolicy object.
+        Update the properties of an activityBasedTimeoutPolicy object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ActivityBasedTimeoutPolicy]
@@ -96,7 +96,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ActivityBasedTimeoutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an activityBasedTimeoutPolicy object.
+        Delete an activityBasedTimeoutPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ActivityBasedTimeoutPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties of an activityBasedTimeoutPolicy object.
+        Get the properties of an activityBasedTimeoutPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -128,7 +128,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ActivityBasedTimeoutPolicy] = None, request_configuration: Optional[ActivityBasedTimeoutPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an activityBasedTimeoutPolicy object.
+        Update the properties of an activityBasedTimeoutPolicy object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -178,7 +178,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ActivityBasedTimeoutPolicyItemRequestBuilderGetQueryParameters():
         """
-        Get the properties of an activityBasedTimeoutPolicy object.
+        Get the properties of an activityBasedTimeoutPolicy object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

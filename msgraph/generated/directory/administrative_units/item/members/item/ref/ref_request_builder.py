@@ -27,7 +27,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Use this API to remove a member (user, group, or device) from an administrative unit.
+        Use this API to remove a member (user, group, or device) from an administrative unit. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-delete-members?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to remove a member (user, group, or device) from an administrative unit.
+        Use this API to remove a member (user, group, or device) from an administrative unit. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():
         """
-        Use this API to remove a member (user, group, or device) from an administrative unit.
+        Use this API to remove a member (user, group, or device) from an administrative unit. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

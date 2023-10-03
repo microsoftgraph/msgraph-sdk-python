@@ -45,7 +45,7 @@ class DelegatedAdminCustomersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DelegatedAdminCustomersRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminCustomerCollectionResponse]:
         """
-        Get a list of the delegatedAdminCustomer objects and their properties.
+        Get a list of the delegatedAdminCustomer objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminCustomerCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/tenantrelationship-list-delegatedadmincustomers?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class DelegatedAdminCustomersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DelegatedAdminCustomersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the delegatedAdminCustomer objects and their properties.
+        Get a list of the delegatedAdminCustomer objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class DelegatedAdminCustomersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DelegatedAdminCustomersRequestBuilderGetQueryParameters():
         """
-        Get a list of the delegatedAdminCustomer objects and their properties.
+        Get a list of the delegatedAdminCustomer objects and their properties. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

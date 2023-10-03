@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .recent_response import RecentResponse
+    from .recent_get_response import RecentGetResponse
 
 class RecentRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class RecentRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/recent(){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RecentRequestBuilderGetRequestConfiguration] = None) -> Optional[RecentResponse]:
+    async def get(self,request_configuration: Optional[RecentRequestBuilderGetRequestConfiguration] = None) -> Optional[RecentGetResponse]:
         """
         Invoke function recent
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[RecentResponse]
+        Returns: Optional[RecentGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class RecentRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .recent_response import RecentResponse
+        from .recent_get_response import RecentGetResponse
 
-        return await self.request_adapter.send_async(request_info, RecentResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, RecentGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RecentRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

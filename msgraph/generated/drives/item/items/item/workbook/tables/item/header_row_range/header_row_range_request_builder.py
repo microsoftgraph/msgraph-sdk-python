@@ -28,7 +28,7 @@ class HeaderRowRangeRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[HeaderRowRangeRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookRange]:
         """
-        Gets the range object associated with header row of the table.
+        Gets the range object associated with header row of the table. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookRange]
         Find more info here: https://learn.microsoft.com/graph/api/table-headerrowrange?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class HeaderRowRangeRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[HeaderRowRangeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Gets the range object associated with header row of the table.
+        Gets the range object associated with header row of the table. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

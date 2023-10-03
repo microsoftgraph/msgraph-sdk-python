@@ -27,7 +27,7 @@ class ClearFiltersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[ClearFiltersRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Clears all the filters currently applied on the table.
+        Clears all the filters currently applied on the table. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/table-clearfilters?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class ClearFiltersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[ClearFiltersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Clears all the filters currently applied on the table.
+        Clears all the filters currently applied on the table. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

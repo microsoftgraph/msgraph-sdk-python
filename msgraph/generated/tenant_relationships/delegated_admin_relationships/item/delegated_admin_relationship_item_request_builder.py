@@ -31,7 +31,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a delegatedAdminRelationship object. A relationship can only be deleted if it's in the 'created' status. 
+        Delete a delegatedAdminRelationship object. A relationship can only be deleted if it's in the 'created' status.  This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/delegatedadminrelationship-delete?view=graph-rest-1.0
@@ -51,7 +51,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
         """
-        Read the properties of a delegatedAdminRelationship object.
+        Read the properties of a delegatedAdminRelationship object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminRelationship]
         Find more info here: https://learn.microsoft.com/graph/api/delegatedadminrelationship-get?view=graph-rest-1.0
@@ -73,7 +73,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
         """
-        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the created status.
+        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the created status. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminRelationship]
@@ -98,7 +98,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a delegatedAdminRelationship object. A relationship can only be deleted if it's in the 'created' status. 
+        Delete a delegatedAdminRelationship object. A relationship can only be deleted if it's in the 'created' status.  This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,7 +113,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties of a delegatedAdminRelationship object.
+        Read the properties of a delegatedAdminRelationship object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -130,7 +130,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the created status.
+        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the created status. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -198,7 +198,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DelegatedAdminRelationshipItemRequestBuilderGetQueryParameters():
         """
-        Read the properties of a delegatedAdminRelationship object.
+        Read the properties of a delegatedAdminRelationship object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

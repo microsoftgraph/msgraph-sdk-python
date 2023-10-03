@@ -28,10 +28,10 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a managedEBookAssignment.
+        Deletes a iosVppEBookAssignment.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-managedebookassignment-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-books-iosvppebookassignment-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -95,7 +95,7 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a managedEBookAssignment.
+        Deletes a iosVppEBookAssignment.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

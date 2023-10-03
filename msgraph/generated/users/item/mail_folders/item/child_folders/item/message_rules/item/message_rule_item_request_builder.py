@@ -28,7 +28,7 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[MessageRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete the specified messageRule object.
+        Delete the specified messageRule object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/messagerule-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MessageRuleItemRequestBuilderGetRequestConfiguration] = None) -> Optional[MessageRule]:
         """
-        Get the properties and relationships of a messageRule object.
+        Get the properties and relationships of a messageRule object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MessageRule]
         Find more info here: https://learn.microsoft.com/graph/api/messagerule-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[MessageRule] = None, request_configuration: Optional[MessageRuleItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[MessageRule]:
         """
-        Change writable properties on a messageRule object and save the changes.
+        Change writable properties on a messageRule object and save the changes. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MessageRule]
@@ -95,7 +95,7 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[MessageRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete the specified messageRule object.
+        Delete the specified messageRule object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MessageRuleItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a messageRule object.
+        Get the properties and relationships of a messageRule object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[MessageRule] = None, request_configuration: Optional[MessageRuleItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Change writable properties on a messageRule object and save the changes.
+        Change writable properties on a messageRule object and save the changes. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MessageRuleItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a messageRule object.
+        Get the properties and relationships of a messageRule object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

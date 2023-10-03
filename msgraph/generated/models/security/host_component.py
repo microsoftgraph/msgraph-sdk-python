@@ -24,7 +24,7 @@ class HostComponent(Artifact):
     last_seen_date_time: Optional[datetime.datetime] = None
     # A name running on the artifact, for example, Microsoft IIS.
     name: Optional[str] = None
-    # The component version running on the artifact, for example, v8.5. This should not be assumed to be strictly numerical.
+    # The component version running on the artifact, for example, v8.5. This shouldn't be assumed to be strictly numerical.
     version: Optional[str] = None
     
     @staticmethod

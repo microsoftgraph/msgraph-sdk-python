@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .assign_post_request_body import AssignPostRequestBody
-    from .assign_response import AssignResponse
+    from .assign_post_response import AssignPostResponse
 
 class AssignRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class AssignRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/deviceConfigurations/{deviceConfiguration%2Did}/assign", path_parameters)
     
-    async def post(self,body: Optional[AssignPostRequestBody] = None, request_configuration: Optional[AssignRequestBuilderPostRequestConfiguration] = None) -> Optional[AssignResponse]:
+    async def post(self,body: Optional[AssignPostRequestBody] = None, request_configuration: Optional[AssignRequestBuilderPostRequestConfiguration] = None) -> Optional[AssignPostResponse]:
         """
         Not yet documented
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[AssignResponse]
+        Returns: Optional[AssignPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-deviceconfiguration-assign?view=graph-rest-1.0
         """
         if not body:
@@ -48,9 +48,9 @@ class AssignRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .assign_response import AssignResponse
+        from .assign_post_response import AssignPostResponse
 
-        return await self.request_adapter.send_async(request_info, AssignResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AssignPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[AssignPostRequestBody] = None, request_configuration: Optional[AssignRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

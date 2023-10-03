@@ -27,7 +27,7 @@ class CancelRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[CancelRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Cancel a print job. Print jobs can be canceled only on behalf of a user, using delegated permissions.
+        Cancel a print job. Print jobs can be canceled only on behalf of a user, using delegated permissions. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/printjob-cancel?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class CancelRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[CancelRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Cancel a print job. Print jobs can be canceled only on behalf of a user, using delegated permissions.
+        Cancel a print job. Print jobs can be canceled only on behalf of a user, using delegated permissions. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

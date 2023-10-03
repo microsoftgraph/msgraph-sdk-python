@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .favorite_post_request_body import FavoritePostRequestBody
-    from .favorite_response import FavoriteResponse
+    from .favorite_post_response import FavoritePostResponse
 
 class FavoriteRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class FavoriteRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/serviceAnnouncement/messages/favorite", path_parameters)
     
-    async def post(self,body: Optional[FavoritePostRequestBody] = None, request_configuration: Optional[FavoriteRequestBuilderPostRequestConfiguration] = None) -> Optional[FavoriteResponse]:
+    async def post(self,body: Optional[FavoritePostRequestBody] = None, request_configuration: Optional[FavoriteRequestBuilderPostRequestConfiguration] = None) -> Optional[FavoritePostResponse]:
         """
-        Change the status of a list of serviceUpdateMessages to favorite for the signed in user.
+        Change the status of a list of serviceUpdateMessages to favorite for the signed in user. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[FavoriteResponse]
+        Returns: Optional[FavoritePostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceupdatemessage-favorite?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class FavoriteRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .favorite_response import FavoriteResponse
+        from .favorite_post_response import FavoritePostResponse
 
-        return await self.request_adapter.send_async(request_info, FavoriteResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, FavoritePostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[FavoritePostRequestBody] = None, request_configuration: Optional[FavoriteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Change the status of a list of serviceUpdateMessages to favorite for the signed in user.
+        Change the status of a list of serviceUpdateMessages to favorite for the signed in user. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

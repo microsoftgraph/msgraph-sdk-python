@@ -28,7 +28,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove an Azure Active Directory (Azure AD) role assignment with administrative unit scope.
+        Remove an Azure Active Directory (Azure AD) role assignment with administrative unit scope. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-delete-scopedrolemembers?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ScopedRoleMembership]:
         """
-        Get an Azure Active Directory (Azure AD) role assignment with administrative unit scope.
+        Get an Azure Active Directory (Azure AD) role assignment with administrative unit scope. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ScopedRoleMembership]
         Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-get-scopedrolemembers?view=graph-rest-1.0
@@ -94,7 +94,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove an Azure Active Directory (Azure AD) role assignment with administrative unit scope.
+        Remove an Azure Active Directory (Azure AD) role assignment with administrative unit scope. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get an Azure Active Directory (Azure AD) role assignment with administrative unit scope.
+        Get an Azure Active Directory (Azure AD) role assignment with administrative unit scope. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -167,7 +167,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ScopedRoleMembershipItemRequestBuilderGetQueryParameters():
         """
-        Get an Azure Active Directory (Azure AD) role assignment with administrative unit scope.
+        Get an Azure Active Directory (Azure AD) role assignment with administrative unit scope. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

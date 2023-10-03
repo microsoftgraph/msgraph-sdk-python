@@ -71,7 +71,7 @@ class AppliesToRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DirectoryObject] = None, request_configuration: Optional[AppliesToRequestBuilderPostRequestConfiguration] = None) -> Optional[DirectoryObject]:
         """
-        Add an appliesTo on a featureRolloutPolicy object to specify the directoryObject to which the featureRolloutPolicy should be applied.
+        Add an appliesTo on a featureRolloutPolicy object to specify the directoryObject to which the featureRolloutPolicy should be applied. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObject]
@@ -113,7 +113,7 @@ class AppliesToRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DirectoryObject] = None, request_configuration: Optional[AppliesToRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add an appliesTo on a featureRolloutPolicy object to specify the directoryObject to which the featureRolloutPolicy should be applied.
+        Add an appliesTo on a featureRolloutPolicy object to specify the directoryObject to which the featureRolloutPolicy should be applied. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -29,7 +29,7 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ClaimsMappingPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a claimsMappingPolicy object.
+        Delete a claimsMappingPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/claimsmappingpolicy-delete?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ClaimsMappingPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ClaimsMappingPolicy]:
         """
-        Retrieve the properties and relationships of a claimsMappingPolicy object.
+        Retrieve the properties and relationships of a claimsMappingPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ClaimsMappingPolicy]
         Find more info here: https://learn.microsoft.com/graph/api/claimsmappingpolicy-get?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ClaimsMappingPolicy] = None, request_configuration: Optional[ClaimsMappingPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ClaimsMappingPolicy]:
         """
-        Update the properties of a claimsMappingPolicy object.
+        Update the properties of a claimsMappingPolicy object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ClaimsMappingPolicy]
@@ -96,7 +96,7 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ClaimsMappingPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a claimsMappingPolicy object.
+        Delete a claimsMappingPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ClaimsMappingPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a claimsMappingPolicy object.
+        Retrieve the properties and relationships of a claimsMappingPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -128,7 +128,7 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ClaimsMappingPolicy] = None, request_configuration: Optional[ClaimsMappingPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a claimsMappingPolicy object.
+        Update the properties of a claimsMappingPolicy object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -178,7 +178,7 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ClaimsMappingPolicyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a claimsMappingPolicy object.
+        Retrieve the properties and relationships of a claimsMappingPolicy object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

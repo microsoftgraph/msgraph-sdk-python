@@ -28,7 +28,7 @@ class LearningCourseActivityItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[LearningCourseActivityItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a learningCourseActivity object by using the course activity ID of either an assignment or a self-initiated activity.
+        Delete a learningCourseActivity object by using the course activity ID of either an assignment or a self-initiated activity. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/learningcourseactivity-delete?view=graph-rest-1.0
@@ -69,7 +69,7 @@ class LearningCourseActivityItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[LearningCourseActivity] = None, request_configuration: Optional[LearningCourseActivityItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[LearningCourseActivity]:
         """
-        Update the properties of a learningCourseActivity object. 
+        Update the properties of a learningCourseActivity object.  This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningCourseActivity]
@@ -94,7 +94,7 @@ class LearningCourseActivityItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[LearningCourseActivityItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a learningCourseActivity object by using the course activity ID of either an assignment or a self-initiated activity.
+        Delete a learningCourseActivity object by using the course activity ID of either an assignment or a self-initiated activity. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -126,7 +126,7 @@ class LearningCourseActivityItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[LearningCourseActivity] = None, request_configuration: Optional[LearningCourseActivityItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a learningCourseActivity object. 
+        Update the properties of a learningCourseActivity object.  This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

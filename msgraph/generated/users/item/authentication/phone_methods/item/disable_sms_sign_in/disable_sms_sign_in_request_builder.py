@@ -27,7 +27,7 @@ class DisableSmsSignInRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[DisableSmsSignInRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Disable SMS sign-in for an existing mobile phone number registered to a user. The number will no longer be available for SMS sign-in, which can prevent your user from signing in.
+        Disable SMS sign-in for an existing mobile phone number registered to a user. The number will no longer be available for SMS sign-in, which can prevent your user from signing in. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/phoneauthenticationmethod-disablesmssignin?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class DisableSmsSignInRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[DisableSmsSignInRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Disable SMS sign-in for an existing mobile phone number registered to a user. The number will no longer be available for SMS sign-in, which can prevent your user from signing in.
+        Disable SMS sign-in for an existing mobile phone number registered to a user. The number will no longer be available for SMS sign-in, which can prevent your user from signing in. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

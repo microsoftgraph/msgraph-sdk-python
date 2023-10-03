@@ -27,7 +27,7 @@ class UnpublishRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[UnpublishRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Make the scheduling page of this business not available to external customers. Set the isPublished property to false, and the publicUrl property to null.
+        Make the scheduling page of this business not available to external customers. Set the isPublished property to false, and the publicUrl property to null. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-unpublish?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class UnpublishRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[UnpublishRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Make the scheduling page of this business not available to external customers. Set the isPublished property to false, and the publicUrl property to null.
+        Make the scheduling page of this business not available to external customers. Set the isPublished property to false, and the publicUrl property to null. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

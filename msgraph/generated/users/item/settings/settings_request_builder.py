@@ -48,7 +48,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[UserSettings]:
         """
-        Read the user and organization userSettings object.To learn how to update the properties of the userSettings object, see update user settings.
+        Read the user and organization userSettings object.To learn how to update the properties of the userSettings object, see update user settings. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserSettings]
         Find more info here: https://learn.microsoft.com/graph/api/usersettings-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[UserSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[UserSettings]:
         """
-        Update the properties of the userSettings object. Users in the same organization can have different settings based on their preference or on the organization policies. To get the user current settings, see current user settings. 
+        Update the properties of the userSettings object. Users in the same organization can have different settings based on their preference or on the organization policies. To get the user current settings, see current user settings.  This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserSettings]
@@ -110,7 +110,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the user and organization userSettings object.To learn how to update the properties of the userSettings object, see update user settings.
+        Read the user and organization userSettings object.To learn how to update the properties of the userSettings object, see update user settings. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[UserSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of the userSettings object. Users in the same organization can have different settings based on their preference or on the organization policies. To get the user current settings, see current user settings. 
+        Update the properties of the userSettings object. Users in the same organization can have different settings based on their preference or on the organization policies. To get the user current settings, see current user settings.  This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -177,7 +177,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SettingsRequestBuilderGetQueryParameters():
         """
-        Read the user and organization userSettings object.To learn how to update the properties of the userSettings object, see update user settings.
+        Read the user and organization userSettings object.To learn how to update the properties of the userSettings object, see update user settings. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

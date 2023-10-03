@@ -28,10 +28,11 @@ class ResumeRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ResumePostRequestBody] = None, request_configuration: Optional[ResumeRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action resume
+        In Azure AD entitlement management, when an access package policy has been enabled to call out a custom extension and the request processing is waiting for the callback from the customer, the customer can initiate a resume action. It is performed on an accessPackageAssignmentRequest object whose requestStatus is in a WaitingForCallback state. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentrequest-resume?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -50,7 +51,7 @@ class ResumeRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ResumePostRequestBody] = None, request_configuration: Optional[ResumeRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action resume
+        In Azure AD entitlement management, when an access package policy has been enabled to call out a custom extension and the request processing is waiting for the callback from the customer, the customer can initiate a resume action. It is performed on an accessPackageAssignmentRequest object whose requestStatus is in a WaitingForCallback state. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -45,7 +45,7 @@ class InstancesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessReviewHistoryInstanceCollectionResponse]:
         """
-        Retrieve the instances of an access review history definition created in the last 30 days.
+        Retrieve the instances of an access review history definition created in the last 30 days. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewHistoryInstanceCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/accessreviewhistorydefinition-list-instances?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class InstancesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the instances of an access review history definition created in the last 30 days.
+        Retrieve the instances of an access review history definition created in the last 30 days. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class InstancesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class InstancesRequestBuilderGetQueryParameters():
         """
-        Retrieve the instances of an access review history definition created in the last 30 days.
+        Retrieve the instances of an access review history definition created in the last 30 days. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -45,7 +45,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> Optional[ColumnDefinitionCollectionResponse]:
         """
-        Get the collection of columns represented as [columnDefinition][columnDefinition] resources in a [site][site].
+        Get the collection of columns represented as columnDefinition][columnDefinition] resources in a [site][site]. This API is supported in the following [national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ColumnDefinitionCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/site-list-columns?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ColumnDefinition] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> Optional[ColumnDefinition]:
         """
-        Create a column for a [site][site] with a request that specifies a [columnDefinition][columnDefinition].
+        Create a column for a site][site] with a request that specifies a [columnDefinition][columnDefinition]. This API is supported in the following [national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ColumnDefinition]
@@ -92,7 +92,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the collection of columns represented as [columnDefinition][columnDefinition] resources in a [site][site].
+        Get the collection of columns represented as columnDefinition][columnDefinition] resources in a [site][site]. This API is supported in the following [national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ColumnDefinition] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a column for a [site][site] with a request that specifies a [columnDefinition][columnDefinition].
+        Create a column for a site][site] with a request that specifies a [columnDefinition][columnDefinition]. This API is supported in the following [national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ColumnsRequestBuilderGetQueryParameters():
         """
-        Get the collection of columns represented as [columnDefinition][columnDefinition] resources in a [site][site].
+        Get the collection of columns represented as columnDefinition][columnDefinition] resources in a [site][site]. This API is supported in the following [national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

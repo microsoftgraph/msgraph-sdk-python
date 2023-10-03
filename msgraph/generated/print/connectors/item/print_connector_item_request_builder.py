@@ -28,7 +28,7 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[PrintConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete (unregister) a printConnector.
+        Delete (unregister) a printConnector. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/printconnector-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PrintConnectorItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintConnector]:
         """
-        Retrieve the properties and relationships of a printConnector object.
+        Retrieve the properties and relationships of a printConnector object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintConnector]
         Find more info here: https://learn.microsoft.com/graph/api/printconnector-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[PrintConnector] = None, request_configuration: Optional[PrintConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PrintConnector]:
         """
-        Update the properties of a printConnector object.
+        Update the properties of a printConnector object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintConnector]
@@ -95,7 +95,7 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[PrintConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete (unregister) a printConnector.
+        Delete (unregister) a printConnector. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PrintConnectorItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a printConnector object.
+        Retrieve the properties and relationships of a printConnector object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[PrintConnector] = None, request_configuration: Optional[PrintConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a printConnector object.
+        Update the properties of a printConnector object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PrintConnectorItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a printConnector object.
+        Retrieve the properties and relationships of a printConnector object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

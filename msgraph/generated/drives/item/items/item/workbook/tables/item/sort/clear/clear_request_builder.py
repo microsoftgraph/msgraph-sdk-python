@@ -27,7 +27,7 @@ class ClearRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[ClearRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Clears the sorting that is currently on the table. While this doesn't modify the table's ordering, it clears the state of the header buttons.
+        Clears the sorting that is currently on the table. While this doesn't modify the table's ordering, it clears the state of the header buttons. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/tablesort-clear?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class ClearRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[ClearRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Clears the sorting that is currently on the table. While this doesn't modify the table's ordering, it clears the state of the header buttons.
+        Clears the sorting that is currently on the table. While this doesn't modify the table's ordering, it clears the state of the header buttons. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

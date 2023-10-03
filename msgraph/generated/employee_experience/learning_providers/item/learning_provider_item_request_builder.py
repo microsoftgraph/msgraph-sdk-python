@@ -50,7 +50,7 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[LearningProviderItemRequestBuilderGetRequestConfiguration] = None) -> Optional[LearningProvider]:
         """
-        Read the properties and relationships of a learningProvider object.
+        Read the properties and relationships of a learningProvider object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningProvider]
         Find more info here: https://learn.microsoft.com/graph/api/learningprovider-get?view=graph-rest-1.0
@@ -72,7 +72,7 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProviderItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[LearningProvider]:
         """
-        Update the properties of a learningProvider object.
+        Update the properties of a learningProvider object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningProvider]
@@ -112,7 +112,7 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[LearningProviderItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a learningProvider object.
+        Read the properties and relationships of a learningProvider object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -129,7 +129,7 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProviderItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a learningProvider object.
+        Update the properties of a learningProvider object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -188,7 +188,7 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LearningProviderItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a learningProvider object.
+        Read the properties and relationships of a learningProvider object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

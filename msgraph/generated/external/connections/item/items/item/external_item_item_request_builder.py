@@ -30,7 +30,7 @@ class ExternalItemItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ExternalItemItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an externalItem object.
+        Delete an externalItem object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/externalconnectors-externalitem-delete?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class ExternalItemItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ExternalItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ExternalItem]:
         """
-        Read the properties and relationships of an externalItem object.
+        Read the properties and relationships of an externalItem object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExternalItem]
         Find more info here: https://learn.microsoft.com/graph/api/externalconnectors-externalitem-get?view=graph-rest-1.0
@@ -96,7 +96,7 @@ class ExternalItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ExternalItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an externalItem object.
+        Delete an externalItem object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class ExternalItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ExternalItemItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an externalItem object.
+        Read the properties and relationships of an externalItem object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -187,7 +187,7 @@ class ExternalItemItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExternalItemItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an externalItem object.
+        Read the properties and relationships of an externalItem object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

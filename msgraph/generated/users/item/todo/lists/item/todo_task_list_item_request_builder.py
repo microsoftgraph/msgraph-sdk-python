@@ -30,7 +30,7 @@ class TodoTaskListItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TodoTaskListItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a todoTaskList object.
+        Deletes a todoTaskList object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/todotasklist-delete?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class TodoTaskListItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TodoTaskListItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TodoTaskList]:
         """
-        Read the properties and relationships of a todoTaskList object.
+        Read the properties and relationships of a todoTaskList object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TodoTaskList]
         Find more info here: https://learn.microsoft.com/graph/api/todotasklist-get?view=graph-rest-1.0
@@ -72,7 +72,7 @@ class TodoTaskListItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TodoTaskList] = None, request_configuration: Optional[TodoTaskListItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TodoTaskList]:
         """
-        Update the properties of a todoTaskList object.
+        Update the properties of a todoTaskList object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TodoTaskList]
@@ -97,7 +97,7 @@ class TodoTaskListItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TodoTaskListItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a todoTaskList object.
+        Deletes a todoTaskList object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +112,7 @@ class TodoTaskListItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TodoTaskListItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a todoTaskList object.
+        Read the properties and relationships of a todoTaskList object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -129,7 +129,7 @@ class TodoTaskListItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TodoTaskList] = None, request_configuration: Optional[TodoTaskListItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a todoTaskList object.
+        Update the properties of a todoTaskList object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -188,7 +188,7 @@ class TodoTaskListItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TodoTaskListItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a todoTaskList object.
+        Read the properties and relationships of a todoTaskList object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

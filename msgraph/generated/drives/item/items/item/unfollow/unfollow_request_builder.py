@@ -27,7 +27,7 @@ class UnfollowRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[UnfollowRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Unfollow a driveItem.
+        Unfollow a driveItem. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/driveitem-unfollow?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class UnfollowRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[UnfollowRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Unfollow a driveItem.
+        Unfollow a driveItem. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

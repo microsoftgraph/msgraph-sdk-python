@@ -45,7 +45,7 @@ class TimeOffRequestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TimeOffRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[TimeOffRequestCollectionResponse]:
         """
-        Retrieve a list of timeOffRequest objects in the team.
+        Retrieve a list of timeOffRequest objects in the team. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TimeOffRequestCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/timeoffrequest-list?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class TimeOffRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TimeOffRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of timeOffRequest objects in the team.
+        Retrieve a list of timeOffRequest objects in the team. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class TimeOffRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TimeOffRequestsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of timeOffRequest objects in the team.
+        Retrieve a list of timeOffRequest objects in the team. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

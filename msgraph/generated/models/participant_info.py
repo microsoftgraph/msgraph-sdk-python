@@ -27,7 +27,7 @@ class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # The participant ID of the participant. Read-only.
     participant_id: Optional[str] = None
-    # The home region of the participant. This can be a country, a continent, or a larger geographic region. This does not change based on the participant's current physical location. Read-only.
+    # The home region of the participant. This can be a country, a continent, or a larger geographic region. This doesn't change based on the participant's current physical location. Read-only.
     region: Optional[str] = None
     
     @staticmethod

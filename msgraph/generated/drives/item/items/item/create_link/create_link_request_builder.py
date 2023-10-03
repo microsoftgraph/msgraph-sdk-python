@@ -29,7 +29,7 @@ class CreateLinkRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CreateLinkPostRequestBody] = None, request_configuration: Optional[CreateLinkRequestBuilderPostRequestConfiguration] = None) -> Optional[Permission]:
         """
-        You can use createLink action to share a DriveItem via a sharing link. The createLink action will create a new sharing link if the specified link type doesn't already exist for the calling application.If a sharing link of the specified type already exists for the app, the existing sharing link will be returned. DriveItem resources inherit sharing permissions from their ancestors.
+        You can use createLink action to share a DriveItem via a sharing link. The createLink action will create a new sharing link if the specified link type doesn't already exist for the calling application.If a sharing link of the specified type already exists for the app, the existing sharing link will be returned. DriveItem resources inherit sharing permissions from their ancestors. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Permission]
@@ -54,7 +54,7 @@ class CreateLinkRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CreateLinkPostRequestBody] = None, request_configuration: Optional[CreateLinkRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        You can use createLink action to share a DriveItem via a sharing link. The createLink action will create a new sharing link if the specified link type doesn't already exist for the calling application.If a sharing link of the specified type already exists for the app, the existing sharing link will be returned. DriveItem resources inherit sharing permissions from their ancestors.
+        You can use createLink action to share a DriveItem via a sharing link. The createLink action will create a new sharing link if the specified link type doesn't already exist for the calling application.If a sharing link of the specified type already exists for the app, the existing sharing link will be returned. DriveItem resources inherit sharing permissions from their ancestors. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

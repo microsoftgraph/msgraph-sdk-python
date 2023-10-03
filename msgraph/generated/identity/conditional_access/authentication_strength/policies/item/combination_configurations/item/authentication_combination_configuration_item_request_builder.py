@@ -28,7 +28,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder(BaseRequestBuilde
     
     async def delete(self,request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an authenticationCombinationConfiguration  for a custom authenticationStrengthPolicy object.
+        Delete an authenticationCombinationConfiguration  for a custom authenticationStrengthPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/authenticationstrengthpolicy-delete-combinationconfigurations?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder(BaseRequestBuilde
     
     async def get(self,request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationCombinationConfiguration]:
         """
-        Read the properties and relationships of an authenticationCombinationConfiguration object.
+        Read the properties and relationships of an authenticationCombinationConfiguration object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationCombinationConfiguration]
         Find more info here: https://learn.microsoft.com/graph/api/authenticationcombinationconfiguration-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder(BaseRequestBuilde
     
     async def patch(self,body: Optional[AuthenticationCombinationConfiguration] = None, request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AuthenticationCombinationConfiguration]:
         """
-        Update the properties of an authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be updated as they are the only type of authenticationCombinationConfiguration that may be created.
+        Update the properties of an authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be updated as they're the only type of authenticationCombinationConfiguration that may be created. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationCombinationConfiguration]
@@ -95,7 +95,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder(BaseRequestBuilde
     
     def to_delete_request_information(self,request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an authenticationCombinationConfiguration  for a custom authenticationStrengthPolicy object.
+        Delete an authenticationCombinationConfiguration  for a custom authenticationStrengthPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder(BaseRequestBuilde
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an authenticationCombinationConfiguration object.
+        Read the properties and relationships of an authenticationCombinationConfiguration object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder(BaseRequestBuilde
     
     def to_patch_request_information(self,body: Optional[AuthenticationCombinationConfiguration] = None, request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be updated as they are the only type of authenticationCombinationConfiguration that may be created.
+        Update the properties of an authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be updated as they're the only type of authenticationCombinationConfiguration that may be created. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder(BaseRequestBuilde
     @dataclass
     class AuthenticationCombinationConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an authenticationCombinationConfiguration object.
+        Read the properties and relationships of an authenticationCombinationConfiguration object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

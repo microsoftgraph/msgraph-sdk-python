@@ -28,7 +28,7 @@ class SetSolidColorRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SetSolidColorPostRequestBody] = None, request_configuration: Optional[SetSolidColorRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Sets the fill formatting of a chart element to a uniform color.
+        Sets the fill formatting of a chart element to a uniform color. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class SetSolidColorRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SetSolidColorPostRequestBody] = None, request_configuration: Optional[SetSolidColorRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Sets the fill formatting of a chart element to a uniform color.
+        Sets the fill formatting of a chart element to a uniform color. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

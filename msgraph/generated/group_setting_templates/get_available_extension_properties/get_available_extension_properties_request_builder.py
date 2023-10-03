@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from .get_available_extension_properties_post_request_body import GetAvailableExtensionPropertiesPostRequestBody
-    from .get_available_extension_properties_response import GetAvailableExtensionPropertiesResponse
+    from .get_available_extension_properties_post_response import GetAvailableExtensionPropertiesPostResponse
 
 class GetAvailableExtensionPropertiesRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class GetAvailableExtensionPropertiesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groupSettingTemplates/getAvailableExtensionProperties", path_parameters)
     
-    async def post(self,body: Optional[GetAvailableExtensionPropertiesPostRequestBody] = None, request_configuration: Optional[GetAvailableExtensionPropertiesRequestBuilderPostRequestConfiguration] = None) -> Optional[GetAvailableExtensionPropertiesResponse]:
+    async def post(self,body: Optional[GetAvailableExtensionPropertiesPostRequestBody] = None, request_configuration: Optional[GetAvailableExtensionPropertiesRequestBuilderPostRequestConfiguration] = None) -> Optional[GetAvailableExtensionPropertiesPostResponse]:
         """
-        Return all directory extension definitions that have been registered in a directory, including through multi-tenant apps. The following entities support extension properties:+ user+ group+ administrativeUnit+ application+ device+ organization
+        Return all directory extension definitions that have been registered in a directory, including through multi-tenant apps. The following entities support extension properties: This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetAvailableExtensionPropertiesResponse]
+        Returns: Optional[GetAvailableExtensionPropertiesPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directoryobject-getavailableextensionproperties?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class GetAvailableExtensionPropertiesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_available_extension_properties_response import GetAvailableExtensionPropertiesResponse
+        from .get_available_extension_properties_post_response import GetAvailableExtensionPropertiesPostResponse
 
-        return await self.request_adapter.send_async(request_info, GetAvailableExtensionPropertiesResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetAvailableExtensionPropertiesPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[GetAvailableExtensionPropertiesPostRequestBody] = None, request_configuration: Optional[GetAvailableExtensionPropertiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Return all directory extension definitions that have been registered in a directory, including through multi-tenant apps. The following entities support extension properties:+ user+ group+ administrativeUnit+ application+ device+ organization
+        Return all directory extension definitions that have been registered in a directory, including through multi-tenant apps. The following entities support extension properties: This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

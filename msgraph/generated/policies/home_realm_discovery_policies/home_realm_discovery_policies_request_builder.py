@@ -45,7 +45,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[HomeRealmDiscoveryPolicyCollectionResponse]:
         """
-        Get a list of homeRealmDiscoveryPolicy objects.
+        Get a list of homeRealmDiscoveryPolicy objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HomeRealmDiscoveryPolicyCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/homerealmdiscoverypolicy-list?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[HomeRealmDiscoveryPolicy]:
         """
-        Create a new homeRealmDiscoveryPolicy object.
+        Create a new homeRealmDiscoveryPolicy object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HomeRealmDiscoveryPolicy]
@@ -92,7 +92,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of homeRealmDiscoveryPolicy objects.
+        Get a list of homeRealmDiscoveryPolicy objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new homeRealmDiscoveryPolicy object.
+        Create a new homeRealmDiscoveryPolicy object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HomeRealmDiscoveryPoliciesRequestBuilderGetQueryParameters():
         """
-        Get a list of homeRealmDiscoveryPolicy objects.
+        Get a list of homeRealmDiscoveryPolicy objects. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

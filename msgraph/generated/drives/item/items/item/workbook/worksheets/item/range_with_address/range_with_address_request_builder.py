@@ -25,6 +25,8 @@ class RangeWithAddressRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['address'] = str(address)
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/range(address='{address}')", path_parameters)
     
     async def get(self,request_configuration: Optional[RangeWithAddressRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookRange]:

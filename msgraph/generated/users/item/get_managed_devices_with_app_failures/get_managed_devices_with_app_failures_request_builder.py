@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .get_managed_devices_with_app_failures_response import GetManagedDevicesWithAppFailuresResponse
+    from .get_managed_devices_with_app_failures_get_response import GetManagedDevicesWithAppFailuresGetResponse
 
 class GetManagedDevicesWithAppFailuresRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class GetManagedDevicesWithAppFailuresRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/getManagedDevicesWithAppFailures(){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetManagedDevicesWithAppFailuresRequestBuilderGetRequestConfiguration] = None) -> Optional[GetManagedDevicesWithAppFailuresResponse]:
+    async def get(self,request_configuration: Optional[GetManagedDevicesWithAppFailuresRequestBuilderGetRequestConfiguration] = None) -> Optional[GetManagedDevicesWithAppFailuresGetResponse]:
         """
         Retrieves the list of devices with failed apps
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetManagedDevicesWithAppFailuresResponse]
+        Returns: Optional[GetManagedDevicesWithAppFailuresGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class GetManagedDevicesWithAppFailuresRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_managed_devices_with_app_failures_response import GetManagedDevicesWithAppFailuresResponse
+        from .get_managed_devices_with_app_failures_get_response import GetManagedDevicesWithAppFailuresGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetManagedDevicesWithAppFailuresResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetManagedDevicesWithAppFailuresGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetManagedDevicesWithAppFailuresRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

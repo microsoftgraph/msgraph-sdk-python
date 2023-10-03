@@ -45,7 +45,7 @@ class DomainsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DomainsRequestBuilderGetRequestConfiguration] = None) -> Optional[DomainCollectionResponse]:
         """
-        Retrieve a list of domain objects.
+        Retrieve a list of domain objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DomainCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/domain-list?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class DomainsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Domain] = None, request_configuration: Optional[DomainsRequestBuilderPostRequestConfiguration] = None) -> Optional[Domain]:
         """
-        Adds a domain to the tenant. Important: You cannot use an associated domain with your Azure AD tenant until ownership is verified. See List verificationDnsRecords for details. Root domains require verification. For example, contoso.com requires verification. If a root domain is verified, subdomains of the root domain are automatically verified. For example, subdomain.contoso.com is automatically be verified if contoso.com has been verified.
+        Adds a domain to the tenant. Important: You cannot use an associated domain with your Azure AD tenant until ownership is verified. See List verificationDnsRecords for details. Root domains require verification. For example, contoso.com requires verification. If a root domain is verified, subdomains of the root domain are automatically verified. For example, subdomain.contoso.com is automatically be verified if contoso.com has been verified. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Domain]
@@ -92,7 +92,7 @@ class DomainsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DomainsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of domain objects.
+        Retrieve a list of domain objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class DomainsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Domain] = None, request_configuration: Optional[DomainsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Adds a domain to the tenant. Important: You cannot use an associated domain with your Azure AD tenant until ownership is verified. See List verificationDnsRecords for details. Root domains require verification. For example, contoso.com requires verification. If a root domain is verified, subdomains of the root domain are automatically verified. For example, subdomain.contoso.com is automatically be verified if contoso.com has been verified.
+        Adds a domain to the tenant. Important: You cannot use an associated domain with your Azure AD tenant until ownership is verified. See List verificationDnsRecords for details. Root domains require verification. For example, contoso.com requires verification. If a root domain is verified, subdomains of the root domain are automatically verified. For example, subdomain.contoso.com is automatically be verified if contoso.com has been verified. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class DomainsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DomainsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of domain objects.
+        Retrieve a list of domain objects. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

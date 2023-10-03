@@ -45,7 +45,7 @@ class BucketsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[BucketsRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerBucketCollectionResponse]:
         """
-        Retrieve a list of plannerbucket objects.
+        Retrieve a list of plannerbucket objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerBucketCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/planner-list-buckets?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class BucketsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[PlannerBucket] = None, request_configuration: Optional[BucketsRequestBuilderPostRequestConfiguration] = None) -> Optional[PlannerBucket]:
         """
-        Create a new plannerBucket object.
+        Create a new plannerBucket object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerBucket]
@@ -92,7 +92,7 @@ class BucketsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[BucketsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of plannerbucket objects.
+        Retrieve a list of plannerbucket objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class BucketsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[PlannerBucket] = None, request_configuration: Optional[BucketsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new plannerBucket object.
+        Create a new plannerBucket object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class BucketsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BucketsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of plannerbucket objects.
+        Retrieve a list of plannerbucket objects. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

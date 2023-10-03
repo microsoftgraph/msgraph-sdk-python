@@ -27,7 +27,7 @@ class ReapplyRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[ReapplyRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Reapplies the current sorting parameters to the table.
+        Reapplies the current sorting parameters to the table. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/tablesort-reapply?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class ReapplyRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[ReapplyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Reapplies the current sorting parameters to the table.
+        Reapplies the current sorting parameters to the table. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -45,7 +45,7 @@ class MonthlyPrintUsageByUserRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MonthlyPrintUsageByUserRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintUsageByUserCollectionResponse]:
         """
-        Retrieve a list of monthly print usage summaries, grouped by user.
+        Retrieve a list of monthly print usage summaries, grouped by user. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintUsageByUserCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/reportroot-list-monthlyprintusagebyuser?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class MonthlyPrintUsageByUserRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MonthlyPrintUsageByUserRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of monthly print usage summaries, grouped by user.
+        Retrieve a list of monthly print usage summaries, grouped by user. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class MonthlyPrintUsageByUserRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MonthlyPrintUsageByUserRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of monthly print usage summaries, grouped by user.
+        Retrieve a list of monthly print usage summaries, grouped by user. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

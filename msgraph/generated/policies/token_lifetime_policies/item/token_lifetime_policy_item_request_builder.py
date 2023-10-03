@@ -29,7 +29,7 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a tokenLifetimePolicy object.
+        Delete a tokenLifetimePolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/tokenlifetimepolicy-delete?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TokenLifetimePolicy]:
         """
-        Retrieve the properties and relationships of a tokenLifetimePolicy object.
+        Retrieve the properties and relationships of a tokenLifetimePolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TokenLifetimePolicy]
         Find more info here: https://learn.microsoft.com/graph/api/tokenlifetimepolicy-get?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TokenLifetimePolicy] = None, request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TokenLifetimePolicy]:
         """
-        Update the properties of a tokenLifetimePolicy object.
+        Update the properties of a tokenLifetimePolicy object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TokenLifetimePolicy]
@@ -96,7 +96,7 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a tokenLifetimePolicy object.
+        Delete a tokenLifetimePolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a tokenLifetimePolicy object.
+        Retrieve the properties and relationships of a tokenLifetimePolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -128,7 +128,7 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TokenLifetimePolicy] = None, request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a tokenLifetimePolicy object.
+        Update the properties of a tokenLifetimePolicy object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -178,7 +178,7 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TokenLifetimePolicyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a tokenLifetimePolicy object.
+        Retrieve the properties and relationships of a tokenLifetimePolicy object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

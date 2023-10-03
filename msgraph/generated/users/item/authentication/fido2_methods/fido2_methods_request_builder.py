@@ -44,7 +44,7 @@ class Fido2MethodsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[Fido2MethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[Fido2AuthenticationMethodCollectionResponse]:
         """
-        Retrieve a list of a user's FIDO2 Security Key Authentication Method objects and their properties.
+        Retrieve a list of a user's FIDO2 Security Key Authentication Method objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Fido2AuthenticationMethodCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/fido2authenticationmethod-list?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class Fido2MethodsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[Fido2MethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of a user's FIDO2 Security Key Authentication Method objects and their properties.
+        Retrieve a list of a user's FIDO2 Security Key Authentication Method objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +103,7 @@ class Fido2MethodsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class Fido2MethodsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of a user's FIDO2 Security Key Authentication Method objects and their properties.
+        Retrieve a list of a user's FIDO2 Security Key Authentication Method objects and their properties. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

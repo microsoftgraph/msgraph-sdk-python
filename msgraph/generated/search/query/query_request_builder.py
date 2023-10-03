@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from .query_post_request_body import QueryPostRequestBody
-    from .query_response import QueryResponse
+    from .query_post_response import QueryPostResponse
 
 class QueryRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class QueryRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/search/query", path_parameters)
     
-    async def post(self,body: Optional[QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None) -> Optional[QueryResponse]:
+    async def post(self,body: Optional[QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None) -> Optional[QueryPostResponse]:
         """
-        Runs the query specified in the request body. Search results are provided in the response.
+        Runs the query specified in the request body. Search results are provided in the response. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[QueryResponse]
+        Returns: Optional[QueryPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/search-query?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class QueryRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .query_response import QueryResponse
+        from .query_post_response import QueryPostResponse
 
-        return await self.request_adapter.send_async(request_info, QueryResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, QueryPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Runs the query specified in the request body. Search results are provided in the response.
+        Runs the query specified in the request body. Search results are provided in the response. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -45,7 +45,7 @@ class AuthenticationMethodModesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AuthenticationMethodModesRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationMethodModeDetailCollectionResponse]:
         """
-        Get a list of all supported authentication methods, or all supported authentication method combinations as a list of authenticationMethodModes objects and their properties.
+        Get a list of all supported authentication methods, or all supported authentication method combinations as a list of authenticationMethodModes objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethodModeDetailCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/authenticationstrengthroot-list-authenticationmethodmodes?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class AuthenticationMethodModesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationMethodModesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of all supported authentication methods, or all supported authentication method combinations as a list of authenticationMethodModes objects and their properties.
+        Get a list of all supported authentication methods, or all supported authentication method combinations as a list of authenticationMethodModes objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class AuthenticationMethodModesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthenticationMethodModesRequestBuilderGetQueryParameters():
         """
-        Get a list of all supported authentication methods, or all supported authentication method combinations as a list of authenticationMethodModes objects and their properties.
+        Get a list of all supported authentication methods, or all supported authentication method combinations as a list of authenticationMethodModes objects and their properties. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

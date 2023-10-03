@@ -31,7 +31,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AgreementItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an agreement object.
+        Delete an agreement object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/agreement-delete?view=graph-rest-1.0
@@ -51,10 +51,10 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AgreementItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Agreement]:
         """
-        Retrieve all files related to an agreement. This includes the default file and all localized files.
+        Retrieve the properties and relationships of an agreement object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Agreement]
-        Find more info here: https://learn.microsoft.com/graph/api/agreement-list-files?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/agreement-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -73,7 +73,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Agreement] = None, request_configuration: Optional[AgreementItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Agreement]:
         """
-        Update the properties of an agreement object.
+        Update the properties of an agreement object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Agreement]
@@ -98,7 +98,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AgreementItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an agreement object.
+        Delete an agreement object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,7 +113,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AgreementItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve all files related to an agreement. This includes the default file and all localized files.
+        Retrieve the properties and relationships of an agreement object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -130,7 +130,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Agreement] = None, request_configuration: Optional[AgreementItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an agreement object.
+        Update the properties of an agreement object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -198,7 +198,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AgreementItemRequestBuilderGetQueryParameters():
         """
-        Retrieve all files related to an agreement. This includes the default file and all localized files.
+        Retrieve the properties and relationships of an agreement object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

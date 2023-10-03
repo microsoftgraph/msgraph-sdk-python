@@ -28,7 +28,7 @@ class SetUpFeedbackResourcesFolderRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[SetUpFeedbackResourcesFolderRequestBuilderPostRequestConfiguration] = None) -> Optional[EducationAssignment]:
         """
-        Create a SharePoint folder to upload feedback files for a given educationSubmission. Only teachers can perform this operation. The teacher determines the resources to upload in the feedback resources folder of a submission.
+        Create a SharePoint folder to upload feedback files for a given educationSubmission. Only teachers can perform this operation. The teacher determines the resources to upload in the feedback resources folder of a submission. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationAssignment]
         Find more info here: https://learn.microsoft.com/graph/api/educationassignment-setupfeedbackresourcesfolder?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class SetUpFeedbackResourcesFolderRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[SetUpFeedbackResourcesFolderRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a SharePoint folder to upload feedback files for a given educationSubmission. Only teachers can perform this operation. The teacher determines the resources to upload in the feedback resources folder of a submission.
+        Create a SharePoint folder to upload feedback files for a given educationSubmission. Only teachers can perform this operation. The teacher determines the resources to upload in the feedback resources folder of a submission. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

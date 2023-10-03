@@ -28,7 +28,7 @@ class AttachmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AttachmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an attachment from a user calendar event, mail message, or group post.
+        Delete an attachment from a user calendar event, mail message, or group post. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/attachment-delete?view=graph-rest-1.0
@@ -69,7 +69,7 @@ class AttachmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AttachmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an attachment from a user calendar event, mail message, or group post.
+        Delete an attachment from a user calendar event, mail message, or group post. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

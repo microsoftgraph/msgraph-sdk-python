@@ -29,7 +29,7 @@ class MuteRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MutePostRequestBody] = None, request_configuration: Optional[MuteRequestBuilderPostRequestConfiguration] = None) -> Optional[MuteParticipantOperation]:
         """
-        Mute a specific participant in the call. This is a server mute, meaning that the server will drop all audio packets for this participant, even if the participant continues to stream audio. For more information about how to handle mute operations, see muteParticipantOperation.
+        Mute a specific participant in the call. This is a server mute, meaning that the server will drop all audio packets for this participant, even if the participant continues to stream audio. For more information about how to handle mute operations, see muteParticipantOperation. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MuteParticipantOperation]
@@ -54,7 +54,7 @@ class MuteRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[MutePostRequestBody] = None, request_configuration: Optional[MuteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Mute a specific participant in the call. This is a server mute, meaning that the server will drop all audio packets for this participant, even if the participant continues to stream audio. For more information about how to handle mute operations, see muteParticipantOperation.
+        Mute a specific participant in the call. This is a server mute, meaning that the server will drop all audio packets for this participant, even if the participant continues to stream audio. For more information about how to handle mute operations, see muteParticipantOperation. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

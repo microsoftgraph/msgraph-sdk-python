@@ -44,7 +44,7 @@ class IndicatorsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IndicatorsRequestBuilderGetRequestConfiguration] = None) -> Optional[ArticleIndicatorCollectionResponse]:
         """
-        Get a list of articleIndicator objects that represent indicators of threat or compromise related to the contents of an article.
+        Get a list of articleIndicator objects that represent indicators of threat or compromise related to the contents of an article. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ArticleIndicatorCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/security-article-list-indicators?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class IndicatorsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IndicatorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of articleIndicator objects that represent indicators of threat or compromise related to the contents of an article.
+        Get a list of articleIndicator objects that represent indicators of threat or compromise related to the contents of an article. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +103,7 @@ class IndicatorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IndicatorsRequestBuilderGetQueryParameters():
         """
-        Get a list of articleIndicator objects that represent indicators of threat or compromise related to the contents of an article.
+        Get a list of articleIndicator objects that represent indicators of threat or compromise related to the contents of an article. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

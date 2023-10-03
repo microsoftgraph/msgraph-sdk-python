@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
-    from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_response import GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeResponse
+    from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_get_response import GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeGetResponse
 
 class GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder(BaseRequestBuilder):
     """
@@ -28,13 +28,17 @@ class GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestB
         param user_id: Usage: userId='{userId}'
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['endDateTime'] = str(end_date_time)
+            path_parameters['startDateTime'] = str(start_date_time)
+            path_parameters['userId'] = str(user_id)
         super().__init__(request_adapter, "{+baseurl}/reports/getUserArchivedPrintJobs(userId='{userId}',startDateTime={startDateTime},endDateTime={endDateTime}){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration] = None) -> Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeResponse]:
+    async def get(self,request_configuration: Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration] = None) -> Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeGetResponse]:
         """
         Invoke function getUserArchivedPrintJobs
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeResponse]
+        Returns: Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -47,9 +51,9 @@ class GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestB
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_response import GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeResponse
+        from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_get_response import GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

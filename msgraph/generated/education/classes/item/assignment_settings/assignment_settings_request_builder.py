@@ -68,7 +68,7 @@ class AssignmentSettingsRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EducationAssignmentSettings] = None, request_configuration: Optional[AssignmentSettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationAssignmentSettings]:
         """
-        Update the properties of an educationAssignmentSettings object. Only teachers can update these settings.
+        Update the properties of an educationAssignmentSettings object. Only teachers can update these settings. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationAssignmentSettings]
@@ -125,7 +125,7 @@ class AssignmentSettingsRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EducationAssignmentSettings] = None, request_configuration: Optional[AssignmentSettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an educationAssignmentSettings object. Only teachers can update these settings.
+        Update the properties of an educationAssignmentSettings object. Only teachers can update these settings. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

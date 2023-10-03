@@ -66,7 +66,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Identity] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> Optional[Identity]:
         """
-        Create an identity resource for a new member in an externalGroup.
+        Create an identity resource for a new member in an externalGroup. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Identity]
@@ -108,7 +108,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Identity] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an identity resource for a new member in an externalGroup.
+        Create an identity resource for a new member in an externalGroup. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -53,7 +53,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
     
     async def get(self,request_configuration: Optional[UnifiedRoleEligibilityScheduleRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleEligibilityScheduleRequest]:
         """
-        In PIM, read the details of a request for for a role eligibility request made through the unifiedRoleEligibilityScheduleRequest object.
+        In PIM, read the details of a request for for a role eligibility request made through the unifiedRoleEligibilityScheduleRequest object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleEligibilityScheduleRequest]
         Find more info here: https://learn.microsoft.com/graph/api/unifiedroleeligibilityschedulerequest-get?view=graph-rest-1.0
@@ -114,7 +114,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
     
     def to_get_request_information(self,request_configuration: Optional[UnifiedRoleEligibilityScheduleRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        In PIM, read the details of a request for for a role eligibility request made through the unifiedRoleEligibilityScheduleRequest object.
+        In PIM, read the details of a request for for a role eligibility request made through the unifiedRoleEligibilityScheduleRequest object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -226,7 +226,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
     @dataclass
     class UnifiedRoleEligibilityScheduleRequestItemRequestBuilderGetQueryParameters():
         """
-        In PIM, read the details of a request for for a role eligibility request made through the unifiedRoleEligibilityScheduleRequest object.
+        In PIM, read the details of a request for for a role eligibility request made through the unifiedRoleEligibilityScheduleRequest object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

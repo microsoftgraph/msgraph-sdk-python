@@ -29,7 +29,7 @@ class ManagerRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ManagerRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove a user's manager.
+        Remove a user's manager. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/user-delete-manager?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class ManagerRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagerRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryObject]:
         """
-        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
+        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObject]
         Find more info here: https://learn.microsoft.com/graph/api/user-list-manager?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class ManagerRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ManagerRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a user's manager.
+        Remove a user's manager. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -86,7 +86,7 @@ class ManagerRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagerRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
+        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -133,7 +133,7 @@ class ManagerRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagerRequestBuilderGetQueryParameters():
         """
-        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
+        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

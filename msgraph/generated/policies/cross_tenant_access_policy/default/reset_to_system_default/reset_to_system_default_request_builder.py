@@ -27,7 +27,7 @@ class ResetToSystemDefaultRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[ResetToSystemDefaultRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Reset any changes made to the default configuration in a cross-tenant access policy back to the system default.
+        Reset any changes made to the default configuration in a cross-tenant access policy back to the system default. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicyconfigurationdefault-resettosystemdefault?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class ResetToSystemDefaultRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[ResetToSystemDefaultRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Reset any changes made to the default configuration in a cross-tenant access policy back to the system default.
+        Reset any changes made to the default configuration in a cross-tenant access policy back to the system default. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

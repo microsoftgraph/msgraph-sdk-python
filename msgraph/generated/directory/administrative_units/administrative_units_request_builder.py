@@ -46,7 +46,7 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AdministrativeUnitsRequestBuilderGetRequestConfiguration] = None) -> Optional[AdministrativeUnitCollectionResponse]:
         """
-        Retrieve a list of administrativeUnit objects.
+        Retrieve a list of administrativeUnit objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AdministrativeUnitCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directory-list-administrativeunits?view=graph-rest-1.0
@@ -68,7 +68,7 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitsRequestBuilderPostRequestConfiguration] = None) -> Optional[AdministrativeUnit]:
         """
-        Use this API to create a new administrativeUnit.
+        Use this API to create a new administrativeUnit. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AdministrativeUnit]
@@ -93,7 +93,7 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AdministrativeUnitsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of administrativeUnit objects.
+        Retrieve a list of administrativeUnit objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new administrativeUnit.
+        Use this API to create a new administrativeUnit. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -159,7 +159,7 @@ class AdministrativeUnitsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AdministrativeUnitsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of administrativeUnit objects.
+        Retrieve a list of administrativeUnit objects. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

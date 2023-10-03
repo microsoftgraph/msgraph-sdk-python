@@ -28,7 +28,7 @@ class ReplyRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ReplyPostRequestBody] = None, request_configuration: Optional[ReplyRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Reply to a post and add a new post to the specified thread in a group conversation.  You can specify both the parent conversation and thread in the request, or, you can specify just the parent thread without the parent conversation.
+        Reply to a post and add a new post to the specified thread in a group conversation.  You can specify both the parent conversation and thread in the request, or, you can specify just the parent thread without the parent conversation. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class ReplyRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ReplyPostRequestBody] = None, request_configuration: Optional[ReplyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Reply to a post and add a new post to the specified thread in a group conversation.  You can specify both the parent conversation and thread in the request, or, you can specify just the parent thread without the parent conversation.
+        Reply to a post and add a new post to the specified thread in a group conversation.  You can specify both the parent conversation and thread in the request, or, you can specify just the parent thread without the parent conversation. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

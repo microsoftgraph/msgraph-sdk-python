@@ -53,7 +53,7 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes the worksheet from the workbook.
+        Deletes the worksheet from the workbook. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/worksheet-delete?view=graph-rest-1.0
@@ -73,7 +73,7 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookWorksheet]:
         """
-        Retrieve the properties and relationships of worksheet object.
+        Retrieve the properties and relationships of worksheet object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookWorksheet]
         Find more info here: https://learn.microsoft.com/graph/api/worksheet-get?view=graph-rest-1.0
@@ -95,7 +95,7 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkbookWorksheet] = None, request_configuration: Optional[WorkbookWorksheetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookWorksheet]:
         """
-        Update the properties of worksheet object.
+        Update the properties of worksheet object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookWorksheet]
@@ -132,7 +132,7 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes the worksheet from the workbook.
+        Deletes the worksheet from the workbook. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of worksheet object.
+        Retrieve the properties and relationships of worksheet object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -164,7 +164,7 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkbookWorksheet] = None, request_configuration: Optional[WorkbookWorksheetItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of worksheet object.
+        Update the properties of worksheet object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -280,7 +280,7 @@ class WorkbookWorksheetItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkbookWorksheetItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of worksheet object.
+        Retrieve the properties and relationships of worksheet object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

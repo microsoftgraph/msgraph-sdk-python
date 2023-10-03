@@ -28,7 +28,7 @@ class SetPresenceRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SetPresencePostRequestBody] = None, request_configuration: Optional[SetPresenceRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Set the state of a user's presence session as an application.
+        Set the state of a user's presence session as an application. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class SetPresenceRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SetPresencePostRequestBody] = None, request_configuration: Optional[SetPresenceRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Set the state of a user's presence session as an application.
+        Set the state of a user's presence session as an application. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

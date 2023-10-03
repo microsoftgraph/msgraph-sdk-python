@@ -29,7 +29,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a homeRealmDiscoveryPolicy object.
+        Delete a homeRealmDiscoveryPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/homerealmdiscoverypolicy-delete?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[HomeRealmDiscoveryPolicy]:
         """
-        Retrieve the properties and relationships of a homeRealmDiscoveryPolicy object.
+        Retrieve the properties and relationships of a homeRealmDiscoveryPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HomeRealmDiscoveryPolicy]
         Find more info here: https://learn.microsoft.com/graph/api/homerealmdiscoverypolicy-get?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[HomeRealmDiscoveryPolicy]:
         """
-        Update the properties of a homeRealmDiscoveryPolicy object.
+        Update the properties of a homeRealmDiscoveryPolicy object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HomeRealmDiscoveryPolicy]
@@ -96,7 +96,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a homeRealmDiscoveryPolicy object.
+        Delete a homeRealmDiscoveryPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a homeRealmDiscoveryPolicy object.
+        Retrieve the properties and relationships of a homeRealmDiscoveryPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -128,7 +128,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a homeRealmDiscoveryPolicy object.
+        Update the properties of a homeRealmDiscoveryPolicy object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -178,7 +178,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HomeRealmDiscoveryPolicyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a homeRealmDiscoveryPolicy object.
+        Retrieve the properties and relationships of a homeRealmDiscoveryPolicy object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

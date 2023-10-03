@@ -56,7 +56,7 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AccessReviewInstanceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessReviewInstance]:
         """
-        Read the properties and relationships of an accessReviewInstance object.
+        Read the properties and relationships of an accessReviewInstance object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewInstance]
         Find more info here: https://learn.microsoft.com/graph/api/accessreviewinstance-get?view=graph-rest-1.0
@@ -118,7 +118,7 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AccessReviewInstanceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an accessReviewInstance object.
+        Read the properties and relationships of an accessReviewInstance object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -257,7 +257,7 @@ class AccessReviewInstanceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessReviewInstanceItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an accessReviewInstance object.
+        Read the properties and relationships of an accessReviewInstance object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

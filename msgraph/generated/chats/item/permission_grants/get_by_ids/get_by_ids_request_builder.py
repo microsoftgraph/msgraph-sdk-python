@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .get_by_ids_post_request_body import GetByIdsPostRequestBody
-    from .get_by_ids_response import GetByIdsResponse
+    from .get_by_ids_post_response import GetByIdsPostResponse
 
 class GetByIdsRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class GetByIdsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/chats/{chat%2Did}/permissionGrants/getByIds", path_parameters)
     
-    async def post(self,body: Optional[GetByIdsPostRequestBody] = None, request_configuration: Optional[GetByIdsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetByIdsResponse]:
+    async def post(self,body: Optional[GetByIdsPostRequestBody] = None, request_configuration: Optional[GetByIdsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetByIdsPostResponse]:
         """
-        Return the directory objects specified in a list of IDs. Only a subset of user properties are returned by default in v1.0. Some common uses for this function are to:
+        Return the directory objects specified in a list of IDs. Only a subset of user properties are returned by default in v1.0. Some common uses for this function are to: This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetByIdsResponse]
+        Returns: Optional[GetByIdsPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directoryobject-getbyids?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class GetByIdsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_by_ids_response import GetByIdsResponse
+        from .get_by_ids_post_response import GetByIdsPostResponse
 
-        return await self.request_adapter.send_async(request_info, GetByIdsResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetByIdsPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[GetByIdsPostRequestBody] = None, request_configuration: Optional[GetByIdsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Return the directory objects specified in a list of IDs. Only a subset of user properties are returned by default in v1.0. Some common uses for this function are to:
+        Return the directory objects specified in a list of IDs. Only a subset of user properties are returned by default in v1.0. Some common uses for this function are to: This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

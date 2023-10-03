@@ -45,7 +45,7 @@ class SubjectRightsRequestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SubjectRightsRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[SubjectRightsRequestCollectionResponse]:
         """
-        Get a list of subjectRightsRequest objects and their properties.
+        Get a list of subjectRightsRequest objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SubjectRightsRequestCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/subjectrightsrequest-list?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class SubjectRightsRequestsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SubjectRightsRequest] = None, request_configuration: Optional[SubjectRightsRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[SubjectRightsRequest]:
         """
-        Create a new subjectRightsRequest object.
+        Create a new subjectRightsRequest object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SubjectRightsRequest]
@@ -92,7 +92,7 @@ class SubjectRightsRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SubjectRightsRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of subjectRightsRequest objects and their properties.
+        Get a list of subjectRightsRequest objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class SubjectRightsRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SubjectRightsRequest] = None, request_configuration: Optional[SubjectRightsRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new subjectRightsRequest object.
+        Create a new subjectRightsRequest object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class SubjectRightsRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SubjectRightsRequestsRequestBuilderGetQueryParameters():
         """
-        Get a list of subjectRightsRequest objects and their properties.
+        Get a list of subjectRightsRequest objects and their properties. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -46,7 +46,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[JobsRequestBuilderGetRequestConfiguration] = None) -> Optional[SynchronizationJobCollectionResponse]:
         """
-        List existing jobs for a given application instance (service principal).
+        List existing jobs for a given application instance (service principal). This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SynchronizationJobCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/synchronization-synchronization-list-jobs?view=graph-rest-1.0
@@ -68,7 +68,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SynchronizationJob] = None, request_configuration: Optional[JobsRequestBuilderPostRequestConfiguration] = None) -> Optional[SynchronizationJob]:
         """
-        Create new synchronization job with a default synchronization schema. The job is created in a disabled state. Call Start job to start synchronization.
+        Create new synchronization job with a default synchronization schema. The job is created in a disabled state. Call Start job to start synchronization. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SynchronizationJob]
@@ -93,7 +93,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[JobsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List existing jobs for a given application instance (service principal).
+        List existing jobs for a given application instance (service principal). This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SynchronizationJob] = None, request_configuration: Optional[JobsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new synchronization job with a default synchronization schema. The job is created in a disabled state. Call Start job to start synchronization.
+        Create new synchronization job with a default synchronization schema. The job is created in a disabled state. Call Start job to start synchronization. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -159,7 +159,7 @@ class JobsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class JobsRequestBuilderGetQueryParameters():
         """
-        List existing jobs for a given application instance (service principal).
+        List existing jobs for a given application instance (service principal). This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

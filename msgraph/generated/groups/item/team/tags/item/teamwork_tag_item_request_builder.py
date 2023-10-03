@@ -29,7 +29,7 @@ class TeamworkTagItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TeamworkTagItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a tag object permanently.
+        Delete a tag object permanently. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/teamworktag-delete?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class TeamworkTagItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TeamworkTagItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamworkTag]:
         """
-        Read the properties and relationships of a tag object.
+        Read the properties and relationships of a tag object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamworkTag]
         Find more info here: https://learn.microsoft.com/graph/api/teamworktag-get?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class TeamworkTagItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TeamworkTag] = None, request_configuration: Optional[TeamworkTagItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TeamworkTag]:
         """
-        Update the properties of a tag object.
+        Update the properties of a tag object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamworkTag]
@@ -96,7 +96,7 @@ class TeamworkTagItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TeamworkTagItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a tag object permanently.
+        Delete a tag object permanently. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class TeamworkTagItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TeamworkTagItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a tag object.
+        Read the properties and relationships of a tag object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -128,7 +128,7 @@ class TeamworkTagItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TeamworkTag] = None, request_configuration: Optional[TeamworkTagItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a tag object.
+        Update the properties of a tag object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -178,7 +178,7 @@ class TeamworkTagItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TeamworkTagItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a tag object.
+        Read the properties and relationships of a tag object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

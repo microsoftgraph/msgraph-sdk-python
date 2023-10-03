@@ -9,9 +9,11 @@ if TYPE_CHECKING:
     from .host_component import HostComponent
     from .host_cookie import HostCookie
     from .hostname import Hostname
+    from .host_ssl_certificate import HostSslCertificate
     from .host_tracker import HostTracker
     from .ip_address import IpAddress
     from .passive_dns_record import PassiveDnsRecord
+    from .ssl_certificate import SslCertificate
     from .unclassified_artifact import UnclassifiedArtifact
 
 from ..entity import Entity
@@ -50,6 +52,10 @@ class Artifact(Entity):
             from .hostname import Hostname
 
             return Hostname()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostSslCertificate".casefold():
+            from .host_ssl_certificate import HostSslCertificate
+
+            return HostSslCertificate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostTracker".casefold():
             from .host_tracker import HostTracker
 
@@ -62,6 +68,10 @@ class Artifact(Entity):
             from .passive_dns_record import PassiveDnsRecord
 
             return PassiveDnsRecord()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.sslCertificate".casefold():
+            from .ssl_certificate import SslCertificate
+
+            return SslCertificate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.unclassifiedArtifact".casefold():
             from .unclassified_artifact import UnclassifiedArtifact
 
@@ -78,9 +88,11 @@ class Artifact(Entity):
         from .host_component import HostComponent
         from .host_cookie import HostCookie
         from .hostname import Hostname
+        from .host_ssl_certificate import HostSslCertificate
         from .host_tracker import HostTracker
         from .ip_address import IpAddress
         from .passive_dns_record import PassiveDnsRecord
+        from .ssl_certificate import SslCertificate
         from .unclassified_artifact import UnclassifiedArtifact
 
         from ..entity import Entity
@@ -88,9 +100,11 @@ class Artifact(Entity):
         from .host_component import HostComponent
         from .host_cookie import HostCookie
         from .hostname import Hostname
+        from .host_ssl_certificate import HostSslCertificate
         from .host_tracker import HostTracker
         from .ip_address import IpAddress
         from .passive_dns_record import PassiveDnsRecord
+        from .ssl_certificate import SslCertificate
         from .unclassified_artifact import UnclassifiedArtifact
 
         fields: Dict[str, Callable[[Any], None]] = {

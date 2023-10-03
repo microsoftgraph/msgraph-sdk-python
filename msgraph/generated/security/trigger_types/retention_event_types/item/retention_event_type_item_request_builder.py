@@ -48,7 +48,7 @@ class RetentionEventTypeItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RetentionEventTypeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[RetentionEventType]:
         """
-        Read the properties and relationships of a retentionEventType object.
+        Read the properties and relationships of a retentionEventType object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RetentionEventType]
         Find more info here: https://learn.microsoft.com/graph/api/security-retentioneventtype-get?view=graph-rest-1.0
@@ -109,7 +109,7 @@ class RetentionEventTypeItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RetentionEventTypeItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a retentionEventType object.
+        Read the properties and relationships of a retentionEventType object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -167,7 +167,7 @@ class RetentionEventTypeItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RetentionEventTypeItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a retentionEventType object.
+        Read the properties and relationships of a retentionEventType object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

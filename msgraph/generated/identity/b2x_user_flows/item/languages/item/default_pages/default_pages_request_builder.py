@@ -45,7 +45,7 @@ class DefaultPagesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DefaultPagesRequestBuilderGetRequestConfiguration] = None) -> Optional[UserFlowLanguagePageCollectionResponse]:
         """
-        Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
+        Collection of pages with the default content to display in a user flow for a specified language. This collection doesn't allow any kind of modification.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserFlowLanguagePageCollectionResponse]
         """
@@ -90,7 +90,7 @@ class DefaultPagesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DefaultPagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
+        Collection of pages with the default content to display in a user flow for a specified language. This collection doesn't allow any kind of modification.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class DefaultPagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DefaultPagesRequestBuilderGetQueryParameters():
         """
-        Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
+        Collection of pages with the default content to display in a user flow for a specified language. This collection doesn't allow any kind of modification.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -12,6 +12,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .....models.simulation import Simulation
+    from .landing_page.landing_page_request_builder import LandingPageRequestBuilder
+    from .login_page.login_page_request_builder import LoginPageRequestBuilder
+    from .payload.payload_request_builder import PayloadRequestBuilder
 
 class SimulationItemRequestBuilder(BaseRequestBuilder):
     """
@@ -47,7 +50,7 @@ class SimulationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SimulationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Simulation]:
         """
-        Get an attack simulation campaign for a tenant.
+        Get an attack simulation campaign for a tenant. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Simulation]
         Find more info here: https://learn.microsoft.com/graph/api/simulation-get?view=graph-rest-1.0
@@ -108,7 +111,7 @@ class SimulationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SimulationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get an attack simulation campaign for a tenant.
+        Get an attack simulation campaign for a tenant. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -153,6 +156,33 @@ class SimulationItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return SimulationItemRequestBuilder(self.request_adapter, raw_url)
     
+    @property
+    def landing_page(self) -> LandingPageRequestBuilder:
+        """
+        Provides operations to manage the landingPage property of the microsoft.graph.simulation entity.
+        """
+        from .landing_page.landing_page_request_builder import LandingPageRequestBuilder
+
+        return LandingPageRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def login_page(self) -> LoginPageRequestBuilder:
+        """
+        Provides operations to manage the loginPage property of the microsoft.graph.simulation entity.
+        """
+        from .login_page.login_page_request_builder import LoginPageRequestBuilder
+
+        return LoginPageRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def payload(self) -> PayloadRequestBuilder:
+        """
+        Provides operations to manage the payload property of the microsoft.graph.simulation entity.
+        """
+        from .payload.payload_request_builder import PayloadRequestBuilder
+
+        return PayloadRequestBuilder(self.request_adapter, self.path_parameters)
+    
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
     @dataclass
@@ -166,7 +196,7 @@ class SimulationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SimulationItemRequestBuilderGetQueryParameters():
         """
-        Get an attack simulation campaign for a tenant.
+        Get an attack simulation campaign for a tenant. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

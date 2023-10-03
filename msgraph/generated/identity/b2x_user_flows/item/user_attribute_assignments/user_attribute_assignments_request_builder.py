@@ -47,7 +47,7 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserAttributeAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityUserFlowAttributeAssignmentCollectionResponse]:
         """
-        Get the identityUserFlowAttributeAssignment resources from the userAttributeAssignments navigation property in a b2xIdentityUserFlow.
+        Get the identityUserFlowAttributeAssignment resources from the userAttributeAssignments navigation property in a b2xIdentityUserFlow. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityUserFlowAttributeAssignmentCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/b2xidentityuserflow-list-userattributeassignments?view=graph-rest-1.0
@@ -69,7 +69,7 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[IdentityUserFlowAttributeAssignment] = None, request_configuration: Optional[UserAttributeAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[IdentityUserFlowAttributeAssignment]:
         """
-        Create a new identityUserFlowAttributeAssignment object in a b2xIdentityUserFlow.
+        Create a new identityUserFlowAttributeAssignment object in a b2xIdentityUserFlow. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityUserFlowAttributeAssignment]
@@ -94,7 +94,7 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserAttributeAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the identityUserFlowAttributeAssignment resources from the userAttributeAssignments navigation property in a b2xIdentityUserFlow.
+        Get the identityUserFlowAttributeAssignment resources from the userAttributeAssignments navigation property in a b2xIdentityUserFlow. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[IdentityUserFlowAttributeAssignment] = None, request_configuration: Optional[UserAttributeAssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new identityUserFlowAttributeAssignment object in a b2xIdentityUserFlow.
+        Create a new identityUserFlowAttributeAssignment object in a b2xIdentityUserFlow. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -169,7 +169,7 @@ class UserAttributeAssignmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserAttributeAssignmentsRequestBuilderGetQueryParameters():
         """
-        Get the identityUserFlowAttributeAssignment resources from the userAttributeAssignments navigation property in a b2xIdentityUserFlow.
+        Get the identityUserFlowAttributeAssignment resources from the userAttributeAssignments navigation property in a b2xIdentityUserFlow. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -45,7 +45,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[ConnectionOperationCollectionResponse]:
         """
-        Read the properties and relationships of a connectionOperation object.
+        Read the properties and relationships of a connectionOperation object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConnectionOperationCollectionResponse]
         """
@@ -90,7 +90,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a connectionOperation object.
+        Read the properties and relationships of a connectionOperation object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OperationsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a connectionOperation object.
+        Read the properties and relationships of a connectionOperation object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

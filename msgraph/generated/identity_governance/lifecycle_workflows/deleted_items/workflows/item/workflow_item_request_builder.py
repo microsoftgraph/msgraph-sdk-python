@@ -39,7 +39,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[WorkflowItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a workflow object.
+        Delete a workflow object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-deletedItemcontainer-delete?view=graph-rest-1.0
@@ -59,7 +59,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[WorkflowItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Workflow]:
         """
-        Retrieve a deleted workflow object.
+        Retrieve a deleted workflow object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Workflow]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-deleteditemcontainer-get?view=graph-rest-1.0
@@ -81,7 +81,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[WorkflowItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a workflow object.
+        Delete a workflow object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -96,7 +96,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[WorkflowItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a deleted workflow object.
+        Retrieve a deleted workflow object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -233,7 +233,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkflowItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a deleted workflow object.
+        Retrieve a deleted workflow object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

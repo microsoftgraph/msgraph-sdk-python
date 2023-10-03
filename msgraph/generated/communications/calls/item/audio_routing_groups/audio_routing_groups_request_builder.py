@@ -45,7 +45,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AudioRoutingGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[AudioRoutingGroupCollectionResponse]:
         """
-        Retrieve a list of audioRoutingGroup objects.
+        Retrieve a list of audioRoutingGroup objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AudioRoutingGroupCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/call-list-audioroutinggroups?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[AudioRoutingGroup]:
         """
-        Create a new audioRoutingGroup.
+        Create a new audioRoutingGroup. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AudioRoutingGroup]
@@ -92,7 +92,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AudioRoutingGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of audioRoutingGroup objects.
+        Retrieve a list of audioRoutingGroup objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new audioRoutingGroup.
+        Create a new audioRoutingGroup. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class AudioRoutingGroupsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AudioRoutingGroupsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of audioRoutingGroup objects.
+        Retrieve a list of audioRoutingGroup objects. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

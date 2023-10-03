@@ -29,7 +29,7 @@ class CopyNotebookRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CopyNotebookPostRequestBody] = None, request_configuration: Optional[CopyNotebookRequestBuilderPostRequestConfiguration] = None) -> Optional[OnenoteOperation]:
         """
-        For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
+        For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenoteOperation]
@@ -54,7 +54,7 @@ class CopyNotebookRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CopyNotebookPostRequestBody] = None, request_configuration: Optional[CopyNotebookRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
+        For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

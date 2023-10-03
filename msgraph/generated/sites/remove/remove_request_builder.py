@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from .remove_post_request_body import RemovePostRequestBody
-    from .remove_response import RemoveResponse
+    from .remove_post_response import RemovePostResponse
 
 class RemoveRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class RemoveRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/sites/remove", path_parameters)
     
-    async def post(self,body: Optional[RemovePostRequestBody] = None, request_configuration: Optional[RemoveRequestBuilderPostRequestConfiguration] = None) -> Optional[RemoveResponse]:
+    async def post(self,body: Optional[RemovePostRequestBody] = None, request_configuration: Optional[RemoveRequestBuilderPostRequestConfiguration] = None) -> Optional[RemovePostResponse]:
         """
         Unfollow a user's site or multiple sites.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[RemoveResponse]
+        Returns: Optional[RemovePostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/site-unfollow?view=graph-rest-1.0
         """
         if not body:
@@ -48,9 +48,9 @@ class RemoveRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .remove_response import RemoveResponse
+        from .remove_post_response import RemovePostResponse
 
-        return await self.request_adapter.send_async(request_info, RemoveResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, RemovePostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[RemovePostRequestBody] = None, request_configuration: Optional[RemoveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

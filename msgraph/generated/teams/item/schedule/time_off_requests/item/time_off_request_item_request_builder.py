@@ -28,7 +28,7 @@ class TimeOffRequestItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TimeOffRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a timeOffRequest object.
+        Delete a timeOffRequest object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/timeoffrequest-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class TimeOffRequestItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TimeOffRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TimeOffRequest]:
         """
-        Retrieve the properties and relationships of a timeoffrequest object.
+        Retrieve the properties and relationships of a timeoffrequest object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TimeOffRequest]
         Find more info here: https://learn.microsoft.com/graph/api/timeoffrequest-get?view=graph-rest-1.0
@@ -94,7 +94,7 @@ class TimeOffRequestItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TimeOffRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a timeOffRequest object.
+        Delete a timeOffRequest object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class TimeOffRequestItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TimeOffRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a timeoffrequest object.
+        Retrieve the properties and relationships of a timeoffrequest object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -167,7 +167,7 @@ class TimeOffRequestItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TimeOffRequestItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a timeoffrequest object.
+        Retrieve the properties and relationships of a timeoffrequest object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

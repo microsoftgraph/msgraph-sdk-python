@@ -41,7 +41,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[WorkbookChartItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes the chart object.
+        Deletes the chart object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/chart-delete?view=graph-rest-1.0
@@ -61,7 +61,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[WorkbookChartItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChart]:
         """
-        Retrieve the properties and relationships of chart object.
+        Retrieve the properties and relationships of chart object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChart]
         Find more info here: https://learn.microsoft.com/graph/api/chart-get?view=graph-rest-1.0
@@ -128,7 +128,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[WorkbookChartItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChart]:
         """
-        Update the properties of chart object.
+        Update the properties of chart object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChart]
@@ -153,7 +153,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookChartItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes the chart object.
+        Deletes the chart object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -168,7 +168,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookChartItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of chart object.
+        Retrieve the properties and relationships of chart object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -185,7 +185,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[WorkbookChartItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of chart object.
+        Update the properties of chart object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -316,7 +316,7 @@ class WorkbookChartItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkbookChartItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of chart object.
+        Retrieve the properties and relationships of chart object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

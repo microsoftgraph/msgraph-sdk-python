@@ -47,7 +47,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyRule]:
         """
-        Retrieve a rule or settings defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object:+ unifiedRoleManagementPolicyApprovalRule+ unifiedRoleManagementPolicyAuthenticationContextRule+ unifiedRoleManagementPolicyEnablementRule+ unifiedRoleManagementPolicyExpirationRule+ unifiedRoleManagementPolicyNotificationRule
+        Retrieve a rule or settings defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object: This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleManagementPolicyRule]
         Find more info here: https://learn.microsoft.com/graph/api/unifiedrolemanagementpolicyrule-get?view=graph-rest-1.0
@@ -69,7 +69,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyRule]:
         """
-        Update a rule defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object: For more information about rules for Azure AD roles and examples of updating rules, see the following articles:
+        Update a rule defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object: For more information about rules for Azure AD roles and examples of updating rules, see the following articles: This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleManagementPolicyRule]
@@ -109,7 +109,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a rule or settings defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object:+ unifiedRoleManagementPolicyApprovalRule+ unifiedRoleManagementPolicyAuthenticationContextRule+ unifiedRoleManagementPolicyEnablementRule+ unifiedRoleManagementPolicyExpirationRule+ unifiedRoleManagementPolicyNotificationRule
+        Retrieve a rule or settings defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object: This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -126,7 +126,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update a rule defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object: For more information about rules for Azure AD roles and examples of updating rules, see the following articles:
+        Update a rule defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object: For more information about rules for Azure AD roles and examples of updating rules, see the following articles: This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -167,7 +167,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UnifiedRoleManagementPolicyRuleItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a rule or settings defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object:+ unifiedRoleManagementPolicyApprovalRule+ unifiedRoleManagementPolicyAuthenticationContextRule+ unifiedRoleManagementPolicyEnablementRule+ unifiedRoleManagementPolicyExpirationRule+ unifiedRoleManagementPolicyNotificationRule
+        Retrieve a rule or settings defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object: This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

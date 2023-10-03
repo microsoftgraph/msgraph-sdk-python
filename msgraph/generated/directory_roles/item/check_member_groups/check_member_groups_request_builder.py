@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from .check_member_groups_post_request_body import CheckMemberGroupsPostRequestBody
-    from .check_member_groups_response import CheckMemberGroupsResponse
+    from .check_member_groups_post_response import CheckMemberGroupsPostResponse
 
 class CheckMemberGroupsRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class CheckMemberGroupsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/directoryRoles/{directoryRole%2Did}/checkMemberGroups", path_parameters)
     
-    async def post(self,body: Optional[CheckMemberGroupsPostRequestBody] = None, request_configuration: Optional[CheckMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[CheckMemberGroupsResponse]:
+    async def post(self,body: Optional[CheckMemberGroupsPostRequestBody] = None, request_configuration: Optional[CheckMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[CheckMemberGroupsPostResponse]:
         """
-        Check for membership in a specified list of group IDs, and return from that list those groups (identified by IDs) of which the specified user, group, service principal, organizational contact, device, or directory object is a member. This function is transitive. You can check up to a maximum of 20 groups per request. This function supports all groups provisioned in Azure AD. Because Microsoft 365 groups cannot contain other groups, membership in a Microsoft 365 group is always direct.
+        Check for membership in a specified list of group IDs, and return from that list those groups (identified by IDs) of which the specified user, group, service principal, organizational contact, device, or directory object is a member. This function is transitive. You can check up to a maximum of 20 groups per request. This function supports all groups provisioned in Azure AD. Because Microsoft 365 groups cannot contain other groups, membership in a Microsoft 365 group is always direct. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[CheckMemberGroupsResponse]
+        Returns: Optional[CheckMemberGroupsPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directoryobject-checkmembergroups?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class CheckMemberGroupsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .check_member_groups_response import CheckMemberGroupsResponse
+        from .check_member_groups_post_response import CheckMemberGroupsPostResponse
 
-        return await self.request_adapter.send_async(request_info, CheckMemberGroupsResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, CheckMemberGroupsPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[CheckMemberGroupsPostRequestBody] = None, request_configuration: Optional[CheckMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Check for membership in a specified list of group IDs, and return from that list those groups (identified by IDs) of which the specified user, group, service principal, organizational contact, device, or directory object is a member. This function is transitive. You can check up to a maximum of 20 groups per request. This function supports all groups provisioned in Azure AD. Because Microsoft 365 groups cannot contain other groups, membership in a Microsoft 365 group is always direct.
+        Check for membership in a specified list of group IDs, and return from that list those groups (identified by IDs) of which the specified user, group, service principal, organizational contact, device, or directory object is a member. This function is transitive. You can check up to a maximum of 20 groups per request. This function supports all groups provisioned in Azure AD. Because Microsoft 365 groups cannot contain other groups, membership in a Microsoft 365 group is always direct. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

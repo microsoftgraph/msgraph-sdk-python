@@ -28,7 +28,7 @@ class BookingCustomerBaseItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[BookingCustomerBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete the specified bookingCustomer object.
+        Delete the specified bookingCustomer object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/bookingcustomer-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class BookingCustomerBaseItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[BookingCustomerBaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingCustomerBase]:
         """
-        Get the properties and relationships of a bookingCustomer object.
+        Get the properties and relationships of a bookingCustomer object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingCustomerBase]
         Find more info here: https://learn.microsoft.com/graph/api/bookingcustomer-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class BookingCustomerBaseItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[BookingCustomerBase] = None, request_configuration: Optional[BookingCustomerBaseItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[BookingCustomerBase]:
         """
-        Update the properties of a bookingCustomer object.
+        Update the properties of a bookingCustomer object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingCustomerBase]
@@ -95,7 +95,7 @@ class BookingCustomerBaseItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[BookingCustomerBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete the specified bookingCustomer object.
+        Delete the specified bookingCustomer object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class BookingCustomerBaseItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[BookingCustomerBaseItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a bookingCustomer object.
+        Get the properties and relationships of a bookingCustomer object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class BookingCustomerBaseItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[BookingCustomerBase] = None, request_configuration: Optional[BookingCustomerBaseItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a bookingCustomer object.
+        Update the properties of a bookingCustomer object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class BookingCustomerBaseItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BookingCustomerBaseItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a bookingCustomer object.
+        Get the properties and relationships of a bookingCustomer object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

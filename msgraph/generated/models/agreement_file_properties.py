@@ -15,7 +15,7 @@ from .entity import Entity
 
 @dataclass
 class AgreementFileProperties(Entity):
-    # The date time representing when the file was created.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    # The date time representing when the file was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
     # Localized display name of the policy file of an agreement. The localized display name is shown to end users who view the agreement.
     display_name: Optional[str] = None
@@ -23,7 +23,7 @@ class AgreementFileProperties(Entity):
     file_data: Optional[AgreementFileData] = None
     # Name of the agreement file (for example, TOU.pdf). Read-only.
     file_name: Optional[str] = None
-    # If none of the languages matches the client preference, indicates whether this is the default agreement file . If none of the files are marked as default, the first one is treated as the default. Read-only.
+    # If none of the languages matches the client preference, indicates whether this is the default agreement file. If none of the files are marked as default, the first one is treated as the default. Read-only.
     is_default: Optional[bool] = None
     # Indicates whether the agreement file is a major version update. Major version updates invalidate the agreement's acceptances on the corresponding language.
     is_major_version: Optional[bool] = None

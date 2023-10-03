@@ -28,7 +28,7 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AppRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an appRoleAssignment that has been granted to a user.
+        Delete an appRoleAssignment that has been granted to a user. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/user-delete-approleassignments?view=graph-rest-1.0
@@ -93,7 +93,7 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AppRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an appRoleAssignment that has been granted to a user.
+        Delete an appRoleAssignment that has been granted to a user. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

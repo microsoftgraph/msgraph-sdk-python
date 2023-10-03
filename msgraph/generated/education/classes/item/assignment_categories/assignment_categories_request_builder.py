@@ -46,7 +46,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AssignmentCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationCategoryCollectionResponse]:
         """
-        Retrieve a list of educationCategory objects. Only teachers can perform this operation.
+        Retrieve a list of educationCategory objects. Only teachers can perform this operation. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationCategoryCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/educationclass-list-categories?view=graph-rest-1.0
@@ -68,7 +68,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[EducationCategory] = None, request_configuration: Optional[AssignmentCategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[EducationCategory]:
         """
-        Creates a new educationCategory on an educationClass. Only teachers can perform this operation.
+        Create a new educationCategory on an educationClass. Only teachers can perform this operation. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationCategory]
@@ -93,7 +93,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentCategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of educationCategory objects. Only teachers can perform this operation.
+        Retrieve a list of educationCategory objects. Only teachers can perform this operation. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[EducationCategory] = None, request_configuration: Optional[AssignmentCategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Creates a new educationCategory on an educationClass. Only teachers can perform this operation.
+        Create a new educationCategory on an educationClass. Only teachers can perform this operation. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -159,7 +159,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AssignmentCategoriesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of educationCategory objects. Only teachers can perform this operation.
+        Retrieve a list of educationCategory objects. Only teachers can perform this operation. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

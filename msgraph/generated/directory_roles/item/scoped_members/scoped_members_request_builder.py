@@ -45,7 +45,7 @@ class ScopedMembersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ScopedMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[ScopedRoleMembershipCollectionResponse]:
         """
-        Retrieve a list of scopedRoleMembership objects for a directory role.
+        Retrieve a list of scopedRoleMembership objects for a directory role. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ScopedRoleMembershipCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directoryrole-list-scopedmembers?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class ScopedMembersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ScopedMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of scopedRoleMembership objects for a directory role.
+        Retrieve a list of scopedRoleMembership objects for a directory role. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class ScopedMembersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ScopedMembersRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of scopedRoleMembership objects for a directory role.
+        Retrieve a list of scopedRoleMembership objects for a directory role. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

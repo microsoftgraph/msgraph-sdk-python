@@ -46,7 +46,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityProviderCollectionResponse]:
         """
-        Retrieve all identityProviders in the directory.
+        Retrieve all identityProviders in the directory. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityProviderCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/identityprovider-list?view=graph-rest-1.0
@@ -68,7 +68,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[IdentityProvider] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None) -> Optional[IdentityProvider]:
         """
-        Create a new identityProvider by specifying display name, identityProvider type, client ID, and client secret.
+        Create a new identityProvider by specifying display name, identityProvider type, client ID, and client secret. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityProvider]
@@ -93,7 +93,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve all identityProviders in the directory.
+        Retrieve all identityProviders in the directory. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[IdentityProvider] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new identityProvider by specifying display name, identityProvider type, client ID, and client secret.
+        Create a new identityProvider by specifying display name, identityProvider type, client ID, and client secret. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -159,7 +159,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IdentityProvidersRequestBuilderGetQueryParameters():
         """
-        Retrieve all identityProviders in the directory.
+        Retrieve all identityProviders in the directory. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

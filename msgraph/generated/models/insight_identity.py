@@ -15,7 +15,7 @@ class InsightIdentity(AdditionalDataHolder, BackedModel, Parsable):
     address: Optional[str] = None
     # The display name of the user who shared the item.
     display_name: Optional[str] = None
-    # The id of the user who shared the item.
+    # The ID of the user who shared the item.
     id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

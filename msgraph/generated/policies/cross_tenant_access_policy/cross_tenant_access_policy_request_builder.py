@@ -49,7 +49,7 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[CrossTenantAccessPolicy]:
         """
-        Read the properties and relationships of a crossTenantAccessPolicy object.
+        Read the properties and relationships of a crossTenantAccessPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicy]
         Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicy-get?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[CrossTenantAccessPolicy] = None, request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[CrossTenantAccessPolicy]:
         """
-        Update the properties of a cross-tenant access policy.
+        Update the properties of a cross-tenant access policy. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicy]
@@ -111,7 +111,7 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a crossTenantAccessPolicy object.
+        Read the properties and relationships of a crossTenantAccessPolicy object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -128,7 +128,7 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[CrossTenantAccessPolicy] = None, request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a cross-tenant access policy.
+        Update the properties of a cross-tenant access policy. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -187,7 +187,7 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CrossTenantAccessPolicyRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a crossTenantAccessPolicy object.
+        Read the properties and relationships of a crossTenantAccessPolicy object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

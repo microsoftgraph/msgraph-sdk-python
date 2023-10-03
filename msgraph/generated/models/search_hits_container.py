@@ -23,7 +23,7 @@ class SearchHitsContainer(AdditionalDataHolder, BackedModel, Parsable):
     more_results_available: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The total number of results. Note this is not the number of results on the page, but the total number of results satisfying the query.
+    # The total number of results. Note this isn't the number of results on the page, but the total number of results satisfying the query.
     total: Optional[int] = None
     
     @staticmethod

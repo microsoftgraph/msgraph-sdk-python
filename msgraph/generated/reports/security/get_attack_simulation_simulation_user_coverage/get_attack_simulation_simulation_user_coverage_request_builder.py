@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .get_attack_simulation_simulation_user_coverage_response import GetAttackSimulationSimulationUserCoverageResponse
+    from .get_attack_simulation_simulation_user_coverage_get_response import GetAttackSimulationSimulationUserCoverageGetResponse
 
 class GetAttackSimulationSimulationUserCoverageRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class GetAttackSimulationSimulationUserCoverageRequestBuilder(BaseRequestBuilder
         """
         super().__init__(request_adapter, "{+baseurl}/reports/security/getAttackSimulationSimulationUserCoverage(){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetAttackSimulationSimulationUserCoverageRequestBuilderGetRequestConfiguration] = None) -> Optional[GetAttackSimulationSimulationUserCoverageResponse]:
+    async def get(self,request_configuration: Optional[GetAttackSimulationSimulationUserCoverageRequestBuilderGetRequestConfiguration] = None) -> Optional[GetAttackSimulationSimulationUserCoverageGetResponse]:
         """
         Invoke function getAttackSimulationSimulationUserCoverage
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetAttackSimulationSimulationUserCoverageResponse]
+        Returns: Optional[GetAttackSimulationSimulationUserCoverageGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class GetAttackSimulationSimulationUserCoverageRequestBuilder(BaseRequestBuilder
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_attack_simulation_simulation_user_coverage_response import GetAttackSimulationSimulationUserCoverageResponse
+        from .get_attack_simulation_simulation_user_coverage_get_response import GetAttackSimulationSimulationUserCoverageGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetAttackSimulationSimulationUserCoverageResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetAttackSimulationSimulationUserCoverageGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetAttackSimulationSimulationUserCoverageRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

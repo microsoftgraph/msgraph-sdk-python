@@ -27,7 +27,7 @@ class MicrosoftGraphSecurityCloseRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[MicrosoftGraphSecurityCloseRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Close an eDiscovery case. For details, see Close a case.
+        Close an eDiscovery case. For details, see Close a case. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycase-close?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class MicrosoftGraphSecurityCloseRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[MicrosoftGraphSecurityCloseRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Close an eDiscovery case. For details, see Close a case.
+        Close an eDiscovery case. For details, see Close a case. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

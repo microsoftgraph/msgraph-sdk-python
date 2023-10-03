@@ -28,7 +28,7 @@ class WorkforceIntegrationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[WorkforceIntegrationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an instance of a workforceIntegration.
+        Delete an instance of a workforceIntegration. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/workforceintegration-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class WorkforceIntegrationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[WorkforceIntegrationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkforceIntegration]:
         """
-        Retrieve the properties and relationships of a workforceIntegration object.
+        Retrieve the properties and relationships of a workforceIntegration object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkforceIntegration]
         Find more info here: https://learn.microsoft.com/graph/api/workforceintegration-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class WorkforceIntegrationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkforceIntegration] = None, request_configuration: Optional[WorkforceIntegrationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkforceIntegration]:
         """
-        Update the properties of a workforceIntegration object.
+        Update the properties of a workforceIntegration object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkforceIntegration]
@@ -95,7 +95,7 @@ class WorkforceIntegrationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[WorkforceIntegrationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an instance of a workforceIntegration.
+        Delete an instance of a workforceIntegration. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class WorkforceIntegrationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[WorkforceIntegrationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a workforceIntegration object.
+        Retrieve the properties and relationships of a workforceIntegration object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class WorkforceIntegrationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkforceIntegration] = None, request_configuration: Optional[WorkforceIntegrationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a workforceIntegration object.
+        Update the properties of a workforceIntegration object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class WorkforceIntegrationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkforceIntegrationItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a workforceIntegration object.
+        Retrieve the properties and relationships of a workforceIntegration object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

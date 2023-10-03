@@ -31,7 +31,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Uninstall an app from the personal scope of the specified user.
+        Uninstall an app from the personal scope of the specified user. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/userteamwork-delete-installedapps?view=graph-rest-1.0
@@ -51,7 +51,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UserScopeTeamsAppInstallation]:
         """
-        Retrieve the app installed in the personal scope of the specified user.
+        Retrieve the app installed in the personal scope of the specified user. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserScopeTeamsAppInstallation]
         Find more info here: https://learn.microsoft.com/graph/api/userteamwork-get-installedapps?view=graph-rest-1.0
@@ -97,7 +97,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Uninstall an app from the personal scope of the specified user.
+        Uninstall an app from the personal scope of the specified user. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +112,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the app installed in the personal scope of the specified user.
+        Retrieve the app installed in the personal scope of the specified user. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -197,7 +197,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserScopeTeamsAppInstallationItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the app installed in the personal scope of the specified user.
+        Retrieve the app installed in the personal scope of the specified user. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

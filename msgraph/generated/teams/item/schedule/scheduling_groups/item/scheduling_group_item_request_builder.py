@@ -28,7 +28,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Mark a schedulingGroup as inactive by setting its isActive property.This method does not remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group.
+        Mark a schedulingGroup as inactive by setting its isActive property.This method does not remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/schedulinggroup-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SchedulingGroup]:
         """
-        Retrieve the properties and relationships of a schedulingGroup by ID.
+        Retrieve the properties and relationships of a schedulingGroup by ID. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SchedulingGroup]
         Find more info here: https://learn.microsoft.com/graph/api/schedulinggroup-get?view=graph-rest-1.0
@@ -95,7 +95,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Mark a schedulingGroup as inactive by setting its isActive property.This method does not remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group.
+        Mark a schedulingGroup as inactive by setting its isActive property.This method does not remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a schedulingGroup by ID.
+        Retrieve the properties and relationships of a schedulingGroup by ID. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -168,7 +168,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SchedulingGroupItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a schedulingGroup by ID.
+        Retrieve the properties and relationships of a schedulingGroup by ID. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

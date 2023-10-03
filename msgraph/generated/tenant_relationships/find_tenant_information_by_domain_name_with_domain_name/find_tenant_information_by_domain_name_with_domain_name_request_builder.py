@@ -25,6 +25,8 @@ class FindTenantInformationByDomainNameWithDomainNameRequestBuilder(BaseRequestB
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['domainName'] = str(domain_name)
         super().__init__(request_adapter, "{+baseurl}/tenantRelationships/findTenantInformationByDomainName(domainName='{domainName}')", path_parameters)
     
     async def get(self,request_configuration: Optional[FindTenantInformationByDomainNameWithDomainNameRequestBuilderGetRequestConfiguration] = None) -> Optional[TenantInformation]:

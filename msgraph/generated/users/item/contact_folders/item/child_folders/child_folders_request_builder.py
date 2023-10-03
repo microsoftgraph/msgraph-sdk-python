@@ -46,7 +46,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[ContactFolderCollectionResponse]:
         """
-        Get a collection of child folders under the specified contact folder.
+        Get a collection of child folders under the specified contact folder. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContactFolderCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/contactfolder-list-childfolders?view=graph-rest-1.0
@@ -68,7 +68,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ContactFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[ContactFolder]:
         """
-        Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder.
+        Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContactFolder]
@@ -93,7 +93,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a collection of child folders under the specified contact folder.
+        Get a collection of child folders under the specified contact folder. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ContactFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder.
+        Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -159,7 +159,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ChildFoldersRequestBuilderGetQueryParameters():
         """
-        Get a collection of child folders under the specified contact folder.
+        Get a collection of child folders under the specified contact folder. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

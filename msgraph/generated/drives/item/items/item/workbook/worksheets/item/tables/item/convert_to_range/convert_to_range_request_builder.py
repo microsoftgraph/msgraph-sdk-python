@@ -28,7 +28,7 @@ class ConvertToRangeRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[ConvertToRangeRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookRange]:
         """
-        Converts the table into a normal range of cells. All data is preserved.
+        Converts the table into a normal range of cells. All data is preserved. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookRange]
         Find more info here: https://learn.microsoft.com/graph/api/table-converttorange?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class ConvertToRangeRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[ConvertToRangeRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Converts the table into a normal range of cells. All data is preserved.
+        Converts the table into a normal range of cells. All data is preserved. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

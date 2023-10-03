@@ -45,7 +45,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[LocalizationsRequestBuilderGetRequestConfiguration] = None) -> Optional[OrganizationalBrandingLocalizationCollectionResponse]:
         """
-        Retrieve all localization branding objects, including the default branding.
+        Retrieve all localization branding objects, including the default branding. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OrganizationalBrandingLocalizationCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/organizationalbranding-list-localizations?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[OrganizationalBrandingLocalization] = None, request_configuration: Optional[LocalizationsRequestBuilderPostRequestConfiguration] = None) -> Optional[OrganizationalBrandingLocalization]:
         """
-        Create a new organizationalBrandingLocalization object. This creates a localized branding and at the same time, the default branding if it doesn't exist. The default branding is created only once. It's loaded when a localized branding isn't configured for the user's browser language. To retrieve the default branding, see Get branding.
+        Create a new organizationalBrandingLocalization object. This creates a localized branding and at the same time, the default branding if it doesn't exist. The default branding is created only once. It's loaded when a localized branding isn't configured for the user's browser language. To retrieve the default branding, see Get branding. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OrganizationalBrandingLocalization]
@@ -92,7 +92,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[LocalizationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve all localization branding objects, including the default branding.
+        Retrieve all localization branding objects, including the default branding. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[OrganizationalBrandingLocalization] = None, request_configuration: Optional[LocalizationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new organizationalBrandingLocalization object. This creates a localized branding and at the same time, the default branding if it doesn't exist. The default branding is created only once. It's loaded when a localized branding isn't configured for the user's browser language. To retrieve the default branding, see Get branding.
+        Create a new organizationalBrandingLocalization object. This creates a localized branding and at the same time, the default branding if it doesn't exist. The default branding is created only once. It's loaded when a localized branding isn't configured for the user's browser language. To retrieve the default branding, see Get branding. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LocalizationsRequestBuilderGetQueryParameters():
         """
-        Retrieve all localization branding objects, including the default branding.
+        Retrieve all localization branding objects, including the default branding. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

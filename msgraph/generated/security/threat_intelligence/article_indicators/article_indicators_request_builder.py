@@ -45,7 +45,7 @@ class ArticleIndicatorsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ArticleIndicatorsRequestBuilderGetRequestConfiguration] = None) -> Optional[ArticleIndicatorCollectionResponse]:
         """
-        Read the properties and relationships of an articleIndicator object.
+        Read the properties and relationships of an articleIndicator object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ArticleIndicatorCollectionResponse]
         """
@@ -90,7 +90,7 @@ class ArticleIndicatorsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ArticleIndicatorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an articleIndicator object.
+        Read the properties and relationships of an articleIndicator object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class ArticleIndicatorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ArticleIndicatorsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an articleIndicator object.
+        Read the properties and relationships of an articleIndicator object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

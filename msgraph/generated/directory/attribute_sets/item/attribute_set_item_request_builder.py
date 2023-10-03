@@ -47,7 +47,7 @@ class AttributeSetItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AttributeSetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AttributeSet]:
         """
-        Read the properties and relationships of an attributeSet object.
+        Read the properties and relationships of an attributeSet object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttributeSet]
         Find more info here: https://learn.microsoft.com/graph/api/attributeset-get?view=graph-rest-1.0
@@ -69,7 +69,7 @@ class AttributeSetItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[AttributeSet] = None, request_configuration: Optional[AttributeSetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AttributeSet]:
         """
-        Update the properties of an attributeSet object.
+        Update the properties of an attributeSet object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttributeSet]
@@ -109,7 +109,7 @@ class AttributeSetItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AttributeSetItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an attributeSet object.
+        Read the properties and relationships of an attributeSet object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -126,7 +126,7 @@ class AttributeSetItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[AttributeSet] = None, request_configuration: Optional[AttributeSetItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an attributeSet object.
+        Update the properties of an attributeSet object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -167,7 +167,7 @@ class AttributeSetItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttributeSetItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an attributeSet object.
+        Read the properties and relationships of an attributeSet object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from .get_presences_by_user_id_post_request_body import GetPresencesByUserIdPostRequestBody
-    from .get_presences_by_user_id_response import GetPresencesByUserIdResponse
+    from .get_presences_by_user_id_post_response import GetPresencesByUserIdPostResponse
 
 class GetPresencesByUserIdRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class GetPresencesByUserIdRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/communications/getPresencesByUserId", path_parameters)
     
-    async def post(self,body: Optional[GetPresencesByUserIdPostRequestBody] = None, request_configuration: Optional[GetPresencesByUserIdRequestBuilderPostRequestConfiguration] = None) -> Optional[GetPresencesByUserIdResponse]:
+    async def post(self,body: Optional[GetPresencesByUserIdPostRequestBody] = None, request_configuration: Optional[GetPresencesByUserIdRequestBuilderPostRequestConfiguration] = None) -> Optional[GetPresencesByUserIdPostResponse]:
         """
-        Get the presence information for multiple users.
+        Get the presence information for multiple users. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetPresencesByUserIdResponse]
+        Returns: Optional[GetPresencesByUserIdPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/cloudcommunications-getpresencesbyuserid?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class GetPresencesByUserIdRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_presences_by_user_id_response import GetPresencesByUserIdResponse
+        from .get_presences_by_user_id_post_response import GetPresencesByUserIdPostResponse
 
-        return await self.request_adapter.send_async(request_info, GetPresencesByUserIdResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetPresencesByUserIdPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[GetPresencesByUserIdPostRequestBody] = None, request_configuration: Optional[GetPresencesByUserIdRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the presence information for multiple users.
+        Get the presence information for multiple users. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

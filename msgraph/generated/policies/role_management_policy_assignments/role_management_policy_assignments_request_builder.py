@@ -45,7 +45,7 @@ class RoleManagementPolicyAssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RoleManagementPolicyAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyAssignmentCollectionResponse]:
         """
-        Get the details of all role management policy assignments including the policies and rules associated with the Azure AD roles.
+        Get the details of all role management policy assignments including the policies and rules associated with the Azure AD roles. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleManagementPolicyAssignmentCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/policyroot-list-rolemanagementpolicyassignments?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class RoleManagementPolicyAssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RoleManagementPolicyAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the details of all role management policy assignments including the policies and rules associated with the Azure AD roles.
+        Get the details of all role management policy assignments including the policies and rules associated with the Azure AD roles. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class RoleManagementPolicyAssignmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleManagementPolicyAssignmentsRequestBuilderGetQueryParameters():
         """
-        Get the details of all role management policy assignments including the policies and rules associated with the Azure AD roles.
+        Get the details of all role management policy assignments including the policies and rules associated with the Azure AD roles. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

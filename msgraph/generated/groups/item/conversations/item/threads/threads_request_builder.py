@@ -45,7 +45,7 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ThreadsRequestBuilderGetRequestConfiguration] = None) -> Optional[ConversationThreadCollectionResponse]:
         """
-        Get all the threads in a group conversation. Note: You can also get all the threads of a group.
+        Get all the threads in a group conversation. Note: You can also get all the threads of a group. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationThreadCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/conversation-list-threads?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ConversationThread] = None, request_configuration: Optional[ThreadsRequestBuilderPostRequestConfiguration] = None) -> Optional[ConversationThread]:
         """
-        Create a new thread in the specified conversation.  A thread and post are created as specified. Use reply thread to further post to that thread. Or, if you get the post ID, you can also reply to that post in that thread. Note: You can also start a new conversation by first creating a thread.
+        Create a new thread in the specified conversation.  A thread and post are created as specified. Use reply thread to further post to that thread. Or, if you get the post ID, you can also reply to that post in that thread. Note: You can also start a new conversation by first creating a thread. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationThread]
@@ -92,7 +92,7 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ThreadsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get all the threads in a group conversation. Note: You can also get all the threads of a group.
+        Get all the threads in a group conversation. Note: You can also get all the threads of a group. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ConversationThread] = None, request_configuration: Optional[ThreadsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new thread in the specified conversation.  A thread and post are created as specified. Use reply thread to further post to that thread. Or, if you get the post ID, you can also reply to that post in that thread. Note: You can also start a new conversation by first creating a thread.
+        Create a new thread in the specified conversation.  A thread and post are created as specified. Use reply thread to further post to that thread. Or, if you get the post ID, you can also reply to that post in that thread. Note: You can also start a new conversation by first creating a thread. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ThreadsRequestBuilderGetQueryParameters():
         """
-        Get all the threads in a group conversation. Note: You can also get all the threads of a group.
+        Get all the threads in a group conversation. Note: You can also get all the threads of a group. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

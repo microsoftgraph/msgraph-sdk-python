@@ -29,7 +29,7 @@ class RestoreRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[RestorePostRequestBody] = None, request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> Optional[DriveItem]:
         """
-        Restore a driveItem that has been deleted and is currently in the recycle bin. NOTE: This functionality is currently only available for OneDrive Personal.
+        Restore a driveItem that has been deleted and is currently in the recycle bin. NOTE: This functionality is currently only available for OneDrive Personal. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItem]
@@ -54,7 +54,7 @@ class RestoreRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[RestorePostRequestBody] = None, request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Restore a driveItem that has been deleted and is currently in the recycle bin. NOTE: This functionality is currently only available for OneDrive Personal.
+        Restore a driveItem that has been deleted and is currently in the recycle bin. NOTE: This functionality is currently only available for OneDrive Personal. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

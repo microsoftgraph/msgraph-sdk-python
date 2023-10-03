@@ -28,7 +28,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[LifecycleManagementSettings]:
         """
-        Read the properties and relationships of a lifecycleManagementSettings object.
+        Read the properties and relationships of a lifecycleManagementSettings object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LifecycleManagementSettings]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-lifecyclemanagementsettings-get?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[LifecycleManagementSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[LifecycleManagementSettings]:
         """
-        Update the properties of a lifecycleManagementSettings object.
+        Update the properties of a lifecycleManagementSettings object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LifecycleManagementSettings]
@@ -75,7 +75,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a lifecycleManagementSettings object.
+        Read the properties and relationships of a lifecycleManagementSettings object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -92,7 +92,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[LifecycleManagementSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a lifecycleManagementSettings object.
+        Update the properties of a lifecycleManagementSettings object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SettingsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a lifecycleManagementSettings object.
+        Read the properties and relationships of a lifecycleManagementSettings object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

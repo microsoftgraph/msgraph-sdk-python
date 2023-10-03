@@ -20,7 +20,7 @@ class AggregationOption(AdditionalDataHolder, BackedModel, Parsable):
     field: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The number of searchBucket resources to be returned. This is not required when the range is provided manually in the search request. Optional.
+    # The number of searchBucket resources to be returned. This isn't required when the range is provided manually in the search request. Optional.
     size: Optional[int] = None
     
     @staticmethod

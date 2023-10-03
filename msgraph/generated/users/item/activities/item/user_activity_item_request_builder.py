@@ -29,7 +29,7 @@ class UserActivityItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[UserActivityItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an existing user activity for your app.
+        Delete an existing user activity for your app. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/projectrome-delete-activity?view=graph-rest-1.0
@@ -94,7 +94,7 @@ class UserActivityItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[UserActivityItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an existing user activity for your app.
+        Delete an existing user activity for your app. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

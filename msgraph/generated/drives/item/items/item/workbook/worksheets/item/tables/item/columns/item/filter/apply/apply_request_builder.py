@@ -28,7 +28,7 @@ class ApplyRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ApplyPostRequestBody] = None, request_configuration: Optional[ApplyRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Apply the given filter criteria on the given column.
+        Apply the given filter criteria on the given column. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class ApplyRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ApplyPostRequestBody] = None, request_configuration: Optional[ApplyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Apply the given filter criteria on the given column.
+        Apply the given filter criteria on the given column. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

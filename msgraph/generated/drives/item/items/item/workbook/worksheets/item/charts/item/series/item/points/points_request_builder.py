@@ -46,10 +46,10 @@ class PointsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PointsRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartPointCollectionResponse]:
         """
-        Retrieve a list of chartpoint objects.
+        Retrieve a list of chartpoints objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartPointCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/chartpoint-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/chartseries-list-points?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -80,7 +80,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[WorkbookChartPoint] = None, request_configuration: Optional[PointsRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookChartPoint]:
         """
-        Use this API to create a new ChartPoints.
+        Use this API to create a new ChartPoints. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartPoint]
@@ -105,7 +105,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PointsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of chartpoint objects.
+        Retrieve a list of chartpoints objects. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -122,7 +122,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[WorkbookChartPoint] = None, request_configuration: Optional[PointsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new ChartPoints.
+        Use this API to create a new ChartPoints. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -162,7 +162,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PointsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of chartpoint objects.
+        Retrieve a list of chartpoints objects. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

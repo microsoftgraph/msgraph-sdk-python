@@ -45,7 +45,7 @@ class FederationConfigurationRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[FederationConfigurationRequestBuilderGetRequestConfiguration] = None) -> Optional[InternalDomainFederationCollectionResponse]:
         """
-        Read the properties and relationships of an internalDomainFederation object.
+        Read the properties and relationships of an internalDomainFederation object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[InternalDomainFederationCollectionResponse]
         """
@@ -66,7 +66,7 @@ class FederationConfigurationRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[InternalDomainFederation] = None, request_configuration: Optional[FederationConfigurationRequestBuilderPostRequestConfiguration] = None) -> Optional[InternalDomainFederation]:
         """
-        Create a new internalDomainFederation object.
+        Create a new internalDomainFederation object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[InternalDomainFederation]
@@ -91,7 +91,7 @@ class FederationConfigurationRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[FederationConfigurationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an internalDomainFederation object.
+        Read the properties and relationships of an internalDomainFederation object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,7 +108,7 @@ class FederationConfigurationRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[InternalDomainFederation] = None, request_configuration: Optional[FederationConfigurationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new internalDomainFederation object.
+        Create a new internalDomainFederation object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -148,7 +148,7 @@ class FederationConfigurationRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FederationConfigurationRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an internalDomainFederation object.
+        Read the properties and relationships of an internalDomainFederation object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

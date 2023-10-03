@@ -45,7 +45,7 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CalendarPermissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[CalendarPermissionCollectionResponse]:
         """
-        Get a collection of calendarPermission resources that describe the identity and roles of users with whom the specified calendar has been shared or delegated. Here, the calendar can be a user calendar or group calendar.
+        Get a collection of calendarPermission resources that describe the identity and roles of users with whom the specified calendar has been shared or delegated. Here, the calendar can be a user calendar or group calendar. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CalendarPermissionCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/calendar-list-calendarpermissions?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CalendarPermission] = None, request_configuration: Optional[CalendarPermissionsRequestBuilderPostRequestConfiguration] = None) -> Optional[CalendarPermission]:
         """
-        Create a calendarPermission resource to specify the identity and role of the user with whom the specified calendar is being shared or delegated.
+        Create a calendarPermission resource to specify the identity and role of the user with whom the specified calendar is being shared or delegated. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CalendarPermission]
@@ -92,7 +92,7 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CalendarPermissionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a collection of calendarPermission resources that describe the identity and roles of users with whom the specified calendar has been shared or delegated. Here, the calendar can be a user calendar or group calendar.
+        Get a collection of calendarPermission resources that describe the identity and roles of users with whom the specified calendar has been shared or delegated. Here, the calendar can be a user calendar or group calendar. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CalendarPermission] = None, request_configuration: Optional[CalendarPermissionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a calendarPermission resource to specify the identity and role of the user with whom the specified calendar is being shared or delegated.
+        Create a calendarPermission resource to specify the identity and role of the user with whom the specified calendar is being shared or delegated. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CalendarPermissionsRequestBuilderGetQueryParameters():
         """
-        Get a collection of calendarPermission resources that describe the identity and roles of users with whom the specified calendar has been shared or delegated. Here, the calendar can be a user calendar or group calendar.
+        Get a collection of calendarPermission resources that describe the identity and roles of users with whom the specified calendar has been shared or delegated. Here, the calendar can be a user calendar or group calendar. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

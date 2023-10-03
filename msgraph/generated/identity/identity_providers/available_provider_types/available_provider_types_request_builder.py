@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .available_provider_types_response import AvailableProviderTypesResponse
+    from .available_provider_types_get_response import AvailableProviderTypesGetResponse
 
 class AvailableProviderTypesRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class AvailableProviderTypesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identity/identityProviders/availableProviderTypes(){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
     
-    async def get(self,request_configuration: Optional[AvailableProviderTypesRequestBuilderGetRequestConfiguration] = None) -> Optional[AvailableProviderTypesResponse]:
+    async def get(self,request_configuration: Optional[AvailableProviderTypesRequestBuilderGetRequestConfiguration] = None) -> Optional[AvailableProviderTypesGetResponse]:
         """
         Invoke function availableProviderTypes
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[AvailableProviderTypesResponse]
+        Returns: Optional[AvailableProviderTypesGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class AvailableProviderTypesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .available_provider_types_response import AvailableProviderTypesResponse
+        from .available_provider_types_get_response import AvailableProviderTypesGetResponse
 
-        return await self.request_adapter.send_async(request_info, AvailableProviderTypesResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AvailableProviderTypesGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AvailableProviderTypesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

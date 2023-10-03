@@ -38,7 +38,7 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ContentTypeItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove a [content type][contentType] from a [list][] or a [site][].
+        Remove a content type][contentType] from a [list][] or a [site][]. This API is supported in the following [national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/contenttype-delete?view=graph-rest-1.0
@@ -58,7 +58,7 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ContentTypeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ContentType]:
         """
-        Retrieve the metadata for a [content type][contentType] in a [site][] or a [list][].
+        Retrieve the metadata for a content type][contentType] in a [site][] or a [list][]. This API is supported in the following [national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContentType]
         Find more info here: https://learn.microsoft.com/graph/api/contenttype-get?view=graph-rest-1.0
@@ -80,7 +80,7 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ContentType] = None, request_configuration: Optional[ContentTypeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ContentType]:
         """
-        Update a [content type][contentType].
+        Update a content type][contentType]. This API is supported in the following [national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContentType]
@@ -105,7 +105,7 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ContentTypeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a [content type][contentType] from a [list][] or a [site][].
+        Remove a content type][contentType] from a [list][] or a [site][]. This API is supported in the following [national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +120,7 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ContentTypeItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the metadata for a [content type][contentType] in a [site][] or a [list][].
+        Retrieve the metadata for a content type][contentType] in a [site][] or a [list][]. This API is supported in the following [national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -137,7 +137,7 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ContentType] = None, request_configuration: Optional[ContentTypeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update a [content type][contentType].
+        Update a content type][contentType]. This API is supported in the following [national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -268,7 +268,7 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ContentTypeItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the metadata for a [content type][contentType] in a [site][] or a [list][].
+        Retrieve the metadata for a content type][contentType] in a [site][] or a [list][]. This API is supported in the following [national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -12,6 +12,10 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .....models.windows_universal_app_x import WindowsUniversalAppX
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .categories.categories_request_builder import CategoriesRequestBuilder
+    from .committed_contained_apps.committed_contained_apps_request_builder import CommittedContainedAppsRequestBuilder
+    from .content_versions.content_versions_request_builder import ContentVersionsRequestBuilder
 
 class GraphWindowsUniversalAppXRequestBuilder(BaseRequestBuilder):
     """
@@ -73,6 +77,42 @@ class GraphWindowsUniversalAppXRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GraphWindowsUniversalAppXRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def assignments(self) -> AssignmentsRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.mobileApp entity.
+        """
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def categories(self) -> CategoriesRequestBuilder:
+        """
+        Provides operations to manage the categories property of the microsoft.graph.mobileApp entity.
+        """
+        from .categories.categories_request_builder import CategoriesRequestBuilder
+
+        return CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def committed_contained_apps(self) -> CommittedContainedAppsRequestBuilder:
+        """
+        Provides operations to manage the committedContainedApps property of the microsoft.graph.windowsUniversalAppX entity.
+        """
+        from .committed_contained_apps.committed_contained_apps_request_builder import CommittedContainedAppsRequestBuilder
+
+        return CommittedContainedAppsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def content_versions(self) -> ContentVersionsRequestBuilder:
+        """
+        Provides operations to manage the contentVersions property of the microsoft.graph.mobileLobApp entity.
+        """
+        from .content_versions.content_versions_request_builder import ContentVersionsRequestBuilder
+
+        return ContentVersionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class GraphWindowsUniversalAppXRequestBuilderGetQueryParameters():

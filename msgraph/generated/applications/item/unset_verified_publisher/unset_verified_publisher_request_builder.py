@@ -27,7 +27,7 @@ class UnsetVerifiedPublisherRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[UnsetVerifiedPublisherRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Unset the verifiedPublisher previously set on an application, removing all verified publisher properties. For more information, see Publisher verification.
+        Unset the verifiedPublisher previously set on an application, removing all verified publisher properties. For more information, see Publisher verification. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/application-unsetverifiedpublisher?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class UnsetVerifiedPublisherRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[UnsetVerifiedPublisherRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Unset the verifiedPublisher previously set on an application, removing all verified publisher properties. For more information, see Publisher verification.
+        Unset the verifiedPublisher previously set on an application, removing all verified publisher properties. For more information, see Publisher verification. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

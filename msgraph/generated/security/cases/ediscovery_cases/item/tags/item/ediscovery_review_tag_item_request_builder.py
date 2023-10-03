@@ -30,7 +30,7 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove an ediscoveryReviewTag object.
+        Remove an ediscoveryReviewTag object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycase-delete-tags?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryReviewTag]:
         """
-        Read the properties and relationships of an ediscoveryReviewTag object.
+        Read the properties and relationships of an ediscoveryReviewTag object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewTag]
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoveryreviewtag-get?view=graph-rest-1.0
@@ -72,7 +72,7 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EdiscoveryReviewTag] = None, request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EdiscoveryReviewTag]:
         """
-        Update the properties of an ediscoveryReviewTag object.
+        Update the properties of an ediscoveryReviewTag object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewTag]
@@ -97,7 +97,7 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove an ediscoveryReviewTag object.
+        Remove an ediscoveryReviewTag object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +112,7 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an ediscoveryReviewTag object.
+        Read the properties and relationships of an ediscoveryReviewTag object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -129,7 +129,7 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EdiscoveryReviewTag] = None, request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an ediscoveryReviewTag object.
+        Update the properties of an ediscoveryReviewTag object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -188,7 +188,7 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EdiscoveryReviewTagItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an ediscoveryReviewTag object.
+        Read the properties and relationships of an ediscoveryReviewTag object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

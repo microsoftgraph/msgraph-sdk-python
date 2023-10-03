@@ -45,7 +45,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TimeOffReasonsRequestBuilderGetRequestConfiguration] = None) -> Optional[TimeOffReasonCollectionResponse]:
         """
-        Get the list of timeOffReasons in a schedule.
+        Get the list of timeOffReasons in a schedule. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TimeOffReasonCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/schedule-list-timeoffreasons?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TimeOffReason] = None, request_configuration: Optional[TimeOffReasonsRequestBuilderPostRequestConfiguration] = None) -> Optional[TimeOffReason]:
         """
-        Create a new timeOffReason.
+        Create a new timeOffReason. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TimeOffReason]
@@ -92,7 +92,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TimeOffReasonsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of timeOffReasons in a schedule.
+        Get the list of timeOffReasons in a schedule. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[TimeOffReason] = None, request_configuration: Optional[TimeOffReasonsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new timeOffReason.
+        Create a new timeOffReason. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class TimeOffReasonsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TimeOffReasonsRequestBuilderGetQueryParameters():
         """
-        Get the list of timeOffReasons in a schedule.
+        Get the list of timeOffReasons in a schedule. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -45,7 +45,7 @@ class AssociatedTeamsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AssociatedTeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[AssociatedTeamInfoCollectionResponse]:
         """
-        Get the list of teams in Microsoft Teams that a user is associated with.Currently, a user can be associated with a team in two different ways:* A user can be a direct member of a team.* A user can be a member of a shared channel that is hosted inside a team.
+        Get the list of teams in Microsoft Teams that a user is associated with.Currently, a user can be associated with a team in two different ways: This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AssociatedTeamInfoCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/associatedteaminfo-list?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class AssociatedTeamsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AssociatedTeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of teams in Microsoft Teams that a user is associated with.Currently, a user can be associated with a team in two different ways:* A user can be a direct member of a team.* A user can be a member of a shared channel that is hosted inside a team.
+        Get the list of teams in Microsoft Teams that a user is associated with.Currently, a user can be associated with a team in two different ways: This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class AssociatedTeamsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AssociatedTeamsRequestBuilderGetQueryParameters():
         """
-        Get the list of teams in Microsoft Teams that a user is associated with.Currently, a user can be associated with a team in two different ways:* A user can be a direct member of a team.* A user can be a member of a shared channel that is hosted inside a team.
+        Get the list of teams in Microsoft Teams that a user is associated with.Currently, a user can be associated with a team in two different ways: This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

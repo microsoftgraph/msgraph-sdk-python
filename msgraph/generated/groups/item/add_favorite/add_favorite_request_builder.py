@@ -27,7 +27,7 @@ class AddFavoriteRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[AddFavoriteRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Add the group to the list of the current user's favorite groups. Supported for Microsoft 365 groups only.
+        Add the group to the list of the current user's favorite groups. Supported for Microsoft 365 groups only. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/group-addfavorite?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class AddFavoriteRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[AddFavoriteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add the group to the list of the current user's favorite groups. Supported for Microsoft 365 groups only.
+        Add the group to the list of the current user's favorite groups. Supported for Microsoft 365 groups only. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

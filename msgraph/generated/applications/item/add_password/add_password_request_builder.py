@@ -29,7 +29,7 @@ class AddPasswordRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AddPasswordPostRequestBody] = None, request_configuration: Optional[AddPasswordRequestBuilderPostRequestConfiguration] = None) -> Optional[PasswordCredential]:
         """
-        Adds a strong password or secret to an application.
+        Adds a strong password or secret to an application. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PasswordCredential]
@@ -54,7 +54,7 @@ class AddPasswordRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AddPasswordPostRequestBody] = None, request_configuration: Optional[AddPasswordRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Adds a strong password or secret to an application.
+        Adds a strong password or secret to an application. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

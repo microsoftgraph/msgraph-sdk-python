@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .delta_with_token_response import DeltaWithTokenResponse
+    from .delta_with_token_get_response import DeltaWithTokenGetResponse
 
 class DeltaWithTokenRequestBuilder(BaseRequestBuilder):
     """
@@ -25,13 +25,15 @@ class DeltaWithTokenRequestBuilder(BaseRequestBuilder):
         param token: Usage: token='{token}'
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['token'] = str(token)
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/delta(token='{token}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[DeltaWithTokenRequestBuilderGetRequestConfiguration] = None) -> Optional[DeltaWithTokenResponse]:
+    async def get(self,request_configuration: Optional[DeltaWithTokenRequestBuilderGetRequestConfiguration] = None) -> Optional[DeltaWithTokenGetResponse]:
         """
         Invoke function delta
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[DeltaWithTokenResponse]
+        Returns: Optional[DeltaWithTokenGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -44,9 +46,9 @@ class DeltaWithTokenRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .delta_with_token_response import DeltaWithTokenResponse
+        from .delta_with_token_get_response import DeltaWithTokenGetResponse
 
-        return await self.request_adapter.send_async(request_info, DeltaWithTokenResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, DeltaWithTokenGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DeltaWithTokenRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

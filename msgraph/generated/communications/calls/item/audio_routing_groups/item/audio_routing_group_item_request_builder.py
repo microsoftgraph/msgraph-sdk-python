@@ -28,7 +28,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AudioRoutingGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete the specified audioRoutingGroup.
+        Delete the specified audioRoutingGroup. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/audioroutinggroup-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AudioRoutingGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AudioRoutingGroup]:
         """
-        Retrieve the properties and relationships of an audioRoutingGroup object.
+        Retrieve the properties and relationships of an audioRoutingGroup object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AudioRoutingGroup]
         Find more info here: https://learn.microsoft.com/graph/api/audioroutinggroup-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AudioRoutingGroup]:
         """
-        Modify sources and receivers of an audioRoutingGroup.
+        Modify sources and receivers of an audioRoutingGroup. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AudioRoutingGroup]
@@ -95,7 +95,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AudioRoutingGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete the specified audioRoutingGroup.
+        Delete the specified audioRoutingGroup. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AudioRoutingGroupItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an audioRoutingGroup object.
+        Retrieve the properties and relationships of an audioRoutingGroup object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Modify sources and receivers of an audioRoutingGroup.
+        Modify sources and receivers of an audioRoutingGroup. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AudioRoutingGroupItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an audioRoutingGroup object.
+        Retrieve the properties and relationships of an audioRoutingGroup object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

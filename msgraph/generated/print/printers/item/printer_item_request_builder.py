@@ -33,7 +33,7 @@ class PrinterItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[PrinterItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete (unregister) a printer.
+        Delete (unregister) a printer. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/printer-delete?view=graph-rest-1.0
@@ -53,7 +53,7 @@ class PrinterItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PrinterItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Printer]:
         """
-        Retrieve the properties and relationships of a printer object.
+        Retrieve the properties and relationships of a printer object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Printer]
         Find more info here: https://learn.microsoft.com/graph/api/printer-get?view=graph-rest-1.0
@@ -75,7 +75,7 @@ class PrinterItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Printer] = None, request_configuration: Optional[PrinterItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Printer]:
         """
-        Update the properties of a printer object.
+        Update the properties of a printer object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Printer]
@@ -100,7 +100,7 @@ class PrinterItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[PrinterItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete (unregister) a printer.
+        Delete (unregister) a printer. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +115,7 @@ class PrinterItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PrinterItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a printer object.
+        Retrieve the properties and relationships of a printer object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -132,7 +132,7 @@ class PrinterItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Printer] = None, request_configuration: Optional[PrinterItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a printer object.
+        Update the properties of a printer object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -218,7 +218,7 @@ class PrinterItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PrinterItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a printer object.
+        Retrieve the properties and relationships of a printer object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

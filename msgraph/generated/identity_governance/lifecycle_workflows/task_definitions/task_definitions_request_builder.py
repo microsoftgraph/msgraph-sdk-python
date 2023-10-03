@@ -44,7 +44,7 @@ class TaskDefinitionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TaskDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[TaskDefinitionCollectionResponse]:
         """
-        Get a list of the taskDefinition objects and their properties.
+        Get a list of the taskDefinition objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TaskDefinitionCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-lifecycleworkflowscontainer-list-taskdefinitions?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class TaskDefinitionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TaskDefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the taskDefinition objects and their properties.
+        Get a list of the taskDefinition objects and their properties. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +103,7 @@ class TaskDefinitionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TaskDefinitionsRequestBuilderGetQueryParameters():
         """
-        Get a list of the taskDefinition objects and their properties.
+        Get a list of the taskDefinition objects and their properties. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

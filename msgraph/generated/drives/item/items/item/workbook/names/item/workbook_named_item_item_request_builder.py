@@ -49,7 +49,7 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[WorkbookNamedItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookNamedItem]:
         """
-        Retrieve the properties and relationships of nameditem object.
+        Retrieve the properties and relationships of nameditem object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookNamedItem]
         Find more info here: https://learn.microsoft.com/graph/api/nameditem-get?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkbookNamedItem] = None, request_configuration: Optional[WorkbookNamedItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookNamedItem]:
         """
-        Update the properties of nameditem object.
+        Update the properties of nameditem object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookNamedItem]
@@ -111,7 +111,7 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookNamedItemItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of nameditem object.
+        Retrieve the properties and relationships of nameditem object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -128,7 +128,7 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkbookNamedItem] = None, request_configuration: Optional[WorkbookNamedItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of nameditem object.
+        Update the properties of nameditem object. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -187,7 +187,7 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkbookNamedItemItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of nameditem object.
+        Retrieve the properties and relationships of nameditem object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

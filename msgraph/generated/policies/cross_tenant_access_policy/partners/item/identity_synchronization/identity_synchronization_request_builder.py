@@ -28,7 +28,7 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[IdentitySynchronizationRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete the user synchronization policy for a partner-specific configuration.
+        Delete the user synchronization policy for a partner-specific configuration. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/crosstenantidentitysyncpolicypartner-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IdentitySynchronizationRequestBuilderGetRequestConfiguration] = None) -> Optional[CrossTenantIdentitySyncPolicyPartner]:
         """
-        Get the user synchronization policy of a partner-specific configuration.
+        Get the user synchronization policy of a partner-specific configuration. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantIdentitySyncPolicyPartner]
         Find more info here: https://learn.microsoft.com/graph/api/crosstenantidentitysyncpolicypartner-get?view=graph-rest-1.0
@@ -94,7 +94,7 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[IdentitySynchronizationRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete the user synchronization policy for a partner-specific configuration.
+        Delete the user synchronization policy for a partner-specific configuration. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IdentitySynchronizationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the user synchronization policy of a partner-specific configuration.
+        Get the user synchronization policy of a partner-specific configuration. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -167,7 +167,7 @@ class IdentitySynchronizationRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IdentitySynchronizationRequestBuilderGetQueryParameters():
         """
-        Get the user synchronization policy of a partner-specific configuration.
+        Get the user synchronization policy of a partner-specific configuration. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

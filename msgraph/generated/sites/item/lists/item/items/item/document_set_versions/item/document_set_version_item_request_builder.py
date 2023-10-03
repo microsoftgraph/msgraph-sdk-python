@@ -30,7 +30,7 @@ class DocumentSetVersionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DocumentSetVersionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a version of a document set in a list.
+        Delete a version of a document set in a list. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/documentsetversion-delete?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class DocumentSetVersionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DocumentSetVersionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DocumentSetVersion]:
         """
-        Read the properties and relationships of a documentSetVersion object.
+        Read the properties and relationships of a documentSetVersion object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DocumentSetVersion]
         Find more info here: https://learn.microsoft.com/graph/api/documentsetversion-get?view=graph-rest-1.0
@@ -96,7 +96,7 @@ class DocumentSetVersionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DocumentSetVersionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a version of a document set in a list.
+        Delete a version of a document set in a list. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class DocumentSetVersionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DocumentSetVersionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a documentSetVersion object.
+        Read the properties and relationships of a documentSetVersion object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -187,7 +187,7 @@ class DocumentSetVersionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DocumentSetVersionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a documentSetVersion object.
+        Read the properties and relationships of a documentSetVersion object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -17,7 +17,7 @@ class ResourceVisualization(AdditionalDataHolder, BackedModel, Parsable):
     container_type: Optional[str] = None
     # A path leading to the folder in which the item is stored.
     container_web_url: Optional[str] = None
-    # The item's media type. Can be used for filtering for a specific type of file based on supported IANA Media Mime Types. Note that not all Media Mime Types are supported.
+    # The item's media type. Can be used for filtering for a specific type of file based on supported IANA Media Mime Types. Not all Media Mime Types are supported.
     media_type: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -27,7 +27,7 @@ class ResourceVisualization(AdditionalDataHolder, BackedModel, Parsable):
     preview_text: Optional[str] = None
     # The item's title text.
     title: Optional[str] = None
-    # The item's media type. Can be used for filtering for a specific file based on a specific type. See below for supported types.
+    # The item's media type. Can be used for filtering for a specific file based on a specific type. See the section Type property values for supported types.
     type: Optional[str] = None
     
     @staticmethod

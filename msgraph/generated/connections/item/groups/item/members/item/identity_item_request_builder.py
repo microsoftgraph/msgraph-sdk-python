@@ -28,7 +28,7 @@ class IdentityItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[IdentityItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an identity resource to remove the corresponding member from an externalGroup.
+        Delete an identity resource to remove the corresponding member from an externalGroup. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/externalconnectors-identity-delete?view=graph-rest-1.0
@@ -93,7 +93,7 @@ class IdentityItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an identity resource to remove the corresponding member from an externalGroup.
+        Delete an identity resource to remove the corresponding member from an externalGroup. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

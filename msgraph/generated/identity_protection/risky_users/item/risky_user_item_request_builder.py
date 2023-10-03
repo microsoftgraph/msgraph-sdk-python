@@ -48,7 +48,7 @@ class RiskyUserItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RiskyUserItemRequestBuilderGetRequestConfiguration] = None) -> Optional[RiskyUser]:
         """
-        Read the properties and relationships of a riskyUser object.
+        Read the properties and relationships of a riskyUser object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RiskyUser]
         Find more info here: https://learn.microsoft.com/graph/api/riskyuser-get?view=graph-rest-1.0
@@ -109,7 +109,7 @@ class RiskyUserItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RiskyUserItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a riskyUser object.
+        Read the properties and relationships of a riskyUser object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -176,7 +176,7 @@ class RiskyUserItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RiskyUserItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a riskyUser object.
+        Read the properties and relationships of a riskyUser object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

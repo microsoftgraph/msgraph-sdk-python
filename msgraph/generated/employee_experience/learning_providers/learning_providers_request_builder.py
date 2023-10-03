@@ -45,7 +45,7 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[LearningProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[LearningProviderCollectionResponse]:
         """
-        Get a list of the learningProvider resources registered in Viva Learning for a tenant.
+        Get a list of the learningProvider resources registered in Viva Learning for a tenant. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningProviderCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/employeeexperience-list-learningproviders?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProvidersRequestBuilderPostRequestConfiguration] = None) -> Optional[LearningProvider]:
         """
-        Create a new learningProvider object and register it with Viva Learning using the specified display name and logos for different themes.
+        Create a new learningProvider object and register it with Viva Learning using the specified display name and logos for different themes. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningProvider]
@@ -92,7 +92,7 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[LearningProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the learningProvider resources registered in Viva Learning for a tenant.
+        Get a list of the learningProvider resources registered in Viva Learning for a tenant. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProvidersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new learningProvider object and register it with Viva Learning using the specified display name and logos for different themes.
+        Create a new learningProvider object and register it with Viva Learning using the specified display name and logos for different themes. This API is supported in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LearningProvidersRequestBuilderGetQueryParameters():
         """
-        Get a list of the learningProvider resources registered in Viva Learning for a tenant.
+        Get a list of the learningProvider resources registered in Viva Learning for a tenant. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

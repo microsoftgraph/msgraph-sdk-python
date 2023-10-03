@@ -25,11 +25,13 @@ class ServicePrincipalsWithAppIdRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['appId'] = str(app_id)
         super().__init__(request_adapter, "{+baseurl}/servicePrincipals(appId='{appId}'){?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ServicePrincipalsWithAppIdRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a servicePrincipal object.
+        Delete a servicePrincipal object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-delete?view=graph-rest-1.0
@@ -49,7 +51,7 @@ class ServicePrincipalsWithAppIdRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ServicePrincipalsWithAppIdRequestBuilderGetRequestConfiguration] = None) -> Optional[ServicePrincipal]:
         """
-        Retrieve the properties and relationships of a servicePrincipal object.
+        Retrieve the properties and relationships of a servicePrincipal object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServicePrincipal]
         Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-get?view=graph-rest-1.0
@@ -95,7 +97,7 @@ class ServicePrincipalsWithAppIdRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ServicePrincipalsWithAppIdRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a servicePrincipal object.
+        Delete a servicePrincipal object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +112,7 @@ class ServicePrincipalsWithAppIdRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ServicePrincipalsWithAppIdRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a servicePrincipal object.
+        Retrieve the properties and relationships of a servicePrincipal object. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -168,7 +170,7 @@ class ServicePrincipalsWithAppIdRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ServicePrincipalsWithAppIdRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a servicePrincipal object.
+        Retrieve the properties and relationships of a servicePrincipal object. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

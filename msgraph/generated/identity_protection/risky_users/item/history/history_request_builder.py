@@ -45,7 +45,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[HistoryRequestBuilderGetRequestConfiguration] = None) -> Optional[RiskyUserHistoryItemCollectionResponse]:
         """
-        Get the riskyUserHistoryItems from the history navigation property.
+        Get the riskyUserHistoryItems from the history navigation property. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RiskyUserHistoryItemCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/riskyuser-list-history?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[HistoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the riskyUserHistoryItems from the history navigation property.
+        Get the riskyUserHistoryItems from the history navigation property. This API is supported in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HistoryRequestBuilderGetQueryParameters():
         """
-        Get the riskyUserHistoryItems from the history navigation property.
+        Get the riskyUserHistoryItems from the history navigation property. This API is supported in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

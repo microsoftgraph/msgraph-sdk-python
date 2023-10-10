@@ -1,5 +1,7 @@
 # Microsoft Graph SDK for Python
 
+> We are very close to GA! Stay tunned for updates in the [M365 Developer Blog](https://devblogs.microsoft.com/microsoft365dev/)
+
 Get started with the Microsoft Graph SDK for Python by integrating the [Microsoft Graph API](https://docs.microsoft.com/graph/overview) into your Python application.
 
 > **Note:** 

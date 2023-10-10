@@ -7,6 +7,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .identity_set import IdentitySet
+    from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
+    from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+    from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
     from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
     from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
     from .user_consent_request import UserConsentRequest
@@ -43,6 +46,18 @@ class Request(Entity):
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupAssignmentScheduleRequest".casefold():
+            from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
+
+            return PrivilegedAccessGroupAssignmentScheduleRequest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessGroupEligibilityScheduleRequest".casefold():
+            from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+
+            return PrivilegedAccessGroupEligibilityScheduleRequest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.privilegedAccessScheduleRequest".casefold():
+            from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
+
+            return PrivilegedAccessScheduleRequest()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.unifiedRoleAssignmentScheduleRequest".casefold():
             from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
 
@@ -64,12 +79,18 @@ class Request(Entity):
         """
         from .entity import Entity
         from .identity_set import IdentitySet
+        from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
+        from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+        from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
         from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
         from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
         from .user_consent_request import UserConsentRequest
 
         from .entity import Entity
         from .identity_set import IdentitySet
+        from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
+        from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+        from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
         from .unified_role_assignment_schedule_request import UnifiedRoleAssignmentScheduleRequest
         from .unified_role_eligibility_schedule_request import UnifiedRoleEligibilityScheduleRequest
         from .user_consent_request import UserConsentRequest

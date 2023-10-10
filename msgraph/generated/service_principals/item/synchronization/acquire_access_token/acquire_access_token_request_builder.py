@@ -28,7 +28,7 @@ class AcquireAccessTokenRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AcquireAccessTokenPostRequestBody] = None, request_configuration: Optional[AcquireAccessTokenRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Acquire an OAuth access token to authorize the Azure AD provisioning service to provision users into an application.
+        Acquire an OAuth access token to authorize the Azure AD provisioning service to provision users into an application. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class AcquireAccessTokenRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AcquireAccessTokenPostRequestBody] = None, request_configuration: Optional[AcquireAccessTokenRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Acquire an OAuth access token to authorize the Azure AD provisioning service to provision users into an application.
+        Acquire an OAuth access token to authorize the Azure AD provisioning service to provision users into an application. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -45,7 +45,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AdditionalSourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[DataSourceCollectionResponse]:
         """
-        Get the list of additional sources associated with an eDiscovery search.
+        Get the list of additional sources associated with an eDiscovery search. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DataSourceCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverysearch-list-additionalsources?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DataSource] = None, request_configuration: Optional[AdditionalSourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[DataSource]:
         """
-        Create a new additional source associated with an eDiscovery search.
+        Create a new additional source associated with an eDiscovery search. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DataSource]
@@ -92,7 +92,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AdditionalSourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of additional sources associated with an eDiscovery search.
+        Get the list of additional sources associated with an eDiscovery search. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DataSource] = None, request_configuration: Optional[AdditionalSourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new additional source associated with an eDiscovery search.
+        Create a new additional source associated with an eDiscovery search. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AdditionalSourcesRequestBuilderGetQueryParameters():
         """
-        Get the list of additional sources associated with an eDiscovery search.
+        Get the list of additional sources associated with an eDiscovery search. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

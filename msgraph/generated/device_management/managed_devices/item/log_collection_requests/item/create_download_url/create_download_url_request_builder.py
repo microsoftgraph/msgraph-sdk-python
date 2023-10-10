@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .......models.o_data_errors.o_data_error import ODataError
-    from .create_download_url_response import CreateDownloadUrlResponse
+    from .create_download_url_post_response import CreateDownloadUrlPostResponse
 
 class CreateDownloadUrlRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class CreateDownloadUrlRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/managedDevices/{managedDevice%2Did}/logCollectionRequests/{deviceLogCollectionResponse%2Did}/createDownloadUrl", path_parameters)
     
-    async def post(self,request_configuration: Optional[CreateDownloadUrlRequestBuilderPostRequestConfiguration] = None) -> Optional[CreateDownloadUrlResponse]:
+    async def post(self,request_configuration: Optional[CreateDownloadUrlRequestBuilderPostRequestConfiguration] = None) -> Optional[CreateDownloadUrlPostResponse]:
         """
         Invoke action createDownloadUrl
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[CreateDownloadUrlResponse]
+        Returns: Optional[CreateDownloadUrlPostResponse]
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class CreateDownloadUrlRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .create_download_url_response import CreateDownloadUrlResponse
+        from .create_download_url_post_response import CreateDownloadUrlPostResponse
 
-        return await self.request_adapter.send_async(request_info, CreateDownloadUrlResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, CreateDownloadUrlPostResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[CreateDownloadUrlRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

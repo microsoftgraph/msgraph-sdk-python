@@ -14,13 +14,13 @@ class ConvertIdResult(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # An error object indicating the reason for the conversion failure. This value is not present if the conversion succeeded.
+    # An error object indicating the reason for the conversion failure. This value isn't present if the conversion succeeded.
     error_details: Optional[GenericError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The identifier that was converted. This value is the original, un-converted identifier.
     source_id: Optional[str] = None
-    # The converted identifier. This value is not present if the conversion failed.
+    # The converted identifier. This value isn't present if the conversion failed.
     target_id: Optional[str] = None
     
     @staticmethod

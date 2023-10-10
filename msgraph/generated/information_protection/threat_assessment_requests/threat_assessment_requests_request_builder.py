@@ -45,7 +45,7 @@ class ThreatAssessmentRequestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[ThreatAssessmentRequestCollectionResponse]:
         """
-        Retrieve a list of threatAssessmentRequest objects. A threat assessment request can be one of the following types:
+        Retrieve a list of threatAssessmentRequest objects. A threat assessment request can be one of the following types: This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ThreatAssessmentRequestCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/informationprotection-list-threatassessmentrequests?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ThreatAssessmentRequestsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ThreatAssessmentRequest] = None, request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[ThreatAssessmentRequest]:
         """
-        Create a new threat assessment request. A threat assessment request can be one of the following types:
+        Create a new threat assessment request. A threat assessment request can be one of the following types: This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ThreatAssessmentRequest]
@@ -92,7 +92,7 @@ class ThreatAssessmentRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of threatAssessmentRequest objects. A threat assessment request can be one of the following types:
+        Retrieve a list of threatAssessmentRequest objects. A threat assessment request can be one of the following types: This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class ThreatAssessmentRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ThreatAssessmentRequest] = None, request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new threat assessment request. A threat assessment request can be one of the following types:
+        Create a new threat assessment request. A threat assessment request can be one of the following types: This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class ThreatAssessmentRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ThreatAssessmentRequestsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of threatAssessmentRequest objects. A threat assessment request can be one of the following types:
+        Retrieve a list of threatAssessmentRequest objects. A threat assessment request can be one of the following types: This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

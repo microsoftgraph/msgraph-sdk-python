@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .search_with_q_response import SearchWithQResponse
+    from .search_with_q_get_response import SearchWithQGetResponse
 
 class SearchWithQRequestBuilder(BaseRequestBuilder):
     """
@@ -25,13 +25,15 @@ class SearchWithQRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['q'] = str(q)
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/search(q='{q}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[SearchWithQRequestBuilderGetRequestConfiguration] = None) -> Optional[SearchWithQResponse]:
+    async def get(self,request_configuration: Optional[SearchWithQRequestBuilderGetRequestConfiguration] = None) -> Optional[SearchWithQGetResponse]:
         """
         Invoke function search
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[SearchWithQResponse]
+        Returns: Optional[SearchWithQGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -44,9 +46,9 @@ class SearchWithQRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .search_with_q_response import SearchWithQResponse
+        from .search_with_q_get_response import SearchWithQGetResponse
 
-        return await self.request_adapter.send_async(request_info, SearchWithQResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SearchWithQGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SearchWithQRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

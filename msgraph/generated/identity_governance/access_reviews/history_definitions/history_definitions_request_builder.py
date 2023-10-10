@@ -45,7 +45,7 @@ class HistoryDefinitionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[HistoryDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessReviewHistoryDefinitionCollectionResponse]:
         """
-        Retrieve the accessReviewHistoryDefinition objects created in the last 30 days, including all nested properties.
+        Retrieve the accessReviewHistoryDefinition objects created in the last 30 days, including all nested properties. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewHistoryDefinitionCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/accessreviewset-list-historydefinitions?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class HistoryDefinitionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AccessReviewHistoryDefinition] = None, request_configuration: Optional[HistoryDefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessReviewHistoryDefinition]:
         """
-        Create a new accessReviewHistoryDefinition object.
+        Create a new accessReviewHistoryDefinition object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewHistoryDefinition]
@@ -92,7 +92,7 @@ class HistoryDefinitionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[HistoryDefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the accessReviewHistoryDefinition objects created in the last 30 days, including all nested properties.
+        Retrieve the accessReviewHistoryDefinition objects created in the last 30 days, including all nested properties. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class HistoryDefinitionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AccessReviewHistoryDefinition] = None, request_configuration: Optional[HistoryDefinitionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new accessReviewHistoryDefinition object.
+        Create a new accessReviewHistoryDefinition object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class HistoryDefinitionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HistoryDefinitionsRequestBuilderGetQueryParameters():
         """
-        Retrieve the accessReviewHistoryDefinition objects created in the last 30 days, including all nested properties.
+        Retrieve the accessReviewHistoryDefinition objects created in the last 30 days, including all nested properties. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

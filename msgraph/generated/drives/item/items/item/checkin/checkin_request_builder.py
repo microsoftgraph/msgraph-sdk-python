@@ -28,7 +28,7 @@ class CheckinRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CheckinPostRequestBody] = None, request_configuration: Optional[CheckinRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Check in a checked out driveItem resource, which makes the version of the document available to others.
+        Check in a checked out driveItem resource, which makes the version of the document available to others. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class CheckinRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CheckinPostRequestBody] = None, request_configuration: Optional[CheckinRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Check in a checked out driveItem resource, which makes the version of the document available to others.
+        Check in a checked out driveItem resource, which makes the version of the document available to others. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

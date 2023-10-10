@@ -49,7 +49,7 @@ class GroupSettingTemplatesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[GroupSettingTemplatesRequestBuilderGetRequestConfiguration] = None) -> Optional[GroupSettingTemplateCollectionResponse]:
         """
-        Group setting templates represents a set of templates from which group settings may be created and used within a tenant. This operation retrieves the list of available groupSettingTemplates objects.
+        Group setting templates represents a set of templates from which group settings may be created and used within a tenant. This operation retrieves the list of available groupSettingTemplates objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GroupSettingTemplateCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/groupsettingtemplate-list?view=graph-rest-1.0
@@ -95,7 +95,7 @@ class GroupSettingTemplatesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[GroupSettingTemplatesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Group setting templates represents a set of templates from which group settings may be created and used within a tenant. This operation retrieves the list of available groupSettingTemplates objects.
+        Group setting templates represents a set of templates from which group settings may be created and used within a tenant. This operation retrieves the list of available groupSettingTemplates objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -188,7 +188,7 @@ class GroupSettingTemplatesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GroupSettingTemplatesRequestBuilderGetQueryParameters():
         """
-        Group setting templates represents a set of templates from which group settings may be created and used within a tenant. This operation retrieves the list of available groupSettingTemplates objects.
+        Group setting templates represents a set of templates from which group settings may be created and used within a tenant. This operation retrieves the list of available groupSettingTemplates objects. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

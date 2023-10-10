@@ -28,7 +28,7 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[LinkedResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a linkedResource object.
+        Deletes a linkedResource object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/linkedresource-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[LinkedResourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[LinkedResource]:
         """
-        Read the properties and relationships of a linkedResource object.
+        Read the properties and relationships of a linkedResource object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LinkedResource]
         Find more info here: https://learn.microsoft.com/graph/api/linkedresource-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[LinkedResource] = None, request_configuration: Optional[LinkedResourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[LinkedResource]:
         """
-        Update the properties of a linkedResource object.
+        Update the properties of a linkedResource object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LinkedResource]
@@ -95,7 +95,7 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[LinkedResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a linkedResource object.
+        Deletes a linkedResource object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[LinkedResourceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a linkedResource object.
+        Read the properties and relationships of a linkedResource object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[LinkedResource] = None, request_configuration: Optional[LinkedResourceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a linkedResource object.
+        Update the properties of a linkedResource object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LinkedResourceItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a linkedResource object.
+        Read the properties and relationships of a linkedResource object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

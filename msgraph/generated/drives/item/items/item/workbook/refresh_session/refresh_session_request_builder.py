@@ -27,7 +27,7 @@ class RefreshSessionRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RefreshSessionRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Use this API to refresh an existing workbook session. 
+        Use this API to refresh an existing workbook session. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/workbook-refreshsession?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class RefreshSessionRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RefreshSessionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to refresh an existing workbook session. 
+        Use this API to refresh an existing workbook session. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

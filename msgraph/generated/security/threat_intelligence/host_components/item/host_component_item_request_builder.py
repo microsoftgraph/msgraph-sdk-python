@@ -48,7 +48,7 @@ class HostComponentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[HostComponentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[HostComponent]:
         """
-        Read the properties and relationships of a hostComponent object.
+        Read the properties and relationships of a hostComponent object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostComponent]
         Find more info here: https://learn.microsoft.com/graph/api/security-hostcomponent-get?view=graph-rest-1.0
@@ -109,7 +109,7 @@ class HostComponentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[HostComponentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a hostComponent object.
+        Read the properties and relationships of a hostComponent object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -176,7 +176,7 @@ class HostComponentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HostComponentItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a hostComponent object.
+        Read the properties and relationships of a hostComponent object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

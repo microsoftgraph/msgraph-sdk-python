@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..........models.o_data_errors.o_data_error import ODataError
-    from .get_activities_by_interval_response import GetActivitiesByIntervalResponse
+    from .get_activities_by_interval_get_response import GetActivitiesByIntervalGetResponse
 
 class GetActivitiesByIntervalRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class GetActivitiesByIntervalRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/lists/{list%2Did}/items/{listItem%2Did}/getActivitiesByInterval(){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetActivitiesByIntervalRequestBuilderGetRequestConfiguration] = None) -> Optional[GetActivitiesByIntervalResponse]:
+    async def get(self,request_configuration: Optional[GetActivitiesByIntervalRequestBuilderGetRequestConfiguration] = None) -> Optional[GetActivitiesByIntervalGetResponse]:
         """
         Invoke function getActivitiesByInterval
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetActivitiesByIntervalResponse]
+        Returns: Optional[GetActivitiesByIntervalGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class GetActivitiesByIntervalRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_activities_by_interval_response import GetActivitiesByIntervalResponse
+        from .get_activities_by_interval_get_response import GetActivitiesByIntervalGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetActivitiesByIntervalResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetActivitiesByIntervalGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetActivitiesByIntervalRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

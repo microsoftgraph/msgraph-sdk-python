@@ -11,7 +11,7 @@ from .entity import Entity
 
 @dataclass
 class WorkbookChartPointFormat(Entity):
-    # Represents the fill format of a chart, which includes background formating information. Read-only.
+    # Represents the fill format of a chart, which includes background formatting information. Read-only.
     fill: Optional[WorkbookChartFill] = None
     # The OdataType property
     odata_type: Optional[str] = None

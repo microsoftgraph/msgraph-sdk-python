@@ -28,7 +28,7 @@ class ValidateCredentialsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ValidateCredentialsPostRequestBody] = None, request_configuration: Optional[ValidateCredentialsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Validate that the credentials are valid in the tenant.
+        Validate that the credentials are valid in the tenant. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class ValidateCredentialsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ValidateCredentialsPostRequestBody] = None, request_configuration: Optional[ValidateCredentialsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Validate that the credentials are valid in the tenant.
+        Validate that the credentials are valid in the tenant. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

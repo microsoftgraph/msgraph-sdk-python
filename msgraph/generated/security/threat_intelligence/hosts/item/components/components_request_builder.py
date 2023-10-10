@@ -44,7 +44,7 @@ class ComponentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ComponentsRequestBuilderGetRequestConfiguration] = None) -> Optional[HostComponentCollectionResponse]:
         """
-        Get a list of hostComponent resources.
+        Get a list of hostComponent resources. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostComponentCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/security-host-list-components?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class ComponentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ComponentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of hostComponent resources.
+        Get a list of hostComponent resources. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +103,7 @@ class ComponentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ComponentsRequestBuilderGetQueryParameters():
         """
-        Get a list of hostComponent resources.
+        Get a list of hostComponent resources. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

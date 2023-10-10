@@ -47,7 +47,7 @@ class CommsOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CommsOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CommsOperation]:
         """
-        Get the status of an operation that adds the large gallery view to a call.
+        Get the status of an operation that adds the large gallery view to a call. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CommsOperation]
         Find more info here: https://learn.microsoft.com/graph/api/addlargegalleryviewoperation-get?view=graph-rest-1.0
@@ -108,7 +108,7 @@ class CommsOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CommsOperationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the status of an operation that adds the large gallery view to a call.
+        Get the status of an operation that adds the large gallery view to a call. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -166,7 +166,7 @@ class CommsOperationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CommsOperationItemRequestBuilderGetQueryParameters():
         """
-        Get the status of an operation that adds the large gallery view to a call.
+        Get the status of an operation that adds the large gallery view to a call. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

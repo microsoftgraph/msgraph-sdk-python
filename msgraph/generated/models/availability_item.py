@@ -19,7 +19,7 @@ class AvailabilityItem(AdditionalDataHolder, BackedModel, Parsable):
     end_date_time: Optional[DateTimeTimeZone] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Indicates the service ID in case of 1:n appointments. If the appointment is of type 1:n, this field will be present, otherwise, null.
+    # Indicates the service ID for 1:n appointments. If the appointment is of type 1:n, this field is present, otherwise, null.
     service_id: Optional[str] = None
     # The startDateTime property
     start_date_time: Optional[DateTimeTimeZone] = None

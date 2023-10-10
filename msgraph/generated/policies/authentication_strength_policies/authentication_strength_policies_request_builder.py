@@ -45,7 +45,7 @@ class AuthenticationStrengthPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AuthenticationStrengthPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationStrengthPolicyCollectionResponse]:
         """
-        Get a list of the authenticationStrengthPolicy objects and their properties. This API returns both built-in and custom policies.
+        Get a list of the authenticationStrengthPolicy objects and their properties. This API returns both built-in and custom policies. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationStrengthPolicyCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/authenticationstrengthroot-list-policies?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class AuthenticationStrengthPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AuthenticationStrengthPolicy] = None, request_configuration: Optional[AuthenticationStrengthPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[AuthenticationStrengthPolicy]:
         """
-        Create a new custom authenticationStrengthPolicy object.
+        Create a new custom authenticationStrengthPolicy object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationStrengthPolicy]
@@ -92,7 +92,7 @@ class AuthenticationStrengthPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationStrengthPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the authenticationStrengthPolicy objects and their properties. This API returns both built-in and custom policies.
+        Get a list of the authenticationStrengthPolicy objects and their properties. This API returns both built-in and custom policies. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class AuthenticationStrengthPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AuthenticationStrengthPolicy] = None, request_configuration: Optional[AuthenticationStrengthPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new custom authenticationStrengthPolicy object.
+        Create a new custom authenticationStrengthPolicy object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class AuthenticationStrengthPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthenticationStrengthPoliciesRequestBuilderGetQueryParameters():
         """
-        Get a list of the authenticationStrengthPolicy objects and their properties. This API returns both built-in and custom policies.
+        Get a list of the authenticationStrengthPolicy objects and their properties. This API returns both built-in and custom policies. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

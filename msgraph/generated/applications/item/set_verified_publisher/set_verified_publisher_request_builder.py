@@ -28,7 +28,7 @@ class SetVerifiedPublisherRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SetVerifiedPublisherPostRequestBody] = None, request_configuration: Optional[SetVerifiedPublisherRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Set the verifiedPublisher on an application. For more information, including prerequisites to setting a verified publisher, see Publisher verification.
+        Set the verifiedPublisher on an application. For more information, including prerequisites to setting a verified publisher, see Publisher verification. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class SetVerifiedPublisherRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SetVerifiedPublisherPostRequestBody] = None, request_configuration: Optional[SetVerifiedPublisherRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Set the verifiedPublisher on an application. For more information, including prerequisites to setting a verified publisher, see Publisher verification.
+        Set the verifiedPublisher on an application. For more information, including prerequisites to setting a verified publisher, see Publisher verification. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from .get_member_groups_post_request_body import GetMemberGroupsPostRequestBody
-    from .get_member_groups_response import GetMemberGroupsResponse
+    from .get_member_groups_post_response import GetMemberGroupsPostResponse
 
 class GetMemberGroupsRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class GetMemberGroupsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/organization/{organization%2Did}/getMemberGroups", path_parameters)
     
-    async def post(self,body: Optional[GetMemberGroupsPostRequestBody] = None, request_configuration: Optional[GetMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetMemberGroupsResponse]:
+    async def post(self,body: Optional[GetMemberGroupsPostRequestBody] = None, request_configuration: Optional[GetMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetMemberGroupsPostResponse]:
         """
-        Return all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. This API returns up to 11,000 group IDs. If more than 11,000 results are available, it returns a 400 Bad Request error with the Directory_ResultSizeLimitExceeded error code. As a workaround, use the List group transitive memberOf API.
+        Return all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. This API returns up to 11,000 group IDs. If more than 11,000 results are available, it returns a 400 Bad Request error with the Directory_ResultSizeLimitExceeded error code. As a workaround, use the List group transitive memberOf API. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetMemberGroupsResponse]
+        Returns: Optional[GetMemberGroupsPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class GetMemberGroupsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_member_groups_response import GetMemberGroupsResponse
+        from .get_member_groups_post_response import GetMemberGroupsPostResponse
 
-        return await self.request_adapter.send_async(request_info, GetMemberGroupsResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetMemberGroupsPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[GetMemberGroupsPostRequestBody] = None, request_configuration: Optional[GetMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Return all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. This API returns up to 11,000 group IDs. If more than 11,000 results are available, it returns a 400 Bad Request error with the Directory_ResultSizeLimitExceeded error code. As a workaround, use the List group transitive memberOf API.
+        Return all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. This API returns up to 11,000 group IDs. If more than 11,000 results are available, it returns a 400 Bad Request error with the Directory_ResultSizeLimitExceeded error code. As a workaround, use the List group transitive memberOf API. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

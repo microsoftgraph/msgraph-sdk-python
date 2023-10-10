@@ -46,7 +46,7 @@ class ParticipantsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ParticipantsRequestBuilderGetRequestConfiguration] = None) -> Optional[ParticipantCollectionResponse]:
         """
-        Retrieve a list of participant objects in the call.
+        Retrieve a list of participant objects in the call. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ParticipantCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/call-list-participants?view=graph-rest-1.0
@@ -92,7 +92,7 @@ class ParticipantsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ParticipantsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of participant objects in the call.
+        Retrieve a list of participant objects in the call. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -158,7 +158,7 @@ class ParticipantsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ParticipantsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of participant objects in the call.
+        Retrieve a list of participant objects in the call. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

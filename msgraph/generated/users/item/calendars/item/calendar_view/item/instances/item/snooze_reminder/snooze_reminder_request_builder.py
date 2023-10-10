@@ -28,7 +28,7 @@ class SnoozeReminderRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SnoozeReminderPostRequestBody] = None, request_configuration: Optional[SnoozeReminderRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Postpone a reminder for an event in a user calendar until a new time.
+        Postpone a reminder for an event in a user calendar until a new time. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class SnoozeReminderRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SnoozeReminderPostRequestBody] = None, request_configuration: Optional[SnoozeReminderRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Postpone a reminder for an event in a user calendar until a new time.
+        Postpone a reminder for an event in a user calendar until a new time. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

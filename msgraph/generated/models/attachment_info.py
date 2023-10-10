@@ -18,7 +18,7 @@ class AttachmentInfo(AdditionalDataHolder, BackedModel, Parsable):
     attachment_type: Optional[AttachmentType] = None
     # The nature of the data in the attachment. Optional.
     content_type: Optional[str] = None
-    # The display name of the attachment. This can be a descriptive string and does not have to be the actual file name. Required.
+    # The display name of the attachment. This can be a descriptive string and doesn't have to be the actual file name. Required.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

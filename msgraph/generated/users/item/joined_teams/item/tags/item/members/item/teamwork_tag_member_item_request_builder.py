@@ -28,7 +28,7 @@ class TeamworkTagMemberItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a member from a standard tag in a team.
+        Delete a member from a standard tag in a team. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/teamworktagmember-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class TeamworkTagMemberItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamworkTagMember]:
         """
-        Get the properties and relationships of a member of a standard tag in a team.
+        Get the properties and relationships of a member of a standard tag in a team. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamworkTagMember]
         Find more info here: https://learn.microsoft.com/graph/api/teamworktagmember-get?view=graph-rest-1.0
@@ -94,7 +94,7 @@ class TeamworkTagMemberItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a member from a standard tag in a team.
+        Delete a member from a standard tag in a team. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class TeamworkTagMemberItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a member of a standard tag in a team.
+        Get the properties and relationships of a member of a standard tag in a team. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -167,7 +167,7 @@ class TeamworkTagMemberItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TeamworkTagMemberItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a member of a standard tag in a team.
+        Get the properties and relationships of a member of a standard tag in a team. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

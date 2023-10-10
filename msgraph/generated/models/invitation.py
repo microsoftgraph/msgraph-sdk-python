@@ -20,11 +20,11 @@ class Invitation(Entity):
     invited_user: Optional[User] = None
     # The display name of the user being invited.
     invited_user_display_name: Optional[str] = None
-    # The email address of the user being invited. Required. The following special characters are not permitted in the email address:Tilde (~)Exclamation point (!)Number sign (#)Dollar sign ($)Percent (%)Circumflex (^)Ampersand (&)Asterisk (*)Parentheses (( ))Plus sign (+)Equal sign (=)Brackets ([ ])Braces ({ })Backslash (/)Slash mark (/)Pipe (/|)Semicolon (;)Colon (:)Quotation marks (')Angle brackets (< >)Question mark (?)Comma (,)However, the following exceptions apply:A period (.) or a hyphen (-) is permitted anywhere in the user name, except at the beginning or end of the name.An underscore (_) is permitted anywhere in the user name. This includes at the beginning or end of the name.
+    # The email address of the user being invited. Required. The following special characters aren't permitted in the email address:Tilde (~)Exclamation point (!)Number sign (#)Dollar sign ($)Percent (%)Circumflex (^)Ampersand (&)Asterisk (*)Parentheses (( ))Plus sign (+)Equal sign (=)Brackets ([ ])Braces ({ })Backslash (/)Slash mark (/)Pipe (/|)Semicolon (;)Colon (:)Quotation marks (')Angle brackets (< >)Question mark (?)Comma (,)However, the following exceptions apply:A period (.) or a hyphen (-) is permitted anywhere in the user name, except at the beginning or end of the name.An underscore (_) is permitted anywhere in the user name. This includes at the beginning or end of the name.
     invited_user_email_address: Optional[str] = None
     # Additional configuration for the message being sent to the invited user, including customizing message text, language and cc recipient list.
     invited_user_message_info: Optional[InvitedUserMessageInfo] = None
-    # The userType of the user being invited. By default, this is Guest. You can invite as Member if you are a company administrator.
+    # The userType of the user being invited. By default, this is Guest. You can invite as Member if you're a company administrator.
     invited_user_type: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

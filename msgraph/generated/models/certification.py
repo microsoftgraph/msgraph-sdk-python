@@ -14,7 +14,7 @@ class Certification(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # URL that shows certification details for the application.
     certification_details_url: Optional[str] = None
-    # The timestamp when the current certification for the application will expire.
+    # The timestamp when the current certification for the application expires.
     certification_expiration_date_time: Optional[datetime.datetime] = None
     # Indicates whether the application is certified by Microsoft.
     is_certified_by_microsoft: Optional[bool] = None

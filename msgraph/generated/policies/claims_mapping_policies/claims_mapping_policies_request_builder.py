@@ -45,7 +45,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ClaimsMappingPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[ClaimsMappingPolicyCollectionResponse]:
         """
-        Get a list of claimsMappingPolicy objects.
+        Get a list of claimsMappingPolicy objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ClaimsMappingPolicyCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/claimsmappingpolicy-list?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ClaimsMappingPolicy] = None, request_configuration: Optional[ClaimsMappingPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[ClaimsMappingPolicy]:
         """
-        Create a new claimsMappingPolicy object.
+        Create a new claimsMappingPolicy object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ClaimsMappingPolicy]
@@ -92,7 +92,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ClaimsMappingPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of claimsMappingPolicy objects.
+        Get a list of claimsMappingPolicy objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ClaimsMappingPolicy] = None, request_configuration: Optional[ClaimsMappingPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new claimsMappingPolicy object.
+        Create a new claimsMappingPolicy object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ClaimsMappingPoliciesRequestBuilderGetQueryParameters():
         """
-        Get a list of claimsMappingPolicy objects.
+        Get a list of claimsMappingPolicy objects. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

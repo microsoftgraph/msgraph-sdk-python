@@ -28,7 +28,7 @@ class GroupSettingItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[GroupSettingItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a tenant-level or group-specific groupSetting object.
+        Delete a tenant-level or group-specific groupSetting object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/groupsetting-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class GroupSettingItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[GroupSettingItemRequestBuilderGetRequestConfiguration] = None) -> Optional[GroupSetting]:
         """
-        Retrieve the properties of a specific group setting object. The setting can be a tenant-level or group-specific setting.
+        Retrieve the properties of a specific group setting object. The setting can be a tenant-level or group-specific setting. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GroupSetting]
         Find more info here: https://learn.microsoft.com/graph/api/groupsetting-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class GroupSettingItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[GroupSetting] = None, request_configuration: Optional[GroupSettingItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[GroupSetting]:
         """
-        Update the properties of a groupSetting object for tenant-wide group settings or a specific group setting.
+        Update the properties of a groupSetting object for tenant-wide group settings or a specific group setting. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GroupSetting]
@@ -95,7 +95,7 @@ class GroupSettingItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[GroupSettingItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a tenant-level or group-specific groupSetting object.
+        Delete a tenant-level or group-specific groupSetting object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class GroupSettingItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[GroupSettingItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of a specific group setting object. The setting can be a tenant-level or group-specific setting.
+        Retrieve the properties of a specific group setting object. The setting can be a tenant-level or group-specific setting. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class GroupSettingItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[GroupSetting] = None, request_configuration: Optional[GroupSettingItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a groupSetting object for tenant-wide group settings or a specific group setting.
+        Update the properties of a groupSetting object for tenant-wide group settings or a specific group setting. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class GroupSettingItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GroupSettingItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of a specific group setting object. The setting can be a tenant-level or group-specific setting.
+        Retrieve the properties of a specific group setting object. The setting can be a tenant-level or group-specific setting. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

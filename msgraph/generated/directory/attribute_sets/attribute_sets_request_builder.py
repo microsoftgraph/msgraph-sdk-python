@@ -45,7 +45,7 @@ class AttributeSetsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AttributeSetsRequestBuilderGetRequestConfiguration] = None) -> Optional[AttributeSetCollectionResponse]:
         """
-        Get a list of the attributeSet objects and their properties.
+        Get a list of the attributeSet objects and their properties. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttributeSetCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directory-list-attributesets?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class AttributeSetsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AttributeSet] = None, request_configuration: Optional[AttributeSetsRequestBuilderPostRequestConfiguration] = None) -> Optional[AttributeSet]:
         """
-        Create a new attributeSet object.
+        Create a new attributeSet object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttributeSet]
@@ -92,7 +92,7 @@ class AttributeSetsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AttributeSetsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the attributeSet objects and their properties.
+        Get a list of the attributeSet objects and their properties. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class AttributeSetsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AttributeSet] = None, request_configuration: Optional[AttributeSetsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new attributeSet object.
+        Create a new attributeSet object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class AttributeSetsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttributeSetsRequestBuilderGetQueryParameters():
         """
-        Get a list of the attributeSet objects and their properties.
+        Get a list of the attributeSet objects and their properties. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

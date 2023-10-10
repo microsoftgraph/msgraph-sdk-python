@@ -37,7 +37,6 @@ if TYPE_CHECKING:
     from .registry_value_evidence import RegistryValueEvidence
     from .security_group_evidence import SecurityGroupEvidence
     from .url_evidence import UrlEvidence
-    from .user_evidence import UserEvidence
 
 @dataclass
 class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
@@ -56,7 +55,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
     remediation_status: Optional[EvidenceRemediationStatus] = None
     # Details about the remediation status.
     remediation_status_details: Optional[str] = None
-    # The role/s that an evidence entity represents in an alert, e.g., an IP address that is associated with an attacker will have the evidence role Attacker.
+    # The role/s that an evidence entity represents in an alert, for example, an IP address that is associated with an attacker has the evidence role Attacker.
     roles: Optional[List[EvidenceRole]] = None
     # Array of custom tags associated with an evidence instance, for example, to denote a group of devices, high-value assets, etc.
     tags: Optional[List[str]] = None
@@ -188,10 +187,6 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
             from .url_evidence import UrlEvidence
 
             return UrlEvidence()
-        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.userEvidence".casefold():
-            from .user_evidence import UserEvidence
-
-            return UserEvidence()
         return AlertEvidence()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -230,7 +225,6 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .registry_value_evidence import RegistryValueEvidence
         from .security_group_evidence import SecurityGroupEvidence
         from .url_evidence import UrlEvidence
-        from .user_evidence import UserEvidence
 
         from .amazon_resource_evidence import AmazonResourceEvidence
         from .analyzed_message_evidence import AnalyzedMessageEvidence
@@ -263,7 +257,6 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .registry_value_evidence import RegistryValueEvidence
         from .security_group_evidence import SecurityGroupEvidence
         from .url_evidence import UrlEvidence
-        from .user_evidence import UserEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

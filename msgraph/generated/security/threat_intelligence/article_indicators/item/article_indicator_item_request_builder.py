@@ -48,7 +48,7 @@ class ArticleIndicatorItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ArticleIndicatorItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ArticleIndicator]:
         """
-        Read the properties and relationships of an articleIndicator object.
+        Read the properties and relationships of an articleIndicator object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ArticleIndicator]
         Find more info here: https://learn.microsoft.com/graph/api/security-articleindicator-get?view=graph-rest-1.0
@@ -109,7 +109,7 @@ class ArticleIndicatorItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ArticleIndicatorItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an articleIndicator object.
+        Read the properties and relationships of an articleIndicator object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -176,7 +176,7 @@ class ArticleIndicatorItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ArticleIndicatorItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an articleIndicator object.
+        Read the properties and relationships of an articleIndicator object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

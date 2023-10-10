@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .unarchive_post_request_body import UnarchivePostRequestBody
-    from .unarchive_response import UnarchiveResponse
+    from .unarchive_post_response import UnarchivePostResponse
 
 class UnarchiveRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class UnarchiveRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/serviceAnnouncement/messages/unarchive", path_parameters)
     
-    async def post(self,body: Optional[UnarchivePostRequestBody] = None, request_configuration: Optional[UnarchiveRequestBuilderPostRequestConfiguration] = None) -> Optional[UnarchiveResponse]:
+    async def post(self,body: Optional[UnarchivePostRequestBody] = None, request_configuration: Optional[UnarchiveRequestBuilderPostRequestConfiguration] = None) -> Optional[UnarchivePostResponse]:
         """
-        Unarchive a list of serviceUpdateMessages for the signed in user.
+        Unarchive a list of serviceUpdateMessages for the signed in user. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[UnarchiveResponse]
+        Returns: Optional[UnarchivePostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceupdatemessage-unarchive?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class UnarchiveRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .unarchive_response import UnarchiveResponse
+        from .unarchive_post_response import UnarchivePostResponse
 
-        return await self.request_adapter.send_async(request_info, UnarchiveResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnarchivePostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[UnarchivePostRequestBody] = None, request_configuration: Optional[UnarchiveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Unarchive a list of serviceUpdateMessages for the signed in user.
+        Unarchive a list of serviceUpdateMessages for the signed in user. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

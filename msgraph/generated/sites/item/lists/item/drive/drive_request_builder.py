@@ -28,7 +28,7 @@ class DriveRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DriveRequestBuilderGetRequestConfiguration] = None) -> Optional[Drive]:
         """
-        Only present on document libraries. Allows access to the list as a [drive][] resource with [driveItems][driveItem].
+        Allows access to the list as a drive resource with driveItems. Only present on document libraries.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Drive]
         """
@@ -49,7 +49,7 @@ class DriveRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DriveRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Only present on document libraries. Allows access to the list as a [drive][] resource with [driveItems][driveItem].
+        Allows access to the list as a drive resource with driveItems. Only present on document libraries.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -77,7 +77,7 @@ class DriveRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DriveRequestBuilderGetQueryParameters():
         """
-        Only present on document libraries. Allows access to the list as a [drive][] resource with [driveItems][driveItem].
+        Allows access to the list as a drive resource with driveItems. Only present on document libraries.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

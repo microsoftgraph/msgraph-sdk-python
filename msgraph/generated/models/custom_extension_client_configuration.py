@@ -13,7 +13,7 @@ class CustomExtensionClientConfiguration(AdditionalDataHolder, BackedModel, Pars
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
-    # The max duration in milliseconds that Azure AD will wait for a response from the external app before it shuts down the connection. The valid range is between 200 and 2000 milliseconds. Default duration is 1000.
+    # The max duration in milliseconds that Azure AD waits for a response from the external app before it shuts down the connection. The valid range is between 200 and 2000 milliseconds. Default duration is 1000.
     timeout_in_milliseconds: Optional[int] = None
     
     @staticmethod

@@ -25,6 +25,8 @@ class TableRowOperationResultWithKeyRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['key'] = str(key)
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/tableRowOperationResult(key='{key}')", path_parameters)
     
     async def get(self,request_configuration: Optional[TableRowOperationResultWithKeyRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookTableRow]:

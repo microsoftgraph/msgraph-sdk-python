@@ -45,7 +45,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ClaimsMappingPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[ClaimsMappingPolicyCollectionResponse]:
         """
-        List the claimsMappingPolicy objects that are assigned to a servicePrincipal.
+        List the claimsMappingPolicy objects that are assigned to a servicePrincipal. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ClaimsMappingPolicyCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-list-claimsmappingpolicies?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ClaimsMappingPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List the claimsMappingPolicy objects that are assigned to a servicePrincipal.
+        List the claimsMappingPolicy objects that are assigned to a servicePrincipal. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,7 +113,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ClaimsMappingPoliciesRequestBuilderGetQueryParameters():
         """
-        List the claimsMappingPolicy objects that are assigned to a servicePrincipal.
+        List the claimsMappingPolicy objects that are assigned to a servicePrincipal. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

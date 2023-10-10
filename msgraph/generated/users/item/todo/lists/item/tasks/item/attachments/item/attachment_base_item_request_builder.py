@@ -29,7 +29,7 @@ class AttachmentBaseItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a taskFileAttachment object from a todoTask resource.
+        Delete a taskFileAttachment object from a todoTask resource. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/taskfileattachment-delete?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class AttachmentBaseItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AttachmentBase]:
         """
-        Read the properties and relationships of a taskFileAttachment object.
+        Read the properties and relationships of a taskFileAttachment object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttachmentBase]
         Find more info here: https://learn.microsoft.com/graph/api/taskfileattachment-get?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class AttachmentBaseItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a taskFileAttachment object from a todoTask resource.
+        Delete a taskFileAttachment object from a todoTask resource. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -86,7 +86,7 @@ class AttachmentBaseItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a taskFileAttachment object.
+        Read the properties and relationships of a taskFileAttachment object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -133,7 +133,7 @@ class AttachmentBaseItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttachmentBaseItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a taskFileAttachment object.
+        Read the properties and relationships of a taskFileAttachment object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

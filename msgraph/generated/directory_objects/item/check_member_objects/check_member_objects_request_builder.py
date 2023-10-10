@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from .check_member_objects_post_request_body import CheckMemberObjectsPostRequestBody
-    from .check_member_objects_response import CheckMemberObjectsResponse
+    from .check_member_objects_post_response import CheckMemberObjectsPostResponse
 
 class CheckMemberObjectsRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class CheckMemberObjectsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/directoryObjects/{directoryObject%2Did}/checkMemberObjects", path_parameters)
     
-    async def post(self,body: Optional[CheckMemberObjectsPostRequestBody] = None, request_configuration: Optional[CheckMemberObjectsRequestBuilderPostRequestConfiguration] = None) -> Optional[CheckMemberObjectsResponse]:
+    async def post(self,body: Optional[CheckMemberObjectsPostRequestBody] = None, request_configuration: Optional[CheckMemberObjectsRequestBuilderPostRequestConfiguration] = None) -> Optional[CheckMemberObjectsPostResponse]:
         """
         Invoke action checkMemberObjects
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[CheckMemberObjectsResponse]
+        Returns: Optional[CheckMemberObjectsPostResponse]
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -47,9 +47,9 @@ class CheckMemberObjectsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .check_member_objects_response import CheckMemberObjectsResponse
+        from .check_member_objects_post_response import CheckMemberObjectsPostResponse
 
-        return await self.request_adapter.send_async(request_info, CheckMemberObjectsResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, CheckMemberObjectsPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[CheckMemberObjectsPostRequestBody] = None, request_configuration: Optional[CheckMemberObjectsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

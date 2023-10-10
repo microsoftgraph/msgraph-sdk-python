@@ -28,7 +28,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[IdentityProviderItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an existing identityProvider.
+        Delete an existing identityProvider. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/identityprovider-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IdentityProviderItemRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityProvider]:
         """
-        Retrieve the properties of an existing identityProvider.
+        Retrieve the properties of an existing identityProvider. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityProvider]
         Find more info here: https://learn.microsoft.com/graph/api/identityprovider-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[IdentityProvider] = None, request_configuration: Optional[IdentityProviderItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[IdentityProvider]:
         """
-        Update properties in an existing identityProvider.
+        Update properties in an existing identityProvider. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityProvider]
@@ -95,7 +95,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityProviderItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an existing identityProvider.
+        Delete an existing identityProvider. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IdentityProviderItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of an existing identityProvider.
+        Retrieve the properties of an existing identityProvider. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[IdentityProvider] = None, request_configuration: Optional[IdentityProviderItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update properties in an existing identityProvider.
+        Update properties in an existing identityProvider. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IdentityProviderItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of an existing identityProvider.
+        Retrieve the properties of an existing identityProvider. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

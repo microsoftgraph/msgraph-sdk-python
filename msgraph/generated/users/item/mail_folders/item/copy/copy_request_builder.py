@@ -29,7 +29,7 @@ class CopyRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CopyPostRequestBody] = None, request_configuration: Optional[CopyRequestBuilderPostRequestConfiguration] = None) -> Optional[MailFolder]:
         """
-        Copy a mailfolder and its contents to another mailfolder.
+        Copy a mailfolder and its contents to another mailfolder. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolder]
@@ -54,7 +54,7 @@ class CopyRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CopyPostRequestBody] = None, request_configuration: Optional[CopyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Copy a mailfolder and its contents to another mailfolder.
+        Copy a mailfolder and its contents to another mailfolder. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

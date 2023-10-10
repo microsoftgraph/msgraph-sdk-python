@@ -14,7 +14,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Additional details in case of error.
+    # Additional details if there's error.
     additional_details: Optional[str] = None
     # Categorizes the error code. Possible values are failure, nonServiceFailure, success, unknownFutureValue
     error_category: Optional[ProvisioningStatusErrorCategory] = None

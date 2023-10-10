@@ -21,7 +21,7 @@ class Acl(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # The type property
     type: Optional[AclType] = None
-    # The unique identifer of the identity. In case of Azure Active Directory identities, value is set to the object identifier of the user, group or tenant for types user, group and everyone (and everyoneExceptGuests) respectively. In case of external groups value is set to the ID of the externalGroup
+    # The unique identifer of the identity. For Azure Active Directory identities, value is set to the object identifier of the user, group or tenant for types user, group and everyone (and everyoneExceptGuests) respectively. For external groups value is set to the ID of the externalGroup
     value: Optional[str] = None
     
     @staticmethod

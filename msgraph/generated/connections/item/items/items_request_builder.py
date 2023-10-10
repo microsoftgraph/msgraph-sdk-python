@@ -45,7 +45,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[ExternalItemCollectionResponse]:
         """
-        Read the properties and relationships of an externalItem object.
+        Read the properties and relationships of an externalItem object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExternalItemCollectionResponse]
         """
@@ -90,7 +90,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an externalItem object.
+        Read the properties and relationships of an externalItem object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ItemsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an externalItem object.
+        Read the properties and relationships of an externalItem object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

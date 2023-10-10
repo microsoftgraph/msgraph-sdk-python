@@ -49,7 +49,7 @@ class DriveItemVersionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DriveItemVersionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DriveItemVersion]:
         """
-        Retrieve the metadata for a specific version of a DriveItem.
+        Retrieve the metadata for a specific version of a DriveItem. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItemVersion]
         Find more info here: https://learn.microsoft.com/graph/api/driveitemversion-get?view=graph-rest-1.0
@@ -110,7 +110,7 @@ class DriveItemVersionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DriveItemVersionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the metadata for a specific version of a DriveItem.
+        Retrieve the metadata for a specific version of a DriveItem. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -186,7 +186,7 @@ class DriveItemVersionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DriveItemVersionItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the metadata for a specific version of a DriveItem.
+        Retrieve the metadata for a specific version of a DriveItem. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

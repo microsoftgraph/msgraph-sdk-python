@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from .add_group_post_request_body import AddGroupPostRequestBody
-    from .add_group_response import AddGroupResponse
+    from .add_group_post_response import AddGroupPostResponse
 
 class AddGroupRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class AddGroupRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groupLifecyclePolicies/{groupLifecyclePolicy%2Did}/addGroup", path_parameters)
     
-    async def post(self,body: Optional[AddGroupPostRequestBody] = None, request_configuration: Optional[AddGroupRequestBuilderPostRequestConfiguration] = None) -> Optional[AddGroupResponse]:
+    async def post(self,body: Optional[AddGroupPostRequestBody] = None, request_configuration: Optional[AddGroupRequestBuilderPostRequestConfiguration] = None) -> Optional[AddGroupPostResponse]:
         """
-        Adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected.
+        Adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[AddGroupResponse]
+        Returns: Optional[AddGroupPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/grouplifecyclepolicy-addgroup?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class AddGroupRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .add_group_response import AddGroupResponse
+        from .add_group_post_response import AddGroupPostResponse
 
-        return await self.request_adapter.send_async(request_info, AddGroupResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AddGroupPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[AddGroupPostRequestBody] = None, request_configuration: Optional[AddGroupRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected.
+        Adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

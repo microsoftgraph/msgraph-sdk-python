@@ -45,7 +45,7 @@ class PoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[ConditionalAccessPolicyCollectionResponse]:
         """
-        Retrieve a list of conditionalAccessPolicy objects.
+        Retrieve a list of conditionalAccessPolicy objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConditionalAccessPolicyCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/conditionalaccessroot-list-policies?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class PoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ConditionalAccessPolicy] = None, request_configuration: Optional[PoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[ConditionalAccessPolicy]:
         """
-        Create a new conditionalAccessPolicy.
+        Create a new conditionalAccessPolicy. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConditionalAccessPolicy]
@@ -92,7 +92,7 @@ class PoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of conditionalAccessPolicy objects.
+        Retrieve a list of conditionalAccessPolicy objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class PoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ConditionalAccessPolicy] = None, request_configuration: Optional[PoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new conditionalAccessPolicy.
+        Create a new conditionalAccessPolicy. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class PoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PoliciesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of conditionalAccessPolicy objects.
+        Retrieve a list of conditionalAccessPolicy objects. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

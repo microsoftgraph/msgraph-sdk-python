@@ -29,7 +29,7 @@ class WorkbookTableRowItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[WorkbookTableRowItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes the row from the table.
+        Deletes the row from the table. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/tablerow-delete?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class WorkbookTableRowItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[WorkbookTableRowItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookTableRow]:
         """
-        Retrieve the properties and relationships of tablerow object.
+        Retrieve the properties and relationships of tablerow object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableRow]
         Find more info here: https://learn.microsoft.com/graph/api/tablerow-get?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class WorkbookTableRowItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkbookTableRow] = None, request_configuration: Optional[WorkbookTableRowItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookTableRow]:
         """
-        Update the properties of tablerow object.
+        Update the properties of tablerow object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableRow]
@@ -96,7 +96,7 @@ class WorkbookTableRowItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookTableRowItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes the row from the table.
+        Deletes the row from the table. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +111,7 @@ class WorkbookTableRowItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookTableRowItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of tablerow object.
+        Retrieve the properties and relationships of tablerow object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -128,7 +128,7 @@ class WorkbookTableRowItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkbookTableRow] = None, request_configuration: Optional[WorkbookTableRowItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of tablerow object.
+        Update the properties of tablerow object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -178,7 +178,7 @@ class WorkbookTableRowItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkbookTableRowItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of tablerow object.
+        Retrieve the properties and relationships of tablerow object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

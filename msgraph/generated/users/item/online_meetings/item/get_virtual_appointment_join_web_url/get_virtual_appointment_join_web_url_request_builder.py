@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .get_virtual_appointment_join_web_url_response import GetVirtualAppointmentJoinWebUrlResponse
+    from .get_virtual_appointment_join_web_url_get_response import GetVirtualAppointmentJoinWebUrlGetResponse
 
 class GetVirtualAppointmentJoinWebUrlRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class GetVirtualAppointmentJoinWebUrlRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/onlineMeetings/{onlineMeeting%2Did}/getVirtualAppointmentJoinWebUrl()", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetVirtualAppointmentJoinWebUrlRequestBuilderGetRequestConfiguration] = None) -> Optional[GetVirtualAppointmentJoinWebUrlResponse]:
+    async def get(self,request_configuration: Optional[GetVirtualAppointmentJoinWebUrlRequestBuilderGetRequestConfiguration] = None) -> Optional[GetVirtualAppointmentJoinWebUrlGetResponse]:
         """
         Invoke function getVirtualAppointmentJoinWebUrl
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetVirtualAppointmentJoinWebUrlResponse]
+        Returns: Optional[GetVirtualAppointmentJoinWebUrlGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class GetVirtualAppointmentJoinWebUrlRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_virtual_appointment_join_web_url_response import GetVirtualAppointmentJoinWebUrlResponse
+        from .get_virtual_appointment_join_web_url_get_response import GetVirtualAppointmentJoinWebUrlGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetVirtualAppointmentJoinWebUrlResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetVirtualAppointmentJoinWebUrlGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetVirtualAppointmentJoinWebUrlRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -45,7 +45,7 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CustomQuestionsRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingCustomQuestionCollectionResponse]:
         """
-        Get the bookingCustomQuestion resources associated with a bookingBusiness.
+        Get the bookingCustomQuestion resources associated with a bookingBusiness. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingCustomQuestionCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-list-customquestions?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[BookingCustomQuestion] = None, request_configuration: Optional[CustomQuestionsRequestBuilderPostRequestConfiguration] = None) -> Optional[BookingCustomQuestion]:
         """
-        Create a new bookingCustomQuestion object.
+        Create a new bookingCustomQuestion object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingCustomQuestion]
@@ -92,7 +92,7 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CustomQuestionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the bookingCustomQuestion resources associated with a bookingBusiness.
+        Get the bookingCustomQuestion resources associated with a bookingBusiness. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[BookingCustomQuestion] = None, request_configuration: Optional[CustomQuestionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new bookingCustomQuestion object.
+        Create a new bookingCustomQuestion object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class CustomQuestionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CustomQuestionsRequestBuilderGetQueryParameters():
         """
-        Get the bookingCustomQuestion resources associated with a bookingBusiness.
+        Get the bookingCustomQuestion resources associated with a bookingBusiness. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

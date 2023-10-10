@@ -16,7 +16,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, BackedModel, Parsable
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Refers to the Name of the conditional access policy (example: 'Require MFA for Salesforce').
     display_name: Optional[str] = None
-    # Refers to the grant controls enforced by the conditional access policy (example: 'Require multi-factor authentication').
+    # Refers to the grant controls enforced by the conditional access policy (example: 'Require multifactor authentication').
     enforced_grant_controls: Optional[List[str]] = None
     # Refers to the session controls enforced by the conditional access policy (example: 'Require app enforced controls').
     enforced_session_controls: Optional[List[str]] = None

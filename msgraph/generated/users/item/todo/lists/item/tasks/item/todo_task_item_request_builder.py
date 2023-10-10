@@ -33,7 +33,7 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TodoTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a todoTask object.
+        Deletes a todoTask object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/todotask-delete?view=graph-rest-1.0
@@ -53,7 +53,7 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TodoTaskItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TodoTask]:
         """
-        Read the properties and relationships of a todoTask object.
+        Read the properties and relationships of a todoTask object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TodoTask]
         Find more info here: https://learn.microsoft.com/graph/api/todotask-get?view=graph-rest-1.0
@@ -75,7 +75,7 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TodoTask] = None, request_configuration: Optional[TodoTaskItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TodoTask]:
         """
-        Update the properties of a todoTask object.
+        Update the properties of a todoTask object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TodoTask]
@@ -100,7 +100,7 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TodoTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a todoTask object.
+        Deletes a todoTask object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +115,7 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TodoTaskItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a todoTask object.
+        Read the properties and relationships of a todoTask object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -132,7 +132,7 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TodoTask] = None, request_configuration: Optional[TodoTaskItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a todoTask object.
+        Update the properties of a todoTask object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -218,7 +218,7 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TodoTaskItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a todoTask object.
+        Read the properties and relationships of a todoTask object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

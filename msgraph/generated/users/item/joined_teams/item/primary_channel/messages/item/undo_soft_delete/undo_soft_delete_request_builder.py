@@ -27,7 +27,7 @@ class UndoSoftDeleteRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[UndoSoftDeleteRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Undo soft deletion of a single chatMessage or a chat message reply in a channel or a chat.
+        Undo soft deletion of a single chatMessage or a chat message reply in a channel or a chat. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/chatmessage-undosoftdelete?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class UndoSoftDeleteRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[UndoSoftDeleteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Undo soft deletion of a single chatMessage or a chat message reply in a channel or a chat.
+        Undo soft deletion of a single chatMessage or a chat message reply in a channel or a chat. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

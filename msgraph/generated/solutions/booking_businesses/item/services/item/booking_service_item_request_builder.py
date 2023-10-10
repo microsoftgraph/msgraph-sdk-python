@@ -28,7 +28,7 @@ class BookingServiceItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[BookingServiceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a bookingService object in the specified bookingBusiness.
+        Delete a bookingService object in the specified bookingBusiness. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/bookingservice-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class BookingServiceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[BookingServiceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingService]:
         """
-        Get the properties and relationships of a bookingService object in the specified bookingBusiness.
+        Get the properties and relationships of a bookingService object in the specified bookingBusiness. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingService]
         Find more info here: https://learn.microsoft.com/graph/api/bookingservice-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class BookingServiceItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[BookingService] = None, request_configuration: Optional[BookingServiceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[BookingService]:
         """
-        Update the properties of a bookingService object in the specified bookingBusiness. The following are some examples you can customize for a service:- Price- Typical length of an appointment- Reminders- Any time buffer to set up before or finish up after the service- Scheduling policy parameters, such as minimum notice to book or cancel, and whether customers can select specific staff members for an appointment.
+        Update the properties of a bookingService object in the specified bookingBusiness. The following are some examples you can customize for a service:- Price- Typical length of an appointment- Reminders- Any time buffer to set up before or finish up after the service- Scheduling policy parameters, such as minimum notice to book or cancel, and whether customers can select specific staff members for an appointment. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingService]
@@ -95,7 +95,7 @@ class BookingServiceItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[BookingServiceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a bookingService object in the specified bookingBusiness.
+        Delete a bookingService object in the specified bookingBusiness. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class BookingServiceItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[BookingServiceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a bookingService object in the specified bookingBusiness.
+        Get the properties and relationships of a bookingService object in the specified bookingBusiness. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class BookingServiceItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[BookingService] = None, request_configuration: Optional[BookingServiceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a bookingService object in the specified bookingBusiness. The following are some examples you can customize for a service:- Price- Typical length of an appointment- Reminders- Any time buffer to set up before or finish up after the service- Scheduling policy parameters, such as minimum notice to book or cancel, and whether customers can select specific staff members for an appointment.
+        Update the properties of a bookingService object in the specified bookingBusiness. The following are some examples you can customize for a service:- Price- Typical length of an appointment- Reminders- Any time buffer to set up before or finish up after the service- Scheduling policy parameters, such as minimum notice to book or cancel, and whether customers can select specific staff members for an appointment. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class BookingServiceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BookingServiceItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a bookingService object in the specified bookingBusiness.
+        Get the properties and relationships of a bookingService object in the specified bookingBusiness. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

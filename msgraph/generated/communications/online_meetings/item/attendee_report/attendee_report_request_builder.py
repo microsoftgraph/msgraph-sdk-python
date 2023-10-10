@@ -27,7 +27,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AttendeeReportRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
-        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
+        Get attendeeReport for the navigation property onlineMeetings from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         Find more info here: https://learn.microsoft.com/graph/api/onlinemeeting-get?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     
     async def put(self,body: bytes, request_configuration: Optional[AttendeeReportRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
-        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
+        Update attendeeReport for the navigation property onlineMeetings in communications
         param body: Binary request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
@@ -69,7 +69,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AttendeeReportRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
+        Get attendeeReport for the navigation property onlineMeetings from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -84,7 +84,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     
     def to_put_request_information(self,body: bytes, request_configuration: Optional[AttendeeReportRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
+        Update attendeeReport for the navigation property onlineMeetings in communications
         param body: Binary request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

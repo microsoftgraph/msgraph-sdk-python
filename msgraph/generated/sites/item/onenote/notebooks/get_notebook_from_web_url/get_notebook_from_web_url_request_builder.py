@@ -29,7 +29,7 @@ class GetNotebookFromWebUrlRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[GetNotebookFromWebUrlPostRequestBody] = None, request_configuration: Optional[GetNotebookFromWebUrlRequestBuilderPostRequestConfiguration] = None) -> Optional[CopyNotebookModel]:
         """
-        Retrieve the properties and relationships of a notebook object by using its URL path. The location can be user notebooks on Microsoft 365, group notebooks, or SharePoint site-hosted team notebooks on Microsoft 365.
+        Retrieve the properties and relationships of a notebook object by using its URL path. The location can be user notebooks on Microsoft 365, group notebooks, or SharePoint site-hosted team notebooks on Microsoft 365. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CopyNotebookModel]
@@ -54,7 +54,7 @@ class GetNotebookFromWebUrlRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[GetNotebookFromWebUrlPostRequestBody] = None, request_configuration: Optional[GetNotebookFromWebUrlRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a notebook object by using its URL path. The location can be user notebooks on Microsoft 365, group notebooks, or SharePoint site-hosted team notebooks on Microsoft 365.
+        Retrieve the properties and relationships of a notebook object by using its URL path. The location can be user notebooks on Microsoft 365, group notebooks, or SharePoint site-hosted team notebooks on Microsoft 365. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

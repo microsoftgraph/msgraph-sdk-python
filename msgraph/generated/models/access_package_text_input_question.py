@@ -14,7 +14,7 @@ class AccessPackageTextInputQuestion(AccessPackageQuestion):
     odata_type: Optional[str] = "#microsoft.graph.accessPackageTextInputQuestion"
     # Indicates whether the answer will be in single or multiple line format.
     is_single_line_question: Optional[bool] = None
-    # The regular expression pattern which any answer to this question must match.
+    # The regular expression pattern that any answer to this question must match.
     regex_pattern: Optional[str] = None
     
     @staticmethod

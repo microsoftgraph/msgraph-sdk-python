@@ -13,7 +13,7 @@ class ListInfo(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # If true, indicates that content types are enabled for this list.
     content_types_enabled: Optional[bool] = None
-    # If true, indicates that the list is not normally visible in the SharePoint user experience.
+    # If true, indicates that the list isn't normally visible in the SharePoint user experience.
     hidden: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

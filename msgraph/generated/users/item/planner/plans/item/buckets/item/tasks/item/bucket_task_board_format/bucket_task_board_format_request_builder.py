@@ -47,7 +47,7 @@ class BucketTaskBoardFormatRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[BucketTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerBucketTaskBoardTaskFormat]:
         """
-        Retrieve the properties and relationships of plannerBucketTaskBoardTaskFormat object.
+        Retrieve the properties and relationships of plannerBucketTaskBoardTaskFormat object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerBucketTaskBoardTaskFormat]
         Find more info here: https://learn.microsoft.com/graph/api/plannerbuckettaskboardtaskformat-get?view=graph-rest-1.0
@@ -109,7 +109,7 @@ class BucketTaskBoardFormatRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[BucketTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of plannerBucketTaskBoardTaskFormat object.
+        Retrieve the properties and relationships of plannerBucketTaskBoardTaskFormat object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -167,7 +167,7 @@ class BucketTaskBoardFormatRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BucketTaskBoardFormatRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of plannerBucketTaskBoardTaskFormat object.
+        Retrieve the properties and relationships of plannerBucketTaskBoardTaskFormat object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

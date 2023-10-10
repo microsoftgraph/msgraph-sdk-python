@@ -16,13 +16,13 @@ class PresenceStatusMessage(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The expiryDateTime property
+    # Time in which the status message expires.If not provided, the status message doesn't expire.expiryDateTime.dateTime shouldn't include time zone.expiryDateTime isn't available when you request the presence of another user.
     expiry_date_time: Optional[DateTimeTimeZone] = None
-    # The message property
+    # Status message item. The only supported format currently is message.contentType = 'text'.
     message: Optional[ItemBody] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The publishedDateTime property
+    # Time in which the status message was published.Read-only.publishedDateTime isn't available when you request the presence of another user.
     published_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

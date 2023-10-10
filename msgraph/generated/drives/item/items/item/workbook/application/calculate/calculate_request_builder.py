@@ -28,7 +28,7 @@ class CalculateRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CalculatePostRequestBody] = None, request_configuration: Optional[CalculateRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Recalculate all currently opened workbooks in Excel.
+        Recalculate all currently opened workbooks in Excel. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class CalculateRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CalculatePostRequestBody] = None, request_configuration: Optional[CalculateRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Recalculate all currently opened workbooks in Excel.
+        Recalculate all currently opened workbooks in Excel. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

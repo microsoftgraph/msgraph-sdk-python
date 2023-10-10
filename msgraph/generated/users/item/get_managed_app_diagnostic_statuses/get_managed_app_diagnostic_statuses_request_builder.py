@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .get_managed_app_diagnostic_statuses_response import GetManagedAppDiagnosticStatusesResponse
+    from .get_managed_app_diagnostic_statuses_get_response import GetManagedAppDiagnosticStatusesGetResponse
 
 class GetManagedAppDiagnosticStatusesRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class GetManagedAppDiagnosticStatusesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/getManagedAppDiagnosticStatuses(){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetManagedAppDiagnosticStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[GetManagedAppDiagnosticStatusesResponse]:
+    async def get(self,request_configuration: Optional[GetManagedAppDiagnosticStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[GetManagedAppDiagnosticStatusesGetResponse]:
         """
         Gets diagnostics validation status for a given user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetManagedAppDiagnosticStatusesResponse]
+        Returns: Optional[GetManagedAppDiagnosticStatusesGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class GetManagedAppDiagnosticStatusesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_managed_app_diagnostic_statuses_response import GetManagedAppDiagnosticStatusesResponse
+        from .get_managed_app_diagnostic_statuses_get_response import GetManagedAppDiagnosticStatusesGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetManagedAppDiagnosticStatusesResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetManagedAppDiagnosticStatusesGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetManagedAppDiagnosticStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

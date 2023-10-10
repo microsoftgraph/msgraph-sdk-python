@@ -48,7 +48,7 @@ class WorkbookRange(Entity):
     row_index: Optional[int] = None
     # The worksheet containing the current range. Read-only.
     sort: Optional[WorkbookRangeSort] = None
-    # Text values of the specified range. The Text value won't depend on the cell width. The # sign substitution that happens in Excel UI won't affect the text value returned by the API. Read-only.
+    # Text values of the specified range. The Text value doesn't depend on the cell width. The # sign substitution that happens in Excel UI doesn't affect the text value returned by the API. Read-only.
     text: Optional[Json] = None
     # Represents the type of data of each cell. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error. Read-only.
     value_types: Optional[Json] = None

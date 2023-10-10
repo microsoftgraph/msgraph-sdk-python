@@ -28,7 +28,7 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a conditionalAccessPolicy object.
+        Delete a conditionalAccessPolicy object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/conditionalaccesspolicy-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ConditionalAccessPolicy]:
         """
-        Retrieve the properties and relationships of a conditionalAccessPolicy object.
+        Retrieve the properties and relationships of a conditionalAccessPolicy object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConditionalAccessPolicy]
         Find more info here: https://learn.microsoft.com/graph/api/conditionalaccesspolicy-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ConditionalAccessPolicy] = None, request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ConditionalAccessPolicy]:
         """
-        Update the properties of a conditionalAccessPolicy object.
+        Update the properties of a conditionalAccessPolicy object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConditionalAccessPolicy]
@@ -95,7 +95,7 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a conditionalAccessPolicy object.
+        Delete a conditionalAccessPolicy object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a conditionalAccessPolicy object.
+        Retrieve the properties and relationships of a conditionalAccessPolicy object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ConditionalAccessPolicy] = None, request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a conditionalAccessPolicy object.
+        Update the properties of a conditionalAccessPolicy object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConditionalAccessPolicyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a conditionalAccessPolicy object.
+        Retrieve the properties and relationships of a conditionalAccessPolicy object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -30,7 +30,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an ediscoveryReviewSetQuery object.
+        Delete an ediscoveryReviewSetQuery object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoveryreviewset-delete-queries?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryReviewSetQuery]:
         """
-        Read the properties and relationships of an ediscoveryReviewSetQuery object.
+        Read the properties and relationships of an ediscoveryReviewSetQuery object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewSetQuery]
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoveryreviewsetquery-get?view=graph-rest-1.0
@@ -72,7 +72,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EdiscoveryReviewSetQuery] = None, request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EdiscoveryReviewSetQuery]:
         """
-        Update the properties of an ediscoveryReviewSetQuery object.
+        Update the properties of an ediscoveryReviewSetQuery object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewSetQuery]
@@ -97,7 +97,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an ediscoveryReviewSetQuery object.
+        Delete an ediscoveryReviewSetQuery object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +112,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an ediscoveryReviewSetQuery object.
+        Read the properties and relationships of an ediscoveryReviewSetQuery object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -129,7 +129,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EdiscoveryReviewSetQuery] = None, request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an ediscoveryReviewSetQuery object.
+        Update the properties of an ediscoveryReviewSetQuery object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -188,7 +188,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EdiscoveryReviewSetQueryItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an ediscoveryReviewSetQuery object.
+        Read the properties and relationships of an ediscoveryReviewSetQuery object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

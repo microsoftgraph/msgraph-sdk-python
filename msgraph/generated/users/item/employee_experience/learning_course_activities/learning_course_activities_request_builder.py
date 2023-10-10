@@ -44,7 +44,7 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[LearningCourseActivitiesRequestBuilderGetRequestConfiguration] = None) -> Optional[LearningCourseActivityCollectionResponse]:
         """
-        Get a list of the learningCourseActivity objects (assigned or self-initiated) for a user.
+        Get a list of the learningCourseActivity objects (assigned or self-initiated) for a user. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningCourseActivityCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/learningcourseactivity-list?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[LearningCourseActivitiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the learningCourseActivity objects (assigned or self-initiated) for a user.
+        Get a list of the learningCourseActivity objects (assigned or self-initiated) for a user. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +103,7 @@ class LearningCourseActivitiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LearningCourseActivitiesRequestBuilderGetQueryParameters():
         """
-        Get a list of the learningCourseActivity objects (assigned or self-initiated) for a user.
+        Get a list of the learningCourseActivity objects (assigned or self-initiated) for a user. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

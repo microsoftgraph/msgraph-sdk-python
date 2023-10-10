@@ -12,6 +12,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models.ios_lob_app import IosLobApp
     from .....models.o_data_errors.o_data_error import ODataError
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .categories.categories_request_builder import CategoriesRequestBuilder
+    from .content_versions.content_versions_request_builder import ContentVersionsRequestBuilder
 
 class GraphIosLobAppRequestBuilder(BaseRequestBuilder):
     """
@@ -73,6 +76,33 @@ class GraphIosLobAppRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GraphIosLobAppRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def assignments(self) -> AssignmentsRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.mobileApp entity.
+        """
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def categories(self) -> CategoriesRequestBuilder:
+        """
+        Provides operations to manage the categories property of the microsoft.graph.mobileApp entity.
+        """
+        from .categories.categories_request_builder import CategoriesRequestBuilder
+
+        return CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def content_versions(self) -> ContentVersionsRequestBuilder:
+        """
+        Provides operations to manage the contentVersions property of the microsoft.graph.mobileLobApp entity.
+        """
+        from .content_versions.content_versions_request_builder import ContentVersionsRequestBuilder
+
+        return ContentVersionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class GraphIosLobAppRequestBuilderGetQueryParameters():

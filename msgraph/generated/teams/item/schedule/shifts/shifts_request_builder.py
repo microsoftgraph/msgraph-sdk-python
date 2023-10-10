@@ -45,7 +45,7 @@ class ShiftsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ShiftsRequestBuilderGetRequestConfiguration] = None) -> Optional[ShiftCollectionResponse]:
         """
-        Get the list of shift instances in a schedule.
+        Get the list of shift instances in a schedule. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ShiftCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/schedule-list-shifts?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ShiftsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Shift] = None, request_configuration: Optional[ShiftsRequestBuilderPostRequestConfiguration] = None) -> Optional[Shift]:
         """
-        Create a new shift instance in a schedule. The duration of a shift cannot be less than 1 minute or longer than 24 hours.
+        Create a new shift instance in a schedule. The duration of a shift cannot be less than 1 minute or longer than 24 hours. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Shift]
@@ -92,7 +92,7 @@ class ShiftsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ShiftsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of shift instances in a schedule.
+        Get the list of shift instances in a schedule. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class ShiftsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Shift] = None, request_configuration: Optional[ShiftsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new shift instance in a schedule. The duration of a shift cannot be less than 1 minute or longer than 24 hours.
+        Create a new shift instance in a schedule. The duration of a shift cannot be less than 1 minute or longer than 24 hours. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class ShiftsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ShiftsRequestBuilderGetQueryParameters():
         """
-        Get the list of shift instances in a schedule.
+        Get the list of shift instances in a schedule. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

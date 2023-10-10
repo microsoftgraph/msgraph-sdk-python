@@ -45,7 +45,7 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OnPremisesSynchronizationRequestBuilderGetRequestConfiguration] = None) -> Optional[OnPremisesDirectorySynchronizationCollectionResponse]:
         """
-        Read the properties and relationships of an onPremisesDirectorySynchronization object.
+        Read the properties and relationships of an onPremisesDirectorySynchronization object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnPremisesDirectorySynchronizationCollectionResponse]
         """
@@ -90,7 +90,7 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OnPremisesSynchronizationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an onPremisesDirectorySynchronization object.
+        Read the properties and relationships of an onPremisesDirectorySynchronization object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OnPremisesSynchronizationRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an onPremisesDirectorySynchronization object.
+        Read the properties and relationships of an onPremisesDirectorySynchronization object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

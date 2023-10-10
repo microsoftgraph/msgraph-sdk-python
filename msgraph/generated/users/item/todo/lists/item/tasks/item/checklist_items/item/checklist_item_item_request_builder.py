@@ -28,7 +28,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ChecklistItemItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a checklistItem object.
+        Delete a checklistItem object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/checklistitem-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ChecklistItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ChecklistItem]:
         """
-        Read the properties and relationships of a checklistItem object.
+        Read the properties and relationships of a checklistItem object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChecklistItem]
         Find more info here: https://learn.microsoft.com/graph/api/checklistitem-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ChecklistItem] = None, request_configuration: Optional[ChecklistItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ChecklistItem]:
         """
-        Update the properties of a checklistItem object.
+        Update the properties of a checklistItem object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChecklistItem]
@@ -95,7 +95,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ChecklistItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a checklistItem object.
+        Delete a checklistItem object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ChecklistItemItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a checklistItem object.
+        Read the properties and relationships of a checklistItem object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ChecklistItem] = None, request_configuration: Optional[ChecklistItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a checklistItem object.
+        Update the properties of a checklistItem object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ChecklistItemItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a checklistItem object.
+        Read the properties and relationships of a checklistItem object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

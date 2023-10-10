@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .get_user_ids_with_flagged_app_registration_response import GetUserIdsWithFlaggedAppRegistrationResponse
+    from .get_user_ids_with_flagged_app_registration_get_response import GetUserIdsWithFlaggedAppRegistrationGetResponse
 
 class GetUserIdsWithFlaggedAppRegistrationRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class GetUserIdsWithFlaggedAppRegistrationRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/managedAppRegistrations/getUserIdsWithFlaggedAppRegistration(){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetUserIdsWithFlaggedAppRegistrationRequestBuilderGetRequestConfiguration] = None) -> Optional[GetUserIdsWithFlaggedAppRegistrationResponse]:
+    async def get(self,request_configuration: Optional[GetUserIdsWithFlaggedAppRegistrationRequestBuilderGetRequestConfiguration] = None) -> Optional[GetUserIdsWithFlaggedAppRegistrationGetResponse]:
         """
         Invoke function getUserIdsWithFlaggedAppRegistration
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetUserIdsWithFlaggedAppRegistrationResponse]
+        Returns: Optional[GetUserIdsWithFlaggedAppRegistrationGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class GetUserIdsWithFlaggedAppRegistrationRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_user_ids_with_flagged_app_registration_response import GetUserIdsWithFlaggedAppRegistrationResponse
+        from .get_user_ids_with_flagged_app_registration_get_response import GetUserIdsWithFlaggedAppRegistrationGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetUserIdsWithFlaggedAppRegistrationResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetUserIdsWithFlaggedAppRegistrationGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetUserIdsWithFlaggedAppRegistrationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

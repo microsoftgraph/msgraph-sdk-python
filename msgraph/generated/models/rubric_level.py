@@ -19,7 +19,7 @@ class RubricLevel(AdditionalDataHolder, BackedModel, Parsable):
     description: Optional[EducationItemBody] = None
     # The name of this rubric level.
     display_name: Optional[str] = None
-    # Null if this is a no-points rubric; educationAssignmentPointsGradeType if it is a points rubric.
+    # Null if this is a no-points rubric; educationAssignmentPointsGradeType if it's a points rubric.
     grading: Optional[EducationAssignmentGradeType] = None
     # The ID of this resource.
     level_id: Optional[str] = None

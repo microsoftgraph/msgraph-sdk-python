@@ -48,7 +48,7 @@ class SynchronizationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SynchronizationTemplateItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SynchronizationTemplate]:
         """
-        Pre-configured synchronization settings for a particular application.
+        Preconfigured synchronization settings for a particular application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SynchronizationTemplate]
         """
@@ -69,7 +69,7 @@ class SynchronizationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[SynchronizationTemplate] = None, request_configuration: Optional[SynchronizationTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[SynchronizationTemplate]:
         """
-        Update (override) the synchronization template associated with a given application.
+        Update (override) the synchronization template associated with a given application. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SynchronizationTemplate]
@@ -109,7 +109,7 @@ class SynchronizationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SynchronizationTemplateItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Pre-configured synchronization settings for a particular application.
+        Preconfigured synchronization settings for a particular application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -126,7 +126,7 @@ class SynchronizationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[SynchronizationTemplate] = None, request_configuration: Optional[SynchronizationTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update (override) the synchronization template associated with a given application.
+        Update (override) the synchronization template associated with a given application. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -176,7 +176,7 @@ class SynchronizationTemplateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SynchronizationTemplateItemRequestBuilderGetQueryParameters():
         """
-        Pre-configured synchronization settings for a particular application.
+        Preconfigured synchronization settings for a particular application.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

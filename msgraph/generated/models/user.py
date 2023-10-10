@@ -271,7 +271,7 @@ class User(DirectoryObject):
     provisioned_plans: Optional[List[ProvisionedPlan]] = None
     # For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property will also update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address while those prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of 10 unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
     proxy_addresses: Optional[List[str]] = None
-    # Devices that are registered for the user. Read-only. Nullable. Supports $expand.
+    # Devices that are registered for the user. Read-only. Nullable. Supports $expand and returns up to 100 objects.
     registered_devices: Optional[List[DirectoryObject]] = None
     # A list for the user to enumerate their responsibilities. Returned only on $select.
     responsibilities: Optional[List[str]] = None

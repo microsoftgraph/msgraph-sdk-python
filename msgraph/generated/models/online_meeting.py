@@ -7,6 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .audio_conferencing import AudioConferencing
     from .broadcast_meeting_settings import BroadcastMeetingSettings
+    from .call_transcript import CallTranscript
     from .chat_info import ChatInfo
     from .entity import Entity
     from .item_body import ItemBody
@@ -37,11 +38,11 @@ class OnlineMeeting(Entity):
     allowed_presenters: Optional[OnlineMeetingPresenters] = None
     # The attendance reports of an online meeting. Read-only.
     attendance_reports: Optional[List[MeetingAttendanceReport]] = None
-    # The content stream of the attendee report of a Microsoft Teams live event. Read-only.
+    # The attendeeReport property
     attendee_report: Optional[bytes] = None
     # The phone access (dial-in) information for an online meeting. Read-only.
     audio_conferencing: Optional[AudioConferencing] = None
-    # Settings related to a live event.
+    # The broadcastSettings property
     broadcast_settings: Optional[BroadcastMeetingSettings] = None
     # The chat information associated with this online meeting.
     chat_info: Optional[ChatInfo] = None
@@ -51,7 +52,7 @@ class OnlineMeeting(Entity):
     end_date_time: Optional[datetime.datetime] = None
     # The externalId property
     external_id: Optional[str] = None
-    # Indicates if this is a Teams live event.
+    # The isBroadcast property
     is_broadcast: Optional[bool] = None
     # Indicates whether to announce when callers join or leave.
     is_entry_exit_announced: Optional[bool] = None
@@ -75,6 +76,8 @@ class OnlineMeeting(Entity):
     start_date_time: Optional[datetime.datetime] = None
     # The subject of the online meeting.
     subject: Optional[str] = None
+    # The transcripts of an online meeting. Read-only.
+    transcripts: Optional[List[CallTranscript]] = None
     # The video teleconferencing ID. Read-only.
     video_teleconference_id: Optional[str] = None
     # Specifies whether a watermark should be applied to a content type by the client application.
@@ -98,6 +101,7 @@ class OnlineMeeting(Entity):
         """
         from .audio_conferencing import AudioConferencing
         from .broadcast_meeting_settings import BroadcastMeetingSettings
+        from .call_transcript import CallTranscript
         from .chat_info import ChatInfo
         from .entity import Entity
         from .item_body import ItemBody
@@ -112,6 +116,7 @@ class OnlineMeeting(Entity):
 
         from .audio_conferencing import AudioConferencing
         from .broadcast_meeting_settings import BroadcastMeetingSettings
+        from .call_transcript import CallTranscript
         from .chat_info import ChatInfo
         from .entity import Entity
         from .item_body import ItemBody
@@ -150,6 +155,7 @@ class OnlineMeeting(Entity):
             "shareMeetingChatHistoryDefault": lambda n : setattr(self, 'share_meeting_chat_history_default', n.get_enum_value(MeetingChatHistoryDefaultMode)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
+            "transcripts": lambda n : setattr(self, 'transcripts', n.get_collection_of_object_values(CallTranscript)),
             "videoTeleconferenceId": lambda n : setattr(self, 'video_teleconference_id', n.get_str_value()),
             "watermarkProtection": lambda n : setattr(self, 'watermark_protection', n.get_object_value(WatermarkProtectionValues)),
         }
@@ -191,6 +197,7 @@ class OnlineMeeting(Entity):
         writer.write_enum_value("shareMeetingChatHistoryDefault", self.share_meeting_chat_history_default)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("subject", self.subject)
+        writer.write_collection_of_object_values("transcripts", self.transcripts)
         writer.write_str_value("videoTeleconferenceId", self.video_teleconference_id)
         writer.write_object_value("watermarkProtection", self.watermark_protection)
     

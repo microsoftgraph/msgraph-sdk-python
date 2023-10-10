@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .unfavorite_post_request_body import UnfavoritePostRequestBody
-    from .unfavorite_response import UnfavoriteResponse
+    from .unfavorite_post_response import UnfavoritePostResponse
 
 class UnfavoriteRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class UnfavoriteRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/serviceAnnouncement/messages/unfavorite", path_parameters)
     
-    async def post(self,body: Optional[UnfavoritePostRequestBody] = None, request_configuration: Optional[UnfavoriteRequestBuilderPostRequestConfiguration] = None) -> Optional[UnfavoriteResponse]:
+    async def post(self,body: Optional[UnfavoritePostRequestBody] = None, request_configuration: Optional[UnfavoriteRequestBuilderPostRequestConfiguration] = None) -> Optional[UnfavoritePostResponse]:
         """
-        Remove the favorite status of serviceUpdateMessages for the signed in user.
+        Remove the favorite status of serviceUpdateMessages for the signed in user. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[UnfavoriteResponse]
+        Returns: Optional[UnfavoritePostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceupdatemessage-unfavorite?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class UnfavoriteRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .unfavorite_response import UnfavoriteResponse
+        from .unfavorite_post_response import UnfavoritePostResponse
 
-        return await self.request_adapter.send_async(request_info, UnfavoriteResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, UnfavoritePostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[UnfavoritePostRequestBody] = None, request_configuration: Optional[UnfavoriteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove the favorite status of serviceUpdateMessages for the signed in user.
+        Remove the favorite status of serviceUpdateMessages for the signed in user. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

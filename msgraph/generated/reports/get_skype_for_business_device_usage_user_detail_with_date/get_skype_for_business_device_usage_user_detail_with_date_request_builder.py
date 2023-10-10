@@ -25,6 +25,8 @@ class GetSkypeForBusinessDeviceUsageUserDetailWithDateRequestBuilder(BaseRequest
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['date'] = str(date)
         super().__init__(request_adapter, "{+baseurl}/reports/getSkypeForBusinessDeviceUsageUserDetail(date={date})", path_parameters)
     
     async def get(self,request_configuration: Optional[GetSkypeForBusinessDeviceUsageUserDetailWithDateRequestBuilderGetRequestConfiguration] = None) -> bytes:

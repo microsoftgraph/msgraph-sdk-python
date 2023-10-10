@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .......models.o_data_errors.o_data_error import ODataError
-    from .as_hierarchy_response import AsHierarchyResponse
+    from .as_hierarchy_get_response import AsHierarchyGetResponse
 
 class MicrosoftGraphSecurityAsHierarchyRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class MicrosoftGraphSecurityAsHierarchyRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/tags/microsoft.graph.security.asHierarchy(){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[MicrosoftGraphSecurityAsHierarchyRequestBuilderGetRequestConfiguration] = None) -> Optional[AsHierarchyResponse]:
+    async def get(self,request_configuration: Optional[MicrosoftGraphSecurityAsHierarchyRequestBuilderGetRequestConfiguration] = None) -> Optional[AsHierarchyGetResponse]:
         """
         Invoke function asHierarchy
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[AsHierarchyResponse]
+        Returns: Optional[AsHierarchyGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class MicrosoftGraphSecurityAsHierarchyRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .as_hierarchy_response import AsHierarchyResponse
+        from .as_hierarchy_get_response import AsHierarchyGetResponse
 
-        return await self.request_adapter.send_async(request_info, AsHierarchyResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AsHierarchyGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[MicrosoftGraphSecurityAsHierarchyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -47,7 +47,7 @@ class RiskDetectionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RiskDetectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[RiskDetection]:
         """
-        Read the properties and relationships of a riskDetection object.
+        Read the properties and relationships of a riskDetection object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RiskDetection]
         Find more info here: https://learn.microsoft.com/graph/api/riskdetection-get?view=graph-rest-1.0
@@ -108,7 +108,7 @@ class RiskDetectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RiskDetectionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a riskDetection object.
+        Read the properties and relationships of a riskDetection object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -166,7 +166,7 @@ class RiskDetectionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RiskDetectionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a riskDetection object.
+        Read the properties and relationships of a riskDetection object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

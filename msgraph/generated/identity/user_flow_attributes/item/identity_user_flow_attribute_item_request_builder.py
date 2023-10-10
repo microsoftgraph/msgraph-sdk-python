@@ -28,7 +28,7 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an identityUserFlowAttribute. Only custom user flow attributes can be deleted.
+        Delete a custom identityUserFlowAttribute. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/identityuserflowattribute-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityUserFlowAttribute]:
         """
-        Retrieve the properties and relationships of a identityUserFlowAttribute object.
+        Retrieve the properties and relationships of a identityUserFlowAttribute object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityUserFlowAttribute]
         Find more info here: https://learn.microsoft.com/graph/api/identityuserflowattribute-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[IdentityUserFlowAttribute] = None, request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[IdentityUserFlowAttribute]:
         """
-        Update the properties of a identityUserFlowAttribute object. Only custom user flow attributes can be updated.
+        Update the properties of a custom identityUserFlowAttribute object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityUserFlowAttribute]
@@ -95,7 +95,7 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an identityUserFlowAttribute. Only custom user flow attributes can be deleted.
+        Delete a custom identityUserFlowAttribute. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a identityUserFlowAttribute object.
+        Retrieve the properties and relationships of a identityUserFlowAttribute object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[IdentityUserFlowAttribute] = None, request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a identityUserFlowAttribute object. Only custom user flow attributes can be updated.
+        Update the properties of a custom identityUserFlowAttribute object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IdentityUserFlowAttributeItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a identityUserFlowAttribute object.
+        Retrieve the properties and relationships of a identityUserFlowAttribute object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -45,7 +45,7 @@ class HostComponentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[HostComponentsRequestBuilderGetRequestConfiguration] = None) -> Optional[HostComponentCollectionResponse]:
         """
-        Read the properties and relationships of a hostComponent object.
+        Read the properties and relationships of a hostComponent object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostComponentCollectionResponse]
         """
@@ -90,7 +90,7 @@ class HostComponentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[HostComponentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a hostComponent object.
+        Read the properties and relationships of a hostComponent object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class HostComponentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HostComponentsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a hostComponent object.
+        Read the properties and relationships of a hostComponent object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

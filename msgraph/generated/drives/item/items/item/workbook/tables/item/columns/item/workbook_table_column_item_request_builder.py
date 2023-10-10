@@ -33,7 +33,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[WorkbookTableColumnItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes the column from the table.
+        Deletes the column from the table. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/tablecolumn-delete?view=graph-rest-1.0
@@ -53,7 +53,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[WorkbookTableColumnItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookTableColumn]:
         """
-        Retrieve the properties and relationships of tablecolumn object.
+        Retrieve the properties and relationships of tablecolumn object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumn]
         Find more info here: https://learn.microsoft.com/graph/api/tablecolumn-get?view=graph-rest-1.0
@@ -75,7 +75,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkbookTableColumn] = None, request_configuration: Optional[WorkbookTableColumnItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookTableColumn]:
         """
-        Update the properties of tablecolumn object.
+        Update the properties of tablecolumn object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumn]
@@ -100,7 +100,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookTableColumnItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes the column from the table.
+        Deletes the column from the table. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +115,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookTableColumnItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of tablecolumn object.
+        Retrieve the properties and relationships of tablecolumn object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -132,7 +132,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkbookTableColumn] = None, request_configuration: Optional[WorkbookTableColumnItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of tablecolumn object.
+        Update the properties of tablecolumn object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -218,7 +218,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkbookTableColumnItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of tablecolumn object.
+        Retrieve the properties and relationships of tablecolumn object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

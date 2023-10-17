@@ -19,7 +19,7 @@ from .message import Message
 @dataclass
 class EventMessage(Message):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.eventMessage"
+    OdataType: Optional[str] = "#microsoft.graph.eventMessage"
     # The endDateTime property
     end_date_time: Optional[DateTimeTimeZone] = None
     # The event associated with the event message. The assumption for attendees or room resources is that the Calendar Attendant is set to automatically update the calendar with an event when meeting request event messages arrive. Navigation property.  Read-only.

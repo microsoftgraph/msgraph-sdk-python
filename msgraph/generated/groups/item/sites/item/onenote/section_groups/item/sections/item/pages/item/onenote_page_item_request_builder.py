@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ............models.o_data_errors.o_data_error import ODataError
     from ............models.onenote_page import OnenotePage
+    from ............models.o_data_errors.o_data_error import ODataError
     from .content.content_request_builder import ContentRequestBuilder
     from .copy_to_section.copy_to_section_request_builder import CopyToSectionRequestBuilder
     from .onenote_patch_content.onenote_patch_content_request_builder import OnenotePatchContentRequestBuilder

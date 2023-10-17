@@ -14,7 +14,7 @@ class WorkbookChartDataLabels(Entity):
     # Represents the format of chart data labels, which includes fill and font formatting. Read-only.
     format: Optional[WorkbookChartDataLabelFormat] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # DataLabelPosition value that represents the position of the data label. The possible values are: None, Center, InsideEnd, InsideBase, OutsideEnd, Left, Right, Top, Bottom, BestFit, Callout.
     position: Optional[str] = None
     # String representing the separator used for the data labels on a chart.

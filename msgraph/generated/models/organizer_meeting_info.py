@@ -12,7 +12,7 @@ from .meeting_info import MeetingInfo
 @dataclass
 class OrganizerMeetingInfo(MeetingInfo):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.organizerMeetingInfo"
+    OdataType: Optional[str] = "#microsoft.graph.organizerMeetingInfo"
     # The organizer property
     organizer: Optional[IdentitySet] = None
     

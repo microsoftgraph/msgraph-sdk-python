@@ -45,7 +45,7 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[HostCookiesRequestBuilderGetRequestConfiguration] = None) -> Optional[HostCookieCollectionResponse]:
         """
-        Read the properties and relationships of a hostCookie object.
+        Read the properties and relationships of a hostCookie object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostCookieCollectionResponse]
         """
@@ -90,7 +90,7 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[HostCookiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a hostCookie object.
+        Read the properties and relationships of a hostCookie object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HostCookiesRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a hostCookie object.
+        Read the properties and relationships of a hostCookie object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -26,7 +26,7 @@ class DeviceManagementExportJob(Entity):
     # Configures how the requested export job is localized
     localization_type: Optional[DeviceManagementExportJobLocalizationType] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Name of the report
     report_name: Optional[str] = None
     # Time that the exported report was requested

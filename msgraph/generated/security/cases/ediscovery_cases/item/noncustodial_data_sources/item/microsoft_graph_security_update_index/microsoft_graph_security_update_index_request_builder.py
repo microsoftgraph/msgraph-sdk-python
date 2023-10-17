@@ -27,7 +27,7 @@ class MicrosoftGraphSecurityUpdateIndexRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[MicrosoftGraphSecurityUpdateIndexRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Trigger an indexOperation to make a non-custodial data source and its associated data source searchable.
+        Trigger an indexOperation to make a non-custodial data source and its associated data source searchable. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverynoncustodialdatasource-updateindex?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class MicrosoftGraphSecurityUpdateIndexRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[MicrosoftGraphSecurityUpdateIndexRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Trigger an indexOperation to make a non-custodial data source and its associated data source searchable.
+        Trigger an indexOperation to make a non-custodial data source and its associated data source searchable. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

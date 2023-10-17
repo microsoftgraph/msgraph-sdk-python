@@ -36,7 +36,7 @@ class MobileThreatDefenseConnector(Entity):
     # When TRUE, inidicates that configuration profile management via Microsoft Defender for Endpoint is enabled. When FALSE, inidicates that configuration profile management via Microsoft Defender for Endpoint is disabled. Default value is FALSE.
     microsoft_defender_for_endpoint_attach_enabled: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Partner state of this tenant.
     partner_state: Optional[MobileThreatPartnerTenantState] = None
     # Get or Set days the per tenant tolerance to unresponsiveness for this partner integration

@@ -27,7 +27,7 @@ class CheckoutRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[CheckoutRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Check out a driveItem resource to prevent others from editing the document, and prevent your changes from being visible until the documented is checked in.
+        Check out a driveItem resource to prevent others from editing the document, and prevent your changes from being visible until the documented is checked in. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/driveitem-checkout?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class CheckoutRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[CheckoutRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Check out a driveItem resource to prevent others from editing the document, and prevent your changes from being visible until the documented is checked in.
+        Check out a driveItem resource to prevent others from editing the document, and prevent your changes from being visible until the documented is checked in. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

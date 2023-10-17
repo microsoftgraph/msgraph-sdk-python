@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models.list_collection_response import ListCollectionResponse
     from ....models.list_ import List_
+    from ....models.list_collection_response import ListCollectionResponse
     from ....models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
     from .item.list_item_request_builder import ListItemRequestBuilder
@@ -45,7 +45,7 @@ class ListsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> Optional[ListCollectionResponse]:
         """
-        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement.
+        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ListCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/list-list?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ListsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[List_] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> Optional[List_]:
         """
-        Create a new [list][] in a [site][].
+        Create a new list][] in a [site][]. This API is available in the following [national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[List_]
@@ -92,7 +92,7 @@ class ListsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement.
+        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class ListsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[List_] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new [list][] in a [site][].
+        Create a new list][] in a [site][]. This API is available in the following [national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class ListsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ListsRequestBuilderGetQueryParameters():
         """
-        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement.
+        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

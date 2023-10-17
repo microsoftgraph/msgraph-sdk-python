@@ -13,8 +13,8 @@ if TYPE_CHECKING:
     from .......models.mail_folder import MailFolder
     from .......models.o_data_errors.o_data_error import ODataError
     from .copy.copy_request_builder import CopyRequestBuilder
-    from .message_rules.message_rules_request_builder import MessageRulesRequestBuilder
     from .messages.messages_request_builder import MessagesRequestBuilder
+    from .message_rules.message_rules_request_builder import MessageRulesRequestBuilder
     from .move.move_request_builder import MoveRequestBuilder
 
 class MailFolderItemRequestBuilder(BaseRequestBuilder):

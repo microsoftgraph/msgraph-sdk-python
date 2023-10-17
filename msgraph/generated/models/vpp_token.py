@@ -32,7 +32,7 @@ class VppToken(Entity):
     # Possible sync statuses associated with an Apple Volume Purchase Program token.
     last_sync_status: Optional[VppTokenSyncStatus] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The organization associated with the Apple Volume Purchase Program Token
     organization_name: Optional[str] = None
     # Possible states associated with an Apple Volume Purchase Program token.

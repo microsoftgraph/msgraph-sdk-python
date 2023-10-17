@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 @dataclass
 class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -27,7 +27,7 @@ class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # The participant ID of the participant. Read-only.
     participant_id: Optional[str] = None
-    # The home region of the participant. This can be a country, a continent, or a larger geographic region. This does not change based on the participant's current physical location. Read-only.
+    # The home region of the participant. This can be a country, a continent, or a larger geographic region. This doesn't change based on the participant's current physical location. Read-only.
     region: Optional[str] = None
     
     @staticmethod

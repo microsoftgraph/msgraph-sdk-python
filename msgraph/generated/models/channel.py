@@ -36,7 +36,7 @@ class Channel(Entity):
     # A collection of all the messages in the channel. A navigation property. Nullable.
     messages: Optional[List[ChatMessage]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A collection of teams with which a channel is shared.
     shared_with_teams: Optional[List[SharedWithChannelTeamInfo]] = None
     # A collection of all the tabs in the channel. A navigation property.

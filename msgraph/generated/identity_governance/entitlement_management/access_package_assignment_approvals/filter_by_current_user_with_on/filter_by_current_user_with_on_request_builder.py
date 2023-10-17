@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .filter_by_current_user_with_on_response import FilterByCurrentUserWithOnResponse
+    from .filter_by_current_user_with_on_get_response import FilterByCurrentUserWithOnGetResponse
 
 class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
     """
@@ -25,13 +25,15 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['on'] = str(on)
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/accessPackageAssignmentApprovals/filterByCurrentUser(on='{on}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None) -> Optional[FilterByCurrentUserWithOnResponse]:
+    async def get(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None) -> Optional[FilterByCurrentUserWithOnGetResponse]:
         """
         Invoke function filterByCurrentUser
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[FilterByCurrentUserWithOnResponse]
+        Returns: Optional[FilterByCurrentUserWithOnGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -44,9 +46,9 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .filter_by_current_user_with_on_response import FilterByCurrentUserWithOnResponse
+        from .filter_by_current_user_with_on_get_response import FilterByCurrentUserWithOnGetResponse
 
-        return await self.request_adapter.send_async(request_info, FilterByCurrentUserWithOnResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, FilterByCurrentUserWithOnGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

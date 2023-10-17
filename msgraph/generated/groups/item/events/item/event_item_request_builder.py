@@ -39,7 +39,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[EventItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an event object.
+        Delete an event object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/group-delete-event?view=graph-rest-1.0
@@ -59,7 +59,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[EventItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Event]:
         """
-        Get an event object.
+        Get an event object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Event]
         Find more info here: https://learn.microsoft.com/graph/api/group-get-event?view=graph-rest-1.0
@@ -105,7 +105,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[EventItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an event object.
+        Delete an event object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +120,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[EventItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get an event object.
+        Get an event object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -277,7 +277,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EventItemRequestBuilderGetQueryParameters():
         """
-        Get an event object.
+        Get an event object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -27,7 +27,7 @@ class BrowserSiteList(Entity):
     # The date and time when the site list was last modified.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The user who published the site list.
     published_by: Optional[IdentitySet] = None
     # The date and time when the site list was published.

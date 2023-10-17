@@ -31,7 +31,7 @@ class SimulationAutomation(Entity):
     # Date and time of the upcoming run of the attack simulation automation.
     next_run_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A collection of simulation automation runs.
     runs: Optional[List[SimulationAutomationRun]] = None
     # Status of the attack simulation automation. Supports $filter and $orderby. The possible values are: unknown, draft, notRunning, running, completed, unknownFutureValue.

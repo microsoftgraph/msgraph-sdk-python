@@ -14,7 +14,7 @@ class ExternalActivityResult(ExternalActivity):
     # Error information that explains the failure to process an external activity.
     error: Optional[PublicError] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExternalActivityResult:

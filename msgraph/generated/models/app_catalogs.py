@@ -12,7 +12,7 @@ from .entity import Entity
 @dataclass
 class AppCatalogs(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The teamsApps property
     teams_apps: Optional[List[TeamsApp]] = None
     

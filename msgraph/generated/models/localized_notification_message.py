@@ -23,7 +23,7 @@ class LocalizedNotificationMessage(Entity):
     # The Message Template content.
     message_template: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The Message Template Subject.
     subject: Optional[str] = None
     

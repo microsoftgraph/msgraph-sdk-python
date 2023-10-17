@@ -16,7 +16,7 @@ class PrintOperation(Entity):
     # The DateTimeOffset when the operation was created. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The status property
     status: Optional[PrintOperationStatus] = None
     

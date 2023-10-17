@@ -40,7 +40,7 @@ class LearningContent(Entity):
     # The number of pages of the learning content, for example, 9. Optional.
     number_of_pages: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The skills tags associated with the learning content. Optional.
     skill_tags: Optional[List[str]] = None
     # The source name of the learning content, such as LinkedIn Learning or Coursera. Optional.

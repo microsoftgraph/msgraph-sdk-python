@@ -6,8 +6,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .device_install_state import DeviceInstallState
-    from .e_book_install_summary import EBookInstallSummary
     from .entity import Entity
+    from .e_book_install_summary import EBookInstallSummary
     from .ios_vpp_e_book import IosVppEBook
     from .managed_e_book_assignment import ManagedEBookAssignment
     from .mime_content import MimeContent
@@ -39,7 +39,7 @@ class ManagedEBook(Entity):
     # The date and time when the eBook was last modified.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The privacy statement Url.
     privacy_information_url: Optional[str] = None
     # The date and time when the eBook was published.
@@ -74,16 +74,16 @@ class ManagedEBook(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .device_install_state import DeviceInstallState
-        from .e_book_install_summary import EBookInstallSummary
         from .entity import Entity
+        from .e_book_install_summary import EBookInstallSummary
         from .ios_vpp_e_book import IosVppEBook
         from .managed_e_book_assignment import ManagedEBookAssignment
         from .mime_content import MimeContent
         from .user_install_state_summary import UserInstallStateSummary
 
         from .device_install_state import DeviceInstallState
-        from .e_book_install_summary import EBookInstallSummary
         from .entity import Entity
+        from .e_book_install_summary import EBookInstallSummary
         from .ios_vpp_e_book import IosVppEBook
         from .managed_e_book_assignment import ManagedEBookAssignment
         from .mime_content import MimeContent

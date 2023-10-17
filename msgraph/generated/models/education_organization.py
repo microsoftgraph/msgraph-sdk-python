@@ -21,7 +21,7 @@ class EducationOrganization(Entity):
     # The name of the external source this resource was generated from.
     external_source_detail: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationOrganization:

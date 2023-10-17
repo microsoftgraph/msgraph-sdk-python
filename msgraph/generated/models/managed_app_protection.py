@@ -24,7 +24,7 @@ class ManagedAppProtection(ManagedAppPolicy):
     Policy used to configure detailed management settings for a specified set of apps
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.managedAppProtection"
+    OdataType: Optional[str] = "#microsoft.graph.managedAppProtection"
     # Data storage locations where a user may store managed data.
     allowed_data_storage_locations: Optional[List[ManagedAppDataStorageLocation]] = None
     # Data can be transferred from/to these classes of apps

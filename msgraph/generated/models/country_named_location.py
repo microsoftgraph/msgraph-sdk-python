@@ -18,7 +18,7 @@ class CountryNamedLocation(NamedLocation):
     # true if IP addresses that don't map to a country or region should be included in the named location. Optional. Default value is false.
     include_unknown_countries_and_regions: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CountryNamedLocation:

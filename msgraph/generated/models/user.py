@@ -32,7 +32,6 @@ if TYPE_CHECKING:
     from .managed_app_registration import ManagedAppRegistration
     from .managed_device import ManagedDevice
     from .message import Message
-    from .o_auth2_permission_grant import OAuth2PermissionGrant
     from .object_identity import ObjectIdentity
     from .office_graph_insights import OfficeGraphInsights
     from .onenote import Onenote
@@ -40,6 +39,7 @@ if TYPE_CHECKING:
     from .on_premises_extension_attributes import OnPremisesExtensionAttributes
     from .on_premises_provisioning_error import OnPremisesProvisioningError
     from .outlook_user import OutlookUser
+    from .o_auth2_permission_grant import OAuth2PermissionGrant
     from .password_profile import PasswordProfile
     from .person import Person
     from .planner_user import PlannerUser
@@ -62,7 +62,7 @@ from .directory_object import DirectoryObject
 @dataclass
 class User(DirectoryObject):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.user"
+    OdataType: Optional[str] = "#microsoft.graph.user"
     # A freeform text entry field for the user to describe themselves. Returned only on $select.
     about_me: Optional[str] = None
     # true if the account is enabled; otherwise, false. This property is required when a user is created. Returned only on $select. Supports $filter (eq, ne, not, and in).
@@ -271,7 +271,7 @@ class User(DirectoryObject):
     provisioned_plans: Optional[List[ProvisionedPlan]] = None
     # For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property will also update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address while those prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of 10 unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
     proxy_addresses: Optional[List[str]] = None
-    # Devices that are registered for the user. Read-only. Nullable. Supports $expand.
+    # Devices that are registered for the user. Read-only. Nullable. Supports $expand and returns up to 100 objects.
     registered_devices: Optional[List[DirectoryObject]] = None
     # A list for the user to enumerate their responsibilities. Returned only on $select.
     responsibilities: Optional[List[str]] = None
@@ -355,7 +355,6 @@ class User(DirectoryObject):
         from .managed_app_registration import ManagedAppRegistration
         from .managed_device import ManagedDevice
         from .message import Message
-        from .o_auth2_permission_grant import OAuth2PermissionGrant
         from .object_identity import ObjectIdentity
         from .office_graph_insights import OfficeGraphInsights
         from .onenote import Onenote
@@ -363,6 +362,7 @@ class User(DirectoryObject):
         from .on_premises_extension_attributes import OnPremisesExtensionAttributes
         from .on_premises_provisioning_error import OnPremisesProvisioningError
         from .outlook_user import OutlookUser
+        from .o_auth2_permission_grant import OAuth2PermissionGrant
         from .password_profile import PasswordProfile
         from .person import Person
         from .planner_user import PlannerUser
@@ -407,7 +407,6 @@ class User(DirectoryObject):
         from .managed_app_registration import ManagedAppRegistration
         from .managed_device import ManagedDevice
         from .message import Message
-        from .o_auth2_permission_grant import OAuth2PermissionGrant
         from .object_identity import ObjectIdentity
         from .office_graph_insights import OfficeGraphInsights
         from .onenote import Onenote
@@ -415,6 +414,7 @@ class User(DirectoryObject):
         from .on_premises_extension_attributes import OnPremisesExtensionAttributes
         from .on_premises_provisioning_error import OnPremisesProvisioningError
         from .outlook_user import OutlookUser
+        from .o_auth2_permission_grant import OAuth2PermissionGrant
         from .password_profile import PasswordProfile
         from .person import Person
         from .planner_user import PlannerUser

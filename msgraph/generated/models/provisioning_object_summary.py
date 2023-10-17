@@ -34,7 +34,7 @@ class ProvisioningObjectSummary(Entity):
     # Details of each property that was modified in this provisioning action on this object.
     modified_properties: Optional[List[ModifiedProperty]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Indicates the activity name or the operation name. Possible values are: create, update, delete, stageddelete, disable, other and unknownFutureValue. For a list of activities logged, refer to Azure AD activity list. Supports $filter (eq, contains).
     provisioning_action: Optional[ProvisioningAction] = None
     # Details of provisioning status.

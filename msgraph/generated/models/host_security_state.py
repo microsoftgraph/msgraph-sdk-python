@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 @dataclass
 class HostSecurityState(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -23,7 +23,7 @@ class HostSecurityState(AdditionalDataHolder, BackedModel, Parsable):
     net_bios_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Host Operating System. (For example, Windows10, MacOS, RHEL, etc.).
+    # Host Operating System. (For example, Windows 10, macOS, RHEL, etc.).
     os: Optional[str] = None
     # Private (not routable) IPv4 or IPv6 address (see RFC 1918) at the time of the alert.
     private_ip_address: Optional[str] = None

@@ -23,7 +23,7 @@ class Schedule(Entity):
     # Indicates whether the schedule is enabled for the team. Required.
     enabled: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The offer requests for shifts in the schedule.
     offer_shift_requests: Optional[List[OfferShiftRequest]] = None
     # Indicates whether offer shift requests are enabled for the schedule.

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models.o_data_errors.o_data_error import ODataError
     from ..models.organization import Organization
     from ..models.organization_collection_response import OrganizationCollectionResponse
+    from ..models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
     from .delta.delta_request_builder import DeltaRequestBuilder
     from .get_available_extension_properties.get_available_extension_properties_request_builder import GetAvailableExtensionPropertiesRequestBuilder

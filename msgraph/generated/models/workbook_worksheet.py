@@ -22,7 +22,7 @@ class WorkbookWorksheet(Entity):
     # Returns collection of names that are associated with the worksheet. Read-only.
     names: Optional[List[WorkbookNamedItem]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Collection of PivotTables that are part of the worksheet.
     pivot_tables: Optional[List[WorkbookPivotTable]] = None
     # The zero-based position of the worksheet within the workbook.

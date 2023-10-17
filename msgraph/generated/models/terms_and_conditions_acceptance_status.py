@@ -20,7 +20,7 @@ class TermsAndConditionsAcceptanceStatus(Entity):
     # Most recent version number of the T&C accepted by the user.
     accepted_version: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Navigation link to the terms and conditions that are assigned.
     terms_and_conditions: Optional[TermsAndConditions] = None
     # Display name of the user whose acceptance the entity represents.

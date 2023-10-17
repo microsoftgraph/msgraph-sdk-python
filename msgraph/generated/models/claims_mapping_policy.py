@@ -11,7 +11,7 @@ from .sts_policy import StsPolicy
 @dataclass
 class ClaimsMappingPolicy(StsPolicy):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.claimsMappingPolicy"
+    OdataType: Optional[str] = "#microsoft.graph.claimsMappingPolicy"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ClaimsMappingPolicy:

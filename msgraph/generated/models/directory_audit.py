@@ -30,7 +30,7 @@ class DirectoryAudit(Entity):
     # Indicates information on which service initiated the activity (For example: Self-service Password Management, Core Directory, B2C, Invited Users, Microsoft Identity Manager, Privileged Identity Management. Supports $filter (eq).
     logged_by_service: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Indicates the type of operation that was performed. The possible values include but are not limited to the following: Add, Assign, Update, Unassign, and Delete.
     operation_type: Optional[str] = None
     # Indicates the result of the activity. Possible values are: success, failure, timeout, unknownFutureValue.

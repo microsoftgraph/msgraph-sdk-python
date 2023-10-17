@@ -16,7 +16,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class KubernetesServiceEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.kubernetesServiceEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.kubernetesServiceEvidence"
     # The service cluster IP.
     cluster_i_p: Optional[IpEvidence] = None
     # The service external IPs.

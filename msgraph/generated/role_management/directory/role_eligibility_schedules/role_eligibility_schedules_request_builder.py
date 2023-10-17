@@ -58,7 +58,7 @@ class RoleEligibilitySchedulesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RoleEligibilitySchedulesRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleEligibilityScheduleCollectionResponse]:
         """
-        Get the unifiedRoleEligibilitySchedule resources from the roleEligibilitySchedules navigation property.
+        Get the unifiedRoleEligibilitySchedule resources from the roleEligibilitySchedules navigation property. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleEligibilityScheduleCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/rbacapplication-list-roleeligibilityschedules?view=graph-rest-1.0
@@ -104,7 +104,7 @@ class RoleEligibilitySchedulesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RoleEligibilitySchedulesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the unifiedRoleEligibilitySchedule resources from the roleEligibilitySchedules navigation property.
+        Get the unifiedRoleEligibilitySchedule resources from the roleEligibilitySchedules navigation property. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -161,7 +161,7 @@ class RoleEligibilitySchedulesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleEligibilitySchedulesRequestBuilderGetQueryParameters():
         """
-        Get the unifiedRoleEligibilitySchedule resources from the roleEligibilitySchedules navigation property.
+        Get the unifiedRoleEligibilitySchedule resources from the roleEligibilitySchedules navigation property. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

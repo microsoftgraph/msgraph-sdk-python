@@ -19,7 +19,7 @@ class AccessReviewHistoryInstance(Entity):
     # Timestamp when all of the available data for this instance was collected and is set after this instance's status is set to done. Required.
     fulfilled_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Timestamp reviews ending on or before this date will be included in the fetched history data.
     review_history_period_end_date_time: Optional[datetime.datetime] = None
     # Timestamp reviews starting on or after this date will be included in the fetched history data.

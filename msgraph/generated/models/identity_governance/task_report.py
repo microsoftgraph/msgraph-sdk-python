@@ -22,7 +22,7 @@ class TaskReport(Entity):
     # The date and time that the task report was last updated.
     last_updated_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The processingStatus property
     processing_status: Optional[LifecycleWorkflowProcessingStatus] = None
     # The unique identifier of the associated run.

@@ -21,7 +21,7 @@ class BaseItemVersion(Entity):
     # Date and time the version was last modified. Read-only.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Indicates the publication status of this particular version. Read-only.
     publication: Optional[PublicationFacet] = None
     

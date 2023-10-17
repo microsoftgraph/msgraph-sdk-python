@@ -25,7 +25,7 @@ class LearningAssignment(LearningCourseActivity):
     # Notes for the course activity. Optional.
     notes: Optional[ItemBody] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LearningAssignment:

@@ -44,7 +44,7 @@ class ConnectorsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ConnectorsRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintConnectorCollectionResponse]:
         """
-        Retrieve a list of printConnectors associated with the printer.
+        Retrieve a list of printConnectors associated with the printer. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintConnectorCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/printer-list-connectors?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class ConnectorsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ConnectorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of printConnectors associated with the printer.
+        Retrieve a list of printConnectors associated with the printer. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +103,7 @@ class ConnectorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConnectorsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of printConnectors associated with the printer.
+        Retrieve a list of printConnectors associated with the printer. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

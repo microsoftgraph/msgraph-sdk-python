@@ -17,7 +17,7 @@ class LinkedResource(Entity):
     # ID of the object that is associated with this task on the third-party/partner system.
     external_id: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Deep link to the linkedResource.
     web_url: Optional[str] = None
     

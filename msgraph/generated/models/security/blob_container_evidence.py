@@ -12,7 +12,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class BlobContainerEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.blobContainerEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.blobContainerEvidence"
     # The name of the blob container.
     name: Optional[str] = None
     # The storage which the blob container belongs to.

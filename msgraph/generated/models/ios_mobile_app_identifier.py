@@ -14,7 +14,7 @@ class IosMobileAppIdentifier(MobileAppIdentifier):
     The identifier for an iOS app.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.iosMobileAppIdentifier"
+    OdataType: Optional[str] = "#microsoft.graph.iosMobileAppIdentifier"
     # The identifier for an app, as specified in the app store.
     bundle_id: Optional[str] = None
     

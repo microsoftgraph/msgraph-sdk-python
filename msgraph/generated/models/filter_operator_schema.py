@@ -18,7 +18,7 @@ class FilterOperatorSchema(Entity):
     # The multivaluedComparisonType property
     multivalued_comparison_type: Optional[ScopeOperatorMultiValuedComparisonType] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Attribute types supported by the operator. Possible values are: Boolean, Binary, Reference, Integer, String.
     supported_attribute_types: Optional[List[AttributeType]] = None
     

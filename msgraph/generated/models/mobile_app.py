@@ -67,7 +67,7 @@ class MobileApp(Entity):
     # Notes for the app.
     notes: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The owner of the app.
     owner: Optional[str] = None
     # The privacy statement Url.

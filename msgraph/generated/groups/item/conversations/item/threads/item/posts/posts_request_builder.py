@@ -44,7 +44,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PostsRequestBuilderGetRequestConfiguration] = None) -> Optional[PostCollectionResponse]:
         """
-        Get the posts of the specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation.
+        Get the posts of the specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PostCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/conversationthread-list-posts?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PostsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the posts of the specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation.
+        Get the posts of the specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +103,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PostsRequestBuilderGetQueryParameters():
         """
-        Get the posts of the specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation.
+        Get the posts of the specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

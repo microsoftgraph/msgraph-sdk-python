@@ -12,7 +12,7 @@ from .authentication_method import AuthenticationMethod
 @dataclass
 class TemporaryAccessPassAuthenticationMethod(AuthenticationMethod):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.temporaryAccessPassAuthenticationMethod"
+    OdataType: Optional[str] = "#microsoft.graph.temporaryAccessPassAuthenticationMethod"
     # The date and time when the Temporary Access Pass was created.
     created_date_time: Optional[datetime.datetime] = None
     # The state of the authentication method that indicates whether it's currently usable by the user.

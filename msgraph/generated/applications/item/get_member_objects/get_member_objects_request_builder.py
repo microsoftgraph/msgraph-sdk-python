@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from .get_member_objects_post_request_body import GetMemberObjectsPostRequestBody
-    from .get_member_objects_response import GetMemberObjectsResponse
+    from .get_member_objects_post_response import GetMemberObjectsPostResponse
 
 class GetMemberObjectsRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class GetMemberObjectsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/applications/{application%2Did}/getMemberObjects", path_parameters)
     
-    async def post(self,body: Optional[GetMemberObjectsPostRequestBody] = None, request_configuration: Optional[GetMemberObjectsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetMemberObjectsResponse]:
+    async def post(self,body: Optional[GetMemberObjectsPostRequestBody] = None, request_configuration: Optional[GetMemberObjectsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetMemberObjectsPostResponse]:
         """
-        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. Note: Only users and role-enabled groups can be members of directory roles.
+        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. Note: Only users and role-enabled groups can be members of directory roles. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetMemberObjectsResponse]
+        Returns: Optional[GetMemberObjectsPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/directoryobject-getmemberobjects?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class GetMemberObjectsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_member_objects_response import GetMemberObjectsResponse
+        from .get_member_objects_post_response import GetMemberObjectsPostResponse
 
-        return await self.request_adapter.send_async(request_info, GetMemberObjectsResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetMemberObjectsPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[GetMemberObjectsPostRequestBody] = None, request_configuration: Optional[GetMemberObjectsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. Note: Only users and role-enabled groups can be members of directory roles.
+        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. Note: Only users and role-enabled groups can be members of directory roles. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

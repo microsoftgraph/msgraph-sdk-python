@@ -17,7 +17,7 @@ class UserExperienceAnalyticsOverview(Entity):
     # The user experience analytics insights. Read-only.
     insights: Optional[List[UserExperienceAnalyticsInsight]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserExperienceAnalyticsOverview:

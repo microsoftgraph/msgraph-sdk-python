@@ -32,7 +32,7 @@ class WorkbookChart(Entity):
     # Represents the name of a chart object.
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Represents either a single series or collection of series in the chart. Read-only.
     series: Optional[List[WorkbookChartSeries]] = None
     # Represents the title of the specified chart, including the text, visibility, position and formating of the title. Read-only.

@@ -48,7 +48,7 @@ class UserExperienceAnalyticsDevicePerformance(Entity):
     # The user experience analytics model level startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
     model_startup_performance_score: Optional[float] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The user experience analytics device Operating System version.
     operating_system_version: Optional[str] = None
     # The user experience analytics responsive desktop time in milliseconds.

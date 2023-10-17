@@ -11,7 +11,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class MailClusterEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.mailClusterEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.mailClusterEvidence"
     # The clustering logic of the emails inside the cluster.
     cluster_by: Optional[str] = None
     # The value utilized to cluster the similar emails.

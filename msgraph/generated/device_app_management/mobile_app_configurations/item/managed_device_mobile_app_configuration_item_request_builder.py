@@ -180,15 +180,6 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
         return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_statuses(self) -> DeviceStatusesRequestBuilder:
-        """
-        Provides operations to manage the deviceStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
-        """
-        from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
-
-        return DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def device_status_summary(self) -> DeviceStatusSummaryRequestBuilder:
         """
         Provides operations to manage the deviceStatusSummary property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
@@ -198,13 +189,13 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
         return DeviceStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user_statuses(self) -> UserStatusesRequestBuilder:
+    def device_statuses(self) -> DeviceStatusesRequestBuilder:
         """
-        Provides operations to manage the userStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
+        Provides operations to manage the deviceStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         """
-        from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
+        from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
 
-        return UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def user_status_summary(self) -> UserStatusSummaryRequestBuilder:
@@ -214,6 +205,15 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
         from .user_status_summary.user_status_summary_request_builder import UserStatusSummaryRequestBuilder
 
         return UserStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def user_statuses(self) -> UserStatusesRequestBuilder:
+        """
+        Provides operations to manage the userStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
+        """
+        from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
+
+        return UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

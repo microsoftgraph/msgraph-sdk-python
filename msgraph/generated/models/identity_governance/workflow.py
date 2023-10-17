@@ -16,7 +16,7 @@ from .workflow_base import WorkflowBase
 @dataclass
 class Workflow(WorkflowBase):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.identityGovernance.workflow"
+    OdataType: Optional[str] = "#microsoft.graph.identityGovernance.workflow"
     # When the workflow was deleted.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
     deleted_date_time: Optional[datetime.datetime] = None
     # The unique identifier of the Azure AD identity that last modified the workflow object.

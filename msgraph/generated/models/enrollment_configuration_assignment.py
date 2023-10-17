@@ -15,7 +15,7 @@ class EnrollmentConfigurationAssignment(Entity):
     Enrollment Configuration Assignment
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Represents an assignment to managed devices in the tenant
     target: Optional[DeviceAndAppManagementAssignmentTarget] = None
     

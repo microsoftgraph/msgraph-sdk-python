@@ -19,7 +19,7 @@ class MobileAppAssignment(Entity):
     # Possible values for the install intent chosen by the admin.
     intent: Optional[InstallIntent] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The settings for target assignment defined by the admin.
     settings: Optional[MobileAppAssignmentSettings] = None
     # The target group assignment defined by the admin.

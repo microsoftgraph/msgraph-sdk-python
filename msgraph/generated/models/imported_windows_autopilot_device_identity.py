@@ -23,7 +23,7 @@ class ImportedWindowsAutopilotDeviceIdentity(Entity):
     # The Import Id of the Windows autopilot device.
     import_id: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Product Key of the Windows autopilot device.
     product_key: Optional[str] = None
     # Serial number of the Windows autopilot device.

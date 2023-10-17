@@ -21,7 +21,7 @@ class LifecycleWorkflowsContainer(Entity):
     # Deleted workflows in your lifecycle workflows instance.
     deleted_items: Optional[DeletedItemContainer] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The settings property
     settings: Optional[LifecycleManagementSettings] = None
     # The definition of tasks within the lifecycle workflows instance.

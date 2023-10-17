@@ -19,7 +19,7 @@ class ManagedAppOperation(Entity):
     # The last time the app operation was modified.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The current state of the operation
     state: Optional[str] = None
     # Version of the entity.

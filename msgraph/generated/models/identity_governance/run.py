@@ -24,7 +24,7 @@ class Run(Entity):
     # The datetime that the run was last updated.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
     last_updated_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The processingStatus property
     processing_status: Optional[LifecycleWorkflowProcessingStatus] = None
     # The date time that the run is scheduled to be executed for a workflow.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.

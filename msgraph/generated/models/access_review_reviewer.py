@@ -16,7 +16,7 @@ class AccessReviewReviewer(Entity):
     # Name of reviewer.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # User principal name of the reviewer.
     user_principal_name: Optional[str] = None
     

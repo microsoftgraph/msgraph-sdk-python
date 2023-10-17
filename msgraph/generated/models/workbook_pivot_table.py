@@ -14,7 +14,7 @@ class WorkbookPivotTable(Entity):
     # Name of the PivotTable.
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The worksheet containing the current PivotTable. Read-only.
     worksheet: Optional[WorkbookWorksheet] = None
     

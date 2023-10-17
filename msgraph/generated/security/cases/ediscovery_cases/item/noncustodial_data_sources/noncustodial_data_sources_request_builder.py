@@ -68,7 +68,7 @@ class NoncustodialDataSourcesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[EdiscoveryNoncustodialDataSource] = None, request_configuration: Optional[NoncustodialDataSourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[EdiscoveryNoncustodialDataSource]:
         """
-        Create a new ediscoveryNoncustodialDataSource object.
+        Create a new ediscoveryNoncustodialDataSource object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryNoncustodialDataSource]
@@ -110,7 +110,7 @@ class NoncustodialDataSourcesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[EdiscoveryNoncustodialDataSource] = None, request_configuration: Optional[NoncustodialDataSourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new ediscoveryNoncustodialDataSource object.
+        Create a new ediscoveryNoncustodialDataSource object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

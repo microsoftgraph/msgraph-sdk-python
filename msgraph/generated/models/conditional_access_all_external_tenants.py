@@ -11,7 +11,7 @@ from .conditional_access_external_tenants import ConditionalAccessExternalTenant
 @dataclass
 class ConditionalAccessAllExternalTenants(ConditionalAccessExternalTenants):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.conditionalAccessAllExternalTenants"
+    OdataType: Optional[str] = "#microsoft.graph.conditionalAccessAllExternalTenants"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessAllExternalTenants:

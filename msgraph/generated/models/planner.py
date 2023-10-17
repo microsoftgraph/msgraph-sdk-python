@@ -16,7 +16,7 @@ class Planner(Entity):
     # Read-only. Nullable. Returns a collection of the specified buckets
     buckets: Optional[List[PlannerBucket]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Read-only. Nullable. Returns a collection of the specified plans
     plans: Optional[List[PlannerPlan]] = None
     # Read-only. Nullable. Returns a collection of the specified tasks

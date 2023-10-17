@@ -40,7 +40,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[MessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete eventMessage.
+        Delete eventMessage. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/eventmessage-delete?view=graph-rest-1.0
@@ -82,7 +82,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Message]:
         """
-        Update the properties of an eventMessage object.
+        Update the properties of an eventMessage object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Message]
@@ -107,7 +107,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[MessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete eventMessage.
+        Delete eventMessage. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +139,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an eventMessage object.
+        Update the properties of an eventMessage object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

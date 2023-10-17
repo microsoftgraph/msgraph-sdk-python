@@ -13,7 +13,7 @@ from .policy_base import PolicyBase
 @dataclass
 class CrossTenantAccessPolicy(PolicyBase):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.crossTenantAccessPolicy"
+    OdataType: Optional[str] = "#microsoft.graph.crossTenantAccessPolicy"
     # Used to specify which Microsoft clouds an organization would like to collaborate with. By default, this value is empty. Supported values for this field are: microsoftonline.com, microsoftonline.us, and partner.microsoftonline.cn.
     allowed_cloud_endpoints: Optional[List[str]] = None
     # Defines the default configuration for how your organization interacts with external Azure Active Directory organizations.

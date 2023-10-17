@@ -45,7 +45,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AttendanceReportsRequestBuilderGetRequestConfiguration] = None) -> Optional[MeetingAttendanceReportCollectionResponse]:
         """
-        Get a list of meetingAttendanceReport objects for an onlineMeeting. Each time an online meeting ends, an attendance report is generated for that session.
+        Get a list of meetingAttendanceReport objects for an onlineMeeting. Each time an online meeting ends, an attendance report is generated for that session. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MeetingAttendanceReportCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/meetingattendancereport-list?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AttendanceReportsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of meetingAttendanceReport objects for an onlineMeeting. Each time an online meeting ends, an attendance report is generated for that session.
+        Get a list of meetingAttendanceReport objects for an onlineMeeting. Each time an online meeting ends, an attendance report is generated for that session. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttendanceReportsRequestBuilderGetQueryParameters():
         """
-        Get a list of meetingAttendanceReport objects for an onlineMeeting. Each time an online meeting ends, an attendance report is generated for that session.
+        Get a list of meetingAttendanceReport objects for an onlineMeeting. Each time an online meeting ends, an attendance report is generated for that session. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -13,7 +13,7 @@ from .change_tracked_entity import ChangeTrackedEntity
 @dataclass
 class WorkforceIntegration(ChangeTrackedEntity):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.workforceIntegration"
+    OdataType: Optional[str] = "#microsoft.graph.workforceIntegration"
     # API version for the call back URL. Start with 1.
     api_version: Optional[int] = None
     # Name of the workforce integration.

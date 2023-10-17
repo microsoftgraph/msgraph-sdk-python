@@ -12,7 +12,7 @@ from .entity import Entity
 @dataclass
 class DeletedItemContainer(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Deleted workflows that end up in the deletedItemsContainer.
     workflows: Optional[List[Workflow]] = None
     

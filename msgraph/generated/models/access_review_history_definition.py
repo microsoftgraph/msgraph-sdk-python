@@ -28,7 +28,7 @@ class AccessReviewHistoryDefinition(Entity):
     # If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that doesn't recur will have exactly one instance.
     instances: Optional[List[AccessReviewHistoryInstance]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A timestamp. Reviews ending on or before this date will be included in the fetched history data. Only required if scheduleSettings isn't defined.
     review_history_period_end_date_time: Optional[datetime.datetime] = None
     # A timestamp. Reviews starting on or before this date will be included in the fetched history data. Only required if scheduleSettings isn't defined.

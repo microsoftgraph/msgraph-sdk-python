@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models.o_data_errors.o_data_error import ODataError
-    from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_response import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalResponse
+    from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_get_response import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalGetResponse
 
 class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(BaseRequestBuilder):
     """
@@ -27,13 +27,17 @@ class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequest
         param start_date_time: Usage: startDateTime='{startDateTime}'
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['end_date_time'] = str(end_date_time)
+            path_parameters['interval'] = str(interval)
+            path_parameters['start_date_time'] = str(start_date_time)
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}/items/{listItem%2Did}/getActivitiesByInterval(startDateTime='{startDateTime}',endDateTime='{endDateTime}',interval='{interval}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilderGetRequestConfiguration] = None) -> Optional[GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalResponse]:
+    async def get(self,request_configuration: Optional[GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilderGetRequestConfiguration] = None) -> Optional[GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalGetResponse]:
         """
         Invoke function getActivitiesByInterval
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalResponse]
+        Returns: Optional[GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -46,9 +50,9 @@ class GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequest
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_response import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalResponse
+        from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_get_response import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

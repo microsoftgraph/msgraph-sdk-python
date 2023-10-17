@@ -45,7 +45,7 @@ class SharedWithTeamsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SharedWithTeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[SharedWithChannelTeamInfoCollectionResponse]:
         """
-        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a membershipType value of shared.
+        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a membershipType value of shared. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharedWithChannelTeamInfoCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/sharedwithchannelteaminfo-list?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class SharedWithTeamsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SharedWithTeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a membershipType value of shared.
+        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a membershipType value of shared. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class SharedWithTeamsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SharedWithTeamsRequestBuilderGetQueryParameters():
         """
-        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a membershipType value of shared.
+        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a membershipType value of shared. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

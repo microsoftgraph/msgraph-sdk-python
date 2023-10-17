@@ -20,7 +20,7 @@ from .entity import Entity
 
 @dataclass
 class SignIn(Entity):
-    # App name displayed in the Azure portal.  Supports $filter (eq, startsWith).
+    # App name displayed in the Microsoft Entra admin center.  Supports $filter (eq, startsWith).
     app_display_name: Optional[str] = None
     # Unique GUID representing the app ID in the Azure Active Directory.  Supports $filter (eq).
     app_id: Optional[str] = None
@@ -43,7 +43,7 @@ class SignIn(Entity):
     # Provides the city, state, and country code where the sign-in originated.  Supports $filter (eq, startsWith) on city, state, and countryOrRegion properties.
     location: Optional[SignInLocation] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Name of the resource the user signed into.  Supports $filter (eq).
     resource_display_name: Optional[str] = None
     # ID of the resource that the user signed into.  Supports $filter (eq).

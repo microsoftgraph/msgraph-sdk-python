@@ -11,7 +11,7 @@ from .search import Search
 @dataclass
 class EdiscoveryReviewSetQuery(Search):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.ediscoveryReviewSetQuery"
+    OdataType: Optional[str] = "#microsoft.graph.security.ediscoveryReviewSetQuery"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryReviewSetQuery:

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models.o_data_errors.o_data_error import ODataError
     from ...models.organization import Organization
+    from ...models.o_data_errors.o_data_error import ODataError
     from .branding.branding_request_builder import BrandingRequestBuilder
     from .certificate_based_auth_configuration.certificate_based_auth_configuration_request_builder import CertificateBasedAuthConfigurationRequestBuilder
     from .check_member_groups.check_member_groups_request_builder import CheckMemberGroupsRequestBuilder
@@ -78,11 +78,11 @@ class OrganizationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Organization] = None, request_configuration: Optional[OrganizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Organization]:
         """
-        Update the properties of a organization object.
+        Update the properties of the currently authenticated organization. In this case, organization is defined as a collection of exactly one record, and so its ID must be specified in the request.  The ID is also known as the tenantId of the organization. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Organization]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-organization-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/organization-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -135,7 +135,7 @@ class OrganizationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Organization] = None, request_configuration: Optional[OrganizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a organization object.
+        Update the properties of the currently authenticated organization. In this case, organization is defined as a collection of exactly one record, and so its ID must be specified in the request.  The ID is also known as the tenantId of the organization. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

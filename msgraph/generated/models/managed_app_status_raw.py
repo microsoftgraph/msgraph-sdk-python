@@ -15,7 +15,7 @@ class ManagedAppStatusRaw(ManagedAppStatus):
     Represents an un-typed status report about organizations app protection and configuration.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.managedAppStatusRaw"
+    OdataType: Optional[str] = "#microsoft.graph.managedAppStatusRaw"
     # Status report content.
     content: Optional[Json] = None
     

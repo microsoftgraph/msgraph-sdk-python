@@ -28,7 +28,7 @@ class MobileAppContentFile(Entity):
     # the file name.
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The size of the file prior to encryption.
     size: Optional[int] = None
     # The size of the file after encryption.

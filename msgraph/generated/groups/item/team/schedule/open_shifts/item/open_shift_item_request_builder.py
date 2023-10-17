@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models.o_data_errors.o_data_error import ODataError
     from .......models.open_shift import OpenShift
+    from .......models.o_data_errors.o_data_error import ODataError
 
 class OpenShiftItemRequestBuilder(BaseRequestBuilder):
     """
@@ -28,7 +28,7 @@ class OpenShiftItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[OpenShiftItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an openShift object.
+        Delete an openShift object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/openshift-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class OpenShiftItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OpenShiftItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OpenShift]:
         """
-        Retrieve the properties and relationships of an openshift object.
+        Retrieve the properties and relationships of an openshift object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OpenShift]
         Find more info here: https://learn.microsoft.com/graph/api/openshift-get?view=graph-rest-1.0
@@ -95,7 +95,7 @@ class OpenShiftItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[OpenShiftItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an openShift object.
+        Delete an openShift object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class OpenShiftItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OpenShiftItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an openshift object.
+        Retrieve the properties and relationships of an openshift object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -168,7 +168,7 @@ class OpenShiftItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OpenShiftItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an openshift object.
+        Retrieve the properties and relationships of an openshift object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

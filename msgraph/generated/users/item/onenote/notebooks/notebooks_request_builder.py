@@ -47,7 +47,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[NotebooksRequestBuilderGetRequestConfiguration] = None) -> Optional[NotebookCollectionResponse]:
         """
-        Retrieve a list of notebook objects.
+        Retrieve a list of notebook objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[NotebookCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/onenote-list-notebooks?view=graph-rest-1.0
@@ -81,7 +81,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Notebook] = None, request_configuration: Optional[NotebooksRequestBuilderPostRequestConfiguration] = None) -> Optional[Notebook]:
         """
-        Create a new OneNote notebook.
+        Create a new OneNote notebook. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Notebook]
@@ -106,7 +106,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[NotebooksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of notebook objects.
+        Retrieve a list of notebook objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -123,7 +123,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Notebook] = None, request_configuration: Optional[NotebooksRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new OneNote notebook.
+        Create a new OneNote notebook. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -172,7 +172,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
     @dataclass
     class NotebooksRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of notebook objects.
+        Retrieve a list of notebook objects. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

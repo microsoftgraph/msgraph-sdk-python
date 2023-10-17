@@ -29,7 +29,7 @@ class UpdateRecordingStatusRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[UpdateRecordingStatusPostRequestBody] = None, request_configuration: Optional[UpdateRecordingStatusRequestBuilderPostRequestConfiguration] = None) -> Optional[UpdateRecordingStatusOperation]:
         """
-        Update the application's recording status associated with a call. This requires the use of the Teams policy-based recording solution.
+        Update the application's recording status associated with a call. This requires the use of the Teams policy-based recording solution. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UpdateRecordingStatusOperation]
@@ -54,7 +54,7 @@ class UpdateRecordingStatusRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[UpdateRecordingStatusPostRequestBody] = None, request_configuration: Optional[UpdateRecordingStatusRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the application's recording status associated with a call. This requires the use of the Teams policy-based recording solution.
+        Update the application's recording status associated with a call. This requires the use of the Teams policy-based recording solution. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

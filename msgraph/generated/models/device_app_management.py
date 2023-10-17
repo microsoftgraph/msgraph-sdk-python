@@ -59,7 +59,7 @@ class DeviceAppManagement(Entity):
     # The mobile apps.
     mobile_apps: Optional[List[MobileApp]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Targeted managed app configurations.
     targeted_managed_app_configurations: Optional[List[TargetedManagedAppConfiguration]] = None
     # List of Vpp tokens for this organization.

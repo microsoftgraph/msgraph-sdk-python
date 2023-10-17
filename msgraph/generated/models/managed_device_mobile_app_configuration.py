@@ -35,7 +35,7 @@ class ManagedDeviceMobileAppConfiguration(Entity):
     # DateTime the object was last modified.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # the associated app.
     targeted_mobile_apps: Optional[List[str]] = None
     # App configuration user status summary.

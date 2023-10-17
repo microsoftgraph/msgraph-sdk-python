@@ -15,7 +15,7 @@ class WindowsPhone81CustomConfiguration(DeviceConfiguration):
     This topic provides descriptions of the declared methods, properties and relationships exposed by the windowsPhone81CustomConfiguration resource.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windowsPhone81CustomConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.windowsPhone81CustomConfiguration"
     # OMA settings. This collection can contain a maximum of 1000 elements.
     oma_settings: Optional[List[OmaSetting]] = None
     

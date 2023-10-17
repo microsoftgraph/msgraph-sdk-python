@@ -27,7 +27,7 @@ class NotificationMessageTemplate(Entity):
     # The list of localized messages for this Notification Message Template.
     localized_notification_messages: Optional[List[LocalizedNotificationMessage]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # List of Scope Tags for this Entity instance.
     role_scope_tag_ids: Optional[List[str]] = None
     

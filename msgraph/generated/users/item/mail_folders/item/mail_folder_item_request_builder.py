@@ -14,8 +14,8 @@ if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .child_folders.child_folders_request_builder import ChildFoldersRequestBuilder
     from .copy.copy_request_builder import CopyRequestBuilder
-    from .message_rules.message_rules_request_builder import MessageRulesRequestBuilder
     from .messages.messages_request_builder import MessagesRequestBuilder
+    from .message_rules.message_rules_request_builder import MessageRulesRequestBuilder
     from .move.move_request_builder import MoveRequestBuilder
 
 class MailFolderItemRequestBuilder(BaseRequestBuilder):
@@ -33,7 +33,7 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[MailFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists.
+        Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/mailfolder-delete?view=graph-rest-1.0
@@ -75,7 +75,7 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[MailFolder] = None, request_configuration: Optional[MailFolderItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[MailFolder]:
         """
-        Update the properties of mailfolder object.
+        Update the properties of mailfolder object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolder]
@@ -100,7 +100,7 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[MailFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists.
+        Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -132,7 +132,7 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[MailFolder] = None, request_configuration: Optional[MailFolderItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of mailfolder object.
+        Update the properties of mailfolder object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

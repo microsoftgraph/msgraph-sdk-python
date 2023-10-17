@@ -11,7 +11,7 @@ from .conversation_member import ConversationMember
 @dataclass
 class SkypeForBusinessUserConversationMember(ConversationMember):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.skypeForBusinessUserConversationMember"
+    OdataType: Optional[str] = "#microsoft.graph.skypeForBusinessUserConversationMember"
     # ID of the tenant that the user belongs to.
     tenant_id: Optional[str] = None
     # Azure Active Directory ID of the user.

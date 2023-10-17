@@ -25,7 +25,7 @@ class Case(Entity):
     # The lastModifiedDateTime property
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The status property
     status: Optional[CaseStatus] = None
     

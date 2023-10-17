@@ -27,7 +27,7 @@ class MessageRule(Entity):
     # Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
     is_read_only: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Indicates the order in which the rule is executed, among other rules.
     sequence: Optional[int] = None
     

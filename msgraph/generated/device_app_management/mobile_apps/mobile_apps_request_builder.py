@@ -61,10 +61,10 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MobileAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileAppCollectionResponse]:
         """
-        List properties and relationships of the managedIOSStoreApp objects.
+        List properties and relationships of the windowsMicrosoftEdgeApp objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileAppCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-managediosstoreapp-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-windowsmicrosoftedgeapp-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -108,7 +108,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedIOSStoreApp objects.
+        List properties and relationships of the windowsMicrosoftEdgeApp objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -309,7 +309,7 @@ class MobileAppsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileAppsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedIOSStoreApp objects.
+        List properties and relationships of the windowsMicrosoftEdgeApp objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

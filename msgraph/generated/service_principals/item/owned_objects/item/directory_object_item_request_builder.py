@@ -80,15 +80,6 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
         return DirectoryObjectItemRequestBuilder(self.request_adapter, raw_url)
     
     @property
-    def graph_application(self) -> GraphApplicationRequestBuilder:
-        """
-        Casts the previous resource to application.
-        """
-        from .graph_application.graph_application_request_builder import GraphApplicationRequestBuilder
-
-        return GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def graph_app_role_assignment(self) -> GraphAppRoleAssignmentRequestBuilder:
         """
         Casts the previous resource to appRoleAssignment.
@@ -96,6 +87,15 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
         from .graph_app_role_assignment.graph_app_role_assignment_request_builder import GraphAppRoleAssignmentRequestBuilder
 
         return GraphAppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_application(self) -> GraphApplicationRequestBuilder:
+        """
+        Casts the previous resource to application.
+        """
+        from .graph_application.graph_application_request_builder import GraphApplicationRequestBuilder
+
+        return GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def graph_endpoint(self) -> GraphEndpointRequestBuilder:

@@ -22,7 +22,7 @@ class AppLogCollectionRequest(Entity):
     # Indicates error message if any during the upload process.
     error_message: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # AppLogUploadStatus
     status: Optional[AppLogUploadState] = None
     

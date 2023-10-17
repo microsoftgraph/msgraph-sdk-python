@@ -15,7 +15,7 @@ class MacOSMicrosoftEdgeApp(MobileApp):
     Contains properties and inherited properties for the macOS Microsoft Edge App.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.macOSMicrosoftEdgeApp"
+    OdataType: Optional[str] = "#microsoft.graph.macOSMicrosoftEdgeApp"
     # The enum to specify the channels for Microsoft Edge apps.
     channel: Optional[MicrosoftEdgeChannel] = None
     

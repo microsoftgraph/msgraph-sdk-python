@@ -33,7 +33,7 @@ class ItemActivityStat(Entity):
     # Statistics about the move actions in this interval. Read-only.
     move: Optional[ItemActionStat] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # When the interval starts. Read-only.
     start_date_time: Optional[datetime.datetime] = None
     

@@ -45,7 +45,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AppManagementPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[AppManagementPolicyCollectionResponse]:
         """
-        Retrieve a list of appManagementPolicy objects.
+        Retrieve a list of appManagementPolicy objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppManagementPolicyCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/appmanagementpolicy-list?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[AppManagementPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[AppManagementPolicy]:
         """
-        Create an appManagementPolicy object.
+        Create an appManagementPolicy object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppManagementPolicy]
@@ -92,7 +92,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AppManagementPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of appManagementPolicy objects.
+        Retrieve a list of appManagementPolicy objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[AppManagementPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an appManagementPolicy object.
+        Create an appManagementPolicy object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AppManagementPoliciesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of appManagementPolicy objects.
+        Retrieve a list of appManagementPolicy objects. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

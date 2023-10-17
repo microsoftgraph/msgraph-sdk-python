@@ -28,7 +28,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder(BaseRequestBuild
     
     async def delete(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a users's temporaryAccessPassAuthenticationMethod object.
+        Delete a users's temporaryAccessPassAuthenticationMethod object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/temporaryaccesspassauthenticationmethod-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder(BaseRequestBuild
     
     async def get(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TemporaryAccessPassAuthenticationMethod]:
         """
-        Retrieve a user's single temporaryAccessPassAuthenticationMethod object.
+        Retrieve a user's single temporaryAccessPassAuthenticationMethod object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TemporaryAccessPassAuthenticationMethod]
         Find more info here: https://learn.microsoft.com/graph/api/temporaryaccesspassauthenticationmethod-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder(BaseRequestBuild
     
     def to_delete_request_information(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a users's temporaryAccessPassAuthenticationMethod object.
+        Delete a users's temporaryAccessPassAuthenticationMethod object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -85,7 +85,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder(BaseRequestBuild
     
     def to_get_request_information(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a user's single temporaryAccessPassAuthenticationMethod object.
+        Retrieve a user's single temporaryAccessPassAuthenticationMethod object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -123,7 +123,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder(BaseRequestBuild
     @dataclass
     class TemporaryAccessPassAuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a user's single temporaryAccessPassAuthenticationMethod object.
+        Retrieve a user's single temporaryAccessPassAuthenticationMethod object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -28,7 +28,7 @@ class TaskDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TaskDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TaskDefinition]:
         """
-        Read the details of a built-in workflow task.
+        Read the details of a built-in workflow task. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TaskDefinition]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-taskdefinition-get?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class TaskDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TaskDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the details of a built-in workflow task.
+        Read the details of a built-in workflow task. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -78,7 +78,7 @@ class TaskDefinitionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TaskDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Read the details of a built-in workflow task.
+        Read the details of a built-in workflow task. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

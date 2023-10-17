@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models.o_data_errors.o_data_error import ODataError
     from .......models.open_shift_change_request import OpenShiftChangeRequest
+    from .......models.o_data_errors.o_data_error import ODataError
 
 class OpenShiftChangeRequestItemRequestBuilder(BaseRequestBuilder):
     """
@@ -47,7 +47,7 @@ class OpenShiftChangeRequestItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OpenShiftChangeRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OpenShiftChangeRequest]:
         """
-        Retrieve the properties and relationships of an openShiftChangeRequest object.
+        Retrieve the properties and relationships of an openShiftChangeRequest object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OpenShiftChangeRequest]
         Find more info here: https://learn.microsoft.com/graph/api/openshiftchangerequest-get?view=graph-rest-1.0
@@ -108,7 +108,7 @@ class OpenShiftChangeRequestItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OpenShiftChangeRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an openShiftChangeRequest object.
+        Retrieve the properties and relationships of an openShiftChangeRequest object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -166,7 +166,7 @@ class OpenShiftChangeRequestItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OpenShiftChangeRequestItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an openShiftChangeRequest object.
+        Retrieve the properties and relationships of an openShiftChangeRequest object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

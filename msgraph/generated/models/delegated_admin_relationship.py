@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
     from .delegated_admin_relationship_status import DelegatedAdminRelationshipStatus
     from .entity import Entity
+    from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
 
 from .entity import Entity
 
@@ -36,7 +37,7 @@ class DelegatedAdminRelationship(Entity):
     # The date and time in ISO 8601 format and in UTC time when the relationship was last modified. Read-only.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The long running operations associated with the delegated admin relationship.
     operations: Optional[List[DelegatedAdminRelationshipOperation]] = None
     # The requests associated with the delegated admin relationship.
@@ -53,6 +54,14 @@ class DelegatedAdminRelationship(Entity):
         """
         if not parse_node:
             raise TypeError("parse_node cannot be null.")
+        try:
+            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.resellerDelegatedAdminRelationship".casefold():
+            from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
+
+            return ResellerDelegatedAdminRelationship()
         return DelegatedAdminRelationship()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -67,6 +76,7 @@ class DelegatedAdminRelationship(Entity):
         from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
         from .delegated_admin_relationship_status import DelegatedAdminRelationshipStatus
         from .entity import Entity
+        from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
 
         from .delegated_admin_access_assignment import DelegatedAdminAccessAssignment
         from .delegated_admin_access_details import DelegatedAdminAccessDetails
@@ -75,6 +85,7 @@ class DelegatedAdminRelationship(Entity):
         from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
         from .delegated_admin_relationship_status import DelegatedAdminRelationshipStatus
         from .entity import Entity
+        from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accessAssignments": lambda n : setattr(self, 'access_assignments', n.get_collection_of_object_values(DelegatedAdminAccessAssignment)),

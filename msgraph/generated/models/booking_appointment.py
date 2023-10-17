@@ -25,7 +25,7 @@ class BookingAppointment(Entity):
     anonymous_join_web_url: Optional[str] = None
     # The time zone of the customer. For a list of possible values, see dateTimeTimeZone.
     customer_time_zone: Optional[str] = None
-    # A collection of customer properties for an appointment. An appointment will contain a list of customer information and each unit will indicate the properties of a customer who is part of that appointment. Optional.
+    # A collection of customer properties for an appointment. An appointment contains a list of customer information and each unit will indicate the properties of a customer who is part of that appointment. Optional.
     customers: Optional[List[BookingCustomerInformationBase]] = None
     # The length of the appointment, denoted in ISO8601 format.
     duration: Optional[datetime.timedelta] = None
@@ -40,8 +40,8 @@ class BookingAppointment(Entity):
     # The maximum number of customers allowed in an appointment. If maximumAttendeesCount of the service is greater than 1, pass valid customer IDs while creating or updating an appointment. To create a customer, use the Create bookingCustomer operation.
     maximum_attendees_count: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
-    # If true indicates that the bookingCustomer for this appointment does not wish to receive a confirmation for this appointment.
+    OdataType: Optional[str] = None
+    # If true indicates that the bookingCustomer for this appointment doesn't wish to receive a confirmation for this appointment.
     opt_out_of_customer_email: Optional[bool] = None
     # The amount of time to reserve after the appointment ends, for cleaning up, as an example. The value is expressed in ISO8601 format.
     post_buffer: Optional[datetime.timedelta] = None
@@ -59,7 +59,7 @@ class BookingAppointment(Entity):
     service_id: Optional[str] = None
     # The location where the service is delivered.
     service_location: Optional[Location] = None
-    # The name of the bookingService associated with this appointment.This property is optional when creating a new appointment. If not specified, it is computed from the service associated with the appointment by the serviceId property.
+    # The name of the bookingService associated with this appointment.This property is optional when creating a new appointment. If not specified, it's computed from the service associated with the appointment by the serviceId property.
     service_name: Optional[str] = None
     # Notes from a bookingStaffMember. The value of this property is available only when reading this bookingAppointment by its ID.
     service_notes: Optional[str] = None

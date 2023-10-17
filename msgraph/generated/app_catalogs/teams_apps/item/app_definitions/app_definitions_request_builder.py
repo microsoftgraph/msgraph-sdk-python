@@ -66,7 +66,7 @@ class AppDefinitionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[AppDefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[TeamsAppDefinition]:
         """
-        Update an app previously published to the Microsoft Teams app catalog. To update an app, the distributionMethod property for the app must be set to organization. This API specifically updates an app published to your organization's app catalog (the tenant app catalog).
+        Update an app previously published to the Microsoft Teams app catalog. To update an app, the distributionMethod property for the app must be set to organization. This API specifically updates an app published to your organization's app catalog (the tenant app catalog). This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppDefinition]
@@ -108,7 +108,7 @@ class AppDefinitionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[AppDefinitionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Update an app previously published to the Microsoft Teams app catalog. To update an app, the distributionMethod property for the app must be set to organization. This API specifically updates an app published to your organization's app catalog (the tenant app catalog).
+        Update an app previously published to the Microsoft Teams app catalog. To update an app, the distributionMethod property for the app must be set to organization. This API specifically updates an app published to your organization's app catalog (the tenant app catalog). This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

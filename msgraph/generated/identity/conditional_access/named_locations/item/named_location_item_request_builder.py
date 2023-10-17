@@ -28,10 +28,10 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[NamedLocationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an ipNamedLocation object.
+        Delete a namedLocation object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/ipnamedlocation-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/namedlocation-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +48,10 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[NamedLocationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[NamedLocation]:
         """
-        Retrieve the properties and relationships of an ipNamedLocation object.
+        Retrieve the properties and relationships of a namedLocation object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[NamedLocation]
-        Find more info here: https://learn.microsoft.com/graph/api/ipnamedlocation-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/namedlocation-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,7 +70,7 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[NamedLocation] = None, request_configuration: Optional[NamedLocationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[NamedLocation]:
         """
-        Update the properties of a countryNamedLocation object.
+        Update the properties of a countryNamedLocation object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[NamedLocation]
@@ -95,7 +95,7 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[NamedLocationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an ipNamedLocation object.
+        Delete a namedLocation object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[NamedLocationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an ipNamedLocation object.
+        Retrieve the properties and relationships of a namedLocation object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[NamedLocation] = None, request_configuration: Optional[NamedLocationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a countryNamedLocation object.
+        Update the properties of a countryNamedLocation object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class NamedLocationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class NamedLocationItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an ipNamedLocation object.
+        Retrieve the properties and relationships of a namedLocation object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

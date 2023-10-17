@@ -13,7 +13,7 @@ from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
 @dataclass
 class SectionGroup(OnenoteEntityHierarchyModel):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.sectionGroup"
+    OdataType: Optional[str] = "#microsoft.graph.sectionGroup"
     # The notebook that contains the section group. Read-only.
     parent_notebook: Optional[Notebook] = None
     # The section group that contains the section group. Read-only.

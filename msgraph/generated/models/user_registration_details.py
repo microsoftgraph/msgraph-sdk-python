@@ -15,9 +15,9 @@ from .entity import Entity
 class UserRegistrationDetails(Entity):
     # Indicates whether the user has an admin role in the tenant. This value can be used to check the authentication methods that privileged accounts are registered for and capable of.
     is_admin: Optional[bool] = None
-    # Indicates whether the user has registered a strong authentication method for multi-factor authentication. The method must be allowed by the authentication methods policy. Supports $filter (eq).
+    # Indicates whether the user has registered a strong authentication method for multifactor authentication. The method must be allowed by the authentication methods policy. Supports $filter (eq).
     is_mfa_capable: Optional[bool] = None
-    # Indicates whether the user has registered a strong authentication method for multi-factor authentication. The method may not necessarily be allowed by the authentication methods policy. Supports $filter (eq).
+    # Indicates whether the user has registered a strong authentication method for multifactor authentication. The method may not necessarily be allowed by the authentication methods policy. Supports $filter (eq).
     is_mfa_registered: Optional[bool] = None
     # Indicates whether the user has registered a passwordless strong authentication method (including FIDO2, Windows Hello for Business, and Microsoft Authenticator (Passwordless)) that is allowed by the authentication methods policy. Supports $filter (eq).
     is_passwordless_capable: Optional[bool] = None
@@ -34,12 +34,12 @@ class UserRegistrationDetails(Entity):
     # Collection of authentication methods registered, such as mobilePhone, email, fido2. Supports $filter (any with eq).
     methods_registered: Optional[List[str]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Collection of authentication methods that the system determined to be the most secure authentication methods among the registered methods for second factor authentication. Possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. Supports $filter (any with eq).
     system_preferred_authentication_methods: Optional[List[str]] = None
     # The user display name, such as Adele Vance. Supports $filter (eq, startsWith) and $orderby.
     user_display_name: Optional[str] = None
-    # The method the user selected as the default second-factor for performing multi-factor authentication. Possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. This property is used as preferred MFA method when isSystemPreferredAuthenticationMethodEnabled is false. Supports $filter (any with eq).
+    # The method the user selected as the default second-factor for performing multifactor authentication. Possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. This property is used as preferred MFA method when isSystemPreferredAuthenticationMethodEnabled is false. Supports $filter (any with eq).
     user_preferred_method_for_secondary_authentication: Optional[UserDefaultAuthenticationMethod] = None
     # The user principal name, such as AdeleV@contoso.com. Supports $filter (eq, startsWith) and $orderby.
     user_principal_name: Optional[str] = None

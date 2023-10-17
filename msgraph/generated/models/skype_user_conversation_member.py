@@ -11,7 +11,7 @@ from .conversation_member import ConversationMember
 @dataclass
 class SkypeUserConversationMember(ConversationMember):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.skypeUserConversationMember"
+    OdataType: Optional[str] = "#microsoft.graph.skypeUserConversationMember"
     # Skype ID of the user.
     skype_id: Optional[str] = None
     

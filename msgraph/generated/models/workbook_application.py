@@ -13,7 +13,7 @@ class WorkbookApplication(Entity):
     # Returns the calculation mode used in the workbook. Possible values are: Automatic, AutomaticExceptTables, Manual.
     calculation_mode: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookApplication:

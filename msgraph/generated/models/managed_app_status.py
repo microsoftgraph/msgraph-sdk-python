@@ -17,7 +17,7 @@ class ManagedAppStatus(Entity):
     # Friendly name of the status report.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Version of the entity.
     version: Optional[str] = None
     

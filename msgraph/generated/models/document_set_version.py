@@ -14,7 +14,7 @@ from .list_item_version import ListItemVersion
 @dataclass
 class DocumentSetVersion(ListItemVersion):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.documentSetVersion"
+    OdataType: Optional[str] = "#microsoft.graph.documentSetVersion"
     # Comment about the captured version.
     comment: Optional[str] = None
     # User who captured the version.

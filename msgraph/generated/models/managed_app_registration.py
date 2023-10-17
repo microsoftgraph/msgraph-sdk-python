@@ -43,7 +43,7 @@ class ManagedAppRegistration(Entity):
     # App management SDK version
     management_sdk_version: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Zero or more long running operations triggered on the app registration.
     operations: Optional[List[ManagedAppOperation]] = None
     # Operating System version

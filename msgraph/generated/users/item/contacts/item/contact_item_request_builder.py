@@ -30,7 +30,7 @@ class ContactItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ContactItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a contact.
+        Delete a contact. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/contact-delete?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class ContactItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ContactItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Contact]:
         """
-        Retrieve the properties and relationships of a contact object. There are two scenarios where an app can get a contact in another user's contact folder:
+        Retrieve the properties and relationships of a contact object. There are two scenarios where an app can get a contact in another user's contact folder: This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Contact]
         Find more info here: https://learn.microsoft.com/graph/api/contact-get?view=graph-rest-1.0
@@ -72,7 +72,7 @@ class ContactItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Contact] = None, request_configuration: Optional[ContactItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Contact]:
         """
-        Update the properties of a contact object.
+        Update the properties of a contact object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Contact]
@@ -97,7 +97,7 @@ class ContactItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ContactItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a contact.
+        Delete a contact. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +112,7 @@ class ContactItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ContactItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a contact object. There are two scenarios where an app can get a contact in another user's contact folder:
+        Retrieve the properties and relationships of a contact object. There are two scenarios where an app can get a contact in another user's contact folder: This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -129,7 +129,7 @@ class ContactItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Contact] = None, request_configuration: Optional[ContactItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a contact object.
+        Update the properties of a contact object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -188,7 +188,7 @@ class ContactItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ContactItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a contact object. There are two scenarios where an app can get a contact in another user's contact folder:
+        Retrieve the properties and relationships of a contact object. There are two scenarios where an app can get a contact in another user's contact folder: This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

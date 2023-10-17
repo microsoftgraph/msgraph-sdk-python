@@ -18,7 +18,7 @@ class WindowsUniversalAppX(MobileLobApp):
     Contains properties and inherited properties for Windows Universal AppX Line Of Business apps. Inherits from `mobileLobApp`.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windowsUniversalAppX"
+    OdataType: Optional[str] = "#microsoft.graph.windowsUniversalAppX"
     # Contains properties for Windows architecture.
     applicable_architectures: Optional[WindowsArchitecture] = None
     # Contains properties for Windows device type. Multiple values can be selected. Default value is `none`.

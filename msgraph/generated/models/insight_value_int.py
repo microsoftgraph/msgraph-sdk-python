@@ -14,7 +14,7 @@ class InsightValueInt(UserExperienceAnalyticsInsightValue):
     The value in an user experience analytics insight.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.insightValueInt"
+    OdataType: Optional[str] = "#microsoft.graph.insightValueInt"
     # The int value of the user experience analytics insight.
     value: Optional[int] = None
     

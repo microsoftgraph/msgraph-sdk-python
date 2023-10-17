@@ -22,10 +22,10 @@ class DirectoryDefinition(Entity):
     # Collection of objects supported by the directory.
     objects: Optional[List[ObjectDefinition]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Whether this object is read-only.
     read_only: Optional[bool] = None
-    # Read only value that indicates version discovered. null if discovery has not yet occurred.
+    # Read only value that indicates version discovered. null if discovery hasn't yet occurred.
     version: Optional[str] = None
     
     @staticmethod

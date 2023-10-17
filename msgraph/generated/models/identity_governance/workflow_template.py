@@ -22,7 +22,7 @@ class WorkflowTemplate(Entity):
     # Conditions describing when to execute the workflow and the criteria to identify in-scope subject set.
     execution_conditions: Optional[WorkflowExecutionConditions] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Represents the configured tasks to execute and their execution sequence within a workflow. This relationship is expanded by default.
     tasks: Optional[List[Task]] = None
     

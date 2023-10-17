@@ -28,7 +28,7 @@ class SendActivityNotificationToRecipientsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SendActivityNotificationToRecipientsPostRequestBody] = None, request_configuration: Optional[SendActivityNotificationToRecipientsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Send activity feed notifications to multiple users, in bulk.  For more details about sending notifications and the requirements for doing so, seesending Teams activity notifications.
+        Send activity feed notifications to multiple users, in bulk.  For more details about sending notifications and the requirements for doing so, seesending Teams activity notifications. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class SendActivityNotificationToRecipientsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SendActivityNotificationToRecipientsPostRequestBody] = None, request_configuration: Optional[SendActivityNotificationToRecipientsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Send activity feed notifications to multiple users, in bulk.  For more details about sending notifications and the requirements for doing so, seesending Teams activity notifications.
+        Send activity feed notifications to multiple users, in bulk.  For more details about sending notifications and the requirements for doing so, seesending Teams activity notifications. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -6,10 +6,10 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .risky_user_history_item import RiskyUserHistoryItem
     from .risk_detail import RiskDetail
     from .risk_level import RiskLevel
     from .risk_state import RiskState
-    from .risky_user_history_item import RiskyUserHistoryItem
 
 from .entity import Entity
 
@@ -22,7 +22,7 @@ class RiskyUser(Entity):
     # Indicates whether a user's risky state is being processed by the backend.
     is_processing: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
     risk_detail: Optional[RiskDetail] = None
     # The date and time that the risky user was last updated.  The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -61,16 +61,16 @@ class RiskyUser(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .risky_user_history_item import RiskyUserHistoryItem
         from .risk_detail import RiskDetail
         from .risk_level import RiskLevel
         from .risk_state import RiskState
-        from .risky_user_history_item import RiskyUserHistoryItem
 
         from .entity import Entity
+        from .risky_user_history_item import RiskyUserHistoryItem
         from .risk_detail import RiskDetail
         from .risk_level import RiskLevel
         from .risk_state import RiskState
-        from .risky_user_history_item import RiskyUserHistoryItem
 
         fields: Dict[str, Callable[[Any], None]] = {
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(RiskyUserHistoryItem)),

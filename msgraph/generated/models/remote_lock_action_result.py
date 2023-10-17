@@ -14,7 +14,7 @@ class RemoteLockActionResult(DeviceActionResult):
     Lock action result with a pin to unlock
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Pin to unlock the client
     unlock_pin: Optional[str] = None
     

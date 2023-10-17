@@ -21,8 +21,8 @@ if TYPE_CHECKING:
     from .operations.operations_request_builder import OperationsRequestBuilder
     from .refresh_session.refresh_session_request_builder import RefreshSessionRequestBuilder
     from .session_info_resource_with_key.session_info_resource_with_key_request_builder import SessionInfoResourceWithKeyRequestBuilder
-    from .table_row_operation_result_with_key.table_row_operation_result_with_key_request_builder import TableRowOperationResultWithKeyRequestBuilder
     from .tables.tables_request_builder import TablesRequestBuilder
+    from .table_row_operation_result_with_key.table_row_operation_result_with_key_request_builder import TableRowOperationResultWithKeyRequestBuilder
     from .worksheets.worksheets_request_builder import WorksheetsRequestBuilder
 
 class WorkbookRequestBuilder(BaseRequestBuilder):

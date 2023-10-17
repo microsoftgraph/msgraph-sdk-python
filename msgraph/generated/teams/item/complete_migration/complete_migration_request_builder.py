@@ -27,7 +27,7 @@ class CompleteMigrationRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[CompleteMigrationRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Complete the message migration process by removing migration mode from a team. Migration mode is a special state where certain operations are barred, like message POST and membership operations during the data migration process. After a completeMigration request is made, you cannot import additional messages into the team. You can add members to the team after the request returns a successful response.
+        Complete the message migration process by removing migration mode from a team. Migration mode is a special state where certain operations are barred, like message POST and membership operations during the data migration process. After a completeMigration request is made, you can't import additional messages into the team. You can add members to the team after the request returns a successful response. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/team-completemigration?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class CompleteMigrationRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[CompleteMigrationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Complete the message migration process by removing migration mode from a team. Migration mode is a special state where certain operations are barred, like message POST and membership operations during the data migration process. After a completeMigration request is made, you cannot import additional messages into the team. You can add members to the team after the request returns a successful response.
+        Complete the message migration process by removing migration mode from a team. Migration mode is a special state where certain operations are barred, like message POST and membership operations during the data migration process. After a completeMigration request is made, you can't import additional messages into the team. You can add members to the team after the request returns a successful response. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

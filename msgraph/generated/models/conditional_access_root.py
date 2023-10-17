@@ -22,7 +22,7 @@ class ConditionalAccessRoot(Entity):
     # Read-only. Nullable. Returns a collection of the specified named locations.
     named_locations: Optional[List[NamedLocation]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
     policies: Optional[List[ConditionalAccessPolicy]] = None
     # Read-only. Nullable. Returns a collection of the specified Conditional Access templates.

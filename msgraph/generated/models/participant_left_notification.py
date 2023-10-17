@@ -14,7 +14,7 @@ class ParticipantLeftNotification(Entity):
     # The call property
     call: Optional[Call] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # ID of the participant under the policy who has left the meeting.
     participant_id: Optional[str] = None
     

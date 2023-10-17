@@ -45,7 +45,7 @@ class ProvisioningRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ProvisioningRequestBuilderGetRequestConfiguration] = None) -> Optional[ProvisioningObjectSummaryCollectionResponse]:
         """
-        Get all provisioning events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system. 
+        Get all provisioning events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system.  This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProvisioningObjectSummaryCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class ProvisioningRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ProvisioningRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get all provisioning events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system. 
+        Get all provisioning events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system.  This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class ProvisioningRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ProvisioningRequestBuilderGetQueryParameters():
         """
-        Get all provisioning events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system. 
+        Get all provisioning events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system.  This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

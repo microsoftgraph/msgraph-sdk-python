@@ -17,7 +17,7 @@ class UserTeamwork(Entity):
     # The apps installed in the personal scope of this user.
     installed_apps: Optional[List[UserScopeTeamsAppInstallation]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTeamwork:

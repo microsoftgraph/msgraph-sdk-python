@@ -11,7 +11,7 @@ from .education_resource import EducationResource
 @dataclass
 class EducationMediaResource(EducationResource):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.educationMediaResource"
+    OdataType: Optional[str] = "#microsoft.graph.educationMediaResource"
     # Location of the file on shared point folder. Required
     file_url: Optional[str] = None
     

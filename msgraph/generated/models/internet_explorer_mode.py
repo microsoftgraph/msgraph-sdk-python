@@ -12,7 +12,7 @@ from .entity import Entity
 @dataclass
 class InternetExplorerMode(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A collection of site lists to support Internet Explorer mode.
     site_lists: Optional[List[BrowserSiteList]] = None
     

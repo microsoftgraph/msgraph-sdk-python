@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models.o_data_errors.o_data_error import ODataError
     from ......models.onenote_page import OnenotePage
+    from ......models.o_data_errors.o_data_error import ODataError
     from .content.content_request_builder import ContentRequestBuilder
     from .copy_to_section.copy_to_section_request_builder import CopyToSectionRequestBuilder
     from .onenote_patch_content.onenote_patch_content_request_builder import OnenotePatchContentRequestBuilder
@@ -34,7 +34,7 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[OnenotePageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a OneNote page.
+        Delete a OneNote page. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/page-delete?view=graph-rest-1.0
@@ -54,7 +54,7 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OnenotePageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OnenotePage]:
         """
-        Retrieve the properties and relationships of a page object. Getting page information Access a page's metadata by page identifier: Getting page content You can use the page's content endpoint to get the HTML content of a page: The includeIDs=true query option is used to update pages.
+        Retrieve the properties and relationships of a page object. Getting page information Access a page's metadata by page identifier: Getting page content You can use the page's content endpoint to get the HTML content of a page: The includeIDs=true query option is used to update pages. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenotePage]
         Find more info here: https://learn.microsoft.com/graph/api/page-get?view=graph-rest-1.0
@@ -100,7 +100,7 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[OnenotePageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a OneNote page.
+        Delete a OneNote page. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +115,7 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OnenotePageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a page object. Getting page information Access a page's metadata by page identifier: Getting page content You can use the page's content endpoint to get the HTML content of a page: The includeIDs=true query option is used to update pages.
+        Retrieve the properties and relationships of a page object. Getting page information Access a page's metadata by page identifier: Getting page content You can use the page's content endpoint to get the HTML content of a page: The includeIDs=true query option is used to update pages. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -227,7 +227,7 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OnenotePageItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a page object. Getting page information Access a page's metadata by page identifier: Getting page content You can use the page's content endpoint to get the HTML content of a page: The includeIDs=true query option is used to update pages.
+        Retrieve the properties and relationships of a page object. Getting page information Access a page's metadata by page identifier: Getting page content You can use the page's content endpoint to get the HTML content of a page: The includeIDs=true query option is used to update pages. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

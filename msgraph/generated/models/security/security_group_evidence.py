@@ -11,7 +11,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class SecurityGroupEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.securityGroupEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.securityGroupEvidence"
     # The name of the security group.
     display_name: Optional[str] = None
     # Unique identifier of the security group.

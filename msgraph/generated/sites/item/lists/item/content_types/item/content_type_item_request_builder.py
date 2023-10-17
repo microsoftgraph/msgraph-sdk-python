@@ -15,9 +15,9 @@ if TYPE_CHECKING:
     from .associate_with_hub_sites.associate_with_hub_sites_request_builder import AssociateWithHubSitesRequestBuilder
     from .base.base_request_builder_ import BaseRequestBuilder_
     from .base_types.base_types_request_builder import BaseTypesRequestBuilder
+    from .columns.columns_request_builder import ColumnsRequestBuilder
     from .column_links.column_links_request_builder import ColumnLinksRequestBuilder
     from .column_positions.column_positions_request_builder import ColumnPositionsRequestBuilder
-    from .columns.columns_request_builder import ColumnsRequestBuilder
     from .copy_to_default_content_location.copy_to_default_content_location_request_builder import CopyToDefaultContentLocationRequestBuilder
     from .is_published.is_published_request_builder import IsPublishedRequestBuilder
     from .publish.publish_request_builder import PublishRequestBuilder

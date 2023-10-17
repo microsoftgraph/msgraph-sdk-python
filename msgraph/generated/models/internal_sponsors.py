@@ -11,7 +11,7 @@ from .subject_set import SubjectSet
 @dataclass
 class InternalSponsors(SubjectSet):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.internalSponsors"
+    OdataType: Optional[str] = "#microsoft.graph.internalSponsors"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InternalSponsors:

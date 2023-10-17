@@ -12,7 +12,7 @@ from .conversation_member import ConversationMember
 @dataclass
 class AadUserConversationMember(ConversationMember):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.aadUserConversationMember"
+    OdataType: Optional[str] = "#microsoft.graph.aadUserConversationMember"
     # The email address of the user.
     email: Optional[str] = None
     # TenantId which the Azure AD user belongs to.

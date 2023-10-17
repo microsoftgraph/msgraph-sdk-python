@@ -12,7 +12,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class GoogleCloudResourceEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.googleCloudResourceEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.googleCloudResourceEvidence"
     # The zone or region where the resource is located.
     location: Optional[str] = None
     # The type of location. Possible values are: unknown, regional, zonal, global, unknownFutureValue.

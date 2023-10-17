@@ -14,7 +14,7 @@ from .identity_provider_base import IdentityProviderBase
 @dataclass
 class SamlOrWsFedProvider(IdentityProviderBase):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.samlOrWsFedProvider"
+    OdataType: Optional[str] = "#microsoft.graph.samlOrWsFedProvider"
     # Issuer URI of the federation server.
     issuer_uri: Optional[str] = None
     # URI of the metadata exchange endpoint used for authentication from rich client applications.

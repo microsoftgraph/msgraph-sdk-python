@@ -26,7 +26,7 @@ class SynchronizationTemplate(Entity):
     # Additional extension properties. Unless mentioned explicitly, metadata values should not be changed.
     metadata: Optional[List[SynchronizationMetadataEntry]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Default synchronization schema for the jobs based on this template.
     schema: Optional[SynchronizationSchema] = None
     

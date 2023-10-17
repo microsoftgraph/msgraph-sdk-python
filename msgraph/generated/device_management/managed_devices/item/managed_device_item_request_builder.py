@@ -20,8 +20,8 @@ if TYPE_CHECKING:
     from .device_configuration_states.device_configuration_states_request_builder import DeviceConfigurationStatesRequestBuilder
     from .disable_lost_mode.disable_lost_mode_request_builder import DisableLostModeRequestBuilder
     from .locate_device.locate_device_request_builder import LocateDeviceRequestBuilder
-    from .log_collection_requests.log_collection_requests_request_builder import LogCollectionRequestsRequestBuilder
     from .logout_shared_apple_device_active_user.logout_shared_apple_device_active_user_request_builder import LogoutSharedAppleDeviceActiveUserRequestBuilder
+    from .log_collection_requests.log_collection_requests_request_builder import LogCollectionRequestsRequestBuilder
     from .reboot_now.reboot_now_request_builder import RebootNowRequestBuilder
     from .recover_passcode.recover_passcode_request_builder import RecoverPasscodeRequestBuilder
     from .remote_lock.remote_lock_request_builder import RemoteLockRequestBuilder

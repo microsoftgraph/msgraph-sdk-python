@@ -33,7 +33,7 @@ class TermsAndConditions(Entity):
     # DateTime the object was last modified.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Administrator-supplied title of the terms and conditions. This is shown to the user on prompts to accept the T&C policy.
     title: Optional[str] = None
     # Integer indicating the current version of the terms. Incremented when an administrator makes a change to the terms and wishes to require users to re-accept the modified T&C policy.

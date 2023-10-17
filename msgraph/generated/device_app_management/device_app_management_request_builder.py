@@ -20,9 +20,9 @@ if TYPE_CHECKING:
     from .managed_app_statuses.managed_app_statuses_request_builder import ManagedAppStatusesRequestBuilder
     from .managed_e_books.managed_e_books_request_builder import ManagedEBooksRequestBuilder
     from .mdm_windows_information_protection_policies.mdm_windows_information_protection_policies_request_builder import MdmWindowsInformationProtectionPoliciesRequestBuilder
+    from .mobile_apps.mobile_apps_request_builder import MobileAppsRequestBuilder
     from .mobile_app_categories.mobile_app_categories_request_builder import MobileAppCategoriesRequestBuilder
     from .mobile_app_configurations.mobile_app_configurations_request_builder import MobileAppConfigurationsRequestBuilder
-    from .mobile_apps.mobile_apps_request_builder import MobileAppsRequestBuilder
     from .sync_microsoft_store_for_business_apps.sync_microsoft_store_for_business_apps_request_builder import SyncMicrosoftStoreForBusinessAppsRequestBuilder
     from .targeted_managed_app_configurations.targeted_managed_app_configurations_request_builder import TargetedManagedAppConfigurationsRequestBuilder
     from .vpp_tokens.vpp_tokens_request_builder import VppTokensRequestBuilder
@@ -46,7 +46,7 @@ class DeviceAppManagementRequestBuilder(BaseRequestBuilder):
         Read properties and relationships of the deviceAppManagement object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceAppManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceappmanagement-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-unlock-deviceappmanagement-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

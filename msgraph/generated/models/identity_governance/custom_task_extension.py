@@ -14,7 +14,7 @@ from ..custom_callout_extension import CustomCalloutExtension
 @dataclass
 class CustomTaskExtension(CustomCalloutExtension):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.identityGovernance.customTaskExtension"
+    OdataType: Optional[str] = "#microsoft.graph.identityGovernance.customTaskExtension"
     # The callback configuration for a custom task extension.
     callback_configuration: Optional[CustomExtensionCallbackConfiguration] = None
     # The unique identifier of the Azure AD user that created the custom task extension.Supports $filter(eq, ne) and $expand.

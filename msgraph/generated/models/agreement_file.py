@@ -14,7 +14,7 @@ class AgreementFile(AgreementFileProperties):
     # The localized version of the terms of use agreement files attached to the agreement.
     localizations: Optional[List[AgreementFileLocalization]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AgreementFile:

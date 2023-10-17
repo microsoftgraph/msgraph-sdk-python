@@ -12,7 +12,7 @@ from .prompt import Prompt
 @dataclass
 class MediaPrompt(Prompt):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.mediaPrompt"
+    OdataType: Optional[str] = "#microsoft.graph.mediaPrompt"
     # The mediaInfo property
     media_info: Optional[MediaInfo] = None
     

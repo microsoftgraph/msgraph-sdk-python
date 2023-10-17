@@ -195,15 +195,6 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
         return TaskDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def workflows(self) -> WorkflowsRequestBuilder:
-        """
-        Provides operations to manage the workflows property of the microsoft.graph.identityGovernance.lifecycleWorkflowsContainer entity.
-        """
-        from .workflows.workflows_request_builder import WorkflowsRequestBuilder
-
-        return WorkflowsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def workflow_templates(self) -> WorkflowTemplatesRequestBuilder:
         """
         Provides operations to manage the workflowTemplates property of the microsoft.graph.identityGovernance.lifecycleWorkflowsContainer entity.
@@ -211,6 +202,15 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
         from .workflow_templates.workflow_templates_request_builder import WorkflowTemplatesRequestBuilder
 
         return WorkflowTemplatesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def workflows(self) -> WorkflowsRequestBuilder:
+        """
+        Provides operations to manage the workflows property of the microsoft.graph.identityGovernance.lifecycleWorkflowsContainer entity.
+        """
+        from .workflows.workflows_request_builder import WorkflowsRequestBuilder
+
+        return WorkflowsRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

@@ -14,7 +14,7 @@ class EducationSubmissionResource(Entity):
     # Pointer to the assignment from which the resource was copied, and if null, the student uploaded the resource.
     assignment_resource_url: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Resource object.
     resource: Optional[EducationResource] = None
     

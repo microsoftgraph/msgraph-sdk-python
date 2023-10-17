@@ -33,7 +33,7 @@ class SoftwareUpdateStatusSummary(Entity):
     # Number of not applicable users.
     not_applicable_user_count: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Number of remediated devices.
     remediated_device_count: Optional[int] = None
     # Number of remediated users.

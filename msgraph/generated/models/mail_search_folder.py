@@ -11,7 +11,7 @@ from .mail_folder import MailFolder
 @dataclass
 class MailSearchFolder(MailFolder):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.mailSearchFolder"
+    OdataType: Optional[str] = "#microsoft.graph.mailSearchFolder"
     # The OData query to filter the messages.
     filter_query: Optional[str] = None
     # Indicates how the mailbox folder hierarchy should be traversed in the search. true means that a deep search should be done to include child folders in the hierarchy of each folder explicitly specified in sourceFolderIds. false means a shallow search of only each of the folders explicitly specified in sourceFolderIds.

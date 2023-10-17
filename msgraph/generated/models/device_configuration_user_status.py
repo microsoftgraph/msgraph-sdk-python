@@ -17,7 +17,7 @@ class DeviceConfigurationUserStatus(Entity):
     # Last modified date time of the policy report.
     last_reported_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The status property
     status: Optional[ComplianceStatus] = None
     # User name of the DevicePolicyStatus.

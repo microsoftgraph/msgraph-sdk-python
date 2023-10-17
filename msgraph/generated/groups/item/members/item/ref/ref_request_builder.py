@@ -27,7 +27,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove a member from a group via the members navigation property. You can't remove a member from groups with dynamic memberships.
+        Remove a member from a group via the members navigation property. You can't remove a member from groups with dynamic memberships. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/group-delete-members?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a member from a group via the members navigation property. You can't remove a member from groups with dynamic memberships.
+        Remove a member from a group via the members navigation property. You can't remove a member from groups with dynamic memberships. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():
         """
-        Remove a member from a group via the members navigation property. You can't remove a member from groups with dynamic memberships.
+        Remove a member from a group via the members navigation property. You can't remove a member from groups with dynamic memberships. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

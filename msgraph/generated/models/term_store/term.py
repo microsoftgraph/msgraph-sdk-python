@@ -27,7 +27,7 @@ class Term(Entity):
     # Last date and time of term modification. Read-only.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Collection of properties on the term.
     properties: Optional[List[KeyValue]] = None
     # To indicate which terms are related to the current term as either pinned or reused.

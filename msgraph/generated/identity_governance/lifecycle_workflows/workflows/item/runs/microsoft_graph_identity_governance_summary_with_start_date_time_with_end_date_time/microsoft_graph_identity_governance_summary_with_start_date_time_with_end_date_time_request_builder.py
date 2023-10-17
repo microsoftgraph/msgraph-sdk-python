@@ -27,6 +27,9 @@ class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeReq
         param start_date_time: Usage: startDateTime={startDateTime}
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['end_date_time'] = str(end_date_time)
+            path_parameters['start_date_time'] = str(start_date_time)
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/workflows/{workflow%2Did}/runs/microsoft.graph.identityGovernance.summary(startDateTime={startDateTime},endDateTime={endDateTime})", path_parameters)
     
     async def get(self,request_configuration: Optional[MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration] = None) -> Optional[RunSummary]:

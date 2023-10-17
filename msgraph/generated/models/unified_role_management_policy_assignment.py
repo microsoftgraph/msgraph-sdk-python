@@ -12,16 +12,16 @@ from .entity import Entity
 @dataclass
 class UnifiedRoleManagementPolicyAssignment(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The policy that's associated with a policy assignment. Supports $expand and a nested $expand of the rules and effectiveRules relationships for the policy.
     policy: Optional[UnifiedRoleManagementPolicy] = None
     # The id of the policy. Inherited from entity.
     policy_id: Optional[str] = None
-    # The identifier of the role definition object where the policy applies. If not specified, the policy applies to all roles. Supports $filter (eq).
+    # For Azure AD roles policy, it's the identifier of the role definition object where the policy applies. For PIM for groups membership and ownership, it's either member or owner. Supports $filter (eq).
     role_definition_id: Optional[str] = None
     # The identifier of the scope where the policy is assigned.  Can be / for the tenant or a group ID. Required.
     scope_id: Optional[str] = None
-    # The type of the scope where the policy is assigned. One of Directory, DirectoryRole. Required.
+    # The type of the scope where the policy is assigned. One of Directory, DirectoryRole, Group. Required.
     scope_type: Optional[str] = None
     
     @staticmethod

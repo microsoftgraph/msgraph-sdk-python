@@ -28,9 +28,10 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[CustomCalloutExtensionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property customWorkflowExtensions for identityGovernance
+        Delete an accessPackageAssignmentRequestWorkflowExtension object. The custom workflow extension must first be removed from any associated policies before it can be deleted. Follow these steps to remove the custom workflow extension from any associated policies: This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentrequestworkflowextension-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -47,9 +48,10 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CustomCalloutExtensionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CustomCalloutExtension]:
         """
-        Get customWorkflowExtensions from identityGovernance
+        Read the properties and relationships of an accessPackageAssignmentRequestWorkflowExtension object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomCalloutExtension]
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentrequestworkflowextension-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,10 +70,11 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[CustomCalloutExtension] = None, request_configuration: Optional[CustomCalloutExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[CustomCalloutExtension]:
         """
-        Update the navigation property customWorkflowExtensions in identityGovernance
+        Update the properties of an accessPackageAssignmentRequestWorkflowExtension object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomCalloutExtension]
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentrequestworkflowextension-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +95,7 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[CustomCalloutExtensionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property customWorkflowExtensions for identityGovernance
+        Delete an accessPackageAssignmentRequestWorkflowExtension object. The custom workflow extension must first be removed from any associated policies before it can be deleted. Follow these steps to remove the custom workflow extension from any associated policies: This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +110,7 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CustomCalloutExtensionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get customWorkflowExtensions from identityGovernance
+        Read the properties and relationships of an accessPackageAssignmentRequestWorkflowExtension object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -124,7 +127,7 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[CustomCalloutExtension] = None, request_configuration: Optional[CustomCalloutExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property customWorkflowExtensions in identityGovernance
+        Update the properties of an accessPackageAssignmentRequestWorkflowExtension object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -165,7 +168,7 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CustomCalloutExtensionItemRequestBuilderGetQueryParameters():
         """
-        Get customWorkflowExtensions from identityGovernance
+        Read the properties and relationships of an accessPackageAssignmentRequestWorkflowExtension object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

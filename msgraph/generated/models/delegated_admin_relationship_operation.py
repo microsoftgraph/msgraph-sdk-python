@@ -20,7 +20,7 @@ class DelegatedAdminRelationshipOperation(Entity):
     # The time in ISO 8601 format and in UTC time when the long-running operation was last modified. Read-only.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The operationType property
     operation_type: Optional[DelegatedAdminRelationshipOperationType] = None
     # The status property

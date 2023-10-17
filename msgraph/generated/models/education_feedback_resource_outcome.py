@@ -13,7 +13,7 @@ from .education_outcome import EducationOutcome
 @dataclass
 class EducationFeedbackResourceOutcome(EducationOutcome):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.educationFeedbackResourceOutcome"
+    OdataType: Optional[str] = "#microsoft.graph.educationFeedbackResourceOutcome"
     # The actual feedback resource.
     feedback_resource: Optional[EducationResource] = None
     # The status of the feedback resource. The possible values are: notPublished, pendingPublish, published, failedPublish, unknownFutureValue.

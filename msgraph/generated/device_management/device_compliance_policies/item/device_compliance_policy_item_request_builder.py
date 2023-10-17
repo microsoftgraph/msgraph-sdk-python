@@ -17,8 +17,8 @@ if TYPE_CHECKING:
     from .device_setting_state_summaries.device_setting_state_summaries_request_builder import DeviceSettingStateSummariesRequestBuilder
     from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
     from .device_status_overview.device_status_overview_request_builder import DeviceStatusOverviewRequestBuilder
-    from .schedule_actions_for_rules.schedule_actions_for_rules_request_builder import ScheduleActionsForRulesRequestBuilder
     from .scheduled_actions_for_rule.scheduled_actions_for_rule_request_builder import ScheduledActionsForRuleRequestBuilder
+    from .schedule_actions_for_rules.schedule_actions_for_rules_request_builder import ScheduleActionsForRulesRequestBuilder
     from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
     from .user_status_overview.user_status_overview_request_builder import UserStatusOverviewRequestBuilder
 
@@ -37,10 +37,10 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a macOSCompliancePolicy.
+        Deletes a iosCompliancePolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-macoscompliancepolicy-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-ioscompliancepolicy-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -57,10 +57,10 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCompliancePolicy]:
         """
-        Read properties and relationships of the androidWorkProfileCompliancePolicy object.
+        Read properties and relationships of the macOSCompliancePolicy object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-androidworkprofilecompliancepolicy-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-macoscompliancepolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -79,11 +79,11 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceCompliancePolicy]:
         """
-        Update the properties of a androidCompliancePolicy object.
+        Update the properties of a windows10CompliancePolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-androidcompliancepolicy-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows10compliancepolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -104,7 +104,7 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a macOSCompliancePolicy.
+        Deletes a iosCompliancePolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -119,7 +119,7 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the androidWorkProfileCompliancePolicy object.
+        Read properties and relationships of the macOSCompliancePolicy object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +136,7 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a androidCompliancePolicy object.
+        Update the properties of a windows10CompliancePolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -192,15 +192,6 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
         return DeviceSettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_statuses(self) -> DeviceStatusesRequestBuilder:
-        """
-        Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceCompliancePolicy entity.
-        """
-        from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
-
-        return DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def device_status_overview(self) -> DeviceStatusOverviewRequestBuilder:
         """
         Provides operations to manage the deviceStatusOverview property of the microsoft.graph.deviceCompliancePolicy entity.
@@ -208,6 +199,15 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
         from .device_status_overview.device_status_overview_request_builder import DeviceStatusOverviewRequestBuilder
 
         return DeviceStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_statuses(self) -> DeviceStatusesRequestBuilder:
+        """
+        Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceCompliancePolicy entity.
+        """
+        from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
+
+        return DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def schedule_actions_for_rules(self) -> ScheduleActionsForRulesRequestBuilder:
@@ -228,15 +228,6 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
         return ScheduledActionsForRuleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user_statuses(self) -> UserStatusesRequestBuilder:
-        """
-        Provides operations to manage the userStatuses property of the microsoft.graph.deviceCompliancePolicy entity.
-        """
-        from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
-
-        return UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def user_status_overview(self) -> UserStatusOverviewRequestBuilder:
         """
         Provides operations to manage the userStatusOverview property of the microsoft.graph.deviceCompliancePolicy entity.
@@ -244,6 +235,15 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
         from .user_status_overview.user_status_overview_request_builder import UserStatusOverviewRequestBuilder
 
         return UserStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def user_statuses(self) -> UserStatusesRequestBuilder:
+        """
+        Provides operations to manage the userStatuses property of the microsoft.graph.deviceCompliancePolicy entity.
+        """
+        from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
+
+        return UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
@@ -258,7 +258,7 @@ class DeviceCompliancePolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceCompliancePolicyItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the androidWorkProfileCompliancePolicy object.
+        Read properties and relationships of the macOSCompliancePolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

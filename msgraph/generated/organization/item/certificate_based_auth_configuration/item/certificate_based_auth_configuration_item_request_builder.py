@@ -28,7 +28,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a certificateBasedAuthConfiguration object.
+        Delete a certificateBasedAuthConfiguration object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/certificatebasedauthconfiguration-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CertificateBasedAuthConfiguration]:
         """
-        Get the properties of a certificateBasedAuthConfiguration object.
+        Get the properties of a certificateBasedAuthConfiguration object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CertificateBasedAuthConfiguration]
         Find more info here: https://learn.microsoft.com/graph/api/certificatebasedauthconfiguration-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a certificateBasedAuthConfiguration object.
+        Delete a certificateBasedAuthConfiguration object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -85,7 +85,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties of a certificateBasedAuthConfiguration object.
+        Get the properties of a certificateBasedAuthConfiguration object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -123,7 +123,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CertificateBasedAuthConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Get the properties of a certificateBasedAuthConfiguration object.
+        Get the properties of a certificateBasedAuthConfiguration object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -13,7 +13,7 @@ from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleTy
 @dataclass
 class WindowsUpdateScheduledInstall(WindowsUpdateInstallScheduleType):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windowsUpdateScheduledInstall"
+    OdataType: Optional[str] = "#microsoft.graph.windowsUpdateScheduledInstall"
     # Possible values for a weekly schedule.
     scheduled_install_day: Optional[WeeklySchedule] = None
     # Scheduled Install Time during day

@@ -16,7 +16,7 @@ from .search import Search
 @dataclass
 class EdiscoverySearch(Search):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.ediscoverySearch"
+    OdataType: Optional[str] = "#microsoft.graph.security.ediscoverySearch"
     # Adds the results of the eDiscovery search to the specified reviewSet.
     add_to_review_set_operation: Optional[EdiscoveryAddToReviewSetOperation] = None
     # Adds an additional source to the eDiscovery search.

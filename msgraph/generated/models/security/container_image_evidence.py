@@ -12,7 +12,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class ContainerImageEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.containerImageEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.containerImageEvidence"
     # The digest image entity, in case this is a tag image.
     digest_image: Optional[ContainerImageEvidence] = None
     # The unique identifier for the container image entity.

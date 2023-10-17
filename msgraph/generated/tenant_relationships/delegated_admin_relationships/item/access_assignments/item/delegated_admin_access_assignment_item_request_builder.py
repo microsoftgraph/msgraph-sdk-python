@@ -28,7 +28,7 @@ class DelegatedAdminAccessAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DelegatedAdminAccessAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a delegatedAdminAccessAssignment object.
+        Delete a delegatedAdminAccessAssignment object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/delegatedadminaccessassignment-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class DelegatedAdminAccessAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DelegatedAdminAccessAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminAccessAssignment]:
         """
-        Read the properties of a delegatedAdminAccessAssignment object.
+        Read the properties of a delegatedAdminAccessAssignment object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminAccessAssignment]
         Find more info here: https://learn.microsoft.com/graph/api/delegatedadminaccessassignment-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class DelegatedAdminAccessAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DelegatedAdminAccessAssignment] = None, request_configuration: Optional[DelegatedAdminAccessAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DelegatedAdminAccessAssignment]:
         """
-        Update the properties of a delegatedAdminAccessAssignment object.
+        Update the properties of a delegatedAdminAccessAssignment object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminAccessAssignment]
@@ -95,7 +95,7 @@ class DelegatedAdminAccessAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DelegatedAdminAccessAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a delegatedAdminAccessAssignment object.
+        Delete a delegatedAdminAccessAssignment object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class DelegatedAdminAccessAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DelegatedAdminAccessAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties of a delegatedAdminAccessAssignment object.
+        Read the properties of a delegatedAdminAccessAssignment object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class DelegatedAdminAccessAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DelegatedAdminAccessAssignment] = None, request_configuration: Optional[DelegatedAdminAccessAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a delegatedAdminAccessAssignment object.
+        Update the properties of a delegatedAdminAccessAssignment object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class DelegatedAdminAccessAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DelegatedAdminAccessAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Read the properties of a delegatedAdminAccessAssignment object.
+        Read the properties of a delegatedAdminAccessAssignment object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

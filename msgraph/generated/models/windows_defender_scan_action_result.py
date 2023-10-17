@@ -14,7 +14,7 @@ class WindowsDefenderScanActionResult(DeviceActionResult):
     Windows Defender last scan result
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Scan type either full scan or quick scan
     scan_type: Optional[str] = None
     

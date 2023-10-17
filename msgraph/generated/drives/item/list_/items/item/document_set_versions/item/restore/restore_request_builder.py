@@ -27,7 +27,7 @@ class RestoreRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Restore a document set version.
+        Restore a document set version. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/documentsetversion-restore?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class RestoreRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Restore a document set version.
+        Restore a document set version. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

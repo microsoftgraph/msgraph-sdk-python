@@ -11,7 +11,7 @@ from .teamwork_notification_recipient import TeamworkNotificationRecipient
 @dataclass
 class TeamMembersNotificationRecipient(TeamworkNotificationRecipient):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.teamMembersNotificationRecipient"
+    OdataType: Optional[str] = "#microsoft.graph.teamMembersNotificationRecipient"
     # The unique identifier for the team whose members should receive the notification.
     team_id: Optional[str] = None
     

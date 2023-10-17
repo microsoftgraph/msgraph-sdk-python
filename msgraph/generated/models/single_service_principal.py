@@ -11,7 +11,7 @@ from .subject_set import SubjectSet
 @dataclass
 class SingleServicePrincipal(SubjectSet):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.singleServicePrincipal"
+    OdataType: Optional[str] = "#microsoft.graph.singleServicePrincipal"
     # Description of this service principal.
     description: Optional[str] = None
     # ID of the servicePrincipal.

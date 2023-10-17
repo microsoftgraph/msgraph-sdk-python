@@ -11,7 +11,7 @@ from .subject_rights_request_site_location import SubjectRightsRequestSiteLocati
 @dataclass
 class SubjectRightsRequestAllSiteLocation(SubjectRightsRequestSiteLocation):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.subjectRightsRequestAllSiteLocation"
+    OdataType: Optional[str] = "#microsoft.graph.subjectRightsRequestAllSiteLocation"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SubjectRightsRequestAllSiteLocation:

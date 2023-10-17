@@ -28,7 +28,7 @@ class MicrosoftGraphSecurityApplyTagsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ApplyTagsPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityApplyTagsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Apply tags to files in an eDiscovery review set. For details, see Tag documents in a review set in eDiscovery.
+        Apply tags to files in an eDiscovery review set. For details, see Tag documents in a review set in eDiscovery. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class MicrosoftGraphSecurityApplyTagsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ApplyTagsPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityApplyTagsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Apply tags to files in an eDiscovery review set. For details, see Tag documents in a review set in eDiscovery.
+        Apply tags to files in an eDiscovery review set. For details, see Tag documents in a review set in eDiscovery. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

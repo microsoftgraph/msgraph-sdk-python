@@ -20,7 +20,7 @@ class Group(Entity):
     # Name of the group.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # ID of the parent site of this group.
     parent_site_id: Optional[str] = None
     # Returns the type of the group. Possible values are: global, system, and siteCollection.

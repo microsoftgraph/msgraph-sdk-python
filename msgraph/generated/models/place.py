@@ -21,7 +21,7 @@ class Place(Entity):
     # Specifies the place location in latitude, longitude and (optionally) altitude coordinates.
     geo_coordinates: Optional[OutlookGeoCoordinates] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The phone number of the place.
     phone: Optional[str] = None
     

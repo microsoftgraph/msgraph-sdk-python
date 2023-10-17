@@ -14,7 +14,7 @@ from .saml_or_ws_fed_provider import SamlOrWsFedProvider
 @dataclass
 class InternalDomainFederation(SamlOrWsFedProvider):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.internalDomainFederation"
+    OdataType: Optional[str] = "#microsoft.graph.internalDomainFederation"
     # URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Azure Active Directory (Azure AD). Corresponds to the ActiveLogOnUri property of the Set-MsolDomainFederationSettings MSOnline v1 PowerShell cmdlet.
     active_sign_in_uri: Optional[str] = None
     # Determines whether Azure AD accepts the MFA performed by the federated IdP when a federated user accesses an application that is governed by a conditional access policy that requires MFA. The possible values are: acceptIfMfaDoneByFederatedIdp, enforceMfaByFederatedIdp, rejectMfaByFederatedIdp, unknownFutureValue. For more information, see federatedIdpMfaBehavior values.

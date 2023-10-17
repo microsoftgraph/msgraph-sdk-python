@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .get_applicable_policy_requirements_response import GetApplicablePolicyRequirementsResponse
+    from .get_applicable_policy_requirements_post_response import GetApplicablePolicyRequirementsPostResponse
 
 class GetApplicablePolicyRequirementsRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class GetApplicablePolicyRequirementsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/accessPackages/{accessPackage%2Did}/getApplicablePolicyRequirements", path_parameters)
     
-    async def post(self,request_configuration: Optional[GetApplicablePolicyRequirementsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetApplicablePolicyRequirementsResponse]:
+    async def post(self,request_configuration: Optional[GetApplicablePolicyRequirementsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetApplicablePolicyRequirementsPostResponse]:
         """
-        In Azure AD entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest.  Each requirement object corresponds to an access package assignment policy that the currently signed-in user is allowed to request an assignment for.
+        In Azure AD entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest.  Each requirement object corresponds to an access package assignment policy that the currently signed-in user is allowed to request an assignment for. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetApplicablePolicyRequirementsResponse]
+        Returns: Optional[GetApplicablePolicyRequirementsPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/accesspackage-getapplicablepolicyrequirements?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
@@ -44,13 +44,13 @@ class GetApplicablePolicyRequirementsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_applicable_policy_requirements_response import GetApplicablePolicyRequirementsResponse
+        from .get_applicable_policy_requirements_post_response import GetApplicablePolicyRequirementsPostResponse
 
-        return await self.request_adapter.send_async(request_info, GetApplicablePolicyRequirementsResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetApplicablePolicyRequirementsPostResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[GetApplicablePolicyRequirementsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        In Azure AD entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest.  Each requirement object corresponds to an access package assignment policy that the currently signed-in user is allowed to request an assignment for.
+        In Azure AD entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest.  Each requirement object corresponds to an access package assignment policy that the currently signed-in user is allowed to request an assignment for. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

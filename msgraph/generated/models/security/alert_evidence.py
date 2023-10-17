@@ -42,7 +42,7 @@ if TYPE_CHECKING:
 @dataclass
 class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -56,7 +56,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
     remediation_status: Optional[EvidenceRemediationStatus] = None
     # Details about the remediation status.
     remediation_status_details: Optional[str] = None
-    # The role/s that an evidence entity represents in an alert, e.g., an IP address that is associated with an attacker will have the evidence role Attacker.
+    # The role/s that an evidence entity represents in an alert, for example, an IP address that is associated with an attacker has the evidence role Attacker.
     roles: Optional[List[EvidenceRole]] = None
     # Array of custom tags associated with an evidence instance, for example, to denote a group of devices, high-value assets, etc.
     tags: Optional[List[str]] = None

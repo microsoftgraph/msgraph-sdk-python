@@ -25,7 +25,7 @@ class Set(Entity):
     # Name of the set for each languageTag.
     localized_names: Optional[List[LocalizedName]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The parentGroup property
     parent_group: Optional[Group] = None
     # Custom properties for the set.

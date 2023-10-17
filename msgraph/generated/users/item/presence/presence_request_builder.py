@@ -52,7 +52,7 @@ class PresenceRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PresenceRequestBuilderGetRequestConfiguration] = None) -> Optional[Presence]:
         """
-        Get a user's presence information.
+        Get a user's presence information. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Presence]
         Find more info here: https://learn.microsoft.com/graph/api/presence-get?view=graph-rest-1.0
@@ -113,7 +113,7 @@ class PresenceRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PresenceRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a user's presence information.
+        Get a user's presence information. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -216,7 +216,7 @@ class PresenceRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PresenceRequestBuilderGetQueryParameters():
         """
-        Get a user's presence information.
+        Get a user's presence information. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

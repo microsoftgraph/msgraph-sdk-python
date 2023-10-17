@@ -47,7 +47,7 @@ class ConnectionOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ConnectionOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ConnectionOperation]:
         """
-        Read the properties and relationships of a connectionOperation object.
+        Read the properties and relationships of a connectionOperation object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConnectionOperation]
         Find more info here: https://learn.microsoft.com/graph/api/externalconnectors-connectionoperation-get?view=graph-rest-1.0
@@ -108,7 +108,7 @@ class ConnectionOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ConnectionOperationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a connectionOperation object.
+        Read the properties and relationships of a connectionOperation object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -166,7 +166,7 @@ class ConnectionOperationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConnectionOperationItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a connectionOperation object.
+        Read the properties and relationships of a connectionOperation object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

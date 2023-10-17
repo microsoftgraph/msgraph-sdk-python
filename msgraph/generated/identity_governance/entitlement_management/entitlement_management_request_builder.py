@@ -12,17 +12,17 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...models.entitlement_management import EntitlementManagement
     from ...models.o_data_errors.o_data_error import ODataError
-    from .access_package_assignment_approvals.access_package_assignment_approvals_request_builder import AccessPackageAssignmentApprovalsRequestBuilder
     from .access_packages.access_packages_request_builder import AccessPackagesRequestBuilder
+    from .access_package_assignment_approvals.access_package_assignment_approvals_request_builder import AccessPackageAssignmentApprovalsRequestBuilder
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
     from .assignment_policies.assignment_policies_request_builder import AssignmentPoliciesRequestBuilder
     from .assignment_requests.assignment_requests_request_builder import AssignmentRequestsRequestBuilder
-    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
     from .catalogs.catalogs_request_builder import CatalogsRequestBuilder
     from .connected_organizations.connected_organizations_request_builder import ConnectedOrganizationsRequestBuilder
+    from .resources.resources_request_builder import ResourcesRequestBuilder
     from .resource_environments.resource_environments_request_builder import ResourceEnvironmentsRequestBuilder
     from .resource_requests.resource_requests_request_builder import ResourceRequestsRequestBuilder
     from .resource_role_scopes.resource_role_scopes_request_builder import ResourceRoleScopesRequestBuilder
-    from .resources.resources_request_builder import ResourcesRequestBuilder
     from .settings.settings_request_builder import SettingsRequestBuilder
 
 class EntitlementManagementRequestBuilder(BaseRequestBuilder):

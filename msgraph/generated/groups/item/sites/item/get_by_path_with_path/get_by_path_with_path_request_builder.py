@@ -25,6 +25,8 @@ class GetByPathWithPathRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['path'] = str(path)
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/getByPath(path='{path}')", path_parameters)
     
     async def get(self,request_configuration: Optional[GetByPathWithPathRequestBuilderGetRequestConfiguration] = None) -> Optional[Site]:

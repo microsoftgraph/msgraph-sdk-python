@@ -14,7 +14,7 @@ class OutlookUser(Entity):
     # A list of categories defined for the user.
     master_categories: Optional[List[OutlookCategory]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OutlookUser:

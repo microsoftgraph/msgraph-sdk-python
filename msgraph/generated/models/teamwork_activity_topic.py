@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 @dataclass
 class TeamworkActivityTopic(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -18,7 +18,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # Type of source. Possible values are: entityUrl, text. For supported Microsoft Graph URLs, use entityUrl. For custom text, use text.
     source: Optional[TeamworkActivityTopicSource] = None
-    # The topic value. If the value of the source property is entityUrl, this must be a Microsoft Graph URL. If the vaule is text, this must be a plain text value.
+    # The topic value. If the value of the source property is entityUrl, this must be a Microsoft Graph URL. If the value is text, this must be a plain text value.
     value: Optional[str] = None
     # The link the user clicks when they select the notification. Optional when source is entityUrl; required when source is text.
     web_url: Optional[str] = None

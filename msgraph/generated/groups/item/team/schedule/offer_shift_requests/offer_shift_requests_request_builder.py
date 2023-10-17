@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models.o_data_errors.o_data_error import ODataError
     from ......models.offer_shift_request import OfferShiftRequest
     from ......models.offer_shift_request_collection_response import OfferShiftRequestCollectionResponse
+    from ......models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
     from .item.offer_shift_request_item_request_builder import OfferShiftRequestItemRequestBuilder
 
@@ -45,7 +45,7 @@ class OfferShiftRequestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OfferShiftRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[OfferShiftRequestCollectionResponse]:
         """
-        Retrieve the properties and relationships of all offerShiftRequest objects in a team.
+        Retrieve the properties and relationships of all offerShiftRequest objects in a team. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OfferShiftRequestCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/offershiftrequest-list?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class OfferShiftRequestsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[OfferShiftRequest] = None, request_configuration: Optional[OfferShiftRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[OfferShiftRequest]:
         """
-        Create an instance of an offerShiftRequest.
+        Create an instance of an offerShiftRequest. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OfferShiftRequest]
@@ -92,7 +92,7 @@ class OfferShiftRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OfferShiftRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of all offerShiftRequest objects in a team.
+        Retrieve the properties and relationships of all offerShiftRequest objects in a team. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class OfferShiftRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[OfferShiftRequest] = None, request_configuration: Optional[OfferShiftRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an instance of an offerShiftRequest.
+        Create an instance of an offerShiftRequest. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class OfferShiftRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OfferShiftRequestsRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of all offerShiftRequest objects in a team.
+        Retrieve the properties and relationships of all offerShiftRequest objects in a team. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

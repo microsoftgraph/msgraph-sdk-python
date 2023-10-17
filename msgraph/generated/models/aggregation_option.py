@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 @dataclass
 class AggregationOption(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -20,7 +20,7 @@ class AggregationOption(AdditionalDataHolder, BackedModel, Parsable):
     field: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The number of searchBucket resources to be returned. This is not required when the range is provided manually in the search request. Optional.
+    # The number of searchBucket resources to be returned. This isn't required when the range is provided manually in the search request. Optional.
     size: Optional[int] = None
     
     @staticmethod

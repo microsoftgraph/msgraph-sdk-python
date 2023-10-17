@@ -28,7 +28,7 @@ class AuthenticationContextClassReferenceItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AuthenticationContextClassReferenceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an authenticationContextClassReference object that's not published or used by a conditional access policy.
+        Delete an authenticationContextClassReference object that's not published or used by a conditional access policy. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/authenticationcontextclassreference-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class AuthenticationContextClassReferenceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AuthenticationContextClassReferenceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationContextClassReference]:
         """
-        Retrieve the properties and relationships of a authenticationContextClassReference object.
+        Retrieve the properties and relationships of a authenticationContextClassReference object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationContextClassReference]
         Find more info here: https://learn.microsoft.com/graph/api/authenticationcontextclassreference-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class AuthenticationContextClassReferenceItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[AuthenticationContextClassReference] = None, request_configuration: Optional[AuthenticationContextClassReferenceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AuthenticationContextClassReference]:
         """
-        Create an authenticationContextClassReference object, if the ID has not been used. If ID has been used, this call updates the authenticationContextClassReference object.
+        Create an authenticationContextClassReference object, if the ID has not been used. If ID has been used, this call updates the authenticationContextClassReference object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationContextClassReference]
@@ -95,7 +95,7 @@ class AuthenticationContextClassReferenceItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AuthenticationContextClassReferenceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an authenticationContextClassReference object that's not published or used by a conditional access policy.
+        Delete an authenticationContextClassReference object that's not published or used by a conditional access policy. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class AuthenticationContextClassReferenceItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationContextClassReferenceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a authenticationContextClassReference object.
+        Retrieve the properties and relationships of a authenticationContextClassReference object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class AuthenticationContextClassReferenceItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[AuthenticationContextClassReference] = None, request_configuration: Optional[AuthenticationContextClassReferenceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an authenticationContextClassReference object, if the ID has not been used. If ID has been used, this call updates the authenticationContextClassReference object.
+        Create an authenticationContextClassReference object, if the ID has not been used. If ID has been used, this call updates the authenticationContextClassReference object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class AuthenticationContextClassReferenceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthenticationContextClassReferenceItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a authenticationContextClassReference object.
+        Retrieve the properties and relationships of a authenticationContextClassReference object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

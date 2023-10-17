@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .get_all_sites_response import GetAllSitesResponse
+    from .get_all_sites_get_response import GetAllSitesGetResponse
 
 class GetAllSitesRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class GetAllSitesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/getAllSites(){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetAllSitesRequestBuilderGetRequestConfiguration] = None) -> Optional[GetAllSitesResponse]:
+    async def get(self,request_configuration: Optional[GetAllSitesRequestBuilderGetRequestConfiguration] = None) -> Optional[GetAllSitesGetResponse]:
         """
         Invoke function getAllSites
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetAllSitesResponse]
+        Returns: Optional[GetAllSitesGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class GetAllSitesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_all_sites_response import GetAllSitesResponse
+        from .get_all_sites_get_response import GetAllSitesGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetAllSitesResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetAllSitesGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetAllSitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

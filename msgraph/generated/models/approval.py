@@ -12,7 +12,7 @@ from .entity import Entity
 @dataclass
 class Approval(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A collection of stages in the approval decision.
     stages: Optional[List[ApprovalStage]] = None
     

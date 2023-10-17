@@ -29,7 +29,7 @@ class PlayPromptRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[PlayPromptPostRequestBody] = None, request_configuration: Optional[PlayPromptRequestBuilderPostRequestConfiguration] = None) -> Optional[PlayPromptOperation]:
         """
-        Play a prompt in the call. For more information about how to handle operations, see commsOperation
+        Play a prompt in the call. For more information about how to handle operations, see commsOperation This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlayPromptOperation]
@@ -54,7 +54,7 @@ class PlayPromptRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[PlayPromptPostRequestBody] = None, request_configuration: Optional[PlayPromptRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Play a prompt in the call. For more information about how to handle operations, see commsOperation
+        Play a prompt in the call. For more information about how to handle operations, see commsOperation This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

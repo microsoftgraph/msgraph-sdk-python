@@ -12,7 +12,7 @@ from .event_message_detail import EventMessageDetail
 @dataclass
 class TeamJoiningDisabledEventMessageDetail(EventMessageDetail):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.teamJoiningDisabledEventMessageDetail"
+    OdataType: Optional[str] = "#microsoft.graph.teamJoiningDisabledEventMessageDetail"
     # Initiator of the event.
     initiator: Optional[IdentitySet] = None
     # Unique identifier of the team.

@@ -16,7 +16,7 @@ class AuditLogRoot(Entity):
     # The directoryAudits property
     directory_audits: Optional[List[DirectoryAudit]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The provisioning property
     provisioning: Optional[List[ProvisioningObjectSummary]] = None
     # The signIns property

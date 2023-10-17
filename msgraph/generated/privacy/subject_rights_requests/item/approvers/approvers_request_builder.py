@@ -44,7 +44,7 @@ class ApproversRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ApproversRequestBuilderGetRequestConfiguration] = None) -> Optional[UserCollectionResponse]:
         """
-        Get approvers from privacy
+        Collection of users who can approve the request. Currently only supported for requests of type delete.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserCollectionResponse]
         """
@@ -65,7 +65,7 @@ class ApproversRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ApproversRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get approvers from privacy
+        Collection of users who can approve the request. Currently only supported for requests of type delete.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +102,7 @@ class ApproversRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ApproversRequestBuilderGetQueryParameters():
         """
-        Get approvers from privacy
+        Collection of users who can approve the request. Currently only supported for requests of type delete.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

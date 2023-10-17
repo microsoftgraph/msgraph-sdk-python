@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models.o_data_errors.o_data_error import ODataError
-    from .functions_response import FunctionsResponse
+    from .functions_get_response import FunctionsGetResponse
 
 class FunctionsRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class FunctionsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/applications/{application%2Did}/synchronization/jobs/{synchronizationJob%2Did}/schema/functions(){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[FunctionsRequestBuilderGetRequestConfiguration] = None) -> Optional[FunctionsResponse]:
+    async def get(self,request_configuration: Optional[FunctionsRequestBuilderGetRequestConfiguration] = None) -> Optional[FunctionsGetResponse]:
         """
         Invoke function functions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[FunctionsResponse]
+        Returns: Optional[FunctionsGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class FunctionsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .functions_response import FunctionsResponse
+        from .functions_get_response import FunctionsGetResponse
 
-        return await self.request_adapter.send_async(request_info, FunctionsResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, FunctionsGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[FunctionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

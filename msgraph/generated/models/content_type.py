@@ -45,7 +45,7 @@ class ContentType(Entity):
     # The name of the content type.
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Specifies the order in which the content type appears in the selection UI.
     order: Optional[ContentTypeOrder] = None
     # The unique identifier of the content type.

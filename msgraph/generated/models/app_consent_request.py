@@ -17,7 +17,7 @@ class AppConsentRequest(Entity):
     # The identifier of the application. Required. Supports $filter (eq only) and $orderby.
     app_id: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A list of pending scopes waiting for approval. Required.
     pending_scopes: Optional[List[AppConsentRequestScope]] = None
     # A list of pending user consent requests. Supports $filter (eq).

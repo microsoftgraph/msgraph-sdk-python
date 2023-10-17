@@ -14,7 +14,7 @@ class WorkbookChartAxes(Entity):
     # Represents the category axis in a chart. Read-only.
     category_axis: Optional[WorkbookChartAxis] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Represents the series axis of a 3-dimensional chart. Read-only.
     series_axis: Optional[WorkbookChartAxis] = None
     # Represents the value axis in an axis. Read-only.

@@ -15,7 +15,7 @@ class MobileContainedApp(Entity):
     An abstract class that represents a contained app in a mobileApp acting as a package.
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileContainedApp:

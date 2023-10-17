@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models.o_data_errors.o_data_error import ODataError
     from ....models.outlook_user import OutlookUser
+    from ....models.o_data_errors.o_data_error import ODataError
     from .master_categories.master_categories_request_builder import MasterCategoriesRequestBuilder
     from .supported_languages.supported_languages_request_builder import SupportedLanguagesRequestBuilder
     from .supported_time_zones.supported_time_zones_request_builder import SupportedTimeZonesRequestBuilder

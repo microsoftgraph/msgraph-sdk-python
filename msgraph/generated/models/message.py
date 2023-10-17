@@ -26,7 +26,7 @@ from .outlook_item import OutlookItem
 @dataclass
 class Message(OutlookItem):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.message"
+    OdataType: Optional[str] = "#microsoft.graph.message"
     # The fileAttachment and itemAttachment attachments for the message.
     attachments: Optional[List[Attachment]] = None
     # The Bcc: recipients for the message.

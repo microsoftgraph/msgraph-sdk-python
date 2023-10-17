@@ -12,7 +12,7 @@ from .comms_operation import CommsOperation
 @dataclass
 class InviteParticipantsOperation(CommsOperation):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The participants to invite.
     participants: Optional[List[InvitationParticipantInfo]] = None
     

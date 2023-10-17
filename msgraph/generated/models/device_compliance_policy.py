@@ -46,7 +46,7 @@ class DeviceCompliancePolicy(Entity):
     # DateTime the object was last modified.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
     scheduled_actions_for_rule: Optional[List[DeviceComplianceScheduledActionForRule]] = None
     # Device compliance users status overview

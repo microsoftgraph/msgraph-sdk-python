@@ -12,7 +12,7 @@ from .place import Place
 @dataclass
 class Room(Place):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.room"
+    OdataType: Optional[str] = "#microsoft.graph.room"
     # Specifies the name of the audio device in the room.
     audio_device_name: Optional[str] = None
     # Type of room. Possible values are standard, and reserved.

@@ -11,7 +11,7 @@ from .domain_dns_record import DomainDnsRecord
 @dataclass
 class DomainDnsTxtRecord(DomainDnsRecord):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Value used when configuring the text property at the DNS host.
     text: Optional[str] = None
     

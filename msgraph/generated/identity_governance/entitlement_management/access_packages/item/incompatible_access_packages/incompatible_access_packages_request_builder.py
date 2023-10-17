@@ -45,7 +45,7 @@ class IncompatibleAccessPackagesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IncompatibleAccessPackagesRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageCollectionResponse]:
         """
-        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.  
+        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.   This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/accesspackage-list-incompatibleaccesspackages?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class IncompatibleAccessPackagesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IncompatibleAccessPackagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.  
+        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.   This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,7 +113,7 @@ class IncompatibleAccessPackagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IncompatibleAccessPackagesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.  
+        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.   This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

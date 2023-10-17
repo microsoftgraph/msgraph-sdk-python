@@ -14,7 +14,7 @@ class DelegatedAdminCustomer(Entity):
     # The Azure AD display name of the customer tenant. Read-only. Supports $orderby.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Contains the management details of a service in the customer tenant that's managed by delegated administration.
     service_management_details: Optional[List[DelegatedAdminServiceManagementDetail]] = None
     # The Azure AD-assigned tenant ID of the customer. Read-only.

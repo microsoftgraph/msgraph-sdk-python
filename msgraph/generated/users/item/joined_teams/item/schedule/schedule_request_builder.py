@@ -13,15 +13,15 @@ if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
     from ......models.schedule import Schedule
     from .offer_shift_requests.offer_shift_requests_request_builder import OfferShiftRequestsRequestBuilder
-    from .open_shift_change_requests.open_shift_change_requests_request_builder import OpenShiftChangeRequestsRequestBuilder
     from .open_shifts.open_shifts_request_builder import OpenShiftsRequestBuilder
+    from .open_shift_change_requests.open_shift_change_requests_request_builder import OpenShiftChangeRequestsRequestBuilder
     from .scheduling_groups.scheduling_groups_request_builder import SchedulingGroupsRequestBuilder
     from .share.share_request_builder import ShareRequestBuilder
     from .shifts.shifts_request_builder import ShiftsRequestBuilder
     from .swap_shifts_change_requests.swap_shifts_change_requests_request_builder import SwapShiftsChangeRequestsRequestBuilder
+    from .times_off.times_off_request_builder import TimesOffRequestBuilder
     from .time_off_reasons.time_off_reasons_request_builder import TimeOffReasonsRequestBuilder
     from .time_off_requests.time_off_requests_request_builder import TimeOffRequestsRequestBuilder
-    from .times_off.times_off_request_builder import TimesOffRequestBuilder
 
 class ScheduleRequestBuilder(BaseRequestBuilder):
     """
@@ -57,7 +57,7 @@ class ScheduleRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ScheduleRequestBuilderGetRequestConfiguration] = None) -> Optional[Schedule]:
         """
-        Retrieve the properties and relationships of a schedule object. The schedule creation process conforms to the One API guideline for resource based long running operations (RELO).When clients use the PUT method, if the schedule is provisioned, the operation updates the schedule; otherwise, the operation starts the schedule provisioning process in the background. During schedule provisioning, clients can use the GET method to get the schedule and look at the provisionStatus property for the current state of the provisioning. If the provisioning failed, clients can get additional information from the provisionStatusCode property. Clients can also inspect the configuration of the schedule.
+        Retrieve the properties and relationships of a schedule object. The schedule creation process conforms to the One API guideline for resource based long running operations (RELO).When clients use the PUT method, if the schedule is provisioned, the operation updates the schedule; otherwise, the operation starts the schedule provisioning process in the background. During schedule provisioning, clients can use the GET method to get the schedule and look at the provisionStatus property for the current state of the provisioning. If the provisioning failed, clients can get additional information from the provisionStatusCode property. Clients can also inspect the configuration of the schedule. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Schedule]
         Find more info here: https://learn.microsoft.com/graph/api/schedule-get?view=graph-rest-1.0
@@ -118,7 +118,7 @@ class ScheduleRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ScheduleRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a schedule object. The schedule creation process conforms to the One API guideline for resource based long running operations (RELO).When clients use the PUT method, if the schedule is provisioned, the operation updates the schedule; otherwise, the operation starts the schedule provisioning process in the background. During schedule provisioning, clients can use the GET method to get the schedule and look at the provisionStatus property for the current state of the provisioning. If the provisioning failed, clients can get additional information from the provisionStatusCode property. Clients can also inspect the configuration of the schedule.
+        Retrieve the properties and relationships of a schedule object. The schedule creation process conforms to the One API guideline for resource based long running operations (RELO).When clients use the PUT method, if the schedule is provisioned, the operation updates the schedule; otherwise, the operation starts the schedule provisioning process in the background. During schedule provisioning, clients can use the GET method to get the schedule and look at the provisionStatus property for the current state of the provisioning. If the provisioning failed, clients can get additional information from the provisionStatusCode property. Clients can also inspect the configuration of the schedule. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -266,7 +266,7 @@ class ScheduleRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ScheduleRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a schedule object. The schedule creation process conforms to the One API guideline for resource based long running operations (RELO).When clients use the PUT method, if the schedule is provisioned, the operation updates the schedule; otherwise, the operation starts the schedule provisioning process in the background. During schedule provisioning, clients can use the GET method to get the schedule and look at the provisionStatus property for the current state of the provisioning. If the provisioning failed, clients can get additional information from the provisionStatusCode property. Clients can also inspect the configuration of the schedule.
+        Retrieve the properties and relationships of a schedule object. The schedule creation process conforms to the One API guideline for resource based long running operations (RELO).When clients use the PUT method, if the schedule is provisioned, the operation updates the schedule; otherwise, the operation starts the schedule provisioning process in the background. During schedule provisioning, clients can use the GET method to get the schedule and look at the provisionStatus property for the current state of the provisioning. If the provisioning failed, clients can get additional information from the provisionStatusCode property. Clients can also inspect the configuration of the schedule. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

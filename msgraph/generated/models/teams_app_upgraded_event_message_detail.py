@@ -12,7 +12,7 @@ from .event_message_detail import EventMessageDetail
 @dataclass
 class TeamsAppUpgradedEventMessageDetail(EventMessageDetail):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.teamsAppUpgradedEventMessageDetail"
+    OdataType: Optional[str] = "#microsoft.graph.teamsAppUpgradedEventMessageDetail"
     # Initiator of the event.
     initiator: Optional[IdentitySet] = None
     # Display name of the teamsApp.

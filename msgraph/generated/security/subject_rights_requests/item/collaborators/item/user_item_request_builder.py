@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
     from ......models.user import User
     from .mailbox_settings.mailbox_settings_request_builder import MailboxSettingsRequestBuilder
+    from .service_provisioning_errors.service_provisioning_errors_request_builder import ServiceProvisioningErrorsRequestBuilder
 
 class UserItemRequestBuilder(BaseRequestBuilder):
     """
@@ -29,7 +30,7 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserItemRequestBuilderGetRequestConfiguration] = None) -> Optional[User]:
         """
-        Get collaborators from security
+        Collection of users who can collaborate on the request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
         """
@@ -50,7 +51,7 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get collaborators from security
+        Collection of users who can collaborate on the request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -84,10 +85,19 @@ class UserItemRequestBuilder(BaseRequestBuilder):
 
         return MailboxSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
+    def service_provisioning_errors(self) -> ServiceProvisioningErrorsRequestBuilder:
+        """
+        The serviceProvisioningErrors property
+        """
+        from .service_provisioning_errors.service_provisioning_errors_request_builder import ServiceProvisioningErrorsRequestBuilder
+
+        return ServiceProvisioningErrorsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class UserItemRequestBuilderGetQueryParameters():
         """
-        Get collaborators from security
+        Collection of users who can collaborate on the request.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

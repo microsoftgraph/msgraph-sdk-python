@@ -12,12 +12,12 @@ from .entity import Entity
 
 @dataclass
 class WorkbookChartSeriesFormat(Entity):
-    # Represents the fill format of a chart series, which includes background formating information. Read-only.
+    # Represents the fill format of a chart series, which includes background formatting information. Read-only.
     fill: Optional[WorkbookChartFill] = None
     # Represents line formatting. Read-only.
     line: Optional[WorkbookChartLineFormat] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartSeriesFormat:

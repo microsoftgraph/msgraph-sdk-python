@@ -18,8 +18,8 @@ if TYPE_CHECKING:
     from .cases.cases_request_builder import CasesRequestBuilder
     from .incidents.incidents_request_builder import IncidentsRequestBuilder
     from .microsoft_graph_security_run_hunting_query.microsoft_graph_security_run_hunting_query_request_builder import MicrosoftGraphSecurityRunHuntingQueryRequestBuilder
-    from .secure_score_control_profiles.secure_score_control_profiles_request_builder import SecureScoreControlProfilesRequestBuilder
     from .secure_scores.secure_scores_request_builder import SecureScoresRequestBuilder
+    from .secure_score_control_profiles.secure_score_control_profiles_request_builder import SecureScoreControlProfilesRequestBuilder
     from .subject_rights_requests.subject_rights_requests_request_builder import SubjectRightsRequestsRequestBuilder
     from .threat_intelligence.threat_intelligence_request_builder import ThreatIntelligenceRequestBuilder
     from .triggers.triggers_request_builder import TriggersRequestBuilder
@@ -221,15 +221,6 @@ class SecurityRequestBuilder(BaseRequestBuilder):
         return ThreatIntelligenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def triggers(self) -> TriggersRequestBuilder:
-        """
-        Provides operations to manage the triggers property of the microsoft.graph.security entity.
-        """
-        from .triggers.triggers_request_builder import TriggersRequestBuilder
-
-        return TriggersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def trigger_types(self) -> TriggerTypesRequestBuilder:
         """
         Provides operations to manage the triggerTypes property of the microsoft.graph.security entity.
@@ -237,6 +228,15 @@ class SecurityRequestBuilder(BaseRequestBuilder):
         from .trigger_types.trigger_types_request_builder import TriggerTypesRequestBuilder
 
         return TriggerTypesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def triggers(self) -> TriggersRequestBuilder:
+        """
+        Provides operations to manage the triggers property of the microsoft.graph.security entity.
+        """
+        from .triggers.triggers_request_builder import TriggersRequestBuilder
+
+        return TriggersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SecurityRequestBuilderGetQueryParameters():

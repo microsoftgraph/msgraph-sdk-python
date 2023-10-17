@@ -12,7 +12,7 @@ from .message import Message
 @dataclass
 class CalendarSharingMessage(Message):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.calendarSharingMessage"
+    OdataType: Optional[str] = "#microsoft.graph.calendarSharingMessage"
     # The canAccept property
     can_accept: Optional[bool] = None
     # The sharingMessageAction property

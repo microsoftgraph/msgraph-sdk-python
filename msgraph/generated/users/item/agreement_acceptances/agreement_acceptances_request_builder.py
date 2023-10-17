@@ -44,7 +44,7 @@ class AgreementAcceptancesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AgreementAcceptancesRequestBuilderGetRequestConfiguration] = None) -> Optional[AgreementAcceptanceCollectionResponse]:
         """
-        Retrieve the signed-in user's agreementAcceptance objects.
+        Retrieve the signed-in user's agreementAcceptance objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AgreementAcceptanceCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/user-list-agreementacceptances?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class AgreementAcceptancesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AgreementAcceptancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the signed-in user's agreementAcceptance objects.
+        Retrieve the signed-in user's agreementAcceptance objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +103,7 @@ class AgreementAcceptancesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AgreementAcceptancesRequestBuilderGetQueryParameters():
         """
-        Retrieve the signed-in user's agreementAcceptance objects.
+        Retrieve the signed-in user's agreementAcceptance objects. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

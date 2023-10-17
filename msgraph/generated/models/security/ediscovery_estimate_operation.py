@@ -18,7 +18,7 @@ class EdiscoveryEstimateOperation(CaseOperation):
     # The number of mailboxes that had search hits.
     mailbox_count: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # eDiscovery search.
     search: Optional[EdiscoverySearch] = None
     # The number of mailboxes that had search hits.

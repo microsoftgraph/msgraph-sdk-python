@@ -13,7 +13,7 @@ from .identity_set import IdentitySet
 @dataclass
 class SharePointIdentitySet(IdentitySet):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.sharePointIdentitySet"
+    OdataType: Optional[str] = "#microsoft.graph.sharePointIdentitySet"
     # The group associated with this action. Optional.
     group: Optional[Identity] = None
     # The SharePoint group associated with this action. Optional.

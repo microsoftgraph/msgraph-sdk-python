@@ -15,7 +15,7 @@ class AuthenticationCombinationConfiguration(Entity):
     # Which authentication method combinations this configuration applies to. Must be an allowedCombinations object that's defined for the authenticationStrengthPolicy. The only possible value for fido2combinationConfigurations is 'fido2'.
     applies_to_combinations: Optional[List[AuthenticationMethodModes]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationCombinationConfiguration:

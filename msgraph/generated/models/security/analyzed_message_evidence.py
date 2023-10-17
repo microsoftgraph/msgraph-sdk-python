@@ -13,7 +13,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class AnalyzedMessageEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.analyzedMessageEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.analyzedMessageEvidence"
     # Direction of the email relative to your network. The possible values are: inbound, outbound or intraorg.
     anti_spam_direction: Optional[str] = None
     # Number of attachments in the email.

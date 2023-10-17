@@ -50,7 +50,7 @@ class BookingService(Entity):
     # Additional information about this service.
     notes: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The time to buffer after an appointment for this service ends, and before the next customer appointment can be booked.
     post_buffer: Optional[datetime.timedelta] = None
     # The time to buffer before an appointment for this service can start.

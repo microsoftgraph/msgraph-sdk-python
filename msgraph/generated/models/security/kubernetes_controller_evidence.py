@@ -13,7 +13,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class KubernetesControllerEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.kubernetesControllerEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.kubernetesControllerEvidence"
     # The labels for the Kubernetes pod.
     labels: Optional[Dictionary] = None
     # The controller name.

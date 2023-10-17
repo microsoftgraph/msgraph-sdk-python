@@ -28,7 +28,7 @@ class FollowRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[FollowRequestBuilderPostRequestConfiguration] = None) -> Optional[DriveItem]:
         """
-        Follow a driveItem.
+        Follow a driveItem. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItem]
         Find more info here: https://learn.microsoft.com/graph/api/driveitem-follow?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class FollowRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[FollowRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Follow a driveItem.
+        Follow a driveItem. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -15,7 +15,7 @@ class WorkbookOperation(Entity):
     # The error returned by the operation.
     error: Optional[WorkbookOperationError] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The resource URI for the result.
     resource_location: Optional[str] = None
     # The status property

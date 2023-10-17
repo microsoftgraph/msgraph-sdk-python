@@ -12,8 +12,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.terms_of_use_container import TermsOfUseContainer
-    from .agreement_acceptances.agreement_acceptances_request_builder import AgreementAcceptancesRequestBuilder
     from .agreements.agreements_request_builder import AgreementsRequestBuilder
+    from .agreement_acceptances.agreement_acceptances_request_builder import AgreementAcceptancesRequestBuilder
 
 class TermsOfUseRequestBuilder(BaseRequestBuilder):
     """

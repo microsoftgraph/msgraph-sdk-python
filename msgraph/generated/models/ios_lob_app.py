@@ -17,7 +17,7 @@ class IosLobApp(MobileLobApp):
     Contains properties and inherited properties for iOS Line Of Business apps.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.iosLobApp"
+    OdataType: Optional[str] = "#microsoft.graph.iosLobApp"
     # Contains properties of the possible iOS device types the mobile app can run on.
     applicable_device_type: Optional[IosDeviceType] = None
     # The build number of iOS Line of Business (LoB) app.

@@ -15,7 +15,7 @@ class IosLobAppProvisioningConfigurationAssignment(Entity):
     A class containing the properties used for Group Assignment of an iOS LOB App Provisioning and Configuration.
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The target group assignment defined by the admin.
     target: Optional[DeviceAndAppManagementAssignmentTarget] = None
     

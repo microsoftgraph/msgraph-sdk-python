@@ -63,7 +63,7 @@ class EducationAssignment(Entity):
     # Optional field to specify the URL of the channel to post the assignment publish notification. If not specified or null, defaults to the General channel. This field only applies to assignments where the assignTo value is educationAssignmentClassRecipient. Updating the notificationChannelUrl isn't allowed after the assignment has been published.
     notification_channel_url: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Learning objects that are associated with this assignment.  Only teachers can modify this list. Nullable.
     resources: Optional[List[EducationAssignmentResource]] = None
     # Folder URL where all the file resources for this assignment are stored.

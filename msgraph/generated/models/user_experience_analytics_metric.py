@@ -14,7 +14,7 @@ class UserExperienceAnalyticsMetric(Entity):
     The user experience analytics metric contains the score and units of a metric of a user experience anlaytics category.
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The unit of the user experience analytics metric. Examples: none, percentage, count, seconds, score.
     unit: Optional[str] = None
     # The value of the user experience analytics metric.

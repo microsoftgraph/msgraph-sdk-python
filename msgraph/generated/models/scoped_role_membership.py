@@ -14,7 +14,7 @@ class ScopedRoleMembership(Entity):
     # Unique identifier for the administrative unit that the directory role is scoped to
     administrative_unit_id: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Unique identifier for the directory role that the member is in.
     role_id: Optional[str] = None
     # The roleMemberInfo property

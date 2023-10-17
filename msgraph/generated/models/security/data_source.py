@@ -25,7 +25,7 @@ class DataSource(Entity):
     # The hold status of the dataSource.The possible values are: notApplied, applied, applying, removing, partial
     hold_status: Optional[DataSourceHoldStatus] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DataSource:

@@ -20,18 +20,18 @@ from .base_item import BaseItem
 @dataclass
 class List_(BaseItem):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.list"
+    OdataType: Optional[str] = "#microsoft.graph.list"
     # The collection of field definitions for this list.
     columns: Optional[List[ColumnDefinition]] = None
     # The collection of content types present in this list.
     content_types: Optional[List[ContentType]] = None
     # The displayable title of the list.
     display_name: Optional[str] = None
-    # Only present on document libraries. Allows access to the list as a [drive][] resource with [driveItems][driveItem].
+    # Allows access to the list as a drive resource with driveItems. Only present on document libraries.
     drive: Optional[Drive] = None
     # All items contained in the list.
     items: Optional[List[ListItem]] = None
-    # Provides additional details about the list.
+    # Contains more details about the list.
     list_: Optional[ListInfo] = None
     # The collection of long-running operations on the list.
     operations: Optional[List[RichLongRunningOperation]] = None
@@ -39,7 +39,7 @@ class List_(BaseItem):
     sharepoint_ids: Optional[SharepointIds] = None
     # The set of subscriptions on the list.
     subscriptions: Optional[List[Subscription]] = None
-    # If present, indicates that this is a system-managed list. Read-only.
+    # If present, indicates that the list is system-managed. Read-only.
     system: Optional[SystemFacet] = None
     
     @staticmethod

@@ -28,7 +28,7 @@ class CalendarPermissionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[CalendarPermissionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete calendarPermission.
+        Delete calendarPermission. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/calendarpermission-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class CalendarPermissionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CalendarPermissionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CalendarPermission]:
         """
-        Get the specified permissions object of a user or group calendar that has been shared.
+        Get the specified permissions object of a user or group calendar that has been shared. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CalendarPermission]
         Find more info here: https://learn.microsoft.com/graph/api/calendarpermission-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class CalendarPermissionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[CalendarPermission] = None, request_configuration: Optional[CalendarPermissionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[CalendarPermission]:
         """
-        Update the permissions assigned to an existing sharee or delegate, through the corresponding <b>calendarPermission</b> object for a calendar.
+        Update the permissions assigned to an existing share recipient or delegate, through the corresponding <b>calendarPermission</b> object for a calendar. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CalendarPermission]
@@ -95,7 +95,7 @@ class CalendarPermissionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[CalendarPermissionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete calendarPermission.
+        Delete calendarPermission. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class CalendarPermissionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CalendarPermissionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the specified permissions object of a user or group calendar that has been shared.
+        Get the specified permissions object of a user or group calendar that has been shared. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class CalendarPermissionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[CalendarPermission] = None, request_configuration: Optional[CalendarPermissionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the permissions assigned to an existing sharee or delegate, through the corresponding <b>calendarPermission</b> object for a calendar.
+        Update the permissions assigned to an existing share recipient or delegate, through the corresponding <b>calendarPermission</b> object for a calendar. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,7 +168,7 @@ class CalendarPermissionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CalendarPermissionItemRequestBuilderGetQueryParameters():
         """
-        Get the specified permissions object of a user or group calendar that has been shared.
+        Get the specified permissions object of a user or group calendar that has been shared. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

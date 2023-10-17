@@ -63,7 +63,7 @@ class EducationUser(Entity):
     # The primary cellular telephone number for the user.
     mobile_phone: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The officeLocation property
     office_location: Optional[str] = None
     # Additional information used to associate the Azure Active Directory user with its Active Directory counterpart.

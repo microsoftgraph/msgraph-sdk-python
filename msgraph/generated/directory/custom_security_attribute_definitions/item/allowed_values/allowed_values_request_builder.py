@@ -45,7 +45,7 @@ class AllowedValuesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AllowedValuesRequestBuilderGetRequestConfiguration] = None) -> Optional[AllowedValueCollectionResponse]:
         """
-        Get a list of the allowedValue objects and their properties.
+        Get a list of the allowedValue objects and their properties. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AllowedValueCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/customsecurityattributedefinition-list-allowedvalues?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class AllowedValuesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AllowedValue] = None, request_configuration: Optional[AllowedValuesRequestBuilderPostRequestConfiguration] = None) -> Optional[AllowedValue]:
         """
-        Create a new allowedValue object.
+        Create a new allowedValue object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AllowedValue]
@@ -92,7 +92,7 @@ class AllowedValuesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AllowedValuesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the allowedValue objects and their properties.
+        Get a list of the allowedValue objects and their properties. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class AllowedValuesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AllowedValue] = None, request_configuration: Optional[AllowedValuesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new allowedValue object.
+        Create a new allowedValue object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class AllowedValuesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AllowedValuesRequestBuilderGetQueryParameters():
         """
-        Get a list of the allowedValue objects and their properties.
+        Get a list of the allowedValue objects and their properties. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

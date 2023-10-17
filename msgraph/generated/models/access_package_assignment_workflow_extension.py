@@ -13,7 +13,7 @@ from .custom_callout_extension import CustomCalloutExtension
 @dataclass
 class AccessPackageAssignmentWorkflowExtension(CustomCalloutExtension):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.accessPackageAssignmentWorkflowExtension"
+    OdataType: Optional[str] = "#microsoft.graph.accessPackageAssignmentWorkflowExtension"
     # The callback configuration for a custom extension.
     callback_configuration: Optional[CustomExtensionCallbackConfiguration] = None
     # The userPrincipalName of the user or identity of the subject that created this resource. Read-only.

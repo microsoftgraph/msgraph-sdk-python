@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .get_attack_simulation_repeat_offenders_response import GetAttackSimulationRepeatOffendersResponse
+    from .get_attack_simulation_repeat_offenders_get_response import GetAttackSimulationRepeatOffendersGetResponse
 
 class GetAttackSimulationRepeatOffendersRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class GetAttackSimulationRepeatOffendersRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/reports/security/getAttackSimulationRepeatOffenders(){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetAttackSimulationRepeatOffendersRequestBuilderGetRequestConfiguration] = None) -> Optional[GetAttackSimulationRepeatOffendersResponse]:
+    async def get(self,request_configuration: Optional[GetAttackSimulationRepeatOffendersRequestBuilderGetRequestConfiguration] = None) -> Optional[GetAttackSimulationRepeatOffendersGetResponse]:
         """
         Invoke function getAttackSimulationRepeatOffenders
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetAttackSimulationRepeatOffendersResponse]
+        Returns: Optional[GetAttackSimulationRepeatOffendersGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class GetAttackSimulationRepeatOffendersRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_attack_simulation_repeat_offenders_response import GetAttackSimulationRepeatOffendersResponse
+        from .get_attack_simulation_repeat_offenders_get_response import GetAttackSimulationRepeatOffendersGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetAttackSimulationRepeatOffendersResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetAttackSimulationRepeatOffendersGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetAttackSimulationRepeatOffendersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

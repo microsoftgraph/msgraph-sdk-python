@@ -38,7 +38,7 @@ class AuditEvent(Entity):
     # Event display name.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Resources being modified.
     resources: Optional[List[AuditResource]] = None
     

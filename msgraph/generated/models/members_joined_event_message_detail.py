@@ -13,7 +13,7 @@ from .event_message_detail import EventMessageDetail
 @dataclass
 class MembersJoinedEventMessageDetail(EventMessageDetail):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.membersJoinedEventMessageDetail"
+    OdataType: Optional[str] = "#microsoft.graph.membersJoinedEventMessageDetail"
     # Initiator of the event.
     initiator: Optional[IdentitySet] = None
     # List of members who joined the chat.

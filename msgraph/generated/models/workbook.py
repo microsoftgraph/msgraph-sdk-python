@@ -26,7 +26,7 @@ class Workbook(Entity):
     # Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
     names: Optional[List[WorkbookNamedItem]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The status of workbook operations. Getting an operation collection is not supported, but you can get the status of a long-running operation if the Location header is returned in the response. Read-only.
     operations: Optional[List[WorkbookOperation]] = None
     # Represents a collection of tables associated with the workbook. Read-only.

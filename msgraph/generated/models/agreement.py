@@ -28,7 +28,7 @@ class Agreement(Entity):
     # Indicates whether the user has to expand the agreement before accepting. Supports $filter (eq).
     is_viewing_before_acceptance_required: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Expiration schedule and frequency of agreement for all users. Supports $filter (eq).
     terms_expiration: Optional[TermsExpiration] = None
     # The duration after which the user must re-accept the terms of use. The value is represented in ISO 8601 format for durations. Supports $filter (eq).

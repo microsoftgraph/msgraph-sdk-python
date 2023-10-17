@@ -15,7 +15,7 @@ class CustomExtensionStageSetting(Entity):
     # Indicates the custom workflow extension that will be executed at this stage. Nullable. Supports $expand.
     custom_extension: Optional[CustomCalloutExtension] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The stage property
     stage: Optional[AccessPackageCustomExtensionStage] = None
     

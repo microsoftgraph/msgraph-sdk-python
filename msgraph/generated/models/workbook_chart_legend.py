@@ -14,7 +14,7 @@ class WorkbookChartLegend(Entity):
     # Represents the formatting of a chart legend, which includes fill and font formatting. Read-only.
     format: Optional[WorkbookChartLegendFormat] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Boolean value for whether the chart legend should overlap with the main body of the chart.
     overlay: Optional[bool] = None
     # Represents the position of the legend on the chart. The possible values are: Top, Bottom, Left, Right, Corner, Custom.

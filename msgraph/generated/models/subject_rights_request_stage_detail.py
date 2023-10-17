@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 @dataclass
 class SubjectRightsRequestStageDetail(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -20,7 +20,7 @@ class SubjectRightsRequestStageDetail(AdditionalDataHolder, BackedModel, Parsabl
     error: Optional[PublicError] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The stage of the subject rights request. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue.
+    # The stage of the subject rights request. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue, approval. You must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: approval.
     stage: Optional[SubjectRightsRequestStage] = None
     # Status of the current stage. Possible values are: notStarted, current, completed, failed, unknownFutureValue.
     status: Optional[SubjectRightsRequestStageStatus] = None

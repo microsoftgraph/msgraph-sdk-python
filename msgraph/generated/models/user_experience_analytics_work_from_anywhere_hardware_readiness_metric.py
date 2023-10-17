@@ -14,7 +14,7 @@ class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric(Entity):
     The user experience analytics hardware readiness entity contains account level information about hardware blockers for windows upgrade.
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The percentage of devices for which OS check has failed. Valid values 0 to 100. Supports: $select, $OrderBy. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
     os_check_failed_percentage: Optional[float] = None
     # The percentage of devices for which processor hardware core count check has failed. Valid values 0 to 100. Supports: $select, $OrderBy. Read-only. Valid values -1.79769313486232E+308 to 1.79769313486232E+308

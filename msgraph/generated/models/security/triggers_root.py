@@ -12,7 +12,7 @@ from ..entity import Entity
 @dataclass
 class TriggersRoot(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The retentionEvents property
     retention_events: Optional[List[RetentionEvent]] = None
     

@@ -20,7 +20,7 @@ class RemoteAssistancePartner(Entity):
     # Timestamp of the last request sent to Intune by the TEM partner.
     last_connection_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The current TeamViewer connector status
     onboarding_status: Optional[RemoteAssistanceOnboardingStatus] = None
     # URL of the partner's onboarding portal, where an administrator can configure their Remote Assistance service.

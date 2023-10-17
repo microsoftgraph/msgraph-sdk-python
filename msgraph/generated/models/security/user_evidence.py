@@ -12,7 +12,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class UserEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.userEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.userEvidence"
     # The user account details.
     user_account: Optional[UserAccount] = None
     

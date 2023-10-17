@@ -30,7 +30,7 @@ class MailFolder(Entity):
     # The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
     multi_value_extended_properties: Optional[List[MultiValueLegacyExtendedProperty]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The unique identifier for the mailFolder's parent mailFolder.
     parent_folder_id: Optional[str] = None
     # The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.

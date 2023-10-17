@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from .remove_group_post_request_body import RemoveGroupPostRequestBody
-    from .remove_group_response import RemoveGroupResponse
+    from .remove_group_post_response import RemoveGroupPostResponse
 
 class RemoveGroupRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class RemoveGroupRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groupLifecyclePolicies/{groupLifecyclePolicy%2Did}/removeGroup", path_parameters)
     
-    async def post(self,body: Optional[RemoveGroupPostRequestBody] = None, request_configuration: Optional[RemoveGroupRequestBuilderPostRequestConfiguration] = None) -> Optional[RemoveGroupResponse]:
+    async def post(self,body: Optional[RemoveGroupPostRequestBody] = None, request_configuration: Optional[RemoveGroupRequestBuilderPostRequestConfiguration] = None) -> Optional[RemoveGroupPostResponse]:
         """
-        Removes a group from a lifecycle policy.
+        Removes a group from a lifecycle policy. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[RemoveGroupResponse]
+        Returns: Optional[RemoveGroupPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/grouplifecyclepolicy-removegroup?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class RemoveGroupRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .remove_group_response import RemoveGroupResponse
+        from .remove_group_post_response import RemoveGroupPostResponse
 
-        return await self.request_adapter.send_async(request_info, RemoveGroupResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, RemoveGroupPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[RemoveGroupPostRequestBody] = None, request_configuration: Optional[RemoveGroupRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Removes a group from a lifecycle policy.
+        Removes a group from a lifecycle policy. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

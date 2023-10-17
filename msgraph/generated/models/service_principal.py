@@ -33,7 +33,7 @@ from .directory_object import DirectoryObject
 @dataclass
 class ServicePrincipal(DirectoryObject):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.servicePrincipal"
+    OdataType: Optional[str] = "#microsoft.graph.servicePrincipal"
     # true if the service principal account is enabled; otherwise, false. If set to false, then no users will be able to sign in to this app, even if they are assigned to it. Supports $filter (eq, ne, not, in).
     account_enabled: Optional[bool] = None
     # Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Microsoft 365 call the application in the context of a document the user is working on.
@@ -44,7 +44,7 @@ class ServicePrincipal(DirectoryObject):
     app_description: Optional[str] = None
     # The display name exposed by the associated application.
     app_display_name: Optional[str] = None
-    # The unique identifier for the associated application (its appId property). Supports $filter (eq, ne, not, in, startsWith).
+    # The unique identifier for the associated application (its appId property). Alternate key. Supports $filter (eq, ne, not, in, startsWith).
     app_id: Optional[str] = None
     # The appManagementPolicy applied to this application.
     app_management_policies: Optional[List[AppManagementPolicy]] = None

@@ -14,7 +14,7 @@ class RichLongRunningOperation(LongRunningOperation):
     # Error that caused the operation to fail.
     error: Optional[PublicError] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A value between 0 and 100 that indicates the progress of the operation.
     percentage_complete: Optional[int] = None
     # The unique identifier for the result.

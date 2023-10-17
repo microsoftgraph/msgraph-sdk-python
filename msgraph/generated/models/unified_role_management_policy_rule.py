@@ -17,7 +17,7 @@ from .entity import Entity
 @dataclass
 class UnifiedRoleManagementPolicyRule(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Defines details of scope that's targeted by role management policy rule. The details can include the principal type, the role assignment type, and actions affecting a role. Supports $filter (eq, ne).
     target: Optional[UnifiedRoleManagementPolicyRuleTarget] = None
     

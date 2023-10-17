@@ -21,7 +21,7 @@ class TaskDefinition(Entity):
     # The display name of the taskDefinition.Supports $filter(eq, ne) and $orderby.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The parameters that must be supplied when creating a workflow task object.Supports $filter(any).
     parameters: Optional[List[Parameter]] = None
     # The version number of the taskDefinition. New records are pushed when we add support for new parameters.Supports $filter(ge, gt, le, lt, eq, ne) and $orderby.

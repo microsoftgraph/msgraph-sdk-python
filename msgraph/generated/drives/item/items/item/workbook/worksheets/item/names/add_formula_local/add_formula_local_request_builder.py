@@ -29,7 +29,7 @@ class AddFormulaLocalRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AddFormulaLocalPostRequestBody] = None, request_configuration: Optional[AddFormulaLocalRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookNamedItem]:
         """
-        Adds a new name to the collection of the given scope using the user's locale for the formula.
+        Adds a new name to the collection of the given scope using the user's locale for the formula. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookNamedItem]
@@ -54,7 +54,7 @@ class AddFormulaLocalRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AddFormulaLocalPostRequestBody] = None, request_configuration: Optional[AddFormulaLocalRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Adds a new name to the collection of the given scope using the user's locale for the formula.
+        Adds a new name to the collection of the given scope using the user's locale for the formula. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

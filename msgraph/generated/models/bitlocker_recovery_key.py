@@ -19,7 +19,7 @@ class BitlockerRecoveryKey(Entity):
     # The BitLocker recovery key. Returned only on $select. Not nullable.
     key: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Indicates the type of volume the BitLocker key is associated with. The possible values are: 1 (for operatingSystemVolume), 2 (for fixedDataVolume), 3 (for removableDataVolume), and 4 (for unknownFutureValue).
     volume_type: Optional[VolumeType] = None
     

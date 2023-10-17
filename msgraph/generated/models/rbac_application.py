@@ -20,7 +20,7 @@ from .entity import Entity
 @dataclass
 class RbacApplication(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The resourceNamespaces property
     resource_namespaces: Optional[List[UnifiedRbacResourceNamespace]] = None
     # Instances for active role assignments.

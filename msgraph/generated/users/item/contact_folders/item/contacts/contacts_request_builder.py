@@ -46,7 +46,7 @@ class ContactsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None) -> Optional[ContactCollectionResponse]:
         """
-        Get a contact collection from the default Contacts folder of the signed-in user (.../me/contacts), or from the specified contact folder.
+        Get a contact collection from the default Contacts folder of the signed-in user (.../me/contacts), or from the specified contact folder. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContactCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/contactfolder-list-contacts?view=graph-rest-1.0
@@ -68,7 +68,7 @@ class ContactsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Contact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None) -> Optional[Contact]:
         """
-        Add a contact to the root Contacts folder or to the contacts endpoint of another contact folder.
+        Add a contact to the root Contacts folder or to the contacts endpoint of another contact folder. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Contact]
@@ -93,7 +93,7 @@ class ContactsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a contact collection from the default Contacts folder of the signed-in user (.../me/contacts), or from the specified contact folder.
+        Get a contact collection from the default Contacts folder of the signed-in user (.../me/contacts), or from the specified contact folder. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +110,7 @@ class ContactsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Contact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add a contact to the root Contacts folder or to the contacts endpoint of another contact folder.
+        Add a contact to the root Contacts folder or to the contacts endpoint of another contact folder. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -159,7 +159,7 @@ class ContactsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ContactsRequestBuilderGetQueryParameters():
         """
-        Get a contact collection from the default Contacts folder of the signed-in user (.../me/contacts), or from the specified contact folder.
+        Get a contact collection from the default Contacts folder of the signed-in user (.../me/contacts), or from the specified contact folder. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

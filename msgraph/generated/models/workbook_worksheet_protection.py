@@ -12,7 +12,7 @@ from .entity import Entity
 @dataclass
 class WorkbookWorksheetProtection(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Sheet protection options. Read-only.
     options: Optional[WorkbookWorksheetProtectionOptions] = None
     # Indicates if the worksheet is protected.  Read-only.

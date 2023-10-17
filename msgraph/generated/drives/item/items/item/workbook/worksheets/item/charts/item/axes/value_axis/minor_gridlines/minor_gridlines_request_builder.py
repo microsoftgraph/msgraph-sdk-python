@@ -48,7 +48,7 @@ class MinorGridlinesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MinorGridlinesRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartGridlines]:
         """
-        Retrieve the properties and relationships of chartgridlines object.
+        Retrieve the properties and relationships of chartgridlines object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartGridlines]
         Find more info here: https://learn.microsoft.com/graph/api/chartgridlines-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class MinorGridlinesRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkbookChartGridlines] = None, request_configuration: Optional[MinorGridlinesRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChartGridlines]:
         """
-        Update the properties of chartgridlines object.
+        Update the properties of chartgridlines object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartGridlines]
@@ -110,7 +110,7 @@ class MinorGridlinesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MinorGridlinesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of chartgridlines object.
+        Retrieve the properties and relationships of chartgridlines object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +127,7 @@ class MinorGridlinesRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkbookChartGridlines] = None, request_configuration: Optional[MinorGridlinesRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of chartgridlines object.
+        Update the properties of chartgridlines object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -177,7 +177,7 @@ class MinorGridlinesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MinorGridlinesRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of chartgridlines object.
+        Retrieve the properties and relationships of chartgridlines object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

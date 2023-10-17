@@ -17,7 +17,7 @@ class ManagedIOSLobApp(ManagedMobileLobApp):
     Contains properties and inherited properties for Managed iOS Line Of Business apps.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.managedIOSLobApp"
+    OdataType: Optional[str] = "#microsoft.graph.managedIOSLobApp"
     # Contains properties of the possible iOS device types the mobile app can run on.
     applicable_device_type: Optional[IosDeviceType] = None
     # The build number of managed iOS Line of Business (LoB) app.

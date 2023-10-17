@@ -12,7 +12,7 @@ from .teleconference_device_media_quality import TeleconferenceDeviceMediaQualit
 @dataclass
 class TeleconferenceDeviceVideoQuality(TeleconferenceDeviceMediaQuality):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.teleconferenceDeviceVideoQuality"
+    OdataType: Optional[str] = "#microsoft.graph.teleconferenceDeviceVideoQuality"
     # The average inbound stream video bit rate per second.
     average_inbound_bit_rate: Optional[float] = None
     # The average inbound stream video frame rate per second.

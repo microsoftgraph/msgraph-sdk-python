@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 @dataclass
 class RubricLevel(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -19,7 +19,7 @@ class RubricLevel(AdditionalDataHolder, BackedModel, Parsable):
     description: Optional[EducationItemBody] = None
     # The name of this rubric level.
     display_name: Optional[str] = None
-    # Null if this is a no-points rubric; educationAssignmentPointsGradeType if it is a points rubric.
+    # Null if this is a no-points rubric; educationAssignmentPointsGradeType if it's a points rubric.
     grading: Optional[EducationAssignmentGradeType] = None
     # The ID of this resource.
     level_id: Optional[str] = None

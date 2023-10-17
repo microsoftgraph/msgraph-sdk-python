@@ -28,7 +28,7 @@ class TransferRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TransferPostRequestBody] = None, request_configuration: Optional[TransferRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Transfer an active peer-to-peer call or group call. A consultative transfer means that the transferor can inform the person they want to transfer the call to (the transferee), before the transfer is made. This is opposed to transfering the call directly.
+        Transfer an active peer-to-peer call or group call. A consultative transfer means that the transferor can inform the person they want to transfer the call to (the transferee), before the transfer is made. This is opposed to transfering the call directly. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class TransferRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[TransferPostRequestBody] = None, request_configuration: Optional[TransferRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Transfer an active peer-to-peer call or group call. A consultative transfer means that the transferor can inform the person they want to transfer the call to (the transferee), before the transfer is made. This is opposed to transfering the call directly.
+        Transfer an active peer-to-peer call or group call. A consultative transfer means that the transferor can inform the person they want to transfer the call to (the transferee), before the transfer is made. This is opposed to transfering the call directly. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

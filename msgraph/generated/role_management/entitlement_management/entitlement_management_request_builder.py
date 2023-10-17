@@ -14,13 +14,13 @@ if TYPE_CHECKING:
     from ...models.rbac_application import RbacApplication
     from .resource_namespaces.resource_namespaces_request_builder import ResourceNamespacesRequestBuilder
     from .role_assignments.role_assignments_request_builder import RoleAssignmentsRequestBuilder
+    from .role_assignment_schedules.role_assignment_schedules_request_builder import RoleAssignmentSchedulesRequestBuilder
     from .role_assignment_schedule_instances.role_assignment_schedule_instances_request_builder import RoleAssignmentScheduleInstancesRequestBuilder
     from .role_assignment_schedule_requests.role_assignment_schedule_requests_request_builder import RoleAssignmentScheduleRequestsRequestBuilder
-    from .role_assignment_schedules.role_assignment_schedules_request_builder import RoleAssignmentSchedulesRequestBuilder
     from .role_definitions.role_definitions_request_builder import RoleDefinitionsRequestBuilder
+    from .role_eligibility_schedules.role_eligibility_schedules_request_builder import RoleEligibilitySchedulesRequestBuilder
     from .role_eligibility_schedule_instances.role_eligibility_schedule_instances_request_builder import RoleEligibilityScheduleInstancesRequestBuilder
     from .role_eligibility_schedule_requests.role_eligibility_schedule_requests_request_builder import RoleEligibilityScheduleRequestsRequestBuilder
-    from .role_eligibility_schedules.role_eligibility_schedules_request_builder import RoleEligibilitySchedulesRequestBuilder
 
 class EntitlementManagementRequestBuilder(BaseRequestBuilder):
     """
@@ -171,15 +171,6 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         return ResourceNamespacesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def role_assignments(self) -> RoleAssignmentsRequestBuilder:
-        """
-        Provides operations to manage the roleAssignments property of the microsoft.graph.rbacApplication entity.
-        """
-        from .role_assignments.role_assignments_request_builder import RoleAssignmentsRequestBuilder
-
-        return RoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def role_assignment_schedule_instances(self) -> RoleAssignmentScheduleInstancesRequestBuilder:
         """
         Provides operations to manage the roleAssignmentScheduleInstances property of the microsoft.graph.rbacApplication entity.
@@ -205,6 +196,15 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         from .role_assignment_schedules.role_assignment_schedules_request_builder import RoleAssignmentSchedulesRequestBuilder
 
         return RoleAssignmentSchedulesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def role_assignments(self) -> RoleAssignmentsRequestBuilder:
+        """
+        Provides operations to manage the roleAssignments property of the microsoft.graph.rbacApplication entity.
+        """
+        from .role_assignments.role_assignments_request_builder import RoleAssignmentsRequestBuilder
+
+        return RoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def role_definitions(self) -> RoleDefinitionsRequestBuilder:

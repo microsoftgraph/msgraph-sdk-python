@@ -15,7 +15,7 @@ class DeviceComplianceScheduledActionForRule(Entity):
     Scheduled Action for Rule
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Name of the rule which this scheduled action applies to. Currently scheduled actions are created per policy instead of per rule, thus RuleName is always set to default value PasswordRequired.
     rule_name: Optional[str] = None
     # The list of scheduled action configurations for this compliance policy. Compliance policy must have one and only one block scheduled action.

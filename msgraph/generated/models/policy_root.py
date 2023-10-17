@@ -58,7 +58,7 @@ class PolicyRoot(Entity):
     # The policy that represents the security defaults that protect against common attacks.
     identity_security_defaults_enforcement_policy: Optional[IdentitySecurityDefaultsEnforcementPolicy] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The policy that specifies the conditions under which consent can be granted.
     permission_grant_policies: Optional[List[PermissionGrantPolicy]] = None
     # Specifies the various policies associated with scopes and roles.

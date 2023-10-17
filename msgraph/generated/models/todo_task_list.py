@@ -22,7 +22,7 @@ class TodoTaskList(Entity):
     # True if the task list is shared with other users
     is_shared: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The tasks in this task list. Read-only. Nullable.
     tasks: Optional[List[TodoTask]] = None
     # The wellknownListName property

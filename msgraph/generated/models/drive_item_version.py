@@ -11,7 +11,7 @@ from .base_item_version import BaseItemVersion
 @dataclass
 class DriveItemVersion(BaseItemVersion):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.driveItemVersion"
+    OdataType: Optional[str] = "#microsoft.graph.driveItemVersion"
     # The content stream for this version of the item.
     content: Optional[bytes] = None
     # Indicates the size of the content stream for this version of the item.

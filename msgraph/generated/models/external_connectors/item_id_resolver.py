@@ -12,7 +12,7 @@ from .url_to_item_resolver_base import UrlToItemResolverBase
 @dataclass
 class ItemIdResolver(UrlToItemResolverBase):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.externalConnectors.itemIdResolver"
+    OdataType: Optional[str] = "#microsoft.graph.externalConnectors.itemIdResolver"
     # Pattern that specifies how to form the ID of the external item that the URL represents. The named groups from the regular expression in urlPattern within the urlMatchInfo can be referenced by inserting the group name inside curly brackets.
     item_id: Optional[str] = None
     # Configurations to match and resolve URL.

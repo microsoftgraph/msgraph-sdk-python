@@ -50,7 +50,7 @@ class EdiscoveryReviewSetItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[EdiscoveryReviewSetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryReviewSet]:
         """
-        Read the properties and relationships of an ediscoveryReviewSet object.
+        Read the properties and relationships of an ediscoveryReviewSet object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewSet]
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoveryreviewset-get?view=graph-rest-1.0
@@ -111,7 +111,7 @@ class EdiscoveryReviewSetItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[EdiscoveryReviewSetItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an ediscoveryReviewSet object.
+        Read the properties and relationships of an ediscoveryReviewSet object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -196,7 +196,7 @@ class EdiscoveryReviewSetItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EdiscoveryReviewSetItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an ediscoveryReviewSet object.
+        Read the properties and relationships of an ediscoveryReviewSet object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -26,7 +26,7 @@ class Article(Entity):
     # The most recent date and time when this article was updated. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_updated_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The summary property
     summary: Optional[FormattedContent] = None
     # Tags for this article, communicating keywords, or key concepts.

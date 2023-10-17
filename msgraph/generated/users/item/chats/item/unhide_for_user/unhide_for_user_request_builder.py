@@ -28,7 +28,7 @@ class UnhideForUserRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[UnhideForUserPostRequestBody] = None, request_configuration: Optional[UnhideForUserRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Unhide a chat for a user.
+        Unhide a chat for a user. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class UnhideForUserRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[UnhideForUserPostRequestBody] = None, request_configuration: Optional[UnhideForUserRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Unhide a chat for a user.
+        Unhide a chat for a user. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

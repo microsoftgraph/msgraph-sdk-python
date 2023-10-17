@@ -11,7 +11,7 @@ from .subject_set import SubjectSet
 @dataclass
 class AttributeRuleMembers(SubjectSet):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.attributeRuleMembers"
+    OdataType: Optional[str] = "#microsoft.graph.attributeRuleMembers"
     # A description of the membership rule.
     description: Optional[str] = None
     # Determines the allowed target users for this policy. For more information about the syntax of the membership rule, see Membership Rules syntax.

@@ -26,7 +26,7 @@ class EnrollmentTroubleshootingEvent(DeviceManagementTroubleshootingEvent):
     # Device identifier created or collected by Intune.
     managed_device_identifier: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Operating System.
     operating_system: Optional[str] = None
     # OS Version.

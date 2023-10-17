@@ -11,7 +11,7 @@ from .subject_set import SubjectSet
 @dataclass
 class ConnectedOrganizationMembers(SubjectSet):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.connectedOrganizationMembers"
+    OdataType: Optional[str] = "#microsoft.graph.connectedOrganizationMembers"
     # The ID of the connected organization in entitlement management.
     connected_organization_id: Optional[str] = None
     # The name of the connected organization.

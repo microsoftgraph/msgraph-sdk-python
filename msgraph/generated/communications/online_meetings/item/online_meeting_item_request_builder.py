@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models.o_data_errors.o_data_error import ODataError
     from ....models.online_meeting import OnlineMeeting
+    from ....models.o_data_errors.o_data_error import ODataError
     from .attendance_reports.attendance_reports_request_builder import AttendanceReportsRequestBuilder
     from .attendee_report.attendee_report_request_builder import AttendeeReportRequestBuilder
     from .get_virtual_appointment_join_web_url.get_virtual_appointment_join_web_url_request_builder import GetVirtualAppointmentJoinWebUrlRequestBuilder
+    from .transcripts.transcripts_request_builder import TranscriptsRequestBuilder
 
 class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
     """
@@ -181,6 +182,15 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
         from .get_virtual_appointment_join_web_url.get_virtual_appointment_join_web_url_request_builder import GetVirtualAppointmentJoinWebUrlRequestBuilder
 
         return GetVirtualAppointmentJoinWebUrlRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def transcripts(self) -> TranscriptsRequestBuilder:
+        """
+        Provides operations to manage the transcripts property of the microsoft.graph.onlineMeeting entity.
+        """
+        from .transcripts.transcripts_request_builder import TranscriptsRequestBuilder
+
+        return TranscriptsRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

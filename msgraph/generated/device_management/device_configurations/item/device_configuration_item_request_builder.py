@@ -36,10 +36,10 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a windowsDefenderAdvancedThreatProtectionConfiguration.
+        Deletes a editionUpgradeConfiguration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windowsdefenderadvancedthreatprotectionconfiguration-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-editionupgradeconfiguration-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -56,10 +56,10 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Read properties and relationships of the appleDeviceFeaturesConfigurationBase object.
+        Read properties and relationships of the androidGeneralDeviceConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-appledevicefeaturesconfigurationbase-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-androidgeneraldeviceconfiguration-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,11 +90,11 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Update the properties of a windows10EnterpriseModernAppManagementConfiguration object.
+        Update the properties of a sharedPCConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows10enterprisemodernappmanagementconfiguration-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-sharedpcconfiguration-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -115,7 +115,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a windowsDefenderAdvancedThreatProtectionConfiguration.
+        Deletes a editionUpgradeConfiguration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -130,7 +130,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the appleDeviceFeaturesConfigurationBase object.
+        Read properties and relationships of the androidGeneralDeviceConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a windows10EnterpriseModernAppManagementConfiguration object.
+        Update the properties of a sharedPCConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -203,15 +203,6 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
         return DeviceSettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device_statuses(self) -> DeviceStatusesRequestBuilder:
-        """
-        Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceConfiguration entity.
-        """
-        from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
-
-        return DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def device_status_overview(self) -> DeviceStatusOverviewRequestBuilder:
         """
         Provides operations to manage the deviceStatusOverview property of the microsoft.graph.deviceConfiguration entity.
@@ -221,13 +212,13 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
         return DeviceStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user_statuses(self) -> UserStatusesRequestBuilder:
+    def device_statuses(self) -> DeviceStatusesRequestBuilder:
         """
-        Provides operations to manage the userStatuses property of the microsoft.graph.deviceConfiguration entity.
+        Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceConfiguration entity.
         """
-        from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
+        from .device_statuses.device_statuses_request_builder import DeviceStatusesRequestBuilder
 
-        return UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+        return DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def user_status_overview(self) -> UserStatusOverviewRequestBuilder:
@@ -237,6 +228,15 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
         from .user_status_overview.user_status_overview_request_builder import UserStatusOverviewRequestBuilder
 
         return UserStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def user_statuses(self) -> UserStatusesRequestBuilder:
+        """
+        Provides operations to manage the userStatuses property of the microsoft.graph.deviceConfiguration entity.
+        """
+        from .user_statuses.user_statuses_request_builder import UserStatusesRequestBuilder
+
+        return UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
@@ -251,7 +251,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the appleDeviceFeaturesConfigurationBase object.
+        Read properties and relationships of the androidGeneralDeviceConfiguration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

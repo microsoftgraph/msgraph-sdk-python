@@ -45,7 +45,7 @@ class AuthenticationContextClassReferencesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AuthenticationContextClassReferencesRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationContextClassReferenceCollectionResponse]:
         """
-        Retrieve a list of authenticationContextClassReference objects.
+        Retrieve a list of authenticationContextClassReference objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationContextClassReferenceCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/conditionalaccessroot-list-authenticationcontextclassreferences?view=graph-rest-1.0
@@ -91,7 +91,7 @@ class AuthenticationContextClassReferencesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationContextClassReferencesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of authenticationContextClassReference objects.
+        Retrieve a list of authenticationContextClassReference objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class AuthenticationContextClassReferencesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthenticationContextClassReferencesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of authenticationContextClassReference objects.
+        Retrieve a list of authenticationContextClassReference objects. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

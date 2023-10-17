@@ -14,7 +14,7 @@ class IPv4Range(IpRange):
     IPv4 Range definition.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.iPv4Range"
+    OdataType: Optional[str] = "#microsoft.graph.iPv4Range"
     # Lower address.
     lower_address: Optional[str] = None
     # Upper address.

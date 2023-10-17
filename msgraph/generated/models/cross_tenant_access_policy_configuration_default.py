@@ -28,7 +28,7 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity):
     # If true, the default configuration is set to the system default configuration. If false, the default settings have been customized.
     is_service_default: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyConfigurationDefault:

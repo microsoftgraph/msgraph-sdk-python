@@ -21,7 +21,7 @@ class CalendarPermission(Entity):
     # True if the user can be removed from the list of recipients or delegates for the specified calendar, false otherwise. The 'My organization' user determines the permissions other people within your organization have to the given calendar. You can't remove 'My organization' as a share recipient to a calendar.
     is_removable: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Current permission level of the calendar share recipient or delegate.
     role: Optional[CalendarRoleType] = None
     

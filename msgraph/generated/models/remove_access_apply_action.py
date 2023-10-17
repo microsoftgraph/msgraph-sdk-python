@@ -11,7 +11,7 @@ from .access_review_apply_action import AccessReviewApplyAction
 @dataclass
 class RemoveAccessApplyAction(AccessReviewApplyAction):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.removeAccessApplyAction"
+    OdataType: Optional[str] = "#microsoft.graph.removeAccessApplyAction"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RemoveAccessApplyAction:

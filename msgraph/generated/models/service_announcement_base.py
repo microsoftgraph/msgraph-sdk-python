@@ -21,7 +21,7 @@ class ServiceAnnouncementBase(Entity):
     # The last modified time of the service event.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The start time of the service event.
     start_date_time: Optional[datetime.datetime] = None
     # The title of the service event.

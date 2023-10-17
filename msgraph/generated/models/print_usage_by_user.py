@@ -11,7 +11,7 @@ from .print_usage import PrintUsage
 @dataclass
 class PrintUsageByUser(PrintUsage):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.printUsageByUser"
+    OdataType: Optional[str] = "#microsoft.graph.printUsageByUser"
     # The UPN of the user represented by these statistics.
     user_principal_name: Optional[str] = None
     

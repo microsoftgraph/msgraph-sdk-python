@@ -17,7 +17,7 @@ class Win32LobAppPowerShellScriptRule(Win32LobAppRule):
     A complex type to store the PowerShell script rule data for a Win32 LOB app.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.win32LobAppPowerShellScriptRule"
+    OdataType: Optional[str] = "#microsoft.graph.win32LobAppPowerShellScriptRule"
     # The script output comparison value. Do not specify a value if the rule is used for detection.
     comparison_value: Optional[str] = None
     # The display name for the rule. Do not specify this value if the rule is used for detection.

@@ -30,7 +30,7 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ConversationThreadItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete conversationThread.
+        Delete conversationThread. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/conversationthread-delete?view=graph-rest-1.0
@@ -50,10 +50,10 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ConversationThreadItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ConversationThread]:
         """
-        Get a specific thread that belongs to a group. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. 
+        Get a thread object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationThread]
-        Find more info here: https://learn.microsoft.com/graph/api/conversationthread-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/group-get-thread?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,7 +72,7 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ConversationThread] = None, request_configuration: Optional[ConversationThreadItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ConversationThread]:
         """
-        Update conversation thread
+        This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationThread]
@@ -97,7 +97,7 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ConversationThreadItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete conversationThread.
+        Delete conversationThread. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +112,7 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ConversationThreadItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a specific thread that belongs to a group. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. 
+        Get a thread object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -129,7 +129,7 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ConversationThread] = None, request_configuration: Optional[ConversationThreadItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update conversation thread
+        This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -188,7 +188,7 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConversationThreadItemRequestBuilderGetQueryParameters():
         """
-        Get a specific thread that belongs to a group. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. 
+        Get a thread object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

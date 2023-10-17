@@ -13,7 +13,7 @@ from .entity import Entity
 @dataclass
 class IdentityUserFlow(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The userFlowType property
     user_flow_type: Optional[UserFlowType] = None
     # The userFlowTypeVersion property

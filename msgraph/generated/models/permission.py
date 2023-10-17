@@ -35,7 +35,7 @@ class Permission(Entity):
     # Provides the link details of the current permission, if it's a link type permission. Read-only.
     link: Optional[SharingLink] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The type of permission, for example, read. See below for the full list of roles. Read-only.
     roles: Optional[List[str]] = None
     # A unique token that can be used to access this shared item via the shares API. Read-only.

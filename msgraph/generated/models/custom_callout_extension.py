@@ -27,7 +27,7 @@ class CustomCalloutExtension(Entity):
     # The type and details for configuring the endpoint to call the logic app's workflow.
     endpoint_configuration: Optional[CustomExtensionEndpointConfiguration] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CustomCalloutExtension:

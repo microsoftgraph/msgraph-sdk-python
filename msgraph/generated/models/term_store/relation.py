@@ -16,7 +16,7 @@ class Relation(Entity):
     # The from [term] of the relation. The term from which the relationship is defined. A null value would indicate the relation is directly with the [set].
     from_term: Optional[Term] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The type of relation. Possible values are: pin, reuse.
     relationship: Optional[RelationType] = None
     # The [set] in which the relation is relevant.

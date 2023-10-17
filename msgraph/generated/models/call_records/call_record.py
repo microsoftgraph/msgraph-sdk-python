@@ -24,7 +24,7 @@ class CallRecord(Entity):
     # List of all the modalities used in the call. Possible values are: unknown, audio, video, videoBasedScreenSharing, data, screenSharing, unknownFutureValue.
     modalities: Optional[List[Modality]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The organizing party's identity.
     organizer: Optional[IdentitySet] = None
     # List of distinct identities involved in the call.

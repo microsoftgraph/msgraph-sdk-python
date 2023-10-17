@@ -15,7 +15,7 @@ class SimulationAutomationRun(Entity):
     # Date and time when the run ends in an attack simulation automation.
     end_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Unique identifier for the attack simulation campaign initiated in the attack simulation automation run.
     simulation_id: Optional[str] = None
     # Date and time when the run starts in an attack simulation automation.

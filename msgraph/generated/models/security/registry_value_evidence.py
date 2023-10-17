@@ -11,7 +11,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class RegistryValueEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.registryValueEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.registryValueEvidence"
     # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
     mde_device_id: Optional[str] = None
     # Registry hive of the key that the recorded action was applied to.

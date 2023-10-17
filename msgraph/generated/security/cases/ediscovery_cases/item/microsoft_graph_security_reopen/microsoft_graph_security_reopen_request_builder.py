@@ -27,7 +27,7 @@ class MicrosoftGraphSecurityReopenRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[MicrosoftGraphSecurityReopenRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Reopen an eDiscovery case that was closed. For details, see Reopen a closed case.
+        Reopen an eDiscovery case that was closed. For details, see Reopen a closed case. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycase-reopen?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class MicrosoftGraphSecurityReopenRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[MicrosoftGraphSecurityReopenRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Reopen an eDiscovery case that was closed. For details, see Reopen a closed case.
+        Reopen an eDiscovery case that was closed. For details, see Reopen a closed case. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

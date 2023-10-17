@@ -11,7 +11,7 @@ from .ip_range import IpRange
 @dataclass
 class IPv6CidrRange(IpRange):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.iPv6CidrRange"
+    OdataType: Optional[str] = "#microsoft.graph.iPv6CidrRange"
     # IPv6 address in CIDR notation. Not nullable.
     cidr_address: Optional[str] = None
     

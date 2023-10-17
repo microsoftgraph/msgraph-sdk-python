@@ -28,7 +28,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AlertItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Alert]:
         """
-        Retrieve the properties and relationships of an alert object.
+        Retrieve the properties and relationships of an alert object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Alert]
         Find more info here: https://learn.microsoft.com/graph/api/alert-get?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Alert] = None, request_configuration: Optional[AlertItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Alert]:
         """
-        Update an editable alert property within any integrated solution to keep alert status and assignments in sync across solutions. This method updates any solution that has a record of the referenced alert ID.
+        Update an editable alert property within any integrated solution to keep alert status and assignments in sync across solutions. This method updates any solution that has a record of the referenced alert ID. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Alert]
@@ -75,7 +75,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AlertItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an alert object.
+        Retrieve the properties and relationships of an alert object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -92,7 +92,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Alert] = None, request_configuration: Optional[AlertItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update an editable alert property within any integrated solution to keep alert status and assignments in sync across solutions. This method updates any solution that has a record of the referenced alert ID.
+        Update an editable alert property within any integrated solution to keep alert status and assignments in sync across solutions. This method updates any solution that has a record of the referenced alert ID. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AlertItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an alert object.
+        Retrieve the properties and relationships of an alert object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

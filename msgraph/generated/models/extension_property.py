@@ -11,7 +11,7 @@ from .directory_object import DirectoryObject
 @dataclass
 class ExtensionProperty(DirectoryObject):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.extensionProperty"
+    OdataType: Optional[str] = "#microsoft.graph.extensionProperty"
     # Display name of the application object on which this extension property is defined. Read-only.
     app_display_name: Optional[str] = None
     # Specifies the data type of the value the extension property can hold. Following values are supported. Not nullable. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximum

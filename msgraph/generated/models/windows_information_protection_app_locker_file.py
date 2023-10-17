@@ -20,7 +20,7 @@ class WindowsInformationProtectionAppLockerFile(Entity):
     # SHA256 hash of the file
     file_hash: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Version of the entity.
     version: Optional[str] = None
     

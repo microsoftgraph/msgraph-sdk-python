@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...........models.o_data_errors.o_data_error import ODataError
     from ...........models.onenote_page import OnenotePage
     from ...........models.onenote_page_collection_response import OnenotePageCollectionResponse
+    from ...........models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
     from .item.onenote_page_item_request_builder import OnenotePageItemRequestBuilder
 
@@ -45,7 +45,7 @@ class PagesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PagesRequestBuilderGetRequestConfiguration] = None) -> Optional[OnenotePageCollectionResponse]:
         """
-        Retrieve a list of page objects from the specified section.
+        Retrieve a list of page objects from the specified section. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenotePageCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/section-list-pages?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class PagesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[OnenotePage] = None, request_configuration: Optional[PagesRequestBuilderPostRequestConfiguration] = None) -> Optional[OnenotePage]:
         """
-        Create a new page in the specified section.
+        Create a new page in the specified section. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenotePage]
@@ -92,7 +92,7 @@ class PagesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of page objects from the specified section.
+        Retrieve a list of page objects from the specified section. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class PagesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[OnenotePage] = None, request_configuration: Optional[PagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new page in the specified section.
+        Create a new page in the specified section. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class PagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PagesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of page objects from the specified section.
+        Retrieve a list of page objects from the specified section. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

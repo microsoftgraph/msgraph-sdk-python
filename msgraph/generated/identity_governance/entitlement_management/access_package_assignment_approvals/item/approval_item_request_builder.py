@@ -48,7 +48,7 @@ class ApprovalItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ApprovalItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Approval]:
         """
-        In Azure AD entitlement management, retrieve the properties of an approval object.  This call can be made by an approver, providing the identifier of the access package assignment request.
+        Retrieve the properties of an approval object. This API request is made by an approver in the following scenarios: In Azure AD entitlement management, providing the identifier of the access package assignment request.In PIM for groups, providing the identifier of the assignment schedule request. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Approval]
         Find more info here: https://learn.microsoft.com/graph/api/approval-get?view=graph-rest-1.0
@@ -109,7 +109,7 @@ class ApprovalItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ApprovalItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        In Azure AD entitlement management, retrieve the properties of an approval object.  This call can be made by an approver, providing the identifier of the access package assignment request.
+        Retrieve the properties of an approval object. This API request is made by an approver in the following scenarios: In Azure AD entitlement management, providing the identifier of the access package assignment request.In PIM for groups, providing the identifier of the assignment schedule request. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -176,7 +176,7 @@ class ApprovalItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ApprovalItemRequestBuilderGetQueryParameters():
         """
-        In Azure AD entitlement management, retrieve the properties of an approval object.  This call can be made by an approver, providing the identifier of the access package assignment request.
+        Retrieve the properties of an approval object. This API request is made by an approver in the following scenarios: In Azure AD entitlement management, providing the identifier of the access package assignment request.In PIM for groups, providing the identifier of the assignment schedule request. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -11,7 +11,7 @@ from .subject_rights_request_mailbox_location import SubjectRightsRequestMailbox
 @dataclass
 class SubjectRightsRequestAllMailboxLocation(SubjectRightsRequestMailboxLocation):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.subjectRightsRequestAllMailboxLocation"
+    OdataType: Optional[str] = "#microsoft.graph.subjectRightsRequestAllMailboxLocation"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SubjectRightsRequestAllMailboxLocation:

@@ -31,7 +31,7 @@ class UnifiedRoleScheduleBase(Entity):
     # When the schedule was last modified.
     modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The principal that's getting a role assignment or that's eligible for a role through the request.
     principal: Optional[DirectoryObject] = None
     # Identifier of the principal that has been granted the role assignment or eligibility.

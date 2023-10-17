@@ -29,7 +29,7 @@ class SubscribeToToneRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SubscribeToTonePostRequestBody] = None, request_configuration: Optional[SubscribeToToneRequestBuilderPostRequestConfiguration] = None) -> Optional[SubscribeToToneOperation]:
         """
-        Subscribe to DTMF (dual-tone multi-frequency signaling). This allows you to be notified when the user presses keys on a 'dialpad'.
+        Subscribe to DTMF (dual-tone multi-frequency signaling) which allows you to be notified when the user presses keys on a 'dialpad'. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SubscribeToToneOperation]
@@ -54,7 +54,7 @@ class SubscribeToToneRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SubscribeToTonePostRequestBody] = None, request_configuration: Optional[SubscribeToToneRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Subscribe to DTMF (dual-tone multi-frequency signaling). This allows you to be notified when the user presses keys on a 'dialpad'.
+        Subscribe to DTMF (dual-tone multi-frequency signaling) which allows you to be notified when the user presses keys on a 'dialpad'. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -23,7 +23,7 @@ class DelegatedAdminAccessAssignment(Entity):
     # The date and time in ISO 8601 and in UTC time when this access assignment was last modified. Read-only.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The status of the access assignment. Read-only. The possible values are: pending, active, deleting, deleted, error, unknownFutureValue.
     status: Optional[DelegatedAdminAccessAssignmentStatus] = None
     

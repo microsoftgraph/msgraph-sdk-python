@@ -16,8 +16,8 @@ if TYPE_CHECKING:
     from .drive_item.drive_item_request_builder import DriveItemRequestBuilder
     from .items.items_request_builder import ItemsRequestBuilder
     from .last_modified_by_user.last_modified_by_user_request_builder import LastModifiedByUserRequestBuilder
-    from .list_item.list_item_request_builder import ListItemRequestBuilder
     from .list_.list_request_builder import ListRequestBuilder
+    from .list_item.list_item_request_builder import ListItemRequestBuilder
     from .permission.permission_request_builder import PermissionRequestBuilder
     from .root.root_request_builder import RootRequestBuilder
     from .site.site_request_builder import SiteRequestBuilder
@@ -56,7 +56,7 @@ class SharedDriveItemItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SharedDriveItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SharedDriveItem]:
         """
-        Access a shared DriveItem or a collection of shared items by using a shareId or sharing URL. To use a sharing URL with this API, your app needs to transform the URL into a sharing token.
+        Access a shared DriveItem or a collection of shared items by using a shareId or sharing URL. To use a sharing URL with this API, your app needs to transform the URL into a sharing token. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharedDriveItem]
         Find more info here: https://learn.microsoft.com/graph/api/shares-get?view=graph-rest-1.0
@@ -117,7 +117,7 @@ class SharedDriveItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SharedDriveItemItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Access a shared DriveItem or a collection of shared items by using a shareId or sharing URL. To use a sharing URL with this API, your app needs to transform the URL into a sharing token.
+        Access a shared DriveItem or a collection of shared items by using a shareId or sharing URL. To use a sharing URL with this API, your app needs to transform the URL into a sharing token. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -256,7 +256,7 @@ class SharedDriveItemItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SharedDriveItemItemRequestBuilderGetQueryParameters():
         """
-        Access a shared DriveItem or a collection of shared items by using a shareId or sharing URL. To use a sharing URL with this API, your app needs to transform the URL into a sharing token.
+        Access a shared DriveItem or a collection of shared items by using a shareId or sharing URL. To use a sharing URL with this API, your app needs to transform the URL into a sharing token. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -15,7 +15,7 @@ class DeviceConfigurationAssignment(Entity):
     The device configuration assignment entity assigns an AAD group to a specific device configuration.
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The assignment target for the device configuration.
     target: Optional[DeviceAndAppManagementAssignmentTarget] = None
     

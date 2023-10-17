@@ -14,7 +14,7 @@ class ConfigurationManagerCollectionAssignmentTarget(DeviceAndAppManagementAssig
     Represents an assignment to a Configuration Manager Collection.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.configurationManagerCollectionAssignmentTarget"
+    OdataType: Optional[str] = "#microsoft.graph.configurationManagerCollectionAssignmentTarget"
     # The collection Id that is the target of the assignment.
     collection_id: Optional[str] = None
     

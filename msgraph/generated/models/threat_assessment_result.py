@@ -17,7 +17,7 @@ class ThreatAssessmentResult(Entity):
     # The result message for each threat assessment.
     message: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The threat assessment result type. Possible values are: checkPolicy, rescan.
     result_type: Optional[ThreatAssessmentResultType] = None
     

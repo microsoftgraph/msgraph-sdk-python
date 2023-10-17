@@ -39,7 +39,7 @@ class RetentionEvent(Entity):
     # Last time the status of the event was updated.
     last_status_update_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Specifies the event that will start the retention period for labels that use this event type when an event is created.
     retention_event_type: Optional[RetentionEventType] = None
     

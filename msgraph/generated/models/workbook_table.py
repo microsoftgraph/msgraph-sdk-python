@@ -25,7 +25,7 @@ class WorkbookTable(Entity):
     # Name of the table.
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Represents a collection of all the rows in the table. Read-only.
     rows: Optional[List[WorkbookTableRow]] = None
     # Indicates whether the columns show banded formatting in which odd columns are highlighted differently from even ones to make reading the table easier.

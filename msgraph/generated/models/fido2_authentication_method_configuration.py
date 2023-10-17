@@ -13,7 +13,7 @@ from .authentication_method_configuration import AuthenticationMethodConfigurati
 @dataclass
 class Fido2AuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.fido2AuthenticationMethodConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.fido2AuthenticationMethodConfiguration"
     # A collection of groups that are enabled to use the authentication method.
     include_targets: Optional[List[AuthenticationMethodTarget]] = None
     # Determines whether attestation must be enforced for FIDO2 security key registration.

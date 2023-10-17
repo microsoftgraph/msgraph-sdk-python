@@ -1,0 +1,25 @@
+from enum import Enum
+
+class PayloadBrand(str, Enum):
+    Unknown = "unknown",
+    Other = "other",
+    AmericanExpress = "americanExpress",
+    CapitalOne = "capitalOne",
+    Dhl = "dhl",
+    DocuSign = "docuSign",
+    Dropbox = "dropbox",
+    Facebook = "facebook",
+    FirstAmerican = "firstAmerican",
+    Microsoft = "microsoft",
+    Netflix = "netflix",
+    Scotiabank = "scotiabank",
+    SendGrid = "sendGrid",
+    StewartTitle = "stewartTitle",
+    Tesco = "tesco",
+    WellsFargo = "wellsFargo",
+    SyrinxCloud = "syrinxCloud",
+    Adobe = "adobe",
+    Teams = "teams",
+    Zoom = "zoom",
+    UnknownFutureValue = "unknownFutureValue",
+

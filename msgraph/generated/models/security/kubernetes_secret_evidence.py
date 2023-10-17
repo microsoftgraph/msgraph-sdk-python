@@ -12,7 +12,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class KubernetesSecretEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.kubernetesSecretEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.kubernetesSecretEvidence"
     # The secret name.
     name: Optional[str] = None
     # The secret namespace.

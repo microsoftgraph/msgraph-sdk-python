@@ -11,7 +11,7 @@ from .identity import Identity
 @dataclass
 class TeamworkTagIdentity(Identity):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.teamworkTagIdentity"
+    OdataType: Optional[str] = "#microsoft.graph.teamworkTagIdentity"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkTagIdentity:

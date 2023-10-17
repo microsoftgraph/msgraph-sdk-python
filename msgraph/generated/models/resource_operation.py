@@ -18,7 +18,7 @@ class ResourceOperation(Entity):
     # Description of the resource operation. The description is used in mouse-over text for the operation when shown in the Azure Portal.
     description: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Name of the Resource this operation is performed on.
     resource_name: Optional[str] = None
     

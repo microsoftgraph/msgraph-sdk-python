@@ -12,7 +12,7 @@ from .authentication_method_configuration import AuthenticationMethodConfigurati
 @dataclass
 class TemporaryAccessPassAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.temporaryAccessPassAuthenticationMethodConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.temporaryAccessPassAuthenticationMethodConfiguration"
     # Default length in characters of a Temporary Access Pass object. Must be between 8 and 48 characters.
     default_length: Optional[int] = None
     # Default lifetime in minutes for a Temporary Access Pass. Value can be any integer between the minimumLifetimeInMinutes and maximumLifetimeInMinutes.

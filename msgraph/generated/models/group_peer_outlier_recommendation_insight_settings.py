@@ -11,7 +11,7 @@ from .access_review_recommendation_insight_setting import AccessReviewRecommenda
 @dataclass
 class GroupPeerOutlierRecommendationInsightSettings(AccessReviewRecommendationInsightSetting):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.groupPeerOutlierRecommendationInsightSettings"
+    OdataType: Optional[str] = "#microsoft.graph.groupPeerOutlierRecommendationInsightSettings"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GroupPeerOutlierRecommendationInsightSettings:

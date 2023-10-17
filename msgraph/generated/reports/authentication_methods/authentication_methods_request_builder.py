@@ -12,11 +12,11 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...models.authentication_methods_root import AuthenticationMethodsRoot
     from ...models.o_data_errors.o_data_error import ODataError
-    from .user_registration_details.user_registration_details_request_builder import UserRegistrationDetailsRequestBuilder
     from .users_registered_by_feature.users_registered_by_feature_request_builder import UsersRegisteredByFeatureRequestBuilder
     from .users_registered_by_feature_with_included_user_types_with_included_user_roles.users_registered_by_feature_with_included_user_types_with_included_user_roles_request_builder import UsersRegisteredByFeatureWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
     from .users_registered_by_method.users_registered_by_method_request_builder import UsersRegisteredByMethodRequestBuilder
     from .users_registered_by_method_with_included_user_types_with_included_user_roles.users_registered_by_method_with_included_user_types_with_included_user_roles_request_builder import UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilder
+    from .user_registration_details.user_registration_details_request_builder import UserRegistrationDetailsRequestBuilder
 
 class AuthenticationMethodsRequestBuilder(BaseRequestBuilder):
     """

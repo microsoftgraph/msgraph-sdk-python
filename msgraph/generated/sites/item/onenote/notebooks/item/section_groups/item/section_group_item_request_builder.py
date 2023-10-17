@@ -14,8 +14,8 @@ if TYPE_CHECKING:
     from ........models.section_group import SectionGroup
     from .parent_notebook.parent_notebook_request_builder import ParentNotebookRequestBuilder
     from .parent_section_group.parent_section_group_request_builder import ParentSectionGroupRequestBuilder
-    from .section_groups.section_groups_request_builder import SectionGroupsRequestBuilder
     from .sections.sections_request_builder import SectionsRequestBuilder
+    from .section_groups.section_groups_request_builder import SectionGroupsRequestBuilder
 
 class SectionGroupItemRequestBuilder(BaseRequestBuilder):
     """

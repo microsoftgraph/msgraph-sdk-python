@@ -17,7 +17,7 @@ class TeamsAppInstallation(Entity):
     # The set of resource-specific permissions consented to while installing or upgrading the teamsApp.
     consented_permission_set: Optional[TeamsAppPermissionSet] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The app that is installed.
     teams_app: Optional[TeamsApp] = None
     # The details of this version of the app.

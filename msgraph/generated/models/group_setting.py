@@ -14,7 +14,7 @@ class GroupSetting(Entity):
     # Display name of this group of settings, which comes from the associated template.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Unique identifier for the tenant-level groupSettingTemplates object that's been customized for this group-level settings object. Read-only.
     template_id: Optional[str] = None
     # Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object.

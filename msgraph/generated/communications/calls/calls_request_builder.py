@@ -46,7 +46,7 @@ class CallsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CallsRequestBuilderGetRequestConfiguration] = None) -> Optional[CallCollectionResponse]:
         """
-        Retrieve the properties and relationships of a call object.
+        Retrieve the properties and relationships of a call object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CallCollectionResponse]
         """
@@ -67,7 +67,7 @@ class CallsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Call] = None, request_configuration: Optional[CallsRequestBuilderPostRequestConfiguration] = None) -> Optional[Call]:
         """
-        Create call enables your bot to create a new outgoing peer-to-peer or group call, or join an existing meeting. You will need to register the calling bot and go through the list of permissions needed as mentioned below.
+        Create call enables your bot to create a new outgoing peer-to-peer or group call, or join an existing meeting. You will need to register the calling bot and go through the list of permissions needed as mentioned below. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Call]
@@ -92,7 +92,7 @@ class CallsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CallsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a call object.
+        Retrieve the properties and relationships of a call object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class CallsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Call] = None, request_configuration: Optional[CallsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create call enables your bot to create a new outgoing peer-to-peer or group call, or join an existing meeting. You will need to register the calling bot and go through the list of permissions needed as mentioned below.
+        Create call enables your bot to create a new outgoing peer-to-peer or group call, or join an existing meeting. You will need to register the calling bot and go through the list of permissions needed as mentioned below. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -158,7 +158,7 @@ class CallsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CallsRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a call object.
+        Retrieve the properties and relationships of a call object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

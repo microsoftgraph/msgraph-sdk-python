@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .............models.o_data_errors.o_data_error import ODataError
     from .............models.onenote_operation import OnenoteOperation
+    from .............models.o_data_errors.o_data_error import ODataError
     from .copy_to_section_post_request_body import CopyToSectionPostRequestBody
 
 class CopyToSectionRequestBuilder(BaseRequestBuilder):
@@ -29,7 +29,7 @@ class CopyToSectionRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CopyToSectionPostRequestBody] = None, request_configuration: Optional[CopyToSectionRequestBuilderPostRequestConfiguration] = None) -> Optional[OnenoteOperation]:
         """
-        Copy a page to a specific section. For copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
+        Copy a page to a specific section. For copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenoteOperation]
@@ -54,7 +54,7 @@ class CopyToSectionRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CopyToSectionPostRequestBody] = None, request_configuration: Optional[CopyToSectionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Copy a page to a specific section. For copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
+        Copy a page to a specific section. For copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

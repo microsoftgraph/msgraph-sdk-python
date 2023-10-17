@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 @dataclass
 class SubjectRightsRequestHistory(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -23,7 +23,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, BackedModel, Parsable):
     event_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The stage when the entity was changed. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue.
+    # The stage when the entity was changed. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue, approval. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: approval.
     stage: Optional[SubjectRightsRequestStage] = None
     # The status of the stage when the entity was changed. Possible values are: notStarted, current, completed, failed, unknownFutureValue.
     stage_status: Optional[SubjectRightsRequestStageStatus] = None

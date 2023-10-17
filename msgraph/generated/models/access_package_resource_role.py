@@ -16,7 +16,7 @@ class AccessPackageResourceRole(Entity):
     # The display name of the resource role such as the role defined by the application.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The unique identifier of the resource role in the origin system. For a SharePoint Online site, the originId will be the sequence number of the role in the site.
     origin_id: Optional[str] = None
     # The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup.

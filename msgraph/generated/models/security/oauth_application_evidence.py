@@ -11,7 +11,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class OauthApplicationEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.oauthApplicationEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.oauthApplicationEvidence"
     # Unique identifier of the application.
     app_id: Optional[str] = None
     # Name of the application.

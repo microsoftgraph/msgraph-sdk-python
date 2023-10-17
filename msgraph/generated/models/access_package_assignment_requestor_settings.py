@@ -10,11 +10,11 @@ if TYPE_CHECKING:
 @dataclass
 class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # False indicates that the requestor is not permitted to include a schedule in their request.
+    # False indicates that the requestor isn't permitted to include a schedule in their request.
     allow_custom_assignment_schedule: Optional[bool] = None
     # True allows on-behalf-of requestors to create a request to add access for another principal.
     enable_on_behalf_requestors_to_add_access: Optional[bool] = None

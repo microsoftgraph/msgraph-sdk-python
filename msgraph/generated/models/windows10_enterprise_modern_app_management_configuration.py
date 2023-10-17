@@ -14,7 +14,7 @@ class Windows10EnterpriseModernAppManagementConfiguration(DeviceConfiguration):
     Windows10 Enterprise Modern App Management Configuration.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windows10EnterpriseModernAppManagementConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.windows10EnterpriseModernAppManagementConfiguration"
     # Indicates whether or not to uninstall a fixed list of built-in Windows apps.
     uninstall_built_in_apps: Optional[bool] = None
     

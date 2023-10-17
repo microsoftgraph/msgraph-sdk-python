@@ -16,7 +16,7 @@ class IdentityApiConnector(Entity):
     # The name of the API connector.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The URL of the API endpoint to call.
     target_url: Optional[str] = None
     

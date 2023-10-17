@@ -16,7 +16,7 @@ class PrintTask(Entity):
     # The definition property
     definition: Optional[PrintTaskDefinition] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The URL for the print entity that triggered this task. For example, https://graph.microsoft.com/v1.0/print/printers/{printerId}/jobs/{jobId}. Read-only.
     parent_url: Optional[str] = None
     # The status property

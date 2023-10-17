@@ -35,7 +35,7 @@ class AccessPackageCatalog(Entity):
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The resourceRoles property
     resource_roles: Optional[List[AccessPackageResourceRole]] = None
     # The resourceScopes property

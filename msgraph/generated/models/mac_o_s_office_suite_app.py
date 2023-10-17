@@ -14,7 +14,7 @@ class MacOSOfficeSuiteApp(MobileApp):
     Contains properties and inherited properties for the MacOS Office Suite App.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.macOSOfficeSuiteApp"
+    OdataType: Optional[str] = "#microsoft.graph.macOSOfficeSuiteApp"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MacOSOfficeSuiteApp:

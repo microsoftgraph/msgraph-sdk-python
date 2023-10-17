@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .get_all_messages_response import GetAllMessagesResponse
+    from .get_all_messages_get_response import GetAllMessagesGetResponse
 
 class GetAllMessagesRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class GetAllMessagesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/chats/getAllMessages(){?model*,%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetAllMessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[GetAllMessagesResponse]:
+    async def get(self,request_configuration: Optional[GetAllMessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[GetAllMessagesGetResponse]:
         """
         Invoke function getAllMessages
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetAllMessagesResponse]
+        Returns: Optional[GetAllMessagesGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class GetAllMessagesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_all_messages_response import GetAllMessagesResponse
+        from .get_all_messages_get_response import GetAllMessagesGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetAllMessagesResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetAllMessagesGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetAllMessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -46,7 +46,7 @@ class BookingBusiness(Entity):
     # The language of the self-service booking page.
     language_tag: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The telephone number for the business. The phone property, together with address and webSiteUrl, appear in the footer of a business scheduling page.
     phone: Optional[str] = None
     # The URL for the scheduling page, which is set after you publish or unpublish the page. Read-only.

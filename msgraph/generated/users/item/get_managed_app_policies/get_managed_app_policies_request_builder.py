@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .get_managed_app_policies_response import GetManagedAppPoliciesResponse
+    from .get_managed_app_policies_get_response import GetManagedAppPoliciesGetResponse
 
 class GetManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class GetManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/getManagedAppPolicies(){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[GetManagedAppPoliciesResponse]:
+    async def get(self,request_configuration: Optional[GetManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[GetManagedAppPoliciesGetResponse]:
         """
         Gets app restrictions for a given user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetManagedAppPoliciesResponse]
+        Returns: Optional[GetManagedAppPoliciesGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class GetManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_managed_app_policies_response import GetManagedAppPoliciesResponse
+        from .get_managed_app_policies_get_response import GetManagedAppPoliciesGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetManagedAppPoliciesResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetManagedAppPoliciesGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

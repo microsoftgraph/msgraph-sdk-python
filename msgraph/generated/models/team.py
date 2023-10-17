@@ -12,17 +12,17 @@ if TYPE_CHECKING:
     from .profile_photo import ProfilePhoto
     from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
     from .schedule import Schedule
+    from .teams_app_installation import TeamsAppInstallation
+    from .teams_async_operation import TeamsAsyncOperation
+    from .teams_template import TeamsTemplate
+    from .teamwork_tag import TeamworkTag
     from .team_fun_settings import TeamFunSettings
     from .team_guest_settings import TeamGuestSettings
     from .team_member_settings import TeamMemberSettings
     from .team_messaging_settings import TeamMessagingSettings
-    from .teams_app_installation import TeamsAppInstallation
-    from .teams_async_operation import TeamsAsyncOperation
     from .team_specialization import TeamSpecialization
-    from .teams_template import TeamsTemplate
     from .team_summary import TeamSummary
     from .team_visibility_type import TeamVisibilityType
-    from .teamwork_tag import TeamworkTag
 
 from .entity import Entity
 
@@ -61,7 +61,7 @@ class Team(Entity):
     # Settings to configure messaging and mentions in the team.
     messaging_settings: Optional[TeamMessagingSettings] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The async operations that ran or are running on this team.
     operations: Optional[List[TeamsAsyncOperation]] = None
     # A collection of permissions granted to apps to access the team.
@@ -110,17 +110,17 @@ class Team(Entity):
         from .profile_photo import ProfilePhoto
         from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
         from .schedule import Schedule
+        from .teams_app_installation import TeamsAppInstallation
+        from .teams_async_operation import TeamsAsyncOperation
+        from .teams_template import TeamsTemplate
+        from .teamwork_tag import TeamworkTag
         from .team_fun_settings import TeamFunSettings
         from .team_guest_settings import TeamGuestSettings
         from .team_member_settings import TeamMemberSettings
         from .team_messaging_settings import TeamMessagingSettings
-        from .teams_app_installation import TeamsAppInstallation
-        from .teams_async_operation import TeamsAsyncOperation
         from .team_specialization import TeamSpecialization
-        from .teams_template import TeamsTemplate
         from .team_summary import TeamSummary
         from .team_visibility_type import TeamVisibilityType
-        from .teamwork_tag import TeamworkTag
 
         from .channel import Channel
         from .conversation_member import ConversationMember
@@ -129,17 +129,17 @@ class Team(Entity):
         from .profile_photo import ProfilePhoto
         from .resource_specific_permission_grant import ResourceSpecificPermissionGrant
         from .schedule import Schedule
+        from .teams_app_installation import TeamsAppInstallation
+        from .teams_async_operation import TeamsAsyncOperation
+        from .teams_template import TeamsTemplate
+        from .teamwork_tag import TeamworkTag
         from .team_fun_settings import TeamFunSettings
         from .team_guest_settings import TeamGuestSettings
         from .team_member_settings import TeamMemberSettings
         from .team_messaging_settings import TeamMessagingSettings
-        from .teams_app_installation import TeamsAppInstallation
-        from .teams_async_operation import TeamsAsyncOperation
         from .team_specialization import TeamSpecialization
-        from .teams_template import TeamsTemplate
         from .team_summary import TeamSummary
         from .team_visibility_type import TeamVisibilityType
-        from .teamwork_tag import TeamworkTag
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allChannels": lambda n : setattr(self, 'all_channels', n.get_collection_of_object_values(Channel)),

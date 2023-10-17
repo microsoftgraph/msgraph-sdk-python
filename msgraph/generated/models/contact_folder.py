@@ -22,7 +22,7 @@ class ContactFolder(Entity):
     # The collection of multi-value extended properties defined for the contactFolder. Read-only. Nullable.
     multi_value_extended_properties: Optional[List[MultiValueLegacyExtendedProperty]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The ID of the folder's parent folder.
     parent_folder_id: Optional[str] = None
     # The collection of single-value extended properties defined for the contactFolder. Read-only. Nullable.

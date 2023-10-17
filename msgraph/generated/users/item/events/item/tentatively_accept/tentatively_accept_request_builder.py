@@ -28,7 +28,7 @@ class TentativelyAcceptRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TentativelyAcceptPostRequestBody] = None, request_configuration: Optional[TentativelyAcceptRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Tentatively accept the specified event in a user calendar. If the event allows proposals for new times, on responding tentative to the event, an invitee can choose to suggest an alternative time by including the proposedNewTime parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times.
+        Tentatively accept the specified event in a user calendar. If the event allows proposals for new times, on responding tentative to the event, an invitee can choose to suggest an alternative time by including the proposedNewTime parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class TentativelyAcceptRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[TentativelyAcceptPostRequestBody] = None, request_configuration: Optional[TentativelyAcceptRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Tentatively accept the specified event in a user calendar. If the event allows proposals for new times, on responding tentative to the event, an invitee can choose to suggest an alternative time by including the proposedNewTime parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times.
+        Tentatively accept the specified event in a user calendar. If the event allows proposals for new times, on responding tentative to the event, an invitee can choose to suggest an alternative time by including the proposedNewTime parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

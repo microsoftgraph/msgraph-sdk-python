@@ -36,12 +36,12 @@ from .directory_object import DirectoryObject
 @dataclass
 class Application(DirectoryObject):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.application"
+    OdataType: Optional[str] = "#microsoft.graph.application"
     # Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Office 365 call the application in the context of a document the user is working on.
     add_ins: Optional[List[AddIn]] = None
     # Specifies settings for an application that implements a web API.
     api: Optional[ApiApplication] = None
-    # The unique identifier for the application that is assigned to an application by Azure AD. Not nullable. Read-only. Supports $filter (eq).
+    # The unique identifier for the application that is assigned to an application by Azure AD. Not nullable. Read-only. Alternate key. Supports $filter (eq).
     app_id: Optional[str] = None
     # The appManagementPolicy applied to this application.
     app_management_policies: Optional[List[AppManagementPolicy]] = None

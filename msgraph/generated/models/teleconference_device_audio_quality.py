@@ -11,7 +11,7 @@ from .teleconference_device_media_quality import TeleconferenceDeviceMediaQualit
 @dataclass
 class TeleconferenceDeviceAudioQuality(TeleconferenceDeviceMediaQuality):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.teleconferenceDeviceAudioQuality"
+    OdataType: Optional[str] = "#microsoft.graph.teleconferenceDeviceAudioQuality"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeleconferenceDeviceAudioQuality:

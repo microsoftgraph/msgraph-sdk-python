@@ -32,7 +32,7 @@ from .directory_object import DirectoryObject
 @dataclass
 class Group(DirectoryObject):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.group"
+    OdataType: Optional[str] = "#microsoft.graph.group"
     # The list of users or groups that are allowed to create post's or calendar events in this group. If this list is non-empty then only users or groups listed here are allowed to post.
     accepted_senders: Optional[List[DirectoryObject]] = None
     # Indicates if people external to the organization can send messages to the group. Default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).

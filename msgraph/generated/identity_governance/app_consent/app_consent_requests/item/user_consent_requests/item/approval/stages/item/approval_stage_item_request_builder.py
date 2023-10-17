@@ -47,7 +47,7 @@ class ApprovalStageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ApprovalStageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ApprovalStage]:
         """
-        In Azure AD entitlement management, retrieve the properties of an approvalStage object. An approval stage is contained within an approval object.
+        Retrieve the properties of an approvalStage object. An approval stage is contained within an approval object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ApprovalStage]
         Find more info here: https://learn.microsoft.com/graph/api/approvalstage-get?view=graph-rest-1.0
@@ -69,7 +69,7 @@ class ApprovalStageItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ApprovalStage] = None, request_configuration: Optional[ApprovalStageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ApprovalStage]:
         """
-        In Azure AD entitlement management, approve or deny an approvalStage object in an approval.
+        Approve or deny an approvalStage object in an approval. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ApprovalStage]
@@ -109,7 +109,7 @@ class ApprovalStageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ApprovalStageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        In Azure AD entitlement management, retrieve the properties of an approvalStage object. An approval stage is contained within an approval object.
+        Retrieve the properties of an approvalStage object. An approval stage is contained within an approval object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -126,7 +126,7 @@ class ApprovalStageItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ApprovalStage] = None, request_configuration: Optional[ApprovalStageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        In Azure AD entitlement management, approve or deny an approvalStage object in an approval.
+        Approve or deny an approvalStage object in an approval. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -167,7 +167,7 @@ class ApprovalStageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ApprovalStageItemRequestBuilderGetQueryParameters():
         """
-        In Azure AD entitlement management, retrieve the properties of an approvalStage object. An approval stage is contained within an approval object.
+        Retrieve the properties of an approvalStage object. An approval stage is contained within an approval object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

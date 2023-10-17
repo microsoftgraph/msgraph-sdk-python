@@ -71,7 +71,7 @@ class ColumnDefinition(Entity):
     # This column stores number values.
     number: Optional[NumberColumn] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # This column stores Person or Group values.
     person_or_group: Optional[PersonOrGroupColumn] = None
     # If 'true', changes to this column will be propagated to lists that implement the column.

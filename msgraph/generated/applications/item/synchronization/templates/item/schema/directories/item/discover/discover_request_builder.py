@@ -28,7 +28,7 @@ class DiscoverRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[DiscoverRequestBuilderPostRequestConfiguration] = None) -> Optional[DirectoryDefinition]:
         """
-        Discover the latest schema definition for provisioning to an application. 
+        Discover the latest schema definition for provisioning to an application.  This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryDefinition]
         Find more info here: https://learn.microsoft.com/graph/api/synchronization-directorydefinition-discover?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class DiscoverRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[DiscoverRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Discover the latest schema definition for provisioning to an application. 
+        Discover the latest schema definition for provisioning to an application.  This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

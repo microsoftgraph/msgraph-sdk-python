@@ -14,7 +14,7 @@ class WorkbookChartAxisTitleFormat(Entity):
     # Represents the font attributes, such as font name, font size, color, etc. of chart axis title object. Read-only.
     font: Optional[WorkbookChartFont] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartAxisTitleFormat:

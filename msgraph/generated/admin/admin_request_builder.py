@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models.admin import Admin
     from ..models.o_data_errors.o_data_error import ODataError
     from .edge.edge_request_builder import EdgeRequestBuilder
+    from .people.people_request_builder import PeopleRequestBuilder
     from .service_announcement.service_announcement_request_builder import ServiceAnnouncementRequestBuilder
     from .sharepoint.sharepoint_request_builder import SharepointRequestBuilder
 
@@ -129,6 +130,15 @@ class AdminRequestBuilder(BaseRequestBuilder):
         from .edge.edge_request_builder import EdgeRequestBuilder
 
         return EdgeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def people(self) -> PeopleRequestBuilder:
+        """
+        Provides operations to manage the people property of the microsoft.graph.admin entity.
+        """
+        from .people.people_request_builder import PeopleRequestBuilder
+
+        return PeopleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def service_announcement(self) -> ServiceAnnouncementRequestBuilder:

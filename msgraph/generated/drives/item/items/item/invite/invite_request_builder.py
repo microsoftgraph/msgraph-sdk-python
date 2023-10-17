@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
     from .invite_post_request_body import InvitePostRequestBody
-    from .invite_response import InviteResponse
+    from .invite_post_response import InvitePostResponse
 
 class InviteRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class InviteRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/invite", path_parameters)
     
-    async def post(self,body: Optional[InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> Optional[InviteResponse]:
+    async def post(self,body: Optional[InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> Optional[InvitePostResponse]:
         """
-        Sends a sharing invitation for a driveItem.A sharing invitation provides permissions to the recipients and optionally sends them an email with a [sharing link][].
+        Sends a sharing invitation for a driveItem.A sharing invitation provides permissions to the recipients and optionally sends them an email with a sharing link][]. This API is available in the following [national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[InviteResponse]
+        Returns: Optional[InvitePostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/driveitem-invite?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class InviteRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .invite_response import InviteResponse
+        from .invite_post_response import InvitePostResponse
 
-        return await self.request_adapter.send_async(request_info, InviteResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, InvitePostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Sends a sharing invitation for a driveItem.A sharing invitation provides permissions to the recipients and optionally sends them an email with a [sharing link][].
+        Sends a sharing invitation for a driveItem.A sharing invitation provides permissions to the recipients and optionally sends them an email with a sharing link][]. This API is available in the following [national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

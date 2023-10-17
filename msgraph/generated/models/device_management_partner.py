@@ -26,7 +26,7 @@ class DeviceManagementPartner(Entity):
     # Timestamp of last heartbeat after admin enabled option Connect to Device management Partner
     last_heartbeat_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Partner App Type.
     partner_app_type: Optional[DeviceManagementPartnerAppType] = None
     # Partner state of this tenant.

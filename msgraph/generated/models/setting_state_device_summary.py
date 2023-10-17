@@ -26,7 +26,7 @@ class SettingStateDeviceSummary(Entity):
     # Device Not Applicable count for the setting
     not_applicable_device_count: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Device Compliant count for the setting
     remediated_device_count: Optional[int] = None
     # Name of the setting

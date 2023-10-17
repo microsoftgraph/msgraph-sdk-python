@@ -14,7 +14,7 @@ class WorkbookChartAxisTitle(Entity):
     # Represents the formatting of chart axis title. Read-only.
     format: Optional[WorkbookChartAxisTitleFormat] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Represents the axis title.
     text: Optional[str] = None
     # A boolean that specifies the visibility of an axis title.

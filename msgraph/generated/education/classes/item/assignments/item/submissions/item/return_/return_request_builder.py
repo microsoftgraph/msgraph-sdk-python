@@ -28,7 +28,7 @@ class ReturnRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[ReturnRequestBuilderPostRequestConfiguration] = None) -> Optional[EducationSubmission]:
         """
-        Make the grade and feedback associated with this submission available to the student.  This action changes the status of the submission from 'submitted' to 'returned' and indicates that feedback is provided or grading is done. This action can only be done by the teacher.
+        Make the grade and feedback associated with this submission available to the student.  This action changes the status of the submission from 'submitted' to 'returned' and indicates that feedback is provided or grading is done. This action can only be done by the teacher. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationSubmission]
         Find more info here: https://learn.microsoft.com/graph/api/educationsubmission-return?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class ReturnRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[ReturnRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Make the grade and feedback associated with this submission available to the student.  This action changes the status of the submission from 'submitted' to 'returned' and indicates that feedback is provided or grading is done. This action can only be done by the teacher.
+        Make the grade and feedback associated with this submission available to the student.  This action changes the status of the submission from 'submitted' to 'returned' and indicates that feedback is provided or grading is done. This action can only be done by the teacher. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

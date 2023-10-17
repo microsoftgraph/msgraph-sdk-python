@@ -44,7 +44,7 @@ class CollaboratorsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CollaboratorsRequestBuilderGetRequestConfiguration] = None) -> Optional[UserCollectionResponse]:
         """
-        Get collaborators from privacy
+        Collection of users who can collaborate on the request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserCollectionResponse]
         """
@@ -65,7 +65,7 @@ class CollaboratorsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CollaboratorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get collaborators from privacy
+        Collection of users who can collaborate on the request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +102,7 @@ class CollaboratorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CollaboratorsRequestBuilderGetQueryParameters():
         """
-        Get collaborators from privacy
+        Collection of users who can collaborate on the request.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

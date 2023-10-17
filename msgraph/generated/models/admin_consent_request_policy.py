@@ -16,7 +16,7 @@ class AdminConsentRequestPolicy(Entity):
     # Specifies whether reviewers will receive notifications. Required.
     notify_reviewers: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Specifies whether reviewers will receive reminder emails. Required.
     reminders_enabled: Optional[bool] = None
     # Specifies the duration the request is active before it automatically expires if no decision is applied.

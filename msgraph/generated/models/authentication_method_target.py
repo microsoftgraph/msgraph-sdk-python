@@ -16,7 +16,7 @@ class AuthenticationMethodTarget(Entity):
     # Determines if the user is enforced to register the authentication method.
     is_registration_required: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The targetType property
     target_type: Optional[AuthenticationMethodTargetType] = None
     

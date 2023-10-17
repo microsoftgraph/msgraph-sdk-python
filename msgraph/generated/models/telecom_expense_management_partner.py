@@ -23,7 +23,7 @@ class TelecomExpenseManagementPartner(Entity):
     # Timestamp of the last request sent to Intune by the TEM partner.
     last_connection_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # URL of the TEM partner's administrative control panel, where an administrator can configure their TEM service.
     url: Optional[str] = None
     

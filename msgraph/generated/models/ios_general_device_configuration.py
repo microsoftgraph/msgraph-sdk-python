@@ -29,7 +29,7 @@ class IosGeneralDeviceConfiguration(DeviceConfiguration):
     This topic provides descriptions of the declared methods, properties and relationships exposed by the iosGeneralDeviceConfiguration resource.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.iosGeneralDeviceConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.iosGeneralDeviceConfiguration"
     # Indicates whether or not to allow account modification when the device is in supervised mode.
     account_block_modification: Optional[bool] = None
     # Indicates whether or not to allow activation lock when the device is in the supervised mode.

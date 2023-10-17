@@ -20,7 +20,7 @@ class RoleAssignment(Entity):
     # The display or friendly name of the role Assignment.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # List of ids of role scope member security groups.  These are IDs from Azure Active Directory.
     resource_scopes: Optional[List[str]] = None
     # Role definition this assignment is part of.

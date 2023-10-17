@@ -11,7 +11,7 @@ from .entity import Entity
 @dataclass
 class EducationAssignmentSettings(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Indicates whether turn-in celebration animation is shown. A value of true indicates that the animation isn't shown. Default value is false.
     submission_animation_disabled: Optional[bool] = None
     

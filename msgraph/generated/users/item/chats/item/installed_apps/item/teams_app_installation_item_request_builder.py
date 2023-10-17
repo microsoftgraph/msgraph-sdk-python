@@ -31,7 +31,7 @@ class TeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Uninstall an app installed within a chat.
+        Uninstall an app installed within a chat. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/chat-delete-installedapps?view=graph-rest-1.0
@@ -51,7 +51,7 @@ class TeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsAppInstallation]:
         """
-        Get an app installed in a chat.
+        Get an app installed in a chat. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppInstallation]
         Find more info here: https://learn.microsoft.com/graph/api/chat-get-installedapps?view=graph-rest-1.0
@@ -97,7 +97,7 @@ class TeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Uninstall an app installed within a chat.
+        Uninstall an app installed within a chat. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +112,7 @@ class TeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get an app installed in a chat.
+        Get an app installed in a chat. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -197,7 +197,7 @@ class TeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TeamsAppInstallationItemRequestBuilderGetQueryParameters():
         """
-        Get an app installed in a chat.
+        Get an app installed in a chat. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -18,7 +18,7 @@ class Windows81GeneralConfiguration(DeviceConfiguration):
     This topic provides descriptions of the declared methods, properties and relationships exposed by the windows81GeneralConfiguration resource.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windows81GeneralConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.windows81GeneralConfiguration"
     # Indicates whether or not to Block the user from adding email accounts to the device that are not associated with a Microsoft account.
     accounts_block_adding_non_microsoft_account_email: Optional[bool] = None
     # Value indicating whether this policy only applies to Windows 8.1. This property is read-only.

@@ -13,7 +13,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class BlobEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.blobEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.blobEvidence"
     # The container which the blob belongs to.
     blob_container: Optional[BlobContainerEvidence] = None
     # The Etag associated with this blob.

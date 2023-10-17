@@ -12,7 +12,7 @@ from .change_tracked_entity import ChangeTrackedEntity
 @dataclass
 class ShiftPreferences(ChangeTrackedEntity):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.shiftPreferences"
+    OdataType: Optional[str] = "#microsoft.graph.shiftPreferences"
     # Availability of the user to be scheduled for work and its recurrence pattern.
     availability: Optional[List[ShiftAvailability]] = None
     

@@ -11,7 +11,7 @@ from .conversation_member import ConversationMember
 @dataclass
 class AnonymousGuestConversationMember(ConversationMember):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.anonymousGuestConversationMember"
+    OdataType: Optional[str] = "#microsoft.graph.anonymousGuestConversationMember"
     # Unique ID that represents the user. Note: This ID can change if the user leaves and rejoins the meeting, or joins from a different device.
     anonymous_guest_id: Optional[str] = None
     

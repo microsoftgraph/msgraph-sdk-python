@@ -19,7 +19,7 @@ class UnifiedRoleAssignmentSchedule(UnifiedRoleScheduleBase):
     # How the assignments is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleAssignmentSchedule can be managed by the caller. Supports $filter (eq, ne).
     member_type: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The period of the role assignment. It can represent a single occurrence or multiple recurrences.
     schedule_info: Optional[RequestSchedule] = None
     

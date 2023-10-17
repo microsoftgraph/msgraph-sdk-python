@@ -28,10 +28,11 @@ class SetStatusMessageRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SetStatusMessagePostRequestBody] = None, request_configuration: Optional[SetStatusMessageRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action setStatusMessage
+        Set a presence status message for a user. An optional expiration date and time can be supplied. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/presence-setstatusmessage?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -50,7 +51,7 @@ class SetStatusMessageRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SetStatusMessagePostRequestBody] = None, request_configuration: Optional[SetStatusMessageRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action setStatusMessage
+        Set a presence status message for a user. An optional expiration date and time can be supplied. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

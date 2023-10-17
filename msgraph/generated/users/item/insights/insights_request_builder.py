@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models.o_data_errors.o_data_error import ODataError
     from ....models.office_graph_insights import OfficeGraphInsights
+    from ....models.o_data_errors.o_data_error import ODataError
     from .shared.shared_request_builder import SharedRequestBuilder
     from .trending.trending_request_builder import TrendingRequestBuilder
     from .used.used_request_builder import UsedRequestBuilder

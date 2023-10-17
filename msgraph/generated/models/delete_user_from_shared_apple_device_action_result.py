@@ -14,7 +14,7 @@ class DeleteUserFromSharedAppleDeviceActionResult(DeviceActionResult):
     Delete user from shared apple device action result
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # User principal name of the user to be deleted
     user_principal_name: Optional[str] = None
     

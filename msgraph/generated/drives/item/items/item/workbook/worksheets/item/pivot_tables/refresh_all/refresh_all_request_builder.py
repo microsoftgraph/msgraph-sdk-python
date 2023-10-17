@@ -27,7 +27,7 @@ class RefreshAllRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RefreshAllRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Refreshes the PivotTable within a given worksheet.
+        Refreshes the PivotTable within a given worksheet. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/workbookpivottable-refreshall?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class RefreshAllRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RefreshAllRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Refreshes the PivotTable within a given worksheet.
+        Refreshes the PivotTable within a given worksheet. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

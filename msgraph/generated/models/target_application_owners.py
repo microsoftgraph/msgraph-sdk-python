@@ -11,7 +11,7 @@ from .subject_set import SubjectSet
 @dataclass
 class TargetApplicationOwners(SubjectSet):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.targetApplicationOwners"
+    OdataType: Optional[str] = "#microsoft.graph.targetApplicationOwners"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TargetApplicationOwners:

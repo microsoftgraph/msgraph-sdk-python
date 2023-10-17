@@ -14,7 +14,7 @@ class ResetPasscodeActionResult(DeviceActionResult):
     Reset passcode action result
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Newly generated passcode for the device
     passcode: Optional[str] = None
     

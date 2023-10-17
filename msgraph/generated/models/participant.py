@@ -25,7 +25,7 @@ class Participant(Entity):
     # A blob of data provided by the participant in the roster.
     metadata: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Information about whether the participant has recording capability.
     recording_info: Optional[RecordingInfo] = None
     # Indicates the reason or reasons media content from this participant is restricted.

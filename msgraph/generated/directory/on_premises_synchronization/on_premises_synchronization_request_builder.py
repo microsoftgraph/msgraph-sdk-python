@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...models.o_data_errors.o_data_error import ODataError
     from ...models.on_premises_directory_synchronization import OnPremisesDirectorySynchronization
     from ...models.on_premises_directory_synchronization_collection_response import OnPremisesDirectorySynchronizationCollectionResponse
+    from ...models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
     from .item.on_premises_directory_synchronization_item_request_builder import OnPremisesDirectorySynchronizationItemRequestBuilder
 
@@ -45,7 +45,7 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OnPremisesSynchronizationRequestBuilderGetRequestConfiguration] = None) -> Optional[OnPremisesDirectorySynchronizationCollectionResponse]:
         """
-        Read the properties and relationships of an onPremisesDirectorySynchronization object.
+        Read the properties and relationships of an onPremisesDirectorySynchronization object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnPremisesDirectorySynchronizationCollectionResponse]
         """
@@ -90,7 +90,7 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OnPremisesSynchronizationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an onPremisesDirectorySynchronization object.
+        Read the properties and relationships of an onPremisesDirectorySynchronization object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OnPremisesSynchronizationRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an onPremisesDirectorySynchronization object.
+        Read the properties and relationships of an onPremisesDirectorySynchronization object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

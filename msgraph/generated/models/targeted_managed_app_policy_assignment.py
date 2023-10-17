@@ -15,7 +15,7 @@ class TargetedManagedAppPolicyAssignment(Entity):
     The type for deployment of groups or apps.
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Identifier for deployment to a group or app
     target: Optional[DeviceAndAppManagementAssignmentTarget] = None
     

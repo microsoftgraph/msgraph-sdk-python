@@ -25,7 +25,7 @@ class WindowsInformationProtection(ManagedAppPolicy):
     Policy for Windows information protection to configure detailed management settings
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windowsInformationProtection"
+    OdataType: Optional[str] = "#microsoft.graph.windowsInformationProtection"
     # Navigation property to list of security groups targeted for policy.
     assignments: Optional[List[TargetedManagedAppPolicyAssignment]] = None
     # Specifies whether to allow Azure RMS encryption for WIP

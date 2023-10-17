@@ -16,7 +16,7 @@ class MacOSLobApp(MobileLobApp):
     Contains properties and inherited properties for the macOS LOB App.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.macOSLobApp"
+    OdataType: Optional[str] = "#microsoft.graph.macOSLobApp"
     # The build number of the package. This should match the package CFBundleShortVersionString of the .pkg file.
     build_number: Optional[str] = None
     # The primary bundleId of the package.

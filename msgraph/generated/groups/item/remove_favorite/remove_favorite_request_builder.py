@@ -27,7 +27,7 @@ class RemoveFavoriteRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RemoveFavoriteRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Remove the group from the list of the current user's favorite groups. Supported for Microsoft 365 groups only.
+        Remove the group from the list of the current user's favorite groups. Supported for Microsoft 365 groups only. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/group-removefavorite?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class RemoveFavoriteRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RemoveFavoriteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove the group from the list of the current user's favorite groups. Supported for Microsoft 365 groups only.
+        Remove the group from the list of the current user's favorite groups. Supported for Microsoft 365 groups only. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -17,7 +17,7 @@ class TermsOfUseContainer(Entity):
     # Represents a tenant's customizable terms of use agreement that's created and managed with Azure Active Directory (Azure AD).
     agreements: Optional[List[Agreement]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TermsOfUseContainer:

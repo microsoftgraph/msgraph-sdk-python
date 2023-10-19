@@ -33,11 +33,11 @@ class AccessPackageAssignmentRequest(Entity):
     custom_extension_callout_instances: Optional[List[CustomExtensionCalloutInstance]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
+    # The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property can't be changed once set.
     request_type: Optional[AccessPackageRequestType] = None
     # The subject who requested or, if a direct assignment, was assigned. Read-only. Nullable. Supports $expand.
     requestor: Optional[AccessPackageSubject] = None
-    # The range of dates that access is to be assigned to the requestor. This property cannot be changed once set.
+    # The range of dates that access is to be assigned to the requestor. This property can't be changed once set.
     schedule: Optional[EntitlementManagementSchedule] = None
     # The state of the request. The possible values are: submitted, pendingApproval, delivering, delivered, deliveryFailed, denied, scheduled, canceled, partiallyDelivered, unknownFutureValue. Read-only. Supports $filter (eq).
     state: Optional[AccessPackageRequestState] = None

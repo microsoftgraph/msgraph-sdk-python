@@ -48,7 +48,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
             "allowStaffSelection": lambda n : setattr(self, 'allow_staff_selection', n.get_bool_value()),
             "maximumAdvance": lambda n : setattr(self, 'maximum_advance', n.get_timedelta_value()),
             "minimumLeadTime": lambda n : setattr(self, 'minimum_lead_time', n.get_timedelta_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sendConfirmationsToOwner": lambda n : setattr(self, 'send_confirmations_to_owner', n.get_bool_value()),
             "timeSlotInterval": lambda n : setattr(self, 'time_slot_interval', n.get_timedelta_value()),
         }
@@ -65,7 +65,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("allowStaffSelection", self.allow_staff_selection)
         writer.write_timedelta_value("maximumAdvance", self.maximum_advance)
         writer.write_timedelta_value("minimumLeadTime", self.minimum_lead_time)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_bool_value("sendConfirmationsToOwner", self.send_confirmations_to_owner)
         writer.write_timedelta_value("timeSlotInterval", self.time_slot_interval)
         writer.write_additional_data_value(self.additional_data)

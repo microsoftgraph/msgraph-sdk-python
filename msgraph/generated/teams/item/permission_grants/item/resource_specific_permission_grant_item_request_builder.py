@@ -12,11 +12,6 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
     from .....models.resource_specific_permission_grant import ResourceSpecificPermissionGrant
-    from .check_member_groups.check_member_groups_request_builder import CheckMemberGroupsRequestBuilder
-    from .check_member_objects.check_member_objects_request_builder import CheckMemberObjectsRequestBuilder
-    from .get_member_groups.get_member_groups_request_builder import GetMemberGroupsRequestBuilder
-    from .get_member_objects.get_member_objects_request_builder import GetMemberObjectsRequestBuilder
-    from .restore.restore_request_builder import RestoreRequestBuilder
 
 class ResourceSpecificPermissionGrantItemRequestBuilder(BaseRequestBuilder):
     """
@@ -102,12 +97,12 @@ class ResourceSpecificPermissionGrantItemRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -117,14 +112,14 @@ class ResourceSpecificPermissionGrantItemRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[ResourceSpecificPermissionGrant] = None, request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -137,13 +132,13 @@ class ResourceSpecificPermissionGrantItemRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -156,51 +151,6 @@ class ResourceSpecificPermissionGrantItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return ResourceSpecificPermissionGrantItemRequestBuilder(self.request_adapter, raw_url)
-    
-    @property
-    def check_member_groups(self) -> CheckMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the checkMemberGroups method.
-        """
-        from .check_member_groups.check_member_groups_request_builder import CheckMemberGroupsRequestBuilder
-
-        return CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def check_member_objects(self) -> CheckMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the checkMemberObjects method.
-        """
-        from .check_member_objects.check_member_objects_request_builder import CheckMemberObjectsRequestBuilder
-
-        return CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_member_groups(self) -> GetMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the getMemberGroups method.
-        """
-        from .get_member_groups.get_member_groups_request_builder import GetMemberGroupsRequestBuilder
-
-        return GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_member_objects(self) -> GetMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the getMemberObjects method.
-        """
-        from .get_member_objects.get_member_objects_request_builder import GetMemberObjectsRequestBuilder
-
-        return GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def restore(self) -> RestoreRequestBuilder:
-        """
-        Provides operations to call the restore method.
-        """
-        from .restore.restore_request_builder import RestoreRequestBuilder
-
-        return RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

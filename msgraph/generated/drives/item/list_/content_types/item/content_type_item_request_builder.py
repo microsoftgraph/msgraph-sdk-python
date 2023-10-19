@@ -15,9 +15,9 @@ if TYPE_CHECKING:
     from .associate_with_hub_sites.associate_with_hub_sites_request_builder import AssociateWithHubSitesRequestBuilder
     from .base.base_request_builder_ import BaseRequestBuilder_
     from .base_types.base_types_request_builder import BaseTypesRequestBuilder
+    from .columns.columns_request_builder import ColumnsRequestBuilder
     from .column_links.column_links_request_builder import ColumnLinksRequestBuilder
     from .column_positions.column_positions_request_builder import ColumnPositionsRequestBuilder
-    from .columns.columns_request_builder import ColumnsRequestBuilder
     from .copy_to_default_content_location.copy_to_default_content_location_request_builder import CopyToDefaultContentLocationRequestBuilder
     from .is_published.is_published_request_builder import IsPublishedRequestBuilder
     from .publish.publish_request_builder import PublishRequestBuilder
@@ -107,12 +107,12 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[ContentTypeItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -122,14 +122,14 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[ContentType] = None, request_configuration: Optional[ContentTypeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -142,13 +142,13 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

@@ -59,7 +59,7 @@ class CallOptions(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "hideBotAfterEscalation": lambda n : setattr(self, 'hide_bot_after_escalation', n.get_bool_value()),
             "isContentSharingNotificationEnabled": lambda n : setattr(self, 'is_content_sharing_notification_enabled', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -73,7 +73,7 @@ class CallOptions(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("hideBotAfterEscalation", self.hide_bot_after_escalation)
         writer.write_bool_value("isContentSharingNotificationEnabled", self.is_content_sharing_notification_enabled)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

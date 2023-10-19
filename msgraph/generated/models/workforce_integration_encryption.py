@@ -42,7 +42,7 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, BackedModel, Parsable
         from .workforce_integration_encryption_protocol import WorkforceIntegrationEncryptionProtocol
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(WorkforceIntegrationEncryptionProtocol)),
             "secret": lambda n : setattr(self, 'secret', n.get_str_value()),
         }
@@ -56,7 +56,7 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, BackedModel, Parsable
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("protocol", self.protocol)
         writer.write_str_value("secret", self.secret)
         writer.write_additional_data_value(self.additional_data)

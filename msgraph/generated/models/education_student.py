@@ -56,7 +56,7 @@ class EducationStudent(AdditionalDataHolder, BackedModel, Parsable):
             "gender": lambda n : setattr(self, 'gender', n.get_enum_value(EducationGender)),
             "grade": lambda n : setattr(self, 'grade', n.get_str_value()),
             "graduationYear": lambda n : setattr(self, 'graduation_year', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "studentNumber": lambda n : setattr(self, 'student_number', n.get_str_value()),
         }
         return fields
@@ -74,7 +74,7 @@ class EducationStudent(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_enum_value("gender", self.gender)
         writer.write_str_value("grade", self.grade)
         writer.write_str_value("graduationYear", self.graduation_year)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("studentNumber", self.student_number)
         writer.write_additional_data_value(self.additional_data)
     

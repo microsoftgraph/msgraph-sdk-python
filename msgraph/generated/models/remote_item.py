@@ -117,7 +117,7 @@ class RemoteItem(AdditionalDataHolder, BackedModel, Parsable):
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "package": lambda n : setattr(self, 'package', n.get_object_value(Package)),
             "parentReference": lambda n : setattr(self, 'parent_reference', n.get_object_value(ItemReference)),
             "shared": lambda n : setattr(self, 'shared', n.get_object_value(Shared)),
@@ -148,7 +148,7 @@ class RemoteItem(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("package", self.package)
         writer.write_object_value("parentReference", self.parent_reference)
         writer.write_object_value("shared", self.shared)

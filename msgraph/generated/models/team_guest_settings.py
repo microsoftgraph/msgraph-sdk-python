@@ -37,7 +37,7 @@ class TeamGuestSettings(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "allowCreateUpdateChannels": lambda n : setattr(self, 'allow_create_update_channels', n.get_bool_value()),
             "allowDeleteChannels": lambda n : setattr(self, 'allow_delete_channels', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -51,7 +51,7 @@ class TeamGuestSettings(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("allowCreateUpdateChannels", self.allow_create_update_channels)
         writer.write_bool_value("allowDeleteChannels", self.allow_delete_channels)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

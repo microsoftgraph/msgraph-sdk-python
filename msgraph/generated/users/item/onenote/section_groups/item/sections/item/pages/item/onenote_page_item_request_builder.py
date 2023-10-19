@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..........models.o_data_errors.o_data_error import ODataError
     from ..........models.onenote_page import OnenotePage
+    from ..........models.o_data_errors.o_data_error import ODataError
     from .content.content_request_builder import ContentRequestBuilder
     from .copy_to_section.copy_to_section_request_builder import CopyToSectionRequestBuilder
     from .onenote_patch_content.onenote_patch_content_request_builder import OnenotePatchContentRequestBuilder
@@ -103,12 +103,12 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[OnenotePageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -118,14 +118,14 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[OnenotePage] = None, request_configuration: Optional[OnenotePageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -138,13 +138,13 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

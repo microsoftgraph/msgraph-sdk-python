@@ -28,7 +28,7 @@ class DismissRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DismissPostRequestBody] = None, request_configuration: Optional[DismissRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Dismiss the risk of one or more riskyServicePrincipal objects. This action sets the targeted service principal account's risk level to none. You can dismiss up to 60 service principal accounts in one request.
+        Dismiss the risk of one or more riskyServicePrincipal objects. This action sets the targeted service principal account's risk level to none. You can dismiss up to 60 service principal accounts in one request. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class DismissRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DismissPostRequestBody] = None, request_configuration: Optional[DismissRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Dismiss the risk of one or more riskyServicePrincipal objects. This action sets the targeted service principal account's risk level to none. You can dismiss up to 60 service principal accounts in one request.
+        Dismiss the risk of one or more riskyServicePrincipal objects. This action sets the targeted service principal account's risk level to none. You can dismiss up to 60 service principal accounts in one request. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -59,12 +59,12 @@ class DismissRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

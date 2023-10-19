@@ -27,7 +27,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
     b2b_direct_connect_inbound: Optional[CrossTenantAccessPolicyB2BSetting] = None
     # Defines your partner-specific configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B direct connect.
     b2b_direct_connect_outbound: Optional[CrossTenantAccessPolicyB2BSetting] = None
-    # Defines the cross-tenant policy for the synchronization of users from a partner tenant. Use this user synchronization policy to streamline collaboration between users in a multi-tenant organization by automating the creation, update, and deletion of users from one tenant to another.
+    # Defines the cross-tenant policy for the synchronization of users from a partner tenant. Use this user synchronization policy to streamline collaboration between users in a multitenant organization by automating the creation, update, and deletion of users from one tenant to another.
     identity_synchronization: Optional[CrossTenantIdentitySyncPolicyPartner] = None
     # Determines the partner-specific configuration for trusting other Conditional Access claims from external Azure AD organizations.
     inbound_trust: Optional[CrossTenantAccessPolicyInboundTrust] = None
@@ -73,7 +73,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
             "identitySynchronization": lambda n : setattr(self, 'identity_synchronization', n.get_object_value(CrossTenantIdentitySyncPolicyPartner)),
             "inboundTrust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(CrossTenantAccessPolicyInboundTrust)),
             "isServiceProvider": lambda n : setattr(self, 'is_service_provider', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         return fields
@@ -94,7 +94,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, BackedMo
         writer.write_object_value("identitySynchronization", self.identity_synchronization)
         writer.write_object_value("inboundTrust", self.inbound_trust)
         writer.write_bool_value("isServiceProvider", self.is_service_provider)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_additional_data_value(self.additional_data)
     

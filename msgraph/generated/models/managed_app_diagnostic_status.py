@@ -41,7 +41,7 @@ class ManagedAppDiagnosticStatus(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "mitigationInstruction": lambda n : setattr(self, 'mitigation_instruction', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
             "validationName": lambda n : setattr(self, 'validation_name', n.get_str_value()),
         }
@@ -56,7 +56,7 @@ class ManagedAppDiagnosticStatus(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("mitigationInstruction", self.mitigation_instruction)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("state", self.state)
         writer.write_str_value("validationName", self.validation_name)
         writer.write_additional_data_value(self.additional_data)

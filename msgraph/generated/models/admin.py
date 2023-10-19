@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .edge import Edge
+    from .people_admin_settings import PeopleAdminSettings
     from .service_announcement import ServiceAnnouncement
     from .sharepoint import Sharepoint
 
@@ -20,6 +21,8 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
     edge: Optional[Edge] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The people property
+    people: Optional[PeopleAdminSettings] = None
     # A container for service communications resources. Read-only.
     service_announcement: Optional[ServiceAnnouncement] = None
     # The sharepoint property
@@ -42,16 +45,19 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .edge import Edge
+        from .people_admin_settings import PeopleAdminSettings
         from .service_announcement import ServiceAnnouncement
         from .sharepoint import Sharepoint
 
         from .edge import Edge
+        from .people_admin_settings import PeopleAdminSettings
         from .service_announcement import ServiceAnnouncement
         from .sharepoint import Sharepoint
 
         fields: Dict[str, Callable[[Any], None]] = {
             "edge": lambda n : setattr(self, 'edge', n.get_object_value(Edge)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "people": lambda n : setattr(self, 'people', n.get_object_value(PeopleAdminSettings)),
             "serviceAnnouncement": lambda n : setattr(self, 'service_announcement', n.get_object_value(ServiceAnnouncement)),
             "sharepoint": lambda n : setattr(self, 'sharepoint', n.get_object_value(Sharepoint)),
         }
@@ -66,7 +72,8 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("edge", self.edge)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_object_value("people", self.people)
         writer.write_object_value("serviceAnnouncement", self.service_announcement)
         writer.write_object_value("sharepoint", self.sharepoint)
         writer.write_additional_data_value(self.additional_data)

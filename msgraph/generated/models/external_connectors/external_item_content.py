@@ -42,7 +42,7 @@ class ExternalItemContent(AdditionalDataHolder, BackedModel, Parsable):
         from .external_item_content_type import ExternalItemContentType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(ExternalItemContentType)),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
@@ -56,7 +56,7 @@ class ExternalItemContent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("type", self.type)
         writer.write_str_value("value", self.value)
         writer.write_additional_data_value(self.additional_data)

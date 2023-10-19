@@ -72,7 +72,7 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, BackedModel, Pars
             "errorCode": lambda n : setattr(self, 'error_code', n.get_int_value()),
             "errorDescription": lambda n : setattr(self, 'error_description', n.get_str_value()),
             "instanceDisplayName": lambda n : setattr(self, 'instance_display_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "setting": lambda n : setattr(self, 'setting', n.get_str_value()),
             "settingName": lambda n : setattr(self, 'setting_name', n.get_str_value()),
             "sources": lambda n : setattr(self, 'sources', n.get_collection_of_object_values(SettingSource)),
@@ -96,7 +96,7 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, BackedModel, Pars
         writer.write_int_value("errorCode", self.error_code)
         writer.write_str_value("errorDescription", self.error_description)
         writer.write_str_value("instanceDisplayName", self.instance_display_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("setting", self.setting)
         writer.write_str_value("settingName", self.setting_name)
         writer.write_collection_of_object_values("sources", self.sources)

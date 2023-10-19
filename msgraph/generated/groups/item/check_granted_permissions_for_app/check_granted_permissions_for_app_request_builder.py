@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .check_granted_permissions_for_app_response import CheckGrantedPermissionsForAppResponse
+    from .check_granted_permissions_for_app_post_response import CheckGrantedPermissionsForAppPostResponse
 
 class CheckGrantedPermissionsForAppRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class CheckGrantedPermissionsForAppRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/checkGrantedPermissionsForApp", path_parameters)
     
-    async def post(self,request_configuration: Optional[CheckGrantedPermissionsForAppRequestBuilderPostRequestConfiguration] = None) -> Optional[CheckGrantedPermissionsForAppResponse]:
+    async def post(self,request_configuration: Optional[CheckGrantedPermissionsForAppRequestBuilderPostRequestConfiguration] = None) -> Optional[CheckGrantedPermissionsForAppPostResponse]:
         """
         Invoke action checkGrantedPermissionsForApp
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[CheckGrantedPermissionsForAppResponse]
+        Returns: Optional[CheckGrantedPermissionsForAppPostResponse]
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class CheckGrantedPermissionsForAppRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .check_granted_permissions_for_app_response import CheckGrantedPermissionsForAppResponse
+        from .check_granted_permissions_for_app_post_response import CheckGrantedPermissionsForAppPostResponse
 
-        return await self.request_adapter.send_async(request_info, CheckGrantedPermissionsForAppResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, CheckGrantedPermissionsForAppPostResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[CheckGrantedPermissionsForAppRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
@@ -54,13 +54,13 @@ class CheckGrantedPermissionsForAppRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> CheckGrantedPermissionsForAppRequestBuilder:

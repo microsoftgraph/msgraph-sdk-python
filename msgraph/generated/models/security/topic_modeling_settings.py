@@ -42,7 +42,7 @@ class TopicModelingSettings(AdditionalDataHolder, BackedModel, Parsable):
             "dynamicallyAdjustTopicCount": lambda n : setattr(self, 'dynamically_adjust_topic_count', n.get_bool_value()),
             "ignoreNumbers": lambda n : setattr(self, 'ignore_numbers', n.get_bool_value()),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "topicCount": lambda n : setattr(self, 'topic_count', n.get_int_value()),
         }
         return fields
@@ -58,7 +58,7 @@ class TopicModelingSettings(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("dynamicallyAdjustTopicCount", self.dynamically_adjust_topic_count)
         writer.write_bool_value("ignoreNumbers", self.ignore_numbers)
         writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("topicCount", self.topic_count)
         writer.write_additional_data_value(self.additional_data)
     

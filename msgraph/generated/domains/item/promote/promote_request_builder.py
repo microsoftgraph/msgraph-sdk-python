@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .promote_response import PromoteResponse
+    from .promote_post_response import PromotePostResponse
 
 class PromoteRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class PromoteRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/domains/{domain%2Did}/promote", path_parameters)
     
-    async def post(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None) -> Optional[PromoteResponse]:
+    async def post(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None) -> Optional[PromotePostResponse]:
         """
-        Promote a verified subdomain to the root domain. A verified domain has its isVerified property set to true.
+        Promote a verified subdomain to the root domain. A verified domain has its isVerified property set to true. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[PromoteResponse]
+        Returns: Optional[PromotePostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/domain-promote?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
@@ -44,24 +44,24 @@ class PromoteRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .promote_response import PromoteResponse
+        from .promote_post_response import PromotePostResponse
 
-        return await self.request_adapter.send_async(request_info, PromoteResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, PromotePostResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Promote a verified subdomain to the root domain. A verified domain has its isVerified property set to true.
+        Promote a verified subdomain to the root domain. A verified domain has its isVerified property set to true. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> PromoteRequestBuilder:

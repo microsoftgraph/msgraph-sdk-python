@@ -63,7 +63,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, BackedModel, Parsable):
             "hostOnly": lambda n : setattr(self, 'host_only', n.get_bool_value()),
             "hostOrDomain": lambda n : setattr(self, 'host_or_domain', n.get_str_value()),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
             "publishedDateTime": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
             "sourceEnvironment": lambda n : setattr(self, 'source_environment', n.get_enum_value(BrowserSharedCookieSourceEnvironment)),
@@ -83,7 +83,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("hostOnly", self.host_only)
         writer.write_str_value("hostOrDomain", self.host_or_domain)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("path", self.path)
         writer.write_datetime_value("publishedDateTime", self.published_date_time)
         writer.write_enum_value("sourceEnvironment", self.source_environment)

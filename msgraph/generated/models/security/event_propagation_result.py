@@ -47,7 +47,7 @@ class EventPropagationResult(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "location": lambda n : setattr(self, 'location', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "serviceName": lambda n : setattr(self, 'service_name', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(EventPropagationStatus)),
             "statusInformation": lambda n : setattr(self, 'status_information', n.get_str_value()),
@@ -63,7 +63,7 @@ class EventPropagationResult(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("location", self.location)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("serviceName", self.service_name)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("statusInformation", self.status_information)

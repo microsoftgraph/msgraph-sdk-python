@@ -47,7 +47,7 @@ class AttendeeAvailability(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "attendee": lambda n : setattr(self, 'attendee', n.get_object_value(AttendeeBase)),
             "availability": lambda n : setattr(self, 'availability', n.get_enum_value(FreeBusyStatus)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -61,7 +61,7 @@ class AttendeeAvailability(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("attendee", self.attendee)
         writer.write_enum_value("availability", self.availability)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

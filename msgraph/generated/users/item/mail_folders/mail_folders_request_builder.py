@@ -68,7 +68,7 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MailFolder] = None, request_configuration: Optional[MailFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[MailFolder]:
         """
-        Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+        Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolder]
@@ -98,19 +98,19 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[MailFolder] = None, request_configuration: Optional[MailFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+        Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -118,13 +118,13 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

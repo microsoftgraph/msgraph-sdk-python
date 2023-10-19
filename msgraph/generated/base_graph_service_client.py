@@ -13,15 +13,15 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .admin.admin_request_builder import AdminRequestBuilder
-    from .agreement_acceptances.agreement_acceptances_request_builder import AgreementAcceptancesRequestBuilder
     from .agreements.agreements_request_builder import AgreementsRequestBuilder
-    from .app_catalogs.app_catalogs_request_builder import AppCatalogsRequestBuilder
+    from .agreement_acceptances.agreement_acceptances_request_builder import AgreementAcceptancesRequestBuilder
     from .applications.applications_request_builder import ApplicationsRequestBuilder
     from .applications_with_app_id.applications_with_app_id_request_builder import ApplicationsWithAppIdRequestBuilder
     from .application_templates.application_templates_request_builder import ApplicationTemplatesRequestBuilder
+    from .app_catalogs.app_catalogs_request_builder import AppCatalogsRequestBuilder
     from .audit_logs.audit_logs_request_builder import AuditLogsRequestBuilder
-    from .authentication_method_configurations.authentication_method_configurations_request_builder import AuthenticationMethodConfigurationsRequestBuilder
     from .authentication_methods_policy.authentication_methods_policy_request_builder import AuthenticationMethodsPolicyRequestBuilder
+    from .authentication_method_configurations.authentication_method_configurations_request_builder import AuthenticationMethodConfigurationsRequestBuilder
     from .certificate_based_auth_configuration.certificate_based_auth_configuration_request_builder import CertificateBasedAuthConfigurationRequestBuilder
     from .chats.chats_request_builder import ChatsRequestBuilder
     from .communications.communications_request_builder import CommunicationsRequestBuilder
@@ -30,25 +30,25 @@ if TYPE_CHECKING:
     from .contacts.contacts_request_builder import ContactsRequestBuilder
     from .contracts.contracts_request_builder import ContractsRequestBuilder
     from .data_policy_operations.data_policy_operations_request_builder import DataPolicyOperationsRequestBuilder
-    from .device_app_management.device_app_management_request_builder import DeviceAppManagementRequestBuilder
-    from .device_management.device_management_request_builder import DeviceManagementRequestBuilder
     from .devices.devices_request_builder import DevicesRequestBuilder
     from .devices_with_device_id.devices_with_device_id_request_builder import DevicesWithDeviceIdRequestBuilder
+    from .device_app_management.device_app_management_request_builder import DeviceAppManagementRequestBuilder
+    from .device_management.device_management_request_builder import DeviceManagementRequestBuilder
     from .directory.directory_request_builder import DirectoryRequestBuilder
     from .directory_objects.directory_objects_request_builder import DirectoryObjectsRequestBuilder
     from .directory_roles.directory_roles_request_builder import DirectoryRolesRequestBuilder
     from .directory_roles_with_role_template_id.directory_roles_with_role_template_id_request_builder import DirectoryRolesWithRoleTemplateIdRequestBuilder
     from .directory_role_templates.directory_role_templates_request_builder import DirectoryRoleTemplatesRequestBuilder
-    from .domain_dns_records.domain_dns_records_request_builder import DomainDnsRecordsRequestBuilder
     from .domains.domains_request_builder import DomainsRequestBuilder
+    from .domain_dns_records.domain_dns_records_request_builder import DomainDnsRecordsRequestBuilder
     from .drives.drives_request_builder import DrivesRequestBuilder
     from .education.education_request_builder import EducationRequestBuilder
     from .employee_experience.employee_experience_request_builder import EmployeeExperienceRequestBuilder
     from .external.external_request_builder import ExternalRequestBuilder
     from .filter_operators.filter_operators_request_builder import FilterOperatorsRequestBuilder
     from .functions.functions_request_builder import FunctionsRequestBuilder
-    from .group_lifecycle_policies.group_lifecycle_policies_request_builder import GroupLifecyclePoliciesRequestBuilder
     from .groups.groups_request_builder import GroupsRequestBuilder
+    from .group_lifecycle_policies.group_lifecycle_policies_request_builder import GroupLifecyclePoliciesRequestBuilder
     from .group_settings.group_settings_request_builder import GroupSettingsRequestBuilder
     from .group_setting_templates.group_setting_templates_request_builder import GroupSettingTemplatesRequestBuilder
     from .identity.identity_request_builder import IdentityRequestBuilder
@@ -192,15 +192,6 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         return AppCatalogsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def applications(self) -> ApplicationsRequestBuilder:
-        """
-        Provides operations to manage the collection of application entities.
-        """
-        from .applications.applications_request_builder import ApplicationsRequestBuilder
-
-        return ApplicationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def application_templates(self) -> ApplicationTemplatesRequestBuilder:
         """
         Provides operations to manage the collection of applicationTemplate entities.
@@ -208,6 +199,15 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         from .application_templates.application_templates_request_builder import ApplicationTemplatesRequestBuilder
 
         return ApplicationTemplatesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def applications(self) -> ApplicationsRequestBuilder:
+        """
+        Provides operations to manage the collection of application entities.
+        """
+        from .applications.applications_request_builder import ApplicationsRequestBuilder
+
+        return ApplicationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def audit_logs(self) -> AuditLogsRequestBuilder:
@@ -354,15 +354,6 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         return DirectoryObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def directory_roles(self) -> DirectoryRolesRequestBuilder:
-        """
-        Provides operations to manage the collection of directoryRole entities.
-        """
-        from .directory_roles.directory_roles_request_builder import DirectoryRolesRequestBuilder
-
-        return DirectoryRolesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def directory_role_templates(self) -> DirectoryRoleTemplatesRequestBuilder:
         """
         Provides operations to manage the collection of directoryRoleTemplate entities.
@@ -370,6 +361,15 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         from .directory_role_templates.directory_role_templates_request_builder import DirectoryRoleTemplatesRequestBuilder
 
         return DirectoryRoleTemplatesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def directory_roles(self) -> DirectoryRolesRequestBuilder:
+        """
+        Provides operations to manage the collection of directoryRole entities.
+        """
+        from .directory_roles.directory_roles_request_builder import DirectoryRolesRequestBuilder
+
+        return DirectoryRolesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def domain_dns_records(self) -> DomainDnsRecordsRequestBuilder:
@@ -453,13 +453,13 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         return GroupLifecyclePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def groups(self) -> GroupsRequestBuilder:
+    def group_setting_templates(self) -> GroupSettingTemplatesRequestBuilder:
         """
-        Provides operations to manage the collection of group entities.
+        Provides operations to manage the collection of groupSettingTemplate entities.
         """
-        from .groups.groups_request_builder import GroupsRequestBuilder
+        from .group_setting_templates.group_setting_templates_request_builder import GroupSettingTemplatesRequestBuilder
 
-        return GroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return GroupSettingTemplatesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def group_settings(self) -> GroupSettingsRequestBuilder:
@@ -471,13 +471,13 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         return GroupSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def group_setting_templates(self) -> GroupSettingTemplatesRequestBuilder:
+    def groups(self) -> GroupsRequestBuilder:
         """
-        Provides operations to manage the collection of groupSettingTemplate entities.
+        Provides operations to manage the collection of group entities.
         """
-        from .group_setting_templates.group_setting_templates_request_builder import GroupSettingTemplatesRequestBuilder
+        from .groups.groups_request_builder import GroupsRequestBuilder
 
-        return GroupSettingTemplatesRequestBuilder(self.request_adapter, self.path_parameters)
+        return GroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def identity(self) -> IdentityRequestBuilder:

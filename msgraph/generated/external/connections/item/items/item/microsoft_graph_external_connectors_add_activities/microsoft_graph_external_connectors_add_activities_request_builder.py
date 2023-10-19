@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .......models.o_data_errors.o_data_error import ODataError
     from .add_activities_post_request_body import AddActivitiesPostRequestBody
-    from .add_activities_response import AddActivitiesResponse
+    from .add_activities_post_response import AddActivitiesPostResponse
 
 class MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder(BaseRequestBui
         """
         super().__init__(request_adapter, "{+baseurl}/external/connections/{externalConnection%2Did}/items/{externalItem%2Did}/microsoft.graph.externalConnectors.addActivities", path_parameters)
     
-    async def post(self,body: Optional[AddActivitiesPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilderPostRequestConfiguration] = None) -> Optional[AddActivitiesResponse]:
+    async def post(self,body: Optional[AddActivitiesPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilderPostRequestConfiguration] = None) -> Optional[AddActivitiesPostResponse]:
         """
         Invoke action addActivities
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[AddActivitiesResponse]
+        Returns: Optional[AddActivitiesPostResponse]
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -47,9 +47,9 @@ class MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder(BaseRequestBui
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .add_activities_response import AddActivitiesResponse
+        from .add_activities_post_response import AddActivitiesPostResponse
 
-        return await self.request_adapter.send_async(request_info, AddActivitiesResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AddActivitiesPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[AddActivitiesPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
@@ -61,13 +61,13 @@ class MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder(BaseRequestBui
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

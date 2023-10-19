@@ -10,11 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models.o_data_errors.o_data_error import ODataError
     from .....models.online_meeting import OnlineMeeting
+    from .....models.o_data_errors.o_data_error import ODataError
     from .attendance_reports.attendance_reports_request_builder import AttendanceReportsRequestBuilder
     from .attendee_report.attendee_report_request_builder import AttendeeReportRequestBuilder
     from .get_virtual_appointment_join_web_url.get_virtual_appointment_join_web_url_request_builder import GetVirtualAppointmentJoinWebUrlRequestBuilder
+    from .transcripts.transcripts_request_builder import TranscriptsRequestBuilder
 
 class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
     """
@@ -31,7 +32,7 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an onlineMeeting object.
+        Delete an onlineMeeting object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/onlinemeeting-delete?view=graph-rest-1.0
@@ -51,7 +52,7 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OnlineMeeting]:
         """
-        Retrieve the properties and relationships of an onlineMeeting object. For example, you can: Teams live event attendee report is an online meeting artifact. For details, see Online meeting artifacts and permissions.
+        Retrieve the properties and relationships of an onlineMeeting object. For example, you can: Teams live event attendee report (deprecated) is an online meeting artifact. For details, see Online meeting artifacts and permissions. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnlineMeeting]
         Find more info here: https://learn.microsoft.com/graph/api/onlinemeeting-get?view=graph-rest-1.0
@@ -73,7 +74,7 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[OnlineMeeting] = None, request_configuration: Optional[OnlineMeetingItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[OnlineMeeting]:
         """
-        Update the properties of the specified onlineMeeting object. Please see Request body section for the list of properties that support updating.
+        Update the properties of the specified onlineMeeting object. Please see Request body section for the list of properties that support updating. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnlineMeeting]
@@ -98,39 +99,39 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an onlineMeeting object.
+        Delete an onlineMeeting object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an onlineMeeting object. For example, you can: Teams live event attendee report is an online meeting artifact. For details, see Online meeting artifacts and permissions.
+        Retrieve the properties and relationships of an onlineMeeting object. For example, you can: Teams live event attendee report (deprecated) is an online meeting artifact. For details, see Online meeting artifacts and permissions. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[OnlineMeeting] = None, request_configuration: Optional[OnlineMeetingItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of the specified onlineMeeting object. Please see Request body section for the list of properties that support updating.
+        Update the properties of the specified onlineMeeting object. Please see Request body section for the list of properties that support updating. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,13 +139,13 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -185,6 +186,15 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
 
         return GetVirtualAppointmentJoinWebUrlRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
+    def transcripts(self) -> TranscriptsRequestBuilder:
+        """
+        Provides operations to manage the transcripts property of the microsoft.graph.onlineMeeting entity.
+        """
+        from .transcripts.transcripts_request_builder import TranscriptsRequestBuilder
+
+        return TranscriptsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
     @dataclass
@@ -198,7 +208,7 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OnlineMeetingItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an onlineMeeting object. For example, you can: Teams live event attendee report is an online meeting artifact. For details, see Online meeting artifacts and permissions.
+        Retrieve the properties and relationships of an onlineMeeting object. For example, you can: Teams live event attendee report (deprecated) is an online meeting artifact. For details, see Online meeting artifacts and permissions. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

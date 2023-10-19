@@ -41,7 +41,7 @@ class AlertComment(AdditionalDataHolder, BackedModel, Parsable):
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
             "createdByDisplayName": lambda n : setattr(self, 'created_by_display_name', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -56,7 +56,7 @@ class AlertComment(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("comment", self.comment)
         writer.write_str_value("createdByDisplayName", self.created_by_display_name)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

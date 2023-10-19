@@ -25,15 +25,15 @@ if TYPE_CHECKING:
     from .message_pinned_event_message_detail import MessagePinnedEventMessageDetail
     from .message_unpinned_event_message_detail import MessageUnpinnedEventMessageDetail
     from .tab_updated_event_message_detail import TabUpdatedEventMessageDetail
+    from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
+    from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
+    from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
     from .team_archived_event_message_detail import TeamArchivedEventMessageDetail
     from .team_created_event_message_detail import TeamCreatedEventMessageDetail
     from .team_description_updated_event_message_detail import TeamDescriptionUpdatedEventMessageDetail
     from .team_joining_disabled_event_message_detail import TeamJoiningDisabledEventMessageDetail
     from .team_joining_enabled_event_message_detail import TeamJoiningEnabledEventMessageDetail
     from .team_renamed_event_message_detail import TeamRenamedEventMessageDetail
-    from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
-    from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
-    from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
     from .team_unarchived_event_message_detail import TeamUnarchivedEventMessageDetail
 
 @dataclass
@@ -206,15 +206,15 @@ class EventMessageDetail(AdditionalDataHolder, BackedModel, Parsable):
         from .message_pinned_event_message_detail import MessagePinnedEventMessageDetail
         from .message_unpinned_event_message_detail import MessageUnpinnedEventMessageDetail
         from .tab_updated_event_message_detail import TabUpdatedEventMessageDetail
+        from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
+        from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
+        from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
         from .team_archived_event_message_detail import TeamArchivedEventMessageDetail
         from .team_created_event_message_detail import TeamCreatedEventMessageDetail
         from .team_description_updated_event_message_detail import TeamDescriptionUpdatedEventMessageDetail
         from .team_joining_disabled_event_message_detail import TeamJoiningDisabledEventMessageDetail
         from .team_joining_enabled_event_message_detail import TeamJoiningEnabledEventMessageDetail
         from .team_renamed_event_message_detail import TeamRenamedEventMessageDetail
-        from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
-        from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
-        from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
         from .team_unarchived_event_message_detail import TeamUnarchivedEventMessageDetail
 
         from .call_ended_event_message_detail import CallEndedEventMessageDetail
@@ -237,19 +237,19 @@ class EventMessageDetail(AdditionalDataHolder, BackedModel, Parsable):
         from .message_pinned_event_message_detail import MessagePinnedEventMessageDetail
         from .message_unpinned_event_message_detail import MessageUnpinnedEventMessageDetail
         from .tab_updated_event_message_detail import TabUpdatedEventMessageDetail
+        from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
+        from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
+        from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
         from .team_archived_event_message_detail import TeamArchivedEventMessageDetail
         from .team_created_event_message_detail import TeamCreatedEventMessageDetail
         from .team_description_updated_event_message_detail import TeamDescriptionUpdatedEventMessageDetail
         from .team_joining_disabled_event_message_detail import TeamJoiningDisabledEventMessageDetail
         from .team_joining_enabled_event_message_detail import TeamJoiningEnabledEventMessageDetail
         from .team_renamed_event_message_detail import TeamRenamedEventMessageDetail
-        from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
-        from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
-        from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
         from .team_unarchived_event_message_detail import TeamUnarchivedEventMessageDetail
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -261,7 +261,7 @@ class EventMessageDetail(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

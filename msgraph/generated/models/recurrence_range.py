@@ -51,7 +51,7 @@ class RecurrenceRange(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "endDate": lambda n : setattr(self, 'end_date', n.get_date_value()),
             "numberOfOccurrences": lambda n : setattr(self, 'number_of_occurrences', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recurrenceTimeZone": lambda n : setattr(self, 'recurrence_time_zone', n.get_str_value()),
             "startDate": lambda n : setattr(self, 'start_date', n.get_date_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(RecurrenceRangeType)),
@@ -68,7 +68,7 @@ class RecurrenceRange(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_date_value("endDate", self.end_date)
         writer.write_int_value("numberOfOccurrences", self.number_of_occurrences)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("recurrenceTimeZone", self.recurrence_time_zone)
         writer.write_date_value("startDate", self.start_date)
         writer.write_enum_value("type", self.type)

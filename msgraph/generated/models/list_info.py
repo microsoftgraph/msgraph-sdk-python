@@ -13,7 +13,7 @@ class ListInfo(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # If true, indicates that content types are enabled for this list.
     content_types_enabled: Optional[bool] = None
-    # If true, indicates that the list is not normally visible in the SharePoint user experience.
+    # If true, indicates that the list isn't normally visible in the SharePoint user experience.
     hidden: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -39,7 +39,7 @@ class ListInfo(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "contentTypesEnabled": lambda n : setattr(self, 'content_types_enabled', n.get_bool_value()),
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "template": lambda n : setattr(self, 'template', n.get_str_value()),
         }
         return fields
@@ -54,7 +54,7 @@ class ListInfo(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("contentTypesEnabled", self.content_types_enabled)
         writer.write_bool_value("hidden", self.hidden)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("template", self.template)
         writer.write_additional_data_value(self.additional_data)
     

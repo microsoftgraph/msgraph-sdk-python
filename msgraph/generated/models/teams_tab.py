@@ -18,7 +18,7 @@ class TeamsTab(Entity):
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The application that is linked to the tab. This cannot be changed after tab creation.
+    # The application that is linked to the tab. This can't be changed after tab creation.
     teams_app: Optional[TeamsApp] = None
     # Deep link URL of the tab instance. Read only.
     web_url: Optional[str] = None

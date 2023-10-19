@@ -28,7 +28,7 @@ class AcquireAccessTokenRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AcquireAccessTokenPostRequestBody] = None, request_configuration: Optional[AcquireAccessTokenRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Acquire an OAuth access token to authorize the Azure AD provisioning service to provision users into an application.
+        Acquire an OAuth access token to authorize the Microsoft Entra provisioning service to provision users into an application. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class AcquireAccessTokenRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AcquireAccessTokenPostRequestBody] = None, request_configuration: Optional[AcquireAccessTokenRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Acquire an OAuth access token to authorize the Azure AD provisioning service to provision users into an application.
+        Acquire an OAuth access token to authorize the Microsoft Entra provisioning service to provision users into an application. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -59,12 +59,12 @@ class AcquireAccessTokenRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

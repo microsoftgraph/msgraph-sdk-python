@@ -12,6 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ......models.group import Group
     from ......models.o_data_errors.o_data_error import ODataError
+    from .service_provisioning_errors.service_provisioning_errors_request_builder import ServiceProvisioningErrorsRequestBuilder
 
 class GroupRequestBuilder(BaseRequestBuilder):
     """
@@ -54,14 +55,14 @@ class GroupRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> GroupRequestBuilder:
@@ -73,6 +74,15 @@ class GroupRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GroupRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def service_provisioning_errors(self) -> ServiceProvisioningErrorsRequestBuilder:
+        """
+        The serviceProvisioningErrors property
+        """
+        from .service_provisioning_errors.service_provisioning_errors_request_builder import ServiceProvisioningErrorsRequestBuilder
+
+        return ServiceProvisioningErrorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class GroupRequestBuilderGetQueryParameters():

@@ -48,7 +48,7 @@ class OrganizationalBrandingProperties(Entity):
     custom_terms_of_use_text: Optional[str] = None
     # A custom URL to replace the default URL of the 'Terms of Use' hyperlink in the footer. This URL must be in ASCII format or non-ASCII characters must be URL encoded, and not exceed 128characters.
     custom_terms_of_use_url: Optional[str] = None
-    # A custom icon (favicon) to replace a default Microsoft product favicon on an Azure AD tenant.
+    # A custom icon (favicon) to replace a default Microsoft product favicon on a Microsoft Entra tenant.
     favicon: Optional[bytes] = None
     # A relative url for the favicon above that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
     favicon_relative_url: Optional[str] = None

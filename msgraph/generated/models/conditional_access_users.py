@@ -62,7 +62,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, BackedModel, Parsable):
             "includeGuestsOrExternalUsers": lambda n : setattr(self, 'include_guests_or_external_users', n.get_object_value(ConditionalAccessGuestsOrExternalUsers)),
             "includeRoles": lambda n : setattr(self, 'include_roles', n.get_collection_of_primitive_values(str)),
             "includeUsers": lambda n : setattr(self, 'include_users', n.get_collection_of_primitive_values(str)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -82,7 +82,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("includeGuestsOrExternalUsers", self.include_guests_or_external_users)
         writer.write_collection_of_primitive_values("includeRoles", self.include_roles)
         writer.write_collection_of_primitive_values("includeUsers", self.include_users)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

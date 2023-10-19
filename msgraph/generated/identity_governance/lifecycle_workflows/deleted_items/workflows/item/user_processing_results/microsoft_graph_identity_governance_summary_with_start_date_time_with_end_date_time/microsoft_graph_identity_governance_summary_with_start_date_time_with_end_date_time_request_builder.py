@@ -27,6 +27,9 @@ class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeReq
         param start_date_time: Usage: startDateTime={startDateTime}
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['end_date_time'] = str(end_date_time)
+            path_parameters['start_date_time'] = str(start_date_time)
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow%2Did}/userProcessingResults/microsoft.graph.identityGovernance.summary(startDateTime={startDateTime},endDateTime={endDateTime})", path_parameters)
     
     async def get(self,request_configuration: Optional[MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration] = None) -> Optional[UserSummary]:
@@ -57,13 +60,13 @@ class MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeReq
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> MicrosoftGraphIdentityGovernanceSummaryWithStartDateTimeWithEndDateTimeRequestBuilder:

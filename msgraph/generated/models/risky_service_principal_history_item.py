@@ -4,8 +4,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .risk_service_principal_activity import RiskServicePrincipalActivity
     from .risky_service_principal import RiskyServicePrincipal
+    from .risk_service_principal_activity import RiskServicePrincipalActivity
 
 from .risky_service_principal import RiskyServicePrincipal
 
@@ -34,11 +34,11 @@ class RiskyServicePrincipalHistoryItem(RiskyServicePrincipal):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .risk_service_principal_activity import RiskServicePrincipalActivity
         from .risky_service_principal import RiskyServicePrincipal
+        from .risk_service_principal_activity import RiskServicePrincipalActivity
 
-        from .risk_service_principal_activity import RiskServicePrincipalActivity
         from .risky_service_principal import RiskyServicePrincipal
+        from .risk_service_principal_activity import RiskServicePrincipalActivity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_object_value(RiskServicePrincipalActivity)),

@@ -53,7 +53,7 @@ class UserExperienceAnalyticsInsight(AdditionalDataHolder, BackedModel, Parsable
 
         fields: Dict[str, Callable[[Any], None]] = {
             "insightId": lambda n : setattr(self, 'insight_id', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(UserExperienceAnalyticsInsightSeverity)),
             "userExperienceAnalyticsMetricId": lambda n : setattr(self, 'user_experience_analytics_metric_id', n.get_str_value()),
             "values": lambda n : setattr(self, 'values', n.get_collection_of_object_values(UserExperienceAnalyticsInsightValue)),
@@ -69,7 +69,7 @@ class UserExperienceAnalyticsInsight(AdditionalDataHolder, BackedModel, Parsable
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("insightId", self.insight_id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("severity", self.severity)
         writer.write_str_value("userExperienceAnalyticsMetricId", self.user_experience_analytics_metric_id)
         writer.write_collection_of_object_values("values", self.values)

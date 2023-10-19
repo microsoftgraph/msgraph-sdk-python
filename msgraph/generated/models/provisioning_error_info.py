@@ -14,7 +14,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Additional details in case of error.
+    # Additional details if there's error.
     additional_details: Optional[str] = None
     # Categorizes the error code. Possible values are failure, nonServiceFailure, success, unknownFutureValue
     error_category: Optional[ProvisioningStatusErrorCategory] = None
@@ -51,7 +51,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, BackedModel, Parsable):
             "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_str_value()),
             "errorCategory": lambda n : setattr(self, 'error_category', n.get_enum_value(ProvisioningStatusErrorCategory)),
             "errorCode": lambda n : setattr(self, 'error_code', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "reason": lambda n : setattr(self, 'reason', n.get_str_value()),
             "recommendedAction": lambda n : setattr(self, 'recommended_action', n.get_str_value()),
         }
@@ -68,7 +68,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("additionalDetails", self.additional_details)
         writer.write_enum_value("errorCategory", self.error_category)
         writer.write_str_value("errorCode", self.error_code)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("reason", self.reason)
         writer.write_str_value("recommendedAction", self.recommended_action)
         writer.write_additional_data_value(self.additional_data)

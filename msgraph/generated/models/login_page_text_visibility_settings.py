@@ -49,7 +49,7 @@ class LoginPageTextVisibilitySettings(AdditionalDataHolder, BackedModel, Parsabl
             "hidePrivacyAndCookies": lambda n : setattr(self, 'hide_privacy_and_cookies', n.get_bool_value()),
             "hideResetItNow": lambda n : setattr(self, 'hide_reset_it_now', n.get_bool_value()),
             "hideTermsOfUse": lambda n : setattr(self, 'hide_terms_of_use', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -67,7 +67,7 @@ class LoginPageTextVisibilitySettings(AdditionalDataHolder, BackedModel, Parsabl
         writer.write_bool_value("hidePrivacyAndCookies", self.hide_privacy_and_cookies)
         writer.write_bool_value("hideResetItNow", self.hide_reset_it_now)
         writer.write_bool_value("hideTermsOfUse", self.hide_terms_of_use)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

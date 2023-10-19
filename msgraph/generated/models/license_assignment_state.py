@@ -49,7 +49,7 @@ class LicenseAssignmentState(AdditionalDataHolder, BackedModel, Parsable):
             "disabledPlans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(UUID)),
             "error": lambda n : setattr(self, 'error', n.get_str_value()),
             "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "skuId": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
         }
@@ -67,7 +67,7 @@ class LicenseAssignmentState(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_primitive_values("disabledPlans", self.disabled_plans)
         writer.write_str_value("error", self.error)
         writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_uuid_value("skuId", self.sku_id)
         writer.write_str_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)

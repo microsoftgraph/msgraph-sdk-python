@@ -39,7 +39,7 @@ class ExportFileMetadata(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "downloadUrl": lambda n : setattr(self, 'download_url', n.get_str_value()),
             "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
         return fields
@@ -54,7 +54,7 @@ class ExportFileMetadata(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("downloadUrl", self.download_url)
         writer.write_str_value("fileName", self.file_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("size", self.size)
         writer.write_additional_data_value(self.additional_data)
     

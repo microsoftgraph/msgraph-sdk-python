@@ -45,7 +45,7 @@ class LinkedResourcesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[LinkedResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[LinkedResourceCollectionResponse]:
         """
-        Get information of one or more items in a partner application, based on which a specified task was created. The information is represented in a linkedResource object for each item. It includes an external ID for the item in the partner application, and if applicable, a deep link to that item in the application.
+        Get information of one or more items in a partner application, based on which a specified task was created. The information is represented in a linkedResource object for each item. It includes an external ID for the item in the partner application, and if applicable, a deep link to that item in the application. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LinkedResourceCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/todotask-list-linkedresources?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class LinkedResourcesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[LinkedResource] = None, request_configuration: Optional[LinkedResourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[LinkedResource]:
         """
-        Create a linkedResource object to associate a specified task with an item in a partner application. For example, you can associate a task with an email item in Outlook that spurred the task, and you can create a linkedResource object to track its association. You can also create a linkedResource object while creating a task.
+        Create a linkedResource object to associate a specified task with an item in a partner application. For example, you can associate a task with an email item in Outlook that spurred the task, and you can create a linkedResource object to track its association. You can also create a linkedResource object while creating a task. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LinkedResource]
@@ -92,24 +92,24 @@ class LinkedResourcesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[LinkedResourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get information of one or more items in a partner application, based on which a specified task was created. The information is represented in a linkedResource object for each item. It includes an external ID for the item in the partner application, and if applicable, a deep link to that item in the application.
+        Get information of one or more items in a partner application, based on which a specified task was created. The information is represented in a linkedResource object for each item. It includes an external ID for the item in the partner application, and if applicable, a deep link to that item in the application. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[LinkedResource] = None, request_configuration: Optional[LinkedResourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a linkedResource object to associate a specified task with an item in a partner application. For example, you can associate a task with an email item in Outlook that spurred the task, and you can create a linkedResource object to track its association. You can also create a linkedResource object while creating a task.
+        Create a linkedResource object to associate a specified task with an item in a partner application. For example, you can associate a task with an email item in Outlook that spurred the task, and you can create a linkedResource object to track its association. You can also create a linkedResource object while creating a task. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,13 +117,13 @@ class LinkedResourcesRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class LinkedResourcesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LinkedResourcesRequestBuilderGetQueryParameters():
         """
-        Get information of one or more items in a partner application, based on which a specified task was created. The information is represented in a linkedResource object for each item. It includes an external ID for the item in the partner application, and if applicable, a deep link to that item in the application.
+        Get information of one or more items in a partner application, based on which a specified task was created. The information is represented in a linkedResource object for each item. It includes an external ID for the item in the partner application, and if applicable, a deep link to that item in the application. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

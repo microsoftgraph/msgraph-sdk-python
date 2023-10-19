@@ -59,7 +59,7 @@ class UserAgent(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "applicationVersion": lambda n : setattr(self, 'application_version', n.get_str_value()),
             "headerValue": lambda n : setattr(self, 'header_value', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -73,7 +73,7 @@ class UserAgent(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("applicationVersion", self.application_version)
         writer.write_str_value("headerValue", self.header_value)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

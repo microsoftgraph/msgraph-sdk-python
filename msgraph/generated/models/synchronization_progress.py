@@ -41,7 +41,7 @@ class SynchronizationProgress(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "completedUnits": lambda n : setattr(self, 'completed_units', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "progressObservationDateTime": lambda n : setattr(self, 'progress_observation_date_time', n.get_datetime_value()),
             "totalUnits": lambda n : setattr(self, 'total_units', n.get_int_value()),
             "units": lambda n : setattr(self, 'units', n.get_str_value()),
@@ -57,7 +57,7 @@ class SynchronizationProgress(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_int_value("completedUnits", self.completed_units)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_datetime_value("progressObservationDateTime", self.progress_observation_date_time)
         writer.write_int_value("totalUnits", self.total_units)
         writer.write_str_value("units", self.units)

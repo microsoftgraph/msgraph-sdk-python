@@ -56,7 +56,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
     remediation_status: Optional[EvidenceRemediationStatus] = None
     # Details about the remediation status.
     remediation_status_details: Optional[str] = None
-    # The role/s that an evidence entity represents in an alert, e.g., an IP address that is associated with an attacker will have the evidence role Attacker.
+    # The role/s that an evidence entity represents in an alert, for example, an IP address that is associated with an attacker has the evidence role Attacker.
     roles: Optional[List[EvidenceRole]] = None
     # Array of custom tags associated with an evidence instance, for example, to denote a group of devices, high-value assets, etc.
     tags: Optional[List[str]] = None
@@ -268,7 +268,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "detailedRoles": lambda n : setattr(self, 'detailed_roles', n.get_collection_of_primitive_values(str)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "remediationStatus": lambda n : setattr(self, 'remediation_status', n.get_enum_value(EvidenceRemediationStatus)),
             "remediationStatusDetails": lambda n : setattr(self, 'remediation_status_details', n.get_str_value()),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_enum_values(EvidenceRole)),
@@ -287,7 +287,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_primitive_values("detailedRoles", self.detailed_roles)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("remediationStatus", self.remediation_status)
         writer.write_str_value("remediationStatusDetails", self.remediation_status_details)
         writer.write_collection_of_enum_values("roles", self.roles)

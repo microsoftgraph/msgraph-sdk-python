@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models.admin import Admin
     from ..models.o_data_errors.o_data_error import ODataError
     from .edge.edge_request_builder import EdgeRequestBuilder
+    from .people.people_request_builder import PeopleRequestBuilder
     from .service_announcement.service_announcement_request_builder import ServiceAnnouncementRequestBuilder
     from .sharepoint.sharepoint_request_builder import SharepointRequestBuilder
 
@@ -81,14 +82,14 @@ class AdminRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[Admin] = None, request_configuration: Optional[AdminRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -101,13 +102,13 @@ class AdminRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -129,6 +130,15 @@ class AdminRequestBuilder(BaseRequestBuilder):
         from .edge.edge_request_builder import EdgeRequestBuilder
 
         return EdgeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def people(self) -> PeopleRequestBuilder:
+        """
+        Provides operations to manage the people property of the microsoft.graph.admin entity.
+        """
+        from .people.people_request_builder import PeopleRequestBuilder
+
+        return PeopleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def service_announcement(self) -> ServiceAnnouncementRequestBuilder:

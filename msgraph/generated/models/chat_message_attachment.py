@@ -50,7 +50,7 @@ class ChatMessageAttachment(AdditionalDataHolder, BackedModel, Parsable):
             "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "teamsAppId": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
             "thumbnailUrl": lambda n : setattr(self, 'thumbnail_url', n.get_str_value()),
         }
@@ -69,7 +69,7 @@ class ChatMessageAttachment(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("contentUrl", self.content_url)
         writer.write_str_value("id", self.id)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("teamsAppId", self.teams_app_id)
         writer.write_str_value("thumbnailUrl", self.thumbnail_url)
         writer.write_additional_data_value(self.additional_data)

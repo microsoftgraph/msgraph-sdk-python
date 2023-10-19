@@ -121,7 +121,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, BackedModel, Parsab
             "maximumOutboundRoundTripDelay": lambda n : setattr(self, 'maximum_outbound_round_trip_delay', n.get_timedelta_value()),
             "mediaDuration": lambda n : setattr(self, 'media_duration', n.get_timedelta_value()),
             "networkLinkSpeedInBytes": lambda n : setattr(self, 'network_link_speed_in_bytes', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "outboundPackets": lambda n : setattr(self, 'outbound_packets', n.get_int_value()),
             "remoteIPAddress": lambda n : setattr(self, 'remote_i_p_address', n.get_str_value()),
             "remotePort": lambda n : setattr(self, 'remote_port', n.get_int_value()),
@@ -154,7 +154,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, BackedModel, Parsab
         writer.write_timedelta_value("maximumOutboundRoundTripDelay", self.maximum_outbound_round_trip_delay)
         writer.write_timedelta_value("mediaDuration", self.media_duration)
         writer.write_int_value("networkLinkSpeedInBytes", self.network_link_speed_in_bytes)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("outboundPackets", self.outbound_packets)
         writer.write_str_value("remoteIPAddress", self.remote_i_p_address)
         writer.write_int_value("remotePort", self.remote_port)

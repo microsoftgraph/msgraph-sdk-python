@@ -35,7 +35,7 @@ class PrinterShareViewpoint(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "lastUsedDateTime": lambda n : setattr(self, 'last_used_date_time', n.get_datetime_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -48,7 +48,7 @@ class PrinterShareViewpoint(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_datetime_value("lastUsedDateTime", self.last_used_date_time)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

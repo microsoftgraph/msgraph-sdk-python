@@ -70,7 +70,7 @@ class BrowserSiteHistory(AdditionalDataHolder, BackedModel, Parsable):
             "compatibilityMode": lambda n : setattr(self, 'compatibility_mode', n.get_enum_value(BrowserSiteCompatibilityMode)),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "mergeType": lambda n : setattr(self, 'merge_type', n.get_enum_value(BrowserSiteMergeType)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "publishedDateTime": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
             "targetEnvironment": lambda n : setattr(self, 'target_environment', n.get_enum_value(BrowserSiteTargetEnvironment)),
         }
@@ -89,7 +89,7 @@ class BrowserSiteHistory(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_enum_value("compatibilityMode", self.compatibility_mode)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_enum_value("mergeType", self.merge_type)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_datetime_value("publishedDateTime", self.published_date_time)
         writer.write_enum_value("targetEnvironment", self.target_environment)
         writer.write_additional_data_value(self.additional_data)

@@ -40,7 +40,7 @@ class TraceRouteHop(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "hopCount": lambda n : setattr(self, 'hop_count', n.get_int_value()),
             "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "roundTripTime": lambda n : setattr(self, 'round_trip_time', n.get_timedelta_value()),
         }
         return fields
@@ -55,7 +55,7 @@ class TraceRouteHop(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_int_value("hopCount", self.hop_count)
         writer.write_str_value("ipAddress", self.ip_address)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_timedelta_value("roundTripTime", self.round_trip_time)
         writer.write_additional_data_value(self.additional_data)
     

@@ -42,7 +42,7 @@ class MacOSLobChildApp(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "buildNumber": lambda n : setattr(self, 'build_number', n.get_str_value()),
             "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "versionNumber": lambda n : setattr(self, 'version_number', n.get_str_value()),
         }
         return fields
@@ -57,7 +57,7 @@ class MacOSLobChildApp(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("buildNumber", self.build_number)
         writer.write_str_value("bundleId", self.bundle_id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("versionNumber", self.version_number)
         writer.write_additional_data_value(self.additional_data)
     

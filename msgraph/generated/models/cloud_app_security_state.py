@@ -39,7 +39,7 @@ class CloudAppSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "destinationServiceIp": lambda n : setattr(self, 'destination_service_ip', n.get_str_value()),
             "destinationServiceName": lambda n : setattr(self, 'destination_service_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
         }
         return fields
@@ -54,7 +54,7 @@ class CloudAppSecurityState(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("destinationServiceIp", self.destination_service_ip)
         writer.write_str_value("destinationServiceName", self.destination_service_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("riskScore", self.risk_score)
         writer.write_additional_data_value(self.additional_data)
     

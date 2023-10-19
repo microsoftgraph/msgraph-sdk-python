@@ -5,9 +5,9 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .print_connector import PrintConnector
     from .printer import Printer
     from .printer_share import PrinterShare
+    from .print_connector import PrintConnector
     from .print_operation import PrintOperation
     from .print_service import PrintService
     from .print_settings import PrintSettings
@@ -53,17 +53,17 @@ class Print(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .print_connector import PrintConnector
         from .printer import Printer
         from .printer_share import PrinterShare
+        from .print_connector import PrintConnector
         from .print_operation import PrintOperation
         from .print_service import PrintService
         from .print_settings import PrintSettings
         from .print_task_definition import PrintTaskDefinition
 
-        from .print_connector import PrintConnector
         from .printer import Printer
         from .printer_share import PrinterShare
+        from .print_connector import PrintConnector
         from .print_operation import PrintOperation
         from .print_service import PrintService
         from .print_settings import PrintSettings
@@ -71,7 +71,7 @@ class Print(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "connectors": lambda n : setattr(self, 'connectors', n.get_collection_of_object_values(PrintConnector)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(PrintOperation)),
             "printers": lambda n : setattr(self, 'printers', n.get_collection_of_object_values(Printer)),
             "services": lambda n : setattr(self, 'services', n.get_collection_of_object_values(PrintService)),
@@ -90,7 +90,7 @@ class Print(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("connectors", self.connectors)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_collection_of_object_values("printers", self.printers)
         writer.write_collection_of_object_values("services", self.services)

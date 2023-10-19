@@ -40,7 +40,7 @@ class PersonOrGroupColumn(AdditionalDataHolder, BackedModel, Parsable):
             "allowMultipleSelection": lambda n : setattr(self, 'allow_multiple_selection', n.get_bool_value()),
             "chooseFromType": lambda n : setattr(self, 'choose_from_type', n.get_str_value()),
             "displayAs": lambda n : setattr(self, 'display_as', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -55,7 +55,7 @@ class PersonOrGroupColumn(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("allowMultipleSelection", self.allow_multiple_selection)
         writer.write_str_value("chooseFromType", self.choose_from_type)
         writer.write_str_value("displayAs", self.display_as)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

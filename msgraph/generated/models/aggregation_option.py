@@ -20,7 +20,7 @@ class AggregationOption(AdditionalDataHolder, BackedModel, Parsable):
     field: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The number of searchBucket resources to be returned. This is not required when the range is provided manually in the search request. Optional.
+    # The number of searchBucket resources to be returned. This isn't required when the range is provided manually in the search request. Optional.
     size: Optional[int] = None
     
     @staticmethod
@@ -46,7 +46,7 @@ class AggregationOption(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "bucketDefinition": lambda n : setattr(self, 'bucket_definition', n.get_object_value(BucketAggregationDefinition)),
             "field": lambda n : setattr(self, 'field', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
         return fields
@@ -61,7 +61,7 @@ class AggregationOption(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("bucketDefinition", self.bucket_definition)
         writer.write_str_value("field", self.field)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("size", self.size)
         writer.write_additional_data_value(self.additional_data)
     

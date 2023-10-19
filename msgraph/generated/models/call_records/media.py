@@ -61,7 +61,7 @@ class Media(AdditionalDataHolder, BackedModel, Parsable):
             "callerDevice": lambda n : setattr(self, 'caller_device', n.get_object_value(DeviceInfo)),
             "callerNetwork": lambda n : setattr(self, 'caller_network', n.get_object_value(NetworkInfo)),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "streams": lambda n : setattr(self, 'streams', n.get_collection_of_object_values(MediaStream)),
         }
         return fields
@@ -79,7 +79,7 @@ class Media(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("callerDevice", self.caller_device)
         writer.write_object_value("callerNetwork", self.caller_network)
         writer.write_str_value("label", self.label)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("streams", self.streams)
         writer.write_additional_data_value(self.additional_data)
     

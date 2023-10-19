@@ -64,7 +64,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, BackedModel, Pars
             "allowInsertRows": lambda n : setattr(self, 'allow_insert_rows', n.get_bool_value()),
             "allowPivotTables": lambda n : setattr(self, 'allow_pivot_tables', n.get_bool_value()),
             "allowSort": lambda n : setattr(self, 'allow_sort', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -87,7 +87,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, BackedModel, Pars
         writer.write_bool_value("allowInsertRows", self.allow_insert_rows)
         writer.write_bool_value("allowPivotTables", self.allow_pivot_tables)
         writer.write_bool_value("allowSort", self.allow_sort)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -28,7 +28,7 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an educationSubmissionResource from the submission. Only teachers and students can perform this operation. If the resource was copied from the assignment, a new copy of the resource will be created after the current copy is deleted. This allows you to 'reset' the resource to its original state. If the resource was not copied from the assignment but was added from the student, the resource is simply deleted.
+        Delete an educationSubmissionResource from the submission. Only teachers and students can perform this operation. If the resource was copied from the assignment, a new copy of the resource will be created after the current copy is deleted. This allows you to 'reset' the resource to its original state. If the resource wasn't copied from the assignment but was added from the student, the resource is deleted. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/educationsubmissionresource-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationSubmissionResource]:
         """
-        Retrieve the properties of a specific resource associated with a submission. Only teachers, students, and applications with application permissions can perform this operation. This resource is in the 'working' resource list and should be considered work in process by a student. This resource is wrapped with a possible pointer back to the assignment resource if it was copied from the assignment.
+        Retrieve the properties of a specific resource associated with a submission. Only teachers, students, and applications with application permissions can perform this operation. This resource is in the 'working' resource list and should be considered work in process by a student. This resource is wrapped with a possible pointer back to the assignment resource if it was copied from the assignment. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationSubmissionResource]
         Find more info here: https://learn.microsoft.com/graph/api/educationsubmissionresource-get?view=graph-rest-1.0
@@ -94,34 +94,34 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an educationSubmissionResource from the submission. Only teachers and students can perform this operation. If the resource was copied from the assignment, a new copy of the resource will be created after the current copy is deleted. This allows you to 'reset' the resource to its original state. If the resource was not copied from the assignment but was added from the student, the resource is simply deleted.
+        Delete an educationSubmissionResource from the submission. Only teachers and students can perform this operation. If the resource was copied from the assignment, a new copy of the resource will be created after the current copy is deleted. This allows you to 'reset' the resource to its original state. If the resource wasn't copied from the assignment but was added from the student, the resource is deleted. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of a specific resource associated with a submission. Only teachers, students, and applications with application permissions can perform this operation. This resource is in the 'working' resource list and should be considered work in process by a student. This resource is wrapped with a possible pointer back to the assignment resource if it was copied from the assignment.
+        Retrieve the properties of a specific resource associated with a submission. Only teachers, students, and applications with application permissions can perform this operation. This resource is in the 'working' resource list and should be considered work in process by a student. This resource is wrapped with a possible pointer back to the assignment resource if it was copied from the assignment. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[EducationSubmissionResource] = None, request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -134,13 +134,13 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -167,7 +167,7 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EducationSubmissionResourceItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of a specific resource associated with a submission. Only teachers, students, and applications with application permissions can perform this operation. This resource is in the 'working' resource list and should be considered work in process by a student. This resource is wrapped with a possible pointer back to the assignment resource if it was copied from the assignment.
+        Retrieve the properties of a specific resource associated with a submission. Only teachers, students, and applications with application permissions can perform this operation. This resource is in the 'working' resource list and should be considered work in process by a student. This resource is wrapped with a possible pointer back to the assignment resource if it was copied from the assignment. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

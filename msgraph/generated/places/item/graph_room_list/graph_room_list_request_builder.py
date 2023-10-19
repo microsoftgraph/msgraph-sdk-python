@@ -12,6 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.room_list import RoomList
+    from .rooms.rooms_request_builder import RoomsRequestBuilder
 
 class GraphRoomListRequestBuilder(BaseRequestBuilder):
     """
@@ -54,14 +55,14 @@ class GraphRoomListRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> GraphRoomListRequestBuilder:
@@ -73,6 +74,15 @@ class GraphRoomListRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GraphRoomListRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def rooms(self) -> RoomsRequestBuilder:
+        """
+        Provides operations to manage the rooms property of the microsoft.graph.roomList entity.
+        """
+        from .rooms.rooms_request_builder import RoomsRequestBuilder
+
+        return RoomsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class GraphRoomListRequestBuilderGetQueryParameters():

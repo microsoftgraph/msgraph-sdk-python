@@ -29,7 +29,7 @@ class PinnedChatMessageInfoItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[PinnedChatMessageInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Unpin a message from a chat.
+        Unpin a message from a chat. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/chat-delete-pinnedmessages?view=graph-rest-1.0
@@ -94,17 +94,17 @@ class PinnedChatMessageInfoItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[PinnedChatMessageInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Unpin a message from a chat.
+        Unpin a message from a chat. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[PinnedChatMessageInfoItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -114,14 +114,14 @@ class PinnedChatMessageInfoItemRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[PinnedChatMessageInfo] = None, request_configuration: Optional[PinnedChatMessageInfoItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -134,13 +134,13 @@ class PinnedChatMessageInfoItemRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

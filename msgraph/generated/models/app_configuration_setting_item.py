@@ -50,7 +50,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, BackedModel, Parsable):
             "appConfigKey": lambda n : setattr(self, 'app_config_key', n.get_str_value()),
             "appConfigKeyType": lambda n : setattr(self, 'app_config_key_type', n.get_enum_value(MdmAppConfigKeyType)),
             "appConfigKeyValue": lambda n : setattr(self, 'app_config_key_value', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -65,7 +65,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("appConfigKey", self.app_config_key)
         writer.write_enum_value("appConfigKeyType", self.app_config_key_type)
         writer.write_str_value("appConfigKeyValue", self.app_config_key_value)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

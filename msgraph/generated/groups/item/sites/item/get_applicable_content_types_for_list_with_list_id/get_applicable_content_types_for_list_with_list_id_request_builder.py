@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .get_applicable_content_types_for_list_with_list_id_response import GetApplicableContentTypesForListWithListIdResponse
+    from .get_applicable_content_types_for_list_with_list_id_get_response import GetApplicableContentTypesForListWithListIdGetResponse
 
 class GetApplicableContentTypesForListWithListIdRequestBuilder(BaseRequestBuilder):
     """
@@ -25,13 +25,15 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder(BaseRequestBuilde
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['list_id'] = str(list_id)
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/getApplicableContentTypesForList(listId='{listId}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetApplicableContentTypesForListWithListIdRequestBuilderGetRequestConfiguration] = None) -> Optional[GetApplicableContentTypesForListWithListIdResponse]:
+    async def get(self,request_configuration: Optional[GetApplicableContentTypesForListWithListIdRequestBuilderGetRequestConfiguration] = None) -> Optional[GetApplicableContentTypesForListWithListIdGetResponse]:
         """
         Invoke function getApplicableContentTypesForList
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetApplicableContentTypesForListWithListIdResponse]
+        Returns: Optional[GetApplicableContentTypesForListWithListIdGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -44,9 +46,9 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder(BaseRequestBuilde
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_applicable_content_types_for_list_with_list_id_response import GetApplicableContentTypesForListWithListIdResponse
+        from .get_applicable_content_types_for_list_with_list_id_get_response import GetApplicableContentTypesForListWithListIdGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetApplicableContentTypesForListWithListIdResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetApplicableContentTypesForListWithListIdGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetApplicableContentTypesForListWithListIdRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -55,14 +57,14 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder(BaseRequestBuilde
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> GetApplicableContentTypesForListWithListIdRequestBuilder:

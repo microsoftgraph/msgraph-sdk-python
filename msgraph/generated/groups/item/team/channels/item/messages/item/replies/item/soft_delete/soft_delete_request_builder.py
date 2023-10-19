@@ -27,7 +27,7 @@ class SoftDeleteRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[SoftDeleteRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Delete a single chatMessage or a chat message reply in a channel or a chat.
+        Delete a single chatMessage or a chat message reply in a channel or a chat. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/chatmessage-softdelete?view=graph-rest-1.0
@@ -47,17 +47,17 @@ class SoftDeleteRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[SoftDeleteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a single chatMessage or a chat message reply in a channel or a chat.
+        Delete a single chatMessage or a chat message reply in a channel or a chat. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> SoftDeleteRequestBuilder:

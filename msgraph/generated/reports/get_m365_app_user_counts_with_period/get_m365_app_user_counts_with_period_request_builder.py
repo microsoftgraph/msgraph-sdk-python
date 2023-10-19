@@ -24,6 +24,8 @@ class GetM365AppUserCountsWithPeriodRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['period'] = str(period)
         super().__init__(request_adapter, "{+baseurl}/reports/getM365AppUserCounts(period='{period}')", path_parameters)
     
     async def get(self,request_configuration: Optional[GetM365AppUserCountsWithPeriodRequestBuilderGetRequestConfiguration] = None) -> bytes:
@@ -52,12 +54,12 @@ class GetM365AppUserCountsWithPeriodRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> GetM365AppUserCountsWithPeriodRequestBuilder:

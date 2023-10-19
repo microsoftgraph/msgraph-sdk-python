@@ -13,7 +13,7 @@ from .entity import Entity
 class AuthenticationMethodsRoot(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
-    # Represents the state of a user's authentication methods, including which methods are registered and which features the user is registered and capable of (such as multi-factor authentication, self-service password reset, and passwordless authentication).
+    # Represents the state of a user's authentication methods, including which methods are registered and which features the user is registered and capable of (such as multifactor authentication, self-service password reset, and passwordless authentication).
     user_registration_details: Optional[List[UserRegistrationDetails]] = None
     
     @staticmethod

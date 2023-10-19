@@ -14,7 +14,7 @@ class LocationConstraint(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The client requests the service to include in the response a meeting location for the meeting. If this is true and all the resources are busy, findMeetingTimes will not return any meeting time suggestions. If this is false and all the resources are busy, findMeetingTimes would still look for meeting times without locations.
+    # The client requests the service to include in the response a meeting location for the meeting. If this is true and all the resources are busy, findMeetingTimes won't return any meeting time suggestions. If this is false and all the resources are busy, findMeetingTimes would still look for meeting times without locations.
     is_required: Optional[bool] = None
     # Constraint information for one or more locations that the client requests for the meeting.
     locations: Optional[List[LocationConstraintItem]] = None
@@ -46,7 +46,7 @@ class LocationConstraint(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
             "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(LocationConstraintItem)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "suggestLocation": lambda n : setattr(self, 'suggest_location', n.get_bool_value()),
         }
         return fields
@@ -61,7 +61,7 @@ class LocationConstraint(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("isRequired", self.is_required)
         writer.write_collection_of_object_values("locations", self.locations)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_bool_value("suggestLocation", self.suggest_location)
         writer.write_additional_data_value(self.additional_data)
     

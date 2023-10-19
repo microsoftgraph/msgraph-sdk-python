@@ -28,7 +28,7 @@ class SetDataRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SetDataPostRequestBody] = None, request_configuration: Optional[SetDataRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Resets the source data for the chart.
+        Resets the source data for the chart. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class SetDataRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SetDataPostRequestBody] = None, request_configuration: Optional[SetDataRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Resets the source data for the chart.
+        Resets the source data for the chart. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -59,12 +59,12 @@ class SetDataRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

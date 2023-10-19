@@ -11,13 +11,13 @@ class AppIdentity(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Refers to the Unique GUID representing Application Id in the Azure Active Directory.
+    # Refers to the unique ID representing application in Microsoft Entra ID.
     app_id: Optional[str] = None
-    # Refers to the Application Name displayed in the Azure Portal.
+    # Refers to the application name displayed in the Microsoft Entra admin center.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Refers to the Unique GUID indicating Service Principal Id in Azure Active Directory for the corresponding App.
+    # Refers to the unique ID for the service principal in Microsoft Entra ID.
     service_principal_id: Optional[str] = None
     # Refers to the Service Principal Name is the Application name in the tenant.
     service_principal_name: Optional[str] = None
@@ -41,7 +41,7 @@ class AppIdentity(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "servicePrincipalId": lambda n : setattr(self, 'service_principal_id', n.get_str_value()),
             "servicePrincipalName": lambda n : setattr(self, 'service_principal_name', n.get_str_value()),
         }
@@ -57,7 +57,7 @@ class AppIdentity(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("appId", self.app_id)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("servicePrincipalId", self.service_principal_id)
         writer.write_str_value("servicePrincipalName", self.service_principal_name)
         writer.write_additional_data_value(self.additional_data)

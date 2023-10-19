@@ -21,16 +21,16 @@ if TYPE_CHECKING:
     from .device_compliance_policies.device_compliance_policies_request_builder import DeviceCompliancePoliciesRequestBuilder
     from .device_compliance_policy_device_state_summary.device_compliance_policy_device_state_summary_request_builder import DeviceCompliancePolicyDeviceStateSummaryRequestBuilder
     from .device_compliance_policy_setting_state_summaries.device_compliance_policy_setting_state_summaries_request_builder import DeviceCompliancePolicySettingStateSummariesRequestBuilder
-    from .device_configuration_device_state_summaries.device_configuration_device_state_summaries_request_builder import DeviceConfigurationDeviceStateSummariesRequestBuilder
     from .device_configurations.device_configurations_request_builder import DeviceConfigurationsRequestBuilder
+    from .device_configuration_device_state_summaries.device_configuration_device_state_summaries_request_builder import DeviceConfigurationDeviceStateSummariesRequestBuilder
     from .device_enrollment_configurations.device_enrollment_configurations_request_builder import DeviceEnrollmentConfigurationsRequestBuilder
     from .device_management_partners.device_management_partners_request_builder import DeviceManagementPartnersRequestBuilder
     from .exchange_connectors.exchange_connectors_request_builder import ExchangeConnectorsRequestBuilder
     from .get_effective_permissions_with_scope.get_effective_permissions_with_scope_request_builder import GetEffectivePermissionsWithScopeRequestBuilder
     from .imported_windows_autopilot_device_identities.imported_windows_autopilot_device_identities_request_builder import ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder
     from .ios_update_statuses.ios_update_statuses_request_builder import IosUpdateStatusesRequestBuilder
-    from .managed_device_overview.managed_device_overview_request_builder import ManagedDeviceOverviewRequestBuilder
     from .managed_devices.managed_devices_request_builder import ManagedDevicesRequestBuilder
+    from .managed_device_overview.managed_device_overview_request_builder import ManagedDeviceOverviewRequestBuilder
     from .mobile_app_troubleshooting_events.mobile_app_troubleshooting_events_request_builder import MobileAppTroubleshootingEventsRequestBuilder
     from .mobile_threat_defense_connectors.mobile_threat_defense_connectors_request_builder import MobileThreatDefenseConnectorsRequestBuilder
     from .notification_message_templates.notification_message_templates_request_builder import NotificationMessageTemplatesRequestBuilder
@@ -50,8 +50,8 @@ if TYPE_CHECKING:
     from .user_experience_analytics_app_health_device_model_performance.user_experience_analytics_app_health_device_model_performance_request_builder import UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilder
     from .user_experience_analytics_app_health_device_performance.user_experience_analytics_app_health_device_performance_request_builder import UserExperienceAnalyticsAppHealthDevicePerformanceRequestBuilder
     from .user_experience_analytics_app_health_device_performance_details.user_experience_analytics_app_health_device_performance_details_request_builder import UserExperienceAnalyticsAppHealthDevicePerformanceDetailsRequestBuilder
-    from .user_experience_analytics_app_health_o_s_version_performance.user_experience_analytics_app_health_o_s_version_performance_request_builder import UserExperienceAnalyticsAppHealthOSVersionPerformanceRequestBuilder
     from .user_experience_analytics_app_health_overview.user_experience_analytics_app_health_overview_request_builder import UserExperienceAnalyticsAppHealthOverviewRequestBuilder
+    from .user_experience_analytics_app_health_o_s_version_performance.user_experience_analytics_app_health_o_s_version_performance_request_builder import UserExperienceAnalyticsAppHealthOSVersionPerformanceRequestBuilder
     from .user_experience_analytics_baselines.user_experience_analytics_baselines_request_builder import UserExperienceAnalyticsBaselinesRequestBuilder
     from .user_experience_analytics_categories.user_experience_analytics_categories_request_builder import UserExperienceAnalyticsCategoriesRequestBuilder
     from .user_experience_analytics_device_performance.user_experience_analytics_device_performance_request_builder import UserExperienceAnalyticsDevicePerformanceRequestBuilder
@@ -91,7 +91,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         Read properties and relationships of the deviceManagement object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-devicemanagement-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mstunnel-devicemanagement-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -126,7 +126,7 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-devicemanagement-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-wip-devicemanagement-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -152,14 +152,14 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[DeviceManagement] = None, request_configuration: Optional[DeviceManagementRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -172,13 +172,13 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -601,15 +601,6 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         return UserExperienceAnalyticsDeviceStartupHistoryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user_experience_analytics_device_startup_processes(self) -> UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder:
-        """
-        Provides operations to manage the userExperienceAnalyticsDeviceStartupProcesses property of the microsoft.graph.deviceManagement entity.
-        """
-        from .user_experience_analytics_device_startup_processes.user_experience_analytics_device_startup_processes_request_builder import UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder
-
-        return UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def user_experience_analytics_device_startup_process_performance(self) -> UserExperienceAnalyticsDeviceStartupProcessPerformanceRequestBuilder:
         """
         Provides operations to manage the userExperienceAnalyticsDeviceStartupProcessPerformance property of the microsoft.graph.deviceManagement entity.
@@ -617,6 +608,15 @@ class DeviceManagementRequestBuilder(BaseRequestBuilder):
         from .user_experience_analytics_device_startup_process_performance.user_experience_analytics_device_startup_process_performance_request_builder import UserExperienceAnalyticsDeviceStartupProcessPerformanceRequestBuilder
 
         return UserExperienceAnalyticsDeviceStartupProcessPerformanceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def user_experience_analytics_device_startup_processes(self) -> UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder:
+        """
+        Provides operations to manage the userExperienceAnalyticsDeviceStartupProcesses property of the microsoft.graph.deviceManagement entity.
+        """
+        from .user_experience_analytics_device_startup_processes.user_experience_analytics_device_startup_processes_request_builder import UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder
+
+        return UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def user_experience_analytics_metric_history(self) -> UserExperienceAnalyticsMetricHistoryRequestBuilder:

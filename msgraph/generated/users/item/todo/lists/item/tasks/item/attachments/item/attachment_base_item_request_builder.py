@@ -29,7 +29,7 @@ class AttachmentBaseItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a taskFileAttachment object from a todoTask resource.
+        Delete a taskFileAttachment object from a todoTask resource. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/taskfileattachment-delete?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class AttachmentBaseItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AttachmentBase]:
         """
-        Read the properties and relationships of a taskFileAttachment object.
+        Read the properties and relationships of a taskFileAttachment object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttachmentBase]
         Find more info here: https://learn.microsoft.com/graph/api/taskfileattachment-get?view=graph-rest-1.0
@@ -71,34 +71,34 @@ class AttachmentBaseItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a taskFileAttachment object from a todoTask resource.
+        Delete a taskFileAttachment object from a todoTask resource. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a taskFileAttachment object.
+        Read the properties and relationships of a taskFileAttachment object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> AttachmentBaseItemRequestBuilder:
@@ -133,7 +133,7 @@ class AttachmentBaseItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttachmentBaseItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a taskFileAttachment object.
+        Read the properties and relationships of a taskFileAttachment object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -16,13 +16,13 @@ class AttachmentItem(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The type of attachment. Possible values are: file, item, reference. Required.
     attachment_type: Optional[AttachmentType] = None
-    # The CID or Content-Id of the attachment for referencing in case of in-line attachments using <img src='cid:contentId'> tag in HTML messages. Optional.
+    # The CID or Content-Id of the attachment for referencing for the in-line attachments using the <img src='cid:contentId'> tag in HTML messages. Optional.
     content_id: Optional[str] = None
     # The nature of the data in the attachment. Optional.
     content_type: Optional[str] = None
     # true if the attachment is an inline attachment; otherwise, false. Optional.
     is_inline: Optional[bool] = None
-    # The display name of the attachment. This can be a descriptive string and does not have to be the actual file name. Required.
+    # The display name of the attachment. This can be a descriptive string and doesn't have to be the actual file name. Required.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -55,7 +55,7 @@ class AttachmentItem(AdditionalDataHolder, BackedModel, Parsable):
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "isInline": lambda n : setattr(self, 'is_inline', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
         return fields
@@ -73,7 +73,7 @@ class AttachmentItem(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("contentType", self.content_type)
         writer.write_bool_value("isInline", self.is_inline)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("size", self.size)
         writer.write_additional_data_value(self.additional_data)
     

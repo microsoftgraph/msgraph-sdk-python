@@ -51,7 +51,7 @@ class Quota(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "deleted": lambda n : setattr(self, 'deleted', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "remaining": lambda n : setattr(self, 'remaining', n.get_int_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
             "storagePlanInformation": lambda n : setattr(self, 'storage_plan_information', n.get_object_value(StoragePlanInformation)),
@@ -69,7 +69,7 @@ class Quota(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_int_value("deleted", self.deleted)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("remaining", self.remaining)
         writer.write_str_value("state", self.state)
         writer.write_object_value("storagePlanInformation", self.storage_plan_information)

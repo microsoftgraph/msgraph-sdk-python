@@ -44,7 +44,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> Optional[OAuth2PermissionGrantCollectionResponse]:
         """
-        Retrieve a list of oAuth2PermissionGrant entities, representing delegated permissions granted to the service principal (representing the client application) to access an API on behalf of a user.
+        Retrieve a list of oAuth2PermissionGrant entities, representing delegated permissions granted to the service principal (representing the client application) to access an API on behalf of a user. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OAuth2PermissionGrantCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-list-oauth2permissiongrants?view=graph-rest-1.0
@@ -66,19 +66,19 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of oAuth2PermissionGrant entities, representing delegated permissions granted to the service principal (representing the client application) to access an API on behalf of a user.
+        Retrieve a list of oAuth2PermissionGrant entities, representing delegated permissions granted to the service principal (representing the client application) to access an API on behalf of a user. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> Oauth2PermissionGrantsRequestBuilder:
@@ -103,7 +103,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class Oauth2PermissionGrantsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of oAuth2PermissionGrant entities, representing delegated permissions granted to the service principal (representing the client application) to access an API on behalf of a user.
+        Retrieve a list of oAuth2PermissionGrant entities, representing delegated permissions granted to the service principal (representing the client application) to access an API on behalf of a user. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

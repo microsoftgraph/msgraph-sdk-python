@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from .add_post_request_body import AddPostRequestBody
-    from .add_response import AddResponse
+    from .add_post_response import AddPostResponse
 
 class AddRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class AddRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/sites/add", path_parameters)
     
-    async def post(self,body: Optional[AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> Optional[AddResponse]:
+    async def post(self,body: Optional[AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> Optional[AddPostResponse]:
         """
         Follow a user's site or multiple sites.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[AddResponse]
+        Returns: Optional[AddPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/site-follow?view=graph-rest-1.0
         """
         if not body:
@@ -48,9 +48,9 @@ class AddRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .add_response import AddResponse
+        from .add_post_response import AddPostResponse
 
-        return await self.request_adapter.send_async(request_info, AddResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, AddPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
@@ -62,13 +62,13 @@ class AddRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

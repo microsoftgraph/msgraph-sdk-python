@@ -98,7 +98,7 @@ class NetworkConnection(AdditionalDataHolder, BackedModel, Parsable):
             "natDestinationPort": lambda n : setattr(self, 'nat_destination_port', n.get_str_value()),
             "natSourceAddress": lambda n : setattr(self, 'nat_source_address', n.get_str_value()),
             "natSourcePort": lambda n : setattr(self, 'nat_source_port', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(SecurityNetworkProtocol)),
             "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
             "sourceAddress": lambda n : setattr(self, 'source_address', n.get_str_value()),
@@ -130,7 +130,7 @@ class NetworkConnection(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("natDestinationPort", self.nat_destination_port)
         writer.write_str_value("natSourceAddress", self.nat_source_address)
         writer.write_str_value("natSourcePort", self.nat_source_port)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("protocol", self.protocol)
         writer.write_str_value("riskScore", self.risk_score)
         writer.write_str_value("sourceAddress", self.source_address)

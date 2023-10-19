@@ -44,7 +44,7 @@ class RoleManagement(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "directory": lambda n : setattr(self, 'directory', n.get_object_value(RbacApplication)),
             "entitlementManagement": lambda n : setattr(self, 'entitlement_management', n.get_object_value(RbacApplication)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -58,7 +58,7 @@ class RoleManagement(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("directory", self.directory)
         writer.write_object_value("entitlementManagement", self.entitlement_management)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

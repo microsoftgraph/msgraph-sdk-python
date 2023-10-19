@@ -59,7 +59,7 @@ class DeviceProtectionOverview(AdditionalDataHolder, BackedModel, Parsable):
             "cleanDeviceCount": lambda n : setattr(self, 'clean_device_count', n.get_int_value()),
             "criticalFailuresDeviceCount": lambda n : setattr(self, 'critical_failures_device_count', n.get_int_value()),
             "inactiveThreatAgentDeviceCount": lambda n : setattr(self, 'inactive_threat_agent_device_count', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "pendingFullScanDeviceCount": lambda n : setattr(self, 'pending_full_scan_device_count', n.get_int_value()),
             "pendingManualStepsDeviceCount": lambda n : setattr(self, 'pending_manual_steps_device_count', n.get_int_value()),
             "pendingOfflineScanDeviceCount": lambda n : setattr(self, 'pending_offline_scan_device_count', n.get_int_value()),
@@ -82,7 +82,7 @@ class DeviceProtectionOverview(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_int_value("cleanDeviceCount", self.clean_device_count)
         writer.write_int_value("criticalFailuresDeviceCount", self.critical_failures_device_count)
         writer.write_int_value("inactiveThreatAgentDeviceCount", self.inactive_threat_agent_device_count)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("pendingFullScanDeviceCount", self.pending_full_scan_device_count)
         writer.write_int_value("pendingManualStepsDeviceCount", self.pending_manual_steps_device_count)
         writer.write_int_value("pendingOfflineScanDeviceCount", self.pending_offline_scan_device_count)

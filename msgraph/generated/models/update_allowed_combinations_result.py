@@ -49,7 +49,7 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, BackedModel, Parsabl
             "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
             "conditionalAccessReferences": lambda n : setattr(self, 'conditional_access_references', n.get_collection_of_primitive_values(str)),
             "currentCombinations": lambda n : setattr(self, 'current_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "previousCombinations": lambda n : setattr(self, 'previous_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
         }
         return fields
@@ -65,7 +65,7 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, BackedModel, Parsabl
         writer.write_str_value("additionalInformation", self.additional_information)
         writer.write_collection_of_primitive_values("conditionalAccessReferences", self.conditional_access_references)
         writer.write_collection_of_enum_values("currentCombinations", self.current_combinations)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_enum_values("previousCombinations", self.previous_combinations)
         writer.write_additional_data_value(self.additional_data)
     

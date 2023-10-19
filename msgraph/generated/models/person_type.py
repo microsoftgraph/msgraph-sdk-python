@@ -36,7 +36,7 @@ class PersonType(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "class": lambda n : setattr(self, 'class_', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "subclass": lambda n : setattr(self, 'subclass', n.get_str_value()),
         }
         return fields
@@ -50,7 +50,7 @@ class PersonType(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("class", self.class_)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("subclass", self.subclass)
         writer.write_additional_data_value(self.additional_data)
     

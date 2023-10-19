@@ -29,7 +29,7 @@ class UploadClientCertificateRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[UploadClientCertificatePostRequestBody] = None, request_configuration: Optional[UploadClientCertificateRequestBuilderPostRequestConfiguration] = None) -> Optional[IdentityApiConnector]:
         """
-        Upload a PKCS 12 format key (.pfx) to an API connector's authentication configuration. The input is a base-64 encoded value of the PKCS 12 certificate contents. This method returns an apiConnector.
+        Upload a PKCS 12 format key (.pfx) to an API connector's authentication configuration. The input is a base-64 encoded value of the PKCS 12 certificate contents. This method returns an apiConnector. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityApiConnector]
@@ -54,7 +54,7 @@ class UploadClientCertificateRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[UploadClientCertificatePostRequestBody] = None, request_configuration: Optional[UploadClientCertificateRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Upload a PKCS 12 format key (.pfx) to an API connector's authentication configuration. The input is a base-64 encoded value of the PKCS 12 certificate contents. This method returns an apiConnector.
+        Upload a PKCS 12 format key (.pfx) to an API connector's authentication configuration. The input is a base-64 encoded value of the PKCS 12 certificate contents. This method returns an apiConnector. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -62,13 +62,13 @@ class UploadClientCertificateRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

@@ -53,7 +53,7 @@ class RecentNotebook(AdditionalDataHolder, BackedModel, Parsable):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastAccessedTime": lambda n : setattr(self, 'last_accessed_time', n.get_datetime_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(RecentNotebookLinks)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sourceService": lambda n : setattr(self, 'source_service', n.get_enum_value(OnenoteSourceService)),
         }
         return fields
@@ -69,7 +69,7 @@ class RecentNotebook(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("lastAccessedTime", self.last_accessed_time)
         writer.write_object_value("links", self.links)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("sourceService", self.source_service)
         writer.write_additional_data_value(self.additional_data)
     

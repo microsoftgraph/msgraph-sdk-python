@@ -12,11 +12,11 @@ from .entity import Entity
 class WorkbookRangeFont(Entity):
     # Represents the bold status of font.
     bold: Optional[bool] = None
-    # HTML color code representation of the text color. E.g. #FF0000 represents Red.
+    # HTML color code representation of the text color. for example #FF0000 represents Red.
     color: Optional[str] = None
     # Represents the italic status of the font.
     italic: Optional[bool] = None
-    # Font name (e.g. 'Calibri')
+    # Font name (for example 'Calibri')
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

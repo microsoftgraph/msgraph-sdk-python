@@ -57,7 +57,7 @@ class TargetResource(AdditionalDataHolder, BackedModel, Parsable):
             "groupType": lambda n : setattr(self, 'group_type', n.get_enum_value(GroupType)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(ModifiedProperty)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
@@ -75,7 +75,7 @@ class TargetResource(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_enum_value("groupType", self.group_type)
         writer.write_str_value("id", self.id)
         writer.write_collection_of_object_values("modifiedProperties", self.modified_properties)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("type", self.type)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)

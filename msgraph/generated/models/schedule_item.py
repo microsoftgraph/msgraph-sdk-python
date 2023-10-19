@@ -56,7 +56,7 @@ class ScheduleItem(AdditionalDataHolder, BackedModel, Parsable):
             "end": lambda n : setattr(self, 'end', n.get_object_value(DateTimeTimeZone)),
             "isPrivate": lambda n : setattr(self, 'is_private', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "start": lambda n : setattr(self, 'start', n.get_object_value(DateTimeTimeZone)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(FreeBusyStatus)),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
@@ -74,7 +74,7 @@ class ScheduleItem(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("end", self.end)
         writer.write_bool_value("isPrivate", self.is_private)
         writer.write_str_value("location", self.location)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("start", self.start)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("subject", self.subject)

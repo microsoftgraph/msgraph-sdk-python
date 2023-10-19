@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models.o_data_errors.o_data_error import ODataError
     from ....models.organizational_branding import OrganizationalBranding
+    from ....models.o_data_errors.o_data_error import ODataError
     from .background_image.background_image_request_builder import BackgroundImageRequestBuilder
     from .banner_logo.banner_logo_request_builder import BannerLogoRequestBuilder
     from .custom_c_s_s.custom_c_s_s_request_builder import CustomCSSRequestBuilder
@@ -36,7 +36,7 @@ class BrandingRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[BrandingRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete the default organizational branding object. To delete the organizationalBranding object, all images (Stream types) must first be removed from the object.
+        Delete the default organizational branding object. To delete the organizationalBranding object, all images (Stream types) must first be removed from the object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/organizationalbranding-delete?view=graph-rest-1.0
@@ -56,7 +56,7 @@ class BrandingRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[BrandingRequestBuilderGetRequestConfiguration] = None) -> Optional[OrganizationalBranding]:
         """
-        Retrieve the default organizational branding object, if the Accept-Language header is set to 0 or default. If no default organizational branding object exists, this method returns a 404 Not Found error. If the Accept-Language header is set to an existing locale identified by the value of its id, this method retrieves the branding for the specified locale. This method retrieves only non-Stream properties, for example, usernameHintText and signInPageText. To retrieve Stream types of the default branding, for example, bannerLogo and backgroundImage, use the GET organizationalBrandingLocalization method.
+        Retrieve the default organizational branding object, if the Accept-Language header is set to 0 or default. If no default organizational branding object exists, this method returns a 404 Not Found error. If the Accept-Language header is set to an existing locale identified by the value of its id, this method retrieves the branding for the specified locale. This method retrieves only non-Stream properties, for example, usernameHintText and signInPageText. To retrieve Stream types of the default branding, for example, bannerLogo and backgroundImage, use the GET organizationalBrandingLocalization method. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OrganizationalBranding]
         Find more info here: https://learn.microsoft.com/graph/api/organizationalbranding-get?view=graph-rest-1.0
@@ -78,7 +78,7 @@ class BrandingRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[OrganizationalBranding] = None, request_configuration: Optional[BrandingRequestBuilderPatchRequestConfiguration] = None) -> Optional[OrganizationalBranding]:
         """
-        Update the properties of the default branding object specified by the organizationalBranding resource.
+        Update the properties of the default branding object specified by the organizationalBranding resource. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OrganizationalBranding]
@@ -103,39 +103,39 @@ class BrandingRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[BrandingRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete the default organizational branding object. To delete the organizationalBranding object, all images (Stream types) must first be removed from the object.
+        Delete the default organizational branding object. To delete the organizationalBranding object, all images (Stream types) must first be removed from the object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[BrandingRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the default organizational branding object, if the Accept-Language header is set to 0 or default. If no default organizational branding object exists, this method returns a 404 Not Found error. If the Accept-Language header is set to an existing locale identified by the value of its id, this method retrieves the branding for the specified locale. This method retrieves only non-Stream properties, for example, usernameHintText and signInPageText. To retrieve Stream types of the default branding, for example, bannerLogo and backgroundImage, use the GET organizationalBrandingLocalization method.
+        Retrieve the default organizational branding object, if the Accept-Language header is set to 0 or default. If no default organizational branding object exists, this method returns a 404 Not Found error. If the Accept-Language header is set to an existing locale identified by the value of its id, this method retrieves the branding for the specified locale. This method retrieves only non-Stream properties, for example, usernameHintText and signInPageText. To retrieve Stream types of the default branding, for example, bannerLogo and backgroundImage, use the GET organizationalBrandingLocalization method. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[OrganizationalBranding] = None, request_configuration: Optional[BrandingRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of the default branding object specified by the organizationalBranding resource.
+        Update the properties of the default branding object specified by the organizationalBranding resource. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,13 +143,13 @@ class BrandingRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -248,7 +248,7 @@ class BrandingRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BrandingRequestBuilderGetQueryParameters():
         """
-        Retrieve the default organizational branding object, if the Accept-Language header is set to 0 or default. If no default organizational branding object exists, this method returns a 404 Not Found error. If the Accept-Language header is set to an existing locale identified by the value of its id, this method retrieves the branding for the specified locale. This method retrieves only non-Stream properties, for example, usernameHintText and signInPageText. To retrieve Stream types of the default branding, for example, bannerLogo and backgroundImage, use the GET organizationalBrandingLocalization method.
+        Retrieve the default organizational branding object, if the Accept-Language header is set to 0 or default. If no default organizational branding object exists, this method returns a 404 Not Found error. If the Accept-Language header is set to an existing locale identified by the value of its id, this method retrieves the branding for the specified locale. This method retrieves only non-Stream properties, for example, usernameHintText and signInPageText. To retrieve Stream types of the default branding, for example, bannerLogo and backgroundImage, use the GET organizationalBrandingLocalization method. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,7 +29,7 @@ class MicrosoftGraphIdentityGovernanceCreateNewVersionRequestBuilder(BaseRequest
     
     async def post(self,body: Optional[CreateNewVersionPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphIdentityGovernanceCreateNewVersionRequestBuilderPostRequestConfiguration] = None) -> Optional[Workflow]:
         """
-        Create a new version of the workflow object.
+        Create a new version of the workflow object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Workflow]
@@ -54,7 +54,7 @@ class MicrosoftGraphIdentityGovernanceCreateNewVersionRequestBuilder(BaseRequest
     
     def to_post_request_information(self,body: Optional[CreateNewVersionPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphIdentityGovernanceCreateNewVersionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new version of the workflow object.
+        Create a new version of the workflow object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -62,13 +62,13 @@ class MicrosoftGraphIdentityGovernanceCreateNewVersionRequestBuilder(BaseRequest
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

@@ -39,7 +39,7 @@ class PrintDocumentUploadProperties(AdditionalDataHolder, BackedModel, Parsable)
         fields: Dict[str, Callable[[Any], None]] = {
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "documentName": lambda n : setattr(self, 'document_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
         return fields
@@ -54,7 +54,7 @@ class PrintDocumentUploadProperties(AdditionalDataHolder, BackedModel, Parsable)
             raise TypeError("writer cannot be null.")
         writer.write_str_value("contentType", self.content_type)
         writer.write_str_value("documentName", self.document_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("size", self.size)
         writer.write_additional_data_value(self.additional_data)
     

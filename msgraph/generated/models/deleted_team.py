@@ -14,7 +14,7 @@ class DeletedTeam(Entity):
     # The channels that are either shared with this deleted team or created in this deleted team.
     channels: Optional[List[Channel]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeletedTeam:

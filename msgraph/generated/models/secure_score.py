@@ -33,7 +33,7 @@ class SecureScore(Entity):
     # Tenant maximum possible score on specified date.
     max_score: Optional[float] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Complex type containing details about the security product/service vendor, provider, and subprovider (for example, vendor=Microsoft; provider=SecureScore). Required.
     vendor_information: Optional[SecurityVendorInformation] = None
     

@@ -12,7 +12,7 @@ from .conditional_access_session_control import ConditionalAccessSessionControl
 @dataclass
 class CloudAppSecuritySessionControl(ConditionalAccessSessionControl):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.cloudAppSecuritySessionControl"
+    OdataType: Optional[str] = "#microsoft.graph.cloudAppSecuritySessionControl"
     # Possible values are: mcasConfigured, monitorOnly, blockDownloads, unknownFutureValue. For more information, see Deploy Conditional Access App Control for featured apps.
     cloud_app_security_type: Optional[CloudAppSecuritySessionControlType] = None
     

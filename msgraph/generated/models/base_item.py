@@ -10,8 +10,8 @@ if TYPE_CHECKING:
     from .entity import Entity
     from .identity_set import IdentitySet
     from .item_reference import ItemReference
-    from .list_item import ListItem
     from .list_ import List_
+    from .list_item import ListItem
     from .shared_drive_item import SharedDriveItem
     from .site import Site
     from .user import User
@@ -39,7 +39,7 @@ class BaseItem(Entity):
     # The name of the item. Read-write.
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Parent information, if the item has a parent. Read-write.
     parent_reference: Optional[ItemReference] = None
     # URL that either displays the resource in the browser (for Office file formats), or is a direct link to the file (for other formats). Read-only.
@@ -94,8 +94,8 @@ class BaseItem(Entity):
         from .entity import Entity
         from .identity_set import IdentitySet
         from .item_reference import ItemReference
-        from .list_item import ListItem
         from .list_ import List_
+        from .list_item import ListItem
         from .shared_drive_item import SharedDriveItem
         from .site import Site
         from .user import User
@@ -105,8 +105,8 @@ class BaseItem(Entity):
         from .entity import Entity
         from .identity_set import IdentitySet
         from .item_reference import ItemReference
-        from .list_item import ListItem
         from .list_ import List_
+        from .list_item import ListItem
         from .shared_drive_item import SharedDriveItem
         from .site import Site
         from .user import User

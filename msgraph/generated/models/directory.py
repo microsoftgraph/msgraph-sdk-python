@@ -27,7 +27,7 @@ class Directory(Entity):
     # Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
     federation_configurations: Optional[List[IdentityProviderBase]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A container for on-premises directory synchronization functionalities that are available for the organization.
     on_premises_synchronization: Optional[List[OnPremisesDirectorySynchronization]] = None
     

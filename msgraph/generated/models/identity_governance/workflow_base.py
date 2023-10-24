@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 @dataclass
 class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -36,7 +36,7 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
     is_enabled: Optional[bool] = None
     # If true, the Lifecycle Workflow engine executes the workflow based on the schedule defined by tenant settings. Can't be true for a disabled workflow (where isEnabled is false).
     is_scheduling_enabled: Optional[bool] = None
-    # The unique identifier of the Azure Active Directory identity that last modified the workflow.
+    # The unique identifier of the Microsoft Entra identity that last modified the workflow.
     last_modified_by: Optional[User] = None
     # When the workflow was last modified.
     last_modified_date_time: Optional[datetime.datetime] = None

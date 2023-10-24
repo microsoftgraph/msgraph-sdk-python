@@ -21,7 +21,7 @@ class AccessPackageSubject(Entity):
     # The object identifier of the subject. null if the subject isn't yet a user in the tenant.
     object_id: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A string representation of the principal's security identifier, if known, or null if the subject doesn't have a security identifier.
     on_premises_security_identifier: Optional[str] = None
     # The principal name, if known, of the subject.

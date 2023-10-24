@@ -15,19 +15,19 @@ class PermissionGrantConditionSet(Entity):
     client_application_ids: Optional[List[str]] = None
     # A list of Microsoft Partner Network (MPN) IDs for verified publishers of the client application, or a list with the single value all to match with client apps from any publisher. Default is the single value all.
     client_application_publisher_ids: Optional[List[str]] = None
-    # A list of Azure Active Directory tenant IDs in which the client application is registered, or a list with the single value all to match with client apps registered in any tenant. Default is the single value all.
+    # A list of Microsoft Entra tenant IDs in which the client application is registered, or a list with the single value all to match with client apps registered in any tenant. Default is the single value all.
     client_application_tenant_ids: Optional[List[str]] = None
-    # Set to true to only match on client applications with a verified publisher. Set to false to match on any client app, even if it does not have a verified publisher. Default is false.
+    # Set to true to only match on client applications with a verified publisher. Set to false to match on any client app, even if it doesn't have a verified publisher. Default is false.
     client_applications_from_verified_publisher_only: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
-    # The permission classification for the permission being granted, or all to match with any permission classification (including permissions which are not classified). Default is all.
+    OdataType: Optional[str] = None
+    # The permission classification for the permission being granted, or all to match with any permission classification (including permissions that aren't classified). Default is all.
     permission_classification: Optional[str] = None
-    # The permission type of the permission being granted. Possible values: application for application permissions (e.g. app roles), or delegated for delegated permissions. The value delegatedUserConsentable indicates delegated permissions which have not been configured by the API publisher to require admin consent—this value may be used in built-in permission grant policies, but cannot be used in custom permission grant policies. Required.
+    # The permission type of the permission being granted. Possible values: application for application permissions (for example app roles), or delegated for delegated permissions. The value delegatedUserConsentable indicates delegated permissions that haven't been configured by the API publisher to require admin consent—this value may be used in built-in permission grant policies, but can't be used in custom permission grant policies. Required.
     permission_type: Optional[PermissionType] = None
     # The list of id values for the specific permissions to match with, or a list with the single value all to match with any permission. The id of delegated permissions can be found in the oauth2PermissionScopes property of the API's servicePrincipal object. The id of application permissions can be found in the appRoles property of the API's servicePrincipal object. The id of resource-specific application permissions can be found in the resourceSpecificApplicationPermissions property of the API's servicePrincipal object. Default is the single value all.
     permissions: Optional[List[str]] = None
-    # The appId of the resource application (e.g. the API) for which a permission is being granted, or any to match with any resource application or API. Default is any.
+    # The appId of the resource application (for example the API) for which a permission is being granted, or any to match with any resource application or API. Default is any.
     resource_application: Optional[str] = None
     
     @staticmethod

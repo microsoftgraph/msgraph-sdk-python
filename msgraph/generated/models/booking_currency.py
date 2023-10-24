@@ -11,7 +11,7 @@ from .entity import Entity
 @dataclass
 class BookingCurrency(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The currency symbol. For example, the currency symbol for the US dollar and for the Australian dollar is $.
     symbol: Optional[str] = None
     

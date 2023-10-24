@@ -5,27 +5,27 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .risk_detection import RiskDetection
     from .risky_service_principal import RiskyServicePrincipal
     from .risky_user import RiskyUser
+    from .risk_detection import RiskDetection
     from .service_principal_risk_detection import ServicePrincipalRiskDetection
 
 @dataclass
 class IdentityProtectionRoot(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
-    # Risk detection in Azure AD Identity Protection and the associated information about the detection.
+    # Risk detection in Microsoft Entra ID Protection and the associated information about the detection.
     risk_detections: Optional[List[RiskDetection]] = None
-    # Azure AD service principals that are at risk.
+    # Microsoft Entra service principals that are at risk.
     risky_service_principals: Optional[List[RiskyServicePrincipal]] = None
-    # Users that are flagged as at-risk by Azure AD Identity Protection.
+    # Users that are flagged as at-risk by Microsoft Entra ID Protection.
     risky_users: Optional[List[RiskyUser]] = None
-    # Represents information about detected at-risk service principals in an Azure AD tenant.
+    # Represents information about detected at-risk service principals in a Microsoft Entra tenant.
     service_principal_risk_detections: Optional[List[ServicePrincipalRiskDetection]] = None
     
     @staticmethod
@@ -44,14 +44,14 @@ class IdentityProtectionRoot(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .risk_detection import RiskDetection
         from .risky_service_principal import RiskyServicePrincipal
         from .risky_user import RiskyUser
+        from .risk_detection import RiskDetection
         from .service_principal_risk_detection import ServicePrincipalRiskDetection
 
-        from .risk_detection import RiskDetection
         from .risky_service_principal import RiskyServicePrincipal
         from .risky_user import RiskyUser
+        from .risk_detection import RiskDetection
         from .service_principal_risk_detection import ServicePrincipalRiskDetection
 
         fields: Dict[str, Callable[[Any], None]] = {

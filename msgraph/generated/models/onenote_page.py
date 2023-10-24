@@ -15,7 +15,7 @@ from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
 @dataclass
 class OnenotePage(OnenoteEntitySchemaObjectModel):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.onenotePage"
+    OdataType: Optional[str] = "#microsoft.graph.onenotePage"
     # The page's HTML content.
     content: Optional[bytes] = None
     # The URL for the page's HTML content.  Read-only.

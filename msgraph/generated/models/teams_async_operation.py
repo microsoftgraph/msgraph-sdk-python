@@ -23,7 +23,7 @@ class TeamsAsyncOperation(Entity):
     # Time when the async operation was last updated.
     last_action_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The operationType property
     operation_type: Optional[TeamsAsyncOperationType] = None
     # The status property

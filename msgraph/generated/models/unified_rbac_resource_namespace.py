@@ -14,7 +14,7 @@ class UnifiedRbacResourceNamespace(Entity):
     # The name property
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The resourceActions property
     resource_actions: Optional[List[UnifiedRbacResourceAction]] = None
     

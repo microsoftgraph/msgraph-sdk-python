@@ -14,7 +14,7 @@ from .event_message_detail import EventMessageDetail
 @dataclass
 class CallRecordingEventMessageDetail(EventMessageDetail):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.callRecordingEventMessageDetail"
+    OdataType: Optional[str] = "#microsoft.graph.callRecordingEventMessageDetail"
     # Unique identifier of the call.
     call_id: Optional[str] = None
     # Display name for the call recording.

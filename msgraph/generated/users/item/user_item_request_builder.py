@@ -18,15 +18,15 @@ if TYPE_CHECKING:
     from .assign_license.assign_license_request_builder import AssignLicenseRequestBuilder
     from .authentication.authentication_request_builder import AuthenticationRequestBuilder
     from .calendar.calendar_request_builder import CalendarRequestBuilder
-    from .calendar_groups.calendar_groups_request_builder import CalendarGroupsRequestBuilder
     from .calendars.calendars_request_builder import CalendarsRequestBuilder
+    from .calendar_groups.calendar_groups_request_builder import CalendarGroupsRequestBuilder
     from .calendar_view.calendar_view_request_builder import CalendarViewRequestBuilder
     from .change_password.change_password_request_builder import ChangePasswordRequestBuilder
     from .chats.chats_request_builder import ChatsRequestBuilder
     from .check_member_groups.check_member_groups_request_builder import CheckMemberGroupsRequestBuilder
     from .check_member_objects.check_member_objects_request_builder import CheckMemberObjectsRequestBuilder
-    from .contact_folders.contact_folders_request_builder import ContactFoldersRequestBuilder
     from .contacts.contacts_request_builder import ContactsRequestBuilder
+    from .contact_folders.contact_folders_request_builder import ContactFoldersRequestBuilder
     from .created_objects.created_objects_request_builder import CreatedObjectsRequestBuilder
     from .device_management_troubleshooting_events.device_management_troubleshooting_events_request_builder import DeviceManagementTroubleshootingEventsRequestBuilder
     from .direct_reports.direct_reports_request_builder import DirectReportsRequestBuilder
@@ -77,6 +77,7 @@ if TYPE_CHECKING:
     from .revoke_sign_in_sessions.revoke_sign_in_sessions_request_builder import RevokeSignInSessionsRequestBuilder
     from .scoped_role_member_of.scoped_role_member_of_request_builder import ScopedRoleMemberOfRequestBuilder
     from .send_mail.send_mail_request_builder import SendMailRequestBuilder
+    from .service_provisioning_errors.service_provisioning_errors_request_builder import ServiceProvisioningErrorsRequestBuilder
     from .settings.settings_request_builder import SettingsRequestBuilder
     from .teamwork.teamwork_request_builder import TeamworkRequestBuilder
     from .todo.todo_request_builder import TodoRequestBuilder
@@ -134,10 +135,10 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserItemRequestBuilderGetRequestConfiguration] = None) -> Optional[User]:
         """
-        Retrieve the properties and relationships of user object.
+        Read properties and relationships of the user object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
-        Find more info here: https://learn.microsoft.com/graph/api/user-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -201,29 +202,30 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.DELETE
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.DELETE
+        request_info.try_add_request_header("Accept", "application/json, application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[UserItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of user object.
+        Read properties and relationships of the user object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def to_patch_request_information(self,body: Optional[User] = None, request_configuration: Optional[UserItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -236,13 +238,13 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.PATCH
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -320,15 +322,6 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         return CalendarGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def calendars(self) -> CalendarsRequestBuilder:
-        """
-        Provides operations to manage the calendars property of the microsoft.graph.user entity.
-        """
-        from .calendars.calendars_request_builder import CalendarsRequestBuilder
-
-        return CalendarsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def calendar_view(self) -> CalendarViewRequestBuilder:
         """
         Provides operations to manage the calendarView property of the microsoft.graph.user entity.
@@ -336,6 +329,15 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         from .calendar_view.calendar_view_request_builder import CalendarViewRequestBuilder
 
         return CalendarViewRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def calendars(self) -> CalendarsRequestBuilder:
+        """
+        Provides operations to manage the calendars property of the microsoft.graph.user entity.
+        """
+        from .calendars.calendars_request_builder import CalendarsRequestBuilder
+
+        return CalendarsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def change_password(self) -> ChangePasswordRequestBuilder:
@@ -590,15 +592,6 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         return LicenseDetailsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def mailbox_settings(self) -> MailboxSettingsRequestBuilder:
-        """
-        The mailboxSettings property
-        """
-        from .mailbox_settings.mailbox_settings_request_builder import MailboxSettingsRequestBuilder
-
-        return MailboxSettingsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def mail_folders(self) -> MailFoldersRequestBuilder:
         """
         Provides operations to manage the mailFolders property of the microsoft.graph.user entity.
@@ -606,6 +599,15 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         from .mail_folders.mail_folders_request_builder import MailFoldersRequestBuilder
 
         return MailFoldersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def mailbox_settings(self) -> MailboxSettingsRequestBuilder:
+        """
+        The mailboxSettings property
+        """
+        from .mailbox_settings.mailbox_settings_request_builder import MailboxSettingsRequestBuilder
+
+        return MailboxSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def managed_app_registrations(self) -> ManagedAppRegistrationsRequestBuilder:
@@ -824,6 +826,15 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         return SendMailRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def service_provisioning_errors(self) -> ServiceProvisioningErrorsRequestBuilder:
+        """
+        The serviceProvisioningErrors property
+        """
+        from .service_provisioning_errors.service_provisioning_errors_request_builder import ServiceProvisioningErrorsRequestBuilder
+
+        return ServiceProvisioningErrorsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def settings(self) -> SettingsRequestBuilder:
         """
         Provides operations to manage the settings property of the microsoft.graph.user entity.
@@ -890,7 +901,7 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of user object.
+        Read properties and relationships of the user object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

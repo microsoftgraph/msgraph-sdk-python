@@ -23,7 +23,7 @@ from .directory_object import DirectoryObject
 @dataclass
 class PolicyBase(DirectoryObject):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.policyBase"
+    OdataType: Optional[str] = "#microsoft.graph.policyBase"
     # Description for this policy. Required.
     description: Optional[str] = None
     # Display name for this policy. Required.

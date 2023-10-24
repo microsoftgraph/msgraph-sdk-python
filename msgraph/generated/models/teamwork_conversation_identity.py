@@ -12,7 +12,7 @@ from .identity import Identity
 @dataclass
 class TeamworkConversationIdentity(Identity):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.teamworkConversationIdentity"
+    OdataType: Optional[str] = "#microsoft.graph.teamworkConversationIdentity"
     # Type of conversation. Possible values are: team, channel, chat, and unknownFutureValue.
     conversation_identity_type: Optional[TeamworkConversationIdentityType] = None
     

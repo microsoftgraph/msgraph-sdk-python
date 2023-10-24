@@ -26,6 +26,9 @@ class ExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder(BaseRequestB
         param top: Usage: top={top}
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['skip'] = str(skip)
+            path_parameters['top'] = str(top)
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/exportDeviceAndAppManagementData(skip={skip},top={top})", path_parameters)
     
     async def get(self,request_configuration: Optional[ExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceAndAppManagementData]:
@@ -56,13 +59,13 @@ class ExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder(BaseRequestB
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> ExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder:

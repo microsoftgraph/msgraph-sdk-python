@@ -16,7 +16,7 @@ class ManagedAppConfiguration(ManagedAppPolicy):
     Configuration used to deliver a set of custom settings as-is to apps for users to whom the configuration is scoped
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.managedAppConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.managedAppConfiguration"
     # A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
     custom_settings: Optional[List[KeyValuePair]] = None
     

@@ -16,8 +16,8 @@ class Teamwork(Entity):
     # The deleted team.
     deleted_teams: Optional[List[DeletedTeam]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
-    # The teamsAppSettings property
+    OdataType: Optional[str] = None
+    # Represents tenant-wide settings for all Teams apps in the tenant.
     teams_app_settings: Optional[TeamsAppSettings] = None
     # The workforceIntegrations property
     workforce_integrations: Optional[List[WorkforceIntegration]] = None

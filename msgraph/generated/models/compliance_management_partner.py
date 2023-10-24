@@ -33,7 +33,7 @@ class ComplianceManagementPartner(Entity):
     # Partner onboarded for Mac devices.
     mac_os_onboarded: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Partner state of this tenant.
     partner_state: Optional[DeviceManagementPartnerTenantState] = None
     

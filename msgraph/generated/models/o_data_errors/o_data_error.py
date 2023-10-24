@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 @dataclass
 class ODataError(APIError):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -54,4 +54,12 @@ class ODataError(APIError):
         writer.write_object_value("error", self.error)
         writer.write_additional_data_value(self.additional_data)
     
+    @property
+    def primary_message(self) -> str:
+        """
+        The primary error message.
+        """
+        if self.error is not None:
+            return '' if self.error.message is None else self.error.message
+        return ''
 

@@ -11,7 +11,7 @@ from .identity import Identity
 @dataclass
 class UserIdentity(Identity):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.userIdentity"
+    OdataType: Optional[str] = "#microsoft.graph.userIdentity"
     # Indicates the client IP address used by user performing the activity (audit log only).
     ip_address: Optional[str] = None
     # The userPrincipalName attribute of the user.

@@ -56,7 +56,7 @@ class EducationClass(Entity):
     # All users in the class. Nullable.
     members: Optional[List[EducationUser]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # All schools that this class is associated with. Nullable.
     schools: Optional[List[EducationSchool]] = None
     # All teachers in the class. Nullable.

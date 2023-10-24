@@ -21,7 +21,7 @@ class TaskProcessingResult(Entity):
     # Describes why the taskProcessingResult has failed.
     failure_reason: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The processingStatus property
     processing_status: Optional[LifecycleWorkflowProcessingStatus] = None
     # The date time when taskProcessingResult execution started. Value is null if task execution has not yet started.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.

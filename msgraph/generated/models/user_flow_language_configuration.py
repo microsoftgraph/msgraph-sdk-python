@@ -11,15 +11,15 @@ from .entity import Entity
 
 @dataclass
 class UserFlowLanguageConfiguration(Entity):
-    # Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
+    # Collection of pages with the default content to display in a user flow for a specified language. This collection doesn't allow any kind of modification.
     default_pages: Optional[List[UserFlowLanguagePage]] = None
     # The language name to display. This property is read-only.
     display_name: Optional[str] = None
     # Indicates whether the language is enabled within the user flow.
     is_enabled: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
-    # Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
+    OdataType: Optional[str] = None
+    # Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows you to modify the content of the page, any other modification isn't allowed (creation or deletion of pages).
     overrides_pages: Optional[List[UserFlowLanguagePage]] = None
     
     @staticmethod

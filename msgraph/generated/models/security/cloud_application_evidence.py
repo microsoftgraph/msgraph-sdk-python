@@ -11,7 +11,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class CloudApplicationEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.cloudApplicationEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.cloudApplicationEvidence"
     # Unique identifier of the application.
     app_id: Optional[int] = None
     # Name of the application.

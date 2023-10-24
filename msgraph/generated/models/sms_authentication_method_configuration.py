@@ -12,7 +12,7 @@ from .authentication_method_configuration import AuthenticationMethodConfigurati
 @dataclass
 class SmsAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.smsAuthenticationMethodConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.smsAuthenticationMethodConfiguration"
     # A collection of groups that are enabled to use the authentication method.
     include_targets: Optional[List[SmsAuthenticationMethodTarget]] = None
     

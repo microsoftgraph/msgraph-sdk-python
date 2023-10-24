@@ -38,7 +38,7 @@ class UserActivity(Entity):
     # Set by the server. DateTime in UTC when the object was modified on the server.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Set by the server. A status code used to identify valid objects. Values: active, updated, deleted, ignored.
     status: Optional[Status] = None
     # Optional. The timezone in which the user's device used to generate the activity was located at activity creation time; values supplied as Olson IDs in order to support cross-platform representation.

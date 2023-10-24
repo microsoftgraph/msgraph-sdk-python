@@ -10,19 +10,19 @@ if TYPE_CHECKING:
 @dataclass
 class AttachmentItem(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The type of attachment. Possible values are: file, item, reference. Required.
     attachment_type: Optional[AttachmentType] = None
-    # The CID or Content-Id of the attachment for referencing in case of in-line attachments using <img src='cid:contentId'> tag in HTML messages. Optional.
+    # The CID or Content-Id of the attachment for referencing for the in-line attachments using the <img src='cid:contentId'> tag in HTML messages. Optional.
     content_id: Optional[str] = None
     # The nature of the data in the attachment. Optional.
     content_type: Optional[str] = None
     # true if the attachment is an inline attachment; otherwise, false. Optional.
     is_inline: Optional[bool] = None
-    # The display name of the attachment. This can be a descriptive string and does not have to be the actual file name. Required.
+    # The display name of the attachment. This can be a descriptive string and doesn't have to be the actual file name. Required.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

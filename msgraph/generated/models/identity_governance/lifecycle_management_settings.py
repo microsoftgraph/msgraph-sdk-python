@@ -14,7 +14,7 @@ class LifecycleManagementSettings(Entity):
     # The emailSettings property
     email_settings: Optional[EmailSettings] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The interval in hours at which all workflows running in the tenant should be scheduled for execution. This interval has a minimum value of 1 and a maximum value of 24. The default value is 3 hours.
     workflow_schedule_interval_in_hours: Optional[int] = None
     

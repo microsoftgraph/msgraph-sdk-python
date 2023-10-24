@@ -11,7 +11,7 @@ from .custom_extension_endpoint_configuration import CustomExtensionEndpointConf
 @dataclass
 class LogicAppTriggerEndpointConfiguration(CustomExtensionEndpointConfiguration):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.logicAppTriggerEndpointConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.logicAppTriggerEndpointConfiguration"
     # The name of the logic app.
     logic_app_workflow_name: Optional[str] = None
     # The Azure resource group name for the logic app.

@@ -16,8 +16,8 @@ class Presence(Entity):
     # The base presence information for a user. Possible values are Available, AvailableIdle,  Away, BeRightBack, Busy, BusyIdle, DoNotDisturb, Offline, PresenceUnknown
     availability: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
-    # The statusMessage property
+    OdataType: Optional[str] = None
+    # The presence status message of a user.
     status_message: Optional[PresenceStatusMessage] = None
     
     @staticmethod

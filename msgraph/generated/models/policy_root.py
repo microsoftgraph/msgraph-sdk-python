@@ -37,37 +37,37 @@ class PolicyRoot(Entity):
     app_management_policies: Optional[List[AppManagementPolicy]] = None
     # The policy configuration of the self-service sign-up experience of external users.
     authentication_flows_policy: Optional[AuthenticationFlowsPolicy] = None
-    # The authentication methods and the users that are allowed to use them to sign in and perform multifactor authentication (MFA) in Azure Active Directory (Azure AD).
+    # The authentication methods and the users that are allowed to use them to sign in and perform multifactor authentication (MFA) in Microsoft Entra ID.
     authentication_methods_policy: Optional[AuthenticationMethodsPolicy] = None
-    # The authentication method combinations that are to be used in scenarios defined by Azure AD Conditional Access.
+    # The authentication method combinations that are to be used in scenarios defined by Microsoft Entra Conditional Access.
     authentication_strength_policies: Optional[List[AuthenticationStrengthPolicy]] = None
-    # The policy that controls Azure AD authorization settings.
+    # The policy that controls Microsoft Entra authorization settings.
     authorization_policy: Optional[AuthorizationPolicy] = None
     # The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
     claims_mapping_policies: Optional[List[ClaimsMappingPolicy]] = None
     # The custom rules that define an access scenario.
     conditional_access_policies: Optional[List[ConditionalAccessPolicy]] = None
-    # The custom rules that define an access scenario when interacting with external Azure AD tenants.
+    # The custom rules that define an access scenario when interacting with external Microsoft Entra tenants.
     cross_tenant_access_policy: Optional[CrossTenantAccessPolicy] = None
     # The tenant-wide policy that enforces app management restrictions for all applications and service principals.
     default_app_management_policy: Optional[TenantAppManagementPolicy] = None
     # The feature rollout policy associated with a directory object.
     feature_rollout_policies: Optional[List[FeatureRolloutPolicy]] = None
-    # The policy to control Azure AD authentication behavior for federated users.
+    # The policy to control Microsoft Entra authentication behavior for federated users.
     home_realm_discovery_policies: Optional[List[HomeRealmDiscoveryPolicy]] = None
     # The policy that represents the security defaults that protect against common attacks.
     identity_security_defaults_enforcement_policy: Optional[IdentitySecurityDefaultsEnforcementPolicy] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The policy that specifies the conditions under which consent can be granted.
     permission_grant_policies: Optional[List[PermissionGrantPolicy]] = None
     # Specifies the various policies associated with scopes and roles.
     role_management_policies: Optional[List[UnifiedRoleManagementPolicy]] = None
     # The assignment of a role management policy to a role definition object.
     role_management_policy_assignments: Optional[List[UnifiedRoleManagementPolicyAssignment]] = None
-    # The policy that specifies the characteristics of SAML tokens issued by Azure AD.
+    # The policy that specifies the characteristics of SAML tokens issued by Microsoft Entra ID.
     token_issuance_policies: Optional[List[TokenIssuancePolicy]] = None
-    # The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
+    # The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Microsoft Entra ID.
     token_lifetime_policies: Optional[List[TokenLifetimePolicy]] = None
     
     @staticmethod

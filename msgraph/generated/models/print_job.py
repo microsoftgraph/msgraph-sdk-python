@@ -27,7 +27,7 @@ class PrintJob(Entity):
     # If true, document can be fetched by printer.
     is_fetchable: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Contains the source job URL, if the job has been redirected from another printer.
     redirected_from: Optional[str] = None
     # Contains the destination job URL, if the job has been redirected to another printer.

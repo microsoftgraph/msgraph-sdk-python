@@ -29,7 +29,7 @@ class PlannerTask(Entity):
     assignee_priority: Optional[str] = None
     # The set of assignees the task is assigned to.
     assignments: Optional[PlannerAssignments] = None
-    # Bucket ID to which the task belongs. The bucket needs to be in the plan that the task is in. It is 28 characters long and case-sensitive. Format validation is done on the service.
+    # Bucket ID to which the task belongs. The bucket needs to be in the plan that the task is in. It's 28 characters long and case-sensitive. Format validation is done on the service.
     bucket_id: Optional[str] = None
     # Read-only. Nullable. Used to render the task correctly in the task board view when grouped by bucket.
     bucket_task_board_format: Optional[PlannerBucketTaskBoardTaskFormat] = None
@@ -45,14 +45,14 @@ class PlannerTask(Entity):
     created_by: Optional[IdentitySet] = None
     # Read-only. Date and time at which the task is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     created_date_time: Optional[datetime.datetime] = None
-    # Read-only. Nullable. Additional details about the task.
+    # Read-only. Nullable. More details about the task.
     details: Optional[PlannerTaskDetails] = None
     # Date and time at which the task is due. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     due_date_time: Optional[datetime.datetime] = None
-    # Read-only. Value is true if the details object of the task has a non-empty description and false otherwise.
+    # Read-only. Value is true if the details object of the task has a nonempty description and false otherwise.
     has_description: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Hint used to order items of this type in a list view. The format is defined as outlined here.
     order_hint: Optional[str] = None
     # Percentage of task completion. When set to 100, the task is considered completed.

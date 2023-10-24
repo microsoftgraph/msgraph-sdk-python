@@ -30,7 +30,7 @@ from .outlook_item import OutlookItem
 @dataclass
 class Event(OutlookItem):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.event"
+    OdataType: Optional[str] = "#microsoft.graph.event"
     # true if the meeting organizer allows invitees to propose a new time when responding; otherwise, false. Optional. Default is true.
     allow_new_time_proposals: Optional[bool] = None
     # The collection of FileAttachment, ItemAttachment, and referenceAttachment attachments for the event. Navigation property. Read-only. Nullable.

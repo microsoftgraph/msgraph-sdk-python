@@ -5,6 +5,13 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .azure_communication_services_user_identity import AzureCommunicationServicesUserIdentity
+    from .communications_application_identity import CommunicationsApplicationIdentity
+    from .communications_application_instance_identity import CommunicationsApplicationInstanceIdentity
+    from .communications_encrypted_identity import CommunicationsEncryptedIdentity
+    from .communications_guest_identity import CommunicationsGuestIdentity
+    from .communications_phone_identity import CommunicationsPhoneIdentity
+    from .communications_user_identity import CommunicationsUserIdentity
     from .email_identity import EmailIdentity
     from .initiator import Initiator
     from .provisioned_identity import ProvisionedIdentity
@@ -21,11 +28,11 @@ if TYPE_CHECKING:
 @dataclass
 class Identity(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The display name of the identity. Note that this might not always be available or up to date. For example, if a user changes their display name, the API might show the new value in a future response, but the items associated with the user won't show up as having changed when using delta.
+    # The display name of the identity. The display name might not always be available or up to date. For example, if a user changes their display name, the API might show the new value in a future response, but the items associated with the user won't show up as having changed when using delta.
     display_name: Optional[str] = None
     # Unique identifier for the identity.
     id: Optional[str] = None
@@ -45,6 +52,34 @@ class Identity(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.azureCommunicationServicesUserIdentity".casefold():
+            from .azure_communication_services_user_identity import AzureCommunicationServicesUserIdentity
+
+            return AzureCommunicationServicesUserIdentity()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsApplicationIdentity".casefold():
+            from .communications_application_identity import CommunicationsApplicationIdentity
+
+            return CommunicationsApplicationIdentity()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsApplicationInstanceIdentity".casefold():
+            from .communications_application_instance_identity import CommunicationsApplicationInstanceIdentity
+
+            return CommunicationsApplicationInstanceIdentity()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsEncryptedIdentity".casefold():
+            from .communications_encrypted_identity import CommunicationsEncryptedIdentity
+
+            return CommunicationsEncryptedIdentity()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsGuestIdentity".casefold():
+            from .communications_guest_identity import CommunicationsGuestIdentity
+
+            return CommunicationsGuestIdentity()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsPhoneIdentity".casefold():
+            from .communications_phone_identity import CommunicationsPhoneIdentity
+
+            return CommunicationsPhoneIdentity()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsUserIdentity".casefold():
+            from .communications_user_identity import CommunicationsUserIdentity
+
+            return CommunicationsUserIdentity()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.emailIdentity".casefold():
             from .email_identity import EmailIdentity
 
@@ -100,6 +135,13 @@ class Identity(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .azure_communication_services_user_identity import AzureCommunicationServicesUserIdentity
+        from .communications_application_identity import CommunicationsApplicationIdentity
+        from .communications_application_instance_identity import CommunicationsApplicationInstanceIdentity
+        from .communications_encrypted_identity import CommunicationsEncryptedIdentity
+        from .communications_guest_identity import CommunicationsGuestIdentity
+        from .communications_phone_identity import CommunicationsPhoneIdentity
+        from .communications_user_identity import CommunicationsUserIdentity
         from .email_identity import EmailIdentity
         from .initiator import Initiator
         from .provisioned_identity import ProvisionedIdentity
@@ -113,6 +155,13 @@ class Identity(AdditionalDataHolder, BackedModel, Parsable):
         from .teamwork_user_identity import TeamworkUserIdentity
         from .user_identity import UserIdentity
 
+        from .azure_communication_services_user_identity import AzureCommunicationServicesUserIdentity
+        from .communications_application_identity import CommunicationsApplicationIdentity
+        from .communications_application_instance_identity import CommunicationsApplicationInstanceIdentity
+        from .communications_encrypted_identity import CommunicationsEncryptedIdentity
+        from .communications_guest_identity import CommunicationsGuestIdentity
+        from .communications_phone_identity import CommunicationsPhoneIdentity
+        from .communications_user_identity import CommunicationsUserIdentity
         from .email_identity import EmailIdentity
         from .initiator import Initiator
         from .provisioned_identity import ProvisionedIdentity

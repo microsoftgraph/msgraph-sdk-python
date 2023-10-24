@@ -33,7 +33,7 @@ class ManagedAppPolicy(Entity):
     # Last time the policy was modified.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Version of the entity.
     version: Optional[str] = None
     

@@ -29,7 +29,7 @@ class DeviceEnrollmentConfiguration(Entity):
     # Last modified date time in UTC of the device enrollment configuration
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Priority is used when a user exists in multiple groups that are assigned enrollment configuration. Users are subject only to the configuration with the lowest priority value.
     priority: Optional[int] = None
     # The version of the device enrollment configuration

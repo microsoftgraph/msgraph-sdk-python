@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from .translate_exchange_ids_post_request_body import TranslateExchangeIdsPostRequestBody
-    from .translate_exchange_ids_response import TranslateExchangeIdsResponse
+    from .translate_exchange_ids_post_response import TranslateExchangeIdsPostResponse
 
 class TranslateExchangeIdsRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class TranslateExchangeIdsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/translateExchangeIds", path_parameters)
     
-    async def post(self,body: Optional[TranslateExchangeIdsPostRequestBody] = None, request_configuration: Optional[TranslateExchangeIdsRequestBuilderPostRequestConfiguration] = None) -> Optional[TranslateExchangeIdsResponse]:
+    async def post(self,body: Optional[TranslateExchangeIdsPostRequestBody] = None, request_configuration: Optional[TranslateExchangeIdsRequestBuilderPostRequestConfiguration] = None) -> Optional[TranslateExchangeIdsPostResponse]:
         """
-        Translate identifiers of Outlook-related resources between formats.
+        Translate identifiers of Outlook-related resources between formats. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[TranslateExchangeIdsResponse]
+        Returns: Optional[TranslateExchangeIdsPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/user-translateexchangeids?view=graph-rest-1.0
         """
         if not body:
@@ -48,13 +48,13 @@ class TranslateExchangeIdsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .translate_exchange_ids_response import TranslateExchangeIdsResponse
+        from .translate_exchange_ids_post_response import TranslateExchangeIdsPostResponse
 
-        return await self.request_adapter.send_async(request_info, TranslateExchangeIdsResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, TranslateExchangeIdsPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[TranslateExchangeIdsPostRequestBody] = None, request_configuration: Optional[TranslateExchangeIdsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Translate identifiers of Outlook-related resources between formats.
+        Translate identifiers of Outlook-related resources between formats. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -62,13 +62,13 @@ class TranslateExchangeIdsRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.POST
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

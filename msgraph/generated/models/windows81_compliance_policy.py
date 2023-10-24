@@ -15,7 +15,7 @@ class Windows81CompliancePolicy(DeviceCompliancePolicy):
     This class contains compliance settings for Windows 8.1.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windows81CompliancePolicy"
+    OdataType: Optional[str] = "#microsoft.graph.windows81CompliancePolicy"
     # Maximum Windows 8.1 version.
     os_maximum_version: Optional[str] = None
     # Minimum Windows 8.1 version.

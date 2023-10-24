@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
-    from .is_published_response import IsPublishedResponse
+    from .is_published_get_response import IsPublishedGetResponse
 
 class IsPublishedRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class IsPublishedRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/contentTypes/{contentType%2Did}/isPublished()", path_parameters)
     
-    async def get(self,request_configuration: Optional[IsPublishedRequestBuilderGetRequestConfiguration] = None) -> Optional[IsPublishedResponse]:
+    async def get(self,request_configuration: Optional[IsPublishedRequestBuilderGetRequestConfiguration] = None) -> Optional[IsPublishedGetResponse]:
         """
         Invoke function isPublished
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[IsPublishedResponse]
+        Returns: Optional[IsPublishedGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class IsPublishedRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .is_published_response import IsPublishedResponse
+        from .is_published_get_response import IsPublishedGetResponse
 
-        return await self.request_adapter.send_async(request_info, IsPublishedResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, IsPublishedGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[IsPublishedRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -54,13 +54,13 @@ class IsPublishedRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> IsPublishedRequestBuilder:

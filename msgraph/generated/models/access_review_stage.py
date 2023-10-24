@@ -17,10 +17,10 @@ class AccessReviewStage(Entity):
     decisions: Optional[List[AccessReviewInstanceDecisionItem]] = None
     # The date and time in ISO 8601 format and UTC time when the review stage is scheduled to end. This property is the cumulative total of the durationInDays for all stages. Read-only.
     end_date_time: Optional[datetime.datetime] = None
-    # This collection of reviewer scopes is used to define the list of fallback reviewers. These fallback reviewers will be notified to take action if no users are found from the list of reviewers specified. This could occur when either the group owner is specified as the reviewer but the group owner does not exist, or manager is specified as reviewer but a user's manager does not exist.
+    # This collection of reviewer scopes is used to define the list of fallback reviewers. These fallback reviewers are notified to take action if no users are found from the list of reviewers specified. This could occur when either the group owner is specified as the reviewer but the group owner doesn't exist, or manager is specified as reviewer but a user's manager doesn't exist.
     fallback_reviewers: Optional[List[AccessReviewReviewerScope]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # This collection of access review scopes is used to define who the reviewers are. For examples of options for assigning reviewers, see Assign reviewers to your access review definition using the Microsoft Graph API.
     reviewers: Optional[List[AccessReviewReviewerScope]] = None
     # The date and time in ISO 8601 format and UTC time when the review stage is scheduled to start. Read-only.

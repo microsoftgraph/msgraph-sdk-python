@@ -10,13 +10,13 @@ if TYPE_CHECKING:
 @dataclass
 class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # If false, then approval is not required for new requests in this policy.
+    # If false, then approval isn't required for new requests in this policy.
     is_approval_required_for_add: Optional[bool] = None
-    # If false, then approval is not required for updates to requests in this policy.
+    # If false, then approval isn't required for updates to requests in this policy.
     is_approval_required_for_update: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

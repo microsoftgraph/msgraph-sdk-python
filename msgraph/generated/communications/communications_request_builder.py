@@ -12,8 +12,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..models.cloud_communications import CloudCommunications
     from ..models.o_data_errors.o_data_error import ODataError
-    from .call_records.call_records_request_builder import CallRecordsRequestBuilder
     from .calls.calls_request_builder import CallsRequestBuilder
+    from .call_records.call_records_request_builder import CallRecordsRequestBuilder
     from .get_presences_by_user_id.get_presences_by_user_id_request_builder import GetPresencesByUserIdRequestBuilder
     from .online_meetings.online_meetings_request_builder import OnlineMeetingsRequestBuilder
     from .presences.presences_request_builder import PresencesRequestBuilder
@@ -83,14 +83,14 @@ class CommunicationsRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def to_patch_request_information(self,body: Optional[CloudCommunications] = None, request_configuration: Optional[CommunicationsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -103,13 +103,13 @@ class CommunicationsRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.PATCH
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

@@ -14,7 +14,7 @@ from .event_message_detail import EventMessageDetail
 @dataclass
 class MembersAddedEventMessageDetail(EventMessageDetail):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.membersAddedEventMessageDetail"
+    OdataType: Optional[str] = "#microsoft.graph.membersAddedEventMessageDetail"
     # Initiator of the event.
     initiator: Optional[IdentitySet] = None
     # List of members added.

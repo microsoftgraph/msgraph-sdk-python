@@ -11,7 +11,7 @@ from .subject_set import SubjectSet
 @dataclass
 class RequestorManager(SubjectSet):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.requestorManager"
+    OdataType: Optional[str] = "#microsoft.graph.requestorManager"
     # The hierarchical level of the manager with respect to the requestor. For example, the direct manager of a requestor would have a managerLevel of 1, while the manager of the requestor's manager would have a managerLevel of 2. Default value for managerLevel is 1. Possible values for this property range from 1 to 2.
     manager_level: Optional[int] = None
     

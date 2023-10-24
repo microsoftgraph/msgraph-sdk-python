@@ -13,7 +13,7 @@ class DomainDnsSrvRecord(DomainDnsRecord):
     # Value to use when configuring the Target property of the SRV record at the DNS host.
     name_target: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Value to use when configuring the port property of the SRV record at the DNS host.
     port: Optional[int] = None
     # Value to use when configuring the priority property of the SRV record at the DNS host.

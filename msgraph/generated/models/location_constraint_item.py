@@ -11,7 +11,7 @@ from .location import Location
 @dataclass
 class LocationConstraintItem(Location):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.locationConstraintItem"
+    OdataType: Optional[str] = "#microsoft.graph.locationConstraintItem"
     # If set to true and the specified resource is busy, findMeetingTimes looks for another resource that is free. If set to false and the specified resource is busy, findMeetingTimes returns the resource best ranked in the user's cache without checking if it's free. Default is true.
     resolve_availability: Optional[bool] = None
     

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models.o_data_errors.o_data_error import ODataError
     from ....models.outlook_user import OutlookUser
+    from ....models.o_data_errors.o_data_error import ODataError
     from .master_categories.master_categories_request_builder import MasterCategoriesRequestBuilder
     from .supported_languages.supported_languages_request_builder import SupportedLanguagesRequestBuilder
     from .supported_time_zones.supported_time_zones_request_builder import SupportedTimeZonesRequestBuilder
@@ -70,14 +70,14 @@ class OutlookRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> OutlookRequestBuilder:

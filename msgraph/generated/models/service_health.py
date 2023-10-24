@@ -15,7 +15,7 @@ class ServiceHealth(Entity):
     # A collection of issues that happened on the service, with detailed information for each issue.
     issues: Optional[List[ServiceHealthIssue]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The service name. Use the list healthOverviews operation to get exact string names for services subscribed by the tenant.
     service: Optional[str] = None
     # The status property

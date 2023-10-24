@@ -15,7 +15,7 @@ class WorkbookChartPoint(Entity):
     # Encapsulates the format properties chart point. Read-only.
     format: Optional[WorkbookChartPointFormat] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Returns the value of a chart point. Read-only.
     value: Optional[Json] = None
     

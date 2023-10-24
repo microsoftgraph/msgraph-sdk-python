@@ -25,7 +25,7 @@ class Segment(Entity):
     # Media associated with this segment.
     media: Optional[List[Media]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # UTC time when the segment started. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     start_date_time: Optional[datetime.datetime] = None
     

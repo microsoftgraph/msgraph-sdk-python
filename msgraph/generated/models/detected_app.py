@@ -22,7 +22,7 @@ class DetectedApp(Entity):
     # The devices that have the discovered application installed
     managed_devices: Optional[List[ManagedDevice]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Indicates the operating system / platform of the discovered application.  Some possible values are Windows, iOS, macOS. The default value is unknown (0).
     platform: Optional[DetectedAppPlatformType] = None
     # Indicates the publisher of the discovered application. For example: 'Microsoft'.  The default value is an empty string.

@@ -11,7 +11,7 @@ from .schedule_entity import ScheduleEntity
 @dataclass
 class TimeOffItem(ScheduleEntity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # ID of the timeOffReason for this timeOffItem. Required.
     time_off_reason_id: Optional[str] = None
     

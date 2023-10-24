@@ -37,7 +37,7 @@ class EntitlementManagement(Entity):
     # References to a directory or domain of another organization whose users can request access.
     connected_organizations: Optional[List[ConnectedOrganization]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A reference to the geolocation environments in which a resource is located.
     resource_environments: Optional[List[AccessPackageResourceEnvironment]] = None
     # Represents a request to add or remove a resource to or from a catalog respectively.
@@ -46,7 +46,7 @@ class EntitlementManagement(Entity):
     resource_role_scopes: Optional[List[AccessPackageResourceRoleScope]] = None
     # The resources associated with the catalogs.
     resources: Optional[List[AccessPackageResource]] = None
-    # The settings that control the behavior of Azure AD entitlement management.
+    # The settings that control the behavior of Microsoft Entra entitlement management.
     settings: Optional[EntitlementManagementSettings] = None
     
     @staticmethod

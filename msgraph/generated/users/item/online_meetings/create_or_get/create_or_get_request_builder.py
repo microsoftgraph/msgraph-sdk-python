@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models.o_data_errors.o_data_error import ODataError
     from .....models.online_meeting import OnlineMeeting
+    from .....models.o_data_errors.o_data_error import ODataError
     from .create_or_get_post_request_body import CreateOrGetPostRequestBody
 
 class CreateOrGetRequestBuilder(BaseRequestBuilder):
@@ -29,7 +29,7 @@ class CreateOrGetRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CreateOrGetPostRequestBody] = None, request_configuration: Optional[CreateOrGetRequestBuilderPostRequestConfiguration] = None) -> Optional[OnlineMeeting]:
         """
-        Create an onlineMeeting object with a custom specified external ID. If the external ID already exists, this API will return the onlineMeeting object with that external ID. 
+        Create an onlineMeeting object with a custom specified external ID. If the external ID already exists, this API will return the onlineMeeting object with that external ID.  This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnlineMeeting]
@@ -54,7 +54,7 @@ class CreateOrGetRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CreateOrGetPostRequestBody] = None, request_configuration: Optional[CreateOrGetRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an onlineMeeting object with a custom specified external ID. If the external ID already exists, this API will return the onlineMeeting object with that external ID. 
+        Create an onlineMeeting object with a custom specified external ID. If the external ID already exists, this API will return the onlineMeeting object with that external ID.  This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -62,13 +62,13 @@ class CreateOrGetRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.POST
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

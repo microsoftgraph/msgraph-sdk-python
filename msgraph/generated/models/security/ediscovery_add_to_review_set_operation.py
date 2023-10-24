@@ -13,7 +13,7 @@ from .case_operation import CaseOperation
 @dataclass
 class EdiscoveryAddToReviewSetOperation(CaseOperation):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # eDiscovery review set to which items matching source collection query gets added.
     review_set: Optional[EdiscoveryReviewSet] = None
     # eDiscovery search that gets added to review set.

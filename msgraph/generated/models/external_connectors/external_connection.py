@@ -31,7 +31,7 @@ class ExternalConnection(Entity):
     # The display name of the connection to be displayed in the Microsoft 365 admin center. Maximum length of 128 characters. Required.
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The operations property
     operations: Optional[List[ConnectionOperation]] = None
     # The schema property

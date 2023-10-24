@@ -34,8 +34,8 @@ class ProvisioningObjectSummary(Entity):
     # Details of each property that was modified in this provisioning action on this object.
     modified_properties: Optional[List[ModifiedProperty]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
-    # Indicates the activity name or the operation name. Possible values are: create, update, delete, stageddelete, disable, other and unknownFutureValue. For a list of activities logged, refer to Azure AD activity list. Supports $filter (eq, contains).
+    OdataType: Optional[str] = None
+    # Indicates the activity name or the operation name. Possible values are: create, update, delete, stageddelete, disable, other and unknownFutureValue. For a list of activities logged, refer to Microsoft Entra activity list. Supports $filter (eq, contains).
     provisioning_action: Optional[ProvisioningAction] = None
     # Details of provisioning status.
     provisioning_status_info: Optional[ProvisioningStatusInfo] = None
@@ -51,7 +51,7 @@ class ProvisioningObjectSummary(Entity):
     target_identity: Optional[ProvisionedIdentity] = None
     # Details of target system of the object being provisioned. Supports $filter (eq, contains) for displayName.
     target_system: Optional[ProvisioningSystem] = None
-    # Unique Azure AD tenant ID. Supports $filter (eq, contains).
+    # Unique Microsoft Entra tenant ID. Supports $filter (eq, contains).
     tenant_id: Optional[str] = None
     
     @staticmethod

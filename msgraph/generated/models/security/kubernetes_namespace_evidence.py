@@ -13,7 +13,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class KubernetesNamespaceEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.kubernetesNamespaceEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.kubernetesNamespaceEvidence"
     # The namespace cluster.
     cluster: Optional[KubernetesClusterEvidence] = None
     # The labels for the Kubernetes pod.

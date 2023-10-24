@@ -50,7 +50,7 @@ class Calendar(Entity):
     # The calendar name.
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # If set, this represents the user who created or added the calendar. For a calendar that the user created or added, the owner property is set to the user. For a calendar shared with the user, the owner property is set to the person who shared that calendar with the user.
     owner: Optional[EmailAddress] = None
     # The collection of single-value extended properties defined for the calendar. Read-only. Nullable.

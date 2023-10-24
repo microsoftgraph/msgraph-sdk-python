@@ -5,6 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .attack_simulation_operation import AttackSimulationOperation
     from .entity import Entity
     from .long_running_operation_status import LongRunningOperationStatus
     from .rich_long_running_operation import RichLongRunningOperation
@@ -18,7 +19,7 @@ class LongRunningOperation(Entity):
     # The time of the last action in the operation. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_action_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # URI of the resource that the operation is performed on.
     resource_location: Optional[str] = None
     # The status of the operation. The possible values are: notStarted, running, succeeded, failed, unknownFutureValue.
@@ -39,6 +40,10 @@ class LongRunningOperation(Entity):
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.attackSimulationOperation".casefold():
+            from .attack_simulation_operation import AttackSimulationOperation
+
+            return AttackSimulationOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.richLongRunningOperation".casefold():
             from .rich_long_running_operation import RichLongRunningOperation
 
@@ -50,10 +55,12 @@ class LongRunningOperation(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .attack_simulation_operation import AttackSimulationOperation
         from .entity import Entity
         from .long_running_operation_status import LongRunningOperationStatus
         from .rich_long_running_operation import RichLongRunningOperation
 
+        from .attack_simulation_operation import AttackSimulationOperation
         from .entity import Entity
         from .long_running_operation_status import LongRunningOperationStatus
         from .rich_long_running_operation import RichLongRunningOperation

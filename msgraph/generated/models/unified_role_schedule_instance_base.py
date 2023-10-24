@@ -24,7 +24,7 @@ class UnifiedRoleScheduleInstanceBase(Entity):
     # Identifier of the directory object representing the scope of the assignment or role eligibility. The scope of an assignment or role eligibility determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only.
     directory_scope_id: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The principal that's getting a role assignment or role eligibility through the request.
     principal: Optional[DirectoryObject] = None
     # Identifier of the principal that has been granted the role assignment or that's eligible for a role.

@@ -11,7 +11,7 @@ from .extension import Extension
 @dataclass
 class OpenTypeExtension(Extension):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.openTypeExtension"
+    OdataType: Optional[str] = "#microsoft.graph.openTypeExtension"
     # A unique text identifier for an open type data extension. Optional.
     extension_name: Optional[str] = None
     

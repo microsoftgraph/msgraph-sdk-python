@@ -11,7 +11,7 @@ from .identity import Identity
 @dataclass
 class ProvisioningServicePrincipal(Identity):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.provisioningServicePrincipal"
+    OdataType: Optional[str] = "#microsoft.graph.provisioningServicePrincipal"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisioningServicePrincipal:

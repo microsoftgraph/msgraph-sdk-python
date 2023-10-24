@@ -24,7 +24,7 @@ class DeviceComplianceSettingState(Entity):
     # The Device Name that is being reported
     device_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The setting class name and property name.
     setting: Optional[str] = None
     # The Setting Name that is being reported

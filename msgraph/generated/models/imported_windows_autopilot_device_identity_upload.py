@@ -21,7 +21,7 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(Entity):
     # Collection of all Autopilot devices as a part of this upload.
     device_identities: Optional[List[ImportedWindowsAutopilotDeviceIdentity]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The status property
     status: Optional[ImportedWindowsAutopilotDeviceIdentityUploadStatus] = None
     

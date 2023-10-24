@@ -17,7 +17,7 @@ class Windows10TeamGeneralConfiguration(DeviceConfiguration):
     This topic provides descriptions of the declared methods, properties and relationships exposed by the windows10TeamGeneralConfiguration resource.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windows10TeamGeneralConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.windows10TeamGeneralConfiguration"
     # Indicates whether or not to Block Azure Operational Insights.
     azure_operational_insights_block_telemetry: Optional[bool] = None
     # The Azure Operational Insights workspace id.

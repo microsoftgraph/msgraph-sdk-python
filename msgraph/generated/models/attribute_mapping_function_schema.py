@@ -12,7 +12,7 @@ from .entity import Entity
 @dataclass
 class AttributeMappingFunctionSchema(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Collection of function parameters.
     parameters: Optional[List[AttributeMappingParameterSchema]] = None
     

@@ -16,7 +16,7 @@ class UserSettings(Entity):
     # When set to true, the delegate access to the user's trending API is disabled. When set to true, documents in the user's Office Delve are disabled. When set to true, the relevancy of the content displayed in Microsoft 365, for example in Suggested sites in SharePoint Home and the Discover view in OneDrive for Business is affected. Users can control this setting in Office Delve.
     contribution_to_content_discovery_disabled: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The shiftPreferences property
     shift_preferences: Optional[ShiftPreferences] = None
     

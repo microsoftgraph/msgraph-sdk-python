@@ -15,10 +15,10 @@ class ExternalGroup(Entity):
     description: Optional[str] = None
     # The friendly name of the external group. Optional.
     display_name: Optional[str] = None
-    # A member added to an externalGroup. You can add Azure Active Directory users, Azure Active Directory groups, or an externalGroup as members.
+    # A member added to an externalGroup. You can add Microsoft Entra users, Microsoft Entra groups, or an externalGroup as members.
     members: Optional[List[Identity]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExternalGroup:

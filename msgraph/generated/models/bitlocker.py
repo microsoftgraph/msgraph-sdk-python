@@ -12,7 +12,7 @@ from .entity import Entity
 @dataclass
 class Bitlocker(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The recovery keys associated with the bitlocker entity.
     recovery_keys: Optional[List[BitlockerRecoveryKey]] = None
     

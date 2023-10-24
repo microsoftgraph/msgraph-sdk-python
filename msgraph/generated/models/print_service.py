@@ -14,7 +14,7 @@ class PrintService(Entity):
     # Endpoints that can be used to access the service. Read-only. Nullable.
     endpoints: Optional[List[PrintServiceEndpoint]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintService:

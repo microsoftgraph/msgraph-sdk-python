@@ -11,7 +11,7 @@ from .identity import Identity
 @dataclass
 class SharePointIdentity(Identity):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.sharePointIdentity"
+    OdataType: Optional[str] = "#microsoft.graph.sharePointIdentity"
     # The sign in name of the SharePoint identity.
     login_name: Optional[str] = None
     

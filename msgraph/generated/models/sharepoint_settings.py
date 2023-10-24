@@ -58,7 +58,7 @@ class SharepointSettings(Entity):
     # Indicates whether users are allowed to sync files only on PCs joined to specific domains.
     is_unmanaged_sync_app_for_tenant_restricted: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The default OneDrive storage limit for all new and existing users who are assigned a qualifying license. Measured in megabytes (MB).
     personal_site_default_storage_limit_in_m_b: Optional[int] = None
     # Collection of email domains that are allowed for sharing outside the organization.

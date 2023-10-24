@@ -10,15 +10,15 @@ if TYPE_CHECKING:
 @dataclass
 class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Display name for the cross-tenant user synchronization policy. Use the name of the partner Azure AD (Azure Active Directory) tenant to easily identify the policy. Optional.
+    # Display name for the cross-tenant user synchronization policy. Use the name of the partner Microsoft Entra tenant to easily identify the policy. Optional.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Tenant identifier for the partner Azure AD organization. Read-only.
+    # Tenant identifier for the partner Microsoft Entra organization. Read-only.
     tenant_id: Optional[str] = None
     # Defines whether users can be synchronized from the partner tenant. Key.
     user_sync_inbound: Optional[CrossTenantUserSyncInbound] = None

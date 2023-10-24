@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ...........models.o_data_errors.o_data_error import ODataError
-    from .image_response import ImageResponse
+    from .image_get_response import ImageGetResponse
 
 class ImageRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class ImageRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}/image()", path_parameters)
     
-    async def get(self,request_configuration: Optional[ImageRequestBuilderGetRequestConfiguration] = None) -> Optional[ImageResponse]:
+    async def get(self,request_configuration: Optional[ImageRequestBuilderGetRequestConfiguration] = None) -> Optional[ImageGetResponse]:
         """
         Invoke function image
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ImageResponse]
+        Returns: Optional[ImageGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -43,9 +43,9 @@ class ImageRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .image_response import ImageResponse
+        from .image_get_response import ImageGetResponse
 
-        return await self.request_adapter.send_async(request_info, ImageResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ImageGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ImageRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -54,13 +54,13 @@ class ImageRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> ImageRequestBuilder:

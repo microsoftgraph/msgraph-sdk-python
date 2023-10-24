@@ -11,7 +11,7 @@ from .directory_object import DirectoryObject
 @dataclass
 class DirectoryRoleTemplate(DirectoryObject):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.directoryRoleTemplate"
+    OdataType: Optional[str] = "#microsoft.graph.directoryRoleTemplate"
     # The description to set for the directory role. Read-only.
     description: Optional[str] = None
     # The display name to set for the directory role. Read-only.

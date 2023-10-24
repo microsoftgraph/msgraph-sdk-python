@@ -11,7 +11,7 @@ from .education_resource import EducationResource
 @dataclass
 class EducationLinkResource(EducationResource):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.educationLinkResource"
+    OdataType: Optional[str] = "#microsoft.graph.educationLinkResource"
     # URL to the resource.
     link: Optional[str] = None
     

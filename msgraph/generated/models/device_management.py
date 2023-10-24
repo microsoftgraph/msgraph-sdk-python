@@ -125,7 +125,7 @@ class DeviceManagement(Entity):
     # The Notification Message Templates.
     notification_message_templates: Optional[List[NotificationMessageTemplate]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The remote assist partners.
     remote_assistance_partners: Optional[List[RemoteAssistancePartner]] = None
     # Reports singleton

@@ -48,7 +48,7 @@ class OrganizationalBrandingProperties(Entity):
     custom_terms_of_use_text: Optional[str] = None
     # A custom URL to replace the default URL of the 'Terms of Use' hyperlink in the footer. This URL must be in ASCII format or non-ASCII characters must be URL encoded, and not exceed 128characters.
     custom_terms_of_use_url: Optional[str] = None
-    # A custom icon (favicon) to replace a default Microsoft product favicon on an Azure AD tenant.
+    # A custom icon (favicon) to replace a default Microsoft product favicon on a Microsoft Entra tenant.
     favicon: Optional[bytes] = None
     # A relative url for the favicon above that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
     favicon_relative_url: Optional[str] = None
@@ -63,7 +63,7 @@ class OrganizationalBrandingProperties(Entity):
     # Represents the various texts that can be hidden on the login page for a tenant.
     login_page_text_visibility_settings: Optional[LoginPageTextVisibilitySettings] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Text that appears at the bottom of the sign-in box. Use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be in Unicode format and not exceed 1024 characters.
     sign_in_page_text: Optional[str] = None
     # A square version of your company logo that appears in Windows 10 out-of-box experiences (OOBE) and when Windows Autopilot is enabled for deployment. Allowed types are PNG or JPEG not larger than 240 x 240 pixels and not more than 10 KB in size. We recommend using a transparent image with no padding around the logo.

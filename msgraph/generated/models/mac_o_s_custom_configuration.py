@@ -14,7 +14,7 @@ class MacOSCustomConfiguration(DeviceConfiguration):
     This topic provides descriptions of the declared methods, properties and relationships exposed by the macOSCustomConfiguration resource.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.macOSCustomConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.macOSCustomConfiguration"
     # Payload. (UTF8 encoded byte array)
     payload: Optional[bytes] = None
     # Payload file name (.mobileconfig

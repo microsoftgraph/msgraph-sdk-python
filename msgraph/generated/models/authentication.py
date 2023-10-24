@@ -29,7 +29,7 @@ class Authentication(Entity):
     # The details of the Microsoft Authenticator app registered to a user for authentication.
     microsoft_authenticator_methods: Optional[List[MicrosoftAuthenticatorAuthenticationMethod]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Represents the status of a long-running operation.
     operations: Optional[List[LongRunningOperation]] = None
     # Represents the password that's registered to a user for authentication. For security, the password itself will never be returned in the object, but action can be taken to reset a password.

@@ -10,13 +10,13 @@ if TYPE_CHECKING:
 @dataclass
 class AppliedConditionalAccessPolicy(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Refers to the Name of the conditional access policy (example: 'Require MFA for Salesforce').
     display_name: Optional[str] = None
-    # Refers to the grant controls enforced by the conditional access policy (example: 'Require multi-factor authentication').
+    # Refers to the grant controls enforced by the conditional access policy (example: 'Require multifactor authentication').
     enforced_grant_controls: Optional[List[str]] = None
     # Refers to the session controls enforced by the conditional access policy (example: 'Require app enforced controls').
     enforced_session_controls: Optional[List[str]] = None

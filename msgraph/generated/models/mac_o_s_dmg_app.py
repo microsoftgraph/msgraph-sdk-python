@@ -16,7 +16,7 @@ class MacOSDmgApp(MobileLobApp):
     Contains properties and inherited properties for the MacOS DMG (Apple Disk Image) App.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.macOSDmgApp"
+    OdataType: Optional[str] = "#microsoft.graph.macOSDmgApp"
     # When TRUE, indicates that the app's version will NOT be used to detect if the app is installed on a device. When FALSE, indicates that the app's version will be used to detect if the app is installed on a device. Set this to true for apps that use a self update feature. The default value is FALSE.
     ignore_version_detection: Optional[bool] = None
     # The list of .apps expected to be installed by the DMG (Apple Disk Image)

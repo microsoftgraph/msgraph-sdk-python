@@ -16,7 +16,7 @@ class UserExperienceAnalyticsDeviceStartupProcess(Entity):
     # The Intune device id of the device. Supports: $select, $OrderBy. Read-only.
     managed_device_id: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The name of the process. Examples: outlook, excel. Supports: $select, $OrderBy. Read-only.
     process_name: Optional[str] = None
     # The product name of the process. Examples: Microsoft Outlook, Microsoft Excel. Supports: $select, $OrderBy. Read-only.

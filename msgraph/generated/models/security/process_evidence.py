@@ -15,7 +15,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class ProcessEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.processEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.processEvidence"
     # The status of the detection.The possible values are: detected, blocked, prevented, unknownFutureValue.
     detection_status: Optional[DetectionStatus] = None
     # Image file details.

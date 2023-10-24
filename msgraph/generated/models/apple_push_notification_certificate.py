@@ -29,7 +29,7 @@ class ApplePushNotificationCertificate(Entity):
     # Last modified date and time for Apple push notification certificate.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Topic Id.
     topic_identifier: Optional[str] = None
     

@@ -28,7 +28,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ChecklistItemItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a checklistItem object.
+        Delete a checklistItem object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/checklistitem-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ChecklistItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ChecklistItem]:
         """
-        Read the properties and relationships of a checklistItem object.
+        Read the properties and relationships of a checklistItem object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChecklistItem]
         Find more info here: https://learn.microsoft.com/graph/api/checklistitem-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ChecklistItem] = None, request_configuration: Optional[ChecklistItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ChecklistItem]:
         """
-        Update the properties of a checklistItem object.
+        Update the properties of a checklistItem object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChecklistItem]
@@ -95,39 +95,40 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ChecklistItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a checklistItem object.
+        Delete a checklistItem object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.DELETE
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.DELETE
+        request_info.try_add_request_header("Accept", "application/json, application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[ChecklistItemItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a checklistItem object.
+        Read the properties and relationships of a checklistItem object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def to_patch_request_information(self,body: Optional[ChecklistItem] = None, request_configuration: Optional[ChecklistItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a checklistItem object.
+        Update the properties of a checklistItem object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,13 +136,13 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.PATCH
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -168,7 +169,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ChecklistItemItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a checklistItem object.
+        Read the properties and relationships of a checklistItem object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

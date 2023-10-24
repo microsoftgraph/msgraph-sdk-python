@@ -18,7 +18,7 @@ from .entity import Entity
 class CustomCalloutExtension(Entity):
     # Configuration for securing the API call to the logic app. For example, using OAuth client credentials flow.
     authentication_configuration: Optional[CustomExtensionAuthenticationConfiguration] = None
-    # HTTP connection settings that define how long Azure AD can wait for a connection to a logic app, how many times you can retry a timed-out connection and the exception scenarios when retries are allowed.
+    # HTTP connection settings that define how long Microsoft Entra ID can wait for a connection to a logic app, how many times you can retry a timed-out connection and the exception scenarios when retries are allowed.
     client_configuration: Optional[CustomExtensionClientConfiguration] = None
     # Description for the customCalloutExtension object.
     description: Optional[str] = None
@@ -27,7 +27,7 @@ class CustomCalloutExtension(Entity):
     # The type and details for configuring the endpoint to call the logic app's workflow.
     endpoint_configuration: Optional[CustomExtensionEndpointConfiguration] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CustomCalloutExtension:

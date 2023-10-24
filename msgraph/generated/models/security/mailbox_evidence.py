@@ -12,7 +12,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class MailboxEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.mailboxEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.mailboxEvidence"
     # The name associated with the mailbox.
     display_name: Optional[str] = None
     # The primary email address of the mailbox.

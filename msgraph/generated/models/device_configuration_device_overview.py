@@ -22,7 +22,7 @@ class DeviceConfigurationDeviceOverview(Entity):
     # Number of not applicable devices
     not_applicable_count: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Number of pending devices
     pending_count: Optional[int] = None
     # Number of succeeded devices

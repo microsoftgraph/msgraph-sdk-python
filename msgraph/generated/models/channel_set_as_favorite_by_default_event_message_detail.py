@@ -12,7 +12,7 @@ from .event_message_detail import EventMessageDetail
 @dataclass
 class ChannelSetAsFavoriteByDefaultEventMessageDetail(EventMessageDetail):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.channelSetAsFavoriteByDefaultEventMessageDetail"
+    OdataType: Optional[str] = "#microsoft.graph.channelSetAsFavoriteByDefaultEventMessageDetail"
     # Unique identifier of the channel.
     channel_id: Optional[str] = None
     # Initiator of the event.

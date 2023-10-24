@@ -17,7 +17,7 @@ class PrintTaskDefinition(Entity):
     # The name of the printTaskDefinition.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A list of tasks that have been created based on this definition. The list includes currently running tasks and recently completed tasks. Read-only.
     tasks: Optional[List[PrintTask]] = None
     

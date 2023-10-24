@@ -11,7 +11,7 @@ from .schedule_change_request import ScheduleChangeRequest
 @dataclass
 class OpenShiftChangeRequest(ScheduleChangeRequest):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.openShiftChangeRequest"
+    OdataType: Optional[str] = "#microsoft.graph.openShiftChangeRequest"
     # ID for the open shift.
     open_shift_id: Optional[str] = None
     

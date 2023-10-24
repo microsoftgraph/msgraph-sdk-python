@@ -11,7 +11,7 @@ from .organizational_branding_properties import OrganizationalBrandingProperties
 @dataclass
 class OrganizationalBrandingLocalization(OrganizationalBrandingProperties):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.organizationalBrandingLocalization"
+    OdataType: Optional[str] = "#microsoft.graph.organizationalBrandingLocalization"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrganizationalBrandingLocalization:

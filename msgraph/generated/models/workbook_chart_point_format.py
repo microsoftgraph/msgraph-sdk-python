@@ -11,10 +11,10 @@ from .entity import Entity
 
 @dataclass
 class WorkbookChartPointFormat(Entity):
-    # Represents the fill format of a chart, which includes background formating information. Read-only.
+    # Represents the fill format of a chart, which includes background formatting information. Read-only.
     fill: Optional[WorkbookChartFill] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartPointFormat:

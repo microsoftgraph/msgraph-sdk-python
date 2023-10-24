@@ -11,7 +11,7 @@ from .conditional_access_external_tenants import ConditionalAccessExternalTenant
 @dataclass
 class ConditionalAccessEnumeratedExternalTenants(ConditionalAccessExternalTenants):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.conditionalAccessEnumeratedExternalTenants"
+    OdataType: Optional[str] = "#microsoft.graph.conditionalAccessEnumeratedExternalTenants"
     # A collection of tenant IDs that define the scope of a policy targeting conditional access for guests and external users.
     members: Optional[List[str]] = None
     

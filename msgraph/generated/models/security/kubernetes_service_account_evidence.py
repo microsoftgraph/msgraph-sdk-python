@@ -12,7 +12,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class KubernetesServiceAccountEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.kubernetesServiceAccountEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.kubernetesServiceAccountEvidence"
     # The service account name.
     name: Optional[str] = None
     # The service account namespace.

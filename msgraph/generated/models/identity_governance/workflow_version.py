@@ -11,7 +11,7 @@ from .workflow_base import WorkflowBase
 @dataclass
 class WorkflowVersion(WorkflowBase):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.identityGovernance.workflowVersion"
+    OdataType: Optional[str] = "#microsoft.graph.identityGovernance.workflowVersion"
     # The version of the workflow.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
     version_number: Optional[int] = None
     

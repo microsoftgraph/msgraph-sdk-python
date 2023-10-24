@@ -24,7 +24,7 @@ class UnifiedRoleAssignment(Entity):
     # Identifier of the directory object representing the scope of the assignment.  Either this property or appScopeId is required. The scope of an assignment determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only. Supports $filter (eq, in).
     directory_scope_id: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Referencing the assigned principal. Read-only. Supports $expand.
     principal: Optional[DirectoryObject] = None
     # Identifier of the principal to which the assignment is granted. Supports $filter (eq, in).

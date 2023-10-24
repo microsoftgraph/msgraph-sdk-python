@@ -7,15 +7,15 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 @dataclass
 class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The display name of the customer tenant as set by Azure AD. Read-only
+    # The display name of the customer tenant as set by Microsoft Entra ID. Read-only
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The Azure AD-assigned tenant ID of the customer tenant.
+    # The Microsoft Entra ID-assigned tenant ID of the customer tenant.
     tenant_id: Optional[str] = None
     
     @staticmethod

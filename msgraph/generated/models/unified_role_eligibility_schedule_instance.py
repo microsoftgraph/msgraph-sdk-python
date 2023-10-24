@@ -16,7 +16,7 @@ class UnifiedRoleEligibilityScheduleInstance(UnifiedRoleScheduleInstanceBase):
     # How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).
     member_type: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The identifier of the unifiedRoleEligibilitySchedule object from which this instance was created. Supports $filter (eq, ne).
     role_eligibility_schedule_id: Optional[str] = None
     # When this instance starts.

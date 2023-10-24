@@ -12,7 +12,7 @@ from .authentication_method_configuration import AuthenticationMethodConfigurati
 @dataclass
 class SoftwareOathAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.softwareOathAuthenticationMethodConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.softwareOathAuthenticationMethodConfiguration"
     # A collection of groups that are enabled to use the authentication method. Expanded by default.
     include_targets: Optional[List[AuthenticationMethodTarget]] = None
     

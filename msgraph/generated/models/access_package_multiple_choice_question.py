@@ -12,7 +12,7 @@ from .access_package_question import AccessPackageQuestion
 @dataclass
 class AccessPackageMultipleChoiceQuestion(AccessPackageQuestion):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.accessPackageMultipleChoiceQuestion"
+    OdataType: Optional[str] = "#microsoft.graph.accessPackageMultipleChoiceQuestion"
     # List of answer choices.
     choices: Optional[List[AccessPackageAnswerChoice]] = None
     # Indicates whether requestor can select multiple choices as their answer.

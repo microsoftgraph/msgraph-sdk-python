@@ -33,7 +33,7 @@ class EducationRubric(Entity):
     # The collection of levels making up this rubric.
     levels: Optional[List[RubricLevel]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The collection of qualities making up this rubric.
     qualities: Optional[List[RubricQuality]] = None
     

@@ -16,7 +16,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(DeviceEnrollmentConfi
     Windows Hello for Business settings lets users access their devices using a gesture, such as biometric authentication, or a PIN. Configure settings for enrolled Windows 10, Windows 10 Mobile and later.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.deviceEnrollmentWindowsHelloForBusinessConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.deviceEnrollmentWindowsHelloForBusinessConfiguration"
     # Possible values of a property
     enhanced_biometrics_state: Optional[Enablement] = None
     # Controls the period of time (in days) that a PIN can be used before the system requires the user to change it. This must be set between 0 and 730, inclusive. If set to 0, the user's PIN will never expire

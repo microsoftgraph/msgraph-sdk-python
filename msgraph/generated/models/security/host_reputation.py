@@ -15,7 +15,7 @@ class HostReputation(Entity):
     # The classification property
     classification: Optional[HostReputationClassification] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A collection of rules that have been used to calculate the classification and score.
     rules: Optional[List[HostReputationRule]] = None
     # The calculated score (0-100) of the requested host. A higher value indicates that this host is more likely to be suspicious or malicious.

@@ -24,7 +24,7 @@ class ManagedAppPolicyDeploymentSummary(Entity):
     # Not yet documented
     last_refresh_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Version of the entity.
     version: Optional[str] = None
     

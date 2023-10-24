@@ -14,7 +14,7 @@ class EducationAssignmentResource(Entity):
     # Indicates whether this resource should be copied to each student submission for modification and submission. Required
     distribute_for_student_work: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Resource object that has been associated with this assignment.
     resource: Optional[EducationResource] = None
     

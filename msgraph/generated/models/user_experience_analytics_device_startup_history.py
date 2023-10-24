@@ -32,7 +32,7 @@ class UserExperienceAnalyticsDeviceStartupHistory(Entity):
     # When TRUE, indicates the device login is the first login after a reboot. When FALSE, indicates the device login is not the first login after a reboot. Supports: $select, $OrderBy. Read-only.
     is_first_login: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The user experience analytics device boot record's operating system version. Supports: $select, $OrderBy. Read-only.
     operating_system_version: Optional[str] = None
     # The time for desktop to become responsive during login process in milliseconds. Supports: $select, $OrderBy. Read-only.

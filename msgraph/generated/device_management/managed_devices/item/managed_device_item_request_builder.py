@@ -20,8 +20,8 @@ if TYPE_CHECKING:
     from .device_configuration_states.device_configuration_states_request_builder import DeviceConfigurationStatesRequestBuilder
     from .disable_lost_mode.disable_lost_mode_request_builder import DisableLostModeRequestBuilder
     from .locate_device.locate_device_request_builder import LocateDeviceRequestBuilder
-    from .log_collection_requests.log_collection_requests_request_builder import LogCollectionRequestsRequestBuilder
     from .logout_shared_apple_device_active_user.logout_shared_apple_device_active_user_request_builder import LogoutSharedAppleDeviceActiveUserRequestBuilder
+    from .log_collection_requests.log_collection_requests_request_builder import LogCollectionRequestsRequestBuilder
     from .reboot_now.reboot_now_request_builder import RebootNowRequestBuilder
     from .recover_passcode.recover_passcode_request_builder import RecoverPasscodeRequestBuilder
     from .remote_lock.remote_lock_request_builder import RemoteLockRequestBuilder
@@ -124,12 +124,13 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.DELETE
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.DELETE
+        request_info.try_add_request_header("Accept", "application/json, application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[ManagedDeviceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -139,14 +140,14 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def to_patch_request_information(self,body: Optional[ManagedDevice] = None, request_configuration: Optional[ManagedDeviceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -159,13 +160,13 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.PATCH
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

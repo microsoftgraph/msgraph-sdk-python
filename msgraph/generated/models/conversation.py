@@ -17,7 +17,7 @@ class Conversation(Entity):
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     last_delivered_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A short summary from the body of the latest post in this conversation. Supports $filter (eq, ne, le, ge).
     preview: Optional[str] = None
     # A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.

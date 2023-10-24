@@ -11,7 +11,7 @@ from .sts_policy import StsPolicy
 @dataclass
 class TokenLifetimePolicy(StsPolicy):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.tokenLifetimePolicy"
+    OdataType: Optional[str] = "#microsoft.graph.tokenLifetimePolicy"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TokenLifetimePolicy:

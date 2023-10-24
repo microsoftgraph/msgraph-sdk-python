@@ -14,7 +14,7 @@ class AppConsentApprovalRoute(Entity):
     # A collection of appConsentRequest objects representing apps for which admin consent has been requested by one or more users.
     app_consent_requests: Optional[List[AppConsentRequest]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppConsentApprovalRoute:

@@ -18,7 +18,7 @@ class AccessPackageResourceScope(Entity):
     # True if the scopes are arranged in a hierarchy and this is the top or root scope of the resource.
     is_root_scope: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The unique identifier for the scope in the resource as defined in the origin system.
     origin_id: Optional[str] = None
     # The origin system for the scope.

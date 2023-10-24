@@ -16,7 +16,7 @@ from .printer_base import PrinterBase
 @dataclass
 class PrinterShare(PrinterBase):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.printerShare"
+    OdataType: Optional[str] = "#microsoft.graph.printerShare"
     # If true, all users and groups will be granted access to this printer share. This supersedes the allow lists defined by the allowedUsers and allowedGroups navigation properties.
     allow_all_users: Optional[bool] = None
     # The groups whose users have access to print using the printer.

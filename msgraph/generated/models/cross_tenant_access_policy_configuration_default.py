@@ -15,20 +15,20 @@ from .entity import Entity
 class CrossTenantAccessPolicyConfigurationDefault(Entity):
     # Determines the default configuration for automatic user consent settings. The inboundAllowed and outboundAllowed properties are always false and cannot be updated in the default configuration. Read-only.
     automatic_user_consent_settings: Optional[InboundOutboundPolicyConfiguration] = None
-    # Defines your default configuration for users from other organizations accessing your resources via Azure AD B2B collaboration.
+    # Defines your default configuration for users from other organizations accessing your resources via Microsoft Entra B2B collaboration.
     b2b_collaboration_inbound: Optional[CrossTenantAccessPolicyB2BSetting] = None
-    # Defines your default configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B collaboration.
+    # Defines your default configuration for users in your organization going outbound to access resources in another organization via Microsoft Entra B2B collaboration.
     b2b_collaboration_outbound: Optional[CrossTenantAccessPolicyB2BSetting] = None
-    # Defines your default configuration for users from other organizations accessing your resources via Azure AD B2B direct connect.
+    # Defines your default configuration for users from other organizations accessing your resources via Microsoft Entra B2B direct connect.
     b2b_direct_connect_inbound: Optional[CrossTenantAccessPolicyB2BSetting] = None
-    # Defines your default configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B direct connect.
+    # Defines your default configuration for users in your organization going outbound to access resources in another organization via Microsoft Entra B2B direct connect.
     b2b_direct_connect_outbound: Optional[CrossTenantAccessPolicyB2BSetting] = None
-    # Determines the default configuration for trusting other Conditional Access claims from external Azure AD organizations.
+    # Determines the default configuration for trusting other Conditional Access claims from external Microsoft Entra organizations.
     inbound_trust: Optional[CrossTenantAccessPolicyInboundTrust] = None
     # If true, the default configuration is set to the system default configuration. If false, the default settings have been customized.
     is_service_default: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyConfigurationDefault:

@@ -5,9 +5,9 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .print_connector import PrintConnector
     from .printer_base import PrinterBase
     from .printer_share import PrinterShare
+    from .print_connector import PrintConnector
     from .print_task_trigger import PrintTaskTrigger
 
 from .printer_base import PrinterBase
@@ -15,7 +15,7 @@ from .printer_base import PrinterBase
 @dataclass
 class Printer(PrinterBase):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.printer"
+    OdataType: Optional[str] = "#microsoft.graph.printer"
     # The connectors that are associated with the printer.
     connectors: Optional[List[PrintConnector]] = None
     # True if the printer has a physical device for printing. Read-only.
@@ -47,14 +47,14 @@ class Printer(PrinterBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .print_connector import PrintConnector
         from .printer_base import PrinterBase
         from .printer_share import PrinterShare
+        from .print_connector import PrintConnector
         from .print_task_trigger import PrintTaskTrigger
 
-        from .print_connector import PrintConnector
         from .printer_base import PrinterBase
         from .printer_share import PrinterShare
+        from .print_connector import PrintConnector
         from .print_task_trigger import PrintTaskTrigger
 
         fields: Dict[str, Callable[[Any], None]] = {

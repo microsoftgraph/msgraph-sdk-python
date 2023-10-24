@@ -11,7 +11,7 @@ from .host import Host
 @dataclass
 class Hostname(Host):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.hostname"
+    OdataType: Optional[str] = "#microsoft.graph.security.hostname"
     # The company or individual who registered this hostname, from WHOIS data.
     registrant: Optional[str] = None
     # The registrar for this hostname, from WHOIS data.

@@ -12,7 +12,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class KubernetesClusterEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.kubernetesClusterEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.kubernetesClusterEvidence"
     # The cloud identifier of the cluster. Can be either an amazonResourceEvidence, azureResourceEvidence, or googleCloudResourceEvidence object.
     cloud_resource: Optional[AlertEvidence] = None
     # The distribution type of the cluster.

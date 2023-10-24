@@ -15,7 +15,7 @@ class DeviceCompliancePolicyAssignment(Entity):
     Device compliance policy assignment.
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Target for the compliance policy assignment.
     target: Optional[DeviceAndAppManagementAssignmentTarget] = None
     

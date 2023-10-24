@@ -29,7 +29,7 @@ class WorkbookChartAxis(Entity):
     # Represents the interval between two minor tick marks. 'Can be set to a numeric value or an empty string (for automatic axis values). The returned value is always a number.
     minor_unit: Optional[Json] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Represents the axis title. Read-only.
     title: Optional[WorkbookChartAxisTitle] = None
     

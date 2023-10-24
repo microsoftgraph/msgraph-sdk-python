@@ -15,11 +15,11 @@ from .entity import Entity
 class IdentityUserFlowAttributeAssignment(Entity):
     # The display name of the identityUserFlowAttribute within a user flow.
     display_name: Optional[str] = None
-    # Determines whether the identityUserFlowAttribute is optional. true means the user doesn't have to provide a value. false means the user cannot complete sign-up without providing a value.
+    # Determines whether the identityUserFlowAttribute is optional. true means the user doesn't have to provide a value. false means the user can't complete sign-up without providing a value.
     is_optional: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
-    # Determines whether the identityUserFlowAttribute requires verification. This is only used for verifying the user's phone number or email address.
+    OdataType: Optional[str] = None
+    # Determines whether the identityUserFlowAttribute requires verification, and is only used for verifying the user's phone number or email address.
     requires_verification: Optional[bool] = None
     # The user attribute that you want to add to your user flow.
     user_attribute: Optional[IdentityUserFlowAttribute] = None

@@ -12,7 +12,7 @@ from .entity import Entity
 @dataclass
 class InferenceClassification(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
     overrides: Optional[List[InferenceClassificationOverride]] = None
     

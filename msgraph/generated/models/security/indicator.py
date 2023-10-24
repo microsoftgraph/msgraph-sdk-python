@@ -17,7 +17,7 @@ class Indicator(Entity):
     # The artifact property
     artifact: Optional[Artifact] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The source property
     source: Optional[IndicatorSource] = None
     

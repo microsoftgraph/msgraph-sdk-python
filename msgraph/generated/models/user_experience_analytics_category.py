@@ -20,7 +20,7 @@ class UserExperienceAnalyticsCategory(Entity):
     # The metric values for the user experience analytics category. Read-only.
     metric_values: Optional[List[UserExperienceAnalyticsMetric]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserExperienceAnalyticsCategory:

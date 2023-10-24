@@ -12,7 +12,7 @@ from .authentication_method_configuration import AuthenticationMethodConfigurati
 @dataclass
 class VoiceAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.voiceAuthenticationMethodConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.voiceAuthenticationMethodConfiguration"
     # A collection of groups that are enabled to use the authentication method. Expanded by default.
     include_targets: Optional[List[AuthenticationMethodTarget]] = None
     # true if users can register office phones, otherwise, false.

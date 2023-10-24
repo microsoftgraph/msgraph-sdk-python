@@ -14,7 +14,7 @@ class WindowsInformationProtectionStoreApp(WindowsInformationProtectionApp):
     Store App for Windows information protection
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windowsInformationProtectionStoreApp"
+    OdataType: Optional[str] = "#microsoft.graph.windowsInformationProtectionStoreApp"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionStoreApp:

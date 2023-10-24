@@ -15,7 +15,7 @@ class Windows10MobileCompliancePolicy(DeviceCompliancePolicy):
     This class contains compliance settings for Windows 10 Mobile.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windows10MobileCompliancePolicy"
+    OdataType: Optional[str] = "#microsoft.graph.windows10MobileCompliancePolicy"
     # Require devices to be reported healthy by Windows Device Health Attestation - bit locker is enabled
     bit_locker_enabled: Optional[bool] = None
     # Require devices to be reported as healthy by Windows Device Health Attestation.

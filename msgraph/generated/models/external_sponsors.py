@@ -11,7 +11,7 @@ from .subject_set import SubjectSet
 @dataclass
 class ExternalSponsors(SubjectSet):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.externalSponsors"
+    OdataType: Optional[str] = "#microsoft.graph.externalSponsors"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExternalSponsors:

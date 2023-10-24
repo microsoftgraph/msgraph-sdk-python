@@ -19,7 +19,7 @@ class ApprovalStage(Entity):
     # The justification associated with the approval stage decision.
     justification: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The result of this approval record. Possible values include: NotReviewed, Approved, Denied.
     review_result: Optional[str] = None
     # The identifier of the reviewer. 00000000-0000-0000-0000-000000000000 if the assigned reviewer hasn't reviewed. Read-only.

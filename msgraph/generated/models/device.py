@@ -14,7 +14,7 @@ from .directory_object import DirectoryObject
 @dataclass
 class Device(DirectoryObject):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.device"
+    OdataType: Optional[str] = "#microsoft.graph.device"
     # true if the account is enabled; otherwise, false. Required. Default is true.  Supports $filter (eq, ne, not, in). Only callers in Global Administrator and Cloud Device Administrator roles can set this property.
     account_enabled: Optional[bool] = None
     # For internal use only. Not nullable. Supports $filter (eq, not, ge, le).
@@ -69,7 +69,7 @@ class Device(DirectoryObject):
     system_labels: Optional[List[str]] = None
     # Groups and administrative units that the device is a member of. This operation is transitive. Supports $expand.
     transitive_member_of: Optional[List[DirectoryObject]] = None
-    # Type of trust for the joined device. Read-only. Possible values:  Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory.
+    # Type of trust for the joined device. Read-only. Possible values:  Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Microsoft Entra ID). For more details, see Introduction to device management in Microsoft Entra ID.
     trust_type: Optional[str] = None
     
     @staticmethod

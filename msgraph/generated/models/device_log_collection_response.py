@@ -25,7 +25,7 @@ class DeviceLogCollectionResponse(Entity):
     # Indicates Intune device unique identifier.
     managed_device_id: Optional[UUID] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The DateTime the request was received.
     received_date_time_u_t_c: Optional[datetime.datetime] = None
     # The DateTime of the request.

@@ -11,7 +11,7 @@ from .api_authentication_configuration_base import ApiAuthenticationConfiguratio
 @dataclass
 class BasicAuthentication(ApiAuthenticationConfigurationBase):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.basicAuthentication"
+    OdataType: Optional[str] = "#microsoft.graph.basicAuthentication"
     # The password. It isn't returned in the responses.
     password: Optional[str] = None
     # The username.

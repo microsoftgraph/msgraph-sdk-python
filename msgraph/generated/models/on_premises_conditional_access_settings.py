@@ -21,7 +21,7 @@ class OnPremisesConditionalAccessSettings(Entity):
     # User groups that will be targeted by on premises conditional access. All users in these groups will be required to have mobile device managed and compliant for mail access.
     included_groups: Optional[List[UUID]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Override the default access rule when allowing a device to ensure access is granted.
     override_default_rule: Optional[bool] = None
     

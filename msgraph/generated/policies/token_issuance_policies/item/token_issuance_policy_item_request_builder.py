@@ -29,7 +29,7 @@ class TokenIssuancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a tokenIssuancePolicy object.
+        Delete a tokenIssuancePolicy object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/tokenissuancepolicy-delete?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class TokenIssuancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TokenIssuancePolicy]:
         """
-        The policy that specifies the characteristics of SAML tokens issued by Azure AD.
+        The policy that specifies the characteristics of SAML tokens issued by Microsoft Entra ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TokenIssuancePolicy]
         """
@@ -70,7 +70,7 @@ class TokenIssuancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TokenIssuancePolicy] = None, request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TokenIssuancePolicy]:
         """
-        Update the properties of a tokenIssuancePolicy object.
+        Update the properties of a tokenIssuancePolicy object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TokenIssuancePolicy]
@@ -95,39 +95,40 @@ class TokenIssuancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a tokenIssuancePolicy object.
+        Delete a tokenIssuancePolicy object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.DELETE
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.DELETE
+        request_info.try_add_request_header("Accept", "application/json, application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The policy that specifies the characteristics of SAML tokens issued by Azure AD.
+        The policy that specifies the characteristics of SAML tokens issued by Microsoft Entra ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def to_patch_request_information(self,body: Optional[TokenIssuancePolicy] = None, request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a tokenIssuancePolicy object.
+        Update the properties of a tokenIssuancePolicy object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,13 +136,13 @@ class TokenIssuancePolicyItemRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.PATCH
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -177,7 +178,7 @@ class TokenIssuancePolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TokenIssuancePolicyItemRequestBuilderGetQueryParameters():
         """
-        The policy that specifies the characteristics of SAML tokens issued by Azure AD.
+        The policy that specifies the characteristics of SAML tokens issued by Microsoft Entra ID.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

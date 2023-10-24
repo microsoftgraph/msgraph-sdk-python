@@ -11,8 +11,8 @@ from .subject_rights_request_site_location import SubjectRightsRequestSiteLocati
 @dataclass
 class SubjectRightsRequestEnumeratedSiteLocation(SubjectRightsRequestSiteLocation):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.subjectRightsRequestEnumeratedSiteLocation"
-    # The urls property
+    OdataType: Optional[str] = "#microsoft.graph.subjectRightsRequestEnumeratedSiteLocation"
+    # Collection of site URLs that should be included. Includes the URL of each site, for example, https://www.contoso.com/site1.
     urls: Optional[List[str]] = None
     
     @staticmethod

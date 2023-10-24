@@ -21,7 +21,7 @@ class ExternalItem(Entity):
     # A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.
     content: Optional[ExternalItemContent] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A property bag with the properties of the item. The properties MUST conform to the schema defined for the externalConnection. Required.
     properties: Optional[Properties] = None
     

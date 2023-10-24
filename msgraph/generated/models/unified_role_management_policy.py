@@ -26,12 +26,12 @@ class UnifiedRoleManagementPolicy(Entity):
     # The time when the role setting was last modified.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The collection of rules like approval rules and expiration rules. Supports $expand.
     rules: Optional[List[UnifiedRoleManagementPolicyRule]] = None
     # The identifier of the scope where the policy is created. Can be / for the tenant or a group ID. Required.
     scope_id: Optional[str] = None
-    # The type of the scope where the policy is created. One of Directory, DirectoryRole. Required.
+    # The type of the scope where the policy is created. One of Directory, DirectoryRole, Group. Required.
     scope_type: Optional[str] = None
     
     @staticmethod

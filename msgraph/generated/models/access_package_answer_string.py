@@ -11,7 +11,7 @@ from .access_package_answer import AccessPackageAnswer
 @dataclass
 class AccessPackageAnswerString(AccessPackageAnswer):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.accessPackageAnswerString"
+    OdataType: Optional[str] = "#microsoft.graph.accessPackageAnswerString"
     # The value stored on the requestor's user profile, if this answer is configured to be stored as a specific attribute.
     value: Optional[str] = None
     

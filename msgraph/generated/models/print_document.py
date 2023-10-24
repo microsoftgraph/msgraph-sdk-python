@@ -15,7 +15,7 @@ class PrintDocument(Entity):
     # The document's name. Read-only.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The document's size in bytes. Read-only.
     size: Optional[int] = None
     

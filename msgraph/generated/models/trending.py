@@ -16,7 +16,7 @@ class Trending(Entity):
     # The lastModifiedDateTime property
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Used for navigating to the trending document.
     resource: Optional[Entity] = None
     # Reference properties of the trending document, such as the url and type of the document.

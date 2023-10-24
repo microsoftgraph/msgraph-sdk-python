@@ -11,7 +11,7 @@ from .service_provisioning_error import ServiceProvisioningError
 @dataclass
 class ServiceProvisioningXmlError(ServiceProvisioningError):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.serviceProvisioningXmlError"
+    OdataType: Optional[str] = "#microsoft.graph.serviceProvisioningXmlError"
     # The errorDetail property
     error_detail: Optional[str] = None
     

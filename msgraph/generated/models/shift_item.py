@@ -19,7 +19,7 @@ class ShiftItem(ScheduleEntity):
     # The shift notes for the shiftItem.
     notes: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ShiftItem:

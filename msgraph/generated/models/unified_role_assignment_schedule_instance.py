@@ -21,8 +21,8 @@ class UnifiedRoleAssignmentScheduleInstance(UnifiedRoleScheduleInstanceBase):
     # How the assignments is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleAssignmentSchedule can be managed by the caller. Supports $filter (eq, ne).
     member_type: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
-    # The identifier of the role assignment in Azure AD. Supports $filter (eq, ne).
+    OdataType: Optional[str] = None
+    # The identifier of the role assignment in Microsoft Entra. Supports $filter (eq, ne).
     role_assignment_origin_id: Optional[str] = None
     # The identifier of the unifiedRoleAssignmentSchedule object from which this instance was created. Supports $filter (eq, ne).
     role_assignment_schedule_id: Optional[str] = None

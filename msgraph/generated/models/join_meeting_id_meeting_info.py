@@ -11,7 +11,7 @@ from .meeting_info import MeetingInfo
 @dataclass
 class JoinMeetingIdMeetingInfo(MeetingInfo):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.joinMeetingIdMeetingInfo"
+    OdataType: Optional[str] = "#microsoft.graph.joinMeetingIdMeetingInfo"
     # The ID used to join the meeting.
     join_meeting_id: Optional[str] = None
     # The passcode used to join the meeting. Optional.

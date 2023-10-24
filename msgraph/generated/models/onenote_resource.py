@@ -11,7 +11,7 @@ from .onenote_entity_base_model import OnenoteEntityBaseModel
 @dataclass
 class OnenoteResource(OnenoteEntityBaseModel):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.onenoteResource"
+    OdataType: Optional[str] = "#microsoft.graph.onenoteResource"
     # The content stream
     content: Optional[bytes] = None
     # The URL for downloading the content

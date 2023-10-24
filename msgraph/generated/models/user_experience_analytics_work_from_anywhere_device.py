@@ -48,7 +48,7 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity):
     # The model name of the device. Supports: $select, $OrderBy. Read-only.
     model: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # When TRUE, indicates OS check failed for device to upgrade to the latest version of windows. When FALSE, indicates the check succeeded. Supports: $select, $OrderBy. Read-only.
     os_check_failed: Optional[bool] = None
     # The OS description of the device. Supports: $select, $OrderBy. Read-only.

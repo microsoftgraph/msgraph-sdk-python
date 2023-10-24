@@ -11,7 +11,7 @@ from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 @dataclass
 class UnifiedRoleManagementPolicyEnablementRule(UnifiedRoleManagementPolicyRule):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.unifiedRoleManagementPolicyEnablementRule"
+    OdataType: Optional[str] = "#microsoft.graph.unifiedRoleManagementPolicyEnablementRule"
     # The collection of rules that are enabled for this policy rule. For example, MultiFactorAuthentication, Ticketing, and Justification.
     enabled_rules: Optional[List[str]] = None
     

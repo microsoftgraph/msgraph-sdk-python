@@ -20,7 +20,7 @@ class ServiceAnnouncement(Entity):
     # A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
     messages: Optional[List[ServiceUpdateMessage]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceAnnouncement:

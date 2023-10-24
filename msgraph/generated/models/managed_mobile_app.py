@@ -17,7 +17,7 @@ class ManagedMobileApp(Entity):
     # The identifier for an app with it's operating system type.
     mobile_app_identifier: Optional[MobileAppIdentifier] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Version of the entity.
     version: Optional[str] = None
     

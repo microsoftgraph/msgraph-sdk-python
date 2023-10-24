@@ -52,7 +52,7 @@ class TodoTask(Entity):
     # A collection of resources linked to the task.
     linked_resources: Optional[List[LinkedResource]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The recurrence pattern for the task.
     recurrence: Optional[PatternedRecurrence] = None
     # The date and time in the specified time zone for a reminder alert of the task to occur.

@@ -27,7 +27,7 @@ class ResetToSystemDefaultRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[ResetToSystemDefaultRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Reset any changes made to the default configuration in a cross-tenant access policy back to the system default.
+        Reset any changes made to the default configuration in a cross-tenant access policy back to the system default. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicyconfigurationdefault-resettosystemdefault?view=graph-rest-1.0
@@ -47,17 +47,18 @@ class ResetToSystemDefaultRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[ResetToSystemDefaultRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Reset any changes made to the default configuration in a cross-tenant access policy back to the system default.
+        Reset any changes made to the default configuration in a cross-tenant access policy back to the system default. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.POST
+        request_info.try_add_request_header("Accept", "application/json, application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> ResetToSystemDefaultRequestBuilder:

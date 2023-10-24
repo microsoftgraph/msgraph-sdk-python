@@ -11,7 +11,7 @@ from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 @dataclass
 class UnifiedRoleManagementPolicyNotificationRule(UnifiedRoleManagementPolicyRule):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.unifiedRoleManagementPolicyNotificationRule"
+    OdataType: Optional[str] = "#microsoft.graph.unifiedRoleManagementPolicyNotificationRule"
     # Indicates whether a default recipient will receive the notification email.
     is_default_recipients_enabled: Optional[bool] = None
     # The level of notification. The possible values are None, Critical, All.

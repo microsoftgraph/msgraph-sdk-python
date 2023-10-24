@@ -16,7 +16,7 @@ from .education_organization import EducationOrganization
 @dataclass
 class EducationSchool(EducationOrganization):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.educationSchool"
+    OdataType: Optional[str] = "#microsoft.graph.educationSchool"
     # Address of the school.
     address: Optional[PhysicalAddress] = None
     # The underlying administrativeUnit for this school.

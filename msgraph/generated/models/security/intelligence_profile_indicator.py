@@ -12,7 +12,7 @@ from .indicator import Indicator
 @dataclass
 class IntelligenceProfileIndicator(Indicator):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.intelligenceProfileIndicator"
+    OdataType: Optional[str] = "#microsoft.graph.security.intelligenceProfileIndicator"
     # Designate when an artifact was first used actively in an attack, when a particular sample was compiled, or if neither of those could be ascertained when the file was first seen in public repositories (for example, VirusTotal, ANY.RUN, Hybrid Analysis) or reported publicly.
     first_seen_date_time: Optional[datetime.datetime] = None
     # Designate when an artifact was most recently used actively in an attack, when a particular sample was compiled, or if neither of those could be ascertained when the file was first seen in public repositories (for example, VirusTotal, ANY.RUN, Hybrid Analysis) or reported publicly.

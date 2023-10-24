@@ -11,7 +11,7 @@ from .entity import Entity
 @dataclass
 class DelegatedAdminServiceManagementDetail(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The URL of the management portal for the managed service. Read-only.
     service_management_url: Optional[str] = None
     # The name of a managed service. Read-only.

@@ -12,7 +12,7 @@ from .access_review_query_scope import AccessReviewQueryScope
 @dataclass
 class AccessReviewInactiveUsersQueryScope(AccessReviewQueryScope):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.accessReviewInactiveUsersQueryScope"
+    OdataType: Optional[str] = "#microsoft.graph.accessReviewInactiveUsersQueryScope"
     # Defines the duration of inactivity. Inactivity is based on the last sign in date of the user compared to the access review instance's start date. If this property is not specified, it's assigned the default value PT0S.
     inactive_duration: Optional[datetime.timedelta] = None
     

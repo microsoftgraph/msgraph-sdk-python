@@ -6,10 +6,10 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
     from .risk_detail import RiskDetail
     from .risk_level import RiskLevel
     from .risk_state import RiskState
-    from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
 
 from .entity import Entity
 
@@ -19,14 +19,14 @@ class RiskyServicePrincipal(Entity):
     app_id: Optional[str] = None
     # The display name for the service principal.
     display_name: Optional[str] = None
-    # Represents the risk history of Azure AD service principals.
+    # Represents the risk history of Microsoft Entra service principals.
     history: Optional[List[RiskyServicePrincipalHistoryItem]] = None
     # true if the service principal account is enabled; otherwise, false.
     is_enabled: Optional[bool] = None
-    # Indicates whether Azure AD is currently processing the service principal's risky state.
+    # Indicates whether Microsoft Entra ID is currently processing the service principal's risky state.
     is_processing: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden,  unknownFutureValue, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
     risk_detail: Optional[RiskDetail] = None
     # The date and time that the risk state was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2021 is 2021-01-01T00:00:00Z. Supports $filter (eq).
@@ -35,7 +35,7 @@ class RiskyServicePrincipal(Entity):
     risk_level: Optional[RiskLevel] = None
     # State of the service principal's risk. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
     risk_state: Optional[RiskState] = None
-    # Identifies whether the service principal represents an Application, a ManagedIdentity, or a legacy application (socialIdp). This is set by Azure AD internally and is inherited from servicePrincipal.
+    # Identifies whether the service principal represents an Application, a ManagedIdentity, or a legacy application (socialIdp). This is set by Microsoft Entra ID internally and is inherited from servicePrincipal.
     service_principal_type: Optional[str] = None
     
     @staticmethod
@@ -63,16 +63,16 @@ class RiskyServicePrincipal(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
         from .risk_detail import RiskDetail
         from .risk_level import RiskLevel
         from .risk_state import RiskState
-        from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
 
         from .entity import Entity
+        from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
         from .risk_detail import RiskDetail
         from .risk_level import RiskLevel
         from .risk_state import RiskState
-        from .risky_service_principal_history_item import RiskyServicePrincipalHistoryItem
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),

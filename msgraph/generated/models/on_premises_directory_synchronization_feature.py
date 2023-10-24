@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 @dataclass
 class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -15,7 +15,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
     block_cloud_object_takeover_through_hard_match_enabled: Optional[bool] = None
     # Use to block soft match for all objects if enabled for the  tenant. Customers are encouraged to enable this feature and keep it enabled until soft matching is required again for their tenancy. This flag should be enabled again after any soft matching has been completed and is no longer needed.
     block_soft_match_enabled: Optional[bool] = None
-    # When true, persists the values of Mobile and OtherMobile in on-premises AD during sync cycles instead of values of MobilePhone or AlternateMobilePhones in Azure AD.
+    # When true, persists the values of Mobile and OtherMobile in on-premises AD during sync cycles instead of values of MobilePhone or AlternateMobilePhones in Microsoft Entra ID.
     bypass_dir_sync_overrides_enabled: Optional[bool] = None
     # Used to indicate that cloud password policy applies to users whose passwords are synchronized from on-premises.
     cloud_password_policy_for_password_synced_users_enabled: Optional[bool] = None
@@ -25,7 +25,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
     concurrent_org_id_provisioning_enabled: Optional[bool] = None
     # Used to indicate that device write-back is enabled.
     device_writeback_enabled: Optional[bool] = None
-    # Used to indicate that directory extensions are being synced from on-premises AD to Azure AD.
+    # Used to indicate that directory extensions are being synced from on-premises AD to Microsoft Entra ID.
     directory_extensions_enabled: Optional[bool] = None
     # Used to indicate that for a Microsoft Forefront Online Protection for Exchange (FOPE) migrated tenant, the conflicting proxy address should be migrated over.
     fope_conflict_resolution_enabled: Optional[bool] = None
@@ -35,7 +35,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
     odata_type: Optional[str] = None
     # Used to indicate on-premise password synchronization is enabled.
     password_sync_enabled: Optional[bool] = None
-    # Used to indicate that writeback of password resets from Azure AD to on-premises AD is enabled.
+    # Used to indicate that writeback of password resets from Microsoft Entra ID to on-premises AD is enabled.
     password_writeback_enabled: Optional[bool] = None
     # Used to indicate that we should quarantine objects with conflicting proxy address.
     quarantine_upon_proxy_addresses_conflict_enabled: Optional[bool] = None

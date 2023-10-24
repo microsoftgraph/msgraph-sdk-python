@@ -11,7 +11,7 @@ from .entity import Entity
 @dataclass
 class SingleValueLegacyExtendedProperty(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A property value.
     value: Optional[str] = None
     

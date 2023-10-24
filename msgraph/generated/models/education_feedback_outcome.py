@@ -12,7 +12,7 @@ from .education_outcome import EducationOutcome
 @dataclass
 class EducationFeedbackOutcome(EducationOutcome):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.educationFeedbackOutcome"
+    OdataType: Optional[str] = "#microsoft.graph.educationFeedbackOutcome"
     # Teacher's written feedback to the student.
     feedback: Optional[EducationFeedback] = None
     # A copy of the feedback property that is made when the grade is released to the student.

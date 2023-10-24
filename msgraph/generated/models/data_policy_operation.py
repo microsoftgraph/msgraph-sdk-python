@@ -15,7 +15,7 @@ class DataPolicyOperation(Entity):
     # Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.
     completed_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Specifies the progress of an operation.
     progress: Optional[float] = None
     # Possible values are: notStarted, running, complete, failed, unknownFutureValue.

@@ -39,7 +39,7 @@ class BrowserSite(Entity):
     # The mergeType property
     merge_type: Optional[BrowserSiteMergeType] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The status property
     status: Optional[BrowserSiteStatus] = None
     # The targetEnvironment property

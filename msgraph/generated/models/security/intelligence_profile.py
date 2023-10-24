@@ -28,7 +28,7 @@ class IntelligenceProfile(Entity):
     # The kind property
     kind: Optional[IntelligenceProfileKind] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The summary property
     summary: Optional[FormattedContent] = None
     # Known targets related to this intelligenceProfile.

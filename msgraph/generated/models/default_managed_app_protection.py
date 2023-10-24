@@ -18,7 +18,7 @@ class DefaultManagedAppProtection(ManagedAppProtection):
     Policy used to configure detailed management settings for a specified set of apps for all users not targeted by a TargetedManagedAppProtection Policy
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.defaultManagedAppProtection"
+    OdataType: Optional[str] = "#microsoft.graph.defaultManagedAppProtection"
     # Represents the level to which app data is encrypted for managed apps
     app_data_encryption_type: Optional[ManagedAppDataEncryptionType] = None
     # List of apps to which the policy is deployed.

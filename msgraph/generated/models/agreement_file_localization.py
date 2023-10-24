@@ -12,8 +12,8 @@ from .agreement_file_properties import AgreementFileProperties
 @dataclass
 class AgreementFileLocalization(AgreementFileProperties):
     # The OdataType property
-    odata_type: Optional[str] = None
-    # Read-only. Customized versions of the terms of use agreement in the Azure AD tenant.
+    OdataType: Optional[str] = None
+    # Read-only. Customized versions of the terms of use agreement in the Microsoft Entra tenant.
     versions: Optional[List[AgreementFileVersion]] = None
     
     @staticmethod

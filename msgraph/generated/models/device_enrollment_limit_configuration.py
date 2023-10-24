@@ -14,7 +14,7 @@ class DeviceEnrollmentLimitConfiguration(DeviceEnrollmentConfiguration):
     Device Enrollment Configuration that restricts the number of devices a user can enroll
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.deviceEnrollmentLimitConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.deviceEnrollmentLimitConfiguration"
     # The maximum number of devices that a user can enroll
     limit: Optional[int] = None
     

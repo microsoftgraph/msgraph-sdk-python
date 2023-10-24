@@ -35,7 +35,7 @@ class UnifiedRoleAssignmentScheduleRequest(Request):
     # A message provided by users and administrators when create they create the unifiedRoleAssignmentScheduleRequest object.
     justification: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The principal that's getting a role assignment through the request. Supports $expand.
     principal: Optional[DirectoryObject] = None
     # Identifier of the principal that has been granted the assignment. Can be a user, role-assignable group, or a service principal. Supports $filter (eq, ne).

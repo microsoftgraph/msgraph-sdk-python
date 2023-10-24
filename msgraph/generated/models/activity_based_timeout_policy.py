@@ -11,7 +11,7 @@ from .sts_policy import StsPolicy
 @dataclass
 class ActivityBasedTimeoutPolicy(StsPolicy):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.activityBasedTimeoutPolicy"
+    OdataType: Optional[str] = "#microsoft.graph.activityBasedTimeoutPolicy"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ActivityBasedTimeoutPolicy:

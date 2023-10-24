@@ -32,7 +32,7 @@ class UnifiedRoleEligibilityScheduleRequest(Request):
     # A message provided by users and administrators when create they create the unifiedRoleEligibilityScheduleRequest object.
     justification: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The principal that's getting a role eligibility through the request. Supports $expand.
     principal: Optional[DirectoryObject] = None
     # Identifier of the principal that has been granted the role eligibility. Can be a user or a role-assignable group. You can grant only active assignments service principals.Supports $filter (eq, ne).

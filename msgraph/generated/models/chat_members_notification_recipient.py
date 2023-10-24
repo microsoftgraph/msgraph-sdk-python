@@ -11,7 +11,7 @@ from .teamwork_notification_recipient import TeamworkNotificationRecipient
 @dataclass
 class ChatMembersNotificationRecipient(TeamworkNotificationRecipient):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.chatMembersNotificationRecipient"
+    OdataType: Optional[str] = "#microsoft.graph.chatMembersNotificationRecipient"
     # The unique identifier for the chat whose members should receive the notifications.
     chat_id: Optional[str] = None
     

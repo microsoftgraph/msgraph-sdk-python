@@ -25,7 +25,7 @@ class ManagedDeviceMobileAppConfigurationUserSummary(Entity):
     # Number of not applicable users
     not_applicable_count: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Number of pending Users
     pending_count: Optional[int] = None
     # Number of succeeded Users

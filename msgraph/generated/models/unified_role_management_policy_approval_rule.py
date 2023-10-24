@@ -12,7 +12,7 @@ from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 @dataclass
 class UnifiedRoleManagementPolicyApprovalRule(UnifiedRoleManagementPolicyRule):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.unifiedRoleManagementPolicyApprovalRule"
+    OdataType: Optional[str] = "#microsoft.graph.unifiedRoleManagementPolicyApprovalRule"
     # The settings for approval of the role assignment.
     setting: Optional[ApprovalSettings] = None
     

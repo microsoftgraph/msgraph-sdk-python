@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ...........models.o_data_errors.o_data_error import ODataError
     from ...........models.onenote_section import OnenoteSection
     from ...........models.onenote_section_collection_response import OnenoteSectionCollectionResponse
+    from ...........models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
     from .item.onenote_section_item_request_builder import OnenoteSectionItemRequestBuilder
 
@@ -45,7 +45,7 @@ class SectionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[OnenoteSectionCollectionResponse]:
         """
-        Retrieve a list of onenoteSection objects from the specified section group.
+        Retrieve a list of onenoteSection objects from the specified section group. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenoteSectionCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/sectiongroup-list-sections?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class SectionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[OnenoteSection] = None, request_configuration: Optional[SectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[OnenoteSection]:
         """
-        Create a new onenoteSection in the specified section group.
+        Create a new onenoteSection in the specified section group. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenoteSection]
@@ -92,24 +92,24 @@ class SectionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of onenoteSection objects from the specified section group.
+        Retrieve a list of onenoteSection objects from the specified section group. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def to_post_request_information(self,body: Optional[OnenoteSection] = None, request_configuration: Optional[SectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new onenoteSection in the specified section group.
+        Create a new onenoteSection in the specified section group. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,13 +117,13 @@ class SectionsRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.POST
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class SectionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SectionsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of onenoteSection objects from the specified section group.
+        Retrieve a list of onenoteSection objects from the specified section group. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

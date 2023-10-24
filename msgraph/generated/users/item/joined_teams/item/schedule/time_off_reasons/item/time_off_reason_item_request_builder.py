@@ -28,7 +28,7 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Mark a timeOffReason as inactive by setting the isActive property. Every team must include at least one timeoff reason. This method does not remove the specified timeOffReason instance. timeOffItem instances that have been assigned this reason remain assigned to this reason.
+        Mark a timeOffReason as inactive by setting the isActive property. Every team must include at least one timeoff reason. This method doesn't remove the specified timeOffReason instance. timeOffItem instances that have been assigned this reason remain assigned to this reason. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/timeoffreason-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TimeOffReason]:
         """
-        Retrieve the properties and relationships of a timeOffReason object by ID.
+        Retrieve the properties and relationships of a timeOffReason object by ID. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TimeOffReason]
         Find more info here: https://learn.microsoft.com/graph/api/timeoffreason-get?view=graph-rest-1.0
@@ -95,34 +95,35 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Mark a timeOffReason as inactive by setting the isActive property. Every team must include at least one timeoff reason. This method does not remove the specified timeOffReason instance. timeOffItem instances that have been assigned this reason remain assigned to this reason.
+        Mark a timeOffReason as inactive by setting the isActive property. Every team must include at least one timeoff reason. This method doesn't remove the specified timeOffReason instance. timeOffItem instances that have been assigned this reason remain assigned to this reason. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.DELETE
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.DELETE
+        request_info.try_add_request_header("Accept", "application/json, application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a timeOffReason object by ID.
+        Retrieve the properties and relationships of a timeOffReason object by ID. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def to_patch_request_information(self,body: Optional[TimeOffReason] = None, request_configuration: Optional[TimeOffReasonItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -135,13 +136,13 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.PATCH
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -168,7 +169,7 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TimeOffReasonItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a timeOffReason object by ID.
+        Retrieve the properties and relationships of a timeOffReason object by ID. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

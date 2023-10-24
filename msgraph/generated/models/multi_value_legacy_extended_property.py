@@ -11,7 +11,7 @@ from .entity import Entity
 @dataclass
 class MultiValueLegacyExtendedProperty(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A collection of property values.
     value: Optional[List[str]] = None
     

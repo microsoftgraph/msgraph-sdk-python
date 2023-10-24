@@ -12,7 +12,7 @@ from .entity import Entity
 @dataclass
 class PlannerGroup(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Read-only. Nullable. Returns the plannerPlans owned by the group.
     plans: Optional[List[PlannerPlan]] = None
     

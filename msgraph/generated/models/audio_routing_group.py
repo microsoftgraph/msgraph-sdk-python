@@ -12,7 +12,7 @@ from .entity import Entity
 @dataclass
 class AudioRoutingGroup(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # List of receiving participant ids.
     receivers: Optional[List[str]] = None
     # The routingMode property

@@ -16,7 +16,7 @@ class WindowsInformationProtectionNetworkLearningSummary(Entity):
     # Device Count
     device_count: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Website url
     url: Optional[str] = None
     

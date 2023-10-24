@@ -18,7 +18,7 @@ class ItemAnalytics(Entity):
     # The lastSevenDays property
     last_seven_days: Optional[ItemActivityStat] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemAnalytics:

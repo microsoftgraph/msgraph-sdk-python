@@ -14,7 +14,7 @@ class OnenoteOperation(Operation):
     # The error returned by the operation.
     error: Optional[OnenoteOperationError] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The operation percent complete if the operation is still in running status.
     percent_complete: Optional[str] = None
     # The resource id.

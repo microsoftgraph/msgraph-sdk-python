@@ -5,16 +5,16 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .conditional_access_session_control import ConditionalAccessSessionControl
+    from .signin_frequency_type import SigninFrequencyType
     from .sign_in_frequency_authentication_type import SignInFrequencyAuthenticationType
     from .sign_in_frequency_interval import SignInFrequencyInterval
-    from .signin_frequency_type import SigninFrequencyType
 
 from .conditional_access_session_control import ConditionalAccessSessionControl
 
 @dataclass
 class SignInFrequencySessionControl(ConditionalAccessSessionControl):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.signInFrequencySessionControl"
+    OdataType: Optional[str] = "#microsoft.graph.signInFrequencySessionControl"
     # The possible values are primaryAndSecondaryAuthentication, secondaryAuthentication, unknownFutureValue.
     authentication_type: Optional[SignInFrequencyAuthenticationType] = None
     # The possible values are timeBased, everyTime, unknownFutureValue.
@@ -41,14 +41,14 @@ class SignInFrequencySessionControl(ConditionalAccessSessionControl):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .conditional_access_session_control import ConditionalAccessSessionControl
+        from .signin_frequency_type import SigninFrequencyType
         from .sign_in_frequency_authentication_type import SignInFrequencyAuthenticationType
         from .sign_in_frequency_interval import SignInFrequencyInterval
-        from .signin_frequency_type import SigninFrequencyType
 
         from .conditional_access_session_control import ConditionalAccessSessionControl
+        from .signin_frequency_type import SigninFrequencyType
         from .sign_in_frequency_authentication_type import SignInFrequencyAuthenticationType
         from .sign_in_frequency_interval import SignInFrequencyInterval
-        from .signin_frequency_type import SigninFrequencyType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_enum_value(SignInFrequencyAuthenticationType)),

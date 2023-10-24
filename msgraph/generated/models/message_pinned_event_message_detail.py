@@ -13,7 +13,7 @@ from .event_message_detail import EventMessageDetail
 @dataclass
 class MessagePinnedEventMessageDetail(EventMessageDetail):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.messagePinnedEventMessageDetail"
+    OdataType: Optional[str] = "#microsoft.graph.messagePinnedEventMessageDetail"
     # Date and time when the event occurred.
     event_date_time: Optional[datetime.datetime] = None
     # Initiator of the event.

@@ -17,7 +17,7 @@ from .entity import Entity
 @dataclass
 class EducationSubmission(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The outcomes property
     outcomes: Optional[List[EducationOutcome]] = None
     # User who moved the status of this submission to reassigned.

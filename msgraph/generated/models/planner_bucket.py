@@ -14,7 +14,7 @@ class PlannerBucket(Entity):
     # Name of the bucket.
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Hint used to order items of this type in a list view. For details about the supported format, see Using order hints in Planner.
     order_hint: Optional[str] = None
     # Plan ID to which the bucket belongs.

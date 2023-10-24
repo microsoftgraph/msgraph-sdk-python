@@ -12,7 +12,7 @@ from .identity import Identity
 @dataclass
 class ProvisioningSystem(Identity):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.provisioningSystem"
+    OdataType: Optional[str] = "#microsoft.graph.provisioningSystem"
     # Details of the system.
     details: Optional[DetailsInfo] = None
     

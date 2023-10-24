@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .search_with_q_response import SearchWithQResponse
+    from .search_with_q_get_response import SearchWithQGetResponse
 
 class SearchWithQRequestBuilder(BaseRequestBuilder):
     """
@@ -25,13 +25,15 @@ class SearchWithQRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['q'] = str(q)
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/search(q='{q}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[SearchWithQRequestBuilderGetRequestConfiguration] = None) -> Optional[SearchWithQResponse]:
+    async def get(self,request_configuration: Optional[SearchWithQRequestBuilderGetRequestConfiguration] = None) -> Optional[SearchWithQGetResponse]:
         """
         Invoke function search
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[SearchWithQResponse]
+        Returns: Optional[SearchWithQGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -44,9 +46,9 @@ class SearchWithQRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .search_with_q_response import SearchWithQResponse
+        from .search_with_q_get_response import SearchWithQGetResponse
 
-        return await self.request_adapter.send_async(request_info, SearchWithQResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SearchWithQGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SearchWithQRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -55,14 +57,14 @@ class SearchWithQRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> SearchWithQRequestBuilder:

@@ -18,7 +18,7 @@ class UserExperienceAnalyticsDeviceStartupProcessPerformance(Entity):
     # The median impact of startup process on device boot time in milliseconds. Supports: $filter, $select, $OrderBy. Read-only.
     median_impact_in_ms: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The name of the startup process. Examples: outlook, excel. Supports: $select, $OrderBy. Read-only.
     process_name: Optional[str] = None
     # The product name of the startup process. Examples: Microsoft Outlook, Microsoft Excel. Supports: $select, $OrderBy. Read-only.

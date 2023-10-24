@@ -11,7 +11,7 @@ from .access_review_instance_decision_item_resource import AccessReviewInstanceD
 @dataclass
 class AccessReviewInstanceDecisionItemAzureRoleResource(AccessReviewInstanceDecisionItemResource):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.accessReviewInstanceDecisionItemAzureRoleResource"
+    OdataType: Optional[str] = "#microsoft.graph.accessReviewInstanceDecisionItemAzureRoleResource"
     # Details of the scope this role is associated with.
     scope: Optional[AccessReviewInstanceDecisionItemResource] = None
     

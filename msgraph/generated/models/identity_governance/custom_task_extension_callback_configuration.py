@@ -12,7 +12,7 @@ from ..custom_extension_callback_configuration import CustomExtensionCallbackCon
 @dataclass
 class CustomTaskExtensionCallbackConfiguration(CustomExtensionCallbackConfiguration):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.identityGovernance.customTaskExtensionCallbackConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.identityGovernance.customTaskExtensionCallbackConfiguration"
     # The authorizedApps property
     authorized_apps: Optional[List[Application]] = None
     

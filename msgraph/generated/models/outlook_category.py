@@ -16,7 +16,7 @@ class OutlookCategory(Entity):
     # A unique name that identifies a category in the user's mailbox. After a category is created, the name cannot be changed. Read-only.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OutlookCategory:

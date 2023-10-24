@@ -36,7 +36,7 @@ class Chat(Entity):
     # A collection of all the messages in the chat. Nullable.
     messages: Optional[List[ChatMessage]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Represents details about an online meeting. If the chat isn't associated with an online meeting, the property is empty. Read-only.
     online_meeting_info: Optional[TeamworkOnlineMeetingInfo] = None
     # A collection of permissions granted to apps for the chat.

@@ -24,7 +24,7 @@ class CustomSecurityAttributeDefinition(Entity):
     # Name of the custom security attribute. Must be unique within an attribute set. Can be up to 32 characters long and include Unicode characters. Cannot contain spaces or special characters. Cannot be changed later. Case insensitive.
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Specifies whether the custom security attribute is active or deactivated. Acceptable values are: Available and Deprecated. Can be changed later.
     status: Optional[str] = None
     # Data type for the custom security attribute values. Supported types are: Boolean, Integer, and String. Cannot be changed later.

@@ -25,21 +25,21 @@ if TYPE_CHECKING:
     from .message_pinned_event_message_detail import MessagePinnedEventMessageDetail
     from .message_unpinned_event_message_detail import MessageUnpinnedEventMessageDetail
     from .tab_updated_event_message_detail import TabUpdatedEventMessageDetail
+    from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
+    from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
+    from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
     from .team_archived_event_message_detail import TeamArchivedEventMessageDetail
     from .team_created_event_message_detail import TeamCreatedEventMessageDetail
     from .team_description_updated_event_message_detail import TeamDescriptionUpdatedEventMessageDetail
     from .team_joining_disabled_event_message_detail import TeamJoiningDisabledEventMessageDetail
     from .team_joining_enabled_event_message_detail import TeamJoiningEnabledEventMessageDetail
     from .team_renamed_event_message_detail import TeamRenamedEventMessageDetail
-    from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
-    from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
-    from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
     from .team_unarchived_event_message_detail import TeamUnarchivedEventMessageDetail
 
 @dataclass
 class EventMessageDetail(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -206,15 +206,15 @@ class EventMessageDetail(AdditionalDataHolder, BackedModel, Parsable):
         from .message_pinned_event_message_detail import MessagePinnedEventMessageDetail
         from .message_unpinned_event_message_detail import MessageUnpinnedEventMessageDetail
         from .tab_updated_event_message_detail import TabUpdatedEventMessageDetail
+        from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
+        from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
+        from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
         from .team_archived_event_message_detail import TeamArchivedEventMessageDetail
         from .team_created_event_message_detail import TeamCreatedEventMessageDetail
         from .team_description_updated_event_message_detail import TeamDescriptionUpdatedEventMessageDetail
         from .team_joining_disabled_event_message_detail import TeamJoiningDisabledEventMessageDetail
         from .team_joining_enabled_event_message_detail import TeamJoiningEnabledEventMessageDetail
         from .team_renamed_event_message_detail import TeamRenamedEventMessageDetail
-        from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
-        from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
-        from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
         from .team_unarchived_event_message_detail import TeamUnarchivedEventMessageDetail
 
         from .call_ended_event_message_detail import CallEndedEventMessageDetail
@@ -237,15 +237,15 @@ class EventMessageDetail(AdditionalDataHolder, BackedModel, Parsable):
         from .message_pinned_event_message_detail import MessagePinnedEventMessageDetail
         from .message_unpinned_event_message_detail import MessageUnpinnedEventMessageDetail
         from .tab_updated_event_message_detail import TabUpdatedEventMessageDetail
+        from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
+        from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
+        from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
         from .team_archived_event_message_detail import TeamArchivedEventMessageDetail
         from .team_created_event_message_detail import TeamCreatedEventMessageDetail
         from .team_description_updated_event_message_detail import TeamDescriptionUpdatedEventMessageDetail
         from .team_joining_disabled_event_message_detail import TeamJoiningDisabledEventMessageDetail
         from .team_joining_enabled_event_message_detail import TeamJoiningEnabledEventMessageDetail
         from .team_renamed_event_message_detail import TeamRenamedEventMessageDetail
-        from .teams_app_installed_event_message_detail import TeamsAppInstalledEventMessageDetail
-        from .teams_app_removed_event_message_detail import TeamsAppRemovedEventMessageDetail
-        from .teams_app_upgraded_event_message_detail import TeamsAppUpgradedEventMessageDetail
         from .team_unarchived_event_message_detail import TeamUnarchivedEventMessageDetail
 
         fields: Dict[str, Callable[[Any], None]] = {

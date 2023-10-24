@@ -13,7 +13,7 @@ from .event_message import EventMessage
 @dataclass
 class EventMessageResponse(EventMessage):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.eventMessageResponse"
+    OdataType: Optional[str] = "#microsoft.graph.eventMessageResponse"
     # The proposedNewTime property
     proposed_new_time: Optional[TimeSlot] = None
     # The responseType property

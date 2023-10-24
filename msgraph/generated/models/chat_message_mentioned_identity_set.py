@@ -12,7 +12,7 @@ from .identity_set import IdentitySet
 @dataclass
 class ChatMessageMentionedIdentitySet(IdentitySet):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.chatMessageMentionedIdentitySet"
+    OdataType: Optional[str] = "#microsoft.graph.chatMessageMentionedIdentitySet"
     # If present, represents a conversation (for example, team or channel) @mentioned in a message.
     conversation: Optional[TeamworkConversationIdentity] = None
     

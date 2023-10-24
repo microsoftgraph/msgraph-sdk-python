@@ -11,7 +11,7 @@ from .education_resource import EducationResource
 @dataclass
 class EducationExternalResource(EducationResource):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.educationExternalResource"
+    OdataType: Optional[str] = "#microsoft.graph.educationExternalResource"
     # Location of the resource. Required
     web_url: Optional[str] = None
     

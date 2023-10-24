@@ -15,7 +15,7 @@ class WorkbookFormatProtection(Entity):
     # Indicates if Excel locks the cells in the object. A null value indicates that the entire range doesn't have uniform lock setting.
     locked: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookFormatProtection:

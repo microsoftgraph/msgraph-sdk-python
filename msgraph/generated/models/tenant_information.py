@@ -7,19 +7,19 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 @dataclass
 class TenantInformation(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Primary domain name of an Azure AD tenant.
+    # Primary domain name of a Microsoft Entra tenant.
     default_domain_name: Optional[str] = None
-    # Display name of an Azure AD tenant.
+    # Display name of a Microsoft Entra tenant.
     display_name: Optional[str] = None
-    # Name shown to users that sign in to an Azure AD tenant.
+    # Name shown to users that sign in to a Microsoft Entra tenant.
     federation_brand_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Unique identifier of an Azure AD tenant.
+    # Unique identifier of a Microsoft Entra tenant.
     tenant_id: Optional[str] = None
     
     @staticmethod

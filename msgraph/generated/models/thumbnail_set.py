@@ -16,7 +16,7 @@ class ThumbnailSet(Entity):
     # A 176x176 scaled thumbnail.
     medium: Optional[Thumbnail] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # A 48x48 cropped thumbnail.
     small: Optional[Thumbnail] = None
     # A custom thumbnail image or the original image used to generate other thumbnails.

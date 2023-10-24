@@ -28,7 +28,7 @@ class DeviceCompliancePolicySettingStateSummary(Entity):
     # Number of not applicable devices
     not_applicable_device_count: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Supported platform types for policies.
     platform_type: Optional[PolicyPlatformType] = None
     # Number of remediated devices

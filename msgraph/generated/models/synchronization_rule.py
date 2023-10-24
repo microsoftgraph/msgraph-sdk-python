@@ -13,19 +13,19 @@ if TYPE_CHECKING:
 @dataclass
 class SynchronizationRule(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The containerFilter property
     container_filter: Optional[ContainerFilter] = None
-    # true if the synchronization rule can be customized; false if this rule is read-only and should not be changed.
+    # true if the synchronization rule can be customized; false if this rule is read-only and shouldn't be changed.
     editable: Optional[bool] = None
     # The groupFilter property
     group_filter: Optional[GroupFilter] = None
     # Synchronization rule identifier. Must be one of the identifiers recognized by the synchronization engine. Supported rule identifiers can be found in the synchronization template returned by the API.
     id: Optional[str] = None
-    # Additional extension properties. Unless instructed explicitly by the support team, metadata values should not be changed.
+    # Additional extension properties. Unless instructed explicitly by the support team, metadata values shouldn't be changed.
     metadata: Optional[List[StringKeyStringValuePair]] = None
     # Human-readable name of the synchronization rule. Not nullable.
     name: Optional[str] = None

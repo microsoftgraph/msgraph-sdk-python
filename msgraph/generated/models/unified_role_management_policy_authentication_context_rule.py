@@ -11,10 +11,10 @@ from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 @dataclass
 class UnifiedRoleManagementPolicyAuthenticationContextRule(UnifiedRoleManagementPolicyRule):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.unifiedRoleManagementPolicyAuthenticationContextRule"
+    OdataType: Optional[str] = "#microsoft.graph.unifiedRoleManagementPolicyAuthenticationContextRule"
     # The value of the authentication context claim.
     claim_value: Optional[str] = None
-    # Whether this rule is enabled.
+    # Determines whether this rule is enabled.
     is_enabled: Optional[bool] = None
     
     @staticmethod

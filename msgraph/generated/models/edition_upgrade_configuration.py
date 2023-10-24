@@ -16,7 +16,7 @@ class EditionUpgradeConfiguration(DeviceConfiguration):
     Windows 10 Edition Upgrade configuration.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.editionUpgradeConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.editionUpgradeConfiguration"
     # Edition Upgrade License File Content.
     license: Optional[str] = None
     # Edition Upgrade License type

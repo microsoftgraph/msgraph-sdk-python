@@ -22,7 +22,7 @@ class B2xIdentityUserFlow(IdentityUserFlow):
     # The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You can't create custom languages in self-service sign-up user flows.
     languages: Optional[List[UserFlowLanguageConfiguration]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The user attribute assignments included in the user flow.
     user_attribute_assignments: Optional[List[IdentityUserFlowAttributeAssignment]] = None
     # The userFlowIdentityProviders property

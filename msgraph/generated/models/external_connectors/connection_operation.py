@@ -15,7 +15,7 @@ class ConnectionOperation(Entity):
     # If status is failed, provides more information about the error that caused the failure.
     error: Optional[PublicError] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Indicates the status of the asynchronous operation. Possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.
     status: Optional[ConnectionOperationStatus] = None
     

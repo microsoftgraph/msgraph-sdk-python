@@ -12,7 +12,7 @@ from .place import Place
 @dataclass
 class RoomList(Place):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.roomList"
+    OdataType: Optional[str] = "#microsoft.graph.roomList"
     # The email address of the room list.
     email_address: Optional[str] = None
     # The rooms property

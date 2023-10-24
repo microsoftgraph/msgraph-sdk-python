@@ -21,7 +21,7 @@ class PrintConnector(Entity):
     # The physical and/or organizational location of the connector.
     location: Optional[PrinterLocation] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The connector machine's operating system version.
     operating_system: Optional[str] = None
     # The DateTimeOffset when the connector was registered.

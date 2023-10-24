@@ -18,7 +18,7 @@ from .entity import Entity
 @dataclass
 class OnenoteEntityBaseModel(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The endpoint where you can get details about the page. Read-only.
     self: Optional[str] = None
     

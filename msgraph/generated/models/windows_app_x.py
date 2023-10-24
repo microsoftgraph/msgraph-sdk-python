@@ -16,7 +16,7 @@ class WindowsAppX(MobileLobApp):
     Contains properties and inherited properties for Windows AppX Line Of Business apps.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windowsAppX"
+    OdataType: Optional[str] = "#microsoft.graph.windowsAppX"
     # Contains properties for Windows architecture.
     applicable_architectures: Optional[WindowsArchitecture] = None
     # The identity name of the uploaded app package. For example: 'Contoso.DemoApp'.

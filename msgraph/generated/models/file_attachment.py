@@ -11,7 +11,7 @@ from .attachment import Attachment
 @dataclass
 class FileAttachment(Attachment):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.fileAttachment"
+    OdataType: Optional[str] = "#microsoft.graph.fileAttachment"
     # The base64-encoded contents of the file.
     content_bytes: Optional[bytes] = None
     # The ID of the attachment in the Exchange store.

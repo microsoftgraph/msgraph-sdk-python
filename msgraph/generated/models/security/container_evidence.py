@@ -13,7 +13,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class ContainerEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.containerEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.containerEvidence"
     # The list of arguments.
     args: Optional[List[str]] = None
     # The list of commands.

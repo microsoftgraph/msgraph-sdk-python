@@ -16,12 +16,12 @@ from .onenote_entity_schema_object_model import OnenoteEntitySchemaObjectModel
 @dataclass
 class OnenoteEntityHierarchyModel(OnenoteEntitySchemaObjectModel):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.onenoteEntityHierarchyModel"
-    # Identity of the user, device, and application which created the item. Read-only.
+    OdataType: Optional[str] = "#microsoft.graph.onenoteEntityHierarchyModel"
+    # Identity of the user, device, and application that created the item. Read-only.
     created_by: Optional[IdentitySet] = None
     # The name of the notebook.
     display_name: Optional[str] = None
-    # Identity of the user, device, and application which created the item. Read-only.
+    # Identity of the user, device, and application that created the item. Read-only.
     last_modified_by: Optional[IdentitySet] = None
     # The date and time when the notebook was last modified. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     last_modified_date_time: Optional[datetime.datetime] = None

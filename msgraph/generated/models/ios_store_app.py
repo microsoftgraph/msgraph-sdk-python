@@ -16,7 +16,7 @@ class IosStoreApp(MobileApp):
     Contains properties and inherited properties for iOS store apps.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.iosStoreApp"
+    OdataType: Optional[str] = "#microsoft.graph.iosStoreApp"
     # The Apple App Store URL
     app_store_url: Optional[str] = None
     # Contains properties of the possible iOS device types the mobile app can run on.

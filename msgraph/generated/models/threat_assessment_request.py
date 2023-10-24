@@ -33,7 +33,7 @@ class ThreatAssessmentRequest(Entity):
     # The expectedAssessment property
     expected_assessment: Optional[ThreatExpectedAssessment] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The source of the threat assessment request. Possible values are: administrator.
     request_source: Optional[ThreatAssessmentRequestSource] = None
     # A collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it.

@@ -19,7 +19,7 @@ class ConditionalAccessTemplate(Entity):
     # The user-friendly name of the template.
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The scenarios property
     scenarios: Optional[TemplateScenarios] = None
     

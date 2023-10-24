@@ -15,7 +15,7 @@ class GroupAssignmentTarget(DeviceAndAppManagementAssignmentTarget):
     Represents an assignment to a group.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.groupAssignmentTarget"
+    OdataType: Optional[str] = "#microsoft.graph.groupAssignmentTarget"
     # The group Id that is the target of the assignment.
     group_id: Optional[str] = None
     

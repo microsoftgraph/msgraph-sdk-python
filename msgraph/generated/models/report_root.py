@@ -13,11 +13,11 @@ if TYPE_CHECKING:
 @dataclass
 class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Container for navigation properties for Azure AD authentication methods resources.
+    # Container for navigation properties for Microsoft Entra authentication methods resources.
     authentication_methods: Optional[AuthenticationMethodsRoot] = None
     # Retrieve a list of daily print usage summaries, grouped by printer.
     daily_print_usage_by_printer: Optional[List[PrintUsageByPrinter]] = None

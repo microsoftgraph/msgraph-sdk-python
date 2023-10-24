@@ -28,7 +28,7 @@ class AuthenticationStrengthPolicy(Entity):
     # The datetime when this policy was last modified.
     modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The policyType property
     policy_type: Optional[AuthenticationStrengthPolicyType] = None
     # The requirementsSatisfied property

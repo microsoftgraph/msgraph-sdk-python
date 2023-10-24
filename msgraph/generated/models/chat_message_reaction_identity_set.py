@@ -11,7 +11,7 @@ from .identity_set import IdentitySet
 @dataclass
 class ChatMessageReactionIdentitySet(IdentitySet):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.chatMessageReactionIdentitySet"
+    OdataType: Optional[str] = "#microsoft.graph.chatMessageReactionIdentitySet"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageReactionIdentitySet:

@@ -34,7 +34,7 @@ class WindowsAutopilotDeviceIdentity(Entity):
     # Model name of the Windows autopilot device.
     model: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Product Key of the Windows autopilot device.
     product_key: Optional[str] = None
     # Purchase Order Identifier of the Windows autopilot device.

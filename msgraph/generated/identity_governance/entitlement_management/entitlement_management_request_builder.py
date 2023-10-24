@@ -12,17 +12,17 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...models.entitlement_management import EntitlementManagement
     from ...models.o_data_errors.o_data_error import ODataError
-    from .access_package_assignment_approvals.access_package_assignment_approvals_request_builder import AccessPackageAssignmentApprovalsRequestBuilder
     from .access_packages.access_packages_request_builder import AccessPackagesRequestBuilder
+    from .access_package_assignment_approvals.access_package_assignment_approvals_request_builder import AccessPackageAssignmentApprovalsRequestBuilder
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
     from .assignment_policies.assignment_policies_request_builder import AssignmentPoliciesRequestBuilder
     from .assignment_requests.assignment_requests_request_builder import AssignmentRequestsRequestBuilder
-    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
     from .catalogs.catalogs_request_builder import CatalogsRequestBuilder
     from .connected_organizations.connected_organizations_request_builder import ConnectedOrganizationsRequestBuilder
+    from .resources.resources_request_builder import ResourcesRequestBuilder
     from .resource_environments.resource_environments_request_builder import ResourceEnvironmentsRequestBuilder
     from .resource_requests.resource_requests_request_builder import ResourceRequestsRequestBuilder
     from .resource_role_scopes.resource_role_scopes_request_builder import ResourceRoleScopesRequestBuilder
-    from .resources.resources_request_builder import ResourcesRequestBuilder
     from .settings.settings_request_builder import SettingsRequestBuilder
 
 class EntitlementManagementRequestBuilder(BaseRequestBuilder):
@@ -109,12 +109,13 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.DELETE
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.DELETE
+        request_info.try_add_request_header("Accept", "application/json, application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[EntitlementManagementRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -124,14 +125,14 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def to_patch_request_information(self,body: Optional[EntitlementManagement] = None, request_configuration: Optional[EntitlementManagementRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -144,13 +145,13 @@ class EntitlementManagementRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.PATCH
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

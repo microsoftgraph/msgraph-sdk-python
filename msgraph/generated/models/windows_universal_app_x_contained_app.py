@@ -14,7 +14,7 @@ class WindowsUniversalAppXContainedApp(MobileContainedApp):
     A class that represents a contained app of a WindowsUniversalAppX app.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windowsUniversalAppXContainedApp"
+    OdataType: Optional[str] = "#microsoft.graph.windowsUniversalAppXContainedApp"
     # The app user model ID of the contained app of a WindowsUniversalAppX app.
     app_user_model_id: Optional[str] = None
     

@@ -22,7 +22,7 @@ class Alert(Entity):
     # The adversary or activity group that is associated with this alert.
     actor_display_name: Optional[str] = None
     # The additionalDataProperty property
-    additional_data: Optional[Dictionary] = None
+    AdditionalData: Optional[Dictionary] = None
     # The alertPolicyId property
     alert_policy_id: Optional[str] = None
     # URL for the alert page in the Microsoft 365 Defender portal.
@@ -39,7 +39,7 @@ class Alert(Entity):
     created_date_time: Optional[datetime.datetime] = None
     # String value describing each alert.
     description: Optional[str] = None
-    # Detection technology or sensor that identified the notable component or activity. Possible values are: unknown, microsoftDefenderForEndpoint, antivirus, smartScreen, customTi, microsoftDefenderForOffice365, automatedInvestigation, microsoftThreatExperts, customDetection, microsoftDefenderForIdentity, cloudAppSecurity, microsoft365Defender, azureAdIdentityProtection, manual, microsoftDataLossPrevention, appGovernancePolicy, appGovernanceDetection, unknownFutureValue, microsoftDefenderForCloud. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: microsoftDefenderForCloud.
+    # Detection technology or sensor that identified the notable component or activity. Possible values are: unknown, microsoftDefenderForEndpoint, antivirus, smartScreen, customTi, microsoftDefenderForOffice365, automatedInvestigation, microsoftThreatExperts, customDetection, microsoftDefenderForIdentity, cloudAppSecurity, microsoft365Defender, azureAdIdentityProtection, manual, microsoftDataLossPrevention, appGovernancePolicy, appGovernanceDetection, unknownFutureValue, microsoftDefenderForCloud. You must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: microsoftDefenderForCloud.
     detection_source: Optional[DetectionSource] = None
     # The ID of the detector that triggered the alert.
     detector_id: Optional[str] = None
@@ -60,7 +60,9 @@ class Alert(Entity):
     # The attack techniques, as aligned with the MITRE ATT&CK framework.
     mitre_techniques: Optional[List[str]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
+    # The productName property
+    product_name: Optional[str] = None
     # The ID of the alert as it appears in the security provider product that generated the alert.
     provider_alert_id: Optional[str] = None
     # Recommended response and remediation actions to take in the event this alert was generated.
@@ -73,7 +75,7 @@ class Alert(Entity):
     severity: Optional[AlertSeverity] = None
     # The status property
     status: Optional[AlertStatus] = None
-    # The Azure Active Directory tenant the alert was created in.
+    # The Microsoft Entra tenant the alert was created in.
     tenant_id: Optional[str] = None
     # The threat associated with this alert.
     threat_display_name: Optional[str] = None
@@ -138,6 +140,7 @@ class Alert(Entity):
             "lastActivityDateTime": lambda n : setattr(self, 'last_activity_date_time', n.get_datetime_value()),
             "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
             "mitreTechniques": lambda n : setattr(self, 'mitre_techniques', n.get_collection_of_primitive_values(str)),
+            "productName": lambda n : setattr(self, 'product_name', n.get_str_value()),
             "providerAlertId": lambda n : setattr(self, 'provider_alert_id', n.get_str_value()),
             "recommendedActions": lambda n : setattr(self, 'recommended_actions', n.get_str_value()),
             "resolvedDateTime": lambda n : setattr(self, 'resolved_date_time', n.get_datetime_value()),
@@ -181,6 +184,7 @@ class Alert(Entity):
         writer.write_datetime_value("lastActivityDateTime", self.last_activity_date_time)
         writer.write_datetime_value("lastUpdateDateTime", self.last_update_date_time)
         writer.write_collection_of_primitive_values("mitreTechniques", self.mitre_techniques)
+        writer.write_str_value("productName", self.product_name)
         writer.write_str_value("providerAlertId", self.provider_alert_id)
         writer.write_str_value("recommendedActions", self.recommended_actions)
         writer.write_datetime_value("resolvedDateTime", self.resolved_date_time)

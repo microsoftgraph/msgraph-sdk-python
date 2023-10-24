@@ -63,7 +63,7 @@ class DeviceConfiguration(Entity):
     # DateTime the object was last modified.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Device Configuration users status overview
     user_status_overview: Optional[DeviceConfigurationUserOverview] = None
     # Device configuration installation status by user.

@@ -11,7 +11,7 @@ from .authentication_method import AuthenticationMethod
 @dataclass
 class SoftwareOathAuthenticationMethod(AuthenticationMethod):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.softwareOathAuthenticationMethod"
+    OdataType: Optional[str] = "#microsoft.graph.softwareOathAuthenticationMethod"
     # The secret key of the method. Always returns null.
     secret_key: Optional[str] = None
     

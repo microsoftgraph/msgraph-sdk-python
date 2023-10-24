@@ -12,7 +12,7 @@ from .data_set import DataSet
 @dataclass
 class EdiscoveryReviewSet(DataSet):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.ediscoveryReviewSet"
+    OdataType: Optional[str] = "#microsoft.graph.security.ediscoveryReviewSet"
     # Represents queries within the review set.
     queries: Optional[List[EdiscoveryReviewSetQuery]] = None
     

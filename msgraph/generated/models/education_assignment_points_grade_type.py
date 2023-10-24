@@ -11,7 +11,7 @@ from .education_assignment_grade_type import EducationAssignmentGradeType
 @dataclass
 class EducationAssignmentPointsGradeType(EducationAssignmentGradeType):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.educationAssignmentPointsGradeType"
+    OdataType: Optional[str] = "#microsoft.graph.educationAssignmentPointsGradeType"
     # Max points possible for this assignment.
     max_points: Optional[float] = None
     

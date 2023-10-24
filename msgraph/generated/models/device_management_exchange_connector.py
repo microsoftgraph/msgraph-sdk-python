@@ -27,7 +27,7 @@ class DeviceManagementExchangeConnector(Entity):
     # Last sync time for the Exchange Connector
     last_sync_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Email address used to configure the Service To Service Exchange Connector.
     primary_smtp_address: Optional[str] = None
     # The name of the Exchange server.

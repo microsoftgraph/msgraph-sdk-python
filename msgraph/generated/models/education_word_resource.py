@@ -11,7 +11,7 @@ from .education_resource import EducationResource
 @dataclass
 class EducationWordResource(EducationResource):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.educationWordResource"
+    OdataType: Optional[str] = "#microsoft.graph.educationWordResource"
     # Location of the file on disk.
     file_url: Optional[str] = None
     

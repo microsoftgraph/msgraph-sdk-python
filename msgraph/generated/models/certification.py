@@ -8,13 +8,13 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 @dataclass
 class Certification(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # URL that shows certification details for the application.
     certification_details_url: Optional[str] = None
-    # The timestamp when the current certification for the application will expire.
+    # The timestamp when the current certification for the application expires.
     certification_expiration_date_time: Optional[datetime.datetime] = None
     # Indicates whether the application is certified by Microsoft.
     is_certified_by_microsoft: Optional[bool] = None

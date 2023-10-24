@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .app_consent.app_consent_request_builder import AppConsentRequestBuilder
     from .entitlement_management.entitlement_management_request_builder import EntitlementManagementRequestBuilder
     from .lifecycle_workflows.lifecycle_workflows_request_builder import LifecycleWorkflowsRequestBuilder
+    from .privileged_access.privileged_access_request_builder import PrivilegedAccessRequestBuilder
     from .terms_of_use.terms_of_use_request_builder import TermsOfUseRequestBuilder
 
 class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
@@ -83,14 +84,14 @@ class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def to_patch_request_information(self,body: Optional[IdentityGovernance] = None, request_configuration: Optional[IdentityGovernanceRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -103,13 +104,13 @@ class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.PATCH
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -158,6 +159,15 @@ class IdentityGovernanceRequestBuilder(BaseRequestBuilder):
         from .lifecycle_workflows.lifecycle_workflows_request_builder import LifecycleWorkflowsRequestBuilder
 
         return LifecycleWorkflowsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def privileged_access(self) -> PrivilegedAccessRequestBuilder:
+        """
+        Provides operations to manage the privilegedAccess property of the microsoft.graph.identityGovernance entity.
+        """
+        from .privileged_access.privileged_access_request_builder import PrivilegedAccessRequestBuilder
+
+        return PrivilegedAccessRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def terms_of_use(self) -> TermsOfUseRequestBuilder:

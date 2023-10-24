@@ -11,7 +11,7 @@ from .identity_user_flow_attribute import IdentityUserFlowAttribute
 @dataclass
 class IdentityBuiltInUserFlowAttribute(IdentityUserFlowAttribute):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.identityBuiltInUserFlowAttribute"
+    OdataType: Optional[str] = "#microsoft.graph.identityBuiltInUserFlowAttribute"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityBuiltInUserFlowAttribute:

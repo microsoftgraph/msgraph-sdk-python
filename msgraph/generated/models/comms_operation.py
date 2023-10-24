@@ -26,7 +26,7 @@ class CommsOperation(Entity):
     # Unique Client Context string. Max limit is 256 chars.
     client_context: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The result information. Read-only.
     result_info: Optional[ResultInfo] = None
     # The status property

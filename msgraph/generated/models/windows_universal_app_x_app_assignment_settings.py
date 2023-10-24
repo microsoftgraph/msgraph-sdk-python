@@ -14,7 +14,7 @@ class WindowsUniversalAppXAppAssignmentSettings(MobileAppAssignmentSettings):
     Contains properties used when assigning a Windows Universal AppX mobile app to a group.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windowsUniversalAppXAppAssignmentSettings"
+    OdataType: Optional[str] = "#microsoft.graph.windowsUniversalAppXAppAssignmentSettings"
     # If true, uses device execution context for Windows Universal AppX mobile app. Device-context install is not allowed when this type of app is targeted with Available intent. Defaults to false.
     use_device_context: Optional[bool] = None
     

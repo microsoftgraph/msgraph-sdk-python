@@ -13,7 +13,7 @@ class ProfilePhoto(Entity):
     # The height of the photo. Read-only.
     height: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The width of the photo. Read-only.
     width: Optional[int] = None
     

@@ -14,7 +14,7 @@ class Schema(Entity):
     # Must be set to microsoft.graph.externalConnector.externalItem. Required.
     base_type: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128.
     properties: Optional[List[Property_]] = None
     

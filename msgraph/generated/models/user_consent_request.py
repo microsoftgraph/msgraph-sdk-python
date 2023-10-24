@@ -14,7 +14,7 @@ class UserConsentRequest(Request):
     # Approval decisions associated with a request.
     approval: Optional[Approval] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The user's justification for requiring access to the app. Supports $filter (eq only) and $orderby.
     reason: Optional[str] = None
     

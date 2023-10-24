@@ -30,7 +30,7 @@ class UserExperienceAnalyticsBaseline(Entity):
     # When TRUE, indicates the current baseline is the commercial median baseline. When FALSE, indicates it is a custom baseline. FALSE by default.
     is_built_in: Optional[bool] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The scores and insights for the reboot analytics metrics.
     reboot_analytics_metrics: Optional[UserExperienceAnalyticsCategory] = None
     # The scores and insights for the resource performance metrics.

@@ -14,7 +14,7 @@ class OmaSettingBase64(OmaSetting):
     OMA Settings Base64 definition.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.omaSettingBase64"
+    OdataType: Optional[str] = "#microsoft.graph.omaSettingBase64"
     # File name associated with the Value property (.cer
     file_name: Optional[str] = None
     # Value. (Base64 encoded string)

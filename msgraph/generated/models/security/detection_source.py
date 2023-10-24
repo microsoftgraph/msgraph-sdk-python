@@ -20,4 +20,9 @@ class DetectionSource(str, Enum):
     AppGovernanceDetection = "appGovernanceDetection",
     UnknownFutureValue = "unknownFutureValue",
     MicrosoftDefenderForCloud = "microsoftDefenderForCloud",
+    NrtAlerts = "nrtAlerts",
+    ScheduledAlerts = "scheduledAlerts",
+    MicrosoftDefenderThreatIntelligenceAnalytics = "microsoftDefenderThreatIntelligenceAnalytics",
+    BuiltInMl = "builtInMl",
+    MicrosoftSentinel = "microsoftSentinel",
 

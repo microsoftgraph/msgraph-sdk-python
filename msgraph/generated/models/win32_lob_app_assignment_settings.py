@@ -18,7 +18,7 @@ class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings):
     Contains properties used to assign an Win32 LOB mobile app to a group.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.win32LobAppAssignmentSettings"
+    OdataType: Optional[str] = "#microsoft.graph.win32LobAppAssignmentSettings"
     # Contains value for delivery optimization priority.
     delivery_optimization_priority: Optional[Win32LobAppDeliveryOptimizationPriority] = None
     # The install time settings to apply for this app assignment.

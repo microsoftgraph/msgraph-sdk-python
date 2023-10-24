@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .set_mobile_device_management_authority_response import SetMobileDeviceManagementAuthorityResponse
+    from .set_mobile_device_management_authority_post_response import SetMobileDeviceManagementAuthorityPostResponse
 
 class SetMobileDeviceManagementAuthorityRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class SetMobileDeviceManagementAuthorityRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/organization/{organization%2Did}/setMobileDeviceManagementAuthority", path_parameters)
     
-    async def post(self,request_configuration: Optional[SetMobileDeviceManagementAuthorityRequestBuilderPostRequestConfiguration] = None) -> Optional[SetMobileDeviceManagementAuthorityResponse]:
+    async def post(self,request_configuration: Optional[SetMobileDeviceManagementAuthorityRequestBuilderPostRequestConfiguration] = None) -> Optional[SetMobileDeviceManagementAuthorityPostResponse]:
         """
         Set mobile device management authority
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[SetMobileDeviceManagementAuthorityResponse]
+        Returns: Optional[SetMobileDeviceManagementAuthorityPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-organization-setmobiledevicemanagementauthority?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
@@ -44,9 +44,9 @@ class SetMobileDeviceManagementAuthorityRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .set_mobile_device_management_authority_response import SetMobileDeviceManagementAuthorityResponse
+        from .set_mobile_device_management_authority_post_response import SetMobileDeviceManagementAuthorityPostResponse
 
-        return await self.request_adapter.send_async(request_info, SetMobileDeviceManagementAuthorityResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, SetMobileDeviceManagementAuthorityPostResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[SetMobileDeviceManagementAuthorityRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
@@ -55,13 +55,13 @@ class SetMobileDeviceManagementAuthorityRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.POST
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> SetMobileDeviceManagementAuthorityRequestBuilder:

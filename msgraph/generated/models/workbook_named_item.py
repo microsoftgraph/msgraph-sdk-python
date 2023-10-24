@@ -17,7 +17,7 @@ class WorkbookNamedItem(Entity):
     # The name of the object. Read-only.
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Indicates whether the name is scoped to the workbook or to a specific worksheet. Read-only.
     scope: Optional[str] = None
     # Indicates what type of reference is associated with the name. The possible values are: String, Integer, Double, Boolean, Range. Read-only.

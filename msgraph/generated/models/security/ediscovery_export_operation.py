@@ -19,17 +19,17 @@ class EdiscoveryExportOperation(CaseOperation):
     description: Optional[str] = None
     # The exportFileMetadata property
     export_file_metadata: Optional[List[ExportFileMetadata]] = None
-    # The options provided for the export. For more details, see reviewSet: export. Possible values are: originalFiles, text, pdfReplacement,  tags.
+    # The options provided for the export. For more information, see reviewSet: export. Possible values are: originalFiles, text, pdfReplacement,  tags.
     export_options: Optional[ExportOptions] = None
-    # The options provided that specify the structure of the export. For more details, see reviewSet: export. Possible values are: none, directory, pst.
+    # The options that specify the structure of the export. For more information, see reviewSet: export. Possible values are: none, directory, pst.
     export_structure: Optional[ExportFileStructure] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The name provided for the export.
     output_name: Optional[str] = None
     # Review set from where documents are exported.
     review_set: Optional[EdiscoveryReviewSet] = None
-    # The review set query which is used to filter the documents for export.
+    # The review set query that is used to filter the documents for export.
     review_set_query: Optional[EdiscoveryReviewSetQuery] = None
     
     @staticmethod

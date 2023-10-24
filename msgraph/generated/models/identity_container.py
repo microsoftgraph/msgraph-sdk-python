@@ -24,7 +24,7 @@ class IdentityContainer(Entity):
     # The identityProviders property
     identity_providers: Optional[List[IdentityProviderBase]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Represents entry point for identity userflow attributes.
     user_flow_attributes: Optional[List[IdentityUserFlowAttribute]] = None
     

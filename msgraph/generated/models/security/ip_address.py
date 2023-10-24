@@ -12,10 +12,10 @@ from .host import Host
 @dataclass
 class IpAddress(Host):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.ipAddress"
+    OdataType: Optional[str] = "#microsoft.graph.security.ipAddress"
     # The details about the autonomous system to which this IP address belongs.
     autonomous_system: Optional[AutonomousSystem] = None
-    # The country or region for this IP address.
+    # The country/region for this IP address.
     country_or_region: Optional[str] = None
     # The hosting company listed for this host.
     hosting_provider: Optional[str] = None

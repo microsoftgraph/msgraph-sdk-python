@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 @dataclass
 class ConditionalAccessSessionControls(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -21,7 +21,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, BackedModel, Parsab
     application_enforced_restrictions: Optional[ApplicationEnforcedRestrictionsSessionControl] = None
     # Session control to apply cloud app security.
     cloud_app_security: Optional[CloudAppSecuritySessionControl] = None
-    # Session control that determines whether it is acceptable for Azure AD to extend existing sessions based on information collected prior to an outage or not.
+    # Session control that determines whether it is acceptable for Microsoft Entra ID to extend existing sessions based on information collected prior to an outage or not.
     disable_resilience_defaults: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

@@ -11,7 +11,7 @@ from .education_submission_recipient import EducationSubmissionRecipient
 @dataclass
 class EducationSubmissionIndividualRecipient(EducationSubmissionRecipient):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.educationSubmissionIndividualRecipient"
+    OdataType: Optional[str] = "#microsoft.graph.educationSubmissionIndividualRecipient"
     # User ID of the user to whom the submission is assigned.
     user_id: Optional[str] = None
     

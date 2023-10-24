@@ -14,7 +14,7 @@ class IosCustomConfiguration(DeviceConfiguration):
     This topic provides descriptions of the declared methods, properties and relationships exposed by the iosCustomConfiguration resource.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.iosCustomConfiguration"
+    OdataType: Optional[str] = "#microsoft.graph.iosCustomConfiguration"
     # Payload. (UTF8 encoded byte array)
     payload: Optional[bytes] = None
     # Payload file name (.mobileconfig

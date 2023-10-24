@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 @dataclass
 class ConditionalAccessFilter(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -18,7 +18,7 @@ class ConditionalAccessFilter(AdditionalDataHolder, BackedModel, Parsable):
     mode: Optional[FilterMode] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Rule syntax is similar to that used for membership rules for groups in Azure Active Directory (Azure AD). For details, see rules with multiple expressions
+    # Rule syntax is similar to that used for membership rules for groups in Microsoft Entra ID. For details, see rules with multiple expressions
     rule: Optional[str] = None
     
     @staticmethod

@@ -12,7 +12,7 @@ from .threat_assessment_request import ThreatAssessmentRequest
 @dataclass
 class MailAssessmentRequest(ThreatAssessmentRequest):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.mailAssessmentRequest"
+    OdataType: Optional[str] = "#microsoft.graph.mailAssessmentRequest"
     # The reason for mail routed to its destination. Possible values are: none, mailFlowRule, safeSender, blockedSender, advancedSpamFiltering, domainAllowList, domainBlockList, notInAddressBook, firstTimeSender, autoPurgeToInbox, autoPurgeToJunk, autoPurgeToDeleted, outbound, notJunk, junk.
     destination_routing_reason: Optional[MailDestinationRoutingReason] = None
     # The resource URI of the mail message for assessment.

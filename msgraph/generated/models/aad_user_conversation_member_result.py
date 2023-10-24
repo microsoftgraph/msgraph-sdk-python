@@ -11,7 +11,7 @@ from .action_result_part import ActionResultPart
 @dataclass
 class AadUserConversationMemberResult(ActionResultPart):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.aadUserConversationMemberResult"
+    OdataType: Optional[str] = "#microsoft.graph.aadUserConversationMemberResult"
     # The userId property
     user_id: Optional[str] = None
     

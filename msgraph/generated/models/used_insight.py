@@ -16,7 +16,7 @@ class UsedInsight(Entity):
     # Information about when the item was last viewed or modified by the user. Read only.
     last_used: Optional[UsageDetails] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Used for navigating to the item that was used. For file attachments, the type is fileAttachment. For linked attachments, the type is driveItem.
     resource: Optional[Entity] = None
     # Reference properties of the used document, such as the url and type of the document. Read-only

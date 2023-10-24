@@ -26,7 +26,7 @@ class DeviceInstallState(Entity):
     # Last sync date and time.
     last_sync_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # OS Description.
     os_description: Optional[str] = None
     # OS Version.

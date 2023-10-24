@@ -19,7 +19,7 @@ class DeviceCompliancePolicyState(Entity):
     # The name of the policy for this policyBase
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Supported platform types for policies.
     platform_type: Optional[PolicyPlatformType] = None
     # Count of how many setting a policy holds

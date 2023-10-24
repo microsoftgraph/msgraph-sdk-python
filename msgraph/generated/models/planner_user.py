@@ -13,7 +13,7 @@ from .entity import Entity
 @dataclass
 class PlannerUser(Entity):
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Read-only. Nullable. Returns the plannerTasks assigned to the user.
     plans: Optional[List[PlannerPlan]] = None
     # Read-only. Nullable. Returns the plannerPlans shared with the user.

@@ -11,7 +11,7 @@ from .access_review_notification_recipient_scope import AccessReviewNotification
 @dataclass
 class AccessReviewNotificationRecipientQueryScope(AccessReviewNotificationRecipientScope):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.accessReviewNotificationRecipientQueryScope"
+    OdataType: Optional[str] = "#microsoft.graph.accessReviewNotificationRecipientQueryScope"
     # Represents the query for who the recipients are. For example, /groups/{group id}/members for group members and /users/{user id} for a specific user.
     query: Optional[str] = None
     # In the scenario where reviewers need to be specified dynamically, indicates the relative source of the query. This property is only required if a relative query (that is, ./manager) is specified.

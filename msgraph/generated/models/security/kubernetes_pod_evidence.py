@@ -17,7 +17,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class KubernetesPodEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.kubernetesPodEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.kubernetesPodEvidence"
     # The list of pod containers which are not init or ephemeral containers.
     containers: Optional[List[ContainerEvidence]] = None
     # The pod controller.

@@ -17,7 +17,7 @@ class TargetedManagedAppProtection(ManagedAppProtection):
     Policy used to configure detailed management settings targeted to specific security groups
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.targetedManagedAppProtection"
+    OdataType: Optional[str] = "#microsoft.graph.targetedManagedAppProtection"
     # Navigation property to list of inclusion and exclusion groups to which the policy is deployed.
     assignments: Optional[List[TargetedManagedAppPolicyAssignment]] = None
     # Indicates if the policy is deployed to any inclusion groups or not.

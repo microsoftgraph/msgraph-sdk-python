@@ -19,7 +19,7 @@ class AttendanceRecord(Entity):
     # Identity of the user associated with this attendance record.
     identity: Optional[Identity] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Role of the attendee. Possible values are: None, Attendee, Presenter, and Organizer.
     role: Optional[str] = None
     # Total duration of the attendances in seconds.

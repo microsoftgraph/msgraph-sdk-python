@@ -11,7 +11,7 @@ from .education_resource import EducationResource
 @dataclass
 class EducationPowerPointResource(EducationResource):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.educationPowerPointResource"
+    OdataType: Optional[str] = "#microsoft.graph.educationPowerPointResource"
     # Location of the file on disk.
     file_url: Optional[str] = None
     

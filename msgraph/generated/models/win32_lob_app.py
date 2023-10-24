@@ -19,7 +19,7 @@ class Win32LobApp(MobileLobApp):
     Contains properties and inherited properties for Win32 apps.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.win32LobApp"
+    OdataType: Optional[str] = "#microsoft.graph.win32LobApp"
     # Contains properties for Windows architecture.
     applicable_architectures: Optional[WindowsArchitecture] = None
     # The command line to install this app

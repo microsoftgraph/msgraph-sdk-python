@@ -16,7 +16,7 @@ class ManagedIOSStoreApp(ManagedApp):
     Contains properties and inherited properties for an iOS store app that you can manage with an Intune app protection policy.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.managedIOSStoreApp"
+    OdataType: Optional[str] = "#microsoft.graph.managedIOSStoreApp"
     # The Apple AppStoreUrl.
     app_store_url: Optional[str] = None
     # Contains properties of the possible iOS device types the mobile app can run on.

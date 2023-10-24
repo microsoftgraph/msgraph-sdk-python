@@ -14,7 +14,7 @@ class MicrosoftStoreForBusinessAppAssignmentSettings(MobileAppAssignmentSettings
     Contains properties used to assign an Microsoft Store for Business mobile app to a group.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.microsoftStoreForBusinessAppAssignmentSettings"
+    OdataType: Optional[str] = "#microsoft.graph.microsoftStoreForBusinessAppAssignmentSettings"
     # Whether or not to use device execution context for Microsoft Store for Business mobile app.
     use_device_context: Optional[bool] = None
     

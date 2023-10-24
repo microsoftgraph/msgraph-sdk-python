@@ -11,10 +11,10 @@ from .identity_source import IdentitySource
 @dataclass
 class AzureActiveDirectoryTenant(IdentitySource):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.azureActiveDirectoryTenant"
-    # The name of the Azure Active Directory tenant. Read only.
+    OdataType: Optional[str] = "#microsoft.graph.azureActiveDirectoryTenant"
+    # The name of the Microsoft Entra tenant. Read only.
     display_name: Optional[str] = None
-    # The ID of the Azure Active Directory tenant. Read only.
+    # The ID of the Microsoft Entra tenant. Read only.
     tenant_id: Optional[str] = None
     
     @staticmethod

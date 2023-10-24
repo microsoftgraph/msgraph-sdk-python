@@ -7,17 +7,17 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 @dataclass
 class AppIdentity(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Refers to the Unique GUID representing Application Id in the Azure Active Directory.
+    # Refers to the unique ID representing application in Microsoft Entra ID.
     app_id: Optional[str] = None
-    # Refers to the Application Name displayed in the Azure Portal.
+    # Refers to the application name displayed in the Microsoft Entra admin center.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Refers to the Unique GUID indicating Service Principal Id in Azure Active Directory for the corresponding App.
+    # Refers to the unique ID for the service principal in Microsoft Entra ID.
     service_principal_id: Optional[str] = None
     # Refers to the Service Principal Name is the Application name in the tenant.
     service_principal_name: Optional[str] = None

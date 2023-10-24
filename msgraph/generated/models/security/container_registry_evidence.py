@@ -11,7 +11,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class ContainerRegistryEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.containerRegistryEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.containerRegistryEvidence"
     # The registry URI.
     registry: Optional[str] = None
     

@@ -20,7 +20,7 @@ class UserProcessingResult(Entity):
     # The number of tasks that failed in the workflow execution.
     failed_tasks_count: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The processingStatus property
     processing_status: Optional[LifecycleWorkflowProcessingStatus] = None
     # The date time that the workflow is scheduled to be executed for a user.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.

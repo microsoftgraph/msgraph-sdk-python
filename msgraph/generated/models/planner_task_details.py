@@ -18,7 +18,7 @@ class PlannerTaskDetails(Entity):
     # Description of the task.
     description: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # This sets the type of preview that shows up on the task. The possible values are: automatic, noPreview, checklist, description, reference. When set to automatic the displayed preview is chosen by the app viewing the task.
     preview_type: Optional[PlannerPreviewType] = None
     # The collection of references on the task.

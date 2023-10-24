@@ -23,7 +23,7 @@ class AuthenticationMethodConfiguration(Entity):
     # Groups of users that are excluded from a policy.
     exclude_targets: Optional[List[ExcludeTarget]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The state of the policy. Possible values are: enabled, disabled.
     state: Optional[AuthenticationMethodState] = None
     

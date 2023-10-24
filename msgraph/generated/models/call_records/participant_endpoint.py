@@ -13,7 +13,7 @@ from .endpoint import Endpoint
 @dataclass
 class ParticipantEndpoint(Endpoint):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.callRecords.participantEndpoint"
+    OdataType: Optional[str] = "#microsoft.graph.callRecords.participantEndpoint"
     # CPU number of cores used by the media endpoint.
     cpu_cores_count: Optional[int] = None
     # CPU name used by the media endpoint.

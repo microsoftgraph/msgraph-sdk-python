@@ -17,7 +17,7 @@ class WorkbookChartSeries(Entity):
     # Represents the name of a series in a chart.
     name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Represents a collection of all points in the series. Read-only.
     points: Optional[List[WorkbookChartPoint]] = None
     

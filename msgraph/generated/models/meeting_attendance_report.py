@@ -19,7 +19,7 @@ class MeetingAttendanceReport(Entity):
     # UTC time when the meeting started. Read-only.
     meeting_start_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Total number of participants. Read-only.
     total_participant_count: Optional[int] = None
     

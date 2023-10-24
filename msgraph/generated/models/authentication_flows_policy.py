@@ -16,7 +16,7 @@ class AuthenticationFlowsPolicy(Entity):
     # Inherited property. The human-readable name of the policy. Optional. Read-only.
     display_name: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Contains selfServiceSignUpAuthenticationFlowConfiguration settings that convey whether self-service sign-up is enabled or disabled. Optional. Read-only.
     self_service_sign_up: Optional[SelfServiceSignUpAuthenticationFlowConfiguration] = None
     

@@ -12,7 +12,7 @@ from .directory_object import DirectoryObject
 @dataclass
 class DirectoryObjectPartnerReference(DirectoryObject):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.directoryObjectPartnerReference"
+    OdataType: Optional[str] = "#microsoft.graph.directoryObjectPartnerReference"
     # Description of the object returned. Read-only.
     description: Optional[str] = None
     # Name of directory object being returned, like group or application. Read-only.

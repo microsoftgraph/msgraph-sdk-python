@@ -16,7 +16,7 @@ class GovernanceInsight(Entity):
     # Indicates when the insight was created.
     insight_created_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GovernanceInsight:

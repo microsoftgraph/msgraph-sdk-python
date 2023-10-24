@@ -11,7 +11,7 @@ from .directory_object import DirectoryObject
 @dataclass
 class Endpoint(DirectoryObject):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.endpoint"
+    OdataType: Optional[str] = "#microsoft.graph.endpoint"
     # The capability property
     capability: Optional[str] = None
     # The providerId property

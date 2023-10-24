@@ -7,21 +7,21 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 @dataclass
 class UserAccount(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The displayed name of the user account.
     account_name: Optional[str] = None
-    # The user object identifier in Azure Active Directory (Azure AD).
+    # The user object identifier in Microsoft Entra ID.
     azure_ad_user_id: Optional[str] = None
-    # The user display name in Azure AD.
+    # The user display name in Microsoft Entra ID.
     display_name: Optional[str] = None
     # The name of the Active Directory domain of which the user is a member.
     domain_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The user principal name of the account in Azure AD.
+    # The user principal name of the account in Microsoft Entra ID.
     user_principal_name: Optional[str] = None
     # The local security identifier of the user account.
     user_sid: Optional[str] = None

@@ -14,7 +14,7 @@ class MobileAppTroubleshootingEvent(Entity):
     # Indicates collection of App Log Upload Request.
     app_log_collection_requests: Optional[List[AppLogCollectionRequest]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileAppTroubleshootingEvent:

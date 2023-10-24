@@ -27,7 +27,7 @@ class LearningCourseActivity(Entity):
     # The registration ID of the provider. Required.
     learning_provider_id: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The status of the course activity. Possible values are: notStarted, inProgress, completed. Required.
     status: Optional[CourseStatus] = None
     

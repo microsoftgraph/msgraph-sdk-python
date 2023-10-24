@@ -14,7 +14,7 @@ class ExclusionGroupAssignmentTarget(GroupAssignmentTarget):
     Represents a group that should be excluded from an assignment.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.exclusionGroupAssignmentTarget"
+    OdataType: Optional[str] = "#microsoft.graph.exclusionGroupAssignmentTarget"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExclusionGroupAssignmentTarget:

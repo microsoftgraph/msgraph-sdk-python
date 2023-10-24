@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .get_oma_setting_plain_text_value_with_secret_reference_value_id_response import GetOmaSettingPlainTextValueWithSecretReferenceValueIdResponse
+    from .get_oma_setting_plain_text_value_with_secret_reference_value_id_get_response import GetOmaSettingPlainTextValueWithSecretReferenceValueIdGetResponse
 
 class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(BaseRequestBuilder):
     """
@@ -25,13 +25,15 @@ class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(BaseRe
         param secret_reference_value_id: Usage: secretReferenceValueId='{secretReferenceValueId}'
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['secret_reference_value_id'] = str(secret_reference_value_id)
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/deviceConfigurations/{deviceConfiguration%2Did}/getOmaSettingPlainTextValue(secretReferenceValueId='{secretReferenceValueId}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilderGetRequestConfiguration] = None) -> Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdResponse]:
+    async def get(self,request_configuration: Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilderGetRequestConfiguration] = None) -> Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdGetResponse]:
         """
         Invoke function getOmaSettingPlainTextValue
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdResponse]
+        Returns: Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -44,9 +46,9 @@ class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(BaseRe
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .get_oma_setting_plain_text_value_with_secret_reference_value_id_response import GetOmaSettingPlainTextValueWithSecretReferenceValueIdResponse
+        from .get_oma_setting_plain_text_value_with_secret_reference_value_id_get_response import GetOmaSettingPlainTextValueWithSecretReferenceValueIdGetResponse
 
-        return await self.request_adapter.send_async(request_info, GetOmaSettingPlainTextValueWithSecretReferenceValueIdResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, GetOmaSettingPlainTextValueWithSecretReferenceValueIdGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -55,13 +57,13 @@ class GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(BaseRe
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder:

@@ -114,7 +114,7 @@ class ManagedDevice(Entity):
     # Notes on the device created by IT Admin. Default is null. To retrieve actual values GET call needs to be made, with device id and included in select parameter. Supports: $select. $Search is not supported.
     notes: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Operating system of the device. Windows, iOS, etc. This property is read-only.
     operating_system: Optional[str] = None
     # Operating system version of the device. This property is read-only.

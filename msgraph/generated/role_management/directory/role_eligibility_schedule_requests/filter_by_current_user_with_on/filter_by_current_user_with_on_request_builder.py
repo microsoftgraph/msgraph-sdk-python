@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .filter_by_current_user_with_on_response import FilterByCurrentUserWithOnResponse
+    from .filter_by_current_user_with_on_get_response import FilterByCurrentUserWithOnGetResponse
 
 class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
     """
@@ -25,13 +25,15 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
+        if isinstance(path_parameters, dict):
+            path_parameters['on'] = str(on)
         super().__init__(request_adapter, "{+baseurl}/roleManagement/directory/roleEligibilityScheduleRequests/filterByCurrentUser(on='{on}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
-    async def get(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None) -> Optional[FilterByCurrentUserWithOnResponse]:
+    async def get(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None) -> Optional[FilterByCurrentUserWithOnGetResponse]:
         """
         Invoke function filterByCurrentUser
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[FilterByCurrentUserWithOnResponse]
+        Returns: Optional[FilterByCurrentUserWithOnGetResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -44,9 +46,9 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .filter_by_current_user_with_on_response import FilterByCurrentUserWithOnResponse
+        from .filter_by_current_user_with_on_get_response import FilterByCurrentUserWithOnGetResponse
 
-        return await self.request_adapter.send_async(request_info, FilterByCurrentUserWithOnResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, FilterByCurrentUserWithOnGetResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -55,14 +57,14 @@ class FilterByCurrentUserWithOnRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> FilterByCurrentUserWithOnRequestBuilder:

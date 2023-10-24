@@ -13,7 +13,7 @@ from .alert_evidence import AlertEvidence
 @dataclass
 class FileEvidence(AlertEvidence):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.fileEvidence"
+    OdataType: Optional[str] = "#microsoft.graph.security.fileEvidence"
     # The status of the detection.The possible values are: detected, blocked, prevented, unknownFutureValue.
     detection_status: Optional[DetectionStatus] = None
     # The file details.

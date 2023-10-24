@@ -11,7 +11,7 @@ from .threat_assessment_request import ThreatAssessmentRequest
 @dataclass
 class UrlAssessmentRequest(ThreatAssessmentRequest):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.urlAssessmentRequest"
+    OdataType: Optional[str] = "#microsoft.graph.urlAssessmentRequest"
     # The URL string.
     url: Optional[str] = None
     

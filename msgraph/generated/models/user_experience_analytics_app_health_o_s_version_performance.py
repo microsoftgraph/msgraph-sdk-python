@@ -18,7 +18,7 @@ class UserExperienceAnalyticsAppHealthOSVersionPerformance(Entity):
     # The mean time to failure for the application in minutes. Valid values 0 to 2147483647. Supports: $filter, $select, $OrderBy. Read-only. Valid values -2147483648 to 2147483647
     mean_time_to_failure_in_minutes: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The OS build number installed on the device. Supports: $select, $OrderBy. Read-only.
     os_build_number: Optional[str] = None
     # The OS version installed on the device. Supports: $select, $OrderBy. Read-only.

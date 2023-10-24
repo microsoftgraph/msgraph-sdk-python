@@ -15,7 +15,7 @@ class OmaSettingDateTime(OmaSetting):
     OMA Settings DateTime definition.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.omaSettingDateTime"
+    OdataType: Optional[str] = "#microsoft.graph.omaSettingDateTime"
     # Value.
     value: Optional[datetime.datetime] = None
     

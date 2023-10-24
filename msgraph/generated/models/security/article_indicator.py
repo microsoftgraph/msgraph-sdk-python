@@ -11,7 +11,7 @@ from .indicator import Indicator
 @dataclass
 class ArticleIndicator(Indicator):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.security.articleIndicator"
+    OdataType: Optional[str] = "#microsoft.graph.security.articleIndicator"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ArticleIndicator:

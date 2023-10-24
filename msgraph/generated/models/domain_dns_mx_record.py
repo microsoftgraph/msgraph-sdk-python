@@ -13,7 +13,7 @@ class DomainDnsMxRecord(DomainDnsRecord):
     # Value used when configuring the answer/destination/value of the MX record at the DNS host.
     mail_exchange: Optional[str] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Value used when configuring the Preference/Priority property of the MX record at the DNS host.
     preference: Optional[int] = None
     

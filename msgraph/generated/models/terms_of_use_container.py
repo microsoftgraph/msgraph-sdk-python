@@ -14,10 +14,10 @@ from .entity import Entity
 class TermsOfUseContainer(Entity):
     # Represents the current status of a user's response to a company's customizable terms of use agreement.
     agreement_acceptances: Optional[List[AgreementAcceptance]] = None
-    # Represents a tenant's customizable terms of use agreement that's created and managed with Azure Active Directory (Azure AD).
+    # Represents a tenant's customizable terms of use agreement that's created and managed with Microsoft Entra ID Governance.
     agreements: Optional[List[Agreement]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TermsOfUseContainer:

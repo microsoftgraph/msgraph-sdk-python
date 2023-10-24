@@ -8,13 +8,14 @@ if TYPE_CHECKING:
     from .chat_message_from_identity_set import ChatMessageFromIdentitySet
     from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
     from .chat_message_reaction_identity_set import ChatMessageReactionIdentitySet
+    from .communications_identity_set import CommunicationsIdentitySet
     from .identity import Identity
     from .share_point_identity_set import SharePointIdentitySet
 
 @dataclass
 class IdentitySet(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
@@ -52,6 +53,10 @@ class IdentitySet(AdditionalDataHolder, BackedModel, Parsable):
             from .chat_message_reaction_identity_set import ChatMessageReactionIdentitySet
 
             return ChatMessageReactionIdentitySet()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.communicationsIdentitySet".casefold():
+            from .communications_identity_set import CommunicationsIdentitySet
+
+            return CommunicationsIdentitySet()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.sharePointIdentitySet".casefold():
             from .share_point_identity_set import SharePointIdentitySet
 
@@ -66,12 +71,14 @@ class IdentitySet(AdditionalDataHolder, BackedModel, Parsable):
         from .chat_message_from_identity_set import ChatMessageFromIdentitySet
         from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
         from .chat_message_reaction_identity_set import ChatMessageReactionIdentitySet
+        from .communications_identity_set import CommunicationsIdentitySet
         from .identity import Identity
         from .share_point_identity_set import SharePointIdentitySet
 
         from .chat_message_from_identity_set import ChatMessageFromIdentitySet
         from .chat_message_mentioned_identity_set import ChatMessageMentionedIdentitySet
         from .chat_message_reaction_identity_set import ChatMessageReactionIdentitySet
+        from .communications_identity_set import CommunicationsIdentitySet
         from .identity import Identity
         from .share_point_identity_set import SharePointIdentitySet
 

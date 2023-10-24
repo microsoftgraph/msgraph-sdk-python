@@ -36,12 +36,12 @@ from .directory_object import DirectoryObject
 @dataclass
 class Application(DirectoryObject):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.application"
+    OdataType: Optional[str] = "#microsoft.graph.application"
     # Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Office 365 call the application in the context of a document the user is working on.
     add_ins: Optional[List[AddIn]] = None
     # Specifies settings for an application that implements a web API.
     api: Optional[ApiApplication] = None
-    # The unique identifier for the application that is assigned to an application by Azure AD. Not nullable. Read-only. Supports $filter (eq).
+    # The unique identifier for the application that is assigned to an application by Microsoft Entra ID. Not nullable. Read-only. Alternate key. Supports $filter (eq).
     app_id: Optional[str] = None
     # The appManagementPolicy applied to this application.
     app_management_policies: Optional[List[AppManagementPolicy]] = None
@@ -67,17 +67,17 @@ class Application(DirectoryObject):
     extension_properties: Optional[List[ExtensionProperty]] = None
     # Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
     federated_identity_credentials: Optional[List[FederatedIdentityCredential]] = None
-    # Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following valid string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all of the security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
+    # Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following valid string values: None, SecurityGroup (for security groups and Microsoft Entra roles), All (this gets all of the security groups, distribution groups, and Microsoft Entra directory roles that the signed-in user is a member of).
     group_membership_claims: Optional[str] = None
     # The homeRealmDiscoveryPolicies property
     home_realm_discovery_policies: Optional[List[HomeRealmDiscoveryPolicy]] = None
-    # Also known as App ID URI, this value is set when an application is used as a resource app. The identifierUris acts as the prefix for the scopes you'll reference in your API's code, and it must be globally unique. You can use the default value provided, which is in the form api://<application-client-id>, or specify a more readable URI like https://contoso.com/api. For more information on valid identifierUris patterns and best practices, see Azure AD application registration security best practices. Not nullable. Supports $filter (eq, ne, ge, le, startsWith).
+    # Also known as App ID URI, this value is set when an application is used as a resource app. The identifierUris acts as the prefix for the scopes you'll reference in your API's code, and it must be globally unique. You can use the default value provided, which is in the form api://<application-client-id>, or specify a more readable URI like https://contoso.com/api. For more information on valid identifierUris patterns and best practices, see Microsoft Entra application registration security best practices. Not nullable. Supports $filter (eq, ne, ge, le, startsWith).
     identifier_uris: Optional[List[str]] = None
-    # Basic profile information of the application such as  app's marketing, support, terms of service and privacy statement URLs. The terms of service and privacy statement are surfaced to users through the user consent experience. For more info, see How to: Add Terms of service and privacy statement for registered Azure AD apps. Supports $filter (eq, ne, not, ge, le, and eq on null values).
+    # Basic profile information of the application such as  app's marketing, support, terms of service and privacy statement URLs. The terms of service and privacy statement are surfaced to users through the user consent experience. For more info, see How to: Add Terms of service and privacy statement for registered Microsoft Entra apps. Supports $filter (eq, ne, not, ge, le, and eq on null values).
     info: Optional[InformationalUrl] = None
     # Specifies whether this application supports device authentication without a user. The default is false.
     is_device_only_auth_supported: Optional[bool] = None
-    # Specifies the fallback application type as public client, such as an installed application running on a mobile device. The default value is false which means the fallback application type is confidential client such as a web app. There are certain scenarios where Azure AD cannot determine the client application type. For example, the ROPC flow where it is configured without specifying a redirect URI. In those cases Azure AD interprets the application type based on the value of this property.
+    # Specifies the fallback application type as public client, such as an installed application running on a mobile device. The default value is false which means the fallback application type is confidential client such as a web app. There are certain scenarios where Microsoft Entra ID cannot determine the client application type. For example, the ROPC flow where it is configured without specifying a redirect URI. In those cases Microsoft Entra ID interprets the application type based on the value of this property.
     is_fallback_public_client: Optional[bool] = None
     # The collection of key credentials associated with the application. Not nullable. Supports $filter (eq, not, ge, le).
     key_credentials: Optional[List[KeyCredential]] = None
@@ -87,7 +87,7 @@ class Application(DirectoryObject):
     notes: Optional[str] = None
     # The oauth2RequirePostResponse property
     oauth2_require_post_response: Optional[bool] = None
-    # Application developers can configure optional claims in their Azure AD applications to specify the claims that are sent to their application by the Microsoft security token service. For more information, see How to: Provide optional claims to your app.
+    # Application developers can configure optional claims in their Microsoft Entra applications to specify the claims that are sent to their application by the Microsoft security token service. For more information, see How to: Provide optional claims to your app.
     optional_claims: Optional[OptionalClaims] = None
     # Directory objects that are owners of the application. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
     owners: Optional[List[DirectoryObject]] = None
@@ -99,7 +99,7 @@ class Application(DirectoryObject):
     public_client: Optional[PublicClientApplication] = None
     # The verified publisher domain for the application. Read-only. For more information, see How to: Configure an application's publisher domain. Supports $filter (eq, ne, ge, le, startsWith).
     publisher_domain: Optional[str] = None
-    # Specifies whether this application requires Azure AD to verify the signed authentication requests.
+    # Specifies whether this application requires Microsoft Entra ID to verify the signed authentication requests.
     request_signature_verification: Optional[RequestSignatureVerification] = None
     # Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. For more information, see Limits on requested permissions per app. Not nullable. Supports $filter (eq, not, ge, le).
     required_resource_access: Optional[List[RequiredResourceAccess]] = None
@@ -113,11 +113,11 @@ class Application(DirectoryObject):
     sign_in_audience: Optional[str] = None
     # Specifies settings for a single-page application, including sign out URLs and redirect URIs for authorization codes and access tokens.
     spa: Optional[SpaApplication] = None
-    # Represents the capability for Azure Active Directory (Azure AD) identity synchronization through the Microsoft Graph API.
+    # Represents the capability for Microsoft Entra identity synchronization through the Microsoft Graph API.
     synchronization: Optional[Synchronization] = None
     # Custom strings that can be used to categorize and identify the application. Not nullable. Strings added here will also appear in the tags property of any associated service principals.Supports $filter (eq, not, ge, le, startsWith) and $search.
     tags: Optional[List[str]] = None
-    # Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
+    # Specifies the keyId of a public key from the keyCredentials collection. When configured, Microsoft Entra ID encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
     token_encryption_key_id: Optional[UUID] = None
     # The tokenIssuancePolicies property
     token_issuance_policies: Optional[List[TokenIssuancePolicy]] = None

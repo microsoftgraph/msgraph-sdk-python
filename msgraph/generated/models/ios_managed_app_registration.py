@@ -14,7 +14,7 @@ class IosManagedAppRegistration(ManagedAppRegistration):
     Represents the synchronization details of an ios app, with management capabilities, for a specific user.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.iosManagedAppRegistration"
+    OdataType: Optional[str] = "#microsoft.graph.iosManagedAppRegistration"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosManagedAppRegistration:

@@ -14,7 +14,7 @@ class OmaSettingFloatingPoint(OmaSetting):
     OMA Settings Floating Point definition.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.omaSettingFloatingPoint"
+    OdataType: Optional[str] = "#microsoft.graph.omaSettingFloatingPoint"
     # Value.
     value: Optional[float] = None
     

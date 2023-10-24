@@ -16,7 +16,7 @@ class AppleDeviceFeaturesConfigurationBase(DeviceConfiguration):
     Apple device features configuration profile.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.appleDeviceFeaturesConfigurationBase"
+    OdataType: Optional[str] = "#microsoft.graph.appleDeviceFeaturesConfigurationBase"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppleDeviceFeaturesConfigurationBase:

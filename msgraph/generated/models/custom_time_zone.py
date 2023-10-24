@@ -13,7 +13,7 @@ from .time_zone_base import TimeZoneBase
 @dataclass
 class CustomTimeZone(TimeZoneBase):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.customTimeZone"
+    OdataType: Optional[str] = "#microsoft.graph.customTimeZone"
     # The time offset of the time zone from Coordinated Universal Time (UTC). This value is in minutes. Time zones that are ahead of UTC have a positive offset; time zones that are behind UTC have a negative offset.
     bias: Optional[int] = None
     # Specifies when the time zone switches from standard time to daylight saving time.

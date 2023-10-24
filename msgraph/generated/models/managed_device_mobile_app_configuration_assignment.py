@@ -15,7 +15,7 @@ class ManagedDeviceMobileAppConfigurationAssignment(Entity):
     Contains the properties used to assign an MDM app configuration to a group.
     """
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Assignment target that the T&C policy is assigned to.
     target: Optional[DeviceAndAppManagementAssignmentTarget] = None
     

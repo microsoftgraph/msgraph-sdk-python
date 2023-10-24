@@ -7,15 +7,15 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 @dataclass
 class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
-    backing_store: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
+    BackingStore: BackingStore = field(default_factory=BackingStoreFactorySingleton(backing_store_factory=None).backing_store_factory.create_backing_store, repr=False)
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Specifies whether compliant devices from external Azure AD organizations are trusted.
+    # Specifies whether compliant devices from external Microsoft Entra organizations are trusted.
     is_compliant_device_accepted: Optional[bool] = None
-    # Specifies whether hybrid Azure AD joined devices from external Azure AD organizations are trusted.
+    # Specifies whether Microsoft Entra hybrid joined devices from external Microsoft Entra organizations are trusted.
     is_hybrid_azure_a_d_joined_device_accepted: Optional[bool] = None
-    # Specifies whether MFA from external Azure AD organizations is trusted.
+    # Specifies whether MFA from external Microsoft Entra organizations is trusted.
     is_mfa_accepted: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

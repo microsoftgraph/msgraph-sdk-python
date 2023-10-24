@@ -20,7 +20,7 @@ class AccessPackageQuestion(Entity):
     # The text of the question represented in a format for a specific locale.
     localizations: Optional[List[AccessPackageLocalizedText]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Relative position of this question when displaying a list of questions to the requestor.
     sequence: Optional[int] = None
     # The text of the question to show to the requestor.

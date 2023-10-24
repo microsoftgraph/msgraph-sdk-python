@@ -26,7 +26,7 @@ class ActivityHistoryItem(Entity):
     # Set by the server. DateTime in UTC when the object was modified on the server.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Required. UTC DateTime when the historyItem (activity session) was started. Required for timeline history.
     started_date_time: Optional[datetime.datetime] = None
     # Set by the server. A status code used to identify valid objects. Values: active, updated, deleted, ignored.

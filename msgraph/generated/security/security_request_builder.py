@@ -18,8 +18,8 @@ if TYPE_CHECKING:
     from .cases.cases_request_builder import CasesRequestBuilder
     from .incidents.incidents_request_builder import IncidentsRequestBuilder
     from .microsoft_graph_security_run_hunting_query.microsoft_graph_security_run_hunting_query_request_builder import MicrosoftGraphSecurityRunHuntingQueryRequestBuilder
-    from .secure_score_control_profiles.secure_score_control_profiles_request_builder import SecureScoreControlProfilesRequestBuilder
     from .secure_scores.secure_scores_request_builder import SecureScoresRequestBuilder
+    from .secure_score_control_profiles.secure_score_control_profiles_request_builder import SecureScoreControlProfilesRequestBuilder
     from .subject_rights_requests.subject_rights_requests_request_builder import SubjectRightsRequestsRequestBuilder
     from .threat_intelligence.threat_intelligence_request_builder import ThreatIntelligenceRequestBuilder
     from .triggers.triggers_request_builder import TriggersRequestBuilder
@@ -90,14 +90,14 @@ class SecurityRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def to_patch_request_information(self,body: Optional[Security] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -110,13 +110,13 @@ class SecurityRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.PATCH
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -221,15 +221,6 @@ class SecurityRequestBuilder(BaseRequestBuilder):
         return ThreatIntelligenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def triggers(self) -> TriggersRequestBuilder:
-        """
-        Provides operations to manage the triggers property of the microsoft.graph.security entity.
-        """
-        from .triggers.triggers_request_builder import TriggersRequestBuilder
-
-        return TriggersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def trigger_types(self) -> TriggerTypesRequestBuilder:
         """
         Provides operations to manage the triggerTypes property of the microsoft.graph.security entity.
@@ -237,6 +228,15 @@ class SecurityRequestBuilder(BaseRequestBuilder):
         from .trigger_types.trigger_types_request_builder import TriggerTypesRequestBuilder
 
         return TriggerTypesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def triggers(self) -> TriggersRequestBuilder:
+        """
+        Provides operations to manage the triggers property of the microsoft.graph.security entity.
+        """
+        from .triggers.triggers_request_builder import TriggersRequestBuilder
+
+        return TriggersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SecurityRequestBuilderGetQueryParameters():

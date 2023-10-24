@@ -14,7 +14,7 @@ class WindowsWebApp(MobileApp):
     Contains properties and inherited properties for Windows web apps.
     """
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.windowsWebApp"
+    OdataType: Optional[str] = "#microsoft.graph.windowsWebApp"
     # Indicates the Windows web app URL. Example: 'https://www.contoso.com'
     app_url: Optional[str] = None
     

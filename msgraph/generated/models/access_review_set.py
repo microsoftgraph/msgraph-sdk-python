@@ -17,7 +17,7 @@ class AccessReviewSet(Entity):
     # Represents a collection of access review history data and the scopes used to collect that data.
     history_definitions: Optional[List[AccessReviewHistoryDefinition]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewSet:

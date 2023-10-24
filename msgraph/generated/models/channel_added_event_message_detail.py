@@ -12,7 +12,7 @@ from .event_message_detail import EventMessageDetail
 @dataclass
 class ChannelAddedEventMessageDetail(EventMessageDetail):
     # The OdataType property
-    odata_type: Optional[str] = "#microsoft.graph.channelAddedEventMessageDetail"
+    OdataType: Optional[str] = "#microsoft.graph.channelAddedEventMessageDetail"
     # Display name of the channel.
     channel_display_name: Optional[str] = None
     # Unique identifier of the channel.

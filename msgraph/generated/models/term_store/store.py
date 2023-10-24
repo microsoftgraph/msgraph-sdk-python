@@ -19,7 +19,7 @@ class Store(Entity):
     # List of languages for the term store.
     language_tags: Optional[List[str]] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
     sets: Optional[List[Set]] = None
     

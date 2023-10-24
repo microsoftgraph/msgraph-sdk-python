@@ -47,7 +47,7 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationCategoryCollectionResponse]:
         """
-        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationCategoryCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/educationassignment-list-categories?view=graph-rest-1.0
@@ -69,7 +69,7 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[EducationCategory] = None, request_configuration: Optional[CategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[EducationCategory]:
         """
-        Add one or more existing educationCategory objects to the specified  educationAssignment. Only teachers can perform this operation.
+        Add one or more existing educationCategory objects to the specified  educationAssignment. Only teachers can perform this operation. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationCategory]
@@ -94,24 +94,24 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         return request_info
     
     def to_post_request_information(self,body: Optional[EducationCategory] = None, request_configuration: Optional[CategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add one or more existing educationCategory objects to the specified  educationAssignment. Only teachers can perform this operation.
+        Add one or more existing educationCategory objects to the specified  educationAssignment. Only teachers can perform this operation. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,13 +119,13 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.POST
+        request_info.try_add_request_header("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -169,7 +169,7 @@ class CategoriesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CategoriesRequestBuilderGetQueryParameters():
         """
-        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

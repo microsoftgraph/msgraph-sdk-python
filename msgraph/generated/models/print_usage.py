@@ -30,7 +30,7 @@ class PrintUsage(Entity):
     # The mediaSheetCount property
     media_sheet_count: Optional[int] = None
     # The OdataType property
-    odata_type: Optional[str] = None
+    OdataType: Optional[str] = None
     # The pageCount property
     page_count: Optional[int] = None
     # The singleSidedSheetCount property

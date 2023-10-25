@@ -19,7 +19,7 @@ class Synchronization(Entity):
     odata_type: Optional[str] = None
     # Represents a collection of credentials to access provisioned cloud applications.
     secrets: Optional[List[SynchronizationSecretKeyStringValuePair]] = None
-    # Pre-configured synchronization settings for a particular application.
+    # Preconfigured synchronization settings for a particular application.
     templates: Optional[List[SynchronizationTemplate]] = None
     
     @staticmethod

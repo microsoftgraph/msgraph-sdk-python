@@ -12,6 +12,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models.android_lob_app import AndroidLobApp
     from .....models.o_data_errors.o_data_error import ODataError
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+    from .categories.categories_request_builder import CategoriesRequestBuilder
+    from .content_versions.content_versions_request_builder import ContentVersionsRequestBuilder
 
 class GraphAndroidLobAppRequestBuilder(BaseRequestBuilder):
     """
@@ -54,14 +57,14 @@ class GraphAndroidLobAppRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> GraphAndroidLobAppRequestBuilder:
@@ -73,6 +76,33 @@ class GraphAndroidLobAppRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GraphAndroidLobAppRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def assignments(self) -> AssignmentsRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.mobileApp entity.
+        """
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def categories(self) -> CategoriesRequestBuilder:
+        """
+        Provides operations to manage the categories property of the microsoft.graph.mobileApp entity.
+        """
+        from .categories.categories_request_builder import CategoriesRequestBuilder
+
+        return CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def content_versions(self) -> ContentVersionsRequestBuilder:
+        """
+        Provides operations to manage the contentVersions property of the microsoft.graph.mobileLobApp entity.
+        """
+        from .content_versions.content_versions_request_builder import ContentVersionsRequestBuilder
+
+        return ContentVersionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class GraphAndroidLobAppRequestBuilderGetQueryParameters():

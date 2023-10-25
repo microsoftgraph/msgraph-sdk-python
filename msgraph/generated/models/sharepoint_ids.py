@@ -48,7 +48,7 @@ class SharepointIds(AdditionalDataHolder, BackedModel, Parsable):
             "listId": lambda n : setattr(self, 'list_id', n.get_str_value()),
             "listItemId": lambda n : setattr(self, 'list_item_id', n.get_str_value()),
             "listItemUniqueId": lambda n : setattr(self, 'list_item_unique_id', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "siteId": lambda n : setattr(self, 'site_id', n.get_str_value()),
             "siteUrl": lambda n : setattr(self, 'site_url', n.get_str_value()),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
@@ -67,7 +67,7 @@ class SharepointIds(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("listId", self.list_id)
         writer.write_str_value("listItemId", self.list_item_id)
         writer.write_str_value("listItemUniqueId", self.list_item_unique_id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("siteId", self.site_id)
         writer.write_str_value("siteUrl", self.site_url)
         writer.write_str_value("tenantId", self.tenant_id)

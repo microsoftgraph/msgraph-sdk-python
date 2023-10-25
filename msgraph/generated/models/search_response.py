@@ -53,7 +53,7 @@ class SearchResponse(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "hitsContainers": lambda n : setattr(self, 'hits_containers', n.get_collection_of_object_values(SearchHitsContainer)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "queryAlterationResponse": lambda n : setattr(self, 'query_alteration_response', n.get_object_value(AlterationResponse)),
             "resultTemplates": lambda n : setattr(self, 'result_templates', n.get_object_value(ResultTemplateDictionary)),
             "searchTerms": lambda n : setattr(self, 'search_terms', n.get_collection_of_primitive_values(str)),
@@ -69,7 +69,7 @@ class SearchResponse(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("hitsContainers", self.hits_containers)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("queryAlterationResponse", self.query_alteration_response)
         writer.write_object_value("resultTemplates", self.result_templates)
         writer.write_collection_of_primitive_values("searchTerms", self.search_terms)

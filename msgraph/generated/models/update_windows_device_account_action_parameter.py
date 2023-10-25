@@ -54,7 +54,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, BackedMode
             "deviceAccount": lambda n : setattr(self, 'device_account', n.get_object_value(WindowsDeviceAccount)),
             "deviceAccountEmail": lambda n : setattr(self, 'device_account_email', n.get_str_value()),
             "exchangeServer": lambda n : setattr(self, 'exchange_server', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "passwordRotationEnabled": lambda n : setattr(self, 'password_rotation_enabled', n.get_bool_value()),
             "sessionInitiationProtocalAddress": lambda n : setattr(self, 'session_initiation_protocal_address', n.get_str_value()),
         }
@@ -72,7 +72,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, BackedMode
         writer.write_object_value("deviceAccount", self.device_account)
         writer.write_str_value("deviceAccountEmail", self.device_account_email)
         writer.write_str_value("exchangeServer", self.exchange_server)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_bool_value("passwordRotationEnabled", self.password_rotation_enabled)
         writer.write_str_value("sessionInitiationProtocalAddress", self.session_initiation_protocal_address)
         writer.write_additional_data_value(self.additional_data)

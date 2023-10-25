@@ -47,7 +47,7 @@ class ChatMessageMention(AdditionalDataHolder, BackedModel, Parsable):
             "id": lambda n : setattr(self, 'id', n.get_int_value()),
             "mentionText": lambda n : setattr(self, 'mention_text', n.get_str_value()),
             "mentioned": lambda n : setattr(self, 'mentioned', n.get_object_value(ChatMessageMentionedIdentitySet)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -62,7 +62,7 @@ class ChatMessageMention(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_int_value("id", self.id)
         writer.write_str_value("mentionText", self.mention_text)
         writer.write_object_value("mentioned", self.mentioned)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

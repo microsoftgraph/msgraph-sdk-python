@@ -12,7 +12,7 @@ from .entity import Entity
 
 @dataclass
 class BitlockerRecoveryKey(Entity):
-    # The date and time when the key was originally backed up to Azure Active Directory. Not nullable.
+    # The date and time when the key was originally backed up to Microsoft Entra ID. Not nullable.
     created_date_time: Optional[datetime.datetime] = None
     # Identifier of the device the BitLocker key is originally backed up from. Supports $filter (eq).
     device_id: Optional[str] = None

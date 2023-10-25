@@ -16,7 +16,7 @@ class ExtensionProperty(DirectoryObject):
     app_display_name: Optional[str] = None
     # Specifies the data type of the value the extension property can hold. Following values are supported. Not nullable. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximum
     data_type: Optional[str] = None
-    # Indicates if this extension property was synced from on-premises active directory using Azure AD Connect. Read-only.
+    # Indicates if this extension property was synced from on-premises active directory using Microsoft Entra Connect. Read-only.
     is_synced_from_on_premises: Optional[bool] = None
     # Name of the extension property. Not nullable. Supports $filter (eq).
     name: Optional[str] = None

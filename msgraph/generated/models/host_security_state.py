@@ -23,7 +23,7 @@ class HostSecurityState(AdditionalDataHolder, BackedModel, Parsable):
     net_bios_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Host Operating System. (For example, Windows10, MacOS, RHEL, etc.).
+    # Host Operating System. (For example, Windows 10, macOS, RHEL, etc.).
     os: Optional[str] = None
     # Private (not routable) IPv4 or IPv6 address (see RFC 1918) at the time of the alert.
     private_ip_address: Optional[str] = None
@@ -54,7 +54,7 @@ class HostSecurityState(AdditionalDataHolder, BackedModel, Parsable):
             "isAzureAdRegistered": lambda n : setattr(self, 'is_azure_ad_registered', n.get_bool_value()),
             "isHybridAzureDomainJoined": lambda n : setattr(self, 'is_hybrid_azure_domain_joined', n.get_bool_value()),
             "netBiosName": lambda n : setattr(self, 'net_bios_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "os": lambda n : setattr(self, 'os', n.get_str_value()),
             "privateIpAddress": lambda n : setattr(self, 'private_ip_address', n.get_str_value()),
             "publicIpAddress": lambda n : setattr(self, 'public_ip_address', n.get_str_value()),
@@ -75,7 +75,7 @@ class HostSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("isAzureAdRegistered", self.is_azure_ad_registered)
         writer.write_bool_value("isHybridAzureDomainJoined", self.is_hybrid_azure_domain_joined)
         writer.write_str_value("netBiosName", self.net_bios_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("os", self.os)
         writer.write_str_value("privateIpAddress", self.private_ip_address)
         writer.write_str_value("publicIpAddress", self.public_ip_address)

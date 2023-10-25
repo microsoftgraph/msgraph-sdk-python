@@ -46,7 +46,7 @@ class TeamMessagingSettings(AdditionalDataHolder, BackedModel, Parsable):
             "allowTeamMentions": lambda n : setattr(self, 'allow_team_mentions', n.get_bool_value()),
             "allowUserDeleteMessages": lambda n : setattr(self, 'allow_user_delete_messages', n.get_bool_value()),
             "allowUserEditMessages": lambda n : setattr(self, 'allow_user_edit_messages', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -63,7 +63,7 @@ class TeamMessagingSettings(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("allowTeamMentions", self.allow_team_mentions)
         writer.write_bool_value("allowUserDeleteMessages", self.allow_user_delete_messages)
         writer.write_bool_value("allowUserEditMessages", self.allow_user_edit_messages)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

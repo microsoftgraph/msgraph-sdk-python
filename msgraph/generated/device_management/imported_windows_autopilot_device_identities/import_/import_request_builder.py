@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from .import_post_request_body import ImportPostRequestBody
-    from .import_response import ImportResponse
+    from .import_post_response import ImportPostResponse
 
 class ImportRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +27,12 @@ class ImportRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/importedWindowsAutopilotDeviceIdentities/import", path_parameters)
     
-    async def post(self,body: Optional[ImportPostRequestBody] = None, request_configuration: Optional[ImportRequestBuilderPostRequestConfiguration] = None) -> Optional[ImportResponse]:
+    async def post(self,body: Optional[ImportPostRequestBody] = None, request_configuration: Optional[ImportRequestBuilderPostRequestConfiguration] = None) -> Optional[ImportPostResponse]:
         """
         Not yet documented
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[ImportResponse]
+        Returns: Optional[ImportPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/intune-enrollment-importedwindowsautopilotdeviceidentity-import?view=graph-rest-1.0
         """
         if not body:
@@ -48,9 +48,9 @@ class ImportRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .import_response import ImportResponse
+        from .import_post_response import ImportPostResponse
 
-        return await self.request_adapter.send_async(request_info, ImportResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, ImportPostResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[ImportPostRequestBody] = None, request_configuration: Optional[ImportRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
@@ -62,13 +62,13 @@ class ImportRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

@@ -14,7 +14,7 @@ class Certification(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # URL that shows certification details for the application.
     certification_details_url: Optional[str] = None
-    # The timestamp when the current certification for the application will expire.
+    # The timestamp when the current certification for the application expires.
     certification_expiration_date_time: Optional[datetime.datetime] = None
     # Indicates whether the application is certified by Microsoft.
     is_certified_by_microsoft: Optional[bool] = None
@@ -47,7 +47,7 @@ class Certification(AdditionalDataHolder, BackedModel, Parsable):
             "isCertifiedByMicrosoft": lambda n : setattr(self, 'is_certified_by_microsoft', n.get_bool_value()),
             "isPublisherAttested": lambda n : setattr(self, 'is_publisher_attested', n.get_bool_value()),
             "lastCertificationDateTime": lambda n : setattr(self, 'last_certification_date_time', n.get_datetime_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -62,7 +62,7 @@ class Certification(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_datetime_value("certificationExpirationDateTime", self.certification_expiration_date_time)
         writer.write_bool_value("isPublisherAttested", self.is_publisher_attested)
         writer.write_datetime_value("lastCertificationDateTime", self.last_certification_date_time)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

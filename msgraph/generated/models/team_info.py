@@ -19,7 +19,7 @@ class TeamInfo(Entity):
     odata_type: Optional[str] = None
     # The team property
     team: Optional[Team] = None
-    # The ID of the Azure Active Directory tenant.
+    # The ID of the Microsoft Entra tenant.
     tenant_id: Optional[str] = None
     
     @staticmethod

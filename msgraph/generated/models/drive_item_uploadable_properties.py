@@ -50,7 +50,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, BackedModel, Parsable)
             "fileSize": lambda n : setattr(self, 'file_size', n.get_int_value()),
             "fileSystemInfo": lambda n : setattr(self, 'file_system_info', n.get_object_value(FileSystemInfo)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -66,7 +66,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, BackedModel, Parsable)
         writer.write_int_value("fileSize", self.file_size)
         writer.write_object_value("fileSystemInfo", self.file_system_info)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

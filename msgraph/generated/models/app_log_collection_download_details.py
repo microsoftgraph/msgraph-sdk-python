@@ -47,7 +47,7 @@ class AppLogCollectionDownloadDetails(AdditionalDataHolder, BackedModel, Parsabl
             "appLogDecryptionAlgorithm": lambda n : setattr(self, 'app_log_decryption_algorithm', n.get_enum_value(AppLogDecryptionAlgorithm)),
             "decryptionKey": lambda n : setattr(self, 'decryption_key', n.get_str_value()),
             "downloadUrl": lambda n : setattr(self, 'download_url', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -62,7 +62,7 @@ class AppLogCollectionDownloadDetails(AdditionalDataHolder, BackedModel, Parsabl
         writer.write_enum_value("appLogDecryptionAlgorithm", self.app_log_decryption_algorithm)
         writer.write_str_value("decryptionKey", self.decryption_key)
         writer.write_str_value("downloadUrl", self.download_url)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

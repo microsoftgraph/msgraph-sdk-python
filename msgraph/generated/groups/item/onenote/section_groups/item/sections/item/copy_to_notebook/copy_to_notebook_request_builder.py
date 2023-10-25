@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models.o_data_errors.o_data_error import ODataError
     from .........models.onenote_operation import OnenoteOperation
+    from .........models.o_data_errors.o_data_error import ODataError
     from .copy_to_notebook_post_request_body import CopyToNotebookPostRequestBody
 
 class CopyToNotebookRequestBuilder(BaseRequestBuilder):
@@ -29,7 +29,7 @@ class CopyToNotebookRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CopyToNotebookPostRequestBody] = None, request_configuration: Optional[CopyToNotebookRequestBuilderPostRequestConfiguration] = None) -> Optional[OnenoteOperation]:
         """
-        For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
+        For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenoteOperation]
@@ -54,7 +54,7 @@ class CopyToNotebookRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CopyToNotebookPostRequestBody] = None, request_configuration: Optional[CopyToNotebookRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
+        For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -62,13 +62,13 @@ class CopyToNotebookRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

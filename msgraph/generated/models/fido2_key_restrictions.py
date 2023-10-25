@@ -47,7 +47,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, BackedModel, Parsable):
             "aaGuids": lambda n : setattr(self, 'aa_guids', n.get_collection_of_primitive_values(str)),
             "enforcementType": lambda n : setattr(self, 'enforcement_type', n.get_enum_value(Fido2RestrictionEnforcementType)),
             "isEnforced": lambda n : setattr(self, 'is_enforced', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -62,7 +62,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_primitive_values("aaGuids", self.aa_guids)
         writer.write_enum_value("enforcementType", self.enforcement_type)
         writer.write_bool_value("isEnforced", self.is_enforced)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

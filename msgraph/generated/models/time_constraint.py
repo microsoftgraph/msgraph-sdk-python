@@ -46,7 +46,7 @@ class TimeConstraint(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activityDomain": lambda n : setattr(self, 'activity_domain', n.get_enum_value(ActivityDomain)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(TimeSlot)),
         }
         return fields
@@ -60,7 +60,7 @@ class TimeConstraint(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("activityDomain", self.activity_domain)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("timeSlots", self.time_slots)
         writer.write_additional_data_value(self.additional_data)
     

@@ -46,7 +46,7 @@ class File(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "hashes": lambda n : setattr(self, 'hashes', n.get_object_value(Hashes)),
             "mimeType": lambda n : setattr(self, 'mime_type', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "processingMetadata": lambda n : setattr(self, 'processing_metadata', n.get_bool_value()),
         }
         return fields
@@ -61,7 +61,7 @@ class File(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("hashes", self.hashes)
         writer.write_str_value("mimeType", self.mime_type)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_bool_value("processingMetadata", self.processing_metadata)
         writer.write_additional_data_value(self.additional_data)
     

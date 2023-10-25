@@ -59,7 +59,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, BackedModel, Parsable):
             "externalAudience": lambda n : setattr(self, 'external_audience', n.get_enum_value(ExternalAudienceScope)),
             "externalReplyMessage": lambda n : setattr(self, 'external_reply_message', n.get_str_value()),
             "internalReplyMessage": lambda n : setattr(self, 'internal_reply_message', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "scheduledEndDateTime": lambda n : setattr(self, 'scheduled_end_date_time', n.get_object_value(DateTimeTimeZone)),
             "scheduledStartDateTime": lambda n : setattr(self, 'scheduled_start_date_time', n.get_object_value(DateTimeTimeZone)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(AutomaticRepliesStatus)),
@@ -77,7 +77,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_enum_value("externalAudience", self.external_audience)
         writer.write_str_value("externalReplyMessage", self.external_reply_message)
         writer.write_str_value("internalReplyMessage", self.internal_reply_message)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("scheduledEndDateTime", self.scheduled_end_date_time)
         writer.write_object_value("scheduledStartDateTime", self.scheduled_start_date_time)
         writer.write_enum_value("status", self.status)

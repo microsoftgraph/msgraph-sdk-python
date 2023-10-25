@@ -43,7 +43,7 @@ class ObjectDefinitionMetadataEntry(AdditionalDataHolder, BackedModel, Parsable)
 
         fields: Dict[str, Callable[[Any], None]] = {
             "key": lambda n : setattr(self, 'key', n.get_enum_value(ObjectDefinitionMetadata)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
         return fields
@@ -57,7 +57,7 @@ class ObjectDefinitionMetadataEntry(AdditionalDataHolder, BackedModel, Parsable)
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("key", self.key)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("value", self.value)
         writer.write_additional_data_value(self.additional_data)
     

@@ -4,8 +4,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .authentication_method_mode_detail import AuthenticationMethodModeDetail
     from .authentication_method_modes import AuthenticationMethodModes
+    from .authentication_method_mode_detail import AuthenticationMethodModeDetail
     from .authentication_strength_policy import AuthenticationStrengthPolicy
     from .entity import Entity
 
@@ -38,13 +38,13 @@ class AuthenticationStrengthRoot(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .authentication_method_mode_detail import AuthenticationMethodModeDetail
         from .authentication_method_modes import AuthenticationMethodModes
+        from .authentication_method_mode_detail import AuthenticationMethodModeDetail
         from .authentication_strength_policy import AuthenticationStrengthPolicy
         from .entity import Entity
 
-        from .authentication_method_mode_detail import AuthenticationMethodModeDetail
         from .authentication_method_modes import AuthenticationMethodModes
+        from .authentication_method_mode_detail import AuthenticationMethodModeDetail
         from .authentication_strength_policy import AuthenticationStrengthPolicy
         from .entity import Entity
 

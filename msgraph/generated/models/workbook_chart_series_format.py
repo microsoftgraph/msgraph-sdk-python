@@ -12,7 +12,7 @@ from .entity import Entity
 
 @dataclass
 class WorkbookChartSeriesFormat(Entity):
-    # Represents the fill format of a chart series, which includes background formating information. Read-only.
+    # Represents the fill format of a chart series, which includes background formatting information. Read-only.
     fill: Optional[WorkbookChartFill] = None
     # Represents line formatting. Read-only.
     line: Optional[WorkbookChartLineFormat] = None

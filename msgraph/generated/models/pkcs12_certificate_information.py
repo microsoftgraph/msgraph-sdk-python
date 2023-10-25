@@ -11,7 +11,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Represents whether the certificate is the active certificate to be used for calling the API connector. The active certificate is the most recently uploaded certificate which is not yet expired but whose notBefore time is in the past.
+    # Represents whether the certificate is the active certificate to be used for calling the API connector. The active certificate is the most recently uploaded certificate that isn't yet expired but whose notBefore time is in the past.
     is_active: Optional[bool] = None
     # The certificate's expiry. This value is a NumericDate as defined in RFC 7519 (A JSON numeric value representing the number of seconds from 1970-01-01T00:00:00Z UTC until the specified UTC date/time, ignoring leap seconds.)
     not_after: Optional[int] = None
@@ -42,7 +42,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, BackedModel, Parsable):
             "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
             "notAfter": lambda n : setattr(self, 'not_after', n.get_int_value()),
             "notBefore": lambda n : setattr(self, 'not_before', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "thumbprint": lambda n : setattr(self, 'thumbprint', n.get_str_value()),
         }
         return fields
@@ -58,7 +58,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("isActive", self.is_active)
         writer.write_int_value("notAfter", self.not_after)
         writer.write_int_value("notBefore", self.not_before)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("thumbprint", self.thumbprint)
         writer.write_additional_data_value(self.additional_data)
     

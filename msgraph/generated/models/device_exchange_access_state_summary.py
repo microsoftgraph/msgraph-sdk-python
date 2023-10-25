@@ -46,7 +46,7 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, BackedModel, Parsab
         fields: Dict[str, Callable[[Any], None]] = {
             "allowedDeviceCount": lambda n : setattr(self, 'allowed_device_count', n.get_int_value()),
             "blockedDeviceCount": lambda n : setattr(self, 'blocked_device_count', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "quarantinedDeviceCount": lambda n : setattr(self, 'quarantined_device_count', n.get_int_value()),
             "unavailableDeviceCount": lambda n : setattr(self, 'unavailable_device_count', n.get_int_value()),
             "unknownDeviceCount": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
@@ -63,7 +63,7 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, BackedModel, Parsab
             raise TypeError("writer cannot be null.")
         writer.write_int_value("allowedDeviceCount", self.allowed_device_count)
         writer.write_int_value("blockedDeviceCount", self.blocked_device_count)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("quarantinedDeviceCount", self.quarantined_device_count)
         writer.write_int_value("unavailableDeviceCount", self.unavailable_device_count)
         writer.write_int_value("unknownDeviceCount", self.unknown_device_count)

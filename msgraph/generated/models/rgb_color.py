@@ -42,7 +42,7 @@ class RgbColor(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "b": lambda n : setattr(self, 'b', n.get_int_value()),
             "g": lambda n : setattr(self, 'g', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "r": lambda n : setattr(self, 'r', n.get_int_value()),
         }
         return fields
@@ -57,7 +57,7 @@ class RgbColor(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_int_value("b", self.b)
         writer.write_int_value("g", self.g)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("r", self.r)
         writer.write_additional_data_value(self.additional_data)
     

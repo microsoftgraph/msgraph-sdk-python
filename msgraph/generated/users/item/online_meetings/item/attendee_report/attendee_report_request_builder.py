@@ -27,7 +27,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AttendeeReportRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
-        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
+        Get attendeeReport for the navigation property onlineMeetings from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         Find more info here: https://learn.microsoft.com/graph/api/onlinemeeting-get?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     
     async def put(self,body: bytes, request_configuration: Optional[AttendeeReportRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
-        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
+        Update attendeeReport for the navigation property onlineMeetings in users
         param body: Binary request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
@@ -69,22 +69,23 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AttendeeReportRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
+        Get attendeeReport for the navigation property onlineMeetings from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/octet-stream, application/json, application/json")
         return request_info
     
     def to_put_request_information(self,body: bytes, request_configuration: Optional[AttendeeReportRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        The content stream of the attendee report of a Microsoft Teams live event. Read-only.
+        Update attendeeReport for the navigation property onlineMeetings in users
         param body: Binary request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -92,13 +93,14 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PUT
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_stream_content(body)
+        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.set_stream_content(body, "application/octet-stream")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> AttendeeReportRequestBuilder:

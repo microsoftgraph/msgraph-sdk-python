@@ -80,7 +80,7 @@ class Location(AdditionalDataHolder, BackedModel, Parsable):
             "locationEmailAddress": lambda n : setattr(self, 'location_email_address', n.get_str_value()),
             "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(LocationType)),
             "locationUri": lambda n : setattr(self, 'location_uri', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "uniqueId": lambda n : setattr(self, 'unique_id', n.get_str_value()),
             "uniqueIdType": lambda n : setattr(self, 'unique_id_type', n.get_enum_value(LocationUniqueIdType)),
         }
@@ -100,7 +100,7 @@ class Location(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("locationEmailAddress", self.location_email_address)
         writer.write_enum_value("locationType", self.location_type)
         writer.write_str_value("locationUri", self.location_uri)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("uniqueId", self.unique_id)
         writer.write_enum_value("uniqueIdType", self.unique_id_type)
         writer.write_additional_data_value(self.additional_data)

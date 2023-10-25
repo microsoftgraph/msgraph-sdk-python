@@ -59,7 +59,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "dlpAction": lambda n : setattr(self, 'dlp_action', n.get_collection_of_enum_values(ChatMessagePolicyViolationDlpActionTypes)),
             "justificationText": lambda n : setattr(self, 'justification_text', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "policyTip": lambda n : setattr(self, 'policy_tip', n.get_object_value(ChatMessagePolicyViolationPolicyTip)),
             "userAction": lambda n : setattr(self, 'user_action', n.get_collection_of_enum_values(ChatMessagePolicyViolationUserActionTypes)),
             "verdictDetails": lambda n : setattr(self, 'verdict_details', n.get_collection_of_enum_values(ChatMessagePolicyViolationVerdictDetailsTypes)),
@@ -76,7 +76,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("dlpAction", self.dlp_action)
         writer.write_str_value("justificationText", self.justification_text)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("policyTip", self.policy_tip)
         writer.write_enum_value("userAction", self.user_action)
         writer.write_enum_value("verdictDetails", self.verdict_details)

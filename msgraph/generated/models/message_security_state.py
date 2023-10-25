@@ -59,7 +59,7 @@ class MessageSecurityState(AdditionalDataHolder, BackedModel, Parsable):
             "messageReceivedDateTime": lambda n : setattr(self, 'message_received_date_time', n.get_datetime_value()),
             "messageSubject": lambda n : setattr(self, 'message_subject', n.get_str_value()),
             "networkMessageId": lambda n : setattr(self, 'network_message_id', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -80,7 +80,7 @@ class MessageSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_datetime_value("messageReceivedDateTime", self.message_received_date_time)
         writer.write_str_value("messageSubject", self.message_subject)
         writer.write_str_value("networkMessageId", self.network_message_id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

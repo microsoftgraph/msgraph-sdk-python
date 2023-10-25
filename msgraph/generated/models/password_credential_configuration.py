@@ -46,7 +46,7 @@ class PasswordCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsabl
 
         fields: Dict[str, Callable[[Any], None]] = {
             "maxLifetime": lambda n : setattr(self, 'max_lifetime', n.get_timedelta_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "restrictForAppsCreatedAfterDateTime": lambda n : setattr(self, 'restrict_for_apps_created_after_date_time', n.get_datetime_value()),
             "restrictionType": lambda n : setattr(self, 'restriction_type', n.get_enum_value(AppCredentialRestrictionType)),
         }
@@ -61,7 +61,7 @@ class PasswordCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsabl
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_timedelta_value("maxLifetime", self.max_lifetime)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_datetime_value("restrictForAppsCreatedAfterDateTime", self.restrict_for_apps_created_after_date_time)
         writer.write_enum_value("restrictionType", self.restriction_type)
         writer.write_additional_data_value(self.additional_data)

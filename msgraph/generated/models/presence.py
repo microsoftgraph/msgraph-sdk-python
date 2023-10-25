@@ -17,7 +17,7 @@ class Presence(Entity):
     availability: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The statusMessage property
+    # The presence status message of a user.
     status_message: Optional[PresenceStatusMessage] = None
     
     @staticmethod

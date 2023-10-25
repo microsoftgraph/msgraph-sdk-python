@@ -63,7 +63,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, BackedModel, Parsable):
             "dynamicCriteria": lambda n : setattr(self, 'dynamic_criteria', n.get_str_value()),
             "filterOn": lambda n : setattr(self, 'filter_on', n.get_str_value()),
             "icon": lambda n : setattr(self, 'icon', n.get_object_value(WorkbookIcon)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operator": lambda n : setattr(self, 'operator', n.get_str_value()),
             "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
         }
@@ -83,7 +83,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("dynamicCriteria", self.dynamic_criteria)
         writer.write_str_value("filterOn", self.filter_on)
         writer.write_object_value("icon", self.icon)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("operator", self.operator)
         writer.write_object_value("values", self.values)
         writer.write_additional_data_value(self.additional_data)

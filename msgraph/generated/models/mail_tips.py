@@ -83,7 +83,7 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
             "isModerated": lambda n : setattr(self, 'is_moderated', n.get_bool_value()),
             "mailboxFull": lambda n : setattr(self, 'mailbox_full', n.get_bool_value()),
             "maxMessageSize": lambda n : setattr(self, 'max_message_size', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recipientScope": lambda n : setattr(self, 'recipient_scope', n.get_collection_of_enum_values(RecipientScopeType)),
             "recipientSuggestions": lambda n : setattr(self, 'recipient_suggestions', n.get_collection_of_object_values(Recipient)),
             "totalMemberCount": lambda n : setattr(self, 'total_member_count', n.get_int_value()),
@@ -107,7 +107,7 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("isModerated", self.is_moderated)
         writer.write_bool_value("mailboxFull", self.mailbox_full)
         writer.write_int_value("maxMessageSize", self.max_message_size)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("recipientScope", self.recipient_scope)
         writer.write_collection_of_object_values("recipientSuggestions", self.recipient_suggestions)
         writer.write_int_value("totalMemberCount", self.total_member_count)

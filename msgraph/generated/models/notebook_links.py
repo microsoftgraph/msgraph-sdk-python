@@ -42,7 +42,7 @@ class NotebookLinks(AdditionalDataHolder, BackedModel, Parsable):
         from .external_link import ExternalLink
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "oneNoteClientUrl": lambda n : setattr(self, 'one_note_client_url', n.get_object_value(ExternalLink)),
             "oneNoteWebUrl": lambda n : setattr(self, 'one_note_web_url', n.get_object_value(ExternalLink)),
         }
@@ -56,7 +56,7 @@ class NotebookLinks(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("oneNoteClientUrl", self.one_note_client_url)
         writer.write_object_value("oneNoteWebUrl", self.one_note_web_url)
         writer.write_additional_data_value(self.additional_data)

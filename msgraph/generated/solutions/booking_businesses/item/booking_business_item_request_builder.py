@@ -37,7 +37,7 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[BookingBusinessItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a bookingBusiness object.
+        Delete a bookingBusiness object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-delete?view=graph-rest-1.0
@@ -57,7 +57,7 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[BookingBusinessItemRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingBusiness]:
         """
-        Get the properties and relationships of a bookingBusiness object.
+        Get the properties and relationships of a bookingBusiness object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingBusiness]
         Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-get?view=graph-rest-1.0
@@ -79,7 +79,7 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[BookingBusiness] = None, request_configuration: Optional[BookingBusinessItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[BookingBusiness]:
         """
-        Update the properties of a bookingBusiness object.
+        Update the properties of a bookingBusiness object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingBusiness]
@@ -104,39 +104,40 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[BookingBusinessItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a bookingBusiness object.
+        Delete a bookingBusiness object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json, application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[BookingBusinessItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a bookingBusiness object.
+        Get the properties and relationships of a bookingBusiness object. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         return request_info
     
     def to_patch_request_information(self,body: Optional[BookingBusiness] = None, request_configuration: Optional[BookingBusinessItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a bookingBusiness object.
+        Update the properties of a bookingBusiness object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -144,13 +145,13 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -183,15 +184,6 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
         return CalendarViewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def customers(self) -> CustomersRequestBuilder:
-        """
-        Provides operations to manage the customers property of the microsoft.graph.bookingBusiness entity.
-        """
-        from .customers.customers_request_builder import CustomersRequestBuilder
-
-        return CustomersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def custom_questions(self) -> CustomQuestionsRequestBuilder:
         """
         Provides operations to manage the customQuestions property of the microsoft.graph.bookingBusiness entity.
@@ -199,6 +191,15 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
         from .custom_questions.custom_questions_request_builder import CustomQuestionsRequestBuilder
 
         return CustomQuestionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def customers(self) -> CustomersRequestBuilder:
+        """
+        Provides operations to manage the customers property of the microsoft.graph.bookingBusiness entity.
+        """
+        from .customers.customers_request_builder import CustomersRequestBuilder
+
+        return CustomersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def get_staff_availability(self) -> GetStaffAvailabilityRequestBuilder:
@@ -258,7 +259,7 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BookingBusinessItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a bookingBusiness object.
+        Get the properties and relationships of a bookingBusiness object. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

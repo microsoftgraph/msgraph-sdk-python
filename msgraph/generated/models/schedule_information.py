@@ -56,7 +56,7 @@ class ScheduleInformation(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "availabilityView": lambda n : setattr(self, 'availability_view', n.get_str_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(FreeBusyError)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "scheduleId": lambda n : setattr(self, 'schedule_id', n.get_str_value()),
             "scheduleItems": lambda n : setattr(self, 'schedule_items', n.get_collection_of_object_values(ScheduleItem)),
             "workingHours": lambda n : setattr(self, 'working_hours', n.get_object_value(WorkingHours)),
@@ -73,7 +73,7 @@ class ScheduleInformation(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("availabilityView", self.availability_view)
         writer.write_object_value("error", self.error)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("scheduleId", self.schedule_id)
         writer.write_collection_of_object_values("scheduleItems", self.schedule_items)
         writer.write_object_value("workingHours", self.working_hours)

@@ -49,7 +49,7 @@ class BookingWorkHours(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "day": lambda n : setattr(self, 'day', n.get_enum_value(DayOfWeek)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(BookingWorkTimeSlot)),
         }
         return fields
@@ -63,7 +63,7 @@ class BookingWorkHours(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("day", self.day)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("timeSlots", self.time_slots)
         writer.write_additional_data_value(self.additional_data)
     

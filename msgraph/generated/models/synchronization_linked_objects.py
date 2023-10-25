@@ -46,7 +46,7 @@ class SynchronizationLinkedObjects(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "manager": lambda n : setattr(self, 'manager', n.get_object_value(SynchronizationJobSubject)),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(SynchronizationJobSubject)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(SynchronizationJobSubject)),
         }
         return fields
@@ -61,7 +61,7 @@ class SynchronizationLinkedObjects(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("manager", self.manager)
         writer.write_collection_of_object_values("members", self.members)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("owners", self.owners)
         writer.write_additional_data_value(self.additional_data)
     

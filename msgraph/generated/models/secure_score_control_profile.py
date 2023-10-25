@@ -42,7 +42,7 @@ class SecureScoreControlProfile(Entity):
     remediation: Optional[str] = None
     # Description of the impact on users of the remediation.
     remediation_impact: Optional[str] = None
-    # Service that owns the control (Exchange, Sharepoint, Azure AD).
+    # Service that owns the control (Exchange, Sharepoint, Microsoft Entra ID).
     service: Optional[str] = None
     # List of threats the control mitigates (accountBreach, dataDeletion, dataExfiltration, dataSpillage,
     threats: Optional[List[str]] = None

@@ -52,7 +52,7 @@ class ObjectDefinition(AdditionalDataHolder, BackedModel, Parsable):
             "attributes": lambda n : setattr(self, 'attributes', n.get_collection_of_object_values(AttributeDefinition)),
             "metadata": lambda n : setattr(self, 'metadata', n.get_collection_of_object_values(ObjectDefinitionMetadataEntry)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "supportedApis": lambda n : setattr(self, 'supported_apis', n.get_collection_of_primitive_values(str)),
         }
         return fields
@@ -68,7 +68,7 @@ class ObjectDefinition(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_object_values("attributes", self.attributes)
         writer.write_collection_of_object_values("metadata", self.metadata)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_primitive_values("supportedApis", self.supported_apis)
         writer.write_additional_data_value(self.additional_data)
     

@@ -42,7 +42,7 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
             "exceptions": lambda n : setattr(self, 'exceptions', n.get_collection_of_primitive_values(str)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "useForLocalAddresses": lambda n : setattr(self, 'use_for_local_addresses', n.get_bool_value()),
         }
         return fields
@@ -57,7 +57,7 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("address", self.address)
         writer.write_collection_of_primitive_values("exceptions", self.exceptions)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_bool_value("useForLocalAddresses", self.use_for_local_addresses)
         writer.write_additional_data_value(self.additional_data)
     

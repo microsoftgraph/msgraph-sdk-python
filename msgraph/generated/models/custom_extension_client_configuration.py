@@ -13,7 +13,7 @@ class CustomExtensionClientConfiguration(AdditionalDataHolder, BackedModel, Pars
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
-    # The max duration in milliseconds that Azure AD will wait for a response from the external app before it shuts down the connection. The valid range is between 200 and 2000 milliseconds. Default duration is 1000.
+    # The max duration in milliseconds that Microsoft Entra ID waits for a response from the external app before it shuts down the connection. The valid range is between 200 and 2000 milliseconds. Default duration is 1000.
     timeout_in_milliseconds: Optional[int] = None
     
     @staticmethod
@@ -33,7 +33,7 @@ class CustomExtensionClientConfiguration(AdditionalDataHolder, BackedModel, Pars
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "timeoutInMilliseconds": lambda n : setattr(self, 'timeout_in_milliseconds', n.get_int_value()),
         }
         return fields
@@ -46,7 +46,7 @@ class CustomExtensionClientConfiguration(AdditionalDataHolder, BackedModel, Pars
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("timeoutInMilliseconds", self.timeout_in_milliseconds)
         writer.write_additional_data_value(self.additional_data)
     

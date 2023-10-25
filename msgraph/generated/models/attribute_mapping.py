@@ -63,7 +63,7 @@ class AttributeMapping(AdditionalDataHolder, BackedModel, Parsable):
             "flowBehavior": lambda n : setattr(self, 'flow_behavior', n.get_enum_value(AttributeFlowBehavior)),
             "flowType": lambda n : setattr(self, 'flow_type', n.get_enum_value(AttributeFlowType)),
             "matchingPriority": lambda n : setattr(self, 'matching_priority', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "source": lambda n : setattr(self, 'source', n.get_object_value(AttributeMappingSource)),
             "targetAttributeName": lambda n : setattr(self, 'target_attribute_name', n.get_str_value()),
         }
@@ -82,7 +82,7 @@ class AttributeMapping(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_enum_value("flowBehavior", self.flow_behavior)
         writer.write_enum_value("flowType", self.flow_type)
         writer.write_int_value("matchingPriority", self.matching_priority)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("source", self.source)
         writer.write_str_value("targetAttributeName", self.target_attribute_name)
         writer.write_additional_data_value(self.additional_data)

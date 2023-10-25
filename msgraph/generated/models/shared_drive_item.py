@@ -7,8 +7,8 @@ if TYPE_CHECKING:
     from .base_item import BaseItem
     from .drive_item import DriveItem
     from .identity_set import IdentitySet
-    from .list_item import ListItem
     from .list_ import List_
+    from .list_item import ListItem
     from .permission import Permission
     from .site import Site
 
@@ -54,16 +54,16 @@ class SharedDriveItem(BaseItem):
         from .base_item import BaseItem
         from .drive_item import DriveItem
         from .identity_set import IdentitySet
-        from .list_item import ListItem
         from .list_ import List_
+        from .list_item import ListItem
         from .permission import Permission
         from .site import Site
 
         from .base_item import BaseItem
         from .drive_item import DriveItem
         from .identity_set import IdentitySet
-        from .list_item import ListItem
         from .list_ import List_
+        from .list_item import ListItem
         from .permission import Permission
         from .site import Site
 

@@ -33,8 +33,8 @@ class BaseCollectionPaginationCountResponse(AdditionalDataHolder, BackedModel, P
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.count": lambda n : setattr(self, 'odata_count', n.get_int_value()),
-            "@odata.nextLink": lambda n : setattr(self, 'odata_next_link', n.get_str_value()),
+            "OdataCount": lambda n : setattr(self, 'odata_count', n.get_int_value()),
+            "OdataNextLink": lambda n : setattr(self, 'odata_next_link', n.get_str_value()),
         }
         return fields
     
@@ -46,8 +46,8 @@ class BaseCollectionPaginationCountResponse(AdditionalDataHolder, BackedModel, P
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("@odata.count", self.odata_count)
-        writer.write_str_value("@odata.nextLink", self.odata_next_link)
+        writer.write_int_value("OdataCount", self.odata_count)
+        writer.write_str_value("OdataNextLink", self.odata_next_link)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -73,7 +73,7 @@ class Process(AdditionalDataHolder, BackedModel, Parsable):
             "integrityLevel": lambda n : setattr(self, 'integrity_level', n.get_enum_value(ProcessIntegrityLevel)),
             "isElevated": lambda n : setattr(self, 'is_elevated', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "parentProcessCreatedDateTime": lambda n : setattr(self, 'parent_process_created_date_time', n.get_datetime_value()),
             "parentProcessId": lambda n : setattr(self, 'parent_process_id', n.get_int_value()),
             "parentProcessName": lambda n : setattr(self, 'parent_process_name', n.get_str_value()),
@@ -97,7 +97,7 @@ class Process(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_enum_value("integrityLevel", self.integrity_level)
         writer.write_bool_value("isElevated", self.is_elevated)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_datetime_value("parentProcessCreatedDateTime", self.parent_process_created_date_time)
         writer.write_int_value("parentProcessId", self.parent_process_id)
         writer.write_str_value("parentProcessName", self.parent_process_name)

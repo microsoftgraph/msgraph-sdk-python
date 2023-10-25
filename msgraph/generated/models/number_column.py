@@ -43,7 +43,7 @@ class NumberColumn(AdditionalDataHolder, BackedModel, Parsable):
             "displayAs": lambda n : setattr(self, 'display_as', n.get_str_value()),
             "maximum": lambda n : setattr(self, 'maximum', n.get_float_value()),
             "minimum": lambda n : setattr(self, 'minimum', n.get_float_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -59,7 +59,7 @@ class NumberColumn(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("displayAs", self.display_as)
         writer.write_float_value("maximum", self.maximum)
         writer.write_float_value("minimum", self.minimum)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

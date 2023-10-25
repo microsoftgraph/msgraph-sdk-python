@@ -43,7 +43,7 @@ class Thumbnail(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
             "height": lambda n : setattr(self, 'height', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sourceItemId": lambda n : setattr(self, 'source_item_id', n.get_str_value()),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
             "width": lambda n : setattr(self, 'width', n.get_int_value()),
@@ -60,7 +60,7 @@ class Thumbnail(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bytes_value("content", self.content)
         writer.write_int_value("height", self.height)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("sourceItemId", self.source_item_id)
         writer.write_str_value("url", self.url)
         writer.write_int_value("width", self.width)

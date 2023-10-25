@@ -45,7 +45,7 @@ class LookupColumn(AdditionalDataHolder, BackedModel, Parsable):
             "allowUnlimitedLength": lambda n : setattr(self, 'allow_unlimited_length', n.get_bool_value()),
             "columnName": lambda n : setattr(self, 'column_name', n.get_str_value()),
             "listId": lambda n : setattr(self, 'list_id', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "primaryLookupColumnId": lambda n : setattr(self, 'primary_lookup_column_id', n.get_str_value()),
         }
         return fields
@@ -62,7 +62,7 @@ class LookupColumn(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("allowUnlimitedLength", self.allow_unlimited_length)
         writer.write_str_value("columnName", self.column_name)
         writer.write_str_value("listId", self.list_id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("primaryLookupColumnId", self.primary_lookup_column_id)
         writer.write_additional_data_value(self.additional_data)
     

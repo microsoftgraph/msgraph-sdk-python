@@ -102,7 +102,7 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
             "mediaSize": lambda n : setattr(self, 'media_size', n.get_str_value()),
             "mediaType": lambda n : setattr(self, 'media_type', n.get_str_value()),
             "multipageLayout": lambda n : setattr(self, 'multipage_layout', n.get_enum_value(PrintMultipageLayout)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "orientation": lambda n : setattr(self, 'orientation', n.get_enum_value(PrintOrientation)),
             "outputBin": lambda n : setattr(self, 'output_bin', n.get_str_value()),
             "pagesPerSheet": lambda n : setattr(self, 'pages_per_sheet', n.get_int_value()),
@@ -131,7 +131,7 @@ class PrinterDefaults(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("mediaSize", self.media_size)
         writer.write_str_value("mediaType", self.media_type)
         writer.write_enum_value("multipageLayout", self.multipage_layout)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("orientation", self.orientation)
         writer.write_str_value("outputBin", self.output_bin)
         writer.write_int_value("pagesPerSheet", self.pages_per_sheet)

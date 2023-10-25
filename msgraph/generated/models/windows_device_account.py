@@ -5,8 +5,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .windows_device_a_d_account import WindowsDeviceADAccount
     from .windows_device_azure_a_d_account import WindowsDeviceAzureADAccount
+    from .windows_device_a_d_account import WindowsDeviceADAccount
 
 @dataclass
 class WindowsDeviceAccount(AdditionalDataHolder, BackedModel, Parsable):
@@ -48,14 +48,14 @@ class WindowsDeviceAccount(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .windows_device_a_d_account import WindowsDeviceADAccount
         from .windows_device_azure_a_d_account import WindowsDeviceAzureADAccount
+        from .windows_device_a_d_account import WindowsDeviceADAccount
 
-        from .windows_device_a_d_account import WindowsDeviceADAccount
         from .windows_device_azure_a_d_account import WindowsDeviceAzureADAccount
+        from .windows_device_a_d_account import WindowsDeviceADAccount
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "password": lambda n : setattr(self, 'password', n.get_str_value()),
         }
         return fields
@@ -68,7 +68,7 @@ class WindowsDeviceAccount(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("password", self.password)
         writer.write_additional_data_value(self.additional_data)
     

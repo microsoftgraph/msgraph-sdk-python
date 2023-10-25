@@ -53,7 +53,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, BackedModel, Parsable):
             "action": lambda n : setattr(self, 'action', n.get_enum_value(CalendarSharingAction)),
             "actionType": lambda n : setattr(self, 'action_type', n.get_enum_value(CalendarSharingActionType)),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(CalendarSharingActionImportance)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -68,7 +68,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_enum_value("action", self.action)
         writer.write_enum_value("actionType", self.action_type)
         writer.write_enum_value("importance", self.importance)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

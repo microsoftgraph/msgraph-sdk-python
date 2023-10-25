@@ -56,7 +56,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, BackedModel, Parsable):
             "insightCounts": lambda n : setattr(self, 'insight_counts', n.get_collection_of_object_values(KeyValuePair)),
             "itemCount": lambda n : setattr(self, 'item_count', n.get_int_value()),
             "itemNeedReview": lambda n : setattr(self, 'item_need_review', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "productItemCounts": lambda n : setattr(self, 'product_item_counts', n.get_collection_of_object_values(KeyValuePair)),
             "signedOffItemCount": lambda n : setattr(self, 'signed_off_item_count', n.get_int_value()),
             "totalItemSize": lambda n : setattr(self, 'total_item_size', n.get_int_value()),
@@ -75,7 +75,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_object_values("insightCounts", self.insight_counts)
         writer.write_int_value("itemCount", self.item_count)
         writer.write_int_value("itemNeedReview", self.item_need_review)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("productItemCounts", self.product_item_counts)
         writer.write_int_value("signedOffItemCount", self.signed_off_item_count)
         writer.write_int_value("totalItemSize", self.total_item_size)

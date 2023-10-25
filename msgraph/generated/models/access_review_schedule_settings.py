@@ -37,7 +37,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # Optional. Describes the types of insights that aid reviewers to make access review decisions. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationInsightSettings setting will be used instead of the value of this property.
     recommendation_insight_settings: Optional[List[AccessReviewRecommendationInsightSetting]] = None
-    # Optional field. Indicates the period of inactivity (with respect to the start date of the review instance) that recommendations will be configured from. The recommendation will be to deny if the user is inactive during the look-back duration. For reviews of groups and Azure AD roles, any duration is accepted. For reviews of applications, 30 days is the maximum duration. If not specified, the duration is 30 days. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationLookBackDuration setting will be used instead of the value of this property.
+    # Optional field. Indicates the period of inactivity (with respect to the start date of the review instance) that recommendations will be configured from. The recommendation will be to deny if the user is inactive during the look-back duration. For reviews of groups and Microsoft Entra roles, any duration is accepted. For reviews of applications, 30 days is the maximum duration. If not specified, the duration is 30 days. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationLookBackDuration setting will be used instead of the value of this property.
     recommendation_look_back_duration: Optional[datetime.timedelta] = None
     # Indicates whether decision recommendations are enabled or disabled. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationsEnabled setting will be used instead of the value of this property.
     recommendations_enabled: Optional[bool] = None
@@ -79,7 +79,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, BackedModel, Parsable):
             "instanceDurationInDays": lambda n : setattr(self, 'instance_duration_in_days', n.get_int_value()),
             "justificationRequiredOnApproval": lambda n : setattr(self, 'justification_required_on_approval', n.get_bool_value()),
             "mailNotificationsEnabled": lambda n : setattr(self, 'mail_notifications_enabled', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recommendationInsightSettings": lambda n : setattr(self, 'recommendation_insight_settings', n.get_collection_of_object_values(AccessReviewRecommendationInsightSetting)),
             "recommendationLookBackDuration": lambda n : setattr(self, 'recommendation_look_back_duration', n.get_timedelta_value()),
             "recommendationsEnabled": lambda n : setattr(self, 'recommendations_enabled', n.get_bool_value()),
@@ -104,7 +104,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_int_value("instanceDurationInDays", self.instance_duration_in_days)
         writer.write_bool_value("justificationRequiredOnApproval", self.justification_required_on_approval)
         writer.write_bool_value("mailNotificationsEnabled", self.mail_notifications_enabled)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("recommendationInsightSettings", self.recommendation_insight_settings)
         writer.write_timedelta_value("recommendationLookBackDuration", self.recommendation_look_back_duration)
         writer.write_bool_value("recommendationsEnabled", self.recommendations_enabled)

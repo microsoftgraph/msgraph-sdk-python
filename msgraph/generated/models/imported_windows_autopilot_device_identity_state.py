@@ -50,7 +50,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, BackedMo
             "deviceErrorName": lambda n : setattr(self, 'device_error_name', n.get_str_value()),
             "deviceImportStatus": lambda n : setattr(self, 'device_import_status', n.get_enum_value(ImportedWindowsAutopilotDeviceIdentityImportStatus)),
             "deviceRegistrationId": lambda n : setattr(self, 'device_registration_id', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -66,7 +66,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, BackedMo
         writer.write_str_value("deviceErrorName", self.device_error_name)
         writer.write_enum_value("deviceImportStatus", self.device_import_status)
         writer.write_str_value("deviceRegistrationId", self.device_registration_id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -45,7 +45,7 @@ class ServicePrincipalLockConfiguration(AdditionalDataHolder, BackedModel, Parsa
             "credentialsWithUsageSign": lambda n : setattr(self, 'credentials_with_usage_sign', n.get_bool_value()),
             "credentialsWithUsageVerify": lambda n : setattr(self, 'credentials_with_usage_verify', n.get_bool_value()),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_bool_value()),
         }
         return fields
@@ -62,7 +62,7 @@ class ServicePrincipalLockConfiguration(AdditionalDataHolder, BackedModel, Parsa
         writer.write_bool_value("credentialsWithUsageSign", self.credentials_with_usage_sign)
         writer.write_bool_value("credentialsWithUsageVerify", self.credentials_with_usage_verify)
         writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_bool_value("tokenEncryptionKeyId", self.token_encryption_key_id)
         writer.write_additional_data_value(self.additional_data)
     

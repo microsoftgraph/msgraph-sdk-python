@@ -45,7 +45,7 @@ class SimulationReport(AdditionalDataHolder, BackedModel, Parsable):
         from .user_simulation_details import UserSimulationDetails
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "overview": lambda n : setattr(self, 'overview', n.get_object_value(SimulationReportOverview)),
             "simulationUsers": lambda n : setattr(self, 'simulation_users', n.get_collection_of_object_values(UserSimulationDetails)),
         }
@@ -59,7 +59,7 @@ class SimulationReport(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("overview", self.overview)
         writer.write_collection_of_object_values("simulationUsers", self.simulation_users)
         writer.write_additional_data_value(self.additional_data)

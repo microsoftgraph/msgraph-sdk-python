@@ -56,7 +56,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, BackedModel, Parsable):
             "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(AnswerInputType)),
             "answerOptions": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
             "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "question": lambda n : setattr(self, 'question', n.get_str_value()),
             "questionId": lambda n : setattr(self, 'question_id', n.get_str_value()),
             "selectedOptions": lambda n : setattr(self, 'selected_options', n.get_collection_of_primitive_values(str)),
@@ -75,7 +75,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_enum_value("answerInputType", self.answer_input_type)
         writer.write_collection_of_primitive_values("answerOptions", self.answer_options)
         writer.write_bool_value("isRequired", self.is_required)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("question", self.question)
         writer.write_str_value("questionId", self.question_id)
         writer.write_collection_of_primitive_values("selectedOptions", self.selected_options)

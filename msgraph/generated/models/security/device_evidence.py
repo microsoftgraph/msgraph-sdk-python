@@ -19,7 +19,7 @@ from .alert_evidence import AlertEvidence
 class DeviceEvidence(AlertEvidence):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.deviceEvidence"
-    # A unique identifier assigned to a device by Azure Active Directory (Azure AD) when device is Azure AD-joined.
+    # A unique identifier assigned to a device by Microsoft Entra ID when device is Microsoft Entra joined.
     azure_ad_device_id: Optional[str] = None
     # State of the Defender AntiMalware engine. The possible values are: notReporting, disabled, notUpdated, updated, unknown, notSupported, unknownFutureValue.
     defender_av_status: Optional[DefenderAvStatus] = None

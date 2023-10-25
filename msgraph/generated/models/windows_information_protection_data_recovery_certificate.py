@@ -46,7 +46,7 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
             "certificate": lambda n : setattr(self, 'certificate', n.get_bytes_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "subjectName": lambda n : setattr(self, 'subject_name', n.get_str_value()),
         }
         return fields
@@ -62,7 +62,7 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
         writer.write_bytes_value("certificate", self.certificate)
         writer.write_str_value("description", self.description)
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("subjectName", self.subject_name)
         writer.write_additional_data_value(self.additional_data)
     

@@ -46,7 +46,7 @@ class OutlookGeoCoordinates(AdditionalDataHolder, BackedModel, Parsable):
             "altitudeAccuracy": lambda n : setattr(self, 'altitude_accuracy', n.get_float_value()),
             "latitude": lambda n : setattr(self, 'latitude', n.get_float_value()),
             "longitude": lambda n : setattr(self, 'longitude', n.get_float_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -63,7 +63,7 @@ class OutlookGeoCoordinates(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_float_value("altitudeAccuracy", self.altitude_accuracy)
         writer.write_float_value("latitude", self.latitude)
         writer.write_float_value("longitude", self.longitude)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

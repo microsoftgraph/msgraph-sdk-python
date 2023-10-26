@@ -18,7 +18,7 @@ class AccessPackageResourceEnvironment(Entity):
     description: Optional[str] = None
     # The display name of this object.
     display_name: Optional[str] = None
-    # Determines whether this is default environment or not. It is set to true for all static origin systems, such as Azure AD groups and Azure AD Applications.
+    # Determines whether this is default environment or not. It is set to true for all static origin systems, such as Microsoft Entra groups and Microsoft Entra Applications.
     is_default_environment: Optional[bool] = None
     # The date and time that this object was last modified. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     modified_date_time: Optional[datetime.datetime] = None

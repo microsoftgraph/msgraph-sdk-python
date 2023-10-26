@@ -19,7 +19,7 @@ class WorkbookChartTitle(Entity):
     overlay: Optional[bool] = None
     # Represents the title text of a chart.
     text: Optional[str] = None
-    # A boolean value the represents the visibility of a chart title object.
+    # A boolean value that represents the visibility of a chart title object.
     visible: Optional[bool] = None
     
     @staticmethod

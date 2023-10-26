@@ -44,7 +44,7 @@ class CvssSummary(AdditionalDataHolder, BackedModel, Parsable):
         from .vulnerability_severity import VulnerabilitySeverity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "score": lambda n : setattr(self, 'score', n.get_float_value()),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(VulnerabilitySeverity)),
             "vectorString": lambda n : setattr(self, 'vector_string', n.get_str_value()),
@@ -59,7 +59,7 @@ class CvssSummary(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_float_value("score", self.score)
         writer.write_enum_value("severity", self.severity)
         writer.write_str_value("vectorString", self.vector_string)

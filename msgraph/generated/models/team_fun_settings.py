@@ -50,7 +50,7 @@ class TeamFunSettings(AdditionalDataHolder, BackedModel, Parsable):
             "allowGiphy": lambda n : setattr(self, 'allow_giphy', n.get_bool_value()),
             "allowStickersAndMemes": lambda n : setattr(self, 'allow_stickers_and_memes', n.get_bool_value()),
             "giphyContentRating": lambda n : setattr(self, 'giphy_content_rating', n.get_enum_value(GiphyRatingType)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -66,7 +66,7 @@ class TeamFunSettings(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("allowGiphy", self.allow_giphy)
         writer.write_bool_value("allowStickersAndMemes", self.allow_stickers_and_memes)
         writer.write_enum_value("giphyContentRating", self.giphy_content_rating)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

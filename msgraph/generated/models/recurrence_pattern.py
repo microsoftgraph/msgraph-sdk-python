@@ -64,7 +64,7 @@ class RecurrencePattern(AdditionalDataHolder, BackedModel, Parsable):
             "index": lambda n : setattr(self, 'index', n.get_enum_value(WeekIndex)),
             "interval": lambda n : setattr(self, 'interval', n.get_int_value()),
             "month": lambda n : setattr(self, 'month', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(RecurrencePatternType)),
         }
         return fields
@@ -83,7 +83,7 @@ class RecurrencePattern(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_enum_value("index", self.index)
         writer.write_int_value("interval", self.interval)
         writer.write_int_value("month", self.month)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
     

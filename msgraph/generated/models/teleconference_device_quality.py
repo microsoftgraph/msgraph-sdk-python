@@ -68,7 +68,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, BackedModel, Parsable):
             "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
             "mediaLegId": lambda n : setattr(self, 'media_leg_id', n.get_uuid_value()),
             "mediaQualityList": lambda n : setattr(self, 'media_quality_list', n.get_collection_of_object_values(TeleconferenceDeviceMediaQuality)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "participantId": lambda n : setattr(self, 'participant_id', n.get_uuid_value()),
         }
         return fields
@@ -90,7 +90,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("deviceName", self.device_name)
         writer.write_uuid_value("mediaLegId", self.media_leg_id)
         writer.write_collection_of_object_values("mediaQualityList", self.media_quality_list)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_uuid_value("participantId", self.participant_id)
         writer.write_additional_data_value(self.additional_data)
     

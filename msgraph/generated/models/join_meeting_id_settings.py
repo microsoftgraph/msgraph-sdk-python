@@ -39,7 +39,7 @@ class JoinMeetingIdSettings(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "isPasscodeRequired": lambda n : setattr(self, 'is_passcode_required', n.get_bool_value()),
             "joinMeetingId": lambda n : setattr(self, 'join_meeting_id', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "passcode": lambda n : setattr(self, 'passcode', n.get_str_value()),
         }
         return fields
@@ -54,7 +54,7 @@ class JoinMeetingIdSettings(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("isPasscodeRequired", self.is_passcode_required)
         writer.write_str_value("joinMeetingId", self.join_meeting_id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("passcode", self.passcode)
         writer.write_additional_data_value(self.additional_data)
     

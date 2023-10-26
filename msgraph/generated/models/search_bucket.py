@@ -40,7 +40,7 @@ class SearchBucket(AdditionalDataHolder, BackedModel, Parsable):
             "aggregationFilterToken": lambda n : setattr(self, 'aggregation_filter_token', n.get_str_value()),
             "count": lambda n : setattr(self, 'count', n.get_int_value()),
             "key": lambda n : setattr(self, 'key', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -55,7 +55,7 @@ class SearchBucket(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("aggregationFilterToken", self.aggregation_filter_token)
         writer.write_int_value("count", self.count)
         writer.write_str_value("key", self.key)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

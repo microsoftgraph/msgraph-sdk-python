@@ -45,7 +45,7 @@ class PatternedRecurrence(AdditionalDataHolder, BackedModel, Parsable):
         from .recurrence_range import RecurrenceRange
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "pattern": lambda n : setattr(self, 'pattern', n.get_object_value(RecurrencePattern)),
             "range": lambda n : setattr(self, 'range', n.get_object_value(RecurrenceRange)),
         }
@@ -59,7 +59,7 @@ class PatternedRecurrence(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("pattern", self.pattern)
         writer.write_object_value("range", self.range)
         writer.write_additional_data_value(self.additional_data)

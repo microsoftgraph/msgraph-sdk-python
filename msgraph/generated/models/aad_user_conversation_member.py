@@ -15,7 +15,7 @@ class AadUserConversationMember(ConversationMember):
     odata_type: Optional[str] = "#microsoft.graph.aadUserConversationMember"
     # The email address of the user.
     email: Optional[str] = None
-    # TenantId which the Azure AD user belongs to.
+    # TenantId which the Microsoft Entra user belongs to.
     tenant_id: Optional[str] = None
     # The user property
     user: Optional[User] = None

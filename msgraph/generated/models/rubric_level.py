@@ -19,7 +19,7 @@ class RubricLevel(AdditionalDataHolder, BackedModel, Parsable):
     description: Optional[EducationItemBody] = None
     # The name of this rubric level.
     display_name: Optional[str] = None
-    # Null if this is a no-points rubric; educationAssignmentPointsGradeType if it is a points rubric.
+    # Null if this is a no-points rubric; educationAssignmentPointsGradeType if it's a points rubric.
     grading: Optional[EducationAssignmentGradeType] = None
     # The ID of this resource.
     level_id: Optional[str] = None
@@ -53,7 +53,7 @@ class RubricLevel(AdditionalDataHolder, BackedModel, Parsable):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "grading": lambda n : setattr(self, 'grading', n.get_object_value(EducationAssignmentGradeType)),
             "levelId": lambda n : setattr(self, 'level_id', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -69,7 +69,7 @@ class RubricLevel(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("grading", self.grading)
         writer.write_str_value("levelId", self.level_id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

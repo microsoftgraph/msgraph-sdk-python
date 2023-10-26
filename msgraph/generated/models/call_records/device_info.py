@@ -84,7 +84,7 @@ class DeviceInfo(AdditionalDataHolder, BackedModel, Parsable):
             "lowSpeechLevelEventRatio": lambda n : setattr(self, 'low_speech_level_event_ratio', n.get_float_value()),
             "lowSpeechToNoiseEventRatio": lambda n : setattr(self, 'low_speech_to_noise_event_ratio', n.get_float_value()),
             "micGlitchRate": lambda n : setattr(self, 'mic_glitch_rate', n.get_float_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "receivedNoiseLevel": lambda n : setattr(self, 'received_noise_level', n.get_int_value()),
             "receivedSignalLevel": lambda n : setattr(self, 'received_signal_level', n.get_int_value()),
             "renderDeviceDriver": lambda n : setattr(self, 'render_device_driver', n.get_str_value()),
@@ -117,7 +117,7 @@ class DeviceInfo(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_float_value("lowSpeechLevelEventRatio", self.low_speech_level_event_ratio)
         writer.write_float_value("lowSpeechToNoiseEventRatio", self.low_speech_to_noise_event_ratio)
         writer.write_float_value("micGlitchRate", self.mic_glitch_rate)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("receivedNoiseLevel", self.received_noise_level)
         writer.write_int_value("receivedSignalLevel", self.received_signal_level)
         writer.write_str_value("renderDeviceDriver", self.render_device_driver)

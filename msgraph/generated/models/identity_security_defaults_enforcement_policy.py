@@ -12,7 +12,7 @@ from .policy_base import PolicyBase
 class IdentitySecurityDefaultsEnforcementPolicy(PolicyBase):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identitySecurityDefaultsEnforcementPolicy"
-    # If set to true, Azure Active Directory security defaults is enabled for the tenant.
+    # If set to true, Microsoft Entra security defaults are enabled for the tenant.
     is_enabled: Optional[bool] = None
     
     @staticmethod

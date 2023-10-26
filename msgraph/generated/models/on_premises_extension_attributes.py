@@ -76,7 +76,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, BackedModel, Parsable)
             "extensionAttribute7": lambda n : setattr(self, 'extension_attribute7', n.get_str_value()),
             "extensionAttribute8": lambda n : setattr(self, 'extension_attribute8', n.get_str_value()),
             "extensionAttribute9": lambda n : setattr(self, 'extension_attribute9', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -103,7 +103,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, BackedModel, Parsable)
         writer.write_str_value("extensionAttribute7", self.extension_attribute7)
         writer.write_str_value("extensionAttribute8", self.extension_attribute8)
         writer.write_str_value("extensionAttribute9", self.extension_attribute9)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

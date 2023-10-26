@@ -39,7 +39,7 @@ class Alert(Entity):
     assigned_to: Optional[str] = None
     # Azure subscription ID, present if this alert is related to an Azure resource.
     azure_subscription_id: Optional[str] = None
-    # Azure Active Directory tenant ID. Required.
+    # Microsoft Entra tenant ID. Required.
     azure_tenant_id: Optional[str] = None
     # Category of the alert (for example, credentialTheft, ransomware, etc.).
     category: Optional[str] = None

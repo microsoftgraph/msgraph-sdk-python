@@ -47,7 +47,7 @@ class AlterationResponse(AdditionalDataHolder, BackedModel, Parsable):
         from .search_alteration_type import SearchAlterationType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "originalQueryString": lambda n : setattr(self, 'original_query_string', n.get_str_value()),
             "queryAlteration": lambda n : setattr(self, 'query_alteration', n.get_object_value(SearchAlteration)),
             "queryAlterationType": lambda n : setattr(self, 'query_alteration_type', n.get_enum_value(SearchAlterationType)),
@@ -62,7 +62,7 @@ class AlterationResponse(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("originalQueryString", self.original_query_string)
         writer.write_object_value("queryAlteration", self.query_alteration)
         writer.write_enum_value("queryAlterationType", self.query_alteration_type)

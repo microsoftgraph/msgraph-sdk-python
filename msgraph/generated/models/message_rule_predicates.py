@@ -130,7 +130,7 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
             "isVoicemail": lambda n : setattr(self, 'is_voicemail', n.get_bool_value()),
             "messageActionFlag": lambda n : setattr(self, 'message_action_flag', n.get_enum_value(MessageActionFlag)),
             "notSentToMe": lambda n : setattr(self, 'not_sent_to_me', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recipientContains": lambda n : setattr(self, 'recipient_contains', n.get_collection_of_primitive_values(str)),
             "senderContains": lambda n : setattr(self, 'sender_contains', n.get_collection_of_primitive_values(str)),
             "sensitivity": lambda n : setattr(self, 'sensitivity', n.get_enum_value(Sensitivity)),
@@ -172,7 +172,7 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("isVoicemail", self.is_voicemail)
         writer.write_enum_value("messageActionFlag", self.message_action_flag)
         writer.write_bool_value("notSentToMe", self.not_sent_to_me)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_primitive_values("recipientContains", self.recipient_contains)
         writer.write_collection_of_primitive_values("senderContains", self.sender_contains)
         writer.write_enum_value("sensitivity", self.sensitivity)

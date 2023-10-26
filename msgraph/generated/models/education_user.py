@@ -66,7 +66,7 @@ class EducationUser(Entity):
     odata_type: Optional[str] = None
     # The officeLocation property
     office_location: Optional[str] = None
-    # Additional information used to associate the Azure Active Directory user with its Active Directory counterpart.
+    # Additional information used to associate the Microsoft Entra user with its Active Directory counterpart.
     on_premises_info: Optional[EducationOnPremisesInfo] = None
     # Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two can be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.
     password_policies: Optional[str] = None

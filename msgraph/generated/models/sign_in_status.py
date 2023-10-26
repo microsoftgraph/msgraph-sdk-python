@@ -40,7 +40,7 @@ class SignInStatus(AdditionalDataHolder, BackedModel, Parsable):
             "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_str_value()),
             "errorCode": lambda n : setattr(self, 'error_code', n.get_int_value()),
             "failureReason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -55,7 +55,7 @@ class SignInStatus(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("additionalDetails", self.additional_details)
         writer.write_int_value("errorCode", self.error_code)
         writer.write_str_value("failureReason", self.failure_reason)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

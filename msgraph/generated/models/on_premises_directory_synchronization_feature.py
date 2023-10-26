@@ -15,7 +15,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
     block_cloud_object_takeover_through_hard_match_enabled: Optional[bool] = None
     # Use to block soft match for all objects if enabled for the  tenant. Customers are encouraged to enable this feature and keep it enabled until soft matching is required again for their tenancy. This flag should be enabled again after any soft matching has been completed and is no longer needed.
     block_soft_match_enabled: Optional[bool] = None
-    # When true, persists the values of Mobile and OtherMobile in on-premises AD during sync cycles instead of values of MobilePhone or AlternateMobilePhones in Azure AD.
+    # When true, persists the values of Mobile and OtherMobile in on-premises AD during sync cycles instead of values of MobilePhone or AlternateMobilePhones in Microsoft Entra ID.
     bypass_dir_sync_overrides_enabled: Optional[bool] = None
     # Used to indicate that cloud password policy applies to users whose passwords are synchronized from on-premises.
     cloud_password_policy_for_password_synced_users_enabled: Optional[bool] = None
@@ -25,7 +25,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
     concurrent_org_id_provisioning_enabled: Optional[bool] = None
     # Used to indicate that device write-back is enabled.
     device_writeback_enabled: Optional[bool] = None
-    # Used to indicate that directory extensions are being synced from on-premises AD to Azure AD.
+    # Used to indicate that directory extensions are being synced from on-premises AD to Microsoft Entra ID.
     directory_extensions_enabled: Optional[bool] = None
     # Used to indicate that for a Microsoft Forefront Online Protection for Exchange (FOPE) migrated tenant, the conflicting proxy address should be migrated over.
     fope_conflict_resolution_enabled: Optional[bool] = None
@@ -35,7 +35,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
     odata_type: Optional[str] = None
     # Used to indicate on-premise password synchronization is enabled.
     password_sync_enabled: Optional[bool] = None
-    # Used to indicate that writeback of password resets from Azure AD to on-premises AD is enabled.
+    # Used to indicate that writeback of password resets from Microsoft Entra ID to on-premises AD is enabled.
     password_writeback_enabled: Optional[bool] = None
     # Used to indicate that we should quarantine objects with conflicting proxy address.
     quarantine_upon_proxy_addresses_conflict_enabled: Optional[bool] = None
@@ -79,7 +79,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
             "directoryExtensionsEnabled": lambda n : setattr(self, 'directory_extensions_enabled', n.get_bool_value()),
             "fopeConflictResolutionEnabled": lambda n : setattr(self, 'fope_conflict_resolution_enabled', n.get_bool_value()),
             "groupWriteBackEnabled": lambda n : setattr(self, 'group_write_back_enabled', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "passwordSyncEnabled": lambda n : setattr(self, 'password_sync_enabled', n.get_bool_value()),
             "passwordWritebackEnabled": lambda n : setattr(self, 'password_writeback_enabled', n.get_bool_value()),
             "quarantineUponProxyAddressesConflictEnabled": lambda n : setattr(self, 'quarantine_upon_proxy_addresses_conflict_enabled', n.get_bool_value()),
@@ -110,7 +110,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
         writer.write_bool_value("directoryExtensionsEnabled", self.directory_extensions_enabled)
         writer.write_bool_value("fopeConflictResolutionEnabled", self.fope_conflict_resolution_enabled)
         writer.write_bool_value("groupWriteBackEnabled", self.group_write_back_enabled)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_bool_value("passwordSyncEnabled", self.password_sync_enabled)
         writer.write_bool_value("passwordWritebackEnabled", self.password_writeback_enabled)
         writer.write_bool_value("quarantineUponProxyAddressesConflictEnabled", self.quarantine_upon_proxy_addresses_conflict_enabled)

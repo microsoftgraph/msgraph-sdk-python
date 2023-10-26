@@ -43,7 +43,7 @@ class StaffAvailabilityItem(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "availabilityItems": lambda n : setattr(self, 'availability_items', n.get_collection_of_object_values(AvailabilityItem)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "staffId": lambda n : setattr(self, 'staff_id', n.get_str_value()),
         }
         return fields
@@ -57,7 +57,7 @@ class StaffAvailabilityItem(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("availabilityItems", self.availability_items)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("staffId", self.staff_id)
         writer.write_additional_data_value(self.additional_data)
     

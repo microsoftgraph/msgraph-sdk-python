@@ -44,7 +44,7 @@ class FilterClause(AdditionalDataHolder, BackedModel, Parsable):
         from .filter_operand import FilterOperand
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operatorName": lambda n : setattr(self, 'operator_name', n.get_str_value()),
             "sourceOperandName": lambda n : setattr(self, 'source_operand_name', n.get_str_value()),
             "targetOperand": lambda n : setattr(self, 'target_operand', n.get_object_value(FilterOperand)),
@@ -59,7 +59,7 @@ class FilterClause(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("operatorName", self.operator_name)
         writer.write_str_value("sourceOperandName", self.source_operand_name)
         writer.write_object_value("targetOperand", self.target_operand)

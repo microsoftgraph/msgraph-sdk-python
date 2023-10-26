@@ -14,7 +14,7 @@ from .user_agent import UserAgent
 class ClientUserAgent(UserAgent):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.callRecords.clientUserAgent"
-    # The unique identifier of the Azure AD application used by this endpoint.
+    # The unique identifier of the Microsoft Entra application used by this endpoint.
     azure_a_d_app_id: Optional[str] = None
     # Immutable resource identifier of the Azure Communication Service associated with this endpoint based on Communication Services APIs.
     communication_service_id: Optional[str] = None

@@ -56,7 +56,7 @@ class SelfSignedCertificate(AdditionalDataHolder, BackedModel, Parsable):
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "key": lambda n : setattr(self, 'key', n.get_bytes_value()),
             "keyId": lambda n : setattr(self, 'key_id', n.get_uuid_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "thumbprint": lambda n : setattr(self, 'thumbprint', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
@@ -77,7 +77,7 @@ class SelfSignedCertificate(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_bytes_value("key", self.key)
         writer.write_uuid_value("keyId", self.key_id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("thumbprint", self.thumbprint)
         writer.write_str_value("type", self.type)

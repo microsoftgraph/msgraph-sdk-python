@@ -50,7 +50,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(IdentitySet)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "participantId": lambda n : setattr(self, 'participant_id', n.get_str_value()),
             "removeFromDefaultAudioRoutingGroup": lambda n : setattr(self, 'remove_from_default_audio_routing_group', n.get_bool_value()),
             "replacesCallId": lambda n : setattr(self, 'replaces_call_id', n.get_str_value()),
@@ -67,7 +67,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("hidden", self.hidden)
         writer.write_object_value("identity", self.identity)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("participantId", self.participant_id)
         writer.write_bool_value("removeFromDefaultAudioRoutingGroup", self.remove_from_default_audio_routing_group)
         writer.write_str_value("replacesCallId", self.replaces_call_id)

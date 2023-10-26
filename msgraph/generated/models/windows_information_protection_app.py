@@ -69,7 +69,7 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, BackedModel, Parsabl
             "denied": lambda n : setattr(self, 'denied', n.get_bool_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "productName": lambda n : setattr(self, 'product_name', n.get_str_value()),
             "publisherName": lambda n : setattr(self, 'publisher_name', n.get_str_value()),
         }
@@ -86,7 +86,7 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, BackedModel, Parsabl
         writer.write_bool_value("denied", self.denied)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("productName", self.product_name)
         writer.write_str_value("publisherName", self.publisher_name)
         writer.write_additional_data_value(self.additional_data)

@@ -64,7 +64,7 @@ class Reminder(AdditionalDataHolder, BackedModel, Parsable):
             "eventStartTime": lambda n : setattr(self, 'event_start_time', n.get_object_value(DateTimeTimeZone)),
             "eventSubject": lambda n : setattr(self, 'event_subject', n.get_str_value()),
             "eventWebLink": lambda n : setattr(self, 'event_web_link', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "reminderFireTime": lambda n : setattr(self, 'reminder_fire_time', n.get_object_value(DateTimeTimeZone)),
         }
         return fields
@@ -84,7 +84,7 @@ class Reminder(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("eventStartTime", self.event_start_time)
         writer.write_str_value("eventSubject", self.event_subject)
         writer.write_str_value("eventWebLink", self.event_web_link)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("reminderFireTime", self.reminder_fire_time)
         writer.write_additional_data_value(self.additional_data)
     

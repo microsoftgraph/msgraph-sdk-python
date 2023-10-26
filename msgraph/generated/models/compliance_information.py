@@ -44,7 +44,7 @@ class ComplianceInformation(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "certificationControls": lambda n : setattr(self, 'certification_controls', n.get_collection_of_object_values(CertificationControl)),
             "certificationName": lambda n : setattr(self, 'certification_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -58,7 +58,7 @@ class ComplianceInformation(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("certificationControls", self.certification_controls)
         writer.write_str_value("certificationName", self.certification_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -81,7 +81,7 @@ class SynchronizationTaskExecution(AdditionalDataHolder, BackedModel, Parsable):
             "countImportedDeltas": lambda n : setattr(self, 'count_imported_deltas', n.get_int_value()),
             "countImportedReferenceDeltas": lambda n : setattr(self, 'count_imported_reference_deltas', n.get_int_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(SynchronizationError)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(SynchronizationTaskExecutionResult)),
             "timeBegan": lambda n : setattr(self, 'time_began', n.get_datetime_value()),
             "timeEnded": lambda n : setattr(self, 'time_ended', n.get_datetime_value()),
@@ -107,7 +107,7 @@ class SynchronizationTaskExecution(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_int_value("countImportedDeltas", self.count_imported_deltas)
         writer.write_int_value("countImportedReferenceDeltas", self.count_imported_reference_deltas)
         writer.write_object_value("error", self.error)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("state", self.state)
         writer.write_datetime_value("timeBegan", self.time_began)
         writer.write_datetime_value("timeEnded", self.time_ended)

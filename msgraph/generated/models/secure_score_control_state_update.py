@@ -44,7 +44,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, BackedModel, Parsable)
         fields: Dict[str, Callable[[Any], None]] = {
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
             "updatedBy": lambda n : setattr(self, 'updated_by', n.get_str_value()),
             "updatedDateTime": lambda n : setattr(self, 'updated_date_time', n.get_datetime_value()),
@@ -61,7 +61,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, BackedModel, Parsable)
             raise TypeError("writer cannot be null.")
         writer.write_str_value("assignedTo", self.assigned_to)
         writer.write_str_value("comment", self.comment)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("state", self.state)
         writer.write_str_value("updatedBy", self.updated_by)
         writer.write_datetime_value("updatedDateTime", self.updated_date_time)

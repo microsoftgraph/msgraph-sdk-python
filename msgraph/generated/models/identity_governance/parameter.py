@@ -45,7 +45,7 @@ class Parameter(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "valueType": lambda n : setattr(self, 'value_type', n.get_enum_value(ValueType)),
             "values": lambda n : setattr(self, 'values', n.get_collection_of_primitive_values(str)),
         }
@@ -60,7 +60,7 @@ class Parameter(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("name", self.name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("valueType", self.value_type)
         writer.write_collection_of_primitive_values("values", self.values)
         writer.write_additional_data_value(self.additional_data)

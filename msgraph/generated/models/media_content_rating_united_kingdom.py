@@ -46,7 +46,7 @@ class MediaContentRatingUnitedKingdom(AdditionalDataHolder, BackedModel, Parsabl
 
         fields: Dict[str, Callable[[Any], None]] = {
             "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(RatingUnitedKingdomMoviesType)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(RatingUnitedKingdomTelevisionType)),
         }
         return fields
@@ -60,7 +60,7 @@ class MediaContentRatingUnitedKingdom(AdditionalDataHolder, BackedModel, Parsabl
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("movieRating", self.movie_rating)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("tvRating", self.tv_rating)
         writer.write_additional_data_value(self.additional_data)
     

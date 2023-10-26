@@ -14,9 +14,9 @@ class CrossCloudAzureActiveDirectoryTenant(IdentitySource):
     odata_type: Optional[str] = "#microsoft.graph.crossCloudAzureActiveDirectoryTenant"
     # The ID of the cloud where the tenant is located, one of microsoftonline.com, microsoftonline.us or partner.microsoftonline.cn. Read only.
     cloud_instance: Optional[str] = None
-    # The name of the Azure Active Directory tenant. Read only.
+    # The name of the Microsoft Entra tenant. Read only.
     display_name: Optional[str] = None
-    # The ID of the Azure Active Directory tenant. Read only.
+    # The ID of the Microsoft Entra tenant. Read only.
     tenant_id: Optional[str] = None
     
     @staticmethod

@@ -43,7 +43,7 @@ class ResponseStatus(AdditionalDataHolder, BackedModel, Parsable):
         from .response_type import ResponseType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "response": lambda n : setattr(self, 'response', n.get_enum_value(ResponseType)),
             "time": lambda n : setattr(self, 'time', n.get_datetime_value()),
         }
@@ -57,7 +57,7 @@ class ResponseStatus(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("response", self.response)
         writer.write_datetime_value("time", self.time)
         writer.write_additional_data_value(self.additional_data)

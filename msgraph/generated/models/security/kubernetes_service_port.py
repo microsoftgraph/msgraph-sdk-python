@@ -53,7 +53,7 @@ class KubernetesServicePort(AdditionalDataHolder, BackedModel, Parsable):
             "appProtocol": lambda n : setattr(self, 'app_protocol', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "nodePort": lambda n : setattr(self, 'node_port', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "port": lambda n : setattr(self, 'port', n.get_int_value()),
             "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(ContainerPortProtocol)),
             "targetPort": lambda n : setattr(self, 'target_port', n.get_str_value()),
@@ -71,7 +71,7 @@ class KubernetesServicePort(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("appProtocol", self.app_protocol)
         writer.write_str_value("name", self.name)
         writer.write_int_value("nodePort", self.node_port)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("port", self.port)
         writer.write_enum_value("protocol", self.protocol)
         writer.write_str_value("targetPort", self.target_port)

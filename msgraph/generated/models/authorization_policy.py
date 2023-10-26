@@ -25,7 +25,7 @@ class AuthorizationPolicy(PolicyBase):
     allowed_to_sign_up_email_based_subscriptions: Optional[bool] = None
     # Indicates whether users can use the Self-Serve Password Reset feature on the tenant.
     allowed_to_use_s_s_p_r: Optional[bool] = None
-    # To disable the use of MSOL PowerShell, set this property to true. This also disables user-based access to the legacy service endpoint used by MSOL PowerShell. This doesn't affect Azure Active Directory Connect or Microsoft Graph.
+    # To disable the use of MSOL PowerShell, set this property to true. This also disables user-based access to the legacy service endpoint used by MSOL PowerShell. This doesn't affect Microsoft Entra Connect or Microsoft Graph.
     block_msol_power_shell: Optional[bool] = None
     # The defaultUserRolePermissions property
     default_user_role_permissions: Optional[DefaultUserRolePermissions] = None

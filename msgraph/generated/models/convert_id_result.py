@@ -14,13 +14,13 @@ class ConvertIdResult(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # An error object indicating the reason for the conversion failure. This value is not present if the conversion succeeded.
+    # An error object indicating the reason for the conversion failure. This value isn't present if the conversion succeeded.
     error_details: Optional[GenericError] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The identifier that was converted. This value is the original, un-converted identifier.
     source_id: Optional[str] = None
-    # The converted identifier. This value is not present if the conversion failed.
+    # The converted identifier. This value isn't present if the conversion failed.
     target_id: Optional[str] = None
     
     @staticmethod
@@ -45,7 +45,7 @@ class ConvertIdResult(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "errorDetails": lambda n : setattr(self, 'error_details', n.get_object_value(GenericError)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sourceId": lambda n : setattr(self, 'source_id', n.get_str_value()),
             "targetId": lambda n : setattr(self, 'target_id', n.get_str_value()),
         }
@@ -60,7 +60,7 @@ class ConvertIdResult(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("errorDetails", self.error_details)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("sourceId", self.source_id)
         writer.write_str_value("targetId", self.target_id)
         writer.write_additional_data_value(self.additional_data)

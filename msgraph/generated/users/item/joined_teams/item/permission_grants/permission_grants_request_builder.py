@@ -14,11 +14,7 @@ if TYPE_CHECKING:
     from ......models.resource_specific_permission_grant import ResourceSpecificPermissionGrant
     from ......models.resource_specific_permission_grant_collection_response import ResourceSpecificPermissionGrantCollectionResponse
     from .count.count_request_builder import CountRequestBuilder
-    from .delta.delta_request_builder import DeltaRequestBuilder
-    from .get_available_extension_properties.get_available_extension_properties_request_builder import GetAvailableExtensionPropertiesRequestBuilder
-    from .get_by_ids.get_by_ids_request_builder import GetByIdsRequestBuilder
     from .item.resource_specific_permission_grant_item_request_builder import ResourceSpecificPermissionGrantItemRequestBuilder
-    from .validate_properties.validate_properties_request_builder import ValidatePropertiesRequestBuilder
 
 class PermissionGrantsRequestBuilder(BaseRequestBuilder):
     """
@@ -49,7 +45,7 @@ class PermissionGrantsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> Optional[ResourceSpecificPermissionGrantCollectionResponse]:
         """
-        List all resource-specific permission grants on the team. This list specifies the Azure AD apps that have access to the team, along with each app's corresponding type of resource-specific access.
+        List all resource-specific permission grants on the team. This list specifies the Microsoft Entra apps that have access to the team, along with each app's corresponding type of resource-specific access. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ResourceSpecificPermissionGrantCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/team-list-permissiongrants?view=graph-rest-1.0
@@ -95,19 +91,19 @@ class PermissionGrantsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List all resource-specific permission grants on the team. This list specifies the Azure AD apps that have access to the team, along with each app's corresponding type of resource-specific access.
+        List all resource-specific permission grants on the team. This list specifies the Microsoft Entra apps that have access to the team, along with each app's corresponding type of resource-specific access. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         return request_info
     
     def to_post_request_information(self,body: Optional[ResourceSpecificPermissionGrant] = None, request_configuration: Optional[PermissionGrantsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
@@ -120,13 +116,13 @@ class PermissionGrantsRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,46 +145,10 @@ class PermissionGrantsRequestBuilder(BaseRequestBuilder):
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
     
-    @property
-    def delta(self) -> DeltaRequestBuilder:
-        """
-        Provides operations to call the delta method.
-        """
-        from .delta.delta_request_builder import DeltaRequestBuilder
-
-        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_available_extension_properties(self) -> GetAvailableExtensionPropertiesRequestBuilder:
-        """
-        Provides operations to call the getAvailableExtensionProperties method.
-        """
-        from .get_available_extension_properties.get_available_extension_properties_request_builder import GetAvailableExtensionPropertiesRequestBuilder
-
-        return GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_by_ids(self) -> GetByIdsRequestBuilder:
-        """
-        Provides operations to call the getByIds method.
-        """
-        from .get_by_ids.get_by_ids_request_builder import GetByIdsRequestBuilder
-
-        return GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def validate_properties(self) -> ValidatePropertiesRequestBuilder:
-        """
-        Provides operations to call the validateProperties method.
-        """
-        from .validate_properties.validate_properties_request_builder import ValidatePropertiesRequestBuilder
-
-        return ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class PermissionGrantsRequestBuilderGetQueryParameters():
         """
-        List all resource-specific permission grants on the team. This list specifies the Azure AD apps that have access to the team, along with each app's corresponding type of resource-specific access.
+        List all resource-specific permission grants on the team. This list specifies the Microsoft Entra apps that have access to the team, along with each app's corresponding type of resource-specific access. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

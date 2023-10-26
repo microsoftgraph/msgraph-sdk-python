@@ -68,7 +68,7 @@ class UserSimulationDetails(AdditionalDataHolder, BackedModel, Parsable):
             "compromisedDateTime": lambda n : setattr(self, 'compromised_date_time', n.get_datetime_value()),
             "inProgressTrainingsCount": lambda n : setattr(self, 'in_progress_trainings_count', n.get_int_value()),
             "isCompromised": lambda n : setattr(self, 'is_compromised', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "reportedPhishDateTime": lambda n : setattr(self, 'reported_phish_date_time', n.get_datetime_value()),
             "simulationEvents": lambda n : setattr(self, 'simulation_events', n.get_collection_of_object_values(UserSimulationEventInfo)),
             "simulationUser": lambda n : setattr(self, 'simulation_user', n.get_object_value(AttackSimulationUser)),
@@ -89,7 +89,7 @@ class UserSimulationDetails(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_datetime_value("compromisedDateTime", self.compromised_date_time)
         writer.write_int_value("inProgressTrainingsCount", self.in_progress_trainings_count)
         writer.write_bool_value("isCompromised", self.is_compromised)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_datetime_value("reportedPhishDateTime", self.reported_phish_date_time)
         writer.write_collection_of_object_values("simulationEvents", self.simulation_events)
         writer.write_object_value("simulationUser", self.simulation_user)

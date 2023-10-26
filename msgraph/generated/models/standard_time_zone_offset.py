@@ -63,7 +63,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, BackedModel, Parsable):
             "dayOccurrence": lambda n : setattr(self, 'day_occurrence', n.get_int_value()),
             "dayOfWeek": lambda n : setattr(self, 'day_of_week', n.get_enum_value(DayOfWeek)),
             "month": lambda n : setattr(self, 'month', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "time": lambda n : setattr(self, 'time', n.get_time_value()),
             "year": lambda n : setattr(self, 'year', n.get_int_value()),
         }
@@ -80,7 +80,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_int_value("dayOccurrence", self.day_occurrence)
         writer.write_enum_value("dayOfWeek", self.day_of_week)
         writer.write_int_value("month", self.month)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_time_value("time", self.time)
         writer.write_int_value("year", self.year)
         writer.write_additional_data_value(self.additional_data)

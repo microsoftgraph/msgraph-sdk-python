@@ -52,12 +52,13 @@ class WindowsDefenderUpdateSignaturesRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json, application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> WindowsDefenderUpdateSignaturesRequestBuilder:

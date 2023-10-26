@@ -53,7 +53,7 @@ class ApprovalSettings(AdditionalDataHolder, BackedModel, Parsable):
             "isApprovalRequired": lambda n : setattr(self, 'is_approval_required', n.get_bool_value()),
             "isApprovalRequiredForExtension": lambda n : setattr(self, 'is_approval_required_for_extension', n.get_bool_value()),
             "isRequestorJustificationRequired": lambda n : setattr(self, 'is_requestor_justification_required', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -70,7 +70,7 @@ class ApprovalSettings(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("isApprovalRequired", self.is_approval_required)
         writer.write_bool_value("isApprovalRequiredForExtension", self.is_approval_required_for_extension)
         writer.write_bool_value("isRequestorJustificationRequired", self.is_requestor_justification_required)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

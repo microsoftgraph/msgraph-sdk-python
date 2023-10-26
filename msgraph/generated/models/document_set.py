@@ -60,7 +60,7 @@ class DocumentSet(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "allowedContentTypes": lambda n : setattr(self, 'allowed_content_types', n.get_collection_of_object_values(ContentTypeInfo)),
             "defaultContents": lambda n : setattr(self, 'default_contents', n.get_collection_of_object_values(DocumentSetContent)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "propagateWelcomePageChanges": lambda n : setattr(self, 'propagate_welcome_page_changes', n.get_bool_value()),
             "sharedColumns": lambda n : setattr(self, 'shared_columns', n.get_collection_of_object_values(ColumnDefinition)),
             "shouldPrefixNameToFile": lambda n : setattr(self, 'should_prefix_name_to_file', n.get_bool_value()),
@@ -79,7 +79,7 @@ class DocumentSet(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("allowedContentTypes", self.allowed_content_types)
         writer.write_collection_of_object_values("defaultContents", self.default_contents)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_bool_value("propagateWelcomePageChanges", self.propagate_welcome_page_changes)
         writer.write_collection_of_object_values("sharedColumns", self.shared_columns)
         writer.write_bool_value("shouldPrefixNameToFile", self.should_prefix_name_to_file)

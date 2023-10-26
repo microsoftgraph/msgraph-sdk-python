@@ -10,8 +10,8 @@ if TYPE_CHECKING:
     from .entity import Entity
     from .identity_set import IdentitySet
     from .item_reference import ItemReference
-    from .list_item import ListItem
     from .list_ import List_
+    from .list_item import ListItem
     from .shared_drive_item import SharedDriveItem
     from .site import Site
     from .user import User
@@ -94,8 +94,8 @@ class BaseItem(Entity):
         from .entity import Entity
         from .identity_set import IdentitySet
         from .item_reference import ItemReference
-        from .list_item import ListItem
         from .list_ import List_
+        from .list_item import ListItem
         from .shared_drive_item import SharedDriveItem
         from .site import Site
         from .user import User
@@ -105,8 +105,8 @@ class BaseItem(Entity):
         from .entity import Entity
         from .identity_set import IdentitySet
         from .item_reference import ItemReference
-        from .list_item import ListItem
         from .list_ import List_
+        from .list_item import ListItem
         from .shared_drive_item import SharedDriveItem
         from .site import Site
         from .user import User

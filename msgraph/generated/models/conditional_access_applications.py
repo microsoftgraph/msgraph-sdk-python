@@ -53,7 +53,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, BackedModel, Parsable)
             "includeApplications": lambda n : setattr(self, 'include_applications', n.get_collection_of_primitive_values(str)),
             "includeAuthenticationContextClassReferences": lambda n : setattr(self, 'include_authentication_context_class_references', n.get_collection_of_primitive_values(str)),
             "includeUserActions": lambda n : setattr(self, 'include_user_actions', n.get_collection_of_primitive_values(str)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -70,7 +70,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, BackedModel, Parsable)
         writer.write_collection_of_primitive_values("includeApplications", self.include_applications)
         writer.write_collection_of_primitive_values("includeAuthenticationContextClassReferences", self.include_authentication_context_class_references)
         writer.write_collection_of_primitive_values("includeUserActions", self.include_user_actions)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

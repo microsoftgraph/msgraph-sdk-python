@@ -5,13 +5,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .account_target_content import AccountTargetContent
     from .email_identity import EmailIdentity
+    from .end_user_notification_setting import EndUserNotificationSetting
     from .entity import Entity
+    from .landing_page import LandingPage
+    from .login_page import LoginPage
+    from .o_auth_consent_app_detail import OAuthConsentAppDetail
+    from .payload import Payload
     from .payload_delivery_platform import PayloadDeliveryPlatform
     from .simulation_attack_technique import SimulationAttackTechnique
     from .simulation_attack_type import SimulationAttackType
     from .simulation_report import SimulationReport
     from .simulation_status import SimulationStatus
+    from .training_setting import TrainingSetting
 
 from .entity import Entity
 
@@ -33,22 +40,40 @@ class Simulation(Entity):
     description: Optional[str] = None
     # Display name of the attack simulation and training campaign. Supports $filter and $orderby.
     display_name: Optional[str] = None
+    # The durationInDays property
+    duration_in_days: Optional[int] = None
+    # The endUserNotificationSetting property
+    end_user_notification_setting: Optional[EndUserNotificationSetting] = None
+    # The excludedAccountTarget property
+    excluded_account_target: Optional[AccountTargetContent] = None
+    # The includedAccountTarget property
+    included_account_target: Optional[AccountTargetContent] = None
     # Flag that represents if the attack simulation and training campaign was created from a simulation automation flow. Supports $filter and $orderby.
     is_automated: Optional[bool] = None
+    # The landingPage property
+    landing_page: Optional[LandingPage] = None
     # Identity of the user who most recently modified the attack simulation and training campaign.
     last_modified_by: Optional[EmailIdentity] = None
     # Date and time of the most recent modification of the attack simulation and training campaign.
     last_modified_date_time: Optional[datetime.datetime] = None
     # Date and time of the launch/start of the attack simulation and training campaign. Supports $filter and $orderby.
     launch_date_time: Optional[datetime.datetime] = None
+    # The loginPage property
+    login_page: Optional[LoginPage] = None
+    # The oAuthConsentAppDetail property
+    o_auth_consent_app_detail: Optional[OAuthConsentAppDetail] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The payload property
+    payload: Optional[Payload] = None
     # Method of delivery of the phishing payload used in the attack simulation and training campaign. Possible values are: unknown, sms, email, teams, unknownFutureValue.
     payload_delivery_platform: Optional[PayloadDeliveryPlatform] = None
     # Report of the attack simulation and training campaign.
     report: Optional[SimulationReport] = None
     # Status of the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, draft, running, scheduled, succeeded, failed, cancelled, excluded, unknownFutureValue.
     status: Optional[SimulationStatus] = None
+    # The trainingSetting property
+    training_setting: Optional[TrainingSetting] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Simulation:
@@ -66,21 +91,35 @@ class Simulation(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .account_target_content import AccountTargetContent
         from .email_identity import EmailIdentity
+        from .end_user_notification_setting import EndUserNotificationSetting
         from .entity import Entity
+        from .landing_page import LandingPage
+        from .login_page import LoginPage
+        from .o_auth_consent_app_detail import OAuthConsentAppDetail
+        from .payload import Payload
         from .payload_delivery_platform import PayloadDeliveryPlatform
         from .simulation_attack_technique import SimulationAttackTechnique
         from .simulation_attack_type import SimulationAttackType
         from .simulation_report import SimulationReport
         from .simulation_status import SimulationStatus
+        from .training_setting import TrainingSetting
 
+        from .account_target_content import AccountTargetContent
         from .email_identity import EmailIdentity
+        from .end_user_notification_setting import EndUserNotificationSetting
         from .entity import Entity
+        from .landing_page import LandingPage
+        from .login_page import LoginPage
+        from .o_auth_consent_app_detail import OAuthConsentAppDetail
+        from .payload import Payload
         from .payload_delivery_platform import PayloadDeliveryPlatform
         from .simulation_attack_technique import SimulationAttackTechnique
         from .simulation_attack_type import SimulationAttackType
         from .simulation_report import SimulationReport
         from .simulation_status import SimulationStatus
+        from .training_setting import TrainingSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
             "attackTechnique": lambda n : setattr(self, 'attack_technique', n.get_enum_value(SimulationAttackTechnique)),
@@ -91,13 +130,22 @@ class Simulation(Entity):
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "durationInDays": lambda n : setattr(self, 'duration_in_days', n.get_int_value()),
+            "endUserNotificationSetting": lambda n : setattr(self, 'end_user_notification_setting', n.get_object_value(EndUserNotificationSetting)),
+            "excludedAccountTarget": lambda n : setattr(self, 'excluded_account_target', n.get_object_value(AccountTargetContent)),
+            "includedAccountTarget": lambda n : setattr(self, 'included_account_target', n.get_object_value(AccountTargetContent)),
             "isAutomated": lambda n : setattr(self, 'is_automated', n.get_bool_value()),
+            "landingPage": lambda n : setattr(self, 'landing_page', n.get_object_value(LandingPage)),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(EmailIdentity)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "launchDateTime": lambda n : setattr(self, 'launch_date_time', n.get_datetime_value()),
+            "loginPage": lambda n : setattr(self, 'login_page', n.get_object_value(LoginPage)),
+            "oAuthConsentAppDetail": lambda n : setattr(self, 'o_auth_consent_app_detail', n.get_object_value(OAuthConsentAppDetail)),
+            "payload": lambda n : setattr(self, 'payload', n.get_object_value(Payload)),
             "payloadDeliveryPlatform": lambda n : setattr(self, 'payload_delivery_platform', n.get_enum_value(PayloadDeliveryPlatform)),
             "report": lambda n : setattr(self, 'report', n.get_object_value(SimulationReport)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(SimulationStatus)),
+            "trainingSetting": lambda n : setattr(self, 'training_setting', n.get_object_value(TrainingSetting)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -120,12 +168,21 @@ class Simulation(Entity):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
+        writer.write_int_value("durationInDays", self.duration_in_days)
+        writer.write_object_value("endUserNotificationSetting", self.end_user_notification_setting)
+        writer.write_object_value("excludedAccountTarget", self.excluded_account_target)
+        writer.write_object_value("includedAccountTarget", self.included_account_target)
         writer.write_bool_value("isAutomated", self.is_automated)
+        writer.write_object_value("landingPage", self.landing_page)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_datetime_value("launchDateTime", self.launch_date_time)
+        writer.write_object_value("loginPage", self.login_page)
+        writer.write_object_value("oAuthConsentAppDetail", self.o_auth_consent_app_detail)
+        writer.write_object_value("payload", self.payload)
         writer.write_enum_value("payloadDeliveryPlatform", self.payload_delivery_platform)
         writer.write_object_value("report", self.report)
         writer.write_enum_value("status", self.status)
+        writer.write_object_value("trainingSetting", self.training_setting)
     
 

@@ -37,7 +37,7 @@ class ImplicitGrantSettings(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "enableAccessTokenIssuance": lambda n : setattr(self, 'enable_access_token_issuance', n.get_bool_value()),
             "enableIdTokenIssuance": lambda n : setattr(self, 'enable_id_token_issuance', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -51,7 +51,7 @@ class ImplicitGrantSettings(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("enableAccessTokenIssuance", self.enable_access_token_issuance)
         writer.write_bool_value("enableIdTokenIssuance", self.enable_id_token_issuance)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

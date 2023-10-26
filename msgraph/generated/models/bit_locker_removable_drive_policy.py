@@ -49,7 +49,7 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, BackedModel, Parsable)
         fields: Dict[str, Callable[[Any], None]] = {
             "blockCrossOrganizationWriteAccess": lambda n : setattr(self, 'block_cross_organization_write_access', n.get_bool_value()),
             "encryptionMethod": lambda n : setattr(self, 'encryption_method', n.get_enum_value(BitLockerEncryptionMethod)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "requireEncryptionForWriteAccess": lambda n : setattr(self, 'require_encryption_for_write_access', n.get_bool_value()),
         }
         return fields
@@ -64,7 +64,7 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, BackedModel, Parsable)
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("blockCrossOrganizationWriteAccess", self.block_cross_organization_write_access)
         writer.write_enum_value("encryptionMethod", self.encryption_method)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_bool_value("requireEncryptionForWriteAccess", self.require_encryption_for_write_access)
         writer.write_additional_data_value(self.additional_data)
     

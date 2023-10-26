@@ -55,7 +55,7 @@ class SearchHit(AdditionalDataHolder, BackedModel, Parsable):
             "contentSource": lambda n : setattr(self, 'content_source', n.get_str_value()),
             "hitId": lambda n : setattr(self, 'hit_id', n.get_str_value()),
             "isCollapsed": lambda n : setattr(self, 'is_collapsed', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rank": lambda n : setattr(self, 'rank', n.get_int_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(Entity)),
             "resultTemplateId": lambda n : setattr(self, 'result_template_id', n.get_str_value()),
@@ -74,7 +74,7 @@ class SearchHit(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("contentSource", self.content_source)
         writer.write_str_value("hitId", self.hit_id)
         writer.write_bool_value("isCollapsed", self.is_collapsed)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("rank", self.rank)
         writer.write_object_value("resource", self.resource)
         writer.write_str_value("resultTemplateId", self.result_template_id)

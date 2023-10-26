@@ -66,7 +66,7 @@ class RegistryKeyState(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "hive": lambda n : setattr(self, 'hive', n.get_enum_value(RegistryHive)),
             "key": lambda n : setattr(self, 'key', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "oldKey": lambda n : setattr(self, 'old_key', n.get_str_value()),
             "oldValueData": lambda n : setattr(self, 'old_value_data', n.get_str_value()),
             "oldValueName": lambda n : setattr(self, 'old_value_name', n.get_str_value()),
@@ -88,7 +88,7 @@ class RegistryKeyState(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("hive", self.hive)
         writer.write_str_value("key", self.key)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("oldKey", self.old_key)
         writer.write_str_value("oldValueData", self.old_value_data)
         writer.write_str_value("oldValueName", self.old_value_name)

@@ -46,7 +46,7 @@ class EntitlementManagement(Entity):
     resource_role_scopes: Optional[List[AccessPackageResourceRoleScope]] = None
     # The resources associated with the catalogs.
     resources: Optional[List[AccessPackageResource]] = None
-    # The settings that control the behavior of Azure AD entitlement management.
+    # The settings that control the behavior of Microsoft Entra entitlement management.
     settings: Optional[EntitlementManagementSettings] = None
     
     @staticmethod

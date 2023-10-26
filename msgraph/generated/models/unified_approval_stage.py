@@ -55,7 +55,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
             "escalationTimeInMinutes": lambda n : setattr(self, 'escalation_time_in_minutes', n.get_int_value()),
             "isApproverJustificationRequired": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
             "isEscalationEnabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "primaryApprovers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(SubjectSet)),
         }
         return fields
@@ -73,7 +73,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_int_value("escalationTimeInMinutes", self.escalation_time_in_minutes)
         writer.write_bool_value("isApproverJustificationRequired", self.is_approver_justification_required)
         writer.write_bool_value("isEscalationEnabled", self.is_escalation_enabled)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("primaryApprovers", self.primary_approvers)
         writer.write_additional_data_value(self.additional_data)
     

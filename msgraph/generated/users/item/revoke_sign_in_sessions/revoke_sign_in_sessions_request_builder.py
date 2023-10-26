@@ -11,7 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
-    from .revoke_sign_in_sessions_response import RevokeSignInSessionsResponse
+    from .revoke_sign_in_sessions_post_response import RevokeSignInSessionsPostResponse
 
 class RevokeSignInSessionsRequestBuilder(BaseRequestBuilder):
     """
@@ -26,11 +26,11 @@ class RevokeSignInSessionsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/revokeSignInSessions", path_parameters)
     
-    async def post(self,request_configuration: Optional[RevokeSignInSessionsRequestBuilderPostRequestConfiguration] = None) -> Optional[RevokeSignInSessionsResponse]:
+    async def post(self,request_configuration: Optional[RevokeSignInSessionsRequestBuilderPostRequestConfiguration] = None) -> Optional[RevokeSignInSessionsPostResponse]:
         """
-        Invalidates all the refresh tokens issued to applications for a user (as well as session cookies in a user's browser), by resetting the signInSessionsValidFromDateTime user property to the current date-time. Typically, this operation is performed (by the user or an administrator) if the user has a lost or stolen device. This operation prevents access to the organization's data through applications on the device by requiring the user to sign in again to all applications that they have previously consented to, independent of device.
+        Invalidates all the refresh tokens issued to applications for a user (as well as session cookies in a user's browser), by resetting the signInSessionsValidFromDateTime user property to the current date-time. Typically, this operation is performed (by the user or an administrator) if the user has a lost or stolen device. This operation prevents access to the organization's data through applications on the device by requiring the user to sign in again to all applications that they have previously consented to, independent of device. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[RevokeSignInSessionsResponse]
+        Returns: Optional[RevokeSignInSessionsPostResponse]
         Find more info here: https://learn.microsoft.com/graph/api/user-revokesigninsessions?view=graph-rest-1.0
         """
         request_info = self.to_post_request_information(
@@ -44,24 +44,24 @@ class RevokeSignInSessionsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .revoke_sign_in_sessions_response import RevokeSignInSessionsResponse
+        from .revoke_sign_in_sessions_post_response import RevokeSignInSessionsPostResponse
 
-        return await self.request_adapter.send_async(request_info, RevokeSignInSessionsResponse, error_mapping)
+        return await self.request_adapter.send_async(request_info, RevokeSignInSessionsPostResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[RevokeSignInSessionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invalidates all the refresh tokens issued to applications for a user (as well as session cookies in a user's browser), by resetting the signInSessionsValidFromDateTime user property to the current date-time. Typically, this operation is performed (by the user or an administrator) if the user has a lost or stolen device. This operation prevents access to the organization's data through applications on the device by requiring the user to sign in again to all applications that they have previously consented to, independent of device.
+        Invalidates all the refresh tokens issued to applications for a user (as well as session cookies in a user's browser), by resetting the signInSessionsValidFromDateTime user property to the current date-time. Typically, this operation is performed (by the user or an administrator) if the user has a lost or stolen device. This operation prevents access to the organization's data through applications on the device by requiring the user to sign in again to all applications that they have previously consented to, independent of device. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> RevokeSignInSessionsRequestBuilder:

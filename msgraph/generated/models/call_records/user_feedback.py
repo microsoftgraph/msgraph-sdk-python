@@ -47,7 +47,7 @@ class UserFeedback(AdditionalDataHolder, BackedModel, Parsable):
         from .user_feedback_rating import UserFeedbackRating
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rating": lambda n : setattr(self, 'rating', n.get_enum_value(UserFeedbackRating)),
             "text": lambda n : setattr(self, 'text', n.get_str_value()),
             "tokens": lambda n : setattr(self, 'tokens', n.get_object_value(FeedbackTokenSet)),
@@ -62,7 +62,7 @@ class UserFeedback(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("rating", self.rating)
         writer.write_str_value("text", self.text)
         writer.write_object_value("tokens", self.tokens)

@@ -58,7 +58,7 @@ class ItemReference(AdditionalDataHolder, BackedModel, Parsable):
             "driveType": lambda n : setattr(self, 'drive_type', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
             "shareId": lambda n : setattr(self, 'share_id', n.get_str_value()),
             "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
@@ -78,7 +78,7 @@ class ItemReference(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("driveType", self.drive_type)
         writer.write_str_value("id", self.id)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("path", self.path)
         writer.write_str_value("shareId", self.share_id)
         writer.write_object_value("sharepointIds", self.sharepoint_ids)

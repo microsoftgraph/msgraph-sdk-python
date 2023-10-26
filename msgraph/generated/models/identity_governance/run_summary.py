@@ -45,7 +45,7 @@ class RunSummary(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "failedRuns": lambda n : setattr(self, 'failed_runs', n.get_int_value()),
             "failedTasks": lambda n : setattr(self, 'failed_tasks', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "successfulRuns": lambda n : setattr(self, 'successful_runs', n.get_int_value()),
             "totalRuns": lambda n : setattr(self, 'total_runs', n.get_int_value()),
             "totalTasks": lambda n : setattr(self, 'total_tasks', n.get_int_value()),
@@ -63,7 +63,7 @@ class RunSummary(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_int_value("failedRuns", self.failed_runs)
         writer.write_int_value("failedTasks", self.failed_tasks)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("successfulRuns", self.successful_runs)
         writer.write_int_value("totalRuns", self.total_runs)
         writer.write_int_value("totalTasks", self.total_tasks)

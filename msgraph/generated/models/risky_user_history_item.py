@@ -4,8 +4,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .risk_user_activity import RiskUserActivity
     from .risky_user import RiskyUser
+    from .risk_user_activity import RiskUserActivity
 
 from .risky_user import RiskyUser
 
@@ -36,11 +36,11 @@ class RiskyUserHistoryItem(RiskyUser):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .risk_user_activity import RiskUserActivity
         from .risky_user import RiskyUser
+        from .risk_user_activity import RiskUserActivity
 
-        from .risk_user_activity import RiskUserActivity
         from .risky_user import RiskyUser
+        from .risk_user_activity import RiskUserActivity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_object_value(RiskUserActivity)),

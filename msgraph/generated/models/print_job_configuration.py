@@ -6,9 +6,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .integer_range import IntegerRange
+    from .printer_feed_orientation import PrinterFeedOrientation
     from .print_color_mode import PrintColorMode
     from .print_duplex_mode import PrintDuplexMode
-    from .printer_feed_orientation import PrinterFeedOrientation
     from .print_finishing import PrintFinishing
     from .print_margin import PrintMargin
     from .print_multipage_layout import PrintMultipageLayout
@@ -81,9 +81,9 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .integer_range import IntegerRange
+        from .printer_feed_orientation import PrinterFeedOrientation
         from .print_color_mode import PrintColorMode
         from .print_duplex_mode import PrintDuplexMode
-        from .printer_feed_orientation import PrinterFeedOrientation
         from .print_finishing import PrintFinishing
         from .print_margin import PrintMargin
         from .print_multipage_layout import PrintMultipageLayout
@@ -92,9 +92,9 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         from .print_scaling import PrintScaling
 
         from .integer_range import IntegerRange
+        from .printer_feed_orientation import PrinterFeedOrientation
         from .print_color_mode import PrintColorMode
         from .print_duplex_mode import PrintDuplexMode
-        from .printer_feed_orientation import PrinterFeedOrientation
         from .print_finishing import PrintFinishing
         from .print_margin import PrintMargin
         from .print_multipage_layout import PrintMultipageLayout
@@ -116,7 +116,7 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
             "mediaSize": lambda n : setattr(self, 'media_size', n.get_str_value()),
             "mediaType": lambda n : setattr(self, 'media_type', n.get_str_value()),
             "multipageLayout": lambda n : setattr(self, 'multipage_layout', n.get_enum_value(PrintMultipageLayout)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "orientation": lambda n : setattr(self, 'orientation', n.get_enum_value(PrintOrientation)),
             "outputBin": lambda n : setattr(self, 'output_bin', n.get_str_value()),
             "pageRanges": lambda n : setattr(self, 'page_ranges', n.get_collection_of_object_values(IntegerRange)),
@@ -147,7 +147,7 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("mediaSize", self.media_size)
         writer.write_str_value("mediaType", self.media_type)
         writer.write_enum_value("multipageLayout", self.multipage_layout)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("orientation", self.orientation)
         writer.write_str_value("outputBin", self.output_bin)
         writer.write_collection_of_object_values("pageRanges", self.page_ranges)

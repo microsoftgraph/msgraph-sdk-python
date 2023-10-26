@@ -12,9 +12,9 @@ from .entity import Entity
 
 @dataclass
 class TeamworkTag(Entity):
-    # The description of the tag as it will appear to the user in Microsoft Teams. A teamworkTag can't have more than 200 teamworkTagMembers.
+    # The description of the tag as it appears to the user in Microsoft Teams. A teamworkTag can't have more than 200 teamworkTagMembers.
     description: Optional[str] = None
-    # The name of the tag as it will appear to the user in Microsoft Teams.
+    # The name of the tag as it appears to the user in Microsoft Teams.
     display_name: Optional[str] = None
     # The number of users assigned to the tag.
     member_count: Optional[int] = None

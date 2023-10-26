@@ -83,7 +83,7 @@ class AttributeDefinition(AdditionalDataHolder, BackedModel, Parsable):
             "multivalued": lambda n : setattr(self, 'multivalued', n.get_bool_value()),
             "mutability": lambda n : setattr(self, 'mutability', n.get_enum_value(Mutability)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "referencedObjects": lambda n : setattr(self, 'referenced_objects', n.get_collection_of_object_values(ReferencedObject)),
             "required": lambda n : setattr(self, 'required', n.get_bool_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(AttributeType)),
@@ -107,7 +107,7 @@ class AttributeDefinition(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("multivalued", self.multivalued)
         writer.write_enum_value("mutability", self.mutability)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("referencedObjects", self.referenced_objects)
         writer.write_bool_value("required", self.required)
         writer.write_enum_value("type", self.type)

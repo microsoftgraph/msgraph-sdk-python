@@ -12,15 +12,15 @@ from .directory_object import DirectoryObject
 class ResourceSpecificPermissionGrant(DirectoryObject):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.resourceSpecificPermissionGrant"
-    # ID of the service principal of the Azure AD app that has been granted access. Read-only.
+    # ID of the service principal of the Microsoft Entra app that has been granted access. Read-only.
     client_app_id: Optional[str] = None
-    # ID of the Azure AD app that has been granted access. Read-only.
+    # ID of the Microsoft Entra app that has been granted access. Read-only.
     client_id: Optional[str] = None
     # The name of the resource-specific permission. Read-only.
     permission: Optional[str] = None
     # The type of permission. Possible values are: Application, Delegated. Read-only.
     permission_type: Optional[str] = None
-    # ID of the Azure AD app that is hosting the resource. Read-only.
+    # ID of the Microsoft Entra app that is hosting the resource. Read-only.
     resource_app_id: Optional[str] = None
     
     @staticmethod

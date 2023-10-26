@@ -81,7 +81,7 @@ class SynchronizationStatus(AdditionalDataHolder, BackedModel, Parsable):
             "lastExecution": lambda n : setattr(self, 'last_execution', n.get_object_value(SynchronizationTaskExecution)),
             "lastSuccessfulExecution": lambda n : setattr(self, 'last_successful_execution', n.get_object_value(SynchronizationTaskExecution)),
             "lastSuccessfulExecutionWithExports": lambda n : setattr(self, 'last_successful_execution_with_exports', n.get_object_value(SynchronizationTaskExecution)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "progress": lambda n : setattr(self, 'progress', n.get_collection_of_object_values(SynchronizationProgress)),
             "quarantine": lambda n : setattr(self, 'quarantine', n.get_object_value(SynchronizationQuarantine)),
             "steadyStateFirstAchievedTime": lambda n : setattr(self, 'steady_state_first_achieved_time', n.get_datetime_value()),
@@ -105,7 +105,7 @@ class SynchronizationStatus(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("lastExecution", self.last_execution)
         writer.write_object_value("lastSuccessfulExecution", self.last_successful_execution)
         writer.write_object_value("lastSuccessfulExecutionWithExports", self.last_successful_execution_with_exports)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("progress", self.progress)
         writer.write_object_value("quarantine", self.quarantine)
         writer.write_datetime_value("steadyStateFirstAchievedTime", self.steady_state_first_achieved_time)

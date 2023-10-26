@@ -12,4 +12,5 @@ class ServiceSource(str, Enum):
     DataLossPrevention = "dataLossPrevention",
     UnknownFutureValue = "unknownFutureValue",
     MicrosoftDefenderForCloud = "microsoftDefenderForCloud",
+    MicrosoftSentinel = "microsoftSentinel",
 

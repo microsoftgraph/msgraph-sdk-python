@@ -48,7 +48,7 @@ class ScoredEmailAddress(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
             "itemId": lambda n : setattr(self, 'item_id', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "relevanceScore": lambda n : setattr(self, 'relevance_score', n.get_float_value()),
             "selectionLikelihood": lambda n : setattr(self, 'selection_likelihood', n.get_enum_value(SelectionLikelihoodInfo)),
         }
@@ -64,7 +64,7 @@ class ScoredEmailAddress(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("address", self.address)
         writer.write_str_value("itemId", self.item_id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_float_value("relevanceScore", self.relevance_score)
         writer.write_enum_value("selectionLikelihood", self.selection_likelihood)
         writer.write_additional_data_value(self.additional_data)

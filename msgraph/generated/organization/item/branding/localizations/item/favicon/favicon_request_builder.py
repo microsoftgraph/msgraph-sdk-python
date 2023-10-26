@@ -27,7 +27,7 @@ class FaviconRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[FaviconRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
-        A custom icon (favicon) to replace a default Microsoft product favicon on an Azure AD tenant.
+        A custom icon (favicon) to replace a default Microsoft product favicon on a Microsoft Entra tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         Find more info here: https://learn.microsoft.com/graph/api/organizationalbranding-list-localizations?view=graph-rest-1.0
@@ -45,15 +45,17 @@ class FaviconRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    async def put(self,body: bytes, request_configuration: Optional[FaviconRequestBuilderPutRequestConfiguration] = None) -> bytes:
+    async def put(self,body: bytes, content_type: str, request_configuration: Optional[FaviconRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
-        A custom icon (favicon) to replace a default Microsoft product favicon on an Azure AD tenant.
+        A custom icon (favicon) to replace a default Microsoft product favicon on a Microsoft Entra tenant.
         param body: Binary request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         """
         if not body:
             raise TypeError("body cannot be null.")
+        if not content_type:
+            raise TypeError("content_type cannot be null.")
         request_info = self.to_put_request_information(
             body, request_configuration
         )
@@ -69,36 +71,40 @@ class FaviconRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[FaviconRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A custom icon (favicon) to replace a default Microsoft product favicon on an Azure AD tenant.
+        A custom icon (favicon) to replace a default Microsoft product favicon on a Microsoft Entra tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "image/bmp, image/jpg, image/jpeg, image/gif, image/vnd.microsoft.icon, image/png, image/tiff, application/json, application/json")
         return request_info
     
-    def to_put_request_information(self,body: bytes, request_configuration: Optional[FaviconRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: bytes, content_type: str, request_configuration: Optional[FaviconRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        A custom icon (favicon) to replace a default Microsoft product favicon on an Azure AD tenant.
+        A custom icon (favicon) to replace a default Microsoft product favicon on a Microsoft Entra tenant.
         param body: Binary request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
             raise TypeError("body cannot be null.")
+        if not content_type:
+            raise TypeError("content_type cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PUT
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_stream_content(body)
+        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.set_stream_content(body, content_type)
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> FaviconRequestBuilder:

@@ -12,9 +12,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models.education_class import EducationClass
     from ....models.o_data_errors.o_data_error import ODataError
+    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
     from .assignment_categories.assignment_categories_request_builder import AssignmentCategoriesRequestBuilder
     from .assignment_defaults.assignment_defaults_request_builder import AssignmentDefaultsRequestBuilder
-    from .assignments.assignments_request_builder import AssignmentsRequestBuilder
     from .assignment_settings.assignment_settings_request_builder import AssignmentSettingsRequestBuilder
     from .group.group_request_builder import GroupRequestBuilder
     from .members.members_request_builder import MembersRequestBuilder
@@ -36,7 +36,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[EducationClassItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an educationClass. Because a class is also a universal group, deleting a class deletes the group.
+        Delete an educationClass. Because a class is also a universal group, deleting a class deletes the group. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/educationclass-delete?view=graph-rest-1.0
@@ -56,7 +56,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[EducationClassItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationClass]:
         """
-        Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members.
+        Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationClass]
         Find more info here: https://learn.microsoft.com/graph/api/educationclass-get?view=graph-rest-1.0
@@ -78,7 +78,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EducationClass] = None, request_configuration: Optional[EducationClassItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationClass]:
         """
-        Update the properties of an educationClass object.
+        Update the properties of an educationClass object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationClass]
@@ -103,39 +103,40 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[EducationClassItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an educationClass. Because a class is also a universal group, deleting a class deletes the group.
+        Delete an educationClass. Because a class is also a universal group, deleting a class deletes the group. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json, application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[EducationClassItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members.
+        Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         return request_info
     
     def to_patch_request_information(self,body: Optional[EducationClass] = None, request_configuration: Optional[EducationClassItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an educationClass object.
+        Update the properties of an educationClass object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,13 +144,13 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -182,15 +183,6 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
         return AssignmentDefaultsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def assignments(self) -> AssignmentsRequestBuilder:
-        """
-        Provides operations to manage the assignments property of the microsoft.graph.educationClass entity.
-        """
-        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
-
-        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def assignment_settings(self) -> AssignmentSettingsRequestBuilder:
         """
         Provides operations to manage the assignmentSettings property of the microsoft.graph.educationClass entity.
@@ -198,6 +190,15 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
         from .assignment_settings.assignment_settings_request_builder import AssignmentSettingsRequestBuilder
 
         return AssignmentSettingsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def assignments(self) -> AssignmentsRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.educationClass entity.
+        """
+        from .assignments.assignments_request_builder import AssignmentsRequestBuilder
+
+        return AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def group(self) -> GroupRequestBuilder:
@@ -248,7 +249,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EducationClassItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members.
+        Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

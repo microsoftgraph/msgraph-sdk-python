@@ -43,7 +43,7 @@ class ImageInfo(AdditionalDataHolder, BackedModel, Parsable):
             "alternateText": lambda n : setattr(self, 'alternate_text', n.get_str_value()),
             "alternativeText": lambda n : setattr(self, 'alternative_text', n.get_str_value()),
             "iconUrl": lambda n : setattr(self, 'icon_url', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -59,7 +59,7 @@ class ImageInfo(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("alternateText", self.alternate_text)
         writer.write_str_value("alternativeText", self.alternative_text)
         writer.write_str_value("iconUrl", self.icon_url)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

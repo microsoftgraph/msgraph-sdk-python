@@ -42,7 +42,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, BackedModel, Par
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
             "osMinimumVersion": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
             "personalDeviceEnrollmentBlocked": lambda n : setattr(self, 'personal_device_enrollment_blocked', n.get_bool_value()),
@@ -58,7 +58,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, BackedModel, Par
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("osMaximumVersion", self.os_maximum_version)
         writer.write_str_value("osMinimumVersion", self.os_minimum_version)
         writer.write_bool_value("personalDeviceEnrollmentBlocked", self.personal_device_enrollment_blocked)

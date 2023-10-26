@@ -47,7 +47,7 @@ class UriClickSecurityState(AdditionalDataHolder, BackedModel, Parsable):
             "clickAction": lambda n : setattr(self, 'click_action', n.get_str_value()),
             "clickDateTime": lambda n : setattr(self, 'click_date_time', n.get_datetime_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sourceId": lambda n : setattr(self, 'source_id', n.get_str_value()),
             "uriDomain": lambda n : setattr(self, 'uri_domain', n.get_str_value()),
             "verdict": lambda n : setattr(self, 'verdict', n.get_str_value()),
@@ -65,7 +65,7 @@ class UriClickSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("clickAction", self.click_action)
         writer.write_datetime_value("clickDateTime", self.click_date_time)
         writer.write_str_value("id", self.id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("sourceId", self.source_id)
         writer.write_str_value("uriDomain", self.uri_domain)
         writer.write_str_value("verdict", self.verdict)

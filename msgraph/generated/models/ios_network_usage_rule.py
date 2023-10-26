@@ -50,7 +50,7 @@ class IosNetworkUsageRule(AdditionalDataHolder, BackedModel, Parsable):
             "cellularDataBlockWhenRoaming": lambda n : setattr(self, 'cellular_data_block_when_roaming', n.get_bool_value()),
             "cellularDataBlocked": lambda n : setattr(self, 'cellular_data_blocked', n.get_bool_value()),
             "managedApps": lambda n : setattr(self, 'managed_apps', n.get_collection_of_object_values(AppListItem)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -65,7 +65,7 @@ class IosNetworkUsageRule(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("cellularDataBlockWhenRoaming", self.cellular_data_block_when_roaming)
         writer.write_bool_value("cellularDataBlocked", self.cellular_data_blocked)
         writer.write_collection_of_object_values("managedApps", self.managed_apps)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

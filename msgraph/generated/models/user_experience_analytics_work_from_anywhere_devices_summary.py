@@ -86,7 +86,7 @@ class UserExperienceAnalyticsWorkFromAnywhereDevicesSummary(AdditionalDataHolder
             "devicesWithoutAutopilotProfileAssigned": lambda n : setattr(self, 'devices_without_autopilot_profile_assigned', n.get_int_value()),
             "devicesWithoutCloudIdentity": lambda n : setattr(self, 'devices_without_cloud_identity', n.get_int_value()),
             "intuneDevices": lambda n : setattr(self, 'intune_devices', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tenantAttachDevices": lambda n : setattr(self, 'tenant_attach_devices', n.get_int_value()),
             "totalDevices": lambda n : setattr(self, 'total_devices', n.get_int_value()),
             "unsupportedOSversionDevices": lambda n : setattr(self, 'unsupported_o_sversion_devices', n.get_int_value()),
@@ -112,7 +112,7 @@ class UserExperienceAnalyticsWorkFromAnywhereDevicesSummary(AdditionalDataHolder
         writer.write_int_value("devicesWithoutAutopilotProfileAssigned", self.devices_without_autopilot_profile_assigned)
         writer.write_int_value("devicesWithoutCloudIdentity", self.devices_without_cloud_identity)
         writer.write_int_value("intuneDevices", self.intune_devices)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("tenantAttachDevices", self.tenant_attach_devices)
         writer.write_int_value("totalDevices", self.total_devices)
         writer.write_int_value("unsupportedOSversionDevices", self.unsupported_o_sversion_devices)

@@ -26,7 +26,7 @@ class AccessPackageResource(Entity):
     modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group.
+    # The unique identifier of the resource in the origin system. In the case of a Microsoft Entra group, this is the identifier of the group.
     origin_id: Optional[str] = None
     # The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup.
     origin_system: Optional[str] = None

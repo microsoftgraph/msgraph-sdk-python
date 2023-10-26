@@ -16,7 +16,7 @@ class AttachmentBase(Entity):
     content_type: Optional[str] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_modified_date_time: Optional[datetime.datetime] = None
-    # The display name of the attachment. This does not need to be the actual file name.
+    # The display name of the attachment. This doesn't need to be the actual file name.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

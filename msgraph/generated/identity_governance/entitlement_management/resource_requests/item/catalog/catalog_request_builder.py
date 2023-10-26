@@ -14,8 +14,8 @@ if TYPE_CHECKING:
     from ......models.o_data_errors.o_data_error import ODataError
     from .access_packages.access_packages_request_builder import AccessPackagesRequestBuilder
     from .custom_workflow_extensions.custom_workflow_extensions_request_builder import CustomWorkflowExtensionsRequestBuilder
-    from .resource_roles.resource_roles_request_builder import ResourceRolesRequestBuilder
     from .resources.resources_request_builder import ResourcesRequestBuilder
+    from .resource_roles.resource_roles_request_builder import ResourceRolesRequestBuilder
     from .resource_scopes.resource_scopes_request_builder import ResourceScopesRequestBuilder
 
 class CatalogRequestBuilder(BaseRequestBuilder):
@@ -102,12 +102,13 @@ class CatalogRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json, application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[CatalogRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -117,14 +118,14 @@ class CatalogRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         return request_info
     
     def to_patch_request_information(self,body: Optional[AccessPackageCatalog] = None, request_configuration: Optional[CatalogRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -137,13 +138,13 @@ class CatalogRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -185,15 +186,6 @@ class CatalogRequestBuilder(BaseRequestBuilder):
         return ResourceRolesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def resources(self) -> ResourcesRequestBuilder:
-        """
-        Provides operations to manage the resources property of the microsoft.graph.accessPackageCatalog entity.
-        """
-        from .resources.resources_request_builder import ResourcesRequestBuilder
-
-        return ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def resource_scopes(self) -> ResourceScopesRequestBuilder:
         """
         Provides operations to manage the resourceScopes property of the microsoft.graph.accessPackageCatalog entity.
@@ -201,6 +193,15 @@ class CatalogRequestBuilder(BaseRequestBuilder):
         from .resource_scopes.resource_scopes_request_builder import ResourceScopesRequestBuilder
 
         return ResourceScopesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resources(self) -> ResourcesRequestBuilder:
+        """
+        Provides operations to manage the resources property of the microsoft.graph.accessPackageCatalog entity.
+        """
+        from .resources.resources_request_builder import ResourcesRequestBuilder
+
+        return ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

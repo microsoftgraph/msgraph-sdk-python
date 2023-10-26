@@ -67,7 +67,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, BackedModel, Parsable):
             "configMgrDeviceCount": lambda n : setattr(self, 'config_mgr_device_count', n.get_int_value()),
             "iosCount": lambda n : setattr(self, 'ios_count', n.get_int_value()),
             "macOSCount": lambda n : setattr(self, 'mac_o_s_count', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "unknownCount": lambda n : setattr(self, 'unknown_count', n.get_int_value()),
             "windowsCount": lambda n : setattr(self, 'windows_count', n.get_int_value()),
             "windowsMobileCount": lambda n : setattr(self, 'windows_mobile_count', n.get_int_value()),
@@ -91,7 +91,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_int_value("configMgrDeviceCount", self.config_mgr_device_count)
         writer.write_int_value("iosCount", self.ios_count)
         writer.write_int_value("macOSCount", self.mac_o_s_count)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("unknownCount", self.unknown_count)
         writer.write_int_value("windowsCount", self.windows_count)
         writer.write_int_value("windowsMobileCount", self.windows_mobile_count)

@@ -18,7 +18,7 @@ class ConditionalAccessFilter(AdditionalDataHolder, BackedModel, Parsable):
     mode: Optional[FilterMode] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Rule syntax is similar to that used for membership rules for groups in Azure Active Directory (Azure AD). For details, see rules with multiple expressions
+    # Rule syntax is similar to that used for membership rules for groups in Microsoft Entra ID. For details, see rules with multiple expressions
     rule: Optional[str] = None
     
     @staticmethod
@@ -43,7 +43,7 @@ class ConditionalAccessFilter(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "mode": lambda n : setattr(self, 'mode', n.get_enum_value(FilterMode)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rule": lambda n : setattr(self, 'rule', n.get_str_value()),
         }
         return fields
@@ -57,7 +57,7 @@ class ConditionalAccessFilter(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("mode", self.mode)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("rule", self.rule)
         writer.write_additional_data_value(self.additional_data)
     

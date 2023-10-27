@@ -71,9 +71,10 @@ async def find_user(user_name: str, client: GraphServiceClient) -> None:
     )
     request_configuration = (
         UsersRequestBuilder.UsersRequestBuilderGetRequestConfiguration(
-            query_parameters=query_params, headers={"ConsistencyLevel": "eventual"}
+            query_parameters=query_params,
         )
     )
+    request_configuration.headers.add("ConsistencyLevel", "eventual")
 
     response = await client.users.get(request_configuration=request_configuration)
     if response.value:

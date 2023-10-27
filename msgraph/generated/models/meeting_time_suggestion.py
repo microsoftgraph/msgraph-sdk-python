@@ -65,7 +65,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, BackedModel, Parsable):
             "confidence": lambda n : setattr(self, 'confidence', n.get_float_value()),
             "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(Location)),
             "meetingTimeSlot": lambda n : setattr(self, 'meeting_time_slot', n.get_object_value(TimeSlot)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "order": lambda n : setattr(self, 'order', n.get_int_value()),
             "organizerAvailability": lambda n : setattr(self, 'organizer_availability', n.get_enum_value(FreeBusyStatus)),
             "suggestionReason": lambda n : setattr(self, 'suggestion_reason', n.get_str_value()),
@@ -84,7 +84,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_float_value("confidence", self.confidence)
         writer.write_collection_of_object_values("locations", self.locations)
         writer.write_object_value("meetingTimeSlot", self.meeting_time_slot)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("order", self.order)
         writer.write_enum_value("organizerAvailability", self.organizer_availability)
         writer.write_str_value("suggestionReason", self.suggestion_reason)

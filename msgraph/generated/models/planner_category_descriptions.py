@@ -106,7 +106,7 @@ class PlannerCategoryDescriptions(AdditionalDataHolder, BackedModel, Parsable):
             "category7": lambda n : setattr(self, 'category7', n.get_str_value()),
             "category8": lambda n : setattr(self, 'category8', n.get_str_value()),
             "category9": lambda n : setattr(self, 'category9', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -143,7 +143,7 @@ class PlannerCategoryDescriptions(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("category7", self.category7)
         writer.write_str_value("category8", self.category8)
         writer.write_str_value("category9", self.category9)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

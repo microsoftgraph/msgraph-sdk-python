@@ -41,7 +41,7 @@ class PrintMargin(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "bottom": lambda n : setattr(self, 'bottom', n.get_int_value()),
             "left": lambda n : setattr(self, 'left', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "right": lambda n : setattr(self, 'right', n.get_int_value()),
             "top": lambda n : setattr(self, 'top', n.get_int_value()),
         }
@@ -57,7 +57,7 @@ class PrintMargin(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_int_value("bottom", self.bottom)
         writer.write_int_value("left", self.left)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("right", self.right)
         writer.write_int_value("top", self.top)
         writer.write_additional_data_value(self.additional_data)

@@ -53,7 +53,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "latestTrainingStatus": lambda n : setattr(self, 'latest_training_status', n.get_enum_value(TrainingStatus)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "trainingAssignedProperties": lambda n : setattr(self, 'training_assigned_properties', n.get_object_value(UserTrainingContentEventInfo)),
             "trainingCompletedProperties": lambda n : setattr(self, 'training_completed_properties', n.get_object_value(UserTrainingContentEventInfo)),
             "trainingUpdatedProperties": lambda n : setattr(self, 'training_updated_properties', n.get_object_value(UserTrainingContentEventInfo)),
@@ -70,7 +70,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("latestTrainingStatus", self.latest_training_status)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("trainingAssignedProperties", self.training_assigned_properties)
         writer.write_object_value("trainingCompletedProperties", self.training_completed_properties)
         writer.write_object_value("trainingUpdatedProperties", self.training_updated_properties)

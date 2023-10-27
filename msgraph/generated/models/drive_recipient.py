@@ -40,7 +40,7 @@ class DriveRecipient(AdditionalDataHolder, BackedModel, Parsable):
             "alias": lambda n : setattr(self, 'alias', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
             "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -55,7 +55,7 @@ class DriveRecipient(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("alias", self.alias)
         writer.write_str_value("email", self.email)
         writer.write_str_value("objectId", self.object_id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

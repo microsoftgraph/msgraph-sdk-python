@@ -39,7 +39,7 @@ class TeamSummary(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "guestsCount": lambda n : setattr(self, 'guests_count', n.get_int_value()),
             "membersCount": lambda n : setattr(self, 'members_count', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "ownersCount": lambda n : setattr(self, 'owners_count', n.get_int_value()),
         }
         return fields
@@ -54,7 +54,7 @@ class TeamSummary(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_int_value("guestsCount", self.guests_count)
         writer.write_int_value("membersCount", self.members_count)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("ownersCount", self.owners_count)
         writer.write_additional_data_value(self.additional_data)
     

@@ -15,7 +15,7 @@ class InsightIdentity(AdditionalDataHolder, BackedModel, Parsable):
     address: Optional[str] = None
     # The display name of the user who shared the item.
     display_name: Optional[str] = None
-    # The id of the user who shared the item.
+    # The ID of the user who shared the item.
     id: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -40,7 +40,7 @@ class InsightIdentity(AdditionalDataHolder, BackedModel, Parsable):
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -55,7 +55,7 @@ class InsightIdentity(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("address", self.address)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("id", self.id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

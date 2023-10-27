@@ -10,7 +10,7 @@ from .authentication_method_target import AuthenticationMethodTarget
 
 @dataclass
 class SmsAuthenticationMethodTarget(AuthenticationMethodTarget):
-    # Determines if users can use this authentication method to sign in to Azure AD. true if users can use this method for primary authentication, otherwise false.
+    # Determines if users can use this authentication method to sign in to Microsoft Entra ID. true if users can use this method for primary authentication, otherwise false.
     is_usable_for_sign_in: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

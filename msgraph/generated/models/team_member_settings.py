@@ -49,7 +49,7 @@ class TeamMemberSettings(AdditionalDataHolder, BackedModel, Parsable):
             "allowCreateUpdateRemoveConnectors": lambda n : setattr(self, 'allow_create_update_remove_connectors', n.get_bool_value()),
             "allowCreateUpdateRemoveTabs": lambda n : setattr(self, 'allow_create_update_remove_tabs', n.get_bool_value()),
             "allowDeleteChannels": lambda n : setattr(self, 'allow_delete_channels', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -67,7 +67,7 @@ class TeamMemberSettings(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("allowCreateUpdateRemoveConnectors", self.allow_create_update_remove_connectors)
         writer.write_bool_value("allowCreateUpdateRemoveTabs", self.allow_create_update_remove_tabs)
         writer.write_bool_value("allowDeleteChannels", self.allow_delete_channels)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

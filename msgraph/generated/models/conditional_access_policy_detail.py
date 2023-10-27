@@ -52,7 +52,7 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, BackedModel, Parsable)
         fields: Dict[str, Callable[[Any], None]] = {
             "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(ConditionalAccessConditionSet)),
             "grantControls": lambda n : setattr(self, 'grant_controls', n.get_object_value(ConditionalAccessGrantControls)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sessionControls": lambda n : setattr(self, 'session_controls', n.get_object_value(ConditionalAccessSessionControls)),
         }
         return fields
@@ -67,7 +67,7 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, BackedModel, Parsable)
             raise TypeError("writer cannot be null.")
         writer.write_object_value("conditions", self.conditions)
         writer.write_object_value("grantControls", self.grant_controls)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("sessionControls", self.session_controls)
         writer.write_additional_data_value(self.additional_data)
     

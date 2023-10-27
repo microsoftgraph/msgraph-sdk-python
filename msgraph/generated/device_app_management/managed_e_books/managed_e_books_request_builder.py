@@ -45,10 +45,10 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedEBooksRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedEBookCollectionResponse]:
         """
-        List properties and relationships of the managedEBook objects.
+        List properties and relationships of the iosVppEBook objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBookCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-managedebook-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-books-iosvppebook-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,19 +92,19 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedEBooksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedEBook objects.
+        List properties and relationships of the iosVppEBook objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         return request_info
     
     def to_post_request_information(self,body: Optional[ManagedEBook] = None, request_configuration: Optional[ManagedEBooksRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
@@ -117,13 +117,13 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedEBooksRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedEBook objects.
+        List properties and relationships of the iosVppEBook objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

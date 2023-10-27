@@ -12,7 +12,7 @@ from .subject_rights_request_mailbox_location import SubjectRightsRequestMailbox
 class SubjectRightsRequestEnumeratedMailboxLocation(SubjectRightsRequestMailboxLocation):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.subjectRightsRequestEnumeratedMailboxLocation"
-    # The userPrincipalNames property
+    # Collection of mailboxes that should be included in the search. Includes the user principal name (UPN) of each mailbox, for example, Monica.Thompson@contoso.com.
     user_principal_names: Optional[List[str]] = None
     
     @staticmethod

@@ -19,7 +19,7 @@ class AvailabilityItem(AdditionalDataHolder, BackedModel, Parsable):
     end_date_time: Optional[DateTimeTimeZone] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Indicates the service ID in case of 1:n appointments. If the appointment is of type 1:n, this field will be present, otherwise, null.
+    # Indicates the service ID for 1:n appointments. If the appointment is of type 1:n, this field is present, otherwise, null.
     service_id: Optional[str] = None
     # The startDateTime property
     start_date_time: Optional[DateTimeTimeZone] = None
@@ -50,7 +50,7 @@ class AvailabilityItem(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "serviceId": lambda n : setattr(self, 'service_id', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(BookingsAvailabilityStatus)),
@@ -66,7 +66,7 @@ class AvailabilityItem(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("endDateTime", self.end_date_time)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("serviceId", self.service_id)
         writer.write_object_value("startDateTime", self.start_date_time)
         writer.write_enum_value("status", self.status)

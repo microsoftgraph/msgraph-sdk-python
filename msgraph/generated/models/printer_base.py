@@ -23,7 +23,7 @@ class PrinterBase(Entity):
     defaults: Optional[PrinterDefaults] = None
     # The name of the printer/printerShare.
     display_name: Optional[str] = None
-    # Whether the printer/printerShare is currently accepting new print jobs.
+    # Specifies whether the printer/printerShare is currently accepting new print jobs.
     is_accepting_jobs: Optional[bool] = None
     # The list of jobs that are queued for printing by the printer/printerShare.
     jobs: Optional[List[PrintJob]] = None

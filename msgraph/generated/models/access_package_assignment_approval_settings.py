@@ -14,9 +14,9 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, BackedModel,
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # If false, then approval is not required for new requests in this policy.
+    # If false, then approval isn't required for new requests in this policy.
     is_approval_required_for_add: Optional[bool] = None
-    # If false, then approval is not required for updates to requests in this policy.
+    # If false, then approval isn't required for updates to requests in this policy.
     is_approval_required_for_update: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -46,7 +46,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, BackedModel,
         fields: Dict[str, Callable[[Any], None]] = {
             "isApprovalRequiredForAdd": lambda n : setattr(self, 'is_approval_required_for_add', n.get_bool_value()),
             "isApprovalRequiredForUpdate": lambda n : setattr(self, 'is_approval_required_for_update', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "stages": lambda n : setattr(self, 'stages', n.get_collection_of_object_values(AccessPackageApprovalStage)),
         }
         return fields
@@ -61,7 +61,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, BackedModel,
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("isApprovalRequiredForAdd", self.is_approval_required_for_add)
         writer.write_bool_value("isApprovalRequiredForUpdate", self.is_approval_required_for_update)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("stages", self.stages)
         writer.write_additional_data_value(self.additional_data)
     

@@ -57,7 +57,7 @@ class CloudCommunications(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "callRecords": lambda n : setattr(self, 'call_records', n.get_collection_of_object_values(CallRecord)),
             "calls": lambda n : setattr(self, 'calls', n.get_collection_of_object_values(Call)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "onlineMeetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(OnlineMeeting)),
             "presences": lambda n : setattr(self, 'presences', n.get_collection_of_object_values(Presence)),
         }
@@ -73,7 +73,7 @@ class CloudCommunications(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("callRecords", self.call_records)
         writer.write_collection_of_object_values("calls", self.calls)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("onlineMeetings", self.online_meetings)
         writer.write_collection_of_object_values("presences", self.presences)
         writer.write_additional_data_value(self.additional_data)

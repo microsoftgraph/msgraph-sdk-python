@@ -52,7 +52,7 @@ class FileDetails(AdditionalDataHolder, BackedModel, Parsable):
             "filePublisher": lambda n : setattr(self, 'file_publisher', n.get_str_value()),
             "fileSize": lambda n : setattr(self, 'file_size', n.get_int_value()),
             "issuer": lambda n : setattr(self, 'issuer', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sha1": lambda n : setattr(self, 'sha1', n.get_str_value()),
             "sha256": lambda n : setattr(self, 'sha256', n.get_str_value()),
             "signer": lambda n : setattr(self, 'signer', n.get_str_value()),
@@ -72,7 +72,7 @@ class FileDetails(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("filePublisher", self.file_publisher)
         writer.write_int_value("fileSize", self.file_size)
         writer.write_str_value("issuer", self.issuer)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("sha1", self.sha1)
         writer.write_str_value("sha256", self.sha256)
         writer.write_str_value("signer", self.signer)

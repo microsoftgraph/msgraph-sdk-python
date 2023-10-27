@@ -60,7 +60,7 @@ class AlertHistoryState(AdditionalDataHolder, BackedModel, Parsable):
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_primitive_values(str)),
             "feedback": lambda n : setattr(self, 'feedback', n.get_enum_value(AlertFeedback)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(AlertStatus)),
             "updatedDateTime": lambda n : setattr(self, 'updated_date_time', n.get_datetime_value()),
             "user": lambda n : setattr(self, 'user', n.get_str_value()),
@@ -79,7 +79,7 @@ class AlertHistoryState(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("assignedTo", self.assigned_to)
         writer.write_collection_of_primitive_values("comments", self.comments)
         writer.write_enum_value("feedback", self.feedback)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("status", self.status)
         writer.write_datetime_value("updatedDateTime", self.updated_date_time)
         writer.write_str_value("user", self.user)

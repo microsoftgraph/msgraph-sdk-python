@@ -40,7 +40,7 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, BackedModel, Par
             "complianceUrl": lambda n : setattr(self, 'compliance_url', n.get_str_value()),
             "generalText": lambda n : setattr(self, 'general_text', n.get_str_value()),
             "matchedConditionDescriptions": lambda n : setattr(self, 'matched_condition_descriptions', n.get_collection_of_primitive_values(str)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -55,7 +55,7 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, BackedModel, Par
         writer.write_str_value("complianceUrl", self.compliance_url)
         writer.write_str_value("generalText", self.general_text)
         writer.write_collection_of_primitive_values("matchedConditionDescriptions", self.matched_condition_descriptions)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

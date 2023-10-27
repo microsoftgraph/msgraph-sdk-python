@@ -31,7 +31,7 @@ class UnifiedRoleManagementPolicy(Entity):
     rules: Optional[List[UnifiedRoleManagementPolicyRule]] = None
     # The identifier of the scope where the policy is created. Can be / for the tenant or a group ID. Required.
     scope_id: Optional[str] = None
-    # The type of the scope where the policy is created. One of Directory, DirectoryRole. Required.
+    # The type of the scope where the policy is created. One of Directory, DirectoryRole, Group. Required.
     scope_type: Optional[str] = None
     
     @staticmethod

@@ -54,7 +54,7 @@ class ParseExpressionResponse(AdditionalDataHolder, BackedModel, Parsable):
             "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
             "evaluationResult": lambda n : setattr(self, 'evaluation_result', n.get_collection_of_primitive_values(str)),
             "evaluationSucceeded": lambda n : setattr(self, 'evaluation_succeeded', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "parsedExpression": lambda n : setattr(self, 'parsed_expression', n.get_object_value(AttributeMappingSource)),
             "parsingSucceeded": lambda n : setattr(self, 'parsing_succeeded', n.get_bool_value()),
         }
@@ -71,7 +71,7 @@ class ParseExpressionResponse(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("error", self.error)
         writer.write_collection_of_primitive_values("evaluationResult", self.evaluation_result)
         writer.write_bool_value("evaluationSucceeded", self.evaluation_succeeded)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("parsedExpression", self.parsed_expression)
         writer.write_bool_value("parsingSucceeded", self.parsing_succeeded)
         writer.write_additional_data_value(self.additional_data)

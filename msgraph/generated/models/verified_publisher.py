@@ -40,7 +40,7 @@ class VerifiedPublisher(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "addedDateTime": lambda n : setattr(self, 'added_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "verifiedPublisherId": lambda n : setattr(self, 'verified_publisher_id', n.get_str_value()),
         }
         return fields
@@ -55,7 +55,7 @@ class VerifiedPublisher(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_datetime_value("addedDateTime", self.added_date_time)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("verifiedPublisherId", self.verified_publisher_id)
         writer.write_additional_data_value(self.additional_data)
     

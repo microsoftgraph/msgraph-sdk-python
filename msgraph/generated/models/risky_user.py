@@ -6,10 +6,10 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .risky_user_history_item import RiskyUserHistoryItem
     from .risk_detail import RiskDetail
     from .risk_level import RiskLevel
     from .risk_state import RiskState
-    from .risky_user_history_item import RiskyUserHistoryItem
 
 from .entity import Entity
 
@@ -61,16 +61,16 @@ class RiskyUser(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .risky_user_history_item import RiskyUserHistoryItem
         from .risk_detail import RiskDetail
         from .risk_level import RiskLevel
         from .risk_state import RiskState
-        from .risky_user_history_item import RiskyUserHistoryItem
 
         from .entity import Entity
+        from .risky_user_history_item import RiskyUserHistoryItem
         from .risk_detail import RiskDetail
         from .risk_level import RiskLevel
         from .risk_state import RiskState
-        from .risky_user_history_item import RiskyUserHistoryItem
 
         fields: Dict[str, Callable[[Any], None]] = {
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(RiskyUserHistoryItem)),

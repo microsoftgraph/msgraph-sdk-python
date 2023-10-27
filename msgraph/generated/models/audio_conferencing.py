@@ -45,7 +45,7 @@ class AudioConferencing(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "conferenceId": lambda n : setattr(self, 'conference_id', n.get_str_value()),
             "dialinUrl": lambda n : setattr(self, 'dialin_url', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tollFreeNumber": lambda n : setattr(self, 'toll_free_number', n.get_str_value()),
             "tollFreeNumbers": lambda n : setattr(self, 'toll_free_numbers', n.get_collection_of_primitive_values(str)),
             "tollNumber": lambda n : setattr(self, 'toll_number', n.get_str_value()),
@@ -63,7 +63,7 @@ class AudioConferencing(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("conferenceId", self.conference_id)
         writer.write_str_value("dialinUrl", self.dialin_url)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("tollFreeNumber", self.toll_free_number)
         writer.write_collection_of_primitive_values("tollFreeNumbers", self.toll_free_numbers)
         writer.write_str_value("tollNumber", self.toll_number)

@@ -47,7 +47,7 @@ class ColumnValidation(AdditionalDataHolder, BackedModel, Parsable):
             "defaultLanguage": lambda n : setattr(self, 'default_language', n.get_str_value()),
             "descriptions": lambda n : setattr(self, 'descriptions', n.get_collection_of_object_values(DisplayNameLocalization)),
             "formula": lambda n : setattr(self, 'formula', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -62,7 +62,7 @@ class ColumnValidation(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("defaultLanguage", self.default_language)
         writer.write_collection_of_object_values("descriptions", self.descriptions)
         writer.write_str_value("formula", self.formula)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.site_collection_response import SiteCollectionResponse
     from .add.add_request_builder import AddRequestBuilder
     from .count.count_request_builder import CountRequestBuilder
+    from .delta.delta_request_builder import DeltaRequestBuilder
     from .get_all_sites.get_all_sites_request_builder import GetAllSitesRequestBuilder
     from .item.site_item_request_builder import SiteItemRequestBuilder
     from .remove.remove_request_builder import RemoveRequestBuilder
@@ -73,14 +74,14 @@ class SitesRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json;q=1")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> SitesRequestBuilder:
@@ -110,6 +111,15 @@ class SitesRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def delta(self) -> DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        from .delta.delta_request_builder import DeltaRequestBuilder
+
+        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def get_all_sites(self) -> GetAllSitesRequestBuilder:

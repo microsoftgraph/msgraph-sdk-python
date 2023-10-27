@@ -63,8 +63,8 @@ from msgraph.generated.users.item.messages.messages_request_builder import Messa
 
 async def get_user_messages():
     request_config = MessagesRequestBuilder.MessagesRequestBuilderGetRequestConfiguration(
-        headers={"prefer": "outlook.body-content-type=text"}
     )
+    request_config.headers.add("prefer", "outlook.body-content-type=text")
 
     messages = await (client.users.by_user_id('USER_ID')
                     .messages

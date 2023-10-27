@@ -43,7 +43,7 @@ class TimeSlot(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "end": lambda n : setattr(self, 'end', n.get_object_value(DateTimeTimeZone)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "start": lambda n : setattr(self, 'start', n.get_object_value(DateTimeTimeZone)),
         }
         return fields
@@ -57,7 +57,7 @@ class TimeSlot(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("end", self.end)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("start", self.start)
         writer.write_additional_data_value(self.additional_data)
     

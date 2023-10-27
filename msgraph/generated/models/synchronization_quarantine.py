@@ -57,7 +57,7 @@ class SynchronizationQuarantine(AdditionalDataHolder, BackedModel, Parsable):
             "currentBegan": lambda n : setattr(self, 'current_began', n.get_datetime_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(SynchronizationError)),
             "nextAttempt": lambda n : setattr(self, 'next_attempt', n.get_datetime_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "reason": lambda n : setattr(self, 'reason', n.get_enum_value(QuarantineReason)),
             "seriesBegan": lambda n : setattr(self, 'series_began', n.get_datetime_value()),
             "seriesCount": lambda n : setattr(self, 'series_count', n.get_int_value()),
@@ -75,7 +75,7 @@ class SynchronizationQuarantine(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_datetime_value("currentBegan", self.current_began)
         writer.write_object_value("error", self.error)
         writer.write_datetime_value("nextAttempt", self.next_attempt)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("reason", self.reason)
         writer.write_datetime_value("seriesBegan", self.series_began)
         writer.write_int_value("seriesCount", self.series_count)

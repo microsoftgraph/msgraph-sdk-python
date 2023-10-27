@@ -49,7 +49,7 @@ class PropertyRule(AdditionalDataHolder, BackedModel, Parsable):
         from .rule_operation import RuleOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operation": lambda n : setattr(self, 'operation', n.get_enum_value(RuleOperation)),
             "property": lambda n : setattr(self, 'property_', n.get_str_value()),
             "values": lambda n : setattr(self, 'values', n.get_collection_of_primitive_values(str)),
@@ -65,7 +65,7 @@ class PropertyRule(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("operation", self.operation)
         writer.write_str_value("property", self.property_)
         writer.write_collection_of_primitive_values("values", self.values)

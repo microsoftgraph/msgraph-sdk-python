@@ -38,10 +38,10 @@ class InnerError(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "client-request-id": lambda n : setattr(self, 'client_request_id', n.get_str_value()),
+            "clientRequestId": lambda n : setattr(self, 'client_request_id', n.get_str_value()),
             "Date": lambda n : setattr(self, 'date', n.get_datetime_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "request-id": lambda n : setattr(self, 'request_id', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "requestId": lambda n : setattr(self, 'request_id', n.get_str_value()),
         }
         return fields
     
@@ -53,10 +53,10 @@ class InnerError(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("client-request-id", self.client_request_id)
+        writer.write_str_value("clientRequestId", self.client_request_id)
         writer.write_datetime_value("Date", self.date)
-        writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_str_value("request-id", self.request_id)
+        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("requestId", self.request_id)
         writer.write_additional_data_value(self.additional_data)
     
 

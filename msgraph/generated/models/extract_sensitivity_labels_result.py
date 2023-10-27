@@ -41,7 +41,7 @@ class ExtractSensitivityLabelsResult(AdditionalDataHolder, BackedModel, Parsable
 
         fields: Dict[str, Callable[[Any], None]] = {
             "labels": lambda n : setattr(self, 'labels', n.get_collection_of_object_values(SensitivityLabelAssignment)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -54,7 +54,7 @@ class ExtractSensitivityLabelsResult(AdditionalDataHolder, BackedModel, Parsable
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("labels", self.labels)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

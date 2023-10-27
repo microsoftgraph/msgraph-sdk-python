@@ -33,8 +33,8 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.deltaLink": lambda n : setattr(self, 'odata_delta_link', n.get_str_value()),
-            "@odata.nextLink": lambda n : setattr(self, 'odata_next_link', n.get_str_value()),
+            "OdataDeltaLink": lambda n : setattr(self, 'odata_delta_link', n.get_str_value()),
+            "OdataNextLink": lambda n : setattr(self, 'odata_next_link', n.get_str_value()),
         }
         return fields
     
@@ -46,8 +46,8 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.deltaLink", self.odata_delta_link)
-        writer.write_str_value("@odata.nextLink", self.odata_next_link)
+        writer.write_str_value("OdataDeltaLink", self.odata_delta_link)
+        writer.write_str_value("OdataNextLink", self.odata_next_link)
         writer.write_additional_data_value(self.additional_data)
     
 

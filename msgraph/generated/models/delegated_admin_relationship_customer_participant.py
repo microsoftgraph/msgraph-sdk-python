@@ -11,11 +11,11 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Backed
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The display name of the customer tenant as set by Azure AD. Read-only
+    # The display name of the customer tenant as set by Microsoft Entra ID. Read-only
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The Azure AD-assigned tenant ID of the customer tenant.
+    # The Microsoft Entra ID-assigned tenant ID of the customer tenant.
     tenant_id: Optional[str] = None
     
     @staticmethod
@@ -36,7 +36,7 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Backed
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         return fields
@@ -50,7 +50,7 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Backed
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_additional_data_value(self.additional_data)
     

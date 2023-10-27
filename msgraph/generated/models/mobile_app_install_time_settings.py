@@ -42,7 +42,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "deadlineDateTime": lambda n : setattr(self, 'deadline_date_time', n.get_datetime_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "useLocalTime": lambda n : setattr(self, 'use_local_time', n.get_bool_value()),
         }
@@ -57,7 +57,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_datetime_value("deadlineDateTime", self.deadline_date_time)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_bool_value("useLocalTime", self.use_local_time)
         writer.write_additional_data_value(self.additional_data)

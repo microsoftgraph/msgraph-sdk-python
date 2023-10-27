@@ -50,7 +50,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, BackedModel, Parsable):
             "assignedDateTime": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
             "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "trainingStatus": lambda n : setattr(self, 'training_status', n.get_enum_value(TrainingStatus)),
         }
         return fields
@@ -66,7 +66,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_datetime_value("assignedDateTime", self.assigned_date_time)
         writer.write_datetime_value("completionDateTime", self.completion_date_time)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("trainingStatus", self.training_status)
         writer.write_additional_data_value(self.additional_data)
     

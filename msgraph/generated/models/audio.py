@@ -75,7 +75,7 @@ class Audio(AdditionalDataHolder, BackedModel, Parsable):
             "genre": lambda n : setattr(self, 'genre', n.get_str_value()),
             "hasDrm": lambda n : setattr(self, 'has_drm', n.get_bool_value()),
             "isVariableBitrate": lambda n : setattr(self, 'is_variable_bitrate', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
             "track": lambda n : setattr(self, 'track', n.get_int_value()),
             "trackCount": lambda n : setattr(self, 'track_count', n.get_int_value()),
@@ -103,7 +103,7 @@ class Audio(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("genre", self.genre)
         writer.write_bool_value("hasDrm", self.has_drm)
         writer.write_bool_value("isVariableBitrate", self.is_variable_bitrate)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("title", self.title)
         writer.write_int_value("track", self.track)
         writer.write_int_value("trackCount", self.track_count)

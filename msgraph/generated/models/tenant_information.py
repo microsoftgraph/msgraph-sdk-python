@@ -11,15 +11,15 @@ class TenantInformation(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Primary domain name of an Azure AD tenant.
+    # Primary domain name of a Microsoft Entra tenant.
     default_domain_name: Optional[str] = None
-    # Display name of an Azure AD tenant.
+    # Display name of a Microsoft Entra tenant.
     display_name: Optional[str] = None
-    # Name shown to users that sign in to an Azure AD tenant.
+    # Name shown to users that sign in to a Microsoft Entra tenant.
     federation_brand_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Unique identifier of an Azure AD tenant.
+    # Unique identifier of a Microsoft Entra tenant.
     tenant_id: Optional[str] = None
     
     @staticmethod
@@ -42,7 +42,7 @@ class TenantInformation(AdditionalDataHolder, BackedModel, Parsable):
             "defaultDomainName": lambda n : setattr(self, 'default_domain_name', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "federationBrandName": lambda n : setattr(self, 'federation_brand_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         return fields
@@ -58,7 +58,7 @@ class TenantInformation(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("defaultDomainName", self.default_domain_name)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("federationBrandName", self.federation_brand_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_additional_data_value(self.additional_data)
     

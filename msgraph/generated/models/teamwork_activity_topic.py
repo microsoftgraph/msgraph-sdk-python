@@ -18,7 +18,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # Type of source. Possible values are: entityUrl, text. For supported Microsoft Graph URLs, use entityUrl. For custom text, use text.
     source: Optional[TeamworkActivityTopicSource] = None
-    # The topic value. If the value of the source property is entityUrl, this must be a Microsoft Graph URL. If the vaule is text, this must be a plain text value.
+    # The topic value. If the value of the source property is entityUrl, this must be a Microsoft Graph URL. If the value is text, this must be a plain text value.
     value: Optional[str] = None
     # The link the user clicks when they select the notification. Optional when source is entityUrl; required when source is text.
     web_url: Optional[str] = None
@@ -44,7 +44,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, BackedModel, Parsable):
         from .teamwork_activity_topic_source import TeamworkActivityTopicSource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "source": lambda n : setattr(self, 'source', n.get_enum_value(TeamworkActivityTopicSource)),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
             "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
@@ -59,7 +59,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("source", self.source)
         writer.write_str_value("value", self.value)
         writer.write_str_value("webUrl", self.web_url)

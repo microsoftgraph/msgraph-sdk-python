@@ -47,7 +47,7 @@ class DocumentSetContent(AdditionalDataHolder, BackedModel, Parsable):
             "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(ContentTypeInfo)),
             "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
             "folderName": lambda n : setattr(self, 'folder_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -62,7 +62,7 @@ class DocumentSetContent(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("contentType", self.content_type)
         writer.write_str_value("fileName", self.file_name)
         writer.write_str_value("folderName", self.folder_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

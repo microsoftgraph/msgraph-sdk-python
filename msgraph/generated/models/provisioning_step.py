@@ -57,7 +57,7 @@ class ProvisioningStep(AdditionalDataHolder, BackedModel, Parsable):
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "details": lambda n : setattr(self, 'details', n.get_object_value(DetailsInfo)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "provisioningStepType": lambda n : setattr(self, 'provisioning_step_type', n.get_enum_value(ProvisioningStepType)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(ProvisioningResult)),
         }
@@ -74,7 +74,7 @@ class ProvisioningStep(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("description", self.description)
         writer.write_object_value("details", self.details)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("provisioningStepType", self.provisioning_step_type)
         writer.write_enum_value("status", self.status)
         writer.write_additional_data_value(self.additional_data)

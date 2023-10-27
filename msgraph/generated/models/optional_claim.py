@@ -42,7 +42,7 @@ class OptionalClaim(AdditionalDataHolder, BackedModel, Parsable):
             "additionalProperties": lambda n : setattr(self, 'additional_properties', n.get_collection_of_primitive_values(str)),
             "essential": lambda n : setattr(self, 'essential', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "source": lambda n : setattr(self, 'source', n.get_str_value()),
         }
         return fields
@@ -58,7 +58,7 @@ class OptionalClaim(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_primitive_values("additionalProperties", self.additional_properties)
         writer.write_bool_value("essential", self.essential)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("source", self.source)
         writer.write_additional_data_value(self.additional_data)
     

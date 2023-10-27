@@ -38,7 +38,7 @@ class RecommendedAction(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "actionWebUrl": lambda n : setattr(self, 'action_web_url', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "potentialScoreImpact": lambda n : setattr(self, 'potential_score_impact', n.get_float_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
@@ -53,7 +53,7 @@ class RecommendedAction(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("actionWebUrl", self.action_web_url)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_float_value("potentialScoreImpact", self.potential_score_impact)
         writer.write_str_value("title", self.title)
         writer.write_additional_data_value(self.additional_data)

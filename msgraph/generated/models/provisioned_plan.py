@@ -38,7 +38,7 @@ class ProvisionedPlan(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "capabilityStatus": lambda n : setattr(self, 'capability_status', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "provisioningStatus": lambda n : setattr(self, 'provisioning_status', n.get_str_value()),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
         }
@@ -53,7 +53,7 @@ class ProvisionedPlan(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("capabilityStatus", self.capability_status)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("provisioningStatus", self.provisioning_status)
         writer.write_str_value("service", self.service)
         writer.write_additional_data_value(self.additional_data)

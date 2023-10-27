@@ -45,7 +45,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    async def put(self,body: bytes, request_configuration: Optional[CustomCSSRequestBuilderPutRequestConfiguration] = None) -> bytes:
+    async def put(self,body: bytes, content_type: str, request_configuration: Optional[CustomCSSRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
         CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
         param body: Binary request body
@@ -54,6 +54,8 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
+        if not content_type:
+            raise TypeError("content_type cannot be null.")
         request_info = self.to_put_request_information(
             body, request_configuration
         )
@@ -74,15 +76,16 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "image/bmp, image/jpg, image/jpeg, image/gif, image/vnd.microsoft.icon, image/png, image/tiff, application/json, application/json")
         return request_info
     
-    def to_put_request_information(self,body: bytes, request_configuration: Optional[CustomCSSRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: bytes, content_type: str, request_configuration: Optional[CustomCSSRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
         param body: Binary request body
@@ -91,14 +94,17 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
+        if not content_type:
+            raise TypeError("content_type cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PUT
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_stream_content(body)
+        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.set_stream_content(body, content_type)
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> CustomCSSRequestBuilder:

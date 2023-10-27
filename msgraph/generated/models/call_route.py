@@ -48,7 +48,7 @@ class CallRoute(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "final": lambda n : setattr(self, 'final', n.get_object_value(IdentitySet)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "original": lambda n : setattr(self, 'original', n.get_object_value(IdentitySet)),
             "routingType": lambda n : setattr(self, 'routing_type', n.get_enum_value(RoutingType)),
         }
@@ -63,7 +63,7 @@ class CallRoute(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("final", self.final)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_object_value("original", self.original)
         writer.write_enum_value("routingType", self.routing_type)
         writer.write_additional_data_value(self.additional_data)

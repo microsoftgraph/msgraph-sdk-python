@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .ref.ref_request_builder import RefRequestBuilder
+    from .service_provisioning_errors.service_provisioning_errors_request_builder import ServiceProvisioningErrorsRequestBuilder
 
 class GroupItemRequestBuilder(BaseRequestBuilder):
     """
@@ -28,5 +29,14 @@ class GroupItemRequestBuilder(BaseRequestBuilder):
         from .ref.ref_request_builder import RefRequestBuilder
 
         return RefRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def service_provisioning_errors(self) -> ServiceProvisioningErrorsRequestBuilder:
+        """
+        The serviceProvisioningErrors property
+        """
+        from .service_provisioning_errors.service_provisioning_errors_request_builder import ServiceProvisioningErrorsRequestBuilder
+
+        return ServiceProvisioningErrorsRequestBuilder(self.request_adapter, self.path_parameters)
     
 

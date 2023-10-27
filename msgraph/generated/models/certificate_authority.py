@@ -49,7 +49,7 @@ class CertificateAuthority(AdditionalDataHolder, BackedModel, Parsable):
             "isRootAuthority": lambda n : setattr(self, 'is_root_authority', n.get_bool_value()),
             "issuer": lambda n : setattr(self, 'issuer', n.get_str_value()),
             "issuerSki": lambda n : setattr(self, 'issuer_ski', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -67,7 +67,7 @@ class CertificateAuthority(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("isRootAuthority", self.is_root_authority)
         writer.write_str_value("issuer", self.issuer)
         writer.write_str_value("issuerSki", self.issuer_ski)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

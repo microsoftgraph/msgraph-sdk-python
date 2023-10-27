@@ -16,7 +16,7 @@ from .entity import Entity
 class WorkbookRangeFormat(Entity):
     # Collection of border objects that apply to the overall range selected Read-only.
     borders: Optional[List[WorkbookRangeBorder]] = None
-    # Gets or sets the width of all colums within the range. If the column widths are not uniform, null will be returned.
+    # Gets or sets the width of all columns within the range. If the column widths aren't uniform, null will be returned.
     column_width: Optional[float] = None
     # Returns the fill object defined on the overall range. Read-only.
     fill: Optional[WorkbookRangeFill] = None
@@ -28,7 +28,7 @@ class WorkbookRangeFormat(Entity):
     odata_type: Optional[str] = None
     # Returns the format protection object for a range. Read-only.
     protection: Optional[WorkbookFormatProtection] = None
-    # Gets or sets the height of all rows in the range. If the row heights are not uniform null will be returned.
+    # Gets or sets the height of all rows in the range. If the row heights aren't uniform null will be returned.
     row_height: Optional[float] = None
     # Represents the vertical alignment for the specified object. The possible values are: Top, Center, Bottom, Justify, Distributed.
     vertical_alignment: Optional[str] = None

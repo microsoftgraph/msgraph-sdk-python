@@ -16,9 +16,9 @@ class SynchronizationJobSubject(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Principals that you would like to provision.
     links: Optional[SynchronizationLinkedObjects] = None
-    # The identifier of an object to which a synchronizationJob is to be applied. Can be one of the following: An onPremisesDistinguishedName for synchronization from Active Directory to Azure AD.The user ID for synchronization from Azure AD to a third-party.The Worker ID of the Workday worker for synchronization from Workday to either Active Directory or Azure AD.
+    # The identifier of an object to which a synchronizationJob is to be applied. Can be one of the following: An onPremisesDistinguishedName for synchronization from Active Directory to Azure AD.The user ID for synchronization from Microsoft Entra ID to a third-party.The Worker ID of the Workday worker for synchronization from Workday to either Active Directory or Microsoft Entra ID.
     object_id: Optional[str] = None
-    # The type of the object to which a synchronizationJob is to be applied. Can be one of the following: user for synchronizing between Active Directory and Azure AD.User for synchronizing a user between Azure AD and a third-party application. Worker for synchronization a user between Workday and either Active Directory or Azure AD.Group for synchronizing a group between Azure AD and a third-party application.
+    # The type of the object to which a synchronizationJob is to be applied. Can be one of the following: user for synchronizing between Active Directory and Azure AD.User for synchronizing a user between Microsoft Entra ID and a third-party application. Worker for synchronization a user between Workday and either Active Directory or Microsoft Entra ID.Group for synchronizing a group between Microsoft Entra ID and a third-party application.
     object_type_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -47,7 +47,7 @@ class SynchronizationJobSubject(AdditionalDataHolder, BackedModel, Parsable):
             "links": lambda n : setattr(self, 'links', n.get_object_value(SynchronizationLinkedObjects)),
             "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
             "objectTypeName": lambda n : setattr(self, 'object_type_name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -62,7 +62,7 @@ class SynchronizationJobSubject(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("links", self.links)
         writer.write_str_value("objectId", self.object_id)
         writer.write_str_value("objectTypeName", self.object_type_name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

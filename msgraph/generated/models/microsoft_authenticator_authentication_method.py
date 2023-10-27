@@ -14,9 +14,9 @@ from .authentication_method import AuthenticationMethod
 class MicrosoftAuthenticatorAuthenticationMethod(AuthenticationMethod):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.microsoftAuthenticatorAuthenticationMethod"
-    # The date and time that this app was registered. This property is null if the device is not registered for passwordless Phone Sign-In.
+    # The date and time that this app was registered. This property is null if the device isn't registered for passwordless Phone Sign-In.
     created_date_time: Optional[datetime.datetime] = None
-    # The registered device on which Microsoft Authenticator resides. This property is null if the device is not registered for passwordless Phone Sign-In.
+    # The registered device on which Microsoft Authenticator resides. This property is null if the device isn't registered for passwordless Phone Sign-In.
     device: Optional[Device] = None
     # Tags containing app metadata.
     device_tag: Optional[str] = None

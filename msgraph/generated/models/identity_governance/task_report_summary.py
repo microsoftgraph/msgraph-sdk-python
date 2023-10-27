@@ -40,7 +40,7 @@ class TaskReportSummary(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "failedTasks": lambda n : setattr(self, 'failed_tasks', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "successfulTasks": lambda n : setattr(self, 'successful_tasks', n.get_int_value()),
             "totalTasks": lambda n : setattr(self, 'total_tasks', n.get_int_value()),
             "unprocessedTasks": lambda n : setattr(self, 'unprocessed_tasks', n.get_int_value()),
@@ -56,7 +56,7 @@ class TaskReportSummary(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_int_value("failedTasks", self.failed_tasks)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("successfulTasks", self.successful_tasks)
         writer.write_int_value("totalTasks", self.total_tasks)
         writer.write_int_value("unprocessedTasks", self.unprocessed_tasks)

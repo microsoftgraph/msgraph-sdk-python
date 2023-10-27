@@ -41,7 +41,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
             "entityId": lambda n : setattr(self, 'entity_id', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "removeUrl": lambda n : setattr(self, 'remove_url', n.get_str_value()),
             "websiteUrl": lambda n : setattr(self, 'website_url', n.get_str_value()),
         }
@@ -57,7 +57,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("contentUrl", self.content_url)
         writer.write_str_value("entityId", self.entity_id)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("removeUrl", self.remove_url)
         writer.write_str_value("websiteUrl", self.website_url)
         writer.write_additional_data_value(self.additional_data)

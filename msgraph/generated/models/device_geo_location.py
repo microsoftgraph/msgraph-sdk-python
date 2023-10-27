@@ -57,7 +57,7 @@ class DeviceGeoLocation(AdditionalDataHolder, BackedModel, Parsable):
             "lastCollectedDateTime": lambda n : setattr(self, 'last_collected_date_time', n.get_datetime_value()),
             "latitude": lambda n : setattr(self, 'latitude', n.get_float_value()),
             "longitude": lambda n : setattr(self, 'longitude', n.get_float_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "speed": lambda n : setattr(self, 'speed', n.get_float_value()),
             "verticalAccuracy": lambda n : setattr(self, 'vertical_accuracy', n.get_float_value()),
         }
@@ -77,7 +77,7 @@ class DeviceGeoLocation(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_datetime_value("lastCollectedDateTime", self.last_collected_date_time)
         writer.write_float_value("latitude", self.latitude)
         writer.write_float_value("longitude", self.longitude)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_float_value("speed", self.speed)
         writer.write_float_value("verticalAccuracy", self.vertical_accuracy)
         writer.write_additional_data_value(self.additional_data)

@@ -55,7 +55,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, BackedModel, Parsable):
         from .win32_lob_app_msi_package_type import Win32LobAppMsiPackageType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "packageType": lambda n : setattr(self, 'package_type', n.get_enum_value(Win32LobAppMsiPackageType)),
             "productCode": lambda n : setattr(self, 'product_code', n.get_str_value()),
             "productName": lambda n : setattr(self, 'product_name', n.get_str_value()),
@@ -74,7 +74,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_enum_value("packageType", self.package_type)
         writer.write_str_value("productCode", self.product_code)
         writer.write_str_value("productName", self.product_name)

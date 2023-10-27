@@ -11,11 +11,11 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, BackedModel, Par
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # Specifies whether compliant devices from external Azure AD organizations are trusted.
+    # Specifies whether compliant devices from external Microsoft Entra organizations are trusted.
     is_compliant_device_accepted: Optional[bool] = None
-    # Specifies whether hybrid Azure AD joined devices from external Azure AD organizations are trusted.
+    # Specifies whether Microsoft Entra hybrid joined devices from external Microsoft Entra organizations are trusted.
     is_hybrid_azure_a_d_joined_device_accepted: Optional[bool] = None
-    # Specifies whether MFA from external Azure AD organizations is trusted.
+    # Specifies whether MFA from external Microsoft Entra organizations is trusted.
     is_mfa_accepted: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -40,7 +40,7 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, BackedModel, Par
             "isCompliantDeviceAccepted": lambda n : setattr(self, 'is_compliant_device_accepted', n.get_bool_value()),
             "isHybridAzureADJoinedDeviceAccepted": lambda n : setattr(self, 'is_hybrid_azure_a_d_joined_device_accepted', n.get_bool_value()),
             "isMfaAccepted": lambda n : setattr(self, 'is_mfa_accepted', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -55,7 +55,7 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, BackedModel, Par
         writer.write_bool_value("isCompliantDeviceAccepted", self.is_compliant_device_accepted)
         writer.write_bool_value("isHybridAzureADJoinedDeviceAccepted", self.is_hybrid_azure_a_d_joined_device_accepted)
         writer.write_bool_value("isMfaAccepted", self.is_mfa_accepted)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

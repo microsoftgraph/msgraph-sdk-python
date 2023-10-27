@@ -44,7 +44,7 @@ class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, BackedModel, P
         fields: Dict[str, Callable[[Any], None]] = {
             "displayAppInformationRequiredState": lambda n : setattr(self, 'display_app_information_required_state', n.get_object_value(AuthenticationMethodFeatureConfiguration)),
             "displayLocationInformationRequiredState": lambda n : setattr(self, 'display_location_information_required_state', n.get_object_value(AuthenticationMethodFeatureConfiguration)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -58,7 +58,7 @@ class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, BackedModel, P
             raise TypeError("writer cannot be null.")
         writer.write_object_value("displayAppInformationRequiredState", self.display_app_information_required_state)
         writer.write_object_value("displayLocationInformationRequiredState", self.display_location_information_required_state)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

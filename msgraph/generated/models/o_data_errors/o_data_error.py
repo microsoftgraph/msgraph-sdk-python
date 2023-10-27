@@ -54,4 +54,12 @@ class ODataError(APIError):
         writer.write_object_value("error", self.error)
         writer.write_additional_data_value(self.additional_data)
     
+    @property
+    def primary_message(self) -> str:
+        """
+        The primary error message.
+        """
+        if self.error is not None:
+            return '' if self.error.message is None else self.error.message
+        return ''
 

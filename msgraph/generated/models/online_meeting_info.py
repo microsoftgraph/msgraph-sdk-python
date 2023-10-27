@@ -52,7 +52,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "conferenceId": lambda n : setattr(self, 'conference_id', n.get_str_value()),
             "joinUrl": lambda n : setattr(self, 'join_url', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(Phone)),
             "quickDial": lambda n : setattr(self, 'quick_dial', n.get_str_value()),
             "tollFreeNumbers": lambda n : setattr(self, 'toll_free_numbers', n.get_collection_of_primitive_values(str)),
@@ -70,7 +70,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("conferenceId", self.conference_id)
         writer.write_str_value("joinUrl", self.join_url)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("phones", self.phones)
         writer.write_str_value("quickDial", self.quick_dial)
         writer.write_collection_of_primitive_values("tollFreeNumbers", self.toll_free_numbers)

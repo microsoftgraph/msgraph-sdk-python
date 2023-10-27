@@ -42,7 +42,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, BackedModel, Parsable):
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "maxWords": lambda n : setattr(self, 'max_words', n.get_int_value()),
             "minWords": lambda n : setattr(self, 'min_words', n.get_int_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "similarityThreshold": lambda n : setattr(self, 'similarity_threshold', n.get_int_value()),
         }
         return fields
@@ -58,7 +58,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_int_value("maxWords", self.max_words)
         writer.write_int_value("minWords", self.min_words)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_int_value("similarityThreshold", self.similarity_threshold)
         writer.write_additional_data_value(self.additional_data)
     

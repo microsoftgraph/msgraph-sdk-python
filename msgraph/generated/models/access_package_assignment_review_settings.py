@@ -66,7 +66,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, BackedModel, P
             "isRecommendationEnabled": lambda n : setattr(self, 'is_recommendation_enabled', n.get_bool_value()),
             "isReviewerJustificationRequired": lambda n : setattr(self, 'is_reviewer_justification_required', n.get_bool_value()),
             "isSelfReview": lambda n : setattr(self, 'is_self_review', n.get_bool_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "primaryReviewers": lambda n : setattr(self, 'primary_reviewers', n.get_collection_of_object_values(SubjectSet)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(EntitlementManagementSchedule)),
         }
@@ -86,7 +86,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, BackedModel, P
         writer.write_bool_value("isRecommendationEnabled", self.is_recommendation_enabled)
         writer.write_bool_value("isReviewerJustificationRequired", self.is_reviewer_justification_required)
         writer.write_bool_value("isSelfReview", self.is_self_review)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_collection_of_object_values("primaryReviewers", self.primary_reviewers)
         writer.write_object_value("schedule", self.schedule)
         writer.write_additional_data_value(self.additional_data)

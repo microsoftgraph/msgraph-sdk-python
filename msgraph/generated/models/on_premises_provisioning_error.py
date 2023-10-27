@@ -42,7 +42,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
             "occurredDateTime": lambda n : setattr(self, 'occurred_date_time', n.get_datetime_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "propertyCausingError": lambda n : setattr(self, 'property_causing_error', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
@@ -58,7 +58,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("category", self.category)
         writer.write_datetime_value("occurredDateTime", self.occurred_date_time)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("propertyCausingError", self.property_causing_error)
         writer.write_str_value("value", self.value)
         writer.write_additional_data_value(self.additional_data)

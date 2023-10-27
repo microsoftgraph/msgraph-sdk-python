@@ -17,7 +17,7 @@ class CustomExtensionCallbackConfiguration(AdditionalDataHolder, BackedModel, Pa
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
-    # The maximum duration in ISO 8601 format that Azure AD will wait for a resume action for the callout it sent to the logic app. The valid range for custom extensions in lifecycle workflows is five minutes to three hours. The valid range for custom extensions in entitlement management is between 5 minutes and 14 days. For example, PT3H refers to three hours, P3D refers to three days, PT10M refers to ten minutes.
+    # The maximum duration in ISO 8601 format that Microsoft Entra ID will wait for a resume action for the callout it sent to the logic app. The valid range for custom extensions in lifecycle workflows is five minutes to three hours. The valid range for custom extensions in entitlement management is between 5 minutes and 14 days. For example, PT3H refers to three hours, P3D refers to three days, PT10M refers to ten minutes.
     timeout_duration: Optional[datetime.timedelta] = None
     
     @staticmethod
@@ -49,7 +49,7 @@ class CustomExtensionCallbackConfiguration(AdditionalDataHolder, BackedModel, Pa
         from .identity_governance.custom_task_extension_callback_configuration import CustomTaskExtensionCallbackConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "timeoutDuration": lambda n : setattr(self, 'timeout_duration', n.get_timedelta_value()),
         }
         return fields
@@ -62,7 +62,7 @@ class CustomExtensionCallbackConfiguration(AdditionalDataHolder, BackedModel, Pa
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_timedelta_value("timeoutDuration", self.timeout_duration)
         writer.write_additional_data_value(self.additional_data)
     

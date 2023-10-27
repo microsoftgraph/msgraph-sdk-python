@@ -83,7 +83,7 @@ class UserSecurityState(AdditionalDataHolder, BackedModel, Parsable):
             "logonIp": lambda n : setattr(self, 'logon_ip', n.get_str_value()),
             "logonLocation": lambda n : setattr(self, 'logon_location', n.get_str_value()),
             "logonType": lambda n : setattr(self, 'logon_type', n.get_enum_value(LogonType)),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
             "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
             "userAccountType": lambda n : setattr(self, 'user_account_type', n.get_enum_value(UserAccountSecurityType)),
@@ -109,7 +109,7 @@ class UserSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("logonIp", self.logon_ip)
         writer.write_str_value("logonLocation", self.logon_location)
         writer.write_enum_value("logonType", self.logon_type)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_str_value("onPremisesSecurityIdentifier", self.on_premises_security_identifier)
         writer.write_str_value("riskScore", self.risk_score)
         writer.write_enum_value("userAccountType", self.user_account_type)

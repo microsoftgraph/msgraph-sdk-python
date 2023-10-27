@@ -31,11 +31,11 @@ class WorkbookRangeView(Entity):
     row_count: Optional[int] = None
     # Represents a collection of range views associated with the range. Read-only. Read-only.
     rows: Optional[List[WorkbookRangeView]] = None
-    # Text values of the specified range. The Text value will not depend on the cell width. The # sign substitution that happens in Excel UI will not affect the text value returned by the API. Read-only.
+    # Text values of the specified range. The Text value won't depend on the cell width. The # sign substitution that happens in Excel UI won't affect the text value returned by the API. Read-only.
     text: Optional[Json] = None
     # Represents the type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
     value_types: Optional[Json] = None
-    # Represents the raw values of the specified range view. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
+    # Represents the raw values of the specified range view. The data returned could be of type string, number, or a boolean. Cell that contains an error returns the error string.
     values: Optional[Json] = None
     
     @staticmethod

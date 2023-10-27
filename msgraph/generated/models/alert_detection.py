@@ -40,7 +40,7 @@ class AlertDetection(AdditionalDataHolder, BackedModel, Parsable):
             "detectionType": lambda n : setattr(self, 'detection_type', n.get_str_value()),
             "method": lambda n : setattr(self, 'method', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -55,7 +55,7 @@ class AlertDetection(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("detectionType", self.detection_type)
         writer.write_str_value("method", self.method)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("OdataType", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

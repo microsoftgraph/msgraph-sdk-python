@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "msgraph-sdk"
-version = "1.0.0a16"
+version = "1.0.0rc0"
 authors = [{name = "Microsoft", email = "graphtooling+python@microsoft.com"}]
 description = "The Microsoft Graph Python SDK"
 dependencies = [
@@ -58,7 +58,7 @@ pythonpath = [
 ]
 
 [tool.bumpver]
-current_version = "1.0.0a16"
+current_version = "1.0.0rc0"
 version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = true

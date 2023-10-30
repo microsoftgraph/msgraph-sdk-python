@@ -46,7 +46,7 @@ class LocationConstraint(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
             "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(LocationConstraintItem)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "suggestLocation": lambda n : setattr(self, 'suggest_location', n.get_bool_value()),
         }
         return fields
@@ -61,7 +61,7 @@ class LocationConstraint(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("isRequired", self.is_required)
         writer.write_collection_of_object_values("locations", self.locations)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("suggestLocation", self.suggest_location)
         writer.write_additional_data_value(self.additional_data)
     

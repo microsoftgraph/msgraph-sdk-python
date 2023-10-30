@@ -54,7 +54,7 @@ class WhoisContact(AdditionalDataHolder, BackedModel, Parsable):
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
             "fax": lambda n : setattr(self, 'fax', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "organization": lambda n : setattr(self, 'organization', n.get_str_value()),
             "telephone": lambda n : setattr(self, 'telephone', n.get_str_value()),
         }
@@ -72,7 +72,7 @@ class WhoisContact(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("email", self.email)
         writer.write_str_value("fax", self.fax)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("organization", self.organization)
         writer.write_str_value("telephone", self.telephone)
         writer.write_additional_data_value(self.additional_data)

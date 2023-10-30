@@ -85,7 +85,7 @@ class IdentitySet(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "application": lambda n : setattr(self, 'application', n.get_object_value(Identity)),
             "device": lambda n : setattr(self, 'device', n.get_object_value(Identity)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "user": lambda n : setattr(self, 'user', n.get_object_value(Identity)),
         }
         return fields
@@ -100,7 +100,7 @@ class IdentitySet(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("application", self.application)
         writer.write_object_value("device", self.device)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("user", self.user)
         writer.write_additional_data_value(self.additional_data)
     

@@ -45,7 +45,7 @@ class ConvertIdResult(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "errorDetails": lambda n : setattr(self, 'error_details', n.get_object_value(GenericError)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sourceId": lambda n : setattr(self, 'source_id', n.get_str_value()),
             "targetId": lambda n : setattr(self, 'target_id', n.get_str_value()),
         }
@@ -60,7 +60,7 @@ class ConvertIdResult(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("errorDetails", self.error_details)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("sourceId", self.source_id)
         writer.write_str_value("targetId", self.target_id)
         writer.write_additional_data_value(self.additional_data)

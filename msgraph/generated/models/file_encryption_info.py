@@ -54,7 +54,7 @@ class FileEncryptionInfo(AdditionalDataHolder, BackedModel, Parsable):
             "initializationVector": lambda n : setattr(self, 'initialization_vector', n.get_bytes_value()),
             "mac": lambda n : setattr(self, 'mac', n.get_bytes_value()),
             "macKey": lambda n : setattr(self, 'mac_key', n.get_bytes_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "profileIdentifier": lambda n : setattr(self, 'profile_identifier', n.get_str_value()),
         }
         return fields
@@ -73,7 +73,7 @@ class FileEncryptionInfo(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bytes_value("initializationVector", self.initialization_vector)
         writer.write_bytes_value("mac", self.mac)
         writer.write_bytes_value("macKey", self.mac_key)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("profileIdentifier", self.profile_identifier)
         writer.write_additional_data_value(self.additional_data)
     

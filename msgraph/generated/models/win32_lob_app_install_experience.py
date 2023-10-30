@@ -49,7 +49,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "deviceRestartBehavior": lambda n : setattr(self, 'device_restart_behavior', n.get_enum_value(Win32LobAppRestartBehavior)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "runAsAccount": lambda n : setattr(self, 'run_as_account', n.get_enum_value(RunAsAccountType)),
         }
         return fields
@@ -63,7 +63,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("deviceRestartBehavior", self.device_restart_behavior)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("runAsAccount", self.run_as_account)
         writer.write_additional_data_value(self.additional_data)
     

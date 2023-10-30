@@ -12,7 +12,6 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.profile_photo_collection_response import ProfilePhotoCollectionResponse
-    from .count.count_request_builder import CountRequestBuilder
     from .item.profile_photo_item_request_builder import ProfilePhotoItemRequestBuilder
 
 class PhotosRequestBuilder(BaseRequestBuilder):
@@ -26,7 +25,7 @@ class PhotosRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/photos{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/photos{?%24top,%24skip,%24filter,%24orderby,%24select}", path_parameters)
     
     def by_profile_photo_id(self,profile_photo_id: str) -> ProfilePhotoItemRequestBuilder:
         """
@@ -91,15 +90,6 @@ class PhotosRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return PhotosRequestBuilder(self.request_adapter, raw_url)
     
-    @property
-    def count(self) -> CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count.count_request_builder import CountRequestBuilder
-
-        return CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class PhotosRequestBuilderGetQueryParameters():
         """
@@ -113,8 +103,6 @@ class PhotosRequestBuilder(BaseRequestBuilder):
             """
             if not original_name:
                 raise TypeError("original_name cannot be null.")
-            if original_name == "count":
-                return "%24count"
             if original_name == "filter":
                 return "%24filter"
             if original_name == "orderby":
@@ -127,9 +115,6 @@ class PhotosRequestBuilder(BaseRequestBuilder):
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
         # Filter items by property values
         filter: Optional[str] = None
 

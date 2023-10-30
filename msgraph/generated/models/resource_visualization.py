@@ -51,7 +51,7 @@ class ResourceVisualization(AdditionalDataHolder, BackedModel, Parsable):
             "containerType": lambda n : setattr(self, 'container_type', n.get_str_value()),
             "containerWebUrl": lambda n : setattr(self, 'container_web_url', n.get_str_value()),
             "mediaType": lambda n : setattr(self, 'media_type', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "previewImageUrl": lambda n : setattr(self, 'preview_image_url', n.get_str_value()),
             "previewText": lambda n : setattr(self, 'preview_text', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
@@ -71,7 +71,7 @@ class ResourceVisualization(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("containerType", self.container_type)
         writer.write_str_value("containerWebUrl", self.container_web_url)
         writer.write_str_value("mediaType", self.media_type)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("previewImageUrl", self.preview_image_url)
         writer.write_str_value("previewText", self.preview_text)
         writer.write_str_value("title", self.title)

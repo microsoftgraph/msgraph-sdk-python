@@ -13,15 +13,15 @@ from .training_setting import TrainingSetting
 class CustomTrainingSetting(TrainingSetting):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.customTrainingSetting"
-    # The assignedTo property
+    # A user collection that specifies to whom the training should be assigned. Possible values are: none, allUsers, clickedPayload, compromised, reportedPhish, readButNotClicked, didNothing, unknownFutureValue.
     assigned_to: Optional[List[TrainingAssignedTo]] = None
-    # The description property
+    # The description of the custom training setting.
     description: Optional[str] = None
-    # The displayName property
+    # The display name of the custom training setting.
     display_name: Optional[str] = None
-    # The durationInMinutes property
+    # Training duration.
     duration_in_minutes: Optional[int] = None
-    # The url property
+    # The training URL.
     url: Optional[str] = None
     
     @staticmethod

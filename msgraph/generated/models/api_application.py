@@ -55,7 +55,7 @@ class ApiApplication(AdditionalDataHolder, BackedModel, Parsable):
             "acceptMappedClaims": lambda n : setattr(self, 'accept_mapped_claims', n.get_bool_value()),
             "knownClientApplications": lambda n : setattr(self, 'known_client_applications', n.get_collection_of_primitive_values(UUID)),
             "oauth2PermissionScopes": lambda n : setattr(self, 'oauth2_permission_scopes', n.get_collection_of_object_values(PermissionScope)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "preAuthorizedApplications": lambda n : setattr(self, 'pre_authorized_applications', n.get_collection_of_object_values(PreAuthorizedApplication)),
             "requestedAccessTokenVersion": lambda n : setattr(self, 'requested_access_token_version', n.get_int_value()),
         }
@@ -72,7 +72,7 @@ class ApiApplication(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("acceptMappedClaims", self.accept_mapped_claims)
         writer.write_collection_of_primitive_values("knownClientApplications", self.known_client_applications)
         writer.write_collection_of_object_values("oauth2PermissionScopes", self.oauth2_permission_scopes)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("preAuthorizedApplications", self.pre_authorized_applications)
         writer.write_int_value("requestedAccessTokenVersion", self.requested_access_token_version)
         writer.write_additional_data_value(self.additional_data)

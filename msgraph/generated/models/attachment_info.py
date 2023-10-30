@@ -49,7 +49,7 @@ class AttachmentInfo(AdditionalDataHolder, BackedModel, Parsable):
             "attachmentType": lambda n : setattr(self, 'attachment_type', n.get_enum_value(AttachmentType)),
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
         return fields
@@ -65,7 +65,7 @@ class AttachmentInfo(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_enum_value("attachmentType", self.attachment_type)
         writer.write_str_value("contentType", self.content_type)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("size", self.size)
         writer.write_additional_data_value(self.additional_data)
     

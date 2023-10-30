@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .attribute_sets.attribute_sets_request_builder import AttributeSetsRequestBuilder
     from .custom_security_attribute_definitions.custom_security_attribute_definitions_request_builder import CustomSecurityAttributeDefinitionsRequestBuilder
     from .deleted_items.deleted_items_request_builder import DeletedItemsRequestBuilder
+    from .device_local_credentials.device_local_credentials_request_builder import DeviceLocalCredentialsRequestBuilder
     from .federation_configurations.federation_configurations_request_builder import FederationConfigurationsRequestBuilder
     from .on_premises_synchronization.on_premises_synchronization_request_builder import OnPremisesSynchronizationRequestBuilder
 
@@ -159,6 +160,15 @@ class DirectoryRequestBuilder(BaseRequestBuilder):
         from .deleted_items.deleted_items_request_builder import DeletedItemsRequestBuilder
 
         return DeletedItemsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_local_credentials(self) -> DeviceLocalCredentialsRequestBuilder:
+        """
+        Provides operations to manage the deviceLocalCredentials property of the microsoft.graph.directory entity.
+        """
+        from .device_local_credentials.device_local_credentials_request_builder import DeviceLocalCredentialsRequestBuilder
+
+        return DeviceLocalCredentialsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def federation_configurations(self) -> FederationConfigurationsRequestBuilder:

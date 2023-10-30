@@ -57,7 +57,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, BackedModel, P
             "enforcedSettings": lambda n : setattr(self, 'enforced_settings', n.get_collection_of_primitive_values(str)),
             "inheritableSettings": lambda n : setattr(self, 'inheritable_settings', n.get_collection_of_primitive_values(str)),
             "level": lambda n : setattr(self, 'level', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_enum_values(UnifiedRoleManagementPolicyRuleTargetOperations)),
             "targetObjects": lambda n : setattr(self, 'target_objects', n.get_collection_of_object_values(DirectoryObject)),
         }
@@ -75,7 +75,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, BackedModel, P
         writer.write_collection_of_primitive_values("enforcedSettings", self.enforced_settings)
         writer.write_collection_of_primitive_values("inheritableSettings", self.inheritable_settings)
         writer.write_str_value("level", self.level)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_enum_values("operations", self.operations)
         writer.write_collection_of_object_values("targetObjects", self.target_objects)
         writer.write_additional_data_value(self.additional_data)

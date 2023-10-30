@@ -197,6 +197,7 @@ if TYPE_CHECKING:
     from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
     from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
     from .device_install_state import DeviceInstallState
+    from .device_local_credential_info import DeviceLocalCredentialInfo
     from .device_log_collection_response import DeviceLogCollectionResponse
     from .device_management import DeviceManagement
     from .device_management_exchange_connector import DeviceManagementExchangeConnector
@@ -1612,6 +1613,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .device_install_state import DeviceInstallState
 
             return DeviceInstallState()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceLocalCredentialInfo".casefold():
+            from .device_local_credential_info import DeviceLocalCredentialInfo
+
+            return DeviceLocalCredentialInfo()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceLogCollectionResponse".casefold():
             from .device_log_collection_response import DeviceLogCollectionResponse
 
@@ -4294,6 +4299,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
         from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
         from .device_install_state import DeviceInstallState
+        from .device_local_credential_info import DeviceLocalCredentialInfo
         from .device_log_collection_response import DeviceLogCollectionResponse
         from .device_management import DeviceManagement
         from .device_management_exchange_connector import DeviceManagementExchangeConnector
@@ -5107,6 +5113,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
         from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
         from .device_install_state import DeviceInstallState
+        from .device_local_credential_info import DeviceLocalCredentialInfo
         from .device_log_collection_response import DeviceLogCollectionResponse
         from .device_management import DeviceManagement
         from .device_management_exchange_connector import DeviceManagementExchangeConnector
@@ -5730,7 +5737,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -5743,7 +5750,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("id", self.id)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

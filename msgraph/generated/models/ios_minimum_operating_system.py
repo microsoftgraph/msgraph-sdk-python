@@ -50,7 +50,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "v10_0": lambda n : setattr(self, 'v10_0', n.get_bool_value()),
             "v11_0": lambda n : setattr(self, 'v11_0', n.get_bool_value()),
             "v12_0": lambda n : setattr(self, 'v12_0', n.get_bool_value()),
@@ -70,7 +70,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("v10_0", self.v10_0)
         writer.write_bool_value("v11_0", self.v11_0)
         writer.write_bool_value("v12_0", self.v12_0)

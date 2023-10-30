@@ -48,7 +48,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, BackedModel, Parsable):
             "allowedToCreateTenants": lambda n : setattr(self, 'allowed_to_create_tenants', n.get_bool_value()),
             "allowedToReadBitlockerKeysForOwnedDevice": lambda n : setattr(self, 'allowed_to_read_bitlocker_keys_for_owned_device', n.get_bool_value()),
             "allowedToReadOtherUsers": lambda n : setattr(self, 'allowed_to_read_other_users', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "permissionGrantPoliciesAssigned": lambda n : setattr(self, 'permission_grant_policies_assigned', n.get_collection_of_primitive_values(str)),
         }
         return fields
@@ -66,7 +66,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("allowedToCreateTenants", self.allowed_to_create_tenants)
         writer.write_bool_value("allowedToReadBitlockerKeysForOwnedDevice", self.allowed_to_read_bitlocker_keys_for_owned_device)
         writer.write_bool_value("allowedToReadOtherUsers", self.allowed_to_read_other_users)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_primitive_values("permissionGrantPoliciesAssigned", self.permission_grant_policies_assigned)
         writer.write_additional_data_value(self.additional_data)
     

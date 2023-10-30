@@ -61,7 +61,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, BackedModel, Parsable):
             "dependsOn": lambda n : setattr(self, 'depends_on', n.get_collection_of_primitive_values(str)),
             "durationInDays": lambda n : setattr(self, 'duration_in_days', n.get_int_value()),
             "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recommendationInsightSettings": lambda n : setattr(self, 'recommendation_insight_settings', n.get_collection_of_object_values(AccessReviewRecommendationInsightSetting)),
             "recommendationsEnabled": lambda n : setattr(self, 'recommendations_enabled', n.get_bool_value()),
             "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
@@ -81,7 +81,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_primitive_values("dependsOn", self.depends_on)
         writer.write_int_value("durationInDays", self.duration_in_days)
         writer.write_collection_of_object_values("fallbackReviewers", self.fallback_reviewers)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("recommendationInsightSettings", self.recommendation_insight_settings)
         writer.write_bool_value("recommendationsEnabled", self.recommendations_enabled)
         writer.write_collection_of_object_values("reviewers", self.reviewers)

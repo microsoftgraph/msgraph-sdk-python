@@ -45,9 +45,10 @@ class EndUserNotificationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[EndUserNotificationsRequestBuilderGetRequestConfiguration] = None) -> Optional[EndUserNotificationCollectionResponse]:
         """
-        Get endUserNotifications from security
+        Get a list of endUserNotification objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EndUserNotificationCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/attacksimulationroot-list-endusernotifications?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +91,7 @@ class EndUserNotificationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[EndUserNotificationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get endUserNotifications from security
+        Get a list of endUserNotification objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +148,7 @@ class EndUserNotificationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EndUserNotificationsRequestBuilderGetQueryParameters():
         """
-        Get endUserNotifications from security
+        Get a list of endUserNotification objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -43,7 +43,7 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, BackedModel, Parsa
 
         fields: Dict[str, Callable[[Any], None]] = {
             "applications": lambda n : setattr(self, 'applications', n.get_object_value(CrossTenantAccessPolicyTargetConfiguration)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "usersAndGroups": lambda n : setattr(self, 'users_and_groups', n.get_object_value(CrossTenantAccessPolicyTargetConfiguration)),
         }
         return fields
@@ -57,7 +57,7 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, BackedModel, Parsa
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("applications", self.applications)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("usersAndGroups", self.users_and_groups)
         writer.write_additional_data_value(self.additional_data)
     

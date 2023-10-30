@@ -14,27 +14,27 @@ from .entity import Entity
 
 @dataclass
 class LoginPage(Entity):
-    # The content property
+    # The HTML content of the login page.
     content: Optional[str] = None
-    # The createdBy property
+    # Identity of the user who created the login page.
     created_by: Optional[EmailIdentity] = None
-    # The createdDateTime property
+    # Date and time when the login page was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
-    # The description property
+    # Description about the login page.
     description: Optional[str] = None
-    # The displayName property
+    # Display name of the login page.
     display_name: Optional[str] = None
-    # The language property
+    # The content language of the login page.
     language: Optional[str] = None
-    # The lastModifiedBy property
+    # Identity of the user who last modified the login page.
     last_modified_by: Optional[EmailIdentity] = None
-    # The lastModifiedDateTime property
+    # Date and time when the login page was last modified. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The source property
+    # The source of the content. Possible values are: unknown, global, tenant, unknownFutureValue.
     source: Optional[SimulationContentSource] = None
-    # The status property
+    # The login page status. Possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
     status: Optional[SimulationContentStatus] = None
     
     @staticmethod

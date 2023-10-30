@@ -97,7 +97,7 @@ class SearchRequest(AdditionalDataHolder, BackedModel, Parsable):
             "entityTypes": lambda n : setattr(self, 'entity_types', n.get_collection_of_enum_values(EntityType)),
             "fields": lambda n : setattr(self, 'fields', n.get_collection_of_primitive_values(str)),
             "from": lambda n : setattr(self, 'from_', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "query": lambda n : setattr(self, 'query', n.get_object_value(SearchQuery)),
             "queryAlterationOptions": lambda n : setattr(self, 'query_alteration_options', n.get_object_value(SearchAlterationOptions)),
             "region": lambda n : setattr(self, 'region', n.get_str_value()),
@@ -124,7 +124,7 @@ class SearchRequest(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_enum_values("entityTypes", self.entity_types)
         writer.write_collection_of_primitive_values("fields", self.fields)
         writer.write_int_value("from", self.from_)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("query", self.query)
         writer.write_object_value("queryAlterationOptions", self.query_alteration_options)
         writer.write_str_value("region", self.region)

@@ -64,7 +64,7 @@ class Property_(AdditionalDataHolder, BackedModel, Parsable):
             "isSearchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
             "labels": lambda n : setattr(self, 'labels', n.get_collection_of_enum_values(Label)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(PropertyType)),
         }
         return fields
@@ -84,7 +84,7 @@ class Property_(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("isSearchable", self.is_searchable)
         writer.write_collection_of_enum_values("labels", self.labels)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
     

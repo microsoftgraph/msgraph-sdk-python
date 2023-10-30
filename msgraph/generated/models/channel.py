@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .channel_membership_type import ChannelMembershipType
+    from .channel_summary import ChannelSummary
     from .chat_message import ChatMessage
     from .conversation_member import ConversationMember
     from .drive_item import DriveItem
@@ -39,6 +40,8 @@ class Channel(Entity):
     odata_type: Optional[str] = None
     # A collection of teams with which a channel is shared.
     shared_with_teams: Optional[List[SharedWithChannelTeamInfo]] = None
+    # Contains summary information about the channel, including number of owners, members, guests, and an indicator for members from other tenants. The summary property will only be returned if it is specified in the $select clause of the Get channel method.
+    summary: Optional[ChannelSummary] = None
     # A collection of all the tabs in the channel. A navigation property.
     tabs: Optional[List[TeamsTab]] = None
     # The ID of the Microsoft Entra tenant.
@@ -63,6 +66,7 @@ class Channel(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .channel_membership_type import ChannelMembershipType
+        from .channel_summary import ChannelSummary
         from .chat_message import ChatMessage
         from .conversation_member import ConversationMember
         from .drive_item import DriveItem
@@ -71,6 +75,7 @@ class Channel(Entity):
         from .teams_tab import TeamsTab
 
         from .channel_membership_type import ChannelMembershipType
+        from .channel_summary import ChannelSummary
         from .chat_message import ChatMessage
         from .conversation_member import ConversationMember
         from .drive_item import DriveItem
@@ -89,6 +94,7 @@ class Channel(Entity):
             "membershipType": lambda n : setattr(self, 'membership_type', n.get_enum_value(ChannelMembershipType)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(ChatMessage)),
             "sharedWithTeams": lambda n : setattr(self, 'shared_with_teams', n.get_collection_of_object_values(SharedWithChannelTeamInfo)),
+            "summary": lambda n : setattr(self, 'summary', n.get_object_value(ChannelSummary)),
             "tabs": lambda n : setattr(self, 'tabs', n.get_collection_of_object_values(TeamsTab)),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
@@ -116,6 +122,7 @@ class Channel(Entity):
         writer.write_enum_value("membershipType", self.membership_type)
         writer.write_collection_of_object_values("messages", self.messages)
         writer.write_collection_of_object_values("sharedWithTeams", self.shared_with_teams)
+        writer.write_object_value("summary", self.summary)
         writer.write_collection_of_object_values("tabs", self.tabs)
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_str_value("webUrl", self.web_url)

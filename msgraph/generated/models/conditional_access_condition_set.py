@@ -84,7 +84,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, BackedModel, Parsable)
             "clientApplications": lambda n : setattr(self, 'client_applications', n.get_object_value(ConditionalAccessClientApplications)),
             "devices": lambda n : setattr(self, 'devices', n.get_object_value(ConditionalAccessDevices)),
             "locations": lambda n : setattr(self, 'locations', n.get_object_value(ConditionalAccessLocations)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "platforms": lambda n : setattr(self, 'platforms', n.get_object_value(ConditionalAccessPlatforms)),
             "servicePrincipalRiskLevels": lambda n : setattr(self, 'service_principal_risk_levels', n.get_collection_of_enum_values(RiskLevel)),
             "signInRiskLevels": lambda n : setattr(self, 'sign_in_risk_levels', n.get_collection_of_enum_values(RiskLevel)),
@@ -106,7 +106,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, BackedModel, Parsable)
         writer.write_object_value("clientApplications", self.client_applications)
         writer.write_object_value("devices", self.devices)
         writer.write_object_value("locations", self.locations)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("platforms", self.platforms)
         writer.write_collection_of_enum_values("servicePrincipalRiskLevels", self.service_principal_risk_levels)
         writer.write_collection_of_enum_values("signInRiskLevels", self.sign_in_risk_levels)

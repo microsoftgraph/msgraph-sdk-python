@@ -64,7 +64,7 @@ class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
             "dailyPrintUsageByUser": lambda n : setattr(self, 'daily_print_usage_by_user', n.get_collection_of_object_values(PrintUsageByUser)),
             "monthlyPrintUsageByPrinter": lambda n : setattr(self, 'monthly_print_usage_by_printer', n.get_collection_of_object_values(PrintUsageByPrinter)),
             "monthlyPrintUsageByUser": lambda n : setattr(self, 'monthly_print_usage_by_user', n.get_collection_of_object_values(PrintUsageByUser)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "security": lambda n : setattr(self, 'security', n.get_object_value(SecurityReportsRoot)),
         }
         return fields
@@ -82,7 +82,7 @@ class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_object_values("dailyPrintUsageByUser", self.daily_print_usage_by_user)
         writer.write_collection_of_object_values("monthlyPrintUsageByPrinter", self.monthly_print_usage_by_printer)
         writer.write_collection_of_object_values("monthlyPrintUsageByUser", self.monthly_print_usage_by_user)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("security", self.security)
         writer.write_additional_data_value(self.additional_data)
     

@@ -46,7 +46,7 @@ class PublicationFacet(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "checkedOutBy": lambda n : setattr(self, 'checked_out_by', n.get_object_value(IdentitySet)),
             "level": lambda n : setattr(self, 'level', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "versionId": lambda n : setattr(self, 'version_id', n.get_str_value()),
         }
         return fields
@@ -61,7 +61,7 @@ class PublicationFacet(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("checkedOutBy", self.checked_out_by)
         writer.write_str_value("level", self.level)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("versionId", self.version_id)
         writer.write_additional_data_value(self.additional_data)
     

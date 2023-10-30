@@ -14,13 +14,13 @@ class CoachmarkLocation(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The length property
+    # Length of coachmark.
     length: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The offset property
+    # Offset of coachmark.
     offset: Optional[int] = None
-    # The type property
+    # Type of coachmark location. The possible values are: unknown, fromEmail, subject, externalTag, displayName, messageBody, unknownFutureValue.
     type: Optional[CoachmarkLocationType] = None
     
     @staticmethod
@@ -45,7 +45,7 @@ class CoachmarkLocation(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "length": lambda n : setattr(self, 'length', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "offset": lambda n : setattr(self, 'offset', n.get_int_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(CoachmarkLocationType)),
         }
@@ -60,7 +60,7 @@ class CoachmarkLocation(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_int_value("length", self.length)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("offset", self.offset)
         writer.write_enum_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)

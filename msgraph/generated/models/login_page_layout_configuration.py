@@ -47,7 +47,7 @@ class LoginPageLayoutConfiguration(AdditionalDataHolder, BackedModel, Parsable):
             "isFooterShown": lambda n : setattr(self, 'is_footer_shown', n.get_bool_value()),
             "isHeaderShown": lambda n : setattr(self, 'is_header_shown', n.get_bool_value()),
             "layoutTemplateType": lambda n : setattr(self, 'layout_template_type', n.get_enum_value(LayoutTemplateType)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -62,7 +62,7 @@ class LoginPageLayoutConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_bool_value("isFooterShown", self.is_footer_shown)
         writer.write_bool_value("isHeaderShown", self.is_header_shown)
         writer.write_enum_value("layoutTemplateType", self.layout_template_type)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

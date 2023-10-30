@@ -127,7 +127,7 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
             "maxPacketLossRate": lambda n : setattr(self, 'max_packet_loss_rate', n.get_float_value()),
             "maxRatioOfConcealedSamples": lambda n : setattr(self, 'max_ratio_of_concealed_samples', n.get_float_value()),
             "maxRoundTripTime": lambda n : setattr(self, 'max_round_trip_time', n.get_timedelta_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "packetUtilization": lambda n : setattr(self, 'packet_utilization', n.get_int_value()),
             "postForwardErrorCorrectionPacketLossRate": lambda n : setattr(self, 'post_forward_error_correction_packet_loss_rate', n.get_float_value()),
             "rmsFreezeDuration": lambda n : setattr(self, 'rms_freeze_duration', n.get_timedelta_value()),
@@ -169,7 +169,7 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_float_value("maxPacketLossRate", self.max_packet_loss_rate)
         writer.write_float_value("maxRatioOfConcealedSamples", self.max_ratio_of_concealed_samples)
         writer.write_timedelta_value("maxRoundTripTime", self.max_round_trip_time)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("packetUtilization", self.packet_utilization)
         writer.write_float_value("postForwardErrorCorrectionPacketLossRate", self.post_forward_error_correction_packet_loss_rate)
         writer.write_timedelta_value("rmsFreezeDuration", self.rms_freeze_duration)

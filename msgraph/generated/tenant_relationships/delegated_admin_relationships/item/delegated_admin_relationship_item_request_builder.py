@@ -73,7 +73,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
         """
-        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the created status. This API is available in the following national cloud deployments.
+        Update the properties of a delegatedAdminRelationship object. You can only update a relationship when it's in the created status. However, you can update the autoExtendDuration property when the relationship is in either the created or active status. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminRelationship]
@@ -131,7 +131,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the created status. This API is available in the following national cloud deployments.
+        Update the properties of a delegatedAdminRelationship object. You can only update a relationship when it's in the created status. However, you can update the autoExtendDuration property when the relationship is in either the created or active status. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

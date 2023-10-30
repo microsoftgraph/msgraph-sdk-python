@@ -13,11 +13,11 @@ from .long_running_operation import LongRunningOperation
 class AttackSimulationOperation(LongRunningOperation):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The percentageCompleted property
+    # Percentage of completion of the respective operation.
     percentage_completed: Optional[int] = None
-    # The tenantId property
+    # Tenant identifier.
     tenant_id: Optional[str] = None
-    # The type property
+    # The attack simulation operation type. Possible values are: createSimulation, updateSimulation, unknownFutureValue.
     type: Optional[AttackSimulationOperationType] = None
     
     @staticmethod

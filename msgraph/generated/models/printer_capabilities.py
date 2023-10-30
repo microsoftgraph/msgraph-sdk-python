@@ -129,7 +129,7 @@ class PrinterCapabilities(AdditionalDataHolder, BackedModel, Parsable):
             "mediaSizes": lambda n : setattr(self, 'media_sizes', n.get_collection_of_primitive_values(str)),
             "mediaTypes": lambda n : setattr(self, 'media_types', n.get_collection_of_primitive_values(str)),
             "multipageLayouts": lambda n : setattr(self, 'multipage_layouts', n.get_collection_of_enum_values(PrintMultipageLayout)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "orientations": lambda n : setattr(self, 'orientations', n.get_collection_of_enum_values(PrintOrientation)),
             "outputBins": lambda n : setattr(self, 'output_bins', n.get_collection_of_primitive_values(str)),
             "pagesPerSheet": lambda n : setattr(self, 'pages_per_sheet', n.get_collection_of_primitive_values(int)),
@@ -166,7 +166,7 @@ class PrinterCapabilities(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_primitive_values("mediaSizes", self.media_sizes)
         writer.write_collection_of_primitive_values("mediaTypes", self.media_types)
         writer.write_collection_of_enum_values("multipageLayouts", self.multipage_layouts)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_enum_values("orientations", self.orientations)
         writer.write_collection_of_primitive_values("outputBins", self.output_bins)
         writer.write_collection_of_primitive_values("pagesPerSheet", self.pages_per_sheet)

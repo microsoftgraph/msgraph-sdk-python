@@ -37,7 +37,7 @@ class AccessReviewReviewerScope(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "query": lambda n : setattr(self, 'query', n.get_str_value()),
             "queryRoot": lambda n : setattr(self, 'query_root', n.get_str_value()),
             "queryType": lambda n : setattr(self, 'query_type', n.get_str_value()),
@@ -52,7 +52,7 @@ class AccessReviewReviewerScope(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("query", self.query)
         writer.write_str_value("queryRoot", self.query_root)
         writer.write_str_value("queryType", self.query_type)

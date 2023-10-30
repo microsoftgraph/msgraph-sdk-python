@@ -47,7 +47,7 @@ class Filter(AdditionalDataHolder, BackedModel, Parsable):
             "categoryFilterGroups": lambda n : setattr(self, 'category_filter_groups', n.get_collection_of_object_values(FilterGroup)),
             "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(FilterGroup)),
             "inputFilterGroups": lambda n : setattr(self, 'input_filter_groups', n.get_collection_of_object_values(FilterGroup)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -62,7 +62,7 @@ class Filter(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_object_values("categoryFilterGroups", self.category_filter_groups)
         writer.write_collection_of_object_values("groups", self.groups)
         writer.write_collection_of_object_values("inputFilterGroups", self.input_filter_groups)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

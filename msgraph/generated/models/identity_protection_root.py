@@ -55,7 +55,7 @@ class IdentityProtectionRoot(AdditionalDataHolder, BackedModel, Parsable):
         from .service_principal_risk_detection import ServicePrincipalRiskDetection
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "riskDetections": lambda n : setattr(self, 'risk_detections', n.get_collection_of_object_values(RiskDetection)),
             "riskyServicePrincipals": lambda n : setattr(self, 'risky_service_principals', n.get_collection_of_object_values(RiskyServicePrincipal)),
             "riskyUsers": lambda n : setattr(self, 'risky_users', n.get_collection_of_object_values(RiskyUser)),
@@ -71,7 +71,7 @@ class IdentityProtectionRoot(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("riskDetections", self.risk_detections)
         writer.write_collection_of_object_values("riskyServicePrincipals", self.risky_service_principals)
         writer.write_collection_of_object_values("riskyUsers", self.risky_users)

@@ -15,29 +15,29 @@ from .entity import Entity
 
 @dataclass
 class LandingPage(Entity):
-    # The createdBy property
+    # Identity of the user who created the landing page.
     created_by: Optional[EmailIdentity] = None
-    # The createdDateTime property
+    # Date and time when the landing page was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
-    # The description property
+    # Description of the landing page as defined by the user.
     description: Optional[str] = None
-    # The details property
+    # The detail information for a landing page associated with a simulation during its creation.
     details: Optional[List[LandingPageDetail]] = None
-    # The displayName property
+    # The display name of the landing page.
     display_name: Optional[str] = None
-    # The lastModifiedBy property
+    # Email identity of the user who last modified the landing page.
     last_modified_by: Optional[EmailIdentity] = None
-    # The lastModifiedDateTime property
+    # Date and time when the landing page was last modified. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_modified_date_time: Optional[datetime.datetime] = None
-    # The locale property
+    # Content locale.
     locale: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The source property
+    # The source of the content. Possible values are: unknown, global, tenant, unknownFutureValue.
     source: Optional[SimulationContentSource] = None
-    # The status property
+    # The status of the simulation. Possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
     status: Optional[SimulationContentStatus] = None
-    # The supportedLocales property
+    # Supported locales.
     supported_locales: Optional[List[str]] = None
     
     @staticmethod

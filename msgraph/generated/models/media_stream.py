@@ -54,7 +54,7 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
             "direction": lambda n : setattr(self, 'direction', n.get_enum_value(MediaDirection)),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
             "mediaType": lambda n : setattr(self, 'media_type', n.get_enum_value(Modality)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "serverMuted": lambda n : setattr(self, 'server_muted', n.get_bool_value()),
             "sourceId": lambda n : setattr(self, 'source_id', n.get_str_value()),
         }
@@ -71,7 +71,7 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_enum_value("direction", self.direction)
         writer.write_str_value("label", self.label)
         writer.write_enum_value("mediaType", self.media_type)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("serverMuted", self.server_muted)
         writer.write_str_value("sourceId", self.source_id)
         writer.write_additional_data_value(self.additional_data)

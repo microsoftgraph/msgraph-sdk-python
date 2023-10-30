@@ -11,19 +11,19 @@ from .entity import Entity
 
 @dataclass
 class EndUserNotificationDetail(Entity):
-    # The emailContent property
+    # Email HTML content.
     email_content: Optional[str] = None
-    # The isDefaultLangauge property
+    # Indicates whether this language is default.
     is_default_langauge: Optional[bool] = None
-    # The language property
+    # Notification language.
     language: Optional[str] = None
-    # The locale property
+    # Notification locale.
     locale: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The sentFrom property
     sent_from: Optional[EmailIdentity] = None
-    # The subject property
+    # Mail subject.
     subject: Optional[str] = None
     
     @staticmethod

@@ -39,7 +39,7 @@ class ObjectIdentity(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "issuer": lambda n : setattr(self, 'issuer', n.get_str_value()),
             "issuerAssignedId": lambda n : setattr(self, 'issuer_assigned_id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "signInType": lambda n : setattr(self, 'sign_in_type', n.get_str_value()),
         }
         return fields
@@ -54,7 +54,7 @@ class ObjectIdentity(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("issuer", self.issuer)
         writer.write_str_value("issuerAssignedId", self.issuer_assigned_id)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("signInType", self.sign_in_type)
         writer.write_additional_data_value(self.additional_data)
     

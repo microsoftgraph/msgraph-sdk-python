@@ -47,7 +47,7 @@ class UserAccount(AdditionalDataHolder, BackedModel, Parsable):
             "azureAdUserId": lambda n : setattr(self, 'azure_ad_user_id', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
             "userSid": lambda n : setattr(self, 'user_sid', n.get_str_value()),
         }
@@ -65,7 +65,7 @@ class UserAccount(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("azureAdUserId", self.azure_ad_user_id)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("domainName", self.domain_name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_str_value("userSid", self.user_sid)
         writer.write_additional_data_value(self.additional_data)

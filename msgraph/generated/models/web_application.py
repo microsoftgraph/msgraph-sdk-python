@@ -54,7 +54,7 @@ class WebApplication(AdditionalDataHolder, BackedModel, Parsable):
             "homePageUrl": lambda n : setattr(self, 'home_page_url', n.get_str_value()),
             "implicitGrantSettings": lambda n : setattr(self, 'implicit_grant_settings', n.get_object_value(ImplicitGrantSettings)),
             "logoutUrl": lambda n : setattr(self, 'logout_url', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "redirectUriSettings": lambda n : setattr(self, 'redirect_uri_settings', n.get_collection_of_object_values(RedirectUriSettings)),
             "redirectUris": lambda n : setattr(self, 'redirect_uris', n.get_collection_of_primitive_values(str)),
         }
@@ -71,7 +71,7 @@ class WebApplication(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("homePageUrl", self.home_page_url)
         writer.write_object_value("implicitGrantSettings", self.implicit_grant_settings)
         writer.write_str_value("logoutUrl", self.logout_url)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("redirectUriSettings", self.redirect_uri_settings)
         writer.write_collection_of_primitive_values("redirectUris", self.redirect_uris)
         writer.write_additional_data_value(self.additional_data)

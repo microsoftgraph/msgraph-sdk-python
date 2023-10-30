@@ -10,11 +10,11 @@ from .entity import Entity
 
 @dataclass
 class LandingPageDetail(Entity):
-    # The content property
+    # Landing page detail content.
     content: Optional[str] = None
-    # The isDefaultLangauge property
+    # Indicates whether this language detail is default for the landing page.
     is_default_langauge: Optional[bool] = None
-    # The language property
+    # The content language for the landing page.
     language: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

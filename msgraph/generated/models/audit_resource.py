@@ -52,7 +52,7 @@ class AuditResource(AdditionalDataHolder, BackedModel, Parsable):
             "auditResourceType": lambda n : setattr(self, 'audit_resource_type', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(AuditProperty)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
         }
         return fields
@@ -68,7 +68,7 @@ class AuditResource(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("auditResourceType", self.audit_resource_type)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("modifiedProperties", self.modified_properties)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("resourceId", self.resource_id)
         writer.write_additional_data_value(self.additional_data)
     

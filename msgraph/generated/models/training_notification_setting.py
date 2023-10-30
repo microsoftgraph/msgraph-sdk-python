@@ -14,9 +14,9 @@ from .end_user_notification_setting import EndUserNotificationSetting
 class TrainingNotificationSetting(EndUserNotificationSetting):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.trainingNotificationSetting"
-    # The trainingAssignment property
+    # Training assignment details.
     training_assignment: Optional[BaseEndUserNotification] = None
-    # The trainingReminder property
+    # Training reminder details.
     training_reminder: Optional[TrainingReminderNotification] = None
     
     @staticmethod

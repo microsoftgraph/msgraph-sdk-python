@@ -52,7 +52,7 @@ class FollowupFlag(AdditionalDataHolder, BackedModel, Parsable):
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_object_value(DateTimeTimeZone)),
             "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_object_value(DateTimeTimeZone)),
             "flagStatus": lambda n : setattr(self, 'flag_status', n.get_enum_value(FollowupFlagStatus)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
         }
         return fields
@@ -68,7 +68,7 @@ class FollowupFlag(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_object_value("completedDateTime", self.completed_date_time)
         writer.write_object_value("dueDateTime", self.due_date_time)
         writer.write_enum_value("flagStatus", self.flag_status)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("startDateTime", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
     

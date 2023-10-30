@@ -41,7 +41,7 @@ class RegistrationEnforcement(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "authenticationMethodsRegistrationCampaign": lambda n : setattr(self, 'authentication_methods_registration_campaign', n.get_object_value(AuthenticationMethodsRegistrationCampaign)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -54,7 +54,7 @@ class RegistrationEnforcement(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("authenticationMethodsRegistrationCampaign", self.authentication_methods_registration_campaign)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

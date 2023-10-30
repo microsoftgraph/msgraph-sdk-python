@@ -79,7 +79,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
             "directoryExtensionsEnabled": lambda n : setattr(self, 'directory_extensions_enabled', n.get_bool_value()),
             "fopeConflictResolutionEnabled": lambda n : setattr(self, 'fope_conflict_resolution_enabled', n.get_bool_value()),
             "groupWriteBackEnabled": lambda n : setattr(self, 'group_write_back_enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "passwordSyncEnabled": lambda n : setattr(self, 'password_sync_enabled', n.get_bool_value()),
             "passwordWritebackEnabled": lambda n : setattr(self, 'password_writeback_enabled', n.get_bool_value()),
             "quarantineUponProxyAddressesConflictEnabled": lambda n : setattr(self, 'quarantine_upon_proxy_addresses_conflict_enabled', n.get_bool_value()),
@@ -110,7 +110,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
         writer.write_bool_value("directoryExtensionsEnabled", self.directory_extensions_enabled)
         writer.write_bool_value("fopeConflictResolutionEnabled", self.fope_conflict_resolution_enabled)
         writer.write_bool_value("groupWriteBackEnabled", self.group_write_back_enabled)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("passwordSyncEnabled", self.password_sync_enabled)
         writer.write_bool_value("passwordWritebackEnabled", self.password_writeback_enabled)
         writer.write_bool_value("quarantineUponProxyAddressesConflictEnabled", self.quarantine_upon_proxy_addresses_conflict_enabled)

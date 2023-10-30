@@ -24,7 +24,7 @@ class DelegatedAdminRelationship(Entity):
     access_details: Optional[DelegatedAdminAccessDetails] = None
     # The date and time in ISO 8601 format and in UTC time when the relationship became active. Read-only.
     activated_date_time: Optional[datetime.datetime] = None
-    # The autoExtendDuration property
+    # The duration by which the validity of the relationship is automatically extended, denoted in ISO 8601 format. Supported values are: P0D, PT0S, P180D. The default value is PT0S. PT0S indicates that the relationship expires when the endDateTime is reached and it isn't automatically extended.
     auto_extend_duration: Optional[datetime.timedelta] = None
     # The date and time in ISO 8601 format and in UTC time when the relationship was created. Read-only.
     created_date_time: Optional[datetime.datetime] = None

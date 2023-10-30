@@ -12,7 +12,7 @@ from .account_target_content import AccountTargetContent
 class AddressBookAccountTargetContent(AccountTargetContent):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.addressBookAccountTargetContent"
-    # The accountTargetEmails property
+    # List of user emails targeted for an attack simulation training campaign.
     account_target_emails: Optional[List[str]] = None
     
     @staticmethod

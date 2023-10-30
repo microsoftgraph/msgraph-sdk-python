@@ -14,19 +14,19 @@ class PayloadCoachmark(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The coachmarkLocation property
+    # The coachmark location.
     coachmark_location: Optional[CoachmarkLocation] = None
-    # The description property
+    # The description about the coachmark.
     description: Optional[str] = None
-    # The indicator property
+    # The coachmark indicator.
     indicator: Optional[str] = None
-    # The isValid property
+    # Indicates whether the coachmark is valid or not.
     is_valid: Optional[bool] = None
-    # The language property
+    # The coachmark language.
     language: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The order property
+    # The coachmark order.
     order: Optional[str] = None
     
     @staticmethod
@@ -55,7 +55,7 @@ class PayloadCoachmark(AdditionalDataHolder, BackedModel, Parsable):
             "indicator": lambda n : setattr(self, 'indicator', n.get_str_value()),
             "isValid": lambda n : setattr(self, 'is_valid', n.get_bool_value()),
             "language": lambda n : setattr(self, 'language', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "order": lambda n : setattr(self, 'order', n.get_str_value()),
         }
         return fields
@@ -73,7 +73,7 @@ class PayloadCoachmark(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("indicator", self.indicator)
         writer.write_bool_value("isValid", self.is_valid)
         writer.write_str_value("language", self.language)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("order", self.order)
         writer.write_additional_data_value(self.additional_data)
     

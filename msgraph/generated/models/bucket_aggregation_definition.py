@@ -53,7 +53,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "isDescending": lambda n : setattr(self, 'is_descending', n.get_bool_value()),
             "minimumCount": lambda n : setattr(self, 'minimum_count', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "prefixFilter": lambda n : setattr(self, 'prefix_filter', n.get_str_value()),
             "ranges": lambda n : setattr(self, 'ranges', n.get_collection_of_object_values(BucketAggregationRange)),
             "sortBy": lambda n : setattr(self, 'sort_by', n.get_enum_value(BucketAggregationSortProperty)),
@@ -70,7 +70,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("isDescending", self.is_descending)
         writer.write_int_value("minimumCount", self.minimum_count)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("prefixFilter", self.prefix_filter)
         writer.write_collection_of_object_values("ranges", self.ranges)
         writer.write_enum_value("sortBy", self.sort_by)

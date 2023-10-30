@@ -24,7 +24,7 @@ from .entity import Entity
 
 @dataclass
 class Simulation(Entity):
-    # The social engineering technique used in the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, credentialHarvesting, attachmentMalware, driveByUrl, linkInAttachment, linkToMalwareFile, unknownFutureValue. For more information on the types of social engineering attack techniques, see simulations.
+    # The social engineering technique used in the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, credentialHarvesting, attachmentMalware, driveByUrl, linkInAttachment, linkToMalwareFile, unknownFutureValue, oAuthConsentGrant. Note that you must use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: oAuthConsentGrant. For more information on the types of social engineering attack techniques, see simulations.
     attack_technique: Optional[SimulationAttackTechnique] = None
     # Attack type of the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, social, cloud, endpoint, unknownFutureValue.
     attack_type: Optional[SimulationAttackType] = None
@@ -40,17 +40,17 @@ class Simulation(Entity):
     description: Optional[str] = None
     # Display name of the attack simulation and training campaign. Supports $filter and $orderby.
     display_name: Optional[str] = None
-    # The durationInDays property
+    # Simulation duration in days.
     duration_in_days: Optional[int] = None
-    # The endUserNotificationSetting property
+    # Details about the end user notification setting.
     end_user_notification_setting: Optional[EndUserNotificationSetting] = None
-    # The excludedAccountTarget property
+    # Users excluded from the simulation.
     excluded_account_target: Optional[AccountTargetContent] = None
-    # The includedAccountTarget property
+    # Users targeted in the simulation.
     included_account_target: Optional[AccountTargetContent] = None
     # Flag that represents if the attack simulation and training campaign was created from a simulation automation flow. Supports $filter and $orderby.
     is_automated: Optional[bool] = None
-    # The landingPage property
+    # The landing page associated with a simulation during its creation.
     landing_page: Optional[LandingPage] = None
     # Identity of the user who most recently modified the attack simulation and training campaign.
     last_modified_by: Optional[EmailIdentity] = None
@@ -58,13 +58,13 @@ class Simulation(Entity):
     last_modified_date_time: Optional[datetime.datetime] = None
     # Date and time of the launch/start of the attack simulation and training campaign. Supports $filter and $orderby.
     launch_date_time: Optional[datetime.datetime] = None
-    # The loginPage property
+    # The login page associated with a simulation during its creation.
     login_page: Optional[LoginPage] = None
-    # The oAuthConsentAppDetail property
+    # OAuth app details for the OAuth technique.
     o_auth_consent_app_detail: Optional[OAuthConsentAppDetail] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The payload property
+    # The payload associated with a simulation during its creation.
     payload: Optional[Payload] = None
     # Method of delivery of the phishing payload used in the attack simulation and training campaign. Possible values are: unknown, sms, email, teams, unknownFutureValue.
     payload_delivery_platform: Optional[PayloadDeliveryPlatform] = None
@@ -72,7 +72,7 @@ class Simulation(Entity):
     report: Optional[SimulationReport] = None
     # Status of the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, draft, running, scheduled, succeeded, failed, cancelled, excluded, unknownFutureValue.
     status: Optional[SimulationStatus] = None
-    # The trainingSetting property
+    # Details about the training settings for a simulation.
     training_setting: Optional[TrainingSetting] = None
     
     @staticmethod

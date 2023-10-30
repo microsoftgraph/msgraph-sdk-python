@@ -50,7 +50,7 @@ class DeviceDetail(AdditionalDataHolder, BackedModel, Parsable):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "isCompliant": lambda n : setattr(self, 'is_compliant', n.get_bool_value()),
             "isManaged": lambda n : setattr(self, 'is_managed', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),
             "trustType": lambda n : setattr(self, 'trust_type', n.get_str_value()),
         }
@@ -69,7 +69,7 @@ class DeviceDetail(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isCompliant", self.is_compliant)
         writer.write_bool_value("isManaged", self.is_managed)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("operatingSystem", self.operating_system)
         writer.write_str_value("trustType", self.trust_type)
         writer.write_additional_data_value(self.additional_data)

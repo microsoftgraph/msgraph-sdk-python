@@ -72,7 +72,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, BackedModel, Parsable)
             "inboundConnectionsBlocked": lambda n : setattr(self, 'inbound_connections_blocked', n.get_bool_value()),
             "inboundNotificationsBlocked": lambda n : setattr(self, 'inbound_notifications_blocked', n.get_bool_value()),
             "incomingTrafficBlocked": lambda n : setattr(self, 'incoming_traffic_blocked', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "outboundConnectionsBlocked": lambda n : setattr(self, 'outbound_connections_blocked', n.get_bool_value()),
             "policyRulesFromGroupPolicyMerged": lambda n : setattr(self, 'policy_rules_from_group_policy_merged', n.get_bool_value()),
             "securedPacketExemptionAllowed": lambda n : setattr(self, 'secured_packet_exemption_allowed', n.get_bool_value()),
@@ -96,7 +96,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, BackedModel, Parsable)
         writer.write_bool_value("inboundConnectionsBlocked", self.inbound_connections_blocked)
         writer.write_bool_value("inboundNotificationsBlocked", self.inbound_notifications_blocked)
         writer.write_bool_value("incomingTrafficBlocked", self.incoming_traffic_blocked)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("outboundConnectionsBlocked", self.outbound_connections_blocked)
         writer.write_bool_value("policyRulesFromGroupPolicyMerged", self.policy_rules_from_group_policy_merged)
         writer.write_bool_value("securedPacketExemptionAllowed", self.secured_packet_exemption_allowed)

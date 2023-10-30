@@ -61,7 +61,7 @@ class SslCertificateEntity(AdditionalDataHolder, BackedModel, Parsable):
             "commonName": lambda n : setattr(self, 'common_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
             "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "organizationName": lambda n : setattr(self, 'organization_name', n.get_str_value()),
             "organizationUnitName": lambda n : setattr(self, 'organization_unit_name', n.get_str_value()),
             "serialNumber": lambda n : setattr(self, 'serial_number', n.get_str_value()),
@@ -82,7 +82,7 @@ class SslCertificateEntity(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("commonName", self.common_name)
         writer.write_str_value("email", self.email)
         writer.write_str_value("givenName", self.given_name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("organizationName", self.organization_name)
         writer.write_str_value("organizationUnitName", self.organization_unit_name)
         writer.write_str_value("serialNumber", self.serial_number)

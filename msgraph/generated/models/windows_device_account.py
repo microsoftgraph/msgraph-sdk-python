@@ -55,7 +55,7 @@ class WindowsDeviceAccount(AdditionalDataHolder, BackedModel, Parsable):
         from .windows_device_a_d_account import WindowsDeviceADAccount
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "password": lambda n : setattr(self, 'password', n.get_str_value()),
         }
         return fields
@@ -68,7 +68,7 @@ class WindowsDeviceAccount(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("password", self.password)
         writer.write_additional_data_value(self.additional_data)
     

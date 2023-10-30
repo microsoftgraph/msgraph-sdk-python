@@ -12,13 +12,13 @@ from .payload_detail import PayloadDetail
 class EmailPayloadDetail(PayloadDetail):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.emailPayloadDetail"
-    # The fromEmail property
+    # Email address of the user.
     from_email: Optional[str] = None
-    # The fromName property
+    # Display name of the user.
     from_name: Optional[str] = None
-    # The isExternalSender property
+    # Indicates whether the sender isn't from the user's organization.
     is_external_sender: Optional[bool] = None
-    # The subject property
+    # The subject of the email address sent to the user.
     subject: Optional[str] = None
     
     @staticmethod

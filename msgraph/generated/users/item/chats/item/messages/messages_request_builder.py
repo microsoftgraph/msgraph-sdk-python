@@ -68,11 +68,11 @@ class MessagesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ChatMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[ChatMessage]:
         """
-        Send a new chatMessage in the specified chat. This API can't create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can create a chat message. This API is available in the following national cloud deployments.
+        Send a new chatMessage in the specified channel or a chat. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChatMessage]
-        Find more info here: https://learn.microsoft.com/graph/api/chat-post-messages?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/chatmessage-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -110,7 +110,7 @@ class MessagesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ChatMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Send a new chatMessage in the specified chat. This API can't create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can create a chat message. This API is available in the following national cloud deployments.
+        Send a new chatMessage in the specified channel or a chat. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

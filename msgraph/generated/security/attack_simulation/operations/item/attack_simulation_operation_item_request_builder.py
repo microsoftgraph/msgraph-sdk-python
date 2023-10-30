@@ -47,9 +47,10 @@ class AttackSimulationOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AttackSimulationOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AttackSimulationOperation]:
         """
-        Get operations from security
+        Get an attack simulation operation to track a long-running operation request for a tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttackSimulationOperation]
+        Find more info here: https://learn.microsoft.com/graph/api/attacksimulationoperation-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -108,7 +109,7 @@ class AttackSimulationOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AttackSimulationOperationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get operations from security
+        Get an attack simulation operation to track a long-running operation request for a tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -166,7 +167,7 @@ class AttackSimulationOperationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttackSimulationOperationItemRequestBuilderGetQueryParameters():
         """
-        Get operations from security
+        Get an attack simulation operation to track a long-running operation request for a tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

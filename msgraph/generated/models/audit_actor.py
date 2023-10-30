@@ -54,7 +54,7 @@ class AuditActor(AdditionalDataHolder, BackedModel, Parsable):
             "applicationId": lambda n : setattr(self, 'application_id', n.get_str_value()),
             "auditActorType": lambda n : setattr(self, 'audit_actor_type', n.get_str_value()),
             "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "servicePrincipalName": lambda n : setattr(self, 'service_principal_name', n.get_str_value()),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
             "userPermissions": lambda n : setattr(self, 'user_permissions', n.get_collection_of_primitive_values(str)),
@@ -74,7 +74,7 @@ class AuditActor(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("applicationId", self.application_id)
         writer.write_str_value("auditActorType", self.audit_actor_type)
         writer.write_str_value("ipAddress", self.ip_address)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("servicePrincipalName", self.service_principal_name)
         writer.write_str_value("userId", self.user_id)
         writer.write_collection_of_primitive_values("userPermissions", self.user_permissions)

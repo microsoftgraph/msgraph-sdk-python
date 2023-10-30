@@ -111,7 +111,7 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
             "linkSpeed": lambda n : setattr(self, 'link_speed', n.get_int_value()),
             "macAddress": lambda n : setattr(self, 'mac_address', n.get_str_value()),
             "networkTransportProtocol": lambda n : setattr(self, 'network_transport_protocol', n.get_enum_value(NetworkTransportProtocol)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "port": lambda n : setattr(self, 'port', n.get_int_value()),
             "receivedQualityEventRatio": lambda n : setattr(self, 'received_quality_event_ratio', n.get_float_value()),
             "reflexiveIPAddress": lambda n : setattr(self, 'reflexive_i_p_address', n.get_str_value()),
@@ -149,7 +149,7 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_int_value("linkSpeed", self.link_speed)
         writer.write_str_value("macAddress", self.mac_address)
         writer.write_enum_value("networkTransportProtocol", self.network_transport_protocol)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("port", self.port)
         writer.write_float_value("receivedQualityEventRatio", self.received_quality_event_ratio)
         writer.write_str_value("reflexiveIPAddress", self.reflexive_i_p_address)

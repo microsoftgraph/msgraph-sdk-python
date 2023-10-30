@@ -62,7 +62,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
             "fallbackPrimaryApprovers": lambda n : setattr(self, 'fallback_primary_approvers', n.get_collection_of_object_values(SubjectSet)),
             "isApproverJustificationRequired": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
             "isEscalationEnabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "primaryApprovers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(SubjectSet)),
         }
         return fields
@@ -82,7 +82,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_object_values("fallbackPrimaryApprovers", self.fallback_primary_approvers)
         writer.write_bool_value("isApproverJustificationRequired", self.is_approver_justification_required)
         writer.write_bool_value("isEscalationEnabled", self.is_escalation_enabled)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("primaryApprovers", self.primary_approvers)
         writer.write_additional_data_value(self.additional_data)
     

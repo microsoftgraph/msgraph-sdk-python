@@ -61,7 +61,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, BackedModel
             "enableTargetsToSelfAddAccess": lambda n : setattr(self, 'enable_targets_to_self_add_access', n.get_bool_value()),
             "enableTargetsToSelfRemoveAccess": lambda n : setattr(self, 'enable_targets_to_self_remove_access', n.get_bool_value()),
             "enableTargetsToSelfUpdateAccess": lambda n : setattr(self, 'enable_targets_to_self_update_access', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "onBehalfRequestors": lambda n : setattr(self, 'on_behalf_requestors', n.get_collection_of_object_values(SubjectSet)),
         }
         return fields
@@ -81,7 +81,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, BackedModel
         writer.write_bool_value("enableTargetsToSelfAddAccess", self.enable_targets_to_self_add_access)
         writer.write_bool_value("enableTargetsToSelfRemoveAccess", self.enable_targets_to_self_remove_access)
         writer.write_bool_value("enableTargetsToSelfUpdateAccess", self.enable_targets_to_self_update_access)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("onBehalfRequestors", self.on_behalf_requestors)
         writer.write_additional_data_value(self.additional_data)
     

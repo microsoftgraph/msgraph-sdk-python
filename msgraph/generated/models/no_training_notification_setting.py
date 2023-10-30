@@ -13,7 +13,7 @@ from .end_user_notification_setting import EndUserNotificationSetting
 class NoTrainingNotificationSetting(EndUserNotificationSetting):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.noTrainingNotificationSetting"
-    # The simulationNotification property
+    # The notification for the user who is part of the simulation.
     simulation_notification: Optional[SimulationNotification] = None
     
     @staticmethod

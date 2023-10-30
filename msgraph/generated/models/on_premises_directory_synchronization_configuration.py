@@ -41,7 +41,7 @@ class OnPremisesDirectorySynchronizationConfiguration(AdditionalDataHolder, Back
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accidentalDeletionPrevention": lambda n : setattr(self, 'accidental_deletion_prevention', n.get_object_value(OnPremisesAccidentalDeletionPrevention)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -54,7 +54,7 @@ class OnPremisesDirectorySynchronizationConfiguration(AdditionalDataHolder, Back
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("accidentalDeletionPrevention", self.accidental_deletion_prevention)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

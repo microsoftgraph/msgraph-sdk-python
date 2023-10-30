@@ -99,7 +99,7 @@ class DeviceActionResult(AdditionalDataHolder, BackedModel, Parsable):
             "actionName": lambda n : setattr(self, 'action_name', n.get_str_value()),
             "actionState": lambda n : setattr(self, 'action_state', n.get_enum_value(ActionState)),
             "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         return fields
@@ -115,7 +115,7 @@ class DeviceActionResult(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("actionName", self.action_name)
         writer.write_enum_value("actionState", self.action_state)
         writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
     

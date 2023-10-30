@@ -16,35 +16,35 @@ from .entity import Entity
 
 @dataclass
 class Training(Entity):
-    # The availabilityStatus property
+    # Training availability status. Possible values are: unknown, notAvailable, available, archive, delete, unknownFutureValue.
     availability_status: Optional[TrainingAvailabilityStatus] = None
-    # The createdBy property
+    # Identity of the user who created the training.
     created_by: Optional[EmailIdentity] = None
-    # The createdDateTime property
+    # Date and time when the training was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
-    # The description property
+    # The description for the training.
     description: Optional[str] = None
-    # The displayName property
+    # The display name for the training.
     display_name: Optional[str] = None
-    # The durationInMinutes property
+    # Training duration.
     duration_in_minutes: Optional[int] = None
-    # The hasEvaluation property
+    # Indicates whether the training has any evaluation.
     has_evaluation: Optional[bool] = None
-    # The languageDetails property
+    # Language specific details on a training.
     language_details: Optional[List[TrainingLanguageDetail]] = None
-    # The lastModifiedBy property
+    # Identity of the user who last modified the training.
     last_modified_by: Optional[EmailIdentity] = None
-    # The lastModifiedDateTime property
+    # Date and time when the training was last modified. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The source property
+    # Training content source. Possible values are: unknown, global, tenant, unknownFutureValue.
     source: Optional[SimulationContentSource] = None
-    # The supportedLocales property
+    # Supported locales for content for the associated training.
     supported_locales: Optional[List[str]] = None
-    # The tags property
+    # Training tags.
     tags: Optional[List[str]] = None
-    # The type property
+    # The type of training. Possible values are: unknown, phishing, unknownFutureValue.
     type: Optional[TrainingType] = None
     
     @staticmethod

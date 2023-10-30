@@ -74,7 +74,7 @@ class SynchronizationRule(AdditionalDataHolder, BackedModel, Parsable):
             "metadata": lambda n : setattr(self, 'metadata', n.get_collection_of_object_values(StringKeyStringValuePair)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "objectMappings": lambda n : setattr(self, 'object_mappings', n.get_collection_of_object_values(ObjectMapping)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "priority": lambda n : setattr(self, 'priority', n.get_int_value()),
             "sourceDirectoryName": lambda n : setattr(self, 'source_directory_name', n.get_str_value()),
             "targetDirectoryName": lambda n : setattr(self, 'target_directory_name', n.get_str_value()),
@@ -96,7 +96,7 @@ class SynchronizationRule(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_object_values("metadata", self.metadata)
         writer.write_str_value("name", self.name)
         writer.write_collection_of_object_values("objectMappings", self.object_mappings)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("priority", self.priority)
         writer.write_str_value("sourceDirectoryName", self.source_directory_name)
         writer.write_str_value("targetDirectoryName", self.target_directory_name)

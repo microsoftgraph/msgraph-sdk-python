@@ -56,7 +56,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "edge": lambda n : setattr(self, 'edge', n.get_object_value(Edge)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "people": lambda n : setattr(self, 'people', n.get_object_value(PeopleAdminSettings)),
             "serviceAnnouncement": lambda n : setattr(self, 'service_announcement', n.get_object_value(ServiceAnnouncement)),
             "sharepoint": lambda n : setattr(self, 'sharepoint', n.get_object_value(Sharepoint)),
@@ -72,7 +72,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("edge", self.edge)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("people", self.people)
         writer.write_object_value("serviceAnnouncement", self.service_announcement)
         writer.write_object_value("sharepoint", self.sharepoint)

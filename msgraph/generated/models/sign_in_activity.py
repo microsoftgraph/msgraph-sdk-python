@@ -44,7 +44,7 @@ class SignInActivity(AdditionalDataHolder, BackedModel, Parsable):
             "lastNonInteractiveSignInRequestId": lambda n : setattr(self, 'last_non_interactive_sign_in_request_id', n.get_str_value()),
             "lastSignInDateTime": lambda n : setattr(self, 'last_sign_in_date_time', n.get_datetime_value()),
             "lastSignInRequestId": lambda n : setattr(self, 'last_sign_in_request_id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -60,7 +60,7 @@ class SignInActivity(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_str_value("lastNonInteractiveSignInRequestId", self.last_non_interactive_sign_in_request_id)
         writer.write_datetime_value("lastSignInDateTime", self.last_sign_in_date_time)
         writer.write_str_value("lastSignInRequestId", self.last_sign_in_request_id)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

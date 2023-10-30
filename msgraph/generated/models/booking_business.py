@@ -99,22 +99,22 @@ class BookingBusiness(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(PhysicalAddress)),
             "appointments": lambda n : setattr(self, 'appointments', n.get_collection_of_object_values(BookingAppointment)),
-            "businessHours": lambda n : setattr(self, 'business_hours', n.get_collection_of_object_values(BookingWorkHours)),
-            "businessType": lambda n : setattr(self, 'business_type', n.get_str_value()),
-            "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(BookingAppointment)),
-            "customQuestions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(BookingCustomQuestion)),
+            "business_hours": lambda n : setattr(self, 'business_hours', n.get_collection_of_object_values(BookingWorkHours)),
+            "business_type": lambda n : setattr(self, 'business_type', n.get_str_value()),
+            "calendar_view": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(BookingAppointment)),
+            "custom_questions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(BookingCustomQuestion)),
             "customers": lambda n : setattr(self, 'customers', n.get_collection_of_object_values(BookingCustomerBase)),
-            "defaultCurrencyIso": lambda n : setattr(self, 'default_currency_iso', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "default_currency_iso": lambda n : setattr(self, 'default_currency_iso', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "isPublished": lambda n : setattr(self, 'is_published', n.get_bool_value()),
-            "languageTag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
+            "is_published": lambda n : setattr(self, 'is_published', n.get_bool_value()),
+            "language_tag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
-            "publicUrl": lambda n : setattr(self, 'public_url', n.get_str_value()),
-            "schedulingPolicy": lambda n : setattr(self, 'scheduling_policy', n.get_object_value(BookingSchedulingPolicy)),
+            "public_url": lambda n : setattr(self, 'public_url', n.get_str_value()),
+            "scheduling_policy": lambda n : setattr(self, 'scheduling_policy', n.get_object_value(BookingSchedulingPolicy)),
             "services": lambda n : setattr(self, 'services', n.get_collection_of_object_values(BookingService)),
-            "staffMembers": lambda n : setattr(self, 'staff_members', n.get_collection_of_object_values(BookingStaffMemberBase)),
-            "webSiteUrl": lambda n : setattr(self, 'web_site_url', n.get_str_value()),
+            "staff_members": lambda n : setattr(self, 'staff_members', n.get_collection_of_object_values(BookingStaffMemberBase)),
+            "web_site_url": lambda n : setattr(self, 'web_site_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -131,19 +131,19 @@ class BookingBusiness(Entity):
         super().serialize(writer)
         writer.write_object_value("address", self.address)
         writer.write_collection_of_object_values("appointments", self.appointments)
-        writer.write_collection_of_object_values("businessHours", self.business_hours)
-        writer.write_str_value("businessType", self.business_type)
-        writer.write_collection_of_object_values("calendarView", self.calendar_view)
-        writer.write_collection_of_object_values("customQuestions", self.custom_questions)
+        writer.write_collection_of_object_values("business_hours", self.business_hours)
+        writer.write_str_value("business_type", self.business_type)
+        writer.write_collection_of_object_values("calendar_view", self.calendar_view)
+        writer.write_collection_of_object_values("custom_questions", self.custom_questions)
         writer.write_collection_of_object_values("customers", self.customers)
-        writer.write_str_value("defaultCurrencyIso", self.default_currency_iso)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("default_currency_iso", self.default_currency_iso)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_str_value("email", self.email)
-        writer.write_str_value("languageTag", self.language_tag)
+        writer.write_str_value("language_tag", self.language_tag)
         writer.write_str_value("phone", self.phone)
-        writer.write_object_value("schedulingPolicy", self.scheduling_policy)
+        writer.write_object_value("scheduling_policy", self.scheduling_policy)
         writer.write_collection_of_object_values("services", self.services)
-        writer.write_collection_of_object_values("staffMembers", self.staff_members)
-        writer.write_str_value("webSiteUrl", self.web_site_url)
+        writer.write_collection_of_object_values("staff_members", self.staff_members)
+        writer.write_str_value("web_site_url", self.web_site_url)
     
 

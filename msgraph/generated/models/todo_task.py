@@ -105,24 +105,24 @@ class TodoTask(Entity):
         from .task_status import TaskStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attachmentSessions": lambda n : setattr(self, 'attachment_sessions', n.get_collection_of_object_values(AttachmentSession)),
+            "attachment_sessions": lambda n : setattr(self, 'attachment_sessions', n.get_collection_of_object_values(AttachmentSession)),
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(AttachmentBase)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(ItemBody)),
-            "bodyLastModifiedDateTime": lambda n : setattr(self, 'body_last_modified_date_time', n.get_datetime_value()),
+            "body_last_modified_date_time": lambda n : setattr(self, 'body_last_modified_date_time', n.get_datetime_value()),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
-            "checklistItems": lambda n : setattr(self, 'checklist_items', n.get_collection_of_object_values(ChecklistItem)),
-            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_object_value(DateTimeTimeZone)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_object_value(DateTimeTimeZone)),
+            "checklist_items": lambda n : setattr(self, 'checklist_items', n.get_collection_of_object_values(ChecklistItem)),
+            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_object_value(DateTimeTimeZone)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "due_date_time": lambda n : setattr(self, 'due_date_time', n.get_object_value(DateTimeTimeZone)),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
-            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(Importance)),
-            "isReminderOn": lambda n : setattr(self, 'is_reminder_on', n.get_bool_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "linkedResources": lambda n : setattr(self, 'linked_resources', n.get_collection_of_object_values(LinkedResource)),
+            "is_reminder_on": lambda n : setattr(self, 'is_reminder_on', n.get_bool_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "linked_resources": lambda n : setattr(self, 'linked_resources', n.get_collection_of_object_values(LinkedResource)),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(PatternedRecurrence)),
-            "reminderDateTime": lambda n : setattr(self, 'reminder_date_time', n.get_object_value(DateTimeTimeZone)),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
+            "reminder_date_time": lambda n : setattr(self, 'reminder_date_time', n.get_object_value(DateTimeTimeZone)),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(TaskStatus)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
@@ -139,24 +139,24 @@ class TodoTask(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("attachmentSessions", self.attachment_sessions)
+        writer.write_collection_of_object_values("attachment_sessions", self.attachment_sessions)
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_object_value("body", self.body)
-        writer.write_datetime_value("bodyLastModifiedDateTime", self.body_last_modified_date_time)
+        writer.write_datetime_value("body_last_modified_date_time", self.body_last_modified_date_time)
         writer.write_collection_of_primitive_values("categories", self.categories)
-        writer.write_collection_of_object_values("checklistItems", self.checklist_items)
-        writer.write_object_value("completedDateTime", self.completed_date_time)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_object_value("dueDateTime", self.due_date_time)
+        writer.write_collection_of_object_values("checklist_items", self.checklist_items)
+        writer.write_object_value("completed_date_time", self.completed_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_object_value("due_date_time", self.due_date_time)
         writer.write_collection_of_object_values("extensions", self.extensions)
-        writer.write_bool_value("hasAttachments", self.has_attachments)
+        writer.write_bool_value("has_attachments", self.has_attachments)
         writer.write_enum_value("importance", self.importance)
-        writer.write_bool_value("isReminderOn", self.is_reminder_on)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_collection_of_object_values("linkedResources", self.linked_resources)
+        writer.write_bool_value("is_reminder_on", self.is_reminder_on)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_collection_of_object_values("linked_resources", self.linked_resources)
         writer.write_object_value("recurrence", self.recurrence)
-        writer.write_object_value("reminderDateTime", self.reminder_date_time)
-        writer.write_object_value("startDateTime", self.start_date_time)
+        writer.write_object_value("reminder_date_time", self.reminder_date_time)
+        writer.write_object_value("start_date_time", self.start_date_time)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("title", self.title)
     

@@ -44,10 +44,10 @@ class LoginPageLayoutConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         from .layout_template_type import LayoutTemplateType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isFooterShown": lambda n : setattr(self, 'is_footer_shown', n.get_bool_value()),
-            "isHeaderShown": lambda n : setattr(self, 'is_header_shown', n.get_bool_value()),
-            "layoutTemplateType": lambda n : setattr(self, 'layout_template_type', n.get_enum_value(LayoutTemplateType)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "is_footer_shown": lambda n : setattr(self, 'is_footer_shown', n.get_bool_value()),
+            "is_header_shown": lambda n : setattr(self, 'is_header_shown', n.get_bool_value()),
+            "layout_template_type": lambda n : setattr(self, 'layout_template_type', n.get_enum_value(LayoutTemplateType)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -59,10 +59,10 @@ class LoginPageLayoutConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("isFooterShown", self.is_footer_shown)
-        writer.write_bool_value("isHeaderShown", self.is_header_shown)
-        writer.write_enum_value("layoutTemplateType", self.layout_template_type)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("is_footer_shown", self.is_footer_shown)
+        writer.write_bool_value("is_header_shown", self.is_header_shown)
+        writer.write_enum_value("layout_template_type", self.layout_template_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -38,9 +38,9 @@ class IosDeviceType(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "iPad": lambda n : setattr(self, 'i_pad', n.get_bool_value()),
-            "iPhoneAndIPod": lambda n : setattr(self, 'i_phone_and_i_pod', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "i_pad": lambda n : setattr(self, 'i_pad', n.get_bool_value()),
+            "i_phone_and_i_pod": lambda n : setattr(self, 'i_phone_and_i_pod', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -52,9 +52,9 @@ class IosDeviceType(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("iPad", self.i_pad)
-        writer.write_bool_value("iPhoneAndIPod", self.i_phone_and_i_pod)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("i_pad", self.i_pad)
+        writer.write_bool_value("i_phone_and_i_pod", self.i_phone_and_i_pod)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

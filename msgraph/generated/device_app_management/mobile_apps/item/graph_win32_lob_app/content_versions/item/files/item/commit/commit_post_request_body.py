@@ -38,7 +38,7 @@ class CommitPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ..........models.file_encryption_info import FileEncryptionInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fileEncryptionInfo": lambda n : setattr(self, 'file_encryption_info', n.get_object_value(FileEncryptionInfo)),
+            "file_encryption_info": lambda n : setattr(self, 'file_encryption_info', n.get_object_value(FileEncryptionInfo)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class CommitPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("fileEncryptionInfo", self.file_encryption_info)
+        writer.write_object_value("file_encryption_info", self.file_encryption_info)
         writer.write_additional_data_value(self.additional_data)
     
 

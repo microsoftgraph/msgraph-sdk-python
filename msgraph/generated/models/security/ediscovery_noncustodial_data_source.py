@@ -44,8 +44,8 @@ class EdiscoveryNoncustodialDataSource(DataSourceContainer):
         from .ediscovery_index_operation import EdiscoveryIndexOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "dataSource": lambda n : setattr(self, 'data_source', n.get_object_value(DataSource)),
-            "lastIndexOperation": lambda n : setattr(self, 'last_index_operation', n.get_object_value(EdiscoveryIndexOperation)),
+            "data_source": lambda n : setattr(self, 'data_source', n.get_object_value(DataSource)),
+            "last_index_operation": lambda n : setattr(self, 'last_index_operation', n.get_object_value(EdiscoveryIndexOperation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,7 +60,7 @@ class EdiscoveryNoncustodialDataSource(DataSourceContainer):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("dataSource", self.data_source)
-        writer.write_object_value("lastIndexOperation", self.last_index_operation)
+        writer.write_object_value("data_source", self.data_source)
+        writer.write_object_value("last_index_operation", self.last_index_operation)
     
 

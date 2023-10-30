@@ -42,7 +42,7 @@ class AccessPackageMultipleChoiceQuestion(AccessPackageQuestion):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "choices": lambda n : setattr(self, 'choices', n.get_collection_of_object_values(AccessPackageAnswerChoice)),
-            "isMultipleSelectionAllowed": lambda n : setattr(self, 'is_multiple_selection_allowed', n.get_bool_value()),
+            "is_multiple_selection_allowed": lambda n : setattr(self, 'is_multiple_selection_allowed', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,6 +58,6 @@ class AccessPackageMultipleChoiceQuestion(AccessPackageQuestion):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("choices", self.choices)
-        writer.write_bool_value("isMultipleSelectionAllowed", self.is_multiple_selection_allowed)
+        writer.write_bool_value("is_multiple_selection_allowed", self.is_multiple_selection_allowed)
     
 

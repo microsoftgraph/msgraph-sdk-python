@@ -80,23 +80,23 @@ class Domain(Entity):
         from .internal_domain_federation import InternalDomainFederation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_str_value()),
-            "availabilityStatus": lambda n : setattr(self, 'availability_status', n.get_str_value()),
-            "domainNameReferences": lambda n : setattr(self, 'domain_name_references', n.get_collection_of_object_values(DirectoryObject)),
-            "federationConfiguration": lambda n : setattr(self, 'federation_configuration', n.get_collection_of_object_values(InternalDomainFederation)),
-            "isAdminManaged": lambda n : setattr(self, 'is_admin_managed', n.get_bool_value()),
-            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "isInitial": lambda n : setattr(self, 'is_initial', n.get_bool_value()),
-            "isRoot": lambda n : setattr(self, 'is_root', n.get_bool_value()),
-            "isVerified": lambda n : setattr(self, 'is_verified', n.get_bool_value()),
+            "authentication_type": lambda n : setattr(self, 'authentication_type', n.get_str_value()),
+            "availability_status": lambda n : setattr(self, 'availability_status', n.get_str_value()),
+            "domain_name_references": lambda n : setattr(self, 'domain_name_references', n.get_collection_of_object_values(DirectoryObject)),
+            "federation_configuration": lambda n : setattr(self, 'federation_configuration', n.get_collection_of_object_values(InternalDomainFederation)),
+            "is_admin_managed": lambda n : setattr(self, 'is_admin_managed', n.get_bool_value()),
+            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "is_initial": lambda n : setattr(self, 'is_initial', n.get_bool_value()),
+            "is_root": lambda n : setattr(self, 'is_root', n.get_bool_value()),
+            "is_verified": lambda n : setattr(self, 'is_verified', n.get_bool_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "passwordNotificationWindowInDays": lambda n : setattr(self, 'password_notification_window_in_days', n.get_int_value()),
-            "passwordValidityPeriodInDays": lambda n : setattr(self, 'password_validity_period_in_days', n.get_int_value()),
-            "serviceConfigurationRecords": lambda n : setattr(self, 'service_configuration_records', n.get_collection_of_object_values(DomainDnsRecord)),
+            "password_notification_window_in_days": lambda n : setattr(self, 'password_notification_window_in_days', n.get_int_value()),
+            "password_validity_period_in_days": lambda n : setattr(self, 'password_validity_period_in_days', n.get_int_value()),
+            "service_configuration_records": lambda n : setattr(self, 'service_configuration_records', n.get_collection_of_object_values(DomainDnsRecord)),
             "state": lambda n : setattr(self, 'state', n.get_object_value(DomainState)),
-            "supportedServices": lambda n : setattr(self, 'supported_services', n.get_collection_of_primitive_values(str)),
-            "verificationDnsRecords": lambda n : setattr(self, 'verification_dns_records', n.get_collection_of_object_values(DomainDnsRecord)),
+            "supported_services": lambda n : setattr(self, 'supported_services', n.get_collection_of_primitive_values(str)),
+            "verification_dns_records": lambda n : setattr(self, 'verification_dns_records', n.get_collection_of_object_values(DomainDnsRecord)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -111,22 +111,22 @@ class Domain(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("authenticationType", self.authentication_type)
-        writer.write_str_value("availabilityStatus", self.availability_status)
-        writer.write_collection_of_object_values("domainNameReferences", self.domain_name_references)
-        writer.write_collection_of_object_values("federationConfiguration", self.federation_configuration)
-        writer.write_bool_value("isAdminManaged", self.is_admin_managed)
-        writer.write_bool_value("isDefault", self.is_default)
-        writer.write_bool_value("isInitial", self.is_initial)
-        writer.write_bool_value("isRoot", self.is_root)
-        writer.write_bool_value("isVerified", self.is_verified)
+        writer.write_str_value("authentication_type", self.authentication_type)
+        writer.write_str_value("availability_status", self.availability_status)
+        writer.write_collection_of_object_values("domain_name_references", self.domain_name_references)
+        writer.write_collection_of_object_values("federation_configuration", self.federation_configuration)
+        writer.write_bool_value("is_admin_managed", self.is_admin_managed)
+        writer.write_bool_value("is_default", self.is_default)
+        writer.write_bool_value("is_initial", self.is_initial)
+        writer.write_bool_value("is_root", self.is_root)
+        writer.write_bool_value("is_verified", self.is_verified)
         writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("model", self.model)
-        writer.write_int_value("passwordNotificationWindowInDays", self.password_notification_window_in_days)
-        writer.write_int_value("passwordValidityPeriodInDays", self.password_validity_period_in_days)
-        writer.write_collection_of_object_values("serviceConfigurationRecords", self.service_configuration_records)
+        writer.write_int_value("password_notification_window_in_days", self.password_notification_window_in_days)
+        writer.write_int_value("password_validity_period_in_days", self.password_validity_period_in_days)
+        writer.write_collection_of_object_values("service_configuration_records", self.service_configuration_records)
         writer.write_object_value("state", self.state)
-        writer.write_collection_of_primitive_values("supportedServices", self.supported_services)
-        writer.write_collection_of_object_values("verificationDnsRecords", self.verification_dns_records)
+        writer.write_collection_of_primitive_values("supported_services", self.supported_services)
+        writer.write_collection_of_object_values("verification_dns_records", self.verification_dns_records)
     
 

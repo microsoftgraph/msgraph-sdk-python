@@ -31,7 +31,7 @@ class MovePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "DestinationId": lambda n : setattr(self, 'destination_id', n.get_str_value()),
+            "destination_id": lambda n : setattr(self, 'destination_id', n.get_str_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class MovePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("DestinationId", self.destination_id)
+        writer.write_str_value("destination_id", self.destination_id)
         writer.write_additional_data_value(self.additional_data)
     
 

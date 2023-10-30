@@ -85,22 +85,22 @@ class DeviceEvidence(AlertEvidence):
         from .vm_metadata import VmMetadata
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "azureAdDeviceId": lambda n : setattr(self, 'azure_ad_device_id', n.get_str_value()),
-            "defenderAvStatus": lambda n : setattr(self, 'defender_av_status', n.get_enum_value(DefenderAvStatus)),
-            "deviceDnsName": lambda n : setattr(self, 'device_dns_name', n.get_str_value()),
-            "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
-            "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(DeviceHealthStatus)),
-            "ipInterfaces": lambda n : setattr(self, 'ip_interfaces', n.get_collection_of_primitive_values(str)),
-            "loggedOnUsers": lambda n : setattr(self, 'logged_on_users', n.get_collection_of_object_values(LoggedOnUser)),
-            "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
-            "onboardingStatus": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(OnboardingStatus)),
-            "osBuild": lambda n : setattr(self, 'os_build', n.get_int_value()),
-            "osPlatform": lambda n : setattr(self, 'os_platform', n.get_str_value()),
-            "rbacGroupId": lambda n : setattr(self, 'rbac_group_id', n.get_int_value()),
-            "rbacGroupName": lambda n : setattr(self, 'rbac_group_name', n.get_str_value()),
-            "riskScore": lambda n : setattr(self, 'risk_score', n.get_enum_value(DeviceRiskScore)),
+            "azure_ad_device_id": lambda n : setattr(self, 'azure_ad_device_id', n.get_str_value()),
+            "defender_av_status": lambda n : setattr(self, 'defender_av_status', n.get_enum_value(DefenderAvStatus)),
+            "device_dns_name": lambda n : setattr(self, 'device_dns_name', n.get_str_value()),
+            "first_seen_date_time": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
+            "health_status": lambda n : setattr(self, 'health_status', n.get_enum_value(DeviceHealthStatus)),
+            "ip_interfaces": lambda n : setattr(self, 'ip_interfaces', n.get_collection_of_primitive_values(str)),
+            "logged_on_users": lambda n : setattr(self, 'logged_on_users', n.get_collection_of_object_values(LoggedOnUser)),
+            "mde_device_id": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
+            "onboarding_status": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(OnboardingStatus)),
+            "os_build": lambda n : setattr(self, 'os_build', n.get_int_value()),
+            "os_platform": lambda n : setattr(self, 'os_platform', n.get_str_value()),
+            "rbac_group_id": lambda n : setattr(self, 'rbac_group_id', n.get_int_value()),
+            "rbac_group_name": lambda n : setattr(self, 'rbac_group_name', n.get_str_value()),
+            "risk_score": lambda n : setattr(self, 'risk_score', n.get_enum_value(DeviceRiskScore)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
-            "vmMetadata": lambda n : setattr(self, 'vm_metadata', n.get_object_value(VmMetadata)),
+            "vm_metadata": lambda n : setattr(self, 'vm_metadata', n.get_object_value(VmMetadata)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -115,21 +115,21 @@ class DeviceEvidence(AlertEvidence):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("azureAdDeviceId", self.azure_ad_device_id)
-        writer.write_enum_value("defenderAvStatus", self.defender_av_status)
-        writer.write_str_value("deviceDnsName", self.device_dns_name)
-        writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
-        writer.write_enum_value("healthStatus", self.health_status)
-        writer.write_collection_of_primitive_values("ipInterfaces", self.ip_interfaces)
-        writer.write_collection_of_object_values("loggedOnUsers", self.logged_on_users)
-        writer.write_str_value("mdeDeviceId", self.mde_device_id)
-        writer.write_enum_value("onboardingStatus", self.onboarding_status)
-        writer.write_int_value("osBuild", self.os_build)
-        writer.write_str_value("osPlatform", self.os_platform)
-        writer.write_int_value("rbacGroupId", self.rbac_group_id)
-        writer.write_str_value("rbacGroupName", self.rbac_group_name)
-        writer.write_enum_value("riskScore", self.risk_score)
+        writer.write_str_value("azure_ad_device_id", self.azure_ad_device_id)
+        writer.write_enum_value("defender_av_status", self.defender_av_status)
+        writer.write_str_value("device_dns_name", self.device_dns_name)
+        writer.write_datetime_value("first_seen_date_time", self.first_seen_date_time)
+        writer.write_enum_value("health_status", self.health_status)
+        writer.write_collection_of_primitive_values("ip_interfaces", self.ip_interfaces)
+        writer.write_collection_of_object_values("logged_on_users", self.logged_on_users)
+        writer.write_str_value("mde_device_id", self.mde_device_id)
+        writer.write_enum_value("onboarding_status", self.onboarding_status)
+        writer.write_int_value("os_build", self.os_build)
+        writer.write_str_value("os_platform", self.os_platform)
+        writer.write_int_value("rbac_group_id", self.rbac_group_id)
+        writer.write_str_value("rbac_group_name", self.rbac_group_name)
+        writer.write_enum_value("risk_score", self.risk_score)
         writer.write_str_value("version", self.version)
-        writer.write_object_value("vmMetadata", self.vm_metadata)
+        writer.write_object_value("vm_metadata", self.vm_metadata)
     
 

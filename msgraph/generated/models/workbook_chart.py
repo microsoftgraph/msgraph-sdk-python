@@ -80,7 +80,7 @@ class WorkbookChart(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "axes": lambda n : setattr(self, 'axes', n.get_object_value(WorkbookChartAxes)),
-            "dataLabels": lambda n : setattr(self, 'data_labels', n.get_object_value(WorkbookChartDataLabels)),
+            "data_labels": lambda n : setattr(self, 'data_labels', n.get_object_value(WorkbookChartDataLabels)),
             "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartAreaFormat)),
             "height": lambda n : setattr(self, 'height', n.get_float_value()),
             "left": lambda n : setattr(self, 'left', n.get_float_value()),
@@ -106,7 +106,7 @@ class WorkbookChart(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("axes", self.axes)
-        writer.write_object_value("dataLabels", self.data_labels)
+        writer.write_object_value("data_labels", self.data_labels)
         writer.write_object_value("format", self.format)
         writer.write_float_value("height", self.height)
         writer.write_float_value("left", self.left)

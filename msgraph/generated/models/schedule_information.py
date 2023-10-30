@@ -54,12 +54,12 @@ class ScheduleInformation(AdditionalDataHolder, BackedModel, Parsable):
         from .working_hours import WorkingHours
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "availabilityView": lambda n : setattr(self, 'availability_view', n.get_str_value()),
+            "availability_view": lambda n : setattr(self, 'availability_view', n.get_str_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(FreeBusyError)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "scheduleId": lambda n : setattr(self, 'schedule_id', n.get_str_value()),
-            "scheduleItems": lambda n : setattr(self, 'schedule_items', n.get_collection_of_object_values(ScheduleItem)),
-            "workingHours": lambda n : setattr(self, 'working_hours', n.get_object_value(WorkingHours)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "schedule_id": lambda n : setattr(self, 'schedule_id', n.get_str_value()),
+            "schedule_items": lambda n : setattr(self, 'schedule_items', n.get_collection_of_object_values(ScheduleItem)),
+            "working_hours": lambda n : setattr(self, 'working_hours', n.get_object_value(WorkingHours)),
         }
         return fields
     
@@ -71,12 +71,12 @@ class ScheduleInformation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("availabilityView", self.availability_view)
+        writer.write_str_value("availability_view", self.availability_view)
         writer.write_object_value("error", self.error)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("scheduleId", self.schedule_id)
-        writer.write_collection_of_object_values("scheduleItems", self.schedule_items)
-        writer.write_object_value("workingHours", self.working_hours)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("schedule_id", self.schedule_id)
+        writer.write_collection_of_object_values("schedule_items", self.schedule_items)
+        writer.write_object_value("working_hours", self.working_hours)
         writer.write_additional_data_value(self.additional_data)
     
 

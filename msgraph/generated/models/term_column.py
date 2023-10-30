@@ -49,11 +49,11 @@ class TermColumn(AdditionalDataHolder, BackedModel, Parsable):
         from .term_store.term import Term
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowMultipleValues": lambda n : setattr(self, 'allow_multiple_values', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "parentTerm": lambda n : setattr(self, 'parent_term', n.get_object_value(Term)),
-            "showFullyQualifiedName": lambda n : setattr(self, 'show_fully_qualified_name', n.get_bool_value()),
-            "termSet": lambda n : setattr(self, 'term_set', n.get_object_value(Set)),
+            "allow_multiple_values": lambda n : setattr(self, 'allow_multiple_values', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "parent_term": lambda n : setattr(self, 'parent_term', n.get_object_value(Term)),
+            "show_fully_qualified_name": lambda n : setattr(self, 'show_fully_qualified_name', n.get_bool_value()),
+            "term_set": lambda n : setattr(self, 'term_set', n.get_object_value(Set)),
         }
         return fields
     
@@ -65,11 +65,11 @@ class TermColumn(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("allowMultipleValues", self.allow_multiple_values)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("parentTerm", self.parent_term)
-        writer.write_bool_value("showFullyQualifiedName", self.show_fully_qualified_name)
-        writer.write_object_value("termSet", self.term_set)
+        writer.write_bool_value("allow_multiple_values", self.allow_multiple_values)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("parent_term", self.parent_term)
+        writer.write_bool_value("show_fully_qualified_name", self.show_fully_qualified_name)
+        writer.write_object_value("term_set", self.term_set)
         writer.write_additional_data_value(self.additional_data)
     
 

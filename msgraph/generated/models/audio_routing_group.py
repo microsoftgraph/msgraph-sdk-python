@@ -44,7 +44,7 @@ class AudioRoutingGroup(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "receivers": lambda n : setattr(self, 'receivers', n.get_collection_of_primitive_values(str)),
-            "routingMode": lambda n : setattr(self, 'routing_mode', n.get_enum_value(RoutingMode)),
+            "routing_mode": lambda n : setattr(self, 'routing_mode', n.get_enum_value(RoutingMode)),
             "sources": lambda n : setattr(self, 'sources', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
@@ -61,7 +61,7 @@ class AudioRoutingGroup(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("receivers", self.receivers)
-        writer.write_enum_value("routingMode", self.routing_mode)
+        writer.write_enum_value("routing_mode", self.routing_mode)
         writer.write_collection_of_primitive_values("sources", self.sources)
     
 

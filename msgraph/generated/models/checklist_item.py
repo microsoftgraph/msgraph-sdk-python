@@ -43,10 +43,10 @@ class ChecklistItem(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "checkedDateTime": lambda n : setattr(self, 'checked_date_time', n.get_datetime_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "isChecked": lambda n : setattr(self, 'is_checked', n.get_bool_value()),
+            "checked_date_time": lambda n : setattr(self, 'checked_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "is_checked": lambda n : setattr(self, 'is_checked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,9 +61,9 @@ class ChecklistItem(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("checkedDateTime", self.checked_date_time)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_bool_value("isChecked", self.is_checked)
+        writer.write_datetime_value("checked_date_time", self.checked_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_bool_value("is_checked", self.is_checked)
     
 

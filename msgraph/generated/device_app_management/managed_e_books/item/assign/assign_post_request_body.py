@@ -38,7 +38,7 @@ class AssignPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from .....models.managed_e_book_assignment import ManagedEBookAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "managedEBookAssignments": lambda n : setattr(self, 'managed_e_book_assignments', n.get_collection_of_object_values(ManagedEBookAssignment)),
+            "managed_e_book_assignments": lambda n : setattr(self, 'managed_e_book_assignments', n.get_collection_of_object_values(ManagedEBookAssignment)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class AssignPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("managedEBookAssignments", self.managed_e_book_assignments)
+        writer.write_collection_of_object_values("managed_e_book_assignments", self.managed_e_book_assignments)
         writer.write_additional_data_value(self.additional_data)
     
 

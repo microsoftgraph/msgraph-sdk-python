@@ -105,35 +105,35 @@ class SharepointSettings(Entity):
         from .sharing_domain_restriction_mode import SharingDomainRestrictionMode
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedDomainGuidsForSyncApp": lambda n : setattr(self, 'allowed_domain_guids_for_sync_app', n.get_collection_of_primitive_values(UUID)),
-            "availableManagedPathsForSiteCreation": lambda n : setattr(self, 'available_managed_paths_for_site_creation', n.get_collection_of_primitive_values(str)),
-            "deletedUserPersonalSiteRetentionPeriodInDays": lambda n : setattr(self, 'deleted_user_personal_site_retention_period_in_days', n.get_int_value()),
-            "excludedFileExtensionsForSyncApp": lambda n : setattr(self, 'excluded_file_extensions_for_sync_app', n.get_collection_of_primitive_values(str)),
-            "idleSessionSignOut": lambda n : setattr(self, 'idle_session_sign_out', n.get_object_value(IdleSessionSignOut)),
-            "imageTaggingOption": lambda n : setattr(self, 'image_tagging_option', n.get_enum_value(ImageTaggingChoice)),
-            "isCommentingOnSitePagesEnabled": lambda n : setattr(self, 'is_commenting_on_site_pages_enabled', n.get_bool_value()),
-            "isFileActivityNotificationEnabled": lambda n : setattr(self, 'is_file_activity_notification_enabled', n.get_bool_value()),
-            "isLegacyAuthProtocolsEnabled": lambda n : setattr(self, 'is_legacy_auth_protocols_enabled', n.get_bool_value()),
-            "isLoopEnabled": lambda n : setattr(self, 'is_loop_enabled', n.get_bool_value()),
-            "isMacSyncAppEnabled": lambda n : setattr(self, 'is_mac_sync_app_enabled', n.get_bool_value()),
-            "isRequireAcceptingUserToMatchInvitedUserEnabled": lambda n : setattr(self, 'is_require_accepting_user_to_match_invited_user_enabled', n.get_bool_value()),
-            "isResharingByExternalUsersEnabled": lambda n : setattr(self, 'is_resharing_by_external_users_enabled', n.get_bool_value()),
-            "isSharePointMobileNotificationEnabled": lambda n : setattr(self, 'is_share_point_mobile_notification_enabled', n.get_bool_value()),
-            "isSharePointNewsfeedEnabled": lambda n : setattr(self, 'is_share_point_newsfeed_enabled', n.get_bool_value()),
-            "isSiteCreationEnabled": lambda n : setattr(self, 'is_site_creation_enabled', n.get_bool_value()),
-            "isSiteCreationUIEnabled": lambda n : setattr(self, 'is_site_creation_u_i_enabled', n.get_bool_value()),
-            "isSitePagesCreationEnabled": lambda n : setattr(self, 'is_site_pages_creation_enabled', n.get_bool_value()),
-            "isSitesStorageLimitAutomatic": lambda n : setattr(self, 'is_sites_storage_limit_automatic', n.get_bool_value()),
-            "isSyncButtonHiddenOnPersonalSite": lambda n : setattr(self, 'is_sync_button_hidden_on_personal_site', n.get_bool_value()),
-            "isUnmanagedSyncAppForTenantRestricted": lambda n : setattr(self, 'is_unmanaged_sync_app_for_tenant_restricted', n.get_bool_value()),
-            "personalSiteDefaultStorageLimitInMB": lambda n : setattr(self, 'personal_site_default_storage_limit_in_m_b', n.get_int_value()),
-            "sharingAllowedDomainList": lambda n : setattr(self, 'sharing_allowed_domain_list', n.get_collection_of_primitive_values(str)),
-            "sharingBlockedDomainList": lambda n : setattr(self, 'sharing_blocked_domain_list', n.get_collection_of_primitive_values(str)),
-            "sharingCapability": lambda n : setattr(self, 'sharing_capability', n.get_enum_value(SharingCapabilities)),
-            "sharingDomainRestrictionMode": lambda n : setattr(self, 'sharing_domain_restriction_mode', n.get_enum_value(SharingDomainRestrictionMode)),
-            "siteCreationDefaultManagedPath": lambda n : setattr(self, 'site_creation_default_managed_path', n.get_str_value()),
-            "siteCreationDefaultStorageLimitInMB": lambda n : setattr(self, 'site_creation_default_storage_limit_in_m_b', n.get_int_value()),
-            "tenantDefaultTimezone": lambda n : setattr(self, 'tenant_default_timezone', n.get_str_value()),
+            "allowed_domain_guids_for_sync_app": lambda n : setattr(self, 'allowed_domain_guids_for_sync_app', n.get_collection_of_primitive_values(UUID)),
+            "available_managed_paths_for_site_creation": lambda n : setattr(self, 'available_managed_paths_for_site_creation', n.get_collection_of_primitive_values(str)),
+            "deleted_user_personal_site_retention_period_in_days": lambda n : setattr(self, 'deleted_user_personal_site_retention_period_in_days', n.get_int_value()),
+            "excluded_file_extensions_for_sync_app": lambda n : setattr(self, 'excluded_file_extensions_for_sync_app', n.get_collection_of_primitive_values(str)),
+            "idle_session_sign_out": lambda n : setattr(self, 'idle_session_sign_out', n.get_object_value(IdleSessionSignOut)),
+            "image_tagging_option": lambda n : setattr(self, 'image_tagging_option', n.get_enum_value(ImageTaggingChoice)),
+            "is_commenting_on_site_pages_enabled": lambda n : setattr(self, 'is_commenting_on_site_pages_enabled', n.get_bool_value()),
+            "is_file_activity_notification_enabled": lambda n : setattr(self, 'is_file_activity_notification_enabled', n.get_bool_value()),
+            "is_legacy_auth_protocols_enabled": lambda n : setattr(self, 'is_legacy_auth_protocols_enabled', n.get_bool_value()),
+            "is_loop_enabled": lambda n : setattr(self, 'is_loop_enabled', n.get_bool_value()),
+            "is_mac_sync_app_enabled": lambda n : setattr(self, 'is_mac_sync_app_enabled', n.get_bool_value()),
+            "is_require_accepting_user_to_match_invited_user_enabled": lambda n : setattr(self, 'is_require_accepting_user_to_match_invited_user_enabled', n.get_bool_value()),
+            "is_resharing_by_external_users_enabled": lambda n : setattr(self, 'is_resharing_by_external_users_enabled', n.get_bool_value()),
+            "is_share_point_mobile_notification_enabled": lambda n : setattr(self, 'is_share_point_mobile_notification_enabled', n.get_bool_value()),
+            "is_share_point_newsfeed_enabled": lambda n : setattr(self, 'is_share_point_newsfeed_enabled', n.get_bool_value()),
+            "is_site_creation_enabled": lambda n : setattr(self, 'is_site_creation_enabled', n.get_bool_value()),
+            "is_site_creation_u_i_enabled": lambda n : setattr(self, 'is_site_creation_u_i_enabled', n.get_bool_value()),
+            "is_site_pages_creation_enabled": lambda n : setattr(self, 'is_site_pages_creation_enabled', n.get_bool_value()),
+            "is_sites_storage_limit_automatic": lambda n : setattr(self, 'is_sites_storage_limit_automatic', n.get_bool_value()),
+            "is_sync_button_hidden_on_personal_site": lambda n : setattr(self, 'is_sync_button_hidden_on_personal_site', n.get_bool_value()),
+            "is_unmanaged_sync_app_for_tenant_restricted": lambda n : setattr(self, 'is_unmanaged_sync_app_for_tenant_restricted', n.get_bool_value()),
+            "personal_site_default_storage_limit_in_m_b": lambda n : setattr(self, 'personal_site_default_storage_limit_in_m_b', n.get_int_value()),
+            "sharing_allowed_domain_list": lambda n : setattr(self, 'sharing_allowed_domain_list', n.get_collection_of_primitive_values(str)),
+            "sharing_blocked_domain_list": lambda n : setattr(self, 'sharing_blocked_domain_list', n.get_collection_of_primitive_values(str)),
+            "sharing_capability": lambda n : setattr(self, 'sharing_capability', n.get_enum_value(SharingCapabilities)),
+            "sharing_domain_restriction_mode": lambda n : setattr(self, 'sharing_domain_restriction_mode', n.get_enum_value(SharingDomainRestrictionMode)),
+            "site_creation_default_managed_path": lambda n : setattr(self, 'site_creation_default_managed_path', n.get_str_value()),
+            "site_creation_default_storage_limit_in_m_b": lambda n : setattr(self, 'site_creation_default_storage_limit_in_m_b', n.get_int_value()),
+            "tenant_default_timezone": lambda n : setattr(self, 'tenant_default_timezone', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -148,34 +148,34 @@ class SharepointSettings(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_primitive_values("allowedDomainGuidsForSyncApp", self.allowed_domain_guids_for_sync_app)
-        writer.write_collection_of_primitive_values("availableManagedPathsForSiteCreation", self.available_managed_paths_for_site_creation)
-        writer.write_int_value("deletedUserPersonalSiteRetentionPeriodInDays", self.deleted_user_personal_site_retention_period_in_days)
-        writer.write_collection_of_primitive_values("excludedFileExtensionsForSyncApp", self.excluded_file_extensions_for_sync_app)
-        writer.write_object_value("idleSessionSignOut", self.idle_session_sign_out)
-        writer.write_enum_value("imageTaggingOption", self.image_tagging_option)
-        writer.write_bool_value("isCommentingOnSitePagesEnabled", self.is_commenting_on_site_pages_enabled)
-        writer.write_bool_value("isFileActivityNotificationEnabled", self.is_file_activity_notification_enabled)
-        writer.write_bool_value("isLegacyAuthProtocolsEnabled", self.is_legacy_auth_protocols_enabled)
-        writer.write_bool_value("isLoopEnabled", self.is_loop_enabled)
-        writer.write_bool_value("isMacSyncAppEnabled", self.is_mac_sync_app_enabled)
-        writer.write_bool_value("isRequireAcceptingUserToMatchInvitedUserEnabled", self.is_require_accepting_user_to_match_invited_user_enabled)
-        writer.write_bool_value("isResharingByExternalUsersEnabled", self.is_resharing_by_external_users_enabled)
-        writer.write_bool_value("isSharePointMobileNotificationEnabled", self.is_share_point_mobile_notification_enabled)
-        writer.write_bool_value("isSharePointNewsfeedEnabled", self.is_share_point_newsfeed_enabled)
-        writer.write_bool_value("isSiteCreationEnabled", self.is_site_creation_enabled)
-        writer.write_bool_value("isSiteCreationUIEnabled", self.is_site_creation_u_i_enabled)
-        writer.write_bool_value("isSitePagesCreationEnabled", self.is_site_pages_creation_enabled)
-        writer.write_bool_value("isSitesStorageLimitAutomatic", self.is_sites_storage_limit_automatic)
-        writer.write_bool_value("isSyncButtonHiddenOnPersonalSite", self.is_sync_button_hidden_on_personal_site)
-        writer.write_bool_value("isUnmanagedSyncAppForTenantRestricted", self.is_unmanaged_sync_app_for_tenant_restricted)
-        writer.write_int_value("personalSiteDefaultStorageLimitInMB", self.personal_site_default_storage_limit_in_m_b)
-        writer.write_collection_of_primitive_values("sharingAllowedDomainList", self.sharing_allowed_domain_list)
-        writer.write_collection_of_primitive_values("sharingBlockedDomainList", self.sharing_blocked_domain_list)
-        writer.write_enum_value("sharingCapability", self.sharing_capability)
-        writer.write_enum_value("sharingDomainRestrictionMode", self.sharing_domain_restriction_mode)
-        writer.write_str_value("siteCreationDefaultManagedPath", self.site_creation_default_managed_path)
-        writer.write_int_value("siteCreationDefaultStorageLimitInMB", self.site_creation_default_storage_limit_in_m_b)
-        writer.write_str_value("tenantDefaultTimezone", self.tenant_default_timezone)
+        writer.write_collection_of_primitive_values("allowed_domain_guids_for_sync_app", self.allowed_domain_guids_for_sync_app)
+        writer.write_collection_of_primitive_values("available_managed_paths_for_site_creation", self.available_managed_paths_for_site_creation)
+        writer.write_int_value("deleted_user_personal_site_retention_period_in_days", self.deleted_user_personal_site_retention_period_in_days)
+        writer.write_collection_of_primitive_values("excluded_file_extensions_for_sync_app", self.excluded_file_extensions_for_sync_app)
+        writer.write_object_value("idle_session_sign_out", self.idle_session_sign_out)
+        writer.write_enum_value("image_tagging_option", self.image_tagging_option)
+        writer.write_bool_value("is_commenting_on_site_pages_enabled", self.is_commenting_on_site_pages_enabled)
+        writer.write_bool_value("is_file_activity_notification_enabled", self.is_file_activity_notification_enabled)
+        writer.write_bool_value("is_legacy_auth_protocols_enabled", self.is_legacy_auth_protocols_enabled)
+        writer.write_bool_value("is_loop_enabled", self.is_loop_enabled)
+        writer.write_bool_value("is_mac_sync_app_enabled", self.is_mac_sync_app_enabled)
+        writer.write_bool_value("is_require_accepting_user_to_match_invited_user_enabled", self.is_require_accepting_user_to_match_invited_user_enabled)
+        writer.write_bool_value("is_resharing_by_external_users_enabled", self.is_resharing_by_external_users_enabled)
+        writer.write_bool_value("is_share_point_mobile_notification_enabled", self.is_share_point_mobile_notification_enabled)
+        writer.write_bool_value("is_share_point_newsfeed_enabled", self.is_share_point_newsfeed_enabled)
+        writer.write_bool_value("is_site_creation_enabled", self.is_site_creation_enabled)
+        writer.write_bool_value("is_site_creation_u_i_enabled", self.is_site_creation_u_i_enabled)
+        writer.write_bool_value("is_site_pages_creation_enabled", self.is_site_pages_creation_enabled)
+        writer.write_bool_value("is_sites_storage_limit_automatic", self.is_sites_storage_limit_automatic)
+        writer.write_bool_value("is_sync_button_hidden_on_personal_site", self.is_sync_button_hidden_on_personal_site)
+        writer.write_bool_value("is_unmanaged_sync_app_for_tenant_restricted", self.is_unmanaged_sync_app_for_tenant_restricted)
+        writer.write_int_value("personal_site_default_storage_limit_in_m_b", self.personal_site_default_storage_limit_in_m_b)
+        writer.write_collection_of_primitive_values("sharing_allowed_domain_list", self.sharing_allowed_domain_list)
+        writer.write_collection_of_primitive_values("sharing_blocked_domain_list", self.sharing_blocked_domain_list)
+        writer.write_enum_value("sharing_capability", self.sharing_capability)
+        writer.write_enum_value("sharing_domain_restriction_mode", self.sharing_domain_restriction_mode)
+        writer.write_str_value("site_creation_default_managed_path", self.site_creation_default_managed_path)
+        writer.write_int_value("site_creation_default_storage_limit_in_m_b", self.site_creation_default_storage_limit_in_m_b)
+        writer.write_str_value("tenant_default_timezone", self.tenant_default_timezone)
     
 

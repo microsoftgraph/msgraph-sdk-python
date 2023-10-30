@@ -48,12 +48,12 @@ class GetConfigurationSettingNonComplianceReportPostRequestBody(AdditionalDataHo
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "filter": lambda n : setattr(self, 'filter', n.get_str_value()),
-            "groupBy": lambda n : setattr(self, 'group_by', n.get_collection_of_primitive_values(str)),
+            "group_by": lambda n : setattr(self, 'group_by', n.get_collection_of_primitive_values(str)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "orderBy": lambda n : setattr(self, 'order_by', n.get_collection_of_primitive_values(str)),
+            "order_by": lambda n : setattr(self, 'order_by', n.get_collection_of_primitive_values(str)),
             "search": lambda n : setattr(self, 'search', n.get_str_value()),
             "select": lambda n : setattr(self, 'select', n.get_collection_of_primitive_values(str)),
-            "sessionId": lambda n : setattr(self, 'session_id', n.get_str_value()),
+            "session_id": lambda n : setattr(self, 'session_id', n.get_str_value()),
             "skip": lambda n : setattr(self, 'skip', n.get_int_value()),
             "top": lambda n : setattr(self, 'top', n.get_int_value()),
         }
@@ -68,12 +68,12 @@ class GetConfigurationSettingNonComplianceReportPostRequestBody(AdditionalDataHo
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("filter", self.filter)
-        writer.write_collection_of_primitive_values("groupBy", self.group_by)
+        writer.write_collection_of_primitive_values("group_by", self.group_by)
         writer.write_str_value("name", self.name)
-        writer.write_collection_of_primitive_values("orderBy", self.order_by)
+        writer.write_collection_of_primitive_values("order_by", self.order_by)
         writer.write_str_value("search", self.search)
         writer.write_collection_of_primitive_values("select", self.select)
-        writer.write_str_value("sessionId", self.session_id)
+        writer.write_str_value("session_id", self.session_id)
         writer.write_int_value("skip", self.skip)
         writer.write_int_value("top", self.top)
         writer.write_additional_data_value(self.additional_data)

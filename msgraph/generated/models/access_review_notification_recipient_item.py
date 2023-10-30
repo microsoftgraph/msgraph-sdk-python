@@ -42,9 +42,9 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, BackedModel, P
         from .access_review_notification_recipient_scope import AccessReviewNotificationRecipientScope
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "notificationRecipientScope": lambda n : setattr(self, 'notification_recipient_scope', n.get_object_value(AccessReviewNotificationRecipientScope)),
-            "notificationTemplateType": lambda n : setattr(self, 'notification_template_type', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "notification_recipient_scope": lambda n : setattr(self, 'notification_recipient_scope', n.get_object_value(AccessReviewNotificationRecipientScope)),
+            "notification_template_type": lambda n : setattr(self, 'notification_template_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -56,9 +56,9 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, BackedModel, P
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("notificationRecipientScope", self.notification_recipient_scope)
-        writer.write_str_value("notificationTemplateType", self.notification_template_type)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_object_value("notification_recipient_scope", self.notification_recipient_scope)
+        writer.write_str_value("notification_template_type", self.notification_template_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

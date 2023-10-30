@@ -90,24 +90,24 @@ class ContentType(Entity):
         from .item_reference import ItemReference
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "associatedHubsUrls": lambda n : setattr(self, 'associated_hubs_urls', n.get_collection_of_primitive_values(str)),
+            "associated_hubs_urls": lambda n : setattr(self, 'associated_hubs_urls', n.get_collection_of_primitive_values(str)),
             "base": lambda n : setattr(self, 'base', n.get_object_value(ContentType)),
-            "baseTypes": lambda n : setattr(self, 'base_types', n.get_collection_of_object_values(ContentType)),
-            "columnLinks": lambda n : setattr(self, 'column_links', n.get_collection_of_object_values(ColumnLink)),
-            "columnPositions": lambda n : setattr(self, 'column_positions', n.get_collection_of_object_values(ColumnDefinition)),
+            "base_types": lambda n : setattr(self, 'base_types', n.get_collection_of_object_values(ContentType)),
+            "column_links": lambda n : setattr(self, 'column_links', n.get_collection_of_object_values(ColumnLink)),
+            "column_positions": lambda n : setattr(self, 'column_positions', n.get_collection_of_object_values(ColumnDefinition)),
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(ColumnDefinition)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "documentSet": lambda n : setattr(self, 'document_set', n.get_object_value(DocumentSet)),
-            "documentTemplate": lambda n : setattr(self, 'document_template', n.get_object_value(DocumentSetContent)),
+            "document_set": lambda n : setattr(self, 'document_set', n.get_object_value(DocumentSet)),
+            "document_template": lambda n : setattr(self, 'document_template', n.get_object_value(DocumentSetContent)),
             "group": lambda n : setattr(self, 'group', n.get_str_value()),
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
-            "inheritedFrom": lambda n : setattr(self, 'inherited_from', n.get_object_value(ItemReference)),
-            "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
+            "inherited_from": lambda n : setattr(self, 'inherited_from', n.get_object_value(ItemReference)),
+            "is_built_in": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "order": lambda n : setattr(self, 'order', n.get_object_value(ContentTypeOrder)),
-            "parentId": lambda n : setattr(self, 'parent_id', n.get_str_value()),
-            "propagateChanges": lambda n : setattr(self, 'propagate_changes', n.get_bool_value()),
-            "readOnly": lambda n : setattr(self, 'read_only', n.get_bool_value()),
+            "parent_id": lambda n : setattr(self, 'parent_id', n.get_str_value()),
+            "propagate_changes": lambda n : setattr(self, 'propagate_changes', n.get_bool_value()),
+            "read_only": lambda n : setattr(self, 'read_only', n.get_bool_value()),
             "sealed": lambda n : setattr(self, 'sealed', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -123,24 +123,24 @@ class ContentType(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_primitive_values("associatedHubsUrls", self.associated_hubs_urls)
+        writer.write_collection_of_primitive_values("associated_hubs_urls", self.associated_hubs_urls)
         writer.write_object_value("base", self.base)
-        writer.write_collection_of_object_values("baseTypes", self.base_types)
-        writer.write_collection_of_object_values("columnLinks", self.column_links)
-        writer.write_collection_of_object_values("columnPositions", self.column_positions)
+        writer.write_collection_of_object_values("base_types", self.base_types)
+        writer.write_collection_of_object_values("column_links", self.column_links)
+        writer.write_collection_of_object_values("column_positions", self.column_positions)
         writer.write_collection_of_object_values("columns", self.columns)
         writer.write_str_value("description", self.description)
-        writer.write_object_value("documentSet", self.document_set)
-        writer.write_object_value("documentTemplate", self.document_template)
+        writer.write_object_value("document_set", self.document_set)
+        writer.write_object_value("document_template", self.document_template)
         writer.write_str_value("group", self.group)
         writer.write_bool_value("hidden", self.hidden)
-        writer.write_object_value("inheritedFrom", self.inherited_from)
-        writer.write_bool_value("isBuiltIn", self.is_built_in)
+        writer.write_object_value("inherited_from", self.inherited_from)
+        writer.write_bool_value("is_built_in", self.is_built_in)
         writer.write_str_value("name", self.name)
         writer.write_object_value("order", self.order)
-        writer.write_str_value("parentId", self.parent_id)
-        writer.write_bool_value("propagateChanges", self.propagate_changes)
-        writer.write_bool_value("readOnly", self.read_only)
+        writer.write_str_value("parent_id", self.parent_id)
+        writer.write_bool_value("propagate_changes", self.propagate_changes)
+        writer.write_bool_value("read_only", self.read_only)
         writer.write_bool_value("sealed", self.sealed)
     
 

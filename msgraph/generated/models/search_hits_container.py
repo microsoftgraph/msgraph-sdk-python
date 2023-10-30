@@ -51,8 +51,8 @@ class SearchHitsContainer(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "aggregations": lambda n : setattr(self, 'aggregations', n.get_collection_of_object_values(SearchAggregation)),
             "hits": lambda n : setattr(self, 'hits', n.get_collection_of_object_values(SearchHit)),
-            "moreResultsAvailable": lambda n : setattr(self, 'more_results_available', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "more_results_available": lambda n : setattr(self, 'more_results_available', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "total": lambda n : setattr(self, 'total', n.get_int_value()),
         }
         return fields
@@ -67,8 +67,8 @@ class SearchHitsContainer(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("aggregations", self.aggregations)
         writer.write_collection_of_object_values("hits", self.hits)
-        writer.write_bool_value("moreResultsAvailable", self.more_results_available)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("more_results_available", self.more_results_available)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("total", self.total)
         writer.write_additional_data_value(self.additional_data)
     

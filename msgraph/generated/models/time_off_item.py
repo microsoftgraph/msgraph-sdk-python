@@ -36,7 +36,7 @@ class TimeOffItem(ScheduleEntity):
         from .schedule_entity import ScheduleEntity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "timeOffReasonId": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),
+            "time_off_reason_id": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class TimeOffItem(ScheduleEntity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("timeOffReasonId", self.time_off_reason_id)
+        writer.write_str_value("time_off_reason_id", self.time_off_reason_id)
     
 

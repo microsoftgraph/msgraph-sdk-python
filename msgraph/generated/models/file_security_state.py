@@ -46,11 +46,11 @@ class FileSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         from .file_hash import FileHash
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fileHash": lambda n : setattr(self, 'file_hash', n.get_object_value(FileHash)),
+            "file_hash": lambda n : setattr(self, 'file_hash', n.get_object_value(FileHash)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
-            "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
+            "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
         }
         return fields
     
@@ -62,11 +62,11 @@ class FileSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("fileHash", self.file_hash)
+        writer.write_object_value("file_hash", self.file_hash)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("path", self.path)
-        writer.write_str_value("riskScore", self.risk_score)
+        writer.write_str_value("risk_score", self.risk_score)
         writer.write_additional_data_value(self.additional_data)
     
 

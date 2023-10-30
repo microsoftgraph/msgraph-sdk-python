@@ -59,12 +59,12 @@ class EdiscoveryCustodian(DataSourceContainer):
         from .user_source import UserSource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "acknowledgedDateTime": lambda n : setattr(self, 'acknowledged_date_time', n.get_datetime_value()),
+            "acknowledged_date_time": lambda n : setattr(self, 'acknowledged_date_time', n.get_datetime_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "lastIndexOperation": lambda n : setattr(self, 'last_index_operation', n.get_object_value(EdiscoveryIndexOperation)),
-            "siteSources": lambda n : setattr(self, 'site_sources', n.get_collection_of_object_values(SiteSource)),
-            "unifiedGroupSources": lambda n : setattr(self, 'unified_group_sources', n.get_collection_of_object_values(UnifiedGroupSource)),
-            "userSources": lambda n : setattr(self, 'user_sources', n.get_collection_of_object_values(UserSource)),
+            "last_index_operation": lambda n : setattr(self, 'last_index_operation', n.get_object_value(EdiscoveryIndexOperation)),
+            "site_sources": lambda n : setattr(self, 'site_sources', n.get_collection_of_object_values(SiteSource)),
+            "unified_group_sources": lambda n : setattr(self, 'unified_group_sources', n.get_collection_of_object_values(UnifiedGroupSource)),
+            "user_sources": lambda n : setattr(self, 'user_sources', n.get_collection_of_object_values(UserSource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -79,11 +79,11 @@ class EdiscoveryCustodian(DataSourceContainer):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("acknowledgedDateTime", self.acknowledged_date_time)
+        writer.write_datetime_value("acknowledged_date_time", self.acknowledged_date_time)
         writer.write_str_value("email", self.email)
-        writer.write_object_value("lastIndexOperation", self.last_index_operation)
-        writer.write_collection_of_object_values("siteSources", self.site_sources)
-        writer.write_collection_of_object_values("unifiedGroupSources", self.unified_group_sources)
-        writer.write_collection_of_object_values("userSources", self.user_sources)
+        writer.write_object_value("last_index_operation", self.last_index_operation)
+        writer.write_collection_of_object_values("site_sources", self.site_sources)
+        writer.write_collection_of_object_values("unified_group_sources", self.unified_group_sources)
+        writer.write_collection_of_object_values("user_sources", self.user_sources)
     
 

@@ -42,7 +42,7 @@ class EdgeSearchEngine(EdgeSearchEngineBase):
         from .edge_search_engine_type import EdgeSearchEngineType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "edgeSearchEngineType": lambda n : setattr(self, 'edge_search_engine_type', n.get_enum_value(EdgeSearchEngineType)),
+            "edge_search_engine_type": lambda n : setattr(self, 'edge_search_engine_type', n.get_enum_value(EdgeSearchEngineType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,6 +57,6 @@ class EdgeSearchEngine(EdgeSearchEngineBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("edgeSearchEngineType", self.edge_search_engine_type)
+        writer.write_enum_value("edge_search_engine_type", self.edge_search_engine_type)
     
 

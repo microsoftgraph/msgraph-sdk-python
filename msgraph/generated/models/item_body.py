@@ -43,8 +43,8 @@ class ItemBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
-            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(BodyType)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "content_type": lambda n : setattr(self, 'content_type', n.get_enum_value(BodyType)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -57,8 +57,8 @@ class ItemBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("content", self.content)
-        writer.write_enum_value("contentType", self.content_type)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_enum_value("content_type", self.content_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

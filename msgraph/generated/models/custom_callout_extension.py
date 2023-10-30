@@ -78,11 +78,11 @@ class CustomCalloutExtension(Entity):
         from .identity_governance.custom_task_extension import CustomTaskExtension
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationConfiguration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(CustomExtensionAuthenticationConfiguration)),
-            "clientConfiguration": lambda n : setattr(self, 'client_configuration', n.get_object_value(CustomExtensionClientConfiguration)),
+            "authentication_configuration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(CustomExtensionAuthenticationConfiguration)),
+            "client_configuration": lambda n : setattr(self, 'client_configuration', n.get_object_value(CustomExtensionClientConfiguration)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "endpointConfiguration": lambda n : setattr(self, 'endpoint_configuration', n.get_object_value(CustomExtensionEndpointConfiguration)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "endpoint_configuration": lambda n : setattr(self, 'endpoint_configuration', n.get_object_value(CustomExtensionEndpointConfiguration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -97,10 +97,10 @@ class CustomCalloutExtension(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("authenticationConfiguration", self.authentication_configuration)
-        writer.write_object_value("clientConfiguration", self.client_configuration)
+        writer.write_object_value("authentication_configuration", self.authentication_configuration)
+        writer.write_object_value("client_configuration", self.client_configuration)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("endpointConfiguration", self.endpoint_configuration)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_object_value("endpoint_configuration", self.endpoint_configuration)
     
 

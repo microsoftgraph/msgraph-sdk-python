@@ -53,9 +53,9 @@ class TaskDefinition(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "category": lambda n : setattr(self, 'category', n.get_collection_of_enum_values(LifecycleTaskCategory)),
-            "continueOnError": lambda n : setattr(self, 'continue_on_error', n.get_bool_value()),
+            "continue_on_error": lambda n : setattr(self, 'continue_on_error', n.get_bool_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "parameters": lambda n : setattr(self, 'parameters', n.get_collection_of_object_values(Parameter)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
@@ -73,9 +73,9 @@ class TaskDefinition(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("category", self.category)
-        writer.write_bool_value("continueOnError", self.continue_on_error)
+        writer.write_bool_value("continue_on_error", self.continue_on_error)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_collection_of_object_values("parameters", self.parameters)
         writer.write_int_value("version", self.version)
     

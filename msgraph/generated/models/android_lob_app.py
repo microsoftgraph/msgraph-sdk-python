@@ -48,10 +48,10 @@ class AndroidLobApp(MobileLobApp):
         from .mobile_lob_app import MobileLobApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(AndroidMinimumOperatingSystem)),
-            "packageId": lambda n : setattr(self, 'package_id', n.get_str_value()),
-            "versionCode": lambda n : setattr(self, 'version_code', n.get_str_value()),
-            "versionName": lambda n : setattr(self, 'version_name', n.get_str_value()),
+            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(AndroidMinimumOperatingSystem)),
+            "package_id": lambda n : setattr(self, 'package_id', n.get_str_value()),
+            "version_code": lambda n : setattr(self, 'version_code', n.get_str_value()),
+            "version_name": lambda n : setattr(self, 'version_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,9 +66,9 @@ class AndroidLobApp(MobileLobApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
-        writer.write_str_value("packageId", self.package_id)
-        writer.write_str_value("versionCode", self.version_code)
-        writer.write_str_value("versionName", self.version_name)
+        writer.write_object_value("minimum_supported_operating_system", self.minimum_supported_operating_system)
+        writer.write_str_value("package_id", self.package_id)
+        writer.write_str_value("version_code", self.version_code)
+        writer.write_str_value("version_name", self.version_name)
     
 

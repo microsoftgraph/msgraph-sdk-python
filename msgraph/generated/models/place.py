@@ -67,8 +67,8 @@ class Place(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(PhysicalAddress)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "geoCoordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(OutlookGeoCoordinates)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "geo_coordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(OutlookGeoCoordinates)),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -85,8 +85,8 @@ class Place(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("address", self.address)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("geoCoordinates", self.geo_coordinates)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_object_value("geo_coordinates", self.geo_coordinates)
         writer.write_str_value("phone", self.phone)
     
 

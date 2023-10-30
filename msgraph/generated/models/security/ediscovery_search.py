@@ -61,12 +61,12 @@ class EdiscoverySearch(Search):
         from .search import Search
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "addToReviewSetOperation": lambda n : setattr(self, 'add_to_review_set_operation', n.get_object_value(EdiscoveryAddToReviewSetOperation)),
-            "additionalSources": lambda n : setattr(self, 'additional_sources', n.get_collection_of_object_values(DataSource)),
-            "custodianSources": lambda n : setattr(self, 'custodian_sources', n.get_collection_of_object_values(DataSource)),
-            "dataSourceScopes": lambda n : setattr(self, 'data_source_scopes', n.get_collection_of_enum_values(DataSourceScopes)),
-            "lastEstimateStatisticsOperation": lambda n : setattr(self, 'last_estimate_statistics_operation', n.get_object_value(EdiscoveryEstimateOperation)),
-            "noncustodialSources": lambda n : setattr(self, 'noncustodial_sources', n.get_collection_of_object_values(EdiscoveryNoncustodialDataSource)),
+            "add_to_review_set_operation": lambda n : setattr(self, 'add_to_review_set_operation', n.get_object_value(EdiscoveryAddToReviewSetOperation)),
+            "additional_sources": lambda n : setattr(self, 'additional_sources', n.get_collection_of_object_values(DataSource)),
+            "custodian_sources": lambda n : setattr(self, 'custodian_sources', n.get_collection_of_object_values(DataSource)),
+            "data_source_scopes": lambda n : setattr(self, 'data_source_scopes', n.get_collection_of_enum_values(DataSourceScopes)),
+            "last_estimate_statistics_operation": lambda n : setattr(self, 'last_estimate_statistics_operation', n.get_object_value(EdiscoveryEstimateOperation)),
+            "noncustodial_sources": lambda n : setattr(self, 'noncustodial_sources', n.get_collection_of_object_values(EdiscoveryNoncustodialDataSource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -81,11 +81,11 @@ class EdiscoverySearch(Search):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("addToReviewSetOperation", self.add_to_review_set_operation)
-        writer.write_collection_of_object_values("additionalSources", self.additional_sources)
-        writer.write_collection_of_object_values("custodianSources", self.custodian_sources)
-        writer.write_enum_value("dataSourceScopes", self.data_source_scopes)
-        writer.write_object_value("lastEstimateStatisticsOperation", self.last_estimate_statistics_operation)
-        writer.write_collection_of_object_values("noncustodialSources", self.noncustodial_sources)
+        writer.write_object_value("add_to_review_set_operation", self.add_to_review_set_operation)
+        writer.write_collection_of_object_values("additional_sources", self.additional_sources)
+        writer.write_collection_of_object_values("custodian_sources", self.custodian_sources)
+        writer.write_enum_value("data_source_scopes", self.data_source_scopes)
+        writer.write_object_value("last_estimate_statistics_operation", self.last_estimate_statistics_operation)
+        writer.write_collection_of_object_values("noncustodial_sources", self.noncustodial_sources)
     
 

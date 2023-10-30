@@ -36,7 +36,7 @@ class SubjectRightsRequestEnumeratedMailboxLocation(SubjectRightsRequestMailboxL
         from .subject_rights_request_mailbox_location import SubjectRightsRequestMailboxLocation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "userPrincipalNames": lambda n : setattr(self, 'user_principal_names', n.get_collection_of_primitive_values(str)),
+            "user_principal_names": lambda n : setattr(self, 'user_principal_names', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class SubjectRightsRequestEnumeratedMailboxLocation(SubjectRightsRequestMailboxL
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_primitive_values("userPrincipalNames", self.user_principal_names)
+        writer.write_collection_of_primitive_values("user_principal_names", self.user_principal_names)
     
 

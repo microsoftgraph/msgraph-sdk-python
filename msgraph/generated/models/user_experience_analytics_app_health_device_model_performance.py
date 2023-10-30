@@ -52,12 +52,12 @@ class UserExperienceAnalyticsAppHealthDeviceModelPerformance(Entity):
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activeDeviceCount": lambda n : setattr(self, 'active_device_count', n.get_int_value()),
-            "deviceManufacturer": lambda n : setattr(self, 'device_manufacturer', n.get_str_value()),
-            "deviceModel": lambda n : setattr(self, 'device_model', n.get_str_value()),
-            "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(UserExperienceAnalyticsHealthState)),
-            "meanTimeToFailureInMinutes": lambda n : setattr(self, 'mean_time_to_failure_in_minutes', n.get_int_value()),
-            "modelAppHealthScore": lambda n : setattr(self, 'model_app_health_score', n.get_float_value()),
+            "active_device_count": lambda n : setattr(self, 'active_device_count', n.get_int_value()),
+            "device_manufacturer": lambda n : setattr(self, 'device_manufacturer', n.get_str_value()),
+            "device_model": lambda n : setattr(self, 'device_model', n.get_str_value()),
+            "health_status": lambda n : setattr(self, 'health_status', n.get_enum_value(UserExperienceAnalyticsHealthState)),
+            "mean_time_to_failure_in_minutes": lambda n : setattr(self, 'mean_time_to_failure_in_minutes', n.get_int_value()),
+            "model_app_health_score": lambda n : setattr(self, 'model_app_health_score', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,11 +72,11 @@ class UserExperienceAnalyticsAppHealthDeviceModelPerformance(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("activeDeviceCount", self.active_device_count)
-        writer.write_str_value("deviceManufacturer", self.device_manufacturer)
-        writer.write_str_value("deviceModel", self.device_model)
-        writer.write_enum_value("healthStatus", self.health_status)
-        writer.write_int_value("meanTimeToFailureInMinutes", self.mean_time_to_failure_in_minutes)
-        writer.write_float_value("modelAppHealthScore", self.model_app_health_score)
+        writer.write_int_value("active_device_count", self.active_device_count)
+        writer.write_str_value("device_manufacturer", self.device_manufacturer)
+        writer.write_str_value("device_model", self.device_model)
+        writer.write_enum_value("health_status", self.health_status)
+        writer.write_int_value("mean_time_to_failure_in_minutes", self.mean_time_to_failure_in_minutes)
+        writer.write_float_value("model_app_health_score", self.model_app_health_score)
     
 

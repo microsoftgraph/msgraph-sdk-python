@@ -43,7 +43,7 @@ class WorkbookRangeBorder(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
-            "sideIndex": lambda n : setattr(self, 'side_index', n.get_str_value()),
+            "side_index": lambda n : setattr(self, 'side_index', n.get_str_value()),
             "style": lambda n : setattr(self, 'style', n.get_str_value()),
             "weight": lambda n : setattr(self, 'weight', n.get_str_value()),
         }
@@ -61,7 +61,7 @@ class WorkbookRangeBorder(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("color", self.color)
-        writer.write_str_value("sideIndex", self.side_index)
+        writer.write_str_value("side_index", self.side_index)
         writer.write_str_value("style", self.style)
         writer.write_str_value("weight", self.weight)
     

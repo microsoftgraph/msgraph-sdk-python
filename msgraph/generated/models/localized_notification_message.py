@@ -48,10 +48,10 @@ class LocalizedNotificationMessage(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "locale": lambda n : setattr(self, 'locale', n.get_str_value()),
-            "messageTemplate": lambda n : setattr(self, 'message_template', n.get_str_value()),
+            "message_template": lambda n : setattr(self, 'message_template', n.get_str_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -67,10 +67,10 @@ class LocalizedNotificationMessage(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isDefault", self.is_default)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_bool_value("is_default", self.is_default)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_str_value("locale", self.locale)
-        writer.write_str_value("messageTemplate", self.message_template)
+        writer.write_str_value("message_template", self.message_template)
         writer.write_str_value("subject", self.subject)
     
 

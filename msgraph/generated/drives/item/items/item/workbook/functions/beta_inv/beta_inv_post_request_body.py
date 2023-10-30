@@ -46,9 +46,9 @@ class Beta_InvPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "A": lambda n : setattr(self, 'a', n.get_object_value(Json)),
+            "a": lambda n : setattr(self, 'a', n.get_object_value(Json)),
             "alpha": lambda n : setattr(self, 'alpha', n.get_object_value(Json)),
-            "B": lambda n : setattr(self, 'b', n.get_object_value(Json)),
+            "b": lambda n : setattr(self, 'b', n.get_object_value(Json)),
             "beta": lambda n : setattr(self, 'beta', n.get_object_value(Json)),
             "probability": lambda n : setattr(self, 'probability', n.get_object_value(Json)),
         }
@@ -62,9 +62,9 @@ class Beta_InvPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("A", self.a)
+        writer.write_object_value("a", self.a)
         writer.write_object_value("alpha", self.alpha)
-        writer.write_object_value("B", self.b)
+        writer.write_object_value("b", self.b)
         writer.write_object_value("beta", self.beta)
         writer.write_object_value("probability", self.probability)
         writer.write_additional_data_value(self.additional_data)

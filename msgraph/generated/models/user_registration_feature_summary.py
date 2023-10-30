@@ -52,11 +52,11 @@ class UserRegistrationFeatureSummary(AdditionalDataHolder, BackedModel, Parsable
         from .user_registration_feature_count import UserRegistrationFeatureCount
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "totalUserCount": lambda n : setattr(self, 'total_user_count', n.get_int_value()),
-            "userRegistrationFeatureCounts": lambda n : setattr(self, 'user_registration_feature_counts', n.get_collection_of_object_values(UserRegistrationFeatureCount)),
-            "userRoles": lambda n : setattr(self, 'user_roles', n.get_enum_value(IncludedUserRoles)),
-            "userTypes": lambda n : setattr(self, 'user_types', n.get_enum_value(IncludedUserTypes)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "total_user_count": lambda n : setattr(self, 'total_user_count', n.get_int_value()),
+            "user_registration_feature_counts": lambda n : setattr(self, 'user_registration_feature_counts', n.get_collection_of_object_values(UserRegistrationFeatureCount)),
+            "user_roles": lambda n : setattr(self, 'user_roles', n.get_enum_value(IncludedUserRoles)),
+            "user_types": lambda n : setattr(self, 'user_types', n.get_enum_value(IncludedUserTypes)),
         }
         return fields
     
@@ -68,11 +68,11 @@ class UserRegistrationFeatureSummary(AdditionalDataHolder, BackedModel, Parsable
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("totalUserCount", self.total_user_count)
-        writer.write_collection_of_object_values("userRegistrationFeatureCounts", self.user_registration_feature_counts)
-        writer.write_enum_value("userRoles", self.user_roles)
-        writer.write_enum_value("userTypes", self.user_types)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("total_user_count", self.total_user_count)
+        writer.write_collection_of_object_values("user_registration_feature_counts", self.user_registration_feature_counts)
+        writer.write_enum_value("user_roles", self.user_roles)
+        writer.write_enum_value("user_types", self.user_types)
         writer.write_additional_data_value(self.additional_data)
     
 

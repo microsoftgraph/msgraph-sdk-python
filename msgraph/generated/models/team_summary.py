@@ -37,10 +37,10 @@ class TeamSummary(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "guestsCount": lambda n : setattr(self, 'guests_count', n.get_int_value()),
-            "membersCount": lambda n : setattr(self, 'members_count', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "ownersCount": lambda n : setattr(self, 'owners_count', n.get_int_value()),
+            "guests_count": lambda n : setattr(self, 'guests_count', n.get_int_value()),
+            "members_count": lambda n : setattr(self, 'members_count', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "owners_count": lambda n : setattr(self, 'owners_count', n.get_int_value()),
         }
         return fields
     
@@ -52,10 +52,10 @@ class TeamSummary(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("guestsCount", self.guests_count)
-        writer.write_int_value("membersCount", self.members_count)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("ownersCount", self.owners_count)
+        writer.write_int_value("guests_count", self.guests_count)
+        writer.write_int_value("members_count", self.members_count)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("owners_count", self.owners_count)
         writer.write_additional_data_value(self.additional_data)
     
 

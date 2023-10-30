@@ -40,10 +40,10 @@ class UserExperienceAnalyticsCloudManagementDevicesSummary(AdditionalDataHolder,
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "coManagedDeviceCount": lambda n : setattr(self, 'co_managed_device_count', n.get_int_value()),
-            "intuneDeviceCount": lambda n : setattr(self, 'intune_device_count', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tenantAttachDeviceCount": lambda n : setattr(self, 'tenant_attach_device_count', n.get_int_value()),
+            "co_managed_device_count": lambda n : setattr(self, 'co_managed_device_count', n.get_int_value()),
+            "intune_device_count": lambda n : setattr(self, 'intune_device_count', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "tenant_attach_device_count": lambda n : setattr(self, 'tenant_attach_device_count', n.get_int_value()),
         }
         return fields
     
@@ -55,10 +55,10 @@ class UserExperienceAnalyticsCloudManagementDevicesSummary(AdditionalDataHolder,
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("coManagedDeviceCount", self.co_managed_device_count)
-        writer.write_int_value("intuneDeviceCount", self.intune_device_count)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("tenantAttachDeviceCount", self.tenant_attach_device_count)
+        writer.write_int_value("co_managed_device_count", self.co_managed_device_count)
+        writer.write_int_value("intune_device_count", self.intune_device_count)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("tenant_attach_device_count", self.tenant_attach_device_count)
         writer.write_additional_data_value(self.additional_data)
     
 

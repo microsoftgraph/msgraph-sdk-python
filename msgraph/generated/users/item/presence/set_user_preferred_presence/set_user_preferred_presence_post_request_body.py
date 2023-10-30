@@ -38,7 +38,7 @@ class SetUserPreferredPresencePostRequestBody(AdditionalDataHolder, BackedModel,
         fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),
             "availability": lambda n : setattr(self, 'availability', n.get_str_value()),
-            "expirationDuration": lambda n : setattr(self, 'expiration_duration', n.get_timedelta_value()),
+            "expiration_duration": lambda n : setattr(self, 'expiration_duration', n.get_timedelta_value()),
         }
         return fields
     
@@ -52,7 +52,7 @@ class SetUserPreferredPresencePostRequestBody(AdditionalDataHolder, BackedModel,
             raise TypeError("writer cannot be null.")
         writer.write_str_value("activity", self.activity)
         writer.write_str_value("availability", self.availability)
-        writer.write_timedelta_value("expirationDuration", self.expiration_duration)
+        writer.write_timedelta_value("expiration_duration", self.expiration_duration)
         writer.write_additional_data_value(self.additional_data)
     
 

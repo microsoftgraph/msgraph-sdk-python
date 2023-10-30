@@ -116,24 +116,24 @@ class DeviceAppManagement(Entity):
         from .windows_information_protection_policy import WindowsInformationProtectionPolicy
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "androidManagedAppProtections": lambda n : setattr(self, 'android_managed_app_protections', n.get_collection_of_object_values(AndroidManagedAppProtection)),
-            "defaultManagedAppProtections": lambda n : setattr(self, 'default_managed_app_protections', n.get_collection_of_object_values(DefaultManagedAppProtection)),
-            "iosManagedAppProtections": lambda n : setattr(self, 'ios_managed_app_protections', n.get_collection_of_object_values(IosManagedAppProtection)),
-            "isEnabledForMicrosoftStoreForBusiness": lambda n : setattr(self, 'is_enabled_for_microsoft_store_for_business', n.get_bool_value()),
-            "managedAppPolicies": lambda n : setattr(self, 'managed_app_policies', n.get_collection_of_object_values(ManagedAppPolicy)),
-            "managedAppRegistrations": lambda n : setattr(self, 'managed_app_registrations', n.get_collection_of_object_values(ManagedAppRegistration)),
-            "managedAppStatuses": lambda n : setattr(self, 'managed_app_statuses', n.get_collection_of_object_values(ManagedAppStatus)),
-            "managedEBooks": lambda n : setattr(self, 'managed_e_books', n.get_collection_of_object_values(ManagedEBook)),
-            "mdmWindowsInformationProtectionPolicies": lambda n : setattr(self, 'mdm_windows_information_protection_policies', n.get_collection_of_object_values(MdmWindowsInformationProtectionPolicy)),
-            "microsoftStoreForBusinessLanguage": lambda n : setattr(self, 'microsoft_store_for_business_language', n.get_str_value()),
-            "microsoftStoreForBusinessLastCompletedApplicationSyncTime": lambda n : setattr(self, 'microsoft_store_for_business_last_completed_application_sync_time', n.get_datetime_value()),
-            "microsoftStoreForBusinessLastSuccessfulSyncDateTime": lambda n : setattr(self, 'microsoft_store_for_business_last_successful_sync_date_time', n.get_datetime_value()),
-            "mobileAppCategories": lambda n : setattr(self, 'mobile_app_categories', n.get_collection_of_object_values(MobileAppCategory)),
-            "mobileAppConfigurations": lambda n : setattr(self, 'mobile_app_configurations', n.get_collection_of_object_values(ManagedDeviceMobileAppConfiguration)),
-            "mobileApps": lambda n : setattr(self, 'mobile_apps', n.get_collection_of_object_values(MobileApp)),
-            "targetedManagedAppConfigurations": lambda n : setattr(self, 'targeted_managed_app_configurations', n.get_collection_of_object_values(TargetedManagedAppConfiguration)),
-            "vppTokens": lambda n : setattr(self, 'vpp_tokens', n.get_collection_of_object_values(VppToken)),
-            "windowsInformationProtectionPolicies": lambda n : setattr(self, 'windows_information_protection_policies', n.get_collection_of_object_values(WindowsInformationProtectionPolicy)),
+            "android_managed_app_protections": lambda n : setattr(self, 'android_managed_app_protections', n.get_collection_of_object_values(AndroidManagedAppProtection)),
+            "default_managed_app_protections": lambda n : setattr(self, 'default_managed_app_protections', n.get_collection_of_object_values(DefaultManagedAppProtection)),
+            "ios_managed_app_protections": lambda n : setattr(self, 'ios_managed_app_protections', n.get_collection_of_object_values(IosManagedAppProtection)),
+            "is_enabled_for_microsoft_store_for_business": lambda n : setattr(self, 'is_enabled_for_microsoft_store_for_business', n.get_bool_value()),
+            "managed_app_policies": lambda n : setattr(self, 'managed_app_policies', n.get_collection_of_object_values(ManagedAppPolicy)),
+            "managed_app_registrations": lambda n : setattr(self, 'managed_app_registrations', n.get_collection_of_object_values(ManagedAppRegistration)),
+            "managed_app_statuses": lambda n : setattr(self, 'managed_app_statuses', n.get_collection_of_object_values(ManagedAppStatus)),
+            "managed_e_books": lambda n : setattr(self, 'managed_e_books', n.get_collection_of_object_values(ManagedEBook)),
+            "mdm_windows_information_protection_policies": lambda n : setattr(self, 'mdm_windows_information_protection_policies', n.get_collection_of_object_values(MdmWindowsInformationProtectionPolicy)),
+            "microsoft_store_for_business_language": lambda n : setattr(self, 'microsoft_store_for_business_language', n.get_str_value()),
+            "microsoft_store_for_business_last_completed_application_sync_time": lambda n : setattr(self, 'microsoft_store_for_business_last_completed_application_sync_time', n.get_datetime_value()),
+            "microsoft_store_for_business_last_successful_sync_date_time": lambda n : setattr(self, 'microsoft_store_for_business_last_successful_sync_date_time', n.get_datetime_value()),
+            "mobile_app_categories": lambda n : setattr(self, 'mobile_app_categories', n.get_collection_of_object_values(MobileAppCategory)),
+            "mobile_app_configurations": lambda n : setattr(self, 'mobile_app_configurations', n.get_collection_of_object_values(ManagedDeviceMobileAppConfiguration)),
+            "mobile_apps": lambda n : setattr(self, 'mobile_apps', n.get_collection_of_object_values(MobileApp)),
+            "targeted_managed_app_configurations": lambda n : setattr(self, 'targeted_managed_app_configurations', n.get_collection_of_object_values(TargetedManagedAppConfiguration)),
+            "vpp_tokens": lambda n : setattr(self, 'vpp_tokens', n.get_collection_of_object_values(VppToken)),
+            "windows_information_protection_policies": lambda n : setattr(self, 'windows_information_protection_policies', n.get_collection_of_object_values(WindowsInformationProtectionPolicy)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -148,23 +148,23 @@ class DeviceAppManagement(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("androidManagedAppProtections", self.android_managed_app_protections)
-        writer.write_collection_of_object_values("defaultManagedAppProtections", self.default_managed_app_protections)
-        writer.write_collection_of_object_values("iosManagedAppProtections", self.ios_managed_app_protections)
-        writer.write_bool_value("isEnabledForMicrosoftStoreForBusiness", self.is_enabled_for_microsoft_store_for_business)
-        writer.write_collection_of_object_values("managedAppPolicies", self.managed_app_policies)
-        writer.write_collection_of_object_values("managedAppRegistrations", self.managed_app_registrations)
-        writer.write_collection_of_object_values("managedAppStatuses", self.managed_app_statuses)
-        writer.write_collection_of_object_values("managedEBooks", self.managed_e_books)
-        writer.write_collection_of_object_values("mdmWindowsInformationProtectionPolicies", self.mdm_windows_information_protection_policies)
-        writer.write_str_value("microsoftStoreForBusinessLanguage", self.microsoft_store_for_business_language)
-        writer.write_datetime_value("microsoftStoreForBusinessLastCompletedApplicationSyncTime", self.microsoft_store_for_business_last_completed_application_sync_time)
-        writer.write_datetime_value("microsoftStoreForBusinessLastSuccessfulSyncDateTime", self.microsoft_store_for_business_last_successful_sync_date_time)
-        writer.write_collection_of_object_values("mobileAppCategories", self.mobile_app_categories)
-        writer.write_collection_of_object_values("mobileAppConfigurations", self.mobile_app_configurations)
-        writer.write_collection_of_object_values("mobileApps", self.mobile_apps)
-        writer.write_collection_of_object_values("targetedManagedAppConfigurations", self.targeted_managed_app_configurations)
-        writer.write_collection_of_object_values("vppTokens", self.vpp_tokens)
-        writer.write_collection_of_object_values("windowsInformationProtectionPolicies", self.windows_information_protection_policies)
+        writer.write_collection_of_object_values("android_managed_app_protections", self.android_managed_app_protections)
+        writer.write_collection_of_object_values("default_managed_app_protections", self.default_managed_app_protections)
+        writer.write_collection_of_object_values("ios_managed_app_protections", self.ios_managed_app_protections)
+        writer.write_bool_value("is_enabled_for_microsoft_store_for_business", self.is_enabled_for_microsoft_store_for_business)
+        writer.write_collection_of_object_values("managed_app_policies", self.managed_app_policies)
+        writer.write_collection_of_object_values("managed_app_registrations", self.managed_app_registrations)
+        writer.write_collection_of_object_values("managed_app_statuses", self.managed_app_statuses)
+        writer.write_collection_of_object_values("managed_e_books", self.managed_e_books)
+        writer.write_collection_of_object_values("mdm_windows_information_protection_policies", self.mdm_windows_information_protection_policies)
+        writer.write_str_value("microsoft_store_for_business_language", self.microsoft_store_for_business_language)
+        writer.write_datetime_value("microsoft_store_for_business_last_completed_application_sync_time", self.microsoft_store_for_business_last_completed_application_sync_time)
+        writer.write_datetime_value("microsoft_store_for_business_last_successful_sync_date_time", self.microsoft_store_for_business_last_successful_sync_date_time)
+        writer.write_collection_of_object_values("mobile_app_categories", self.mobile_app_categories)
+        writer.write_collection_of_object_values("mobile_app_configurations", self.mobile_app_configurations)
+        writer.write_collection_of_object_values("mobile_apps", self.mobile_apps)
+        writer.write_collection_of_object_values("targeted_managed_app_configurations", self.targeted_managed_app_configurations)
+        writer.write_collection_of_object_values("vpp_tokens", self.vpp_tokens)
+        writer.write_collection_of_object_values("windows_information_protection_policies", self.windows_information_protection_policies)
     
 

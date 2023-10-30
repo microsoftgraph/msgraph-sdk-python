@@ -55,13 +55,13 @@ class CallRecordingEventMessageDetail(EventMessageDetail):
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
-            "callRecordingDisplayName": lambda n : setattr(self, 'call_recording_display_name', n.get_str_value()),
-            "callRecordingDuration": lambda n : setattr(self, 'call_recording_duration', n.get_timedelta_value()),
-            "callRecordingStatus": lambda n : setattr(self, 'call_recording_status', n.get_enum_value(CallRecordingStatus)),
-            "callRecordingUrl": lambda n : setattr(self, 'call_recording_url', n.get_str_value()),
+            "call_id": lambda n : setattr(self, 'call_id', n.get_str_value()),
+            "call_recording_display_name": lambda n : setattr(self, 'call_recording_display_name', n.get_str_value()),
+            "call_recording_duration": lambda n : setattr(self, 'call_recording_duration', n.get_timedelta_value()),
+            "call_recording_status": lambda n : setattr(self, 'call_recording_status', n.get_enum_value(CallRecordingStatus)),
+            "call_recording_url": lambda n : setattr(self, 'call_recording_url', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
-            "meetingOrganizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(IdentitySet)),
+            "meeting_organizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -76,12 +76,12 @@ class CallRecordingEventMessageDetail(EventMessageDetail):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("callId", self.call_id)
-        writer.write_str_value("callRecordingDisplayName", self.call_recording_display_name)
-        writer.write_timedelta_value("callRecordingDuration", self.call_recording_duration)
-        writer.write_enum_value("callRecordingStatus", self.call_recording_status)
-        writer.write_str_value("callRecordingUrl", self.call_recording_url)
+        writer.write_str_value("call_id", self.call_id)
+        writer.write_str_value("call_recording_display_name", self.call_recording_display_name)
+        writer.write_timedelta_value("call_recording_duration", self.call_recording_duration)
+        writer.write_enum_value("call_recording_status", self.call_recording_status)
+        writer.write_str_value("call_recording_url", self.call_recording_url)
         writer.write_object_value("initiator", self.initiator)
-        writer.write_object_value("meetingOrganizer", self.meeting_organizer)
+        writer.write_object_value("meeting_organizer", self.meeting_organizer)
     
 

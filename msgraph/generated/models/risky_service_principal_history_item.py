@@ -42,7 +42,7 @@ class RiskyServicePrincipalHistoryItem(RiskyServicePrincipal):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_object_value(RiskServicePrincipalActivity)),
-            "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
+            "initiated_by": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,6 +58,6 @@ class RiskyServicePrincipalHistoryItem(RiskyServicePrincipal):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("activity", self.activity)
-        writer.write_str_value("initiatedBy", self.initiated_by)
+        writer.write_str_value("initiated_by", self.initiated_by)
     
 

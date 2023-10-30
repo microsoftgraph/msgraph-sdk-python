@@ -58,15 +58,15 @@ class UserExperienceAnalyticsWorkFromAnywhereModelPerformance(Entity):
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "cloudIdentityScore": lambda n : setattr(self, 'cloud_identity_score', n.get_float_value()),
-            "cloudManagementScore": lambda n : setattr(self, 'cloud_management_score', n.get_float_value()),
-            "cloudProvisioningScore": lambda n : setattr(self, 'cloud_provisioning_score', n.get_float_value()),
-            "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(UserExperienceAnalyticsHealthState)),
+            "cloud_identity_score": lambda n : setattr(self, 'cloud_identity_score', n.get_float_value()),
+            "cloud_management_score": lambda n : setattr(self, 'cloud_management_score', n.get_float_value()),
+            "cloud_provisioning_score": lambda n : setattr(self, 'cloud_provisioning_score', n.get_float_value()),
+            "health_status": lambda n : setattr(self, 'health_status', n.get_enum_value(UserExperienceAnalyticsHealthState)),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "modelDeviceCount": lambda n : setattr(self, 'model_device_count', n.get_int_value()),
-            "windowsScore": lambda n : setattr(self, 'windows_score', n.get_float_value()),
-            "workFromAnywhereScore": lambda n : setattr(self, 'work_from_anywhere_score', n.get_float_value()),
+            "model_device_count": lambda n : setattr(self, 'model_device_count', n.get_int_value()),
+            "windows_score": lambda n : setattr(self, 'windows_score', n.get_float_value()),
+            "work_from_anywhere_score": lambda n : setattr(self, 'work_from_anywhere_score', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -81,14 +81,14 @@ class UserExperienceAnalyticsWorkFromAnywhereModelPerformance(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_float_value("cloudIdentityScore", self.cloud_identity_score)
-        writer.write_float_value("cloudManagementScore", self.cloud_management_score)
-        writer.write_float_value("cloudProvisioningScore", self.cloud_provisioning_score)
-        writer.write_enum_value("healthStatus", self.health_status)
+        writer.write_float_value("cloud_identity_score", self.cloud_identity_score)
+        writer.write_float_value("cloud_management_score", self.cloud_management_score)
+        writer.write_float_value("cloud_provisioning_score", self.cloud_provisioning_score)
+        writer.write_enum_value("health_status", self.health_status)
         writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("model", self.model)
-        writer.write_int_value("modelDeviceCount", self.model_device_count)
-        writer.write_float_value("windowsScore", self.windows_score)
-        writer.write_float_value("workFromAnywhereScore", self.work_from_anywhere_score)
+        writer.write_int_value("model_device_count", self.model_device_count)
+        writer.write_float_value("windows_score", self.windows_score)
+        writer.write_float_value("work_from_anywhere_score", self.work_from_anywhere_score)
     
 

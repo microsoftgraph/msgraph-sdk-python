@@ -50,10 +50,10 @@ class CalendarPermission(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedRoles": lambda n : setattr(self, 'allowed_roles', n.get_collection_of_enum_values(CalendarRoleType)),
-            "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(EmailAddress)),
-            "isInsideOrganization": lambda n : setattr(self, 'is_inside_organization', n.get_bool_value()),
-            "isRemovable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
+            "allowed_roles": lambda n : setattr(self, 'allowed_roles', n.get_collection_of_enum_values(CalendarRoleType)),
+            "email_address": lambda n : setattr(self, 'email_address', n.get_object_value(EmailAddress)),
+            "is_inside_organization": lambda n : setattr(self, 'is_inside_organization', n.get_bool_value()),
+            "is_removable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
             "role": lambda n : setattr(self, 'role', n.get_enum_value(CalendarRoleType)),
         }
         super_fields = super().get_field_deserializers()
@@ -69,10 +69,10 @@ class CalendarPermission(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_enum_values("allowedRoles", self.allowed_roles)
-        writer.write_object_value("emailAddress", self.email_address)
-        writer.write_bool_value("isInsideOrganization", self.is_inside_organization)
-        writer.write_bool_value("isRemovable", self.is_removable)
+        writer.write_collection_of_enum_values("allowed_roles", self.allowed_roles)
+        writer.write_object_value("email_address", self.email_address)
+        writer.write_bool_value("is_inside_organization", self.is_inside_organization)
+        writer.write_bool_value("is_removable", self.is_removable)
         writer.write_enum_value("role", self.role)
     
 

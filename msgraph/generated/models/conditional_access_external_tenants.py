@@ -58,8 +58,8 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, BackedModel, Parsab
         from .conditional_access_external_tenants_membership_kind import ConditionalAccessExternalTenantsMembershipKind
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "membershipKind": lambda n : setattr(self, 'membership_kind', n.get_enum_value(ConditionalAccessExternalTenantsMembershipKind)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "membership_kind": lambda n : setattr(self, 'membership_kind', n.get_enum_value(ConditionalAccessExternalTenantsMembershipKind)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -71,8 +71,8 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, BackedModel, Parsab
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("membershipKind", self.membership_kind)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_enum_value("membership_kind", self.membership_kind)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

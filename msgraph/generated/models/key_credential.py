@@ -49,13 +49,13 @@ class KeyCredential(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "customKeyIdentifier": lambda n : setattr(self, 'custom_key_identifier', n.get_bytes_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "custom_key_identifier": lambda n : setattr(self, 'custom_key_identifier', n.get_bytes_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "key": lambda n : setattr(self, 'key', n.get_bytes_value()),
-            "keyId": lambda n : setattr(self, 'key_id', n.get_uuid_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "key_id": lambda n : setattr(self, 'key_id', n.get_uuid_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
             "usage": lambda n : setattr(self, 'usage', n.get_str_value()),
         }
@@ -69,13 +69,13 @@ class KeyCredential(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bytes_value("customKeyIdentifier", self.custom_key_identifier)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
+        writer.write_bytes_value("custom_key_identifier", self.custom_key_identifier)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
         writer.write_bytes_value("key", self.key)
-        writer.write_uuid_value("keyId", self.key_id)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_uuid_value("key_id", self.key_id)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
         writer.write_str_value("type", self.type)
         writer.write_str_value("usage", self.usage)
         writer.write_additional_data_value(self.additional_data)

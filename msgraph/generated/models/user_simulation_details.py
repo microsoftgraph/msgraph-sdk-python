@@ -63,16 +63,16 @@ class UserSimulationDetails(AdditionalDataHolder, BackedModel, Parsable):
         from .user_training_event_info import UserTrainingEventInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignedTrainingsCount": lambda n : setattr(self, 'assigned_trainings_count', n.get_int_value()),
-            "completedTrainingsCount": lambda n : setattr(self, 'completed_trainings_count', n.get_int_value()),
-            "compromisedDateTime": lambda n : setattr(self, 'compromised_date_time', n.get_datetime_value()),
-            "inProgressTrainingsCount": lambda n : setattr(self, 'in_progress_trainings_count', n.get_int_value()),
-            "isCompromised": lambda n : setattr(self, 'is_compromised', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "reportedPhishDateTime": lambda n : setattr(self, 'reported_phish_date_time', n.get_datetime_value()),
-            "simulationEvents": lambda n : setattr(self, 'simulation_events', n.get_collection_of_object_values(UserSimulationEventInfo)),
-            "simulationUser": lambda n : setattr(self, 'simulation_user', n.get_object_value(AttackSimulationUser)),
-            "trainingEvents": lambda n : setattr(self, 'training_events', n.get_collection_of_object_values(UserTrainingEventInfo)),
+            "assigned_trainings_count": lambda n : setattr(self, 'assigned_trainings_count', n.get_int_value()),
+            "completed_trainings_count": lambda n : setattr(self, 'completed_trainings_count', n.get_int_value()),
+            "compromised_date_time": lambda n : setattr(self, 'compromised_date_time', n.get_datetime_value()),
+            "in_progress_trainings_count": lambda n : setattr(self, 'in_progress_trainings_count', n.get_int_value()),
+            "is_compromised": lambda n : setattr(self, 'is_compromised', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "reported_phish_date_time": lambda n : setattr(self, 'reported_phish_date_time', n.get_datetime_value()),
+            "simulation_events": lambda n : setattr(self, 'simulation_events', n.get_collection_of_object_values(UserSimulationEventInfo)),
+            "simulation_user": lambda n : setattr(self, 'simulation_user', n.get_object_value(AttackSimulationUser)),
+            "training_events": lambda n : setattr(self, 'training_events', n.get_collection_of_object_values(UserTrainingEventInfo)),
         }
         return fields
     
@@ -84,16 +84,16 @@ class UserSimulationDetails(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("assignedTrainingsCount", self.assigned_trainings_count)
-        writer.write_int_value("completedTrainingsCount", self.completed_trainings_count)
-        writer.write_datetime_value("compromisedDateTime", self.compromised_date_time)
-        writer.write_int_value("inProgressTrainingsCount", self.in_progress_trainings_count)
-        writer.write_bool_value("isCompromised", self.is_compromised)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_datetime_value("reportedPhishDateTime", self.reported_phish_date_time)
-        writer.write_collection_of_object_values("simulationEvents", self.simulation_events)
-        writer.write_object_value("simulationUser", self.simulation_user)
-        writer.write_collection_of_object_values("trainingEvents", self.training_events)
+        writer.write_int_value("assigned_trainings_count", self.assigned_trainings_count)
+        writer.write_int_value("completed_trainings_count", self.completed_trainings_count)
+        writer.write_datetime_value("compromised_date_time", self.compromised_date_time)
+        writer.write_int_value("in_progress_trainings_count", self.in_progress_trainings_count)
+        writer.write_bool_value("is_compromised", self.is_compromised)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_datetime_value("reported_phish_date_time", self.reported_phish_date_time)
+        writer.write_collection_of_object_values("simulation_events", self.simulation_events)
+        writer.write_object_value("simulation_user", self.simulation_user)
+        writer.write_collection_of_object_values("training_events", self.training_events)
         writer.write_additional_data_value(self.additional_data)
     
 

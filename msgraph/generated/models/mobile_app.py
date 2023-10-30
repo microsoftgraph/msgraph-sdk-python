@@ -268,19 +268,19 @@ class MobileApp(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(MobileAppAssignment)),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_object_values(MobileAppCategory)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "developer": lambda n : setattr(self, 'developer', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "informationUrl": lambda n : setattr(self, 'information_url', n.get_str_value()),
-            "isFeatured": lambda n : setattr(self, 'is_featured', n.get_bool_value()),
-            "largeIcon": lambda n : setattr(self, 'large_icon', n.get_object_value(MimeContent)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "information_url": lambda n : setattr(self, 'information_url', n.get_str_value()),
+            "is_featured": lambda n : setattr(self, 'is_featured', n.get_bool_value()),
+            "large_icon": lambda n : setattr(self, 'large_icon', n.get_object_value(MimeContent)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
             "owner": lambda n : setattr(self, 'owner', n.get_str_value()),
-            "privacyInformationUrl": lambda n : setattr(self, 'privacy_information_url', n.get_str_value()),
+            "privacy_information_url": lambda n : setattr(self, 'privacy_information_url', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "publishingState": lambda n : setattr(self, 'publishing_state', n.get_enum_value(MobileAppPublishingState)),
+            "publishing_state": lambda n : setattr(self, 'publishing_state', n.get_enum_value(MobileAppPublishingState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -297,18 +297,18 @@ class MobileApp(Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_collection_of_object_values("categories", self.categories)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("developer", self.developer)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("informationUrl", self.information_url)
-        writer.write_bool_value("isFeatured", self.is_featured)
-        writer.write_object_value("largeIcon", self.large_icon)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("information_url", self.information_url)
+        writer.write_bool_value("is_featured", self.is_featured)
+        writer.write_object_value("large_icon", self.large_icon)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_str_value("notes", self.notes)
         writer.write_str_value("owner", self.owner)
-        writer.write_str_value("privacyInformationUrl", self.privacy_information_url)
+        writer.write_str_value("privacy_information_url", self.privacy_information_url)
         writer.write_str_value("publisher", self.publisher)
-        writer.write_enum_value("publishingState", self.publishing_state)
+        writer.write_enum_value("publishing_state", self.publishing_state)
     
 

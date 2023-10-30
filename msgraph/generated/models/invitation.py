@@ -60,15 +60,15 @@ class Invitation(Entity):
         from .user import User
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "inviteRedeemUrl": lambda n : setattr(self, 'invite_redeem_url', n.get_str_value()),
-            "inviteRedirectUrl": lambda n : setattr(self, 'invite_redirect_url', n.get_str_value()),
-            "invitedUser": lambda n : setattr(self, 'invited_user', n.get_object_value(User)),
-            "invitedUserDisplayName": lambda n : setattr(self, 'invited_user_display_name', n.get_str_value()),
-            "invitedUserEmailAddress": lambda n : setattr(self, 'invited_user_email_address', n.get_str_value()),
-            "invitedUserMessageInfo": lambda n : setattr(self, 'invited_user_message_info', n.get_object_value(InvitedUserMessageInfo)),
-            "invitedUserType": lambda n : setattr(self, 'invited_user_type', n.get_str_value()),
-            "resetRedemption": lambda n : setattr(self, 'reset_redemption', n.get_bool_value()),
-            "sendInvitationMessage": lambda n : setattr(self, 'send_invitation_message', n.get_bool_value()),
+            "invite_redeem_url": lambda n : setattr(self, 'invite_redeem_url', n.get_str_value()),
+            "invite_redirect_url": lambda n : setattr(self, 'invite_redirect_url', n.get_str_value()),
+            "invited_user": lambda n : setattr(self, 'invited_user', n.get_object_value(User)),
+            "invited_user_display_name": lambda n : setattr(self, 'invited_user_display_name', n.get_str_value()),
+            "invited_user_email_address": lambda n : setattr(self, 'invited_user_email_address', n.get_str_value()),
+            "invited_user_message_info": lambda n : setattr(self, 'invited_user_message_info', n.get_object_value(InvitedUserMessageInfo)),
+            "invited_user_type": lambda n : setattr(self, 'invited_user_type', n.get_str_value()),
+            "reset_redemption": lambda n : setattr(self, 'reset_redemption', n.get_bool_value()),
+            "send_invitation_message": lambda n : setattr(self, 'send_invitation_message', n.get_bool_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -84,15 +84,15 @@ class Invitation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("inviteRedeemUrl", self.invite_redeem_url)
-        writer.write_str_value("inviteRedirectUrl", self.invite_redirect_url)
-        writer.write_object_value("invitedUser", self.invited_user)
-        writer.write_str_value("invitedUserDisplayName", self.invited_user_display_name)
-        writer.write_str_value("invitedUserEmailAddress", self.invited_user_email_address)
-        writer.write_object_value("invitedUserMessageInfo", self.invited_user_message_info)
-        writer.write_str_value("invitedUserType", self.invited_user_type)
-        writer.write_bool_value("resetRedemption", self.reset_redemption)
-        writer.write_bool_value("sendInvitationMessage", self.send_invitation_message)
+        writer.write_str_value("invite_redeem_url", self.invite_redeem_url)
+        writer.write_str_value("invite_redirect_url", self.invite_redirect_url)
+        writer.write_object_value("invited_user", self.invited_user)
+        writer.write_str_value("invited_user_display_name", self.invited_user_display_name)
+        writer.write_str_value("invited_user_email_address", self.invited_user_email_address)
+        writer.write_object_value("invited_user_message_info", self.invited_user_message_info)
+        writer.write_str_value("invited_user_type", self.invited_user_type)
+        writer.write_bool_value("reset_redemption", self.reset_redemption)
+        writer.write_bool_value("send_invitation_message", self.send_invitation_message)
         writer.write_str_value("status", self.status)
     
 

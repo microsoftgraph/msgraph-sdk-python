@@ -44,10 +44,10 @@ class InvitedUserMessageInfo(AdditionalDataHolder, BackedModel, Parsable):
         from .recipient import Recipient
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(Recipient)),
-            "customizedMessageBody": lambda n : setattr(self, 'customized_message_body', n.get_str_value()),
-            "messageLanguage": lambda n : setattr(self, 'message_language', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "cc_recipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(Recipient)),
+            "customized_message_body": lambda n : setattr(self, 'customized_message_body', n.get_str_value()),
+            "message_language": lambda n : setattr(self, 'message_language', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -59,10 +59,10 @@ class InvitedUserMessageInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("ccRecipients", self.cc_recipients)
-        writer.write_str_value("customizedMessageBody", self.customized_message_body)
-        writer.write_str_value("messageLanguage", self.message_language)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_collection_of_object_values("cc_recipients", self.cc_recipients)
+        writer.write_str_value("customized_message_body", self.customized_message_body)
+        writer.write_str_value("message_language", self.message_language)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

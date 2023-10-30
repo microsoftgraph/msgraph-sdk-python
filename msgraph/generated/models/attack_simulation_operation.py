@@ -13,11 +13,11 @@ from .long_running_operation import LongRunningOperation
 class AttackSimulationOperation(LongRunningOperation):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The percentageCompleted property
+    # Percentage of completion of the respective operation.
     percentage_completed: Optional[int] = None
-    # The tenantId property
+    # Tenant identifier.
     tenant_id: Optional[str] = None
-    # The type property
+    # The attack simulation operation type. Possible values are: createSimulation, updateSimulation, unknownFutureValue.
     type: Optional[AttackSimulationOperationType] = None
     
     @staticmethod
@@ -43,8 +43,8 @@ class AttackSimulationOperation(LongRunningOperation):
         from .long_running_operation import LongRunningOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "percentageCompleted": lambda n : setattr(self, 'percentage_completed', n.get_int_value()),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "percentage_completed": lambda n : setattr(self, 'percentage_completed', n.get_int_value()),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(AttackSimulationOperationType)),
         }
         super_fields = super().get_field_deserializers()
@@ -60,8 +60,8 @@ class AttackSimulationOperation(LongRunningOperation):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("percentageCompleted", self.percentage_completed)
-        writer.write_str_value("tenantId", self.tenant_id)
+        writer.write_int_value("percentage_completed", self.percentage_completed)
+        writer.write_str_value("tenant_id", self.tenant_id)
         writer.write_enum_value("type", self.type)
     
 

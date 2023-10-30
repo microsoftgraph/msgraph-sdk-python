@@ -58,12 +58,12 @@ class OnenoteSection(OnenoteEntityHierarchyModel):
         from .section_links import SectionLinks
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(SectionLinks)),
             "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(OnenotePage)),
-            "pagesUrl": lambda n : setattr(self, 'pages_url', n.get_str_value()),
-            "parentNotebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(Notebook)),
-            "parentSectionGroup": lambda n : setattr(self, 'parent_section_group', n.get_object_value(SectionGroup)),
+            "pages_url": lambda n : setattr(self, 'pages_url', n.get_str_value()),
+            "parent_notebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(Notebook)),
+            "parent_section_group": lambda n : setattr(self, 'parent_section_group', n.get_object_value(SectionGroup)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,11 +78,11 @@ class OnenoteSection(OnenoteEntityHierarchyModel):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isDefault", self.is_default)
+        writer.write_bool_value("is_default", self.is_default)
         writer.write_object_value("links", self.links)
         writer.write_collection_of_object_values("pages", self.pages)
-        writer.write_str_value("pagesUrl", self.pages_url)
-        writer.write_object_value("parentNotebook", self.parent_notebook)
-        writer.write_object_value("parentSectionGroup", self.parent_section_group)
+        writer.write_str_value("pages_url", self.pages_url)
+        writer.write_object_value("parent_notebook", self.parent_notebook)
+        writer.write_object_value("parent_section_group", self.parent_section_group)
     
 

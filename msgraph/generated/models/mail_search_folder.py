@@ -42,10 +42,10 @@ class MailSearchFolder(MailFolder):
         from .mail_folder import MailFolder
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "filterQuery": lambda n : setattr(self, 'filter_query', n.get_str_value()),
-            "includeNestedFolders": lambda n : setattr(self, 'include_nested_folders', n.get_bool_value()),
-            "isSupported": lambda n : setattr(self, 'is_supported', n.get_bool_value()),
-            "sourceFolderIds": lambda n : setattr(self, 'source_folder_ids', n.get_collection_of_primitive_values(str)),
+            "filter_query": lambda n : setattr(self, 'filter_query', n.get_str_value()),
+            "include_nested_folders": lambda n : setattr(self, 'include_nested_folders', n.get_bool_value()),
+            "is_supported": lambda n : setattr(self, 'is_supported', n.get_bool_value()),
+            "source_folder_ids": lambda n : setattr(self, 'source_folder_ids', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,9 +60,9 @@ class MailSearchFolder(MailFolder):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("filterQuery", self.filter_query)
-        writer.write_bool_value("includeNestedFolders", self.include_nested_folders)
-        writer.write_bool_value("isSupported", self.is_supported)
-        writer.write_collection_of_primitive_values("sourceFolderIds", self.source_folder_ids)
+        writer.write_str_value("filter_query", self.filter_query)
+        writer.write_bool_value("include_nested_folders", self.include_nested_folders)
+        writer.write_bool_value("is_supported", self.is_supported)
+        writer.write_collection_of_primitive_values("source_folder_ids", self.source_folder_ids)
     
 

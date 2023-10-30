@@ -61,16 +61,16 @@ class UserExperienceAnalyticsBaseline(Entity):
         from .user_experience_analytics_category import UserExperienceAnalyticsCategory
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appHealthMetrics": lambda n : setattr(self, 'app_health_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
-            "batteryHealthMetrics": lambda n : setattr(self, 'battery_health_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
-            "bestPracticesMetrics": lambda n : setattr(self, 'best_practices_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "deviceBootPerformanceMetrics": lambda n : setattr(self, 'device_boot_performance_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
-            "rebootAnalyticsMetrics": lambda n : setattr(self, 'reboot_analytics_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
-            "resourcePerformanceMetrics": lambda n : setattr(self, 'resource_performance_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
-            "workFromAnywhereMetrics": lambda n : setattr(self, 'work_from_anywhere_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
+            "app_health_metrics": lambda n : setattr(self, 'app_health_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
+            "battery_health_metrics": lambda n : setattr(self, 'battery_health_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
+            "best_practices_metrics": lambda n : setattr(self, 'best_practices_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "device_boot_performance_metrics": lambda n : setattr(self, 'device_boot_performance_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "is_built_in": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
+            "reboot_analytics_metrics": lambda n : setattr(self, 'reboot_analytics_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
+            "resource_performance_metrics": lambda n : setattr(self, 'resource_performance_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
+            "work_from_anywhere_metrics": lambda n : setattr(self, 'work_from_anywhere_metrics', n.get_object_value(UserExperienceAnalyticsCategory)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -85,15 +85,15 @@ class UserExperienceAnalyticsBaseline(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("appHealthMetrics", self.app_health_metrics)
-        writer.write_object_value("batteryHealthMetrics", self.battery_health_metrics)
-        writer.write_object_value("bestPracticesMetrics", self.best_practices_metrics)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_object_value("deviceBootPerformanceMetrics", self.device_boot_performance_metrics)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_bool_value("isBuiltIn", self.is_built_in)
-        writer.write_object_value("rebootAnalyticsMetrics", self.reboot_analytics_metrics)
-        writer.write_object_value("resourcePerformanceMetrics", self.resource_performance_metrics)
-        writer.write_object_value("workFromAnywhereMetrics", self.work_from_anywhere_metrics)
+        writer.write_object_value("app_health_metrics", self.app_health_metrics)
+        writer.write_object_value("battery_health_metrics", self.battery_health_metrics)
+        writer.write_object_value("best_practices_metrics", self.best_practices_metrics)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_object_value("device_boot_performance_metrics", self.device_boot_performance_metrics)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_bool_value("is_built_in", self.is_built_in)
+        writer.write_object_value("reboot_analytics_metrics", self.reboot_analytics_metrics)
+        writer.write_object_value("resource_performance_metrics", self.resource_performance_metrics)
+        writer.write_object_value("work_from_anywhere_metrics", self.work_from_anywhere_metrics)
     
 

@@ -60,11 +60,11 @@ class Article(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "body": lambda n : setattr(self, 'body', n.get_object_value(FormattedContent)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "imageUrl": lambda n : setattr(self, 'image_url', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "image_url": lambda n : setattr(self, 'image_url', n.get_str_value()),
             "indicators": lambda n : setattr(self, 'indicators', n.get_collection_of_object_values(ArticleIndicator)),
-            "isFeatured": lambda n : setattr(self, 'is_featured', n.get_bool_value()),
-            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
+            "is_featured": lambda n : setattr(self, 'is_featured', n.get_bool_value()),
+            "last_updated_date_time": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "summary": lambda n : setattr(self, 'summary', n.get_object_value(FormattedContent)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
@@ -83,11 +83,11 @@ class Article(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("body", self.body)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_str_value("imageUrl", self.image_url)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_str_value("image_url", self.image_url)
         writer.write_collection_of_object_values("indicators", self.indicators)
-        writer.write_bool_value("isFeatured", self.is_featured)
-        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
+        writer.write_bool_value("is_featured", self.is_featured)
+        writer.write_datetime_value("last_updated_date_time", self.last_updated_date_time)
         writer.write_object_value("summary", self.summary)
         writer.write_collection_of_primitive_values("tags", self.tags)
         writer.write_str_value("title", self.title)

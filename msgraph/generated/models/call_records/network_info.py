@@ -102,33 +102,33 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
         from .wifi_radio_type import WifiRadioType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "bandwidthLowEventRatio": lambda n : setattr(self, 'bandwidth_low_event_ratio', n.get_float_value()),
-            "basicServiceSetIdentifier": lambda n : setattr(self, 'basic_service_set_identifier', n.get_str_value()),
-            "connectionType": lambda n : setattr(self, 'connection_type', n.get_enum_value(NetworkConnectionType)),
-            "delayEventRatio": lambda n : setattr(self, 'delay_event_ratio', n.get_float_value()),
-            "dnsSuffix": lambda n : setattr(self, 'dns_suffix', n.get_str_value()),
-            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "linkSpeed": lambda n : setattr(self, 'link_speed', n.get_int_value()),
-            "macAddress": lambda n : setattr(self, 'mac_address', n.get_str_value()),
-            "networkTransportProtocol": lambda n : setattr(self, 'network_transport_protocol', n.get_enum_value(NetworkTransportProtocol)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "bandwidth_low_event_ratio": lambda n : setattr(self, 'bandwidth_low_event_ratio', n.get_float_value()),
+            "basic_service_set_identifier": lambda n : setattr(self, 'basic_service_set_identifier', n.get_str_value()),
+            "connection_type": lambda n : setattr(self, 'connection_type', n.get_enum_value(NetworkConnectionType)),
+            "delay_event_ratio": lambda n : setattr(self, 'delay_event_ratio', n.get_float_value()),
+            "dns_suffix": lambda n : setattr(self, 'dns_suffix', n.get_str_value()),
+            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "link_speed": lambda n : setattr(self, 'link_speed', n.get_int_value()),
+            "mac_address": lambda n : setattr(self, 'mac_address', n.get_str_value()),
+            "network_transport_protocol": lambda n : setattr(self, 'network_transport_protocol', n.get_enum_value(NetworkTransportProtocol)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "port": lambda n : setattr(self, 'port', n.get_int_value()),
-            "receivedQualityEventRatio": lambda n : setattr(self, 'received_quality_event_ratio', n.get_float_value()),
-            "reflexiveIPAddress": lambda n : setattr(self, 'reflexive_i_p_address', n.get_str_value()),
-            "relayIPAddress": lambda n : setattr(self, 'relay_i_p_address', n.get_str_value()),
-            "relayPort": lambda n : setattr(self, 'relay_port', n.get_int_value()),
-            "sentQualityEventRatio": lambda n : setattr(self, 'sent_quality_event_ratio', n.get_float_value()),
+            "received_quality_event_ratio": lambda n : setattr(self, 'received_quality_event_ratio', n.get_float_value()),
+            "reflexive_i_p_address": lambda n : setattr(self, 'reflexive_i_p_address', n.get_str_value()),
+            "relay_i_p_address": lambda n : setattr(self, 'relay_i_p_address', n.get_str_value()),
+            "relay_port": lambda n : setattr(self, 'relay_port', n.get_int_value()),
+            "sent_quality_event_ratio": lambda n : setattr(self, 'sent_quality_event_ratio', n.get_float_value()),
             "subnet": lambda n : setattr(self, 'subnet', n.get_str_value()),
-            "traceRouteHops": lambda n : setattr(self, 'trace_route_hops', n.get_collection_of_object_values(TraceRouteHop)),
-            "wifiBand": lambda n : setattr(self, 'wifi_band', n.get_enum_value(WifiBand)),
-            "wifiBatteryCharge": lambda n : setattr(self, 'wifi_battery_charge', n.get_int_value()),
-            "wifiChannel": lambda n : setattr(self, 'wifi_channel', n.get_int_value()),
-            "wifiMicrosoftDriver": lambda n : setattr(self, 'wifi_microsoft_driver', n.get_str_value()),
-            "wifiMicrosoftDriverVersion": lambda n : setattr(self, 'wifi_microsoft_driver_version', n.get_str_value()),
-            "wifiRadioType": lambda n : setattr(self, 'wifi_radio_type', n.get_enum_value(WifiRadioType)),
-            "wifiSignalStrength": lambda n : setattr(self, 'wifi_signal_strength', n.get_int_value()),
-            "wifiVendorDriver": lambda n : setattr(self, 'wifi_vendor_driver', n.get_str_value()),
-            "wifiVendorDriverVersion": lambda n : setattr(self, 'wifi_vendor_driver_version', n.get_str_value()),
+            "trace_route_hops": lambda n : setattr(self, 'trace_route_hops', n.get_collection_of_object_values(TraceRouteHop)),
+            "wifi_band": lambda n : setattr(self, 'wifi_band', n.get_enum_value(WifiBand)),
+            "wifi_battery_charge": lambda n : setattr(self, 'wifi_battery_charge', n.get_int_value()),
+            "wifi_channel": lambda n : setattr(self, 'wifi_channel', n.get_int_value()),
+            "wifi_microsoft_driver": lambda n : setattr(self, 'wifi_microsoft_driver', n.get_str_value()),
+            "wifi_microsoft_driver_version": lambda n : setattr(self, 'wifi_microsoft_driver_version', n.get_str_value()),
+            "wifi_radio_type": lambda n : setattr(self, 'wifi_radio_type', n.get_enum_value(WifiRadioType)),
+            "wifi_signal_strength": lambda n : setattr(self, 'wifi_signal_strength', n.get_int_value()),
+            "wifi_vendor_driver": lambda n : setattr(self, 'wifi_vendor_driver', n.get_str_value()),
+            "wifi_vendor_driver_version": lambda n : setattr(self, 'wifi_vendor_driver_version', n.get_str_value()),
         }
         return fields
     
@@ -140,33 +140,33 @@ class NetworkInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_float_value("bandwidthLowEventRatio", self.bandwidth_low_event_ratio)
-        writer.write_str_value("basicServiceSetIdentifier", self.basic_service_set_identifier)
-        writer.write_enum_value("connectionType", self.connection_type)
-        writer.write_float_value("delayEventRatio", self.delay_event_ratio)
-        writer.write_str_value("dnsSuffix", self.dns_suffix)
-        writer.write_str_value("ipAddress", self.ip_address)
-        writer.write_int_value("linkSpeed", self.link_speed)
-        writer.write_str_value("macAddress", self.mac_address)
-        writer.write_enum_value("networkTransportProtocol", self.network_transport_protocol)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_float_value("bandwidth_low_event_ratio", self.bandwidth_low_event_ratio)
+        writer.write_str_value("basic_service_set_identifier", self.basic_service_set_identifier)
+        writer.write_enum_value("connection_type", self.connection_type)
+        writer.write_float_value("delay_event_ratio", self.delay_event_ratio)
+        writer.write_str_value("dns_suffix", self.dns_suffix)
+        writer.write_str_value("ip_address", self.ip_address)
+        writer.write_int_value("link_speed", self.link_speed)
+        writer.write_str_value("mac_address", self.mac_address)
+        writer.write_enum_value("network_transport_protocol", self.network_transport_protocol)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("port", self.port)
-        writer.write_float_value("receivedQualityEventRatio", self.received_quality_event_ratio)
-        writer.write_str_value("reflexiveIPAddress", self.reflexive_i_p_address)
-        writer.write_str_value("relayIPAddress", self.relay_i_p_address)
-        writer.write_int_value("relayPort", self.relay_port)
-        writer.write_float_value("sentQualityEventRatio", self.sent_quality_event_ratio)
+        writer.write_float_value("received_quality_event_ratio", self.received_quality_event_ratio)
+        writer.write_str_value("reflexive_i_p_address", self.reflexive_i_p_address)
+        writer.write_str_value("relay_i_p_address", self.relay_i_p_address)
+        writer.write_int_value("relay_port", self.relay_port)
+        writer.write_float_value("sent_quality_event_ratio", self.sent_quality_event_ratio)
         writer.write_str_value("subnet", self.subnet)
-        writer.write_collection_of_object_values("traceRouteHops", self.trace_route_hops)
-        writer.write_enum_value("wifiBand", self.wifi_band)
-        writer.write_int_value("wifiBatteryCharge", self.wifi_battery_charge)
-        writer.write_int_value("wifiChannel", self.wifi_channel)
-        writer.write_str_value("wifiMicrosoftDriver", self.wifi_microsoft_driver)
-        writer.write_str_value("wifiMicrosoftDriverVersion", self.wifi_microsoft_driver_version)
-        writer.write_enum_value("wifiRadioType", self.wifi_radio_type)
-        writer.write_int_value("wifiSignalStrength", self.wifi_signal_strength)
-        writer.write_str_value("wifiVendorDriver", self.wifi_vendor_driver)
-        writer.write_str_value("wifiVendorDriverVersion", self.wifi_vendor_driver_version)
+        writer.write_collection_of_object_values("trace_route_hops", self.trace_route_hops)
+        writer.write_enum_value("wifi_band", self.wifi_band)
+        writer.write_int_value("wifi_battery_charge", self.wifi_battery_charge)
+        writer.write_int_value("wifi_channel", self.wifi_channel)
+        writer.write_str_value("wifi_microsoft_driver", self.wifi_microsoft_driver)
+        writer.write_str_value("wifi_microsoft_driver_version", self.wifi_microsoft_driver_version)
+        writer.write_enum_value("wifi_radio_type", self.wifi_radio_type)
+        writer.write_int_value("wifi_signal_strength", self.wifi_signal_strength)
+        writer.write_str_value("wifi_vendor_driver", self.wifi_vendor_driver)
+        writer.write_str_value("wifi_vendor_driver_version", self.wifi_vendor_driver_version)
         writer.write_additional_data_value(self.additional_data)
     
 

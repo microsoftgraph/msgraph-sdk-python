@@ -50,11 +50,11 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(DeviceEnrollmentConfigur
         from .device_enrollment_platform_restriction import DeviceEnrollmentPlatformRestriction
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "androidRestriction": lambda n : setattr(self, 'android_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
-            "iosRestriction": lambda n : setattr(self, 'ios_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
-            "macOSRestriction": lambda n : setattr(self, 'mac_o_s_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
-            "windowsMobileRestriction": lambda n : setattr(self, 'windows_mobile_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
-            "windowsRestriction": lambda n : setattr(self, 'windows_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
+            "android_restriction": lambda n : setattr(self, 'android_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
+            "ios_restriction": lambda n : setattr(self, 'ios_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
+            "mac_o_s_restriction": lambda n : setattr(self, 'mac_o_s_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
+            "windows_mobile_restriction": lambda n : setattr(self, 'windows_mobile_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
+            "windows_restriction": lambda n : setattr(self, 'windows_restriction', n.get_object_value(DeviceEnrollmentPlatformRestriction)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,10 +69,10 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(DeviceEnrollmentConfigur
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("androidRestriction", self.android_restriction)
-        writer.write_object_value("iosRestriction", self.ios_restriction)
-        writer.write_object_value("macOSRestriction", self.mac_o_s_restriction)
-        writer.write_object_value("windowsMobileRestriction", self.windows_mobile_restriction)
-        writer.write_object_value("windowsRestriction", self.windows_restriction)
+        writer.write_object_value("android_restriction", self.android_restriction)
+        writer.write_object_value("ios_restriction", self.ios_restriction)
+        writer.write_object_value("mac_o_s_restriction", self.mac_o_s_restriction)
+        writer.write_object_value("windows_mobile_restriction", self.windows_mobile_restriction)
+        writer.write_object_value("windows_restriction", self.windows_restriction)
     
 

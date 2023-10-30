@@ -42,9 +42,9 @@ class ConvertPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fromUnit": lambda n : setattr(self, 'from_unit', n.get_object_value(Json)),
+            "from_unit": lambda n : setattr(self, 'from_unit', n.get_object_value(Json)),
             "number": lambda n : setattr(self, 'number', n.get_object_value(Json)),
-            "toUnit": lambda n : setattr(self, 'to_unit', n.get_object_value(Json)),
+            "to_unit": lambda n : setattr(self, 'to_unit', n.get_object_value(Json)),
         }
         return fields
     
@@ -56,9 +56,9 @@ class ConvertPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("fromUnit", self.from_unit)
+        writer.write_object_value("from_unit", self.from_unit)
         writer.write_object_value("number", self.number)
-        writer.write_object_value("toUnit", self.to_unit)
+        writer.write_object_value("to_unit", self.to_unit)
         writer.write_additional_data_value(self.additional_data)
     
 

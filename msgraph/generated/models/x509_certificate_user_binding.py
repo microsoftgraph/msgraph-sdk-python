@@ -37,10 +37,10 @@ class X509CertificateUserBinding(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "priority": lambda n : setattr(self, 'priority', n.get_int_value()),
-            "userProperty": lambda n : setattr(self, 'user_property', n.get_str_value()),
-            "x509CertificateField": lambda n : setattr(self, 'x509_certificate_field', n.get_str_value()),
+            "user_property": lambda n : setattr(self, 'user_property', n.get_str_value()),
+            "x509_certificate_field": lambda n : setattr(self, 'x509_certificate_field', n.get_str_value()),
         }
         return fields
     
@@ -52,10 +52,10 @@ class X509CertificateUserBinding(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("priority", self.priority)
-        writer.write_str_value("userProperty", self.user_property)
-        writer.write_str_value("x509CertificateField", self.x509_certificate_field)
+        writer.write_str_value("user_property", self.user_property)
+        writer.write_str_value("x509_certificate_field", self.x509_certificate_field)
         writer.write_additional_data_value(self.additional_data)
     
 

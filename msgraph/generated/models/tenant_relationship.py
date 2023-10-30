@@ -45,9 +45,9 @@ class TenantRelationship(AdditionalDataHolder, BackedModel, Parsable):
         from .delegated_admin_relationship import DelegatedAdminRelationship
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "delegatedAdminCustomers": lambda n : setattr(self, 'delegated_admin_customers', n.get_collection_of_object_values(DelegatedAdminCustomer)),
-            "delegatedAdminRelationships": lambda n : setattr(self, 'delegated_admin_relationships', n.get_collection_of_object_values(DelegatedAdminRelationship)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "delegated_admin_customers": lambda n : setattr(self, 'delegated_admin_customers', n.get_collection_of_object_values(DelegatedAdminCustomer)),
+            "delegated_admin_relationships": lambda n : setattr(self, 'delegated_admin_relationships', n.get_collection_of_object_values(DelegatedAdminRelationship)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -59,9 +59,9 @@ class TenantRelationship(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("delegatedAdminCustomers", self.delegated_admin_customers)
-        writer.write_collection_of_object_values("delegatedAdminRelationships", self.delegated_admin_relationships)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_collection_of_object_values("delegated_admin_customers", self.delegated_admin_customers)
+        writer.write_collection_of_object_values("delegated_admin_relationships", self.delegated_admin_relationships)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

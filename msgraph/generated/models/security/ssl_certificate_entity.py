@@ -57,14 +57,14 @@ class SslCertificateEntity(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(PhysicalAddress)),
-            "alternateNames": lambda n : setattr(self, 'alternate_names', n.get_collection_of_primitive_values(str)),
-            "commonName": lambda n : setattr(self, 'common_name', n.get_str_value()),
+            "alternate_names": lambda n : setattr(self, 'alternate_names', n.get_collection_of_primitive_values(str)),
+            "common_name": lambda n : setattr(self, 'common_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "organizationName": lambda n : setattr(self, 'organization_name', n.get_str_value()),
-            "organizationUnitName": lambda n : setattr(self, 'organization_unit_name', n.get_str_value()),
-            "serialNumber": lambda n : setattr(self, 'serial_number', n.get_str_value()),
+            "given_name": lambda n : setattr(self, 'given_name', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "organization_name": lambda n : setattr(self, 'organization_name', n.get_str_value()),
+            "organization_unit_name": lambda n : setattr(self, 'organization_unit_name', n.get_str_value()),
+            "serial_number": lambda n : setattr(self, 'serial_number', n.get_str_value()),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
         }
         return fields
@@ -78,14 +78,14 @@ class SslCertificateEntity(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("address", self.address)
-        writer.write_collection_of_primitive_values("alternateNames", self.alternate_names)
-        writer.write_str_value("commonName", self.common_name)
+        writer.write_collection_of_primitive_values("alternate_names", self.alternate_names)
+        writer.write_str_value("common_name", self.common_name)
         writer.write_str_value("email", self.email)
-        writer.write_str_value("givenName", self.given_name)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("organizationName", self.organization_name)
-        writer.write_str_value("organizationUnitName", self.organization_unit_name)
-        writer.write_str_value("serialNumber", self.serial_number)
+        writer.write_str_value("given_name", self.given_name)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("organization_name", self.organization_name)
+        writer.write_str_value("organization_unit_name", self.organization_unit_name)
+        writer.write_str_value("serial_number", self.serial_number)
         writer.write_str_value("surname", self.surname)
         writer.write_additional_data_value(self.additional_data)
     

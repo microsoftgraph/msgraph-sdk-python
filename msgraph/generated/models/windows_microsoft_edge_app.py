@@ -45,7 +45,7 @@ class WindowsMicrosoftEdgeApp(MobileApp):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "channel": lambda n : setattr(self, 'channel', n.get_enum_value(MicrosoftEdgeChannel)),
-            "displayLanguageLocale": lambda n : setattr(self, 'display_language_locale', n.get_str_value()),
+            "display_language_locale": lambda n : setattr(self, 'display_language_locale', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,6 +61,6 @@ class WindowsMicrosoftEdgeApp(MobileApp):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("channel", self.channel)
-        writer.write_str_value("displayLanguageLocale", self.display_language_locale)
+        writer.write_str_value("display_language_locale", self.display_language_locale)
     
 

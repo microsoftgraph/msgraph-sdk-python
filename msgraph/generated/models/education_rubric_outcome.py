@@ -48,10 +48,10 @@ class EducationRubricOutcome(EducationOutcome):
         from .rubric_quality_selected_column_model import RubricQualitySelectedColumnModel
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "publishedRubricQualityFeedback": lambda n : setattr(self, 'published_rubric_quality_feedback', n.get_collection_of_object_values(RubricQualityFeedbackModel)),
-            "publishedRubricQualitySelectedLevels": lambda n : setattr(self, 'published_rubric_quality_selected_levels', n.get_collection_of_object_values(RubricQualitySelectedColumnModel)),
-            "rubricQualityFeedback": lambda n : setattr(self, 'rubric_quality_feedback', n.get_collection_of_object_values(RubricQualityFeedbackModel)),
-            "rubricQualitySelectedLevels": lambda n : setattr(self, 'rubric_quality_selected_levels', n.get_collection_of_object_values(RubricQualitySelectedColumnModel)),
+            "published_rubric_quality_feedback": lambda n : setattr(self, 'published_rubric_quality_feedback', n.get_collection_of_object_values(RubricQualityFeedbackModel)),
+            "published_rubric_quality_selected_levels": lambda n : setattr(self, 'published_rubric_quality_selected_levels', n.get_collection_of_object_values(RubricQualitySelectedColumnModel)),
+            "rubric_quality_feedback": lambda n : setattr(self, 'rubric_quality_feedback', n.get_collection_of_object_values(RubricQualityFeedbackModel)),
+            "rubric_quality_selected_levels": lambda n : setattr(self, 'rubric_quality_selected_levels', n.get_collection_of_object_values(RubricQualitySelectedColumnModel)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,9 +66,9 @@ class EducationRubricOutcome(EducationOutcome):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("publishedRubricQualityFeedback", self.published_rubric_quality_feedback)
-        writer.write_collection_of_object_values("publishedRubricQualitySelectedLevels", self.published_rubric_quality_selected_levels)
-        writer.write_collection_of_object_values("rubricQualityFeedback", self.rubric_quality_feedback)
-        writer.write_collection_of_object_values("rubricQualitySelectedLevels", self.rubric_quality_selected_levels)
+        writer.write_collection_of_object_values("published_rubric_quality_feedback", self.published_rubric_quality_feedback)
+        writer.write_collection_of_object_values("published_rubric_quality_selected_levels", self.published_rubric_quality_selected_levels)
+        writer.write_collection_of_object_values("rubric_quality_feedback", self.rubric_quality_feedback)
+        writer.write_collection_of_object_values("rubric_quality_selected_levels", self.rubric_quality_selected_levels)
     
 

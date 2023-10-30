@@ -52,14 +52,14 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, BackedModel, Parsable):
         from .key_value_pair import KeyValuePair
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "excludedItemCount": lambda n : setattr(self, 'excluded_item_count', n.get_int_value()),
-            "insightCounts": lambda n : setattr(self, 'insight_counts', n.get_collection_of_object_values(KeyValuePair)),
-            "itemCount": lambda n : setattr(self, 'item_count', n.get_int_value()),
-            "itemNeedReview": lambda n : setattr(self, 'item_need_review', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "productItemCounts": lambda n : setattr(self, 'product_item_counts', n.get_collection_of_object_values(KeyValuePair)),
-            "signedOffItemCount": lambda n : setattr(self, 'signed_off_item_count', n.get_int_value()),
-            "totalItemSize": lambda n : setattr(self, 'total_item_size', n.get_int_value()),
+            "excluded_item_count": lambda n : setattr(self, 'excluded_item_count', n.get_int_value()),
+            "insight_counts": lambda n : setattr(self, 'insight_counts', n.get_collection_of_object_values(KeyValuePair)),
+            "item_count": lambda n : setattr(self, 'item_count', n.get_int_value()),
+            "item_need_review": lambda n : setattr(self, 'item_need_review', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "product_item_counts": lambda n : setattr(self, 'product_item_counts', n.get_collection_of_object_values(KeyValuePair)),
+            "signed_off_item_count": lambda n : setattr(self, 'signed_off_item_count', n.get_int_value()),
+            "total_item_size": lambda n : setattr(self, 'total_item_size', n.get_int_value()),
         }
         return fields
     
@@ -71,14 +71,14 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("excludedItemCount", self.excluded_item_count)
-        writer.write_collection_of_object_values("insightCounts", self.insight_counts)
-        writer.write_int_value("itemCount", self.item_count)
-        writer.write_int_value("itemNeedReview", self.item_need_review)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("productItemCounts", self.product_item_counts)
-        writer.write_int_value("signedOffItemCount", self.signed_off_item_count)
-        writer.write_int_value("totalItemSize", self.total_item_size)
+        writer.write_int_value("excluded_item_count", self.excluded_item_count)
+        writer.write_collection_of_object_values("insight_counts", self.insight_counts)
+        writer.write_int_value("item_count", self.item_count)
+        writer.write_int_value("item_need_review", self.item_need_review)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("product_item_counts", self.product_item_counts)
+        writer.write_int_value("signed_off_item_count", self.signed_off_item_count)
+        writer.write_int_value("total_item_size", self.total_item_size)
         writer.write_additional_data_value(self.additional_data)
     
 

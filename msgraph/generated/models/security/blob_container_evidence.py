@@ -44,7 +44,7 @@ class BlobContainerEvidence(AlertEvidence):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "storageResource": lambda n : setattr(self, 'storage_resource', n.get_object_value(AzureResourceEvidence)),
+            "storage_resource": lambda n : setattr(self, 'storage_resource', n.get_object_value(AzureResourceEvidence)),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -61,7 +61,7 @@ class BlobContainerEvidence(AlertEvidence):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("name", self.name)
-        writer.write_object_value("storageResource", self.storage_resource)
+        writer.write_object_value("storage_resource", self.storage_resource)
         writer.write_str_value("url", self.url)
     
 

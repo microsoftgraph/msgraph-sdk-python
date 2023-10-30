@@ -31,7 +31,7 @@ class UnsetReactionPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "reactionType": lambda n : setattr(self, 'reaction_type', n.get_str_value()),
+            "reaction_type": lambda n : setattr(self, 'reaction_type', n.get_str_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class UnsetReactionPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("reactionType", self.reaction_type)
+        writer.write_str_value("reaction_type", self.reaction_type)
         writer.write_additional_data_value(self.additional_data)
     
 

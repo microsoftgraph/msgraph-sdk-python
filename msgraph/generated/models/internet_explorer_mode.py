@@ -39,7 +39,7 @@ class InternetExplorerMode(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "siteLists": lambda n : setattr(self, 'site_lists', n.get_collection_of_object_values(BrowserSiteList)),
+            "site_lists": lambda n : setattr(self, 'site_lists', n.get_collection_of_object_values(BrowserSiteList)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class InternetExplorerMode(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("siteLists", self.site_lists)
+        writer.write_collection_of_object_values("site_lists", self.site_lists)
     
 

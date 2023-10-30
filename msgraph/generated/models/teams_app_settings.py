@@ -36,7 +36,7 @@ class TeamsAppSettings(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowUserRequestsForAppAccess": lambda n : setattr(self, 'allow_user_requests_for_app_access', n.get_bool_value()),
+            "allow_user_requests_for_app_access": lambda n : setattr(self, 'allow_user_requests_for_app_access', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class TeamsAppSettings(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("allowUserRequestsForAppAccess", self.allow_user_requests_for_app_access)
+        writer.write_bool_value("allow_user_requests_for_app_access", self.allow_user_requests_for_app_access)
     
 

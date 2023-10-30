@@ -64,14 +64,14 @@ class TermsAndConditions(Entity):
         from .terms_and_conditions_assignment import TermsAndConditionsAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "acceptanceStatement": lambda n : setattr(self, 'acceptance_statement', n.get_str_value()),
-            "acceptanceStatuses": lambda n : setattr(self, 'acceptance_statuses', n.get_collection_of_object_values(TermsAndConditionsAcceptanceStatus)),
+            "acceptance_statement": lambda n : setattr(self, 'acceptance_statement', n.get_str_value()),
+            "acceptance_statuses": lambda n : setattr(self, 'acceptance_statuses', n.get_collection_of_object_values(TermsAndConditionsAcceptanceStatus)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(TermsAndConditionsAssignment)),
-            "bodyText": lambda n : setattr(self, 'body_text', n.get_str_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "body_text": lambda n : setattr(self, 'body_text', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
@@ -88,14 +88,14 @@ class TermsAndConditions(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("acceptanceStatement", self.acceptance_statement)
-        writer.write_collection_of_object_values("acceptanceStatuses", self.acceptance_statuses)
+        writer.write_str_value("acceptance_statement", self.acceptance_statement)
+        writer.write_collection_of_object_values("acceptance_statuses", self.acceptance_statuses)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_str_value("bodyText", self.body_text)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_str_value("body_text", self.body_text)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_str_value("title", self.title)
         writer.write_int_value("version", self.version)
     

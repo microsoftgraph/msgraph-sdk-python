@@ -31,7 +31,7 @@ class DeleteUserFromSharedAppleDevicePostRequestBody(AdditionalDataHolder, Backe
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class DeleteUserFromSharedAppleDevicePostRequestBody(AdditionalDataHolder, Backe
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -104,7 +104,7 @@ class AuthenticationMethodConfiguration(Entity):
         from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "excludeTargets": lambda n : setattr(self, 'exclude_targets', n.get_collection_of_object_values(ExcludeTarget)),
+            "exclude_targets": lambda n : setattr(self, 'exclude_targets', n.get_collection_of_object_values(ExcludeTarget)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(AuthenticationMethodState)),
         }
         super_fields = super().get_field_deserializers()
@@ -120,7 +120,7 @@ class AuthenticationMethodConfiguration(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("excludeTargets", self.exclude_targets)
+        writer.write_collection_of_object_values("exclude_targets", self.exclude_targets)
         writer.write_enum_value("state", self.state)
     
 

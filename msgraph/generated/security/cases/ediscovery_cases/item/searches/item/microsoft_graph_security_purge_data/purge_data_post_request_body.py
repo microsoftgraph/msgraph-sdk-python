@@ -43,8 +43,8 @@ class PurgeDataPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.security.purge_type import PurgeType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "purgeAreas": lambda n : setattr(self, 'purge_areas', n.get_collection_of_enum_values(PurgeAreas)),
-            "purgeType": lambda n : setattr(self, 'purge_type', n.get_enum_value(PurgeType)),
+            "purge_areas": lambda n : setattr(self, 'purge_areas', n.get_collection_of_enum_values(PurgeAreas)),
+            "purge_type": lambda n : setattr(self, 'purge_type', n.get_enum_value(PurgeType)),
         }
         return fields
     
@@ -56,8 +56,8 @@ class PurgeDataPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("purgeAreas", self.purge_areas)
-        writer.write_enum_value("purgeType", self.purge_type)
+        writer.write_enum_value("purge_areas", self.purge_areas)
+        writer.write_enum_value("purge_type", self.purge_type)
         writer.write_additional_data_value(self.additional_data)
     
 

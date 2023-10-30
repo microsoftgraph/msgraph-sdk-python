@@ -49,10 +49,10 @@ class EducationAssignmentDefaults(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "addToCalendarAction": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(EducationAddToCalendarOptions)),
-            "addedStudentAction": lambda n : setattr(self, 'added_student_action', n.get_enum_value(EducationAddedStudentAction)),
-            "dueTime": lambda n : setattr(self, 'due_time', n.get_time_value()),
-            "notificationChannelUrl": lambda n : setattr(self, 'notification_channel_url', n.get_str_value()),
+            "add_to_calendar_action": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(EducationAddToCalendarOptions)),
+            "added_student_action": lambda n : setattr(self, 'added_student_action', n.get_enum_value(EducationAddedStudentAction)),
+            "due_time": lambda n : setattr(self, 'due_time', n.get_time_value()),
+            "notification_channel_url": lambda n : setattr(self, 'notification_channel_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,9 +67,9 @@ class EducationAssignmentDefaults(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("addToCalendarAction", self.add_to_calendar_action)
-        writer.write_enum_value("addedStudentAction", self.added_student_action)
-        writer.write_time_value("dueTime", self.due_time)
-        writer.write_str_value("notificationChannelUrl", self.notification_channel_url)
+        writer.write_enum_value("add_to_calendar_action", self.add_to_calendar_action)
+        writer.write_enum_value("added_student_action", self.added_student_action)
+        writer.write_time_value("due_time", self.due_time)
+        writer.write_str_value("notification_channel_url", self.notification_channel_url)
     
 

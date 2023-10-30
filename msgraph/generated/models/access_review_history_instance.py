@@ -52,12 +52,12 @@ class AccessReviewHistoryInstance(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "downloadUri": lambda n : setattr(self, 'download_uri', n.get_str_value()),
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "fulfilledDateTime": lambda n : setattr(self, 'fulfilled_date_time', n.get_datetime_value()),
-            "reviewHistoryPeriodEndDateTime": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
-            "reviewHistoryPeriodStartDateTime": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
-            "runDateTime": lambda n : setattr(self, 'run_date_time', n.get_datetime_value()),
+            "download_uri": lambda n : setattr(self, 'download_uri', n.get_str_value()),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "fulfilled_date_time": lambda n : setattr(self, 'fulfilled_date_time', n.get_datetime_value()),
+            "review_history_period_end_date_time": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
+            "review_history_period_start_date_time": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
+            "run_date_time": lambda n : setattr(self, 'run_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(AccessReviewHistoryStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -73,12 +73,12 @@ class AccessReviewHistoryInstance(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("downloadUri", self.download_uri)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
-        writer.write_datetime_value("fulfilledDateTime", self.fulfilled_date_time)
-        writer.write_datetime_value("reviewHistoryPeriodEndDateTime", self.review_history_period_end_date_time)
-        writer.write_datetime_value("reviewHistoryPeriodStartDateTime", self.review_history_period_start_date_time)
-        writer.write_datetime_value("runDateTime", self.run_date_time)
+        writer.write_str_value("download_uri", self.download_uri)
+        writer.write_datetime_value("expiration_date_time", self.expiration_date_time)
+        writer.write_datetime_value("fulfilled_date_time", self.fulfilled_date_time)
+        writer.write_datetime_value("review_history_period_end_date_time", self.review_history_period_end_date_time)
+        writer.write_datetime_value("review_history_period_start_date_time", self.review_history_period_start_date_time)
+        writer.write_datetime_value("run_date_time", self.run_date_time)
         writer.write_enum_value("status", self.status)
     
 

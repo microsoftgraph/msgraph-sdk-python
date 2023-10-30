@@ -45,12 +45,12 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowStaffSelection": lambda n : setattr(self, 'allow_staff_selection', n.get_bool_value()),
-            "maximumAdvance": lambda n : setattr(self, 'maximum_advance', n.get_timedelta_value()),
-            "minimumLeadTime": lambda n : setattr(self, 'minimum_lead_time', n.get_timedelta_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sendConfirmationsToOwner": lambda n : setattr(self, 'send_confirmations_to_owner', n.get_bool_value()),
-            "timeSlotInterval": lambda n : setattr(self, 'time_slot_interval', n.get_timedelta_value()),
+            "allow_staff_selection": lambda n : setattr(self, 'allow_staff_selection', n.get_bool_value()),
+            "maximum_advance": lambda n : setattr(self, 'maximum_advance', n.get_timedelta_value()),
+            "minimum_lead_time": lambda n : setattr(self, 'minimum_lead_time', n.get_timedelta_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "send_confirmations_to_owner": lambda n : setattr(self, 'send_confirmations_to_owner', n.get_bool_value()),
+            "time_slot_interval": lambda n : setattr(self, 'time_slot_interval', n.get_timedelta_value()),
         }
         return fields
     
@@ -62,12 +62,12 @@ class BookingSchedulingPolicy(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("allowStaffSelection", self.allow_staff_selection)
-        writer.write_timedelta_value("maximumAdvance", self.maximum_advance)
-        writer.write_timedelta_value("minimumLeadTime", self.minimum_lead_time)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_bool_value("sendConfirmationsToOwner", self.send_confirmations_to_owner)
-        writer.write_timedelta_value("timeSlotInterval", self.time_slot_interval)
+        writer.write_bool_value("allow_staff_selection", self.allow_staff_selection)
+        writer.write_timedelta_value("maximum_advance", self.maximum_advance)
+        writer.write_timedelta_value("minimum_lead_time", self.minimum_lead_time)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_bool_value("send_confirmations_to_owner", self.send_confirmations_to_owner)
+        writer.write_timedelta_value("time_slot_interval", self.time_slot_interval)
         writer.write_additional_data_value(self.additional_data)
     
 

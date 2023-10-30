@@ -43,8 +43,8 @@ class ContainerImageEvidence(AlertEvidence):
         from .container_registry_evidence import ContainerRegistryEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "digestImage": lambda n : setattr(self, 'digest_image', n.get_object_value(ContainerImageEvidence)),
-            "imageId": lambda n : setattr(self, 'image_id', n.get_str_value()),
+            "digest_image": lambda n : setattr(self, 'digest_image', n.get_object_value(ContainerImageEvidence)),
+            "image_id": lambda n : setattr(self, 'image_id', n.get_str_value()),
             "registry": lambda n : setattr(self, 'registry', n.get_object_value(ContainerRegistryEvidence)),
         }
         super_fields = super().get_field_deserializers()
@@ -60,8 +60,8 @@ class ContainerImageEvidence(AlertEvidence):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("digestImage", self.digest_image)
-        writer.write_str_value("imageId", self.image_id)
+        writer.write_object_value("digest_image", self.digest_image)
+        writer.write_str_value("image_id", self.image_id)
         writer.write_object_value("registry", self.registry)
     
 

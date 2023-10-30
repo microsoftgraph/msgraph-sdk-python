@@ -74,19 +74,19 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
         from .recipient_scope_type import RecipientScopeType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "automaticReplies": lambda n : setattr(self, 'automatic_replies', n.get_object_value(AutomaticRepliesMailTips)),
-            "customMailTip": lambda n : setattr(self, 'custom_mail_tip', n.get_str_value()),
-            "deliveryRestricted": lambda n : setattr(self, 'delivery_restricted', n.get_bool_value()),
-            "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(EmailAddress)),
+            "automatic_replies": lambda n : setattr(self, 'automatic_replies', n.get_object_value(AutomaticRepliesMailTips)),
+            "custom_mail_tip": lambda n : setattr(self, 'custom_mail_tip', n.get_str_value()),
+            "delivery_restricted": lambda n : setattr(self, 'delivery_restricted', n.get_bool_value()),
+            "email_address": lambda n : setattr(self, 'email_address', n.get_object_value(EmailAddress)),
             "error": lambda n : setattr(self, 'error', n.get_object_value(MailTipsError)),
-            "externalMemberCount": lambda n : setattr(self, 'external_member_count', n.get_int_value()),
-            "isModerated": lambda n : setattr(self, 'is_moderated', n.get_bool_value()),
-            "mailboxFull": lambda n : setattr(self, 'mailbox_full', n.get_bool_value()),
-            "maxMessageSize": lambda n : setattr(self, 'max_message_size', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recipientScope": lambda n : setattr(self, 'recipient_scope', n.get_collection_of_enum_values(RecipientScopeType)),
-            "recipientSuggestions": lambda n : setattr(self, 'recipient_suggestions', n.get_collection_of_object_values(Recipient)),
-            "totalMemberCount": lambda n : setattr(self, 'total_member_count', n.get_int_value()),
+            "external_member_count": lambda n : setattr(self, 'external_member_count', n.get_int_value()),
+            "is_moderated": lambda n : setattr(self, 'is_moderated', n.get_bool_value()),
+            "mailbox_full": lambda n : setattr(self, 'mailbox_full', n.get_bool_value()),
+            "max_message_size": lambda n : setattr(self, 'max_message_size', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "recipient_scope": lambda n : setattr(self, 'recipient_scope', n.get_collection_of_enum_values(RecipientScopeType)),
+            "recipient_suggestions": lambda n : setattr(self, 'recipient_suggestions', n.get_collection_of_object_values(Recipient)),
+            "total_member_count": lambda n : setattr(self, 'total_member_count', n.get_int_value()),
         }
         return fields
     
@@ -98,19 +98,19 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("automaticReplies", self.automatic_replies)
-        writer.write_str_value("customMailTip", self.custom_mail_tip)
-        writer.write_bool_value("deliveryRestricted", self.delivery_restricted)
-        writer.write_object_value("emailAddress", self.email_address)
+        writer.write_object_value("automatic_replies", self.automatic_replies)
+        writer.write_str_value("custom_mail_tip", self.custom_mail_tip)
+        writer.write_bool_value("delivery_restricted", self.delivery_restricted)
+        writer.write_object_value("email_address", self.email_address)
         writer.write_object_value("error", self.error)
-        writer.write_int_value("externalMemberCount", self.external_member_count)
-        writer.write_bool_value("isModerated", self.is_moderated)
-        writer.write_bool_value("mailboxFull", self.mailbox_full)
-        writer.write_int_value("maxMessageSize", self.max_message_size)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_enum_value("recipientScope", self.recipient_scope)
-        writer.write_collection_of_object_values("recipientSuggestions", self.recipient_suggestions)
-        writer.write_int_value("totalMemberCount", self.total_member_count)
+        writer.write_int_value("external_member_count", self.external_member_count)
+        writer.write_bool_value("is_moderated", self.is_moderated)
+        writer.write_bool_value("mailbox_full", self.mailbox_full)
+        writer.write_int_value("max_message_size", self.max_message_size)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_enum_value("recipient_scope", self.recipient_scope)
+        writer.write_collection_of_object_values("recipient_suggestions", self.recipient_suggestions)
+        writer.write_int_value("total_member_count", self.total_member_count)
         writer.write_additional_data_value(self.additional_data)
     
 

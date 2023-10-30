@@ -36,7 +36,7 @@ class TaskFileAttachment(AttachmentBase):
         from .attachment_base import AttachmentBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "contentBytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
+            "content_bytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class TaskFileAttachment(AttachmentBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bytes_value("contentBytes", self.content_bytes)
+        writer.write_bytes_value("content_bytes", self.content_bytes)
     
 

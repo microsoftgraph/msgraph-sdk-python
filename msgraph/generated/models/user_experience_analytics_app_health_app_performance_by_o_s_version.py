@@ -55,15 +55,15 @@ class UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activeDeviceCount": lambda n : setattr(self, 'active_device_count', n.get_int_value()),
-            "appCrashCount": lambda n : setattr(self, 'app_crash_count', n.get_int_value()),
-            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "appName": lambda n : setattr(self, 'app_name', n.get_str_value()),
-            "appPublisher": lambda n : setattr(self, 'app_publisher', n.get_str_value()),
-            "appUsageDuration": lambda n : setattr(self, 'app_usage_duration', n.get_int_value()),
-            "meanTimeToFailureInMinutes": lambda n : setattr(self, 'mean_time_to_failure_in_minutes', n.get_int_value()),
-            "osBuildNumber": lambda n : setattr(self, 'os_build_number', n.get_str_value()),
-            "osVersion": lambda n : setattr(self, 'os_version', n.get_str_value()),
+            "active_device_count": lambda n : setattr(self, 'active_device_count', n.get_int_value()),
+            "app_crash_count": lambda n : setattr(self, 'app_crash_count', n.get_int_value()),
+            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "app_name": lambda n : setattr(self, 'app_name', n.get_str_value()),
+            "app_publisher": lambda n : setattr(self, 'app_publisher', n.get_str_value()),
+            "app_usage_duration": lambda n : setattr(self, 'app_usage_duration', n.get_int_value()),
+            "mean_time_to_failure_in_minutes": lambda n : setattr(self, 'mean_time_to_failure_in_minutes', n.get_int_value()),
+            "os_build_number": lambda n : setattr(self, 'os_build_number', n.get_str_value()),
+            "os_version": lambda n : setattr(self, 'os_version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,14 +78,14 @@ class UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("activeDeviceCount", self.active_device_count)
-        writer.write_int_value("appCrashCount", self.app_crash_count)
-        writer.write_str_value("appDisplayName", self.app_display_name)
-        writer.write_str_value("appName", self.app_name)
-        writer.write_str_value("appPublisher", self.app_publisher)
-        writer.write_int_value("appUsageDuration", self.app_usage_duration)
-        writer.write_int_value("meanTimeToFailureInMinutes", self.mean_time_to_failure_in_minutes)
-        writer.write_str_value("osBuildNumber", self.os_build_number)
-        writer.write_str_value("osVersion", self.os_version)
+        writer.write_int_value("active_device_count", self.active_device_count)
+        writer.write_int_value("app_crash_count", self.app_crash_count)
+        writer.write_str_value("app_display_name", self.app_display_name)
+        writer.write_str_value("app_name", self.app_name)
+        writer.write_str_value("app_publisher", self.app_publisher)
+        writer.write_int_value("app_usage_duration", self.app_usage_duration)
+        writer.write_int_value("mean_time_to_failure_in_minutes", self.mean_time_to_failure_in_minutes)
+        writer.write_str_value("os_build_number", self.os_build_number)
+        writer.write_str_value("os_version", self.os_version)
     
 

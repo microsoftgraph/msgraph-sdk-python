@@ -58,9 +58,9 @@ class TargetedManagedAppConfiguration(ManagedAppConfiguration):
         fields: Dict[str, Callable[[Any], None]] = {
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(ManagedMobileApp)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(TargetedManagedAppPolicyAssignment)),
-            "deployedAppCount": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
-            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(ManagedAppPolicyDeploymentSummary)),
-            "isAssigned": lambda n : setattr(self, 'is_assigned', n.get_bool_value()),
+            "deployed_app_count": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
+            "deployment_summary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(ManagedAppPolicyDeploymentSummary)),
+            "is_assigned": lambda n : setattr(self, 'is_assigned', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -77,8 +77,8 @@ class TargetedManagedAppConfiguration(ManagedAppConfiguration):
         super().serialize(writer)
         writer.write_collection_of_object_values("apps", self.apps)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_int_value("deployedAppCount", self.deployed_app_count)
-        writer.write_object_value("deploymentSummary", self.deployment_summary)
-        writer.write_bool_value("isAssigned", self.is_assigned)
+        writer.write_int_value("deployed_app_count", self.deployed_app_count)
+        writer.write_object_value("deployment_summary", self.deployment_summary)
+        writer.write_bool_value("is_assigned", self.is_assigned)
     
 

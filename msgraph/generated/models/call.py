@@ -139,29 +139,29 @@ class Call(Entity):
         from .tone_info import ToneInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "audioRoutingGroups": lambda n : setattr(self, 'audio_routing_groups', n.get_collection_of_object_values(AudioRoutingGroup)),
-            "callChainId": lambda n : setattr(self, 'call_chain_id', n.get_str_value()),
-            "callOptions": lambda n : setattr(self, 'call_options', n.get_object_value(CallOptions)),
-            "callRoutes": lambda n : setattr(self, 'call_routes', n.get_collection_of_object_values(CallRoute)),
-            "callbackUri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
-            "chatInfo": lambda n : setattr(self, 'chat_info', n.get_object_value(ChatInfo)),
-            "contentSharingSessions": lambda n : setattr(self, 'content_sharing_sessions', n.get_collection_of_object_values(ContentSharingSession)),
+            "audio_routing_groups": lambda n : setattr(self, 'audio_routing_groups', n.get_collection_of_object_values(AudioRoutingGroup)),
+            "call_chain_id": lambda n : setattr(self, 'call_chain_id', n.get_str_value()),
+            "call_options": lambda n : setattr(self, 'call_options', n.get_object_value(CallOptions)),
+            "call_routes": lambda n : setattr(self, 'call_routes', n.get_collection_of_object_values(CallRoute)),
+            "callback_uri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
+            "chat_info": lambda n : setattr(self, 'chat_info', n.get_object_value(ChatInfo)),
+            "content_sharing_sessions": lambda n : setattr(self, 'content_sharing_sessions', n.get_collection_of_object_values(ContentSharingSession)),
             "direction": lambda n : setattr(self, 'direction', n.get_enum_value(CallDirection)),
-            "incomingContext": lambda n : setattr(self, 'incoming_context', n.get_object_value(IncomingContext)),
-            "mediaConfig": lambda n : setattr(self, 'media_config', n.get_object_value(MediaConfig)),
-            "mediaState": lambda n : setattr(self, 'media_state', n.get_object_value(CallMediaState)),
-            "meetingInfo": lambda n : setattr(self, 'meeting_info', n.get_object_value(MeetingInfo)),
-            "myParticipantId": lambda n : setattr(self, 'my_participant_id', n.get_str_value()),
+            "incoming_context": lambda n : setattr(self, 'incoming_context', n.get_object_value(IncomingContext)),
+            "media_config": lambda n : setattr(self, 'media_config', n.get_object_value(MediaConfig)),
+            "media_state": lambda n : setattr(self, 'media_state', n.get_object_value(CallMediaState)),
+            "meeting_info": lambda n : setattr(self, 'meeting_info', n.get_object_value(MeetingInfo)),
+            "my_participant_id": lambda n : setattr(self, 'my_participant_id', n.get_str_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(CommsOperation)),
             "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(Participant)),
-            "requestedModalities": lambda n : setattr(self, 'requested_modalities', n.get_collection_of_enum_values(Modality)),
-            "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(ResultInfo)),
+            "requested_modalities": lambda n : setattr(self, 'requested_modalities', n.get_collection_of_enum_values(Modality)),
+            "result_info": lambda n : setattr(self, 'result_info', n.get_object_value(ResultInfo)),
             "source": lambda n : setattr(self, 'source', n.get_object_value(ParticipantInfo)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(CallState)),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
             "targets": lambda n : setattr(self, 'targets', n.get_collection_of_object_values(InvitationParticipantInfo)),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "toneInfo": lambda n : setattr(self, 'tone_info', n.get_object_value(ToneInfo)),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tone_info": lambda n : setattr(self, 'tone_info', n.get_object_value(ToneInfo)),
             "transcription": lambda n : setattr(self, 'transcription', n.get_object_value(CallTranscriptionInfo)),
         }
         super_fields = super().get_field_deserializers()
@@ -177,29 +177,29 @@ class Call(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("audioRoutingGroups", self.audio_routing_groups)
-        writer.write_str_value("callChainId", self.call_chain_id)
-        writer.write_object_value("callOptions", self.call_options)
-        writer.write_collection_of_object_values("callRoutes", self.call_routes)
-        writer.write_str_value("callbackUri", self.callback_uri)
-        writer.write_object_value("chatInfo", self.chat_info)
-        writer.write_collection_of_object_values("contentSharingSessions", self.content_sharing_sessions)
+        writer.write_collection_of_object_values("audio_routing_groups", self.audio_routing_groups)
+        writer.write_str_value("call_chain_id", self.call_chain_id)
+        writer.write_object_value("call_options", self.call_options)
+        writer.write_collection_of_object_values("call_routes", self.call_routes)
+        writer.write_str_value("callback_uri", self.callback_uri)
+        writer.write_object_value("chat_info", self.chat_info)
+        writer.write_collection_of_object_values("content_sharing_sessions", self.content_sharing_sessions)
         writer.write_enum_value("direction", self.direction)
-        writer.write_object_value("incomingContext", self.incoming_context)
-        writer.write_object_value("mediaConfig", self.media_config)
-        writer.write_object_value("mediaState", self.media_state)
-        writer.write_object_value("meetingInfo", self.meeting_info)
-        writer.write_str_value("myParticipantId", self.my_participant_id)
+        writer.write_object_value("incoming_context", self.incoming_context)
+        writer.write_object_value("media_config", self.media_config)
+        writer.write_object_value("media_state", self.media_state)
+        writer.write_object_value("meeting_info", self.meeting_info)
+        writer.write_str_value("my_participant_id", self.my_participant_id)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_collection_of_object_values("participants", self.participants)
-        writer.write_collection_of_enum_values("requestedModalities", self.requested_modalities)
-        writer.write_object_value("resultInfo", self.result_info)
+        writer.write_collection_of_enum_values("requested_modalities", self.requested_modalities)
+        writer.write_object_value("result_info", self.result_info)
         writer.write_object_value("source", self.source)
         writer.write_enum_value("state", self.state)
         writer.write_str_value("subject", self.subject)
         writer.write_collection_of_object_values("targets", self.targets)
-        writer.write_str_value("tenantId", self.tenant_id)
-        writer.write_object_value("toneInfo", self.tone_info)
+        writer.write_str_value("tenant_id", self.tenant_id)
+        writer.write_object_value("tone_info", self.tone_info)
         writer.write_object_value("transcription", self.transcription)
     
 

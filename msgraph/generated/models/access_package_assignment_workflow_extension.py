@@ -48,11 +48,11 @@ class AccessPackageAssignmentWorkflowExtension(CustomCalloutExtension):
         from .custom_extension_callback_configuration import CustomExtensionCallbackConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callbackConfiguration": lambda n : setattr(self, 'callback_configuration', n.get_object_value(CustomExtensionCallbackConfiguration)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_str_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_str_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "callback_configuration": lambda n : setattr(self, 'callback_configuration', n.get_object_value(CustomExtensionCallbackConfiguration)),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_str_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,10 +67,10 @@ class AccessPackageAssignmentWorkflowExtension(CustomCalloutExtension):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("callbackConfiguration", self.callback_configuration)
-        writer.write_str_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_str_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_object_value("callback_configuration", self.callback_configuration)
+        writer.write_str_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_str_value("last_modified_by", self.last_modified_by)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
     
 

@@ -44,9 +44,9 @@ class ThreatAssessmentResult(Entity):
         from .threat_assessment_result_type import ThreatAssessmentResultType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
-            "resultType": lambda n : setattr(self, 'result_type', n.get_enum_value(ThreatAssessmentResultType)),
+            "result_type": lambda n : setattr(self, 'result_type', n.get_enum_value(ThreatAssessmentResultType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,8 +61,8 @@ class ThreatAssessmentResult(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("message", self.message)
-        writer.write_enum_value("resultType", self.result_type)
+        writer.write_enum_value("result_type", self.result_type)
     
 

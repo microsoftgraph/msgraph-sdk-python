@@ -48,7 +48,7 @@ class UserExperienceAnalyticsCategory(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "insights": lambda n : setattr(self, 'insights', n.get_collection_of_object_values(UserExperienceAnalyticsInsight)),
-            "metricValues": lambda n : setattr(self, 'metric_values', n.get_collection_of_object_values(UserExperienceAnalyticsMetric)),
+            "metric_values": lambda n : setattr(self, 'metric_values', n.get_collection_of_object_values(UserExperienceAnalyticsMetric)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -64,6 +64,6 @@ class UserExperienceAnalyticsCategory(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("insights", self.insights)
-        writer.write_collection_of_object_values("metricValues", self.metric_values)
+        writer.write_collection_of_object_values("metric_values", self.metric_values)
     
 

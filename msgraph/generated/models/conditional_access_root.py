@@ -59,9 +59,9 @@ class ConditionalAccessRoot(Entity):
         from .named_location import NamedLocation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationContextClassReferences": lambda n : setattr(self, 'authentication_context_class_references', n.get_collection_of_object_values(AuthenticationContextClassReference)),
-            "authenticationStrength": lambda n : setattr(self, 'authentication_strength', n.get_object_value(AuthenticationStrengthRoot)),
-            "namedLocations": lambda n : setattr(self, 'named_locations', n.get_collection_of_object_values(NamedLocation)),
+            "authentication_context_class_references": lambda n : setattr(self, 'authentication_context_class_references', n.get_collection_of_object_values(AuthenticationContextClassReference)),
+            "authentication_strength": lambda n : setattr(self, 'authentication_strength', n.get_object_value(AuthenticationStrengthRoot)),
+            "named_locations": lambda n : setattr(self, 'named_locations', n.get_collection_of_object_values(NamedLocation)),
             "policies": lambda n : setattr(self, 'policies', n.get_collection_of_object_values(ConditionalAccessPolicy)),
             "templates": lambda n : setattr(self, 'templates', n.get_collection_of_object_values(ConditionalAccessTemplate)),
         }
@@ -78,9 +78,9 @@ class ConditionalAccessRoot(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("authenticationContextClassReferences", self.authentication_context_class_references)
-        writer.write_object_value("authenticationStrength", self.authentication_strength)
-        writer.write_collection_of_object_values("namedLocations", self.named_locations)
+        writer.write_collection_of_object_values("authentication_context_class_references", self.authentication_context_class_references)
+        writer.write_object_value("authentication_strength", self.authentication_strength)
+        writer.write_collection_of_object_values("named_locations", self.named_locations)
         writer.write_collection_of_object_values("policies", self.policies)
         writer.write_collection_of_object_values("templates", self.templates)
     

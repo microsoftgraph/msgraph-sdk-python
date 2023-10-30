@@ -64,21 +64,21 @@ class SoftwareUpdateStatusSummary(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "compliantDeviceCount": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
-            "compliantUserCount": lambda n : setattr(self, 'compliant_user_count', n.get_int_value()),
-            "conflictDeviceCount": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
-            "conflictUserCount": lambda n : setattr(self, 'conflict_user_count', n.get_int_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "errorDeviceCount": lambda n : setattr(self, 'error_device_count', n.get_int_value()),
-            "errorUserCount": lambda n : setattr(self, 'error_user_count', n.get_int_value()),
-            "nonCompliantDeviceCount": lambda n : setattr(self, 'non_compliant_device_count', n.get_int_value()),
-            "nonCompliantUserCount": lambda n : setattr(self, 'non_compliant_user_count', n.get_int_value()),
-            "notApplicableDeviceCount": lambda n : setattr(self, 'not_applicable_device_count', n.get_int_value()),
-            "notApplicableUserCount": lambda n : setattr(self, 'not_applicable_user_count', n.get_int_value()),
-            "remediatedDeviceCount": lambda n : setattr(self, 'remediated_device_count', n.get_int_value()),
-            "remediatedUserCount": lambda n : setattr(self, 'remediated_user_count', n.get_int_value()),
-            "unknownDeviceCount": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
-            "unknownUserCount": lambda n : setattr(self, 'unknown_user_count', n.get_int_value()),
+            "compliant_device_count": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
+            "compliant_user_count": lambda n : setattr(self, 'compliant_user_count', n.get_int_value()),
+            "conflict_device_count": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
+            "conflict_user_count": lambda n : setattr(self, 'conflict_user_count', n.get_int_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "error_device_count": lambda n : setattr(self, 'error_device_count', n.get_int_value()),
+            "error_user_count": lambda n : setattr(self, 'error_user_count', n.get_int_value()),
+            "non_compliant_device_count": lambda n : setattr(self, 'non_compliant_device_count', n.get_int_value()),
+            "non_compliant_user_count": lambda n : setattr(self, 'non_compliant_user_count', n.get_int_value()),
+            "not_applicable_device_count": lambda n : setattr(self, 'not_applicable_device_count', n.get_int_value()),
+            "not_applicable_user_count": lambda n : setattr(self, 'not_applicable_user_count', n.get_int_value()),
+            "remediated_device_count": lambda n : setattr(self, 'remediated_device_count', n.get_int_value()),
+            "remediated_user_count": lambda n : setattr(self, 'remediated_user_count', n.get_int_value()),
+            "unknown_device_count": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
+            "unknown_user_count": lambda n : setattr(self, 'unknown_user_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -93,20 +93,20 @@ class SoftwareUpdateStatusSummary(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("compliantDeviceCount", self.compliant_device_count)
-        writer.write_int_value("compliantUserCount", self.compliant_user_count)
-        writer.write_int_value("conflictDeviceCount", self.conflict_device_count)
-        writer.write_int_value("conflictUserCount", self.conflict_user_count)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_int_value("errorDeviceCount", self.error_device_count)
-        writer.write_int_value("errorUserCount", self.error_user_count)
-        writer.write_int_value("nonCompliantDeviceCount", self.non_compliant_device_count)
-        writer.write_int_value("nonCompliantUserCount", self.non_compliant_user_count)
-        writer.write_int_value("notApplicableDeviceCount", self.not_applicable_device_count)
-        writer.write_int_value("notApplicableUserCount", self.not_applicable_user_count)
-        writer.write_int_value("remediatedDeviceCount", self.remediated_device_count)
-        writer.write_int_value("remediatedUserCount", self.remediated_user_count)
-        writer.write_int_value("unknownDeviceCount", self.unknown_device_count)
-        writer.write_int_value("unknownUserCount", self.unknown_user_count)
+        writer.write_int_value("compliant_device_count", self.compliant_device_count)
+        writer.write_int_value("compliant_user_count", self.compliant_user_count)
+        writer.write_int_value("conflict_device_count", self.conflict_device_count)
+        writer.write_int_value("conflict_user_count", self.conflict_user_count)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_int_value("error_device_count", self.error_device_count)
+        writer.write_int_value("error_user_count", self.error_user_count)
+        writer.write_int_value("non_compliant_device_count", self.non_compliant_device_count)
+        writer.write_int_value("non_compliant_user_count", self.non_compliant_user_count)
+        writer.write_int_value("not_applicable_device_count", self.not_applicable_device_count)
+        writer.write_int_value("not_applicable_user_count", self.not_applicable_user_count)
+        writer.write_int_value("remediated_device_count", self.remediated_device_count)
+        writer.write_int_value("remediated_user_count", self.remediated_user_count)
+        writer.write_int_value("unknown_device_count", self.unknown_device_count)
+        writer.write_int_value("unknown_user_count", self.unknown_user_count)
     
 

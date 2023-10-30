@@ -40,8 +40,8 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ....models.mail_tips_type import MailTipsType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "EmailAddresses": lambda n : setattr(self, 'email_addresses', n.get_collection_of_primitive_values(str)),
-            "MailTipsOptions": lambda n : setattr(self, 'mail_tips_options', n.get_collection_of_enum_values(MailTipsType)),
+            "email_addresses": lambda n : setattr(self, 'email_addresses', n.get_collection_of_primitive_values(str)),
+            "mail_tips_options": lambda n : setattr(self, 'mail_tips_options', n.get_collection_of_enum_values(MailTipsType)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("EmailAddresses", self.email_addresses)
-        writer.write_enum_value("MailTipsOptions", self.mail_tips_options)
+        writer.write_collection_of_primitive_values("email_addresses", self.email_addresses)
+        writer.write_enum_value("mail_tips_options", self.mail_tips_options)
         writer.write_additional_data_value(self.additional_data)
     
 

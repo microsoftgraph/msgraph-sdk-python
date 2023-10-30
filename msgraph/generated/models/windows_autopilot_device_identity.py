@@ -73,22 +73,22 @@ class WindowsAutopilotDeviceIdentity(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "addressableUserName": lambda n : setattr(self, 'addressable_user_name', n.get_str_value()),
-            "azureActiveDirectoryDeviceId": lambda n : setattr(self, 'azure_active_directory_device_id', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "enrollmentState": lambda n : setattr(self, 'enrollment_state', n.get_enum_value(EnrollmentState)),
-            "groupTag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
-            "lastContactedDateTime": lambda n : setattr(self, 'last_contacted_date_time', n.get_datetime_value()),
-            "managedDeviceId": lambda n : setattr(self, 'managed_device_id', n.get_str_value()),
+            "addressable_user_name": lambda n : setattr(self, 'addressable_user_name', n.get_str_value()),
+            "azure_active_directory_device_id": lambda n : setattr(self, 'azure_active_directory_device_id', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "enrollment_state": lambda n : setattr(self, 'enrollment_state', n.get_enum_value(EnrollmentState)),
+            "group_tag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
+            "last_contacted_date_time": lambda n : setattr(self, 'last_contacted_date_time', n.get_datetime_value()),
+            "managed_device_id": lambda n : setattr(self, 'managed_device_id', n.get_str_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "productKey": lambda n : setattr(self, 'product_key', n.get_str_value()),
-            "purchaseOrderIdentifier": lambda n : setattr(self, 'purchase_order_identifier', n.get_str_value()),
-            "resourceName": lambda n : setattr(self, 'resource_name', n.get_str_value()),
-            "serialNumber": lambda n : setattr(self, 'serial_number', n.get_str_value()),
-            "skuNumber": lambda n : setattr(self, 'sku_number', n.get_str_value()),
-            "systemFamily": lambda n : setattr(self, 'system_family', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "product_key": lambda n : setattr(self, 'product_key', n.get_str_value()),
+            "purchase_order_identifier": lambda n : setattr(self, 'purchase_order_identifier', n.get_str_value()),
+            "resource_name": lambda n : setattr(self, 'resource_name', n.get_str_value()),
+            "serial_number": lambda n : setattr(self, 'serial_number', n.get_str_value()),
+            "sku_number": lambda n : setattr(self, 'sku_number', n.get_str_value()),
+            "system_family": lambda n : setattr(self, 'system_family', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -103,21 +103,21 @@ class WindowsAutopilotDeviceIdentity(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("addressableUserName", self.addressable_user_name)
-        writer.write_str_value("azureActiveDirectoryDeviceId", self.azure_active_directory_device_id)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_enum_value("enrollmentState", self.enrollment_state)
-        writer.write_str_value("groupTag", self.group_tag)
-        writer.write_datetime_value("lastContactedDateTime", self.last_contacted_date_time)
-        writer.write_str_value("managedDeviceId", self.managed_device_id)
+        writer.write_str_value("addressable_user_name", self.addressable_user_name)
+        writer.write_str_value("azure_active_directory_device_id", self.azure_active_directory_device_id)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_enum_value("enrollment_state", self.enrollment_state)
+        writer.write_str_value("group_tag", self.group_tag)
+        writer.write_datetime_value("last_contacted_date_time", self.last_contacted_date_time)
+        writer.write_str_value("managed_device_id", self.managed_device_id)
         writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("model", self.model)
-        writer.write_str_value("productKey", self.product_key)
-        writer.write_str_value("purchaseOrderIdentifier", self.purchase_order_identifier)
-        writer.write_str_value("resourceName", self.resource_name)
-        writer.write_str_value("serialNumber", self.serial_number)
-        writer.write_str_value("skuNumber", self.sku_number)
-        writer.write_str_value("systemFamily", self.system_family)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_str_value("product_key", self.product_key)
+        writer.write_str_value("purchase_order_identifier", self.purchase_order_identifier)
+        writer.write_str_value("resource_name", self.resource_name)
+        writer.write_str_value("serial_number", self.serial_number)
+        writer.write_str_value("sku_number", self.sku_number)
+        writer.write_str_value("system_family", self.system_family)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
     
 

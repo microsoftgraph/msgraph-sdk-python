@@ -46,7 +46,7 @@ class DomainDnsSrvRecord(DomainDnsRecord):
         from .domain_dns_record import DomainDnsRecord
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "nameTarget": lambda n : setattr(self, 'name_target', n.get_str_value()),
+            "name_target": lambda n : setattr(self, 'name_target', n.get_str_value()),
             "port": lambda n : setattr(self, 'port', n.get_int_value()),
             "priority": lambda n : setattr(self, 'priority', n.get_int_value()),
             "protocol": lambda n : setattr(self, 'protocol', n.get_str_value()),
@@ -66,7 +66,7 @@ class DomainDnsSrvRecord(DomainDnsRecord):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("nameTarget", self.name_target)
+        writer.write_str_value("name_target", self.name_target)
         writer.write_int_value("port", self.port)
         writer.write_int_value("priority", self.priority)
         writer.write_str_value("protocol", self.protocol)

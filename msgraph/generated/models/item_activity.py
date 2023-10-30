@@ -53,9 +53,9 @@ class ItemActivity(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "access": lambda n : setattr(self, 'access', n.get_object_value(AccessAction)),
-            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "actor": lambda n : setattr(self, 'actor', n.get_object_value(IdentitySet)),
-            "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(DriveItem)),
+            "drive_item": lambda n : setattr(self, 'drive_item', n.get_object_value(DriveItem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -71,8 +71,8 @@ class ItemActivity(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("access", self.access)
-        writer.write_datetime_value("activityDateTime", self.activity_date_time)
+        writer.write_datetime_value("activity_date_time", self.activity_date_time)
         writer.write_object_value("actor", self.actor)
-        writer.write_object_value("driveItem", self.drive_item)
+        writer.write_object_value("drive_item", self.drive_item)
     
 

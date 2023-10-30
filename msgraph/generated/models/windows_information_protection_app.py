@@ -68,10 +68,10 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, BackedModel, Parsabl
         fields: Dict[str, Callable[[Any], None]] = {
             "denied": lambda n : setattr(self, 'denied', n.get_bool_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "productName": lambda n : setattr(self, 'product_name', n.get_str_value()),
-            "publisherName": lambda n : setattr(self, 'publisher_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "product_name": lambda n : setattr(self, 'product_name', n.get_str_value()),
+            "publisher_name": lambda n : setattr(self, 'publisher_name', n.get_str_value()),
         }
         return fields
     
@@ -85,10 +85,10 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, BackedModel, Parsabl
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("denied", self.denied)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("productName", self.product_name)
-        writer.write_str_value("publisherName", self.publisher_name)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("product_name", self.product_name)
+        writer.write_str_value("publisher_name", self.publisher_name)
         writer.write_additional_data_value(self.additional_data)
     
 

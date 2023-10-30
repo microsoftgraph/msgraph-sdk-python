@@ -40,8 +40,8 @@ class SetPresencePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),
             "availability": lambda n : setattr(self, 'availability', n.get_str_value()),
-            "expirationDuration": lambda n : setattr(self, 'expiration_duration', n.get_timedelta_value()),
-            "sessionId": lambda n : setattr(self, 'session_id', n.get_str_value()),
+            "expiration_duration": lambda n : setattr(self, 'expiration_duration', n.get_timedelta_value()),
+            "session_id": lambda n : setattr(self, 'session_id', n.get_str_value()),
         }
         return fields
     
@@ -55,8 +55,8 @@ class SetPresencePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("activity", self.activity)
         writer.write_str_value("availability", self.availability)
-        writer.write_timedelta_value("expirationDuration", self.expiration_duration)
-        writer.write_str_value("sessionId", self.session_id)
+        writer.write_timedelta_value("expiration_duration", self.expiration_duration)
+        writer.write_str_value("session_id", self.session_id)
         writer.write_additional_data_value(self.additional_data)
     
 

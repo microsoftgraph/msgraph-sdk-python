@@ -57,13 +57,13 @@ class WindowsAppX(MobileLobApp):
         from .windows_minimum_operating_system import WindowsMinimumOperatingSystem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_collection_of_enum_values(WindowsArchitecture)),
-            "identityName": lambda n : setattr(self, 'identity_name', n.get_str_value()),
-            "identityPublisherHash": lambda n : setattr(self, 'identity_publisher_hash', n.get_str_value()),
-            "identityResourceIdentifier": lambda n : setattr(self, 'identity_resource_identifier', n.get_str_value()),
-            "identityVersion": lambda n : setattr(self, 'identity_version', n.get_str_value()),
-            "isBundle": lambda n : setattr(self, 'is_bundle', n.get_bool_value()),
-            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(WindowsMinimumOperatingSystem)),
+            "applicable_architectures": lambda n : setattr(self, 'applicable_architectures', n.get_collection_of_enum_values(WindowsArchitecture)),
+            "identity_name": lambda n : setattr(self, 'identity_name', n.get_str_value()),
+            "identity_publisher_hash": lambda n : setattr(self, 'identity_publisher_hash', n.get_str_value()),
+            "identity_resource_identifier": lambda n : setattr(self, 'identity_resource_identifier', n.get_str_value()),
+            "identity_version": lambda n : setattr(self, 'identity_version', n.get_str_value()),
+            "is_bundle": lambda n : setattr(self, 'is_bundle', n.get_bool_value()),
+            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(WindowsMinimumOperatingSystem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,12 +78,12 @@ class WindowsAppX(MobileLobApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("applicableArchitectures", self.applicable_architectures)
-        writer.write_str_value("identityName", self.identity_name)
-        writer.write_str_value("identityPublisherHash", self.identity_publisher_hash)
-        writer.write_str_value("identityResourceIdentifier", self.identity_resource_identifier)
-        writer.write_str_value("identityVersion", self.identity_version)
-        writer.write_bool_value("isBundle", self.is_bundle)
-        writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
+        writer.write_enum_value("applicable_architectures", self.applicable_architectures)
+        writer.write_str_value("identity_name", self.identity_name)
+        writer.write_str_value("identity_publisher_hash", self.identity_publisher_hash)
+        writer.write_str_value("identity_resource_identifier", self.identity_resource_identifier)
+        writer.write_str_value("identity_version", self.identity_version)
+        writer.write_bool_value("is_bundle", self.is_bundle)
+        writer.write_object_value("minimum_supported_operating_system", self.minimum_supported_operating_system)
     
 

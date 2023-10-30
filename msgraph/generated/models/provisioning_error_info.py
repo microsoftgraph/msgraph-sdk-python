@@ -48,12 +48,12 @@ class ProvisioningErrorInfo(AdditionalDataHolder, BackedModel, Parsable):
         from .provisioning_status_error_category import ProvisioningStatusErrorCategory
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_str_value()),
-            "errorCategory": lambda n : setattr(self, 'error_category', n.get_enum_value(ProvisioningStatusErrorCategory)),
-            "errorCode": lambda n : setattr(self, 'error_code', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "additional_details": lambda n : setattr(self, 'additional_details', n.get_str_value()),
+            "error_category": lambda n : setattr(self, 'error_category', n.get_enum_value(ProvisioningStatusErrorCategory)),
+            "error_code": lambda n : setattr(self, 'error_code', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "reason": lambda n : setattr(self, 'reason', n.get_str_value()),
-            "recommendedAction": lambda n : setattr(self, 'recommended_action', n.get_str_value()),
+            "recommended_action": lambda n : setattr(self, 'recommended_action', n.get_str_value()),
         }
         return fields
     
@@ -65,12 +65,12 @@ class ProvisioningErrorInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("additionalDetails", self.additional_details)
-        writer.write_enum_value("errorCategory", self.error_category)
-        writer.write_str_value("errorCode", self.error_code)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("additional_details", self.additional_details)
+        writer.write_enum_value("error_category", self.error_category)
+        writer.write_str_value("error_code", self.error_code)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("reason", self.reason)
-        writer.write_str_value("recommendedAction", self.recommended_action)
+        writer.write_str_value("recommended_action", self.recommended_action)
         writer.write_additional_data_value(self.additional_data)
     
 

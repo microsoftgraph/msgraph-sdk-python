@@ -42,10 +42,10 @@ class AmazonResourceEvidence(AlertEvidence):
         from .alert_evidence import AlertEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "amazonAccountId": lambda n : setattr(self, 'amazon_account_id', n.get_str_value()),
-            "amazonResourceId": lambda n : setattr(self, 'amazon_resource_id', n.get_str_value()),
-            "resourceName": lambda n : setattr(self, 'resource_name', n.get_str_value()),
-            "resourceType": lambda n : setattr(self, 'resource_type', n.get_str_value()),
+            "amazon_account_id": lambda n : setattr(self, 'amazon_account_id', n.get_str_value()),
+            "amazon_resource_id": lambda n : setattr(self, 'amazon_resource_id', n.get_str_value()),
+            "resource_name": lambda n : setattr(self, 'resource_name', n.get_str_value()),
+            "resource_type": lambda n : setattr(self, 'resource_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,9 +60,9 @@ class AmazonResourceEvidence(AlertEvidence):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("amazonAccountId", self.amazon_account_id)
-        writer.write_str_value("amazonResourceId", self.amazon_resource_id)
-        writer.write_str_value("resourceName", self.resource_name)
-        writer.write_str_value("resourceType", self.resource_type)
+        writer.write_str_value("amazon_account_id", self.amazon_account_id)
+        writer.write_str_value("amazon_resource_id", self.amazon_resource_id)
+        writer.write_str_value("resource_name", self.resource_name)
+        writer.write_str_value("resource_type", self.resource_type)
     
 

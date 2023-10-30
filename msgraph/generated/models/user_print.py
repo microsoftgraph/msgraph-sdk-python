@@ -40,8 +40,8 @@ class UserPrint(AdditionalDataHolder, BackedModel, Parsable):
         from .printer_share import PrinterShare
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recentPrinterShares": lambda n : setattr(self, 'recent_printer_shares', n.get_collection_of_object_values(PrinterShare)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "recent_printer_shares": lambda n : setattr(self, 'recent_printer_shares', n.get_collection_of_object_values(PrinterShare)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class UserPrint(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("recentPrinterShares", self.recent_printer_shares)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("recent_printer_shares", self.recent_printer_shares)
         writer.write_additional_data_value(self.additional_data)
     
 

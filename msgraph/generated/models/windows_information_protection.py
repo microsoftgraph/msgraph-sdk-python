@@ -131,30 +131,30 @@ class WindowsInformationProtection(ManagedAppPolicy):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(TargetedManagedAppPolicyAssignment)),
-            "azureRightsManagementServicesAllowed": lambda n : setattr(self, 'azure_rights_management_services_allowed', n.get_bool_value()),
-            "dataRecoveryCertificate": lambda n : setattr(self, 'data_recovery_certificate', n.get_object_value(WindowsInformationProtectionDataRecoveryCertificate)),
-            "enforcementLevel": lambda n : setattr(self, 'enforcement_level', n.get_enum_value(WindowsInformationProtectionEnforcementLevel)),
-            "enterpriseDomain": lambda n : setattr(self, 'enterprise_domain', n.get_str_value()),
-            "enterpriseIPRanges": lambda n : setattr(self, 'enterprise_i_p_ranges', n.get_collection_of_object_values(WindowsInformationProtectionIPRangeCollection)),
-            "enterpriseIPRangesAreAuthoritative": lambda n : setattr(self, 'enterprise_i_p_ranges_are_authoritative', n.get_bool_value()),
-            "enterpriseInternalProxyServers": lambda n : setattr(self, 'enterprise_internal_proxy_servers', n.get_collection_of_object_values(WindowsInformationProtectionResourceCollection)),
-            "enterpriseNetworkDomainNames": lambda n : setattr(self, 'enterprise_network_domain_names', n.get_collection_of_object_values(WindowsInformationProtectionResourceCollection)),
-            "enterpriseProtectedDomainNames": lambda n : setattr(self, 'enterprise_protected_domain_names', n.get_collection_of_object_values(WindowsInformationProtectionResourceCollection)),
-            "enterpriseProxiedDomains": lambda n : setattr(self, 'enterprise_proxied_domains', n.get_collection_of_object_values(WindowsInformationProtectionProxiedDomainCollection)),
-            "enterpriseProxyServers": lambda n : setattr(self, 'enterprise_proxy_servers', n.get_collection_of_object_values(WindowsInformationProtectionResourceCollection)),
-            "enterpriseProxyServersAreAuthoritative": lambda n : setattr(self, 'enterprise_proxy_servers_are_authoritative', n.get_bool_value()),
-            "exemptAppLockerFiles": lambda n : setattr(self, 'exempt_app_locker_files', n.get_collection_of_object_values(WindowsInformationProtectionAppLockerFile)),
-            "exemptApps": lambda n : setattr(self, 'exempt_apps', n.get_collection_of_object_values(WindowsInformationProtectionApp)),
-            "iconsVisible": lambda n : setattr(self, 'icons_visible', n.get_bool_value()),
-            "indexingEncryptedStoresOrItemsBlocked": lambda n : setattr(self, 'indexing_encrypted_stores_or_items_blocked', n.get_bool_value()),
-            "isAssigned": lambda n : setattr(self, 'is_assigned', n.get_bool_value()),
-            "neutralDomainResources": lambda n : setattr(self, 'neutral_domain_resources', n.get_collection_of_object_values(WindowsInformationProtectionResourceCollection)),
-            "protectedAppLockerFiles": lambda n : setattr(self, 'protected_app_locker_files', n.get_collection_of_object_values(WindowsInformationProtectionAppLockerFile)),
-            "protectedApps": lambda n : setattr(self, 'protected_apps', n.get_collection_of_object_values(WindowsInformationProtectionApp)),
-            "protectionUnderLockConfigRequired": lambda n : setattr(self, 'protection_under_lock_config_required', n.get_bool_value()),
-            "revokeOnUnenrollDisabled": lambda n : setattr(self, 'revoke_on_unenroll_disabled', n.get_bool_value()),
-            "rightsManagementServicesTemplateId": lambda n : setattr(self, 'rights_management_services_template_id', n.get_uuid_value()),
-            "smbAutoEncryptedFileExtensions": lambda n : setattr(self, 'smb_auto_encrypted_file_extensions', n.get_collection_of_object_values(WindowsInformationProtectionResourceCollection)),
+            "azure_rights_management_services_allowed": lambda n : setattr(self, 'azure_rights_management_services_allowed', n.get_bool_value()),
+            "data_recovery_certificate": lambda n : setattr(self, 'data_recovery_certificate', n.get_object_value(WindowsInformationProtectionDataRecoveryCertificate)),
+            "enforcement_level": lambda n : setattr(self, 'enforcement_level', n.get_enum_value(WindowsInformationProtectionEnforcementLevel)),
+            "enterprise_domain": lambda n : setattr(self, 'enterprise_domain', n.get_str_value()),
+            "enterprise_i_p_ranges": lambda n : setattr(self, 'enterprise_i_p_ranges', n.get_collection_of_object_values(WindowsInformationProtectionIPRangeCollection)),
+            "enterprise_i_p_ranges_are_authoritative": lambda n : setattr(self, 'enterprise_i_p_ranges_are_authoritative', n.get_bool_value()),
+            "enterprise_internal_proxy_servers": lambda n : setattr(self, 'enterprise_internal_proxy_servers', n.get_collection_of_object_values(WindowsInformationProtectionResourceCollection)),
+            "enterprise_network_domain_names": lambda n : setattr(self, 'enterprise_network_domain_names', n.get_collection_of_object_values(WindowsInformationProtectionResourceCollection)),
+            "enterprise_protected_domain_names": lambda n : setattr(self, 'enterprise_protected_domain_names', n.get_collection_of_object_values(WindowsInformationProtectionResourceCollection)),
+            "enterprise_proxied_domains": lambda n : setattr(self, 'enterprise_proxied_domains', n.get_collection_of_object_values(WindowsInformationProtectionProxiedDomainCollection)),
+            "enterprise_proxy_servers": lambda n : setattr(self, 'enterprise_proxy_servers', n.get_collection_of_object_values(WindowsInformationProtectionResourceCollection)),
+            "enterprise_proxy_servers_are_authoritative": lambda n : setattr(self, 'enterprise_proxy_servers_are_authoritative', n.get_bool_value()),
+            "exempt_app_locker_files": lambda n : setattr(self, 'exempt_app_locker_files', n.get_collection_of_object_values(WindowsInformationProtectionAppLockerFile)),
+            "exempt_apps": lambda n : setattr(self, 'exempt_apps', n.get_collection_of_object_values(WindowsInformationProtectionApp)),
+            "icons_visible": lambda n : setattr(self, 'icons_visible', n.get_bool_value()),
+            "indexing_encrypted_stores_or_items_blocked": lambda n : setattr(self, 'indexing_encrypted_stores_or_items_blocked', n.get_bool_value()),
+            "is_assigned": lambda n : setattr(self, 'is_assigned', n.get_bool_value()),
+            "neutral_domain_resources": lambda n : setattr(self, 'neutral_domain_resources', n.get_collection_of_object_values(WindowsInformationProtectionResourceCollection)),
+            "protected_app_locker_files": lambda n : setattr(self, 'protected_app_locker_files', n.get_collection_of_object_values(WindowsInformationProtectionAppLockerFile)),
+            "protected_apps": lambda n : setattr(self, 'protected_apps', n.get_collection_of_object_values(WindowsInformationProtectionApp)),
+            "protection_under_lock_config_required": lambda n : setattr(self, 'protection_under_lock_config_required', n.get_bool_value()),
+            "revoke_on_unenroll_disabled": lambda n : setattr(self, 'revoke_on_unenroll_disabled', n.get_bool_value()),
+            "rights_management_services_template_id": lambda n : setattr(self, 'rights_management_services_template_id', n.get_uuid_value()),
+            "smb_auto_encrypted_file_extensions": lambda n : setattr(self, 'smb_auto_encrypted_file_extensions', n.get_collection_of_object_values(WindowsInformationProtectionResourceCollection)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -170,29 +170,29 @@ class WindowsInformationProtection(ManagedAppPolicy):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_bool_value("azureRightsManagementServicesAllowed", self.azure_rights_management_services_allowed)
-        writer.write_object_value("dataRecoveryCertificate", self.data_recovery_certificate)
-        writer.write_enum_value("enforcementLevel", self.enforcement_level)
-        writer.write_str_value("enterpriseDomain", self.enterprise_domain)
-        writer.write_collection_of_object_values("enterpriseIPRanges", self.enterprise_i_p_ranges)
-        writer.write_bool_value("enterpriseIPRangesAreAuthoritative", self.enterprise_i_p_ranges_are_authoritative)
-        writer.write_collection_of_object_values("enterpriseInternalProxyServers", self.enterprise_internal_proxy_servers)
-        writer.write_collection_of_object_values("enterpriseNetworkDomainNames", self.enterprise_network_domain_names)
-        writer.write_collection_of_object_values("enterpriseProtectedDomainNames", self.enterprise_protected_domain_names)
-        writer.write_collection_of_object_values("enterpriseProxiedDomains", self.enterprise_proxied_domains)
-        writer.write_collection_of_object_values("enterpriseProxyServers", self.enterprise_proxy_servers)
-        writer.write_bool_value("enterpriseProxyServersAreAuthoritative", self.enterprise_proxy_servers_are_authoritative)
-        writer.write_collection_of_object_values("exemptAppLockerFiles", self.exempt_app_locker_files)
-        writer.write_collection_of_object_values("exemptApps", self.exempt_apps)
-        writer.write_bool_value("iconsVisible", self.icons_visible)
-        writer.write_bool_value("indexingEncryptedStoresOrItemsBlocked", self.indexing_encrypted_stores_or_items_blocked)
-        writer.write_bool_value("isAssigned", self.is_assigned)
-        writer.write_collection_of_object_values("neutralDomainResources", self.neutral_domain_resources)
-        writer.write_collection_of_object_values("protectedAppLockerFiles", self.protected_app_locker_files)
-        writer.write_collection_of_object_values("protectedApps", self.protected_apps)
-        writer.write_bool_value("protectionUnderLockConfigRequired", self.protection_under_lock_config_required)
-        writer.write_bool_value("revokeOnUnenrollDisabled", self.revoke_on_unenroll_disabled)
-        writer.write_uuid_value("rightsManagementServicesTemplateId", self.rights_management_services_template_id)
-        writer.write_collection_of_object_values("smbAutoEncryptedFileExtensions", self.smb_auto_encrypted_file_extensions)
+        writer.write_bool_value("azure_rights_management_services_allowed", self.azure_rights_management_services_allowed)
+        writer.write_object_value("data_recovery_certificate", self.data_recovery_certificate)
+        writer.write_enum_value("enforcement_level", self.enforcement_level)
+        writer.write_str_value("enterprise_domain", self.enterprise_domain)
+        writer.write_collection_of_object_values("enterprise_i_p_ranges", self.enterprise_i_p_ranges)
+        writer.write_bool_value("enterprise_i_p_ranges_are_authoritative", self.enterprise_i_p_ranges_are_authoritative)
+        writer.write_collection_of_object_values("enterprise_internal_proxy_servers", self.enterprise_internal_proxy_servers)
+        writer.write_collection_of_object_values("enterprise_network_domain_names", self.enterprise_network_domain_names)
+        writer.write_collection_of_object_values("enterprise_protected_domain_names", self.enterprise_protected_domain_names)
+        writer.write_collection_of_object_values("enterprise_proxied_domains", self.enterprise_proxied_domains)
+        writer.write_collection_of_object_values("enterprise_proxy_servers", self.enterprise_proxy_servers)
+        writer.write_bool_value("enterprise_proxy_servers_are_authoritative", self.enterprise_proxy_servers_are_authoritative)
+        writer.write_collection_of_object_values("exempt_app_locker_files", self.exempt_app_locker_files)
+        writer.write_collection_of_object_values("exempt_apps", self.exempt_apps)
+        writer.write_bool_value("icons_visible", self.icons_visible)
+        writer.write_bool_value("indexing_encrypted_stores_or_items_blocked", self.indexing_encrypted_stores_or_items_blocked)
+        writer.write_bool_value("is_assigned", self.is_assigned)
+        writer.write_collection_of_object_values("neutral_domain_resources", self.neutral_domain_resources)
+        writer.write_collection_of_object_values("protected_app_locker_files", self.protected_app_locker_files)
+        writer.write_collection_of_object_values("protected_apps", self.protected_apps)
+        writer.write_bool_value("protection_under_lock_config_required", self.protection_under_lock_config_required)
+        writer.write_bool_value("revoke_on_unenroll_disabled", self.revoke_on_unenroll_disabled)
+        writer.write_uuid_value("rights_management_services_template_id", self.rights_management_services_template_id)
+        writer.write_collection_of_object_values("smb_auto_encrypted_file_extensions", self.smb_auto_encrypted_file_extensions)
     
 

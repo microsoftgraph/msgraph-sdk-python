@@ -31,7 +31,7 @@ class AddCopyFromContentTypeHubPostRequestBody(AdditionalDataHolder, BackedModel
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "contentTypeId": lambda n : setattr(self, 'content_type_id', n.get_str_value()),
+            "content_type_id": lambda n : setattr(self, 'content_type_id', n.get_str_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class AddCopyFromContentTypeHubPostRequestBody(AdditionalDataHolder, BackedModel
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("contentTypeId", self.content_type_id)
+        writer.write_str_value("content_type_id", self.content_type_id)
         writer.write_additional_data_value(self.additional_data)
     
 

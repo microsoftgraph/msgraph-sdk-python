@@ -51,10 +51,10 @@ class UsedInsight(Entity):
         from .usage_details import UsageDetails
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lastUsed": lambda n : setattr(self, 'last_used', n.get_object_value(UsageDetails)),
+            "last_used": lambda n : setattr(self, 'last_used', n.get_object_value(UsageDetails)),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(Entity)),
-            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(ResourceReference)),
-            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(ResourceVisualization)),
+            "resource_reference": lambda n : setattr(self, 'resource_reference', n.get_object_value(ResourceReference)),
+            "resource_visualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(ResourceVisualization)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,7 +69,7 @@ class UsedInsight(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("lastUsed", self.last_used)
+        writer.write_object_value("last_used", self.last_used)
         writer.write_object_value("resource", self.resource)
     
 

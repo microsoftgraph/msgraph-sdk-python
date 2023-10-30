@@ -50,12 +50,12 @@ class AttachmentItem(AdditionalDataHolder, BackedModel, Parsable):
         from .attachment_type import AttachmentType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attachmentType": lambda n : setattr(self, 'attachment_type', n.get_enum_value(AttachmentType)),
-            "contentId": lambda n : setattr(self, 'content_id', n.get_str_value()),
-            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
-            "isInline": lambda n : setattr(self, 'is_inline', n.get_bool_value()),
+            "attachment_type": lambda n : setattr(self, 'attachment_type', n.get_enum_value(AttachmentType)),
+            "content_id": lambda n : setattr(self, 'content_id', n.get_str_value()),
+            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "is_inline": lambda n : setattr(self, 'is_inline', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
         return fields
@@ -68,12 +68,12 @@ class AttachmentItem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("attachmentType", self.attachment_type)
-        writer.write_str_value("contentId", self.content_id)
-        writer.write_str_value("contentType", self.content_type)
-        writer.write_bool_value("isInline", self.is_inline)
+        writer.write_enum_value("attachment_type", self.attachment_type)
+        writer.write_str_value("content_id", self.content_id)
+        writer.write_str_value("content_type", self.content_type)
+        writer.write_bool_value("is_inline", self.is_inline)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("size", self.size)
         writer.write_additional_data_value(self.additional_data)
     

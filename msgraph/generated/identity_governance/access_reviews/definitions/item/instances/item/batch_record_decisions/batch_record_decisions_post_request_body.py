@@ -39,8 +39,8 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, BackedModel, Par
         fields: Dict[str, Callable[[Any], None]] = {
             "decision": lambda n : setattr(self, 'decision', n.get_str_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
-            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
         }
         return fields
     
@@ -54,8 +54,8 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, BackedModel, Par
             raise TypeError("writer cannot be null.")
         writer.write_str_value("decision", self.decision)
         writer.write_str_value("justification", self.justification)
-        writer.write_str_value("principalId", self.principal_id)
-        writer.write_str_value("resourceId", self.resource_id)
+        writer.write_str_value("principal_id", self.principal_id)
+        writer.write_str_value("resource_id", self.resource_id)
         writer.write_additional_data_value(self.additional_data)
     
 

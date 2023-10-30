@@ -48,10 +48,10 @@ class UnifiedRoleAssignmentSchedule(UnifiedRoleScheduleBase):
         from .unified_role_schedule_base import UnifiedRoleScheduleBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(UnifiedRoleEligibilitySchedule)),
-            "assignmentType": lambda n : setattr(self, 'assignment_type', n.get_str_value()),
-            "memberType": lambda n : setattr(self, 'member_type', n.get_str_value()),
-            "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(RequestSchedule)),
+            "activated_using": lambda n : setattr(self, 'activated_using', n.get_object_value(UnifiedRoleEligibilitySchedule)),
+            "assignment_type": lambda n : setattr(self, 'assignment_type', n.get_str_value()),
+            "member_type": lambda n : setattr(self, 'member_type', n.get_str_value()),
+            "schedule_info": lambda n : setattr(self, 'schedule_info', n.get_object_value(RequestSchedule)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,9 +66,9 @@ class UnifiedRoleAssignmentSchedule(UnifiedRoleScheduleBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("activatedUsing", self.activated_using)
-        writer.write_str_value("assignmentType", self.assignment_type)
-        writer.write_str_value("memberType", self.member_type)
-        writer.write_object_value("scheduleInfo", self.schedule_info)
+        writer.write_object_value("activated_using", self.activated_using)
+        writer.write_str_value("assignment_type", self.assignment_type)
+        writer.write_str_value("member_type", self.member_type)
+        writer.write_object_value("schedule_info", self.schedule_info)
     
 

@@ -46,8 +46,8 @@ class ConversationMemberRoleUpdatedEventMessageDetail(EventMessageDetail):
         from .teamwork_user_identity import TeamworkUserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "conversationMemberRoles": lambda n : setattr(self, 'conversation_member_roles', n.get_collection_of_primitive_values(str)),
-            "conversationMemberUser": lambda n : setattr(self, 'conversation_member_user', n.get_object_value(TeamworkUserIdentity)),
+            "conversation_member_roles": lambda n : setattr(self, 'conversation_member_roles', n.get_collection_of_primitive_values(str)),
+            "conversation_member_user": lambda n : setattr(self, 'conversation_member_user', n.get_object_value(TeamworkUserIdentity)),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
@@ -63,8 +63,8 @@ class ConversationMemberRoleUpdatedEventMessageDetail(EventMessageDetail):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_primitive_values("conversationMemberRoles", self.conversation_member_roles)
-        writer.write_object_value("conversationMemberUser", self.conversation_member_user)
+        writer.write_collection_of_primitive_values("conversation_member_roles", self.conversation_member_roles)
+        writer.write_object_value("conversation_member_user", self.conversation_member_user)
         writer.write_object_value("initiator", self.initiator)
     
 

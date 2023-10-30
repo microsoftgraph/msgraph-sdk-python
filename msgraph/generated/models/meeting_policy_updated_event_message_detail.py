@@ -44,8 +44,8 @@ class MeetingPolicyUpdatedEventMessageDetail(EventMessageDetail):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
-            "meetingChatEnabled": lambda n : setattr(self, 'meeting_chat_enabled', n.get_bool_value()),
-            "meetingChatId": lambda n : setattr(self, 'meeting_chat_id', n.get_str_value()),
+            "meeting_chat_enabled": lambda n : setattr(self, 'meeting_chat_enabled', n.get_bool_value()),
+            "meeting_chat_id": lambda n : setattr(self, 'meeting_chat_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,7 +61,7 @@ class MeetingPolicyUpdatedEventMessageDetail(EventMessageDetail):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("initiator", self.initiator)
-        writer.write_bool_value("meetingChatEnabled", self.meeting_chat_enabled)
-        writer.write_str_value("meetingChatId", self.meeting_chat_id)
+        writer.write_bool_value("meeting_chat_enabled", self.meeting_chat_enabled)
+        writer.write_str_value("meeting_chat_id", self.meeting_chat_id)
     
 

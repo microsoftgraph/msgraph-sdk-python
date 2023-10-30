@@ -42,7 +42,7 @@ class LocateDeviceActionResult(DeviceActionResult):
         from .device_geo_location import DeviceGeoLocation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceLocation": lambda n : setattr(self, 'device_location', n.get_object_value(DeviceGeoLocation)),
+            "device_location": lambda n : setattr(self, 'device_location', n.get_object_value(DeviceGeoLocation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,6 +57,6 @@ class LocateDeviceActionResult(DeviceActionResult):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("deviceLocation", self.device_location)
+        writer.write_object_value("device_location", self.device_location)
     
 

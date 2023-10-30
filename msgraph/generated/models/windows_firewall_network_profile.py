@@ -65,19 +65,19 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, BackedModel, Parsable)
         from .state_management_setting import StateManagementSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authorizedApplicationRulesFromGroupPolicyMerged": lambda n : setattr(self, 'authorized_application_rules_from_group_policy_merged', n.get_bool_value()),
-            "connectionSecurityRulesFromGroupPolicyMerged": lambda n : setattr(self, 'connection_security_rules_from_group_policy_merged', n.get_bool_value()),
-            "firewallEnabled": lambda n : setattr(self, 'firewall_enabled', n.get_enum_value(StateManagementSetting)),
-            "globalPortRulesFromGroupPolicyMerged": lambda n : setattr(self, 'global_port_rules_from_group_policy_merged', n.get_bool_value()),
-            "inboundConnectionsBlocked": lambda n : setattr(self, 'inbound_connections_blocked', n.get_bool_value()),
-            "inboundNotificationsBlocked": lambda n : setattr(self, 'inbound_notifications_blocked', n.get_bool_value()),
-            "incomingTrafficBlocked": lambda n : setattr(self, 'incoming_traffic_blocked', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "outboundConnectionsBlocked": lambda n : setattr(self, 'outbound_connections_blocked', n.get_bool_value()),
-            "policyRulesFromGroupPolicyMerged": lambda n : setattr(self, 'policy_rules_from_group_policy_merged', n.get_bool_value()),
-            "securedPacketExemptionAllowed": lambda n : setattr(self, 'secured_packet_exemption_allowed', n.get_bool_value()),
-            "stealthModeBlocked": lambda n : setattr(self, 'stealth_mode_blocked', n.get_bool_value()),
-            "unicastResponsesToMulticastBroadcastsBlocked": lambda n : setattr(self, 'unicast_responses_to_multicast_broadcasts_blocked', n.get_bool_value()),
+            "authorized_application_rules_from_group_policy_merged": lambda n : setattr(self, 'authorized_application_rules_from_group_policy_merged', n.get_bool_value()),
+            "connection_security_rules_from_group_policy_merged": lambda n : setattr(self, 'connection_security_rules_from_group_policy_merged', n.get_bool_value()),
+            "firewall_enabled": lambda n : setattr(self, 'firewall_enabled', n.get_enum_value(StateManagementSetting)),
+            "global_port_rules_from_group_policy_merged": lambda n : setattr(self, 'global_port_rules_from_group_policy_merged', n.get_bool_value()),
+            "inbound_connections_blocked": lambda n : setattr(self, 'inbound_connections_blocked', n.get_bool_value()),
+            "inbound_notifications_blocked": lambda n : setattr(self, 'inbound_notifications_blocked', n.get_bool_value()),
+            "incoming_traffic_blocked": lambda n : setattr(self, 'incoming_traffic_blocked', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "outbound_connections_blocked": lambda n : setattr(self, 'outbound_connections_blocked', n.get_bool_value()),
+            "policy_rules_from_group_policy_merged": lambda n : setattr(self, 'policy_rules_from_group_policy_merged', n.get_bool_value()),
+            "secured_packet_exemption_allowed": lambda n : setattr(self, 'secured_packet_exemption_allowed', n.get_bool_value()),
+            "stealth_mode_blocked": lambda n : setattr(self, 'stealth_mode_blocked', n.get_bool_value()),
+            "unicast_responses_to_multicast_broadcasts_blocked": lambda n : setattr(self, 'unicast_responses_to_multicast_broadcasts_blocked', n.get_bool_value()),
         }
         return fields
     
@@ -89,19 +89,19 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, BackedModel, Parsable)
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("authorizedApplicationRulesFromGroupPolicyMerged", self.authorized_application_rules_from_group_policy_merged)
-        writer.write_bool_value("connectionSecurityRulesFromGroupPolicyMerged", self.connection_security_rules_from_group_policy_merged)
-        writer.write_enum_value("firewallEnabled", self.firewall_enabled)
-        writer.write_bool_value("globalPortRulesFromGroupPolicyMerged", self.global_port_rules_from_group_policy_merged)
-        writer.write_bool_value("inboundConnectionsBlocked", self.inbound_connections_blocked)
-        writer.write_bool_value("inboundNotificationsBlocked", self.inbound_notifications_blocked)
-        writer.write_bool_value("incomingTrafficBlocked", self.incoming_traffic_blocked)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_bool_value("outboundConnectionsBlocked", self.outbound_connections_blocked)
-        writer.write_bool_value("policyRulesFromGroupPolicyMerged", self.policy_rules_from_group_policy_merged)
-        writer.write_bool_value("securedPacketExemptionAllowed", self.secured_packet_exemption_allowed)
-        writer.write_bool_value("stealthModeBlocked", self.stealth_mode_blocked)
-        writer.write_bool_value("unicastResponsesToMulticastBroadcastsBlocked", self.unicast_responses_to_multicast_broadcasts_blocked)
+        writer.write_bool_value("authorized_application_rules_from_group_policy_merged", self.authorized_application_rules_from_group_policy_merged)
+        writer.write_bool_value("connection_security_rules_from_group_policy_merged", self.connection_security_rules_from_group_policy_merged)
+        writer.write_enum_value("firewall_enabled", self.firewall_enabled)
+        writer.write_bool_value("global_port_rules_from_group_policy_merged", self.global_port_rules_from_group_policy_merged)
+        writer.write_bool_value("inbound_connections_blocked", self.inbound_connections_blocked)
+        writer.write_bool_value("inbound_notifications_blocked", self.inbound_notifications_blocked)
+        writer.write_bool_value("incoming_traffic_blocked", self.incoming_traffic_blocked)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_bool_value("outbound_connections_blocked", self.outbound_connections_blocked)
+        writer.write_bool_value("policy_rules_from_group_policy_merged", self.policy_rules_from_group_policy_merged)
+        writer.write_bool_value("secured_packet_exemption_allowed", self.secured_packet_exemption_allowed)
+        writer.write_bool_value("stealth_mode_blocked", self.stealth_mode_blocked)
+        writer.write_bool_value("unicast_responses_to_multicast_broadcasts_blocked", self.unicast_responses_to_multicast_broadcasts_blocked)
         writer.write_additional_data_value(self.additional_data)
     
 

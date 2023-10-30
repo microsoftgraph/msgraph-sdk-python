@@ -44,7 +44,7 @@ class IosMobileAppConfiguration(ManagedDeviceMobileAppConfiguration):
         from .managed_device_mobile_app_configuration import ManagedDeviceMobileAppConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "encodedSettingXml": lambda n : setattr(self, 'encoded_setting_xml', n.get_bytes_value()),
+            "encoded_setting_xml": lambda n : setattr(self, 'encoded_setting_xml', n.get_bytes_value()),
             "settings": lambda n : setattr(self, 'settings', n.get_collection_of_object_values(AppConfigurationSettingItem)),
         }
         super_fields = super().get_field_deserializers()
@@ -60,7 +60,7 @@ class IosMobileAppConfiguration(ManagedDeviceMobileAppConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bytes_value("encodedSettingXml", self.encoded_setting_xml)
+        writer.write_bytes_value("encoded_setting_xml", self.encoded_setting_xml)
         writer.write_collection_of_object_values("settings", self.settings)
     
 

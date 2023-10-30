@@ -111,40 +111,40 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity):
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "autoPilotProfileAssigned": lambda n : setattr(self, 'auto_pilot_profile_assigned', n.get_bool_value()),
-            "autoPilotRegistered": lambda n : setattr(self, 'auto_pilot_registered', n.get_bool_value()),
-            "azureAdDeviceId": lambda n : setattr(self, 'azure_ad_device_id', n.get_str_value()),
-            "azureAdJoinType": lambda n : setattr(self, 'azure_ad_join_type', n.get_str_value()),
-            "azureAdRegistered": lambda n : setattr(self, 'azure_ad_registered', n.get_bool_value()),
-            "cloudIdentityScore": lambda n : setattr(self, 'cloud_identity_score', n.get_float_value()),
-            "cloudManagementScore": lambda n : setattr(self, 'cloud_management_score', n.get_float_value()),
-            "cloudProvisioningScore": lambda n : setattr(self, 'cloud_provisioning_score', n.get_float_value()),
-            "compliancePolicySetToIntune": lambda n : setattr(self, 'compliance_policy_set_to_intune', n.get_bool_value()),
-            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(UserExperienceAnalyticsHealthState)),
-            "isCloudManagedGatewayEnabled": lambda n : setattr(self, 'is_cloud_managed_gateway_enabled', n.get_bool_value()),
-            "managedBy": lambda n : setattr(self, 'managed_by', n.get_str_value()),
+            "auto_pilot_profile_assigned": lambda n : setattr(self, 'auto_pilot_profile_assigned', n.get_bool_value()),
+            "auto_pilot_registered": lambda n : setattr(self, 'auto_pilot_registered', n.get_bool_value()),
+            "azure_ad_device_id": lambda n : setattr(self, 'azure_ad_device_id', n.get_str_value()),
+            "azure_ad_join_type": lambda n : setattr(self, 'azure_ad_join_type', n.get_str_value()),
+            "azure_ad_registered": lambda n : setattr(self, 'azure_ad_registered', n.get_bool_value()),
+            "cloud_identity_score": lambda n : setattr(self, 'cloud_identity_score', n.get_float_value()),
+            "cloud_management_score": lambda n : setattr(self, 'cloud_management_score', n.get_float_value()),
+            "cloud_provisioning_score": lambda n : setattr(self, 'cloud_provisioning_score', n.get_float_value()),
+            "compliance_policy_set_to_intune": lambda n : setattr(self, 'compliance_policy_set_to_intune', n.get_bool_value()),
+            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "health_status": lambda n : setattr(self, 'health_status', n.get_enum_value(UserExperienceAnalyticsHealthState)),
+            "is_cloud_managed_gateway_enabled": lambda n : setattr(self, 'is_cloud_managed_gateway_enabled', n.get_bool_value()),
+            "managed_by": lambda n : setattr(self, 'managed_by', n.get_str_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "osCheckFailed": lambda n : setattr(self, 'os_check_failed', n.get_bool_value()),
-            "osDescription": lambda n : setattr(self, 'os_description', n.get_str_value()),
-            "osVersion": lambda n : setattr(self, 'os_version', n.get_str_value()),
-            "otherWorkloadsSetToIntune": lambda n : setattr(self, 'other_workloads_set_to_intune', n.get_bool_value()),
+            "os_check_failed": lambda n : setattr(self, 'os_check_failed', n.get_bool_value()),
+            "os_description": lambda n : setattr(self, 'os_description', n.get_str_value()),
+            "os_version": lambda n : setattr(self, 'os_version', n.get_str_value()),
+            "other_workloads_set_to_intune": lambda n : setattr(self, 'other_workloads_set_to_intune', n.get_bool_value()),
             "ownership": lambda n : setattr(self, 'ownership', n.get_str_value()),
-            "processorCoreCountCheckFailed": lambda n : setattr(self, 'processor_core_count_check_failed', n.get_bool_value()),
-            "processorFamilyCheckFailed": lambda n : setattr(self, 'processor_family_check_failed', n.get_bool_value()),
-            "processorSpeedCheckFailed": lambda n : setattr(self, 'processor_speed_check_failed', n.get_bool_value()),
-            "processor64BitCheckFailed": lambda n : setattr(self, 'processor64_bit_check_failed', n.get_bool_value()),
-            "ramCheckFailed": lambda n : setattr(self, 'ram_check_failed', n.get_bool_value()),
-            "secureBootCheckFailed": lambda n : setattr(self, 'secure_boot_check_failed', n.get_bool_value()),
-            "serialNumber": lambda n : setattr(self, 'serial_number', n.get_str_value()),
-            "storageCheckFailed": lambda n : setattr(self, 'storage_check_failed', n.get_bool_value()),
-            "tenantAttached": lambda n : setattr(self, 'tenant_attached', n.get_bool_value()),
-            "tpmCheckFailed": lambda n : setattr(self, 'tpm_check_failed', n.get_bool_value()),
-            "upgradeEligibility": lambda n : setattr(self, 'upgrade_eligibility', n.get_enum_value(OperatingSystemUpgradeEligibility)),
-            "windowsScore": lambda n : setattr(self, 'windows_score', n.get_float_value()),
-            "workFromAnywhereScore": lambda n : setattr(self, 'work_from_anywhere_score', n.get_float_value()),
+            "processor_core_count_check_failed": lambda n : setattr(self, 'processor_core_count_check_failed', n.get_bool_value()),
+            "processor_family_check_failed": lambda n : setattr(self, 'processor_family_check_failed', n.get_bool_value()),
+            "processor_speed_check_failed": lambda n : setattr(self, 'processor_speed_check_failed', n.get_bool_value()),
+            "processor64_bit_check_failed": lambda n : setattr(self, 'processor64_bit_check_failed', n.get_bool_value()),
+            "ram_check_failed": lambda n : setattr(self, 'ram_check_failed', n.get_bool_value()),
+            "secure_boot_check_failed": lambda n : setattr(self, 'secure_boot_check_failed', n.get_bool_value()),
+            "serial_number": lambda n : setattr(self, 'serial_number', n.get_str_value()),
+            "storage_check_failed": lambda n : setattr(self, 'storage_check_failed', n.get_bool_value()),
+            "tenant_attached": lambda n : setattr(self, 'tenant_attached', n.get_bool_value()),
+            "tpm_check_failed": lambda n : setattr(self, 'tpm_check_failed', n.get_bool_value()),
+            "upgrade_eligibility": lambda n : setattr(self, 'upgrade_eligibility', n.get_enum_value(OperatingSystemUpgradeEligibility)),
+            "windows_score": lambda n : setattr(self, 'windows_score', n.get_float_value()),
+            "work_from_anywhere_score": lambda n : setattr(self, 'work_from_anywhere_score', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -159,39 +159,39 @@ class UserExperienceAnalyticsWorkFromAnywhereDevice(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("autoPilotProfileAssigned", self.auto_pilot_profile_assigned)
-        writer.write_bool_value("autoPilotRegistered", self.auto_pilot_registered)
-        writer.write_str_value("azureAdDeviceId", self.azure_ad_device_id)
-        writer.write_str_value("azureAdJoinType", self.azure_ad_join_type)
-        writer.write_bool_value("azureAdRegistered", self.azure_ad_registered)
-        writer.write_float_value("cloudIdentityScore", self.cloud_identity_score)
-        writer.write_float_value("cloudManagementScore", self.cloud_management_score)
-        writer.write_float_value("cloudProvisioningScore", self.cloud_provisioning_score)
-        writer.write_bool_value("compliancePolicySetToIntune", self.compliance_policy_set_to_intune)
-        writer.write_str_value("deviceId", self.device_id)
-        writer.write_str_value("deviceName", self.device_name)
-        writer.write_enum_value("healthStatus", self.health_status)
-        writer.write_bool_value("isCloudManagedGatewayEnabled", self.is_cloud_managed_gateway_enabled)
-        writer.write_str_value("managedBy", self.managed_by)
+        writer.write_bool_value("auto_pilot_profile_assigned", self.auto_pilot_profile_assigned)
+        writer.write_bool_value("auto_pilot_registered", self.auto_pilot_registered)
+        writer.write_str_value("azure_ad_device_id", self.azure_ad_device_id)
+        writer.write_str_value("azure_ad_join_type", self.azure_ad_join_type)
+        writer.write_bool_value("azure_ad_registered", self.azure_ad_registered)
+        writer.write_float_value("cloud_identity_score", self.cloud_identity_score)
+        writer.write_float_value("cloud_management_score", self.cloud_management_score)
+        writer.write_float_value("cloud_provisioning_score", self.cloud_provisioning_score)
+        writer.write_bool_value("compliance_policy_set_to_intune", self.compliance_policy_set_to_intune)
+        writer.write_str_value("device_id", self.device_id)
+        writer.write_str_value("device_name", self.device_name)
+        writer.write_enum_value("health_status", self.health_status)
+        writer.write_bool_value("is_cloud_managed_gateway_enabled", self.is_cloud_managed_gateway_enabled)
+        writer.write_str_value("managed_by", self.managed_by)
         writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("model", self.model)
-        writer.write_bool_value("osCheckFailed", self.os_check_failed)
-        writer.write_str_value("osDescription", self.os_description)
-        writer.write_str_value("osVersion", self.os_version)
-        writer.write_bool_value("otherWorkloadsSetToIntune", self.other_workloads_set_to_intune)
+        writer.write_bool_value("os_check_failed", self.os_check_failed)
+        writer.write_str_value("os_description", self.os_description)
+        writer.write_str_value("os_version", self.os_version)
+        writer.write_bool_value("other_workloads_set_to_intune", self.other_workloads_set_to_intune)
         writer.write_str_value("ownership", self.ownership)
-        writer.write_bool_value("processorCoreCountCheckFailed", self.processor_core_count_check_failed)
-        writer.write_bool_value("processorFamilyCheckFailed", self.processor_family_check_failed)
-        writer.write_bool_value("processorSpeedCheckFailed", self.processor_speed_check_failed)
-        writer.write_bool_value("processor64BitCheckFailed", self.processor64_bit_check_failed)
-        writer.write_bool_value("ramCheckFailed", self.ram_check_failed)
-        writer.write_bool_value("secureBootCheckFailed", self.secure_boot_check_failed)
-        writer.write_str_value("serialNumber", self.serial_number)
-        writer.write_bool_value("storageCheckFailed", self.storage_check_failed)
-        writer.write_bool_value("tenantAttached", self.tenant_attached)
-        writer.write_bool_value("tpmCheckFailed", self.tpm_check_failed)
-        writer.write_enum_value("upgradeEligibility", self.upgrade_eligibility)
-        writer.write_float_value("windowsScore", self.windows_score)
-        writer.write_float_value("workFromAnywhereScore", self.work_from_anywhere_score)
+        writer.write_bool_value("processor_core_count_check_failed", self.processor_core_count_check_failed)
+        writer.write_bool_value("processor_family_check_failed", self.processor_family_check_failed)
+        writer.write_bool_value("processor_speed_check_failed", self.processor_speed_check_failed)
+        writer.write_bool_value("processor64_bit_check_failed", self.processor64_bit_check_failed)
+        writer.write_bool_value("ram_check_failed", self.ram_check_failed)
+        writer.write_bool_value("secure_boot_check_failed", self.secure_boot_check_failed)
+        writer.write_str_value("serial_number", self.serial_number)
+        writer.write_bool_value("storage_check_failed", self.storage_check_failed)
+        writer.write_bool_value("tenant_attached", self.tenant_attached)
+        writer.write_bool_value("tpm_check_failed", self.tpm_check_failed)
+        writer.write_enum_value("upgrade_eligibility", self.upgrade_eligibility)
+        writer.write_float_value("windows_score", self.windows_score)
+        writer.write_float_value("work_from_anywhere_score", self.work_from_anywhere_score)
     
 

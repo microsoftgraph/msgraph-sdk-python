@@ -57,15 +57,15 @@ class Reminder(AdditionalDataHolder, BackedModel, Parsable):
         from .location import Location
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
-            "eventEndTime": lambda n : setattr(self, 'event_end_time', n.get_object_value(DateTimeTimeZone)),
-            "eventId": lambda n : setattr(self, 'event_id', n.get_str_value()),
-            "eventLocation": lambda n : setattr(self, 'event_location', n.get_object_value(Location)),
-            "eventStartTime": lambda n : setattr(self, 'event_start_time', n.get_object_value(DateTimeTimeZone)),
-            "eventSubject": lambda n : setattr(self, 'event_subject', n.get_str_value()),
-            "eventWebLink": lambda n : setattr(self, 'event_web_link', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "reminderFireTime": lambda n : setattr(self, 'reminder_fire_time', n.get_object_value(DateTimeTimeZone)),
+            "change_key": lambda n : setattr(self, 'change_key', n.get_str_value()),
+            "event_end_time": lambda n : setattr(self, 'event_end_time', n.get_object_value(DateTimeTimeZone)),
+            "event_id": lambda n : setattr(self, 'event_id', n.get_str_value()),
+            "event_location": lambda n : setattr(self, 'event_location', n.get_object_value(Location)),
+            "event_start_time": lambda n : setattr(self, 'event_start_time', n.get_object_value(DateTimeTimeZone)),
+            "event_subject": lambda n : setattr(self, 'event_subject', n.get_str_value()),
+            "event_web_link": lambda n : setattr(self, 'event_web_link', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "reminder_fire_time": lambda n : setattr(self, 'reminder_fire_time', n.get_object_value(DateTimeTimeZone)),
         }
         return fields
     
@@ -77,15 +77,15 @@ class Reminder(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("changeKey", self.change_key)
-        writer.write_object_value("eventEndTime", self.event_end_time)
-        writer.write_str_value("eventId", self.event_id)
-        writer.write_object_value("eventLocation", self.event_location)
-        writer.write_object_value("eventStartTime", self.event_start_time)
-        writer.write_str_value("eventSubject", self.event_subject)
-        writer.write_str_value("eventWebLink", self.event_web_link)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("reminderFireTime", self.reminder_fire_time)
+        writer.write_str_value("change_key", self.change_key)
+        writer.write_object_value("event_end_time", self.event_end_time)
+        writer.write_str_value("event_id", self.event_id)
+        writer.write_object_value("event_location", self.event_location)
+        writer.write_object_value("event_start_time", self.event_start_time)
+        writer.write_str_value("event_subject", self.event_subject)
+        writer.write_str_value("event_web_link", self.event_web_link)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("reminder_fire_time", self.reminder_fire_time)
         writer.write_additional_data_value(self.additional_data)
     
 

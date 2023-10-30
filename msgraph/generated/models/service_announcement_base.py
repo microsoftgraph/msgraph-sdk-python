@@ -67,9 +67,9 @@ class ServiceAnnouncementBase(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(KeyValuePair)),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -86,9 +86,9 @@ class ServiceAnnouncementBase(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("details", self.details)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
         writer.write_str_value("title", self.title)
     
 

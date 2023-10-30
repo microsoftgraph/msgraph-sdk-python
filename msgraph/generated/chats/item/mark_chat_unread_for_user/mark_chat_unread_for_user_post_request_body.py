@@ -41,7 +41,7 @@ class MarkChatUnreadForUserPostRequestBody(AdditionalDataHolder, BackedModel, Pa
         from ....models.teamwork_user_identity import TeamworkUserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lastMessageReadDateTime": lambda n : setattr(self, 'last_message_read_date_time', n.get_datetime_value()),
+            "last_message_read_date_time": lambda n : setattr(self, 'last_message_read_date_time', n.get_datetime_value()),
             "user": lambda n : setattr(self, 'user', n.get_object_value(TeamworkUserIdentity)),
         }
         return fields
@@ -54,7 +54,7 @@ class MarkChatUnreadForUserPostRequestBody(AdditionalDataHolder, BackedModel, Pa
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("lastMessageReadDateTime", self.last_message_read_date_time)
+        writer.write_datetime_value("last_message_read_date_time", self.last_message_read_date_time)
         writer.write_object_value("user", self.user)
         writer.write_additional_data_value(self.additional_data)
     

@@ -40,7 +40,7 @@ class SumIfsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "sumRange": lambda n : setattr(self, 'sum_range', n.get_object_value(Json)),
+            "sum_range": lambda n : setattr(self, 'sum_range', n.get_object_value(Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
         }
         return fields
@@ -53,7 +53,7 @@ class SumIfsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("sumRange", self.sum_range)
+        writer.write_object_value("sum_range", self.sum_range)
         writer.write_object_value("values", self.values)
         writer.write_additional_data_value(self.additional_data)
     

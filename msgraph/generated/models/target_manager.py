@@ -36,7 +36,7 @@ class TargetManager(SubjectSet):
         from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "managerLevel": lambda n : setattr(self, 'manager_level', n.get_int_value()),
+            "manager_level": lambda n : setattr(self, 'manager_level', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class TargetManager(SubjectSet):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("managerLevel", self.manager_level)
+        writer.write_int_value("manager_level", self.manager_level)
     
 

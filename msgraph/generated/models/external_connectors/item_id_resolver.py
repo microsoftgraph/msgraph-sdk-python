@@ -41,8 +41,8 @@ class ItemIdResolver(UrlToItemResolverBase):
         from .url_to_item_resolver_base import UrlToItemResolverBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "itemId": lambda n : setattr(self, 'item_id', n.get_str_value()),
-            "urlMatchInfo": lambda n : setattr(self, 'url_match_info', n.get_object_value(UrlMatchInfo)),
+            "item_id": lambda n : setattr(self, 'item_id', n.get_str_value()),
+            "url_match_info": lambda n : setattr(self, 'url_match_info', n.get_object_value(UrlMatchInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class ItemIdResolver(UrlToItemResolverBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("itemId", self.item_id)
-        writer.write_object_value("urlMatchInfo", self.url_match_info)
+        writer.write_str_value("item_id", self.item_id)
+        writer.write_object_value("url_match_info", self.url_match_info)
     
 

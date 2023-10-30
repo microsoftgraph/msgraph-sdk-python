@@ -48,10 +48,10 @@ class TeamsApp(Entity):
         from .teams_app_distribution_method import TeamsAppDistributionMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appDefinitions": lambda n : setattr(self, 'app_definitions', n.get_collection_of_object_values(TeamsAppDefinition)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "distributionMethod": lambda n : setattr(self, 'distribution_method', n.get_enum_value(TeamsAppDistributionMethod)),
-            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "app_definitions": lambda n : setattr(self, 'app_definitions', n.get_collection_of_object_values(TeamsAppDefinition)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "distribution_method": lambda n : setattr(self, 'distribution_method', n.get_enum_value(TeamsAppDistributionMethod)),
+            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,9 +66,9 @@ class TeamsApp(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("appDefinitions", self.app_definitions)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_enum_value("distributionMethod", self.distribution_method)
-        writer.write_str_value("externalId", self.external_id)
+        writer.write_collection_of_object_values("app_definitions", self.app_definitions)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_enum_value("distribution_method", self.distribution_method)
+        writer.write_str_value("external_id", self.external_id)
     
 

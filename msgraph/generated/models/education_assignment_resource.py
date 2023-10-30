@@ -41,7 +41,7 @@ class EducationAssignmentResource(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "distributeForStudentWork": lambda n : setattr(self, 'distribute_for_student_work', n.get_bool_value()),
+            "distribute_for_student_work": lambda n : setattr(self, 'distribute_for_student_work', n.get_bool_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(EducationResource)),
         }
         super_fields = super().get_field_deserializers()
@@ -57,7 +57,7 @@ class EducationAssignmentResource(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("distributeForStudentWork", self.distribute_for_student_work)
+        writer.write_bool_value("distribute_for_student_work", self.distribute_for_student_work)
         writer.write_object_value("resource", self.resource)
     
 

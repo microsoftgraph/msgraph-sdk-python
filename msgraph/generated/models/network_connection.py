@@ -85,27 +85,27 @@ class NetworkConnection(AdditionalDataHolder, BackedModel, Parsable):
         from .security_network_protocol import SecurityNetworkProtocol
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
-            "destinationAddress": lambda n : setattr(self, 'destination_address', n.get_str_value()),
-            "destinationDomain": lambda n : setattr(self, 'destination_domain', n.get_str_value()),
-            "destinationLocation": lambda n : setattr(self, 'destination_location', n.get_str_value()),
-            "destinationPort": lambda n : setattr(self, 'destination_port', n.get_str_value()),
-            "destinationUrl": lambda n : setattr(self, 'destination_url', n.get_str_value()),
+            "application_name": lambda n : setattr(self, 'application_name', n.get_str_value()),
+            "destination_address": lambda n : setattr(self, 'destination_address', n.get_str_value()),
+            "destination_domain": lambda n : setattr(self, 'destination_domain', n.get_str_value()),
+            "destination_location": lambda n : setattr(self, 'destination_location', n.get_str_value()),
+            "destination_port": lambda n : setattr(self, 'destination_port', n.get_str_value()),
+            "destination_url": lambda n : setattr(self, 'destination_url', n.get_str_value()),
             "direction": lambda n : setattr(self, 'direction', n.get_enum_value(ConnectionDirection)),
-            "domainRegisteredDateTime": lambda n : setattr(self, 'domain_registered_date_time', n.get_datetime_value()),
-            "localDnsName": lambda n : setattr(self, 'local_dns_name', n.get_str_value()),
-            "natDestinationAddress": lambda n : setattr(self, 'nat_destination_address', n.get_str_value()),
-            "natDestinationPort": lambda n : setattr(self, 'nat_destination_port', n.get_str_value()),
-            "natSourceAddress": lambda n : setattr(self, 'nat_source_address', n.get_str_value()),
-            "natSourcePort": lambda n : setattr(self, 'nat_source_port', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "domain_registered_date_time": lambda n : setattr(self, 'domain_registered_date_time', n.get_datetime_value()),
+            "local_dns_name": lambda n : setattr(self, 'local_dns_name', n.get_str_value()),
+            "nat_destination_address": lambda n : setattr(self, 'nat_destination_address', n.get_str_value()),
+            "nat_destination_port": lambda n : setattr(self, 'nat_destination_port', n.get_str_value()),
+            "nat_source_address": lambda n : setattr(self, 'nat_source_address', n.get_str_value()),
+            "nat_source_port": lambda n : setattr(self, 'nat_source_port', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(SecurityNetworkProtocol)),
-            "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
-            "sourceAddress": lambda n : setattr(self, 'source_address', n.get_str_value()),
-            "sourceLocation": lambda n : setattr(self, 'source_location', n.get_str_value()),
-            "sourcePort": lambda n : setattr(self, 'source_port', n.get_str_value()),
+            "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
+            "source_address": lambda n : setattr(self, 'source_address', n.get_str_value()),
+            "source_location": lambda n : setattr(self, 'source_location', n.get_str_value()),
+            "source_port": lambda n : setattr(self, 'source_port', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(ConnectionStatus)),
-            "urlParameters": lambda n : setattr(self, 'url_parameters', n.get_str_value()),
+            "url_parameters": lambda n : setattr(self, 'url_parameters', n.get_str_value()),
         }
         return fields
     
@@ -117,27 +117,27 @@ class NetworkConnection(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("applicationName", self.application_name)
-        writer.write_str_value("destinationAddress", self.destination_address)
-        writer.write_str_value("destinationDomain", self.destination_domain)
-        writer.write_str_value("destinationLocation", self.destination_location)
-        writer.write_str_value("destinationPort", self.destination_port)
-        writer.write_str_value("destinationUrl", self.destination_url)
+        writer.write_str_value("application_name", self.application_name)
+        writer.write_str_value("destination_address", self.destination_address)
+        writer.write_str_value("destination_domain", self.destination_domain)
+        writer.write_str_value("destination_location", self.destination_location)
+        writer.write_str_value("destination_port", self.destination_port)
+        writer.write_str_value("destination_url", self.destination_url)
         writer.write_enum_value("direction", self.direction)
-        writer.write_datetime_value("domainRegisteredDateTime", self.domain_registered_date_time)
-        writer.write_str_value("localDnsName", self.local_dns_name)
-        writer.write_str_value("natDestinationAddress", self.nat_destination_address)
-        writer.write_str_value("natDestinationPort", self.nat_destination_port)
-        writer.write_str_value("natSourceAddress", self.nat_source_address)
-        writer.write_str_value("natSourcePort", self.nat_source_port)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_datetime_value("domain_registered_date_time", self.domain_registered_date_time)
+        writer.write_str_value("local_dns_name", self.local_dns_name)
+        writer.write_str_value("nat_destination_address", self.nat_destination_address)
+        writer.write_str_value("nat_destination_port", self.nat_destination_port)
+        writer.write_str_value("nat_source_address", self.nat_source_address)
+        writer.write_str_value("nat_source_port", self.nat_source_port)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("protocol", self.protocol)
-        writer.write_str_value("riskScore", self.risk_score)
-        writer.write_str_value("sourceAddress", self.source_address)
-        writer.write_str_value("sourceLocation", self.source_location)
-        writer.write_str_value("sourcePort", self.source_port)
+        writer.write_str_value("risk_score", self.risk_score)
+        writer.write_str_value("source_address", self.source_address)
+        writer.write_str_value("source_location", self.source_location)
+        writer.write_str_value("source_port", self.source_port)
         writer.write_enum_value("status", self.status)
-        writer.write_str_value("urlParameters", self.url_parameters)
+        writer.write_str_value("url_parameters", self.url_parameters)
         writer.write_additional_data_value(self.additional_data)
     
 

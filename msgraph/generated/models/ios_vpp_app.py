@@ -67,16 +67,16 @@ class IosVppApp(MobileApp):
         from .vpp_token_account_type import VppTokenAccountType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
-            "applicableDeviceType": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(IosDeviceType)),
-            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "licensingType": lambda n : setattr(self, 'licensing_type', n.get_object_value(VppLicensingType)),
-            "releaseDateTime": lambda n : setattr(self, 'release_date_time', n.get_datetime_value()),
-            "totalLicenseCount": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
-            "usedLicenseCount": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
-            "vppTokenAccountType": lambda n : setattr(self, 'vpp_token_account_type', n.get_enum_value(VppTokenAccountType)),
-            "vppTokenAppleId": lambda n : setattr(self, 'vpp_token_apple_id', n.get_str_value()),
-            "vppTokenOrganizationName": lambda n : setattr(self, 'vpp_token_organization_name', n.get_str_value()),
+            "app_store_url": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
+            "applicable_device_type": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(IosDeviceType)),
+            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "licensing_type": lambda n : setattr(self, 'licensing_type', n.get_object_value(VppLicensingType)),
+            "release_date_time": lambda n : setattr(self, 'release_date_time', n.get_datetime_value()),
+            "total_license_count": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
+            "used_license_count": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
+            "vpp_token_account_type": lambda n : setattr(self, 'vpp_token_account_type', n.get_enum_value(VppTokenAccountType)),
+            "vpp_token_apple_id": lambda n : setattr(self, 'vpp_token_apple_id', n.get_str_value()),
+            "vpp_token_organization_name": lambda n : setattr(self, 'vpp_token_organization_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -91,15 +91,15 @@ class IosVppApp(MobileApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("appStoreUrl", self.app_store_url)
-        writer.write_object_value("applicableDeviceType", self.applicable_device_type)
-        writer.write_str_value("bundleId", self.bundle_id)
-        writer.write_object_value("licensingType", self.licensing_type)
-        writer.write_datetime_value("releaseDateTime", self.release_date_time)
-        writer.write_int_value("totalLicenseCount", self.total_license_count)
-        writer.write_int_value("usedLicenseCount", self.used_license_count)
-        writer.write_enum_value("vppTokenAccountType", self.vpp_token_account_type)
-        writer.write_str_value("vppTokenAppleId", self.vpp_token_apple_id)
-        writer.write_str_value("vppTokenOrganizationName", self.vpp_token_organization_name)
+        writer.write_str_value("app_store_url", self.app_store_url)
+        writer.write_object_value("applicable_device_type", self.applicable_device_type)
+        writer.write_str_value("bundle_id", self.bundle_id)
+        writer.write_object_value("licensing_type", self.licensing_type)
+        writer.write_datetime_value("release_date_time", self.release_date_time)
+        writer.write_int_value("total_license_count", self.total_license_count)
+        writer.write_int_value("used_license_count", self.used_license_count)
+        writer.write_enum_value("vpp_token_account_type", self.vpp_token_account_type)
+        writer.write_str_value("vpp_token_apple_id", self.vpp_token_apple_id)
+        writer.write_str_value("vpp_token_organization_name", self.vpp_token_organization_name)
     
 

@@ -52,12 +52,12 @@ class FeatureRolloutPolicy(Entity):
         from .staged_feature_name import StagedFeatureName
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(DirectoryObject)),
+            "applies_to": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(DirectoryObject)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "feature": lambda n : setattr(self, 'feature', n.get_enum_value(StagedFeatureName)),
-            "isAppliedToOrganization": lambda n : setattr(self, 'is_applied_to_organization', n.get_bool_value()),
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "is_applied_to_organization": lambda n : setattr(self, 'is_applied_to_organization', n.get_bool_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,11 +72,11 @@ class FeatureRolloutPolicy(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("appliesTo", self.applies_to)
+        writer.write_collection_of_object_values("applies_to", self.applies_to)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_enum_value("feature", self.feature)
-        writer.write_bool_value("isAppliedToOrganization", self.is_applied_to_organization)
-        writer.write_bool_value("isEnabled", self.is_enabled)
+        writer.write_bool_value("is_applied_to_organization", self.is_applied_to_organization)
+        writer.write_bool_value("is_enabled", self.is_enabled)
     
 

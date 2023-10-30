@@ -40,9 +40,9 @@ class ExternalDomainFederation(IdentitySource):
         from .identity_source import IdentitySource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
-            "issuerUri": lambda n : setattr(self, 'issuer_uri', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "domain_name": lambda n : setattr(self, 'domain_name', n.get_str_value()),
+            "issuer_uri": lambda n : setattr(self, 'issuer_uri', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,8 +57,8 @@ class ExternalDomainFederation(IdentitySource):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("domainName", self.domain_name)
-        writer.write_str_value("issuerUri", self.issuer_uri)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("domain_name", self.domain_name)
+        writer.write_str_value("issuer_uri", self.issuer_uri)
     
 

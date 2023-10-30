@@ -41,10 +41,10 @@ class OsVersionCount(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
-            "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "osVersion": lambda n : setattr(self, 'os_version', n.get_str_value()),
+            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "last_update_date_time": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "os_version": lambda n : setattr(self, 'os_version', n.get_str_value()),
         }
         return fields
     
@@ -56,10 +56,10 @@ class OsVersionCount(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("deviceCount", self.device_count)
-        writer.write_datetime_value("lastUpdateDateTime", self.last_update_date_time)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("osVersion", self.os_version)
+        writer.write_int_value("device_count", self.device_count)
+        writer.write_datetime_value("last_update_date_time", self.last_update_date_time)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("os_version", self.os_version)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -40,8 +40,8 @@ class SendMailPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ....models.message import Message
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "Message": lambda n : setattr(self, 'message', n.get_object_value(Message)),
-            "SaveToSentItems": lambda n : setattr(self, 'save_to_sent_items', n.get_bool_value()),
+            "message": lambda n : setattr(self, 'message', n.get_object_value(Message)),
+            "save_to_sent_items": lambda n : setattr(self, 'save_to_sent_items', n.get_bool_value()),
         }
         return fields
     
@@ -53,8 +53,8 @@ class SendMailPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("Message", self.message)
-        writer.write_bool_value("SaveToSentItems", self.save_to_sent_items)
+        writer.write_object_value("message", self.message)
+        writer.write_bool_value("save_to_sent_items", self.save_to_sent_items)
         writer.write_additional_data_value(self.additional_data)
     
 

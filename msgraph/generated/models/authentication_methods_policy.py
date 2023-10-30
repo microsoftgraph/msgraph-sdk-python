@@ -60,14 +60,14 @@ class AuthenticationMethodsPolicy(Entity):
         from .registration_enforcement import RegistrationEnforcement
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationMethodConfigurations": lambda n : setattr(self, 'authentication_method_configurations', n.get_collection_of_object_values(AuthenticationMethodConfiguration)),
+            "authentication_method_configurations": lambda n : setattr(self, 'authentication_method_configurations', n.get_collection_of_object_values(AuthenticationMethodConfiguration)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "policyMigrationState": lambda n : setattr(self, 'policy_migration_state', n.get_enum_value(AuthenticationMethodsPolicyMigrationState)),
-            "policyVersion": lambda n : setattr(self, 'policy_version', n.get_str_value()),
-            "reconfirmationInDays": lambda n : setattr(self, 'reconfirmation_in_days', n.get_int_value()),
-            "registrationEnforcement": lambda n : setattr(self, 'registration_enforcement', n.get_object_value(RegistrationEnforcement)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "policy_migration_state": lambda n : setattr(self, 'policy_migration_state', n.get_enum_value(AuthenticationMethodsPolicyMigrationState)),
+            "policy_version": lambda n : setattr(self, 'policy_version', n.get_str_value()),
+            "reconfirmation_in_days": lambda n : setattr(self, 'reconfirmation_in_days', n.get_int_value()),
+            "registration_enforcement": lambda n : setattr(self, 'registration_enforcement', n.get_object_value(RegistrationEnforcement)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -82,13 +82,13 @@ class AuthenticationMethodsPolicy(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("authenticationMethodConfigurations", self.authentication_method_configurations)
+        writer.write_collection_of_object_values("authentication_method_configurations", self.authentication_method_configurations)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_enum_value("policyMigrationState", self.policy_migration_state)
-        writer.write_str_value("policyVersion", self.policy_version)
-        writer.write_int_value("reconfirmationInDays", self.reconfirmation_in_days)
-        writer.write_object_value("registrationEnforcement", self.registration_enforcement)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_enum_value("policy_migration_state", self.policy_migration_state)
+        writer.write_str_value("policy_version", self.policy_version)
+        writer.write_int_value("reconfirmation_in_days", self.reconfirmation_in_days)
+        writer.write_object_value("registration_enforcement", self.registration_enforcement)
     
 

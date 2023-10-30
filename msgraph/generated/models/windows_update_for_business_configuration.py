@@ -137,42 +137,42 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration):
         from .windows_update_type import WindowsUpdateType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowWindows11Upgrade": lambda n : setattr(self, 'allow_windows11_upgrade', n.get_bool_value()),
-            "autoRestartNotificationDismissal": lambda n : setattr(self, 'auto_restart_notification_dismissal', n.get_enum_value(AutoRestartNotificationDismissalMethod)),
-            "automaticUpdateMode": lambda n : setattr(self, 'automatic_update_mode', n.get_enum_value(AutomaticUpdateMode)),
-            "businessReadyUpdatesOnly": lambda n : setattr(self, 'business_ready_updates_only', n.get_enum_value(WindowsUpdateType)),
-            "deadlineForFeatureUpdatesInDays": lambda n : setattr(self, 'deadline_for_feature_updates_in_days', n.get_int_value()),
-            "deadlineForQualityUpdatesInDays": lambda n : setattr(self, 'deadline_for_quality_updates_in_days', n.get_int_value()),
-            "deadlineGracePeriodInDays": lambda n : setattr(self, 'deadline_grace_period_in_days', n.get_int_value()),
-            "deliveryOptimizationMode": lambda n : setattr(self, 'delivery_optimization_mode', n.get_enum_value(WindowsDeliveryOptimizationMode)),
-            "driversExcluded": lambda n : setattr(self, 'drivers_excluded', n.get_bool_value()),
-            "engagedRestartDeadlineInDays": lambda n : setattr(self, 'engaged_restart_deadline_in_days', n.get_int_value()),
-            "engagedRestartSnoozeScheduleInDays": lambda n : setattr(self, 'engaged_restart_snooze_schedule_in_days', n.get_int_value()),
-            "engagedRestartTransitionScheduleInDays": lambda n : setattr(self, 'engaged_restart_transition_schedule_in_days', n.get_int_value()),
-            "featureUpdatesDeferralPeriodInDays": lambda n : setattr(self, 'feature_updates_deferral_period_in_days', n.get_int_value()),
-            "featureUpdatesPauseExpiryDateTime": lambda n : setattr(self, 'feature_updates_pause_expiry_date_time', n.get_datetime_value()),
-            "featureUpdatesPauseStartDate": lambda n : setattr(self, 'feature_updates_pause_start_date', n.get_date_value()),
-            "featureUpdatesPaused": lambda n : setattr(self, 'feature_updates_paused', n.get_bool_value()),
-            "featureUpdatesRollbackStartDateTime": lambda n : setattr(self, 'feature_updates_rollback_start_date_time', n.get_datetime_value()),
-            "featureUpdatesRollbackWindowInDays": lambda n : setattr(self, 'feature_updates_rollback_window_in_days', n.get_int_value()),
-            "featureUpdatesWillBeRolledBack": lambda n : setattr(self, 'feature_updates_will_be_rolled_back', n.get_bool_value()),
-            "installationSchedule": lambda n : setattr(self, 'installation_schedule', n.get_object_value(WindowsUpdateInstallScheduleType)),
-            "microsoftUpdateServiceAllowed": lambda n : setattr(self, 'microsoft_update_service_allowed', n.get_bool_value()),
-            "postponeRebootUntilAfterDeadline": lambda n : setattr(self, 'postpone_reboot_until_after_deadline', n.get_bool_value()),
-            "prereleaseFeatures": lambda n : setattr(self, 'prerelease_features', n.get_enum_value(PrereleaseFeatures)),
-            "qualityUpdatesDeferralPeriodInDays": lambda n : setattr(self, 'quality_updates_deferral_period_in_days', n.get_int_value()),
-            "qualityUpdatesPauseExpiryDateTime": lambda n : setattr(self, 'quality_updates_pause_expiry_date_time', n.get_datetime_value()),
-            "qualityUpdatesPauseStartDate": lambda n : setattr(self, 'quality_updates_pause_start_date', n.get_date_value()),
-            "qualityUpdatesPaused": lambda n : setattr(self, 'quality_updates_paused', n.get_bool_value()),
-            "qualityUpdatesRollbackStartDateTime": lambda n : setattr(self, 'quality_updates_rollback_start_date_time', n.get_datetime_value()),
-            "qualityUpdatesWillBeRolledBack": lambda n : setattr(self, 'quality_updates_will_be_rolled_back', n.get_bool_value()),
-            "scheduleImminentRestartWarningInMinutes": lambda n : setattr(self, 'schedule_imminent_restart_warning_in_minutes', n.get_int_value()),
-            "scheduleRestartWarningInHours": lambda n : setattr(self, 'schedule_restart_warning_in_hours', n.get_int_value()),
-            "skipChecksBeforeRestart": lambda n : setattr(self, 'skip_checks_before_restart', n.get_bool_value()),
-            "updateNotificationLevel": lambda n : setattr(self, 'update_notification_level', n.get_enum_value(WindowsUpdateNotificationDisplayOption)),
-            "updateWeeks": lambda n : setattr(self, 'update_weeks', n.get_collection_of_enum_values(WindowsUpdateForBusinessUpdateWeeks)),
-            "userPauseAccess": lambda n : setattr(self, 'user_pause_access', n.get_enum_value(Enablement)),
-            "userWindowsUpdateScanAccess": lambda n : setattr(self, 'user_windows_update_scan_access', n.get_enum_value(Enablement)),
+            "allow_windows11_upgrade": lambda n : setattr(self, 'allow_windows11_upgrade', n.get_bool_value()),
+            "auto_restart_notification_dismissal": lambda n : setattr(self, 'auto_restart_notification_dismissal', n.get_enum_value(AutoRestartNotificationDismissalMethod)),
+            "automatic_update_mode": lambda n : setattr(self, 'automatic_update_mode', n.get_enum_value(AutomaticUpdateMode)),
+            "business_ready_updates_only": lambda n : setattr(self, 'business_ready_updates_only', n.get_enum_value(WindowsUpdateType)),
+            "deadline_for_feature_updates_in_days": lambda n : setattr(self, 'deadline_for_feature_updates_in_days', n.get_int_value()),
+            "deadline_for_quality_updates_in_days": lambda n : setattr(self, 'deadline_for_quality_updates_in_days', n.get_int_value()),
+            "deadline_grace_period_in_days": lambda n : setattr(self, 'deadline_grace_period_in_days', n.get_int_value()),
+            "delivery_optimization_mode": lambda n : setattr(self, 'delivery_optimization_mode', n.get_enum_value(WindowsDeliveryOptimizationMode)),
+            "drivers_excluded": lambda n : setattr(self, 'drivers_excluded', n.get_bool_value()),
+            "engaged_restart_deadline_in_days": lambda n : setattr(self, 'engaged_restart_deadline_in_days', n.get_int_value()),
+            "engaged_restart_snooze_schedule_in_days": lambda n : setattr(self, 'engaged_restart_snooze_schedule_in_days', n.get_int_value()),
+            "engaged_restart_transition_schedule_in_days": lambda n : setattr(self, 'engaged_restart_transition_schedule_in_days', n.get_int_value()),
+            "feature_updates_deferral_period_in_days": lambda n : setattr(self, 'feature_updates_deferral_period_in_days', n.get_int_value()),
+            "feature_updates_pause_expiry_date_time": lambda n : setattr(self, 'feature_updates_pause_expiry_date_time', n.get_datetime_value()),
+            "feature_updates_pause_start_date": lambda n : setattr(self, 'feature_updates_pause_start_date', n.get_date_value()),
+            "feature_updates_paused": lambda n : setattr(self, 'feature_updates_paused', n.get_bool_value()),
+            "feature_updates_rollback_start_date_time": lambda n : setattr(self, 'feature_updates_rollback_start_date_time', n.get_datetime_value()),
+            "feature_updates_rollback_window_in_days": lambda n : setattr(self, 'feature_updates_rollback_window_in_days', n.get_int_value()),
+            "feature_updates_will_be_rolled_back": lambda n : setattr(self, 'feature_updates_will_be_rolled_back', n.get_bool_value()),
+            "installation_schedule": lambda n : setattr(self, 'installation_schedule', n.get_object_value(WindowsUpdateInstallScheduleType)),
+            "microsoft_update_service_allowed": lambda n : setattr(self, 'microsoft_update_service_allowed', n.get_bool_value()),
+            "postpone_reboot_until_after_deadline": lambda n : setattr(self, 'postpone_reboot_until_after_deadline', n.get_bool_value()),
+            "prerelease_features": lambda n : setattr(self, 'prerelease_features', n.get_enum_value(PrereleaseFeatures)),
+            "quality_updates_deferral_period_in_days": lambda n : setattr(self, 'quality_updates_deferral_period_in_days', n.get_int_value()),
+            "quality_updates_pause_expiry_date_time": lambda n : setattr(self, 'quality_updates_pause_expiry_date_time', n.get_datetime_value()),
+            "quality_updates_pause_start_date": lambda n : setattr(self, 'quality_updates_pause_start_date', n.get_date_value()),
+            "quality_updates_paused": lambda n : setattr(self, 'quality_updates_paused', n.get_bool_value()),
+            "quality_updates_rollback_start_date_time": lambda n : setattr(self, 'quality_updates_rollback_start_date_time', n.get_datetime_value()),
+            "quality_updates_will_be_rolled_back": lambda n : setattr(self, 'quality_updates_will_be_rolled_back', n.get_bool_value()),
+            "schedule_imminent_restart_warning_in_minutes": lambda n : setattr(self, 'schedule_imminent_restart_warning_in_minutes', n.get_int_value()),
+            "schedule_restart_warning_in_hours": lambda n : setattr(self, 'schedule_restart_warning_in_hours', n.get_int_value()),
+            "skip_checks_before_restart": lambda n : setattr(self, 'skip_checks_before_restart', n.get_bool_value()),
+            "update_notification_level": lambda n : setattr(self, 'update_notification_level', n.get_enum_value(WindowsUpdateNotificationDisplayOption)),
+            "update_weeks": lambda n : setattr(self, 'update_weeks', n.get_collection_of_enum_values(WindowsUpdateForBusinessUpdateWeeks)),
+            "user_pause_access": lambda n : setattr(self, 'user_pause_access', n.get_enum_value(Enablement)),
+            "user_windows_update_scan_access": lambda n : setattr(self, 'user_windows_update_scan_access', n.get_enum_value(Enablement)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -187,39 +187,39 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("allowWindows11Upgrade", self.allow_windows11_upgrade)
-        writer.write_enum_value("autoRestartNotificationDismissal", self.auto_restart_notification_dismissal)
-        writer.write_enum_value("automaticUpdateMode", self.automatic_update_mode)
-        writer.write_enum_value("businessReadyUpdatesOnly", self.business_ready_updates_only)
-        writer.write_int_value("deadlineForFeatureUpdatesInDays", self.deadline_for_feature_updates_in_days)
-        writer.write_int_value("deadlineForQualityUpdatesInDays", self.deadline_for_quality_updates_in_days)
-        writer.write_int_value("deadlineGracePeriodInDays", self.deadline_grace_period_in_days)
-        writer.write_enum_value("deliveryOptimizationMode", self.delivery_optimization_mode)
-        writer.write_bool_value("driversExcluded", self.drivers_excluded)
-        writer.write_int_value("engagedRestartDeadlineInDays", self.engaged_restart_deadline_in_days)
-        writer.write_int_value("engagedRestartSnoozeScheduleInDays", self.engaged_restart_snooze_schedule_in_days)
-        writer.write_int_value("engagedRestartTransitionScheduleInDays", self.engaged_restart_transition_schedule_in_days)
-        writer.write_int_value("featureUpdatesDeferralPeriodInDays", self.feature_updates_deferral_period_in_days)
-        writer.write_datetime_value("featureUpdatesPauseExpiryDateTime", self.feature_updates_pause_expiry_date_time)
-        writer.write_bool_value("featureUpdatesPaused", self.feature_updates_paused)
-        writer.write_datetime_value("featureUpdatesRollbackStartDateTime", self.feature_updates_rollback_start_date_time)
-        writer.write_int_value("featureUpdatesRollbackWindowInDays", self.feature_updates_rollback_window_in_days)
-        writer.write_bool_value("featureUpdatesWillBeRolledBack", self.feature_updates_will_be_rolled_back)
-        writer.write_object_value("installationSchedule", self.installation_schedule)
-        writer.write_bool_value("microsoftUpdateServiceAllowed", self.microsoft_update_service_allowed)
-        writer.write_bool_value("postponeRebootUntilAfterDeadline", self.postpone_reboot_until_after_deadline)
-        writer.write_enum_value("prereleaseFeatures", self.prerelease_features)
-        writer.write_int_value("qualityUpdatesDeferralPeriodInDays", self.quality_updates_deferral_period_in_days)
-        writer.write_datetime_value("qualityUpdatesPauseExpiryDateTime", self.quality_updates_pause_expiry_date_time)
-        writer.write_bool_value("qualityUpdatesPaused", self.quality_updates_paused)
-        writer.write_datetime_value("qualityUpdatesRollbackStartDateTime", self.quality_updates_rollback_start_date_time)
-        writer.write_bool_value("qualityUpdatesWillBeRolledBack", self.quality_updates_will_be_rolled_back)
-        writer.write_int_value("scheduleImminentRestartWarningInMinutes", self.schedule_imminent_restart_warning_in_minutes)
-        writer.write_int_value("scheduleRestartWarningInHours", self.schedule_restart_warning_in_hours)
-        writer.write_bool_value("skipChecksBeforeRestart", self.skip_checks_before_restart)
-        writer.write_enum_value("updateNotificationLevel", self.update_notification_level)
-        writer.write_enum_value("updateWeeks", self.update_weeks)
-        writer.write_enum_value("userPauseAccess", self.user_pause_access)
-        writer.write_enum_value("userWindowsUpdateScanAccess", self.user_windows_update_scan_access)
+        writer.write_bool_value("allow_windows11_upgrade", self.allow_windows11_upgrade)
+        writer.write_enum_value("auto_restart_notification_dismissal", self.auto_restart_notification_dismissal)
+        writer.write_enum_value("automatic_update_mode", self.automatic_update_mode)
+        writer.write_enum_value("business_ready_updates_only", self.business_ready_updates_only)
+        writer.write_int_value("deadline_for_feature_updates_in_days", self.deadline_for_feature_updates_in_days)
+        writer.write_int_value("deadline_for_quality_updates_in_days", self.deadline_for_quality_updates_in_days)
+        writer.write_int_value("deadline_grace_period_in_days", self.deadline_grace_period_in_days)
+        writer.write_enum_value("delivery_optimization_mode", self.delivery_optimization_mode)
+        writer.write_bool_value("drivers_excluded", self.drivers_excluded)
+        writer.write_int_value("engaged_restart_deadline_in_days", self.engaged_restart_deadline_in_days)
+        writer.write_int_value("engaged_restart_snooze_schedule_in_days", self.engaged_restart_snooze_schedule_in_days)
+        writer.write_int_value("engaged_restart_transition_schedule_in_days", self.engaged_restart_transition_schedule_in_days)
+        writer.write_int_value("feature_updates_deferral_period_in_days", self.feature_updates_deferral_period_in_days)
+        writer.write_datetime_value("feature_updates_pause_expiry_date_time", self.feature_updates_pause_expiry_date_time)
+        writer.write_bool_value("feature_updates_paused", self.feature_updates_paused)
+        writer.write_datetime_value("feature_updates_rollback_start_date_time", self.feature_updates_rollback_start_date_time)
+        writer.write_int_value("feature_updates_rollback_window_in_days", self.feature_updates_rollback_window_in_days)
+        writer.write_bool_value("feature_updates_will_be_rolled_back", self.feature_updates_will_be_rolled_back)
+        writer.write_object_value("installation_schedule", self.installation_schedule)
+        writer.write_bool_value("microsoft_update_service_allowed", self.microsoft_update_service_allowed)
+        writer.write_bool_value("postpone_reboot_until_after_deadline", self.postpone_reboot_until_after_deadline)
+        writer.write_enum_value("prerelease_features", self.prerelease_features)
+        writer.write_int_value("quality_updates_deferral_period_in_days", self.quality_updates_deferral_period_in_days)
+        writer.write_datetime_value("quality_updates_pause_expiry_date_time", self.quality_updates_pause_expiry_date_time)
+        writer.write_bool_value("quality_updates_paused", self.quality_updates_paused)
+        writer.write_datetime_value("quality_updates_rollback_start_date_time", self.quality_updates_rollback_start_date_time)
+        writer.write_bool_value("quality_updates_will_be_rolled_back", self.quality_updates_will_be_rolled_back)
+        writer.write_int_value("schedule_imminent_restart_warning_in_minutes", self.schedule_imminent_restart_warning_in_minutes)
+        writer.write_int_value("schedule_restart_warning_in_hours", self.schedule_restart_warning_in_hours)
+        writer.write_bool_value("skip_checks_before_restart", self.skip_checks_before_restart)
+        writer.write_enum_value("update_notification_level", self.update_notification_level)
+        writer.write_enum_value("update_weeks", self.update_weeks)
+        writer.write_enum_value("user_pause_access", self.user_pause_access)
+        writer.write_enum_value("user_windows_update_scan_access", self.user_windows_update_scan_access)
     
 

@@ -59,14 +59,14 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "hostOnly": lambda n : setattr(self, 'host_only', n.get_bool_value()),
-            "hostOrDomain": lambda n : setattr(self, 'host_or_domain', n.get_str_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "host_only": lambda n : setattr(self, 'host_only', n.get_bool_value()),
+            "host_or_domain": lambda n : setattr(self, 'host_or_domain', n.get_str_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
-            "publishedDateTime": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
-            "sourceEnvironment": lambda n : setattr(self, 'source_environment', n.get_enum_value(BrowserSharedCookieSourceEnvironment)),
+            "published_date_time": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
+            "source_environment": lambda n : setattr(self, 'source_environment', n.get_enum_value(BrowserSharedCookieSourceEnvironment)),
         }
         return fields
     
@@ -79,14 +79,14 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("comment", self.comment)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_bool_value("hostOnly", self.host_only)
-        writer.write_str_value("hostOrDomain", self.host_or_domain)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_bool_value("host_only", self.host_only)
+        writer.write_str_value("host_or_domain", self.host_or_domain)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("path", self.path)
-        writer.write_datetime_value("publishedDateTime", self.published_date_time)
-        writer.write_enum_value("sourceEnvironment", self.source_environment)
+        writer.write_datetime_value("published_date_time", self.published_date_time)
+        writer.write_enum_value("source_environment", self.source_environment)
         writer.write_additional_data_value(self.additional_data)
     
 

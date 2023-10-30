@@ -50,16 +50,16 @@ class Photo(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "cameraMake": lambda n : setattr(self, 'camera_make', n.get_str_value()),
-            "cameraModel": lambda n : setattr(self, 'camera_model', n.get_str_value()),
-            "exposureDenominator": lambda n : setattr(self, 'exposure_denominator', n.get_float_value()),
-            "exposureNumerator": lambda n : setattr(self, 'exposure_numerator', n.get_float_value()),
-            "fNumber": lambda n : setattr(self, 'f_number', n.get_float_value()),
-            "focalLength": lambda n : setattr(self, 'focal_length', n.get_float_value()),
+            "camera_make": lambda n : setattr(self, 'camera_make', n.get_str_value()),
+            "camera_model": lambda n : setattr(self, 'camera_model', n.get_str_value()),
+            "exposure_denominator": lambda n : setattr(self, 'exposure_denominator', n.get_float_value()),
+            "exposure_numerator": lambda n : setattr(self, 'exposure_numerator', n.get_float_value()),
+            "f_number": lambda n : setattr(self, 'f_number', n.get_float_value()),
+            "focal_length": lambda n : setattr(self, 'focal_length', n.get_float_value()),
             "iso": lambda n : setattr(self, 'iso', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "orientation": lambda n : setattr(self, 'orientation', n.get_int_value()),
-            "takenDateTime": lambda n : setattr(self, 'taken_date_time', n.get_datetime_value()),
+            "taken_date_time": lambda n : setattr(self, 'taken_date_time', n.get_datetime_value()),
         }
         return fields
     
@@ -71,16 +71,16 @@ class Photo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("cameraMake", self.camera_make)
-        writer.write_str_value("cameraModel", self.camera_model)
-        writer.write_float_value("exposureDenominator", self.exposure_denominator)
-        writer.write_float_value("exposureNumerator", self.exposure_numerator)
-        writer.write_float_value("fNumber", self.f_number)
-        writer.write_float_value("focalLength", self.focal_length)
+        writer.write_str_value("camera_make", self.camera_make)
+        writer.write_str_value("camera_model", self.camera_model)
+        writer.write_float_value("exposure_denominator", self.exposure_denominator)
+        writer.write_float_value("exposure_numerator", self.exposure_numerator)
+        writer.write_float_value("f_number", self.f_number)
+        writer.write_float_value("focal_length", self.focal_length)
         writer.write_int_value("iso", self.iso)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("orientation", self.orientation)
-        writer.write_datetime_value("takenDateTime", self.taken_date_time)
+        writer.write_datetime_value("taken_date_time", self.taken_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

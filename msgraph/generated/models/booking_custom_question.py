@@ -46,9 +46,9 @@ class BookingCustomQuestion(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(AnswerInputType)),
-            "answerOptions": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "answer_input_type": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(AnswerInputType)),
+            "answer_options": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,8 +63,8 @@ class BookingCustomQuestion(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("answerInputType", self.answer_input_type)
-        writer.write_collection_of_primitive_values("answerOptions", self.answer_options)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_enum_value("answer_input_type", self.answer_input_type)
+        writer.write_collection_of_primitive_values("answer_options", self.answer_options)
+        writer.write_str_value("display_name", self.display_name)
     
 

@@ -31,7 +31,7 @@ class WindowsDefenderScanPostRequestBody(AdditionalDataHolder, BackedModel, Pars
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "quickScan": lambda n : setattr(self, 'quick_scan', n.get_bool_value()),
+            "quick_scan": lambda n : setattr(self, 'quick_scan', n.get_bool_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class WindowsDefenderScanPostRequestBody(AdditionalDataHolder, BackedModel, Pars
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("quickScan", self.quick_scan)
+        writer.write_bool_value("quick_scan", self.quick_scan)
         writer.write_additional_data_value(self.additional_data)
     
 

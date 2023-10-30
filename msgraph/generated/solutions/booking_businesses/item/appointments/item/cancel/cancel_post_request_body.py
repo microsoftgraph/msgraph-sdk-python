@@ -31,7 +31,7 @@ class CancelPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "cancellationMessage": lambda n : setattr(self, 'cancellation_message', n.get_str_value()),
+            "cancellation_message": lambda n : setattr(self, 'cancellation_message', n.get_str_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class CancelPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("cancellationMessage", self.cancellation_message)
+        writer.write_str_value("cancellation_message", self.cancellation_message)
         writer.write_additional_data_value(self.additional_data)
     
 

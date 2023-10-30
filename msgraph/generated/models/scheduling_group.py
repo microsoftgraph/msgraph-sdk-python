@@ -40,9 +40,9 @@ class SchedulingGroup(ChangeTrackedEntity):
         from .change_tracked_entity import ChangeTrackedEntity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
-            "userIds": lambda n : setattr(self, 'user_ids', n.get_collection_of_primitive_values(str)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "is_active": lambda n : setattr(self, 'is_active', n.get_bool_value()),
+            "user_ids": lambda n : setattr(self, 'user_ids', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class SchedulingGroup(ChangeTrackedEntity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_primitive_values("userIds", self.user_ids)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_primitive_values("user_ids", self.user_ids)
     
 

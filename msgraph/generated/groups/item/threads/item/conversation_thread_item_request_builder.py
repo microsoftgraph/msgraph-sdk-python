@@ -30,10 +30,10 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ConversationThreadItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete conversationThread. This API is available in the following national cloud deployments.
+        This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/conversationthread-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/group-delete-thread?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -97,7 +97,7 @@ class ConversationThreadItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ConversationThreadItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete conversationThread. This API is available in the following national cloud deployments.
+        This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

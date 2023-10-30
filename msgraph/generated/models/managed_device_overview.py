@@ -53,11 +53,11 @@ class ManagedDeviceOverview(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceExchangeAccessStateSummary": lambda n : setattr(self, 'device_exchange_access_state_summary', n.get_object_value(DeviceExchangeAccessStateSummary)),
-            "deviceOperatingSystemSummary": lambda n : setattr(self, 'device_operating_system_summary', n.get_object_value(DeviceOperatingSystemSummary)),
-            "dualEnrolledDeviceCount": lambda n : setattr(self, 'dual_enrolled_device_count', n.get_int_value()),
-            "enrolledDeviceCount": lambda n : setattr(self, 'enrolled_device_count', n.get_int_value()),
-            "mdmEnrolledCount": lambda n : setattr(self, 'mdm_enrolled_count', n.get_int_value()),
+            "device_exchange_access_state_summary": lambda n : setattr(self, 'device_exchange_access_state_summary', n.get_object_value(DeviceExchangeAccessStateSummary)),
+            "device_operating_system_summary": lambda n : setattr(self, 'device_operating_system_summary', n.get_object_value(DeviceOperatingSystemSummary)),
+            "dual_enrolled_device_count": lambda n : setattr(self, 'dual_enrolled_device_count', n.get_int_value()),
+            "enrolled_device_count": lambda n : setattr(self, 'enrolled_device_count', n.get_int_value()),
+            "mdm_enrolled_count": lambda n : setattr(self, 'mdm_enrolled_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,10 +72,10 @@ class ManagedDeviceOverview(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("deviceExchangeAccessStateSummary", self.device_exchange_access_state_summary)
-        writer.write_object_value("deviceOperatingSystemSummary", self.device_operating_system_summary)
-        writer.write_int_value("dualEnrolledDeviceCount", self.dual_enrolled_device_count)
-        writer.write_int_value("enrolledDeviceCount", self.enrolled_device_count)
-        writer.write_int_value("mdmEnrolledCount", self.mdm_enrolled_count)
+        writer.write_object_value("device_exchange_access_state_summary", self.device_exchange_access_state_summary)
+        writer.write_object_value("device_operating_system_summary", self.device_operating_system_summary)
+        writer.write_int_value("dual_enrolled_device_count", self.dual_enrolled_device_count)
+        writer.write_int_value("enrolled_device_count", self.enrolled_device_count)
+        writer.write_int_value("mdm_enrolled_count", self.mdm_enrolled_count)
     
 

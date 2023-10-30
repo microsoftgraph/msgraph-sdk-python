@@ -42,9 +42,9 @@ class MatchPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lookupArray": lambda n : setattr(self, 'lookup_array', n.get_object_value(Json)),
-            "lookupValue": lambda n : setattr(self, 'lookup_value', n.get_object_value(Json)),
-            "matchType": lambda n : setattr(self, 'match_type', n.get_object_value(Json)),
+            "lookup_array": lambda n : setattr(self, 'lookup_array', n.get_object_value(Json)),
+            "lookup_value": lambda n : setattr(self, 'lookup_value', n.get_object_value(Json)),
+            "match_type": lambda n : setattr(self, 'match_type', n.get_object_value(Json)),
         }
         return fields
     
@@ -56,9 +56,9 @@ class MatchPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("lookupArray", self.lookup_array)
-        writer.write_object_value("lookupValue", self.lookup_value)
-        writer.write_object_value("matchType", self.match_type)
+        writer.write_object_value("lookup_array", self.lookup_array)
+        writer.write_object_value("lookup_value", self.lookup_value)
+        writer.write_object_value("match_type", self.match_type)
         writer.write_additional_data_value(self.additional_data)
     
 

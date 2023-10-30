@@ -45,9 +45,9 @@ class OnlineMeetingRestricted(AdditionalDataHolder, BackedModel, Parsable):
         from .online_meeting_video_disabled_reason import OnlineMeetingVideoDisabledReason
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "contentSharingDisabled": lambda n : setattr(self, 'content_sharing_disabled', n.get_collection_of_enum_values(OnlineMeetingContentSharingDisabledReason)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "videoDisabled": lambda n : setattr(self, 'video_disabled', n.get_collection_of_enum_values(OnlineMeetingVideoDisabledReason)),
+            "content_sharing_disabled": lambda n : setattr(self, 'content_sharing_disabled', n.get_collection_of_enum_values(OnlineMeetingContentSharingDisabledReason)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "video_disabled": lambda n : setattr(self, 'video_disabled', n.get_collection_of_enum_values(OnlineMeetingVideoDisabledReason)),
         }
         return fields
     
@@ -59,9 +59,9 @@ class OnlineMeetingRestricted(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("contentSharingDisabled", self.content_sharing_disabled)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_enum_value("videoDisabled", self.video_disabled)
+        writer.write_enum_value("content_sharing_disabled", self.content_sharing_disabled)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_enum_value("video_disabled", self.video_disabled)
         writer.write_additional_data_value(self.additional_data)
     
 

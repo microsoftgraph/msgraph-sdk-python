@@ -62,17 +62,17 @@ class ArchivedPrintJob(AdditionalDataHolder, BackedModel, Parsable):
         from .user_identity import UserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "acquiredByPrinter": lambda n : setattr(self, 'acquired_by_printer', n.get_bool_value()),
-            "acquiredDateTime": lambda n : setattr(self, 'acquired_date_time', n.get_datetime_value()),
-            "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
-            "copiesPrinted": lambda n : setattr(self, 'copies_printed', n.get_int_value()),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(UserIdentity)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "acquired_by_printer": lambda n : setattr(self, 'acquired_by_printer', n.get_bool_value()),
+            "acquired_date_time": lambda n : setattr(self, 'acquired_date_time', n.get_datetime_value()),
+            "completion_date_time": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
+            "copies_printed": lambda n : setattr(self, 'copies_printed', n.get_int_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(UserIdentity)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "printerId": lambda n : setattr(self, 'printer_id', n.get_str_value()),
-            "printerName": lambda n : setattr(self, 'printer_name', n.get_str_value()),
-            "processingState": lambda n : setattr(self, 'processing_state', n.get_enum_value(PrintJobProcessingState)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "printer_id": lambda n : setattr(self, 'printer_id', n.get_str_value()),
+            "printer_name": lambda n : setattr(self, 'printer_name', n.get_str_value()),
+            "processing_state": lambda n : setattr(self, 'processing_state', n.get_enum_value(PrintJobProcessingState)),
         }
         return fields
     
@@ -84,17 +84,17 @@ class ArchivedPrintJob(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("acquiredByPrinter", self.acquired_by_printer)
-        writer.write_datetime_value("acquiredDateTime", self.acquired_date_time)
-        writer.write_datetime_value("completionDateTime", self.completion_date_time)
-        writer.write_int_value("copiesPrinted", self.copies_printed)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_bool_value("acquired_by_printer", self.acquired_by_printer)
+        writer.write_datetime_value("acquired_date_time", self.acquired_date_time)
+        writer.write_datetime_value("completion_date_time", self.completion_date_time)
+        writer.write_int_value("copies_printed", self.copies_printed)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("id", self.id)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("printerId", self.printer_id)
-        writer.write_str_value("printerName", self.printer_name)
-        writer.write_enum_value("processingState", self.processing_state)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("printer_id", self.printer_id)
+        writer.write_str_value("printer_name", self.printer_name)
+        writer.write_enum_value("processing_state", self.processing_state)
         writer.write_additional_data_value(self.additional_data)
     
 

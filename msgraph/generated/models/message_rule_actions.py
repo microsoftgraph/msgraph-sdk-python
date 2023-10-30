@@ -63,18 +63,18 @@ class MessageRuleActions(AdditionalDataHolder, BackedModel, Parsable):
         from .recipient import Recipient
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignCategories": lambda n : setattr(self, 'assign_categories', n.get_collection_of_primitive_values(str)),
-            "copyToFolder": lambda n : setattr(self, 'copy_to_folder', n.get_str_value()),
+            "assign_categories": lambda n : setattr(self, 'assign_categories', n.get_collection_of_primitive_values(str)),
+            "copy_to_folder": lambda n : setattr(self, 'copy_to_folder', n.get_str_value()),
             "delete": lambda n : setattr(self, 'delete', n.get_bool_value()),
-            "forwardAsAttachmentTo": lambda n : setattr(self, 'forward_as_attachment_to', n.get_collection_of_object_values(Recipient)),
-            "forwardTo": lambda n : setattr(self, 'forward_to', n.get_collection_of_object_values(Recipient)),
-            "markAsRead": lambda n : setattr(self, 'mark_as_read', n.get_bool_value()),
-            "markImportance": lambda n : setattr(self, 'mark_importance', n.get_enum_value(Importance)),
-            "moveToFolder": lambda n : setattr(self, 'move_to_folder', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "permanentDelete": lambda n : setattr(self, 'permanent_delete', n.get_bool_value()),
-            "redirectTo": lambda n : setattr(self, 'redirect_to', n.get_collection_of_object_values(Recipient)),
-            "stopProcessingRules": lambda n : setattr(self, 'stop_processing_rules', n.get_bool_value()),
+            "forward_as_attachment_to": lambda n : setattr(self, 'forward_as_attachment_to', n.get_collection_of_object_values(Recipient)),
+            "forward_to": lambda n : setattr(self, 'forward_to', n.get_collection_of_object_values(Recipient)),
+            "mark_as_read": lambda n : setattr(self, 'mark_as_read', n.get_bool_value()),
+            "mark_importance": lambda n : setattr(self, 'mark_importance', n.get_enum_value(Importance)),
+            "move_to_folder": lambda n : setattr(self, 'move_to_folder', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "permanent_delete": lambda n : setattr(self, 'permanent_delete', n.get_bool_value()),
+            "redirect_to": lambda n : setattr(self, 'redirect_to', n.get_collection_of_object_values(Recipient)),
+            "stop_processing_rules": lambda n : setattr(self, 'stop_processing_rules', n.get_bool_value()),
         }
         return fields
     
@@ -86,18 +86,18 @@ class MessageRuleActions(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("assignCategories", self.assign_categories)
-        writer.write_str_value("copyToFolder", self.copy_to_folder)
+        writer.write_collection_of_primitive_values("assign_categories", self.assign_categories)
+        writer.write_str_value("copy_to_folder", self.copy_to_folder)
         writer.write_bool_value("delete", self.delete)
-        writer.write_collection_of_object_values("forwardAsAttachmentTo", self.forward_as_attachment_to)
-        writer.write_collection_of_object_values("forwardTo", self.forward_to)
-        writer.write_bool_value("markAsRead", self.mark_as_read)
-        writer.write_enum_value("markImportance", self.mark_importance)
-        writer.write_str_value("moveToFolder", self.move_to_folder)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_bool_value("permanentDelete", self.permanent_delete)
-        writer.write_collection_of_object_values("redirectTo", self.redirect_to)
-        writer.write_bool_value("stopProcessingRules", self.stop_processing_rules)
+        writer.write_collection_of_object_values("forward_as_attachment_to", self.forward_as_attachment_to)
+        writer.write_collection_of_object_values("forward_to", self.forward_to)
+        writer.write_bool_value("mark_as_read", self.mark_as_read)
+        writer.write_enum_value("mark_importance", self.mark_importance)
+        writer.write_str_value("move_to_folder", self.move_to_folder)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_bool_value("permanent_delete", self.permanent_delete)
+        writer.write_collection_of_object_values("redirect_to", self.redirect_to)
+        writer.write_bool_value("stop_processing_rules", self.stop_processing_rules)
         writer.write_additional_data_value(self.additional_data)
     
 

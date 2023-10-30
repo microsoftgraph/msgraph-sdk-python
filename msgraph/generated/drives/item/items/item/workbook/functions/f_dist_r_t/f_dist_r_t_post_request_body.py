@@ -42,8 +42,8 @@ class F_Dist_RTPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "degFreedom1": lambda n : setattr(self, 'deg_freedom1', n.get_object_value(Json)),
-            "degFreedom2": lambda n : setattr(self, 'deg_freedom2', n.get_object_value(Json)),
+            "deg_freedom1": lambda n : setattr(self, 'deg_freedom1', n.get_object_value(Json)),
+            "deg_freedom2": lambda n : setattr(self, 'deg_freedom2', n.get_object_value(Json)),
             "x": lambda n : setattr(self, 'x', n.get_object_value(Json)),
         }
         return fields
@@ -56,8 +56,8 @@ class F_Dist_RTPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("degFreedom1", self.deg_freedom1)
-        writer.write_object_value("degFreedom2", self.deg_freedom2)
+        writer.write_object_value("deg_freedom1", self.deg_freedom1)
+        writer.write_object_value("deg_freedom2", self.deg_freedom2)
         writer.write_object_value("x", self.x)
         writer.write_additional_data_value(self.additional_data)
     

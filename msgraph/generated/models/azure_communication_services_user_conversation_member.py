@@ -36,7 +36,7 @@ class AzureCommunicationServicesUserConversationMember(ConversationMember):
         from .conversation_member import ConversationMember
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "azureCommunicationServicesId": lambda n : setattr(self, 'azure_communication_services_id', n.get_str_value()),
+            "azure_communication_services_id": lambda n : setattr(self, 'azure_communication_services_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class AzureCommunicationServicesUserConversationMember(ConversationMember):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("azureCommunicationServicesId", self.azure_communication_services_id)
+        writer.write_str_value("azure_communication_services_id", self.azure_communication_services_id)
     
 

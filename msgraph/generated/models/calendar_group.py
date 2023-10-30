@@ -47,8 +47,8 @@ class CalendarGroup(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "calendars": lambda n : setattr(self, 'calendars', n.get_collection_of_object_values(Calendar)),
-            "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
-            "classId": lambda n : setattr(self, 'class_id', n.get_uuid_value()),
+            "change_key": lambda n : setattr(self, 'change_key', n.get_str_value()),
+            "class_id": lambda n : setattr(self, 'class_id', n.get_uuid_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -65,8 +65,8 @@ class CalendarGroup(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("calendars", self.calendars)
-        writer.write_str_value("changeKey", self.change_key)
-        writer.write_uuid_value("classId", self.class_id)
+        writer.write_str_value("change_key", self.change_key)
+        writer.write_uuid_value("class_id", self.class_id)
         writer.write_str_value("name", self.name)
     
 

@@ -43,10 +43,10 @@ class OutlookGeoCoordinates(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "accuracy": lambda n : setattr(self, 'accuracy', n.get_float_value()),
             "altitude": lambda n : setattr(self, 'altitude', n.get_float_value()),
-            "altitudeAccuracy": lambda n : setattr(self, 'altitude_accuracy', n.get_float_value()),
+            "altitude_accuracy": lambda n : setattr(self, 'altitude_accuracy', n.get_float_value()),
             "latitude": lambda n : setattr(self, 'latitude', n.get_float_value()),
             "longitude": lambda n : setattr(self, 'longitude', n.get_float_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -60,10 +60,10 @@ class OutlookGeoCoordinates(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_float_value("accuracy", self.accuracy)
         writer.write_float_value("altitude", self.altitude)
-        writer.write_float_value("altitudeAccuracy", self.altitude_accuracy)
+        writer.write_float_value("altitude_accuracy", self.altitude_accuracy)
         writer.write_float_value("latitude", self.latitude)
         writer.write_float_value("longitude", self.longitude)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

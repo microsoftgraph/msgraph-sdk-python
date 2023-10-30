@@ -44,8 +44,8 @@ class DeviceComplianceScheduledActionForRule(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "ruleName": lambda n : setattr(self, 'rule_name', n.get_str_value()),
-            "scheduledActionConfigurations": lambda n : setattr(self, 'scheduled_action_configurations', n.get_collection_of_object_values(DeviceComplianceActionItem)),
+            "rule_name": lambda n : setattr(self, 'rule_name', n.get_str_value()),
+            "scheduled_action_configurations": lambda n : setattr(self, 'scheduled_action_configurations', n.get_collection_of_object_values(DeviceComplianceActionItem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,7 +60,7 @@ class DeviceComplianceScheduledActionForRule(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("ruleName", self.rule_name)
-        writer.write_collection_of_object_values("scheduledActionConfigurations", self.scheduled_action_configurations)
+        writer.write_str_value("rule_name", self.rule_name)
+        writer.write_collection_of_object_values("scheduled_action_configurations", self.scheduled_action_configurations)
     
 

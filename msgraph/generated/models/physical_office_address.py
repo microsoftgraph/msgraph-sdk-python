@@ -44,10 +44,10 @@ class PhysicalOfficeAddress(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
-            "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
-            "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
+            "country_or_region": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "office_location": lambda n : setattr(self, 'office_location', n.get_str_value()),
+            "postal_code": lambda n : setattr(self, 'postal_code', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
             "street": lambda n : setattr(self, 'street', n.get_str_value()),
         }
@@ -62,10 +62,10 @@ class PhysicalOfficeAddress(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("city", self.city)
-        writer.write_str_value("countryOrRegion", self.country_or_region)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("officeLocation", self.office_location)
-        writer.write_str_value("postalCode", self.postal_code)
+        writer.write_str_value("country_or_region", self.country_or_region)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("office_location", self.office_location)
+        writer.write_str_value("postal_code", self.postal_code)
         writer.write_str_value("state", self.state)
         writer.write_str_value("street", self.street)
         writer.write_additional_data_value(self.additional_data)

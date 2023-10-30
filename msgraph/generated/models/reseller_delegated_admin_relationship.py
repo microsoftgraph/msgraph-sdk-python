@@ -38,8 +38,8 @@ class ResellerDelegatedAdminRelationship(DelegatedAdminRelationship):
         from .delegated_admin_relationship import DelegatedAdminRelationship
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "indirectProviderTenantId": lambda n : setattr(self, 'indirect_provider_tenant_id', n.get_str_value()),
-            "isPartnerConsentPending": lambda n : setattr(self, 'is_partner_consent_pending', n.get_bool_value()),
+            "indirect_provider_tenant_id": lambda n : setattr(self, 'indirect_provider_tenant_id', n.get_str_value()),
+            "is_partner_consent_pending": lambda n : setattr(self, 'is_partner_consent_pending', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class ResellerDelegatedAdminRelationship(DelegatedAdminRelationship):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("indirectProviderTenantId", self.indirect_provider_tenant_id)
-        writer.write_bool_value("isPartnerConsentPending", self.is_partner_consent_pending)
+        writer.write_str_value("indirect_provider_tenant_id", self.indirect_provider_tenant_id)
+        writer.write_bool_value("is_partner_consent_pending", self.is_partner_consent_pending)
     
 

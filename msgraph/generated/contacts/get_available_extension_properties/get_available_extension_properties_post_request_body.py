@@ -31,7 +31,7 @@ class GetAvailableExtensionPropertiesPostRequestBody(AdditionalDataHolder, Backe
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "isSyncedFromOnPremises": lambda n : setattr(self, 'is_synced_from_on_premises', n.get_bool_value()),
+            "is_synced_from_on_premises": lambda n : setattr(self, 'is_synced_from_on_premises', n.get_bool_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class GetAvailableExtensionPropertiesPostRequestBody(AdditionalDataHolder, Backe
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("isSyncedFromOnPremises", self.is_synced_from_on_premises)
+        writer.write_bool_value("is_synced_from_on_premises", self.is_synced_from_on_premises)
         writer.write_additional_data_value(self.additional_data)
     
 

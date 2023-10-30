@@ -44,10 +44,10 @@ class ReplacePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "newText": lambda n : setattr(self, 'new_text', n.get_object_value(Json)),
-            "numChars": lambda n : setattr(self, 'num_chars', n.get_object_value(Json)),
-            "oldText": lambda n : setattr(self, 'old_text', n.get_object_value(Json)),
-            "startNum": lambda n : setattr(self, 'start_num', n.get_object_value(Json)),
+            "new_text": lambda n : setattr(self, 'new_text', n.get_object_value(Json)),
+            "num_chars": lambda n : setattr(self, 'num_chars', n.get_object_value(Json)),
+            "old_text": lambda n : setattr(self, 'old_text', n.get_object_value(Json)),
+            "start_num": lambda n : setattr(self, 'start_num', n.get_object_value(Json)),
         }
         return fields
     
@@ -59,10 +59,10 @@ class ReplacePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("newText", self.new_text)
-        writer.write_object_value("numChars", self.num_chars)
-        writer.write_object_value("oldText", self.old_text)
-        writer.write_object_value("startNum", self.start_num)
+        writer.write_object_value("new_text", self.new_text)
+        writer.write_object_value("num_chars", self.num_chars)
+        writer.write_object_value("old_text", self.old_text)
+        writer.write_object_value("start_num", self.start_num)
         writer.write_additional_data_value(self.additional_data)
     
 

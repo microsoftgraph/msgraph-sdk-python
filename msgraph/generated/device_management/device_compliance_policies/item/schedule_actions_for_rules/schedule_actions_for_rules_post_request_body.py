@@ -38,7 +38,7 @@ class ScheduleActionsForRulesPostRequestBody(AdditionalDataHolder, BackedModel, 
         from .....models.device_compliance_scheduled_action_for_rule import DeviceComplianceScheduledActionForRule
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceComplianceScheduledActionForRules": lambda n : setattr(self, 'device_compliance_scheduled_action_for_rules', n.get_collection_of_object_values(DeviceComplianceScheduledActionForRule)),
+            "device_compliance_scheduled_action_for_rules": lambda n : setattr(self, 'device_compliance_scheduled_action_for_rules', n.get_collection_of_object_values(DeviceComplianceScheduledActionForRule)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class ScheduleActionsForRulesPostRequestBody(AdditionalDataHolder, BackedModel, 
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("deviceComplianceScheduledActionForRules", self.device_compliance_scheduled_action_for_rules)
+        writer.write_collection_of_object_values("device_compliance_scheduled_action_for_rules", self.device_compliance_scheduled_action_for_rules)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -44,9 +44,9 @@ class Binom_Dist_RangePostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "numberS": lambda n : setattr(self, 'number_s', n.get_object_value(Json)),
-            "numberS2": lambda n : setattr(self, 'number_s2', n.get_object_value(Json)),
-            "probabilityS": lambda n : setattr(self, 'probability_s', n.get_object_value(Json)),
+            "number_s": lambda n : setattr(self, 'number_s', n.get_object_value(Json)),
+            "number_s2": lambda n : setattr(self, 'number_s2', n.get_object_value(Json)),
+            "probability_s": lambda n : setattr(self, 'probability_s', n.get_object_value(Json)),
             "trials": lambda n : setattr(self, 'trials', n.get_object_value(Json)),
         }
         return fields
@@ -59,9 +59,9 @@ class Binom_Dist_RangePostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("numberS", self.number_s)
-        writer.write_object_value("numberS2", self.number_s2)
-        writer.write_object_value("probabilityS", self.probability_s)
+        writer.write_object_value("number_s", self.number_s)
+        writer.write_object_value("number_s2", self.number_s2)
+        writer.write_object_value("probability_s", self.probability_s)
         writer.write_object_value("trials", self.trials)
         writer.write_additional_data_value(self.additional_data)
     

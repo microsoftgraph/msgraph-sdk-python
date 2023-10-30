@@ -44,10 +44,10 @@ class OptionalClaims(AdditionalDataHolder, BackedModel, Parsable):
         from .optional_claim import OptionalClaim
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessToken": lambda n : setattr(self, 'access_token', n.get_collection_of_object_values(OptionalClaim)),
-            "idToken": lambda n : setattr(self, 'id_token', n.get_collection_of_object_values(OptionalClaim)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "saml2Token": lambda n : setattr(self, 'saml2_token', n.get_collection_of_object_values(OptionalClaim)),
+            "access_token": lambda n : setattr(self, 'access_token', n.get_collection_of_object_values(OptionalClaim)),
+            "id_token": lambda n : setattr(self, 'id_token', n.get_collection_of_object_values(OptionalClaim)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "saml2_token": lambda n : setattr(self, 'saml2_token', n.get_collection_of_object_values(OptionalClaim)),
         }
         return fields
     
@@ -59,10 +59,10 @@ class OptionalClaims(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("accessToken", self.access_token)
-        writer.write_collection_of_object_values("idToken", self.id_token)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("saml2Token", self.saml2_token)
+        writer.write_collection_of_object_values("access_token", self.access_token)
+        writer.write_collection_of_object_values("id_token", self.id_token)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("saml2_token", self.saml2_token)
         writer.write_additional_data_value(self.additional_data)
     
 

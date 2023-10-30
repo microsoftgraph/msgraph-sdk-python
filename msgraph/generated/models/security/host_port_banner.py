@@ -43,11 +43,11 @@ class HostPortBanner(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "banner": lambda n : setattr(self, 'banner', n.get_str_value()),
-            "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
-            "lastSeenDateTime": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "scanProtocol": lambda n : setattr(self, 'scan_protocol', n.get_str_value()),
-            "timesObserved": lambda n : setattr(self, 'times_observed', n.get_int_value()),
+            "first_seen_date_time": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
+            "last_seen_date_time": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "scan_protocol": lambda n : setattr(self, 'scan_protocol', n.get_str_value()),
+            "times_observed": lambda n : setattr(self, 'times_observed', n.get_int_value()),
         }
         return fields
     
@@ -60,11 +60,11 @@ class HostPortBanner(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("banner", self.banner)
-        writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
-        writer.write_datetime_value("lastSeenDateTime", self.last_seen_date_time)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("scanProtocol", self.scan_protocol)
-        writer.write_int_value("timesObserved", self.times_observed)
+        writer.write_datetime_value("first_seen_date_time", self.first_seen_date_time)
+        writer.write_datetime_value("last_seen_date_time", self.last_seen_date_time)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("scan_protocol", self.scan_protocol)
+        writer.write_int_value("times_observed", self.times_observed)
         writer.write_additional_data_value(self.additional_data)
     
 

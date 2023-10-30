@@ -39,11 +39,11 @@ class NumberColumn(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "decimalPlaces": lambda n : setattr(self, 'decimal_places', n.get_str_value()),
-            "displayAs": lambda n : setattr(self, 'display_as', n.get_str_value()),
+            "decimal_places": lambda n : setattr(self, 'decimal_places', n.get_str_value()),
+            "display_as": lambda n : setattr(self, 'display_as', n.get_str_value()),
             "maximum": lambda n : setattr(self, 'maximum', n.get_float_value()),
             "minimum": lambda n : setattr(self, 'minimum', n.get_float_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -55,11 +55,11 @@ class NumberColumn(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("decimalPlaces", self.decimal_places)
-        writer.write_str_value("displayAs", self.display_as)
+        writer.write_str_value("decimal_places", self.decimal_places)
+        writer.write_str_value("display_as", self.display_as)
         writer.write_float_value("maximum", self.maximum)
         writer.write_float_value("minimum", self.minimum)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

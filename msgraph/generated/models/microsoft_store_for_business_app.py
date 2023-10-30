@@ -50,11 +50,11 @@ class MicrosoftStoreForBusinessApp(MobileApp):
         from .mobile_app import MobileApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "licenseType": lambda n : setattr(self, 'license_type', n.get_enum_value(MicrosoftStoreForBusinessLicenseType)),
-            "packageIdentityName": lambda n : setattr(self, 'package_identity_name', n.get_str_value()),
-            "productKey": lambda n : setattr(self, 'product_key', n.get_str_value()),
-            "totalLicenseCount": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
-            "usedLicenseCount": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
+            "license_type": lambda n : setattr(self, 'license_type', n.get_enum_value(MicrosoftStoreForBusinessLicenseType)),
+            "package_identity_name": lambda n : setattr(self, 'package_identity_name', n.get_str_value()),
+            "product_key": lambda n : setattr(self, 'product_key', n.get_str_value()),
+            "total_license_count": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
+            "used_license_count": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,10 +69,10 @@ class MicrosoftStoreForBusinessApp(MobileApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("licenseType", self.license_type)
-        writer.write_str_value("packageIdentityName", self.package_identity_name)
-        writer.write_str_value("productKey", self.product_key)
-        writer.write_int_value("totalLicenseCount", self.total_license_count)
-        writer.write_int_value("usedLicenseCount", self.used_license_count)
+        writer.write_enum_value("license_type", self.license_type)
+        writer.write_str_value("package_identity_name", self.package_identity_name)
+        writer.write_str_value("product_key", self.product_key)
+        writer.write_int_value("total_license_count", self.total_license_count)
+        writer.write_int_value("used_license_count", self.used_license_count)
     
 

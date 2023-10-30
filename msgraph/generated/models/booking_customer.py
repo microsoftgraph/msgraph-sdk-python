@@ -52,8 +52,8 @@ class BookingCustomer(BookingCustomerBase):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "addresses": lambda n : setattr(self, 'addresses', n.get_collection_of_object_values(PhysicalAddress)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(Phone)),
         }
         super_fields = super().get_field_deserializers()
@@ -70,8 +70,8 @@ class BookingCustomer(BookingCustomerBase):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("addresses", self.addresses)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("emailAddress", self.email_address)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("email_address", self.email_address)
         writer.write_collection_of_object_values("phones", self.phones)
     
 

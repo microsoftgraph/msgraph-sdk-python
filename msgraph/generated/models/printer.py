@@ -59,12 +59,12 @@ class Printer(PrinterBase):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "connectors": lambda n : setattr(self, 'connectors', n.get_collection_of_object_values(PrintConnector)),
-            "hasPhysicalDevice": lambda n : setattr(self, 'has_physical_device', n.get_bool_value()),
-            "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
-            "lastSeenDateTime": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
-            "registeredDateTime": lambda n : setattr(self, 'registered_date_time', n.get_datetime_value()),
+            "has_physical_device": lambda n : setattr(self, 'has_physical_device', n.get_bool_value()),
+            "is_shared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
+            "last_seen_date_time": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
+            "registered_date_time": lambda n : setattr(self, 'registered_date_time', n.get_datetime_value()),
             "shares": lambda n : setattr(self, 'shares', n.get_collection_of_object_values(PrinterShare)),
-            "taskTriggers": lambda n : setattr(self, 'task_triggers', n.get_collection_of_object_values(PrintTaskTrigger)),
+            "task_triggers": lambda n : setattr(self, 'task_triggers', n.get_collection_of_object_values(PrintTaskTrigger)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -80,11 +80,11 @@ class Printer(PrinterBase):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("connectors", self.connectors)
-        writer.write_bool_value("hasPhysicalDevice", self.has_physical_device)
-        writer.write_bool_value("isShared", self.is_shared)
-        writer.write_datetime_value("lastSeenDateTime", self.last_seen_date_time)
-        writer.write_datetime_value("registeredDateTime", self.registered_date_time)
+        writer.write_bool_value("has_physical_device", self.has_physical_device)
+        writer.write_bool_value("is_shared", self.is_shared)
+        writer.write_datetime_value("last_seen_date_time", self.last_seen_date_time)
+        writer.write_datetime_value("registered_date_time", self.registered_date_time)
         writer.write_collection_of_object_values("shares", self.shares)
-        writer.write_collection_of_object_values("taskTriggers", self.task_triggers)
+        writer.write_collection_of_object_values("task_triggers", self.task_triggers)
     
 

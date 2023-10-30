@@ -42,7 +42,7 @@ class RedirectPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from .....models.invitation_participant_info import InvitationParticipantInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callbackUri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
+            "callback_uri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
             "targets": lambda n : setattr(self, 'targets', n.get_collection_of_object_values(InvitationParticipantInfo)),
             "timeout": lambda n : setattr(self, 'timeout', n.get_int_value()),
         }
@@ -56,7 +56,7 @@ class RedirectPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("callbackUri", self.callback_uri)
+        writer.write_str_value("callback_uri", self.callback_uri)
         writer.write_collection_of_object_values("targets", self.targets)
         writer.write_int_value("timeout", self.timeout)
         writer.write_additional_data_value(self.additional_data)

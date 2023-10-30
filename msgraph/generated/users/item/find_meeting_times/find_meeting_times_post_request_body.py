@@ -60,13 +60,13 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
 
         fields: Dict[str, Callable[[Any], None]] = {
             "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(AttendeeBase)),
-            "isOrganizerOptional": lambda n : setattr(self, 'is_organizer_optional', n.get_bool_value()),
-            "locationConstraint": lambda n : setattr(self, 'location_constraint', n.get_object_value(LocationConstraint)),
-            "maxCandidates": lambda n : setattr(self, 'max_candidates', n.get_int_value()),
-            "meetingDuration": lambda n : setattr(self, 'meeting_duration', n.get_timedelta_value()),
-            "minimumAttendeePercentage": lambda n : setattr(self, 'minimum_attendee_percentage', n.get_float_value()),
-            "returnSuggestionReasons": lambda n : setattr(self, 'return_suggestion_reasons', n.get_bool_value()),
-            "timeConstraint": lambda n : setattr(self, 'time_constraint', n.get_object_value(TimeConstraint)),
+            "is_organizer_optional": lambda n : setattr(self, 'is_organizer_optional', n.get_bool_value()),
+            "location_constraint": lambda n : setattr(self, 'location_constraint', n.get_object_value(LocationConstraint)),
+            "max_candidates": lambda n : setattr(self, 'max_candidates', n.get_int_value()),
+            "meeting_duration": lambda n : setattr(self, 'meeting_duration', n.get_timedelta_value()),
+            "minimum_attendee_percentage": lambda n : setattr(self, 'minimum_attendee_percentage', n.get_float_value()),
+            "return_suggestion_reasons": lambda n : setattr(self, 'return_suggestion_reasons', n.get_bool_value()),
+            "time_constraint": lambda n : setattr(self, 'time_constraint', n.get_object_value(TimeConstraint)),
         }
         return fields
     
@@ -79,13 +79,13 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("attendees", self.attendees)
-        writer.write_bool_value("isOrganizerOptional", self.is_organizer_optional)
-        writer.write_object_value("locationConstraint", self.location_constraint)
-        writer.write_int_value("maxCandidates", self.max_candidates)
-        writer.write_timedelta_value("meetingDuration", self.meeting_duration)
-        writer.write_float_value("minimumAttendeePercentage", self.minimum_attendee_percentage)
-        writer.write_bool_value("returnSuggestionReasons", self.return_suggestion_reasons)
-        writer.write_object_value("timeConstraint", self.time_constraint)
+        writer.write_bool_value("is_organizer_optional", self.is_organizer_optional)
+        writer.write_object_value("location_constraint", self.location_constraint)
+        writer.write_int_value("max_candidates", self.max_candidates)
+        writer.write_timedelta_value("meeting_duration", self.meeting_duration)
+        writer.write_float_value("minimum_attendee_percentage", self.minimum_attendee_percentage)
+        writer.write_bool_value("return_suggestion_reasons", self.return_suggestion_reasons)
+        writer.write_object_value("time_constraint", self.time_constraint)
         writer.write_additional_data_value(self.additional_data)
     
 

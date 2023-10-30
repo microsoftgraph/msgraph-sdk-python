@@ -50,7 +50,7 @@ class AuthenticationCombinationConfiguration(Entity):
         from .fido2_combination_configuration import Fido2CombinationConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appliesToCombinations": lambda n : setattr(self, 'applies_to_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
+            "applies_to_combinations": lambda n : setattr(self, 'applies_to_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -65,6 +65,6 @@ class AuthenticationCombinationConfiguration(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_enum_values("appliesToCombinations", self.applies_to_combinations)
+        writer.write_collection_of_enum_values("applies_to_combinations", self.applies_to_combinations)
     
 

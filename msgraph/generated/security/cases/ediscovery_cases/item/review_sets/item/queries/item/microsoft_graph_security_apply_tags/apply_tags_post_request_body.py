@@ -40,8 +40,8 @@ class ApplyTagsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ..........models.security.ediscovery_review_tag import EdiscoveryReviewTag
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "tagsToAdd": lambda n : setattr(self, 'tags_to_add', n.get_collection_of_object_values(EdiscoveryReviewTag)),
-            "tagsToRemove": lambda n : setattr(self, 'tags_to_remove', n.get_collection_of_object_values(EdiscoveryReviewTag)),
+            "tags_to_add": lambda n : setattr(self, 'tags_to_add', n.get_collection_of_object_values(EdiscoveryReviewTag)),
+            "tags_to_remove": lambda n : setattr(self, 'tags_to_remove', n.get_collection_of_object_values(EdiscoveryReviewTag)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class ApplyTagsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("tagsToAdd", self.tags_to_add)
-        writer.write_collection_of_object_values("tagsToRemove", self.tags_to_remove)
+        writer.write_collection_of_object_values("tags_to_add", self.tags_to_add)
+        writer.write_collection_of_object_values("tags_to_remove", self.tags_to_remove)
         writer.write_additional_data_value(self.additional_data)
     
 

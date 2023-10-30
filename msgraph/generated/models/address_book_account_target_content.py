@@ -12,7 +12,7 @@ from .account_target_content import AccountTargetContent
 class AddressBookAccountTargetContent(AccountTargetContent):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.addressBookAccountTargetContent"
-    # The accountTargetEmails property
+    # List of user emails targeted for an attack simulation training campaign.
     account_target_emails: Optional[List[str]] = None
     
     @staticmethod
@@ -36,7 +36,7 @@ class AddressBookAccountTargetContent(AccountTargetContent):
         from .account_target_content import AccountTargetContent
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accountTargetEmails": lambda n : setattr(self, 'account_target_emails', n.get_collection_of_primitive_values(str)),
+            "account_target_emails": lambda n : setattr(self, 'account_target_emails', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class AddressBookAccountTargetContent(AccountTargetContent):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_primitive_values("accountTargetEmails", self.account_target_emails)
+        writer.write_collection_of_primitive_values("account_target_emails", self.account_target_emails)
     
 

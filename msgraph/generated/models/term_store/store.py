@@ -48,9 +48,9 @@ class Store(Entity):
         from .set import Set
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "defaultLanguageTag": lambda n : setattr(self, 'default_language_tag', n.get_str_value()),
+            "default_language_tag": lambda n : setattr(self, 'default_language_tag', n.get_str_value()),
             "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(Group)),
-            "languageTags": lambda n : setattr(self, 'language_tags', n.get_collection_of_primitive_values(str)),
+            "language_tags": lambda n : setattr(self, 'language_tags', n.get_collection_of_primitive_values(str)),
             "sets": lambda n : setattr(self, 'sets', n.get_collection_of_object_values(Set)),
         }
         super_fields = super().get_field_deserializers()
@@ -66,9 +66,9 @@ class Store(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("defaultLanguageTag", self.default_language_tag)
+        writer.write_str_value("default_language_tag", self.default_language_tag)
         writer.write_collection_of_object_values("groups", self.groups)
-        writer.write_collection_of_primitive_values("languageTags", self.language_tags)
+        writer.write_collection_of_primitive_values("language_tags", self.language_tags)
         writer.write_collection_of_object_values("sets", self.sets)
     
 

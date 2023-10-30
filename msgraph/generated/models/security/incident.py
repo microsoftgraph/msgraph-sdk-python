@@ -88,22 +88,22 @@ class Incident(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(Alert)),
-            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
+            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(AlertClassification)),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_object_values(AlertComment)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "customTags": lambda n : setattr(self, 'custom_tags', n.get_collection_of_primitive_values(str)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "custom_tags": lambda n : setattr(self, 'custom_tags', n.get_collection_of_primitive_values(str)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "determination": lambda n : setattr(self, 'determination', n.get_enum_value(AlertDetermination)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "incidentWebUrl": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_str_value()),
-            "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
-            "redirectIncidentId": lambda n : setattr(self, 'redirect_incident_id', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "incident_web_url": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_str_value()),
+            "last_update_date_time": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
+            "redirect_incident_id": lambda n : setattr(self, 'redirect_incident_id', n.get_str_value()),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(AlertSeverity)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(IncidentStatus)),
-            "systemTags": lambda n : setattr(self, 'system_tags', n.get_collection_of_primitive_values(str)),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "system_tags": lambda n : setattr(self, 'system_tags', n.get_collection_of_primitive_values(str)),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -119,21 +119,21 @@ class Incident(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("alerts", self.alerts)
-        writer.write_str_value("assignedTo", self.assigned_to)
+        writer.write_str_value("assigned_to", self.assigned_to)
         writer.write_enum_value("classification", self.classification)
         writer.write_collection_of_object_values("comments", self.comments)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_collection_of_primitive_values("customTags", self.custom_tags)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_collection_of_primitive_values("custom_tags", self.custom_tags)
         writer.write_str_value("description", self.description)
         writer.write_enum_value("determination", self.determination)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("incidentWebUrl", self.incident_web_url)
-        writer.write_str_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastUpdateDateTime", self.last_update_date_time)
-        writer.write_str_value("redirectIncidentId", self.redirect_incident_id)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("incident_web_url", self.incident_web_url)
+        writer.write_str_value("last_modified_by", self.last_modified_by)
+        writer.write_datetime_value("last_update_date_time", self.last_update_date_time)
+        writer.write_str_value("redirect_incident_id", self.redirect_incident_id)
         writer.write_enum_value("severity", self.severity)
         writer.write_enum_value("status", self.status)
-        writer.write_collection_of_primitive_values("systemTags", self.system_tags)
-        writer.write_str_value("tenantId", self.tenant_id)
+        writer.write_collection_of_primitive_values("system_tags", self.system_tags)
+        writer.write_str_value("tenant_id", self.tenant_id)
     
 

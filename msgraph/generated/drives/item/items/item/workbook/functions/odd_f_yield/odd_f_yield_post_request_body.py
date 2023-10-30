@@ -55,7 +55,7 @@ class OddFYieldPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "basis": lambda n : setattr(self, 'basis', n.get_object_value(Json)),
-            "firstCoupon": lambda n : setattr(self, 'first_coupon', n.get_object_value(Json)),
+            "first_coupon": lambda n : setattr(self, 'first_coupon', n.get_object_value(Json)),
             "frequency": lambda n : setattr(self, 'frequency', n.get_object_value(Json)),
             "issue": lambda n : setattr(self, 'issue', n.get_object_value(Json)),
             "maturity": lambda n : setattr(self, 'maturity', n.get_object_value(Json)),
@@ -75,7 +75,7 @@ class OddFYieldPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("basis", self.basis)
-        writer.write_object_value("firstCoupon", self.first_coupon)
+        writer.write_object_value("first_coupon", self.first_coupon)
         writer.write_object_value("frequency", self.frequency)
         writer.write_object_value("issue", self.issue)
         writer.write_object_value("maturity", self.maturity)

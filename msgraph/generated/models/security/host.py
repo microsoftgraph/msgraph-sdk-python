@@ -113,18 +113,18 @@ class Host(Artifact):
         from .whois_record import WhoisRecord
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "childHostPairs": lambda n : setattr(self, 'child_host_pairs', n.get_collection_of_object_values(HostPair)),
+            "child_host_pairs": lambda n : setattr(self, 'child_host_pairs', n.get_collection_of_object_values(HostPair)),
             "components": lambda n : setattr(self, 'components', n.get_collection_of_object_values(HostComponent)),
             "cookies": lambda n : setattr(self, 'cookies', n.get_collection_of_object_values(HostCookie)),
-            "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
-            "hostPairs": lambda n : setattr(self, 'host_pairs', n.get_collection_of_object_values(HostPair)),
-            "lastSeenDateTime": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
-            "parentHostPairs": lambda n : setattr(self, 'parent_host_pairs', n.get_collection_of_object_values(HostPair)),
-            "passiveDns": lambda n : setattr(self, 'passive_dns', n.get_collection_of_object_values(PassiveDnsRecord)),
-            "passiveDnsReverse": lambda n : setattr(self, 'passive_dns_reverse', n.get_collection_of_object_values(PassiveDnsRecord)),
+            "first_seen_date_time": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
+            "host_pairs": lambda n : setattr(self, 'host_pairs', n.get_collection_of_object_values(HostPair)),
+            "last_seen_date_time": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
+            "parent_host_pairs": lambda n : setattr(self, 'parent_host_pairs', n.get_collection_of_object_values(HostPair)),
+            "passive_dns": lambda n : setattr(self, 'passive_dns', n.get_collection_of_object_values(PassiveDnsRecord)),
+            "passive_dns_reverse": lambda n : setattr(self, 'passive_dns_reverse', n.get_collection_of_object_values(PassiveDnsRecord)),
             "ports": lambda n : setattr(self, 'ports', n.get_collection_of_object_values(HostPort)),
             "reputation": lambda n : setattr(self, 'reputation', n.get_object_value(HostReputation)),
-            "sslCertificates": lambda n : setattr(self, 'ssl_certificates', n.get_collection_of_object_values(HostSslCertificate)),
+            "ssl_certificates": lambda n : setattr(self, 'ssl_certificates', n.get_collection_of_object_values(HostSslCertificate)),
             "subdomains": lambda n : setattr(self, 'subdomains', n.get_collection_of_object_values(Subdomain)),
             "trackers": lambda n : setattr(self, 'trackers', n.get_collection_of_object_values(HostTracker)),
             "whois": lambda n : setattr(self, 'whois', n.get_object_value(WhoisRecord)),
@@ -142,18 +142,18 @@ class Host(Artifact):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("childHostPairs", self.child_host_pairs)
+        writer.write_collection_of_object_values("child_host_pairs", self.child_host_pairs)
         writer.write_collection_of_object_values("components", self.components)
         writer.write_collection_of_object_values("cookies", self.cookies)
-        writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
-        writer.write_collection_of_object_values("hostPairs", self.host_pairs)
-        writer.write_datetime_value("lastSeenDateTime", self.last_seen_date_time)
-        writer.write_collection_of_object_values("parentHostPairs", self.parent_host_pairs)
-        writer.write_collection_of_object_values("passiveDns", self.passive_dns)
-        writer.write_collection_of_object_values("passiveDnsReverse", self.passive_dns_reverse)
+        writer.write_datetime_value("first_seen_date_time", self.first_seen_date_time)
+        writer.write_collection_of_object_values("host_pairs", self.host_pairs)
+        writer.write_datetime_value("last_seen_date_time", self.last_seen_date_time)
+        writer.write_collection_of_object_values("parent_host_pairs", self.parent_host_pairs)
+        writer.write_collection_of_object_values("passive_dns", self.passive_dns)
+        writer.write_collection_of_object_values("passive_dns_reverse", self.passive_dns_reverse)
         writer.write_collection_of_object_values("ports", self.ports)
         writer.write_object_value("reputation", self.reputation)
-        writer.write_collection_of_object_values("sslCertificates", self.ssl_certificates)
+        writer.write_collection_of_object_values("ssl_certificates", self.ssl_certificates)
         writer.write_collection_of_object_values("subdomains", self.subdomains)
         writer.write_collection_of_object_values("trackers", self.trackers)
         writer.write_object_value("whois", self.whois)

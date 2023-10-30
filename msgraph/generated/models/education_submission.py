@@ -79,19 +79,19 @@ class EducationSubmission(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "outcomes": lambda n : setattr(self, 'outcomes', n.get_collection_of_object_values(EducationOutcome)),
-            "reassignedBy": lambda n : setattr(self, 'reassigned_by', n.get_object_value(IdentitySet)),
-            "reassignedDateTime": lambda n : setattr(self, 'reassigned_date_time', n.get_datetime_value()),
+            "reassigned_by": lambda n : setattr(self, 'reassigned_by', n.get_object_value(IdentitySet)),
+            "reassigned_date_time": lambda n : setattr(self, 'reassigned_date_time', n.get_datetime_value()),
             "recipient": lambda n : setattr(self, 'recipient', n.get_object_value(EducationSubmissionRecipient)),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(EducationSubmissionResource)),
-            "resourcesFolderUrl": lambda n : setattr(self, 'resources_folder_url', n.get_str_value()),
-            "returnedBy": lambda n : setattr(self, 'returned_by', n.get_object_value(IdentitySet)),
-            "returnedDateTime": lambda n : setattr(self, 'returned_date_time', n.get_datetime_value()),
+            "resources_folder_url": lambda n : setattr(self, 'resources_folder_url', n.get_str_value()),
+            "returned_by": lambda n : setattr(self, 'returned_by', n.get_object_value(IdentitySet)),
+            "returned_date_time": lambda n : setattr(self, 'returned_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(EducationSubmissionStatus)),
-            "submittedBy": lambda n : setattr(self, 'submitted_by', n.get_object_value(IdentitySet)),
-            "submittedDateTime": lambda n : setattr(self, 'submitted_date_time', n.get_datetime_value()),
-            "submittedResources": lambda n : setattr(self, 'submitted_resources', n.get_collection_of_object_values(EducationSubmissionResource)),
-            "unsubmittedBy": lambda n : setattr(self, 'unsubmitted_by', n.get_object_value(IdentitySet)),
-            "unsubmittedDateTime": lambda n : setattr(self, 'unsubmitted_date_time', n.get_datetime_value()),
+            "submitted_by": lambda n : setattr(self, 'submitted_by', n.get_object_value(IdentitySet)),
+            "submitted_date_time": lambda n : setattr(self, 'submitted_date_time', n.get_datetime_value()),
+            "submitted_resources": lambda n : setattr(self, 'submitted_resources', n.get_collection_of_object_values(EducationSubmissionResource)),
+            "unsubmitted_by": lambda n : setattr(self, 'unsubmitted_by', n.get_object_value(IdentitySet)),
+            "unsubmitted_date_time": lambda n : setattr(self, 'unsubmitted_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -109,6 +109,6 @@ class EducationSubmission(Entity):
         writer.write_collection_of_object_values("outcomes", self.outcomes)
         writer.write_object_value("recipient", self.recipient)
         writer.write_collection_of_object_values("resources", self.resources)
-        writer.write_collection_of_object_values("submittedResources", self.submitted_resources)
+        writer.write_collection_of_object_values("submitted_resources", self.submitted_resources)
     
 

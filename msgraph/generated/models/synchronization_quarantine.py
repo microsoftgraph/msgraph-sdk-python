@@ -54,13 +54,13 @@ class SynchronizationQuarantine(AdditionalDataHolder, BackedModel, Parsable):
         from .synchronization_error import SynchronizationError
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "currentBegan": lambda n : setattr(self, 'current_began', n.get_datetime_value()),
+            "current_began": lambda n : setattr(self, 'current_began', n.get_datetime_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(SynchronizationError)),
-            "nextAttempt": lambda n : setattr(self, 'next_attempt', n.get_datetime_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "next_attempt": lambda n : setattr(self, 'next_attempt', n.get_datetime_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "reason": lambda n : setattr(self, 'reason', n.get_enum_value(QuarantineReason)),
-            "seriesBegan": lambda n : setattr(self, 'series_began', n.get_datetime_value()),
-            "seriesCount": lambda n : setattr(self, 'series_count', n.get_int_value()),
+            "series_began": lambda n : setattr(self, 'series_began', n.get_datetime_value()),
+            "series_count": lambda n : setattr(self, 'series_count', n.get_int_value()),
         }
         return fields
     
@@ -72,13 +72,13 @@ class SynchronizationQuarantine(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("currentBegan", self.current_began)
+        writer.write_datetime_value("current_began", self.current_began)
         writer.write_object_value("error", self.error)
-        writer.write_datetime_value("nextAttempt", self.next_attempt)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_datetime_value("next_attempt", self.next_attempt)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("reason", self.reason)
-        writer.write_datetime_value("seriesBegan", self.series_began)
-        writer.write_int_value("seriesCount", self.series_count)
+        writer.write_datetime_value("series_began", self.series_began)
+        writer.write_int_value("series_count", self.series_count)
         writer.write_additional_data_value(self.additional_data)
     
 

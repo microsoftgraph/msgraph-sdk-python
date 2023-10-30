@@ -36,7 +36,7 @@ class UnifiedRoleManagementPolicyEnablementRule(UnifiedRoleManagementPolicyRule)
         from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "enabledRules": lambda n : setattr(self, 'enabled_rules', n.get_collection_of_primitive_values(str)),
+            "enabled_rules": lambda n : setattr(self, 'enabled_rules', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class UnifiedRoleManagementPolicyEnablementRule(UnifiedRoleManagementPolicyRule)
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_primitive_values("enabledRules", self.enabled_rules)
+        writer.write_collection_of_primitive_values("enabled_rules", self.enabled_rules)
     
 

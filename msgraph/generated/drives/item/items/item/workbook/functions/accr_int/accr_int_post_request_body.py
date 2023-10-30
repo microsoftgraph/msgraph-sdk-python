@@ -53,8 +53,8 @@ class AccrIntPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "basis": lambda n : setattr(self, 'basis', n.get_object_value(Json)),
-            "calcMethod": lambda n : setattr(self, 'calc_method', n.get_object_value(Json)),
-            "firstInterest": lambda n : setattr(self, 'first_interest', n.get_object_value(Json)),
+            "calc_method": lambda n : setattr(self, 'calc_method', n.get_object_value(Json)),
+            "first_interest": lambda n : setattr(self, 'first_interest', n.get_object_value(Json)),
             "frequency": lambda n : setattr(self, 'frequency', n.get_object_value(Json)),
             "issue": lambda n : setattr(self, 'issue', n.get_object_value(Json)),
             "par": lambda n : setattr(self, 'par', n.get_object_value(Json)),
@@ -72,8 +72,8 @@ class AccrIntPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("basis", self.basis)
-        writer.write_object_value("calcMethod", self.calc_method)
-        writer.write_object_value("firstInterest", self.first_interest)
+        writer.write_object_value("calc_method", self.calc_method)
+        writer.write_object_value("first_interest", self.first_interest)
         writer.write_object_value("frequency", self.frequency)
         writer.write_object_value("issue", self.issue)
         writer.write_object_value("par", self.par)

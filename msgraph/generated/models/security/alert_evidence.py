@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from .analyzed_message_evidence import AnalyzedMessageEvidence
     from .azure_resource_evidence import AzureResourceEvidence
     from .blob_container_evidence import BlobContainerEvidence
+    from .blob_evidence import BlobEvidence
     from .cloud_application_evidence import CloudApplicationEvidence
     from .container_evidence import ContainerEvidence
     from .container_image_evidence import ContainerImageEvidence
@@ -91,6 +92,10 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
             from .blob_container_evidence import BlobContainerEvidence
 
             return BlobContainerEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.blobEvidence".casefold():
+            from .blob_evidence import BlobEvidence
+
+            return BlobEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.cloudApplicationEvidence".casefold():
             from .cloud_application_evidence import CloudApplicationEvidence
 
@@ -198,6 +203,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .analyzed_message_evidence import AnalyzedMessageEvidence
         from .azure_resource_evidence import AzureResourceEvidence
         from .blob_container_evidence import BlobContainerEvidence
+        from .blob_evidence import BlobEvidence
         from .cloud_application_evidence import CloudApplicationEvidence
         from .container_evidence import ContainerEvidence
         from .container_image_evidence import ContainerImageEvidence
@@ -230,6 +236,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .analyzed_message_evidence import AnalyzedMessageEvidence
         from .azure_resource_evidence import AzureResourceEvidence
         from .blob_container_evidence import BlobContainerEvidence
+        from .blob_evidence import BlobEvidence
         from .cloud_application_evidence import CloudApplicationEvidence
         from .container_evidence import ContainerEvidence
         from .container_image_evidence import ContainerImageEvidence
@@ -259,11 +266,11 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .user_evidence import UserEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "detailedRoles": lambda n : setattr(self, 'detailed_roles', n.get_collection_of_primitive_values(str)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "remediationStatus": lambda n : setattr(self, 'remediation_status', n.get_enum_value(EvidenceRemediationStatus)),
-            "remediationStatusDetails": lambda n : setattr(self, 'remediation_status_details', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "detailed_roles": lambda n : setattr(self, 'detailed_roles', n.get_collection_of_primitive_values(str)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "remediation_status": lambda n : setattr(self, 'remediation_status', n.get_enum_value(EvidenceRemediationStatus)),
+            "remediation_status_details": lambda n : setattr(self, 'remediation_status_details', n.get_str_value()),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_enum_values(EvidenceRole)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
             "verdict": lambda n : setattr(self, 'verdict', n.get_enum_value(EvidenceVerdict)),
@@ -278,11 +285,11 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_collection_of_primitive_values("detailedRoles", self.detailed_roles)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_enum_value("remediationStatus", self.remediation_status)
-        writer.write_str_value("remediationStatusDetails", self.remediation_status_details)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_collection_of_primitive_values("detailed_roles", self.detailed_roles)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_enum_value("remediation_status", self.remediation_status)
+        writer.write_str_value("remediation_status_details", self.remediation_status_details)
         writer.write_collection_of_enum_values("roles", self.roles)
         writer.write_collection_of_primitive_values("tags", self.tags)
         writer.write_enum_value("verdict", self.verdict)

@@ -52,11 +52,11 @@ class WorkforceIntegration(ChangeTrackedEntity):
         from .workforce_integration_supported_entities import WorkforceIntegrationSupportedEntities
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "apiVersion": lambda n : setattr(self, 'api_version', n.get_int_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "api_version": lambda n : setattr(self, 'api_version', n.get_int_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "encryption": lambda n : setattr(self, 'encryption', n.get_object_value(WorkforceIntegrationEncryption)),
-            "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
-            "supportedEntities": lambda n : setattr(self, 'supported_entities', n.get_collection_of_enum_values(WorkforceIntegrationSupportedEntities)),
+            "is_active": lambda n : setattr(self, 'is_active', n.get_bool_value()),
+            "supported_entities": lambda n : setattr(self, 'supported_entities', n.get_collection_of_enum_values(WorkforceIntegrationSupportedEntities)),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -72,11 +72,11 @@ class WorkforceIntegration(ChangeTrackedEntity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("apiVersion", self.api_version)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_int_value("api_version", self.api_version)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_object_value("encryption", self.encryption)
-        writer.write_bool_value("isActive", self.is_active)
-        writer.write_enum_value("supportedEntities", self.supported_entities)
+        writer.write_bool_value("is_active", self.is_active)
+        writer.write_enum_value("supported_entities", self.supported_entities)
         writer.write_str_value("url", self.url)
     
 

@@ -57,13 +57,13 @@ class InternalDomainFederation(SamlOrWsFedProvider):
         from .signing_certificate_update_status import SigningCertificateUpdateStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activeSignInUri": lambda n : setattr(self, 'active_sign_in_uri', n.get_str_value()),
-            "federatedIdpMfaBehavior": lambda n : setattr(self, 'federated_idp_mfa_behavior', n.get_enum_value(FederatedIdpMfaBehavior)),
-            "isSignedAuthenticationRequestRequired": lambda n : setattr(self, 'is_signed_authentication_request_required', n.get_bool_value()),
-            "nextSigningCertificate": lambda n : setattr(self, 'next_signing_certificate', n.get_str_value()),
-            "promptLoginBehavior": lambda n : setattr(self, 'prompt_login_behavior', n.get_enum_value(PromptLoginBehavior)),
-            "signOutUri": lambda n : setattr(self, 'sign_out_uri', n.get_str_value()),
-            "signingCertificateUpdateStatus": lambda n : setattr(self, 'signing_certificate_update_status', n.get_object_value(SigningCertificateUpdateStatus)),
+            "active_sign_in_uri": lambda n : setattr(self, 'active_sign_in_uri', n.get_str_value()),
+            "federated_idp_mfa_behavior": lambda n : setattr(self, 'federated_idp_mfa_behavior', n.get_enum_value(FederatedIdpMfaBehavior)),
+            "is_signed_authentication_request_required": lambda n : setattr(self, 'is_signed_authentication_request_required', n.get_bool_value()),
+            "next_signing_certificate": lambda n : setattr(self, 'next_signing_certificate', n.get_str_value()),
+            "prompt_login_behavior": lambda n : setattr(self, 'prompt_login_behavior', n.get_enum_value(PromptLoginBehavior)),
+            "sign_out_uri": lambda n : setattr(self, 'sign_out_uri', n.get_str_value()),
+            "signing_certificate_update_status": lambda n : setattr(self, 'signing_certificate_update_status', n.get_object_value(SigningCertificateUpdateStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,12 +78,12 @@ class InternalDomainFederation(SamlOrWsFedProvider):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("activeSignInUri", self.active_sign_in_uri)
-        writer.write_enum_value("federatedIdpMfaBehavior", self.federated_idp_mfa_behavior)
-        writer.write_bool_value("isSignedAuthenticationRequestRequired", self.is_signed_authentication_request_required)
-        writer.write_str_value("nextSigningCertificate", self.next_signing_certificate)
-        writer.write_enum_value("promptLoginBehavior", self.prompt_login_behavior)
-        writer.write_str_value("signOutUri", self.sign_out_uri)
-        writer.write_object_value("signingCertificateUpdateStatus", self.signing_certificate_update_status)
+        writer.write_str_value("active_sign_in_uri", self.active_sign_in_uri)
+        writer.write_enum_value("federated_idp_mfa_behavior", self.federated_idp_mfa_behavior)
+        writer.write_bool_value("is_signed_authentication_request_required", self.is_signed_authentication_request_required)
+        writer.write_str_value("next_signing_certificate", self.next_signing_certificate)
+        writer.write_enum_value("prompt_login_behavior", self.prompt_login_behavior)
+        writer.write_str_value("sign_out_uri", self.sign_out_uri)
+        writer.write_object_value("signing_certificate_update_status", self.signing_certificate_update_status)
     
 

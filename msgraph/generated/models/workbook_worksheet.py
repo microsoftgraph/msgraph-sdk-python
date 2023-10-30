@@ -68,7 +68,7 @@ class WorkbookWorksheet(Entity):
             "charts": lambda n : setattr(self, 'charts', n.get_collection_of_object_values(WorkbookChart)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "names": lambda n : setattr(self, 'names', n.get_collection_of_object_values(WorkbookNamedItem)),
-            "pivotTables": lambda n : setattr(self, 'pivot_tables', n.get_collection_of_object_values(WorkbookPivotTable)),
+            "pivot_tables": lambda n : setattr(self, 'pivot_tables', n.get_collection_of_object_values(WorkbookPivotTable)),
             "position": lambda n : setattr(self, 'position', n.get_int_value()),
             "protection": lambda n : setattr(self, 'protection', n.get_object_value(WorkbookWorksheetProtection)),
             "tables": lambda n : setattr(self, 'tables', n.get_collection_of_object_values(WorkbookTable)),
@@ -90,7 +90,7 @@ class WorkbookWorksheet(Entity):
         writer.write_collection_of_object_values("charts", self.charts)
         writer.write_str_value("name", self.name)
         writer.write_collection_of_object_values("names", self.names)
-        writer.write_collection_of_object_values("pivotTables", self.pivot_tables)
+        writer.write_collection_of_object_values("pivot_tables", self.pivot_tables)
         writer.write_int_value("position", self.position)
         writer.write_object_value("protection", self.protection)
         writer.write_collection_of_object_values("tables", self.tables)

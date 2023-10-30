@@ -182,34 +182,34 @@ class DriveItem(BaseItem):
             "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(ItemAnalytics)),
             "audio": lambda n : setattr(self, 'audio', n.get_object_value(Audio)),
             "bundle": lambda n : setattr(self, 'bundle', n.get_object_value(Bundle)),
-            "cTag": lambda n : setattr(self, 'c_tag', n.get_str_value()),
+            "c_tag": lambda n : setattr(self, 'c_tag', n.get_str_value()),
             "children": lambda n : setattr(self, 'children', n.get_collection_of_object_values(DriveItem)),
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
             "deleted": lambda n : setattr(self, 'deleted', n.get_object_value(Deleted)),
             "file": lambda n : setattr(self, 'file', n.get_object_value(File)),
-            "fileSystemInfo": lambda n : setattr(self, 'file_system_info', n.get_object_value(FileSystemInfo)),
+            "file_system_info": lambda n : setattr(self, 'file_system_info', n.get_object_value(FileSystemInfo)),
             "folder": lambda n : setattr(self, 'folder', n.get_object_value(Folder)),
             "image": lambda n : setattr(self, 'image', n.get_object_value(Image)),
-            "listItem": lambda n : setattr(self, 'list_item', n.get_object_value(ListItem)),
+            "list_item": lambda n : setattr(self, 'list_item', n.get_object_value(ListItem)),
             "location": lambda n : setattr(self, 'location', n.get_object_value(GeoCoordinates)),
             "malware": lambda n : setattr(self, 'malware', n.get_object_value(Malware)),
             "package": lambda n : setattr(self, 'package', n.get_object_value(Package)),
-            "pendingOperations": lambda n : setattr(self, 'pending_operations', n.get_object_value(PendingOperations)),
+            "pending_operations": lambda n : setattr(self, 'pending_operations', n.get_object_value(PendingOperations)),
             "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_object_values(Permission)),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(Photo)),
             "publication": lambda n : setattr(self, 'publication', n.get_object_value(PublicationFacet)),
-            "remoteItem": lambda n : setattr(self, 'remote_item', n.get_object_value(RemoteItem)),
+            "remote_item": lambda n : setattr(self, 'remote_item', n.get_object_value(RemoteItem)),
             "root": lambda n : setattr(self, 'root', n.get_object_value(Root)),
-            "searchResult": lambda n : setattr(self, 'search_result', n.get_object_value(SearchResult)),
+            "search_result": lambda n : setattr(self, 'search_result', n.get_object_value(SearchResult)),
             "shared": lambda n : setattr(self, 'shared', n.get_object_value(Shared)),
-            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
+            "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
-            "specialFolder": lambda n : setattr(self, 'special_folder', n.get_object_value(SpecialFolder)),
+            "special_folder": lambda n : setattr(self, 'special_folder', n.get_object_value(SpecialFolder)),
             "subscriptions": lambda n : setattr(self, 'subscriptions', n.get_collection_of_object_values(Subscription)),
             "thumbnails": lambda n : setattr(self, 'thumbnails', n.get_collection_of_object_values(ThumbnailSet)),
             "versions": lambda n : setattr(self, 'versions', n.get_collection_of_object_values(DriveItemVersion)),
             "video": lambda n : setattr(self, 'video', n.get_object_value(Video)),
-            "webDavUrl": lambda n : setattr(self, 'web_dav_url', n.get_str_value()),
+            "web_dav_url": lambda n : setattr(self, 'web_dav_url', n.get_str_value()),
             "workbook": lambda n : setattr(self, 'workbook', n.get_object_value(Workbook)),
         }
         super_fields = super().get_field_deserializers()
@@ -228,34 +228,34 @@ class DriveItem(BaseItem):
         writer.write_object_value("analytics", self.analytics)
         writer.write_object_value("audio", self.audio)
         writer.write_object_value("bundle", self.bundle)
-        writer.write_str_value("cTag", self.c_tag)
+        writer.write_str_value("c_tag", self.c_tag)
         writer.write_collection_of_object_values("children", self.children)
         writer.write_bytes_value("content", self.content)
         writer.write_object_value("deleted", self.deleted)
         writer.write_object_value("file", self.file)
-        writer.write_object_value("fileSystemInfo", self.file_system_info)
+        writer.write_object_value("file_system_info", self.file_system_info)
         writer.write_object_value("folder", self.folder)
         writer.write_object_value("image", self.image)
-        writer.write_object_value("listItem", self.list_item)
+        writer.write_object_value("list_item", self.list_item)
         writer.write_object_value("location", self.location)
         writer.write_object_value("malware", self.malware)
         writer.write_object_value("package", self.package)
-        writer.write_object_value("pendingOperations", self.pending_operations)
+        writer.write_object_value("pending_operations", self.pending_operations)
         writer.write_collection_of_object_values("permissions", self.permissions)
         writer.write_object_value("photo", self.photo)
         writer.write_object_value("publication", self.publication)
-        writer.write_object_value("remoteItem", self.remote_item)
+        writer.write_object_value("remote_item", self.remote_item)
         writer.write_object_value("root", self.root)
-        writer.write_object_value("searchResult", self.search_result)
+        writer.write_object_value("search_result", self.search_result)
         writer.write_object_value("shared", self.shared)
-        writer.write_object_value("sharepointIds", self.sharepoint_ids)
+        writer.write_object_value("sharepoint_ids", self.sharepoint_ids)
         writer.write_int_value("size", self.size)
-        writer.write_object_value("specialFolder", self.special_folder)
+        writer.write_object_value("special_folder", self.special_folder)
         writer.write_collection_of_object_values("subscriptions", self.subscriptions)
         writer.write_collection_of_object_values("thumbnails", self.thumbnails)
         writer.write_collection_of_object_values("versions", self.versions)
         writer.write_object_value("video", self.video)
-        writer.write_str_value("webDavUrl", self.web_dav_url)
+        writer.write_str_value("web_dav_url", self.web_dav_url)
         writer.write_object_value("workbook", self.workbook)
     
 

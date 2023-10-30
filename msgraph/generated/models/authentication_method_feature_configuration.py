@@ -47,9 +47,9 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, BackedModel
         from .feature_target import FeatureTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "excludeTarget": lambda n : setattr(self, 'exclude_target', n.get_object_value(FeatureTarget)),
-            "includeTarget": lambda n : setattr(self, 'include_target', n.get_object_value(FeatureTarget)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "exclude_target": lambda n : setattr(self, 'exclude_target', n.get_object_value(FeatureTarget)),
+            "include_target": lambda n : setattr(self, 'include_target', n.get_object_value(FeatureTarget)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(AdvancedConfigState)),
         }
         return fields
@@ -62,9 +62,9 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, BackedModel
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("excludeTarget", self.exclude_target)
-        writer.write_object_value("includeTarget", self.include_target)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_object_value("exclude_target", self.exclude_target)
+        writer.write_object_value("include_target", self.include_target)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)
     

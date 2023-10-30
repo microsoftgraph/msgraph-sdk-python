@@ -53,10 +53,10 @@ class ServiceProvisioningError(AdditionalDataHolder, BackedModel, Parsable):
         from .service_provisioning_xml_error import ServiceProvisioningXmlError
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "isResolved": lambda n : setattr(self, 'is_resolved', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "serviceInstance": lambda n : setattr(self, 'service_instance', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "is_resolved": lambda n : setattr(self, 'is_resolved', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "service_instance": lambda n : setattr(self, 'service_instance', n.get_str_value()),
         }
         return fields
     
@@ -68,10 +68,10 @@ class ServiceProvisioningError(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_bool_value("isResolved", self.is_resolved)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("serviceInstance", self.service_instance)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_bool_value("is_resolved", self.is_resolved)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("service_instance", self.service_instance)
         writer.write_additional_data_value(self.additional_data)
     
 

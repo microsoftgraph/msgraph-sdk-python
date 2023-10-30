@@ -38,9 +38,9 @@ class OcrSettings(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "maxImageSize": lambda n : setattr(self, 'max_image_size', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "max_image_size": lambda n : setattr(self, 'max_image_size', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "timeout": lambda n : setattr(self, 'timeout', n.get_timedelta_value()),
         }
         return fields
@@ -53,9 +53,9 @@ class OcrSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_int_value("maxImageSize", self.max_image_size)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_int_value("max_image_size", self.max_image_size)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_timedelta_value("timeout", self.timeout)
         writer.write_additional_data_value(self.additional_data)
     

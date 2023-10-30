@@ -73,21 +73,21 @@ class UserSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         from .user_account_security_type import UserAccountSecurityType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "aadUserId": lambda n : setattr(self, 'aad_user_id', n.get_str_value()),
-            "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
-            "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
-            "emailRole": lambda n : setattr(self, 'email_role', n.get_enum_value(EmailRole)),
-            "isVpn": lambda n : setattr(self, 'is_vpn', n.get_bool_value()),
-            "logonDateTime": lambda n : setattr(self, 'logon_date_time', n.get_datetime_value()),
-            "logonId": lambda n : setattr(self, 'logon_id', n.get_str_value()),
-            "logonIp": lambda n : setattr(self, 'logon_ip', n.get_str_value()),
-            "logonLocation": lambda n : setattr(self, 'logon_location', n.get_str_value()),
-            "logonType": lambda n : setattr(self, 'logon_type', n.get_enum_value(LogonType)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
-            "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
-            "userAccountType": lambda n : setattr(self, 'user_account_type', n.get_enum_value(UserAccountSecurityType)),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "aad_user_id": lambda n : setattr(self, 'aad_user_id', n.get_str_value()),
+            "account_name": lambda n : setattr(self, 'account_name', n.get_str_value()),
+            "domain_name": lambda n : setattr(self, 'domain_name', n.get_str_value()),
+            "email_role": lambda n : setattr(self, 'email_role', n.get_enum_value(EmailRole)),
+            "is_vpn": lambda n : setattr(self, 'is_vpn', n.get_bool_value()),
+            "logon_date_time": lambda n : setattr(self, 'logon_date_time', n.get_datetime_value()),
+            "logon_id": lambda n : setattr(self, 'logon_id', n.get_str_value()),
+            "logon_ip": lambda n : setattr(self, 'logon_ip', n.get_str_value()),
+            "logon_location": lambda n : setattr(self, 'logon_location', n.get_str_value()),
+            "logon_type": lambda n : setattr(self, 'logon_type', n.get_enum_value(LogonType)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "on_premises_security_identifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
+            "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
+            "user_account_type": lambda n : setattr(self, 'user_account_type', n.get_enum_value(UserAccountSecurityType)),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -99,21 +99,21 @@ class UserSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("aadUserId", self.aad_user_id)
-        writer.write_str_value("accountName", self.account_name)
-        writer.write_str_value("domainName", self.domain_name)
-        writer.write_enum_value("emailRole", self.email_role)
-        writer.write_bool_value("isVpn", self.is_vpn)
-        writer.write_datetime_value("logonDateTime", self.logon_date_time)
-        writer.write_str_value("logonId", self.logon_id)
-        writer.write_str_value("logonIp", self.logon_ip)
-        writer.write_str_value("logonLocation", self.logon_location)
-        writer.write_enum_value("logonType", self.logon_type)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("onPremisesSecurityIdentifier", self.on_premises_security_identifier)
-        writer.write_str_value("riskScore", self.risk_score)
-        writer.write_enum_value("userAccountType", self.user_account_type)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_str_value("aad_user_id", self.aad_user_id)
+        writer.write_str_value("account_name", self.account_name)
+        writer.write_str_value("domain_name", self.domain_name)
+        writer.write_enum_value("email_role", self.email_role)
+        writer.write_bool_value("is_vpn", self.is_vpn)
+        writer.write_datetime_value("logon_date_time", self.logon_date_time)
+        writer.write_str_value("logon_id", self.logon_id)
+        writer.write_str_value("logon_ip", self.logon_ip)
+        writer.write_str_value("logon_location", self.logon_location)
+        writer.write_enum_value("logon_type", self.logon_type)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("on_premises_security_identifier", self.on_premises_security_identifier)
+        writer.write_str_value("risk_score", self.risk_score)
+        writer.write_enum_value("user_account_type", self.user_account_type)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -58,10 +58,10 @@ class Segment(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "callee": lambda n : setattr(self, 'callee', n.get_object_value(Endpoint)),
             "caller": lambda n : setattr(self, 'caller', n.get_object_value(Endpoint)),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "failureInfo": lambda n : setattr(self, 'failure_info', n.get_object_value(FailureInfo)),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "failure_info": lambda n : setattr(self, 'failure_info', n.get_object_value(FailureInfo)),
             "media": lambda n : setattr(self, 'media', n.get_collection_of_object_values(Media)),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,9 +78,9 @@ class Segment(Entity):
         super().serialize(writer)
         writer.write_object_value("callee", self.callee)
         writer.write_object_value("caller", self.caller)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_object_value("failureInfo", self.failure_info)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_object_value("failure_info", self.failure_info)
         writer.write_collection_of_object_values("media", self.media)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
     
 

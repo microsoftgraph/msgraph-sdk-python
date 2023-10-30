@@ -43,8 +43,8 @@ class OnenotePagePreview(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "links": lambda n : setattr(self, 'links', n.get_object_value(OnenotePagePreviewLinks)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "previewText": lambda n : setattr(self, 'preview_text', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "preview_text": lambda n : setattr(self, 'preview_text', n.get_str_value()),
         }
         return fields
     
@@ -57,8 +57,8 @@ class OnenotePagePreview(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("links", self.links)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("previewText", self.preview_text)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("preview_text", self.preview_text)
         writer.write_additional_data_value(self.additional_data)
     
 

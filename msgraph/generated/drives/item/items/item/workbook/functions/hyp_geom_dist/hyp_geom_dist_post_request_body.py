@@ -47,10 +47,10 @@ class HypGeom_DistPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "cumulative": lambda n : setattr(self, 'cumulative', n.get_object_value(Json)),
-            "numberPop": lambda n : setattr(self, 'number_pop', n.get_object_value(Json)),
-            "numberSample": lambda n : setattr(self, 'number_sample', n.get_object_value(Json)),
-            "populationS": lambda n : setattr(self, 'population_s', n.get_object_value(Json)),
-            "sampleS": lambda n : setattr(self, 'sample_s', n.get_object_value(Json)),
+            "number_pop": lambda n : setattr(self, 'number_pop', n.get_object_value(Json)),
+            "number_sample": lambda n : setattr(self, 'number_sample', n.get_object_value(Json)),
+            "population_s": lambda n : setattr(self, 'population_s', n.get_object_value(Json)),
+            "sample_s": lambda n : setattr(self, 'sample_s', n.get_object_value(Json)),
         }
         return fields
     
@@ -63,10 +63,10 @@ class HypGeom_DistPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("cumulative", self.cumulative)
-        writer.write_object_value("numberPop", self.number_pop)
-        writer.write_object_value("numberSample", self.number_sample)
-        writer.write_object_value("populationS", self.population_s)
-        writer.write_object_value("sampleS", self.sample_s)
+        writer.write_object_value("number_pop", self.number_pop)
+        writer.write_object_value("number_sample", self.number_sample)
+        writer.write_object_value("population_s", self.population_s)
+        writer.write_object_value("sample_s", self.sample_s)
         writer.write_additional_data_value(self.additional_data)
     
 

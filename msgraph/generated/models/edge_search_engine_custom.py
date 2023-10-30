@@ -39,7 +39,7 @@ class EdgeSearchEngineCustom(EdgeSearchEngineBase):
         from .edge_search_engine_base import EdgeSearchEngineBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "edgeSearchEngineOpenSearchXmlUrl": lambda n : setattr(self, 'edge_search_engine_open_search_xml_url', n.get_str_value()),
+            "edge_search_engine_open_search_xml_url": lambda n : setattr(self, 'edge_search_engine_open_search_xml_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class EdgeSearchEngineCustom(EdgeSearchEngineBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("edgeSearchEngineOpenSearchXmlUrl", self.edge_search_engine_open_search_xml_url)
+        writer.write_str_value("edge_search_engine_open_search_xml_url", self.edge_search_engine_open_search_xml_url)
     
 

@@ -50,12 +50,12 @@ class RetentionEventType(Entity):
         from ..identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -70,11 +70,11 @@ class RetentionEventType(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
     
 

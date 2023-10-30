@@ -38,7 +38,7 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, BackedMode
         from .....models.update_windows_device_account_action_parameter import UpdateWindowsDeviceAccountActionParameter
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "updateWindowsDeviceAccountActionParameter": lambda n : setattr(self, 'update_windows_device_account_action_parameter', n.get_object_value(UpdateWindowsDeviceAccountActionParameter)),
+            "update_windows_device_account_action_parameter": lambda n : setattr(self, 'update_windows_device_account_action_parameter', n.get_object_value(UpdateWindowsDeviceAccountActionParameter)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, BackedMode
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("updateWindowsDeviceAccountActionParameter", self.update_windows_device_account_action_parameter)
+        writer.write_object_value("update_windows_device_account_action_parameter", self.update_windows_device_account_action_parameter)
         writer.write_additional_data_value(self.additional_data)
     
 

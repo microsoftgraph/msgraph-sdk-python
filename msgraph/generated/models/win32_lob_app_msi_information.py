@@ -55,14 +55,14 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, BackedModel, Parsable):
         from .win32_lob_app_msi_package_type import Win32LobAppMsiPackageType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "packageType": lambda n : setattr(self, 'package_type', n.get_enum_value(Win32LobAppMsiPackageType)),
-            "productCode": lambda n : setattr(self, 'product_code', n.get_str_value()),
-            "productName": lambda n : setattr(self, 'product_name', n.get_str_value()),
-            "productVersion": lambda n : setattr(self, 'product_version', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "package_type": lambda n : setattr(self, 'package_type', n.get_enum_value(Win32LobAppMsiPackageType)),
+            "product_code": lambda n : setattr(self, 'product_code', n.get_str_value()),
+            "product_name": lambda n : setattr(self, 'product_name', n.get_str_value()),
+            "product_version": lambda n : setattr(self, 'product_version', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "requiresReboot": lambda n : setattr(self, 'requires_reboot', n.get_bool_value()),
-            "upgradeCode": lambda n : setattr(self, 'upgrade_code', n.get_str_value()),
+            "requires_reboot": lambda n : setattr(self, 'requires_reboot', n.get_bool_value()),
+            "upgrade_code": lambda n : setattr(self, 'upgrade_code', n.get_str_value()),
         }
         return fields
     
@@ -74,14 +74,14 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_enum_value("packageType", self.package_type)
-        writer.write_str_value("productCode", self.product_code)
-        writer.write_str_value("productName", self.product_name)
-        writer.write_str_value("productVersion", self.product_version)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_enum_value("package_type", self.package_type)
+        writer.write_str_value("product_code", self.product_code)
+        writer.write_str_value("product_name", self.product_name)
+        writer.write_str_value("product_version", self.product_version)
         writer.write_str_value("publisher", self.publisher)
-        writer.write_bool_value("requiresReboot", self.requires_reboot)
-        writer.write_str_value("upgradeCode", self.upgrade_code)
+        writer.write_bool_value("requires_reboot", self.requires_reboot)
+        writer.write_str_value("upgrade_code", self.upgrade_code)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -36,7 +36,7 @@ class OpenShiftChangeRequest(ScheduleChangeRequest):
         from .schedule_change_request import ScheduleChangeRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "openShiftId": lambda n : setattr(self, 'open_shift_id', n.get_str_value()),
+            "open_shift_id": lambda n : setattr(self, 'open_shift_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class OpenShiftChangeRequest(ScheduleChangeRequest):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("openShiftId", self.open_shift_id)
+        writer.write_str_value("open_shift_id", self.open_shift_id)
     
 

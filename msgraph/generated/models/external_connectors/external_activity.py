@@ -58,8 +58,8 @@ class ExternalActivity(Entity):
         from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "performedBy": lambda n : setattr(self, 'performed_by', n.get_object_value(Identity)),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "performed_by": lambda n : setattr(self, 'performed_by', n.get_object_value(Identity)),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(ExternalActivityType)),
         }
         super_fields = super().get_field_deserializers()
@@ -75,8 +75,8 @@ class ExternalActivity(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("performedBy", self.performed_by)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_object_value("performed_by", self.performed_by)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
         writer.write_enum_value("type", self.type)
     
 

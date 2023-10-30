@@ -43,8 +43,8 @@ class ChatRenamedEventMessageDetail(EventMessageDetail):
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "chatDisplayName": lambda n : setattr(self, 'chat_display_name', n.get_str_value()),
-            "chatId": lambda n : setattr(self, 'chat_id', n.get_str_value()),
+            "chat_display_name": lambda n : setattr(self, 'chat_display_name', n.get_str_value()),
+            "chat_id": lambda n : setattr(self, 'chat_id', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
@@ -60,8 +60,8 @@ class ChatRenamedEventMessageDetail(EventMessageDetail):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("chatDisplayName", self.chat_display_name)
-        writer.write_str_value("chatId", self.chat_id)
+        writer.write_str_value("chat_display_name", self.chat_display_name)
+        writer.write_str_value("chat_id", self.chat_id)
         writer.write_object_value("initiator", self.initiator)
     
 

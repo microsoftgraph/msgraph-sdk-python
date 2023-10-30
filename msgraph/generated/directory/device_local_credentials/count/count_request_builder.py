@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models.o_data_errors.o_data_error import ODataError
+    from ....models.o_data_errors.o_data_error import ODataError
 
 class CountRequestBuilder(BaseRequestBuilder):
     """
@@ -23,7 +23,7 @@ class CountRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/photos/$count{?%24filter}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/directory/deviceLocalCredentials/$count{?%24search,%24filter}", path_parameters)
     
     async def get(self,request_configuration: Optional[CountRequestBuilderGetRequestConfiguration] = None) -> Optional[int]:
         """
@@ -34,7 +34,7 @@ class CountRequestBuilder(BaseRequestBuilder):
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors.o_data_error import ODataError
+        from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": ODataError,
@@ -86,10 +86,15 @@ class CountRequestBuilder(BaseRequestBuilder):
                 raise TypeError("original_name cannot be null.")
             if original_name == "filter":
                 return "%24filter"
+            if original_name == "search":
+                return "%24search"
             return original_name
         
         # Filter items by property values
         filter: Optional[str] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

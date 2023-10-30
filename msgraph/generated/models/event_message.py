@@ -90,15 +90,15 @@ class EventMessage(Message):
         from .patterned_recurrence import PatternedRecurrence
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
             "event": lambda n : setattr(self, 'event', n.get_object_value(Event)),
-            "isAllDay": lambda n : setattr(self, 'is_all_day', n.get_bool_value()),
-            "isDelegated": lambda n : setattr(self, 'is_delegated', n.get_bool_value()),
-            "isOutOfDate": lambda n : setattr(self, 'is_out_of_date', n.get_bool_value()),
+            "is_all_day": lambda n : setattr(self, 'is_all_day', n.get_bool_value()),
+            "is_delegated": lambda n : setattr(self, 'is_delegated', n.get_bool_value()),
+            "is_out_of_date": lambda n : setattr(self, 'is_out_of_date', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(Location)),
-            "meetingMessageType": lambda n : setattr(self, 'meeting_message_type', n.get_enum_value(MeetingMessageType)),
+            "meeting_message_type": lambda n : setattr(self, 'meeting_message_type', n.get_enum_value(MeetingMessageType)),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(PatternedRecurrence)),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(EventType)),
         }
         super_fields = super().get_field_deserializers()
@@ -114,15 +114,15 @@ class EventMessage(Message):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("endDateTime", self.end_date_time)
+        writer.write_object_value("end_date_time", self.end_date_time)
         writer.write_object_value("event", self.event)
-        writer.write_bool_value("isAllDay", self.is_all_day)
-        writer.write_bool_value("isDelegated", self.is_delegated)
-        writer.write_bool_value("isOutOfDate", self.is_out_of_date)
+        writer.write_bool_value("is_all_day", self.is_all_day)
+        writer.write_bool_value("is_delegated", self.is_delegated)
+        writer.write_bool_value("is_out_of_date", self.is_out_of_date)
         writer.write_object_value("location", self.location)
-        writer.write_enum_value("meetingMessageType", self.meeting_message_type)
+        writer.write_enum_value("meeting_message_type", self.meeting_message_type)
         writer.write_object_value("recurrence", self.recurrence)
-        writer.write_object_value("startDateTime", self.start_date_time)
+        writer.write_object_value("start_date_time", self.start_date_time)
         writer.write_enum_value("type", self.type)
     
 

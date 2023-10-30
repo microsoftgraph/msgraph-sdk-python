@@ -44,8 +44,8 @@ class EducationFeedbackResourceOutcome(EducationOutcome):
         from .education_resource import EducationResource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "feedbackResource": lambda n : setattr(self, 'feedback_resource', n.get_object_value(EducationResource)),
-            "resourceStatus": lambda n : setattr(self, 'resource_status', n.get_enum_value(EducationFeedbackResourceOutcomeStatus)),
+            "feedback_resource": lambda n : setattr(self, 'feedback_resource', n.get_object_value(EducationResource)),
+            "resource_status": lambda n : setattr(self, 'resource_status', n.get_enum_value(EducationFeedbackResourceOutcomeStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,7 +60,7 @@ class EducationFeedbackResourceOutcome(EducationOutcome):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("feedbackResource", self.feedback_resource)
-        writer.write_enum_value("resourceStatus", self.resource_status)
+        writer.write_object_value("feedback_resource", self.feedback_resource)
+        writer.write_enum_value("resource_status", self.resource_status)
     
 

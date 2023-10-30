@@ -46,8 +46,8 @@ class InformationProtection(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "bitlocker": lambda n : setattr(self, 'bitlocker', n.get_object_value(Bitlocker)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "threatAssessmentRequests": lambda n : setattr(self, 'threat_assessment_requests', n.get_collection_of_object_values(ThreatAssessmentRequest)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "threat_assessment_requests": lambda n : setattr(self, 'threat_assessment_requests', n.get_collection_of_object_values(ThreatAssessmentRequest)),
         }
         return fields
     
@@ -60,8 +60,8 @@ class InformationProtection(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("bitlocker", self.bitlocker)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("threatAssessmentRequests", self.threat_assessment_requests)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("threat_assessment_requests", self.threat_assessment_requests)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -52,14 +52,14 @@ class RecordResponsePostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         from .....models.prompt import Prompt
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "bargeInAllowed": lambda n : setattr(self, 'barge_in_allowed', n.get_bool_value()),
-            "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
-            "initialSilenceTimeoutInSeconds": lambda n : setattr(self, 'initial_silence_timeout_in_seconds', n.get_int_value()),
-            "maxRecordDurationInSeconds": lambda n : setattr(self, 'max_record_duration_in_seconds', n.get_int_value()),
-            "maxSilenceTimeoutInSeconds": lambda n : setattr(self, 'max_silence_timeout_in_seconds', n.get_int_value()),
-            "playBeep": lambda n : setattr(self, 'play_beep', n.get_bool_value()),
+            "barge_in_allowed": lambda n : setattr(self, 'barge_in_allowed', n.get_bool_value()),
+            "client_context": lambda n : setattr(self, 'client_context', n.get_str_value()),
+            "initial_silence_timeout_in_seconds": lambda n : setattr(self, 'initial_silence_timeout_in_seconds', n.get_int_value()),
+            "max_record_duration_in_seconds": lambda n : setattr(self, 'max_record_duration_in_seconds', n.get_int_value()),
+            "max_silence_timeout_in_seconds": lambda n : setattr(self, 'max_silence_timeout_in_seconds', n.get_int_value()),
+            "play_beep": lambda n : setattr(self, 'play_beep', n.get_bool_value()),
             "prompts": lambda n : setattr(self, 'prompts', n.get_collection_of_object_values(Prompt)),
-            "stopTones": lambda n : setattr(self, 'stop_tones', n.get_collection_of_primitive_values(str)),
+            "stop_tones": lambda n : setattr(self, 'stop_tones', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -71,14 +71,14 @@ class RecordResponsePostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("bargeInAllowed", self.barge_in_allowed)
-        writer.write_str_value("clientContext", self.client_context)
-        writer.write_int_value("initialSilenceTimeoutInSeconds", self.initial_silence_timeout_in_seconds)
-        writer.write_int_value("maxRecordDurationInSeconds", self.max_record_duration_in_seconds)
-        writer.write_int_value("maxSilenceTimeoutInSeconds", self.max_silence_timeout_in_seconds)
-        writer.write_bool_value("playBeep", self.play_beep)
+        writer.write_bool_value("barge_in_allowed", self.barge_in_allowed)
+        writer.write_str_value("client_context", self.client_context)
+        writer.write_int_value("initial_silence_timeout_in_seconds", self.initial_silence_timeout_in_seconds)
+        writer.write_int_value("max_record_duration_in_seconds", self.max_record_duration_in_seconds)
+        writer.write_int_value("max_silence_timeout_in_seconds", self.max_silence_timeout_in_seconds)
+        writer.write_bool_value("play_beep", self.play_beep)
         writer.write_collection_of_object_values("prompts", self.prompts)
-        writer.write_collection_of_primitive_values("stopTones", self.stop_tones)
+        writer.write_collection_of_primitive_values("stop_tones", self.stop_tones)
         writer.write_additional_data_value(self.additional_data)
     
 

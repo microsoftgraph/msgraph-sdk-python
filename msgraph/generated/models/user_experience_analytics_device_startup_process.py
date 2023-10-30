@@ -47,11 +47,11 @@ class UserExperienceAnalyticsDeviceStartupProcess(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "managedDeviceId": lambda n : setattr(self, 'managed_device_id', n.get_str_value()),
-            "processName": lambda n : setattr(self, 'process_name', n.get_str_value()),
-            "productName": lambda n : setattr(self, 'product_name', n.get_str_value()),
+            "managed_device_id": lambda n : setattr(self, 'managed_device_id', n.get_str_value()),
+            "process_name": lambda n : setattr(self, 'process_name', n.get_str_value()),
+            "product_name": lambda n : setattr(self, 'product_name', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "startupImpactInMs": lambda n : setattr(self, 'startup_impact_in_ms', n.get_int_value()),
+            "startup_impact_in_ms": lambda n : setattr(self, 'startup_impact_in_ms', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,10 +66,10 @@ class UserExperienceAnalyticsDeviceStartupProcess(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("managedDeviceId", self.managed_device_id)
-        writer.write_str_value("processName", self.process_name)
-        writer.write_str_value("productName", self.product_name)
+        writer.write_str_value("managed_device_id", self.managed_device_id)
+        writer.write_str_value("process_name", self.process_name)
+        writer.write_str_value("product_name", self.product_name)
         writer.write_str_value("publisher", self.publisher)
-        writer.write_int_value("startupImpactInMs", self.startup_impact_in_ms)
+        writer.write_int_value("startup_impact_in_ms", self.startup_impact_in_ms)
     
 

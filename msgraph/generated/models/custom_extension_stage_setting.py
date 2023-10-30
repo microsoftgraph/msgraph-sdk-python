@@ -44,7 +44,7 @@ class CustomExtensionStageSetting(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "customExtension": lambda n : setattr(self, 'custom_extension', n.get_object_value(CustomCalloutExtension)),
+            "custom_extension": lambda n : setattr(self, 'custom_extension', n.get_object_value(CustomCalloutExtension)),
             "stage": lambda n : setattr(self, 'stage', n.get_enum_value(AccessPackageCustomExtensionStage)),
         }
         super_fields = super().get_field_deserializers()
@@ -60,7 +60,7 @@ class CustomExtensionStageSetting(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("customExtension", self.custom_extension)
+        writer.write_object_value("custom_extension", self.custom_extension)
         writer.write_enum_value("stage", self.stage)
     
 

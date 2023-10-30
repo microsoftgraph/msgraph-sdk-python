@@ -71,13 +71,13 @@ class BrowserSiteList(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "publishedBy": lambda n : setattr(self, 'published_by', n.get_object_value(IdentitySet)),
-            "publishedDateTime": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "published_by": lambda n : setattr(self, 'published_by', n.get_object_value(IdentitySet)),
+            "published_date_time": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
             "revision": lambda n : setattr(self, 'revision', n.get_str_value()),
-            "sharedCookies": lambda n : setattr(self, 'shared_cookies', n.get_collection_of_object_values(BrowserSharedCookie)),
+            "shared_cookies": lambda n : setattr(self, 'shared_cookies', n.get_collection_of_object_values(BrowserSharedCookie)),
             "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(BrowserSite)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(BrowserSiteListStatus)),
         }
@@ -95,13 +95,13 @@ class BrowserSiteList(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_object_value("publishedBy", self.published_by)
-        writer.write_datetime_value("publishedDateTime", self.published_date_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_object_value("published_by", self.published_by)
+        writer.write_datetime_value("published_date_time", self.published_date_time)
         writer.write_str_value("revision", self.revision)
-        writer.write_collection_of_object_values("sharedCookies", self.shared_cookies)
+        writer.write_collection_of_object_values("shared_cookies", self.shared_cookies)
         writer.write_collection_of_object_values("sites", self.sites)
         writer.write_enum_value("status", self.status)
     

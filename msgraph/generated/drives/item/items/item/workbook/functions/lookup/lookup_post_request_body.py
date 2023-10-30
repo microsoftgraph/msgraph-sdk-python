@@ -42,9 +42,9 @@ class LookupPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lookupValue": lambda n : setattr(self, 'lookup_value', n.get_object_value(Json)),
-            "lookupVector": lambda n : setattr(self, 'lookup_vector', n.get_object_value(Json)),
-            "resultVector": lambda n : setattr(self, 'result_vector', n.get_object_value(Json)),
+            "lookup_value": lambda n : setattr(self, 'lookup_value', n.get_object_value(Json)),
+            "lookup_vector": lambda n : setattr(self, 'lookup_vector', n.get_object_value(Json)),
+            "result_vector": lambda n : setattr(self, 'result_vector', n.get_object_value(Json)),
         }
         return fields
     
@@ -56,9 +56,9 @@ class LookupPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("lookupValue", self.lookup_value)
-        writer.write_object_value("lookupVector", self.lookup_vector)
-        writer.write_object_value("resultVector", self.result_vector)
+        writer.write_object_value("lookup_value", self.lookup_value)
+        writer.write_object_value("lookup_vector", self.lookup_vector)
+        writer.write_object_value("result_vector", self.result_vector)
         writer.write_additional_data_value(self.additional_data)
     
 

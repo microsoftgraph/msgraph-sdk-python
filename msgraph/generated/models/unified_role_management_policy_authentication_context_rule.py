@@ -38,8 +38,8 @@ class UnifiedRoleManagementPolicyAuthenticationContextRule(UnifiedRoleManagement
         from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "claimValue": lambda n : setattr(self, 'claim_value', n.get_str_value()),
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "claim_value": lambda n : setattr(self, 'claim_value', n.get_str_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class UnifiedRoleManagementPolicyAuthenticationContextRule(UnifiedRoleManagement
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("claimValue", self.claim_value)
-        writer.write_bool_value("isEnabled", self.is_enabled)
+        writer.write_str_value("claim_value", self.claim_value)
+        writer.write_bool_value("is_enabled", self.is_enabled)
     
 

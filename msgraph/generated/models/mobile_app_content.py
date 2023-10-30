@@ -47,7 +47,7 @@ class MobileAppContent(Entity):
         from .mobile_contained_app import MobileContainedApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "containedApps": lambda n : setattr(self, 'contained_apps', n.get_collection_of_object_values(MobileContainedApp)),
+            "contained_apps": lambda n : setattr(self, 'contained_apps', n.get_collection_of_object_values(MobileContainedApp)),
             "files": lambda n : setattr(self, 'files', n.get_collection_of_object_values(MobileAppContentFile)),
         }
         super_fields = super().get_field_deserializers()
@@ -63,7 +63,7 @@ class MobileAppContent(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("containedApps", self.contained_apps)
+        writer.write_collection_of_object_values("contained_apps", self.contained_apps)
         writer.write_collection_of_object_values("files", self.files)
     
 

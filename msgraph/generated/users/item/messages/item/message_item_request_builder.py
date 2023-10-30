@@ -63,7 +63,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
         The messages in a mailbox or folder. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Message]
-        Find more info here: https://learn.microsoft.com/graph/api/singlevaluelegacyextendedproperty-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/message-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -82,11 +82,11 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Message]:
         """
-        Update the properties of a message object. This API is available in the following national cloud deployments.
+        Update the properties of an eventMessage object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Message]
-        Find more info here: https://learn.microsoft.com/graph/api/message-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/eventmessage-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -140,7 +140,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a message object. This API is available in the following national cloud deployments.
+        Update the properties of an eventMessage object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

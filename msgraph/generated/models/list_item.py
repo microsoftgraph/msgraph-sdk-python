@@ -70,11 +70,11 @@ class ListItem(BaseItem):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(ItemAnalytics)),
-            "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(ContentTypeInfo)),
-            "documentSetVersions": lambda n : setattr(self, 'document_set_versions', n.get_collection_of_object_values(DocumentSetVersion)),
-            "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(DriveItem)),
+            "content_type": lambda n : setattr(self, 'content_type', n.get_object_value(ContentTypeInfo)),
+            "document_set_versions": lambda n : setattr(self, 'document_set_versions', n.get_collection_of_object_values(DocumentSetVersion)),
+            "drive_item": lambda n : setattr(self, 'drive_item', n.get_object_value(DriveItem)),
             "fields": lambda n : setattr(self, 'fields', n.get_object_value(FieldValueSet)),
-            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
+            "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
             "versions": lambda n : setattr(self, 'versions', n.get_collection_of_object_values(ListItemVersion)),
         }
         super_fields = super().get_field_deserializers()
@@ -91,11 +91,11 @@ class ListItem(BaseItem):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("analytics", self.analytics)
-        writer.write_object_value("contentType", self.content_type)
-        writer.write_collection_of_object_values("documentSetVersions", self.document_set_versions)
-        writer.write_object_value("driveItem", self.drive_item)
+        writer.write_object_value("content_type", self.content_type)
+        writer.write_collection_of_object_values("document_set_versions", self.document_set_versions)
+        writer.write_object_value("drive_item", self.drive_item)
         writer.write_object_value("fields", self.fields)
-        writer.write_object_value("sharepointIds", self.sharepoint_ids)
+        writer.write_object_value("sharepoint_ids", self.sharepoint_ids)
         writer.write_collection_of_object_values("versions", self.versions)
     
 

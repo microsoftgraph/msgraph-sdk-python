@@ -61,15 +61,15 @@ class UnifiedRoleAssignment(Entity):
         from .unified_role_definition import UnifiedRoleDefinition
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(AppScope)),
-            "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
+            "app_scope": lambda n : setattr(self, 'app_scope', n.get_object_value(AppScope)),
+            "app_scope_id": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
             "condition": lambda n : setattr(self, 'condition', n.get_str_value()),
-            "directoryScope": lambda n : setattr(self, 'directory_scope', n.get_object_value(DirectoryObject)),
-            "directoryScopeId": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
+            "directory_scope": lambda n : setattr(self, 'directory_scope', n.get_object_value(DirectoryObject)),
+            "directory_scope_id": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(DirectoryObject)),
-            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(UnifiedRoleDefinition)),
-            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "role_definition": lambda n : setattr(self, 'role_definition', n.get_object_value(UnifiedRoleDefinition)),
+            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,14 +84,14 @@ class UnifiedRoleAssignment(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("appScope", self.app_scope)
-        writer.write_str_value("appScopeId", self.app_scope_id)
+        writer.write_object_value("app_scope", self.app_scope)
+        writer.write_str_value("app_scope_id", self.app_scope_id)
         writer.write_str_value("condition", self.condition)
-        writer.write_object_value("directoryScope", self.directory_scope)
-        writer.write_str_value("directoryScopeId", self.directory_scope_id)
+        writer.write_object_value("directory_scope", self.directory_scope)
+        writer.write_str_value("directory_scope_id", self.directory_scope_id)
         writer.write_object_value("principal", self.principal)
-        writer.write_str_value("principalId", self.principal_id)
-        writer.write_object_value("roleDefinition", self.role_definition)
-        writer.write_str_value("roleDefinitionId", self.role_definition_id)
+        writer.write_str_value("principal_id", self.principal_id)
+        writer.write_object_value("role_definition", self.role_definition)
+        writer.write_str_value("role_definition_id", self.role_definition_id)
     
 

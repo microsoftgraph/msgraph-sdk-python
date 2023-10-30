@@ -44,8 +44,8 @@ class UserSource(DataSource):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "includedSources": lambda n : setattr(self, 'included_sources', n.get_collection_of_enum_values(SourceType)),
-            "siteWebUrl": lambda n : setattr(self, 'site_web_url', n.get_str_value()),
+            "included_sources": lambda n : setattr(self, 'included_sources', n.get_collection_of_enum_values(SourceType)),
+            "site_web_url": lambda n : setattr(self, 'site_web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,7 +61,7 @@ class UserSource(DataSource):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("email", self.email)
-        writer.write_enum_value("includedSources", self.included_sources)
-        writer.write_str_value("siteWebUrl", self.site_web_url)
+        writer.write_enum_value("included_sources", self.included_sources)
+        writer.write_str_value("site_web_url", self.site_web_url)
     
 

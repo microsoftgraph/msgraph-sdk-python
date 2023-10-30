@@ -40,8 +40,8 @@ class LicenseUnitsDetail(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "enabled": lambda n : setattr(self, 'enabled', n.get_int_value()),
-            "lockedOut": lambda n : setattr(self, 'locked_out', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "locked_out": lambda n : setattr(self, 'locked_out', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "suspended": lambda n : setattr(self, 'suspended', n.get_int_value()),
             "warning": lambda n : setattr(self, 'warning', n.get_int_value()),
         }
@@ -56,8 +56,8 @@ class LicenseUnitsDetail(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_int_value("enabled", self.enabled)
-        writer.write_int_value("lockedOut", self.locked_out)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_int_value("locked_out", self.locked_out)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("suspended", self.suspended)
         writer.write_int_value("warning", self.warning)
         writer.write_additional_data_value(self.additional_data)

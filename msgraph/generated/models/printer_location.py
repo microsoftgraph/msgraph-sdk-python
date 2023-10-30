@@ -65,22 +65,22 @@ class PrinterLocation(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "altitudeInMeters": lambda n : setattr(self, 'altitude_in_meters', n.get_int_value()),
+            "altitude_in_meters": lambda n : setattr(self, 'altitude_in_meters', n.get_int_value()),
             "building": lambda n : setattr(self, 'building', n.get_str_value()),
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
-            "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
+            "country_or_region": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
             "floor": lambda n : setattr(self, 'floor', n.get_str_value()),
-            "floorDescription": lambda n : setattr(self, 'floor_description', n.get_str_value()),
+            "floor_description": lambda n : setattr(self, 'floor_description', n.get_str_value()),
             "latitude": lambda n : setattr(self, 'latitude', n.get_float_value()),
             "longitude": lambda n : setattr(self, 'longitude', n.get_float_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "organization": lambda n : setattr(self, 'organization', n.get_collection_of_primitive_values(str)),
-            "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
-            "roomDescription": lambda n : setattr(self, 'room_description', n.get_str_value()),
-            "roomName": lambda n : setattr(self, 'room_name', n.get_str_value()),
+            "postal_code": lambda n : setattr(self, 'postal_code', n.get_str_value()),
+            "room_description": lambda n : setattr(self, 'room_description', n.get_str_value()),
+            "room_name": lambda n : setattr(self, 'room_name', n.get_str_value()),
             "site": lambda n : setattr(self, 'site', n.get_str_value()),
-            "stateOrProvince": lambda n : setattr(self, 'state_or_province', n.get_str_value()),
-            "streetAddress": lambda n : setattr(self, 'street_address', n.get_str_value()),
+            "state_or_province": lambda n : setattr(self, 'state_or_province', n.get_str_value()),
+            "street_address": lambda n : setattr(self, 'street_address', n.get_str_value()),
             "subdivision": lambda n : setattr(self, 'subdivision', n.get_collection_of_primitive_values(str)),
             "subunit": lambda n : setattr(self, 'subunit', n.get_collection_of_primitive_values(str)),
         }
@@ -94,22 +94,22 @@ class PrinterLocation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("altitudeInMeters", self.altitude_in_meters)
+        writer.write_int_value("altitude_in_meters", self.altitude_in_meters)
         writer.write_str_value("building", self.building)
         writer.write_str_value("city", self.city)
-        writer.write_str_value("countryOrRegion", self.country_or_region)
+        writer.write_str_value("country_or_region", self.country_or_region)
         writer.write_str_value("floor", self.floor)
-        writer.write_str_value("floorDescription", self.floor_description)
+        writer.write_str_value("floor_description", self.floor_description)
         writer.write_float_value("latitude", self.latitude)
         writer.write_float_value("longitude", self.longitude)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_primitive_values("organization", self.organization)
-        writer.write_str_value("postalCode", self.postal_code)
-        writer.write_str_value("roomDescription", self.room_description)
-        writer.write_str_value("roomName", self.room_name)
+        writer.write_str_value("postal_code", self.postal_code)
+        writer.write_str_value("room_description", self.room_description)
+        writer.write_str_value("room_name", self.room_name)
         writer.write_str_value("site", self.site)
-        writer.write_str_value("stateOrProvince", self.state_or_province)
-        writer.write_str_value("streetAddress", self.street_address)
+        writer.write_str_value("state_or_province", self.state_or_province)
+        writer.write_str_value("street_address", self.street_address)
         writer.write_collection_of_primitive_values("subdivision", self.subdivision)
         writer.write_collection_of_primitive_values("subunit", self.subunit)
         writer.write_additional_data_value(self.additional_data)

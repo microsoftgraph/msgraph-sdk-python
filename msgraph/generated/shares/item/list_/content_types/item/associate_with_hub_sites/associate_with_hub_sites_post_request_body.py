@@ -33,8 +33,8 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, BackedModel, Pa
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "hubSiteUrls": lambda n : setattr(self, 'hub_site_urls', n.get_collection_of_primitive_values(str)),
-            "propagateToExistingLists": lambda n : setattr(self, 'propagate_to_existing_lists', n.get_bool_value()),
+            "hub_site_urls": lambda n : setattr(self, 'hub_site_urls', n.get_collection_of_primitive_values(str)),
+            "propagate_to_existing_lists": lambda n : setattr(self, 'propagate_to_existing_lists', n.get_bool_value()),
         }
         return fields
     
@@ -46,8 +46,8 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, BackedModel, Pa
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("hubSiteUrls", self.hub_site_urls)
-        writer.write_bool_value("propagateToExistingLists", self.propagate_to_existing_lists)
+        writer.write_collection_of_primitive_values("hub_site_urls", self.hub_site_urls)
+        writer.write_bool_value("propagate_to_existing_lists", self.propagate_to_existing_lists)
         writer.write_additional_data_value(self.additional_data)
     
 

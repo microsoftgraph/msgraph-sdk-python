@@ -64,12 +64,12 @@ class EdiscoveryExportOperation(CaseOperation):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "exportFileMetadata": lambda n : setattr(self, 'export_file_metadata', n.get_collection_of_object_values(ExportFileMetadata)),
-            "exportOptions": lambda n : setattr(self, 'export_options', n.get_collection_of_enum_values(ExportOptions)),
-            "exportStructure": lambda n : setattr(self, 'export_structure', n.get_enum_value(ExportFileStructure)),
-            "outputName": lambda n : setattr(self, 'output_name', n.get_str_value()),
-            "reviewSet": lambda n : setattr(self, 'review_set', n.get_object_value(EdiscoveryReviewSet)),
-            "reviewSetQuery": lambda n : setattr(self, 'review_set_query', n.get_object_value(EdiscoveryReviewSetQuery)),
+            "export_file_metadata": lambda n : setattr(self, 'export_file_metadata', n.get_collection_of_object_values(ExportFileMetadata)),
+            "export_options": lambda n : setattr(self, 'export_options', n.get_collection_of_enum_values(ExportOptions)),
+            "export_structure": lambda n : setattr(self, 'export_structure', n.get_enum_value(ExportFileStructure)),
+            "output_name": lambda n : setattr(self, 'output_name', n.get_str_value()),
+            "review_set": lambda n : setattr(self, 'review_set', n.get_object_value(EdiscoveryReviewSet)),
+            "review_set_query": lambda n : setattr(self, 'review_set_query', n.get_object_value(EdiscoveryReviewSetQuery)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -85,11 +85,11 @@ class EdiscoveryExportOperation(CaseOperation):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-        writer.write_collection_of_object_values("exportFileMetadata", self.export_file_metadata)
-        writer.write_enum_value("exportOptions", self.export_options)
-        writer.write_enum_value("exportStructure", self.export_structure)
-        writer.write_str_value("outputName", self.output_name)
-        writer.write_object_value("reviewSet", self.review_set)
-        writer.write_object_value("reviewSetQuery", self.review_set_query)
+        writer.write_collection_of_object_values("export_file_metadata", self.export_file_metadata)
+        writer.write_enum_value("export_options", self.export_options)
+        writer.write_enum_value("export_structure", self.export_structure)
+        writer.write_str_value("output_name", self.output_name)
+        writer.write_object_value("review_set", self.review_set)
+        writer.write_object_value("review_set_query", self.review_set_query)
     
 

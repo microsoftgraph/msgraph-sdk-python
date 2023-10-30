@@ -81,13 +81,13 @@ class AccessPackageAssignmentRequest(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(AccessPackage)),
+            "access_package": lambda n : setattr(self, 'access_package', n.get_object_value(AccessPackage)),
             "answers": lambda n : setattr(self, 'answers', n.get_collection_of_object_values(AccessPackageAnswer)),
             "assignment": lambda n : setattr(self, 'assignment', n.get_object_value(AccessPackageAssignment)),
-            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "customExtensionCalloutInstances": lambda n : setattr(self, 'custom_extension_callout_instances', n.get_collection_of_object_values(CustomExtensionCalloutInstance)),
-            "requestType": lambda n : setattr(self, 'request_type', n.get_enum_value(AccessPackageRequestType)),
+            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "custom_extension_callout_instances": lambda n : setattr(self, 'custom_extension_callout_instances', n.get_collection_of_object_values(CustomExtensionCalloutInstance)),
+            "request_type": lambda n : setattr(self, 'request_type', n.get_enum_value(AccessPackageRequestType)),
             "requestor": lambda n : setattr(self, 'requestor', n.get_object_value(AccessPackageSubject)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(EntitlementManagementSchedule)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(AccessPackageRequestState)),
@@ -106,13 +106,13 @@ class AccessPackageAssignmentRequest(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("accessPackage", self.access_package)
+        writer.write_object_value("access_package", self.access_package)
         writer.write_collection_of_object_values("answers", self.answers)
         writer.write_object_value("assignment", self.assignment)
-        writer.write_datetime_value("completedDateTime", self.completed_date_time)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_collection_of_object_values("customExtensionCalloutInstances", self.custom_extension_callout_instances)
-        writer.write_enum_value("requestType", self.request_type)
+        writer.write_datetime_value("completed_date_time", self.completed_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_collection_of_object_values("custom_extension_callout_instances", self.custom_extension_callout_instances)
+        writer.write_enum_value("request_type", self.request_type)
         writer.write_object_value("requestor", self.requestor)
         writer.write_object_value("schedule", self.schedule)
         writer.write_enum_value("state", self.state)

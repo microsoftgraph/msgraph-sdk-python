@@ -39,8 +39,8 @@ class UnifiedRoleManagementPolicyExpirationRule(UnifiedRoleManagementPolicyRule)
         from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isExpirationRequired": lambda n : setattr(self, 'is_expiration_required', n.get_bool_value()),
-            "maximumDuration": lambda n : setattr(self, 'maximum_duration', n.get_timedelta_value()),
+            "is_expiration_required": lambda n : setattr(self, 'is_expiration_required', n.get_bool_value()),
+            "maximum_duration": lambda n : setattr(self, 'maximum_duration', n.get_timedelta_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,7 +55,7 @@ class UnifiedRoleManagementPolicyExpirationRule(UnifiedRoleManagementPolicyRule)
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isExpirationRequired", self.is_expiration_required)
-        writer.write_timedelta_value("maximumDuration", self.maximum_duration)
+        writer.write_bool_value("is_expiration_required", self.is_expiration_required)
+        writer.write_timedelta_value("maximum_duration", self.maximum_duration)
     
 

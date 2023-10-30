@@ -38,7 +38,7 @@ class SnoozeReminderPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         from .......models.date_time_time_zone import DateTimeTimeZone
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "NewReminderTime": lambda n : setattr(self, 'new_reminder_time', n.get_object_value(DateTimeTimeZone)),
+            "new_reminder_time": lambda n : setattr(self, 'new_reminder_time', n.get_object_value(DateTimeTimeZone)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class SnoozeReminderPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("NewReminderTime", self.new_reminder_time)
+        writer.write_object_value("new_reminder_time", self.new_reminder_time)
         writer.write_additional_data_value(self.additional_data)
     
 

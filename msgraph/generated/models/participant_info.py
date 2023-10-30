@@ -53,12 +53,12 @@ class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "countryCode": lambda n : setattr(self, 'country_code', n.get_str_value()),
-            "endpointType": lambda n : setattr(self, 'endpoint_type', n.get_enum_value(EndpointType)),
+            "country_code": lambda n : setattr(self, 'country_code', n.get_str_value()),
+            "endpoint_type": lambda n : setattr(self, 'endpoint_type', n.get_enum_value(EndpointType)),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(IdentitySet)),
-            "languageId": lambda n : setattr(self, 'language_id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "participantId": lambda n : setattr(self, 'participant_id', n.get_str_value()),
+            "language_id": lambda n : setattr(self, 'language_id', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "participant_id": lambda n : setattr(self, 'participant_id', n.get_str_value()),
             "region": lambda n : setattr(self, 'region', n.get_str_value()),
         }
         return fields
@@ -71,12 +71,12 @@ class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("countryCode", self.country_code)
-        writer.write_enum_value("endpointType", self.endpoint_type)
+        writer.write_str_value("country_code", self.country_code)
+        writer.write_enum_value("endpoint_type", self.endpoint_type)
         writer.write_object_value("identity", self.identity)
-        writer.write_str_value("languageId", self.language_id)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("participantId", self.participant_id)
+        writer.write_str_value("language_id", self.language_id)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("participant_id", self.participant_id)
         writer.write_str_value("region", self.region)
         writer.write_additional_data_value(self.additional_data)
     

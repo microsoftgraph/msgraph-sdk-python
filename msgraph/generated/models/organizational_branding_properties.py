@@ -118,36 +118,36 @@ class OrganizationalBrandingProperties(Entity):
         from .organizational_branding_localization import OrganizationalBrandingLocalization
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "backgroundColor": lambda n : setattr(self, 'background_color', n.get_str_value()),
-            "backgroundImage": lambda n : setattr(self, 'background_image', n.get_bytes_value()),
-            "backgroundImageRelativeUrl": lambda n : setattr(self, 'background_image_relative_url', n.get_str_value()),
-            "bannerLogo": lambda n : setattr(self, 'banner_logo', n.get_bytes_value()),
-            "bannerLogoRelativeUrl": lambda n : setattr(self, 'banner_logo_relative_url', n.get_str_value()),
-            "cdnList": lambda n : setattr(self, 'cdn_list', n.get_collection_of_primitive_values(str)),
-            "customAccountResetCredentialsUrl": lambda n : setattr(self, 'custom_account_reset_credentials_url', n.get_str_value()),
-            "customCSS": lambda n : setattr(self, 'custom_c_s_s', n.get_bytes_value()),
-            "customCSSRelativeUrl": lambda n : setattr(self, 'custom_c_s_s_relative_url', n.get_str_value()),
-            "customCannotAccessYourAccountText": lambda n : setattr(self, 'custom_cannot_access_your_account_text', n.get_str_value()),
-            "customCannotAccessYourAccountUrl": lambda n : setattr(self, 'custom_cannot_access_your_account_url', n.get_str_value()),
-            "customForgotMyPasswordText": lambda n : setattr(self, 'custom_forgot_my_password_text', n.get_str_value()),
-            "customPrivacyAndCookiesText": lambda n : setattr(self, 'custom_privacy_and_cookies_text', n.get_str_value()),
-            "customPrivacyAndCookiesUrl": lambda n : setattr(self, 'custom_privacy_and_cookies_url', n.get_str_value()),
-            "customResetItNowText": lambda n : setattr(self, 'custom_reset_it_now_text', n.get_str_value()),
-            "customTermsOfUseText": lambda n : setattr(self, 'custom_terms_of_use_text', n.get_str_value()),
-            "customTermsOfUseUrl": lambda n : setattr(self, 'custom_terms_of_use_url', n.get_str_value()),
+            "background_color": lambda n : setattr(self, 'background_color', n.get_str_value()),
+            "background_image": lambda n : setattr(self, 'background_image', n.get_bytes_value()),
+            "background_image_relative_url": lambda n : setattr(self, 'background_image_relative_url', n.get_str_value()),
+            "banner_logo": lambda n : setattr(self, 'banner_logo', n.get_bytes_value()),
+            "banner_logo_relative_url": lambda n : setattr(self, 'banner_logo_relative_url', n.get_str_value()),
+            "cdn_list": lambda n : setattr(self, 'cdn_list', n.get_collection_of_primitive_values(str)),
+            "custom_account_reset_credentials_url": lambda n : setattr(self, 'custom_account_reset_credentials_url', n.get_str_value()),
+            "custom_c_s_s": lambda n : setattr(self, 'custom_c_s_s', n.get_bytes_value()),
+            "custom_c_s_s_relative_url": lambda n : setattr(self, 'custom_c_s_s_relative_url', n.get_str_value()),
+            "custom_cannot_access_your_account_text": lambda n : setattr(self, 'custom_cannot_access_your_account_text', n.get_str_value()),
+            "custom_cannot_access_your_account_url": lambda n : setattr(self, 'custom_cannot_access_your_account_url', n.get_str_value()),
+            "custom_forgot_my_password_text": lambda n : setattr(self, 'custom_forgot_my_password_text', n.get_str_value()),
+            "custom_privacy_and_cookies_text": lambda n : setattr(self, 'custom_privacy_and_cookies_text', n.get_str_value()),
+            "custom_privacy_and_cookies_url": lambda n : setattr(self, 'custom_privacy_and_cookies_url', n.get_str_value()),
+            "custom_reset_it_now_text": lambda n : setattr(self, 'custom_reset_it_now_text', n.get_str_value()),
+            "custom_terms_of_use_text": lambda n : setattr(self, 'custom_terms_of_use_text', n.get_str_value()),
+            "custom_terms_of_use_url": lambda n : setattr(self, 'custom_terms_of_use_url', n.get_str_value()),
             "favicon": lambda n : setattr(self, 'favicon', n.get_bytes_value()),
-            "faviconRelativeUrl": lambda n : setattr(self, 'favicon_relative_url', n.get_str_value()),
-            "headerBackgroundColor": lambda n : setattr(self, 'header_background_color', n.get_str_value()),
-            "headerLogo": lambda n : setattr(self, 'header_logo', n.get_bytes_value()),
-            "headerLogoRelativeUrl": lambda n : setattr(self, 'header_logo_relative_url', n.get_str_value()),
-            "loginPageLayoutConfiguration": lambda n : setattr(self, 'login_page_layout_configuration', n.get_object_value(LoginPageLayoutConfiguration)),
-            "loginPageTextVisibilitySettings": lambda n : setattr(self, 'login_page_text_visibility_settings', n.get_object_value(LoginPageTextVisibilitySettings)),
-            "signInPageText": lambda n : setattr(self, 'sign_in_page_text', n.get_str_value()),
-            "squareLogo": lambda n : setattr(self, 'square_logo', n.get_bytes_value()),
-            "squareLogoDark": lambda n : setattr(self, 'square_logo_dark', n.get_bytes_value()),
-            "squareLogoDarkRelativeUrl": lambda n : setattr(self, 'square_logo_dark_relative_url', n.get_str_value()),
-            "squareLogoRelativeUrl": lambda n : setattr(self, 'square_logo_relative_url', n.get_str_value()),
-            "usernameHintText": lambda n : setattr(self, 'username_hint_text', n.get_str_value()),
+            "favicon_relative_url": lambda n : setattr(self, 'favicon_relative_url', n.get_str_value()),
+            "header_background_color": lambda n : setattr(self, 'header_background_color', n.get_str_value()),
+            "header_logo": lambda n : setattr(self, 'header_logo', n.get_bytes_value()),
+            "header_logo_relative_url": lambda n : setattr(self, 'header_logo_relative_url', n.get_str_value()),
+            "login_page_layout_configuration": lambda n : setattr(self, 'login_page_layout_configuration', n.get_object_value(LoginPageLayoutConfiguration)),
+            "login_page_text_visibility_settings": lambda n : setattr(self, 'login_page_text_visibility_settings', n.get_object_value(LoginPageTextVisibilitySettings)),
+            "sign_in_page_text": lambda n : setattr(self, 'sign_in_page_text', n.get_str_value()),
+            "square_logo": lambda n : setattr(self, 'square_logo', n.get_bytes_value()),
+            "square_logo_dark": lambda n : setattr(self, 'square_logo_dark', n.get_bytes_value()),
+            "square_logo_dark_relative_url": lambda n : setattr(self, 'square_logo_dark_relative_url', n.get_str_value()),
+            "square_logo_relative_url": lambda n : setattr(self, 'square_logo_relative_url', n.get_str_value()),
+            "username_hint_text": lambda n : setattr(self, 'username_hint_text', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -162,35 +162,35 @@ class OrganizationalBrandingProperties(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("backgroundColor", self.background_color)
-        writer.write_bytes_value("backgroundImage", self.background_image)
-        writer.write_str_value("backgroundImageRelativeUrl", self.background_image_relative_url)
-        writer.write_bytes_value("bannerLogo", self.banner_logo)
-        writer.write_str_value("bannerLogoRelativeUrl", self.banner_logo_relative_url)
-        writer.write_collection_of_primitive_values("cdnList", self.cdn_list)
-        writer.write_str_value("customAccountResetCredentialsUrl", self.custom_account_reset_credentials_url)
-        writer.write_bytes_value("customCSS", self.custom_c_s_s)
-        writer.write_str_value("customCSSRelativeUrl", self.custom_c_s_s_relative_url)
-        writer.write_str_value("customCannotAccessYourAccountText", self.custom_cannot_access_your_account_text)
-        writer.write_str_value("customCannotAccessYourAccountUrl", self.custom_cannot_access_your_account_url)
-        writer.write_str_value("customForgotMyPasswordText", self.custom_forgot_my_password_text)
-        writer.write_str_value("customPrivacyAndCookiesText", self.custom_privacy_and_cookies_text)
-        writer.write_str_value("customPrivacyAndCookiesUrl", self.custom_privacy_and_cookies_url)
-        writer.write_str_value("customResetItNowText", self.custom_reset_it_now_text)
-        writer.write_str_value("customTermsOfUseText", self.custom_terms_of_use_text)
-        writer.write_str_value("customTermsOfUseUrl", self.custom_terms_of_use_url)
+        writer.write_str_value("background_color", self.background_color)
+        writer.write_bytes_value("background_image", self.background_image)
+        writer.write_str_value("background_image_relative_url", self.background_image_relative_url)
+        writer.write_bytes_value("banner_logo", self.banner_logo)
+        writer.write_str_value("banner_logo_relative_url", self.banner_logo_relative_url)
+        writer.write_collection_of_primitive_values("cdn_list", self.cdn_list)
+        writer.write_str_value("custom_account_reset_credentials_url", self.custom_account_reset_credentials_url)
+        writer.write_bytes_value("custom_c_s_s", self.custom_c_s_s)
+        writer.write_str_value("custom_c_s_s_relative_url", self.custom_c_s_s_relative_url)
+        writer.write_str_value("custom_cannot_access_your_account_text", self.custom_cannot_access_your_account_text)
+        writer.write_str_value("custom_cannot_access_your_account_url", self.custom_cannot_access_your_account_url)
+        writer.write_str_value("custom_forgot_my_password_text", self.custom_forgot_my_password_text)
+        writer.write_str_value("custom_privacy_and_cookies_text", self.custom_privacy_and_cookies_text)
+        writer.write_str_value("custom_privacy_and_cookies_url", self.custom_privacy_and_cookies_url)
+        writer.write_str_value("custom_reset_it_now_text", self.custom_reset_it_now_text)
+        writer.write_str_value("custom_terms_of_use_text", self.custom_terms_of_use_text)
+        writer.write_str_value("custom_terms_of_use_url", self.custom_terms_of_use_url)
         writer.write_bytes_value("favicon", self.favicon)
-        writer.write_str_value("faviconRelativeUrl", self.favicon_relative_url)
-        writer.write_str_value("headerBackgroundColor", self.header_background_color)
-        writer.write_bytes_value("headerLogo", self.header_logo)
-        writer.write_str_value("headerLogoRelativeUrl", self.header_logo_relative_url)
-        writer.write_object_value("loginPageLayoutConfiguration", self.login_page_layout_configuration)
-        writer.write_object_value("loginPageTextVisibilitySettings", self.login_page_text_visibility_settings)
-        writer.write_str_value("signInPageText", self.sign_in_page_text)
-        writer.write_bytes_value("squareLogo", self.square_logo)
-        writer.write_bytes_value("squareLogoDark", self.square_logo_dark)
-        writer.write_str_value("squareLogoDarkRelativeUrl", self.square_logo_dark_relative_url)
-        writer.write_str_value("squareLogoRelativeUrl", self.square_logo_relative_url)
-        writer.write_str_value("usernameHintText", self.username_hint_text)
+        writer.write_str_value("favicon_relative_url", self.favicon_relative_url)
+        writer.write_str_value("header_background_color", self.header_background_color)
+        writer.write_bytes_value("header_logo", self.header_logo)
+        writer.write_str_value("header_logo_relative_url", self.header_logo_relative_url)
+        writer.write_object_value("login_page_layout_configuration", self.login_page_layout_configuration)
+        writer.write_object_value("login_page_text_visibility_settings", self.login_page_text_visibility_settings)
+        writer.write_str_value("sign_in_page_text", self.sign_in_page_text)
+        writer.write_bytes_value("square_logo", self.square_logo)
+        writer.write_bytes_value("square_logo_dark", self.square_logo_dark)
+        writer.write_str_value("square_logo_dark_relative_url", self.square_logo_dark_relative_url)
+        writer.write_str_value("square_logo_relative_url", self.square_logo_relative_url)
+        writer.write_str_value("username_hint_text", self.username_hint_text)
     
 

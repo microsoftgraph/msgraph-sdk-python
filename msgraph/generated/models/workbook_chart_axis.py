@@ -63,12 +63,12 @@ class WorkbookChartAxis(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartAxisFormat)),
-            "majorGridlines": lambda n : setattr(self, 'major_gridlines', n.get_object_value(WorkbookChartGridlines)),
-            "majorUnit": lambda n : setattr(self, 'major_unit', n.get_object_value(Json)),
+            "major_gridlines": lambda n : setattr(self, 'major_gridlines', n.get_object_value(WorkbookChartGridlines)),
+            "major_unit": lambda n : setattr(self, 'major_unit', n.get_object_value(Json)),
             "maximum": lambda n : setattr(self, 'maximum', n.get_object_value(Json)),
             "minimum": lambda n : setattr(self, 'minimum', n.get_object_value(Json)),
-            "minorGridlines": lambda n : setattr(self, 'minor_gridlines', n.get_object_value(WorkbookChartGridlines)),
-            "minorUnit": lambda n : setattr(self, 'minor_unit', n.get_object_value(Json)),
+            "minor_gridlines": lambda n : setattr(self, 'minor_gridlines', n.get_object_value(WorkbookChartGridlines)),
+            "minor_unit": lambda n : setattr(self, 'minor_unit', n.get_object_value(Json)),
             "title": lambda n : setattr(self, 'title', n.get_object_value(WorkbookChartAxisTitle)),
         }
         super_fields = super().get_field_deserializers()
@@ -85,12 +85,12 @@ class WorkbookChartAxis(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("format", self.format)
-        writer.write_object_value("majorGridlines", self.major_gridlines)
-        writer.write_object_value("majorUnit", self.major_unit)
+        writer.write_object_value("major_gridlines", self.major_gridlines)
+        writer.write_object_value("major_unit", self.major_unit)
         writer.write_object_value("maximum", self.maximum)
         writer.write_object_value("minimum", self.minimum)
-        writer.write_object_value("minorGridlines", self.minor_gridlines)
-        writer.write_object_value("minorUnit", self.minor_unit)
+        writer.write_object_value("minor_gridlines", self.minor_gridlines)
+        writer.write_object_value("minor_unit", self.minor_unit)
         writer.write_object_value("title", self.title)
     
 

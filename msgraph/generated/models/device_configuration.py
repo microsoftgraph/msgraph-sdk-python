@@ -265,15 +265,15 @@ class DeviceConfiguration(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(DeviceConfigurationAssignment)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "deviceSettingStateSummaries": lambda n : setattr(self, 'device_setting_state_summaries', n.get_collection_of_object_values(SettingStateDeviceSummary)),
-            "deviceStatusOverview": lambda n : setattr(self, 'device_status_overview', n.get_object_value(DeviceConfigurationDeviceOverview)),
-            "deviceStatuses": lambda n : setattr(self, 'device_statuses', n.get_collection_of_object_values(DeviceConfigurationDeviceStatus)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "userStatusOverview": lambda n : setattr(self, 'user_status_overview', n.get_object_value(DeviceConfigurationUserOverview)),
-            "userStatuses": lambda n : setattr(self, 'user_statuses', n.get_collection_of_object_values(DeviceConfigurationUserStatus)),
+            "device_setting_state_summaries": lambda n : setattr(self, 'device_setting_state_summaries', n.get_collection_of_object_values(SettingStateDeviceSummary)),
+            "device_status_overview": lambda n : setattr(self, 'device_status_overview', n.get_object_value(DeviceConfigurationDeviceOverview)),
+            "device_statuses": lambda n : setattr(self, 'device_statuses', n.get_collection_of_object_values(DeviceConfigurationDeviceStatus)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "user_status_overview": lambda n : setattr(self, 'user_status_overview', n.get_object_value(DeviceConfigurationUserOverview)),
+            "user_statuses": lambda n : setattr(self, 'user_statuses', n.get_collection_of_object_values(DeviceConfigurationUserStatus)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -290,15 +290,15 @@ class DeviceConfiguration(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_collection_of_object_values("deviceSettingStateSummaries", self.device_setting_state_summaries)
-        writer.write_object_value("deviceStatusOverview", self.device_status_overview)
-        writer.write_collection_of_object_values("deviceStatuses", self.device_statuses)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_object_value("userStatusOverview", self.user_status_overview)
-        writer.write_collection_of_object_values("userStatuses", self.user_statuses)
+        writer.write_collection_of_object_values("device_setting_state_summaries", self.device_setting_state_summaries)
+        writer.write_object_value("device_status_overview", self.device_status_overview)
+        writer.write_collection_of_object_values("device_statuses", self.device_statuses)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_object_value("user_status_overview", self.user_status_overview)
+        writer.write_collection_of_object_values("user_statuses", self.user_statuses)
         writer.write_int_value("version", self.version)
     
 

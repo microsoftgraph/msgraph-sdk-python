@@ -38,7 +38,7 @@ class CommunicationsApplicationIdentity(Identity):
         from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicationType": lambda n : setattr(self, 'application_type', n.get_str_value()),
+            "application_type": lambda n : setattr(self, 'application_type', n.get_str_value()),
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -54,7 +54,7 @@ class CommunicationsApplicationIdentity(Identity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("applicationType", self.application_type)
+        writer.write_str_value("application_type", self.application_type)
         writer.write_bool_value("hidden", self.hidden)
     
 

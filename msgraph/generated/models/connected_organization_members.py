@@ -38,7 +38,7 @@ class ConnectedOrganizationMembers(SubjectSet):
         from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "connectedOrganizationId": lambda n : setattr(self, 'connected_organization_id', n.get_str_value()),
+            "connected_organization_id": lambda n : setattr(self, 'connected_organization_id', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -54,7 +54,7 @@ class ConnectedOrganizationMembers(SubjectSet):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("connectedOrganizationId", self.connected_organization_id)
+        writer.write_str_value("connected_organization_id", self.connected_organization_id)
         writer.write_str_value("description", self.description)
     
 

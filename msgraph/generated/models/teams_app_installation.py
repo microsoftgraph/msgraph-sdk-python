@@ -60,9 +60,9 @@ class TeamsAppInstallation(Entity):
         from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "consentedPermissionSet": lambda n : setattr(self, 'consented_permission_set', n.get_object_value(TeamsAppPermissionSet)),
-            "teamsApp": lambda n : setattr(self, 'teams_app', n.get_object_value(TeamsApp)),
-            "teamsAppDefinition": lambda n : setattr(self, 'teams_app_definition', n.get_object_value(TeamsAppDefinition)),
+            "consented_permission_set": lambda n : setattr(self, 'consented_permission_set', n.get_object_value(TeamsAppPermissionSet)),
+            "teams_app": lambda n : setattr(self, 'teams_app', n.get_object_value(TeamsApp)),
+            "teams_app_definition": lambda n : setattr(self, 'teams_app_definition', n.get_object_value(TeamsAppDefinition)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -77,8 +77,8 @@ class TeamsAppInstallation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("consentedPermissionSet", self.consented_permission_set)
-        writer.write_object_value("teamsApp", self.teams_app)
-        writer.write_object_value("teamsAppDefinition", self.teams_app_definition)
+        writer.write_object_value("consented_permission_set", self.consented_permission_set)
+        writer.write_object_value("teams_app", self.teams_app)
+        writer.write_object_value("teams_app_definition", self.teams_app_definition)
     
 

@@ -72,17 +72,17 @@ class Permission(Entity):
         from .sharing_link import SharingLink
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "grantedTo": lambda n : setattr(self, 'granted_to', n.get_object_value(IdentitySet)),
-            "grantedToIdentities": lambda n : setattr(self, 'granted_to_identities', n.get_collection_of_object_values(IdentitySet)),
-            "grantedToIdentitiesV2": lambda n : setattr(self, 'granted_to_identities_v2', n.get_collection_of_object_values(SharePointIdentitySet)),
-            "grantedToV2": lambda n : setattr(self, 'granted_to_v2', n.get_object_value(SharePointIdentitySet)),
-            "hasPassword": lambda n : setattr(self, 'has_password', n.get_bool_value()),
-            "inheritedFrom": lambda n : setattr(self, 'inherited_from', n.get_object_value(ItemReference)),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "granted_to": lambda n : setattr(self, 'granted_to', n.get_object_value(IdentitySet)),
+            "granted_to_identities": lambda n : setattr(self, 'granted_to_identities', n.get_collection_of_object_values(IdentitySet)),
+            "granted_to_identities_v2": lambda n : setattr(self, 'granted_to_identities_v2', n.get_collection_of_object_values(SharePointIdentitySet)),
+            "granted_to_v2": lambda n : setattr(self, 'granted_to_v2', n.get_object_value(SharePointIdentitySet)),
+            "has_password": lambda n : setattr(self, 'has_password', n.get_bool_value()),
+            "inherited_from": lambda n : setattr(self, 'inherited_from', n.get_object_value(ItemReference)),
             "invitation": lambda n : setattr(self, 'invitation', n.get_object_value(SharingInvitation)),
             "link": lambda n : setattr(self, 'link', n.get_object_value(SharingLink)),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_primitive_values(str)),
-            "shareId": lambda n : setattr(self, 'share_id', n.get_str_value()),
+            "share_id": lambda n : setattr(self, 'share_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -97,16 +97,16 @@ class Permission(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
-        writer.write_object_value("grantedTo", self.granted_to)
-        writer.write_collection_of_object_values("grantedToIdentities", self.granted_to_identities)
-        writer.write_collection_of_object_values("grantedToIdentitiesV2", self.granted_to_identities_v2)
-        writer.write_object_value("grantedToV2", self.granted_to_v2)
-        writer.write_bool_value("hasPassword", self.has_password)
-        writer.write_object_value("inheritedFrom", self.inherited_from)
+        writer.write_datetime_value("expiration_date_time", self.expiration_date_time)
+        writer.write_object_value("granted_to", self.granted_to)
+        writer.write_collection_of_object_values("granted_to_identities", self.granted_to_identities)
+        writer.write_collection_of_object_values("granted_to_identities_v2", self.granted_to_identities_v2)
+        writer.write_object_value("granted_to_v2", self.granted_to_v2)
+        writer.write_bool_value("has_password", self.has_password)
+        writer.write_object_value("inherited_from", self.inherited_from)
         writer.write_object_value("invitation", self.invitation)
         writer.write_object_value("link", self.link)
         writer.write_collection_of_primitive_values("roles", self.roles)
-        writer.write_str_value("shareId", self.share_id)
+        writer.write_str_value("share_id", self.share_id)
     
 

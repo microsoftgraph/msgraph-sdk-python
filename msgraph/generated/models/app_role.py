@@ -46,12 +46,12 @@ class AppRole(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedMemberTypes": lambda n : setattr(self, 'allowed_member_types', n.get_collection_of_primitive_values(str)),
+            "allowed_member_types": lambda n : setattr(self, 'allowed_member_types', n.get_collection_of_primitive_values(str)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_uuid_value()),
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "origin": lambda n : setattr(self, 'origin', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
@@ -65,12 +65,12 @@ class AppRole(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("allowedMemberTypes", self.allowed_member_types)
+        writer.write_collection_of_primitive_values("allowed_member_types", self.allowed_member_types)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_uuid_value("id", self.id)
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("origin", self.origin)
         writer.write_str_value("value", self.value)
         writer.write_additional_data_value(self.additional_data)

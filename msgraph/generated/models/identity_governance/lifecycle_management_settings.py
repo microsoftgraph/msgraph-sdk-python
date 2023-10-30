@@ -41,8 +41,8 @@ class LifecycleManagementSettings(Entity):
         from ..entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "emailSettings": lambda n : setattr(self, 'email_settings', n.get_object_value(EmailSettings)),
-            "workflowScheduleIntervalInHours": lambda n : setattr(self, 'workflow_schedule_interval_in_hours', n.get_int_value()),
+            "email_settings": lambda n : setattr(self, 'email_settings', n.get_object_value(EmailSettings)),
+            "workflow_schedule_interval_in_hours": lambda n : setattr(self, 'workflow_schedule_interval_in_hours', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class LifecycleManagementSettings(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("emailSettings", self.email_settings)
-        writer.write_int_value("workflowScheduleIntervalInHours", self.workflow_schedule_interval_in_hours)
+        writer.write_object_value("email_settings", self.email_settings)
+        writer.write_int_value("workflow_schedule_interval_in_hours", self.workflow_schedule_interval_in_hours)
     
 

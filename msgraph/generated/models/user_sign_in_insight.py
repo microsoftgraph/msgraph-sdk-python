@@ -37,7 +37,7 @@ class UserSignInInsight(GovernanceInsight):
         from .governance_insight import GovernanceInsight
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lastSignInDateTime": lambda n : setattr(self, 'last_sign_in_date_time', n.get_datetime_value()),
+            "last_sign_in_date_time": lambda n : setattr(self, 'last_sign_in_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,6 +52,6 @@ class UserSignInInsight(GovernanceInsight):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("lastSignInDateTime", self.last_sign_in_date_time)
+        writer.write_datetime_value("last_sign_in_date_time", self.last_sign_in_date_time)
     
 

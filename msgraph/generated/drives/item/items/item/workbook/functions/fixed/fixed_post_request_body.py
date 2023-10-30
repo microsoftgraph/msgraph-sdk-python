@@ -43,7 +43,7 @@ class FixedPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "decimals": lambda n : setattr(self, 'decimals', n.get_object_value(Json)),
-            "noCommas": lambda n : setattr(self, 'no_commas', n.get_object_value(Json)),
+            "no_commas": lambda n : setattr(self, 'no_commas', n.get_object_value(Json)),
             "number": lambda n : setattr(self, 'number', n.get_object_value(Json)),
         }
         return fields
@@ -57,7 +57,7 @@ class FixedPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("decimals", self.decimals)
-        writer.write_object_value("noCommas", self.no_commas)
+        writer.write_object_value("no_commas", self.no_commas)
         writer.write_object_value("number", self.number)
         writer.write_additional_data_value(self.additional_data)
     

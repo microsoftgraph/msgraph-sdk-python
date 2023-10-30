@@ -39,7 +39,7 @@ class Windows10EnterpriseModernAppManagementConfiguration(DeviceConfiguration):
         from .device_configuration import DeviceConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "uninstallBuiltInApps": lambda n : setattr(self, 'uninstall_built_in_apps', n.get_bool_value()),
+            "uninstall_built_in_apps": lambda n : setattr(self, 'uninstall_built_in_apps', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class Windows10EnterpriseModernAppManagementConfiguration(DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("uninstallBuiltInApps", self.uninstall_built_in_apps)
+        writer.write_bool_value("uninstall_built_in_apps", self.uninstall_built_in_apps)
     
 

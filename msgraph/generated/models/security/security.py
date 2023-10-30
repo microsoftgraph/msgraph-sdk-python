@@ -91,14 +91,14 @@ class Security(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(Alert)),
             "alerts_v2": lambda n : setattr(self, 'alerts_v2', n.get_collection_of_object_values(Alert)),
-            "attackSimulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(AttackSimulationRoot)),
+            "attack_simulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(AttackSimulationRoot)),
             "cases": lambda n : setattr(self, 'cases', n.get_object_value(CasesRoot)),
             "incidents": lambda n : setattr(self, 'incidents', n.get_collection_of_object_values(Incident)),
-            "secureScoreControlProfiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(SecureScoreControlProfile)),
-            "secureScores": lambda n : setattr(self, 'secure_scores', n.get_collection_of_object_values(SecureScore)),
-            "subjectRightsRequests": lambda n : setattr(self, 'subject_rights_requests', n.get_collection_of_object_values(SubjectRightsRequest)),
-            "threatIntelligence": lambda n : setattr(self, 'threat_intelligence', n.get_object_value(ThreatIntelligence)),
-            "triggerTypes": lambda n : setattr(self, 'trigger_types', n.get_object_value(TriggerTypesRoot)),
+            "secure_score_control_profiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(SecureScoreControlProfile)),
+            "secure_scores": lambda n : setattr(self, 'secure_scores', n.get_collection_of_object_values(SecureScore)),
+            "subject_rights_requests": lambda n : setattr(self, 'subject_rights_requests', n.get_collection_of_object_values(SubjectRightsRequest)),
+            "threat_intelligence": lambda n : setattr(self, 'threat_intelligence', n.get_object_value(ThreatIntelligence)),
+            "trigger_types": lambda n : setattr(self, 'trigger_types', n.get_object_value(TriggerTypesRoot)),
             "triggers": lambda n : setattr(self, 'triggers', n.get_object_value(TriggersRoot)),
         }
         super_fields = super().get_field_deserializers()
@@ -116,14 +116,14 @@ class Security(Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("alerts", self.alerts)
         writer.write_collection_of_object_values("alerts_v2", self.alerts_v2)
-        writer.write_object_value("attackSimulation", self.attack_simulation)
+        writer.write_object_value("attack_simulation", self.attack_simulation)
         writer.write_object_value("cases", self.cases)
         writer.write_collection_of_object_values("incidents", self.incidents)
-        writer.write_collection_of_object_values("secureScoreControlProfiles", self.secure_score_control_profiles)
-        writer.write_collection_of_object_values("secureScores", self.secure_scores)
-        writer.write_collection_of_object_values("subjectRightsRequests", self.subject_rights_requests)
-        writer.write_object_value("threatIntelligence", self.threat_intelligence)
-        writer.write_object_value("triggerTypes", self.trigger_types)
+        writer.write_collection_of_object_values("secure_score_control_profiles", self.secure_score_control_profiles)
+        writer.write_collection_of_object_values("secure_scores", self.secure_scores)
+        writer.write_collection_of_object_values("subject_rights_requests", self.subject_rights_requests)
+        writer.write_object_value("threat_intelligence", self.threat_intelligence)
+        writer.write_object_value("trigger_types", self.trigger_types)
         writer.write_object_value("triggers", self.triggers)
     
 

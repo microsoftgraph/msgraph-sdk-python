@@ -47,10 +47,10 @@ class AppConfigurationSettingItem(AdditionalDataHolder, BackedModel, Parsable):
         from .mdm_app_config_key_type import MdmAppConfigKeyType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appConfigKey": lambda n : setattr(self, 'app_config_key', n.get_str_value()),
-            "appConfigKeyType": lambda n : setattr(self, 'app_config_key_type', n.get_enum_value(MdmAppConfigKeyType)),
-            "appConfigKeyValue": lambda n : setattr(self, 'app_config_key_value', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "app_config_key": lambda n : setattr(self, 'app_config_key', n.get_str_value()),
+            "app_config_key_type": lambda n : setattr(self, 'app_config_key_type', n.get_enum_value(MdmAppConfigKeyType)),
+            "app_config_key_value": lambda n : setattr(self, 'app_config_key_value', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -62,10 +62,10 @@ class AppConfigurationSettingItem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("appConfigKey", self.app_config_key)
-        writer.write_enum_value("appConfigKeyType", self.app_config_key_type)
-        writer.write_str_value("appConfigKeyValue", self.app_config_key_value)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("app_config_key", self.app_config_key)
+        writer.write_enum_value("app_config_key_type", self.app_config_key_type)
+        writer.write_str_value("app_config_key_value", self.app_config_key_value)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

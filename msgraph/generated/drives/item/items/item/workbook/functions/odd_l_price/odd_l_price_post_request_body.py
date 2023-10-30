@@ -54,7 +54,7 @@ class OddLPricePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "basis": lambda n : setattr(self, 'basis', n.get_object_value(Json)),
             "frequency": lambda n : setattr(self, 'frequency', n.get_object_value(Json)),
-            "lastInterest": lambda n : setattr(self, 'last_interest', n.get_object_value(Json)),
+            "last_interest": lambda n : setattr(self, 'last_interest', n.get_object_value(Json)),
             "maturity": lambda n : setattr(self, 'maturity', n.get_object_value(Json)),
             "rate": lambda n : setattr(self, 'rate', n.get_object_value(Json)),
             "redemption": lambda n : setattr(self, 'redemption', n.get_object_value(Json)),
@@ -73,7 +73,7 @@ class OddLPricePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("basis", self.basis)
         writer.write_object_value("frequency", self.frequency)
-        writer.write_object_value("lastInterest", self.last_interest)
+        writer.write_object_value("last_interest", self.last_interest)
         writer.write_object_value("maturity", self.maturity)
         writer.write_object_value("rate", self.rate)
         writer.write_object_value("redemption", self.redemption)

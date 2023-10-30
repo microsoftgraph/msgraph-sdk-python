@@ -53,14 +53,14 @@ class PermissionGrantConditionSet(Entity):
         from .permission_type import PermissionType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "clientApplicationIds": lambda n : setattr(self, 'client_application_ids', n.get_collection_of_primitive_values(str)),
-            "clientApplicationPublisherIds": lambda n : setattr(self, 'client_application_publisher_ids', n.get_collection_of_primitive_values(str)),
-            "clientApplicationTenantIds": lambda n : setattr(self, 'client_application_tenant_ids', n.get_collection_of_primitive_values(str)),
-            "clientApplicationsFromVerifiedPublisherOnly": lambda n : setattr(self, 'client_applications_from_verified_publisher_only', n.get_bool_value()),
-            "permissionClassification": lambda n : setattr(self, 'permission_classification', n.get_str_value()),
-            "permissionType": lambda n : setattr(self, 'permission_type', n.get_enum_value(PermissionType)),
+            "client_application_ids": lambda n : setattr(self, 'client_application_ids', n.get_collection_of_primitive_values(str)),
+            "client_application_publisher_ids": lambda n : setattr(self, 'client_application_publisher_ids', n.get_collection_of_primitive_values(str)),
+            "client_application_tenant_ids": lambda n : setattr(self, 'client_application_tenant_ids', n.get_collection_of_primitive_values(str)),
+            "client_applications_from_verified_publisher_only": lambda n : setattr(self, 'client_applications_from_verified_publisher_only', n.get_bool_value()),
+            "permission_classification": lambda n : setattr(self, 'permission_classification', n.get_str_value()),
+            "permission_type": lambda n : setattr(self, 'permission_type', n.get_enum_value(PermissionType)),
             "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_primitive_values(str)),
-            "resourceApplication": lambda n : setattr(self, 'resource_application', n.get_str_value()),
+            "resource_application": lambda n : setattr(self, 'resource_application', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,13 +75,13 @@ class PermissionGrantConditionSet(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_primitive_values("clientApplicationIds", self.client_application_ids)
-        writer.write_collection_of_primitive_values("clientApplicationPublisherIds", self.client_application_publisher_ids)
-        writer.write_collection_of_primitive_values("clientApplicationTenantIds", self.client_application_tenant_ids)
-        writer.write_bool_value("clientApplicationsFromVerifiedPublisherOnly", self.client_applications_from_verified_publisher_only)
-        writer.write_str_value("permissionClassification", self.permission_classification)
-        writer.write_enum_value("permissionType", self.permission_type)
+        writer.write_collection_of_primitive_values("client_application_ids", self.client_application_ids)
+        writer.write_collection_of_primitive_values("client_application_publisher_ids", self.client_application_publisher_ids)
+        writer.write_collection_of_primitive_values("client_application_tenant_ids", self.client_application_tenant_ids)
+        writer.write_bool_value("client_applications_from_verified_publisher_only", self.client_applications_from_verified_publisher_only)
+        writer.write_str_value("permission_classification", self.permission_classification)
+        writer.write_enum_value("permission_type", self.permission_type)
         writer.write_collection_of_primitive_values("permissions", self.permissions)
-        writer.write_str_value("resourceApplication", self.resource_application)
+        writer.write_str_value("resource_application", self.resource_application)
     
 

@@ -47,7 +47,7 @@ class WorkbookOperation(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(WorkbookOperationError)),
-            "resourceLocation": lambda n : setattr(self, 'resource_location', n.get_str_value()),
+            "resource_location": lambda n : setattr(self, 'resource_location', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(WorkbookOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -64,7 +64,7 @@ class WorkbookOperation(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("error", self.error)
-        writer.write_str_value("resourceLocation", self.resource_location)
+        writer.write_str_value("resource_location", self.resource_location)
         writer.write_enum_value("status", self.status)
     
 

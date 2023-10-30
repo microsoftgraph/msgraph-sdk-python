@@ -47,11 +47,11 @@ class Windows10SecureAssessmentConfiguration(DeviceConfiguration):
         from .device_configuration import DeviceConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowPrinting": lambda n : setattr(self, 'allow_printing', n.get_bool_value()),
-            "allowScreenCapture": lambda n : setattr(self, 'allow_screen_capture', n.get_bool_value()),
-            "allowTextSuggestion": lambda n : setattr(self, 'allow_text_suggestion', n.get_bool_value()),
-            "configurationAccount": lambda n : setattr(self, 'configuration_account', n.get_str_value()),
-            "launchUri": lambda n : setattr(self, 'launch_uri', n.get_str_value()),
+            "allow_printing": lambda n : setattr(self, 'allow_printing', n.get_bool_value()),
+            "allow_screen_capture": lambda n : setattr(self, 'allow_screen_capture', n.get_bool_value()),
+            "allow_text_suggestion": lambda n : setattr(self, 'allow_text_suggestion', n.get_bool_value()),
+            "configuration_account": lambda n : setattr(self, 'configuration_account', n.get_str_value()),
+            "launch_uri": lambda n : setattr(self, 'launch_uri', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,10 +66,10 @@ class Windows10SecureAssessmentConfiguration(DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("allowPrinting", self.allow_printing)
-        writer.write_bool_value("allowScreenCapture", self.allow_screen_capture)
-        writer.write_bool_value("allowTextSuggestion", self.allow_text_suggestion)
-        writer.write_str_value("configurationAccount", self.configuration_account)
-        writer.write_str_value("launchUri", self.launch_uri)
+        writer.write_bool_value("allow_printing", self.allow_printing)
+        writer.write_bool_value("allow_screen_capture", self.allow_screen_capture)
+        writer.write_bool_value("allow_text_suggestion", self.allow_text_suggestion)
+        writer.write_str_value("configuration_account", self.configuration_account)
+        writer.write_str_value("launch_uri", self.launch_uri)
     
 

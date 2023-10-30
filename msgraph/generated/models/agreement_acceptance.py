@@ -64,19 +64,19 @@ class AgreementAcceptance(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "agreementFileId": lambda n : setattr(self, 'agreement_file_id', n.get_str_value()),
-            "agreementId": lambda n : setattr(self, 'agreement_id', n.get_str_value()),
-            "deviceDisplayName": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
-            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "deviceOSType": lambda n : setattr(self, 'device_o_s_type', n.get_str_value()),
-            "deviceOSVersion": lambda n : setattr(self, 'device_o_s_version', n.get_str_value()),
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "recordedDateTime": lambda n : setattr(self, 'recorded_date_time', n.get_datetime_value()),
+            "agreement_file_id": lambda n : setattr(self, 'agreement_file_id', n.get_str_value()),
+            "agreement_id": lambda n : setattr(self, 'agreement_id', n.get_str_value()),
+            "device_display_name": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
+            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "device_o_s_type": lambda n : setattr(self, 'device_o_s_type', n.get_str_value()),
+            "device_o_s_version": lambda n : setattr(self, 'device_o_s_version', n.get_str_value()),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "recorded_date_time": lambda n : setattr(self, 'recorded_date_time', n.get_datetime_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(AgreementAcceptanceState)),
-            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "userEmail": lambda n : setattr(self, 'user_email', n.get_str_value()),
-            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "user_email": lambda n : setattr(self, 'user_email', n.get_str_value()),
+            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -91,18 +91,18 @@ class AgreementAcceptance(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("agreementFileId", self.agreement_file_id)
-        writer.write_str_value("agreementId", self.agreement_id)
-        writer.write_str_value("deviceDisplayName", self.device_display_name)
-        writer.write_str_value("deviceId", self.device_id)
-        writer.write_str_value("deviceOSType", self.device_o_s_type)
-        writer.write_str_value("deviceOSVersion", self.device_o_s_version)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
-        writer.write_datetime_value("recordedDateTime", self.recorded_date_time)
+        writer.write_str_value("agreement_file_id", self.agreement_file_id)
+        writer.write_str_value("agreement_id", self.agreement_id)
+        writer.write_str_value("device_display_name", self.device_display_name)
+        writer.write_str_value("device_id", self.device_id)
+        writer.write_str_value("device_o_s_type", self.device_o_s_type)
+        writer.write_str_value("device_o_s_version", self.device_o_s_version)
+        writer.write_datetime_value("expiration_date_time", self.expiration_date_time)
+        writer.write_datetime_value("recorded_date_time", self.recorded_date_time)
         writer.write_enum_value("state", self.state)
-        writer.write_str_value("userDisplayName", self.user_display_name)
-        writer.write_str_value("userEmail", self.user_email)
-        writer.write_str_value("userId", self.user_id)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_str_value("user_display_name", self.user_display_name)
+        writer.write_str_value("user_email", self.user_email)
+        writer.write_str_value("user_id", self.user_id)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
     
 

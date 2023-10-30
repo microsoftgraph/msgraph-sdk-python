@@ -18,13 +18,13 @@ class EndUserNotificationSetting(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The notificationPreference property
+    # Notification preference. Possible values are: unknown, microsoft, custom, unknownFutureValue.
     notification_preference: Optional[EndUserNotificationPreference] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The positiveReinforcement property
+    # Positive reinforcement detail.
     positive_reinforcement: Optional[PositiveReinforcementNotification] = None
-    # The settingType property
+    # End user notification type. Possible values are: unknown, noTraining, trainingSelected, noNotification, unknownFutureValue.
     setting_type: Optional[EndUserNotificationSettingType] = None
     
     @staticmethod
@@ -68,10 +68,10 @@ class EndUserNotificationSetting(AdditionalDataHolder, BackedModel, Parsable):
         from .training_notification_setting import TrainingNotificationSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "notificationPreference": lambda n : setattr(self, 'notification_preference', n.get_enum_value(EndUserNotificationPreference)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "positiveReinforcement": lambda n : setattr(self, 'positive_reinforcement', n.get_object_value(PositiveReinforcementNotification)),
-            "settingType": lambda n : setattr(self, 'setting_type', n.get_enum_value(EndUserNotificationSettingType)),
+            "notification_preference": lambda n : setattr(self, 'notification_preference', n.get_enum_value(EndUserNotificationPreference)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "positive_reinforcement": lambda n : setattr(self, 'positive_reinforcement', n.get_object_value(PositiveReinforcementNotification)),
+            "setting_type": lambda n : setattr(self, 'setting_type', n.get_enum_value(EndUserNotificationSettingType)),
         }
         return fields
     
@@ -83,10 +83,10 @@ class EndUserNotificationSetting(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("notificationPreference", self.notification_preference)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("positiveReinforcement", self.positive_reinforcement)
-        writer.write_enum_value("settingType", self.setting_type)
+        writer.write_enum_value("notification_preference", self.notification_preference)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("positive_reinforcement", self.positive_reinforcement)
+        writer.write_enum_value("setting_type", self.setting_type)
         writer.write_additional_data_value(self.additional_data)
     
 

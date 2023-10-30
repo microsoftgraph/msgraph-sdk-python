@@ -41,7 +41,7 @@ class RestorePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "parentReference": lambda n : setattr(self, 'parent_reference', n.get_object_value(ItemReference)),
+            "parent_reference": lambda n : setattr(self, 'parent_reference', n.get_object_value(ItemReference)),
         }
         return fields
     
@@ -54,7 +54,7 @@ class RestorePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("name", self.name)
-        writer.write_object_value("parentReference", self.parent_reference)
+        writer.write_object_value("parent_reference", self.parent_reference)
         writer.write_additional_data_value(self.additional_data)
     
 

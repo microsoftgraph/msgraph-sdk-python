@@ -87,8 +87,8 @@ class PrinterBase(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "capabilities": lambda n : setattr(self, 'capabilities', n.get_object_value(PrinterCapabilities)),
             "defaults": lambda n : setattr(self, 'defaults', n.get_object_value(PrinterDefaults)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "isAcceptingJobs": lambda n : setattr(self, 'is_accepting_jobs', n.get_bool_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "is_accepting_jobs": lambda n : setattr(self, 'is_accepting_jobs', n.get_bool_value()),
             "jobs": lambda n : setattr(self, 'jobs', n.get_collection_of_object_values(PrintJob)),
             "location": lambda n : setattr(self, 'location', n.get_object_value(PrinterLocation)),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
@@ -110,8 +110,8 @@ class PrinterBase(Entity):
         super().serialize(writer)
         writer.write_object_value("capabilities", self.capabilities)
         writer.write_object_value("defaults", self.defaults)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_bool_value("isAcceptingJobs", self.is_accepting_jobs)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_bool_value("is_accepting_jobs", self.is_accepting_jobs)
         writer.write_collection_of_object_values("jobs", self.jobs)
         writer.write_object_value("location", self.location)
         writer.write_str_value("manufacturer", self.manufacturer)

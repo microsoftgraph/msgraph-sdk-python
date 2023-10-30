@@ -104,35 +104,35 @@ class WindowsPhone81GeneralConfiguration(DeviceConfiguration):
         from .required_password_type import RequiredPasswordType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applyOnlyToWindowsPhone81": lambda n : setattr(self, 'apply_only_to_windows_phone81', n.get_bool_value()),
-            "appsBlockCopyPaste": lambda n : setattr(self, 'apps_block_copy_paste', n.get_bool_value()),
-            "bluetoothBlocked": lambda n : setattr(self, 'bluetooth_blocked', n.get_bool_value()),
-            "cameraBlocked": lambda n : setattr(self, 'camera_blocked', n.get_bool_value()),
-            "cellularBlockWifiTethering": lambda n : setattr(self, 'cellular_block_wifi_tethering', n.get_bool_value()),
-            "compliantAppListType": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(AppListType)),
-            "compliantAppsList": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(AppListItem)),
-            "diagnosticDataBlockSubmission": lambda n : setattr(self, 'diagnostic_data_block_submission', n.get_bool_value()),
-            "emailBlockAddingAccounts": lambda n : setattr(self, 'email_block_adding_accounts', n.get_bool_value()),
-            "locationServicesBlocked": lambda n : setattr(self, 'location_services_blocked', n.get_bool_value()),
-            "microsoftAccountBlocked": lambda n : setattr(self, 'microsoft_account_blocked', n.get_bool_value()),
-            "nfcBlocked": lambda n : setattr(self, 'nfc_blocked', n.get_bool_value()),
-            "passwordBlockSimple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
-            "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
-            "passwordMinimumCharacterSetCount": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
-            "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
-            "passwordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
-            "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(RequiredPasswordType)),
-            "passwordSignInFailureCountBeforeFactoryReset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
-            "screenCaptureBlocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
-            "storageBlockRemovableStorage": lambda n : setattr(self, 'storage_block_removable_storage', n.get_bool_value()),
-            "storageRequireEncryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
-            "webBrowserBlocked": lambda n : setattr(self, 'web_browser_blocked', n.get_bool_value()),
-            "wifiBlockAutomaticConnectHotspots": lambda n : setattr(self, 'wifi_block_automatic_connect_hotspots', n.get_bool_value()),
-            "wifiBlockHotspotReporting": lambda n : setattr(self, 'wifi_block_hotspot_reporting', n.get_bool_value()),
-            "wifiBlocked": lambda n : setattr(self, 'wifi_blocked', n.get_bool_value()),
-            "windowsStoreBlocked": lambda n : setattr(self, 'windows_store_blocked', n.get_bool_value()),
+            "apply_only_to_windows_phone81": lambda n : setattr(self, 'apply_only_to_windows_phone81', n.get_bool_value()),
+            "apps_block_copy_paste": lambda n : setattr(self, 'apps_block_copy_paste', n.get_bool_value()),
+            "bluetooth_blocked": lambda n : setattr(self, 'bluetooth_blocked', n.get_bool_value()),
+            "camera_blocked": lambda n : setattr(self, 'camera_blocked', n.get_bool_value()),
+            "cellular_block_wifi_tethering": lambda n : setattr(self, 'cellular_block_wifi_tethering', n.get_bool_value()),
+            "compliant_app_list_type": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(AppListType)),
+            "compliant_apps_list": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(AppListItem)),
+            "diagnostic_data_block_submission": lambda n : setattr(self, 'diagnostic_data_block_submission', n.get_bool_value()),
+            "email_block_adding_accounts": lambda n : setattr(self, 'email_block_adding_accounts', n.get_bool_value()),
+            "location_services_blocked": lambda n : setattr(self, 'location_services_blocked', n.get_bool_value()),
+            "microsoft_account_blocked": lambda n : setattr(self, 'microsoft_account_blocked', n.get_bool_value()),
+            "nfc_blocked": lambda n : setattr(self, 'nfc_blocked', n.get_bool_value()),
+            "password_block_simple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
+            "password_expiration_days": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
+            "password_minimum_character_set_count": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
+            "password_minimum_length": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
+            "password_minutes_of_inactivity_before_screen_timeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
+            "password_previous_password_block_count": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
+            "password_required": lambda n : setattr(self, 'password_required', n.get_bool_value()),
+            "password_required_type": lambda n : setattr(self, 'password_required_type', n.get_enum_value(RequiredPasswordType)),
+            "password_sign_in_failure_count_before_factory_reset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
+            "screen_capture_blocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
+            "storage_block_removable_storage": lambda n : setattr(self, 'storage_block_removable_storage', n.get_bool_value()),
+            "storage_require_encryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
+            "web_browser_blocked": lambda n : setattr(self, 'web_browser_blocked', n.get_bool_value()),
+            "wifi_block_automatic_connect_hotspots": lambda n : setattr(self, 'wifi_block_automatic_connect_hotspots', n.get_bool_value()),
+            "wifi_block_hotspot_reporting": lambda n : setattr(self, 'wifi_block_hotspot_reporting', n.get_bool_value()),
+            "wifi_blocked": lambda n : setattr(self, 'wifi_blocked', n.get_bool_value()),
+            "windows_store_blocked": lambda n : setattr(self, 'windows_store_blocked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -147,33 +147,33 @@ class WindowsPhone81GeneralConfiguration(DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("appsBlockCopyPaste", self.apps_block_copy_paste)
-        writer.write_bool_value("bluetoothBlocked", self.bluetooth_blocked)
-        writer.write_bool_value("cameraBlocked", self.camera_blocked)
-        writer.write_bool_value("cellularBlockWifiTethering", self.cellular_block_wifi_tethering)
-        writer.write_enum_value("compliantAppListType", self.compliant_app_list_type)
-        writer.write_collection_of_object_values("compliantAppsList", self.compliant_apps_list)
-        writer.write_bool_value("diagnosticDataBlockSubmission", self.diagnostic_data_block_submission)
-        writer.write_bool_value("emailBlockAddingAccounts", self.email_block_adding_accounts)
-        writer.write_bool_value("locationServicesBlocked", self.location_services_blocked)
-        writer.write_bool_value("microsoftAccountBlocked", self.microsoft_account_blocked)
-        writer.write_bool_value("nfcBlocked", self.nfc_blocked)
-        writer.write_bool_value("passwordBlockSimple", self.password_block_simple)
-        writer.write_int_value("passwordExpirationDays", self.password_expiration_days)
-        writer.write_int_value("passwordMinimumCharacterSetCount", self.password_minimum_character_set_count)
-        writer.write_int_value("passwordMinimumLength", self.password_minimum_length)
-        writer.write_int_value("passwordMinutesOfInactivityBeforeScreenTimeout", self.password_minutes_of_inactivity_before_screen_timeout)
-        writer.write_int_value("passwordPreviousPasswordBlockCount", self.password_previous_password_block_count)
-        writer.write_bool_value("passwordRequired", self.password_required)
-        writer.write_enum_value("passwordRequiredType", self.password_required_type)
-        writer.write_int_value("passwordSignInFailureCountBeforeFactoryReset", self.password_sign_in_failure_count_before_factory_reset)
-        writer.write_bool_value("screenCaptureBlocked", self.screen_capture_blocked)
-        writer.write_bool_value("storageBlockRemovableStorage", self.storage_block_removable_storage)
-        writer.write_bool_value("storageRequireEncryption", self.storage_require_encryption)
-        writer.write_bool_value("webBrowserBlocked", self.web_browser_blocked)
-        writer.write_bool_value("wifiBlockAutomaticConnectHotspots", self.wifi_block_automatic_connect_hotspots)
-        writer.write_bool_value("wifiBlockHotspotReporting", self.wifi_block_hotspot_reporting)
-        writer.write_bool_value("wifiBlocked", self.wifi_blocked)
-        writer.write_bool_value("windowsStoreBlocked", self.windows_store_blocked)
+        writer.write_bool_value("apps_block_copy_paste", self.apps_block_copy_paste)
+        writer.write_bool_value("bluetooth_blocked", self.bluetooth_blocked)
+        writer.write_bool_value("camera_blocked", self.camera_blocked)
+        writer.write_bool_value("cellular_block_wifi_tethering", self.cellular_block_wifi_tethering)
+        writer.write_enum_value("compliant_app_list_type", self.compliant_app_list_type)
+        writer.write_collection_of_object_values("compliant_apps_list", self.compliant_apps_list)
+        writer.write_bool_value("diagnostic_data_block_submission", self.diagnostic_data_block_submission)
+        writer.write_bool_value("email_block_adding_accounts", self.email_block_adding_accounts)
+        writer.write_bool_value("location_services_blocked", self.location_services_blocked)
+        writer.write_bool_value("microsoft_account_blocked", self.microsoft_account_blocked)
+        writer.write_bool_value("nfc_blocked", self.nfc_blocked)
+        writer.write_bool_value("password_block_simple", self.password_block_simple)
+        writer.write_int_value("password_expiration_days", self.password_expiration_days)
+        writer.write_int_value("password_minimum_character_set_count", self.password_minimum_character_set_count)
+        writer.write_int_value("password_minimum_length", self.password_minimum_length)
+        writer.write_int_value("password_minutes_of_inactivity_before_screen_timeout", self.password_minutes_of_inactivity_before_screen_timeout)
+        writer.write_int_value("password_previous_password_block_count", self.password_previous_password_block_count)
+        writer.write_bool_value("password_required", self.password_required)
+        writer.write_enum_value("password_required_type", self.password_required_type)
+        writer.write_int_value("password_sign_in_failure_count_before_factory_reset", self.password_sign_in_failure_count_before_factory_reset)
+        writer.write_bool_value("screen_capture_blocked", self.screen_capture_blocked)
+        writer.write_bool_value("storage_block_removable_storage", self.storage_block_removable_storage)
+        writer.write_bool_value("storage_require_encryption", self.storage_require_encryption)
+        writer.write_bool_value("web_browser_blocked", self.web_browser_blocked)
+        writer.write_bool_value("wifi_block_automatic_connect_hotspots", self.wifi_block_automatic_connect_hotspots)
+        writer.write_bool_value("wifi_block_hotspot_reporting", self.wifi_block_hotspot_reporting)
+        writer.write_bool_value("wifi_blocked", self.wifi_blocked)
+        writer.write_bool_value("windows_store_blocked", self.windows_store_blocked)
     
 

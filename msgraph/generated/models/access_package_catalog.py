@@ -80,16 +80,16 @@ class AccessPackageCatalog(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessPackages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(AccessPackage)),
-            "catalogType": lambda n : setattr(self, 'catalog_type', n.get_enum_value(AccessPackageCatalogType)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "customWorkflowExtensions": lambda n : setattr(self, 'custom_workflow_extensions', n.get_collection_of_object_values(CustomCalloutExtension)),
+            "access_packages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(AccessPackage)),
+            "catalog_type": lambda n : setattr(self, 'catalog_type', n.get_enum_value(AccessPackageCatalogType)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "custom_workflow_extensions": lambda n : setattr(self, 'custom_workflow_extensions', n.get_collection_of_object_values(CustomCalloutExtension)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "isExternallyVisible": lambda n : setattr(self, 'is_externally_visible', n.get_bool_value()),
-            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
-            "resourceRoles": lambda n : setattr(self, 'resource_roles', n.get_collection_of_object_values(AccessPackageResourceRole)),
-            "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_object_values(AccessPackageResourceScope)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "is_externally_visible": lambda n : setattr(self, 'is_externally_visible', n.get_bool_value()),
+            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "resource_roles": lambda n : setattr(self, 'resource_roles', n.get_collection_of_object_values(AccessPackageResourceRole)),
+            "resource_scopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_object_values(AccessPackageResourceScope)),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(AccessPackageResource)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(AccessPackageCatalogState)),
         }
@@ -106,16 +106,16 @@ class AccessPackageCatalog(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("accessPackages", self.access_packages)
-        writer.write_enum_value("catalogType", self.catalog_type)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_collection_of_object_values("customWorkflowExtensions", self.custom_workflow_extensions)
+        writer.write_collection_of_object_values("access_packages", self.access_packages)
+        writer.write_enum_value("catalog_type", self.catalog_type)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_collection_of_object_values("custom_workflow_extensions", self.custom_workflow_extensions)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_bool_value("isExternallyVisible", self.is_externally_visible)
-        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
-        writer.write_collection_of_object_values("resourceRoles", self.resource_roles)
-        writer.write_collection_of_object_values("resourceScopes", self.resource_scopes)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_bool_value("is_externally_visible", self.is_externally_visible)
+        writer.write_datetime_value("modified_date_time", self.modified_date_time)
+        writer.write_collection_of_object_values("resource_roles", self.resource_roles)
+        writer.write_collection_of_object_values("resource_scopes", self.resource_scopes)
         writer.write_collection_of_object_values("resources", self.resources)
         writer.write_enum_value("state", self.state)
     

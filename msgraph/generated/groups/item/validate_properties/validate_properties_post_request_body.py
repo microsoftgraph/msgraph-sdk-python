@@ -36,9 +36,9 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, BackedModel, Parsa
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "onBehalfOfUserId": lambda n : setattr(self, 'on_behalf_of_user_id', n.get_uuid_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "on_behalf_of_user_id": lambda n : setattr(self, 'on_behalf_of_user_id', n.get_uuid_value()),
         }
         return fields
     
@@ -50,9 +50,9 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, BackedModel, Parsa
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("mailNickname", self.mail_nickname)
-        writer.write_uuid_value("onBehalfOfUserId", self.on_behalf_of_user_id)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("mail_nickname", self.mail_nickname)
+        writer.write_uuid_value("on_behalf_of_user_id", self.on_behalf_of_user_id)
         writer.write_additional_data_value(self.additional_data)
     
 

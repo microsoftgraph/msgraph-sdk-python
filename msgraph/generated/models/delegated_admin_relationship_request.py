@@ -50,8 +50,8 @@ class DelegatedAdminRelationshipRequest(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(DelegatedAdminRelationshipRequestAction)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(DelegatedAdminRelationshipRequestStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -68,8 +68,8 @@ class DelegatedAdminRelationshipRequest(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("action", self.action)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_enum_value("status", self.status)
     
 

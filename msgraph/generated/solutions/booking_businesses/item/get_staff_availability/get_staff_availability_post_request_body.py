@@ -42,9 +42,9 @@ class GetStaffAvailabilityPostRequestBody(AdditionalDataHolder, BackedModel, Par
         from .....models.date_time_time_zone import DateTimeTimeZone
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
-            "staffIds": lambda n : setattr(self, 'staff_ids', n.get_collection_of_primitive_values(str)),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
+            "staff_ids": lambda n : setattr(self, 'staff_ids', n.get_collection_of_primitive_values(str)),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
         }
         return fields
     
@@ -56,9 +56,9 @@ class GetStaffAvailabilityPostRequestBody(AdditionalDataHolder, BackedModel, Par
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("endDateTime", self.end_date_time)
-        writer.write_collection_of_primitive_values("staffIds", self.staff_ids)
-        writer.write_object_value("startDateTime", self.start_date_time)
+        writer.write_object_value("end_date_time", self.end_date_time)
+        writer.write_collection_of_primitive_values("staff_ids", self.staff_ids)
+        writer.write_object_value("start_date_time", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

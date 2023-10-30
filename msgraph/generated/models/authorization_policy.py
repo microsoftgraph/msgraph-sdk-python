@@ -23,7 +23,7 @@ class AuthorizationPolicy(PolicyBase):
     allow_user_consent_for_risky_apps: Optional[bool] = None
     # Indicates whether users can sign up for email based subscriptions.
     allowed_to_sign_up_email_based_subscriptions: Optional[bool] = None
-    # Indicates whether users can use the Self-Serve Password Reset feature on the tenant.
+    # Indicates whether users can use the Self-Service Password Reset feature on the tenant.
     allowed_to_use_s_s_p_r: Optional[bool] = None
     # To disable the use of MSOL PowerShell, set this property to true. This also disables user-based access to the legacy service endpoint used by MSOL PowerShell. This doesn't affect Microsoft Entra Connect or Microsoft Graph.
     block_msol_power_shell: Optional[bool] = None
@@ -57,14 +57,14 @@ class AuthorizationPolicy(PolicyBase):
         from .policy_base import PolicyBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowEmailVerifiedUsersToJoinOrganization": lambda n : setattr(self, 'allow_email_verified_users_to_join_organization', n.get_bool_value()),
-            "allowInvitesFrom": lambda n : setattr(self, 'allow_invites_from', n.get_enum_value(AllowInvitesFrom)),
-            "allowUserConsentForRiskyApps": lambda n : setattr(self, 'allow_user_consent_for_risky_apps', n.get_bool_value()),
-            "allowedToSignUpEmailBasedSubscriptions": lambda n : setattr(self, 'allowed_to_sign_up_email_based_subscriptions', n.get_bool_value()),
-            "allowedToUseSSPR": lambda n : setattr(self, 'allowed_to_use_s_s_p_r', n.get_bool_value()),
-            "blockMsolPowerShell": lambda n : setattr(self, 'block_msol_power_shell', n.get_bool_value()),
-            "defaultUserRolePermissions": lambda n : setattr(self, 'default_user_role_permissions', n.get_object_value(DefaultUserRolePermissions)),
-            "guestUserRoleId": lambda n : setattr(self, 'guest_user_role_id', n.get_uuid_value()),
+            "allow_email_verified_users_to_join_organization": lambda n : setattr(self, 'allow_email_verified_users_to_join_organization', n.get_bool_value()),
+            "allow_invites_from": lambda n : setattr(self, 'allow_invites_from', n.get_enum_value(AllowInvitesFrom)),
+            "allow_user_consent_for_risky_apps": lambda n : setattr(self, 'allow_user_consent_for_risky_apps', n.get_bool_value()),
+            "allowed_to_sign_up_email_based_subscriptions": lambda n : setattr(self, 'allowed_to_sign_up_email_based_subscriptions', n.get_bool_value()),
+            "allowed_to_use_s_s_p_r": lambda n : setattr(self, 'allowed_to_use_s_s_p_r', n.get_bool_value()),
+            "block_msol_power_shell": lambda n : setattr(self, 'block_msol_power_shell', n.get_bool_value()),
+            "default_user_role_permissions": lambda n : setattr(self, 'default_user_role_permissions', n.get_object_value(DefaultUserRolePermissions)),
+            "guest_user_role_id": lambda n : setattr(self, 'guest_user_role_id', n.get_uuid_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -79,13 +79,13 @@ class AuthorizationPolicy(PolicyBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("allowEmailVerifiedUsersToJoinOrganization", self.allow_email_verified_users_to_join_organization)
-        writer.write_enum_value("allowInvitesFrom", self.allow_invites_from)
-        writer.write_bool_value("allowUserConsentForRiskyApps", self.allow_user_consent_for_risky_apps)
-        writer.write_bool_value("allowedToSignUpEmailBasedSubscriptions", self.allowed_to_sign_up_email_based_subscriptions)
-        writer.write_bool_value("allowedToUseSSPR", self.allowed_to_use_s_s_p_r)
-        writer.write_bool_value("blockMsolPowerShell", self.block_msol_power_shell)
-        writer.write_object_value("defaultUserRolePermissions", self.default_user_role_permissions)
-        writer.write_uuid_value("guestUserRoleId", self.guest_user_role_id)
+        writer.write_bool_value("allow_email_verified_users_to_join_organization", self.allow_email_verified_users_to_join_organization)
+        writer.write_enum_value("allow_invites_from", self.allow_invites_from)
+        writer.write_bool_value("allow_user_consent_for_risky_apps", self.allow_user_consent_for_risky_apps)
+        writer.write_bool_value("allowed_to_sign_up_email_based_subscriptions", self.allowed_to_sign_up_email_based_subscriptions)
+        writer.write_bool_value("allowed_to_use_s_s_p_r", self.allowed_to_use_s_s_p_r)
+        writer.write_bool_value("block_msol_power_shell", self.block_msol_power_shell)
+        writer.write_object_value("default_user_role_permissions", self.default_user_role_permissions)
+        writer.write_uuid_value("guest_user_role_id", self.guest_user_role_id)
     
 

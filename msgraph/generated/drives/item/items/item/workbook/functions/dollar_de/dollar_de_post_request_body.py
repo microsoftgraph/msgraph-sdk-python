@@ -41,7 +41,7 @@ class DollarDePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "fraction": lambda n : setattr(self, 'fraction', n.get_object_value(Json)),
-            "fractionalDollar": lambda n : setattr(self, 'fractional_dollar', n.get_object_value(Json)),
+            "fractional_dollar": lambda n : setattr(self, 'fractional_dollar', n.get_object_value(Json)),
         }
         return fields
     
@@ -54,7 +54,7 @@ class DollarDePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("fraction", self.fraction)
-        writer.write_object_value("fractionalDollar", self.fractional_dollar)
+        writer.write_object_value("fractional_dollar", self.fractional_dollar)
         writer.write_additional_data_value(self.additional_data)
     
 

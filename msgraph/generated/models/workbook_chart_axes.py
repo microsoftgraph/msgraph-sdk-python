@@ -43,9 +43,9 @@ class WorkbookChartAxes(Entity):
         from .workbook_chart_axis import WorkbookChartAxis
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "categoryAxis": lambda n : setattr(self, 'category_axis', n.get_object_value(WorkbookChartAxis)),
-            "seriesAxis": lambda n : setattr(self, 'series_axis', n.get_object_value(WorkbookChartAxis)),
-            "valueAxis": lambda n : setattr(self, 'value_axis', n.get_object_value(WorkbookChartAxis)),
+            "category_axis": lambda n : setattr(self, 'category_axis', n.get_object_value(WorkbookChartAxis)),
+            "series_axis": lambda n : setattr(self, 'series_axis', n.get_object_value(WorkbookChartAxis)),
+            "value_axis": lambda n : setattr(self, 'value_axis', n.get_object_value(WorkbookChartAxis)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class WorkbookChartAxes(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("categoryAxis", self.category_axis)
-        writer.write_object_value("seriesAxis", self.series_axis)
-        writer.write_object_value("valueAxis", self.value_axis)
+        writer.write_object_value("category_axis", self.category_axis)
+        writer.write_object_value("series_axis", self.series_axis)
+        writer.write_object_value("value_axis", self.value_axis)
     
 

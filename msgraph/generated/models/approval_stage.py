@@ -52,12 +52,12 @@ class ApprovalStage(Entity):
         from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignedToMe": lambda n : setattr(self, 'assigned_to_me', n.get_bool_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "assigned_to_me": lambda n : setattr(self, 'assigned_to_me', n.get_bool_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
-            "reviewResult": lambda n : setattr(self, 'review_result', n.get_str_value()),
-            "reviewedBy": lambda n : setattr(self, 'reviewed_by', n.get_object_value(Identity)),
-            "reviewedDateTime": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
+            "review_result": lambda n : setattr(self, 'review_result', n.get_str_value()),
+            "reviewed_by": lambda n : setattr(self, 'reviewed_by', n.get_object_value(Identity)),
+            "reviewed_date_time": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -73,12 +73,12 @@ class ApprovalStage(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("assignedToMe", self.assigned_to_me)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_bool_value("assigned_to_me", self.assigned_to_me)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_str_value("justification", self.justification)
-        writer.write_str_value("reviewResult", self.review_result)
-        writer.write_object_value("reviewedBy", self.reviewed_by)
-        writer.write_datetime_value("reviewedDateTime", self.reviewed_date_time)
+        writer.write_str_value("review_result", self.review_result)
+        writer.write_object_value("reviewed_by", self.reviewed_by)
+        writer.write_datetime_value("reviewed_date_time", self.reviewed_date_time)
         writer.write_str_value("status", self.status)
     
 

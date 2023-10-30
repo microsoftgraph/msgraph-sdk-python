@@ -70,21 +70,21 @@ class SynchronizationTaskExecution(AdditionalDataHolder, BackedModel, Parsable):
         from .synchronization_task_execution_result import SynchronizationTaskExecutionResult
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activityIdentifier": lambda n : setattr(self, 'activity_identifier', n.get_str_value()),
-            "countEntitled": lambda n : setattr(self, 'count_entitled', n.get_int_value()),
-            "countEntitledForProvisioning": lambda n : setattr(self, 'count_entitled_for_provisioning', n.get_int_value()),
-            "countEscrowed": lambda n : setattr(self, 'count_escrowed', n.get_int_value()),
-            "countEscrowedRaw": lambda n : setattr(self, 'count_escrowed_raw', n.get_int_value()),
-            "countExported": lambda n : setattr(self, 'count_exported', n.get_int_value()),
-            "countExports": lambda n : setattr(self, 'count_exports', n.get_int_value()),
-            "countImported": lambda n : setattr(self, 'count_imported', n.get_int_value()),
-            "countImportedDeltas": lambda n : setattr(self, 'count_imported_deltas', n.get_int_value()),
-            "countImportedReferenceDeltas": lambda n : setattr(self, 'count_imported_reference_deltas', n.get_int_value()),
+            "activity_identifier": lambda n : setattr(self, 'activity_identifier', n.get_str_value()),
+            "count_entitled": lambda n : setattr(self, 'count_entitled', n.get_int_value()),
+            "count_entitled_for_provisioning": lambda n : setattr(self, 'count_entitled_for_provisioning', n.get_int_value()),
+            "count_escrowed": lambda n : setattr(self, 'count_escrowed', n.get_int_value()),
+            "count_escrowed_raw": lambda n : setattr(self, 'count_escrowed_raw', n.get_int_value()),
+            "count_exported": lambda n : setattr(self, 'count_exported', n.get_int_value()),
+            "count_exports": lambda n : setattr(self, 'count_exports', n.get_int_value()),
+            "count_imported": lambda n : setattr(self, 'count_imported', n.get_int_value()),
+            "count_imported_deltas": lambda n : setattr(self, 'count_imported_deltas', n.get_int_value()),
+            "count_imported_reference_deltas": lambda n : setattr(self, 'count_imported_reference_deltas', n.get_int_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(SynchronizationError)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(SynchronizationTaskExecutionResult)),
-            "timeBegan": lambda n : setattr(self, 'time_began', n.get_datetime_value()),
-            "timeEnded": lambda n : setattr(self, 'time_ended', n.get_datetime_value()),
+            "time_began": lambda n : setattr(self, 'time_began', n.get_datetime_value()),
+            "time_ended": lambda n : setattr(self, 'time_ended', n.get_datetime_value()),
         }
         return fields
     
@@ -96,21 +96,21 @@ class SynchronizationTaskExecution(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("activityIdentifier", self.activity_identifier)
-        writer.write_int_value("countEntitled", self.count_entitled)
-        writer.write_int_value("countEntitledForProvisioning", self.count_entitled_for_provisioning)
-        writer.write_int_value("countEscrowed", self.count_escrowed)
-        writer.write_int_value("countEscrowedRaw", self.count_escrowed_raw)
-        writer.write_int_value("countExported", self.count_exported)
-        writer.write_int_value("countExports", self.count_exports)
-        writer.write_int_value("countImported", self.count_imported)
-        writer.write_int_value("countImportedDeltas", self.count_imported_deltas)
-        writer.write_int_value("countImportedReferenceDeltas", self.count_imported_reference_deltas)
+        writer.write_str_value("activity_identifier", self.activity_identifier)
+        writer.write_int_value("count_entitled", self.count_entitled)
+        writer.write_int_value("count_entitled_for_provisioning", self.count_entitled_for_provisioning)
+        writer.write_int_value("count_escrowed", self.count_escrowed)
+        writer.write_int_value("count_escrowed_raw", self.count_escrowed_raw)
+        writer.write_int_value("count_exported", self.count_exported)
+        writer.write_int_value("count_exports", self.count_exports)
+        writer.write_int_value("count_imported", self.count_imported)
+        writer.write_int_value("count_imported_deltas", self.count_imported_deltas)
+        writer.write_int_value("count_imported_reference_deltas", self.count_imported_reference_deltas)
         writer.write_object_value("error", self.error)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("state", self.state)
-        writer.write_datetime_value("timeBegan", self.time_began)
-        writer.write_datetime_value("timeEnded", self.time_ended)
+        writer.write_datetime_value("time_began", self.time_began)
+        writer.write_datetime_value("time_ended", self.time_ended)
         writer.write_additional_data_value(self.additional_data)
     
 

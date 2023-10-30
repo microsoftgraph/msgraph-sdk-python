@@ -43,8 +43,8 @@ class ChannelDescriptionUpdatedEventMessageDetail(EventMessageDetail):
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "channelDescription": lambda n : setattr(self, 'channel_description', n.get_str_value()),
-            "channelId": lambda n : setattr(self, 'channel_id', n.get_str_value()),
+            "channel_description": lambda n : setattr(self, 'channel_description', n.get_str_value()),
+            "channel_id": lambda n : setattr(self, 'channel_id', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
@@ -60,8 +60,8 @@ class ChannelDescriptionUpdatedEventMessageDetail(EventMessageDetail):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("channelDescription", self.channel_description)
-        writer.write_str_value("channelId", self.channel_id)
+        writer.write_str_value("channel_description", self.channel_description)
+        writer.write_str_value("channel_id", self.channel_id)
         writer.write_object_value("initiator", self.initiator)
     
 

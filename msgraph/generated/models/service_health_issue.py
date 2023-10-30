@@ -66,9 +66,9 @@ class ServiceHealthIssue(ServiceAnnouncementBase):
         fields: Dict[str, Callable[[Any], None]] = {
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(ServiceHealthClassificationType)),
             "feature": lambda n : setattr(self, 'feature', n.get_str_value()),
-            "featureGroup": lambda n : setattr(self, 'feature_group', n.get_str_value()),
-            "impactDescription": lambda n : setattr(self, 'impact_description', n.get_str_value()),
-            "isResolved": lambda n : setattr(self, 'is_resolved', n.get_bool_value()),
+            "feature_group": lambda n : setattr(self, 'feature_group', n.get_str_value()),
+            "impact_description": lambda n : setattr(self, 'impact_description', n.get_str_value()),
+            "is_resolved": lambda n : setattr(self, 'is_resolved', n.get_bool_value()),
             "origin": lambda n : setattr(self, 'origin', n.get_enum_value(ServiceHealthOrigin)),
             "posts": lambda n : setattr(self, 'posts', n.get_collection_of_object_values(ServiceHealthIssuePost)),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
@@ -89,9 +89,9 @@ class ServiceHealthIssue(ServiceAnnouncementBase):
         super().serialize(writer)
         writer.write_enum_value("classification", self.classification)
         writer.write_str_value("feature", self.feature)
-        writer.write_str_value("featureGroup", self.feature_group)
-        writer.write_str_value("impactDescription", self.impact_description)
-        writer.write_bool_value("isResolved", self.is_resolved)
+        writer.write_str_value("feature_group", self.feature_group)
+        writer.write_str_value("impact_description", self.impact_description)
+        writer.write_bool_value("is_resolved", self.is_resolved)
         writer.write_enum_value("origin", self.origin)
         writer.write_collection_of_object_values("posts", self.posts)
         writer.write_str_value("service", self.service)

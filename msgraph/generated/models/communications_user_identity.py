@@ -36,7 +36,7 @@ class CommunicationsUserIdentity(Identity):
         from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class CommunicationsUserIdentity(Identity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("tenantId", self.tenant_id)
+        writer.write_str_value("tenant_id", self.tenant_id)
     
 

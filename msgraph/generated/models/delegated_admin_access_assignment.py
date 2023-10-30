@@ -54,10 +54,10 @@ class DelegatedAdminAccessAssignment(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessContainer": lambda n : setattr(self, 'access_container', n.get_object_value(DelegatedAdminAccessContainer)),
-            "accessDetails": lambda n : setattr(self, 'access_details', n.get_object_value(DelegatedAdminAccessDetails)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "access_container": lambda n : setattr(self, 'access_container', n.get_object_value(DelegatedAdminAccessContainer)),
+            "access_details": lambda n : setattr(self, 'access_details', n.get_object_value(DelegatedAdminAccessDetails)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(DelegatedAdminAccessAssignmentStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -73,10 +73,10 @@ class DelegatedAdminAccessAssignment(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("accessContainer", self.access_container)
-        writer.write_object_value("accessDetails", self.access_details)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_object_value("access_container", self.access_container)
+        writer.write_object_value("access_details", self.access_details)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_enum_value("status", self.status)
     
 

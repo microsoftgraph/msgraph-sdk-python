@@ -72,10 +72,10 @@ class PrivilegedAccessScheduleRequest(Request):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(ScheduleRequestActions)),
-            "isValidationOnly": lambda n : setattr(self, 'is_validation_only', n.get_bool_value()),
+            "is_validation_only": lambda n : setattr(self, 'is_validation_only', n.get_bool_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
-            "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(RequestSchedule)),
-            "ticketInfo": lambda n : setattr(self, 'ticket_info', n.get_object_value(TicketInfo)),
+            "schedule_info": lambda n : setattr(self, 'schedule_info', n.get_object_value(RequestSchedule)),
+            "ticket_info": lambda n : setattr(self, 'ticket_info', n.get_object_value(TicketInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -91,9 +91,9 @@ class PrivilegedAccessScheduleRequest(Request):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("action", self.action)
-        writer.write_bool_value("isValidationOnly", self.is_validation_only)
+        writer.write_bool_value("is_validation_only", self.is_validation_only)
         writer.write_str_value("justification", self.justification)
-        writer.write_object_value("scheduleInfo", self.schedule_info)
-        writer.write_object_value("ticketInfo", self.ticket_info)
+        writer.write_object_value("schedule_info", self.schedule_info)
+        writer.write_object_value("ticket_info", self.ticket_info)
     
 

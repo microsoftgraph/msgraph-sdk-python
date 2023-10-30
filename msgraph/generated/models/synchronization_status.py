@@ -76,18 +76,18 @@ class SynchronizationStatus(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "code": lambda n : setattr(self, 'code', n.get_enum_value(SynchronizationStatusCode)),
-            "countSuccessiveCompleteFailures": lambda n : setattr(self, 'count_successive_complete_failures', n.get_int_value()),
-            "escrowsPruned": lambda n : setattr(self, 'escrows_pruned', n.get_bool_value()),
-            "lastExecution": lambda n : setattr(self, 'last_execution', n.get_object_value(SynchronizationTaskExecution)),
-            "lastSuccessfulExecution": lambda n : setattr(self, 'last_successful_execution', n.get_object_value(SynchronizationTaskExecution)),
-            "lastSuccessfulExecutionWithExports": lambda n : setattr(self, 'last_successful_execution_with_exports', n.get_object_value(SynchronizationTaskExecution)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "count_successive_complete_failures": lambda n : setattr(self, 'count_successive_complete_failures', n.get_int_value()),
+            "escrows_pruned": lambda n : setattr(self, 'escrows_pruned', n.get_bool_value()),
+            "last_execution": lambda n : setattr(self, 'last_execution', n.get_object_value(SynchronizationTaskExecution)),
+            "last_successful_execution": lambda n : setattr(self, 'last_successful_execution', n.get_object_value(SynchronizationTaskExecution)),
+            "last_successful_execution_with_exports": lambda n : setattr(self, 'last_successful_execution_with_exports', n.get_object_value(SynchronizationTaskExecution)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "progress": lambda n : setattr(self, 'progress', n.get_collection_of_object_values(SynchronizationProgress)),
             "quarantine": lambda n : setattr(self, 'quarantine', n.get_object_value(SynchronizationQuarantine)),
-            "steadyStateFirstAchievedTime": lambda n : setattr(self, 'steady_state_first_achieved_time', n.get_datetime_value()),
-            "steadyStateLastAchievedTime": lambda n : setattr(self, 'steady_state_last_achieved_time', n.get_datetime_value()),
-            "synchronizedEntryCountByType": lambda n : setattr(self, 'synchronized_entry_count_by_type', n.get_collection_of_object_values(StringKeyLongValuePair)),
-            "troubleshootingUrl": lambda n : setattr(self, 'troubleshooting_url', n.get_str_value()),
+            "steady_state_first_achieved_time": lambda n : setattr(self, 'steady_state_first_achieved_time', n.get_datetime_value()),
+            "steady_state_last_achieved_time": lambda n : setattr(self, 'steady_state_last_achieved_time', n.get_datetime_value()),
+            "synchronized_entry_count_by_type": lambda n : setattr(self, 'synchronized_entry_count_by_type', n.get_collection_of_object_values(StringKeyLongValuePair)),
+            "troubleshooting_url": lambda n : setattr(self, 'troubleshooting_url', n.get_str_value()),
         }
         return fields
     
@@ -100,18 +100,18 @@ class SynchronizationStatus(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("code", self.code)
-        writer.write_int_value("countSuccessiveCompleteFailures", self.count_successive_complete_failures)
-        writer.write_bool_value("escrowsPruned", self.escrows_pruned)
-        writer.write_object_value("lastExecution", self.last_execution)
-        writer.write_object_value("lastSuccessfulExecution", self.last_successful_execution)
-        writer.write_object_value("lastSuccessfulExecutionWithExports", self.last_successful_execution_with_exports)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_int_value("count_successive_complete_failures", self.count_successive_complete_failures)
+        writer.write_bool_value("escrows_pruned", self.escrows_pruned)
+        writer.write_object_value("last_execution", self.last_execution)
+        writer.write_object_value("last_successful_execution", self.last_successful_execution)
+        writer.write_object_value("last_successful_execution_with_exports", self.last_successful_execution_with_exports)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("progress", self.progress)
         writer.write_object_value("quarantine", self.quarantine)
-        writer.write_datetime_value("steadyStateFirstAchievedTime", self.steady_state_first_achieved_time)
-        writer.write_datetime_value("steadyStateLastAchievedTime", self.steady_state_last_achieved_time)
-        writer.write_collection_of_object_values("synchronizedEntryCountByType", self.synchronized_entry_count_by_type)
-        writer.write_str_value("troubleshootingUrl", self.troubleshooting_url)
+        writer.write_datetime_value("steady_state_first_achieved_time", self.steady_state_first_achieved_time)
+        writer.write_datetime_value("steady_state_last_achieved_time", self.steady_state_last_achieved_time)
+        writer.write_collection_of_object_values("synchronized_entry_count_by_type", self.synchronized_entry_count_by_type)
+        writer.write_str_value("troubleshooting_url", self.troubleshooting_url)
         writer.write_additional_data_value(self.additional_data)
     
 

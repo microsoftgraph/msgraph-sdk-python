@@ -158,35 +158,35 @@ class Message(OutlookItem):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(Attachment)),
-            "bccRecipients": lambda n : setattr(self, 'bcc_recipients', n.get_collection_of_object_values(Recipient)),
+            "bcc_recipients": lambda n : setattr(self, 'bcc_recipients', n.get_collection_of_object_values(Recipient)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(ItemBody)),
-            "bodyPreview": lambda n : setattr(self, 'body_preview', n.get_str_value()),
-            "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(Recipient)),
-            "conversationId": lambda n : setattr(self, 'conversation_id', n.get_str_value()),
-            "conversationIndex": lambda n : setattr(self, 'conversation_index', n.get_bytes_value()),
+            "body_preview": lambda n : setattr(self, 'body_preview', n.get_str_value()),
+            "cc_recipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(Recipient)),
+            "conversation_id": lambda n : setattr(self, 'conversation_id', n.get_str_value()),
+            "conversation_index": lambda n : setattr(self, 'conversation_index', n.get_bytes_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
             "flag": lambda n : setattr(self, 'flag', n.get_object_value(FollowupFlag)),
             "from": lambda n : setattr(self, 'from_', n.get_object_value(Recipient)),
-            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(Importance)),
-            "inferenceClassification": lambda n : setattr(self, 'inference_classification', n.get_enum_value(InferenceClassificationType)),
-            "internetMessageHeaders": lambda n : setattr(self, 'internet_message_headers', n.get_collection_of_object_values(InternetMessageHeader)),
-            "internetMessageId": lambda n : setattr(self, 'internet_message_id', n.get_str_value()),
-            "isDeliveryReceiptRequested": lambda n : setattr(self, 'is_delivery_receipt_requested', n.get_bool_value()),
-            "isDraft": lambda n : setattr(self, 'is_draft', n.get_bool_value()),
-            "isRead": lambda n : setattr(self, 'is_read', n.get_bool_value()),
-            "isReadReceiptRequested": lambda n : setattr(self, 'is_read_receipt_requested', n.get_bool_value()),
-            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
-            "parentFolderId": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
-            "receivedDateTime": lambda n : setattr(self, 'received_date_time', n.get_datetime_value()),
-            "replyTo": lambda n : setattr(self, 'reply_to', n.get_collection_of_object_values(Recipient)),
+            "inference_classification": lambda n : setattr(self, 'inference_classification', n.get_enum_value(InferenceClassificationType)),
+            "internet_message_headers": lambda n : setattr(self, 'internet_message_headers', n.get_collection_of_object_values(InternetMessageHeader)),
+            "internet_message_id": lambda n : setattr(self, 'internet_message_id', n.get_str_value()),
+            "is_delivery_receipt_requested": lambda n : setattr(self, 'is_delivery_receipt_requested', n.get_bool_value()),
+            "is_draft": lambda n : setattr(self, 'is_draft', n.get_bool_value()),
+            "is_read": lambda n : setattr(self, 'is_read', n.get_bool_value()),
+            "is_read_receipt_requested": lambda n : setattr(self, 'is_read_receipt_requested', n.get_bool_value()),
+            "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
+            "parent_folder_id": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
+            "received_date_time": lambda n : setattr(self, 'received_date_time', n.get_datetime_value()),
+            "reply_to": lambda n : setattr(self, 'reply_to', n.get_collection_of_object_values(Recipient)),
             "sender": lambda n : setattr(self, 'sender', n.get_object_value(Recipient)),
-            "sentDateTime": lambda n : setattr(self, 'sent_date_time', n.get_datetime_value()),
-            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
+            "sent_date_time": lambda n : setattr(self, 'sent_date_time', n.get_datetime_value()),
+            "single_value_extended_properties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
-            "toRecipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(Recipient)),
-            "uniqueBody": lambda n : setattr(self, 'unique_body', n.get_object_value(ItemBody)),
-            "webLink": lambda n : setattr(self, 'web_link', n.get_str_value()),
+            "to_recipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(Recipient)),
+            "unique_body": lambda n : setattr(self, 'unique_body', n.get_object_value(ItemBody)),
+            "web_link": lambda n : setattr(self, 'web_link', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -202,34 +202,34 @@ class Message(OutlookItem):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("attachments", self.attachments)
-        writer.write_collection_of_object_values("bccRecipients", self.bcc_recipients)
+        writer.write_collection_of_object_values("bcc_recipients", self.bcc_recipients)
         writer.write_object_value("body", self.body)
-        writer.write_str_value("bodyPreview", self.body_preview)
-        writer.write_collection_of_object_values("ccRecipients", self.cc_recipients)
-        writer.write_str_value("conversationId", self.conversation_id)
-        writer.write_bytes_value("conversationIndex", self.conversation_index)
+        writer.write_str_value("body_preview", self.body_preview)
+        writer.write_collection_of_object_values("cc_recipients", self.cc_recipients)
+        writer.write_str_value("conversation_id", self.conversation_id)
+        writer.write_bytes_value("conversation_index", self.conversation_index)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_object_value("flag", self.flag)
         writer.write_object_value("from", self.from_)
-        writer.write_bool_value("hasAttachments", self.has_attachments)
+        writer.write_bool_value("has_attachments", self.has_attachments)
         writer.write_enum_value("importance", self.importance)
-        writer.write_enum_value("inferenceClassification", self.inference_classification)
-        writer.write_collection_of_object_values("internetMessageHeaders", self.internet_message_headers)
-        writer.write_str_value("internetMessageId", self.internet_message_id)
-        writer.write_bool_value("isDeliveryReceiptRequested", self.is_delivery_receipt_requested)
-        writer.write_bool_value("isDraft", self.is_draft)
-        writer.write_bool_value("isRead", self.is_read)
-        writer.write_bool_value("isReadReceiptRequested", self.is_read_receipt_requested)
-        writer.write_collection_of_object_values("multiValueExtendedProperties", self.multi_value_extended_properties)
-        writer.write_str_value("parentFolderId", self.parent_folder_id)
-        writer.write_datetime_value("receivedDateTime", self.received_date_time)
-        writer.write_collection_of_object_values("replyTo", self.reply_to)
+        writer.write_enum_value("inference_classification", self.inference_classification)
+        writer.write_collection_of_object_values("internet_message_headers", self.internet_message_headers)
+        writer.write_str_value("internet_message_id", self.internet_message_id)
+        writer.write_bool_value("is_delivery_receipt_requested", self.is_delivery_receipt_requested)
+        writer.write_bool_value("is_draft", self.is_draft)
+        writer.write_bool_value("is_read", self.is_read)
+        writer.write_bool_value("is_read_receipt_requested", self.is_read_receipt_requested)
+        writer.write_collection_of_object_values("multi_value_extended_properties", self.multi_value_extended_properties)
+        writer.write_str_value("parent_folder_id", self.parent_folder_id)
+        writer.write_datetime_value("received_date_time", self.received_date_time)
+        writer.write_collection_of_object_values("reply_to", self.reply_to)
         writer.write_object_value("sender", self.sender)
-        writer.write_datetime_value("sentDateTime", self.sent_date_time)
-        writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
+        writer.write_datetime_value("sent_date_time", self.sent_date_time)
+        writer.write_collection_of_object_values("single_value_extended_properties", self.single_value_extended_properties)
         writer.write_str_value("subject", self.subject)
-        writer.write_collection_of_object_values("toRecipients", self.to_recipients)
-        writer.write_object_value("uniqueBody", self.unique_body)
-        writer.write_str_value("webLink", self.web_link)
+        writer.write_collection_of_object_values("to_recipients", self.to_recipients)
+        writer.write_object_value("unique_body", self.unique_body)
+        writer.write_str_value("web_link", self.web_link)
     
 

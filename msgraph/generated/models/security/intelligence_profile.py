@@ -68,9 +68,9 @@ class IntelligenceProfile(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "aliases": lambda n : setattr(self, 'aliases', n.get_collection_of_primitive_values(str)),
-            "countriesOrRegionsOfOrigin": lambda n : setattr(self, 'countries_or_regions_of_origin', n.get_collection_of_object_values(IntelligenceProfileCountryOrRegionOfOrigin)),
+            "countries_or_regions_of_origin": lambda n : setattr(self, 'countries_or_regions_of_origin', n.get_collection_of_object_values(IntelligenceProfileCountryOrRegionOfOrigin)),
             "description": lambda n : setattr(self, 'description', n.get_object_value(FormattedContent)),
-            "firstActiveDateTime": lambda n : setattr(self, 'first_active_date_time', n.get_datetime_value()),
+            "first_active_date_time": lambda n : setattr(self, 'first_active_date_time', n.get_datetime_value()),
             "indicators": lambda n : setattr(self, 'indicators', n.get_collection_of_object_values(IntelligenceProfileIndicator)),
             "kind": lambda n : setattr(self, 'kind', n.get_enum_value(IntelligenceProfileKind)),
             "summary": lambda n : setattr(self, 'summary', n.get_object_value(FormattedContent)),
@@ -92,9 +92,9 @@ class IntelligenceProfile(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("aliases", self.aliases)
-        writer.write_collection_of_object_values("countriesOrRegionsOfOrigin", self.countries_or_regions_of_origin)
+        writer.write_collection_of_object_values("countries_or_regions_of_origin", self.countries_or_regions_of_origin)
         writer.write_object_value("description", self.description)
-        writer.write_datetime_value("firstActiveDateTime", self.first_active_date_time)
+        writer.write_datetime_value("first_active_date_time", self.first_active_date_time)
         writer.write_collection_of_object_values("indicators", self.indicators)
         writer.write_enum_value("kind", self.kind)
         writer.write_object_value("summary", self.summary)

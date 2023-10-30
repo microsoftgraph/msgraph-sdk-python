@@ -46,10 +46,10 @@ class MailClusterEvidence(AlertEvidence):
         from .alert_evidence import AlertEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "clusterBy": lambda n : setattr(self, 'cluster_by', n.get_str_value()),
-            "clusterByValue": lambda n : setattr(self, 'cluster_by_value', n.get_str_value()),
-            "emailCount": lambda n : setattr(self, 'email_count', n.get_int_value()),
-            "networkMessageIds": lambda n : setattr(self, 'network_message_ids', n.get_collection_of_primitive_values(str)),
+            "cluster_by": lambda n : setattr(self, 'cluster_by', n.get_str_value()),
+            "cluster_by_value": lambda n : setattr(self, 'cluster_by_value', n.get_str_value()),
+            "email_count": lambda n : setattr(self, 'email_count', n.get_int_value()),
+            "network_message_ids": lambda n : setattr(self, 'network_message_ids', n.get_collection_of_primitive_values(str)),
             "query": lambda n : setattr(self, 'query', n.get_str_value()),
             "urn": lambda n : setattr(self, 'urn', n.get_str_value()),
         }
@@ -66,10 +66,10 @@ class MailClusterEvidence(AlertEvidence):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("clusterBy", self.cluster_by)
-        writer.write_str_value("clusterByValue", self.cluster_by_value)
-        writer.write_int_value("emailCount", self.email_count)
-        writer.write_collection_of_primitive_values("networkMessageIds", self.network_message_ids)
+        writer.write_str_value("cluster_by", self.cluster_by)
+        writer.write_str_value("cluster_by_value", self.cluster_by_value)
+        writer.write_int_value("email_count", self.email_count)
+        writer.write_collection_of_primitive_values("network_message_ids", self.network_message_ids)
         writer.write_str_value("query", self.query)
         writer.write_str_value("urn", self.urn)
     

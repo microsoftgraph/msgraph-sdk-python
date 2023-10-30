@@ -45,9 +45,9 @@ class AppManagementConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         from .password_credential_configuration import PasswordCredentialConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "keyCredentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(KeyCredentialConfiguration)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "passwordCredentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(PasswordCredentialConfiguration)),
+            "key_credentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(KeyCredentialConfiguration)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "password_credentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(PasswordCredentialConfiguration)),
         }
         return fields
     
@@ -59,9 +59,9 @@ class AppManagementConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("keyCredentials", self.key_credentials)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("passwordCredentials", self.password_credentials)
+        writer.write_collection_of_object_values("key_credentials", self.key_credentials)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("password_credentials", self.password_credentials)
         writer.write_additional_data_value(self.additional_data)
     
 

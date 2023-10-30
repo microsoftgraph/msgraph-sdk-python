@@ -41,7 +41,7 @@ class RedirectPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(PrintJobConfiguration)),
-            "destinationPrinterId": lambda n : setattr(self, 'destination_printer_id', n.get_str_value()),
+            "destination_printer_id": lambda n : setattr(self, 'destination_printer_id', n.get_str_value()),
         }
         return fields
     
@@ -54,7 +54,7 @@ class RedirectPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("configuration", self.configuration)
-        writer.write_str_value("destinationPrinterId", self.destination_printer_id)
+        writer.write_str_value("destination_printer_id", self.destination_printer_id)
         writer.write_additional_data_value(self.additional_data)
     
 

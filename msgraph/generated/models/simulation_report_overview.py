@@ -52,11 +52,11 @@ class SimulationReportOverview(AdditionalDataHolder, BackedModel, Parsable):
         from .training_events_content import TrainingEventsContent
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recommendedActions": lambda n : setattr(self, 'recommended_actions', n.get_collection_of_object_values(RecommendedAction)),
-            "resolvedTargetsCount": lambda n : setattr(self, 'resolved_targets_count', n.get_int_value()),
-            "simulationEventsContent": lambda n : setattr(self, 'simulation_events_content', n.get_object_value(SimulationEventsContent)),
-            "trainingEventsContent": lambda n : setattr(self, 'training_events_content', n.get_object_value(TrainingEventsContent)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "recommended_actions": lambda n : setattr(self, 'recommended_actions', n.get_collection_of_object_values(RecommendedAction)),
+            "resolved_targets_count": lambda n : setattr(self, 'resolved_targets_count', n.get_int_value()),
+            "simulation_events_content": lambda n : setattr(self, 'simulation_events_content', n.get_object_value(SimulationEventsContent)),
+            "training_events_content": lambda n : setattr(self, 'training_events_content', n.get_object_value(TrainingEventsContent)),
         }
         return fields
     
@@ -68,11 +68,11 @@ class SimulationReportOverview(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("recommendedActions", self.recommended_actions)
-        writer.write_int_value("resolvedTargetsCount", self.resolved_targets_count)
-        writer.write_object_value("simulationEventsContent", self.simulation_events_content)
-        writer.write_object_value("trainingEventsContent", self.training_events_content)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("recommended_actions", self.recommended_actions)
+        writer.write_int_value("resolved_targets_count", self.resolved_targets_count)
+        writer.write_object_value("simulation_events_content", self.simulation_events_content)
+        writer.write_object_value("training_events_content", self.training_events_content)
         writer.write_additional_data_value(self.additional_data)
     
 

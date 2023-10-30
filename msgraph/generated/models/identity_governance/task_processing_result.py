@@ -58,11 +58,11 @@ class TaskProcessingResult(Entity):
         from .task import Task
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "failureReason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
-            "processingStatus": lambda n : setattr(self, 'processing_status', n.get_enum_value(LifecycleWorkflowProcessingStatus)),
-            "startedDateTime": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
+            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "failure_reason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
+            "processing_status": lambda n : setattr(self, 'processing_status', n.get_enum_value(LifecycleWorkflowProcessingStatus)),
+            "started_date_time": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_object_value(User)),
             "task": lambda n : setattr(self, 'task', n.get_object_value(Task)),
         }
@@ -79,11 +79,11 @@ class TaskProcessingResult(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("completedDateTime", self.completed_date_time)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_str_value("failureReason", self.failure_reason)
-        writer.write_enum_value("processingStatus", self.processing_status)
-        writer.write_datetime_value("startedDateTime", self.started_date_time)
+        writer.write_datetime_value("completed_date_time", self.completed_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_str_value("failure_reason", self.failure_reason)
+        writer.write_enum_value("processing_status", self.processing_status)
+        writer.write_datetime_value("started_date_time", self.started_date_time)
         writer.write_object_value("subject", self.subject)
         writer.write_object_value("task", self.task)
     

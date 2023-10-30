@@ -41,8 +41,8 @@ class RemoteDesktopSecurityConfiguration(Entity):
         from .target_device_group import TargetDeviceGroup
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isRemoteDesktopProtocolEnabled": lambda n : setattr(self, 'is_remote_desktop_protocol_enabled', n.get_bool_value()),
-            "targetDeviceGroups": lambda n : setattr(self, 'target_device_groups', n.get_collection_of_object_values(TargetDeviceGroup)),
+            "is_remote_desktop_protocol_enabled": lambda n : setattr(self, 'is_remote_desktop_protocol_enabled', n.get_bool_value()),
+            "target_device_groups": lambda n : setattr(self, 'target_device_groups', n.get_collection_of_object_values(TargetDeviceGroup)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class RemoteDesktopSecurityConfiguration(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isRemoteDesktopProtocolEnabled", self.is_remote_desktop_protocol_enabled)
-        writer.write_collection_of_object_values("targetDeviceGroups", self.target_device_groups)
+        writer.write_bool_value("is_remote_desktop_protocol_enabled", self.is_remote_desktop_protocol_enabled)
+        writer.write_collection_of_object_values("target_device_groups", self.target_device_groups)
     
 

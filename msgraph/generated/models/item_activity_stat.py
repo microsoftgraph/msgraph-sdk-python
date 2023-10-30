@@ -69,11 +69,11 @@ class ItemActivityStat(Entity):
             "create": lambda n : setattr(self, 'create', n.get_object_value(ItemActionStat)),
             "delete": lambda n : setattr(self, 'delete', n.get_object_value(ItemActionStat)),
             "edit": lambda n : setattr(self, 'edit', n.get_object_value(ItemActionStat)),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "incompleteData": lambda n : setattr(self, 'incomplete_data', n.get_object_value(IncompleteData)),
-            "isTrending": lambda n : setattr(self, 'is_trending', n.get_bool_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "incomplete_data": lambda n : setattr(self, 'incomplete_data', n.get_object_value(IncompleteData)),
+            "is_trending": lambda n : setattr(self, 'is_trending', n.get_bool_value()),
             "move": lambda n : setattr(self, 'move', n.get_object_value(ItemActionStat)),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -93,10 +93,10 @@ class ItemActivityStat(Entity):
         writer.write_object_value("create", self.create)
         writer.write_object_value("delete", self.delete)
         writer.write_object_value("edit", self.edit)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_object_value("incompleteData", self.incomplete_data)
-        writer.write_bool_value("isTrending", self.is_trending)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_object_value("incomplete_data", self.incomplete_data)
+        writer.write_bool_value("is_trending", self.is_trending)
         writer.write_object_value("move", self.move)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
     
 

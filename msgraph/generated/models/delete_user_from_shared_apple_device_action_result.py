@@ -39,7 +39,7 @@ class DeleteUserFromSharedAppleDeviceActionResult(DeviceActionResult):
         from .device_action_result import DeviceActionResult
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class DeleteUserFromSharedAppleDeviceActionResult(DeviceActionResult):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
     
 

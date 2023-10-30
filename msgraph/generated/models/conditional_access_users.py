@@ -54,15 +54,15 @@ class ConditionalAccessUsers(AdditionalDataHolder, BackedModel, Parsable):
         from .conditional_access_guests_or_external_users import ConditionalAccessGuestsOrExternalUsers
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "excludeGroups": lambda n : setattr(self, 'exclude_groups', n.get_collection_of_primitive_values(str)),
-            "excludeGuestsOrExternalUsers": lambda n : setattr(self, 'exclude_guests_or_external_users', n.get_object_value(ConditionalAccessGuestsOrExternalUsers)),
-            "excludeRoles": lambda n : setattr(self, 'exclude_roles', n.get_collection_of_primitive_values(str)),
-            "excludeUsers": lambda n : setattr(self, 'exclude_users', n.get_collection_of_primitive_values(str)),
-            "includeGroups": lambda n : setattr(self, 'include_groups', n.get_collection_of_primitive_values(str)),
-            "includeGuestsOrExternalUsers": lambda n : setattr(self, 'include_guests_or_external_users', n.get_object_value(ConditionalAccessGuestsOrExternalUsers)),
-            "includeRoles": lambda n : setattr(self, 'include_roles', n.get_collection_of_primitive_values(str)),
-            "includeUsers": lambda n : setattr(self, 'include_users', n.get_collection_of_primitive_values(str)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "exclude_groups": lambda n : setattr(self, 'exclude_groups', n.get_collection_of_primitive_values(str)),
+            "exclude_guests_or_external_users": lambda n : setattr(self, 'exclude_guests_or_external_users', n.get_object_value(ConditionalAccessGuestsOrExternalUsers)),
+            "exclude_roles": lambda n : setattr(self, 'exclude_roles', n.get_collection_of_primitive_values(str)),
+            "exclude_users": lambda n : setattr(self, 'exclude_users', n.get_collection_of_primitive_values(str)),
+            "include_groups": lambda n : setattr(self, 'include_groups', n.get_collection_of_primitive_values(str)),
+            "include_guests_or_external_users": lambda n : setattr(self, 'include_guests_or_external_users', n.get_object_value(ConditionalAccessGuestsOrExternalUsers)),
+            "include_roles": lambda n : setattr(self, 'include_roles', n.get_collection_of_primitive_values(str)),
+            "include_users": lambda n : setattr(self, 'include_users', n.get_collection_of_primitive_values(str)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -74,15 +74,15 @@ class ConditionalAccessUsers(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("excludeGroups", self.exclude_groups)
-        writer.write_object_value("excludeGuestsOrExternalUsers", self.exclude_guests_or_external_users)
-        writer.write_collection_of_primitive_values("excludeRoles", self.exclude_roles)
-        writer.write_collection_of_primitive_values("excludeUsers", self.exclude_users)
-        writer.write_collection_of_primitive_values("includeGroups", self.include_groups)
-        writer.write_object_value("includeGuestsOrExternalUsers", self.include_guests_or_external_users)
-        writer.write_collection_of_primitive_values("includeRoles", self.include_roles)
-        writer.write_collection_of_primitive_values("includeUsers", self.include_users)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_collection_of_primitive_values("exclude_groups", self.exclude_groups)
+        writer.write_object_value("exclude_guests_or_external_users", self.exclude_guests_or_external_users)
+        writer.write_collection_of_primitive_values("exclude_roles", self.exclude_roles)
+        writer.write_collection_of_primitive_values("exclude_users", self.exclude_users)
+        writer.write_collection_of_primitive_values("include_groups", self.include_groups)
+        writer.write_object_value("include_guests_or_external_users", self.include_guests_or_external_users)
+        writer.write_collection_of_primitive_values("include_roles", self.include_roles)
+        writer.write_collection_of_primitive_values("include_users", self.include_users)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

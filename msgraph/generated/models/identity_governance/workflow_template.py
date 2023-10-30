@@ -55,8 +55,8 @@ class WorkflowTemplate(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "category": lambda n : setattr(self, 'category', n.get_enum_value(LifecycleWorkflowCategory)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "executionConditions": lambda n : setattr(self, 'execution_conditions', n.get_object_value(WorkflowExecutionConditions)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "execution_conditions": lambda n : setattr(self, 'execution_conditions', n.get_object_value(WorkflowExecutionConditions)),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(Task)),
         }
         super_fields = super().get_field_deserializers()
@@ -74,8 +74,8 @@ class WorkflowTemplate(Entity):
         super().serialize(writer)
         writer.write_enum_value("category", self.category)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("executionConditions", self.execution_conditions)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_object_value("execution_conditions", self.execution_conditions)
         writer.write_collection_of_object_values("tasks", self.tasks)
     
 

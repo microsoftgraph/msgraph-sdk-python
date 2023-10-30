@@ -71,21 +71,21 @@ class UserRegistrationDetails(Entity):
         from .user_default_authentication_method import UserDefaultAuthenticationMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isAdmin": lambda n : setattr(self, 'is_admin', n.get_bool_value()),
-            "isMfaCapable": lambda n : setattr(self, 'is_mfa_capable', n.get_bool_value()),
-            "isMfaRegistered": lambda n : setattr(self, 'is_mfa_registered', n.get_bool_value()),
-            "isPasswordlessCapable": lambda n : setattr(self, 'is_passwordless_capable', n.get_bool_value()),
-            "isSsprCapable": lambda n : setattr(self, 'is_sspr_capable', n.get_bool_value()),
-            "isSsprEnabled": lambda n : setattr(self, 'is_sspr_enabled', n.get_bool_value()),
-            "isSsprRegistered": lambda n : setattr(self, 'is_sspr_registered', n.get_bool_value()),
-            "isSystemPreferredAuthenticationMethodEnabled": lambda n : setattr(self, 'is_system_preferred_authentication_method_enabled', n.get_bool_value()),
-            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
-            "methodsRegistered": lambda n : setattr(self, 'methods_registered', n.get_collection_of_primitive_values(str)),
-            "systemPreferredAuthenticationMethods": lambda n : setattr(self, 'system_preferred_authentication_methods', n.get_collection_of_primitive_values(str)),
-            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "userPreferredMethodForSecondaryAuthentication": lambda n : setattr(self, 'user_preferred_method_for_secondary_authentication', n.get_enum_value(UserDefaultAuthenticationMethod)),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
-            "userType": lambda n : setattr(self, 'user_type', n.get_enum_value(SignInUserType)),
+            "is_admin": lambda n : setattr(self, 'is_admin', n.get_bool_value()),
+            "is_mfa_capable": lambda n : setattr(self, 'is_mfa_capable', n.get_bool_value()),
+            "is_mfa_registered": lambda n : setattr(self, 'is_mfa_registered', n.get_bool_value()),
+            "is_passwordless_capable": lambda n : setattr(self, 'is_passwordless_capable', n.get_bool_value()),
+            "is_sspr_capable": lambda n : setattr(self, 'is_sspr_capable', n.get_bool_value()),
+            "is_sspr_enabled": lambda n : setattr(self, 'is_sspr_enabled', n.get_bool_value()),
+            "is_sspr_registered": lambda n : setattr(self, 'is_sspr_registered', n.get_bool_value()),
+            "is_system_preferred_authentication_method_enabled": lambda n : setattr(self, 'is_system_preferred_authentication_method_enabled', n.get_bool_value()),
+            "last_updated_date_time": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
+            "methods_registered": lambda n : setattr(self, 'methods_registered', n.get_collection_of_primitive_values(str)),
+            "system_preferred_authentication_methods": lambda n : setattr(self, 'system_preferred_authentication_methods', n.get_collection_of_primitive_values(str)),
+            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "user_preferred_method_for_secondary_authentication": lambda n : setattr(self, 'user_preferred_method_for_secondary_authentication', n.get_enum_value(UserDefaultAuthenticationMethod)),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "user_type": lambda n : setattr(self, 'user_type', n.get_enum_value(SignInUserType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -100,20 +100,20 @@ class UserRegistrationDetails(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isAdmin", self.is_admin)
-        writer.write_bool_value("isMfaCapable", self.is_mfa_capable)
-        writer.write_bool_value("isMfaRegistered", self.is_mfa_registered)
-        writer.write_bool_value("isPasswordlessCapable", self.is_passwordless_capable)
-        writer.write_bool_value("isSsprCapable", self.is_sspr_capable)
-        writer.write_bool_value("isSsprEnabled", self.is_sspr_enabled)
-        writer.write_bool_value("isSsprRegistered", self.is_sspr_registered)
-        writer.write_bool_value("isSystemPreferredAuthenticationMethodEnabled", self.is_system_preferred_authentication_method_enabled)
-        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
-        writer.write_collection_of_primitive_values("methodsRegistered", self.methods_registered)
-        writer.write_collection_of_primitive_values("systemPreferredAuthenticationMethods", self.system_preferred_authentication_methods)
-        writer.write_str_value("userDisplayName", self.user_display_name)
-        writer.write_enum_value("userPreferredMethodForSecondaryAuthentication", self.user_preferred_method_for_secondary_authentication)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
-        writer.write_enum_value("userType", self.user_type)
+        writer.write_bool_value("is_admin", self.is_admin)
+        writer.write_bool_value("is_mfa_capable", self.is_mfa_capable)
+        writer.write_bool_value("is_mfa_registered", self.is_mfa_registered)
+        writer.write_bool_value("is_passwordless_capable", self.is_passwordless_capable)
+        writer.write_bool_value("is_sspr_capable", self.is_sspr_capable)
+        writer.write_bool_value("is_sspr_enabled", self.is_sspr_enabled)
+        writer.write_bool_value("is_sspr_registered", self.is_sspr_registered)
+        writer.write_bool_value("is_system_preferred_authentication_method_enabled", self.is_system_preferred_authentication_method_enabled)
+        writer.write_datetime_value("last_updated_date_time", self.last_updated_date_time)
+        writer.write_collection_of_primitive_values("methods_registered", self.methods_registered)
+        writer.write_collection_of_primitive_values("system_preferred_authentication_methods", self.system_preferred_authentication_methods)
+        writer.write_str_value("user_display_name", self.user_display_name)
+        writer.write_enum_value("user_preferred_method_for_secondary_authentication", self.user_preferred_method_for_secondary_authentication)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
+        writer.write_enum_value("user_type", self.user_type)
     
 

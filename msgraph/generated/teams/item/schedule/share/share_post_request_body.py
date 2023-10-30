@@ -36,9 +36,9 @@ class SharePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "notifyTeam": lambda n : setattr(self, 'notify_team', n.get_bool_value()),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "notify_team": lambda n : setattr(self, 'notify_team', n.get_bool_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         return fields
     
@@ -50,9 +50,9 @@ class SharePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_bool_value("notifyTeam", self.notify_team)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_bool_value("notify_team", self.notify_team)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

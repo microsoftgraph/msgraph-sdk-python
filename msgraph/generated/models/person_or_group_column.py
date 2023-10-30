@@ -37,10 +37,10 @@ class PersonOrGroupColumn(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowMultipleSelection": lambda n : setattr(self, 'allow_multiple_selection', n.get_bool_value()),
-            "chooseFromType": lambda n : setattr(self, 'choose_from_type', n.get_str_value()),
-            "displayAs": lambda n : setattr(self, 'display_as', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "allow_multiple_selection": lambda n : setattr(self, 'allow_multiple_selection', n.get_bool_value()),
+            "choose_from_type": lambda n : setattr(self, 'choose_from_type', n.get_str_value()),
+            "display_as": lambda n : setattr(self, 'display_as', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -52,10 +52,10 @@ class PersonOrGroupColumn(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("allowMultipleSelection", self.allow_multiple_selection)
-        writer.write_str_value("chooseFromType", self.choose_from_type)
-        writer.write_str_value("displayAs", self.display_as)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("allow_multiple_selection", self.allow_multiple_selection)
+        writer.write_str_value("choose_from_type", self.choose_from_type)
+        writer.write_str_value("display_as", self.display_as)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

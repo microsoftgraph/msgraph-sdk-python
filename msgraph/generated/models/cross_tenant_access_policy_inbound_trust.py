@@ -37,10 +37,10 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, BackedModel, Par
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "isCompliantDeviceAccepted": lambda n : setattr(self, 'is_compliant_device_accepted', n.get_bool_value()),
-            "isHybridAzureADJoinedDeviceAccepted": lambda n : setattr(self, 'is_hybrid_azure_a_d_joined_device_accepted', n.get_bool_value()),
-            "isMfaAccepted": lambda n : setattr(self, 'is_mfa_accepted', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "is_compliant_device_accepted": lambda n : setattr(self, 'is_compliant_device_accepted', n.get_bool_value()),
+            "is_hybrid_azure_a_d_joined_device_accepted": lambda n : setattr(self, 'is_hybrid_azure_a_d_joined_device_accepted', n.get_bool_value()),
+            "is_mfa_accepted": lambda n : setattr(self, 'is_mfa_accepted', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -52,10 +52,10 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, BackedModel, Par
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("isCompliantDeviceAccepted", self.is_compliant_device_accepted)
-        writer.write_bool_value("isHybridAzureADJoinedDeviceAccepted", self.is_hybrid_azure_a_d_joined_device_accepted)
-        writer.write_bool_value("isMfaAccepted", self.is_mfa_accepted)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("is_compliant_device_accepted", self.is_compliant_device_accepted)
+        writer.write_bool_value("is_hybrid_azure_a_d_joined_device_accepted", self.is_hybrid_azure_a_d_joined_device_accepted)
+        writer.write_bool_value("is_mfa_accepted", self.is_mfa_accepted)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

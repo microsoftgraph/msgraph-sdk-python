@@ -36,7 +36,7 @@ class WorkbookApplication(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "calculationMode": lambda n : setattr(self, 'calculation_mode', n.get_str_value()),
+            "calculation_mode": lambda n : setattr(self, 'calculation_mode', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class WorkbookApplication(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("calculationMode", self.calculation_mode)
+        writer.write_str_value("calculation_mode", self.calculation_mode)
     
 

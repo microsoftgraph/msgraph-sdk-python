@@ -68,18 +68,18 @@ class SharedPCConfiguration(DeviceConfiguration):
         from .shared_p_c_allowed_account_type import SharedPCAllowedAccountType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accountManagerPolicy": lambda n : setattr(self, 'account_manager_policy', n.get_object_value(SharedPCAccountManagerPolicy)),
-            "allowLocalStorage": lambda n : setattr(self, 'allow_local_storage', n.get_bool_value()),
-            "allowedAccounts": lambda n : setattr(self, 'allowed_accounts', n.get_collection_of_enum_values(SharedPCAllowedAccountType)),
-            "disableAccountManager": lambda n : setattr(self, 'disable_account_manager', n.get_bool_value()),
-            "disableEduPolicies": lambda n : setattr(self, 'disable_edu_policies', n.get_bool_value()),
-            "disablePowerPolicies": lambda n : setattr(self, 'disable_power_policies', n.get_bool_value()),
-            "disableSignInOnResume": lambda n : setattr(self, 'disable_sign_in_on_resume', n.get_bool_value()),
+            "account_manager_policy": lambda n : setattr(self, 'account_manager_policy', n.get_object_value(SharedPCAccountManagerPolicy)),
+            "allow_local_storage": lambda n : setattr(self, 'allow_local_storage', n.get_bool_value()),
+            "allowed_accounts": lambda n : setattr(self, 'allowed_accounts', n.get_collection_of_enum_values(SharedPCAllowedAccountType)),
+            "disable_account_manager": lambda n : setattr(self, 'disable_account_manager', n.get_bool_value()),
+            "disable_edu_policies": lambda n : setattr(self, 'disable_edu_policies', n.get_bool_value()),
+            "disable_power_policies": lambda n : setattr(self, 'disable_power_policies', n.get_bool_value()),
+            "disable_sign_in_on_resume": lambda n : setattr(self, 'disable_sign_in_on_resume', n.get_bool_value()),
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "idleTimeBeforeSleepInSeconds": lambda n : setattr(self, 'idle_time_before_sleep_in_seconds', n.get_int_value()),
-            "kioskAppDisplayName": lambda n : setattr(self, 'kiosk_app_display_name', n.get_str_value()),
-            "kioskAppUserModelId": lambda n : setattr(self, 'kiosk_app_user_model_id', n.get_str_value()),
-            "maintenanceStartTime": lambda n : setattr(self, 'maintenance_start_time', n.get_time_value()),
+            "idle_time_before_sleep_in_seconds": lambda n : setattr(self, 'idle_time_before_sleep_in_seconds', n.get_int_value()),
+            "kiosk_app_display_name": lambda n : setattr(self, 'kiosk_app_display_name', n.get_str_value()),
+            "kiosk_app_user_model_id": lambda n : setattr(self, 'kiosk_app_user_model_id', n.get_str_value()),
+            "maintenance_start_time": lambda n : setattr(self, 'maintenance_start_time', n.get_time_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -94,17 +94,17 @@ class SharedPCConfiguration(DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("accountManagerPolicy", self.account_manager_policy)
-        writer.write_bool_value("allowLocalStorage", self.allow_local_storage)
-        writer.write_enum_value("allowedAccounts", self.allowed_accounts)
-        writer.write_bool_value("disableAccountManager", self.disable_account_manager)
-        writer.write_bool_value("disableEduPolicies", self.disable_edu_policies)
-        writer.write_bool_value("disablePowerPolicies", self.disable_power_policies)
-        writer.write_bool_value("disableSignInOnResume", self.disable_sign_in_on_resume)
+        writer.write_object_value("account_manager_policy", self.account_manager_policy)
+        writer.write_bool_value("allow_local_storage", self.allow_local_storage)
+        writer.write_enum_value("allowed_accounts", self.allowed_accounts)
+        writer.write_bool_value("disable_account_manager", self.disable_account_manager)
+        writer.write_bool_value("disable_edu_policies", self.disable_edu_policies)
+        writer.write_bool_value("disable_power_policies", self.disable_power_policies)
+        writer.write_bool_value("disable_sign_in_on_resume", self.disable_sign_in_on_resume)
         writer.write_bool_value("enabled", self.enabled)
-        writer.write_int_value("idleTimeBeforeSleepInSeconds", self.idle_time_before_sleep_in_seconds)
-        writer.write_str_value("kioskAppDisplayName", self.kiosk_app_display_name)
-        writer.write_str_value("kioskAppUserModelId", self.kiosk_app_user_model_id)
-        writer.write_time_value("maintenanceStartTime", self.maintenance_start_time)
+        writer.write_int_value("idle_time_before_sleep_in_seconds", self.idle_time_before_sleep_in_seconds)
+        writer.write_str_value("kiosk_app_display_name", self.kiosk_app_display_name)
+        writer.write_str_value("kiosk_app_user_model_id", self.kiosk_app_user_model_id)
+        writer.write_time_value("maintenance_start_time", self.maintenance_start_time)
     
 

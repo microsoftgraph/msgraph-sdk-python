@@ -104,9 +104,9 @@ class OutlookItem(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
-            "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "change_key": lambda n : setattr(self, 'change_key', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -122,8 +122,8 @@ class OutlookItem(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("categories", self.categories)
-        writer.write_str_value("changeKey", self.change_key)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_str_value("change_key", self.change_key)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
     
 

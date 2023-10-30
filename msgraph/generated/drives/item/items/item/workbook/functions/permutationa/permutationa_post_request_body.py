@@ -41,7 +41,7 @@ class PermutationaPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "number": lambda n : setattr(self, 'number', n.get_object_value(Json)),
-            "numberChosen": lambda n : setattr(self, 'number_chosen', n.get_object_value(Json)),
+            "number_chosen": lambda n : setattr(self, 'number_chosen', n.get_object_value(Json)),
         }
         return fields
     
@@ -54,7 +54,7 @@ class PermutationaPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("number", self.number)
-        writer.write_object_value("numberChosen", self.number_chosen)
+        writer.write_object_value("number_chosen", self.number_chosen)
         writer.write_additional_data_value(self.additional_data)
     
 

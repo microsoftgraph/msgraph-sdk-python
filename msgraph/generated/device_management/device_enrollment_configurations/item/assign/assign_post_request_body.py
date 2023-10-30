@@ -38,7 +38,7 @@ class AssignPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from .....models.enrollment_configuration_assignment import EnrollmentConfigurationAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "enrollmentConfigurationAssignments": lambda n : setattr(self, 'enrollment_configuration_assignments', n.get_collection_of_object_values(EnrollmentConfigurationAssignment)),
+            "enrollment_configuration_assignments": lambda n : setattr(self, 'enrollment_configuration_assignments', n.get_collection_of_object_values(EnrollmentConfigurationAssignment)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class AssignPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("enrollmentConfigurationAssignments", self.enrollment_configuration_assignments)
+        writer.write_collection_of_object_values("enrollment_configuration_assignments", self.enrollment_configuration_assignments)
         writer.write_additional_data_value(self.additional_data)
     
 

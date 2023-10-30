@@ -31,7 +31,7 @@ class FavoritePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "messageIds": lambda n : setattr(self, 'message_ids', n.get_collection_of_primitive_values(str)),
+            "message_ids": lambda n : setattr(self, 'message_ids', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -43,7 +43,7 @@ class FavoritePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("messageIds", self.message_ids)
+        writer.write_collection_of_primitive_values("message_ids", self.message_ids)
         writer.write_additional_data_value(self.additional_data)
     
 

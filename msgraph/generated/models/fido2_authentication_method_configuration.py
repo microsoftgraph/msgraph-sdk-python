@@ -48,10 +48,10 @@ class Fido2AuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
         from .fido2_key_restrictions import Fido2KeyRestrictions
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
-            "isAttestationEnforced": lambda n : setattr(self, 'is_attestation_enforced', n.get_bool_value()),
-            "isSelfServiceRegistrationAllowed": lambda n : setattr(self, 'is_self_service_registration_allowed', n.get_bool_value()),
-            "keyRestrictions": lambda n : setattr(self, 'key_restrictions', n.get_object_value(Fido2KeyRestrictions)),
+            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
+            "is_attestation_enforced": lambda n : setattr(self, 'is_attestation_enforced', n.get_bool_value()),
+            "is_self_service_registration_allowed": lambda n : setattr(self, 'is_self_service_registration_allowed', n.get_bool_value()),
+            "key_restrictions": lambda n : setattr(self, 'key_restrictions', n.get_object_value(Fido2KeyRestrictions)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,9 +66,9 @@ class Fido2AuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("includeTargets", self.include_targets)
-        writer.write_bool_value("isAttestationEnforced", self.is_attestation_enforced)
-        writer.write_bool_value("isSelfServiceRegistrationAllowed", self.is_self_service_registration_allowed)
-        writer.write_object_value("keyRestrictions", self.key_restrictions)
+        writer.write_collection_of_object_values("include_targets", self.include_targets)
+        writer.write_bool_value("is_attestation_enforced", self.is_attestation_enforced)
+        writer.write_bool_value("is_self_service_registration_allowed", self.is_self_service_registration_allowed)
+        writer.write_object_value("key_restrictions", self.key_restrictions)
     
 

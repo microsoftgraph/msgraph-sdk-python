@@ -44,8 +44,8 @@ class InferenceClassificationOverride(Entity):
         from .inference_classification_type import InferenceClassificationType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "classifyAs": lambda n : setattr(self, 'classify_as', n.get_enum_value(InferenceClassificationType)),
-            "senderEmailAddress": lambda n : setattr(self, 'sender_email_address', n.get_object_value(EmailAddress)),
+            "classify_as": lambda n : setattr(self, 'classify_as', n.get_enum_value(InferenceClassificationType)),
+            "sender_email_address": lambda n : setattr(self, 'sender_email_address', n.get_object_value(EmailAddress)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,7 +60,7 @@ class InferenceClassificationOverride(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("classifyAs", self.classify_as)
-        writer.write_object_value("senderEmailAddress", self.sender_email_address)
+        writer.write_enum_value("classify_as", self.classify_as)
+        writer.write_object_value("sender_email_address", self.sender_email_address)
     
 

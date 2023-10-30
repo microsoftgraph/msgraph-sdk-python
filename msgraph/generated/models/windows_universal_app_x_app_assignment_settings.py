@@ -39,7 +39,7 @@ class WindowsUniversalAppXAppAssignmentSettings(MobileAppAssignmentSettings):
         from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "useDeviceContext": lambda n : setattr(self, 'use_device_context', n.get_bool_value()),
+            "use_device_context": lambda n : setattr(self, 'use_device_context', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class WindowsUniversalAppXAppAssignmentSettings(MobileAppAssignmentSettings):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("useDeviceContext", self.use_device_context)
+        writer.write_bool_value("use_device_context", self.use_device_context)
     
 

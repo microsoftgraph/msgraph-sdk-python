@@ -41,8 +41,8 @@ class AuthenticationContextClassReference(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "isAvailable": lambda n : setattr(self, 'is_available', n.get_bool_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "is_available": lambda n : setattr(self, 'is_available', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,7 +58,7 @@ class AuthenticationContextClassReference(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_bool_value("isAvailable", self.is_available)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_bool_value("is_available", self.is_available)
     
 

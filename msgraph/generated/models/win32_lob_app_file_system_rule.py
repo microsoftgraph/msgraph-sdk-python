@@ -55,10 +55,10 @@ class Win32LobAppFileSystemRule(Win32LobAppRule):
         from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "check32BitOn64System": lambda n : setattr(self, 'check32_bit_on64_system', n.get_bool_value()),
-            "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
-            "fileOrFolderName": lambda n : setattr(self, 'file_or_folder_name', n.get_str_value()),
-            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(Win32LobAppFileSystemOperationType)),
+            "check32_bit_on64_system": lambda n : setattr(self, 'check32_bit_on64_system', n.get_bool_value()),
+            "comparison_value": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
+            "file_or_folder_name": lambda n : setattr(self, 'file_or_folder_name', n.get_str_value()),
+            "operation_type": lambda n : setattr(self, 'operation_type', n.get_enum_value(Win32LobAppFileSystemOperationType)),
             "operator": lambda n : setattr(self, 'operator', n.get_enum_value(Win32LobAppRuleOperator)),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
         }
@@ -75,10 +75,10 @@ class Win32LobAppFileSystemRule(Win32LobAppRule):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("check32BitOn64System", self.check32_bit_on64_system)
-        writer.write_str_value("comparisonValue", self.comparison_value)
-        writer.write_str_value("fileOrFolderName", self.file_or_folder_name)
-        writer.write_enum_value("operationType", self.operation_type)
+        writer.write_bool_value("check32_bit_on64_system", self.check32_bit_on64_system)
+        writer.write_str_value("comparison_value", self.comparison_value)
+        writer.write_str_value("file_or_folder_name", self.file_or_folder_name)
+        writer.write_enum_value("operation_type", self.operation_type)
         writer.write_enum_value("operator", self.operator)
         writer.write_str_value("path", self.path)
     

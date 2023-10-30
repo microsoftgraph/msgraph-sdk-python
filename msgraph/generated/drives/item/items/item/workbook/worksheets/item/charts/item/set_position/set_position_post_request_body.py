@@ -40,8 +40,8 @@ class SetPositionPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ...........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endCell": lambda n : setattr(self, 'end_cell', n.get_object_value(Json)),
-            "startCell": lambda n : setattr(self, 'start_cell', n.get_object_value(Json)),
+            "end_cell": lambda n : setattr(self, 'end_cell', n.get_object_value(Json)),
+            "start_cell": lambda n : setattr(self, 'start_cell', n.get_object_value(Json)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class SetPositionPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("endCell", self.end_cell)
-        writer.write_object_value("startCell", self.start_cell)
+        writer.write_object_value("end_cell", self.end_cell)
+        writer.write_object_value("start_cell", self.start_cell)
         writer.write_additional_data_value(self.additional_data)
     
 

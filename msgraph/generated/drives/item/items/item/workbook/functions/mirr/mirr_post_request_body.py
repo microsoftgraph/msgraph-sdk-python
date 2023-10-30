@@ -42,8 +42,8 @@ class MirrPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "financeRate": lambda n : setattr(self, 'finance_rate', n.get_object_value(Json)),
-            "reinvestRate": lambda n : setattr(self, 'reinvest_rate', n.get_object_value(Json)),
+            "finance_rate": lambda n : setattr(self, 'finance_rate', n.get_object_value(Json)),
+            "reinvest_rate": lambda n : setattr(self, 'reinvest_rate', n.get_object_value(Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
         }
         return fields
@@ -56,8 +56,8 @@ class MirrPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("financeRate", self.finance_rate)
-        writer.write_object_value("reinvestRate", self.reinvest_rate)
+        writer.write_object_value("finance_rate", self.finance_rate)
+        writer.write_object_value("reinvest_rate", self.reinvest_rate)
         writer.write_object_value("values", self.values)
         writer.write_additional_data_value(self.additional_data)
     

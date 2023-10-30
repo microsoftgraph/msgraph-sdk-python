@@ -47,7 +47,7 @@ class SynchronizationSchema(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "directories": lambda n : setattr(self, 'directories', n.get_collection_of_object_values(DirectoryDefinition)),
-            "synchronizationRules": lambda n : setattr(self, 'synchronization_rules', n.get_collection_of_object_values(SynchronizationRule)),
+            "synchronization_rules": lambda n : setattr(self, 'synchronization_rules', n.get_collection_of_object_values(SynchronizationRule)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -64,7 +64,7 @@ class SynchronizationSchema(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("directories", self.directories)
-        writer.write_collection_of_object_values("synchronizationRules", self.synchronization_rules)
+        writer.write_collection_of_object_values("synchronization_rules", self.synchronization_rules)
         writer.write_str_value("version", self.version)
     
 

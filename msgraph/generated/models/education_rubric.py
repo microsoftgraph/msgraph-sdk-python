@@ -68,13 +68,13 @@ class EducationRubric(Entity):
         from .rubric_quality import RubricQuality
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_object_value(EducationItemBody)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "grading": lambda n : setattr(self, 'grading', n.get_object_value(EducationAssignmentGradeType)),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "levels": lambda n : setattr(self, 'levels', n.get_collection_of_object_values(RubricLevel)),
             "qualities": lambda n : setattr(self, 'qualities', n.get_collection_of_object_values(RubricQuality)),
         }
@@ -92,7 +92,7 @@ class EducationRubric(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_object_value("grading", self.grading)
         writer.write_collection_of_object_values("levels", self.levels)
         writer.write_collection_of_object_values("qualities", self.qualities)

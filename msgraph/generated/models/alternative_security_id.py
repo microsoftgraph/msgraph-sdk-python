@@ -37,9 +37,9 @@ class AlternativeSecurityId(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "identityProvider": lambda n : setattr(self, 'identity_provider', n.get_str_value()),
+            "identity_provider": lambda n : setattr(self, 'identity_provider', n.get_str_value()),
             "key": lambda n : setattr(self, 'key', n.get_bytes_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_int_value()),
         }
         return fields
@@ -52,9 +52,9 @@ class AlternativeSecurityId(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("identityProvider", self.identity_provider)
+        writer.write_str_value("identity_provider", self.identity_provider)
         writer.write_bytes_value("key", self.key)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
     

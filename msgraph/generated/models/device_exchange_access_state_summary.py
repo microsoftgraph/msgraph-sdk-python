@@ -44,12 +44,12 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, BackedModel, Parsab
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedDeviceCount": lambda n : setattr(self, 'allowed_device_count', n.get_int_value()),
-            "blockedDeviceCount": lambda n : setattr(self, 'blocked_device_count', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "quarantinedDeviceCount": lambda n : setattr(self, 'quarantined_device_count', n.get_int_value()),
-            "unavailableDeviceCount": lambda n : setattr(self, 'unavailable_device_count', n.get_int_value()),
-            "unknownDeviceCount": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
+            "allowed_device_count": lambda n : setattr(self, 'allowed_device_count', n.get_int_value()),
+            "blocked_device_count": lambda n : setattr(self, 'blocked_device_count', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "quarantined_device_count": lambda n : setattr(self, 'quarantined_device_count', n.get_int_value()),
+            "unavailable_device_count": lambda n : setattr(self, 'unavailable_device_count', n.get_int_value()),
+            "unknown_device_count": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
         }
         return fields
     
@@ -61,12 +61,12 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, BackedModel, Parsab
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("allowedDeviceCount", self.allowed_device_count)
-        writer.write_int_value("blockedDeviceCount", self.blocked_device_count)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("quarantinedDeviceCount", self.quarantined_device_count)
-        writer.write_int_value("unavailableDeviceCount", self.unavailable_device_count)
-        writer.write_int_value("unknownDeviceCount", self.unknown_device_count)
+        writer.write_int_value("allowed_device_count", self.allowed_device_count)
+        writer.write_int_value("blocked_device_count", self.blocked_device_count)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("quarantined_device_count", self.quarantined_device_count)
+        writer.write_int_value("unavailable_device_count", self.unavailable_device_count)
+        writer.write_int_value("unknown_device_count", self.unknown_device_count)
         writer.write_additional_data_value(self.additional_data)
     
 

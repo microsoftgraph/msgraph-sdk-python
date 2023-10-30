@@ -98,21 +98,21 @@ class AccessPackageAssignmentPolicy(Entity):
         from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(AccessPackage)),
-            "allowedTargetScope": lambda n : setattr(self, 'allowed_target_scope', n.get_enum_value(AllowedTargetScope)),
-            "automaticRequestSettings": lambda n : setattr(self, 'automatic_request_settings', n.get_object_value(AccessPackageAutomaticRequestSettings)),
+            "access_package": lambda n : setattr(self, 'access_package', n.get_object_value(AccessPackage)),
+            "allowed_target_scope": lambda n : setattr(self, 'allowed_target_scope', n.get_enum_value(AllowedTargetScope)),
+            "automatic_request_settings": lambda n : setattr(self, 'automatic_request_settings', n.get_object_value(AccessPackageAutomaticRequestSettings)),
             "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(AccessPackageCatalog)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "customExtensionStageSettings": lambda n : setattr(self, 'custom_extension_stage_settings', n.get_collection_of_object_values(CustomExtensionStageSetting)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "custom_extension_stage_settings": lambda n : setattr(self, 'custom_extension_stage_settings', n.get_collection_of_object_values(CustomExtensionStageSetting)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(ExpirationPattern)),
-            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
             "questions": lambda n : setattr(self, 'questions', n.get_collection_of_object_values(AccessPackageQuestion)),
-            "requestApprovalSettings": lambda n : setattr(self, 'request_approval_settings', n.get_object_value(AccessPackageAssignmentApprovalSettings)),
-            "requestorSettings": lambda n : setattr(self, 'requestor_settings', n.get_object_value(AccessPackageAssignmentRequestorSettings)),
-            "reviewSettings": lambda n : setattr(self, 'review_settings', n.get_object_value(AccessPackageAssignmentReviewSettings)),
-            "specificAllowedTargets": lambda n : setattr(self, 'specific_allowed_targets', n.get_collection_of_object_values(SubjectSet)),
+            "request_approval_settings": lambda n : setattr(self, 'request_approval_settings', n.get_object_value(AccessPackageAssignmentApprovalSettings)),
+            "requestor_settings": lambda n : setattr(self, 'requestor_settings', n.get_object_value(AccessPackageAssignmentRequestorSettings)),
+            "review_settings": lambda n : setattr(self, 'review_settings', n.get_object_value(AccessPackageAssignmentReviewSettings)),
+            "specific_allowed_targets": lambda n : setattr(self, 'specific_allowed_targets', n.get_collection_of_object_values(SubjectSet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -127,20 +127,20 @@ class AccessPackageAssignmentPolicy(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("accessPackage", self.access_package)
-        writer.write_enum_value("allowedTargetScope", self.allowed_target_scope)
-        writer.write_object_value("automaticRequestSettings", self.automatic_request_settings)
+        writer.write_object_value("access_package", self.access_package)
+        writer.write_enum_value("allowed_target_scope", self.allowed_target_scope)
+        writer.write_object_value("automatic_request_settings", self.automatic_request_settings)
         writer.write_object_value("catalog", self.catalog)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_collection_of_object_values("customExtensionStageSettings", self.custom_extension_stage_settings)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_collection_of_object_values("custom_extension_stage_settings", self.custom_extension_stage_settings)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_object_value("expiration", self.expiration)
-        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
+        writer.write_datetime_value("modified_date_time", self.modified_date_time)
         writer.write_collection_of_object_values("questions", self.questions)
-        writer.write_object_value("requestApprovalSettings", self.request_approval_settings)
-        writer.write_object_value("requestorSettings", self.requestor_settings)
-        writer.write_object_value("reviewSettings", self.review_settings)
-        writer.write_collection_of_object_values("specificAllowedTargets", self.specific_allowed_targets)
+        writer.write_object_value("request_approval_settings", self.request_approval_settings)
+        writer.write_object_value("requestor_settings", self.requestor_settings)
+        writer.write_object_value("review_settings", self.review_settings)
+        writer.write_collection_of_object_values("specific_allowed_targets", self.specific_allowed_targets)
     
 

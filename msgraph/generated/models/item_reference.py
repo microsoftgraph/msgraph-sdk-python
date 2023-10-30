@@ -54,15 +54,15 @@ class ItemReference(AdditionalDataHolder, BackedModel, Parsable):
         from .sharepoint_ids import SharepointIds
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "driveId": lambda n : setattr(self, 'drive_id', n.get_str_value()),
-            "driveType": lambda n : setattr(self, 'drive_type', n.get_str_value()),
+            "drive_id": lambda n : setattr(self, 'drive_id', n.get_str_value()),
+            "drive_type": lambda n : setattr(self, 'drive_type', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
-            "shareId": lambda n : setattr(self, 'share_id', n.get_str_value()),
-            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
-            "siteId": lambda n : setattr(self, 'site_id', n.get_str_value()),
+            "share_id": lambda n : setattr(self, 'share_id', n.get_str_value()),
+            "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
+            "site_id": lambda n : setattr(self, 'site_id', n.get_str_value()),
         }
         return fields
     
@@ -74,15 +74,15 @@ class ItemReference(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("driveId", self.drive_id)
-        writer.write_str_value("driveType", self.drive_type)
+        writer.write_str_value("drive_id", self.drive_id)
+        writer.write_str_value("drive_type", self.drive_type)
         writer.write_str_value("id", self.id)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("path", self.path)
-        writer.write_str_value("shareId", self.share_id)
-        writer.write_object_value("sharepointIds", self.sharepoint_ids)
-        writer.write_str_value("siteId", self.site_id)
+        writer.write_str_value("share_id", self.share_id)
+        writer.write_object_value("sharepoint_ids", self.sharepoint_ids)
+        writer.write_str_value("site_id", self.site_id)
         writer.write_additional_data_value(self.additional_data)
     
 

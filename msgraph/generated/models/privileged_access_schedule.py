@@ -66,10 +66,10 @@ class PrivilegedAccessSchedule(Entity):
         from .request_schedule import RequestSchedule
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "createdUsing": lambda n : setattr(self, 'created_using', n.get_str_value()),
-            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
-            "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(RequestSchedule)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_using": lambda n : setattr(self, 'created_using', n.get_str_value()),
+            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "schedule_info": lambda n : setattr(self, 'schedule_info', n.get_object_value(RequestSchedule)),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -85,10 +85,10 @@ class PrivilegedAccessSchedule(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_str_value("createdUsing", self.created_using)
-        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
-        writer.write_object_value("scheduleInfo", self.schedule_info)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_str_value("created_using", self.created_using)
+        writer.write_datetime_value("modified_date_time", self.modified_date_time)
+        writer.write_object_value("schedule_info", self.schedule_info)
         writer.write_str_value("status", self.status)
     
 

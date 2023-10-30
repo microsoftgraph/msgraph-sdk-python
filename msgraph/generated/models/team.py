@@ -142,34 +142,34 @@ class Team(Entity):
         from .team_visibility_type import TeamVisibilityType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allChannels": lambda n : setattr(self, 'all_channels', n.get_collection_of_object_values(Channel)),
+            "all_channels": lambda n : setattr(self, 'all_channels', n.get_collection_of_object_values(Channel)),
             "channels": lambda n : setattr(self, 'channels', n.get_collection_of_object_values(Channel)),
             "classification": lambda n : setattr(self, 'classification', n.get_str_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "funSettings": lambda n : setattr(self, 'fun_settings', n.get_object_value(TeamFunSettings)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "fun_settings": lambda n : setattr(self, 'fun_settings', n.get_object_value(TeamFunSettings)),
             "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
-            "guestSettings": lambda n : setattr(self, 'guest_settings', n.get_object_value(TeamGuestSettings)),
-            "incomingChannels": lambda n : setattr(self, 'incoming_channels', n.get_collection_of_object_values(Channel)),
-            "installedApps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(TeamsAppInstallation)),
-            "internalId": lambda n : setattr(self, 'internal_id', n.get_str_value()),
-            "isArchived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
-            "memberSettings": lambda n : setattr(self, 'member_settings', n.get_object_value(TeamMemberSettings)),
+            "guest_settings": lambda n : setattr(self, 'guest_settings', n.get_object_value(TeamGuestSettings)),
+            "incoming_channels": lambda n : setattr(self, 'incoming_channels', n.get_collection_of_object_values(Channel)),
+            "installed_apps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(TeamsAppInstallation)),
+            "internal_id": lambda n : setattr(self, 'internal_id', n.get_str_value()),
+            "is_archived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
+            "member_settings": lambda n : setattr(self, 'member_settings', n.get_object_value(TeamMemberSettings)),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(ConversationMember)),
-            "messagingSettings": lambda n : setattr(self, 'messaging_settings', n.get_object_value(TeamMessagingSettings)),
+            "messaging_settings": lambda n : setattr(self, 'messaging_settings', n.get_object_value(TeamMessagingSettings)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(TeamsAsyncOperation)),
-            "permissionGrants": lambda n : setattr(self, 'permission_grants', n.get_collection_of_object_values(ResourceSpecificPermissionGrant)),
+            "permission_grants": lambda n : setattr(self, 'permission_grants', n.get_collection_of_object_values(ResourceSpecificPermissionGrant)),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(ProfilePhoto)),
-            "primaryChannel": lambda n : setattr(self, 'primary_channel', n.get_object_value(Channel)),
+            "primary_channel": lambda n : setattr(self, 'primary_channel', n.get_object_value(Channel)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(Schedule)),
             "specialization": lambda n : setattr(self, 'specialization', n.get_enum_value(TeamSpecialization)),
             "summary": lambda n : setattr(self, 'summary', n.get_object_value(TeamSummary)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_object_values(TeamworkTag)),
             "template": lambda n : setattr(self, 'template', n.get_object_value(TeamsTemplate)),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "visibility": lambda n : setattr(self, 'visibility', n.get_enum_value(TeamVisibilityType)),
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -184,33 +184,33 @@ class Team(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("allChannels", self.all_channels)
+        writer.write_collection_of_object_values("all_channels", self.all_channels)
         writer.write_collection_of_object_values("channels", self.channels)
         writer.write_str_value("classification", self.classification)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("funSettings", self.fun_settings)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_object_value("fun_settings", self.fun_settings)
         writer.write_object_value("group", self.group)
-        writer.write_object_value("guestSettings", self.guest_settings)
-        writer.write_collection_of_object_values("incomingChannels", self.incoming_channels)
-        writer.write_collection_of_object_values("installedApps", self.installed_apps)
-        writer.write_str_value("internalId", self.internal_id)
-        writer.write_bool_value("isArchived", self.is_archived)
-        writer.write_object_value("memberSettings", self.member_settings)
+        writer.write_object_value("guest_settings", self.guest_settings)
+        writer.write_collection_of_object_values("incoming_channels", self.incoming_channels)
+        writer.write_collection_of_object_values("installed_apps", self.installed_apps)
+        writer.write_str_value("internal_id", self.internal_id)
+        writer.write_bool_value("is_archived", self.is_archived)
+        writer.write_object_value("member_settings", self.member_settings)
         writer.write_collection_of_object_values("members", self.members)
-        writer.write_object_value("messagingSettings", self.messaging_settings)
+        writer.write_object_value("messaging_settings", self.messaging_settings)
         writer.write_collection_of_object_values("operations", self.operations)
-        writer.write_collection_of_object_values("permissionGrants", self.permission_grants)
+        writer.write_collection_of_object_values("permission_grants", self.permission_grants)
         writer.write_object_value("photo", self.photo)
-        writer.write_object_value("primaryChannel", self.primary_channel)
+        writer.write_object_value("primary_channel", self.primary_channel)
         writer.write_object_value("schedule", self.schedule)
         writer.write_enum_value("specialization", self.specialization)
         writer.write_object_value("summary", self.summary)
         writer.write_collection_of_object_values("tags", self.tags)
         writer.write_object_value("template", self.template)
-        writer.write_str_value("tenantId", self.tenant_id)
+        writer.write_str_value("tenant_id", self.tenant_id)
         writer.write_enum_value("visibility", self.visibility)
-        writer.write_str_value("webUrl", self.web_url)
+        writer.write_str_value("web_url", self.web_url)
     
 

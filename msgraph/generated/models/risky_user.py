@@ -74,14 +74,14 @@ class RiskyUser(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(RiskyUserHistoryItem)),
-            "isDeleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
-            "isProcessing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
-            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetail)),
-            "riskLastUpdatedDateTime": lambda n : setattr(self, 'risk_last_updated_date_time', n.get_datetime_value()),
-            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(RiskLevel)),
-            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskState)),
-            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "is_deleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
+            "is_processing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
+            "risk_detail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetail)),
+            "risk_last_updated_date_time": lambda n : setattr(self, 'risk_last_updated_date_time', n.get_datetime_value()),
+            "risk_level": lambda n : setattr(self, 'risk_level', n.get_enum_value(RiskLevel)),
+            "risk_state": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskState)),
+            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -97,13 +97,13 @@ class RiskyUser(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("history", self.history)
-        writer.write_bool_value("isDeleted", self.is_deleted)
-        writer.write_bool_value("isProcessing", self.is_processing)
-        writer.write_enum_value("riskDetail", self.risk_detail)
-        writer.write_datetime_value("riskLastUpdatedDateTime", self.risk_last_updated_date_time)
-        writer.write_enum_value("riskLevel", self.risk_level)
-        writer.write_enum_value("riskState", self.risk_state)
-        writer.write_str_value("userDisplayName", self.user_display_name)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_bool_value("is_deleted", self.is_deleted)
+        writer.write_bool_value("is_processing", self.is_processing)
+        writer.write_enum_value("risk_detail", self.risk_detail)
+        writer.write_datetime_value("risk_last_updated_date_time", self.risk_last_updated_date_time)
+        writer.write_enum_value("risk_level", self.risk_level)
+        writer.write_enum_value("risk_state", self.risk_state)
+        writer.write_str_value("user_display_name", self.user_display_name)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
     
 

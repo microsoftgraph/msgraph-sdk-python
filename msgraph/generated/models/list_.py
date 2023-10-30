@@ -82,13 +82,13 @@ class List_(BaseItem):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(ColumnDefinition)),
-            "contentTypes": lambda n : setattr(self, 'content_types', n.get_collection_of_object_values(ContentType)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "content_types": lambda n : setattr(self, 'content_types', n.get_collection_of_object_values(ContentType)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "drive": lambda n : setattr(self, 'drive', n.get_object_value(Drive)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(ListItem)),
             "list": lambda n : setattr(self, 'list_', n.get_object_value(ListInfo)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(RichLongRunningOperation)),
-            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
+            "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
             "subscriptions": lambda n : setattr(self, 'subscriptions', n.get_collection_of_object_values(Subscription)),
             "system": lambda n : setattr(self, 'system', n.get_object_value(SystemFacet)),
         }
@@ -106,13 +106,13 @@ class List_(BaseItem):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("columns", self.columns)
-        writer.write_collection_of_object_values("contentTypes", self.content_types)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_collection_of_object_values("content_types", self.content_types)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_object_value("drive", self.drive)
         writer.write_collection_of_object_values("items", self.items)
         writer.write_object_value("list", self.list_)
         writer.write_collection_of_object_values("operations", self.operations)
-        writer.write_object_value("sharepointIds", self.sharepoint_ids)
+        writer.write_object_value("sharepoint_ids", self.sharepoint_ids)
         writer.write_collection_of_object_values("subscriptions", self.subscriptions)
         writer.write_object_value("system", self.system)
     

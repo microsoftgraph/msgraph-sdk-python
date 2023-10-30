@@ -39,7 +39,7 @@ class AppCatalogs(Entity):
         from .teams_app import TeamsApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "teamsApps": lambda n : setattr(self, 'teams_apps', n.get_collection_of_object_values(TeamsApp)),
+            "teams_apps": lambda n : setattr(self, 'teams_apps', n.get_collection_of_object_values(TeamsApp)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class AppCatalogs(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("teamsApps", self.teams_apps)
+        writer.write_collection_of_object_values("teams_apps", self.teams_apps)
     
 

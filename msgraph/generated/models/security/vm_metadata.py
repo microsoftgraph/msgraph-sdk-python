@@ -46,11 +46,11 @@ class VmMetadata(AdditionalDataHolder, BackedModel, Parsable):
         from .vm_cloud_provider import VmCloudProvider
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "cloudProvider": lambda n : setattr(self, 'cloud_provider', n.get_enum_value(VmCloudProvider)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
-            "subscriptionId": lambda n : setattr(self, 'subscription_id', n.get_str_value()),
-            "vmId": lambda n : setattr(self, 'vm_id', n.get_str_value()),
+            "cloud_provider": lambda n : setattr(self, 'cloud_provider', n.get_enum_value(VmCloudProvider)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "subscription_id": lambda n : setattr(self, 'subscription_id', n.get_str_value()),
+            "vm_id": lambda n : setattr(self, 'vm_id', n.get_str_value()),
         }
         return fields
     
@@ -62,11 +62,11 @@ class VmMetadata(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("cloudProvider", self.cloud_provider)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("resourceId", self.resource_id)
-        writer.write_str_value("subscriptionId", self.subscription_id)
-        writer.write_str_value("vmId", self.vm_id)
+        writer.write_enum_value("cloud_provider", self.cloud_provider)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("resource_id", self.resource_id)
+        writer.write_str_value("subscription_id", self.subscription_id)
+        writer.write_str_value("vm_id", self.vm_id)
         writer.write_additional_data_value(self.additional_data)
     
 

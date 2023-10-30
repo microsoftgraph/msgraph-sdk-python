@@ -57,10 +57,10 @@ class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings):
         from .win32_lob_app_restart_settings import Win32LobAppRestartSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deliveryOptimizationPriority": lambda n : setattr(self, 'delivery_optimization_priority', n.get_enum_value(Win32LobAppDeliveryOptimizationPriority)),
-            "installTimeSettings": lambda n : setattr(self, 'install_time_settings', n.get_object_value(MobileAppInstallTimeSettings)),
+            "delivery_optimization_priority": lambda n : setattr(self, 'delivery_optimization_priority', n.get_enum_value(Win32LobAppDeliveryOptimizationPriority)),
+            "install_time_settings": lambda n : setattr(self, 'install_time_settings', n.get_object_value(MobileAppInstallTimeSettings)),
             "notifications": lambda n : setattr(self, 'notifications', n.get_enum_value(Win32LobAppNotification)),
-            "restartSettings": lambda n : setattr(self, 'restart_settings', n.get_object_value(Win32LobAppRestartSettings)),
+            "restart_settings": lambda n : setattr(self, 'restart_settings', n.get_object_value(Win32LobAppRestartSettings)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,9 +75,9 @@ class Win32LobAppAssignmentSettings(MobileAppAssignmentSettings):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("deliveryOptimizationPriority", self.delivery_optimization_priority)
-        writer.write_object_value("installTimeSettings", self.install_time_settings)
+        writer.write_enum_value("delivery_optimization_priority", self.delivery_optimization_priority)
+        writer.write_object_value("install_time_settings", self.install_time_settings)
         writer.write_enum_value("notifications", self.notifications)
-        writer.write_object_value("restartSettings", self.restart_settings)
+        writer.write_object_value("restart_settings", self.restart_settings)
     
 

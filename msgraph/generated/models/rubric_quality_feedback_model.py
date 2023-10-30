@@ -43,8 +43,8 @@ class RubricQualityFeedbackModel(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "feedback": lambda n : setattr(self, 'feedback', n.get_object_value(EducationItemBody)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "qualityId": lambda n : setattr(self, 'quality_id', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "quality_id": lambda n : setattr(self, 'quality_id', n.get_str_value()),
         }
         return fields
     
@@ -57,8 +57,8 @@ class RubricQualityFeedbackModel(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("feedback", self.feedback)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("qualityId", self.quality_id)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("quality_id", self.quality_id)
         writer.write_additional_data_value(self.additional_data)
     
 

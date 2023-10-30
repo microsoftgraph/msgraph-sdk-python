@@ -7,6 +7,7 @@ if TYPE_CHECKING:
     from .administrative_unit import AdministrativeUnit
     from .attribute_set import AttributeSet
     from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
+    from .device_local_credential_info import DeviceLocalCredentialInfo
     from .directory_object import DirectoryObject
     from .entity import Entity
     from .identity_provider_base import IdentityProviderBase
@@ -24,6 +25,8 @@ class Directory(Entity):
     custom_security_attribute_definitions: Optional[List[CustomSecurityAttributeDefinition]] = None
     # Recently deleted items. Read-only. Nullable.
     deleted_items: Optional[List[DirectoryObject]] = None
+    # The credentials of the device's local administrator account backed up to Microsoft Entra ID.
+    device_local_credentials: Optional[List[DeviceLocalCredentialInfo]] = None
     # Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
     federation_configurations: Optional[List[IdentityProviderBase]] = None
     # The OdataType property
@@ -50,6 +53,7 @@ class Directory(Entity):
         from .administrative_unit import AdministrativeUnit
         from .attribute_set import AttributeSet
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
+        from .device_local_credential_info import DeviceLocalCredentialInfo
         from .directory_object import DirectoryObject
         from .entity import Entity
         from .identity_provider_base import IdentityProviderBase
@@ -58,18 +62,20 @@ class Directory(Entity):
         from .administrative_unit import AdministrativeUnit
         from .attribute_set import AttributeSet
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
+        from .device_local_credential_info import DeviceLocalCredentialInfo
         from .directory_object import DirectoryObject
         from .entity import Entity
         from .identity_provider_base import IdentityProviderBase
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "administrativeUnits": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(AdministrativeUnit)),
-            "attributeSets": lambda n : setattr(self, 'attribute_sets', n.get_collection_of_object_values(AttributeSet)),
-            "customSecurityAttributeDefinitions": lambda n : setattr(self, 'custom_security_attribute_definitions', n.get_collection_of_object_values(CustomSecurityAttributeDefinition)),
-            "deletedItems": lambda n : setattr(self, 'deleted_items', n.get_collection_of_object_values(DirectoryObject)),
-            "federationConfigurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(IdentityProviderBase)),
-            "onPremisesSynchronization": lambda n : setattr(self, 'on_premises_synchronization', n.get_collection_of_object_values(OnPremisesDirectorySynchronization)),
+            "administrative_units": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(AdministrativeUnit)),
+            "attribute_sets": lambda n : setattr(self, 'attribute_sets', n.get_collection_of_object_values(AttributeSet)),
+            "custom_security_attribute_definitions": lambda n : setattr(self, 'custom_security_attribute_definitions', n.get_collection_of_object_values(CustomSecurityAttributeDefinition)),
+            "deleted_items": lambda n : setattr(self, 'deleted_items', n.get_collection_of_object_values(DirectoryObject)),
+            "device_local_credentials": lambda n : setattr(self, 'device_local_credentials', n.get_collection_of_object_values(DeviceLocalCredentialInfo)),
+            "federation_configurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(IdentityProviderBase)),
+            "on_premises_synchronization": lambda n : setattr(self, 'on_premises_synchronization', n.get_collection_of_object_values(OnPremisesDirectorySynchronization)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,11 +90,12 @@ class Directory(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("administrativeUnits", self.administrative_units)
-        writer.write_collection_of_object_values("attributeSets", self.attribute_sets)
-        writer.write_collection_of_object_values("customSecurityAttributeDefinitions", self.custom_security_attribute_definitions)
-        writer.write_collection_of_object_values("deletedItems", self.deleted_items)
-        writer.write_collection_of_object_values("federationConfigurations", self.federation_configurations)
-        writer.write_collection_of_object_values("onPremisesSynchronization", self.on_premises_synchronization)
+        writer.write_collection_of_object_values("administrative_units", self.administrative_units)
+        writer.write_collection_of_object_values("attribute_sets", self.attribute_sets)
+        writer.write_collection_of_object_values("custom_security_attribute_definitions", self.custom_security_attribute_definitions)
+        writer.write_collection_of_object_values("deleted_items", self.deleted_items)
+        writer.write_collection_of_object_values("device_local_credentials", self.device_local_credentials)
+        writer.write_collection_of_object_values("federation_configurations", self.federation_configurations)
+        writer.write_collection_of_object_values("on_premises_synchronization", self.on_premises_synchronization)
     
 

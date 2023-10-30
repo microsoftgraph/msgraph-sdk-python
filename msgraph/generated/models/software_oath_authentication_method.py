@@ -36,7 +36,7 @@ class SoftwareOathAuthenticationMethod(AuthenticationMethod):
         from .authentication_method import AuthenticationMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "secretKey": lambda n : setattr(self, 'secret_key', n.get_str_value()),
+            "secret_key": lambda n : setattr(self, 'secret_key', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class SoftwareOathAuthenticationMethod(AuthenticationMethod):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("secretKey", self.secret_key)
+        writer.write_str_value("secret_key", self.secret_key)
     
 

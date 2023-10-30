@@ -47,11 +47,11 @@ class UserExperienceAnalyticsAppHealthOSVersionPerformance(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activeDeviceCount": lambda n : setattr(self, 'active_device_count', n.get_int_value()),
-            "meanTimeToFailureInMinutes": lambda n : setattr(self, 'mean_time_to_failure_in_minutes', n.get_int_value()),
-            "osBuildNumber": lambda n : setattr(self, 'os_build_number', n.get_str_value()),
-            "osVersion": lambda n : setattr(self, 'os_version', n.get_str_value()),
-            "osVersionAppHealthScore": lambda n : setattr(self, 'os_version_app_health_score', n.get_float_value()),
+            "active_device_count": lambda n : setattr(self, 'active_device_count', n.get_int_value()),
+            "mean_time_to_failure_in_minutes": lambda n : setattr(self, 'mean_time_to_failure_in_minutes', n.get_int_value()),
+            "os_build_number": lambda n : setattr(self, 'os_build_number', n.get_str_value()),
+            "os_version": lambda n : setattr(self, 'os_version', n.get_str_value()),
+            "os_version_app_health_score": lambda n : setattr(self, 'os_version_app_health_score', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,10 +66,10 @@ class UserExperienceAnalyticsAppHealthOSVersionPerformance(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("activeDeviceCount", self.active_device_count)
-        writer.write_int_value("meanTimeToFailureInMinutes", self.mean_time_to_failure_in_minutes)
-        writer.write_str_value("osBuildNumber", self.os_build_number)
-        writer.write_str_value("osVersion", self.os_version)
-        writer.write_float_value("osVersionAppHealthScore", self.os_version_app_health_score)
+        writer.write_int_value("active_device_count", self.active_device_count)
+        writer.write_int_value("mean_time_to_failure_in_minutes", self.mean_time_to_failure_in_minutes)
+        writer.write_str_value("os_build_number", self.os_build_number)
+        writer.write_str_value("os_version", self.os_version)
+        writer.write_float_value("os_version_app_health_score", self.os_version_app_health_score)
     
 

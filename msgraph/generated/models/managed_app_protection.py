@@ -139,33 +139,33 @@ class ManagedAppProtection(ManagedAppPolicy):
         from .targeted_managed_app_protection import TargetedManagedAppProtection
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedDataStorageLocations": lambda n : setattr(self, 'allowed_data_storage_locations', n.get_collection_of_enum_values(ManagedAppDataStorageLocation)),
-            "allowedInboundDataTransferSources": lambda n : setattr(self, 'allowed_inbound_data_transfer_sources', n.get_enum_value(ManagedAppDataTransferLevel)),
-            "allowedOutboundClipboardSharingLevel": lambda n : setattr(self, 'allowed_outbound_clipboard_sharing_level', n.get_enum_value(ManagedAppClipboardSharingLevel)),
-            "allowedOutboundDataTransferDestinations": lambda n : setattr(self, 'allowed_outbound_data_transfer_destinations', n.get_enum_value(ManagedAppDataTransferLevel)),
-            "contactSyncBlocked": lambda n : setattr(self, 'contact_sync_blocked', n.get_bool_value()),
-            "dataBackupBlocked": lambda n : setattr(self, 'data_backup_blocked', n.get_bool_value()),
-            "deviceComplianceRequired": lambda n : setattr(self, 'device_compliance_required', n.get_bool_value()),
-            "disableAppPinIfDevicePinIsSet": lambda n : setattr(self, 'disable_app_pin_if_device_pin_is_set', n.get_bool_value()),
-            "fingerprintBlocked": lambda n : setattr(self, 'fingerprint_blocked', n.get_bool_value()),
-            "managedBrowser": lambda n : setattr(self, 'managed_browser', n.get_collection_of_enum_values(ManagedBrowserType)),
-            "managedBrowserToOpenLinksRequired": lambda n : setattr(self, 'managed_browser_to_open_links_required', n.get_bool_value()),
-            "maximumPinRetries": lambda n : setattr(self, 'maximum_pin_retries', n.get_int_value()),
-            "minimumPinLength": lambda n : setattr(self, 'minimum_pin_length', n.get_int_value()),
-            "minimumRequiredAppVersion": lambda n : setattr(self, 'minimum_required_app_version', n.get_str_value()),
-            "minimumRequiredOsVersion": lambda n : setattr(self, 'minimum_required_os_version', n.get_str_value()),
-            "minimumWarningAppVersion": lambda n : setattr(self, 'minimum_warning_app_version', n.get_str_value()),
-            "minimumWarningOsVersion": lambda n : setattr(self, 'minimum_warning_os_version', n.get_str_value()),
-            "organizationalCredentialsRequired": lambda n : setattr(self, 'organizational_credentials_required', n.get_bool_value()),
-            "periodBeforePinReset": lambda n : setattr(self, 'period_before_pin_reset', n.get_timedelta_value()),
-            "periodOfflineBeforeAccessCheck": lambda n : setattr(self, 'period_offline_before_access_check', n.get_timedelta_value()),
-            "periodOfflineBeforeWipeIsEnforced": lambda n : setattr(self, 'period_offline_before_wipe_is_enforced', n.get_timedelta_value()),
-            "periodOnlineBeforeAccessCheck": lambda n : setattr(self, 'period_online_before_access_check', n.get_timedelta_value()),
-            "pinCharacterSet": lambda n : setattr(self, 'pin_character_set', n.get_enum_value(ManagedAppPinCharacterSet)),
-            "pinRequired": lambda n : setattr(self, 'pin_required', n.get_bool_value()),
-            "printBlocked": lambda n : setattr(self, 'print_blocked', n.get_bool_value()),
-            "saveAsBlocked": lambda n : setattr(self, 'save_as_blocked', n.get_bool_value()),
-            "simplePinBlocked": lambda n : setattr(self, 'simple_pin_blocked', n.get_bool_value()),
+            "allowed_data_storage_locations": lambda n : setattr(self, 'allowed_data_storage_locations', n.get_collection_of_enum_values(ManagedAppDataStorageLocation)),
+            "allowed_inbound_data_transfer_sources": lambda n : setattr(self, 'allowed_inbound_data_transfer_sources', n.get_enum_value(ManagedAppDataTransferLevel)),
+            "allowed_outbound_clipboard_sharing_level": lambda n : setattr(self, 'allowed_outbound_clipboard_sharing_level', n.get_enum_value(ManagedAppClipboardSharingLevel)),
+            "allowed_outbound_data_transfer_destinations": lambda n : setattr(self, 'allowed_outbound_data_transfer_destinations', n.get_enum_value(ManagedAppDataTransferLevel)),
+            "contact_sync_blocked": lambda n : setattr(self, 'contact_sync_blocked', n.get_bool_value()),
+            "data_backup_blocked": lambda n : setattr(self, 'data_backup_blocked', n.get_bool_value()),
+            "device_compliance_required": lambda n : setattr(self, 'device_compliance_required', n.get_bool_value()),
+            "disable_app_pin_if_device_pin_is_set": lambda n : setattr(self, 'disable_app_pin_if_device_pin_is_set', n.get_bool_value()),
+            "fingerprint_blocked": lambda n : setattr(self, 'fingerprint_blocked', n.get_bool_value()),
+            "managed_browser": lambda n : setattr(self, 'managed_browser', n.get_collection_of_enum_values(ManagedBrowserType)),
+            "managed_browser_to_open_links_required": lambda n : setattr(self, 'managed_browser_to_open_links_required', n.get_bool_value()),
+            "maximum_pin_retries": lambda n : setattr(self, 'maximum_pin_retries', n.get_int_value()),
+            "minimum_pin_length": lambda n : setattr(self, 'minimum_pin_length', n.get_int_value()),
+            "minimum_required_app_version": lambda n : setattr(self, 'minimum_required_app_version', n.get_str_value()),
+            "minimum_required_os_version": lambda n : setattr(self, 'minimum_required_os_version', n.get_str_value()),
+            "minimum_warning_app_version": lambda n : setattr(self, 'minimum_warning_app_version', n.get_str_value()),
+            "minimum_warning_os_version": lambda n : setattr(self, 'minimum_warning_os_version', n.get_str_value()),
+            "organizational_credentials_required": lambda n : setattr(self, 'organizational_credentials_required', n.get_bool_value()),
+            "period_before_pin_reset": lambda n : setattr(self, 'period_before_pin_reset', n.get_timedelta_value()),
+            "period_offline_before_access_check": lambda n : setattr(self, 'period_offline_before_access_check', n.get_timedelta_value()),
+            "period_offline_before_wipe_is_enforced": lambda n : setattr(self, 'period_offline_before_wipe_is_enforced', n.get_timedelta_value()),
+            "period_online_before_access_check": lambda n : setattr(self, 'period_online_before_access_check', n.get_timedelta_value()),
+            "pin_character_set": lambda n : setattr(self, 'pin_character_set', n.get_enum_value(ManagedAppPinCharacterSet)),
+            "pin_required": lambda n : setattr(self, 'pin_required', n.get_bool_value()),
+            "print_blocked": lambda n : setattr(self, 'print_blocked', n.get_bool_value()),
+            "save_as_blocked": lambda n : setattr(self, 'save_as_blocked', n.get_bool_value()),
+            "simple_pin_blocked": lambda n : setattr(self, 'simple_pin_blocked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -180,32 +180,32 @@ class ManagedAppProtection(ManagedAppPolicy):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_enum_values("allowedDataStorageLocations", self.allowed_data_storage_locations)
-        writer.write_enum_value("allowedInboundDataTransferSources", self.allowed_inbound_data_transfer_sources)
-        writer.write_enum_value("allowedOutboundClipboardSharingLevel", self.allowed_outbound_clipboard_sharing_level)
-        writer.write_enum_value("allowedOutboundDataTransferDestinations", self.allowed_outbound_data_transfer_destinations)
-        writer.write_bool_value("contactSyncBlocked", self.contact_sync_blocked)
-        writer.write_bool_value("dataBackupBlocked", self.data_backup_blocked)
-        writer.write_bool_value("deviceComplianceRequired", self.device_compliance_required)
-        writer.write_bool_value("disableAppPinIfDevicePinIsSet", self.disable_app_pin_if_device_pin_is_set)
-        writer.write_bool_value("fingerprintBlocked", self.fingerprint_blocked)
-        writer.write_enum_value("managedBrowser", self.managed_browser)
-        writer.write_bool_value("managedBrowserToOpenLinksRequired", self.managed_browser_to_open_links_required)
-        writer.write_int_value("maximumPinRetries", self.maximum_pin_retries)
-        writer.write_int_value("minimumPinLength", self.minimum_pin_length)
-        writer.write_str_value("minimumRequiredAppVersion", self.minimum_required_app_version)
-        writer.write_str_value("minimumRequiredOsVersion", self.minimum_required_os_version)
-        writer.write_str_value("minimumWarningAppVersion", self.minimum_warning_app_version)
-        writer.write_str_value("minimumWarningOsVersion", self.minimum_warning_os_version)
-        writer.write_bool_value("organizationalCredentialsRequired", self.organizational_credentials_required)
-        writer.write_timedelta_value("periodBeforePinReset", self.period_before_pin_reset)
-        writer.write_timedelta_value("periodOfflineBeforeAccessCheck", self.period_offline_before_access_check)
-        writer.write_timedelta_value("periodOfflineBeforeWipeIsEnforced", self.period_offline_before_wipe_is_enforced)
-        writer.write_timedelta_value("periodOnlineBeforeAccessCheck", self.period_online_before_access_check)
-        writer.write_enum_value("pinCharacterSet", self.pin_character_set)
-        writer.write_bool_value("pinRequired", self.pin_required)
-        writer.write_bool_value("printBlocked", self.print_blocked)
-        writer.write_bool_value("saveAsBlocked", self.save_as_blocked)
-        writer.write_bool_value("simplePinBlocked", self.simple_pin_blocked)
+        writer.write_collection_of_enum_values("allowed_data_storage_locations", self.allowed_data_storage_locations)
+        writer.write_enum_value("allowed_inbound_data_transfer_sources", self.allowed_inbound_data_transfer_sources)
+        writer.write_enum_value("allowed_outbound_clipboard_sharing_level", self.allowed_outbound_clipboard_sharing_level)
+        writer.write_enum_value("allowed_outbound_data_transfer_destinations", self.allowed_outbound_data_transfer_destinations)
+        writer.write_bool_value("contact_sync_blocked", self.contact_sync_blocked)
+        writer.write_bool_value("data_backup_blocked", self.data_backup_blocked)
+        writer.write_bool_value("device_compliance_required", self.device_compliance_required)
+        writer.write_bool_value("disable_app_pin_if_device_pin_is_set", self.disable_app_pin_if_device_pin_is_set)
+        writer.write_bool_value("fingerprint_blocked", self.fingerprint_blocked)
+        writer.write_enum_value("managed_browser", self.managed_browser)
+        writer.write_bool_value("managed_browser_to_open_links_required", self.managed_browser_to_open_links_required)
+        writer.write_int_value("maximum_pin_retries", self.maximum_pin_retries)
+        writer.write_int_value("minimum_pin_length", self.minimum_pin_length)
+        writer.write_str_value("minimum_required_app_version", self.minimum_required_app_version)
+        writer.write_str_value("minimum_required_os_version", self.minimum_required_os_version)
+        writer.write_str_value("minimum_warning_app_version", self.minimum_warning_app_version)
+        writer.write_str_value("minimum_warning_os_version", self.minimum_warning_os_version)
+        writer.write_bool_value("organizational_credentials_required", self.organizational_credentials_required)
+        writer.write_timedelta_value("period_before_pin_reset", self.period_before_pin_reset)
+        writer.write_timedelta_value("period_offline_before_access_check", self.period_offline_before_access_check)
+        writer.write_timedelta_value("period_offline_before_wipe_is_enforced", self.period_offline_before_wipe_is_enforced)
+        writer.write_timedelta_value("period_online_before_access_check", self.period_online_before_access_check)
+        writer.write_enum_value("pin_character_set", self.pin_character_set)
+        writer.write_bool_value("pin_required", self.pin_required)
+        writer.write_bool_value("print_blocked", self.print_blocked)
+        writer.write_bool_value("save_as_blocked", self.save_as_blocked)
+        writer.write_bool_value("simple_pin_blocked", self.simple_pin_blocked)
     
 

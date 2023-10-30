@@ -36,7 +36,7 @@ class ServicePrincipalIdentity(Identity):
         from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class ServicePrincipalIdentity(Identity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("appId", self.app_id)
+        writer.write_str_value("app_id", self.app_id)
     
 

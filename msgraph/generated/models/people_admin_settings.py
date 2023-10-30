@@ -39,7 +39,7 @@ class PeopleAdminSettings(Entity):
         from .profile_card_property import ProfileCardProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "profileCardProperties": lambda n : setattr(self, 'profile_card_properties', n.get_collection_of_object_values(ProfileCardProperty)),
+            "profile_card_properties": lambda n : setattr(self, 'profile_card_properties', n.get_collection_of_object_values(ProfileCardProperty)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class PeopleAdminSettings(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("profileCardProperties", self.profile_card_properties)
+        writer.write_collection_of_object_values("profile_card_properties", self.profile_card_properties)
     
 

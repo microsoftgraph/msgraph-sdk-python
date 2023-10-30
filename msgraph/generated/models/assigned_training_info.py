@@ -37,10 +37,10 @@ class AssignedTrainingInfo(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignedUserCount": lambda n : setattr(self, 'assigned_user_count', n.get_int_value()),
-            "completedUserCount": lambda n : setattr(self, 'completed_user_count', n.get_int_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "assigned_user_count": lambda n : setattr(self, 'assigned_user_count', n.get_int_value()),
+            "completed_user_count": lambda n : setattr(self, 'completed_user_count', n.get_int_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -52,10 +52,10 @@ class AssignedTrainingInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("assignedUserCount", self.assigned_user_count)
-        writer.write_int_value("completedUserCount", self.completed_user_count)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_int_value("assigned_user_count", self.assigned_user_count)
+        writer.write_int_value("completed_user_count", self.completed_user_count)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

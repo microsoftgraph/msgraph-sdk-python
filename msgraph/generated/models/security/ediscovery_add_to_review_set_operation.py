@@ -44,7 +44,7 @@ class EdiscoveryAddToReviewSetOperation(CaseOperation):
         from .ediscovery_search import EdiscoverySearch
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "reviewSet": lambda n : setattr(self, 'review_set', n.get_object_value(EdiscoveryReviewSet)),
+            "review_set": lambda n : setattr(self, 'review_set', n.get_object_value(EdiscoveryReviewSet)),
             "search": lambda n : setattr(self, 'search', n.get_object_value(EdiscoverySearch)),
         }
         super_fields = super().get_field_deserializers()
@@ -60,7 +60,7 @@ class EdiscoveryAddToReviewSetOperation(CaseOperation):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("reviewSet", self.review_set)
+        writer.write_object_value("review_set", self.review_set)
         writer.write_object_value("search", self.search)
     
 

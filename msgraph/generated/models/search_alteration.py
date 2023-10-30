@@ -44,10 +44,10 @@ class SearchAlteration(AdditionalDataHolder, BackedModel, Parsable):
         from .altered_query_token import AlteredQueryToken
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "alteredHighlightedQueryString": lambda n : setattr(self, 'altered_highlighted_query_string', n.get_str_value()),
-            "alteredQueryString": lambda n : setattr(self, 'altered_query_string', n.get_str_value()),
-            "alteredQueryTokens": lambda n : setattr(self, 'altered_query_tokens', n.get_collection_of_object_values(AlteredQueryToken)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "altered_highlighted_query_string": lambda n : setattr(self, 'altered_highlighted_query_string', n.get_str_value()),
+            "altered_query_string": lambda n : setattr(self, 'altered_query_string', n.get_str_value()),
+            "altered_query_tokens": lambda n : setattr(self, 'altered_query_tokens', n.get_collection_of_object_values(AlteredQueryToken)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -59,10 +59,10 @@ class SearchAlteration(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("alteredHighlightedQueryString", self.altered_highlighted_query_string)
-        writer.write_str_value("alteredQueryString", self.altered_query_string)
-        writer.write_collection_of_object_values("alteredQueryTokens", self.altered_query_tokens)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("altered_highlighted_query_string", self.altered_highlighted_query_string)
+        writer.write_str_value("altered_query_string", self.altered_query_string)
+        writer.write_collection_of_object_values("altered_query_tokens", self.altered_query_tokens)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -38,10 +38,10 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, BackedModel, P
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "gracePeriodBeforeAccessRemoval": lambda n : setattr(self, 'grace_period_before_access_removal', n.get_timedelta_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "removeAccessWhenTargetLeavesAllowedTargets": lambda n : setattr(self, 'remove_access_when_target_leaves_allowed_targets', n.get_bool_value()),
-            "requestAccessForAllowedTargets": lambda n : setattr(self, 'request_access_for_allowed_targets', n.get_bool_value()),
+            "grace_period_before_access_removal": lambda n : setattr(self, 'grace_period_before_access_removal', n.get_timedelta_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "remove_access_when_target_leaves_allowed_targets": lambda n : setattr(self, 'remove_access_when_target_leaves_allowed_targets', n.get_bool_value()),
+            "request_access_for_allowed_targets": lambda n : setattr(self, 'request_access_for_allowed_targets', n.get_bool_value()),
         }
         return fields
     
@@ -53,10 +53,10 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, BackedModel, P
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_timedelta_value("gracePeriodBeforeAccessRemoval", self.grace_period_before_access_removal)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_bool_value("removeAccessWhenTargetLeavesAllowedTargets", self.remove_access_when_target_leaves_allowed_targets)
-        writer.write_bool_value("requestAccessForAllowedTargets", self.request_access_for_allowed_targets)
+        writer.write_timedelta_value("grace_period_before_access_removal", self.grace_period_before_access_removal)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_bool_value("remove_access_when_target_leaves_allowed_targets", self.remove_access_when_target_leaves_allowed_targets)
+        writer.write_bool_value("request_access_for_allowed_targets", self.request_access_for_allowed_targets)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -49,12 +49,12 @@ class EBookInstallSummary(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "failedDeviceCount": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
-            "failedUserCount": lambda n : setattr(self, 'failed_user_count', n.get_int_value()),
-            "installedDeviceCount": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),
-            "installedUserCount": lambda n : setattr(self, 'installed_user_count', n.get_int_value()),
-            "notInstalledDeviceCount": lambda n : setattr(self, 'not_installed_device_count', n.get_int_value()),
-            "notInstalledUserCount": lambda n : setattr(self, 'not_installed_user_count', n.get_int_value()),
+            "failed_device_count": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
+            "failed_user_count": lambda n : setattr(self, 'failed_user_count', n.get_int_value()),
+            "installed_device_count": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),
+            "installed_user_count": lambda n : setattr(self, 'installed_user_count', n.get_int_value()),
+            "not_installed_device_count": lambda n : setattr(self, 'not_installed_device_count', n.get_int_value()),
+            "not_installed_user_count": lambda n : setattr(self, 'not_installed_user_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,11 +69,11 @@ class EBookInstallSummary(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("failedDeviceCount", self.failed_device_count)
-        writer.write_int_value("failedUserCount", self.failed_user_count)
-        writer.write_int_value("installedDeviceCount", self.installed_device_count)
-        writer.write_int_value("installedUserCount", self.installed_user_count)
-        writer.write_int_value("notInstalledDeviceCount", self.not_installed_device_count)
-        writer.write_int_value("notInstalledUserCount", self.not_installed_user_count)
+        writer.write_int_value("failed_device_count", self.failed_device_count)
+        writer.write_int_value("failed_user_count", self.failed_user_count)
+        writer.write_int_value("installed_device_count", self.installed_device_count)
+        writer.write_int_value("installed_user_count", self.installed_user_count)
+        writer.write_int_value("not_installed_device_count", self.not_installed_device_count)
+        writer.write_int_value("not_installed_user_count", self.not_installed_user_count)
     
 

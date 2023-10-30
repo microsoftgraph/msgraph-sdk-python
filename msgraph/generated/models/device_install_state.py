@@ -57,14 +57,14 @@ class DeviceInstallState(Entity):
         from .install_state import InstallState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "errorCode": lambda n : setattr(self, 'error_code', n.get_str_value()),
-            "installState": lambda n : setattr(self, 'install_state', n.get_enum_value(InstallState)),
-            "lastSyncDateTime": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
-            "osDescription": lambda n : setattr(self, 'os_description', n.get_str_value()),
-            "osVersion": lambda n : setattr(self, 'os_version', n.get_str_value()),
-            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "error_code": lambda n : setattr(self, 'error_code', n.get_str_value()),
+            "install_state": lambda n : setattr(self, 'install_state', n.get_enum_value(InstallState)),
+            "last_sync_date_time": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
+            "os_description": lambda n : setattr(self, 'os_description', n.get_str_value()),
+            "os_version": lambda n : setattr(self, 'os_version', n.get_str_value()),
+            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -79,13 +79,13 @@ class DeviceInstallState(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("deviceId", self.device_id)
-        writer.write_str_value("deviceName", self.device_name)
-        writer.write_str_value("errorCode", self.error_code)
-        writer.write_enum_value("installState", self.install_state)
-        writer.write_datetime_value("lastSyncDateTime", self.last_sync_date_time)
-        writer.write_str_value("osDescription", self.os_description)
-        writer.write_str_value("osVersion", self.os_version)
-        writer.write_str_value("userName", self.user_name)
+        writer.write_str_value("device_id", self.device_id)
+        writer.write_str_value("device_name", self.device_name)
+        writer.write_str_value("error_code", self.error_code)
+        writer.write_enum_value("install_state", self.install_state)
+        writer.write_datetime_value("last_sync_date_time", self.last_sync_date_time)
+        writer.write_str_value("os_description", self.os_description)
+        writer.write_str_value("os_version", self.os_version)
+        writer.write_str_value("user_name", self.user_name)
     
 

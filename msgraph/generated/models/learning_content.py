@@ -71,23 +71,23 @@ class LearningContent(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "additionalTags": lambda n : setattr(self, 'additional_tags', n.get_collection_of_primitive_values(str)),
-            "contentWebUrl": lambda n : setattr(self, 'content_web_url', n.get_str_value()),
+            "additional_tags": lambda n : setattr(self, 'additional_tags', n.get_collection_of_primitive_values(str)),
+            "content_web_url": lambda n : setattr(self, 'content_web_url', n.get_str_value()),
             "contributors": lambda n : setattr(self, 'contributors', n.get_collection_of_primitive_values(str)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_timedelta_value()),
-            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "format": lambda n : setattr(self, 'format', n.get_str_value()),
-            "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
-            "isPremium": lambda n : setattr(self, 'is_premium', n.get_bool_value()),
-            "isSearchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
-            "languageTag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "numberOfPages": lambda n : setattr(self, 'number_of_pages', n.get_int_value()),
-            "skillTags": lambda n : setattr(self, 'skill_tags', n.get_collection_of_primitive_values(str)),
-            "sourceName": lambda n : setattr(self, 'source_name', n.get_str_value()),
-            "thumbnailWebUrl": lambda n : setattr(self, 'thumbnail_web_url', n.get_str_value()),
+            "is_active": lambda n : setattr(self, 'is_active', n.get_bool_value()),
+            "is_premium": lambda n : setattr(self, 'is_premium', n.get_bool_value()),
+            "is_searchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
+            "language_tag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "number_of_pages": lambda n : setattr(self, 'number_of_pages', n.get_int_value()),
+            "skill_tags": lambda n : setattr(self, 'skill_tags', n.get_collection_of_primitive_values(str)),
+            "source_name": lambda n : setattr(self, 'source_name', n.get_str_value()),
+            "thumbnail_web_url": lambda n : setattr(self, 'thumbnail_web_url', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -103,23 +103,23 @@ class LearningContent(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_primitive_values("additionalTags", self.additional_tags)
-        writer.write_str_value("contentWebUrl", self.content_web_url)
+        writer.write_collection_of_primitive_values("additional_tags", self.additional_tags)
+        writer.write_str_value("content_web_url", self.content_web_url)
         writer.write_collection_of_primitive_values("contributors", self.contributors)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_timedelta_value("duration", self.duration)
-        writer.write_str_value("externalId", self.external_id)
+        writer.write_str_value("external_id", self.external_id)
         writer.write_str_value("format", self.format)
-        writer.write_bool_value("isActive", self.is_active)
-        writer.write_bool_value("isPremium", self.is_premium)
-        writer.write_bool_value("isSearchable", self.is_searchable)
-        writer.write_str_value("languageTag", self.language_tag)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_int_value("numberOfPages", self.number_of_pages)
-        writer.write_collection_of_primitive_values("skillTags", self.skill_tags)
-        writer.write_str_value("sourceName", self.source_name)
-        writer.write_str_value("thumbnailWebUrl", self.thumbnail_web_url)
+        writer.write_bool_value("is_active", self.is_active)
+        writer.write_bool_value("is_premium", self.is_premium)
+        writer.write_bool_value("is_searchable", self.is_searchable)
+        writer.write_str_value("language_tag", self.language_tag)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_int_value("number_of_pages", self.number_of_pages)
+        writer.write_collection_of_primitive_values("skill_tags", self.skill_tags)
+        writer.write_str_value("source_name", self.source_name)
+        writer.write_str_value("thumbnail_web_url", self.thumbnail_web_url)
         writer.write_str_value("title", self.title)
     
 

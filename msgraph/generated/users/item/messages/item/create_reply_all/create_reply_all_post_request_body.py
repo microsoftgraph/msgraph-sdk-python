@@ -40,8 +40,8 @@ class CreateReplyAllPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         from ......models.message import Message
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "Comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "Message": lambda n : setattr(self, 'message', n.get_object_value(Message)),
+            "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
+            "message": lambda n : setattr(self, 'message', n.get_object_value(Message)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class CreateReplyAllPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("Comment", self.comment)
-        writer.write_object_value("Message", self.message)
+        writer.write_str_value("comment", self.comment)
+        writer.write_object_value("message", self.message)
         writer.write_additional_data_value(self.additional_data)
     
 

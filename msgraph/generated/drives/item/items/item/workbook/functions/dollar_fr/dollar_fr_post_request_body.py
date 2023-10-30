@@ -40,7 +40,7 @@ class DollarFrPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "decimalDollar": lambda n : setattr(self, 'decimal_dollar', n.get_object_value(Json)),
+            "decimal_dollar": lambda n : setattr(self, 'decimal_dollar', n.get_object_value(Json)),
             "fraction": lambda n : setattr(self, 'fraction', n.get_object_value(Json)),
         }
         return fields
@@ -53,7 +53,7 @@ class DollarFrPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("decimalDollar", self.decimal_dollar)
+        writer.write_object_value("decimal_dollar", self.decimal_dollar)
         writer.write_object_value("fraction", self.fraction)
         writer.write_additional_data_value(self.additional_data)
     

@@ -38,10 +38,10 @@ class AttendanceInterval(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "durationInSeconds": lambda n : setattr(self, 'duration_in_seconds', n.get_int_value()),
-            "joinDateTime": lambda n : setattr(self, 'join_date_time', n.get_datetime_value()),
-            "leaveDateTime": lambda n : setattr(self, 'leave_date_time', n.get_datetime_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "duration_in_seconds": lambda n : setattr(self, 'duration_in_seconds', n.get_int_value()),
+            "join_date_time": lambda n : setattr(self, 'join_date_time', n.get_datetime_value()),
+            "leave_date_time": lambda n : setattr(self, 'leave_date_time', n.get_datetime_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -53,10 +53,10 @@ class AttendanceInterval(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("durationInSeconds", self.duration_in_seconds)
-        writer.write_datetime_value("joinDateTime", self.join_date_time)
-        writer.write_datetime_value("leaveDateTime", self.leave_date_time)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_int_value("duration_in_seconds", self.duration_in_seconds)
+        writer.write_datetime_value("join_date_time", self.join_date_time)
+        writer.write_datetime_value("leave_date_time", self.leave_date_time)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

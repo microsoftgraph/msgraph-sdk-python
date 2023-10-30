@@ -39,7 +39,7 @@ class MicrosoftAuthenticatorAuthenticationMethodTarget(AuthenticationMethodTarge
         from .microsoft_authenticator_authentication_mode import MicrosoftAuthenticatorAuthenticationMode
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationMode": lambda n : setattr(self, 'authentication_mode', n.get_enum_value(MicrosoftAuthenticatorAuthenticationMode)),
+            "authentication_mode": lambda n : setattr(self, 'authentication_mode', n.get_enum_value(MicrosoftAuthenticatorAuthenticationMode)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class MicrosoftAuthenticatorAuthenticationMethodTarget(AuthenticationMethodTarge
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("authenticationMode", self.authentication_mode)
+        writer.write_enum_value("authentication_mode", self.authentication_mode)
     
 

@@ -46,8 +46,8 @@ class ApplicationServicePrincipal(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "application": lambda n : setattr(self, 'application', n.get_object_value(Application)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "servicePrincipal": lambda n : setattr(self, 'service_principal', n.get_object_value(ServicePrincipal)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "service_principal": lambda n : setattr(self, 'service_principal', n.get_object_value(ServicePrincipal)),
         }
         return fields
     
@@ -60,8 +60,8 @@ class ApplicationServicePrincipal(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("application", self.application)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("servicePrincipal", self.service_principal)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("service_principal", self.service_principal)
         writer.write_additional_data_value(self.additional_data)
     
 

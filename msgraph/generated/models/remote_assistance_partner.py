@@ -49,10 +49,10 @@ class RemoteAssistancePartner(Entity):
         from .remote_assistance_onboarding_status import RemoteAssistanceOnboardingStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastConnectionDateTime": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
-            "onboardingStatus": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(RemoteAssistanceOnboardingStatus)),
-            "onboardingUrl": lambda n : setattr(self, 'onboarding_url', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "last_connection_date_time": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
+            "onboarding_status": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(RemoteAssistanceOnboardingStatus)),
+            "onboarding_url": lambda n : setattr(self, 'onboarding_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,9 +67,9 @@ class RemoteAssistancePartner(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastConnectionDateTime", self.last_connection_date_time)
-        writer.write_enum_value("onboardingStatus", self.onboarding_status)
-        writer.write_str_value("onboardingUrl", self.onboarding_url)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_datetime_value("last_connection_date_time", self.last_connection_date_time)
+        writer.write_enum_value("onboarding_status", self.onboarding_status)
+        writer.write_str_value("onboarding_url", self.onboarding_url)
     
 

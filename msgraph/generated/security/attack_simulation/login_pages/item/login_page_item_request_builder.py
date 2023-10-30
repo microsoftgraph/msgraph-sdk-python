@@ -47,7 +47,7 @@ class LoginPageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[LoginPageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[LoginPage]:
         """
-        Get loginPages from security
+        Represents an attack simulation training login page.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LoginPage]
         """
@@ -108,7 +108,7 @@ class LoginPageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[LoginPageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get loginPages from security
+        Represents an attack simulation training login page.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -166,7 +166,7 @@ class LoginPageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LoginPageItemRequestBuilderGetQueryParameters():
         """
-        Get loginPages from security
+        Represents an attack simulation training login page.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

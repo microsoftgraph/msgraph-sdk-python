@@ -51,10 +51,10 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceEnrollmentConfiguration]:
         """
-        Read properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration object.
+        Read properties and relationships of the deviceEnrollmentLimitConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceEnrollmentConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentwindowshelloforbusinessconfiguration-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentlimitconfiguration-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -73,11 +73,11 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceEnrollmentConfiguration]:
         """
-        Update the properties of a deviceEnrollmentLimitConfiguration object.
+        Update the properties of a deviceEnrollmentPlatformRestrictionsConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceEnrollmentConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentlimitconfiguration-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentplatformrestrictionsconfiguration-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -114,7 +114,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration object.
+        Read properties and relationships of the deviceEnrollmentLimitConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -131,7 +131,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceEnrollmentLimitConfiguration object.
+        Update the properties of a deviceEnrollmentPlatformRestrictionsConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -199,7 +199,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceEnrollmentConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration object.
+        Read properties and relationships of the deviceEnrollmentLimitConfiguration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

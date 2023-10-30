@@ -95,21 +95,21 @@ class Chat(Entity):
         from .teamwork_online_meeting_info import TeamworkOnlineMeetingInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "chatType": lambda n : setattr(self, 'chat_type', n.get_enum_value(ChatType)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "installedApps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(TeamsAppInstallation)),
-            "lastMessagePreview": lambda n : setattr(self, 'last_message_preview', n.get_object_value(ChatMessageInfo)),
-            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
+            "chat_type": lambda n : setattr(self, 'chat_type', n.get_enum_value(ChatType)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "installed_apps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(TeamsAppInstallation)),
+            "last_message_preview": lambda n : setattr(self, 'last_message_preview', n.get_object_value(ChatMessageInfo)),
+            "last_updated_date_time": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(ConversationMember)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(ChatMessage)),
-            "onlineMeetingInfo": lambda n : setattr(self, 'online_meeting_info', n.get_object_value(TeamworkOnlineMeetingInfo)),
-            "permissionGrants": lambda n : setattr(self, 'permission_grants', n.get_collection_of_object_values(ResourceSpecificPermissionGrant)),
-            "pinnedMessages": lambda n : setattr(self, 'pinned_messages', n.get_collection_of_object_values(PinnedChatMessageInfo)),
+            "online_meeting_info": lambda n : setattr(self, 'online_meeting_info', n.get_object_value(TeamworkOnlineMeetingInfo)),
+            "permission_grants": lambda n : setattr(self, 'permission_grants', n.get_collection_of_object_values(ResourceSpecificPermissionGrant)),
+            "pinned_messages": lambda n : setattr(self, 'pinned_messages', n.get_collection_of_object_values(PinnedChatMessageInfo)),
             "tabs": lambda n : setattr(self, 'tabs', n.get_collection_of_object_values(TeamsTab)),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "topic": lambda n : setattr(self, 'topic', n.get_str_value()),
             "viewpoint": lambda n : setattr(self, 'viewpoint', n.get_object_value(ChatViewpoint)),
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -124,20 +124,20 @@ class Chat(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("chatType", self.chat_type)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_collection_of_object_values("installedApps", self.installed_apps)
-        writer.write_object_value("lastMessagePreview", self.last_message_preview)
-        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
+        writer.write_enum_value("chat_type", self.chat_type)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_collection_of_object_values("installed_apps", self.installed_apps)
+        writer.write_object_value("last_message_preview", self.last_message_preview)
+        writer.write_datetime_value("last_updated_date_time", self.last_updated_date_time)
         writer.write_collection_of_object_values("members", self.members)
         writer.write_collection_of_object_values("messages", self.messages)
-        writer.write_object_value("onlineMeetingInfo", self.online_meeting_info)
-        writer.write_collection_of_object_values("permissionGrants", self.permission_grants)
-        writer.write_collection_of_object_values("pinnedMessages", self.pinned_messages)
+        writer.write_object_value("online_meeting_info", self.online_meeting_info)
+        writer.write_collection_of_object_values("permission_grants", self.permission_grants)
+        writer.write_collection_of_object_values("pinned_messages", self.pinned_messages)
         writer.write_collection_of_object_values("tabs", self.tabs)
-        writer.write_str_value("tenantId", self.tenant_id)
+        writer.write_str_value("tenant_id", self.tenant_id)
         writer.write_str_value("topic", self.topic)
         writer.write_object_value("viewpoint", self.viewpoint)
-        writer.write_str_value("webUrl", self.web_url)
+        writer.write_str_value("web_url", self.web_url)
     
 

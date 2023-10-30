@@ -115,11 +115,11 @@ class CaseOperation(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(CaseAction)),
-            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "percentProgress": lambda n : setattr(self, 'percent_progress', n.get_int_value()),
-            "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(ResultInfo)),
+            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "percent_progress": lambda n : setattr(self, 'percent_progress', n.get_int_value()),
+            "result_info": lambda n : setattr(self, 'result_info', n.get_object_value(ResultInfo)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(CaseOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -136,11 +136,11 @@ class CaseOperation(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("action", self.action)
-        writer.write_datetime_value("completedDateTime", self.completed_date_time)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_int_value("percentProgress", self.percent_progress)
-        writer.write_object_value("resultInfo", self.result_info)
+        writer.write_datetime_value("completed_date_time", self.completed_date_time)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_int_value("percent_progress", self.percent_progress)
+        writer.write_object_value("result_info", self.result_info)
         writer.write_enum_value("status", self.status)
     
 

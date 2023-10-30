@@ -40,8 +40,8 @@ class ActivitySettings(AdditionalDataHolder, BackedModel, Parsable):
         from .url_to_item_resolver_base import UrlToItemResolverBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "urlToItemResolvers": lambda n : setattr(self, 'url_to_item_resolvers', n.get_collection_of_object_values(UrlToItemResolverBase)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "url_to_item_resolvers": lambda n : setattr(self, 'url_to_item_resolvers', n.get_collection_of_object_values(UrlToItemResolverBase)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class ActivitySettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("urlToItemResolvers", self.url_to_item_resolvers)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("url_to_item_resolvers", self.url_to_item_resolvers)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -38,7 +38,7 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, BackedModel, Pars
         from ..........models.attachment_info import AttachmentInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attachmentInfo": lambda n : setattr(self, 'attachment_info', n.get_object_value(AttachmentInfo)),
+            "attachment_info": lambda n : setattr(self, 'attachment_info', n.get_object_value(AttachmentInfo)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, BackedModel, Pars
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("attachmentInfo", self.attachment_info)
+        writer.write_object_value("attachment_info", self.attachment_info)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -47,8 +47,8 @@ class SharePointIdentitySet(IdentitySet):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "group": lambda n : setattr(self, 'group', n.get_object_value(Identity)),
-            "siteGroup": lambda n : setattr(self, 'site_group', n.get_object_value(SharePointIdentity)),
-            "siteUser": lambda n : setattr(self, 'site_user', n.get_object_value(SharePointIdentity)),
+            "site_group": lambda n : setattr(self, 'site_group', n.get_object_value(SharePointIdentity)),
+            "site_user": lambda n : setattr(self, 'site_user', n.get_object_value(SharePointIdentity)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -64,7 +64,7 @@ class SharePointIdentitySet(IdentitySet):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("group", self.group)
-        writer.write_object_value("siteGroup", self.site_group)
-        writer.write_object_value("siteUser", self.site_user)
+        writer.write_object_value("site_group", self.site_group)
+        writer.write_object_value("site_user", self.site_user)
     
 

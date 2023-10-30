@@ -50,11 +50,11 @@ class AttendanceRecord(Entity):
         from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attendanceIntervals": lambda n : setattr(self, 'attendance_intervals', n.get_collection_of_object_values(AttendanceInterval)),
-            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "attendance_intervals": lambda n : setattr(self, 'attendance_intervals', n.get_collection_of_object_values(AttendanceInterval)),
+            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(Identity)),
             "role": lambda n : setattr(self, 'role', n.get_str_value()),
-            "totalAttendanceInSeconds": lambda n : setattr(self, 'total_attendance_in_seconds', n.get_int_value()),
+            "total_attendance_in_seconds": lambda n : setattr(self, 'total_attendance_in_seconds', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,10 +69,10 @@ class AttendanceRecord(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("attendanceIntervals", self.attendance_intervals)
-        writer.write_str_value("emailAddress", self.email_address)
+        writer.write_collection_of_object_values("attendance_intervals", self.attendance_intervals)
+        writer.write_str_value("email_address", self.email_address)
         writer.write_object_value("identity", self.identity)
         writer.write_str_value("role", self.role)
-        writer.write_int_value("totalAttendanceInSeconds", self.total_attendance_in_seconds)
+        writer.write_int_value("total_attendance_in_seconds", self.total_attendance_in_seconds)
     
 

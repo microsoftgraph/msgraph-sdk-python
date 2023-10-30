@@ -39,11 +39,11 @@ class ImageInfo(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "addImageQuery": lambda n : setattr(self, 'add_image_query', n.get_bool_value()),
-            "alternateText": lambda n : setattr(self, 'alternate_text', n.get_str_value()),
-            "alternativeText": lambda n : setattr(self, 'alternative_text', n.get_str_value()),
-            "iconUrl": lambda n : setattr(self, 'icon_url', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "add_image_query": lambda n : setattr(self, 'add_image_query', n.get_bool_value()),
+            "alternate_text": lambda n : setattr(self, 'alternate_text', n.get_str_value()),
+            "alternative_text": lambda n : setattr(self, 'alternative_text', n.get_str_value()),
+            "icon_url": lambda n : setattr(self, 'icon_url', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -55,11 +55,11 @@ class ImageInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("addImageQuery", self.add_image_query)
-        writer.write_str_value("alternateText", self.alternate_text)
-        writer.write_str_value("alternativeText", self.alternative_text)
-        writer.write_str_value("iconUrl", self.icon_url)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("add_image_query", self.add_image_query)
+        writer.write_str_value("alternate_text", self.alternate_text)
+        writer.write_str_value("alternative_text", self.alternative_text)
+        writer.write_str_value("icon_url", self.icon_url)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

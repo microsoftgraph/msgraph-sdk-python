@@ -69,17 +69,17 @@ class AccessPackage(Entity):
         from .group import Group
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessPackagesIncompatibleWith": lambda n : setattr(self, 'access_packages_incompatible_with', n.get_collection_of_object_values(AccessPackage)),
-            "assignmentPolicies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(AccessPackageAssignmentPolicy)),
+            "access_packages_incompatible_with": lambda n : setattr(self, 'access_packages_incompatible_with', n.get_collection_of_object_values(AccessPackage)),
+            "assignment_policies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(AccessPackageAssignmentPolicy)),
             "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(AccessPackageCatalog)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "incompatibleAccessPackages": lambda n : setattr(self, 'incompatible_access_packages', n.get_collection_of_object_values(AccessPackage)),
-            "incompatibleGroups": lambda n : setattr(self, 'incompatible_groups', n.get_collection_of_object_values(Group)),
-            "isHidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
-            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
-            "resourceRoleScopes": lambda n : setattr(self, 'resource_role_scopes', n.get_collection_of_object_values(AccessPackageResourceRoleScope)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "incompatible_access_packages": lambda n : setattr(self, 'incompatible_access_packages', n.get_collection_of_object_values(AccessPackage)),
+            "incompatible_groups": lambda n : setattr(self, 'incompatible_groups', n.get_collection_of_object_values(Group)),
+            "is_hidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
+            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "resource_role_scopes": lambda n : setattr(self, 'resource_role_scopes', n.get_collection_of_object_values(AccessPackageResourceRoleScope)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -94,16 +94,16 @@ class AccessPackage(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("accessPackagesIncompatibleWith", self.access_packages_incompatible_with)
-        writer.write_collection_of_object_values("assignmentPolicies", self.assignment_policies)
+        writer.write_collection_of_object_values("access_packages_incompatible_with", self.access_packages_incompatible_with)
+        writer.write_collection_of_object_values("assignment_policies", self.assignment_policies)
         writer.write_object_value("catalog", self.catalog)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_object_values("incompatibleAccessPackages", self.incompatible_access_packages)
-        writer.write_collection_of_object_values("incompatibleGroups", self.incompatible_groups)
-        writer.write_bool_value("isHidden", self.is_hidden)
-        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
-        writer.write_collection_of_object_values("resourceRoleScopes", self.resource_role_scopes)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_object_values("incompatible_access_packages", self.incompatible_access_packages)
+        writer.write_collection_of_object_values("incompatible_groups", self.incompatible_groups)
+        writer.write_bool_value("is_hidden", self.is_hidden)
+        writer.write_datetime_value("modified_date_time", self.modified_date_time)
+        writer.write_collection_of_object_values("resource_role_scopes", self.resource_role_scopes)
     
 

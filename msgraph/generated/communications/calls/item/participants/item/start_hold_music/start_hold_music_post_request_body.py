@@ -40,8 +40,8 @@ class StartHoldMusicPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         from .......models.prompt import Prompt
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
-            "customPrompt": lambda n : setattr(self, 'custom_prompt', n.get_object_value(Prompt)),
+            "client_context": lambda n : setattr(self, 'client_context', n.get_str_value()),
+            "custom_prompt": lambda n : setattr(self, 'custom_prompt', n.get_object_value(Prompt)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class StartHoldMusicPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("clientContext", self.client_context)
-        writer.write_object_value("customPrompt", self.custom_prompt)
+        writer.write_str_value("client_context", self.client_context)
+        writer.write_object_value("custom_prompt", self.custom_prompt)
         writer.write_additional_data_value(self.additional_data)
     
 

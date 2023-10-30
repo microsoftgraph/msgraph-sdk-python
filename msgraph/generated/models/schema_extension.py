@@ -51,7 +51,7 @@ class SchemaExtension(Entity):
             "owner": lambda n : setattr(self, 'owner', n.get_str_value()),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(ExtensionSchemaProperty)),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
-            "targetTypes": lambda n : setattr(self, 'target_types', n.get_collection_of_primitive_values(str)),
+            "target_types": lambda n : setattr(self, 'target_types', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -70,6 +70,6 @@ class SchemaExtension(Entity):
         writer.write_str_value("owner", self.owner)
         writer.write_collection_of_object_values("properties", self.properties)
         writer.write_str_value("status", self.status)
-        writer.write_collection_of_primitive_values("targetTypes", self.target_types)
+        writer.write_collection_of_primitive_values("target_types", self.target_types)
     
 

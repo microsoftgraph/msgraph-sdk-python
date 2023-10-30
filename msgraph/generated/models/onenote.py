@@ -68,7 +68,7 @@ class Onenote(Entity):
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(OnenoteOperation)),
             "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(OnenotePage)),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(OnenoteResource)),
-            "sectionGroups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(SectionGroup)),
+            "section_groups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(SectionGroup)),
             "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(OnenoteSection)),
         }
         super_fields = super().get_field_deserializers()
@@ -88,7 +88,7 @@ class Onenote(Entity):
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_collection_of_object_values("pages", self.pages)
         writer.write_collection_of_object_values("resources", self.resources)
-        writer.write_collection_of_object_values("sectionGroups", self.section_groups)
+        writer.write_collection_of_object_values("section_groups", self.section_groups)
         writer.write_collection_of_object_values("sections", self.sections)
     
 

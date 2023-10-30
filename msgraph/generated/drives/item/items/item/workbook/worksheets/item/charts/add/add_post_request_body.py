@@ -42,8 +42,8 @@ class AddPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ..........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "seriesBy": lambda n : setattr(self, 'series_by', n.get_str_value()),
-            "sourceData": lambda n : setattr(self, 'source_data', n.get_object_value(Json)),
+            "series_by": lambda n : setattr(self, 'series_by', n.get_str_value()),
+            "source_data": lambda n : setattr(self, 'source_data', n.get_object_value(Json)),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         return fields
@@ -56,8 +56,8 @@ class AddPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("seriesBy", self.series_by)
-        writer.write_object_value("sourceData", self.source_data)
+        writer.write_str_value("series_by", self.series_by)
+        writer.write_object_value("source_data", self.source_data)
         writer.write_str_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
     

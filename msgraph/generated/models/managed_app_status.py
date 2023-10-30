@@ -52,7 +52,7 @@ class ManagedAppStatus(Entity):
         from .managed_app_status_raw import ManagedAppStatusRaw
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -68,7 +68,7 @@ class ManagedAppStatus(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_str_value("version", self.version)
     
 

@@ -44,10 +44,10 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ......models.date_time_time_zone import DateTimeTimeZone
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "AvailabilityViewInterval": lambda n : setattr(self, 'availability_view_interval', n.get_int_value()),
-            "EndTime": lambda n : setattr(self, 'end_time', n.get_object_value(DateTimeTimeZone)),
-            "Schedules": lambda n : setattr(self, 'schedules', n.get_collection_of_primitive_values(str)),
-            "StartTime": lambda n : setattr(self, 'start_time', n.get_object_value(DateTimeTimeZone)),
+            "availability_view_interval": lambda n : setattr(self, 'availability_view_interval', n.get_int_value()),
+            "end_time": lambda n : setattr(self, 'end_time', n.get_object_value(DateTimeTimeZone)),
+            "schedules": lambda n : setattr(self, 'schedules', n.get_collection_of_primitive_values(str)),
+            "start_time": lambda n : setattr(self, 'start_time', n.get_object_value(DateTimeTimeZone)),
         }
         return fields
     
@@ -59,10 +59,10 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("AvailabilityViewInterval", self.availability_view_interval)
-        writer.write_object_value("EndTime", self.end_time)
-        writer.write_collection_of_primitive_values("Schedules", self.schedules)
-        writer.write_object_value("StartTime", self.start_time)
+        writer.write_int_value("availability_view_interval", self.availability_view_interval)
+        writer.write_object_value("end_time", self.end_time)
+        writer.write_collection_of_primitive_values("schedules", self.schedules)
+        writer.write_object_value("start_time", self.start_time)
         writer.write_additional_data_value(self.additional_data)
     
 

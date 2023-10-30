@@ -50,10 +50,10 @@ class RubricLevel(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_object_value(EducationItemBody)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "grading": lambda n : setattr(self, 'grading', n.get_object_value(EducationAssignmentGradeType)),
-            "levelId": lambda n : setattr(self, 'level_id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "level_id": lambda n : setattr(self, 'level_id', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -66,10 +66,10 @@ class RubricLevel(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_object_value("grading", self.grading)
-        writer.write_str_value("levelId", self.level_id)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("level_id", self.level_id)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

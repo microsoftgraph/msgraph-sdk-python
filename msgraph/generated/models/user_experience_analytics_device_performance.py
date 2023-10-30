@@ -83,26 +83,26 @@ class UserExperienceAnalyticsDevicePerformance(Entity):
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "averageBlueScreens": lambda n : setattr(self, 'average_blue_screens', n.get_float_value()),
-            "averageRestarts": lambda n : setattr(self, 'average_restarts', n.get_float_value()),
-            "blueScreenCount": lambda n : setattr(self, 'blue_screen_count', n.get_int_value()),
-            "bootScore": lambda n : setattr(self, 'boot_score', n.get_int_value()),
-            "coreBootTimeInMs": lambda n : setattr(self, 'core_boot_time_in_ms', n.get_int_value()),
-            "coreLoginTimeInMs": lambda n : setattr(self, 'core_login_time_in_ms', n.get_int_value()),
-            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
-            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "diskType": lambda n : setattr(self, 'disk_type', n.get_enum_value(DiskType)),
-            "groupPolicyBootTimeInMs": lambda n : setattr(self, 'group_policy_boot_time_in_ms', n.get_int_value()),
-            "groupPolicyLoginTimeInMs": lambda n : setattr(self, 'group_policy_login_time_in_ms', n.get_int_value()),
-            "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(UserExperienceAnalyticsHealthState)),
-            "loginScore": lambda n : setattr(self, 'login_score', n.get_int_value()),
+            "average_blue_screens": lambda n : setattr(self, 'average_blue_screens', n.get_float_value()),
+            "average_restarts": lambda n : setattr(self, 'average_restarts', n.get_float_value()),
+            "blue_screen_count": lambda n : setattr(self, 'blue_screen_count', n.get_int_value()),
+            "boot_score": lambda n : setattr(self, 'boot_score', n.get_int_value()),
+            "core_boot_time_in_ms": lambda n : setattr(self, 'core_boot_time_in_ms', n.get_int_value()),
+            "core_login_time_in_ms": lambda n : setattr(self, 'core_login_time_in_ms', n.get_int_value()),
+            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "disk_type": lambda n : setattr(self, 'disk_type', n.get_enum_value(DiskType)),
+            "group_policy_boot_time_in_ms": lambda n : setattr(self, 'group_policy_boot_time_in_ms', n.get_int_value()),
+            "group_policy_login_time_in_ms": lambda n : setattr(self, 'group_policy_login_time_in_ms', n.get_int_value()),
+            "health_status": lambda n : setattr(self, 'health_status', n.get_enum_value(UserExperienceAnalyticsHealthState)),
+            "login_score": lambda n : setattr(self, 'login_score', n.get_int_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "modelStartupPerformanceScore": lambda n : setattr(self, 'model_startup_performance_score', n.get_float_value()),
-            "operatingSystemVersion": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
-            "responsiveDesktopTimeInMs": lambda n : setattr(self, 'responsive_desktop_time_in_ms', n.get_int_value()),
-            "restartCount": lambda n : setattr(self, 'restart_count', n.get_int_value()),
-            "startupPerformanceScore": lambda n : setattr(self, 'startup_performance_score', n.get_float_value()),
+            "model_startup_performance_score": lambda n : setattr(self, 'model_startup_performance_score', n.get_float_value()),
+            "operating_system_version": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
+            "responsive_desktop_time_in_ms": lambda n : setattr(self, 'responsive_desktop_time_in_ms', n.get_int_value()),
+            "restart_count": lambda n : setattr(self, 'restart_count', n.get_int_value()),
+            "startup_performance_score": lambda n : setattr(self, 'startup_performance_score', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -117,25 +117,25 @@ class UserExperienceAnalyticsDevicePerformance(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_float_value("averageBlueScreens", self.average_blue_screens)
-        writer.write_float_value("averageRestarts", self.average_restarts)
-        writer.write_int_value("blueScreenCount", self.blue_screen_count)
-        writer.write_int_value("bootScore", self.boot_score)
-        writer.write_int_value("coreBootTimeInMs", self.core_boot_time_in_ms)
-        writer.write_int_value("coreLoginTimeInMs", self.core_login_time_in_ms)
-        writer.write_int_value("deviceCount", self.device_count)
-        writer.write_str_value("deviceName", self.device_name)
-        writer.write_enum_value("diskType", self.disk_type)
-        writer.write_int_value("groupPolicyBootTimeInMs", self.group_policy_boot_time_in_ms)
-        writer.write_int_value("groupPolicyLoginTimeInMs", self.group_policy_login_time_in_ms)
-        writer.write_enum_value("healthStatus", self.health_status)
-        writer.write_int_value("loginScore", self.login_score)
+        writer.write_float_value("average_blue_screens", self.average_blue_screens)
+        writer.write_float_value("average_restarts", self.average_restarts)
+        writer.write_int_value("blue_screen_count", self.blue_screen_count)
+        writer.write_int_value("boot_score", self.boot_score)
+        writer.write_int_value("core_boot_time_in_ms", self.core_boot_time_in_ms)
+        writer.write_int_value("core_login_time_in_ms", self.core_login_time_in_ms)
+        writer.write_int_value("device_count", self.device_count)
+        writer.write_str_value("device_name", self.device_name)
+        writer.write_enum_value("disk_type", self.disk_type)
+        writer.write_int_value("group_policy_boot_time_in_ms", self.group_policy_boot_time_in_ms)
+        writer.write_int_value("group_policy_login_time_in_ms", self.group_policy_login_time_in_ms)
+        writer.write_enum_value("health_status", self.health_status)
+        writer.write_int_value("login_score", self.login_score)
         writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("model", self.model)
-        writer.write_float_value("modelStartupPerformanceScore", self.model_startup_performance_score)
-        writer.write_str_value("operatingSystemVersion", self.operating_system_version)
-        writer.write_int_value("responsiveDesktopTimeInMs", self.responsive_desktop_time_in_ms)
-        writer.write_int_value("restartCount", self.restart_count)
-        writer.write_float_value("startupPerformanceScore", self.startup_performance_score)
+        writer.write_float_value("model_startup_performance_score", self.model_startup_performance_score)
+        writer.write_str_value("operating_system_version", self.operating_system_version)
+        writer.write_int_value("responsive_desktop_time_in_ms", self.responsive_desktop_time_in_ms)
+        writer.write_int_value("restart_count", self.restart_count)
+        writer.write_float_value("startup_performance_score", self.startup_performance_score)
     
 

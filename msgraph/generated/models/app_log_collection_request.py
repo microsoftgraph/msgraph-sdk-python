@@ -49,9 +49,9 @@ class AppLogCollectionRequest(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "customLogFolders": lambda n : setattr(self, 'custom_log_folders', n.get_collection_of_primitive_values(str)),
-            "errorMessage": lambda n : setattr(self, 'error_message', n.get_str_value()),
+            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "custom_log_folders": lambda n : setattr(self, 'custom_log_folders', n.get_collection_of_primitive_values(str)),
+            "error_message": lambda n : setattr(self, 'error_message', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(AppLogUploadState)),
         }
         super_fields = super().get_field_deserializers()
@@ -67,9 +67,9 @@ class AppLogCollectionRequest(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("completedDateTime", self.completed_date_time)
-        writer.write_collection_of_primitive_values("customLogFolders", self.custom_log_folders)
-        writer.write_str_value("errorMessage", self.error_message)
+        writer.write_datetime_value("completed_date_time", self.completed_date_time)
+        writer.write_collection_of_primitive_values("custom_log_folders", self.custom_log_folders)
+        writer.write_str_value("error_message", self.error_message)
         writer.write_enum_value("status", self.status)
     
 

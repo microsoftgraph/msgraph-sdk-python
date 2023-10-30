@@ -59,12 +59,12 @@ class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
         from .security_reports_root import SecurityReportsRoot
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationMethods": lambda n : setattr(self, 'authentication_methods', n.get_object_value(AuthenticationMethodsRoot)),
-            "dailyPrintUsageByPrinter": lambda n : setattr(self, 'daily_print_usage_by_printer', n.get_collection_of_object_values(PrintUsageByPrinter)),
-            "dailyPrintUsageByUser": lambda n : setattr(self, 'daily_print_usage_by_user', n.get_collection_of_object_values(PrintUsageByUser)),
-            "monthlyPrintUsageByPrinter": lambda n : setattr(self, 'monthly_print_usage_by_printer', n.get_collection_of_object_values(PrintUsageByPrinter)),
-            "monthlyPrintUsageByUser": lambda n : setattr(self, 'monthly_print_usage_by_user', n.get_collection_of_object_values(PrintUsageByUser)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "authentication_methods": lambda n : setattr(self, 'authentication_methods', n.get_object_value(AuthenticationMethodsRoot)),
+            "daily_print_usage_by_printer": lambda n : setattr(self, 'daily_print_usage_by_printer', n.get_collection_of_object_values(PrintUsageByPrinter)),
+            "daily_print_usage_by_user": lambda n : setattr(self, 'daily_print_usage_by_user', n.get_collection_of_object_values(PrintUsageByUser)),
+            "monthly_print_usage_by_printer": lambda n : setattr(self, 'monthly_print_usage_by_printer', n.get_collection_of_object_values(PrintUsageByPrinter)),
+            "monthly_print_usage_by_user": lambda n : setattr(self, 'monthly_print_usage_by_user', n.get_collection_of_object_values(PrintUsageByUser)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "security": lambda n : setattr(self, 'security', n.get_object_value(SecurityReportsRoot)),
         }
         return fields
@@ -77,12 +77,12 @@ class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("authenticationMethods", self.authentication_methods)
-        writer.write_collection_of_object_values("dailyPrintUsageByPrinter", self.daily_print_usage_by_printer)
-        writer.write_collection_of_object_values("dailyPrintUsageByUser", self.daily_print_usage_by_user)
-        writer.write_collection_of_object_values("monthlyPrintUsageByPrinter", self.monthly_print_usage_by_printer)
-        writer.write_collection_of_object_values("monthlyPrintUsageByUser", self.monthly_print_usage_by_user)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_object_value("authentication_methods", self.authentication_methods)
+        writer.write_collection_of_object_values("daily_print_usage_by_printer", self.daily_print_usage_by_printer)
+        writer.write_collection_of_object_values("daily_print_usage_by_user", self.daily_print_usage_by_user)
+        writer.write_collection_of_object_values("monthly_print_usage_by_printer", self.monthly_print_usage_by_printer)
+        writer.write_collection_of_object_values("monthly_print_usage_by_user", self.monthly_print_usage_by_user)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("security", self.security)
         writer.write_additional_data_value(self.additional_data)
     

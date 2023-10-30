@@ -91,24 +91,24 @@ class Calendar(Entity):
         from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedOnlineMeetingProviders": lambda n : setattr(self, 'allowed_online_meeting_providers', n.get_collection_of_enum_values(OnlineMeetingProviderType)),
-            "calendarPermissions": lambda n : setattr(self, 'calendar_permissions', n.get_collection_of_object_values(CalendarPermission)),
-            "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(Event)),
-            "canEdit": lambda n : setattr(self, 'can_edit', n.get_bool_value()),
-            "canShare": lambda n : setattr(self, 'can_share', n.get_bool_value()),
-            "canViewPrivateItems": lambda n : setattr(self, 'can_view_private_items', n.get_bool_value()),
-            "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
+            "allowed_online_meeting_providers": lambda n : setattr(self, 'allowed_online_meeting_providers', n.get_collection_of_enum_values(OnlineMeetingProviderType)),
+            "calendar_permissions": lambda n : setattr(self, 'calendar_permissions', n.get_collection_of_object_values(CalendarPermission)),
+            "calendar_view": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(Event)),
+            "can_edit": lambda n : setattr(self, 'can_edit', n.get_bool_value()),
+            "can_share": lambda n : setattr(self, 'can_share', n.get_bool_value()),
+            "can_view_private_items": lambda n : setattr(self, 'can_view_private_items', n.get_bool_value()),
+            "change_key": lambda n : setattr(self, 'change_key', n.get_str_value()),
             "color": lambda n : setattr(self, 'color', n.get_enum_value(CalendarColor)),
-            "defaultOnlineMeetingProvider": lambda n : setattr(self, 'default_online_meeting_provider', n.get_enum_value(OnlineMeetingProviderType)),
+            "default_online_meeting_provider": lambda n : setattr(self, 'default_online_meeting_provider', n.get_enum_value(OnlineMeetingProviderType)),
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(Event)),
-            "hexColor": lambda n : setattr(self, 'hex_color', n.get_str_value()),
-            "isDefaultCalendar": lambda n : setattr(self, 'is_default_calendar', n.get_bool_value()),
-            "isRemovable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
-            "isTallyingResponses": lambda n : setattr(self, 'is_tallying_responses', n.get_bool_value()),
-            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
+            "hex_color": lambda n : setattr(self, 'hex_color', n.get_str_value()),
+            "is_default_calendar": lambda n : setattr(self, 'is_default_calendar', n.get_bool_value()),
+            "is_removable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
+            "is_tallying_responses": lambda n : setattr(self, 'is_tallying_responses', n.get_bool_value()),
+            "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "owner": lambda n : setattr(self, 'owner', n.get_object_value(EmailAddress)),
-            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
+            "single_value_extended_properties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -123,23 +123,23 @@ class Calendar(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_enum_values("allowedOnlineMeetingProviders", self.allowed_online_meeting_providers)
-        writer.write_collection_of_object_values("calendarPermissions", self.calendar_permissions)
-        writer.write_collection_of_object_values("calendarView", self.calendar_view)
-        writer.write_bool_value("canEdit", self.can_edit)
-        writer.write_bool_value("canShare", self.can_share)
-        writer.write_bool_value("canViewPrivateItems", self.can_view_private_items)
-        writer.write_str_value("changeKey", self.change_key)
+        writer.write_collection_of_enum_values("allowed_online_meeting_providers", self.allowed_online_meeting_providers)
+        writer.write_collection_of_object_values("calendar_permissions", self.calendar_permissions)
+        writer.write_collection_of_object_values("calendar_view", self.calendar_view)
+        writer.write_bool_value("can_edit", self.can_edit)
+        writer.write_bool_value("can_share", self.can_share)
+        writer.write_bool_value("can_view_private_items", self.can_view_private_items)
+        writer.write_str_value("change_key", self.change_key)
         writer.write_enum_value("color", self.color)
-        writer.write_enum_value("defaultOnlineMeetingProvider", self.default_online_meeting_provider)
+        writer.write_enum_value("default_online_meeting_provider", self.default_online_meeting_provider)
         writer.write_collection_of_object_values("events", self.events)
-        writer.write_str_value("hexColor", self.hex_color)
-        writer.write_bool_value("isDefaultCalendar", self.is_default_calendar)
-        writer.write_bool_value("isRemovable", self.is_removable)
-        writer.write_bool_value("isTallyingResponses", self.is_tallying_responses)
-        writer.write_collection_of_object_values("multiValueExtendedProperties", self.multi_value_extended_properties)
+        writer.write_str_value("hex_color", self.hex_color)
+        writer.write_bool_value("is_default_calendar", self.is_default_calendar)
+        writer.write_bool_value("is_removable", self.is_removable)
+        writer.write_bool_value("is_tallying_responses", self.is_tallying_responses)
+        writer.write_collection_of_object_values("multi_value_extended_properties", self.multi_value_extended_properties)
         writer.write_str_value("name", self.name)
         writer.write_object_value("owner", self.owner)
-        writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
+        writer.write_collection_of_object_values("single_value_extended_properties", self.single_value_extended_properties)
     
 

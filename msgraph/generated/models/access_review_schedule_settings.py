@@ -71,20 +71,20 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, BackedModel, Parsable):
         from .patterned_recurrence import PatternedRecurrence
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applyActions": lambda n : setattr(self, 'apply_actions', n.get_collection_of_object_values(AccessReviewApplyAction)),
-            "autoApplyDecisionsEnabled": lambda n : setattr(self, 'auto_apply_decisions_enabled', n.get_bool_value()),
-            "decisionHistoriesForReviewersEnabled": lambda n : setattr(self, 'decision_histories_for_reviewers_enabled', n.get_bool_value()),
-            "defaultDecision": lambda n : setattr(self, 'default_decision', n.get_str_value()),
-            "defaultDecisionEnabled": lambda n : setattr(self, 'default_decision_enabled', n.get_bool_value()),
-            "instanceDurationInDays": lambda n : setattr(self, 'instance_duration_in_days', n.get_int_value()),
-            "justificationRequiredOnApproval": lambda n : setattr(self, 'justification_required_on_approval', n.get_bool_value()),
-            "mailNotificationsEnabled": lambda n : setattr(self, 'mail_notifications_enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recommendationInsightSettings": lambda n : setattr(self, 'recommendation_insight_settings', n.get_collection_of_object_values(AccessReviewRecommendationInsightSetting)),
-            "recommendationLookBackDuration": lambda n : setattr(self, 'recommendation_look_back_duration', n.get_timedelta_value()),
-            "recommendationsEnabled": lambda n : setattr(self, 'recommendations_enabled', n.get_bool_value()),
+            "apply_actions": lambda n : setattr(self, 'apply_actions', n.get_collection_of_object_values(AccessReviewApplyAction)),
+            "auto_apply_decisions_enabled": lambda n : setattr(self, 'auto_apply_decisions_enabled', n.get_bool_value()),
+            "decision_histories_for_reviewers_enabled": lambda n : setattr(self, 'decision_histories_for_reviewers_enabled', n.get_bool_value()),
+            "default_decision": lambda n : setattr(self, 'default_decision', n.get_str_value()),
+            "default_decision_enabled": lambda n : setattr(self, 'default_decision_enabled', n.get_bool_value()),
+            "instance_duration_in_days": lambda n : setattr(self, 'instance_duration_in_days', n.get_int_value()),
+            "justification_required_on_approval": lambda n : setattr(self, 'justification_required_on_approval', n.get_bool_value()),
+            "mail_notifications_enabled": lambda n : setattr(self, 'mail_notifications_enabled', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "recommendation_insight_settings": lambda n : setattr(self, 'recommendation_insight_settings', n.get_collection_of_object_values(AccessReviewRecommendationInsightSetting)),
+            "recommendation_look_back_duration": lambda n : setattr(self, 'recommendation_look_back_duration', n.get_timedelta_value()),
+            "recommendations_enabled": lambda n : setattr(self, 'recommendations_enabled', n.get_bool_value()),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(PatternedRecurrence)),
-            "reminderNotificationsEnabled": lambda n : setattr(self, 'reminder_notifications_enabled', n.get_bool_value()),
+            "reminder_notifications_enabled": lambda n : setattr(self, 'reminder_notifications_enabled', n.get_bool_value()),
         }
         return fields
     
@@ -96,20 +96,20 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("applyActions", self.apply_actions)
-        writer.write_bool_value("autoApplyDecisionsEnabled", self.auto_apply_decisions_enabled)
-        writer.write_bool_value("decisionHistoriesForReviewersEnabled", self.decision_histories_for_reviewers_enabled)
-        writer.write_str_value("defaultDecision", self.default_decision)
-        writer.write_bool_value("defaultDecisionEnabled", self.default_decision_enabled)
-        writer.write_int_value("instanceDurationInDays", self.instance_duration_in_days)
-        writer.write_bool_value("justificationRequiredOnApproval", self.justification_required_on_approval)
-        writer.write_bool_value("mailNotificationsEnabled", self.mail_notifications_enabled)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("recommendationInsightSettings", self.recommendation_insight_settings)
-        writer.write_timedelta_value("recommendationLookBackDuration", self.recommendation_look_back_duration)
-        writer.write_bool_value("recommendationsEnabled", self.recommendations_enabled)
+        writer.write_collection_of_object_values("apply_actions", self.apply_actions)
+        writer.write_bool_value("auto_apply_decisions_enabled", self.auto_apply_decisions_enabled)
+        writer.write_bool_value("decision_histories_for_reviewers_enabled", self.decision_histories_for_reviewers_enabled)
+        writer.write_str_value("default_decision", self.default_decision)
+        writer.write_bool_value("default_decision_enabled", self.default_decision_enabled)
+        writer.write_int_value("instance_duration_in_days", self.instance_duration_in_days)
+        writer.write_bool_value("justification_required_on_approval", self.justification_required_on_approval)
+        writer.write_bool_value("mail_notifications_enabled", self.mail_notifications_enabled)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("recommendation_insight_settings", self.recommendation_insight_settings)
+        writer.write_timedelta_value("recommendation_look_back_duration", self.recommendation_look_back_duration)
+        writer.write_bool_value("recommendations_enabled", self.recommendations_enabled)
         writer.write_object_value("recurrence", self.recurrence)
-        writer.write_bool_value("reminderNotificationsEnabled", self.reminder_notifications_enabled)
+        writer.write_bool_value("reminder_notifications_enabled", self.reminder_notifications_enabled)
         writer.write_additional_data_value(self.additional_data)
     
 

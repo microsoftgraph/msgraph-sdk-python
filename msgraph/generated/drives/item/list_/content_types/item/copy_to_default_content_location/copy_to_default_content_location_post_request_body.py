@@ -40,8 +40,8 @@ class CopyToDefaultContentLocationPostRequestBody(AdditionalDataHolder, BackedMo
         from .......models.item_reference import ItemReference
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "destinationFileName": lambda n : setattr(self, 'destination_file_name', n.get_str_value()),
-            "sourceFile": lambda n : setattr(self, 'source_file', n.get_object_value(ItemReference)),
+            "destination_file_name": lambda n : setattr(self, 'destination_file_name', n.get_str_value()),
+            "source_file": lambda n : setattr(self, 'source_file', n.get_object_value(ItemReference)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class CopyToDefaultContentLocationPostRequestBody(AdditionalDataHolder, BackedMo
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("destinationFileName", self.destination_file_name)
-        writer.write_object_value("sourceFile", self.source_file)
+        writer.write_str_value("destination_file_name", self.destination_file_name)
+        writer.write_object_value("source_file", self.source_file)
         writer.write_additional_data_value(self.additional_data)
     
 

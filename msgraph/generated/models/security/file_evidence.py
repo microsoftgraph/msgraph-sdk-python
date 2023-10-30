@@ -46,9 +46,9 @@ class FileEvidence(AlertEvidence):
         from .file_details import FileDetails
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(DetectionStatus)),
-            "fileDetails": lambda n : setattr(self, 'file_details', n.get_object_value(FileDetails)),
-            "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
+            "detection_status": lambda n : setattr(self, 'detection_status', n.get_enum_value(DetectionStatus)),
+            "file_details": lambda n : setattr(self, 'file_details', n.get_object_value(FileDetails)),
+            "mde_device_id": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,8 +63,8 @@ class FileEvidence(AlertEvidence):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("detectionStatus", self.detection_status)
-        writer.write_object_value("fileDetails", self.file_details)
-        writer.write_str_value("mdeDeviceId", self.mde_device_id)
+        writer.write_enum_value("detection_status", self.detection_status)
+        writer.write_object_value("file_details", self.file_details)
+        writer.write_str_value("mde_device_id", self.mde_device_id)
     
 

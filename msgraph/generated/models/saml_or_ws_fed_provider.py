@@ -65,11 +65,11 @@ class SamlOrWsFedProvider(IdentityProviderBase):
         from .saml_or_ws_fed_external_domain_federation import SamlOrWsFedExternalDomainFederation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "issuerUri": lambda n : setattr(self, 'issuer_uri', n.get_str_value()),
-            "metadataExchangeUri": lambda n : setattr(self, 'metadata_exchange_uri', n.get_str_value()),
-            "passiveSignInUri": lambda n : setattr(self, 'passive_sign_in_uri', n.get_str_value()),
-            "preferredAuthenticationProtocol": lambda n : setattr(self, 'preferred_authentication_protocol', n.get_enum_value(AuthenticationProtocol)),
-            "signingCertificate": lambda n : setattr(self, 'signing_certificate', n.get_str_value()),
+            "issuer_uri": lambda n : setattr(self, 'issuer_uri', n.get_str_value()),
+            "metadata_exchange_uri": lambda n : setattr(self, 'metadata_exchange_uri', n.get_str_value()),
+            "passive_sign_in_uri": lambda n : setattr(self, 'passive_sign_in_uri', n.get_str_value()),
+            "preferred_authentication_protocol": lambda n : setattr(self, 'preferred_authentication_protocol', n.get_enum_value(AuthenticationProtocol)),
+            "signing_certificate": lambda n : setattr(self, 'signing_certificate', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,10 +84,10 @@ class SamlOrWsFedProvider(IdentityProviderBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("issuerUri", self.issuer_uri)
-        writer.write_str_value("metadataExchangeUri", self.metadata_exchange_uri)
-        writer.write_str_value("passiveSignInUri", self.passive_sign_in_uri)
-        writer.write_enum_value("preferredAuthenticationProtocol", self.preferred_authentication_protocol)
-        writer.write_str_value("signingCertificate", self.signing_certificate)
+        writer.write_str_value("issuer_uri", self.issuer_uri)
+        writer.write_str_value("metadata_exchange_uri", self.metadata_exchange_uri)
+        writer.write_str_value("passive_sign_in_uri", self.passive_sign_in_uri)
+        writer.write_enum_value("preferred_authentication_protocol", self.preferred_authentication_protocol)
+        writer.write_str_value("signing_certificate", self.signing_certificate)
     
 

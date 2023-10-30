@@ -42,8 +42,8 @@ class MidPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "numChars": lambda n : setattr(self, 'num_chars', n.get_object_value(Json)),
-            "startNum": lambda n : setattr(self, 'start_num', n.get_object_value(Json)),
+            "num_chars": lambda n : setattr(self, 'num_chars', n.get_object_value(Json)),
+            "start_num": lambda n : setattr(self, 'start_num', n.get_object_value(Json)),
             "text": lambda n : setattr(self, 'text', n.get_object_value(Json)),
         }
         return fields
@@ -56,8 +56,8 @@ class MidPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("numChars", self.num_chars)
-        writer.write_object_value("startNum", self.start_num)
+        writer.write_object_value("num_chars", self.num_chars)
+        writer.write_object_value("start_num", self.start_num)
         writer.write_object_value("text", self.text)
         writer.write_additional_data_value(self.additional_data)
     

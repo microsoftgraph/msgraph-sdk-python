@@ -41,8 +41,8 @@ class AuthenticationMethodModeDetail(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationMethod": lambda n : setattr(self, 'authentication_method', n.get_enum_value(BaseAuthenticationMethod)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "authentication_method": lambda n : setattr(self, 'authentication_method', n.get_enum_value(BaseAuthenticationMethod)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class AuthenticationMethodModeDetail(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("authenticationMethod", self.authentication_method)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_enum_value("authentication_method", self.authentication_method)
+        writer.write_str_value("display_name", self.display_name)
     
 

@@ -40,7 +40,7 @@ class InvitePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ......models.invitation_participant_info import InvitationParticipantInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
+            "client_context": lambda n : setattr(self, 'client_context', n.get_str_value()),
             "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(InvitationParticipantInfo)),
         }
         return fields
@@ -53,7 +53,7 @@ class InvitePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("clientContext", self.client_context)
+        writer.write_str_value("client_context", self.client_context)
         writer.write_collection_of_object_values("participants", self.participants)
         writer.write_additional_data_value(self.additional_data)
     

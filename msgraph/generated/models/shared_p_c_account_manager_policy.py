@@ -49,11 +49,11 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, BackedModel, Parsable):
         from .shared_p_c_account_deletion_policy_type import SharedPCAccountDeletionPolicyType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accountDeletionPolicy": lambda n : setattr(self, 'account_deletion_policy', n.get_enum_value(SharedPCAccountDeletionPolicyType)),
-            "cacheAccountsAboveDiskFreePercentage": lambda n : setattr(self, 'cache_accounts_above_disk_free_percentage', n.get_int_value()),
-            "inactiveThresholdDays": lambda n : setattr(self, 'inactive_threshold_days', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "removeAccountsBelowDiskFreePercentage": lambda n : setattr(self, 'remove_accounts_below_disk_free_percentage', n.get_int_value()),
+            "account_deletion_policy": lambda n : setattr(self, 'account_deletion_policy', n.get_enum_value(SharedPCAccountDeletionPolicyType)),
+            "cache_accounts_above_disk_free_percentage": lambda n : setattr(self, 'cache_accounts_above_disk_free_percentage', n.get_int_value()),
+            "inactive_threshold_days": lambda n : setattr(self, 'inactive_threshold_days', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "remove_accounts_below_disk_free_percentage": lambda n : setattr(self, 'remove_accounts_below_disk_free_percentage', n.get_int_value()),
         }
         return fields
     
@@ -65,11 +65,11 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("accountDeletionPolicy", self.account_deletion_policy)
-        writer.write_int_value("cacheAccountsAboveDiskFreePercentage", self.cache_accounts_above_disk_free_percentage)
-        writer.write_int_value("inactiveThresholdDays", self.inactive_threshold_days)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("removeAccountsBelowDiskFreePercentage", self.remove_accounts_below_disk_free_percentage)
+        writer.write_enum_value("account_deletion_policy", self.account_deletion_policy)
+        writer.write_int_value("cache_accounts_above_disk_free_percentage", self.cache_accounts_above_disk_free_percentage)
+        writer.write_int_value("inactive_threshold_days", self.inactive_threshold_days)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("remove_accounts_below_disk_free_percentage", self.remove_accounts_below_disk_free_percentage)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -39,7 +39,7 @@ class WindowsWebApp(MobileApp):
         from .mobile_app import MobileApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appUrl": lambda n : setattr(self, 'app_url', n.get_str_value()),
+            "app_url": lambda n : setattr(self, 'app_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class WindowsWebApp(MobileApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("appUrl", self.app_url)
+        writer.write_str_value("app_url", self.app_url)
     
 

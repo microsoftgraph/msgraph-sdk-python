@@ -35,9 +35,9 @@ class PrivacyProfile(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "contactEmail": lambda n : setattr(self, 'contact_email', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "statementUrl": lambda n : setattr(self, 'statement_url', n.get_str_value()),
+            "contact_email": lambda n : setattr(self, 'contact_email', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "statement_url": lambda n : setattr(self, 'statement_url', n.get_str_value()),
         }
         return fields
     
@@ -49,9 +49,9 @@ class PrivacyProfile(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("contactEmail", self.contact_email)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("statementUrl", self.statement_url)
+        writer.write_str_value("contact_email", self.contact_email)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("statement_url", self.statement_url)
         writer.write_additional_data_value(self.additional_data)
     
 

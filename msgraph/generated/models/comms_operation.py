@@ -127,8 +127,8 @@ class CommsOperation(Entity):
         from .update_recording_status_operation import UpdateRecordingStatusOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
-            "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(ResultInfo)),
+            "client_context": lambda n : setattr(self, 'client_context', n.get_str_value()),
+            "result_info": lambda n : setattr(self, 'result_info', n.get_object_value(ResultInfo)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(OperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -144,8 +144,8 @@ class CommsOperation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("clientContext", self.client_context)
-        writer.write_object_value("resultInfo", self.result_info)
+        writer.write_str_value("client_context", self.client_context)
+        writer.write_object_value("result_info", self.result_info)
         writer.write_enum_value("status", self.status)
     
 

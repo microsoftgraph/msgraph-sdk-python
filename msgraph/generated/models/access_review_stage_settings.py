@@ -57,15 +57,15 @@ class AccessReviewStageSettings(AdditionalDataHolder, BackedModel, Parsable):
         from .access_review_reviewer_scope import AccessReviewReviewerScope
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "decisionsThatWillMoveToNextStage": lambda n : setattr(self, 'decisions_that_will_move_to_next_stage', n.get_collection_of_primitive_values(str)),
-            "dependsOn": lambda n : setattr(self, 'depends_on', n.get_collection_of_primitive_values(str)),
-            "durationInDays": lambda n : setattr(self, 'duration_in_days', n.get_int_value()),
-            "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recommendationInsightSettings": lambda n : setattr(self, 'recommendation_insight_settings', n.get_collection_of_object_values(AccessReviewRecommendationInsightSetting)),
-            "recommendationsEnabled": lambda n : setattr(self, 'recommendations_enabled', n.get_bool_value()),
+            "decisions_that_will_move_to_next_stage": lambda n : setattr(self, 'decisions_that_will_move_to_next_stage', n.get_collection_of_primitive_values(str)),
+            "depends_on": lambda n : setattr(self, 'depends_on', n.get_collection_of_primitive_values(str)),
+            "duration_in_days": lambda n : setattr(self, 'duration_in_days', n.get_int_value()),
+            "fallback_reviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "recommendation_insight_settings": lambda n : setattr(self, 'recommendation_insight_settings', n.get_collection_of_object_values(AccessReviewRecommendationInsightSetting)),
+            "recommendations_enabled": lambda n : setattr(self, 'recommendations_enabled', n.get_bool_value()),
             "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
-            "stageId": lambda n : setattr(self, 'stage_id', n.get_str_value()),
+            "stage_id": lambda n : setattr(self, 'stage_id', n.get_str_value()),
         }
         return fields
     
@@ -77,15 +77,15 @@ class AccessReviewStageSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("decisionsThatWillMoveToNextStage", self.decisions_that_will_move_to_next_stage)
-        writer.write_collection_of_primitive_values("dependsOn", self.depends_on)
-        writer.write_int_value("durationInDays", self.duration_in_days)
-        writer.write_collection_of_object_values("fallbackReviewers", self.fallback_reviewers)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("recommendationInsightSettings", self.recommendation_insight_settings)
-        writer.write_bool_value("recommendationsEnabled", self.recommendations_enabled)
+        writer.write_collection_of_primitive_values("decisions_that_will_move_to_next_stage", self.decisions_that_will_move_to_next_stage)
+        writer.write_collection_of_primitive_values("depends_on", self.depends_on)
+        writer.write_int_value("duration_in_days", self.duration_in_days)
+        writer.write_collection_of_object_values("fallback_reviewers", self.fallback_reviewers)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("recommendation_insight_settings", self.recommendation_insight_settings)
+        writer.write_bool_value("recommendations_enabled", self.recommendations_enabled)
         writer.write_collection_of_object_values("reviewers", self.reviewers)
-        writer.write_str_value("stageId", self.stage_id)
+        writer.write_str_value("stage_id", self.stage_id)
         writer.write_additional_data_value(self.additional_data)
     
 

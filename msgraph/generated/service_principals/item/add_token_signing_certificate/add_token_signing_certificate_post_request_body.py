@@ -34,8 +34,8 @@ class AddTokenSigningCertificatePostRequestBody(AdditionalDataHolder, BackedMode
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
         }
         return fields
     
@@ -47,8 +47,8 @@ class AddTokenSigningCertificatePostRequestBody(AdditionalDataHolder, BackedMode
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

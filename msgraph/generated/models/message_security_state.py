@@ -50,16 +50,16 @@ class MessageSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "connectingIP": lambda n : setattr(self, 'connecting_i_p', n.get_str_value()),
-            "deliveryAction": lambda n : setattr(self, 'delivery_action', n.get_str_value()),
-            "deliveryLocation": lambda n : setattr(self, 'delivery_location', n.get_str_value()),
+            "connecting_i_p": lambda n : setattr(self, 'connecting_i_p', n.get_str_value()),
+            "delivery_action": lambda n : setattr(self, 'delivery_action', n.get_str_value()),
+            "delivery_location": lambda n : setattr(self, 'delivery_location', n.get_str_value()),
             "directionality": lambda n : setattr(self, 'directionality', n.get_str_value()),
-            "internetMessageId": lambda n : setattr(self, 'internet_message_id', n.get_str_value()),
-            "messageFingerprint": lambda n : setattr(self, 'message_fingerprint', n.get_str_value()),
-            "messageReceivedDateTime": lambda n : setattr(self, 'message_received_date_time', n.get_datetime_value()),
-            "messageSubject": lambda n : setattr(self, 'message_subject', n.get_str_value()),
-            "networkMessageId": lambda n : setattr(self, 'network_message_id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "internet_message_id": lambda n : setattr(self, 'internet_message_id', n.get_str_value()),
+            "message_fingerprint": lambda n : setattr(self, 'message_fingerprint', n.get_str_value()),
+            "message_received_date_time": lambda n : setattr(self, 'message_received_date_time', n.get_datetime_value()),
+            "message_subject": lambda n : setattr(self, 'message_subject', n.get_str_value()),
+            "network_message_id": lambda n : setattr(self, 'network_message_id', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -71,16 +71,16 @@ class MessageSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("connectingIP", self.connecting_i_p)
-        writer.write_str_value("deliveryAction", self.delivery_action)
-        writer.write_str_value("deliveryLocation", self.delivery_location)
+        writer.write_str_value("connecting_i_p", self.connecting_i_p)
+        writer.write_str_value("delivery_action", self.delivery_action)
+        writer.write_str_value("delivery_location", self.delivery_location)
         writer.write_str_value("directionality", self.directionality)
-        writer.write_str_value("internetMessageId", self.internet_message_id)
-        writer.write_str_value("messageFingerprint", self.message_fingerprint)
-        writer.write_datetime_value("messageReceivedDateTime", self.message_received_date_time)
-        writer.write_str_value("messageSubject", self.message_subject)
-        writer.write_str_value("networkMessageId", self.network_message_id)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("internet_message_id", self.internet_message_id)
+        writer.write_str_value("message_fingerprint", self.message_fingerprint)
+        writer.write_datetime_value("message_received_date_time", self.message_received_date_time)
+        writer.write_str_value("message_subject", self.message_subject)
+        writer.write_str_value("network_message_id", self.network_message_id)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

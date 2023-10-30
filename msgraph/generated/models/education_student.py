@@ -51,13 +51,13 @@ class EducationStudent(AdditionalDataHolder, BackedModel, Parsable):
         from .education_gender import EducationGender
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "birthDate": lambda n : setattr(self, 'birth_date', n.get_date_value()),
-            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "birth_date": lambda n : setattr(self, 'birth_date', n.get_date_value()),
+            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "gender": lambda n : setattr(self, 'gender', n.get_enum_value(EducationGender)),
             "grade": lambda n : setattr(self, 'grade', n.get_str_value()),
-            "graduationYear": lambda n : setattr(self, 'graduation_year', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "studentNumber": lambda n : setattr(self, 'student_number', n.get_str_value()),
+            "graduation_year": lambda n : setattr(self, 'graduation_year', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "student_number": lambda n : setattr(self, 'student_number', n.get_str_value()),
         }
         return fields
     
@@ -69,13 +69,13 @@ class EducationStudent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_date_value("birthDate", self.birth_date)
-        writer.write_str_value("externalId", self.external_id)
+        writer.write_date_value("birth_date", self.birth_date)
+        writer.write_str_value("external_id", self.external_id)
         writer.write_enum_value("gender", self.gender)
         writer.write_str_value("grade", self.grade)
-        writer.write_str_value("graduationYear", self.graduation_year)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("studentNumber", self.student_number)
+        writer.write_str_value("graduation_year", self.graduation_year)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("student_number", self.student_number)
         writer.write_additional_data_value(self.additional_data)
     
 

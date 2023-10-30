@@ -31,7 +31,7 @@ class WipeManagedAppRegistrationsByDeviceTagPostRequestBody(AdditionalDataHolder
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceTag": lambda n : setattr(self, 'device_tag', n.get_str_value()),
+            "device_tag": lambda n : setattr(self, 'device_tag', n.get_str_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class WipeManagedAppRegistrationsByDeviceTagPostRequestBody(AdditionalDataHolder
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("deviceTag", self.device_tag)
+        writer.write_str_value("device_tag", self.device_tag)
         writer.write_additional_data_value(self.additional_data)
     
 

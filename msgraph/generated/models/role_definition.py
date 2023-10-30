@@ -65,10 +65,10 @@ class RoleDefinition(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
-            "roleAssignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(RoleAssignment)),
-            "rolePermissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(RolePermission)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "is_built_in": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
+            "role_assignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(RoleAssignment)),
+            "role_permissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(RolePermission)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,9 +84,9 @@ class RoleDefinition(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_bool_value("isBuiltIn", self.is_built_in)
-        writer.write_collection_of_object_values("roleAssignments", self.role_assignments)
-        writer.write_collection_of_object_values("rolePermissions", self.role_permissions)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_bool_value("is_built_in", self.is_built_in)
+        writer.write_collection_of_object_values("role_assignments", self.role_assignments)
+        writer.write_collection_of_object_values("role_permissions", self.role_permissions)
     
 

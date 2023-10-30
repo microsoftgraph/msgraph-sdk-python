@@ -43,13 +43,13 @@ class TeamMemberSettings(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowAddRemoveApps": lambda n : setattr(self, 'allow_add_remove_apps', n.get_bool_value()),
-            "allowCreatePrivateChannels": lambda n : setattr(self, 'allow_create_private_channels', n.get_bool_value()),
-            "allowCreateUpdateChannels": lambda n : setattr(self, 'allow_create_update_channels', n.get_bool_value()),
-            "allowCreateUpdateRemoveConnectors": lambda n : setattr(self, 'allow_create_update_remove_connectors', n.get_bool_value()),
-            "allowCreateUpdateRemoveTabs": lambda n : setattr(self, 'allow_create_update_remove_tabs', n.get_bool_value()),
-            "allowDeleteChannels": lambda n : setattr(self, 'allow_delete_channels', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "allow_add_remove_apps": lambda n : setattr(self, 'allow_add_remove_apps', n.get_bool_value()),
+            "allow_create_private_channels": lambda n : setattr(self, 'allow_create_private_channels', n.get_bool_value()),
+            "allow_create_update_channels": lambda n : setattr(self, 'allow_create_update_channels', n.get_bool_value()),
+            "allow_create_update_remove_connectors": lambda n : setattr(self, 'allow_create_update_remove_connectors', n.get_bool_value()),
+            "allow_create_update_remove_tabs": lambda n : setattr(self, 'allow_create_update_remove_tabs', n.get_bool_value()),
+            "allow_delete_channels": lambda n : setattr(self, 'allow_delete_channels', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -61,13 +61,13 @@ class TeamMemberSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("allowAddRemoveApps", self.allow_add_remove_apps)
-        writer.write_bool_value("allowCreatePrivateChannels", self.allow_create_private_channels)
-        writer.write_bool_value("allowCreateUpdateChannels", self.allow_create_update_channels)
-        writer.write_bool_value("allowCreateUpdateRemoveConnectors", self.allow_create_update_remove_connectors)
-        writer.write_bool_value("allowCreateUpdateRemoveTabs", self.allow_create_update_remove_tabs)
-        writer.write_bool_value("allowDeleteChannels", self.allow_delete_channels)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("allow_add_remove_apps", self.allow_add_remove_apps)
+        writer.write_bool_value("allow_create_private_channels", self.allow_create_private_channels)
+        writer.write_bool_value("allow_create_update_channels", self.allow_create_update_channels)
+        writer.write_bool_value("allow_create_update_remove_connectors", self.allow_create_update_remove_connectors)
+        writer.write_bool_value("allow_create_update_remove_tabs", self.allow_create_update_remove_tabs)
+        writer.write_bool_value("allow_delete_channels", self.allow_delete_channels)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

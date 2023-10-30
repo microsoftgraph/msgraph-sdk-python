@@ -53,13 +53,13 @@ class BookingQuestionAnswer(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "answer": lambda n : setattr(self, 'answer', n.get_str_value()),
-            "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(AnswerInputType)),
-            "answerOptions": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
-            "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "answer_input_type": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(AnswerInputType)),
+            "answer_options": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
+            "is_required": lambda n : setattr(self, 'is_required', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "question": lambda n : setattr(self, 'question', n.get_str_value()),
-            "questionId": lambda n : setattr(self, 'question_id', n.get_str_value()),
-            "selectedOptions": lambda n : setattr(self, 'selected_options', n.get_collection_of_primitive_values(str)),
+            "question_id": lambda n : setattr(self, 'question_id', n.get_str_value()),
+            "selected_options": lambda n : setattr(self, 'selected_options', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -72,13 +72,13 @@ class BookingQuestionAnswer(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("answer", self.answer)
-        writer.write_enum_value("answerInputType", self.answer_input_type)
-        writer.write_collection_of_primitive_values("answerOptions", self.answer_options)
-        writer.write_bool_value("isRequired", self.is_required)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_enum_value("answer_input_type", self.answer_input_type)
+        writer.write_collection_of_primitive_values("answer_options", self.answer_options)
+        writer.write_bool_value("is_required", self.is_required)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("question", self.question)
-        writer.write_str_value("questionId", self.question_id)
-        writer.write_collection_of_primitive_values("selectedOptions", self.selected_options)
+        writer.write_str_value("question_id", self.question_id)
+        writer.write_collection_of_primitive_values("selected_options", self.selected_options)
         writer.write_additional_data_value(self.additional_data)
     
 

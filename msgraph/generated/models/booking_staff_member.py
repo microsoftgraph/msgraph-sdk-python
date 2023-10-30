@@ -59,14 +59,14 @@ class BookingStaffMember(BookingStaffMemberBase):
         from .booking_work_hours import BookingWorkHours
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "availabilityIsAffectedByPersonalCalendar": lambda n : setattr(self, 'availability_is_affected_by_personal_calendar', n.get_bool_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
-            "isEmailNotificationEnabled": lambda n : setattr(self, 'is_email_notification_enabled', n.get_bool_value()),
+            "availability_is_affected_by_personal_calendar": lambda n : setattr(self, 'availability_is_affected_by_personal_calendar', n.get_bool_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "is_email_notification_enabled": lambda n : setattr(self, 'is_email_notification_enabled', n.get_bool_value()),
             "role": lambda n : setattr(self, 'role', n.get_enum_value(BookingStaffRole)),
-            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
-            "useBusinessHours": lambda n : setattr(self, 'use_business_hours', n.get_bool_value()),
-            "workingHours": lambda n : setattr(self, 'working_hours', n.get_collection_of_object_values(BookingWorkHours)),
+            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "use_business_hours": lambda n : setattr(self, 'use_business_hours', n.get_bool_value()),
+            "working_hours": lambda n : setattr(self, 'working_hours', n.get_collection_of_object_values(BookingWorkHours)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -81,13 +81,13 @@ class BookingStaffMember(BookingStaffMemberBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("availabilityIsAffectedByPersonalCalendar", self.availability_is_affected_by_personal_calendar)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("emailAddress", self.email_address)
-        writer.write_bool_value("isEmailNotificationEnabled", self.is_email_notification_enabled)
+        writer.write_bool_value("availability_is_affected_by_personal_calendar", self.availability_is_affected_by_personal_calendar)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("email_address", self.email_address)
+        writer.write_bool_value("is_email_notification_enabled", self.is_email_notification_enabled)
         writer.write_enum_value("role", self.role)
-        writer.write_str_value("timeZone", self.time_zone)
-        writer.write_bool_value("useBusinessHours", self.use_business_hours)
-        writer.write_collection_of_object_values("workingHours", self.working_hours)
+        writer.write_str_value("time_zone", self.time_zone)
+        writer.write_bool_value("use_business_hours", self.use_business_hours)
+        writer.write_collection_of_object_values("working_hours", self.working_hours)
     
 

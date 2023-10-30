@@ -86,20 +86,20 @@ class AccessReviewScheduleDefinition(Entity):
         from .user_identity import UserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "additionalNotificationRecipients": lambda n : setattr(self, 'additional_notification_recipients', n.get_collection_of_object_values(AccessReviewNotificationRecipientItem)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(UserIdentity)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "descriptionForAdmins": lambda n : setattr(self, 'description_for_admins', n.get_str_value()),
-            "descriptionForReviewers": lambda n : setattr(self, 'description_for_reviewers', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
-            "instanceEnumerationScope": lambda n : setattr(self, 'instance_enumeration_scope', n.get_object_value(AccessReviewScope)),
+            "additional_notification_recipients": lambda n : setattr(self, 'additional_notification_recipients', n.get_collection_of_object_values(AccessReviewNotificationRecipientItem)),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(UserIdentity)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "description_for_admins": lambda n : setattr(self, 'description_for_admins', n.get_str_value()),
+            "description_for_reviewers": lambda n : setattr(self, 'description_for_reviewers', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "fallback_reviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
+            "instance_enumeration_scope": lambda n : setattr(self, 'instance_enumeration_scope', n.get_object_value(AccessReviewScope)),
             "instances": lambda n : setattr(self, 'instances', n.get_collection_of_object_values(AccessReviewInstance)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
             "scope": lambda n : setattr(self, 'scope', n.get_object_value(AccessReviewScope)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(AccessReviewScheduleSettings)),
-            "stageSettings": lambda n : setattr(self, 'stage_settings', n.get_collection_of_object_values(AccessReviewStageSettings)),
+            "stage_settings": lambda n : setattr(self, 'stage_settings', n.get_collection_of_object_values(AccessReviewStageSettings)),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -115,20 +115,20 @@ class AccessReviewScheduleDefinition(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("additionalNotificationRecipients", self.additional_notification_recipients)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_str_value("descriptionForAdmins", self.description_for_admins)
-        writer.write_str_value("descriptionForReviewers", self.description_for_reviewers)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_object_values("fallbackReviewers", self.fallback_reviewers)
-        writer.write_object_value("instanceEnumerationScope", self.instance_enumeration_scope)
+        writer.write_collection_of_object_values("additional_notification_recipients", self.additional_notification_recipients)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_str_value("description_for_admins", self.description_for_admins)
+        writer.write_str_value("description_for_reviewers", self.description_for_reviewers)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_object_values("fallback_reviewers", self.fallback_reviewers)
+        writer.write_object_value("instance_enumeration_scope", self.instance_enumeration_scope)
         writer.write_collection_of_object_values("instances", self.instances)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_collection_of_object_values("reviewers", self.reviewers)
         writer.write_object_value("scope", self.scope)
         writer.write_object_value("settings", self.settings)
-        writer.write_collection_of_object_values("stageSettings", self.stage_settings)
+        writer.write_collection_of_object_values("stage_settings", self.stage_settings)
         writer.write_str_value("status", self.status)
     
 

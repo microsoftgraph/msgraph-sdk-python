@@ -60,13 +60,13 @@ class PrivilegedAccessGroupEligibilityScheduleRequest(PrivilegedAccessScheduleRe
         from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessId": lambda n : setattr(self, 'access_id', n.get_enum_value(PrivilegedAccessGroupRelationships)),
+            "access_id": lambda n : setattr(self, 'access_id', n.get_enum_value(PrivilegedAccessGroupRelationships)),
             "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
-            "groupId": lambda n : setattr(self, 'group_id', n.get_str_value()),
+            "group_id": lambda n : setattr(self, 'group_id', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(DirectoryObject)),
-            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "targetSchedule": lambda n : setattr(self, 'target_schedule', n.get_object_value(PrivilegedAccessGroupEligibilitySchedule)),
-            "targetScheduleId": lambda n : setattr(self, 'target_schedule_id', n.get_str_value()),
+            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "target_schedule": lambda n : setattr(self, 'target_schedule', n.get_object_value(PrivilegedAccessGroupEligibilitySchedule)),
+            "target_schedule_id": lambda n : setattr(self, 'target_schedule_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -81,12 +81,12 @@ class PrivilegedAccessGroupEligibilityScheduleRequest(PrivilegedAccessScheduleRe
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("accessId", self.access_id)
+        writer.write_enum_value("access_id", self.access_id)
         writer.write_object_value("group", self.group)
-        writer.write_str_value("groupId", self.group_id)
+        writer.write_str_value("group_id", self.group_id)
         writer.write_object_value("principal", self.principal)
-        writer.write_str_value("principalId", self.principal_id)
-        writer.write_object_value("targetSchedule", self.target_schedule)
-        writer.write_str_value("targetScheduleId", self.target_schedule_id)
+        writer.write_str_value("principal_id", self.principal_id)
+        writer.write_object_value("target_schedule", self.target_schedule)
+        writer.write_str_value("target_schedule_id", self.target_schedule_id)
     
 

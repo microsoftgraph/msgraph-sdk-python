@@ -33,8 +33,8 @@ class StoragePlanInformation(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "upgradeAvailable": lambda n : setattr(self, 'upgrade_available', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "upgrade_available": lambda n : setattr(self, 'upgrade_available', n.get_bool_value()),
         }
         return fields
     
@@ -46,8 +46,8 @@ class StoragePlanInformation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_bool_value("upgradeAvailable", self.upgrade_available)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_bool_value("upgrade_available", self.upgrade_available)
         writer.write_additional_data_value(self.additional_data)
     
 

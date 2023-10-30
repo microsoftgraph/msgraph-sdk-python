@@ -46,9 +46,9 @@ class WindowsInformationProtectionAppLearningSummary(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
-            "applicationType": lambda n : setattr(self, 'application_type', n.get_enum_value(ApplicationType)),
-            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "application_name": lambda n : setattr(self, 'application_name', n.get_str_value()),
+            "application_type": lambda n : setattr(self, 'application_type', n.get_enum_value(ApplicationType)),
+            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,8 +63,8 @@ class WindowsInformationProtectionAppLearningSummary(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("applicationName", self.application_name)
-        writer.write_enum_value("applicationType", self.application_type)
-        writer.write_int_value("deviceCount", self.device_count)
+        writer.write_str_value("application_name", self.application_name)
+        writer.write_enum_value("application_type", self.application_type)
+        writer.write_int_value("device_count", self.device_count)
     
 

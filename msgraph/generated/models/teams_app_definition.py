@@ -69,13 +69,13 @@ class TeamsAppDefinition(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "authorization": lambda n : setattr(self, 'authorization', n.get_object_value(TeamsAppAuthorization)),
             "bot": lambda n : setattr(self, 'bot', n.get_object_value(TeamworkBot)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "publishingState": lambda n : setattr(self, 'publishing_state', n.get_enum_value(TeamsAppPublishingState)),
-            "shortDescription": lambda n : setattr(self, 'short_description', n.get_str_value()),
-            "teamsAppId": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "publishing_state": lambda n : setattr(self, 'publishing_state', n.get_enum_value(TeamsAppPublishingState)),
+            "short_description": lambda n : setattr(self, 'short_description', n.get_str_value()),
+            "teams_app_id": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -93,13 +93,13 @@ class TeamsAppDefinition(Entity):
         super().serialize(writer)
         writer.write_object_value("authorization", self.authorization)
         writer.write_object_value("bot", self.bot)
-        writer.write_object_value("createdBy", self.created_by)
+        writer.write_object_value("created_by", self.created_by)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_enum_value("publishingState", self.publishing_state)
-        writer.write_str_value("shortDescription", self.short_description)
-        writer.write_str_value("teamsAppId", self.teams_app_id)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_enum_value("publishing_state", self.publishing_state)
+        writer.write_str_value("short_description", self.short_description)
+        writer.write_str_value("teams_app_id", self.teams_app_id)
         writer.write_str_value("version", self.version)
     
 

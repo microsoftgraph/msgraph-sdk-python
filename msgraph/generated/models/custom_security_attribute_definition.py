@@ -55,15 +55,15 @@ class CustomSecurityAttributeDefinition(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedValues": lambda n : setattr(self, 'allowed_values', n.get_collection_of_object_values(AllowedValue)),
-            "attributeSet": lambda n : setattr(self, 'attribute_set', n.get_str_value()),
+            "allowed_values": lambda n : setattr(self, 'allowed_values', n.get_collection_of_object_values(AllowedValue)),
+            "attribute_set": lambda n : setattr(self, 'attribute_set', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "isCollection": lambda n : setattr(self, 'is_collection', n.get_bool_value()),
-            "isSearchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
+            "is_collection": lambda n : setattr(self, 'is_collection', n.get_bool_value()),
+            "is_searchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
-            "usePreDefinedValuesOnly": lambda n : setattr(self, 'use_pre_defined_values_only', n.get_bool_value()),
+            "use_pre_defined_values_only": lambda n : setattr(self, 'use_pre_defined_values_only', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,14 +78,14 @@ class CustomSecurityAttributeDefinition(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("allowedValues", self.allowed_values)
-        writer.write_str_value("attributeSet", self.attribute_set)
+        writer.write_collection_of_object_values("allowed_values", self.allowed_values)
+        writer.write_str_value("attribute_set", self.attribute_set)
         writer.write_str_value("description", self.description)
-        writer.write_bool_value("isCollection", self.is_collection)
-        writer.write_bool_value("isSearchable", self.is_searchable)
+        writer.write_bool_value("is_collection", self.is_collection)
+        writer.write_bool_value("is_searchable", self.is_searchable)
         writer.write_str_value("name", self.name)
         writer.write_str_value("status", self.status)
         writer.write_str_value("type", self.type)
-        writer.write_bool_value("usePreDefinedValuesOnly", self.use_pre_defined_values_only)
+        writer.write_bool_value("use_pre_defined_values_only", self.use_pre_defined_values_only)
     
 

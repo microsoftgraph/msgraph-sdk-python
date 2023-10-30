@@ -38,8 +38,8 @@ class ChannelMembersNotificationRecipient(TeamworkNotificationRecipient):
         from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "channelId": lambda n : setattr(self, 'channel_id', n.get_str_value()),
-            "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),
+            "channel_id": lambda n : setattr(self, 'channel_id', n.get_str_value()),
+            "team_id": lambda n : setattr(self, 'team_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class ChannelMembersNotificationRecipient(TeamworkNotificationRecipient):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("channelId", self.channel_id)
-        writer.write_str_value("teamId", self.team_id)
+        writer.write_str_value("channel_id", self.channel_id)
+        writer.write_str_value("team_id", self.team_id)
     
 

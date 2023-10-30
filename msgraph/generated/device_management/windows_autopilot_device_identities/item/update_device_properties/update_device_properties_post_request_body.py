@@ -37,10 +37,10 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, BackedModel, P
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "addressableUserName": lambda n : setattr(self, 'addressable_user_name', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "groupTag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "addressable_user_name": lambda n : setattr(self, 'addressable_user_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "group_tag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -52,10 +52,10 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, BackedModel, P
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("addressableUserName", self.addressable_user_name)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("groupTag", self.group_tag)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_str_value("addressable_user_name", self.addressable_user_name)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("group_tag", self.group_tag)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
     
 

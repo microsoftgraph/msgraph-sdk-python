@@ -44,7 +44,7 @@ class Confidence_NormPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
         fields: Dict[str, Callable[[Any], None]] = {
             "alpha": lambda n : setattr(self, 'alpha', n.get_object_value(Json)),
             "size": lambda n : setattr(self, 'size', n.get_object_value(Json)),
-            "standardDev": lambda n : setattr(self, 'standard_dev', n.get_object_value(Json)),
+            "standard_dev": lambda n : setattr(self, 'standard_dev', n.get_object_value(Json)),
         }
         return fields
     
@@ -58,7 +58,7 @@ class Confidence_NormPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
             raise TypeError("writer cannot be null.")
         writer.write_object_value("alpha", self.alpha)
         writer.write_object_value("size", self.size)
-        writer.write_object_value("standardDev", self.standard_dev)
+        writer.write_object_value("standard_dev", self.standard_dev)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -50,11 +50,11 @@ class RecentNotebook(AdditionalDataHolder, BackedModel, Parsable):
         from .recent_notebook_links import RecentNotebookLinks
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastAccessedTime": lambda n : setattr(self, 'last_accessed_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "last_accessed_time": lambda n : setattr(self, 'last_accessed_time', n.get_datetime_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(RecentNotebookLinks)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sourceService": lambda n : setattr(self, 'source_service', n.get_enum_value(OnenoteSourceService)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "source_service": lambda n : setattr(self, 'source_service', n.get_enum_value(OnenoteSourceService)),
         }
         return fields
     
@@ -66,11 +66,11 @@ class RecentNotebook(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastAccessedTime", self.last_accessed_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_datetime_value("last_accessed_time", self.last_accessed_time)
         writer.write_object_value("links", self.links)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_enum_value("sourceService", self.source_service)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_enum_value("source_service", self.source_service)
         writer.write_additional_data_value(self.additional_data)
     
 

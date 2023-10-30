@@ -39,7 +39,7 @@ class MobileAppTroubleshootingEvent(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appLogCollectionRequests": lambda n : setattr(self, 'app_log_collection_requests', n.get_collection_of_object_values(AppLogCollectionRequest)),
+            "app_log_collection_requests": lambda n : setattr(self, 'app_log_collection_requests', n.get_collection_of_object_values(AppLogCollectionRequest)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class MobileAppTroubleshootingEvent(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("appLogCollectionRequests", self.app_log_collection_requests)
+        writer.write_collection_of_object_values("app_log_collection_requests", self.app_log_collection_requests)
     
 

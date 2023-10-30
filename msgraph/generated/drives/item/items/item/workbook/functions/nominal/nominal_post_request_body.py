@@ -40,7 +40,7 @@ class NominalPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "effectRate": lambda n : setattr(self, 'effect_rate', n.get_object_value(Json)),
+            "effect_rate": lambda n : setattr(self, 'effect_rate', n.get_object_value(Json)),
             "npery": lambda n : setattr(self, 'npery', n.get_object_value(Json)),
         }
         return fields
@@ -53,7 +53,7 @@ class NominalPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("effectRate", self.effect_rate)
+        writer.write_object_value("effect_rate", self.effect_rate)
         writer.write_object_value("npery", self.npery)
         writer.write_additional_data_value(self.additional_data)
     

@@ -46,7 +46,7 @@ class PublishPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "revision": lambda n : setattr(self, 'revision', n.get_str_value()),
-            "sharedCookies": lambda n : setattr(self, 'shared_cookies', n.get_collection_of_object_values(BrowserSharedCookie)),
+            "shared_cookies": lambda n : setattr(self, 'shared_cookies', n.get_collection_of_object_values(BrowserSharedCookie)),
             "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(BrowserSite)),
         }
         return fields
@@ -60,7 +60,7 @@ class PublishPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("revision", self.revision)
-        writer.write_collection_of_object_values("sharedCookies", self.shared_cookies)
+        writer.write_collection_of_object_values("shared_cookies", self.shared_cookies)
         writer.write_collection_of_object_values("sites", self.sites)
         writer.write_additional_data_value(self.additional_data)
     

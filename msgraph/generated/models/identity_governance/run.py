@@ -75,20 +75,20 @@ class Run(Entity):
         from .workflow_execution_type import WorkflowExecutionType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "failedTasksCount": lambda n : setattr(self, 'failed_tasks_count', n.get_int_value()),
-            "failedUsersCount": lambda n : setattr(self, 'failed_users_count', n.get_int_value()),
-            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
-            "processingStatus": lambda n : setattr(self, 'processing_status', n.get_enum_value(LifecycleWorkflowProcessingStatus)),
-            "scheduledDateTime": lambda n : setattr(self, 'scheduled_date_time', n.get_datetime_value()),
-            "startedDateTime": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
-            "successfulUsersCount": lambda n : setattr(self, 'successful_users_count', n.get_int_value()),
-            "taskProcessingResults": lambda n : setattr(self, 'task_processing_results', n.get_collection_of_object_values(TaskProcessingResult)),
-            "totalTasksCount": lambda n : setattr(self, 'total_tasks_count', n.get_int_value()),
-            "totalUnprocessedTasksCount": lambda n : setattr(self, 'total_unprocessed_tasks_count', n.get_int_value()),
-            "totalUsersCount": lambda n : setattr(self, 'total_users_count', n.get_int_value()),
-            "userProcessingResults": lambda n : setattr(self, 'user_processing_results', n.get_collection_of_object_values(UserProcessingResult)),
-            "workflowExecutionType": lambda n : setattr(self, 'workflow_execution_type', n.get_enum_value(WorkflowExecutionType)),
+            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "failed_tasks_count": lambda n : setattr(self, 'failed_tasks_count', n.get_int_value()),
+            "failed_users_count": lambda n : setattr(self, 'failed_users_count', n.get_int_value()),
+            "last_updated_date_time": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
+            "processing_status": lambda n : setattr(self, 'processing_status', n.get_enum_value(LifecycleWorkflowProcessingStatus)),
+            "scheduled_date_time": lambda n : setattr(self, 'scheduled_date_time', n.get_datetime_value()),
+            "started_date_time": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
+            "successful_users_count": lambda n : setattr(self, 'successful_users_count', n.get_int_value()),
+            "task_processing_results": lambda n : setattr(self, 'task_processing_results', n.get_collection_of_object_values(TaskProcessingResult)),
+            "total_tasks_count": lambda n : setattr(self, 'total_tasks_count', n.get_int_value()),
+            "total_unprocessed_tasks_count": lambda n : setattr(self, 'total_unprocessed_tasks_count', n.get_int_value()),
+            "total_users_count": lambda n : setattr(self, 'total_users_count', n.get_int_value()),
+            "user_processing_results": lambda n : setattr(self, 'user_processing_results', n.get_collection_of_object_values(UserProcessingResult)),
+            "workflow_execution_type": lambda n : setattr(self, 'workflow_execution_type', n.get_enum_value(WorkflowExecutionType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -103,19 +103,19 @@ class Run(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("completedDateTime", self.completed_date_time)
-        writer.write_int_value("failedTasksCount", self.failed_tasks_count)
-        writer.write_int_value("failedUsersCount", self.failed_users_count)
-        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
-        writer.write_enum_value("processingStatus", self.processing_status)
-        writer.write_datetime_value("scheduledDateTime", self.scheduled_date_time)
-        writer.write_datetime_value("startedDateTime", self.started_date_time)
-        writer.write_int_value("successfulUsersCount", self.successful_users_count)
-        writer.write_collection_of_object_values("taskProcessingResults", self.task_processing_results)
-        writer.write_int_value("totalTasksCount", self.total_tasks_count)
-        writer.write_int_value("totalUnprocessedTasksCount", self.total_unprocessed_tasks_count)
-        writer.write_int_value("totalUsersCount", self.total_users_count)
-        writer.write_collection_of_object_values("userProcessingResults", self.user_processing_results)
-        writer.write_enum_value("workflowExecutionType", self.workflow_execution_type)
+        writer.write_datetime_value("completed_date_time", self.completed_date_time)
+        writer.write_int_value("failed_tasks_count", self.failed_tasks_count)
+        writer.write_int_value("failed_users_count", self.failed_users_count)
+        writer.write_datetime_value("last_updated_date_time", self.last_updated_date_time)
+        writer.write_enum_value("processing_status", self.processing_status)
+        writer.write_datetime_value("scheduled_date_time", self.scheduled_date_time)
+        writer.write_datetime_value("started_date_time", self.started_date_time)
+        writer.write_int_value("successful_users_count", self.successful_users_count)
+        writer.write_collection_of_object_values("task_processing_results", self.task_processing_results)
+        writer.write_int_value("total_tasks_count", self.total_tasks_count)
+        writer.write_int_value("total_unprocessed_tasks_count", self.total_unprocessed_tasks_count)
+        writer.write_int_value("total_users_count", self.total_users_count)
+        writer.write_collection_of_object_values("user_processing_results", self.user_processing_results)
+        writer.write_enum_value("workflow_execution_type", self.workflow_execution_type)
     
 

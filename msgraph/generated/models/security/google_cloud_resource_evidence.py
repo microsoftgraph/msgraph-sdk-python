@@ -50,11 +50,11 @@ class GoogleCloudResourceEvidence(AlertEvidence):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "location": lambda n : setattr(self, 'location', n.get_str_value()),
-            "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(GoogleCloudLocationType)),
-            "projectId": lambda n : setattr(self, 'project_id', n.get_str_value()),
-            "projectNumber": lambda n : setattr(self, 'project_number', n.get_int_value()),
-            "resourceName": lambda n : setattr(self, 'resource_name', n.get_str_value()),
-            "resourceType": lambda n : setattr(self, 'resource_type', n.get_str_value()),
+            "location_type": lambda n : setattr(self, 'location_type', n.get_enum_value(GoogleCloudLocationType)),
+            "project_id": lambda n : setattr(self, 'project_id', n.get_str_value()),
+            "project_number": lambda n : setattr(self, 'project_number', n.get_int_value()),
+            "resource_name": lambda n : setattr(self, 'resource_name', n.get_str_value()),
+            "resource_type": lambda n : setattr(self, 'resource_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -70,10 +70,10 @@ class GoogleCloudResourceEvidence(AlertEvidence):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("location", self.location)
-        writer.write_enum_value("locationType", self.location_type)
-        writer.write_str_value("projectId", self.project_id)
-        writer.write_int_value("projectNumber", self.project_number)
-        writer.write_str_value("resourceName", self.resource_name)
-        writer.write_str_value("resourceType", self.resource_type)
+        writer.write_enum_value("location_type", self.location_type)
+        writer.write_str_value("project_id", self.project_id)
+        writer.write_int_value("project_number", self.project_number)
+        writer.write_str_value("resource_name", self.resource_name)
+        writer.write_str_value("resource_type", self.resource_type)
     
 

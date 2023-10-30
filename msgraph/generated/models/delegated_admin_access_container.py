@@ -42,9 +42,9 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, BackedModel, Parsable)
         from .delegated_admin_access_container_type import DelegatedAdminAccessContainerType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessContainerId": lambda n : setattr(self, 'access_container_id', n.get_str_value()),
-            "accessContainerType": lambda n : setattr(self, 'access_container_type', n.get_enum_value(DelegatedAdminAccessContainerType)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "access_container_id": lambda n : setattr(self, 'access_container_id', n.get_str_value()),
+            "access_container_type": lambda n : setattr(self, 'access_container_type', n.get_enum_value(DelegatedAdminAccessContainerType)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -56,9 +56,9 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, BackedModel, Parsable)
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("accessContainerId", self.access_container_id)
-        writer.write_enum_value("accessContainerType", self.access_container_type)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("access_container_id", self.access_container_id)
+        writer.write_enum_value("access_container_type", self.access_container_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

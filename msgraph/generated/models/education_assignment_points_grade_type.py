@@ -36,7 +36,7 @@ class EducationAssignmentPointsGradeType(EducationAssignmentGradeType):
         from .education_assignment_grade_type import EducationAssignmentGradeType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "maxPoints": lambda n : setattr(self, 'max_points', n.get_float_value()),
+            "max_points": lambda n : setattr(self, 'max_points', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class EducationAssignmentPointsGradeType(EducationAssignmentGradeType):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_float_value("maxPoints", self.max_points)
+        writer.write_float_value("max_points", self.max_points)
     
 

@@ -24,7 +24,7 @@ class DelegatedAdminRelationship(Entity):
     access_details: Optional[DelegatedAdminAccessDetails] = None
     # The date and time in ISO 8601 format and in UTC time when the relationship became active. Read-only.
     activated_date_time: Optional[datetime.datetime] = None
-    # The autoExtendDuration property
+    # The duration by which the validity of the relationship is automatically extended, denoted in ISO 8601 format. Supported values are: P0D, PT0S, P180D. The default value is PT0S. PT0S indicates that the relationship expires when the endDateTime is reached and it isn't automatically extended.
     auto_extend_duration: Optional[datetime.timedelta] = None
     # The date and time in ISO 8601 format and in UTC time when the relationship was created. Read-only.
     created_date_time: Optional[datetime.datetime] = None
@@ -90,16 +90,16 @@ class DelegatedAdminRelationship(Entity):
         from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessAssignments": lambda n : setattr(self, 'access_assignments', n.get_collection_of_object_values(DelegatedAdminAccessAssignment)),
-            "accessDetails": lambda n : setattr(self, 'access_details', n.get_object_value(DelegatedAdminAccessDetails)),
-            "activatedDateTime": lambda n : setattr(self, 'activated_date_time', n.get_datetime_value()),
-            "autoExtendDuration": lambda n : setattr(self, 'auto_extend_duration', n.get_timedelta_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "access_assignments": lambda n : setattr(self, 'access_assignments', n.get_collection_of_object_values(DelegatedAdminAccessAssignment)),
+            "access_details": lambda n : setattr(self, 'access_details', n.get_object_value(DelegatedAdminAccessDetails)),
+            "activated_date_time": lambda n : setattr(self, 'activated_date_time', n.get_datetime_value()),
+            "auto_extend_duration": lambda n : setattr(self, 'auto_extend_duration', n.get_timedelta_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customer": lambda n : setattr(self, 'customer', n.get_object_value(DelegatedAdminRelationshipCustomerParticipant)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_timedelta_value()),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(DelegatedAdminRelationshipOperation)),
             "requests": lambda n : setattr(self, 'requests', n.get_collection_of_object_values(DelegatedAdminRelationshipRequest)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(DelegatedAdminRelationshipStatus)),
@@ -117,16 +117,16 @@ class DelegatedAdminRelationship(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("accessAssignments", self.access_assignments)
-        writer.write_object_value("accessDetails", self.access_details)
-        writer.write_datetime_value("activatedDateTime", self.activated_date_time)
-        writer.write_timedelta_value("autoExtendDuration", self.auto_extend_duration)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_collection_of_object_values("access_assignments", self.access_assignments)
+        writer.write_object_value("access_details", self.access_details)
+        writer.write_datetime_value("activated_date_time", self.activated_date_time)
+        writer.write_timedelta_value("auto_extend_duration", self.auto_extend_duration)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_object_value("customer", self.customer)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_timedelta_value("duration", self.duration)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_collection_of_object_values("requests", self.requests)
         writer.write_enum_value("status", self.status)

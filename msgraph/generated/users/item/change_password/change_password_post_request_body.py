@@ -33,8 +33,8 @@ class ChangePasswordPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "currentPassword": lambda n : setattr(self, 'current_password', n.get_str_value()),
-            "newPassword": lambda n : setattr(self, 'new_password', n.get_str_value()),
+            "current_password": lambda n : setattr(self, 'current_password', n.get_str_value()),
+            "new_password": lambda n : setattr(self, 'new_password', n.get_str_value()),
         }
         return fields
     
@@ -46,8 +46,8 @@ class ChangePasswordPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("currentPassword", self.current_password)
-        writer.write_str_value("newPassword", self.new_password)
+        writer.write_str_value("current_password", self.current_password)
+        writer.write_str_value("new_password", self.new_password)
         writer.write_additional_data_value(self.additional_data)
     
 

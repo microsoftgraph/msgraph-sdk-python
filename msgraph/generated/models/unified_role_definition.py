@@ -56,13 +56,13 @@ class UnifiedRoleDefinition(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "inheritsPermissionsFrom": lambda n : setattr(self, 'inherits_permissions_from', n.get_collection_of_object_values(UnifiedRoleDefinition)),
-            "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_primitive_values(str)),
-            "rolePermissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(UnifiedRolePermission)),
-            "templateId": lambda n : setattr(self, 'template_id', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "inherits_permissions_from": lambda n : setattr(self, 'inherits_permissions_from', n.get_collection_of_object_values(UnifiedRoleDefinition)),
+            "is_built_in": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "resource_scopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_primitive_values(str)),
+            "role_permissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(UnifiedRolePermission)),
+            "template_id": lambda n : setattr(self, 'template_id', n.get_str_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -79,13 +79,13 @@ class UnifiedRoleDefinition(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_object_values("inheritsPermissionsFrom", self.inherits_permissions_from)
-        writer.write_bool_value("isBuiltIn", self.is_built_in)
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_collection_of_primitive_values("resourceScopes", self.resource_scopes)
-        writer.write_collection_of_object_values("rolePermissions", self.role_permissions)
-        writer.write_str_value("templateId", self.template_id)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_object_values("inherits_permissions_from", self.inherits_permissions_from)
+        writer.write_bool_value("is_built_in", self.is_built_in)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_collection_of_primitive_values("resource_scopes", self.resource_scopes)
+        writer.write_collection_of_object_values("role_permissions", self.role_permissions)
+        writer.write_str_value("template_id", self.template_id)
         writer.write_str_value("version", self.version)
     
 

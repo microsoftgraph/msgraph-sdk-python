@@ -36,7 +36,7 @@ class IPv4CidrRange(IpRange):
         from .ip_range import IpRange
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "cidrAddress": lambda n : setattr(self, 'cidr_address', n.get_str_value()),
+            "cidr_address": lambda n : setattr(self, 'cidr_address', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class IPv4CidrRange(IpRange):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("cidrAddress", self.cidr_address)
+        writer.write_str_value("cidr_address", self.cidr_address)
     
 

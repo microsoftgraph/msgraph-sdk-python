@@ -38,8 +38,8 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(Acce
         from .access_review_instance_decision_item_resource import AccessReviewInstanceDecisionItemResource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessPackageDisplayName": lambda n : setattr(self, 'access_package_display_name', n.get_str_value()),
-            "accessPackageId": lambda n : setattr(self, 'access_package_id', n.get_str_value()),
+            "access_package_display_name": lambda n : setattr(self, 'access_package_display_name', n.get_str_value()),
+            "access_package_id": lambda n : setattr(self, 'access_package_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(Acce
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("accessPackageDisplayName", self.access_package_display_name)
-        writer.write_str_value("accessPackageId", self.access_package_id)
+        writer.write_str_value("access_package_display_name", self.access_package_display_name)
+        writer.write_str_value("access_package_id", self.access_package_id)
     
 

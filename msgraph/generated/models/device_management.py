@@ -352,70 +352,70 @@ class DeviceManagement(Entity):
         from .windows_malware_overview import WindowsMalwareOverview
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applePushNotificationCertificate": lambda n : setattr(self, 'apple_push_notification_certificate', n.get_object_value(ApplePushNotificationCertificate)),
-            "auditEvents": lambda n : setattr(self, 'audit_events', n.get_collection_of_object_values(AuditEvent)),
-            "complianceManagementPartners": lambda n : setattr(self, 'compliance_management_partners', n.get_collection_of_object_values(ComplianceManagementPartner)),
-            "conditionalAccessSettings": lambda n : setattr(self, 'conditional_access_settings', n.get_object_value(OnPremisesConditionalAccessSettings)),
-            "detectedApps": lambda n : setattr(self, 'detected_apps', n.get_collection_of_object_values(DetectedApp)),
-            "deviceCategories": lambda n : setattr(self, 'device_categories', n.get_collection_of_object_values(DeviceCategory)),
-            "deviceCompliancePolicies": lambda n : setattr(self, 'device_compliance_policies', n.get_collection_of_object_values(DeviceCompliancePolicy)),
-            "deviceCompliancePolicyDeviceStateSummary": lambda n : setattr(self, 'device_compliance_policy_device_state_summary', n.get_object_value(DeviceCompliancePolicyDeviceStateSummary)),
-            "deviceCompliancePolicySettingStateSummaries": lambda n : setattr(self, 'device_compliance_policy_setting_state_summaries', n.get_collection_of_object_values(DeviceCompliancePolicySettingStateSummary)),
-            "deviceConfigurationDeviceStateSummaries": lambda n : setattr(self, 'device_configuration_device_state_summaries', n.get_object_value(DeviceConfigurationDeviceStateSummary)),
-            "deviceConfigurations": lambda n : setattr(self, 'device_configurations', n.get_collection_of_object_values(DeviceConfiguration)),
-            "deviceEnrollmentConfigurations": lambda n : setattr(self, 'device_enrollment_configurations', n.get_collection_of_object_values(DeviceEnrollmentConfiguration)),
-            "deviceManagementPartners": lambda n : setattr(self, 'device_management_partners', n.get_collection_of_object_values(DeviceManagementPartner)),
-            "deviceProtectionOverview": lambda n : setattr(self, 'device_protection_overview', n.get_object_value(DeviceProtectionOverview)),
-            "exchangeConnectors": lambda n : setattr(self, 'exchange_connectors', n.get_collection_of_object_values(DeviceManagementExchangeConnector)),
-            "importedWindowsAutopilotDeviceIdentities": lambda n : setattr(self, 'imported_windows_autopilot_device_identities', n.get_collection_of_object_values(ImportedWindowsAutopilotDeviceIdentity)),
-            "intuneAccountId": lambda n : setattr(self, 'intune_account_id', n.get_uuid_value()),
-            "intuneBrand": lambda n : setattr(self, 'intune_brand', n.get_object_value(IntuneBrand)),
-            "iosUpdateStatuses": lambda n : setattr(self, 'ios_update_statuses', n.get_collection_of_object_values(IosUpdateDeviceStatus)),
-            "managedDeviceOverview": lambda n : setattr(self, 'managed_device_overview', n.get_object_value(ManagedDeviceOverview)),
-            "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(ManagedDevice)),
-            "mobileAppTroubleshootingEvents": lambda n : setattr(self, 'mobile_app_troubleshooting_events', n.get_collection_of_object_values(MobileAppTroubleshootingEvent)),
-            "mobileThreatDefenseConnectors": lambda n : setattr(self, 'mobile_threat_defense_connectors', n.get_collection_of_object_values(MobileThreatDefenseConnector)),
-            "notificationMessageTemplates": lambda n : setattr(self, 'notification_message_templates', n.get_collection_of_object_values(NotificationMessageTemplate)),
-            "remoteAssistancePartners": lambda n : setattr(self, 'remote_assistance_partners', n.get_collection_of_object_values(RemoteAssistancePartner)),
+            "apple_push_notification_certificate": lambda n : setattr(self, 'apple_push_notification_certificate', n.get_object_value(ApplePushNotificationCertificate)),
+            "audit_events": lambda n : setattr(self, 'audit_events', n.get_collection_of_object_values(AuditEvent)),
+            "compliance_management_partners": lambda n : setattr(self, 'compliance_management_partners', n.get_collection_of_object_values(ComplianceManagementPartner)),
+            "conditional_access_settings": lambda n : setattr(self, 'conditional_access_settings', n.get_object_value(OnPremisesConditionalAccessSettings)),
+            "detected_apps": lambda n : setattr(self, 'detected_apps', n.get_collection_of_object_values(DetectedApp)),
+            "device_categories": lambda n : setattr(self, 'device_categories', n.get_collection_of_object_values(DeviceCategory)),
+            "device_compliance_policies": lambda n : setattr(self, 'device_compliance_policies', n.get_collection_of_object_values(DeviceCompliancePolicy)),
+            "device_compliance_policy_device_state_summary": lambda n : setattr(self, 'device_compliance_policy_device_state_summary', n.get_object_value(DeviceCompliancePolicyDeviceStateSummary)),
+            "device_compliance_policy_setting_state_summaries": lambda n : setattr(self, 'device_compliance_policy_setting_state_summaries', n.get_collection_of_object_values(DeviceCompliancePolicySettingStateSummary)),
+            "device_configuration_device_state_summaries": lambda n : setattr(self, 'device_configuration_device_state_summaries', n.get_object_value(DeviceConfigurationDeviceStateSummary)),
+            "device_configurations": lambda n : setattr(self, 'device_configurations', n.get_collection_of_object_values(DeviceConfiguration)),
+            "device_enrollment_configurations": lambda n : setattr(self, 'device_enrollment_configurations', n.get_collection_of_object_values(DeviceEnrollmentConfiguration)),
+            "device_management_partners": lambda n : setattr(self, 'device_management_partners', n.get_collection_of_object_values(DeviceManagementPartner)),
+            "device_protection_overview": lambda n : setattr(self, 'device_protection_overview', n.get_object_value(DeviceProtectionOverview)),
+            "exchange_connectors": lambda n : setattr(self, 'exchange_connectors', n.get_collection_of_object_values(DeviceManagementExchangeConnector)),
+            "imported_windows_autopilot_device_identities": lambda n : setattr(self, 'imported_windows_autopilot_device_identities', n.get_collection_of_object_values(ImportedWindowsAutopilotDeviceIdentity)),
+            "intune_account_id": lambda n : setattr(self, 'intune_account_id', n.get_uuid_value()),
+            "intune_brand": lambda n : setattr(self, 'intune_brand', n.get_object_value(IntuneBrand)),
+            "ios_update_statuses": lambda n : setattr(self, 'ios_update_statuses', n.get_collection_of_object_values(IosUpdateDeviceStatus)),
+            "managed_device_overview": lambda n : setattr(self, 'managed_device_overview', n.get_object_value(ManagedDeviceOverview)),
+            "managed_devices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(ManagedDevice)),
+            "mobile_app_troubleshooting_events": lambda n : setattr(self, 'mobile_app_troubleshooting_events', n.get_collection_of_object_values(MobileAppTroubleshootingEvent)),
+            "mobile_threat_defense_connectors": lambda n : setattr(self, 'mobile_threat_defense_connectors', n.get_collection_of_object_values(MobileThreatDefenseConnector)),
+            "notification_message_templates": lambda n : setattr(self, 'notification_message_templates', n.get_collection_of_object_values(NotificationMessageTemplate)),
+            "remote_assistance_partners": lambda n : setattr(self, 'remote_assistance_partners', n.get_collection_of_object_values(RemoteAssistancePartner)),
             "reports": lambda n : setattr(self, 'reports', n.get_object_value(DeviceManagementReports)),
-            "resourceOperations": lambda n : setattr(self, 'resource_operations', n.get_collection_of_object_values(ResourceOperation)),
-            "roleAssignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(DeviceAndAppManagementRoleAssignment)),
-            "roleDefinitions": lambda n : setattr(self, 'role_definitions', n.get_collection_of_object_values(RoleDefinition)),
+            "resource_operations": lambda n : setattr(self, 'resource_operations', n.get_collection_of_object_values(ResourceOperation)),
+            "role_assignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(DeviceAndAppManagementRoleAssignment)),
+            "role_definitions": lambda n : setattr(self, 'role_definitions', n.get_collection_of_object_values(RoleDefinition)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(DeviceManagementSettings)),
-            "softwareUpdateStatusSummary": lambda n : setattr(self, 'software_update_status_summary', n.get_object_value(SoftwareUpdateStatusSummary)),
-            "subscriptionState": lambda n : setattr(self, 'subscription_state', n.get_enum_value(DeviceManagementSubscriptionState)),
-            "telecomExpenseManagementPartners": lambda n : setattr(self, 'telecom_expense_management_partners', n.get_collection_of_object_values(TelecomExpenseManagementPartner)),
-            "termsAndConditions": lambda n : setattr(self, 'terms_and_conditions', n.get_collection_of_object_values(TermsAndConditions)),
-            "troubleshootingEvents": lambda n : setattr(self, 'troubleshooting_events', n.get_collection_of_object_values(DeviceManagementTroubleshootingEvent)),
-            "userExperienceAnalyticsAppHealthApplicationPerformance": lambda n : setattr(self, 'user_experience_analytics_app_health_application_performance', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthApplicationPerformance)),
-            "userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDetails": lambda n : setattr(self, 'user_experience_analytics_app_health_application_performance_by_app_version_details', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails)),
-            "userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDeviceId": lambda n : setattr(self, 'user_experience_analytics_app_health_application_performance_by_app_version_device_id', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId)),
-            "userExperienceAnalyticsAppHealthApplicationPerformanceByOSVersion": lambda n : setattr(self, 'user_experience_analytics_app_health_application_performance_by_o_s_version', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion)),
-            "userExperienceAnalyticsAppHealthDeviceModelPerformance": lambda n : setattr(self, 'user_experience_analytics_app_health_device_model_performance', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthDeviceModelPerformance)),
-            "userExperienceAnalyticsAppHealthDevicePerformance": lambda n : setattr(self, 'user_experience_analytics_app_health_device_performance', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthDevicePerformance)),
-            "userExperienceAnalyticsAppHealthDevicePerformanceDetails": lambda n : setattr(self, 'user_experience_analytics_app_health_device_performance_details', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthDevicePerformanceDetails)),
-            "userExperienceAnalyticsAppHealthOSVersionPerformance": lambda n : setattr(self, 'user_experience_analytics_app_health_o_s_version_performance', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthOSVersionPerformance)),
-            "userExperienceAnalyticsAppHealthOverview": lambda n : setattr(self, 'user_experience_analytics_app_health_overview', n.get_object_value(UserExperienceAnalyticsCategory)),
-            "userExperienceAnalyticsBaselines": lambda n : setattr(self, 'user_experience_analytics_baselines', n.get_collection_of_object_values(UserExperienceAnalyticsBaseline)),
-            "userExperienceAnalyticsCategories": lambda n : setattr(self, 'user_experience_analytics_categories', n.get_collection_of_object_values(UserExperienceAnalyticsCategory)),
-            "userExperienceAnalyticsDevicePerformance": lambda n : setattr(self, 'user_experience_analytics_device_performance', n.get_collection_of_object_values(UserExperienceAnalyticsDevicePerformance)),
-            "userExperienceAnalyticsDeviceScores": lambda n : setattr(self, 'user_experience_analytics_device_scores', n.get_collection_of_object_values(UserExperienceAnalyticsDeviceScores)),
-            "userExperienceAnalyticsDeviceStartupHistory": lambda n : setattr(self, 'user_experience_analytics_device_startup_history', n.get_collection_of_object_values(UserExperienceAnalyticsDeviceStartupHistory)),
-            "userExperienceAnalyticsDeviceStartupProcessPerformance": lambda n : setattr(self, 'user_experience_analytics_device_startup_process_performance', n.get_collection_of_object_values(UserExperienceAnalyticsDeviceStartupProcessPerformance)),
-            "userExperienceAnalyticsDeviceStartupProcesses": lambda n : setattr(self, 'user_experience_analytics_device_startup_processes', n.get_collection_of_object_values(UserExperienceAnalyticsDeviceStartupProcess)),
-            "userExperienceAnalyticsMetricHistory": lambda n : setattr(self, 'user_experience_analytics_metric_history', n.get_collection_of_object_values(UserExperienceAnalyticsMetricHistory)),
-            "userExperienceAnalyticsModelScores": lambda n : setattr(self, 'user_experience_analytics_model_scores', n.get_collection_of_object_values(UserExperienceAnalyticsModelScores)),
-            "userExperienceAnalyticsOverview": lambda n : setattr(self, 'user_experience_analytics_overview', n.get_object_value(UserExperienceAnalyticsOverview)),
-            "userExperienceAnalyticsScoreHistory": lambda n : setattr(self, 'user_experience_analytics_score_history', n.get_collection_of_object_values(UserExperienceAnalyticsScoreHistory)),
-            "userExperienceAnalyticsSettings": lambda n : setattr(self, 'user_experience_analytics_settings', n.get_object_value(UserExperienceAnalyticsSettings)),
-            "userExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric": lambda n : setattr(self, 'user_experience_analytics_work_from_anywhere_hardware_readiness_metric', n.get_object_value(UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric)),
-            "userExperienceAnalyticsWorkFromAnywhereMetrics": lambda n : setattr(self, 'user_experience_analytics_work_from_anywhere_metrics', n.get_collection_of_object_values(UserExperienceAnalyticsWorkFromAnywhereMetric)),
-            "userExperienceAnalyticsWorkFromAnywhereModelPerformance": lambda n : setattr(self, 'user_experience_analytics_work_from_anywhere_model_performance', n.get_collection_of_object_values(UserExperienceAnalyticsWorkFromAnywhereModelPerformance)),
-            "windowsAutopilotDeviceIdentities": lambda n : setattr(self, 'windows_autopilot_device_identities', n.get_collection_of_object_values(WindowsAutopilotDeviceIdentity)),
-            "windowsInformationProtectionAppLearningSummaries": lambda n : setattr(self, 'windows_information_protection_app_learning_summaries', n.get_collection_of_object_values(WindowsInformationProtectionAppLearningSummary)),
-            "windowsInformationProtectionNetworkLearningSummaries": lambda n : setattr(self, 'windows_information_protection_network_learning_summaries', n.get_collection_of_object_values(WindowsInformationProtectionNetworkLearningSummary)),
-            "windowsMalwareInformation": lambda n : setattr(self, 'windows_malware_information', n.get_collection_of_object_values(WindowsMalwareInformation)),
-            "windowsMalwareOverview": lambda n : setattr(self, 'windows_malware_overview', n.get_object_value(WindowsMalwareOverview)),
+            "software_update_status_summary": lambda n : setattr(self, 'software_update_status_summary', n.get_object_value(SoftwareUpdateStatusSummary)),
+            "subscription_state": lambda n : setattr(self, 'subscription_state', n.get_enum_value(DeviceManagementSubscriptionState)),
+            "telecom_expense_management_partners": lambda n : setattr(self, 'telecom_expense_management_partners', n.get_collection_of_object_values(TelecomExpenseManagementPartner)),
+            "terms_and_conditions": lambda n : setattr(self, 'terms_and_conditions', n.get_collection_of_object_values(TermsAndConditions)),
+            "troubleshooting_events": lambda n : setattr(self, 'troubleshooting_events', n.get_collection_of_object_values(DeviceManagementTroubleshootingEvent)),
+            "user_experience_analytics_app_health_application_performance": lambda n : setattr(self, 'user_experience_analytics_app_health_application_performance', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthApplicationPerformance)),
+            "user_experience_analytics_app_health_application_performance_by_app_version_details": lambda n : setattr(self, 'user_experience_analytics_app_health_application_performance_by_app_version_details', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDetails)),
+            "user_experience_analytics_app_health_application_performance_by_app_version_device_id": lambda n : setattr(self, 'user_experience_analytics_app_health_application_performance_by_app_version_device_id', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId)),
+            "user_experience_analytics_app_health_application_performance_by_o_s_version": lambda n : setattr(self, 'user_experience_analytics_app_health_application_performance_by_o_s_version', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthAppPerformanceByOSVersion)),
+            "user_experience_analytics_app_health_device_model_performance": lambda n : setattr(self, 'user_experience_analytics_app_health_device_model_performance', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthDeviceModelPerformance)),
+            "user_experience_analytics_app_health_device_performance": lambda n : setattr(self, 'user_experience_analytics_app_health_device_performance', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthDevicePerformance)),
+            "user_experience_analytics_app_health_device_performance_details": lambda n : setattr(self, 'user_experience_analytics_app_health_device_performance_details', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthDevicePerformanceDetails)),
+            "user_experience_analytics_app_health_o_s_version_performance": lambda n : setattr(self, 'user_experience_analytics_app_health_o_s_version_performance', n.get_collection_of_object_values(UserExperienceAnalyticsAppHealthOSVersionPerformance)),
+            "user_experience_analytics_app_health_overview": lambda n : setattr(self, 'user_experience_analytics_app_health_overview', n.get_object_value(UserExperienceAnalyticsCategory)),
+            "user_experience_analytics_baselines": lambda n : setattr(self, 'user_experience_analytics_baselines', n.get_collection_of_object_values(UserExperienceAnalyticsBaseline)),
+            "user_experience_analytics_categories": lambda n : setattr(self, 'user_experience_analytics_categories', n.get_collection_of_object_values(UserExperienceAnalyticsCategory)),
+            "user_experience_analytics_device_performance": lambda n : setattr(self, 'user_experience_analytics_device_performance', n.get_collection_of_object_values(UserExperienceAnalyticsDevicePerformance)),
+            "user_experience_analytics_device_scores": lambda n : setattr(self, 'user_experience_analytics_device_scores', n.get_collection_of_object_values(UserExperienceAnalyticsDeviceScores)),
+            "user_experience_analytics_device_startup_history": lambda n : setattr(self, 'user_experience_analytics_device_startup_history', n.get_collection_of_object_values(UserExperienceAnalyticsDeviceStartupHistory)),
+            "user_experience_analytics_device_startup_process_performance": lambda n : setattr(self, 'user_experience_analytics_device_startup_process_performance', n.get_collection_of_object_values(UserExperienceAnalyticsDeviceStartupProcessPerformance)),
+            "user_experience_analytics_device_startup_processes": lambda n : setattr(self, 'user_experience_analytics_device_startup_processes', n.get_collection_of_object_values(UserExperienceAnalyticsDeviceStartupProcess)),
+            "user_experience_analytics_metric_history": lambda n : setattr(self, 'user_experience_analytics_metric_history', n.get_collection_of_object_values(UserExperienceAnalyticsMetricHistory)),
+            "user_experience_analytics_model_scores": lambda n : setattr(self, 'user_experience_analytics_model_scores', n.get_collection_of_object_values(UserExperienceAnalyticsModelScores)),
+            "user_experience_analytics_overview": lambda n : setattr(self, 'user_experience_analytics_overview', n.get_object_value(UserExperienceAnalyticsOverview)),
+            "user_experience_analytics_score_history": lambda n : setattr(self, 'user_experience_analytics_score_history', n.get_collection_of_object_values(UserExperienceAnalyticsScoreHistory)),
+            "user_experience_analytics_settings": lambda n : setattr(self, 'user_experience_analytics_settings', n.get_object_value(UserExperienceAnalyticsSettings)),
+            "user_experience_analytics_work_from_anywhere_hardware_readiness_metric": lambda n : setattr(self, 'user_experience_analytics_work_from_anywhere_hardware_readiness_metric', n.get_object_value(UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric)),
+            "user_experience_analytics_work_from_anywhere_metrics": lambda n : setattr(self, 'user_experience_analytics_work_from_anywhere_metrics', n.get_collection_of_object_values(UserExperienceAnalyticsWorkFromAnywhereMetric)),
+            "user_experience_analytics_work_from_anywhere_model_performance": lambda n : setattr(self, 'user_experience_analytics_work_from_anywhere_model_performance', n.get_collection_of_object_values(UserExperienceAnalyticsWorkFromAnywhereModelPerformance)),
+            "windows_autopilot_device_identities": lambda n : setattr(self, 'windows_autopilot_device_identities', n.get_collection_of_object_values(WindowsAutopilotDeviceIdentity)),
+            "windows_information_protection_app_learning_summaries": lambda n : setattr(self, 'windows_information_protection_app_learning_summaries', n.get_collection_of_object_values(WindowsInformationProtectionAppLearningSummary)),
+            "windows_information_protection_network_learning_summaries": lambda n : setattr(self, 'windows_information_protection_network_learning_summaries', n.get_collection_of_object_values(WindowsInformationProtectionNetworkLearningSummary)),
+            "windows_malware_information": lambda n : setattr(self, 'windows_malware_information', n.get_collection_of_object_values(WindowsMalwareInformation)),
+            "windows_malware_overview": lambda n : setattr(self, 'windows_malware_overview', n.get_object_value(WindowsMalwareOverview)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -430,69 +430,69 @@ class DeviceManagement(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("applePushNotificationCertificate", self.apple_push_notification_certificate)
-        writer.write_collection_of_object_values("auditEvents", self.audit_events)
-        writer.write_collection_of_object_values("complianceManagementPartners", self.compliance_management_partners)
-        writer.write_object_value("conditionalAccessSettings", self.conditional_access_settings)
-        writer.write_collection_of_object_values("detectedApps", self.detected_apps)
-        writer.write_collection_of_object_values("deviceCategories", self.device_categories)
-        writer.write_collection_of_object_values("deviceCompliancePolicies", self.device_compliance_policies)
-        writer.write_object_value("deviceCompliancePolicyDeviceStateSummary", self.device_compliance_policy_device_state_summary)
-        writer.write_collection_of_object_values("deviceCompliancePolicySettingStateSummaries", self.device_compliance_policy_setting_state_summaries)
-        writer.write_object_value("deviceConfigurationDeviceStateSummaries", self.device_configuration_device_state_summaries)
-        writer.write_collection_of_object_values("deviceConfigurations", self.device_configurations)
-        writer.write_collection_of_object_values("deviceEnrollmentConfigurations", self.device_enrollment_configurations)
-        writer.write_collection_of_object_values("deviceManagementPartners", self.device_management_partners)
-        writer.write_object_value("deviceProtectionOverview", self.device_protection_overview)
-        writer.write_collection_of_object_values("exchangeConnectors", self.exchange_connectors)
-        writer.write_collection_of_object_values("importedWindowsAutopilotDeviceIdentities", self.imported_windows_autopilot_device_identities)
-        writer.write_uuid_value("intuneAccountId", self.intune_account_id)
-        writer.write_object_value("intuneBrand", self.intune_brand)
-        writer.write_collection_of_object_values("iosUpdateStatuses", self.ios_update_statuses)
-        writer.write_object_value("managedDeviceOverview", self.managed_device_overview)
-        writer.write_collection_of_object_values("managedDevices", self.managed_devices)
-        writer.write_collection_of_object_values("mobileAppTroubleshootingEvents", self.mobile_app_troubleshooting_events)
-        writer.write_collection_of_object_values("mobileThreatDefenseConnectors", self.mobile_threat_defense_connectors)
-        writer.write_collection_of_object_values("notificationMessageTemplates", self.notification_message_templates)
-        writer.write_collection_of_object_values("remoteAssistancePartners", self.remote_assistance_partners)
+        writer.write_object_value("apple_push_notification_certificate", self.apple_push_notification_certificate)
+        writer.write_collection_of_object_values("audit_events", self.audit_events)
+        writer.write_collection_of_object_values("compliance_management_partners", self.compliance_management_partners)
+        writer.write_object_value("conditional_access_settings", self.conditional_access_settings)
+        writer.write_collection_of_object_values("detected_apps", self.detected_apps)
+        writer.write_collection_of_object_values("device_categories", self.device_categories)
+        writer.write_collection_of_object_values("device_compliance_policies", self.device_compliance_policies)
+        writer.write_object_value("device_compliance_policy_device_state_summary", self.device_compliance_policy_device_state_summary)
+        writer.write_collection_of_object_values("device_compliance_policy_setting_state_summaries", self.device_compliance_policy_setting_state_summaries)
+        writer.write_object_value("device_configuration_device_state_summaries", self.device_configuration_device_state_summaries)
+        writer.write_collection_of_object_values("device_configurations", self.device_configurations)
+        writer.write_collection_of_object_values("device_enrollment_configurations", self.device_enrollment_configurations)
+        writer.write_collection_of_object_values("device_management_partners", self.device_management_partners)
+        writer.write_object_value("device_protection_overview", self.device_protection_overview)
+        writer.write_collection_of_object_values("exchange_connectors", self.exchange_connectors)
+        writer.write_collection_of_object_values("imported_windows_autopilot_device_identities", self.imported_windows_autopilot_device_identities)
+        writer.write_uuid_value("intune_account_id", self.intune_account_id)
+        writer.write_object_value("intune_brand", self.intune_brand)
+        writer.write_collection_of_object_values("ios_update_statuses", self.ios_update_statuses)
+        writer.write_object_value("managed_device_overview", self.managed_device_overview)
+        writer.write_collection_of_object_values("managed_devices", self.managed_devices)
+        writer.write_collection_of_object_values("mobile_app_troubleshooting_events", self.mobile_app_troubleshooting_events)
+        writer.write_collection_of_object_values("mobile_threat_defense_connectors", self.mobile_threat_defense_connectors)
+        writer.write_collection_of_object_values("notification_message_templates", self.notification_message_templates)
+        writer.write_collection_of_object_values("remote_assistance_partners", self.remote_assistance_partners)
         writer.write_object_value("reports", self.reports)
-        writer.write_collection_of_object_values("resourceOperations", self.resource_operations)
-        writer.write_collection_of_object_values("roleAssignments", self.role_assignments)
-        writer.write_collection_of_object_values("roleDefinitions", self.role_definitions)
+        writer.write_collection_of_object_values("resource_operations", self.resource_operations)
+        writer.write_collection_of_object_values("role_assignments", self.role_assignments)
+        writer.write_collection_of_object_values("role_definitions", self.role_definitions)
         writer.write_object_value("settings", self.settings)
-        writer.write_object_value("softwareUpdateStatusSummary", self.software_update_status_summary)
-        writer.write_enum_value("subscriptionState", self.subscription_state)
-        writer.write_collection_of_object_values("telecomExpenseManagementPartners", self.telecom_expense_management_partners)
-        writer.write_collection_of_object_values("termsAndConditions", self.terms_and_conditions)
-        writer.write_collection_of_object_values("troubleshootingEvents", self.troubleshooting_events)
-        writer.write_collection_of_object_values("userExperienceAnalyticsAppHealthApplicationPerformance", self.user_experience_analytics_app_health_application_performance)
-        writer.write_collection_of_object_values("userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDetails", self.user_experience_analytics_app_health_application_performance_by_app_version_details)
-        writer.write_collection_of_object_values("userExperienceAnalyticsAppHealthApplicationPerformanceByAppVersionDeviceId", self.user_experience_analytics_app_health_application_performance_by_app_version_device_id)
-        writer.write_collection_of_object_values("userExperienceAnalyticsAppHealthApplicationPerformanceByOSVersion", self.user_experience_analytics_app_health_application_performance_by_o_s_version)
-        writer.write_collection_of_object_values("userExperienceAnalyticsAppHealthDeviceModelPerformance", self.user_experience_analytics_app_health_device_model_performance)
-        writer.write_collection_of_object_values("userExperienceAnalyticsAppHealthDevicePerformance", self.user_experience_analytics_app_health_device_performance)
-        writer.write_collection_of_object_values("userExperienceAnalyticsAppHealthDevicePerformanceDetails", self.user_experience_analytics_app_health_device_performance_details)
-        writer.write_collection_of_object_values("userExperienceAnalyticsAppHealthOSVersionPerformance", self.user_experience_analytics_app_health_o_s_version_performance)
-        writer.write_object_value("userExperienceAnalyticsAppHealthOverview", self.user_experience_analytics_app_health_overview)
-        writer.write_collection_of_object_values("userExperienceAnalyticsBaselines", self.user_experience_analytics_baselines)
-        writer.write_collection_of_object_values("userExperienceAnalyticsCategories", self.user_experience_analytics_categories)
-        writer.write_collection_of_object_values("userExperienceAnalyticsDevicePerformance", self.user_experience_analytics_device_performance)
-        writer.write_collection_of_object_values("userExperienceAnalyticsDeviceScores", self.user_experience_analytics_device_scores)
-        writer.write_collection_of_object_values("userExperienceAnalyticsDeviceStartupHistory", self.user_experience_analytics_device_startup_history)
-        writer.write_collection_of_object_values("userExperienceAnalyticsDeviceStartupProcessPerformance", self.user_experience_analytics_device_startup_process_performance)
-        writer.write_collection_of_object_values("userExperienceAnalyticsDeviceStartupProcesses", self.user_experience_analytics_device_startup_processes)
-        writer.write_collection_of_object_values("userExperienceAnalyticsMetricHistory", self.user_experience_analytics_metric_history)
-        writer.write_collection_of_object_values("userExperienceAnalyticsModelScores", self.user_experience_analytics_model_scores)
-        writer.write_object_value("userExperienceAnalyticsOverview", self.user_experience_analytics_overview)
-        writer.write_collection_of_object_values("userExperienceAnalyticsScoreHistory", self.user_experience_analytics_score_history)
-        writer.write_object_value("userExperienceAnalyticsSettings", self.user_experience_analytics_settings)
-        writer.write_object_value("userExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric", self.user_experience_analytics_work_from_anywhere_hardware_readiness_metric)
-        writer.write_collection_of_object_values("userExperienceAnalyticsWorkFromAnywhereMetrics", self.user_experience_analytics_work_from_anywhere_metrics)
-        writer.write_collection_of_object_values("userExperienceAnalyticsWorkFromAnywhereModelPerformance", self.user_experience_analytics_work_from_anywhere_model_performance)
-        writer.write_collection_of_object_values("windowsAutopilotDeviceIdentities", self.windows_autopilot_device_identities)
-        writer.write_collection_of_object_values("windowsInformationProtectionAppLearningSummaries", self.windows_information_protection_app_learning_summaries)
-        writer.write_collection_of_object_values("windowsInformationProtectionNetworkLearningSummaries", self.windows_information_protection_network_learning_summaries)
-        writer.write_collection_of_object_values("windowsMalwareInformation", self.windows_malware_information)
-        writer.write_object_value("windowsMalwareOverview", self.windows_malware_overview)
+        writer.write_object_value("software_update_status_summary", self.software_update_status_summary)
+        writer.write_enum_value("subscription_state", self.subscription_state)
+        writer.write_collection_of_object_values("telecom_expense_management_partners", self.telecom_expense_management_partners)
+        writer.write_collection_of_object_values("terms_and_conditions", self.terms_and_conditions)
+        writer.write_collection_of_object_values("troubleshooting_events", self.troubleshooting_events)
+        writer.write_collection_of_object_values("user_experience_analytics_app_health_application_performance", self.user_experience_analytics_app_health_application_performance)
+        writer.write_collection_of_object_values("user_experience_analytics_app_health_application_performance_by_app_version_details", self.user_experience_analytics_app_health_application_performance_by_app_version_details)
+        writer.write_collection_of_object_values("user_experience_analytics_app_health_application_performance_by_app_version_device_id", self.user_experience_analytics_app_health_application_performance_by_app_version_device_id)
+        writer.write_collection_of_object_values("user_experience_analytics_app_health_application_performance_by_o_s_version", self.user_experience_analytics_app_health_application_performance_by_o_s_version)
+        writer.write_collection_of_object_values("user_experience_analytics_app_health_device_model_performance", self.user_experience_analytics_app_health_device_model_performance)
+        writer.write_collection_of_object_values("user_experience_analytics_app_health_device_performance", self.user_experience_analytics_app_health_device_performance)
+        writer.write_collection_of_object_values("user_experience_analytics_app_health_device_performance_details", self.user_experience_analytics_app_health_device_performance_details)
+        writer.write_collection_of_object_values("user_experience_analytics_app_health_o_s_version_performance", self.user_experience_analytics_app_health_o_s_version_performance)
+        writer.write_object_value("user_experience_analytics_app_health_overview", self.user_experience_analytics_app_health_overview)
+        writer.write_collection_of_object_values("user_experience_analytics_baselines", self.user_experience_analytics_baselines)
+        writer.write_collection_of_object_values("user_experience_analytics_categories", self.user_experience_analytics_categories)
+        writer.write_collection_of_object_values("user_experience_analytics_device_performance", self.user_experience_analytics_device_performance)
+        writer.write_collection_of_object_values("user_experience_analytics_device_scores", self.user_experience_analytics_device_scores)
+        writer.write_collection_of_object_values("user_experience_analytics_device_startup_history", self.user_experience_analytics_device_startup_history)
+        writer.write_collection_of_object_values("user_experience_analytics_device_startup_process_performance", self.user_experience_analytics_device_startup_process_performance)
+        writer.write_collection_of_object_values("user_experience_analytics_device_startup_processes", self.user_experience_analytics_device_startup_processes)
+        writer.write_collection_of_object_values("user_experience_analytics_metric_history", self.user_experience_analytics_metric_history)
+        writer.write_collection_of_object_values("user_experience_analytics_model_scores", self.user_experience_analytics_model_scores)
+        writer.write_object_value("user_experience_analytics_overview", self.user_experience_analytics_overview)
+        writer.write_collection_of_object_values("user_experience_analytics_score_history", self.user_experience_analytics_score_history)
+        writer.write_object_value("user_experience_analytics_settings", self.user_experience_analytics_settings)
+        writer.write_object_value("user_experience_analytics_work_from_anywhere_hardware_readiness_metric", self.user_experience_analytics_work_from_anywhere_hardware_readiness_metric)
+        writer.write_collection_of_object_values("user_experience_analytics_work_from_anywhere_metrics", self.user_experience_analytics_work_from_anywhere_metrics)
+        writer.write_collection_of_object_values("user_experience_analytics_work_from_anywhere_model_performance", self.user_experience_analytics_work_from_anywhere_model_performance)
+        writer.write_collection_of_object_values("windows_autopilot_device_identities", self.windows_autopilot_device_identities)
+        writer.write_collection_of_object_values("windows_information_protection_app_learning_summaries", self.windows_information_protection_app_learning_summaries)
+        writer.write_collection_of_object_values("windows_information_protection_network_learning_summaries", self.windows_information_protection_network_learning_summaries)
+        writer.write_collection_of_object_values("windows_malware_information", self.windows_malware_information)
+        writer.write_object_value("windows_malware_overview", self.windows_malware_overview)
     
 

@@ -433,130 +433,130 @@ class User(DirectoryObject):
         from .user_teamwork import UserTeamwork
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "aboutMe": lambda n : setattr(self, 'about_me', n.get_str_value()),
-            "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
+            "about_me": lambda n : setattr(self, 'about_me', n.get_str_value()),
+            "account_enabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
             "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(UserActivity)),
-            "ageGroup": lambda n : setattr(self, 'age_group', n.get_str_value()),
-            "agreementAcceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(AgreementAcceptance)),
-            "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(AppRoleAssignment)),
-            "assignedLicenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(AssignedLicense)),
-            "assignedPlans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(AssignedPlan)),
+            "age_group": lambda n : setattr(self, 'age_group', n.get_str_value()),
+            "agreement_acceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(AgreementAcceptance)),
+            "app_role_assignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(AppRoleAssignment)),
+            "assigned_licenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(AssignedLicense)),
+            "assigned_plans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(AssignedPlan)),
             "authentication": lambda n : setattr(self, 'authentication', n.get_object_value(Authentication)),
-            "authorizationInfo": lambda n : setattr(self, 'authorization_info', n.get_object_value(AuthorizationInfo)),
+            "authorization_info": lambda n : setattr(self, 'authorization_info', n.get_object_value(AuthorizationInfo)),
             "birthday": lambda n : setattr(self, 'birthday', n.get_datetime_value()),
-            "businessPhones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
+            "business_phones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
             "calendar": lambda n : setattr(self, 'calendar', n.get_object_value(Calendar)),
-            "calendarGroups": lambda n : setattr(self, 'calendar_groups', n.get_collection_of_object_values(CalendarGroup)),
-            "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(Event)),
+            "calendar_groups": lambda n : setattr(self, 'calendar_groups', n.get_collection_of_object_values(CalendarGroup)),
+            "calendar_view": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(Event)),
             "calendars": lambda n : setattr(self, 'calendars', n.get_collection_of_object_values(Calendar)),
             "chats": lambda n : setattr(self, 'chats', n.get_collection_of_object_values(Chat)),
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
-            "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
-            "consentProvidedForMinor": lambda n : setattr(self, 'consent_provided_for_minor', n.get_str_value()),
-            "contactFolders": lambda n : setattr(self, 'contact_folders', n.get_collection_of_object_values(ContactFolder)),
+            "company_name": lambda n : setattr(self, 'company_name', n.get_str_value()),
+            "consent_provided_for_minor": lambda n : setattr(self, 'consent_provided_for_minor', n.get_str_value()),
+            "contact_folders": lambda n : setattr(self, 'contact_folders', n.get_collection_of_object_values(ContactFolder)),
             "contacts": lambda n : setattr(self, 'contacts', n.get_collection_of_object_values(Contact)),
             "country": lambda n : setattr(self, 'country', n.get_str_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "createdObjects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(DirectoryObject)),
-            "creationType": lambda n : setattr(self, 'creation_type', n.get_str_value()),
-            "customSecurityAttributes": lambda n : setattr(self, 'custom_security_attributes', n.get_object_value(CustomSecurityAttributeValue)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_objects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(DirectoryObject)),
+            "creation_type": lambda n : setattr(self, 'creation_type', n.get_str_value()),
+            "custom_security_attributes": lambda n : setattr(self, 'custom_security_attributes', n.get_object_value(CustomSecurityAttributeValue)),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
-            "deviceEnrollmentLimit": lambda n : setattr(self, 'device_enrollment_limit', n.get_int_value()),
-            "deviceManagementTroubleshootingEvents": lambda n : setattr(self, 'device_management_troubleshooting_events', n.get_collection_of_object_values(DeviceManagementTroubleshootingEvent)),
-            "directReports": lambda n : setattr(self, 'direct_reports', n.get_collection_of_object_values(DirectoryObject)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "device_enrollment_limit": lambda n : setattr(self, 'device_enrollment_limit', n.get_int_value()),
+            "device_management_troubleshooting_events": lambda n : setattr(self, 'device_management_troubleshooting_events', n.get_collection_of_object_values(DeviceManagementTroubleshootingEvent)),
+            "direct_reports": lambda n : setattr(self, 'direct_reports', n.get_collection_of_object_values(DirectoryObject)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "drive": lambda n : setattr(self, 'drive', n.get_object_value(Drive)),
             "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(Drive)),
-            "employeeExperience": lambda n : setattr(self, 'employee_experience', n.get_object_value(EmployeeExperienceUser)),
-            "employeeHireDate": lambda n : setattr(self, 'employee_hire_date', n.get_datetime_value()),
-            "employeeId": lambda n : setattr(self, 'employee_id', n.get_str_value()),
-            "employeeLeaveDateTime": lambda n : setattr(self, 'employee_leave_date_time', n.get_datetime_value()),
-            "employeeOrgData": lambda n : setattr(self, 'employee_org_data', n.get_object_value(EmployeeOrgData)),
-            "employeeType": lambda n : setattr(self, 'employee_type', n.get_str_value()),
+            "employee_experience": lambda n : setattr(self, 'employee_experience', n.get_object_value(EmployeeExperienceUser)),
+            "employee_hire_date": lambda n : setattr(self, 'employee_hire_date', n.get_datetime_value()),
+            "employee_id": lambda n : setattr(self, 'employee_id', n.get_str_value()),
+            "employee_leave_date_time": lambda n : setattr(self, 'employee_leave_date_time', n.get_datetime_value()),
+            "employee_org_data": lambda n : setattr(self, 'employee_org_data', n.get_object_value(EmployeeOrgData)),
+            "employee_type": lambda n : setattr(self, 'employee_type', n.get_str_value()),
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(Event)),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
-            "externalUserState": lambda n : setattr(self, 'external_user_state', n.get_str_value()),
-            "externalUserStateChangeDateTime": lambda n : setattr(self, 'external_user_state_change_date_time', n.get_datetime_value()),
-            "faxNumber": lambda n : setattr(self, 'fax_number', n.get_str_value()),
-            "followedSites": lambda n : setattr(self, 'followed_sites', n.get_collection_of_object_values(Site)),
-            "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
-            "hireDate": lambda n : setattr(self, 'hire_date', n.get_datetime_value()),
+            "external_user_state": lambda n : setattr(self, 'external_user_state', n.get_str_value()),
+            "external_user_state_change_date_time": lambda n : setattr(self, 'external_user_state_change_date_time', n.get_datetime_value()),
+            "fax_number": lambda n : setattr(self, 'fax_number', n.get_str_value()),
+            "followed_sites": lambda n : setattr(self, 'followed_sites', n.get_collection_of_object_values(Site)),
+            "given_name": lambda n : setattr(self, 'given_name', n.get_str_value()),
+            "hire_date": lambda n : setattr(self, 'hire_date', n.get_datetime_value()),
             "identities": lambda n : setattr(self, 'identities', n.get_collection_of_object_values(ObjectIdentity)),
-            "imAddresses": lambda n : setattr(self, 'im_addresses', n.get_collection_of_primitive_values(str)),
-            "inferenceClassification": lambda n : setattr(self, 'inference_classification', n.get_object_value(InferenceClassification)),
+            "im_addresses": lambda n : setattr(self, 'im_addresses', n.get_collection_of_primitive_values(str)),
+            "inference_classification": lambda n : setattr(self, 'inference_classification', n.get_object_value(InferenceClassification)),
             "insights": lambda n : setattr(self, 'insights', n.get_object_value(OfficeGraphInsights)),
             "interests": lambda n : setattr(self, 'interests', n.get_collection_of_primitive_values(str)),
-            "isResourceAccount": lambda n : setattr(self, 'is_resource_account', n.get_bool_value()),
-            "jobTitle": lambda n : setattr(self, 'job_title', n.get_str_value()),
-            "joinedTeams": lambda n : setattr(self, 'joined_teams', n.get_collection_of_object_values(Team)),
-            "lastPasswordChangeDateTime": lambda n : setattr(self, 'last_password_change_date_time', n.get_datetime_value()),
-            "legalAgeGroupClassification": lambda n : setattr(self, 'legal_age_group_classification', n.get_str_value()),
-            "licenseAssignmentStates": lambda n : setattr(self, 'license_assignment_states', n.get_collection_of_object_values(LicenseAssignmentState)),
-            "licenseDetails": lambda n : setattr(self, 'license_details', n.get_collection_of_object_values(LicenseDetails)),
+            "is_resource_account": lambda n : setattr(self, 'is_resource_account', n.get_bool_value()),
+            "job_title": lambda n : setattr(self, 'job_title', n.get_str_value()),
+            "joined_teams": lambda n : setattr(self, 'joined_teams', n.get_collection_of_object_values(Team)),
+            "last_password_change_date_time": lambda n : setattr(self, 'last_password_change_date_time', n.get_datetime_value()),
+            "legal_age_group_classification": lambda n : setattr(self, 'legal_age_group_classification', n.get_str_value()),
+            "license_assignment_states": lambda n : setattr(self, 'license_assignment_states', n.get_collection_of_object_values(LicenseAssignmentState)),
+            "license_details": lambda n : setattr(self, 'license_details', n.get_collection_of_object_values(LicenseDetails)),
             "mail": lambda n : setattr(self, 'mail', n.get_str_value()),
-            "mailFolders": lambda n : setattr(self, 'mail_folders', n.get_collection_of_object_values(MailFolder)),
-            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "mailboxSettings": lambda n : setattr(self, 'mailbox_settings', n.get_object_value(MailboxSettings)),
-            "managedAppRegistrations": lambda n : setattr(self, 'managed_app_registrations', n.get_collection_of_object_values(ManagedAppRegistration)),
-            "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(ManagedDevice)),
+            "mail_folders": lambda n : setattr(self, 'mail_folders', n.get_collection_of_object_values(MailFolder)),
+            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "mailbox_settings": lambda n : setattr(self, 'mailbox_settings', n.get_object_value(MailboxSettings)),
+            "managed_app_registrations": lambda n : setattr(self, 'managed_app_registrations', n.get_collection_of_object_values(ManagedAppRegistration)),
+            "managed_devices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(ManagedDevice)),
             "manager": lambda n : setattr(self, 'manager', n.get_object_value(DirectoryObject)),
-            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
+            "member_of": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(Message)),
-            "mobilePhone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
-            "mySite": lambda n : setattr(self, 'my_site', n.get_str_value()),
-            "oauth2PermissionGrants": lambda n : setattr(self, 'oauth2_permission_grants', n.get_collection_of_object_values(OAuth2PermissionGrant)),
-            "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
-            "onPremisesDistinguishedName": lambda n : setattr(self, 'on_premises_distinguished_name', n.get_str_value()),
-            "onPremisesDomainName": lambda n : setattr(self, 'on_premises_domain_name', n.get_str_value()),
-            "onPremisesExtensionAttributes": lambda n : setattr(self, 'on_premises_extension_attributes', n.get_object_value(OnPremisesExtensionAttributes)),
-            "onPremisesImmutableId": lambda n : setattr(self, 'on_premises_immutable_id', n.get_str_value()),
-            "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
-            "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(OnPremisesProvisioningError)),
-            "onPremisesSamAccountName": lambda n : setattr(self, 'on_premises_sam_account_name', n.get_str_value()),
-            "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
-            "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
-            "onPremisesUserPrincipalName": lambda n : setattr(self, 'on_premises_user_principal_name', n.get_str_value()),
+            "mobile_phone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
+            "my_site": lambda n : setattr(self, 'my_site', n.get_str_value()),
+            "oauth2_permission_grants": lambda n : setattr(self, 'oauth2_permission_grants', n.get_collection_of_object_values(OAuth2PermissionGrant)),
+            "office_location": lambda n : setattr(self, 'office_location', n.get_str_value()),
+            "on_premises_distinguished_name": lambda n : setattr(self, 'on_premises_distinguished_name', n.get_str_value()),
+            "on_premises_domain_name": lambda n : setattr(self, 'on_premises_domain_name', n.get_str_value()),
+            "on_premises_extension_attributes": lambda n : setattr(self, 'on_premises_extension_attributes', n.get_object_value(OnPremisesExtensionAttributes)),
+            "on_premises_immutable_id": lambda n : setattr(self, 'on_premises_immutable_id', n.get_str_value()),
+            "on_premises_last_sync_date_time": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
+            "on_premises_provisioning_errors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(OnPremisesProvisioningError)),
+            "on_premises_sam_account_name": lambda n : setattr(self, 'on_premises_sam_account_name', n.get_str_value()),
+            "on_premises_security_identifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
+            "on_premises_sync_enabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
+            "on_premises_user_principal_name": lambda n : setattr(self, 'on_premises_user_principal_name', n.get_str_value()),
             "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(Onenote)),
-            "onlineMeetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(OnlineMeeting)),
-            "otherMails": lambda n : setattr(self, 'other_mails', n.get_collection_of_primitive_values(str)),
+            "online_meetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(OnlineMeeting)),
+            "other_mails": lambda n : setattr(self, 'other_mails', n.get_collection_of_primitive_values(str)),
             "outlook": lambda n : setattr(self, 'outlook', n.get_object_value(OutlookUser)),
-            "ownedDevices": lambda n : setattr(self, 'owned_devices', n.get_collection_of_object_values(DirectoryObject)),
-            "ownedObjects": lambda n : setattr(self, 'owned_objects', n.get_collection_of_object_values(DirectoryObject)),
-            "passwordPolicies": lambda n : setattr(self, 'password_policies', n.get_str_value()),
-            "passwordProfile": lambda n : setattr(self, 'password_profile', n.get_object_value(PasswordProfile)),
-            "pastProjects": lambda n : setattr(self, 'past_projects', n.get_collection_of_primitive_values(str)),
+            "owned_devices": lambda n : setattr(self, 'owned_devices', n.get_collection_of_object_values(DirectoryObject)),
+            "owned_objects": lambda n : setattr(self, 'owned_objects', n.get_collection_of_object_values(DirectoryObject)),
+            "password_policies": lambda n : setattr(self, 'password_policies', n.get_str_value()),
+            "password_profile": lambda n : setattr(self, 'password_profile', n.get_object_value(PasswordProfile)),
+            "past_projects": lambda n : setattr(self, 'past_projects', n.get_collection_of_primitive_values(str)),
             "people": lambda n : setattr(self, 'people', n.get_collection_of_object_values(Person)),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(ProfilePhoto)),
             "photos": lambda n : setattr(self, 'photos', n.get_collection_of_object_values(ProfilePhoto)),
             "planner": lambda n : setattr(self, 'planner', n.get_object_value(PlannerUser)),
-            "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
-            "preferredDataLocation": lambda n : setattr(self, 'preferred_data_location', n.get_str_value()),
-            "preferredLanguage": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
-            "preferredName": lambda n : setattr(self, 'preferred_name', n.get_str_value()),
+            "postal_code": lambda n : setattr(self, 'postal_code', n.get_str_value()),
+            "preferred_data_location": lambda n : setattr(self, 'preferred_data_location', n.get_str_value()),
+            "preferred_language": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
+            "preferred_name": lambda n : setattr(self, 'preferred_name', n.get_str_value()),
             "presence": lambda n : setattr(self, 'presence', n.get_object_value(Presence)),
             "print": lambda n : setattr(self, 'print', n.get_object_value(UserPrint)),
-            "provisionedPlans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(ProvisionedPlan)),
-            "proxyAddresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
-            "registeredDevices": lambda n : setattr(self, 'registered_devices', n.get_collection_of_object_values(DirectoryObject)),
+            "provisioned_plans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(ProvisionedPlan)),
+            "proxy_addresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
+            "registered_devices": lambda n : setattr(self, 'registered_devices', n.get_collection_of_object_values(DirectoryObject)),
             "responsibilities": lambda n : setattr(self, 'responsibilities', n.get_collection_of_primitive_values(str)),
             "schools": lambda n : setattr(self, 'schools', n.get_collection_of_primitive_values(str)),
-            "scopedRoleMemberOf": lambda n : setattr(self, 'scoped_role_member_of', n.get_collection_of_object_values(ScopedRoleMembership)),
-            "securityIdentifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
-            "serviceProvisioningErrors": lambda n : setattr(self, 'service_provisioning_errors', n.get_collection_of_object_values(ServiceProvisioningError)),
+            "scoped_role_member_of": lambda n : setattr(self, 'scoped_role_member_of', n.get_collection_of_object_values(ScopedRoleMembership)),
+            "security_identifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
+            "service_provisioning_errors": lambda n : setattr(self, 'service_provisioning_errors', n.get_collection_of_object_values(ServiceProvisioningError)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(UserSettings)),
-            "showInAddressList": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
-            "signInActivity": lambda n : setattr(self, 'sign_in_activity', n.get_object_value(SignInActivity)),
-            "signInSessionsValidFromDateTime": lambda n : setattr(self, 'sign_in_sessions_valid_from_date_time', n.get_datetime_value()),
+            "show_in_address_list": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
+            "sign_in_activity": lambda n : setattr(self, 'sign_in_activity', n.get_object_value(SignInActivity)),
+            "sign_in_sessions_valid_from_date_time": lambda n : setattr(self, 'sign_in_sessions_valid_from_date_time', n.get_datetime_value()),
             "skills": lambda n : setattr(self, 'skills', n.get_collection_of_primitive_values(str)),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
-            "streetAddress": lambda n : setattr(self, 'street_address', n.get_str_value()),
+            "street_address": lambda n : setattr(self, 'street_address', n.get_str_value()),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
             "teamwork": lambda n : setattr(self, 'teamwork', n.get_object_value(UserTeamwork)),
             "todo": lambda n : setattr(self, 'todo', n.get_object_value(Todo)),
-            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
-            "usageLocation": lambda n : setattr(self, 'usage_location', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
-            "userType": lambda n : setattr(self, 'user_type', n.get_str_value()),
+            "transitive_member_of": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
+            "usage_location": lambda n : setattr(self, 'usage_location', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "user_type": lambda n : setattr(self, 'user_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -571,129 +571,129 @@ class User(DirectoryObject):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("aboutMe", self.about_me)
-        writer.write_bool_value("accountEnabled", self.account_enabled)
+        writer.write_str_value("about_me", self.about_me)
+        writer.write_bool_value("account_enabled", self.account_enabled)
         writer.write_collection_of_object_values("activities", self.activities)
-        writer.write_str_value("ageGroup", self.age_group)
-        writer.write_collection_of_object_values("agreementAcceptances", self.agreement_acceptances)
-        writer.write_collection_of_object_values("appRoleAssignments", self.app_role_assignments)
-        writer.write_collection_of_object_values("assignedLicenses", self.assigned_licenses)
-        writer.write_collection_of_object_values("assignedPlans", self.assigned_plans)
+        writer.write_str_value("age_group", self.age_group)
+        writer.write_collection_of_object_values("agreement_acceptances", self.agreement_acceptances)
+        writer.write_collection_of_object_values("app_role_assignments", self.app_role_assignments)
+        writer.write_collection_of_object_values("assigned_licenses", self.assigned_licenses)
+        writer.write_collection_of_object_values("assigned_plans", self.assigned_plans)
         writer.write_object_value("authentication", self.authentication)
-        writer.write_object_value("authorizationInfo", self.authorization_info)
+        writer.write_object_value("authorization_info", self.authorization_info)
         writer.write_datetime_value("birthday", self.birthday)
-        writer.write_collection_of_primitive_values("businessPhones", self.business_phones)
+        writer.write_collection_of_primitive_values("business_phones", self.business_phones)
         writer.write_object_value("calendar", self.calendar)
-        writer.write_collection_of_object_values("calendarGroups", self.calendar_groups)
-        writer.write_collection_of_object_values("calendarView", self.calendar_view)
+        writer.write_collection_of_object_values("calendar_groups", self.calendar_groups)
+        writer.write_collection_of_object_values("calendar_view", self.calendar_view)
         writer.write_collection_of_object_values("calendars", self.calendars)
         writer.write_collection_of_object_values("chats", self.chats)
         writer.write_str_value("city", self.city)
-        writer.write_str_value("companyName", self.company_name)
-        writer.write_str_value("consentProvidedForMinor", self.consent_provided_for_minor)
-        writer.write_collection_of_object_values("contactFolders", self.contact_folders)
+        writer.write_str_value("company_name", self.company_name)
+        writer.write_str_value("consent_provided_for_minor", self.consent_provided_for_minor)
+        writer.write_collection_of_object_values("contact_folders", self.contact_folders)
         writer.write_collection_of_object_values("contacts", self.contacts)
         writer.write_str_value("country", self.country)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_collection_of_object_values("createdObjects", self.created_objects)
-        writer.write_str_value("creationType", self.creation_type)
-        writer.write_object_value("customSecurityAttributes", self.custom_security_attributes)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_collection_of_object_values("created_objects", self.created_objects)
+        writer.write_str_value("creation_type", self.creation_type)
+        writer.write_object_value("custom_security_attributes", self.custom_security_attributes)
         writer.write_str_value("department", self.department)
-        writer.write_int_value("deviceEnrollmentLimit", self.device_enrollment_limit)
-        writer.write_collection_of_object_values("deviceManagementTroubleshootingEvents", self.device_management_troubleshooting_events)
-        writer.write_collection_of_object_values("directReports", self.direct_reports)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_int_value("device_enrollment_limit", self.device_enrollment_limit)
+        writer.write_collection_of_object_values("device_management_troubleshooting_events", self.device_management_troubleshooting_events)
+        writer.write_collection_of_object_values("direct_reports", self.direct_reports)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_object_value("drive", self.drive)
         writer.write_collection_of_object_values("drives", self.drives)
-        writer.write_object_value("employeeExperience", self.employee_experience)
-        writer.write_datetime_value("employeeHireDate", self.employee_hire_date)
-        writer.write_str_value("employeeId", self.employee_id)
-        writer.write_datetime_value("employeeLeaveDateTime", self.employee_leave_date_time)
-        writer.write_object_value("employeeOrgData", self.employee_org_data)
-        writer.write_str_value("employeeType", self.employee_type)
+        writer.write_object_value("employee_experience", self.employee_experience)
+        writer.write_datetime_value("employee_hire_date", self.employee_hire_date)
+        writer.write_str_value("employee_id", self.employee_id)
+        writer.write_datetime_value("employee_leave_date_time", self.employee_leave_date_time)
+        writer.write_object_value("employee_org_data", self.employee_org_data)
+        writer.write_str_value("employee_type", self.employee_type)
         writer.write_collection_of_object_values("events", self.events)
         writer.write_collection_of_object_values("extensions", self.extensions)
-        writer.write_str_value("externalUserState", self.external_user_state)
-        writer.write_datetime_value("externalUserStateChangeDateTime", self.external_user_state_change_date_time)
-        writer.write_str_value("faxNumber", self.fax_number)
-        writer.write_collection_of_object_values("followedSites", self.followed_sites)
-        writer.write_str_value("givenName", self.given_name)
-        writer.write_datetime_value("hireDate", self.hire_date)
+        writer.write_str_value("external_user_state", self.external_user_state)
+        writer.write_datetime_value("external_user_state_change_date_time", self.external_user_state_change_date_time)
+        writer.write_str_value("fax_number", self.fax_number)
+        writer.write_collection_of_object_values("followed_sites", self.followed_sites)
+        writer.write_str_value("given_name", self.given_name)
+        writer.write_datetime_value("hire_date", self.hire_date)
         writer.write_collection_of_object_values("identities", self.identities)
-        writer.write_collection_of_primitive_values("imAddresses", self.im_addresses)
-        writer.write_object_value("inferenceClassification", self.inference_classification)
+        writer.write_collection_of_primitive_values("im_addresses", self.im_addresses)
+        writer.write_object_value("inference_classification", self.inference_classification)
         writer.write_object_value("insights", self.insights)
         writer.write_collection_of_primitive_values("interests", self.interests)
-        writer.write_bool_value("isResourceAccount", self.is_resource_account)
-        writer.write_str_value("jobTitle", self.job_title)
-        writer.write_collection_of_object_values("joinedTeams", self.joined_teams)
-        writer.write_datetime_value("lastPasswordChangeDateTime", self.last_password_change_date_time)
-        writer.write_str_value("legalAgeGroupClassification", self.legal_age_group_classification)
-        writer.write_collection_of_object_values("licenseAssignmentStates", self.license_assignment_states)
-        writer.write_collection_of_object_values("licenseDetails", self.license_details)
+        writer.write_bool_value("is_resource_account", self.is_resource_account)
+        writer.write_str_value("job_title", self.job_title)
+        writer.write_collection_of_object_values("joined_teams", self.joined_teams)
+        writer.write_datetime_value("last_password_change_date_time", self.last_password_change_date_time)
+        writer.write_str_value("legal_age_group_classification", self.legal_age_group_classification)
+        writer.write_collection_of_object_values("license_assignment_states", self.license_assignment_states)
+        writer.write_collection_of_object_values("license_details", self.license_details)
         writer.write_str_value("mail", self.mail)
-        writer.write_collection_of_object_values("mailFolders", self.mail_folders)
-        writer.write_str_value("mailNickname", self.mail_nickname)
-        writer.write_object_value("mailboxSettings", self.mailbox_settings)
-        writer.write_collection_of_object_values("managedAppRegistrations", self.managed_app_registrations)
-        writer.write_collection_of_object_values("managedDevices", self.managed_devices)
+        writer.write_collection_of_object_values("mail_folders", self.mail_folders)
+        writer.write_str_value("mail_nickname", self.mail_nickname)
+        writer.write_object_value("mailbox_settings", self.mailbox_settings)
+        writer.write_collection_of_object_values("managed_app_registrations", self.managed_app_registrations)
+        writer.write_collection_of_object_values("managed_devices", self.managed_devices)
         writer.write_object_value("manager", self.manager)
-        writer.write_collection_of_object_values("memberOf", self.member_of)
+        writer.write_collection_of_object_values("member_of", self.member_of)
         writer.write_collection_of_object_values("messages", self.messages)
-        writer.write_str_value("mobilePhone", self.mobile_phone)
-        writer.write_str_value("mySite", self.my_site)
-        writer.write_collection_of_object_values("oauth2PermissionGrants", self.oauth2_permission_grants)
-        writer.write_str_value("officeLocation", self.office_location)
-        writer.write_str_value("onPremisesDistinguishedName", self.on_premises_distinguished_name)
-        writer.write_str_value("onPremisesDomainName", self.on_premises_domain_name)
-        writer.write_object_value("onPremisesExtensionAttributes", self.on_premises_extension_attributes)
-        writer.write_str_value("onPremisesImmutableId", self.on_premises_immutable_id)
-        writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
-        writer.write_collection_of_object_values("onPremisesProvisioningErrors", self.on_premises_provisioning_errors)
-        writer.write_str_value("onPremisesSamAccountName", self.on_premises_sam_account_name)
-        writer.write_str_value("onPremisesSecurityIdentifier", self.on_premises_security_identifier)
-        writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
-        writer.write_str_value("onPremisesUserPrincipalName", self.on_premises_user_principal_name)
+        writer.write_str_value("mobile_phone", self.mobile_phone)
+        writer.write_str_value("my_site", self.my_site)
+        writer.write_collection_of_object_values("oauth2_permission_grants", self.oauth2_permission_grants)
+        writer.write_str_value("office_location", self.office_location)
+        writer.write_str_value("on_premises_distinguished_name", self.on_premises_distinguished_name)
+        writer.write_str_value("on_premises_domain_name", self.on_premises_domain_name)
+        writer.write_object_value("on_premises_extension_attributes", self.on_premises_extension_attributes)
+        writer.write_str_value("on_premises_immutable_id", self.on_premises_immutable_id)
+        writer.write_datetime_value("on_premises_last_sync_date_time", self.on_premises_last_sync_date_time)
+        writer.write_collection_of_object_values("on_premises_provisioning_errors", self.on_premises_provisioning_errors)
+        writer.write_str_value("on_premises_sam_account_name", self.on_premises_sam_account_name)
+        writer.write_str_value("on_premises_security_identifier", self.on_premises_security_identifier)
+        writer.write_bool_value("on_premises_sync_enabled", self.on_premises_sync_enabled)
+        writer.write_str_value("on_premises_user_principal_name", self.on_premises_user_principal_name)
         writer.write_object_value("onenote", self.onenote)
-        writer.write_collection_of_object_values("onlineMeetings", self.online_meetings)
-        writer.write_collection_of_primitive_values("otherMails", self.other_mails)
+        writer.write_collection_of_object_values("online_meetings", self.online_meetings)
+        writer.write_collection_of_primitive_values("other_mails", self.other_mails)
         writer.write_object_value("outlook", self.outlook)
-        writer.write_collection_of_object_values("ownedDevices", self.owned_devices)
-        writer.write_collection_of_object_values("ownedObjects", self.owned_objects)
-        writer.write_str_value("passwordPolicies", self.password_policies)
-        writer.write_object_value("passwordProfile", self.password_profile)
-        writer.write_collection_of_primitive_values("pastProjects", self.past_projects)
+        writer.write_collection_of_object_values("owned_devices", self.owned_devices)
+        writer.write_collection_of_object_values("owned_objects", self.owned_objects)
+        writer.write_str_value("password_policies", self.password_policies)
+        writer.write_object_value("password_profile", self.password_profile)
+        writer.write_collection_of_primitive_values("past_projects", self.past_projects)
         writer.write_collection_of_object_values("people", self.people)
         writer.write_object_value("photo", self.photo)
         writer.write_collection_of_object_values("photos", self.photos)
         writer.write_object_value("planner", self.planner)
-        writer.write_str_value("postalCode", self.postal_code)
-        writer.write_str_value("preferredDataLocation", self.preferred_data_location)
-        writer.write_str_value("preferredLanguage", self.preferred_language)
-        writer.write_str_value("preferredName", self.preferred_name)
+        writer.write_str_value("postal_code", self.postal_code)
+        writer.write_str_value("preferred_data_location", self.preferred_data_location)
+        writer.write_str_value("preferred_language", self.preferred_language)
+        writer.write_str_value("preferred_name", self.preferred_name)
         writer.write_object_value("presence", self.presence)
         writer.write_object_value("print", self.print)
-        writer.write_collection_of_object_values("provisionedPlans", self.provisioned_plans)
-        writer.write_collection_of_primitive_values("proxyAddresses", self.proxy_addresses)
-        writer.write_collection_of_object_values("registeredDevices", self.registered_devices)
+        writer.write_collection_of_object_values("provisioned_plans", self.provisioned_plans)
+        writer.write_collection_of_primitive_values("proxy_addresses", self.proxy_addresses)
+        writer.write_collection_of_object_values("registered_devices", self.registered_devices)
         writer.write_collection_of_primitive_values("responsibilities", self.responsibilities)
         writer.write_collection_of_primitive_values("schools", self.schools)
-        writer.write_collection_of_object_values("scopedRoleMemberOf", self.scoped_role_member_of)
-        writer.write_str_value("securityIdentifier", self.security_identifier)
-        writer.write_collection_of_object_values("serviceProvisioningErrors", self.service_provisioning_errors)
+        writer.write_collection_of_object_values("scoped_role_member_of", self.scoped_role_member_of)
+        writer.write_str_value("security_identifier", self.security_identifier)
+        writer.write_collection_of_object_values("service_provisioning_errors", self.service_provisioning_errors)
         writer.write_object_value("settings", self.settings)
-        writer.write_bool_value("showInAddressList", self.show_in_address_list)
-        writer.write_object_value("signInActivity", self.sign_in_activity)
-        writer.write_datetime_value("signInSessionsValidFromDateTime", self.sign_in_sessions_valid_from_date_time)
+        writer.write_bool_value("show_in_address_list", self.show_in_address_list)
+        writer.write_object_value("sign_in_activity", self.sign_in_activity)
+        writer.write_datetime_value("sign_in_sessions_valid_from_date_time", self.sign_in_sessions_valid_from_date_time)
         writer.write_collection_of_primitive_values("skills", self.skills)
         writer.write_str_value("state", self.state)
-        writer.write_str_value("streetAddress", self.street_address)
+        writer.write_str_value("street_address", self.street_address)
         writer.write_str_value("surname", self.surname)
         writer.write_object_value("teamwork", self.teamwork)
         writer.write_object_value("todo", self.todo)
-        writer.write_collection_of_object_values("transitiveMemberOf", self.transitive_member_of)
-        writer.write_str_value("usageLocation", self.usage_location)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
-        writer.write_str_value("userType", self.user_type)
+        writer.write_collection_of_object_values("transitive_member_of", self.transitive_member_of)
+        writer.write_str_value("usage_location", self.usage_location)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
+        writer.write_str_value("user_type", self.user_type)
     
 

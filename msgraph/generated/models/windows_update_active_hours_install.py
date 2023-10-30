@@ -39,8 +39,8 @@ class WindowsUpdateActiveHoursInstall(WindowsUpdateInstallScheduleType):
         from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activeHoursEnd": lambda n : setattr(self, 'active_hours_end', n.get_time_value()),
-            "activeHoursStart": lambda n : setattr(self, 'active_hours_start', n.get_time_value()),
+            "active_hours_end": lambda n : setattr(self, 'active_hours_end', n.get_time_value()),
+            "active_hours_start": lambda n : setattr(self, 'active_hours_start', n.get_time_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,7 +55,7 @@ class WindowsUpdateActiveHoursInstall(WindowsUpdateInstallScheduleType):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_time_value("activeHoursEnd", self.active_hours_end)
-        writer.write_time_value("activeHoursStart", self.active_hours_start)
+        writer.write_time_value("active_hours_end", self.active_hours_end)
+        writer.write_time_value("active_hours_start", self.active_hours_start)
     
 

@@ -33,7 +33,7 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, BackedModel, Parsa
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "challengeToken": lambda n : setattr(self, 'challenge_token', n.get_str_value()),
+            "challenge_token": lambda n : setattr(self, 'challenge_token', n.get_str_value()),
             "password": lambda n : setattr(self, 'password', n.get_str_value()),
         }
         return fields
@@ -46,7 +46,7 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, BackedModel, Parsa
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("challengeToken", self.challenge_token)
+        writer.write_str_value("challenge_token", self.challenge_token)
         writer.write_str_value("password", self.password)
         writer.write_additional_data_value(self.additional_data)
     

@@ -69,17 +69,17 @@ class VppToken(Entity):
         from .vpp_token_sync_status import VppTokenSyncStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appleId": lambda n : setattr(self, 'apple_id', n.get_str_value()),
-            "automaticallyUpdateApps": lambda n : setattr(self, 'automatically_update_apps', n.get_bool_value()),
-            "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "lastSyncDateTime": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
-            "lastSyncStatus": lambda n : setattr(self, 'last_sync_status', n.get_enum_value(VppTokenSyncStatus)),
-            "organizationName": lambda n : setattr(self, 'organization_name', n.get_str_value()),
+            "apple_id": lambda n : setattr(self, 'apple_id', n.get_str_value()),
+            "automatically_update_apps": lambda n : setattr(self, 'automatically_update_apps', n.get_bool_value()),
+            "country_or_region": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "last_sync_date_time": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
+            "last_sync_status": lambda n : setattr(self, 'last_sync_status', n.get_enum_value(VppTokenSyncStatus)),
+            "organization_name": lambda n : setattr(self, 'organization_name', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(VppTokenState)),
             "token": lambda n : setattr(self, 'token', n.get_str_value()),
-            "vppTokenAccountType": lambda n : setattr(self, 'vpp_token_account_type', n.get_enum_value(VppTokenAccountType)),
+            "vpp_token_account_type": lambda n : setattr(self, 'vpp_token_account_type', n.get_enum_value(VppTokenAccountType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -94,16 +94,16 @@ class VppToken(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("appleId", self.apple_id)
-        writer.write_bool_value("automaticallyUpdateApps", self.automatically_update_apps)
-        writer.write_str_value("countryOrRegion", self.country_or_region)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_datetime_value("lastSyncDateTime", self.last_sync_date_time)
-        writer.write_enum_value("lastSyncStatus", self.last_sync_status)
-        writer.write_str_value("organizationName", self.organization_name)
+        writer.write_str_value("apple_id", self.apple_id)
+        writer.write_bool_value("automatically_update_apps", self.automatically_update_apps)
+        writer.write_str_value("country_or_region", self.country_or_region)
+        writer.write_datetime_value("expiration_date_time", self.expiration_date_time)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_datetime_value("last_sync_date_time", self.last_sync_date_time)
+        writer.write_enum_value("last_sync_status", self.last_sync_status)
+        writer.write_str_value("organization_name", self.organization_name)
         writer.write_enum_value("state", self.state)
         writer.write_str_value("token", self.token)
-        writer.write_enum_value("vppTokenAccountType", self.vpp_token_account_type)
+        writer.write_enum_value("vpp_token_account_type", self.vpp_token_account_type)
     
 

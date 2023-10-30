@@ -46,11 +46,11 @@ class TeamFunSettings(AdditionalDataHolder, BackedModel, Parsable):
         from .giphy_rating_type import GiphyRatingType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowCustomMemes": lambda n : setattr(self, 'allow_custom_memes', n.get_bool_value()),
-            "allowGiphy": lambda n : setattr(self, 'allow_giphy', n.get_bool_value()),
-            "allowStickersAndMemes": lambda n : setattr(self, 'allow_stickers_and_memes', n.get_bool_value()),
-            "giphyContentRating": lambda n : setattr(self, 'giphy_content_rating', n.get_enum_value(GiphyRatingType)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "allow_custom_memes": lambda n : setattr(self, 'allow_custom_memes', n.get_bool_value()),
+            "allow_giphy": lambda n : setattr(self, 'allow_giphy', n.get_bool_value()),
+            "allow_stickers_and_memes": lambda n : setattr(self, 'allow_stickers_and_memes', n.get_bool_value()),
+            "giphy_content_rating": lambda n : setattr(self, 'giphy_content_rating', n.get_enum_value(GiphyRatingType)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -62,11 +62,11 @@ class TeamFunSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("allowCustomMemes", self.allow_custom_memes)
-        writer.write_bool_value("allowGiphy", self.allow_giphy)
-        writer.write_bool_value("allowStickersAndMemes", self.allow_stickers_and_memes)
-        writer.write_enum_value("giphyContentRating", self.giphy_content_rating)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("allow_custom_memes", self.allow_custom_memes)
+        writer.write_bool_value("allow_giphy", self.allow_giphy)
+        writer.write_bool_value("allow_stickers_and_memes", self.allow_stickers_and_memes)
+        writer.write_enum_value("giphy_content_rating", self.giphy_content_rating)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

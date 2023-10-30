@@ -38,9 +38,9 @@ class VppLicensingType(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "supportsDeviceLicensing": lambda n : setattr(self, 'supports_device_licensing', n.get_bool_value()),
-            "supportsUserLicensing": lambda n : setattr(self, 'supports_user_licensing', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "supports_device_licensing": lambda n : setattr(self, 'supports_device_licensing', n.get_bool_value()),
+            "supports_user_licensing": lambda n : setattr(self, 'supports_user_licensing', n.get_bool_value()),
         }
         return fields
     
@@ -52,9 +52,9 @@ class VppLicensingType(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_bool_value("supportsDeviceLicensing", self.supports_device_licensing)
-        writer.write_bool_value("supportsUserLicensing", self.supports_user_licensing)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_bool_value("supports_device_licensing", self.supports_device_licensing)
+        writer.write_bool_value("supports_user_licensing", self.supports_user_licensing)
         writer.write_additional_data_value(self.additional_data)
     
 

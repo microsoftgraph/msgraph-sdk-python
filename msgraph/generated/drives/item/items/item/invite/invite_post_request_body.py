@@ -52,14 +52,14 @@ class InvitePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ......models.drive_recipient import DriveRecipient
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_str_value()),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_str_value()),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "password": lambda n : setattr(self, 'password', n.get_str_value()),
             "recipients": lambda n : setattr(self, 'recipients', n.get_collection_of_object_values(DriveRecipient)),
-            "requireSignIn": lambda n : setattr(self, 'require_sign_in', n.get_bool_value()),
-            "retainInheritedPermissions": lambda n : setattr(self, 'retain_inherited_permissions', n.get_bool_value()),
+            "require_sign_in": lambda n : setattr(self, 'require_sign_in', n.get_bool_value()),
+            "retain_inherited_permissions": lambda n : setattr(self, 'retain_inherited_permissions', n.get_bool_value()),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_primitive_values(str)),
-            "sendInvitation": lambda n : setattr(self, 'send_invitation', n.get_bool_value()),
+            "send_invitation": lambda n : setattr(self, 'send_invitation', n.get_bool_value()),
         }
         return fields
     
@@ -71,14 +71,14 @@ class InvitePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("expirationDateTime", self.expiration_date_time)
+        writer.write_str_value("expiration_date_time", self.expiration_date_time)
         writer.write_str_value("message", self.message)
         writer.write_str_value("password", self.password)
         writer.write_collection_of_object_values("recipients", self.recipients)
-        writer.write_bool_value("requireSignIn", self.require_sign_in)
-        writer.write_bool_value("retainInheritedPermissions", self.retain_inherited_permissions)
+        writer.write_bool_value("require_sign_in", self.require_sign_in)
+        writer.write_bool_value("retain_inherited_permissions", self.retain_inherited_permissions)
         writer.write_collection_of_primitive_values("roles", self.roles)
-        writer.write_bool_value("sendInvitation", self.send_invitation)
+        writer.write_bool_value("send_invitation", self.send_invitation)
         writer.write_additional_data_value(self.additional_data)
     
 

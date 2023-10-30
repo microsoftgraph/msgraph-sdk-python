@@ -44,8 +44,8 @@ class DelegatedPermissionClassification(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(PermissionClassificationType)),
-            "permissionId": lambda n : setattr(self, 'permission_id', n.get_str_value()),
-            "permissionName": lambda n : setattr(self, 'permission_name', n.get_str_value()),
+            "permission_id": lambda n : setattr(self, 'permission_id', n.get_str_value()),
+            "permission_name": lambda n : setattr(self, 'permission_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,7 +61,7 @@ class DelegatedPermissionClassification(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("classification", self.classification)
-        writer.write_str_value("permissionId", self.permission_id)
-        writer.write_str_value("permissionName", self.permission_name)
+        writer.write_str_value("permission_id", self.permission_id)
+        writer.write_str_value("permission_name", self.permission_name)
     
 

@@ -86,17 +86,17 @@ class UnifiedRoleScheduleBase(Entity):
         from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(AppScope)),
-            "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "createdUsing": lambda n : setattr(self, 'created_using', n.get_str_value()),
-            "directoryScope": lambda n : setattr(self, 'directory_scope', n.get_object_value(DirectoryObject)),
-            "directoryScopeId": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
-            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "app_scope": lambda n : setattr(self, 'app_scope', n.get_object_value(AppScope)),
+            "app_scope_id": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_using": lambda n : setattr(self, 'created_using', n.get_str_value()),
+            "directory_scope": lambda n : setattr(self, 'directory_scope', n.get_object_value(DirectoryObject)),
+            "directory_scope_id": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
+            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(DirectoryObject)),
-            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(UnifiedRoleDefinition)),
-            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "role_definition": lambda n : setattr(self, 'role_definition', n.get_object_value(UnifiedRoleDefinition)),
+            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -112,17 +112,17 @@ class UnifiedRoleScheduleBase(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("appScope", self.app_scope)
-        writer.write_str_value("appScopeId", self.app_scope_id)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_str_value("createdUsing", self.created_using)
-        writer.write_object_value("directoryScope", self.directory_scope)
-        writer.write_str_value("directoryScopeId", self.directory_scope_id)
-        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
+        writer.write_object_value("app_scope", self.app_scope)
+        writer.write_str_value("app_scope_id", self.app_scope_id)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_str_value("created_using", self.created_using)
+        writer.write_object_value("directory_scope", self.directory_scope)
+        writer.write_str_value("directory_scope_id", self.directory_scope_id)
+        writer.write_datetime_value("modified_date_time", self.modified_date_time)
         writer.write_object_value("principal", self.principal)
-        writer.write_str_value("principalId", self.principal_id)
-        writer.write_object_value("roleDefinition", self.role_definition)
-        writer.write_str_value("roleDefinitionId", self.role_definition_id)
+        writer.write_str_value("principal_id", self.principal_id)
+        writer.write_object_value("role_definition", self.role_definition)
+        writer.write_str_value("role_definition_id", self.role_definition_id)
         writer.write_str_value("status", self.status)
     
 

@@ -52,8 +52,8 @@ class AccessReviewQueryScope(AccessReviewScope):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "query": lambda n : setattr(self, 'query', n.get_str_value()),
-            "queryRoot": lambda n : setattr(self, 'query_root', n.get_str_value()),
-            "queryType": lambda n : setattr(self, 'query_type', n.get_str_value()),
+            "query_root": lambda n : setattr(self, 'query_root', n.get_str_value()),
+            "query_type": lambda n : setattr(self, 'query_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,7 +69,7 @@ class AccessReviewQueryScope(AccessReviewScope):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("query", self.query)
-        writer.write_str_value("queryRoot", self.query_root)
-        writer.write_str_value("queryType", self.query_type)
+        writer.write_str_value("query_root", self.query_root)
+        writer.write_str_value("query_type", self.query_type)
     
 

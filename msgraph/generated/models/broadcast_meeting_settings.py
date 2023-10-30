@@ -53,13 +53,13 @@ class BroadcastMeetingSettings(AdditionalDataHolder, BackedModel, Parsable):
         from .broadcast_meeting_caption_settings import BroadcastMeetingCaptionSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedAudience": lambda n : setattr(self, 'allowed_audience', n.get_enum_value(BroadcastMeetingAudience)),
+            "allowed_audience": lambda n : setattr(self, 'allowed_audience', n.get_enum_value(BroadcastMeetingAudience)),
             "captions": lambda n : setattr(self, 'captions', n.get_object_value(BroadcastMeetingCaptionSettings)),
-            "isAttendeeReportEnabled": lambda n : setattr(self, 'is_attendee_report_enabled', n.get_bool_value()),
-            "isQuestionAndAnswerEnabled": lambda n : setattr(self, 'is_question_and_answer_enabled', n.get_bool_value()),
-            "isRecordingEnabled": lambda n : setattr(self, 'is_recording_enabled', n.get_bool_value()),
-            "isVideoOnDemandEnabled": lambda n : setattr(self, 'is_video_on_demand_enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "is_attendee_report_enabled": lambda n : setattr(self, 'is_attendee_report_enabled', n.get_bool_value()),
+            "is_question_and_answer_enabled": lambda n : setattr(self, 'is_question_and_answer_enabled', n.get_bool_value()),
+            "is_recording_enabled": lambda n : setattr(self, 'is_recording_enabled', n.get_bool_value()),
+            "is_video_on_demand_enabled": lambda n : setattr(self, 'is_video_on_demand_enabled', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -71,13 +71,13 @@ class BroadcastMeetingSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("allowedAudience", self.allowed_audience)
+        writer.write_enum_value("allowed_audience", self.allowed_audience)
         writer.write_object_value("captions", self.captions)
-        writer.write_bool_value("isAttendeeReportEnabled", self.is_attendee_report_enabled)
-        writer.write_bool_value("isQuestionAndAnswerEnabled", self.is_question_and_answer_enabled)
-        writer.write_bool_value("isRecordingEnabled", self.is_recording_enabled)
-        writer.write_bool_value("isVideoOnDemandEnabled", self.is_video_on_demand_enabled)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("is_attendee_report_enabled", self.is_attendee_report_enabled)
+        writer.write_bool_value("is_question_and_answer_enabled", self.is_question_and_answer_enabled)
+        writer.write_bool_value("is_recording_enabled", self.is_recording_enabled)
+        writer.write_bool_value("is_video_on_demand_enabled", self.is_video_on_demand_enabled)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -63,19 +63,19 @@ class Subscription(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicationId": lambda n : setattr(self, 'application_id', n.get_str_value()),
-            "changeType": lambda n : setattr(self, 'change_type', n.get_str_value()),
-            "clientState": lambda n : setattr(self, 'client_state', n.get_str_value()),
-            "creatorId": lambda n : setattr(self, 'creator_id', n.get_str_value()),
-            "encryptionCertificate": lambda n : setattr(self, 'encryption_certificate', n.get_str_value()),
-            "encryptionCertificateId": lambda n : setattr(self, 'encryption_certificate_id', n.get_str_value()),
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "includeResourceData": lambda n : setattr(self, 'include_resource_data', n.get_bool_value()),
-            "latestSupportedTlsVersion": lambda n : setattr(self, 'latest_supported_tls_version', n.get_str_value()),
-            "lifecycleNotificationUrl": lambda n : setattr(self, 'lifecycle_notification_url', n.get_str_value()),
-            "notificationQueryOptions": lambda n : setattr(self, 'notification_query_options', n.get_str_value()),
-            "notificationUrl": lambda n : setattr(self, 'notification_url', n.get_str_value()),
-            "notificationUrlAppId": lambda n : setattr(self, 'notification_url_app_id', n.get_str_value()),
+            "application_id": lambda n : setattr(self, 'application_id', n.get_str_value()),
+            "change_type": lambda n : setattr(self, 'change_type', n.get_str_value()),
+            "client_state": lambda n : setattr(self, 'client_state', n.get_str_value()),
+            "creator_id": lambda n : setattr(self, 'creator_id', n.get_str_value()),
+            "encryption_certificate": lambda n : setattr(self, 'encryption_certificate', n.get_str_value()),
+            "encryption_certificate_id": lambda n : setattr(self, 'encryption_certificate_id', n.get_str_value()),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "include_resource_data": lambda n : setattr(self, 'include_resource_data', n.get_bool_value()),
+            "latest_supported_tls_version": lambda n : setattr(self, 'latest_supported_tls_version', n.get_str_value()),
+            "lifecycle_notification_url": lambda n : setattr(self, 'lifecycle_notification_url', n.get_str_value()),
+            "notification_query_options": lambda n : setattr(self, 'notification_query_options', n.get_str_value()),
+            "notification_url": lambda n : setattr(self, 'notification_url', n.get_str_value()),
+            "notification_url_app_id": lambda n : setattr(self, 'notification_url_app_id', n.get_str_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -91,19 +91,19 @@ class Subscription(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("applicationId", self.application_id)
-        writer.write_str_value("changeType", self.change_type)
-        writer.write_str_value("clientState", self.client_state)
-        writer.write_str_value("creatorId", self.creator_id)
-        writer.write_str_value("encryptionCertificate", self.encryption_certificate)
-        writer.write_str_value("encryptionCertificateId", self.encryption_certificate_id)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
-        writer.write_bool_value("includeResourceData", self.include_resource_data)
-        writer.write_str_value("latestSupportedTlsVersion", self.latest_supported_tls_version)
-        writer.write_str_value("lifecycleNotificationUrl", self.lifecycle_notification_url)
-        writer.write_str_value("notificationQueryOptions", self.notification_query_options)
-        writer.write_str_value("notificationUrl", self.notification_url)
-        writer.write_str_value("notificationUrlAppId", self.notification_url_app_id)
+        writer.write_str_value("application_id", self.application_id)
+        writer.write_str_value("change_type", self.change_type)
+        writer.write_str_value("client_state", self.client_state)
+        writer.write_str_value("creator_id", self.creator_id)
+        writer.write_str_value("encryption_certificate", self.encryption_certificate)
+        writer.write_str_value("encryption_certificate_id", self.encryption_certificate_id)
+        writer.write_datetime_value("expiration_date_time", self.expiration_date_time)
+        writer.write_bool_value("include_resource_data", self.include_resource_data)
+        writer.write_str_value("latest_supported_tls_version", self.latest_supported_tls_version)
+        writer.write_str_value("lifecycle_notification_url", self.lifecycle_notification_url)
+        writer.write_str_value("notification_query_options", self.notification_query_options)
+        writer.write_str_value("notification_url", self.notification_url)
+        writer.write_str_value("notification_url_app_id", self.notification_url_app_id)
         writer.write_str_value("resource", self.resource)
     
 

@@ -115,39 +115,39 @@ class Windows81GeneralConfiguration(DeviceConfiguration):
         from .windows_user_account_control_settings import WindowsUserAccountControlSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accountsBlockAddingNonMicrosoftAccountEmail": lambda n : setattr(self, 'accounts_block_adding_non_microsoft_account_email', n.get_bool_value()),
-            "applyOnlyToWindows81": lambda n : setattr(self, 'apply_only_to_windows81', n.get_bool_value()),
-            "browserBlockAutofill": lambda n : setattr(self, 'browser_block_autofill', n.get_bool_value()),
-            "browserBlockAutomaticDetectionOfIntranetSites": lambda n : setattr(self, 'browser_block_automatic_detection_of_intranet_sites', n.get_bool_value()),
-            "browserBlockEnterpriseModeAccess": lambda n : setattr(self, 'browser_block_enterprise_mode_access', n.get_bool_value()),
-            "browserBlockJavaScript": lambda n : setattr(self, 'browser_block_java_script', n.get_bool_value()),
-            "browserBlockPlugins": lambda n : setattr(self, 'browser_block_plugins', n.get_bool_value()),
-            "browserBlockPopups": lambda n : setattr(self, 'browser_block_popups', n.get_bool_value()),
-            "browserBlockSendingDoNotTrackHeader": lambda n : setattr(self, 'browser_block_sending_do_not_track_header', n.get_bool_value()),
-            "browserBlockSingleWordEntryOnIntranetSites": lambda n : setattr(self, 'browser_block_single_word_entry_on_intranet_sites', n.get_bool_value()),
-            "browserEnterpriseModeSiteListLocation": lambda n : setattr(self, 'browser_enterprise_mode_site_list_location', n.get_str_value()),
-            "browserInternetSecurityLevel": lambda n : setattr(self, 'browser_internet_security_level', n.get_enum_value(InternetSiteSecurityLevel)),
-            "browserIntranetSecurityLevel": lambda n : setattr(self, 'browser_intranet_security_level', n.get_enum_value(SiteSecurityLevel)),
-            "browserLoggingReportLocation": lambda n : setattr(self, 'browser_logging_report_location', n.get_str_value()),
-            "browserRequireFirewall": lambda n : setattr(self, 'browser_require_firewall', n.get_bool_value()),
-            "browserRequireFraudWarning": lambda n : setattr(self, 'browser_require_fraud_warning', n.get_bool_value()),
-            "browserRequireHighSecurityForRestrictedSites": lambda n : setattr(self, 'browser_require_high_security_for_restricted_sites', n.get_bool_value()),
-            "browserRequireSmartScreen": lambda n : setattr(self, 'browser_require_smart_screen', n.get_bool_value()),
-            "browserTrustedSitesSecurityLevel": lambda n : setattr(self, 'browser_trusted_sites_security_level', n.get_enum_value(SiteSecurityLevel)),
-            "cellularBlockDataRoaming": lambda n : setattr(self, 'cellular_block_data_roaming', n.get_bool_value()),
-            "diagnosticsBlockDataSubmission": lambda n : setattr(self, 'diagnostics_block_data_submission', n.get_bool_value()),
-            "passwordBlockPicturePasswordAndPin": lambda n : setattr(self, 'password_block_picture_password_and_pin', n.get_bool_value()),
-            "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
-            "passwordMinimumCharacterSetCount": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
-            "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
-            "passwordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
-            "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(RequiredPasswordType)),
-            "passwordSignInFailureCountBeforeFactoryReset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
-            "storageRequireDeviceEncryption": lambda n : setattr(self, 'storage_require_device_encryption', n.get_bool_value()),
-            "updatesRequireAutomaticUpdates": lambda n : setattr(self, 'updates_require_automatic_updates', n.get_bool_value()),
-            "userAccountControlSettings": lambda n : setattr(self, 'user_account_control_settings', n.get_enum_value(WindowsUserAccountControlSettings)),
-            "workFoldersUrl": lambda n : setattr(self, 'work_folders_url', n.get_str_value()),
+            "accounts_block_adding_non_microsoft_account_email": lambda n : setattr(self, 'accounts_block_adding_non_microsoft_account_email', n.get_bool_value()),
+            "apply_only_to_windows81": lambda n : setattr(self, 'apply_only_to_windows81', n.get_bool_value()),
+            "browser_block_autofill": lambda n : setattr(self, 'browser_block_autofill', n.get_bool_value()),
+            "browser_block_automatic_detection_of_intranet_sites": lambda n : setattr(self, 'browser_block_automatic_detection_of_intranet_sites', n.get_bool_value()),
+            "browser_block_enterprise_mode_access": lambda n : setattr(self, 'browser_block_enterprise_mode_access', n.get_bool_value()),
+            "browser_block_java_script": lambda n : setattr(self, 'browser_block_java_script', n.get_bool_value()),
+            "browser_block_plugins": lambda n : setattr(self, 'browser_block_plugins', n.get_bool_value()),
+            "browser_block_popups": lambda n : setattr(self, 'browser_block_popups', n.get_bool_value()),
+            "browser_block_sending_do_not_track_header": lambda n : setattr(self, 'browser_block_sending_do_not_track_header', n.get_bool_value()),
+            "browser_block_single_word_entry_on_intranet_sites": lambda n : setattr(self, 'browser_block_single_word_entry_on_intranet_sites', n.get_bool_value()),
+            "browser_enterprise_mode_site_list_location": lambda n : setattr(self, 'browser_enterprise_mode_site_list_location', n.get_str_value()),
+            "browser_internet_security_level": lambda n : setattr(self, 'browser_internet_security_level', n.get_enum_value(InternetSiteSecurityLevel)),
+            "browser_intranet_security_level": lambda n : setattr(self, 'browser_intranet_security_level', n.get_enum_value(SiteSecurityLevel)),
+            "browser_logging_report_location": lambda n : setattr(self, 'browser_logging_report_location', n.get_str_value()),
+            "browser_require_firewall": lambda n : setattr(self, 'browser_require_firewall', n.get_bool_value()),
+            "browser_require_fraud_warning": lambda n : setattr(self, 'browser_require_fraud_warning', n.get_bool_value()),
+            "browser_require_high_security_for_restricted_sites": lambda n : setattr(self, 'browser_require_high_security_for_restricted_sites', n.get_bool_value()),
+            "browser_require_smart_screen": lambda n : setattr(self, 'browser_require_smart_screen', n.get_bool_value()),
+            "browser_trusted_sites_security_level": lambda n : setattr(self, 'browser_trusted_sites_security_level', n.get_enum_value(SiteSecurityLevel)),
+            "cellular_block_data_roaming": lambda n : setattr(self, 'cellular_block_data_roaming', n.get_bool_value()),
+            "diagnostics_block_data_submission": lambda n : setattr(self, 'diagnostics_block_data_submission', n.get_bool_value()),
+            "password_block_picture_password_and_pin": lambda n : setattr(self, 'password_block_picture_password_and_pin', n.get_bool_value()),
+            "password_expiration_days": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
+            "password_minimum_character_set_count": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
+            "password_minimum_length": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
+            "password_minutes_of_inactivity_before_screen_timeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
+            "password_previous_password_block_count": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
+            "password_required_type": lambda n : setattr(self, 'password_required_type', n.get_enum_value(RequiredPasswordType)),
+            "password_sign_in_failure_count_before_factory_reset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
+            "storage_require_device_encryption": lambda n : setattr(self, 'storage_require_device_encryption', n.get_bool_value()),
+            "updates_require_automatic_updates": lambda n : setattr(self, 'updates_require_automatic_updates', n.get_bool_value()),
+            "user_account_control_settings": lambda n : setattr(self, 'user_account_control_settings', n.get_enum_value(WindowsUserAccountControlSettings)),
+            "work_folders_url": lambda n : setattr(self, 'work_folders_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -162,37 +162,37 @@ class Windows81GeneralConfiguration(DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("accountsBlockAddingNonMicrosoftAccountEmail", self.accounts_block_adding_non_microsoft_account_email)
-        writer.write_bool_value("browserBlockAutofill", self.browser_block_autofill)
-        writer.write_bool_value("browserBlockAutomaticDetectionOfIntranetSites", self.browser_block_automatic_detection_of_intranet_sites)
-        writer.write_bool_value("browserBlockEnterpriseModeAccess", self.browser_block_enterprise_mode_access)
-        writer.write_bool_value("browserBlockJavaScript", self.browser_block_java_script)
-        writer.write_bool_value("browserBlockPlugins", self.browser_block_plugins)
-        writer.write_bool_value("browserBlockPopups", self.browser_block_popups)
-        writer.write_bool_value("browserBlockSendingDoNotTrackHeader", self.browser_block_sending_do_not_track_header)
-        writer.write_bool_value("browserBlockSingleWordEntryOnIntranetSites", self.browser_block_single_word_entry_on_intranet_sites)
-        writer.write_str_value("browserEnterpriseModeSiteListLocation", self.browser_enterprise_mode_site_list_location)
-        writer.write_enum_value("browserInternetSecurityLevel", self.browser_internet_security_level)
-        writer.write_enum_value("browserIntranetSecurityLevel", self.browser_intranet_security_level)
-        writer.write_str_value("browserLoggingReportLocation", self.browser_logging_report_location)
-        writer.write_bool_value("browserRequireFirewall", self.browser_require_firewall)
-        writer.write_bool_value("browserRequireFraudWarning", self.browser_require_fraud_warning)
-        writer.write_bool_value("browserRequireHighSecurityForRestrictedSites", self.browser_require_high_security_for_restricted_sites)
-        writer.write_bool_value("browserRequireSmartScreen", self.browser_require_smart_screen)
-        writer.write_enum_value("browserTrustedSitesSecurityLevel", self.browser_trusted_sites_security_level)
-        writer.write_bool_value("cellularBlockDataRoaming", self.cellular_block_data_roaming)
-        writer.write_bool_value("diagnosticsBlockDataSubmission", self.diagnostics_block_data_submission)
-        writer.write_bool_value("passwordBlockPicturePasswordAndPin", self.password_block_picture_password_and_pin)
-        writer.write_int_value("passwordExpirationDays", self.password_expiration_days)
-        writer.write_int_value("passwordMinimumCharacterSetCount", self.password_minimum_character_set_count)
-        writer.write_int_value("passwordMinimumLength", self.password_minimum_length)
-        writer.write_int_value("passwordMinutesOfInactivityBeforeScreenTimeout", self.password_minutes_of_inactivity_before_screen_timeout)
-        writer.write_int_value("passwordPreviousPasswordBlockCount", self.password_previous_password_block_count)
-        writer.write_enum_value("passwordRequiredType", self.password_required_type)
-        writer.write_int_value("passwordSignInFailureCountBeforeFactoryReset", self.password_sign_in_failure_count_before_factory_reset)
-        writer.write_bool_value("storageRequireDeviceEncryption", self.storage_require_device_encryption)
-        writer.write_bool_value("updatesRequireAutomaticUpdates", self.updates_require_automatic_updates)
-        writer.write_enum_value("userAccountControlSettings", self.user_account_control_settings)
-        writer.write_str_value("workFoldersUrl", self.work_folders_url)
+        writer.write_bool_value("accounts_block_adding_non_microsoft_account_email", self.accounts_block_adding_non_microsoft_account_email)
+        writer.write_bool_value("browser_block_autofill", self.browser_block_autofill)
+        writer.write_bool_value("browser_block_automatic_detection_of_intranet_sites", self.browser_block_automatic_detection_of_intranet_sites)
+        writer.write_bool_value("browser_block_enterprise_mode_access", self.browser_block_enterprise_mode_access)
+        writer.write_bool_value("browser_block_java_script", self.browser_block_java_script)
+        writer.write_bool_value("browser_block_plugins", self.browser_block_plugins)
+        writer.write_bool_value("browser_block_popups", self.browser_block_popups)
+        writer.write_bool_value("browser_block_sending_do_not_track_header", self.browser_block_sending_do_not_track_header)
+        writer.write_bool_value("browser_block_single_word_entry_on_intranet_sites", self.browser_block_single_word_entry_on_intranet_sites)
+        writer.write_str_value("browser_enterprise_mode_site_list_location", self.browser_enterprise_mode_site_list_location)
+        writer.write_enum_value("browser_internet_security_level", self.browser_internet_security_level)
+        writer.write_enum_value("browser_intranet_security_level", self.browser_intranet_security_level)
+        writer.write_str_value("browser_logging_report_location", self.browser_logging_report_location)
+        writer.write_bool_value("browser_require_firewall", self.browser_require_firewall)
+        writer.write_bool_value("browser_require_fraud_warning", self.browser_require_fraud_warning)
+        writer.write_bool_value("browser_require_high_security_for_restricted_sites", self.browser_require_high_security_for_restricted_sites)
+        writer.write_bool_value("browser_require_smart_screen", self.browser_require_smart_screen)
+        writer.write_enum_value("browser_trusted_sites_security_level", self.browser_trusted_sites_security_level)
+        writer.write_bool_value("cellular_block_data_roaming", self.cellular_block_data_roaming)
+        writer.write_bool_value("diagnostics_block_data_submission", self.diagnostics_block_data_submission)
+        writer.write_bool_value("password_block_picture_password_and_pin", self.password_block_picture_password_and_pin)
+        writer.write_int_value("password_expiration_days", self.password_expiration_days)
+        writer.write_int_value("password_minimum_character_set_count", self.password_minimum_character_set_count)
+        writer.write_int_value("password_minimum_length", self.password_minimum_length)
+        writer.write_int_value("password_minutes_of_inactivity_before_screen_timeout", self.password_minutes_of_inactivity_before_screen_timeout)
+        writer.write_int_value("password_previous_password_block_count", self.password_previous_password_block_count)
+        writer.write_enum_value("password_required_type", self.password_required_type)
+        writer.write_int_value("password_sign_in_failure_count_before_factory_reset", self.password_sign_in_failure_count_before_factory_reset)
+        writer.write_bool_value("storage_require_device_encryption", self.storage_require_device_encryption)
+        writer.write_bool_value("updates_require_automatic_updates", self.updates_require_automatic_updates)
+        writer.write_enum_value("user_account_control_settings", self.user_account_control_settings)
+        writer.write_str_value("work_folders_url", self.work_folders_url)
     
 

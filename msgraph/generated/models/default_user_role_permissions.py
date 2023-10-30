@@ -43,13 +43,13 @@ class DefaultUserRolePermissions(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedToCreateApps": lambda n : setattr(self, 'allowed_to_create_apps', n.get_bool_value()),
-            "allowedToCreateSecurityGroups": lambda n : setattr(self, 'allowed_to_create_security_groups', n.get_bool_value()),
-            "allowedToCreateTenants": lambda n : setattr(self, 'allowed_to_create_tenants', n.get_bool_value()),
-            "allowedToReadBitlockerKeysForOwnedDevice": lambda n : setattr(self, 'allowed_to_read_bitlocker_keys_for_owned_device', n.get_bool_value()),
-            "allowedToReadOtherUsers": lambda n : setattr(self, 'allowed_to_read_other_users', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "permissionGrantPoliciesAssigned": lambda n : setattr(self, 'permission_grant_policies_assigned', n.get_collection_of_primitive_values(str)),
+            "allowed_to_create_apps": lambda n : setattr(self, 'allowed_to_create_apps', n.get_bool_value()),
+            "allowed_to_create_security_groups": lambda n : setattr(self, 'allowed_to_create_security_groups', n.get_bool_value()),
+            "allowed_to_create_tenants": lambda n : setattr(self, 'allowed_to_create_tenants', n.get_bool_value()),
+            "allowed_to_read_bitlocker_keys_for_owned_device": lambda n : setattr(self, 'allowed_to_read_bitlocker_keys_for_owned_device', n.get_bool_value()),
+            "allowed_to_read_other_users": lambda n : setattr(self, 'allowed_to_read_other_users', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "permission_grant_policies_assigned": lambda n : setattr(self, 'permission_grant_policies_assigned', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -61,13 +61,13 @@ class DefaultUserRolePermissions(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("allowedToCreateApps", self.allowed_to_create_apps)
-        writer.write_bool_value("allowedToCreateSecurityGroups", self.allowed_to_create_security_groups)
-        writer.write_bool_value("allowedToCreateTenants", self.allowed_to_create_tenants)
-        writer.write_bool_value("allowedToReadBitlockerKeysForOwnedDevice", self.allowed_to_read_bitlocker_keys_for_owned_device)
-        writer.write_bool_value("allowedToReadOtherUsers", self.allowed_to_read_other_users)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_primitive_values("permissionGrantPoliciesAssigned", self.permission_grant_policies_assigned)
+        writer.write_bool_value("allowed_to_create_apps", self.allowed_to_create_apps)
+        writer.write_bool_value("allowed_to_create_security_groups", self.allowed_to_create_security_groups)
+        writer.write_bool_value("allowed_to_create_tenants", self.allowed_to_create_tenants)
+        writer.write_bool_value("allowed_to_read_bitlocker_keys_for_owned_device", self.allowed_to_read_bitlocker_keys_for_owned_device)
+        writer.write_bool_value("allowed_to_read_other_users", self.allowed_to_read_other_users)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_primitive_values("permission_grant_policies_assigned", self.permission_grant_policies_assigned)
         writer.write_additional_data_value(self.additional_data)
     
 

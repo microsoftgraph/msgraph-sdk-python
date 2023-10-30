@@ -79,13 +79,13 @@ class EdiscoveryCase(Case):
         from .ediscovery_search import EdiscoverySearch
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "closedBy": lambda n : setattr(self, 'closed_by', n.get_object_value(IdentitySet)),
-            "closedDateTime": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
+            "closed_by": lambda n : setattr(self, 'closed_by', n.get_object_value(IdentitySet)),
+            "closed_date_time": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
             "custodians": lambda n : setattr(self, 'custodians', n.get_collection_of_object_values(EdiscoveryCustodian)),
-            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "noncustodialDataSources": lambda n : setattr(self, 'noncustodial_data_sources', n.get_collection_of_object_values(EdiscoveryNoncustodialDataSource)),
+            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "noncustodial_data_sources": lambda n : setattr(self, 'noncustodial_data_sources', n.get_collection_of_object_values(EdiscoveryNoncustodialDataSource)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(CaseOperation)),
-            "reviewSets": lambda n : setattr(self, 'review_sets', n.get_collection_of_object_values(EdiscoveryReviewSet)),
+            "review_sets": lambda n : setattr(self, 'review_sets', n.get_collection_of_object_values(EdiscoveryReviewSet)),
             "searches": lambda n : setattr(self, 'searches', n.get_collection_of_object_values(EdiscoverySearch)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(EdiscoveryCaseSettings)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_object_values(EdiscoveryReviewTag)),
@@ -103,13 +103,13 @@ class EdiscoveryCase(Case):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("closedBy", self.closed_by)
-        writer.write_datetime_value("closedDateTime", self.closed_date_time)
+        writer.write_object_value("closed_by", self.closed_by)
+        writer.write_datetime_value("closed_date_time", self.closed_date_time)
         writer.write_collection_of_object_values("custodians", self.custodians)
-        writer.write_str_value("externalId", self.external_id)
-        writer.write_collection_of_object_values("noncustodialDataSources", self.noncustodial_data_sources)
+        writer.write_str_value("external_id", self.external_id)
+        writer.write_collection_of_object_values("noncustodial_data_sources", self.noncustodial_data_sources)
         writer.write_collection_of_object_values("operations", self.operations)
-        writer.write_collection_of_object_values("reviewSets", self.review_sets)
+        writer.write_collection_of_object_values("review_sets", self.review_sets)
         writer.write_collection_of_object_values("searches", self.searches)
         writer.write_object_value("settings", self.settings)
         writer.write_collection_of_object_values("tags", self.tags)

@@ -44,7 +44,7 @@ class ManagedMobileApp(Entity):
         from .mobile_app_identifier import MobileAppIdentifier
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "mobileAppIdentifier": lambda n : setattr(self, 'mobile_app_identifier', n.get_object_value(MobileAppIdentifier)),
+            "mobile_app_identifier": lambda n : setattr(self, 'mobile_app_identifier', n.get_object_value(MobileAppIdentifier)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -60,7 +60,7 @@ class ManagedMobileApp(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("mobileAppIdentifier", self.mobile_app_identifier)
+        writer.write_object_value("mobile_app_identifier", self.mobile_app_identifier)
         writer.write_str_value("version", self.version)
     
 

@@ -75,16 +75,16 @@ class WorkbookTable(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(WorkbookTableColumn)),
-            "highlightFirstColumn": lambda n : setattr(self, 'highlight_first_column', n.get_bool_value()),
-            "highlightLastColumn": lambda n : setattr(self, 'highlight_last_column', n.get_bool_value()),
-            "legacyId": lambda n : setattr(self, 'legacy_id', n.get_str_value()),
+            "highlight_first_column": lambda n : setattr(self, 'highlight_first_column', n.get_bool_value()),
+            "highlight_last_column": lambda n : setattr(self, 'highlight_last_column', n.get_bool_value()),
+            "legacy_id": lambda n : setattr(self, 'legacy_id', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(WorkbookTableRow)),
-            "showBandedColumns": lambda n : setattr(self, 'show_banded_columns', n.get_bool_value()),
-            "showBandedRows": lambda n : setattr(self, 'show_banded_rows', n.get_bool_value()),
-            "showFilterButton": lambda n : setattr(self, 'show_filter_button', n.get_bool_value()),
-            "showHeaders": lambda n : setattr(self, 'show_headers', n.get_bool_value()),
-            "showTotals": lambda n : setattr(self, 'show_totals', n.get_bool_value()),
+            "show_banded_columns": lambda n : setattr(self, 'show_banded_columns', n.get_bool_value()),
+            "show_banded_rows": lambda n : setattr(self, 'show_banded_rows', n.get_bool_value()),
+            "show_filter_button": lambda n : setattr(self, 'show_filter_button', n.get_bool_value()),
+            "show_headers": lambda n : setattr(self, 'show_headers', n.get_bool_value()),
+            "show_totals": lambda n : setattr(self, 'show_totals', n.get_bool_value()),
             "sort": lambda n : setattr(self, 'sort', n.get_object_value(WorkbookTableSort)),
             "style": lambda n : setattr(self, 'style', n.get_str_value()),
             "worksheet": lambda n : setattr(self, 'worksheet', n.get_object_value(WorkbookWorksheet)),
@@ -103,16 +103,16 @@ class WorkbookTable(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("columns", self.columns)
-        writer.write_bool_value("highlightFirstColumn", self.highlight_first_column)
-        writer.write_bool_value("highlightLastColumn", self.highlight_last_column)
-        writer.write_str_value("legacyId", self.legacy_id)
+        writer.write_bool_value("highlight_first_column", self.highlight_first_column)
+        writer.write_bool_value("highlight_last_column", self.highlight_last_column)
+        writer.write_str_value("legacy_id", self.legacy_id)
         writer.write_str_value("name", self.name)
         writer.write_collection_of_object_values("rows", self.rows)
-        writer.write_bool_value("showBandedColumns", self.show_banded_columns)
-        writer.write_bool_value("showBandedRows", self.show_banded_rows)
-        writer.write_bool_value("showFilterButton", self.show_filter_button)
-        writer.write_bool_value("showHeaders", self.show_headers)
-        writer.write_bool_value("showTotals", self.show_totals)
+        writer.write_bool_value("show_banded_columns", self.show_banded_columns)
+        writer.write_bool_value("show_banded_rows", self.show_banded_rows)
+        writer.write_bool_value("show_filter_button", self.show_filter_button)
+        writer.write_bool_value("show_headers", self.show_headers)
+        writer.write_bool_value("show_totals", self.show_totals)
         writer.write_object_value("sort", self.sort)
         writer.write_str_value("style", self.style)
         writer.write_object_value("worksheet", self.worksheet)

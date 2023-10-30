@@ -39,7 +39,7 @@ class OutlookUser(Entity):
         from .outlook_category import OutlookCategory
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "masterCategories": lambda n : setattr(self, 'master_categories', n.get_collection_of_object_values(OutlookCategory)),
+            "master_categories": lambda n : setattr(self, 'master_categories', n.get_collection_of_object_values(OutlookCategory)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class OutlookUser(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("masterCategories", self.master_categories)
+        writer.write_collection_of_object_values("master_categories", self.master_categories)
     
 

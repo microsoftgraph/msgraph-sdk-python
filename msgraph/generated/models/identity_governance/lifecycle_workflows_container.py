@@ -64,11 +64,11 @@ class LifecycleWorkflowsContainer(Entity):
         from .workflow_template import WorkflowTemplate
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "customTaskExtensions": lambda n : setattr(self, 'custom_task_extensions', n.get_collection_of_object_values(CustomTaskExtension)),
-            "deletedItems": lambda n : setattr(self, 'deleted_items', n.get_object_value(DeletedItemContainer)),
+            "custom_task_extensions": lambda n : setattr(self, 'custom_task_extensions', n.get_collection_of_object_values(CustomTaskExtension)),
+            "deleted_items": lambda n : setattr(self, 'deleted_items', n.get_object_value(DeletedItemContainer)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(LifecycleManagementSettings)),
-            "taskDefinitions": lambda n : setattr(self, 'task_definitions', n.get_collection_of_object_values(TaskDefinition)),
-            "workflowTemplates": lambda n : setattr(self, 'workflow_templates', n.get_collection_of_object_values(WorkflowTemplate)),
+            "task_definitions": lambda n : setattr(self, 'task_definitions', n.get_collection_of_object_values(TaskDefinition)),
+            "workflow_templates": lambda n : setattr(self, 'workflow_templates', n.get_collection_of_object_values(WorkflowTemplate)),
             "workflows": lambda n : setattr(self, 'workflows', n.get_collection_of_object_values(Workflow)),
         }
         super_fields = super().get_field_deserializers()
@@ -84,11 +84,11 @@ class LifecycleWorkflowsContainer(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("customTaskExtensions", self.custom_task_extensions)
-        writer.write_object_value("deletedItems", self.deleted_items)
+        writer.write_collection_of_object_values("custom_task_extensions", self.custom_task_extensions)
+        writer.write_object_value("deleted_items", self.deleted_items)
         writer.write_object_value("settings", self.settings)
-        writer.write_collection_of_object_values("taskDefinitions", self.task_definitions)
-        writer.write_collection_of_object_values("workflowTemplates", self.workflow_templates)
+        writer.write_collection_of_object_values("task_definitions", self.task_definitions)
+        writer.write_collection_of_object_values("workflow_templates", self.workflow_templates)
         writer.write_collection_of_object_values("workflows", self.workflows)
     
 

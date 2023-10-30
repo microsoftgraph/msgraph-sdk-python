@@ -48,11 +48,11 @@ class HostPair(Entity):
         from .host import Host
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "childHost": lambda n : setattr(self, 'child_host', n.get_object_value(Host)),
-            "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
-            "lastSeenDateTime": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
-            "linkKind": lambda n : setattr(self, 'link_kind', n.get_str_value()),
-            "parentHost": lambda n : setattr(self, 'parent_host', n.get_object_value(Host)),
+            "child_host": lambda n : setattr(self, 'child_host', n.get_object_value(Host)),
+            "first_seen_date_time": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
+            "last_seen_date_time": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
+            "link_kind": lambda n : setattr(self, 'link_kind', n.get_str_value()),
+            "parent_host": lambda n : setattr(self, 'parent_host', n.get_object_value(Host)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,10 +67,10 @@ class HostPair(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("childHost", self.child_host)
-        writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
-        writer.write_datetime_value("lastSeenDateTime", self.last_seen_date_time)
-        writer.write_str_value("linkKind", self.link_kind)
-        writer.write_object_value("parentHost", self.parent_host)
+        writer.write_object_value("child_host", self.child_host)
+        writer.write_datetime_value("first_seen_date_time", self.first_seen_date_time)
+        writer.write_datetime_value("last_seen_date_time", self.last_seen_date_time)
+        writer.write_str_value("link_kind", self.link_kind)
+        writer.write_object_value("parent_host", self.parent_host)
     
 

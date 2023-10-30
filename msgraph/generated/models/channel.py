@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .channel_membership_type import ChannelMembershipType
+    from .channel_summary import ChannelSummary
     from .chat_message import ChatMessage
     from .conversation_member import ConversationMember
     from .drive_item import DriveItem
@@ -39,6 +40,8 @@ class Channel(Entity):
     odata_type: Optional[str] = None
     # A collection of teams with which a channel is shared.
     shared_with_teams: Optional[List[SharedWithChannelTeamInfo]] = None
+    # Contains summary information about the channel, including number of owners, members, guests, and an indicator for members from other tenants. The summary property will only be returned if it is specified in the $select clause of the Get channel method.
+    summary: Optional[ChannelSummary] = None
     # A collection of all the tabs in the channel. A navigation property.
     tabs: Optional[List[TeamsTab]] = None
     # The ID of the Microsoft Entra tenant.
@@ -63,6 +66,7 @@ class Channel(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .channel_membership_type import ChannelMembershipType
+        from .channel_summary import ChannelSummary
         from .chat_message import ChatMessage
         from .conversation_member import ConversationMember
         from .drive_item import DriveItem
@@ -71,6 +75,7 @@ class Channel(Entity):
         from .teams_tab import TeamsTab
 
         from .channel_membership_type import ChannelMembershipType
+        from .channel_summary import ChannelSummary
         from .chat_message import ChatMessage
         from .conversation_member import ConversationMember
         from .drive_item import DriveItem
@@ -79,19 +84,20 @@ class Channel(Entity):
         from .teams_tab import TeamsTab
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "filesFolder": lambda n : setattr(self, 'files_folder', n.get_object_value(DriveItem)),
-            "isFavoriteByDefault": lambda n : setattr(self, 'is_favorite_by_default', n.get_bool_value()),
+            "files_folder": lambda n : setattr(self, 'files_folder', n.get_object_value(DriveItem)),
+            "is_favorite_by_default": lambda n : setattr(self, 'is_favorite_by_default', n.get_bool_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(ConversationMember)),
-            "membershipType": lambda n : setattr(self, 'membership_type', n.get_enum_value(ChannelMembershipType)),
+            "membership_type": lambda n : setattr(self, 'membership_type', n.get_enum_value(ChannelMembershipType)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(ChatMessage)),
-            "sharedWithTeams": lambda n : setattr(self, 'shared_with_teams', n.get_collection_of_object_values(SharedWithChannelTeamInfo)),
+            "shared_with_teams": lambda n : setattr(self, 'shared_with_teams', n.get_collection_of_object_values(SharedWithChannelTeamInfo)),
+            "summary": lambda n : setattr(self, 'summary', n.get_object_value(ChannelSummary)),
             "tabs": lambda n : setattr(self, 'tabs', n.get_collection_of_object_values(TeamsTab)),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -106,18 +112,19 @@ class Channel(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_str_value("email", self.email)
-        writer.write_object_value("filesFolder", self.files_folder)
-        writer.write_bool_value("isFavoriteByDefault", self.is_favorite_by_default)
+        writer.write_object_value("files_folder", self.files_folder)
+        writer.write_bool_value("is_favorite_by_default", self.is_favorite_by_default)
         writer.write_collection_of_object_values("members", self.members)
-        writer.write_enum_value("membershipType", self.membership_type)
+        writer.write_enum_value("membership_type", self.membership_type)
         writer.write_collection_of_object_values("messages", self.messages)
-        writer.write_collection_of_object_values("sharedWithTeams", self.shared_with_teams)
+        writer.write_collection_of_object_values("shared_with_teams", self.shared_with_teams)
+        writer.write_object_value("summary", self.summary)
         writer.write_collection_of_object_values("tabs", self.tabs)
-        writer.write_str_value("tenantId", self.tenant_id)
-        writer.write_str_value("webUrl", self.web_url)
+        writer.write_str_value("tenant_id", self.tenant_id)
+        writer.write_str_value("web_url", self.web_url)
     
 

@@ -104,23 +104,23 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "collate": lambda n : setattr(self, 'collate', n.get_bool_value()),
-            "colorMode": lambda n : setattr(self, 'color_mode', n.get_enum_value(PrintColorMode)),
+            "color_mode": lambda n : setattr(self, 'color_mode', n.get_enum_value(PrintColorMode)),
             "copies": lambda n : setattr(self, 'copies', n.get_int_value()),
             "dpi": lambda n : setattr(self, 'dpi', n.get_int_value()),
-            "duplexMode": lambda n : setattr(self, 'duplex_mode', n.get_enum_value(PrintDuplexMode)),
-            "feedOrientation": lambda n : setattr(self, 'feed_orientation', n.get_enum_value(PrinterFeedOrientation)),
+            "duplex_mode": lambda n : setattr(self, 'duplex_mode', n.get_enum_value(PrintDuplexMode)),
+            "feed_orientation": lambda n : setattr(self, 'feed_orientation', n.get_enum_value(PrinterFeedOrientation)),
             "finishings": lambda n : setattr(self, 'finishings', n.get_collection_of_enum_values(PrintFinishing)),
-            "fitPdfToPage": lambda n : setattr(self, 'fit_pdf_to_page', n.get_bool_value()),
-            "inputBin": lambda n : setattr(self, 'input_bin', n.get_str_value()),
+            "fit_pdf_to_page": lambda n : setattr(self, 'fit_pdf_to_page', n.get_bool_value()),
+            "input_bin": lambda n : setattr(self, 'input_bin', n.get_str_value()),
             "margin": lambda n : setattr(self, 'margin', n.get_object_value(PrintMargin)),
-            "mediaSize": lambda n : setattr(self, 'media_size', n.get_str_value()),
-            "mediaType": lambda n : setattr(self, 'media_type', n.get_str_value()),
-            "multipageLayout": lambda n : setattr(self, 'multipage_layout', n.get_enum_value(PrintMultipageLayout)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "media_size": lambda n : setattr(self, 'media_size', n.get_str_value()),
+            "media_type": lambda n : setattr(self, 'media_type', n.get_str_value()),
+            "multipage_layout": lambda n : setattr(self, 'multipage_layout', n.get_enum_value(PrintMultipageLayout)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "orientation": lambda n : setattr(self, 'orientation', n.get_enum_value(PrintOrientation)),
-            "outputBin": lambda n : setattr(self, 'output_bin', n.get_str_value()),
-            "pageRanges": lambda n : setattr(self, 'page_ranges', n.get_collection_of_object_values(IntegerRange)),
-            "pagesPerSheet": lambda n : setattr(self, 'pages_per_sheet', n.get_int_value()),
+            "output_bin": lambda n : setattr(self, 'output_bin', n.get_str_value()),
+            "page_ranges": lambda n : setattr(self, 'page_ranges', n.get_collection_of_object_values(IntegerRange)),
+            "pages_per_sheet": lambda n : setattr(self, 'pages_per_sheet', n.get_int_value()),
             "quality": lambda n : setattr(self, 'quality', n.get_enum_value(PrintQuality)),
             "scaling": lambda n : setattr(self, 'scaling', n.get_enum_value(PrintScaling)),
         }
@@ -135,23 +135,23 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("collate", self.collate)
-        writer.write_enum_value("colorMode", self.color_mode)
+        writer.write_enum_value("color_mode", self.color_mode)
         writer.write_int_value("copies", self.copies)
         writer.write_int_value("dpi", self.dpi)
-        writer.write_enum_value("duplexMode", self.duplex_mode)
-        writer.write_enum_value("feedOrientation", self.feed_orientation)
+        writer.write_enum_value("duplex_mode", self.duplex_mode)
+        writer.write_enum_value("feed_orientation", self.feed_orientation)
         writer.write_collection_of_enum_values("finishings", self.finishings)
-        writer.write_bool_value("fitPdfToPage", self.fit_pdf_to_page)
-        writer.write_str_value("inputBin", self.input_bin)
+        writer.write_bool_value("fit_pdf_to_page", self.fit_pdf_to_page)
+        writer.write_str_value("input_bin", self.input_bin)
         writer.write_object_value("margin", self.margin)
-        writer.write_str_value("mediaSize", self.media_size)
-        writer.write_str_value("mediaType", self.media_type)
-        writer.write_enum_value("multipageLayout", self.multipage_layout)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("media_size", self.media_size)
+        writer.write_str_value("media_type", self.media_type)
+        writer.write_enum_value("multipage_layout", self.multipage_layout)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("orientation", self.orientation)
-        writer.write_str_value("outputBin", self.output_bin)
-        writer.write_collection_of_object_values("pageRanges", self.page_ranges)
-        writer.write_int_value("pagesPerSheet", self.pages_per_sheet)
+        writer.write_str_value("output_bin", self.output_bin)
+        writer.write_collection_of_object_values("page_ranges", self.page_ranges)
+        writer.write_int_value("pages_per_sheet", self.pages_per_sheet)
         writer.write_enum_value("quality", self.quality)
         writer.write_enum_value("scaling", self.scaling)
         writer.write_additional_data_value(self.additional_data)

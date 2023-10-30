@@ -13,7 +13,7 @@ from .base_end_user_notification import BaseEndUserNotification
 class TrainingReminderNotification(BaseEndUserNotification):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.trainingReminderNotification"
-    # The deliveryFrequency property
+    # Configurable frequency for the reminder email introduced during simulation creation. Possible values are: unknown, weekly, biWeekly, unknownFutureValue.
     delivery_frequency: Optional[NotificationDeliveryFrequency] = None
     
     @staticmethod
@@ -39,7 +39,7 @@ class TrainingReminderNotification(BaseEndUserNotification):
         from .notification_delivery_frequency import NotificationDeliveryFrequency
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deliveryFrequency": lambda n : setattr(self, 'delivery_frequency', n.get_enum_value(NotificationDeliveryFrequency)),
+            "delivery_frequency": lambda n : setattr(self, 'delivery_frequency', n.get_enum_value(NotificationDeliveryFrequency)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class TrainingReminderNotification(BaseEndUserNotification):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("deliveryFrequency", self.delivery_frequency)
+        writer.write_enum_value("delivery_frequency", self.delivery_frequency)
     
 

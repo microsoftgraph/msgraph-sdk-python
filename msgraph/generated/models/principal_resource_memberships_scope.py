@@ -38,8 +38,8 @@ class PrincipalResourceMembershipsScope(AccessReviewScope):
         from .access_review_scope import AccessReviewScope
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "principalScopes": lambda n : setattr(self, 'principal_scopes', n.get_collection_of_object_values(AccessReviewScope)),
-            "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_object_values(AccessReviewScope)),
+            "principal_scopes": lambda n : setattr(self, 'principal_scopes', n.get_collection_of_object_values(AccessReviewScope)),
+            "resource_scopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_object_values(AccessReviewScope)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class PrincipalResourceMembershipsScope(AccessReviewScope):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("principalScopes", self.principal_scopes)
-        writer.write_collection_of_object_values("resourceScopes", self.resource_scopes)
+        writer.write_collection_of_object_values("principal_scopes", self.principal_scopes)
+        writer.write_collection_of_object_values("resource_scopes", self.resource_scopes)
     
 

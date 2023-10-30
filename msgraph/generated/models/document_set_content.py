@@ -44,10 +44,10 @@ class DocumentSetContent(AdditionalDataHolder, BackedModel, Parsable):
         from .content_type_info import ContentTypeInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(ContentTypeInfo)),
-            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
-            "folderName": lambda n : setattr(self, 'folder_name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "content_type": lambda n : setattr(self, 'content_type', n.get_object_value(ContentTypeInfo)),
+            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "folder_name": lambda n : setattr(self, 'folder_name', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -59,10 +59,10 @@ class DocumentSetContent(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("contentType", self.content_type)
-        writer.write_str_value("fileName", self.file_name)
-        writer.write_str_value("folderName", self.folder_name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_object_value("content_type", self.content_type)
+        writer.write_str_value("file_name", self.file_name)
+        writer.write_str_value("folder_name", self.folder_name)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -52,12 +52,12 @@ class ApplicationTemplate(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "homePageUrl": lambda n : setattr(self, 'home_page_url', n.get_str_value()),
-            "logoUrl": lambda n : setattr(self, 'logo_url', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "home_page_url": lambda n : setattr(self, 'home_page_url', n.get_str_value()),
+            "logo_url": lambda n : setattr(self, 'logo_url', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "supportedProvisioningTypes": lambda n : setattr(self, 'supported_provisioning_types', n.get_collection_of_primitive_values(str)),
-            "supportedSingleSignOnModes": lambda n : setattr(self, 'supported_single_sign_on_modes', n.get_collection_of_primitive_values(str)),
+            "supported_provisioning_types": lambda n : setattr(self, 'supported_provisioning_types', n.get_collection_of_primitive_values(str)),
+            "supported_single_sign_on_modes": lambda n : setattr(self, 'supported_single_sign_on_modes', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -74,11 +74,11 @@ class ApplicationTemplate(Entity):
         super().serialize(writer)
         writer.write_collection_of_primitive_values("categories", self.categories)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("homePageUrl", self.home_page_url)
-        writer.write_str_value("logoUrl", self.logo_url)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("home_page_url", self.home_page_url)
+        writer.write_str_value("logo_url", self.logo_url)
         writer.write_str_value("publisher", self.publisher)
-        writer.write_collection_of_primitive_values("supportedProvisioningTypes", self.supported_provisioning_types)
-        writer.write_collection_of_primitive_values("supportedSingleSignOnModes", self.supported_single_sign_on_modes)
+        writer.write_collection_of_primitive_values("supported_provisioning_types", self.supported_provisioning_types)
+        writer.write_collection_of_primitive_values("supported_single_sign_on_modes", self.supported_single_sign_on_modes)
     
 

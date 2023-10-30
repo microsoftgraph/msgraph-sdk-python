@@ -155,30 +155,30 @@ class ColumnDefinition(Entity):
             "boolean": lambda n : setattr(self, 'boolean', n.get_object_value(BooleanColumn)),
             "calculated": lambda n : setattr(self, 'calculated', n.get_object_value(CalculatedColumn)),
             "choice": lambda n : setattr(self, 'choice', n.get_object_value(ChoiceColumn)),
-            "columnGroup": lambda n : setattr(self, 'column_group', n.get_str_value()),
-            "contentApprovalStatus": lambda n : setattr(self, 'content_approval_status', n.get_object_value(ContentApprovalStatusColumn)),
+            "column_group": lambda n : setattr(self, 'column_group', n.get_str_value()),
+            "content_approval_status": lambda n : setattr(self, 'content_approval_status', n.get_object_value(ContentApprovalStatusColumn)),
             "currency": lambda n : setattr(self, 'currency', n.get_object_value(CurrencyColumn)),
-            "dateTime": lambda n : setattr(self, 'date_time', n.get_object_value(DateTimeColumn)),
-            "defaultValue": lambda n : setattr(self, 'default_value', n.get_object_value(DefaultColumnValue)),
+            "date_time": lambda n : setattr(self, 'date_time', n.get_object_value(DateTimeColumn)),
+            "default_value": lambda n : setattr(self, 'default_value', n.get_object_value(DefaultColumnValue)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "enforceUniqueValues": lambda n : setattr(self, 'enforce_unique_values', n.get_bool_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "enforce_unique_values": lambda n : setattr(self, 'enforce_unique_values', n.get_bool_value()),
             "geolocation": lambda n : setattr(self, 'geolocation', n.get_object_value(GeolocationColumn)),
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
-            "hyperlinkOrPicture": lambda n : setattr(self, 'hyperlink_or_picture', n.get_object_value(HyperlinkOrPictureColumn)),
+            "hyperlink_or_picture": lambda n : setattr(self, 'hyperlink_or_picture', n.get_object_value(HyperlinkOrPictureColumn)),
             "indexed": lambda n : setattr(self, 'indexed', n.get_bool_value()),
-            "isDeletable": lambda n : setattr(self, 'is_deletable', n.get_bool_value()),
-            "isReorderable": lambda n : setattr(self, 'is_reorderable', n.get_bool_value()),
-            "isSealed": lambda n : setattr(self, 'is_sealed', n.get_bool_value()),
+            "is_deletable": lambda n : setattr(self, 'is_deletable', n.get_bool_value()),
+            "is_reorderable": lambda n : setattr(self, 'is_reorderable', n.get_bool_value()),
+            "is_sealed": lambda n : setattr(self, 'is_sealed', n.get_bool_value()),
             "lookup": lambda n : setattr(self, 'lookup', n.get_object_value(LookupColumn)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "number": lambda n : setattr(self, 'number', n.get_object_value(NumberColumn)),
-            "personOrGroup": lambda n : setattr(self, 'person_or_group', n.get_object_value(PersonOrGroupColumn)),
-            "propagateChanges": lambda n : setattr(self, 'propagate_changes', n.get_bool_value()),
-            "readOnly": lambda n : setattr(self, 'read_only', n.get_bool_value()),
+            "person_or_group": lambda n : setattr(self, 'person_or_group', n.get_object_value(PersonOrGroupColumn)),
+            "propagate_changes": lambda n : setattr(self, 'propagate_changes', n.get_bool_value()),
+            "read_only": lambda n : setattr(self, 'read_only', n.get_bool_value()),
             "required": lambda n : setattr(self, 'required', n.get_bool_value()),
-            "sourceColumn": lambda n : setattr(self, 'source_column', n.get_object_value(ColumnDefinition)),
-            "sourceContentType": lambda n : setattr(self, 'source_content_type', n.get_object_value(ContentTypeInfo)),
+            "source_column": lambda n : setattr(self, 'source_column', n.get_object_value(ColumnDefinition)),
+            "source_content_type": lambda n : setattr(self, 'source_content_type', n.get_object_value(ContentTypeInfo)),
             "term": lambda n : setattr(self, 'term', n.get_object_value(TermColumn)),
             "text": lambda n : setattr(self, 'text', n.get_object_value(TextColumn)),
             "thumbnail": lambda n : setattr(self, 'thumbnail', n.get_object_value(ThumbnailColumn)),
@@ -201,30 +201,30 @@ class ColumnDefinition(Entity):
         writer.write_object_value("boolean", self.boolean)
         writer.write_object_value("calculated", self.calculated)
         writer.write_object_value("choice", self.choice)
-        writer.write_str_value("columnGroup", self.column_group)
-        writer.write_object_value("contentApprovalStatus", self.content_approval_status)
+        writer.write_str_value("column_group", self.column_group)
+        writer.write_object_value("content_approval_status", self.content_approval_status)
         writer.write_object_value("currency", self.currency)
-        writer.write_object_value("dateTime", self.date_time)
-        writer.write_object_value("defaultValue", self.default_value)
+        writer.write_object_value("date_time", self.date_time)
+        writer.write_object_value("default_value", self.default_value)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_bool_value("enforceUniqueValues", self.enforce_unique_values)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_bool_value("enforce_unique_values", self.enforce_unique_values)
         writer.write_object_value("geolocation", self.geolocation)
         writer.write_bool_value("hidden", self.hidden)
-        writer.write_object_value("hyperlinkOrPicture", self.hyperlink_or_picture)
+        writer.write_object_value("hyperlink_or_picture", self.hyperlink_or_picture)
         writer.write_bool_value("indexed", self.indexed)
-        writer.write_bool_value("isDeletable", self.is_deletable)
-        writer.write_bool_value("isReorderable", self.is_reorderable)
-        writer.write_bool_value("isSealed", self.is_sealed)
+        writer.write_bool_value("is_deletable", self.is_deletable)
+        writer.write_bool_value("is_reorderable", self.is_reorderable)
+        writer.write_bool_value("is_sealed", self.is_sealed)
         writer.write_object_value("lookup", self.lookup)
         writer.write_str_value("name", self.name)
         writer.write_object_value("number", self.number)
-        writer.write_object_value("personOrGroup", self.person_or_group)
-        writer.write_bool_value("propagateChanges", self.propagate_changes)
-        writer.write_bool_value("readOnly", self.read_only)
+        writer.write_object_value("person_or_group", self.person_or_group)
+        writer.write_bool_value("propagate_changes", self.propagate_changes)
+        writer.write_bool_value("read_only", self.read_only)
         writer.write_bool_value("required", self.required)
-        writer.write_object_value("sourceColumn", self.source_column)
-        writer.write_object_value("sourceContentType", self.source_content_type)
+        writer.write_object_value("source_column", self.source_column)
+        writer.write_object_value("source_content_type", self.source_content_type)
         writer.write_object_value("term", self.term)
         writer.write_object_value("text", self.text)
         writer.write_object_value("thumbnail", self.thumbnail)

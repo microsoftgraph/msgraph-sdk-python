@@ -46,10 +46,10 @@ class MeetingAttendanceReport(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attendanceRecords": lambda n : setattr(self, 'attendance_records', n.get_collection_of_object_values(AttendanceRecord)),
-            "meetingEndDateTime": lambda n : setattr(self, 'meeting_end_date_time', n.get_datetime_value()),
-            "meetingStartDateTime": lambda n : setattr(self, 'meeting_start_date_time', n.get_datetime_value()),
-            "totalParticipantCount": lambda n : setattr(self, 'total_participant_count', n.get_int_value()),
+            "attendance_records": lambda n : setattr(self, 'attendance_records', n.get_collection_of_object_values(AttendanceRecord)),
+            "meeting_end_date_time": lambda n : setattr(self, 'meeting_end_date_time', n.get_datetime_value()),
+            "meeting_start_date_time": lambda n : setattr(self, 'meeting_start_date_time', n.get_datetime_value()),
+            "total_participant_count": lambda n : setattr(self, 'total_participant_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -64,9 +64,9 @@ class MeetingAttendanceReport(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("attendanceRecords", self.attendance_records)
-        writer.write_datetime_value("meetingEndDateTime", self.meeting_end_date_time)
-        writer.write_datetime_value("meetingStartDateTime", self.meeting_start_date_time)
-        writer.write_int_value("totalParticipantCount", self.total_participant_count)
+        writer.write_collection_of_object_values("attendance_records", self.attendance_records)
+        writer.write_datetime_value("meeting_end_date_time", self.meeting_end_date_time)
+        writer.write_datetime_value("meeting_start_date_time", self.meeting_start_date_time)
+        writer.write_int_value("total_participant_count", self.total_participant_count)
     
 

@@ -115,24 +115,24 @@ class Site(BaseItem):
         fields: Dict[str, Callable[[Any], None]] = {
             "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(ItemAnalytics)),
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(ColumnDefinition)),
-            "contentTypes": lambda n : setattr(self, 'content_types', n.get_collection_of_object_values(ContentType)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "content_types": lambda n : setattr(self, 'content_types', n.get_collection_of_object_values(ContentType)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "drive": lambda n : setattr(self, 'drive', n.get_object_value(Drive)),
             "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(Drive)),
             "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
-            "externalColumns": lambda n : setattr(self, 'external_columns', n.get_collection_of_object_values(ColumnDefinition)),
-            "isPersonalSite": lambda n : setattr(self, 'is_personal_site', n.get_bool_value()),
+            "external_columns": lambda n : setattr(self, 'external_columns', n.get_collection_of_object_values(ColumnDefinition)),
+            "is_personal_site": lambda n : setattr(self, 'is_personal_site', n.get_bool_value()),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(BaseItem)),
             "lists": lambda n : setattr(self, 'lists', n.get_collection_of_object_values(List_)),
             "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(Onenote)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(RichLongRunningOperation)),
             "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_object_values(Permission)),
             "root": lambda n : setattr(self, 'root', n.get_object_value(Root)),
-            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
-            "siteCollection": lambda n : setattr(self, 'site_collection', n.get_object_value(SiteCollection)),
+            "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
+            "site_collection": lambda n : setattr(self, 'site_collection', n.get_object_value(SiteCollection)),
             "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(Site)),
-            "termStore": lambda n : setattr(self, 'term_store', n.get_object_value(Store)),
-            "termStores": lambda n : setattr(self, 'term_stores', n.get_collection_of_object_values(Store)),
+            "term_store": lambda n : setattr(self, 'term_store', n.get_object_value(Store)),
+            "term_stores": lambda n : setattr(self, 'term_stores', n.get_collection_of_object_values(Store)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -149,23 +149,23 @@ class Site(BaseItem):
         super().serialize(writer)
         writer.write_object_value("analytics", self.analytics)
         writer.write_collection_of_object_values("columns", self.columns)
-        writer.write_collection_of_object_values("contentTypes", self.content_types)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_collection_of_object_values("content_types", self.content_types)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_object_value("drive", self.drive)
         writer.write_collection_of_object_values("drives", self.drives)
         writer.write_object_value("error", self.error)
-        writer.write_collection_of_object_values("externalColumns", self.external_columns)
-        writer.write_bool_value("isPersonalSite", self.is_personal_site)
+        writer.write_collection_of_object_values("external_columns", self.external_columns)
+        writer.write_bool_value("is_personal_site", self.is_personal_site)
         writer.write_collection_of_object_values("items", self.items)
         writer.write_collection_of_object_values("lists", self.lists)
         writer.write_object_value("onenote", self.onenote)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_collection_of_object_values("permissions", self.permissions)
         writer.write_object_value("root", self.root)
-        writer.write_object_value("sharepointIds", self.sharepoint_ids)
-        writer.write_object_value("siteCollection", self.site_collection)
+        writer.write_object_value("sharepoint_ids", self.sharepoint_ids)
+        writer.write_object_value("site_collection", self.site_collection)
         writer.write_collection_of_object_values("sites", self.sites)
-        writer.write_object_value("termStore", self.term_store)
-        writer.write_collection_of_object_values("termStores", self.term_stores)
+        writer.write_object_value("term_store", self.term_store)
+        writer.write_collection_of_object_values("term_stores", self.term_stores)
     
 

@@ -45,7 +45,7 @@ class Presence(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),
             "availability": lambda n : setattr(self, 'availability', n.get_str_value()),
-            "statusMessage": lambda n : setattr(self, 'status_message', n.get_object_value(PresenceStatusMessage)),
+            "status_message": lambda n : setattr(self, 'status_message', n.get_object_value(PresenceStatusMessage)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -62,6 +62,6 @@ class Presence(Entity):
         super().serialize(writer)
         writer.write_str_value("activity", self.activity)
         writer.write_str_value("availability", self.availability)
-        writer.write_object_value("statusMessage", self.status_message)
+        writer.write_object_value("status_message", self.status_message)
     
 

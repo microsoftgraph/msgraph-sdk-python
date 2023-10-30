@@ -84,16 +84,16 @@ class Authentication(Entity):
         from .windows_hello_for_business_authentication_method import WindowsHelloForBusinessAuthenticationMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "emailMethods": lambda n : setattr(self, 'email_methods', n.get_collection_of_object_values(EmailAuthenticationMethod)),
-            "fido2Methods": lambda n : setattr(self, 'fido2_methods', n.get_collection_of_object_values(Fido2AuthenticationMethod)),
+            "email_methods": lambda n : setattr(self, 'email_methods', n.get_collection_of_object_values(EmailAuthenticationMethod)),
+            "fido2_methods": lambda n : setattr(self, 'fido2_methods', n.get_collection_of_object_values(Fido2AuthenticationMethod)),
             "methods": lambda n : setattr(self, 'methods', n.get_collection_of_object_values(AuthenticationMethod)),
-            "microsoftAuthenticatorMethods": lambda n : setattr(self, 'microsoft_authenticator_methods', n.get_collection_of_object_values(MicrosoftAuthenticatorAuthenticationMethod)),
+            "microsoft_authenticator_methods": lambda n : setattr(self, 'microsoft_authenticator_methods', n.get_collection_of_object_values(MicrosoftAuthenticatorAuthenticationMethod)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(LongRunningOperation)),
-            "passwordMethods": lambda n : setattr(self, 'password_methods', n.get_collection_of_object_values(PasswordAuthenticationMethod)),
-            "phoneMethods": lambda n : setattr(self, 'phone_methods', n.get_collection_of_object_values(PhoneAuthenticationMethod)),
-            "softwareOathMethods": lambda n : setattr(self, 'software_oath_methods', n.get_collection_of_object_values(SoftwareOathAuthenticationMethod)),
-            "temporaryAccessPassMethods": lambda n : setattr(self, 'temporary_access_pass_methods', n.get_collection_of_object_values(TemporaryAccessPassAuthenticationMethod)),
-            "windowsHelloForBusinessMethods": lambda n : setattr(self, 'windows_hello_for_business_methods', n.get_collection_of_object_values(WindowsHelloForBusinessAuthenticationMethod)),
+            "password_methods": lambda n : setattr(self, 'password_methods', n.get_collection_of_object_values(PasswordAuthenticationMethod)),
+            "phone_methods": lambda n : setattr(self, 'phone_methods', n.get_collection_of_object_values(PhoneAuthenticationMethod)),
+            "software_oath_methods": lambda n : setattr(self, 'software_oath_methods', n.get_collection_of_object_values(SoftwareOathAuthenticationMethod)),
+            "temporary_access_pass_methods": lambda n : setattr(self, 'temporary_access_pass_methods', n.get_collection_of_object_values(TemporaryAccessPassAuthenticationMethod)),
+            "windows_hello_for_business_methods": lambda n : setattr(self, 'windows_hello_for_business_methods', n.get_collection_of_object_values(WindowsHelloForBusinessAuthenticationMethod)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -108,15 +108,15 @@ class Authentication(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("emailMethods", self.email_methods)
-        writer.write_collection_of_object_values("fido2Methods", self.fido2_methods)
+        writer.write_collection_of_object_values("email_methods", self.email_methods)
+        writer.write_collection_of_object_values("fido2_methods", self.fido2_methods)
         writer.write_collection_of_object_values("methods", self.methods)
-        writer.write_collection_of_object_values("microsoftAuthenticatorMethods", self.microsoft_authenticator_methods)
+        writer.write_collection_of_object_values("microsoft_authenticator_methods", self.microsoft_authenticator_methods)
         writer.write_collection_of_object_values("operations", self.operations)
-        writer.write_collection_of_object_values("passwordMethods", self.password_methods)
-        writer.write_collection_of_object_values("phoneMethods", self.phone_methods)
-        writer.write_collection_of_object_values("softwareOathMethods", self.software_oath_methods)
-        writer.write_collection_of_object_values("temporaryAccessPassMethods", self.temporary_access_pass_methods)
-        writer.write_collection_of_object_values("windowsHelloForBusinessMethods", self.windows_hello_for_business_methods)
+        writer.write_collection_of_object_values("password_methods", self.password_methods)
+        writer.write_collection_of_object_values("phone_methods", self.phone_methods)
+        writer.write_collection_of_object_values("software_oath_methods", self.software_oath_methods)
+        writer.write_collection_of_object_values("temporary_access_pass_methods", self.temporary_access_pass_methods)
+        writer.write_collection_of_object_values("windows_hello_for_business_methods", self.windows_hello_for_business_methods)
     
 

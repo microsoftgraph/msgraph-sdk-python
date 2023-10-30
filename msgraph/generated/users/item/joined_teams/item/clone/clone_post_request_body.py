@@ -53,9 +53,9 @@ class ClonePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "classification": lambda n : setattr(self, 'classification', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "partsToClone": lambda n : setattr(self, 'parts_to_clone', n.get_collection_of_enum_values(ClonableTeamParts)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "parts_to_clone": lambda n : setattr(self, 'parts_to_clone', n.get_collection_of_enum_values(ClonableTeamParts)),
             "visibility": lambda n : setattr(self, 'visibility', n.get_enum_value(TeamVisibilityType)),
         }
         return fields
@@ -70,9 +70,9 @@ class ClonePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("classification", self.classification)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("mailNickname", self.mail_nickname)
-        writer.write_enum_value("partsToClone", self.parts_to_clone)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("mail_nickname", self.mail_nickname)
+        writer.write_enum_value("parts_to_clone", self.parts_to_clone)
         writer.write_enum_value("visibility", self.visibility)
         writer.write_additional_data_value(self.additional_data)
     

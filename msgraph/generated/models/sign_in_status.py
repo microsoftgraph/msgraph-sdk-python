@@ -37,10 +37,10 @@ class SignInStatus(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_str_value()),
-            "errorCode": lambda n : setattr(self, 'error_code', n.get_int_value()),
-            "failureReason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "additional_details": lambda n : setattr(self, 'additional_details', n.get_str_value()),
+            "error_code": lambda n : setattr(self, 'error_code', n.get_int_value()),
+            "failure_reason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -52,10 +52,10 @@ class SignInStatus(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("additionalDetails", self.additional_details)
-        writer.write_int_value("errorCode", self.error_code)
-        writer.write_str_value("failureReason", self.failure_reason)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("additional_details", self.additional_details)
+        writer.write_int_value("error_code", self.error_code)
+        writer.write_str_value("failure_reason", self.failure_reason)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -44,9 +44,9 @@ class LicenseDetails(Entity):
         from .service_plan_info import ServicePlanInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(ServicePlanInfo)),
-            "skuId": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
-            "skuPartNumber": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
+            "service_plans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(ServicePlanInfo)),
+            "sku_id": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
+            "sku_part_number": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,8 +61,8 @@ class LicenseDetails(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("servicePlans", self.service_plans)
-        writer.write_uuid_value("skuId", self.sku_id)
-        writer.write_str_value("skuPartNumber", self.sku_part_number)
+        writer.write_collection_of_object_values("service_plans", self.service_plans)
+        writer.write_uuid_value("sku_id", self.sku_id)
+        writer.write_str_value("sku_part_number", self.sku_part_number)
     
 

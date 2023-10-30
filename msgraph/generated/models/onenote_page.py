@@ -67,16 +67,16 @@ class OnenotePage(OnenoteEntitySchemaObjectModel):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
-            "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
-            "createdByAppId": lambda n : setattr(self, 'created_by_app_id', n.get_str_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "content_url": lambda n : setattr(self, 'content_url', n.get_str_value()),
+            "created_by_app_id": lambda n : setattr(self, 'created_by_app_id', n.get_str_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "level": lambda n : setattr(self, 'level', n.get_int_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(PageLinks)),
             "order": lambda n : setattr(self, 'order', n.get_int_value()),
-            "parentNotebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(Notebook)),
-            "parentSection": lambda n : setattr(self, 'parent_section', n.get_object_value(OnenoteSection)),
+            "parent_notebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(Notebook)),
+            "parent_section": lambda n : setattr(self, 'parent_section', n.get_object_value(OnenoteSection)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
-            "userTags": lambda n : setattr(self, 'user_tags', n.get_collection_of_primitive_values(str)),
+            "user_tags": lambda n : setattr(self, 'user_tags', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -92,15 +92,15 @@ class OnenotePage(OnenoteEntitySchemaObjectModel):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bytes_value("content", self.content)
-        writer.write_str_value("contentUrl", self.content_url)
-        writer.write_str_value("createdByAppId", self.created_by_app_id)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_str_value("content_url", self.content_url)
+        writer.write_str_value("created_by_app_id", self.created_by_app_id)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_int_value("level", self.level)
         writer.write_object_value("links", self.links)
         writer.write_int_value("order", self.order)
-        writer.write_object_value("parentNotebook", self.parent_notebook)
-        writer.write_object_value("parentSection", self.parent_section)
+        writer.write_object_value("parent_notebook", self.parent_notebook)
+        writer.write_object_value("parent_section", self.parent_section)
         writer.write_str_value("title", self.title)
-        writer.write_collection_of_primitive_values("userTags", self.user_tags)
+        writer.write_collection_of_primitive_values("user_tags", self.user_tags)
     
 

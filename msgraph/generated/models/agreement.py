@@ -64,13 +64,13 @@ class Agreement(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "acceptances": lambda n : setattr(self, 'acceptances', n.get_collection_of_object_values(AgreementAcceptance)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "file": lambda n : setattr(self, 'file', n.get_object_value(AgreementFile)),
             "files": lambda n : setattr(self, 'files', n.get_collection_of_object_values(AgreementFileLocalization)),
-            "isPerDeviceAcceptanceRequired": lambda n : setattr(self, 'is_per_device_acceptance_required', n.get_bool_value()),
-            "isViewingBeforeAcceptanceRequired": lambda n : setattr(self, 'is_viewing_before_acceptance_required', n.get_bool_value()),
-            "termsExpiration": lambda n : setattr(self, 'terms_expiration', n.get_object_value(TermsExpiration)),
-            "userReacceptRequiredFrequency": lambda n : setattr(self, 'user_reaccept_required_frequency', n.get_timedelta_value()),
+            "is_per_device_acceptance_required": lambda n : setattr(self, 'is_per_device_acceptance_required', n.get_bool_value()),
+            "is_viewing_before_acceptance_required": lambda n : setattr(self, 'is_viewing_before_acceptance_required', n.get_bool_value()),
+            "terms_expiration": lambda n : setattr(self, 'terms_expiration', n.get_object_value(TermsExpiration)),
+            "user_reaccept_required_frequency": lambda n : setattr(self, 'user_reaccept_required_frequency', n.get_timedelta_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -86,12 +86,12 @@ class Agreement(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("acceptances", self.acceptances)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_object_value("file", self.file)
         writer.write_collection_of_object_values("files", self.files)
-        writer.write_bool_value("isPerDeviceAcceptanceRequired", self.is_per_device_acceptance_required)
-        writer.write_bool_value("isViewingBeforeAcceptanceRequired", self.is_viewing_before_acceptance_required)
-        writer.write_object_value("termsExpiration", self.terms_expiration)
-        writer.write_timedelta_value("userReacceptRequiredFrequency", self.user_reaccept_required_frequency)
+        writer.write_bool_value("is_per_device_acceptance_required", self.is_per_device_acceptance_required)
+        writer.write_bool_value("is_viewing_before_acceptance_required", self.is_viewing_before_acceptance_required)
+        writer.write_object_value("terms_expiration", self.terms_expiration)
+        writer.write_timedelta_value("user_reaccept_required_frequency", self.user_reaccept_required_frequency)
     
 

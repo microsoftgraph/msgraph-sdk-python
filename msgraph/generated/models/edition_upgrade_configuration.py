@@ -52,9 +52,9 @@ class EditionUpgradeConfiguration(DeviceConfiguration):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "license": lambda n : setattr(self, 'license', n.get_str_value()),
-            "licenseType": lambda n : setattr(self, 'license_type', n.get_enum_value(EditionUpgradeLicenseType)),
-            "productKey": lambda n : setattr(self, 'product_key', n.get_str_value()),
-            "targetEdition": lambda n : setattr(self, 'target_edition', n.get_enum_value(Windows10EditionType)),
+            "license_type": lambda n : setattr(self, 'license_type', n.get_enum_value(EditionUpgradeLicenseType)),
+            "product_key": lambda n : setattr(self, 'product_key', n.get_str_value()),
+            "target_edition": lambda n : setattr(self, 'target_edition', n.get_enum_value(Windows10EditionType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -70,8 +70,8 @@ class EditionUpgradeConfiguration(DeviceConfiguration):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("license", self.license)
-        writer.write_enum_value("licenseType", self.license_type)
-        writer.write_str_value("productKey", self.product_key)
-        writer.write_enum_value("targetEdition", self.target_edition)
+        writer.write_enum_value("license_type", self.license_type)
+        writer.write_str_value("product_key", self.product_key)
+        writer.write_enum_value("target_edition", self.target_edition)
     
 

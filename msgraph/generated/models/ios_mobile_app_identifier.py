@@ -39,7 +39,7 @@ class IosMobileAppIdentifier(MobileAppIdentifier):
         from .mobile_app_identifier import MobileAppIdentifier
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class IosMobileAppIdentifier(MobileAppIdentifier):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("bundleId", self.bundle_id)
+        writer.write_str_value("bundle_id", self.bundle_id)
     
 

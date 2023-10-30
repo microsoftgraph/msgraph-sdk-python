@@ -50,10 +50,10 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
-            "messageLanguage": lambda n : setattr(self, 'message_language', n.get_object_value(LocaleInfo)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "scheduledEndTime": lambda n : setattr(self, 'scheduled_end_time', n.get_object_value(DateTimeTimeZone)),
-            "scheduledStartTime": lambda n : setattr(self, 'scheduled_start_time', n.get_object_value(DateTimeTimeZone)),
+            "message_language": lambda n : setattr(self, 'message_language', n.get_object_value(LocaleInfo)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "scheduled_end_time": lambda n : setattr(self, 'scheduled_end_time', n.get_object_value(DateTimeTimeZone)),
+            "scheduled_start_time": lambda n : setattr(self, 'scheduled_start_time', n.get_object_value(DateTimeTimeZone)),
         }
         return fields
     
@@ -66,10 +66,10 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("message", self.message)
-        writer.write_object_value("messageLanguage", self.message_language)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("scheduledEndTime", self.scheduled_end_time)
-        writer.write_object_value("scheduledStartTime", self.scheduled_start_time)
+        writer.write_object_value("message_language", self.message_language)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("scheduled_end_time", self.scheduled_end_time)
+        writer.write_object_value("scheduled_start_time", self.scheduled_start_time)
         writer.write_additional_data_value(self.additional_data)
     
 

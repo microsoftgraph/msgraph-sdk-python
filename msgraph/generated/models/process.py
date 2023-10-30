@@ -66,19 +66,19 @@ class Process(AdditionalDataHolder, BackedModel, Parsable):
         from .process_integrity_level import ProcessIntegrityLevel
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
-            "commandLine": lambda n : setattr(self, 'command_line', n.get_str_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "fileHash": lambda n : setattr(self, 'file_hash', n.get_object_value(FileHash)),
-            "integrityLevel": lambda n : setattr(self, 'integrity_level', n.get_enum_value(ProcessIntegrityLevel)),
-            "isElevated": lambda n : setattr(self, 'is_elevated', n.get_bool_value()),
+            "account_name": lambda n : setattr(self, 'account_name', n.get_str_value()),
+            "command_line": lambda n : setattr(self, 'command_line', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "file_hash": lambda n : setattr(self, 'file_hash', n.get_object_value(FileHash)),
+            "integrity_level": lambda n : setattr(self, 'integrity_level', n.get_enum_value(ProcessIntegrityLevel)),
+            "is_elevated": lambda n : setattr(self, 'is_elevated', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "parentProcessCreatedDateTime": lambda n : setattr(self, 'parent_process_created_date_time', n.get_datetime_value()),
-            "parentProcessId": lambda n : setattr(self, 'parent_process_id', n.get_int_value()),
-            "parentProcessName": lambda n : setattr(self, 'parent_process_name', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "parent_process_created_date_time": lambda n : setattr(self, 'parent_process_created_date_time', n.get_datetime_value()),
+            "parent_process_id": lambda n : setattr(self, 'parent_process_id', n.get_int_value()),
+            "parent_process_name": lambda n : setattr(self, 'parent_process_name', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
-            "processId": lambda n : setattr(self, 'process_id', n.get_int_value()),
+            "process_id": lambda n : setattr(self, 'process_id', n.get_int_value()),
         }
         return fields
     
@@ -90,19 +90,19 @@ class Process(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("accountName", self.account_name)
-        writer.write_str_value("commandLine", self.command_line)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_object_value("fileHash", self.file_hash)
-        writer.write_enum_value("integrityLevel", self.integrity_level)
-        writer.write_bool_value("isElevated", self.is_elevated)
+        writer.write_str_value("account_name", self.account_name)
+        writer.write_str_value("command_line", self.command_line)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_object_value("file_hash", self.file_hash)
+        writer.write_enum_value("integrity_level", self.integrity_level)
+        writer.write_bool_value("is_elevated", self.is_elevated)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_datetime_value("parentProcessCreatedDateTime", self.parent_process_created_date_time)
-        writer.write_int_value("parentProcessId", self.parent_process_id)
-        writer.write_str_value("parentProcessName", self.parent_process_name)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_datetime_value("parent_process_created_date_time", self.parent_process_created_date_time)
+        writer.write_int_value("parent_process_id", self.parent_process_id)
+        writer.write_str_value("parent_process_name", self.parent_process_name)
         writer.write_str_value("path", self.path)
-        writer.write_int_value("processId", self.process_id)
+        writer.write_int_value("process_id", self.process_id)
         writer.write_additional_data_value(self.additional_data)
     
 

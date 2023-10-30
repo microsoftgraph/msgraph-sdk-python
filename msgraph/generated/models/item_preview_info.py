@@ -37,10 +37,10 @@ class ItemPreviewInfo(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "getUrl": lambda n : setattr(self, 'get_url', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "postParameters": lambda n : setattr(self, 'post_parameters', n.get_str_value()),
-            "postUrl": lambda n : setattr(self, 'post_url', n.get_str_value()),
+            "get_url": lambda n : setattr(self, 'get_url', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "post_parameters": lambda n : setattr(self, 'post_parameters', n.get_str_value()),
+            "post_url": lambda n : setattr(self, 'post_url', n.get_str_value()),
         }
         return fields
     
@@ -52,10 +52,10 @@ class ItemPreviewInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("getUrl", self.get_url)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("postParameters", self.post_parameters)
-        writer.write_str_value("postUrl", self.post_url)
+        writer.write_str_value("get_url", self.get_url)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("post_parameters", self.post_parameters)
+        writer.write_str_value("post_url", self.post_url)
         writer.write_additional_data_value(self.additional_data)
     
 

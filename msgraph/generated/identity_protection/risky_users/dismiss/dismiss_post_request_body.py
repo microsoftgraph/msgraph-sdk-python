@@ -31,7 +31,7 @@ class DismissPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "userIds": lambda n : setattr(self, 'user_ids', n.get_collection_of_primitive_values(str)),
+            "user_ids": lambda n : setattr(self, 'user_ids', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -43,7 +43,7 @@ class DismissPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("userIds", self.user_ids)
+        writer.write_collection_of_primitive_values("user_ids", self.user_ids)
         writer.write_additional_data_value(self.additional_data)
     
 

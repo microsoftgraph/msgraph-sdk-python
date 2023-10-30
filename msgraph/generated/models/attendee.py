@@ -44,7 +44,7 @@ class Attendee(AttendeeBase):
         from .time_slot import TimeSlot
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "proposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(TimeSlot)),
+            "proposed_new_time": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(TimeSlot)),
             "status": lambda n : setattr(self, 'status', n.get_object_value(ResponseStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -60,7 +60,7 @@ class Attendee(AttendeeBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("proposedNewTime", self.proposed_new_time)
+        writer.write_object_value("proposed_new_time", self.proposed_new_time)
         writer.write_object_value("status", self.status)
     
 

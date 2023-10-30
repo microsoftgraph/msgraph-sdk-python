@@ -48,11 +48,11 @@ class RelatedContact(AdditionalDataHolder, BackedModel, Parsable):
         from .contact_relationship import ContactRelationship
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessConsent": lambda n : setattr(self, 'access_consent', n.get_bool_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
-            "mobilePhone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "access_consent": lambda n : setattr(self, 'access_consent', n.get_bool_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "mobile_phone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(ContactRelationship)),
         }
         return fields
@@ -65,11 +65,11 @@ class RelatedContact(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("accessConsent", self.access_consent)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("emailAddress", self.email_address)
-        writer.write_str_value("mobilePhone", self.mobile_phone)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("access_consent", self.access_consent)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("email_address", self.email_address)
+        writer.write_str_value("mobile_phone", self.mobile_phone)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("relationship", self.relationship)
         writer.write_additional_data_value(self.additional_data)
     

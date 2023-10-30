@@ -57,12 +57,12 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, BackedModel, Parsable):
         from .chat_message_policy_violation_verdict_details_types import ChatMessagePolicyViolationVerdictDetailsTypes
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "dlpAction": lambda n : setattr(self, 'dlp_action', n.get_collection_of_enum_values(ChatMessagePolicyViolationDlpActionTypes)),
-            "justificationText": lambda n : setattr(self, 'justification_text', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "policyTip": lambda n : setattr(self, 'policy_tip', n.get_object_value(ChatMessagePolicyViolationPolicyTip)),
-            "userAction": lambda n : setattr(self, 'user_action', n.get_collection_of_enum_values(ChatMessagePolicyViolationUserActionTypes)),
-            "verdictDetails": lambda n : setattr(self, 'verdict_details', n.get_collection_of_enum_values(ChatMessagePolicyViolationVerdictDetailsTypes)),
+            "dlp_action": lambda n : setattr(self, 'dlp_action', n.get_collection_of_enum_values(ChatMessagePolicyViolationDlpActionTypes)),
+            "justification_text": lambda n : setattr(self, 'justification_text', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "policy_tip": lambda n : setattr(self, 'policy_tip', n.get_object_value(ChatMessagePolicyViolationPolicyTip)),
+            "user_action": lambda n : setattr(self, 'user_action', n.get_collection_of_enum_values(ChatMessagePolicyViolationUserActionTypes)),
+            "verdict_details": lambda n : setattr(self, 'verdict_details', n.get_collection_of_enum_values(ChatMessagePolicyViolationVerdictDetailsTypes)),
         }
         return fields
     
@@ -74,12 +74,12 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("dlpAction", self.dlp_action)
-        writer.write_str_value("justificationText", self.justification_text)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("policyTip", self.policy_tip)
-        writer.write_enum_value("userAction", self.user_action)
-        writer.write_enum_value("verdictDetails", self.verdict_details)
+        writer.write_enum_value("dlp_action", self.dlp_action)
+        writer.write_str_value("justification_text", self.justification_text)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("policy_tip", self.policy_tip)
+        writer.write_enum_value("user_action", self.user_action)
+        writer.write_enum_value("verdict_details", self.verdict_details)
         writer.write_additional_data_value(self.additional_data)
     
 

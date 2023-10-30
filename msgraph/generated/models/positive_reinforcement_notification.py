@@ -13,7 +13,7 @@ from .base_end_user_notification import BaseEndUserNotification
 class PositiveReinforcementNotification(BaseEndUserNotification):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.positiveReinforcementNotification"
-    # The deliveryPreference property
+    # Delivery preference. Possible values are: unknown, deliverImmedietly, deliverAfterCampaignEnd, unknownFutureValue.
     delivery_preference: Optional[NotificationDeliveryPreference] = None
     
     @staticmethod
@@ -39,7 +39,7 @@ class PositiveReinforcementNotification(BaseEndUserNotification):
         from .notification_delivery_preference import NotificationDeliveryPreference
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deliveryPreference": lambda n : setattr(self, 'delivery_preference', n.get_enum_value(NotificationDeliveryPreference)),
+            "delivery_preference": lambda n : setattr(self, 'delivery_preference', n.get_enum_value(NotificationDeliveryPreference)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class PositiveReinforcementNotification(BaseEndUserNotification):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("deliveryPreference", self.delivery_preference)
+        writer.write_enum_value("delivery_preference", self.delivery_preference)
     
 

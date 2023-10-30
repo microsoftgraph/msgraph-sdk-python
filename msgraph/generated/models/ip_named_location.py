@@ -41,8 +41,8 @@ class IpNamedLocation(NamedLocation):
         from .named_location import NamedLocation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "ipRanges": lambda n : setattr(self, 'ip_ranges', n.get_collection_of_object_values(IpRange)),
-            "isTrusted": lambda n : setattr(self, 'is_trusted', n.get_bool_value()),
+            "ip_ranges": lambda n : setattr(self, 'ip_ranges', n.get_collection_of_object_values(IpRange)),
+            "is_trusted": lambda n : setattr(self, 'is_trusted', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class IpNamedLocation(NamedLocation):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("ipRanges", self.ip_ranges)
-        writer.write_bool_value("isTrusted", self.is_trusted)
+        writer.write_collection_of_object_values("ip_ranges", self.ip_ranges)
+        writer.write_bool_value("is_trusted", self.is_trusted)
     
 

@@ -39,7 +39,7 @@ class AuthenticationMethodsRoot(Entity):
         from .user_registration_details import UserRegistrationDetails
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "userRegistrationDetails": lambda n : setattr(self, 'user_registration_details', n.get_collection_of_object_values(UserRegistrationDetails)),
+            "user_registration_details": lambda n : setattr(self, 'user_registration_details', n.get_collection_of_object_values(UserRegistrationDetails)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class AuthenticationMethodsRoot(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("userRegistrationDetails", self.user_registration_details)
+        writer.write_collection_of_object_values("user_registration_details", self.user_registration_details)
     
 

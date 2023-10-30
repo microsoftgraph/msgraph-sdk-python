@@ -51,11 +51,11 @@ class TermsAndConditionsAcceptanceStatus(Entity):
         from .terms_and_conditions import TermsAndConditions
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "acceptedDateTime": lambda n : setattr(self, 'accepted_date_time', n.get_datetime_value()),
-            "acceptedVersion": lambda n : setattr(self, 'accepted_version', n.get_int_value()),
-            "termsAndConditions": lambda n : setattr(self, 'terms_and_conditions', n.get_object_value(TermsAndConditions)),
-            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "accepted_date_time": lambda n : setattr(self, 'accepted_date_time', n.get_datetime_value()),
+            "accepted_version": lambda n : setattr(self, 'accepted_version', n.get_int_value()),
+            "terms_and_conditions": lambda n : setattr(self, 'terms_and_conditions', n.get_object_value(TermsAndConditions)),
+            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -70,10 +70,10 @@ class TermsAndConditionsAcceptanceStatus(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("acceptedDateTime", self.accepted_date_time)
-        writer.write_int_value("acceptedVersion", self.accepted_version)
-        writer.write_object_value("termsAndConditions", self.terms_and_conditions)
-        writer.write_str_value("userDisplayName", self.user_display_name)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_datetime_value("accepted_date_time", self.accepted_date_time)
+        writer.write_int_value("accepted_version", self.accepted_version)
+        writer.write_object_value("terms_and_conditions", self.terms_and_conditions)
+        writer.write_str_value("user_display_name", self.user_display_name)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
     
 

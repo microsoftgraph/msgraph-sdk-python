@@ -57,13 +57,13 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity):
         from .inbound_outbound_policy_configuration import InboundOutboundPolicyConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "automaticUserConsentSettings": lambda n : setattr(self, 'automatic_user_consent_settings', n.get_object_value(InboundOutboundPolicyConfiguration)),
-            "b2bCollaborationInbound": lambda n : setattr(self, 'b2b_collaboration_inbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
-            "b2bCollaborationOutbound": lambda n : setattr(self, 'b2b_collaboration_outbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
-            "b2bDirectConnectInbound": lambda n : setattr(self, 'b2b_direct_connect_inbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
-            "b2bDirectConnectOutbound": lambda n : setattr(self, 'b2b_direct_connect_outbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
-            "inboundTrust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(CrossTenantAccessPolicyInboundTrust)),
-            "isServiceDefault": lambda n : setattr(self, 'is_service_default', n.get_bool_value()),
+            "automatic_user_consent_settings": lambda n : setattr(self, 'automatic_user_consent_settings', n.get_object_value(InboundOutboundPolicyConfiguration)),
+            "b2b_collaboration_inbound": lambda n : setattr(self, 'b2b_collaboration_inbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
+            "b2b_collaboration_outbound": lambda n : setattr(self, 'b2b_collaboration_outbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
+            "b2b_direct_connect_inbound": lambda n : setattr(self, 'b2b_direct_connect_inbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
+            "b2b_direct_connect_outbound": lambda n : setattr(self, 'b2b_direct_connect_outbound', n.get_object_value(CrossTenantAccessPolicyB2BSetting)),
+            "inbound_trust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(CrossTenantAccessPolicyInboundTrust)),
+            "is_service_default": lambda n : setattr(self, 'is_service_default', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,12 +78,12 @@ class CrossTenantAccessPolicyConfigurationDefault(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("automaticUserConsentSettings", self.automatic_user_consent_settings)
-        writer.write_object_value("b2bCollaborationInbound", self.b2b_collaboration_inbound)
-        writer.write_object_value("b2bCollaborationOutbound", self.b2b_collaboration_outbound)
-        writer.write_object_value("b2bDirectConnectInbound", self.b2b_direct_connect_inbound)
-        writer.write_object_value("b2bDirectConnectOutbound", self.b2b_direct_connect_outbound)
-        writer.write_object_value("inboundTrust", self.inbound_trust)
-        writer.write_bool_value("isServiceDefault", self.is_service_default)
+        writer.write_object_value("automatic_user_consent_settings", self.automatic_user_consent_settings)
+        writer.write_object_value("b2b_collaboration_inbound", self.b2b_collaboration_inbound)
+        writer.write_object_value("b2b_collaboration_outbound", self.b2b_collaboration_outbound)
+        writer.write_object_value("b2b_direct_connect_inbound", self.b2b_direct_connect_inbound)
+        writer.write_object_value("b2b_direct_connect_outbound", self.b2b_direct_connect_outbound)
+        writer.write_object_value("inbound_trust", self.inbound_trust)
+        writer.write_bool_value("is_service_default", self.is_service_default)
     
 

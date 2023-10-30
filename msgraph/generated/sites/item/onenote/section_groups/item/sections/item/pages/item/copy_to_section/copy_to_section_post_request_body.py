@@ -37,10 +37,10 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "groupId": lambda n : setattr(self, 'group_id', n.get_str_value()),
+            "group_id": lambda n : setattr(self, 'group_id', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "siteCollectionId": lambda n : setattr(self, 'site_collection_id', n.get_str_value()),
-            "siteId": lambda n : setattr(self, 'site_id', n.get_str_value()),
+            "site_collection_id": lambda n : setattr(self, 'site_collection_id', n.get_str_value()),
+            "site_id": lambda n : setattr(self, 'site_id', n.get_str_value()),
         }
         return fields
     
@@ -52,10 +52,10 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("groupId", self.group_id)
+        writer.write_str_value("group_id", self.group_id)
         writer.write_str_value("id", self.id)
-        writer.write_str_value("siteCollectionId", self.site_collection_id)
-        writer.write_str_value("siteId", self.site_id)
+        writer.write_str_value("site_collection_id", self.site_collection_id)
+        writer.write_str_value("site_id", self.site_id)
         writer.write_additional_data_value(self.additional_data)
     
 

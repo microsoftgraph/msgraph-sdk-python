@@ -48,11 +48,11 @@ class DeviceConfigurationUserStatus(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "devicesCount": lambda n : setattr(self, 'devices_count', n.get_int_value()),
-            "lastReportedDateTime": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
+            "devices_count": lambda n : setattr(self, 'devices_count', n.get_int_value()),
+            "last_reported_date_time": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(ComplianceStatus)),
-            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,10 +67,10 @@ class DeviceConfigurationUserStatus(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("devicesCount", self.devices_count)
-        writer.write_datetime_value("lastReportedDateTime", self.last_reported_date_time)
+        writer.write_int_value("devices_count", self.devices_count)
+        writer.write_datetime_value("last_reported_date_time", self.last_reported_date_time)
         writer.write_enum_value("status", self.status)
-        writer.write_str_value("userDisplayName", self.user_display_name)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_str_value("user_display_name", self.user_display_name)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
     
 

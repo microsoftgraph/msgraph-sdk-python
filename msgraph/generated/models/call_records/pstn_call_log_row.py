@@ -85,30 +85,30 @@ class PstnCallLogRow(AdditionalDataHolder, BackedModel, Parsable):
         from .pstn_call_duration_source import PstnCallDurationSource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callDurationSource": lambda n : setattr(self, 'call_duration_source', n.get_enum_value(PstnCallDurationSource)),
-            "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
-            "callType": lambda n : setattr(self, 'call_type', n.get_str_value()),
-            "calleeNumber": lambda n : setattr(self, 'callee_number', n.get_str_value()),
-            "callerNumber": lambda n : setattr(self, 'caller_number', n.get_str_value()),
+            "call_duration_source": lambda n : setattr(self, 'call_duration_source', n.get_enum_value(PstnCallDurationSource)),
+            "call_id": lambda n : setattr(self, 'call_id', n.get_str_value()),
+            "call_type": lambda n : setattr(self, 'call_type', n.get_str_value()),
+            "callee_number": lambda n : setattr(self, 'callee_number', n.get_str_value()),
+            "caller_number": lambda n : setattr(self, 'caller_number', n.get_str_value()),
             "charge": lambda n : setattr(self, 'charge', n.get_float_value()),
-            "conferenceId": lambda n : setattr(self, 'conference_id', n.get_str_value()),
-            "connectionCharge": lambda n : setattr(self, 'connection_charge', n.get_float_value()),
+            "conference_id": lambda n : setattr(self, 'conference_id', n.get_str_value()),
+            "connection_charge": lambda n : setattr(self, 'connection_charge', n.get_float_value()),
             "currency": lambda n : setattr(self, 'currency', n.get_str_value()),
-            "destinationContext": lambda n : setattr(self, 'destination_context', n.get_str_value()),
-            "destinationName": lambda n : setattr(self, 'destination_name', n.get_str_value()),
+            "destination_context": lambda n : setattr(self, 'destination_context', n.get_str_value()),
+            "destination_name": lambda n : setattr(self, 'destination_name', n.get_str_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_int_value()),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "inventoryType": lambda n : setattr(self, 'inventory_type', n.get_str_value()),
-            "licenseCapability": lambda n : setattr(self, 'license_capability', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "inventory_type": lambda n : setattr(self, 'inventory_type', n.get_str_value()),
+            "license_capability": lambda n : setattr(self, 'license_capability', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operator": lambda n : setattr(self, 'operator', n.get_str_value()),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "tenantCountryCode": lambda n : setattr(self, 'tenant_country_code', n.get_str_value()),
-            "usageCountryCode": lambda n : setattr(self, 'usage_country_code', n.get_str_value()),
-            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "tenant_country_code": lambda n : setattr(self, 'tenant_country_code', n.get_str_value()),
+            "usage_country_code": lambda n : setattr(self, 'usage_country_code', n.get_str_value()),
+            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -120,30 +120,30 @@ class PstnCallLogRow(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("callDurationSource", self.call_duration_source)
-        writer.write_str_value("callId", self.call_id)
-        writer.write_str_value("callType", self.call_type)
-        writer.write_str_value("calleeNumber", self.callee_number)
-        writer.write_str_value("callerNumber", self.caller_number)
+        writer.write_enum_value("call_duration_source", self.call_duration_source)
+        writer.write_str_value("call_id", self.call_id)
+        writer.write_str_value("call_type", self.call_type)
+        writer.write_str_value("callee_number", self.callee_number)
+        writer.write_str_value("caller_number", self.caller_number)
         writer.write_float_value("charge", self.charge)
-        writer.write_str_value("conferenceId", self.conference_id)
-        writer.write_float_value("connectionCharge", self.connection_charge)
+        writer.write_str_value("conference_id", self.conference_id)
+        writer.write_float_value("connection_charge", self.connection_charge)
         writer.write_str_value("currency", self.currency)
-        writer.write_str_value("destinationContext", self.destination_context)
-        writer.write_str_value("destinationName", self.destination_name)
+        writer.write_str_value("destination_context", self.destination_context)
+        writer.write_str_value("destination_name", self.destination_name)
         writer.write_int_value("duration", self.duration)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
         writer.write_str_value("id", self.id)
-        writer.write_str_value("inventoryType", self.inventory_type)
-        writer.write_str_value("licenseCapability", self.license_capability)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("inventory_type", self.inventory_type)
+        writer.write_str_value("license_capability", self.license_capability)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("operator", self.operator)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
-        writer.write_str_value("tenantCountryCode", self.tenant_country_code)
-        writer.write_str_value("usageCountryCode", self.usage_country_code)
-        writer.write_str_value("userDisplayName", self.user_display_name)
-        writer.write_str_value("userId", self.user_id)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
+        writer.write_str_value("tenant_country_code", self.tenant_country_code)
+        writer.write_str_value("usage_country_code", self.usage_country_code)
+        writer.write_str_value("user_display_name", self.user_display_name)
+        writer.write_str_value("user_id", self.user_id)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
     
 

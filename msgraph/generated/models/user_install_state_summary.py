@@ -50,11 +50,11 @@ class UserInstallStateSummary(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceStates": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(DeviceInstallState)),
-            "failedDeviceCount": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
-            "installedDeviceCount": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),
-            "notInstalledDeviceCount": lambda n : setattr(self, 'not_installed_device_count', n.get_int_value()),
-            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "device_states": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(DeviceInstallState)),
+            "failed_device_count": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
+            "installed_device_count": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),
+            "not_installed_device_count": lambda n : setattr(self, 'not_installed_device_count', n.get_int_value()),
+            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,10 +69,10 @@ class UserInstallStateSummary(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("deviceStates", self.device_states)
-        writer.write_int_value("failedDeviceCount", self.failed_device_count)
-        writer.write_int_value("installedDeviceCount", self.installed_device_count)
-        writer.write_int_value("notInstalledDeviceCount", self.not_installed_device_count)
-        writer.write_str_value("userName", self.user_name)
+        writer.write_collection_of_object_values("device_states", self.device_states)
+        writer.write_int_value("failed_device_count", self.failed_device_count)
+        writer.write_int_value("installed_device_count", self.installed_device_count)
+        writer.write_int_value("not_installed_device_count", self.not_installed_device_count)
+        writer.write_str_value("user_name", self.user_name)
     
 

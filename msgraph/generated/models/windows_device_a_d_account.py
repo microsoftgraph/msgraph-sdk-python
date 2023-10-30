@@ -38,8 +38,8 @@ class WindowsDeviceADAccount(WindowsDeviceAccount):
         from .windows_device_account import WindowsDeviceAccount
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
-            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "domain_name": lambda n : setattr(self, 'domain_name', n.get_str_value()),
+            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class WindowsDeviceADAccount(WindowsDeviceAccount):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("domainName", self.domain_name)
-        writer.write_str_value("userName", self.user_name)
+        writer.write_str_value("domain_name", self.domain_name)
+        writer.write_str_value("user_name", self.user_name)
     
 

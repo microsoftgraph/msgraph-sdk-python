@@ -31,7 +31,7 @@ class GetMemberGroupsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "securityEnabledOnly": lambda n : setattr(self, 'security_enabled_only', n.get_bool_value()),
+            "security_enabled_only": lambda n : setattr(self, 'security_enabled_only', n.get_bool_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class GetMemberGroupsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("securityEnabledOnly", self.security_enabled_only)
+        writer.write_bool_value("security_enabled_only", self.security_enabled_only)
         writer.write_additional_data_value(self.additional_data)
     
 

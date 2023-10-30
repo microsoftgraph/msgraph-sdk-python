@@ -43,10 +43,10 @@ class Contract(DirectoryObject):
         from .directory_object import DirectoryObject
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "contractType": lambda n : setattr(self, 'contract_type', n.get_str_value()),
-            "customerId": lambda n : setattr(self, 'customer_id', n.get_uuid_value()),
-            "defaultDomainName": lambda n : setattr(self, 'default_domain_name', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "contract_type": lambda n : setattr(self, 'contract_type', n.get_str_value()),
+            "customer_id": lambda n : setattr(self, 'customer_id', n.get_uuid_value()),
+            "default_domain_name": lambda n : setattr(self, 'default_domain_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,9 +61,9 @@ class Contract(DirectoryObject):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("contractType", self.contract_type)
-        writer.write_uuid_value("customerId", self.customer_id)
-        writer.write_str_value("defaultDomainName", self.default_domain_name)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("contract_type", self.contract_type)
+        writer.write_uuid_value("customer_id", self.customer_id)
+        writer.write_str_value("default_domain_name", self.default_domain_name)
+        writer.write_str_value("display_name", self.display_name)
     
 

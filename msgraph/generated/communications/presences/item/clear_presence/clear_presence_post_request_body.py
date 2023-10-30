@@ -31,7 +31,7 @@ class ClearPresencePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "sessionId": lambda n : setattr(self, 'session_id', n.get_str_value()),
+            "session_id": lambda n : setattr(self, 'session_id', n.get_str_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class ClearPresencePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("sessionId", self.session_id)
+        writer.write_str_value("session_id", self.session_id)
         writer.write_additional_data_value(self.additional_data)
     
 

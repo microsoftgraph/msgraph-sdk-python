@@ -36,7 +36,7 @@ class WorkflowVersion(WorkflowBase):
         from .workflow_base import WorkflowBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "versionNumber": lambda n : setattr(self, 'version_number', n.get_int_value()),
+            "version_number": lambda n : setattr(self, 'version_number', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class WorkflowVersion(WorkflowBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("versionNumber", self.version_number)
+        writer.write_int_value("version_number", self.version_number)
     
 

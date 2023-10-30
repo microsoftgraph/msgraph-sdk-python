@@ -68,10 +68,10 @@ class SharedDriveItem(BaseItem):
         from .site import Site
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(DriveItem)),
+            "drive_item": lambda n : setattr(self, 'drive_item', n.get_object_value(DriveItem)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(DriveItem)),
             "list": lambda n : setattr(self, 'list_', n.get_object_value(List_)),
-            "listItem": lambda n : setattr(self, 'list_item', n.get_object_value(ListItem)),
+            "list_item": lambda n : setattr(self, 'list_item', n.get_object_value(ListItem)),
             "owner": lambda n : setattr(self, 'owner', n.get_object_value(IdentitySet)),
             "permission": lambda n : setattr(self, 'permission', n.get_object_value(Permission)),
             "root": lambda n : setattr(self, 'root', n.get_object_value(DriveItem)),
@@ -90,10 +90,10 @@ class SharedDriveItem(BaseItem):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("driveItem", self.drive_item)
+        writer.write_object_value("drive_item", self.drive_item)
         writer.write_collection_of_object_values("items", self.items)
         writer.write_object_value("list", self.list_)
-        writer.write_object_value("listItem", self.list_item)
+        writer.write_object_value("list_item", self.list_item)
         writer.write_object_value("owner", self.owner)
         writer.write_object_value("permission", self.permission)
         writer.write_object_value("root", self.root)

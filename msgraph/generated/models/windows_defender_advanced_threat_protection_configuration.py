@@ -41,8 +41,8 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(DeviceConfiguration):
         from .device_configuration import DeviceConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowSampleSharing": lambda n : setattr(self, 'allow_sample_sharing', n.get_bool_value()),
-            "enableExpeditedTelemetryReporting": lambda n : setattr(self, 'enable_expedited_telemetry_reporting', n.get_bool_value()),
+            "allow_sample_sharing": lambda n : setattr(self, 'allow_sample_sharing', n.get_bool_value()),
+            "enable_expedited_telemetry_reporting": lambda n : setattr(self, 'enable_expedited_telemetry_reporting', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("allowSampleSharing", self.allow_sample_sharing)
-        writer.write_bool_value("enableExpeditedTelemetryReporting", self.enable_expedited_telemetry_reporting)
+        writer.write_bool_value("allow_sample_sharing", self.allow_sample_sharing)
+        writer.write_bool_value("enable_expedited_telemetry_reporting", self.enable_expedited_telemetry_reporting)
     
 

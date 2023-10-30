@@ -45,9 +45,9 @@ class Endpoint(DirectoryObject):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "capability": lambda n : setattr(self, 'capability', n.get_str_value()),
-            "providerId": lambda n : setattr(self, 'provider_id', n.get_str_value()),
-            "providerName": lambda n : setattr(self, 'provider_name', n.get_str_value()),
-            "providerResourceId": lambda n : setattr(self, 'provider_resource_id', n.get_str_value()),
+            "provider_id": lambda n : setattr(self, 'provider_id', n.get_str_value()),
+            "provider_name": lambda n : setattr(self, 'provider_name', n.get_str_value()),
+            "provider_resource_id": lambda n : setattr(self, 'provider_resource_id', n.get_str_value()),
             "uri": lambda n : setattr(self, 'uri', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -64,9 +64,9 @@ class Endpoint(DirectoryObject):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("capability", self.capability)
-        writer.write_str_value("providerId", self.provider_id)
-        writer.write_str_value("providerName", self.provider_name)
-        writer.write_str_value("providerResourceId", self.provider_resource_id)
+        writer.write_str_value("provider_id", self.provider_id)
+        writer.write_str_value("provider_name", self.provider_name)
+        writer.write_str_value("provider_resource_id", self.provider_resource_id)
         writer.write_str_value("uri", self.uri)
     
 

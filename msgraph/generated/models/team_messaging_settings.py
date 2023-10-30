@@ -41,12 +41,12 @@ class TeamMessagingSettings(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowChannelMentions": lambda n : setattr(self, 'allow_channel_mentions', n.get_bool_value()),
-            "allowOwnerDeleteMessages": lambda n : setattr(self, 'allow_owner_delete_messages', n.get_bool_value()),
-            "allowTeamMentions": lambda n : setattr(self, 'allow_team_mentions', n.get_bool_value()),
-            "allowUserDeleteMessages": lambda n : setattr(self, 'allow_user_delete_messages', n.get_bool_value()),
-            "allowUserEditMessages": lambda n : setattr(self, 'allow_user_edit_messages', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "allow_channel_mentions": lambda n : setattr(self, 'allow_channel_mentions', n.get_bool_value()),
+            "allow_owner_delete_messages": lambda n : setattr(self, 'allow_owner_delete_messages', n.get_bool_value()),
+            "allow_team_mentions": lambda n : setattr(self, 'allow_team_mentions', n.get_bool_value()),
+            "allow_user_delete_messages": lambda n : setattr(self, 'allow_user_delete_messages', n.get_bool_value()),
+            "allow_user_edit_messages": lambda n : setattr(self, 'allow_user_edit_messages', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -58,12 +58,12 @@ class TeamMessagingSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("allowChannelMentions", self.allow_channel_mentions)
-        writer.write_bool_value("allowOwnerDeleteMessages", self.allow_owner_delete_messages)
-        writer.write_bool_value("allowTeamMentions", self.allow_team_mentions)
-        writer.write_bool_value("allowUserDeleteMessages", self.allow_user_delete_messages)
-        writer.write_bool_value("allowUserEditMessages", self.allow_user_edit_messages)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("allow_channel_mentions", self.allow_channel_mentions)
+        writer.write_bool_value("allow_owner_delete_messages", self.allow_owner_delete_messages)
+        writer.write_bool_value("allow_team_mentions", self.allow_team_mentions)
+        writer.write_bool_value("allow_user_delete_messages", self.allow_user_delete_messages)
+        writer.write_bool_value("allow_user_edit_messages", self.allow_user_edit_messages)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

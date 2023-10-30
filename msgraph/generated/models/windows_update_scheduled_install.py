@@ -42,8 +42,8 @@ class WindowsUpdateScheduledInstall(WindowsUpdateInstallScheduleType):
         from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "scheduledInstallDay": lambda n : setattr(self, 'scheduled_install_day', n.get_enum_value(WeeklySchedule)),
-            "scheduledInstallTime": lambda n : setattr(self, 'scheduled_install_time', n.get_time_value()),
+            "scheduled_install_day": lambda n : setattr(self, 'scheduled_install_day', n.get_enum_value(WeeklySchedule)),
+            "scheduled_install_time": lambda n : setattr(self, 'scheduled_install_time', n.get_time_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,7 +58,7 @@ class WindowsUpdateScheduledInstall(WindowsUpdateInstallScheduleType):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("scheduledInstallDay", self.scheduled_install_day)
-        writer.write_time_value("scheduledInstallTime", self.scheduled_install_time)
+        writer.write_enum_value("scheduled_install_day", self.scheduled_install_day)
+        writer.write_time_value("scheduled_install_time", self.scheduled_install_time)
     
 

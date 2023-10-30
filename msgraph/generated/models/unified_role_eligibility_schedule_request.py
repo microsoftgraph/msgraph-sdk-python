@@ -86,20 +86,20 @@ class UnifiedRoleEligibilityScheduleRequest(Request):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(UnifiedRoleScheduleRequestActions)),
-            "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(AppScope)),
-            "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
-            "directoryScope": lambda n : setattr(self, 'directory_scope', n.get_object_value(DirectoryObject)),
-            "directoryScopeId": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
-            "isValidationOnly": lambda n : setattr(self, 'is_validation_only', n.get_bool_value()),
+            "app_scope": lambda n : setattr(self, 'app_scope', n.get_object_value(AppScope)),
+            "app_scope_id": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
+            "directory_scope": lambda n : setattr(self, 'directory_scope', n.get_object_value(DirectoryObject)),
+            "directory_scope_id": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
+            "is_validation_only": lambda n : setattr(self, 'is_validation_only', n.get_bool_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(DirectoryObject)),
-            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(UnifiedRoleDefinition)),
-            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
-            "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(RequestSchedule)),
-            "targetSchedule": lambda n : setattr(self, 'target_schedule', n.get_object_value(UnifiedRoleEligibilitySchedule)),
-            "targetScheduleId": lambda n : setattr(self, 'target_schedule_id', n.get_str_value()),
-            "ticketInfo": lambda n : setattr(self, 'ticket_info', n.get_object_value(TicketInfo)),
+            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "role_definition": lambda n : setattr(self, 'role_definition', n.get_object_value(UnifiedRoleDefinition)),
+            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "schedule_info": lambda n : setattr(self, 'schedule_info', n.get_object_value(RequestSchedule)),
+            "target_schedule": lambda n : setattr(self, 'target_schedule', n.get_object_value(UnifiedRoleEligibilitySchedule)),
+            "target_schedule_id": lambda n : setattr(self, 'target_schedule_id', n.get_str_value()),
+            "ticket_info": lambda n : setattr(self, 'ticket_info', n.get_object_value(TicketInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -115,19 +115,19 @@ class UnifiedRoleEligibilityScheduleRequest(Request):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("action", self.action)
-        writer.write_object_value("appScope", self.app_scope)
-        writer.write_str_value("appScopeId", self.app_scope_id)
-        writer.write_object_value("directoryScope", self.directory_scope)
-        writer.write_str_value("directoryScopeId", self.directory_scope_id)
-        writer.write_bool_value("isValidationOnly", self.is_validation_only)
+        writer.write_object_value("app_scope", self.app_scope)
+        writer.write_str_value("app_scope_id", self.app_scope_id)
+        writer.write_object_value("directory_scope", self.directory_scope)
+        writer.write_str_value("directory_scope_id", self.directory_scope_id)
+        writer.write_bool_value("is_validation_only", self.is_validation_only)
         writer.write_str_value("justification", self.justification)
         writer.write_object_value("principal", self.principal)
-        writer.write_str_value("principalId", self.principal_id)
-        writer.write_object_value("roleDefinition", self.role_definition)
-        writer.write_str_value("roleDefinitionId", self.role_definition_id)
-        writer.write_object_value("scheduleInfo", self.schedule_info)
-        writer.write_object_value("targetSchedule", self.target_schedule)
-        writer.write_str_value("targetScheduleId", self.target_schedule_id)
-        writer.write_object_value("ticketInfo", self.ticket_info)
+        writer.write_str_value("principal_id", self.principal_id)
+        writer.write_object_value("role_definition", self.role_definition)
+        writer.write_str_value("role_definition_id", self.role_definition_id)
+        writer.write_object_value("schedule_info", self.schedule_info)
+        writer.write_object_value("target_schedule", self.target_schedule)
+        writer.write_str_value("target_schedule_id", self.target_schedule_id)
+        writer.write_object_value("ticket_info", self.ticket_info)
     
 

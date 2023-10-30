@@ -65,13 +65,13 @@ class Workflow(WorkflowBase):
         from .workflow_version import WorkflowVersion
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
-            "executionScope": lambda n : setattr(self, 'execution_scope', n.get_collection_of_object_values(UserProcessingResult)),
+            "deleted_date_time": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
+            "execution_scope": lambda n : setattr(self, 'execution_scope', n.get_collection_of_object_values(UserProcessingResult)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "nextScheduleRunDateTime": lambda n : setattr(self, 'next_schedule_run_date_time', n.get_datetime_value()),
+            "next_schedule_run_date_time": lambda n : setattr(self, 'next_schedule_run_date_time', n.get_datetime_value()),
             "runs": lambda n : setattr(self, 'runs', n.get_collection_of_object_values(Run)),
-            "taskReports": lambda n : setattr(self, 'task_reports', n.get_collection_of_object_values(TaskReport)),
-            "userProcessingResults": lambda n : setattr(self, 'user_processing_results', n.get_collection_of_object_values(UserProcessingResult)),
+            "task_reports": lambda n : setattr(self, 'task_reports', n.get_collection_of_object_values(TaskReport)),
+            "user_processing_results": lambda n : setattr(self, 'user_processing_results', n.get_collection_of_object_values(UserProcessingResult)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
             "versions": lambda n : setattr(self, 'versions', n.get_collection_of_object_values(WorkflowVersion)),
         }
@@ -88,13 +88,13 @@ class Workflow(WorkflowBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
-        writer.write_collection_of_object_values("executionScope", self.execution_scope)
+        writer.write_datetime_value("deleted_date_time", self.deleted_date_time)
+        writer.write_collection_of_object_values("execution_scope", self.execution_scope)
         writer.write_str_value("id", self.id)
-        writer.write_datetime_value("nextScheduleRunDateTime", self.next_schedule_run_date_time)
+        writer.write_datetime_value("next_schedule_run_date_time", self.next_schedule_run_date_time)
         writer.write_collection_of_object_values("runs", self.runs)
-        writer.write_collection_of_object_values("taskReports", self.task_reports)
-        writer.write_collection_of_object_values("userProcessingResults", self.user_processing_results)
+        writer.write_collection_of_object_values("task_reports", self.task_reports)
+        writer.write_collection_of_object_values("user_processing_results", self.user_processing_results)
         writer.write_int_value("version", self.version)
         writer.write_collection_of_object_values("versions", self.versions)
     

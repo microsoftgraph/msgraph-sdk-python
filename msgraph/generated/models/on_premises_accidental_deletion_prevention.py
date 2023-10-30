@@ -42,9 +42,9 @@ class OnPremisesAccidentalDeletionPrevention(AdditionalDataHolder, BackedModel, 
         from .on_premises_directory_synchronization_deletion_prevention_type import OnPremisesDirectorySynchronizationDeletionPreventionType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "alertThreshold": lambda n : setattr(self, 'alert_threshold', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "synchronizationPreventionType": lambda n : setattr(self, 'synchronization_prevention_type', n.get_enum_value(OnPremisesDirectorySynchronizationDeletionPreventionType)),
+            "alert_threshold": lambda n : setattr(self, 'alert_threshold', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "synchronization_prevention_type": lambda n : setattr(self, 'synchronization_prevention_type', n.get_enum_value(OnPremisesDirectorySynchronizationDeletionPreventionType)),
         }
         return fields
     
@@ -56,9 +56,9 @@ class OnPremisesAccidentalDeletionPrevention(AdditionalDataHolder, BackedModel, 
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("alertThreshold", self.alert_threshold)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_enum_value("synchronizationPreventionType", self.synchronization_prevention_type)
+        writer.write_int_value("alert_threshold", self.alert_threshold)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_enum_value("synchronization_prevention_type", self.synchronization_prevention_type)
         writer.write_additional_data_value(self.additional_data)
     
 

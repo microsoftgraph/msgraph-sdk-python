@@ -66,9 +66,9 @@ class AccessReviewInstanceDecisionItemResource(AdditionalDataHolder, BackedModel
         from .access_review_instance_decision_item_service_principal_resource import AccessReviewInstanceDecisionItemServicePrincipalResource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         return fields
@@ -81,9 +81,9 @@ class AccessReviewInstanceDecisionItemResource(AdditionalDataHolder, BackedModel
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_str_value("id", self.id)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
     

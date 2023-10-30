@@ -119,23 +119,23 @@ class ThreatIntelligence(Entity):
         from .whois_record import WhoisRecord
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "articleIndicators": lambda n : setattr(self, 'article_indicators', n.get_collection_of_object_values(ArticleIndicator)),
+            "article_indicators": lambda n : setattr(self, 'article_indicators', n.get_collection_of_object_values(ArticleIndicator)),
             "articles": lambda n : setattr(self, 'articles', n.get_collection_of_object_values(Article)),
-            "hostComponents": lambda n : setattr(self, 'host_components', n.get_collection_of_object_values(HostComponent)),
-            "hostCookies": lambda n : setattr(self, 'host_cookies', n.get_collection_of_object_values(HostCookie)),
-            "hostPairs": lambda n : setattr(self, 'host_pairs', n.get_collection_of_object_values(HostPair)),
-            "hostPorts": lambda n : setattr(self, 'host_ports', n.get_collection_of_object_values(HostPort)),
-            "hostSslCertificates": lambda n : setattr(self, 'host_ssl_certificates', n.get_collection_of_object_values(HostSslCertificate)),
-            "hostTrackers": lambda n : setattr(self, 'host_trackers', n.get_collection_of_object_values(HostTracker)),
+            "host_components": lambda n : setattr(self, 'host_components', n.get_collection_of_object_values(HostComponent)),
+            "host_cookies": lambda n : setattr(self, 'host_cookies', n.get_collection_of_object_values(HostCookie)),
+            "host_pairs": lambda n : setattr(self, 'host_pairs', n.get_collection_of_object_values(HostPair)),
+            "host_ports": lambda n : setattr(self, 'host_ports', n.get_collection_of_object_values(HostPort)),
+            "host_ssl_certificates": lambda n : setattr(self, 'host_ssl_certificates', n.get_collection_of_object_values(HostSslCertificate)),
+            "host_trackers": lambda n : setattr(self, 'host_trackers', n.get_collection_of_object_values(HostTracker)),
             "hosts": lambda n : setattr(self, 'hosts', n.get_collection_of_object_values(Host)),
-            "intelProfiles": lambda n : setattr(self, 'intel_profiles', n.get_collection_of_object_values(IntelligenceProfile)),
-            "intelligenceProfileIndicators": lambda n : setattr(self, 'intelligence_profile_indicators', n.get_collection_of_object_values(IntelligenceProfileIndicator)),
-            "passiveDnsRecords": lambda n : setattr(self, 'passive_dns_records', n.get_collection_of_object_values(PassiveDnsRecord)),
-            "sslCertificates": lambda n : setattr(self, 'ssl_certificates', n.get_collection_of_object_values(SslCertificate)),
+            "intel_profiles": lambda n : setattr(self, 'intel_profiles', n.get_collection_of_object_values(IntelligenceProfile)),
+            "intelligence_profile_indicators": lambda n : setattr(self, 'intelligence_profile_indicators', n.get_collection_of_object_values(IntelligenceProfileIndicator)),
+            "passive_dns_records": lambda n : setattr(self, 'passive_dns_records', n.get_collection_of_object_values(PassiveDnsRecord)),
+            "ssl_certificates": lambda n : setattr(self, 'ssl_certificates', n.get_collection_of_object_values(SslCertificate)),
             "subdomains": lambda n : setattr(self, 'subdomains', n.get_collection_of_object_values(Subdomain)),
             "vulnerabilities": lambda n : setattr(self, 'vulnerabilities', n.get_collection_of_object_values(Vulnerability)),
-            "whoisHistoryRecords": lambda n : setattr(self, 'whois_history_records', n.get_collection_of_object_values(WhoisHistoryRecord)),
-            "whoisRecords": lambda n : setattr(self, 'whois_records', n.get_collection_of_object_values(WhoisRecord)),
+            "whois_history_records": lambda n : setattr(self, 'whois_history_records', n.get_collection_of_object_values(WhoisHistoryRecord)),
+            "whois_records": lambda n : setattr(self, 'whois_records', n.get_collection_of_object_values(WhoisRecord)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -150,22 +150,22 @@ class ThreatIntelligence(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("articleIndicators", self.article_indicators)
+        writer.write_collection_of_object_values("article_indicators", self.article_indicators)
         writer.write_collection_of_object_values("articles", self.articles)
-        writer.write_collection_of_object_values("hostComponents", self.host_components)
-        writer.write_collection_of_object_values("hostCookies", self.host_cookies)
-        writer.write_collection_of_object_values("hostPairs", self.host_pairs)
-        writer.write_collection_of_object_values("hostPorts", self.host_ports)
-        writer.write_collection_of_object_values("hostSslCertificates", self.host_ssl_certificates)
-        writer.write_collection_of_object_values("hostTrackers", self.host_trackers)
+        writer.write_collection_of_object_values("host_components", self.host_components)
+        writer.write_collection_of_object_values("host_cookies", self.host_cookies)
+        writer.write_collection_of_object_values("host_pairs", self.host_pairs)
+        writer.write_collection_of_object_values("host_ports", self.host_ports)
+        writer.write_collection_of_object_values("host_ssl_certificates", self.host_ssl_certificates)
+        writer.write_collection_of_object_values("host_trackers", self.host_trackers)
         writer.write_collection_of_object_values("hosts", self.hosts)
-        writer.write_collection_of_object_values("intelProfiles", self.intel_profiles)
-        writer.write_collection_of_object_values("intelligenceProfileIndicators", self.intelligence_profile_indicators)
-        writer.write_collection_of_object_values("passiveDnsRecords", self.passive_dns_records)
-        writer.write_collection_of_object_values("sslCertificates", self.ssl_certificates)
+        writer.write_collection_of_object_values("intel_profiles", self.intel_profiles)
+        writer.write_collection_of_object_values("intelligence_profile_indicators", self.intelligence_profile_indicators)
+        writer.write_collection_of_object_values("passive_dns_records", self.passive_dns_records)
+        writer.write_collection_of_object_values("ssl_certificates", self.ssl_certificates)
         writer.write_collection_of_object_values("subdomains", self.subdomains)
         writer.write_collection_of_object_values("vulnerabilities", self.vulnerabilities)
-        writer.write_collection_of_object_values("whoisHistoryRecords", self.whois_history_records)
-        writer.write_collection_of_object_values("whoisRecords", self.whois_records)
+        writer.write_collection_of_object_values("whois_history_records", self.whois_history_records)
+        writer.write_collection_of_object_values("whois_records", self.whois_records)
     
 

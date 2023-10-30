@@ -49,10 +49,10 @@ class AdminConsentRequestPolicy(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "notifyReviewers": lambda n : setattr(self, 'notify_reviewers', n.get_bool_value()),
-            "remindersEnabled": lambda n : setattr(self, 'reminders_enabled', n.get_bool_value()),
-            "requestDurationInDays": lambda n : setattr(self, 'request_duration_in_days', n.get_int_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "notify_reviewers": lambda n : setattr(self, 'notify_reviewers', n.get_bool_value()),
+            "reminders_enabled": lambda n : setattr(self, 'reminders_enabled', n.get_bool_value()),
+            "request_duration_in_days": lambda n : setattr(self, 'request_duration_in_days', n.get_int_value()),
             "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
@@ -69,10 +69,10 @@ class AdminConsentRequestPolicy(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_bool_value("notifyReviewers", self.notify_reviewers)
-        writer.write_bool_value("remindersEnabled", self.reminders_enabled)
-        writer.write_int_value("requestDurationInDays", self.request_duration_in_days)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_bool_value("notify_reviewers", self.notify_reviewers)
+        writer.write_bool_value("reminders_enabled", self.reminders_enabled)
+        writer.write_int_value("request_duration_in_days", self.request_duration_in_days)
         writer.write_collection_of_object_values("reviewers", self.reviewers)
         writer.write_int_value("version", self.version)
     

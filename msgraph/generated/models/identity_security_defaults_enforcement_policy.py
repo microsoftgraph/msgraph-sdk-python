@@ -36,7 +36,7 @@ class IdentitySecurityDefaultsEnforcementPolicy(PolicyBase):
         from .policy_base import PolicyBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class IdentitySecurityDefaultsEnforcementPolicy(PolicyBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isEnabled", self.is_enabled)
+        writer.write_bool_value("is_enabled", self.is_enabled)
     
 

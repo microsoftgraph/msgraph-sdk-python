@@ -41,7 +41,7 @@ class BitrshiftPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "number": lambda n : setattr(self, 'number', n.get_object_value(Json)),
-            "shiftAmount": lambda n : setattr(self, 'shift_amount', n.get_object_value(Json)),
+            "shift_amount": lambda n : setattr(self, 'shift_amount', n.get_object_value(Json)),
         }
         return fields
     
@@ -54,7 +54,7 @@ class BitrshiftPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("number", self.number)
-        writer.write_object_value("shiftAmount", self.shift_amount)
+        writer.write_object_value("shift_amount", self.shift_amount)
         writer.write_additional_data_value(self.additional_data)
     
 

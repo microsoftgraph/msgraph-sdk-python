@@ -12,13 +12,13 @@ from .payload_detail import PayloadDetail
 class EmailPayloadDetail(PayloadDetail):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.emailPayloadDetail"
-    # The fromEmail property
+    # Email address of the user.
     from_email: Optional[str] = None
-    # The fromName property
+    # Display name of the user.
     from_name: Optional[str] = None
-    # The isExternalSender property
+    # Indicates whether the sender isn't from the user's organization.
     is_external_sender: Optional[bool] = None
-    # The subject property
+    # The subject of the email address sent to the user.
     subject: Optional[str] = None
     
     @staticmethod
@@ -42,9 +42,9 @@ class EmailPayloadDetail(PayloadDetail):
         from .payload_detail import PayloadDetail
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fromEmail": lambda n : setattr(self, 'from_email', n.get_str_value()),
-            "fromName": lambda n : setattr(self, 'from_name', n.get_str_value()),
-            "isExternalSender": lambda n : setattr(self, 'is_external_sender', n.get_bool_value()),
+            "from_email": lambda n : setattr(self, 'from_email', n.get_str_value()),
+            "from_name": lambda n : setattr(self, 'from_name', n.get_str_value()),
+            "is_external_sender": lambda n : setattr(self, 'is_external_sender', n.get_bool_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -60,9 +60,9 @@ class EmailPayloadDetail(PayloadDetail):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("fromEmail", self.from_email)
-        writer.write_str_value("fromName", self.from_name)
-        writer.write_bool_value("isExternalSender", self.is_external_sender)
+        writer.write_str_value("from_email", self.from_email)
+        writer.write_str_value("from_name", self.from_name)
+        writer.write_bool_value("is_external_sender", self.is_external_sender)
         writer.write_str_value("subject", self.subject)
     
 

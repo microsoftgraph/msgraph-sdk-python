@@ -44,8 +44,8 @@ class TeamsAppRemovedEventMessageDetail(EventMessageDetail):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
-            "teamsAppDisplayName": lambda n : setattr(self, 'teams_app_display_name', n.get_str_value()),
-            "teamsAppId": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
+            "teams_app_display_name": lambda n : setattr(self, 'teams_app_display_name', n.get_str_value()),
+            "teams_app_id": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,7 +61,7 @@ class TeamsAppRemovedEventMessageDetail(EventMessageDetail):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("initiator", self.initiator)
-        writer.write_str_value("teamsAppDisplayName", self.teams_app_display_name)
-        writer.write_str_value("teamsAppId", self.teams_app_id)
+        writer.write_str_value("teams_app_display_name", self.teams_app_display_name)
+        writer.write_str_value("teams_app_id", self.teams_app_id)
     
 

@@ -65,14 +65,14 @@ class BrowserSiteHistory(AdditionalDataHolder, BackedModel, Parsable):
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowRedirect": lambda n : setattr(self, 'allow_redirect', n.get_bool_value()),
+            "allow_redirect": lambda n : setattr(self, 'allow_redirect', n.get_bool_value()),
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "compatibilityMode": lambda n : setattr(self, 'compatibility_mode', n.get_enum_value(BrowserSiteCompatibilityMode)),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
-            "mergeType": lambda n : setattr(self, 'merge_type', n.get_enum_value(BrowserSiteMergeType)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "publishedDateTime": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
-            "targetEnvironment": lambda n : setattr(self, 'target_environment', n.get_enum_value(BrowserSiteTargetEnvironment)),
+            "compatibility_mode": lambda n : setattr(self, 'compatibility_mode', n.get_enum_value(BrowserSiteCompatibilityMode)),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
+            "merge_type": lambda n : setattr(self, 'merge_type', n.get_enum_value(BrowserSiteMergeType)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "published_date_time": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
+            "target_environment": lambda n : setattr(self, 'target_environment', n.get_enum_value(BrowserSiteTargetEnvironment)),
         }
         return fields
     
@@ -84,14 +84,14 @@ class BrowserSiteHistory(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("allowRedirect", self.allow_redirect)
+        writer.write_bool_value("allow_redirect", self.allow_redirect)
         writer.write_str_value("comment", self.comment)
-        writer.write_enum_value("compatibilityMode", self.compatibility_mode)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_enum_value("mergeType", self.merge_type)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_datetime_value("publishedDateTime", self.published_date_time)
-        writer.write_enum_value("targetEnvironment", self.target_environment)
+        writer.write_enum_value("compatibility_mode", self.compatibility_mode)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
+        writer.write_enum_value("merge_type", self.merge_type)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_datetime_value("published_date_time", self.published_date_time)
+        writer.write_enum_value("target_environment", self.target_environment)
         writer.write_additional_data_value(self.additional_data)
     
 

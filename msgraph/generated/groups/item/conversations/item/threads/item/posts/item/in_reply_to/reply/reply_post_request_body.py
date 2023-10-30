@@ -38,7 +38,7 @@ class ReplyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ...........models.post import Post
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "Post": lambda n : setattr(self, 'post', n.get_object_value(Post)),
+            "post": lambda n : setattr(self, 'post', n.get_object_value(Post)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class ReplyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("Post", self.post)
+        writer.write_object_value("post", self.post)
         writer.write_additional_data_value(self.additional_data)
     
 

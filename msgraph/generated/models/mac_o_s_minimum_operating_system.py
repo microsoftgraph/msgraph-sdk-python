@@ -58,7 +58,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "v10_10": lambda n : setattr(self, 'v10_10', n.get_bool_value()),
             "v10_11": lambda n : setattr(self, 'v10_11', n.get_bool_value()),
             "v10_12": lambda n : setattr(self, 'v10_12', n.get_bool_value()),
@@ -82,7 +82,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("v10_10", self.v10_10)
         writer.write_bool_value("v10_11", self.v10_11)
         writer.write_bool_value("v10_12", self.v10_12)

@@ -42,8 +42,8 @@ class UserLastSignInRecommendationInsightSetting(AccessReviewRecommendationInsig
         from .user_sign_in_recommendation_scope import UserSignInRecommendationScope
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "recommendationLookBackDuration": lambda n : setattr(self, 'recommendation_look_back_duration', n.get_timedelta_value()),
-            "signInScope": lambda n : setattr(self, 'sign_in_scope', n.get_enum_value(UserSignInRecommendationScope)),
+            "recommendation_look_back_duration": lambda n : setattr(self, 'recommendation_look_back_duration', n.get_timedelta_value()),
+            "sign_in_scope": lambda n : setattr(self, 'sign_in_scope', n.get_enum_value(UserSignInRecommendationScope)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,7 +58,7 @@ class UserLastSignInRecommendationInsightSetting(AccessReviewRecommendationInsig
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_timedelta_value("recommendationLookBackDuration", self.recommendation_look_back_duration)
-        writer.write_enum_value("signInScope", self.sign_in_scope)
+        writer.write_timedelta_value("recommendation_look_back_duration", self.recommendation_look_back_duration)
+        writer.write_enum_value("sign_in_scope", self.sign_in_scope)
     
 

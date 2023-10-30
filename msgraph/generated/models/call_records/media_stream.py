@@ -105,37 +105,37 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
         from .video_codec import VideoCodec
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "audioCodec": lambda n : setattr(self, 'audio_codec', n.get_enum_value(AudioCodec)),
-            "averageAudioDegradation": lambda n : setattr(self, 'average_audio_degradation', n.get_float_value()),
-            "averageAudioNetworkJitter": lambda n : setattr(self, 'average_audio_network_jitter', n.get_timedelta_value()),
-            "averageBandwidthEstimate": lambda n : setattr(self, 'average_bandwidth_estimate', n.get_int_value()),
-            "averageFreezeDuration": lambda n : setattr(self, 'average_freeze_duration', n.get_timedelta_value()),
-            "averageJitter": lambda n : setattr(self, 'average_jitter', n.get_timedelta_value()),
-            "averagePacketLossRate": lambda n : setattr(self, 'average_packet_loss_rate', n.get_float_value()),
-            "averageRatioOfConcealedSamples": lambda n : setattr(self, 'average_ratio_of_concealed_samples', n.get_float_value()),
-            "averageReceivedFrameRate": lambda n : setattr(self, 'average_received_frame_rate', n.get_float_value()),
-            "averageRoundTripTime": lambda n : setattr(self, 'average_round_trip_time', n.get_timedelta_value()),
-            "averageVideoFrameLossPercentage": lambda n : setattr(self, 'average_video_frame_loss_percentage', n.get_float_value()),
-            "averageVideoFrameRate": lambda n : setattr(self, 'average_video_frame_rate', n.get_float_value()),
-            "averageVideoPacketLossRate": lambda n : setattr(self, 'average_video_packet_loss_rate', n.get_float_value()),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "isAudioForwardErrorCorrectionUsed": lambda n : setattr(self, 'is_audio_forward_error_correction_used', n.get_bool_value()),
-            "lowFrameRateRatio": lambda n : setattr(self, 'low_frame_rate_ratio', n.get_float_value()),
-            "lowVideoProcessingCapabilityRatio": lambda n : setattr(self, 'low_video_processing_capability_ratio', n.get_float_value()),
-            "maxAudioNetworkJitter": lambda n : setattr(self, 'max_audio_network_jitter', n.get_timedelta_value()),
-            "maxJitter": lambda n : setattr(self, 'max_jitter', n.get_timedelta_value()),
-            "maxPacketLossRate": lambda n : setattr(self, 'max_packet_loss_rate', n.get_float_value()),
-            "maxRatioOfConcealedSamples": lambda n : setattr(self, 'max_ratio_of_concealed_samples', n.get_float_value()),
-            "maxRoundTripTime": lambda n : setattr(self, 'max_round_trip_time', n.get_timedelta_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "packetUtilization": lambda n : setattr(self, 'packet_utilization', n.get_int_value()),
-            "postForwardErrorCorrectionPacketLossRate": lambda n : setattr(self, 'post_forward_error_correction_packet_loss_rate', n.get_float_value()),
-            "rmsFreezeDuration": lambda n : setattr(self, 'rms_freeze_duration', n.get_timedelta_value()),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "streamDirection": lambda n : setattr(self, 'stream_direction', n.get_enum_value(MediaStreamDirection)),
-            "streamId": lambda n : setattr(self, 'stream_id', n.get_str_value()),
-            "videoCodec": lambda n : setattr(self, 'video_codec', n.get_enum_value(VideoCodec)),
-            "wasMediaBypassed": lambda n : setattr(self, 'was_media_bypassed', n.get_bool_value()),
+            "audio_codec": lambda n : setattr(self, 'audio_codec', n.get_enum_value(AudioCodec)),
+            "average_audio_degradation": lambda n : setattr(self, 'average_audio_degradation', n.get_float_value()),
+            "average_audio_network_jitter": lambda n : setattr(self, 'average_audio_network_jitter', n.get_timedelta_value()),
+            "average_bandwidth_estimate": lambda n : setattr(self, 'average_bandwidth_estimate', n.get_int_value()),
+            "average_freeze_duration": lambda n : setattr(self, 'average_freeze_duration', n.get_timedelta_value()),
+            "average_jitter": lambda n : setattr(self, 'average_jitter', n.get_timedelta_value()),
+            "average_packet_loss_rate": lambda n : setattr(self, 'average_packet_loss_rate', n.get_float_value()),
+            "average_ratio_of_concealed_samples": lambda n : setattr(self, 'average_ratio_of_concealed_samples', n.get_float_value()),
+            "average_received_frame_rate": lambda n : setattr(self, 'average_received_frame_rate', n.get_float_value()),
+            "average_round_trip_time": lambda n : setattr(self, 'average_round_trip_time', n.get_timedelta_value()),
+            "average_video_frame_loss_percentage": lambda n : setattr(self, 'average_video_frame_loss_percentage', n.get_float_value()),
+            "average_video_frame_rate": lambda n : setattr(self, 'average_video_frame_rate', n.get_float_value()),
+            "average_video_packet_loss_rate": lambda n : setattr(self, 'average_video_packet_loss_rate', n.get_float_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "is_audio_forward_error_correction_used": lambda n : setattr(self, 'is_audio_forward_error_correction_used', n.get_bool_value()),
+            "low_frame_rate_ratio": lambda n : setattr(self, 'low_frame_rate_ratio', n.get_float_value()),
+            "low_video_processing_capability_ratio": lambda n : setattr(self, 'low_video_processing_capability_ratio', n.get_float_value()),
+            "max_audio_network_jitter": lambda n : setattr(self, 'max_audio_network_jitter', n.get_timedelta_value()),
+            "max_jitter": lambda n : setattr(self, 'max_jitter', n.get_timedelta_value()),
+            "max_packet_loss_rate": lambda n : setattr(self, 'max_packet_loss_rate', n.get_float_value()),
+            "max_ratio_of_concealed_samples": lambda n : setattr(self, 'max_ratio_of_concealed_samples', n.get_float_value()),
+            "max_round_trip_time": lambda n : setattr(self, 'max_round_trip_time', n.get_timedelta_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "packet_utilization": lambda n : setattr(self, 'packet_utilization', n.get_int_value()),
+            "post_forward_error_correction_packet_loss_rate": lambda n : setattr(self, 'post_forward_error_correction_packet_loss_rate', n.get_float_value()),
+            "rms_freeze_duration": lambda n : setattr(self, 'rms_freeze_duration', n.get_timedelta_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "stream_direction": lambda n : setattr(self, 'stream_direction', n.get_enum_value(MediaStreamDirection)),
+            "stream_id": lambda n : setattr(self, 'stream_id', n.get_str_value()),
+            "video_codec": lambda n : setattr(self, 'video_codec', n.get_enum_value(VideoCodec)),
+            "was_media_bypassed": lambda n : setattr(self, 'was_media_bypassed', n.get_bool_value()),
         }
         return fields
     
@@ -147,37 +147,37 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("audioCodec", self.audio_codec)
-        writer.write_float_value("averageAudioDegradation", self.average_audio_degradation)
-        writer.write_timedelta_value("averageAudioNetworkJitter", self.average_audio_network_jitter)
-        writer.write_int_value("averageBandwidthEstimate", self.average_bandwidth_estimate)
-        writer.write_timedelta_value("averageFreezeDuration", self.average_freeze_duration)
-        writer.write_timedelta_value("averageJitter", self.average_jitter)
-        writer.write_float_value("averagePacketLossRate", self.average_packet_loss_rate)
-        writer.write_float_value("averageRatioOfConcealedSamples", self.average_ratio_of_concealed_samples)
-        writer.write_float_value("averageReceivedFrameRate", self.average_received_frame_rate)
-        writer.write_timedelta_value("averageRoundTripTime", self.average_round_trip_time)
-        writer.write_float_value("averageVideoFrameLossPercentage", self.average_video_frame_loss_percentage)
-        writer.write_float_value("averageVideoFrameRate", self.average_video_frame_rate)
-        writer.write_float_value("averageVideoPacketLossRate", self.average_video_packet_loss_rate)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_bool_value("isAudioForwardErrorCorrectionUsed", self.is_audio_forward_error_correction_used)
-        writer.write_float_value("lowFrameRateRatio", self.low_frame_rate_ratio)
-        writer.write_float_value("lowVideoProcessingCapabilityRatio", self.low_video_processing_capability_ratio)
-        writer.write_timedelta_value("maxAudioNetworkJitter", self.max_audio_network_jitter)
-        writer.write_timedelta_value("maxJitter", self.max_jitter)
-        writer.write_float_value("maxPacketLossRate", self.max_packet_loss_rate)
-        writer.write_float_value("maxRatioOfConcealedSamples", self.max_ratio_of_concealed_samples)
-        writer.write_timedelta_value("maxRoundTripTime", self.max_round_trip_time)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("packetUtilization", self.packet_utilization)
-        writer.write_float_value("postForwardErrorCorrectionPacketLossRate", self.post_forward_error_correction_packet_loss_rate)
-        writer.write_timedelta_value("rmsFreezeDuration", self.rms_freeze_duration)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
-        writer.write_enum_value("streamDirection", self.stream_direction)
-        writer.write_str_value("streamId", self.stream_id)
-        writer.write_enum_value("videoCodec", self.video_codec)
-        writer.write_bool_value("wasMediaBypassed", self.was_media_bypassed)
+        writer.write_enum_value("audio_codec", self.audio_codec)
+        writer.write_float_value("average_audio_degradation", self.average_audio_degradation)
+        writer.write_timedelta_value("average_audio_network_jitter", self.average_audio_network_jitter)
+        writer.write_int_value("average_bandwidth_estimate", self.average_bandwidth_estimate)
+        writer.write_timedelta_value("average_freeze_duration", self.average_freeze_duration)
+        writer.write_timedelta_value("average_jitter", self.average_jitter)
+        writer.write_float_value("average_packet_loss_rate", self.average_packet_loss_rate)
+        writer.write_float_value("average_ratio_of_concealed_samples", self.average_ratio_of_concealed_samples)
+        writer.write_float_value("average_received_frame_rate", self.average_received_frame_rate)
+        writer.write_timedelta_value("average_round_trip_time", self.average_round_trip_time)
+        writer.write_float_value("average_video_frame_loss_percentage", self.average_video_frame_loss_percentage)
+        writer.write_float_value("average_video_frame_rate", self.average_video_frame_rate)
+        writer.write_float_value("average_video_packet_loss_rate", self.average_video_packet_loss_rate)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_bool_value("is_audio_forward_error_correction_used", self.is_audio_forward_error_correction_used)
+        writer.write_float_value("low_frame_rate_ratio", self.low_frame_rate_ratio)
+        writer.write_float_value("low_video_processing_capability_ratio", self.low_video_processing_capability_ratio)
+        writer.write_timedelta_value("max_audio_network_jitter", self.max_audio_network_jitter)
+        writer.write_timedelta_value("max_jitter", self.max_jitter)
+        writer.write_float_value("max_packet_loss_rate", self.max_packet_loss_rate)
+        writer.write_float_value("max_ratio_of_concealed_samples", self.max_ratio_of_concealed_samples)
+        writer.write_timedelta_value("max_round_trip_time", self.max_round_trip_time)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("packet_utilization", self.packet_utilization)
+        writer.write_float_value("post_forward_error_correction_packet_loss_rate", self.post_forward_error_correction_packet_loss_rate)
+        writer.write_timedelta_value("rms_freeze_duration", self.rms_freeze_duration)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
+        writer.write_enum_value("stream_direction", self.stream_direction)
+        writer.write_str_value("stream_id", self.stream_id)
+        writer.write_enum_value("video_codec", self.video_codec)
+        writer.write_bool_value("was_media_bypassed", self.was_media_bypassed)
         writer.write_additional_data_value(self.additional_data)
     
 

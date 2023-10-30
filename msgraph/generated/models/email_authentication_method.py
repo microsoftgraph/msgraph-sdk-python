@@ -36,7 +36,7 @@ class EmailAuthenticationMethod(AuthenticationMethod):
         from .authentication_method import AuthenticationMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class EmailAuthenticationMethod(AuthenticationMethod):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("emailAddress", self.email_address)
+        writer.write_str_value("email_address", self.email_address)
     
 

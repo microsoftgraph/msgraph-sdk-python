@@ -44,8 +44,8 @@ class PlannerPlanContainer(AdditionalDataHolder, BackedModel, Parsable):
         from .planner_container_type import PlannerContainerType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "containerId": lambda n : setattr(self, 'container_id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "container_id": lambda n : setattr(self, 'container_id', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(PlannerContainerType)),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
@@ -59,8 +59,8 @@ class PlannerPlanContainer(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("containerId", self.container_id)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("container_id", self.container_id)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("type", self.type)
         writer.write_str_value("url", self.url)
         writer.write_additional_data_value(self.additional_data)

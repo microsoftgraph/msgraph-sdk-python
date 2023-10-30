@@ -43,9 +43,9 @@ class MailboxEvidence(AlertEvidence):
         from .user_account import UserAccount
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "primaryAddress": lambda n : setattr(self, 'primary_address', n.get_str_value()),
-            "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(UserAccount)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "primary_address": lambda n : setattr(self, 'primary_address', n.get_str_value()),
+            "user_account": lambda n : setattr(self, 'user_account', n.get_object_value(UserAccount)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class MailboxEvidence(AlertEvidence):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("primaryAddress", self.primary_address)
-        writer.write_object_value("userAccount", self.user_account)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("primary_address", self.primary_address)
+        writer.write_object_value("user_account", self.user_account)
     
 

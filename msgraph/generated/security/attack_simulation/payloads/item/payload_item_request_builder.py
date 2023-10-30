@@ -47,7 +47,7 @@ class PayloadItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PayloadItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Payload]:
         """
-        Get payloads from security
+        Represents an attack simulation training campaign payload in a tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Payload]
         """
@@ -108,7 +108,7 @@ class PayloadItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PayloadItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get payloads from security
+        Represents an attack simulation training campaign payload in a tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -166,7 +166,7 @@ class PayloadItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PayloadItemRequestBuilderGetQueryParameters():
         """
-        Get payloads from security
+        Represents an attack simulation training campaign payload in a tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

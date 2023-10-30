@@ -44,8 +44,8 @@ class IosCustomConfiguration(DeviceConfiguration):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "payload": lambda n : setattr(self, 'payload', n.get_bytes_value()),
-            "payloadFileName": lambda n : setattr(self, 'payload_file_name', n.get_str_value()),
-            "payloadName": lambda n : setattr(self, 'payload_name', n.get_str_value()),
+            "payload_file_name": lambda n : setattr(self, 'payload_file_name', n.get_str_value()),
+            "payload_name": lambda n : setattr(self, 'payload_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,7 +61,7 @@ class IosCustomConfiguration(DeviceConfiguration):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bytes_value("payload", self.payload)
-        writer.write_str_value("payloadFileName", self.payload_file_name)
-        writer.write_str_value("payloadName", self.payload_name)
+        writer.write_str_value("payload_file_name", self.payload_file_name)
+        writer.write_str_value("payload_name", self.payload_name)
     
 

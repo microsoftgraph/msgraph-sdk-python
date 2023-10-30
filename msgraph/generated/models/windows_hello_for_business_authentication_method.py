@@ -49,10 +49,10 @@ class WindowsHelloForBusinessAuthenticationMethod(AuthenticationMethod):
         from .device import Device
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "device": lambda n : setattr(self, 'device', n.get_object_value(Device)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "keyStrength": lambda n : setattr(self, 'key_strength', n.get_enum_value(AuthenticationMethodKeyStrength)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "key_strength": lambda n : setattr(self, 'key_strength', n.get_enum_value(AuthenticationMethodKeyStrength)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,9 +67,9 @@ class WindowsHelloForBusinessAuthenticationMethod(AuthenticationMethod):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_object_value("device", self.device)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_enum_value("keyStrength", self.key_strength)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_enum_value("key_strength", self.key_strength)
     
 

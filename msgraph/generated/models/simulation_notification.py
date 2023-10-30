@@ -13,7 +13,7 @@ from .base_end_user_notification import BaseEndUserNotification
 class SimulationNotification(BaseEndUserNotification):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.simulationNotification"
-    # The targettedUserType property
+    # Target user type. Possible values are: unknown, clicked, compromised, allUsers, unknownFutureValue.
     targetted_user_type: Optional[TargettedUserType] = None
     
     @staticmethod
@@ -39,7 +39,7 @@ class SimulationNotification(BaseEndUserNotification):
         from .targetted_user_type import TargettedUserType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "targettedUserType": lambda n : setattr(self, 'targetted_user_type', n.get_enum_value(TargettedUserType)),
+            "targetted_user_type": lambda n : setattr(self, 'targetted_user_type', n.get_enum_value(TargettedUserType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class SimulationNotification(BaseEndUserNotification):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("targettedUserType", self.targetted_user_type)
+        writer.write_enum_value("targetted_user_type", self.targetted_user_type)
     
 

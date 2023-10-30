@@ -36,7 +36,7 @@ class DomainDnsCnameRecord(DomainDnsRecord):
         from .domain_dns_record import DomainDnsRecord
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "canonicalName": lambda n : setattr(self, 'canonical_name', n.get_str_value()),
+            "canonical_name": lambda n : setattr(self, 'canonical_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class DomainDnsCnameRecord(DomainDnsRecord):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("canonicalName", self.canonical_name)
+        writer.write_str_value("canonical_name", self.canonical_name)
     
 

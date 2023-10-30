@@ -51,11 +51,11 @@ class PassiveDnsRecord(Artifact):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "artifact": lambda n : setattr(self, 'artifact', n.get_object_value(Artifact)),
-            "collectedDateTime": lambda n : setattr(self, 'collected_date_time', n.get_datetime_value()),
-            "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
-            "lastSeenDateTime": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
-            "parentHost": lambda n : setattr(self, 'parent_host', n.get_object_value(Host)),
-            "recordType": lambda n : setattr(self, 'record_type', n.get_str_value()),
+            "collected_date_time": lambda n : setattr(self, 'collected_date_time', n.get_datetime_value()),
+            "first_seen_date_time": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
+            "last_seen_date_time": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
+            "parent_host": lambda n : setattr(self, 'parent_host', n.get_object_value(Host)),
+            "record_type": lambda n : setattr(self, 'record_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -71,10 +71,10 @@ class PassiveDnsRecord(Artifact):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("artifact", self.artifact)
-        writer.write_datetime_value("collectedDateTime", self.collected_date_time)
-        writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
-        writer.write_datetime_value("lastSeenDateTime", self.last_seen_date_time)
-        writer.write_object_value("parentHost", self.parent_host)
-        writer.write_str_value("recordType", self.record_type)
+        writer.write_datetime_value("collected_date_time", self.collected_date_time)
+        writer.write_datetime_value("first_seen_date_time", self.first_seen_date_time)
+        writer.write_datetime_value("last_seen_date_time", self.last_seen_date_time)
+        writer.write_object_value("parent_host", self.parent_host)
+        writer.write_str_value("record_type", self.record_type)
     
 

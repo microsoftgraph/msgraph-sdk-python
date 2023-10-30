@@ -42,7 +42,7 @@ class AndroidWorkProfileCustomConfiguration(DeviceConfiguration):
         from .oma_setting import OmaSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "omaSettings": lambda n : setattr(self, 'oma_settings', n.get_collection_of_object_values(OmaSetting)),
+            "oma_settings": lambda n : setattr(self, 'oma_settings', n.get_collection_of_object_values(OmaSetting)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,6 +57,6 @@ class AndroidWorkProfileCustomConfiguration(DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("omaSettings", self.oma_settings)
+        writer.write_collection_of_object_values("oma_settings", self.oma_settings)
     
 

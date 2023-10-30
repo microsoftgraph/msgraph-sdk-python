@@ -39,7 +39,7 @@ class Edge(Entity):
         from .internet_explorer_mode import InternetExplorerMode
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "internetExplorerMode": lambda n : setattr(self, 'internet_explorer_mode', n.get_object_value(InternetExplorerMode)),
+            "internet_explorer_mode": lambda n : setattr(self, 'internet_explorer_mode', n.get_object_value(InternetExplorerMode)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class Edge(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("internetExplorerMode", self.internet_explorer_mode)
+        writer.write_object_value("internet_explorer_mode", self.internet_explorer_mode)
     
 

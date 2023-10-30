@@ -40,7 +40,7 @@ class UserExperienceAnalyticsScoreHistory(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "startupDateTime": lambda n : setattr(self, 'startup_date_time', n.get_datetime_value()),
+            "startup_date_time": lambda n : setattr(self, 'startup_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,6 +55,6 @@ class UserExperienceAnalyticsScoreHistory(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("startupDateTime", self.startup_date_time)
+        writer.write_datetime_value("startup_date_time", self.startup_date_time)
     
 

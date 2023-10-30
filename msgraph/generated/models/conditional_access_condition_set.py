@@ -80,15 +80,15 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, BackedModel, Parsable)
 
         fields: Dict[str, Callable[[Any], None]] = {
             "applications": lambda n : setattr(self, 'applications', n.get_object_value(ConditionalAccessApplications)),
-            "clientAppTypes": lambda n : setattr(self, 'client_app_types', n.get_collection_of_enum_values(ConditionalAccessClientApp)),
-            "clientApplications": lambda n : setattr(self, 'client_applications', n.get_object_value(ConditionalAccessClientApplications)),
+            "client_app_types": lambda n : setattr(self, 'client_app_types', n.get_collection_of_enum_values(ConditionalAccessClientApp)),
+            "client_applications": lambda n : setattr(self, 'client_applications', n.get_object_value(ConditionalAccessClientApplications)),
             "devices": lambda n : setattr(self, 'devices', n.get_object_value(ConditionalAccessDevices)),
             "locations": lambda n : setattr(self, 'locations', n.get_object_value(ConditionalAccessLocations)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "platforms": lambda n : setattr(self, 'platforms', n.get_object_value(ConditionalAccessPlatforms)),
-            "servicePrincipalRiskLevels": lambda n : setattr(self, 'service_principal_risk_levels', n.get_collection_of_enum_values(RiskLevel)),
-            "signInRiskLevels": lambda n : setattr(self, 'sign_in_risk_levels', n.get_collection_of_enum_values(RiskLevel)),
-            "userRiskLevels": lambda n : setattr(self, 'user_risk_levels', n.get_collection_of_enum_values(RiskLevel)),
+            "service_principal_risk_levels": lambda n : setattr(self, 'service_principal_risk_levels', n.get_collection_of_enum_values(RiskLevel)),
+            "sign_in_risk_levels": lambda n : setattr(self, 'sign_in_risk_levels', n.get_collection_of_enum_values(RiskLevel)),
+            "user_risk_levels": lambda n : setattr(self, 'user_risk_levels', n.get_collection_of_enum_values(RiskLevel)),
             "users": lambda n : setattr(self, 'users', n.get_object_value(ConditionalAccessUsers)),
         }
         return fields
@@ -102,15 +102,15 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, BackedModel, Parsable)
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("applications", self.applications)
-        writer.write_collection_of_enum_values("clientAppTypes", self.client_app_types)
-        writer.write_object_value("clientApplications", self.client_applications)
+        writer.write_collection_of_enum_values("client_app_types", self.client_app_types)
+        writer.write_object_value("client_applications", self.client_applications)
         writer.write_object_value("devices", self.devices)
         writer.write_object_value("locations", self.locations)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("platforms", self.platforms)
-        writer.write_collection_of_enum_values("servicePrincipalRiskLevels", self.service_principal_risk_levels)
-        writer.write_collection_of_enum_values("signInRiskLevels", self.sign_in_risk_levels)
-        writer.write_collection_of_enum_values("userRiskLevels", self.user_risk_levels)
+        writer.write_collection_of_enum_values("service_principal_risk_levels", self.service_principal_risk_levels)
+        writer.write_collection_of_enum_values("sign_in_risk_levels", self.sign_in_risk_levels)
+        writer.write_collection_of_enum_values("user_risk_levels", self.user_risk_levels)
         writer.write_object_value("users", self.users)
         writer.write_additional_data_value(self.additional_data)
     

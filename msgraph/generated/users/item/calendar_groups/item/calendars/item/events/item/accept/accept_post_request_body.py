@@ -33,8 +33,8 @@ class AcceptPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "Comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "SendResponse": lambda n : setattr(self, 'send_response', n.get_bool_value()),
+            "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
+            "send_response": lambda n : setattr(self, 'send_response', n.get_bool_value()),
         }
         return fields
     
@@ -46,8 +46,8 @@ class AcceptPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("Comment", self.comment)
-        writer.write_bool_value("SendResponse", self.send_response)
+        writer.write_str_value("comment", self.comment)
+        writer.write_bool_value("send_response", self.send_response)
         writer.write_additional_data_value(self.additional_data)
     
 

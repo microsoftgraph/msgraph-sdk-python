@@ -39,7 +39,7 @@ class AttributeSet(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "maxAttributesPerSet": lambda n : setattr(self, 'max_attributes_per_set', n.get_int_value()),
+            "max_attributes_per_set": lambda n : setattr(self, 'max_attributes_per_set', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,6 +55,6 @@ class AttributeSet(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-        writer.write_int_value("maxAttributesPerSet", self.max_attributes_per_set)
+        writer.write_int_value("max_attributes_per_set", self.max_attributes_per_set)
     
 

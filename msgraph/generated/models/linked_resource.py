@@ -42,10 +42,10 @@ class LinkedResource(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "application_name": lambda n : setattr(self, 'application_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,9 +60,9 @@ class LinkedResource(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("applicationName", self.application_name)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("externalId", self.external_id)
-        writer.write_str_value("webUrl", self.web_url)
+        writer.write_str_value("application_name", self.application_name)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("external_id", self.external_id)
+        writer.write_str_value("web_url", self.web_url)
     
 

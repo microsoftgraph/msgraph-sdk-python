@@ -57,9 +57,9 @@ class EducationOrganization(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(EducationExternalSource)),
-            "externalSourceDetail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "external_source": lambda n : setattr(self, 'external_source', n.get_enum_value(EducationExternalSource)),
+            "external_source_detail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,8 +75,8 @@ class EducationOrganization(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_enum_value("externalSource", self.external_source)
-        writer.write_str_value("externalSourceDetail", self.external_source_detail)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_enum_value("external_source", self.external_source)
+        writer.write_str_value("external_source_detail", self.external_source_detail)
     
 

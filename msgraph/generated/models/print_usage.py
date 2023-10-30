@@ -75,17 +75,17 @@ class PrintUsage(Entity):
         from .print_usage_by_user import PrintUsageByUser
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "blackAndWhitePageCount": lambda n : setattr(self, 'black_and_white_page_count', n.get_int_value()),
-            "colorPageCount": lambda n : setattr(self, 'color_page_count', n.get_int_value()),
-            "completedBlackAndWhiteJobCount": lambda n : setattr(self, 'completed_black_and_white_job_count', n.get_int_value()),
-            "completedColorJobCount": lambda n : setattr(self, 'completed_color_job_count', n.get_int_value()),
-            "completedJobCount": lambda n : setattr(self, 'completed_job_count', n.get_int_value()),
-            "doubleSidedSheetCount": lambda n : setattr(self, 'double_sided_sheet_count', n.get_int_value()),
-            "incompleteJobCount": lambda n : setattr(self, 'incomplete_job_count', n.get_int_value()),
-            "mediaSheetCount": lambda n : setattr(self, 'media_sheet_count', n.get_int_value()),
-            "pageCount": lambda n : setattr(self, 'page_count', n.get_int_value()),
-            "singleSidedSheetCount": lambda n : setattr(self, 'single_sided_sheet_count', n.get_int_value()),
-            "usageDate": lambda n : setattr(self, 'usage_date', n.get_date_value()),
+            "black_and_white_page_count": lambda n : setattr(self, 'black_and_white_page_count', n.get_int_value()),
+            "color_page_count": lambda n : setattr(self, 'color_page_count', n.get_int_value()),
+            "completed_black_and_white_job_count": lambda n : setattr(self, 'completed_black_and_white_job_count', n.get_int_value()),
+            "completed_color_job_count": lambda n : setattr(self, 'completed_color_job_count', n.get_int_value()),
+            "completed_job_count": lambda n : setattr(self, 'completed_job_count', n.get_int_value()),
+            "double_sided_sheet_count": lambda n : setattr(self, 'double_sided_sheet_count', n.get_int_value()),
+            "incomplete_job_count": lambda n : setattr(self, 'incomplete_job_count', n.get_int_value()),
+            "media_sheet_count": lambda n : setattr(self, 'media_sheet_count', n.get_int_value()),
+            "page_count": lambda n : setattr(self, 'page_count', n.get_int_value()),
+            "single_sided_sheet_count": lambda n : setattr(self, 'single_sided_sheet_count', n.get_int_value()),
+            "usage_date": lambda n : setattr(self, 'usage_date', n.get_date_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -100,16 +100,16 @@ class PrintUsage(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("blackAndWhitePageCount", self.black_and_white_page_count)
-        writer.write_int_value("colorPageCount", self.color_page_count)
-        writer.write_int_value("completedBlackAndWhiteJobCount", self.completed_black_and_white_job_count)
-        writer.write_int_value("completedColorJobCount", self.completed_color_job_count)
-        writer.write_int_value("completedJobCount", self.completed_job_count)
-        writer.write_int_value("doubleSidedSheetCount", self.double_sided_sheet_count)
-        writer.write_int_value("incompleteJobCount", self.incomplete_job_count)
-        writer.write_int_value("mediaSheetCount", self.media_sheet_count)
-        writer.write_int_value("pageCount", self.page_count)
-        writer.write_int_value("singleSidedSheetCount", self.single_sided_sheet_count)
-        writer.write_date_value("usageDate", self.usage_date)
+        writer.write_int_value("black_and_white_page_count", self.black_and_white_page_count)
+        writer.write_int_value("color_page_count", self.color_page_count)
+        writer.write_int_value("completed_black_and_white_job_count", self.completed_black_and_white_job_count)
+        writer.write_int_value("completed_color_job_count", self.completed_color_job_count)
+        writer.write_int_value("completed_job_count", self.completed_job_count)
+        writer.write_int_value("double_sided_sheet_count", self.double_sided_sheet_count)
+        writer.write_int_value("incomplete_job_count", self.incomplete_job_count)
+        writer.write_int_value("media_sheet_count", self.media_sheet_count)
+        writer.write_int_value("page_count", self.page_count)
+        writer.write_int_value("single_sided_sheet_count", self.single_sided_sheet_count)
+        writer.write_date_value("usage_date", self.usage_date)
     
 

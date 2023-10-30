@@ -52,10 +52,10 @@ class DocumentSetVersion(ListItemVersion):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(DocumentSetVersionItem)),
-            "shouldCaptureMinorVersion": lambda n : setattr(self, 'should_capture_minor_version', n.get_bool_value()),
+            "should_capture_minor_version": lambda n : setattr(self, 'should_capture_minor_version', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -71,9 +71,9 @@ class DocumentSetVersion(ListItemVersion):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("comment", self.comment)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_collection_of_object_values("items", self.items)
-        writer.write_bool_value("shouldCaptureMinorVersion", self.should_capture_minor_version)
+        writer.write_bool_value("should_capture_minor_version", self.should_capture_minor_version)
     
 

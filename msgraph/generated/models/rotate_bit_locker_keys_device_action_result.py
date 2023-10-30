@@ -39,7 +39,7 @@ class RotateBitLockerKeysDeviceActionResult(DeviceActionResult):
         from .device_action_result import DeviceActionResult
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "errorCode": lambda n : setattr(self, 'error_code', n.get_int_value()),
+            "error_code": lambda n : setattr(self, 'error_code', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class RotateBitLockerKeysDeviceActionResult(DeviceActionResult):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("errorCode", self.error_code)
+        writer.write_int_value("error_code", self.error_code)
     
 

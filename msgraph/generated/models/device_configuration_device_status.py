@@ -52,13 +52,13 @@ class DeviceConfigurationDeviceStatus(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "complianceGracePeriodExpirationDateTime": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
-            "deviceDisplayName": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
-            "deviceModel": lambda n : setattr(self, 'device_model', n.get_str_value()),
-            "lastReportedDateTime": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
+            "compliance_grace_period_expiration_date_time": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
+            "device_display_name": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
+            "device_model": lambda n : setattr(self, 'device_model', n.get_str_value()),
+            "last_reported_date_time": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(ComplianceStatus)),
-            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,12 +73,12 @@ class DeviceConfigurationDeviceStatus(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("complianceGracePeriodExpirationDateTime", self.compliance_grace_period_expiration_date_time)
-        writer.write_str_value("deviceDisplayName", self.device_display_name)
-        writer.write_str_value("deviceModel", self.device_model)
-        writer.write_datetime_value("lastReportedDateTime", self.last_reported_date_time)
+        writer.write_datetime_value("compliance_grace_period_expiration_date_time", self.compliance_grace_period_expiration_date_time)
+        writer.write_str_value("device_display_name", self.device_display_name)
+        writer.write_str_value("device_model", self.device_model)
+        writer.write_datetime_value("last_reported_date_time", self.last_reported_date_time)
         writer.write_enum_value("status", self.status)
-        writer.write_str_value("userName", self.user_name)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_str_value("user_name", self.user_name)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
     
 

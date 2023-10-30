@@ -77,12 +77,12 @@ class AgreementFileProperties(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "fileData": lambda n : setattr(self, 'file_data', n.get_object_value(AgreementFileData)),
-            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
-            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "isMajorVersion": lambda n : setattr(self, 'is_major_version', n.get_bool_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "file_data": lambda n : setattr(self, 'file_data', n.get_object_value(AgreementFileData)),
+            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "is_major_version": lambda n : setattr(self, 'is_major_version', n.get_bool_value()),
             "language": lambda n : setattr(self, 'language', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -98,12 +98,12 @@ class AgreementFileProperties(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("fileData", self.file_data)
-        writer.write_str_value("fileName", self.file_name)
-        writer.write_bool_value("isDefault", self.is_default)
-        writer.write_bool_value("isMajorVersion", self.is_major_version)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_object_value("file_data", self.file_data)
+        writer.write_str_value("file_name", self.file_name)
+        writer.write_bool_value("is_default", self.is_default)
+        writer.write_bool_value("is_major_version", self.is_major_version)
         writer.write_str_value("language", self.language)
     
 

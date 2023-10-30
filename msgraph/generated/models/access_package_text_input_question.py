@@ -38,8 +38,8 @@ class AccessPackageTextInputQuestion(AccessPackageQuestion):
         from .access_package_question import AccessPackageQuestion
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isSingleLineQuestion": lambda n : setattr(self, 'is_single_line_question', n.get_bool_value()),
-            "regexPattern": lambda n : setattr(self, 'regex_pattern', n.get_str_value()),
+            "is_single_line_question": lambda n : setattr(self, 'is_single_line_question', n.get_bool_value()),
+            "regex_pattern": lambda n : setattr(self, 'regex_pattern', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class AccessPackageTextInputQuestion(AccessPackageQuestion):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isSingleLineQuestion", self.is_single_line_question)
-        writer.write_str_value("regexPattern", self.regex_pattern)
+        writer.write_bool_value("is_single_line_question", self.is_single_line_question)
+        writer.write_str_value("regex_pattern", self.regex_pattern)
     
 

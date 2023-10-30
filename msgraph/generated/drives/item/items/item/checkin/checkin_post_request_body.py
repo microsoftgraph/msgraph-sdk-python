@@ -33,7 +33,7 @@ class CheckinPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "checkInAs": lambda n : setattr(self, 'check_in_as', n.get_str_value()),
+            "check_in_as": lambda n : setattr(self, 'check_in_as', n.get_str_value()),
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
         }
         return fields
@@ -46,7 +46,7 @@ class CheckinPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("checkInAs", self.check_in_as)
+        writer.write_str_value("check_in_as", self.check_in_as)
         writer.write_str_value("comment", self.comment)
         writer.write_additional_data_value(self.additional_data)
     

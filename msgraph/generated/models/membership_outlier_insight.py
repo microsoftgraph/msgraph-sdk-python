@@ -61,12 +61,12 @@ class MembershipOutlierInsight(GovernanceInsight):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "container": lambda n : setattr(self, 'container', n.get_object_value(DirectoryObject)),
-            "containerId": lambda n : setattr(self, 'container_id', n.get_str_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(User)),
+            "container_id": lambda n : setattr(self, 'container_id', n.get_str_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(User)),
             "member": lambda n : setattr(self, 'member', n.get_object_value(DirectoryObject)),
-            "memberId": lambda n : setattr(self, 'member_id', n.get_str_value()),
-            "outlierContainerType": lambda n : setattr(self, 'outlier_container_type', n.get_enum_value(OutlierContainerType)),
-            "outlierMemberType": lambda n : setattr(self, 'outlier_member_type', n.get_enum_value(OutlierMemberType)),
+            "member_id": lambda n : setattr(self, 'member_id', n.get_str_value()),
+            "outlier_container_type": lambda n : setattr(self, 'outlier_container_type', n.get_enum_value(OutlierContainerType)),
+            "outlier_member_type": lambda n : setattr(self, 'outlier_member_type', n.get_enum_value(OutlierMemberType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -82,11 +82,11 @@ class MembershipOutlierInsight(GovernanceInsight):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("container", self.container)
-        writer.write_str_value("containerId", self.container_id)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
+        writer.write_str_value("container_id", self.container_id)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
         writer.write_object_value("member", self.member)
-        writer.write_str_value("memberId", self.member_id)
-        writer.write_enum_value("outlierContainerType", self.outlier_container_type)
-        writer.write_enum_value("outlierMemberType", self.outlier_member_type)
+        writer.write_str_value("member_id", self.member_id)
+        writer.write_enum_value("outlier_container_type", self.outlier_container_type)
+        writer.write_enum_value("outlier_member_type", self.outlier_member_type)
     
 

@@ -43,9 +43,9 @@ class TenantAppManagementPolicy(PolicyBase):
         from .policy_base import PolicyBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicationRestrictions": lambda n : setattr(self, 'application_restrictions', n.get_object_value(AppManagementConfiguration)),
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "servicePrincipalRestrictions": lambda n : setattr(self, 'service_principal_restrictions', n.get_object_value(AppManagementConfiguration)),
+            "application_restrictions": lambda n : setattr(self, 'application_restrictions', n.get_object_value(AppManagementConfiguration)),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "service_principal_restrictions": lambda n : setattr(self, 'service_principal_restrictions', n.get_object_value(AppManagementConfiguration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class TenantAppManagementPolicy(PolicyBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("applicationRestrictions", self.application_restrictions)
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_object_value("servicePrincipalRestrictions", self.service_principal_restrictions)
+        writer.write_object_value("application_restrictions", self.application_restrictions)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_object_value("service_principal_restrictions", self.service_principal_restrictions)
     
 

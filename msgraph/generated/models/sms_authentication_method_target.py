@@ -36,7 +36,7 @@ class SmsAuthenticationMethodTarget(AuthenticationMethodTarget):
         from .authentication_method_target import AuthenticationMethodTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isUsableForSignIn": lambda n : setattr(self, 'is_usable_for_sign_in', n.get_bool_value()),
+            "is_usable_for_sign_in": lambda n : setattr(self, 'is_usable_for_sign_in', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class SmsAuthenticationMethodTarget(AuthenticationMethodTarget):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isUsableForSignIn", self.is_usable_for_sign_in)
+        writer.write_bool_value("is_usable_for_sign_in", self.is_usable_for_sign_in)
     
 

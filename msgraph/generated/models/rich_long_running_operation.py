@@ -46,8 +46,8 @@ class RichLongRunningOperation(LongRunningOperation):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
-            "percentageComplete": lambda n : setattr(self, 'percentage_complete', n.get_int_value()),
-            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "percentage_complete": lambda n : setattr(self, 'percentage_complete', n.get_int_value()),
+            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -64,8 +64,8 @@ class RichLongRunningOperation(LongRunningOperation):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("error", self.error)
-        writer.write_int_value("percentageComplete", self.percentage_complete)
-        writer.write_str_value("resourceId", self.resource_id)
+        writer.write_int_value("percentage_complete", self.percentage_complete)
+        writer.write_str_value("resource_id", self.resource_id)
         writer.write_str_value("type", self.type)
     
 

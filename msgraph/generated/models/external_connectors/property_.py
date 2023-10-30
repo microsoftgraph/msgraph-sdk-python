@@ -58,13 +58,13 @@ class Property_(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "aliases": lambda n : setattr(self, 'aliases', n.get_collection_of_primitive_values(str)),
-            "isQueryable": lambda n : setattr(self, 'is_queryable', n.get_bool_value()),
-            "isRefinable": lambda n : setattr(self, 'is_refinable', n.get_bool_value()),
-            "isRetrievable": lambda n : setattr(self, 'is_retrievable', n.get_bool_value()),
-            "isSearchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
+            "is_queryable": lambda n : setattr(self, 'is_queryable', n.get_bool_value()),
+            "is_refinable": lambda n : setattr(self, 'is_refinable', n.get_bool_value()),
+            "is_retrievable": lambda n : setattr(self, 'is_retrievable', n.get_bool_value()),
+            "is_searchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
             "labels": lambda n : setattr(self, 'labels', n.get_collection_of_enum_values(Label)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(PropertyType)),
         }
         return fields
@@ -78,13 +78,13 @@ class Property_(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_primitive_values("aliases", self.aliases)
-        writer.write_bool_value("isQueryable", self.is_queryable)
-        writer.write_bool_value("isRefinable", self.is_refinable)
-        writer.write_bool_value("isRetrievable", self.is_retrievable)
-        writer.write_bool_value("isSearchable", self.is_searchable)
+        writer.write_bool_value("is_queryable", self.is_queryable)
+        writer.write_bool_value("is_refinable", self.is_refinable)
+        writer.write_bool_value("is_retrievable", self.is_retrievable)
+        writer.write_bool_value("is_searchable", self.is_searchable)
         writer.write_collection_of_enum_values("labels", self.labels)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
     

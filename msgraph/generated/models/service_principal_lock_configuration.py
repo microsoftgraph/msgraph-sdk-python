@@ -41,12 +41,12 @@ class ServicePrincipalLockConfiguration(AdditionalDataHolder, BackedModel, Parsa
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "allProperties": lambda n : setattr(self, 'all_properties', n.get_bool_value()),
-            "credentialsWithUsageSign": lambda n : setattr(self, 'credentials_with_usage_sign', n.get_bool_value()),
-            "credentialsWithUsageVerify": lambda n : setattr(self, 'credentials_with_usage_verify', n.get_bool_value()),
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_bool_value()),
+            "all_properties": lambda n : setattr(self, 'all_properties', n.get_bool_value()),
+            "credentials_with_usage_sign": lambda n : setattr(self, 'credentials_with_usage_sign', n.get_bool_value()),
+            "credentials_with_usage_verify": lambda n : setattr(self, 'credentials_with_usage_verify', n.get_bool_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "token_encryption_key_id": lambda n : setattr(self, 'token_encryption_key_id', n.get_bool_value()),
         }
         return fields
     
@@ -58,12 +58,12 @@ class ServicePrincipalLockConfiguration(AdditionalDataHolder, BackedModel, Parsa
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("allProperties", self.all_properties)
-        writer.write_bool_value("credentialsWithUsageSign", self.credentials_with_usage_sign)
-        writer.write_bool_value("credentialsWithUsageVerify", self.credentials_with_usage_verify)
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_bool_value("tokenEncryptionKeyId", self.token_encryption_key_id)
+        writer.write_bool_value("all_properties", self.all_properties)
+        writer.write_bool_value("credentials_with_usage_sign", self.credentials_with_usage_sign)
+        writer.write_bool_value("credentials_with_usage_verify", self.credentials_with_usage_verify)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_bool_value("token_encryption_key_id", self.token_encryption_key_id)
         writer.write_additional_data_value(self.additional_data)
     
 

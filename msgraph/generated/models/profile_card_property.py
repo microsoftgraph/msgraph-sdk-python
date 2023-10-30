@@ -42,7 +42,7 @@ class ProfileCardProperty(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "annotations": lambda n : setattr(self, 'annotations', n.get_collection_of_object_values(ProfileCardAnnotation)),
-            "directoryPropertyName": lambda n : setattr(self, 'directory_property_name', n.get_str_value()),
+            "directory_property_name": lambda n : setattr(self, 'directory_property_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,6 +58,6 @@ class ProfileCardProperty(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("annotations", self.annotations)
-        writer.write_str_value("directoryPropertyName", self.directory_property_name)
+        writer.write_str_value("directory_property_name", self.directory_property_name)
     
 

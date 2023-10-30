@@ -56,18 +56,18 @@ class DeviceProtectionOverview(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "cleanDeviceCount": lambda n : setattr(self, 'clean_device_count', n.get_int_value()),
-            "criticalFailuresDeviceCount": lambda n : setattr(self, 'critical_failures_device_count', n.get_int_value()),
-            "inactiveThreatAgentDeviceCount": lambda n : setattr(self, 'inactive_threat_agent_device_count', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "pendingFullScanDeviceCount": lambda n : setattr(self, 'pending_full_scan_device_count', n.get_int_value()),
-            "pendingManualStepsDeviceCount": lambda n : setattr(self, 'pending_manual_steps_device_count', n.get_int_value()),
-            "pendingOfflineScanDeviceCount": lambda n : setattr(self, 'pending_offline_scan_device_count', n.get_int_value()),
-            "pendingQuickScanDeviceCount": lambda n : setattr(self, 'pending_quick_scan_device_count', n.get_int_value()),
-            "pendingRestartDeviceCount": lambda n : setattr(self, 'pending_restart_device_count', n.get_int_value()),
-            "pendingSignatureUpdateDeviceCount": lambda n : setattr(self, 'pending_signature_update_device_count', n.get_int_value()),
-            "totalReportedDeviceCount": lambda n : setattr(self, 'total_reported_device_count', n.get_int_value()),
-            "unknownStateThreatAgentDeviceCount": lambda n : setattr(self, 'unknown_state_threat_agent_device_count', n.get_int_value()),
+            "clean_device_count": lambda n : setattr(self, 'clean_device_count', n.get_int_value()),
+            "critical_failures_device_count": lambda n : setattr(self, 'critical_failures_device_count', n.get_int_value()),
+            "inactive_threat_agent_device_count": lambda n : setattr(self, 'inactive_threat_agent_device_count', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "pending_full_scan_device_count": lambda n : setattr(self, 'pending_full_scan_device_count', n.get_int_value()),
+            "pending_manual_steps_device_count": lambda n : setattr(self, 'pending_manual_steps_device_count', n.get_int_value()),
+            "pending_offline_scan_device_count": lambda n : setattr(self, 'pending_offline_scan_device_count', n.get_int_value()),
+            "pending_quick_scan_device_count": lambda n : setattr(self, 'pending_quick_scan_device_count', n.get_int_value()),
+            "pending_restart_device_count": lambda n : setattr(self, 'pending_restart_device_count', n.get_int_value()),
+            "pending_signature_update_device_count": lambda n : setattr(self, 'pending_signature_update_device_count', n.get_int_value()),
+            "total_reported_device_count": lambda n : setattr(self, 'total_reported_device_count', n.get_int_value()),
+            "unknown_state_threat_agent_device_count": lambda n : setattr(self, 'unknown_state_threat_agent_device_count', n.get_int_value()),
         }
         return fields
     
@@ -79,18 +79,18 @@ class DeviceProtectionOverview(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("cleanDeviceCount", self.clean_device_count)
-        writer.write_int_value("criticalFailuresDeviceCount", self.critical_failures_device_count)
-        writer.write_int_value("inactiveThreatAgentDeviceCount", self.inactive_threat_agent_device_count)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("pendingFullScanDeviceCount", self.pending_full_scan_device_count)
-        writer.write_int_value("pendingManualStepsDeviceCount", self.pending_manual_steps_device_count)
-        writer.write_int_value("pendingOfflineScanDeviceCount", self.pending_offline_scan_device_count)
-        writer.write_int_value("pendingQuickScanDeviceCount", self.pending_quick_scan_device_count)
-        writer.write_int_value("pendingRestartDeviceCount", self.pending_restart_device_count)
-        writer.write_int_value("pendingSignatureUpdateDeviceCount", self.pending_signature_update_device_count)
-        writer.write_int_value("totalReportedDeviceCount", self.total_reported_device_count)
-        writer.write_int_value("unknownStateThreatAgentDeviceCount", self.unknown_state_threat_agent_device_count)
+        writer.write_int_value("clean_device_count", self.clean_device_count)
+        writer.write_int_value("critical_failures_device_count", self.critical_failures_device_count)
+        writer.write_int_value("inactive_threat_agent_device_count", self.inactive_threat_agent_device_count)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("pending_full_scan_device_count", self.pending_full_scan_device_count)
+        writer.write_int_value("pending_manual_steps_device_count", self.pending_manual_steps_device_count)
+        writer.write_int_value("pending_offline_scan_device_count", self.pending_offline_scan_device_count)
+        writer.write_int_value("pending_quick_scan_device_count", self.pending_quick_scan_device_count)
+        writer.write_int_value("pending_restart_device_count", self.pending_restart_device_count)
+        writer.write_int_value("pending_signature_update_device_count", self.pending_signature_update_device_count)
+        writer.write_int_value("total_reported_device_count", self.total_reported_device_count)
+        writer.write_int_value("unknown_state_threat_agent_device_count", self.unknown_state_threat_agent_device_count)
         writer.write_additional_data_value(self.additional_data)
     
 

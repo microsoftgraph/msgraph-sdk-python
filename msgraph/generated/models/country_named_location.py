@@ -43,9 +43,9 @@ class CountryNamedLocation(NamedLocation):
         from .named_location import NamedLocation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "countriesAndRegions": lambda n : setattr(self, 'countries_and_regions', n.get_collection_of_primitive_values(str)),
-            "countryLookupMethod": lambda n : setattr(self, 'country_lookup_method', n.get_enum_value(CountryLookupMethodType)),
-            "includeUnknownCountriesAndRegions": lambda n : setattr(self, 'include_unknown_countries_and_regions', n.get_bool_value()),
+            "countries_and_regions": lambda n : setattr(self, 'countries_and_regions', n.get_collection_of_primitive_values(str)),
+            "country_lookup_method": lambda n : setattr(self, 'country_lookup_method', n.get_enum_value(CountryLookupMethodType)),
+            "include_unknown_countries_and_regions": lambda n : setattr(self, 'include_unknown_countries_and_regions', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class CountryNamedLocation(NamedLocation):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_primitive_values("countriesAndRegions", self.countries_and_regions)
-        writer.write_enum_value("countryLookupMethod", self.country_lookup_method)
-        writer.write_bool_value("includeUnknownCountriesAndRegions", self.include_unknown_countries_and_regions)
+        writer.write_collection_of_primitive_values("countries_and_regions", self.countries_and_regions)
+        writer.write_enum_value("country_lookup_method", self.country_lookup_method)
+        writer.write_bool_value("include_unknown_countries_and_regions", self.include_unknown_countries_and_regions)
     
 

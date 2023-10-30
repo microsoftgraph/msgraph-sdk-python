@@ -38,7 +38,7 @@ class ImportPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ....models.imported_windows_autopilot_device_identity import ImportedWindowsAutopilotDeviceIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "importedWindowsAutopilotDeviceIdentities": lambda n : setattr(self, 'imported_windows_autopilot_device_identities', n.get_collection_of_object_values(ImportedWindowsAutopilotDeviceIdentity)),
+            "imported_windows_autopilot_device_identities": lambda n : setattr(self, 'imported_windows_autopilot_device_identities', n.get_collection_of_object_values(ImportedWindowsAutopilotDeviceIdentity)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class ImportPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("importedWindowsAutopilotDeviceIdentities", self.imported_windows_autopilot_device_identities)
+        writer.write_collection_of_object_values("imported_windows_autopilot_device_identities", self.imported_windows_autopilot_device_identities)
         writer.write_additional_data_value(self.additional_data)
     
 

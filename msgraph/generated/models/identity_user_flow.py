@@ -52,8 +52,8 @@ class IdentityUserFlow(Entity):
         from .user_flow_type import UserFlowType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "userFlowType": lambda n : setattr(self, 'user_flow_type', n.get_enum_value(UserFlowType)),
-            "userFlowTypeVersion": lambda n : setattr(self, 'user_flow_type_version', n.get_float_value()),
+            "user_flow_type": lambda n : setattr(self, 'user_flow_type', n.get_enum_value(UserFlowType)),
+            "user_flow_type_version": lambda n : setattr(self, 'user_flow_type_version', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -68,7 +68,7 @@ class IdentityUserFlow(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("userFlowType", self.user_flow_type)
-        writer.write_float_value("userFlowTypeVersion", self.user_flow_type_version)
+        writer.write_enum_value("user_flow_type", self.user_flow_type)
+        writer.write_float_value("user_flow_type_version", self.user_flow_type_version)
     
 

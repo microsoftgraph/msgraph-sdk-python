@@ -48,10 +48,10 @@ class AppConsentRequest(Entity):
         from .user_consent_request import UserConsentRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "pendingScopes": lambda n : setattr(self, 'pending_scopes', n.get_collection_of_object_values(AppConsentRequestScope)),
-            "userConsentRequests": lambda n : setattr(self, 'user_consent_requests', n.get_collection_of_object_values(UserConsentRequest)),
+            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "pending_scopes": lambda n : setattr(self, 'pending_scopes', n.get_collection_of_object_values(AppConsentRequestScope)),
+            "user_consent_requests": lambda n : setattr(self, 'user_consent_requests', n.get_collection_of_object_values(UserConsentRequest)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,9 +66,9 @@ class AppConsentRequest(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("appDisplayName", self.app_display_name)
-        writer.write_str_value("appId", self.app_id)
-        writer.write_collection_of_object_values("pendingScopes", self.pending_scopes)
-        writer.write_collection_of_object_values("userConsentRequests", self.user_consent_requests)
+        writer.write_str_value("app_display_name", self.app_display_name)
+        writer.write_str_value("app_id", self.app_id)
+        writer.write_collection_of_object_values("pending_scopes", self.pending_scopes)
+        writer.write_collection_of_object_values("user_consent_requests", self.user_consent_requests)
     
 

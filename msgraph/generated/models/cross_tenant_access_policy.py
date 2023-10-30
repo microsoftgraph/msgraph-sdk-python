@@ -46,7 +46,7 @@ class CrossTenantAccessPolicy(PolicyBase):
         from .policy_base import PolicyBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedCloudEndpoints": lambda n : setattr(self, 'allowed_cloud_endpoints', n.get_collection_of_primitive_values(str)),
+            "allowed_cloud_endpoints": lambda n : setattr(self, 'allowed_cloud_endpoints', n.get_collection_of_primitive_values(str)),
             "default": lambda n : setattr(self, 'default', n.get_object_value(CrossTenantAccessPolicyConfigurationDefault)),
             "partners": lambda n : setattr(self, 'partners', n.get_collection_of_object_values(CrossTenantAccessPolicyConfigurationPartner)),
         }
@@ -63,7 +63,7 @@ class CrossTenantAccessPolicy(PolicyBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_primitive_values("allowedCloudEndpoints", self.allowed_cloud_endpoints)
+        writer.write_collection_of_primitive_values("allowed_cloud_endpoints", self.allowed_cloud_endpoints)
         writer.write_object_value("default", self.default)
         writer.write_collection_of_object_values("partners", self.partners)
     

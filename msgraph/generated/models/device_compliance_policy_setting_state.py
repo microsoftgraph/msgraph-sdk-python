@@ -68,19 +68,19 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, BackedModel, Pars
         from .setting_source import SettingSource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "currentValue": lambda n : setattr(self, 'current_value', n.get_str_value()),
-            "errorCode": lambda n : setattr(self, 'error_code', n.get_int_value()),
-            "errorDescription": lambda n : setattr(self, 'error_description', n.get_str_value()),
-            "instanceDisplayName": lambda n : setattr(self, 'instance_display_name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "current_value": lambda n : setattr(self, 'current_value', n.get_str_value()),
+            "error_code": lambda n : setattr(self, 'error_code', n.get_int_value()),
+            "error_description": lambda n : setattr(self, 'error_description', n.get_str_value()),
+            "instance_display_name": lambda n : setattr(self, 'instance_display_name', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "setting": lambda n : setattr(self, 'setting', n.get_str_value()),
-            "settingName": lambda n : setattr(self, 'setting_name', n.get_str_value()),
+            "setting_name": lambda n : setattr(self, 'setting_name', n.get_str_value()),
             "sources": lambda n : setattr(self, 'sources', n.get_collection_of_object_values(SettingSource)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(ComplianceStatus)),
-            "userEmail": lambda n : setattr(self, 'user_email', n.get_str_value()),
-            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "user_email": lambda n : setattr(self, 'user_email', n.get_str_value()),
+            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -92,19 +92,19 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, BackedModel, Pars
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("currentValue", self.current_value)
-        writer.write_int_value("errorCode", self.error_code)
-        writer.write_str_value("errorDescription", self.error_description)
-        writer.write_str_value("instanceDisplayName", self.instance_display_name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("current_value", self.current_value)
+        writer.write_int_value("error_code", self.error_code)
+        writer.write_str_value("error_description", self.error_description)
+        writer.write_str_value("instance_display_name", self.instance_display_name)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("setting", self.setting)
-        writer.write_str_value("settingName", self.setting_name)
+        writer.write_str_value("setting_name", self.setting_name)
         writer.write_collection_of_object_values("sources", self.sources)
         writer.write_enum_value("state", self.state)
-        writer.write_str_value("userEmail", self.user_email)
-        writer.write_str_value("userId", self.user_id)
-        writer.write_str_value("userName", self.user_name)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_str_value("user_email", self.user_email)
+        writer.write_str_value("user_id", self.user_id)
+        writer.write_str_value("user_name", self.user_name)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
     
 

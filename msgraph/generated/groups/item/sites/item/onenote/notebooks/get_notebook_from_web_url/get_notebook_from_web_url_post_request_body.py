@@ -31,7 +31,7 @@ class GetNotebookFromWebUrlPostRequestBody(AdditionalDataHolder, BackedModel, Pa
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class GetNotebookFromWebUrlPostRequestBody(AdditionalDataHolder, BackedModel, Pa
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("webUrl", self.web_url)
+        writer.write_str_value("web_url", self.web_url)
         writer.write_additional_data_value(self.additional_data)
     
 

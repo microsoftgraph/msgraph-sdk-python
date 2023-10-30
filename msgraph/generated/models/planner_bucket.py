@@ -46,8 +46,8 @@ class PlannerBucket(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "orderHint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
-            "planId": lambda n : setattr(self, 'plan_id', n.get_str_value()),
+            "order_hint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
+            "plan_id": lambda n : setattr(self, 'plan_id', n.get_str_value()),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(PlannerTask)),
         }
         super_fields = super().get_field_deserializers()
@@ -64,8 +64,8 @@ class PlannerBucket(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("orderHint", self.order_hint)
-        writer.write_str_value("planId", self.plan_id)
+        writer.write_str_value("order_hint", self.order_hint)
+        writer.write_str_value("plan_id", self.plan_id)
         writer.write_collection_of_object_values("tasks", self.tasks)
     
 

@@ -55,15 +55,15 @@ class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
         from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "durationBeforeAutomaticDenial": lambda n : setattr(self, 'duration_before_automatic_denial', n.get_timedelta_value()),
-            "durationBeforeEscalation": lambda n : setattr(self, 'duration_before_escalation', n.get_timedelta_value()),
-            "escalationApprovers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(SubjectSet)),
-            "fallbackEscalationApprovers": lambda n : setattr(self, 'fallback_escalation_approvers', n.get_collection_of_object_values(SubjectSet)),
-            "fallbackPrimaryApprovers": lambda n : setattr(self, 'fallback_primary_approvers', n.get_collection_of_object_values(SubjectSet)),
-            "isApproverJustificationRequired": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
-            "isEscalationEnabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "primaryApprovers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(SubjectSet)),
+            "duration_before_automatic_denial": lambda n : setattr(self, 'duration_before_automatic_denial', n.get_timedelta_value()),
+            "duration_before_escalation": lambda n : setattr(self, 'duration_before_escalation', n.get_timedelta_value()),
+            "escalation_approvers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(SubjectSet)),
+            "fallback_escalation_approvers": lambda n : setattr(self, 'fallback_escalation_approvers', n.get_collection_of_object_values(SubjectSet)),
+            "fallback_primary_approvers": lambda n : setattr(self, 'fallback_primary_approvers', n.get_collection_of_object_values(SubjectSet)),
+            "is_approver_justification_required": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
+            "is_escalation_enabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "primary_approvers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(SubjectSet)),
         }
         return fields
     
@@ -75,15 +75,15 @@ class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_timedelta_value("durationBeforeAutomaticDenial", self.duration_before_automatic_denial)
-        writer.write_timedelta_value("durationBeforeEscalation", self.duration_before_escalation)
-        writer.write_collection_of_object_values("escalationApprovers", self.escalation_approvers)
-        writer.write_collection_of_object_values("fallbackEscalationApprovers", self.fallback_escalation_approvers)
-        writer.write_collection_of_object_values("fallbackPrimaryApprovers", self.fallback_primary_approvers)
-        writer.write_bool_value("isApproverJustificationRequired", self.is_approver_justification_required)
-        writer.write_bool_value("isEscalationEnabled", self.is_escalation_enabled)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("primaryApprovers", self.primary_approvers)
+        writer.write_timedelta_value("duration_before_automatic_denial", self.duration_before_automatic_denial)
+        writer.write_timedelta_value("duration_before_escalation", self.duration_before_escalation)
+        writer.write_collection_of_object_values("escalation_approvers", self.escalation_approvers)
+        writer.write_collection_of_object_values("fallback_escalation_approvers", self.fallback_escalation_approvers)
+        writer.write_collection_of_object_values("fallback_primary_approvers", self.fallback_primary_approvers)
+        writer.write_bool_value("is_approver_justification_required", self.is_approver_justification_required)
+        writer.write_bool_value("is_escalation_enabled", self.is_escalation_enabled)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("primary_approvers", self.primary_approvers)
         writer.write_additional_data_value(self.additional_data)
     
 

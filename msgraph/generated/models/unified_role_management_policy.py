@@ -60,14 +60,14 @@ class UnifiedRoleManagementPolicy(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "effectiveRules": lambda n : setattr(self, 'effective_rules', n.get_collection_of_object_values(UnifiedRoleManagementPolicyRule)),
-            "isOrganizationDefault": lambda n : setattr(self, 'is_organization_default', n.get_bool_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(Identity)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "effective_rules": lambda n : setattr(self, 'effective_rules', n.get_collection_of_object_values(UnifiedRoleManagementPolicyRule)),
+            "is_organization_default": lambda n : setattr(self, 'is_organization_default', n.get_bool_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(Identity)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "rules": lambda n : setattr(self, 'rules', n.get_collection_of_object_values(UnifiedRoleManagementPolicyRule)),
-            "scopeId": lambda n : setattr(self, 'scope_id', n.get_str_value()),
-            "scopeType": lambda n : setattr(self, 'scope_type', n.get_str_value()),
+            "scope_id": lambda n : setattr(self, 'scope_id', n.get_str_value()),
+            "scope_type": lambda n : setattr(self, 'scope_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -83,13 +83,13 @@ class UnifiedRoleManagementPolicy(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_object_values("effectiveRules", self.effective_rules)
-        writer.write_bool_value("isOrganizationDefault", self.is_organization_default)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_object_values("effective_rules", self.effective_rules)
+        writer.write_bool_value("is_organization_default", self.is_organization_default)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_collection_of_object_values("rules", self.rules)
-        writer.write_str_value("scopeId", self.scope_id)
-        writer.write_str_value("scopeType", self.scope_type)
+        writer.write_str_value("scope_id", self.scope_id)
+        writer.write_str_value("scope_type", self.scope_type)
     
 

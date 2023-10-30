@@ -42,7 +42,7 @@ class TeamUnarchivedEventMessageDetail(EventMessageDetail):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
-            "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),
+            "team_id": lambda n : setattr(self, 'team_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,6 +58,6 @@ class TeamUnarchivedEventMessageDetail(EventMessageDetail):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("initiator", self.initiator)
-        writer.write_str_value("teamId", self.team_id)
+        writer.write_str_value("team_id", self.team_id)
     
 

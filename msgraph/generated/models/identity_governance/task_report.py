@@ -71,18 +71,18 @@ class TaskReport(Entity):
         from .task_processing_result import TaskProcessingResult
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "failedUsersCount": lambda n : setattr(self, 'failed_users_count', n.get_int_value()),
-            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
-            "processingStatus": lambda n : setattr(self, 'processing_status', n.get_enum_value(LifecycleWorkflowProcessingStatus)),
-            "runId": lambda n : setattr(self, 'run_id', n.get_str_value()),
-            "startedDateTime": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
-            "successfulUsersCount": lambda n : setattr(self, 'successful_users_count', n.get_int_value()),
+            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "failed_users_count": lambda n : setattr(self, 'failed_users_count', n.get_int_value()),
+            "last_updated_date_time": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
+            "processing_status": lambda n : setattr(self, 'processing_status', n.get_enum_value(LifecycleWorkflowProcessingStatus)),
+            "run_id": lambda n : setattr(self, 'run_id', n.get_str_value()),
+            "started_date_time": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
+            "successful_users_count": lambda n : setattr(self, 'successful_users_count', n.get_int_value()),
             "task": lambda n : setattr(self, 'task', n.get_object_value(Task)),
-            "taskDefinition": lambda n : setattr(self, 'task_definition', n.get_object_value(TaskDefinition)),
-            "taskProcessingResults": lambda n : setattr(self, 'task_processing_results', n.get_collection_of_object_values(TaskProcessingResult)),
-            "totalUsersCount": lambda n : setattr(self, 'total_users_count', n.get_int_value()),
-            "unprocessedUsersCount": lambda n : setattr(self, 'unprocessed_users_count', n.get_int_value()),
+            "task_definition": lambda n : setattr(self, 'task_definition', n.get_object_value(TaskDefinition)),
+            "task_processing_results": lambda n : setattr(self, 'task_processing_results', n.get_collection_of_object_values(TaskProcessingResult)),
+            "total_users_count": lambda n : setattr(self, 'total_users_count', n.get_int_value()),
+            "unprocessed_users_count": lambda n : setattr(self, 'unprocessed_users_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -97,17 +97,17 @@ class TaskReport(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("completedDateTime", self.completed_date_time)
-        writer.write_int_value("failedUsersCount", self.failed_users_count)
-        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
-        writer.write_enum_value("processingStatus", self.processing_status)
-        writer.write_str_value("runId", self.run_id)
-        writer.write_datetime_value("startedDateTime", self.started_date_time)
-        writer.write_int_value("successfulUsersCount", self.successful_users_count)
+        writer.write_datetime_value("completed_date_time", self.completed_date_time)
+        writer.write_int_value("failed_users_count", self.failed_users_count)
+        writer.write_datetime_value("last_updated_date_time", self.last_updated_date_time)
+        writer.write_enum_value("processing_status", self.processing_status)
+        writer.write_str_value("run_id", self.run_id)
+        writer.write_datetime_value("started_date_time", self.started_date_time)
+        writer.write_int_value("successful_users_count", self.successful_users_count)
         writer.write_object_value("task", self.task)
-        writer.write_object_value("taskDefinition", self.task_definition)
-        writer.write_collection_of_object_values("taskProcessingResults", self.task_processing_results)
-        writer.write_int_value("totalUsersCount", self.total_users_count)
-        writer.write_int_value("unprocessedUsersCount", self.unprocessed_users_count)
+        writer.write_object_value("task_definition", self.task_definition)
+        writer.write_collection_of_object_values("task_processing_results", self.task_processing_results)
+        writer.write_int_value("total_users_count", self.total_users_count)
+        writer.write_int_value("unprocessed_users_count", self.unprocessed_users_count)
     
 

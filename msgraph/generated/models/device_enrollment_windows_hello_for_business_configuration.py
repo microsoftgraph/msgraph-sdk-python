@@ -67,18 +67,18 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(DeviceEnrollmentConfi
         from .windows_hello_for_business_pin_usage import WindowsHelloForBusinessPinUsage
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "enhancedBiometricsState": lambda n : setattr(self, 'enhanced_biometrics_state', n.get_enum_value(Enablement)),
-            "pinExpirationInDays": lambda n : setattr(self, 'pin_expiration_in_days', n.get_int_value()),
-            "pinLowercaseCharactersUsage": lambda n : setattr(self, 'pin_lowercase_characters_usage', n.get_enum_value(WindowsHelloForBusinessPinUsage)),
-            "pinMaximumLength": lambda n : setattr(self, 'pin_maximum_length', n.get_int_value()),
-            "pinMinimumLength": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
-            "pinPreviousBlockCount": lambda n : setattr(self, 'pin_previous_block_count', n.get_int_value()),
-            "pinSpecialCharactersUsage": lambda n : setattr(self, 'pin_special_characters_usage', n.get_enum_value(WindowsHelloForBusinessPinUsage)),
-            "pinUppercaseCharactersUsage": lambda n : setattr(self, 'pin_uppercase_characters_usage', n.get_enum_value(WindowsHelloForBusinessPinUsage)),
-            "remotePassportEnabled": lambda n : setattr(self, 'remote_passport_enabled', n.get_bool_value()),
-            "securityDeviceRequired": lambda n : setattr(self, 'security_device_required', n.get_bool_value()),
+            "enhanced_biometrics_state": lambda n : setattr(self, 'enhanced_biometrics_state', n.get_enum_value(Enablement)),
+            "pin_expiration_in_days": lambda n : setattr(self, 'pin_expiration_in_days', n.get_int_value()),
+            "pin_lowercase_characters_usage": lambda n : setattr(self, 'pin_lowercase_characters_usage', n.get_enum_value(WindowsHelloForBusinessPinUsage)),
+            "pin_maximum_length": lambda n : setattr(self, 'pin_maximum_length', n.get_int_value()),
+            "pin_minimum_length": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
+            "pin_previous_block_count": lambda n : setattr(self, 'pin_previous_block_count', n.get_int_value()),
+            "pin_special_characters_usage": lambda n : setattr(self, 'pin_special_characters_usage', n.get_enum_value(WindowsHelloForBusinessPinUsage)),
+            "pin_uppercase_characters_usage": lambda n : setattr(self, 'pin_uppercase_characters_usage', n.get_enum_value(WindowsHelloForBusinessPinUsage)),
+            "remote_passport_enabled": lambda n : setattr(self, 'remote_passport_enabled', n.get_bool_value()),
+            "security_device_required": lambda n : setattr(self, 'security_device_required', n.get_bool_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(Enablement)),
-            "unlockWithBiometricsEnabled": lambda n : setattr(self, 'unlock_with_biometrics_enabled', n.get_bool_value()),
+            "unlock_with_biometrics_enabled": lambda n : setattr(self, 'unlock_with_biometrics_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -93,17 +93,17 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(DeviceEnrollmentConfi
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("enhancedBiometricsState", self.enhanced_biometrics_state)
-        writer.write_int_value("pinExpirationInDays", self.pin_expiration_in_days)
-        writer.write_enum_value("pinLowercaseCharactersUsage", self.pin_lowercase_characters_usage)
-        writer.write_int_value("pinMaximumLength", self.pin_maximum_length)
-        writer.write_int_value("pinMinimumLength", self.pin_minimum_length)
-        writer.write_int_value("pinPreviousBlockCount", self.pin_previous_block_count)
-        writer.write_enum_value("pinSpecialCharactersUsage", self.pin_special_characters_usage)
-        writer.write_enum_value("pinUppercaseCharactersUsage", self.pin_uppercase_characters_usage)
-        writer.write_bool_value("remotePassportEnabled", self.remote_passport_enabled)
-        writer.write_bool_value("securityDeviceRequired", self.security_device_required)
+        writer.write_enum_value("enhanced_biometrics_state", self.enhanced_biometrics_state)
+        writer.write_int_value("pin_expiration_in_days", self.pin_expiration_in_days)
+        writer.write_enum_value("pin_lowercase_characters_usage", self.pin_lowercase_characters_usage)
+        writer.write_int_value("pin_maximum_length", self.pin_maximum_length)
+        writer.write_int_value("pin_minimum_length", self.pin_minimum_length)
+        writer.write_int_value("pin_previous_block_count", self.pin_previous_block_count)
+        writer.write_enum_value("pin_special_characters_usage", self.pin_special_characters_usage)
+        writer.write_enum_value("pin_uppercase_characters_usage", self.pin_uppercase_characters_usage)
+        writer.write_bool_value("remote_passport_enabled", self.remote_passport_enabled)
+        writer.write_bool_value("security_device_required", self.security_device_required)
         writer.write_enum_value("state", self.state)
-        writer.write_bool_value("unlockWithBiometricsEnabled", self.unlock_with_biometrics_enabled)
+        writer.write_bool_value("unlock_with_biometrics_enabled", self.unlock_with_biometrics_enabled)
     
 

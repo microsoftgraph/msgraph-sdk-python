@@ -33,8 +33,8 @@ class GroupFilter(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "includedGroups": lambda n : setattr(self, 'included_groups', n.get_collection_of_primitive_values(str)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "included_groups": lambda n : setattr(self, 'included_groups', n.get_collection_of_primitive_values(str)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -46,8 +46,8 @@ class GroupFilter(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("includedGroups", self.included_groups)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_collection_of_primitive_values("included_groups", self.included_groups)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

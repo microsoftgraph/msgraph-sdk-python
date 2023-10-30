@@ -64,18 +64,18 @@ class WindowsInformationProtectionPolicy(WindowsInformationProtection):
         from .windows_information_protection_pin_character_requirements import WindowsInformationProtectionPinCharacterRequirements
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "daysWithoutContactBeforeUnenroll": lambda n : setattr(self, 'days_without_contact_before_unenroll', n.get_int_value()),
-            "mdmEnrollmentUrl": lambda n : setattr(self, 'mdm_enrollment_url', n.get_str_value()),
-            "minutesOfInactivityBeforeDeviceLock": lambda n : setattr(self, 'minutes_of_inactivity_before_device_lock', n.get_int_value()),
-            "numberOfPastPinsRemembered": lambda n : setattr(self, 'number_of_past_pins_remembered', n.get_int_value()),
-            "passwordMaximumAttemptCount": lambda n : setattr(self, 'password_maximum_attempt_count', n.get_int_value()),
-            "pinExpirationDays": lambda n : setattr(self, 'pin_expiration_days', n.get_int_value()),
-            "pinLowercaseLetters": lambda n : setattr(self, 'pin_lowercase_letters', n.get_enum_value(WindowsInformationProtectionPinCharacterRequirements)),
-            "pinMinimumLength": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
-            "pinSpecialCharacters": lambda n : setattr(self, 'pin_special_characters', n.get_enum_value(WindowsInformationProtectionPinCharacterRequirements)),
-            "pinUppercaseLetters": lambda n : setattr(self, 'pin_uppercase_letters', n.get_enum_value(WindowsInformationProtectionPinCharacterRequirements)),
-            "revokeOnMdmHandoffDisabled": lambda n : setattr(self, 'revoke_on_mdm_handoff_disabled', n.get_bool_value()),
-            "windowsHelloForBusinessBlocked": lambda n : setattr(self, 'windows_hello_for_business_blocked', n.get_bool_value()),
+            "days_without_contact_before_unenroll": lambda n : setattr(self, 'days_without_contact_before_unenroll', n.get_int_value()),
+            "mdm_enrollment_url": lambda n : setattr(self, 'mdm_enrollment_url', n.get_str_value()),
+            "minutes_of_inactivity_before_device_lock": lambda n : setattr(self, 'minutes_of_inactivity_before_device_lock', n.get_int_value()),
+            "number_of_past_pins_remembered": lambda n : setattr(self, 'number_of_past_pins_remembered', n.get_int_value()),
+            "password_maximum_attempt_count": lambda n : setattr(self, 'password_maximum_attempt_count', n.get_int_value()),
+            "pin_expiration_days": lambda n : setattr(self, 'pin_expiration_days', n.get_int_value()),
+            "pin_lowercase_letters": lambda n : setattr(self, 'pin_lowercase_letters', n.get_enum_value(WindowsInformationProtectionPinCharacterRequirements)),
+            "pin_minimum_length": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
+            "pin_special_characters": lambda n : setattr(self, 'pin_special_characters', n.get_enum_value(WindowsInformationProtectionPinCharacterRequirements)),
+            "pin_uppercase_letters": lambda n : setattr(self, 'pin_uppercase_letters', n.get_enum_value(WindowsInformationProtectionPinCharacterRequirements)),
+            "revoke_on_mdm_handoff_disabled": lambda n : setattr(self, 'revoke_on_mdm_handoff_disabled', n.get_bool_value()),
+            "windows_hello_for_business_blocked": lambda n : setattr(self, 'windows_hello_for_business_blocked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -90,17 +90,17 @@ class WindowsInformationProtectionPolicy(WindowsInformationProtection):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("daysWithoutContactBeforeUnenroll", self.days_without_contact_before_unenroll)
-        writer.write_str_value("mdmEnrollmentUrl", self.mdm_enrollment_url)
-        writer.write_int_value("minutesOfInactivityBeforeDeviceLock", self.minutes_of_inactivity_before_device_lock)
-        writer.write_int_value("numberOfPastPinsRemembered", self.number_of_past_pins_remembered)
-        writer.write_int_value("passwordMaximumAttemptCount", self.password_maximum_attempt_count)
-        writer.write_int_value("pinExpirationDays", self.pin_expiration_days)
-        writer.write_enum_value("pinLowercaseLetters", self.pin_lowercase_letters)
-        writer.write_int_value("pinMinimumLength", self.pin_minimum_length)
-        writer.write_enum_value("pinSpecialCharacters", self.pin_special_characters)
-        writer.write_enum_value("pinUppercaseLetters", self.pin_uppercase_letters)
-        writer.write_bool_value("revokeOnMdmHandoffDisabled", self.revoke_on_mdm_handoff_disabled)
-        writer.write_bool_value("windowsHelloForBusinessBlocked", self.windows_hello_for_business_blocked)
+        writer.write_int_value("days_without_contact_before_unenroll", self.days_without_contact_before_unenroll)
+        writer.write_str_value("mdm_enrollment_url", self.mdm_enrollment_url)
+        writer.write_int_value("minutes_of_inactivity_before_device_lock", self.minutes_of_inactivity_before_device_lock)
+        writer.write_int_value("number_of_past_pins_remembered", self.number_of_past_pins_remembered)
+        writer.write_int_value("password_maximum_attempt_count", self.password_maximum_attempt_count)
+        writer.write_int_value("pin_expiration_days", self.pin_expiration_days)
+        writer.write_enum_value("pin_lowercase_letters", self.pin_lowercase_letters)
+        writer.write_int_value("pin_minimum_length", self.pin_minimum_length)
+        writer.write_enum_value("pin_special_characters", self.pin_special_characters)
+        writer.write_enum_value("pin_uppercase_letters", self.pin_uppercase_letters)
+        writer.write_bool_value("revoke_on_mdm_handoff_disabled", self.revoke_on_mdm_handoff_disabled)
+        writer.write_bool_value("windows_hello_for_business_blocked", self.windows_hello_for_business_blocked)
     
 

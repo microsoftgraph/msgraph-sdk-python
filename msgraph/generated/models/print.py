@@ -71,13 +71,13 @@ class Print(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "connectors": lambda n : setattr(self, 'connectors', n.get_collection_of_object_values(PrintConnector)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(PrintOperation)),
             "printers": lambda n : setattr(self, 'printers', n.get_collection_of_object_values(Printer)),
             "services": lambda n : setattr(self, 'services', n.get_collection_of_object_values(PrintService)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(PrintSettings)),
             "shares": lambda n : setattr(self, 'shares', n.get_collection_of_object_values(PrinterShare)),
-            "taskDefinitions": lambda n : setattr(self, 'task_definitions', n.get_collection_of_object_values(PrintTaskDefinition)),
+            "task_definitions": lambda n : setattr(self, 'task_definitions', n.get_collection_of_object_values(PrintTaskDefinition)),
         }
         return fields
     
@@ -90,13 +90,13 @@ class Print(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("connectors", self.connectors)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_collection_of_object_values("printers", self.printers)
         writer.write_collection_of_object_values("services", self.services)
         writer.write_object_value("settings", self.settings)
         writer.write_collection_of_object_values("shares", self.shares)
-        writer.write_collection_of_object_values("taskDefinitions", self.task_definitions)
+        writer.write_collection_of_object_values("task_definitions", self.task_definitions)
         writer.write_additional_data_value(self.additional_data)
     
 

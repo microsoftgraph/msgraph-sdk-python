@@ -41,8 +41,8 @@ class SharedWithChannelTeamInfo(TeamInfo):
         from .team_info import TeamInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedMembers": lambda n : setattr(self, 'allowed_members', n.get_collection_of_object_values(ConversationMember)),
-            "isHostTeam": lambda n : setattr(self, 'is_host_team', n.get_bool_value()),
+            "allowed_members": lambda n : setattr(self, 'allowed_members', n.get_collection_of_object_values(ConversationMember)),
+            "is_host_team": lambda n : setattr(self, 'is_host_team', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class SharedWithChannelTeamInfo(TeamInfo):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("allowedMembers", self.allowed_members)
-        writer.write_bool_value("isHostTeam", self.is_host_team)
+        writer.write_collection_of_object_values("allowed_members", self.allowed_members)
+        writer.write_bool_value("is_host_team", self.is_host_team)
     
 

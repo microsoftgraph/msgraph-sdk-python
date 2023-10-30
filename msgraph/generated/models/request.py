@@ -96,11 +96,11 @@ class Request(Entity):
         from .user_consent_request import UserConsentRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "approvalId": lambda n : setattr(self, 'approval_id', n.get_str_value()),
-            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "customData": lambda n : setattr(self, 'custom_data', n.get_str_value()),
+            "approval_id": lambda n : setattr(self, 'approval_id', n.get_str_value()),
+            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "custom_data": lambda n : setattr(self, 'custom_data', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -116,11 +116,11 @@ class Request(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("approvalId", self.approval_id)
-        writer.write_datetime_value("completedDateTime", self.completed_date_time)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_str_value("customData", self.custom_data)
+        writer.write_str_value("approval_id", self.approval_id)
+        writer.write_datetime_value("completed_date_time", self.completed_date_time)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_str_value("custom_data", self.custom_data)
         writer.write_str_value("status", self.status)
     
 

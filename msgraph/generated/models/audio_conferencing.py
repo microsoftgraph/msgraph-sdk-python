@@ -43,13 +43,13 @@ class AudioConferencing(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "conferenceId": lambda n : setattr(self, 'conference_id', n.get_str_value()),
-            "dialinUrl": lambda n : setattr(self, 'dialin_url', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tollFreeNumber": lambda n : setattr(self, 'toll_free_number', n.get_str_value()),
-            "tollFreeNumbers": lambda n : setattr(self, 'toll_free_numbers', n.get_collection_of_primitive_values(str)),
-            "tollNumber": lambda n : setattr(self, 'toll_number', n.get_str_value()),
-            "tollNumbers": lambda n : setattr(self, 'toll_numbers', n.get_collection_of_primitive_values(str)),
+            "conference_id": lambda n : setattr(self, 'conference_id', n.get_str_value()),
+            "dialin_url": lambda n : setattr(self, 'dialin_url', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "toll_free_number": lambda n : setattr(self, 'toll_free_number', n.get_str_value()),
+            "toll_free_numbers": lambda n : setattr(self, 'toll_free_numbers', n.get_collection_of_primitive_values(str)),
+            "toll_number": lambda n : setattr(self, 'toll_number', n.get_str_value()),
+            "toll_numbers": lambda n : setattr(self, 'toll_numbers', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -61,13 +61,13 @@ class AudioConferencing(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("conferenceId", self.conference_id)
-        writer.write_str_value("dialinUrl", self.dialin_url)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("tollFreeNumber", self.toll_free_number)
-        writer.write_collection_of_primitive_values("tollFreeNumbers", self.toll_free_numbers)
-        writer.write_str_value("tollNumber", self.toll_number)
-        writer.write_collection_of_primitive_values("tollNumbers", self.toll_numbers)
+        writer.write_str_value("conference_id", self.conference_id)
+        writer.write_str_value("dialin_url", self.dialin_url)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("toll_free_number", self.toll_free_number)
+        writer.write_collection_of_primitive_values("toll_free_numbers", self.toll_free_numbers)
+        writer.write_str_value("toll_number", self.toll_number)
+        writer.write_collection_of_primitive_values("toll_numbers", self.toll_numbers)
         writer.write_additional_data_value(self.additional_data)
     
 

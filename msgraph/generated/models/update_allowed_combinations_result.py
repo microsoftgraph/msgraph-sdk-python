@@ -46,11 +46,11 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, BackedModel, Parsabl
         from .authentication_method_modes import AuthenticationMethodModes
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
-            "conditionalAccessReferences": lambda n : setattr(self, 'conditional_access_references', n.get_collection_of_primitive_values(str)),
-            "currentCombinations": lambda n : setattr(self, 'current_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "previousCombinations": lambda n : setattr(self, 'previous_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
+            "additional_information": lambda n : setattr(self, 'additional_information', n.get_str_value()),
+            "conditional_access_references": lambda n : setattr(self, 'conditional_access_references', n.get_collection_of_primitive_values(str)),
+            "current_combinations": lambda n : setattr(self, 'current_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "previous_combinations": lambda n : setattr(self, 'previous_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
         }
         return fields
     
@@ -62,11 +62,11 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, BackedModel, Parsabl
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("additionalInformation", self.additional_information)
-        writer.write_collection_of_primitive_values("conditionalAccessReferences", self.conditional_access_references)
-        writer.write_collection_of_enum_values("currentCombinations", self.current_combinations)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_enum_values("previousCombinations", self.previous_combinations)
+        writer.write_str_value("additional_information", self.additional_information)
+        writer.write_collection_of_primitive_values("conditional_access_references", self.conditional_access_references)
+        writer.write_collection_of_enum_values("current_combinations", self.current_combinations)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_enum_values("previous_combinations", self.previous_combinations)
         writer.write_additional_data_value(self.additional_data)
     
 

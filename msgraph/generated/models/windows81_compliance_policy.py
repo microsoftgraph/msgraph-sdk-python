@@ -62,17 +62,17 @@ class Windows81CompliancePolicy(DeviceCompliancePolicy):
         from .required_password_type import RequiredPasswordType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
-            "osMinimumVersion": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
-            "passwordBlockSimple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
-            "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
-            "passwordMinimumCharacterSetCount": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
-            "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
-            "passwordMinutesOfInactivityBeforeLock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
-            "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(RequiredPasswordType)),
-            "storageRequireEncryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
+            "os_maximum_version": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
+            "os_minimum_version": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
+            "password_block_simple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
+            "password_expiration_days": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
+            "password_minimum_character_set_count": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
+            "password_minimum_length": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
+            "password_minutes_of_inactivity_before_lock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
+            "password_previous_password_block_count": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
+            "password_required": lambda n : setattr(self, 'password_required', n.get_bool_value()),
+            "password_required_type": lambda n : setattr(self, 'password_required_type', n.get_enum_value(RequiredPasswordType)),
+            "storage_require_encryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -87,16 +87,16 @@ class Windows81CompliancePolicy(DeviceCompliancePolicy):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("osMaximumVersion", self.os_maximum_version)
-        writer.write_str_value("osMinimumVersion", self.os_minimum_version)
-        writer.write_bool_value("passwordBlockSimple", self.password_block_simple)
-        writer.write_int_value("passwordExpirationDays", self.password_expiration_days)
-        writer.write_int_value("passwordMinimumCharacterSetCount", self.password_minimum_character_set_count)
-        writer.write_int_value("passwordMinimumLength", self.password_minimum_length)
-        writer.write_int_value("passwordMinutesOfInactivityBeforeLock", self.password_minutes_of_inactivity_before_lock)
-        writer.write_int_value("passwordPreviousPasswordBlockCount", self.password_previous_password_block_count)
-        writer.write_bool_value("passwordRequired", self.password_required)
-        writer.write_enum_value("passwordRequiredType", self.password_required_type)
-        writer.write_bool_value("storageRequireEncryption", self.storage_require_encryption)
+        writer.write_str_value("os_maximum_version", self.os_maximum_version)
+        writer.write_str_value("os_minimum_version", self.os_minimum_version)
+        writer.write_bool_value("password_block_simple", self.password_block_simple)
+        writer.write_int_value("password_expiration_days", self.password_expiration_days)
+        writer.write_int_value("password_minimum_character_set_count", self.password_minimum_character_set_count)
+        writer.write_int_value("password_minimum_length", self.password_minimum_length)
+        writer.write_int_value("password_minutes_of_inactivity_before_lock", self.password_minutes_of_inactivity_before_lock)
+        writer.write_int_value("password_previous_password_block_count", self.password_previous_password_block_count)
+        writer.write_bool_value("password_required", self.password_required)
+        writer.write_enum_value("password_required_type", self.password_required_type)
+        writer.write_bool_value("storage_require_encryption", self.storage_require_encryption)
     
 

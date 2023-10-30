@@ -53,10 +53,10 @@ class AdministrativeUnit(DirectoryObject):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(DirectoryObject)),
-            "scopedRoleMembers": lambda n : setattr(self, 'scoped_role_members', n.get_collection_of_object_values(ScopedRoleMembership)),
+            "scoped_role_members": lambda n : setattr(self, 'scoped_role_members', n.get_collection_of_object_values(ScopedRoleMembership)),
             "visibility": lambda n : setattr(self, 'visibility', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -73,10 +73,10 @@ class AdministrativeUnit(DirectoryObject):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_collection_of_object_values("members", self.members)
-        writer.write_collection_of_object_values("scopedRoleMembers", self.scoped_role_members)
+        writer.write_collection_of_object_values("scoped_role_members", self.scoped_role_members)
         writer.write_str_value("visibility", self.visibility)
     
 

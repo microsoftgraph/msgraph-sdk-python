@@ -45,9 +45,9 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
 
         fields: Dict[str, Callable[[Any], None]] = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(AuthenticationMethodTargetType)),
-            "targetedAuthenticationMethod": lambda n : setattr(self, 'targeted_authentication_method', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "target_type": lambda n : setattr(self, 'target_type', n.get_enum_value(AuthenticationMethodTargetType)),
+            "targeted_authentication_method": lambda n : setattr(self, 'targeted_authentication_method', n.get_str_value()),
         }
         return fields
     
@@ -60,9 +60,9 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("id", self.id)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_enum_value("targetType", self.target_type)
-        writer.write_str_value("targetedAuthenticationMethod", self.targeted_authentication_method)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_enum_value("target_type", self.target_type)
+        writer.write_str_value("targeted_authentication_method", self.targeted_authentication_method)
         writer.write_additional_data_value(self.additional_data)
     
 

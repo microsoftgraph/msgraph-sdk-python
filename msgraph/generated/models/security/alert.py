@@ -121,35 +121,35 @@ class Alert(Entity):
         from .service_source import ServiceSource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "actorDisplayName": lambda n : setattr(self, 'actor_display_name', n.get_str_value()),
-            "alertPolicyId": lambda n : setattr(self, 'alert_policy_id', n.get_str_value()),
-            "alertWebUrl": lambda n : setattr(self, 'alert_web_url', n.get_str_value()),
-            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
+            "actor_display_name": lambda n : setattr(self, 'actor_display_name', n.get_str_value()),
+            "alert_policy_id": lambda n : setattr(self, 'alert_policy_id', n.get_str_value()),
+            "alert_web_url": lambda n : setattr(self, 'alert_web_url', n.get_str_value()),
+            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(AlertClassification)),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_object_values(AlertComment)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "detectionSource": lambda n : setattr(self, 'detection_source', n.get_enum_value(DetectionSource)),
-            "detectorId": lambda n : setattr(self, 'detector_id', n.get_str_value()),
+            "detection_source": lambda n : setattr(self, 'detection_source', n.get_enum_value(DetectionSource)),
+            "detector_id": lambda n : setattr(self, 'detector_id', n.get_str_value()),
             "determination": lambda n : setattr(self, 'determination', n.get_enum_value(AlertDetermination)),
             "evidence": lambda n : setattr(self, 'evidence', n.get_collection_of_object_values(AlertEvidence)),
-            "firstActivityDateTime": lambda n : setattr(self, 'first_activity_date_time', n.get_datetime_value()),
-            "incidentId": lambda n : setattr(self, 'incident_id', n.get_str_value()),
-            "incidentWebUrl": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
-            "lastActivityDateTime": lambda n : setattr(self, 'last_activity_date_time', n.get_datetime_value()),
-            "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
-            "mitreTechniques": lambda n : setattr(self, 'mitre_techniques', n.get_collection_of_primitive_values(str)),
-            "productName": lambda n : setattr(self, 'product_name', n.get_str_value()),
-            "providerAlertId": lambda n : setattr(self, 'provider_alert_id', n.get_str_value()),
-            "recommendedActions": lambda n : setattr(self, 'recommended_actions', n.get_str_value()),
-            "resolvedDateTime": lambda n : setattr(self, 'resolved_date_time', n.get_datetime_value()),
-            "serviceSource": lambda n : setattr(self, 'service_source', n.get_enum_value(ServiceSource)),
+            "first_activity_date_time": lambda n : setattr(self, 'first_activity_date_time', n.get_datetime_value()),
+            "incident_id": lambda n : setattr(self, 'incident_id', n.get_str_value()),
+            "incident_web_url": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
+            "last_activity_date_time": lambda n : setattr(self, 'last_activity_date_time', n.get_datetime_value()),
+            "last_update_date_time": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
+            "mitre_techniques": lambda n : setattr(self, 'mitre_techniques', n.get_collection_of_primitive_values(str)),
+            "product_name": lambda n : setattr(self, 'product_name', n.get_str_value()),
+            "provider_alert_id": lambda n : setattr(self, 'provider_alert_id', n.get_str_value()),
+            "recommended_actions": lambda n : setattr(self, 'recommended_actions', n.get_str_value()),
+            "resolved_date_time": lambda n : setattr(self, 'resolved_date_time', n.get_datetime_value()),
+            "service_source": lambda n : setattr(self, 'service_source', n.get_enum_value(ServiceSource)),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(AlertSeverity)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(AlertStatus)),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "threatDisplayName": lambda n : setattr(self, 'threat_display_name', n.get_str_value()),
-            "threatFamilyName": lambda n : setattr(self, 'threat_family_name', n.get_str_value()),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "threat_display_name": lambda n : setattr(self, 'threat_display_name', n.get_str_value()),
+            "threat_family_name": lambda n : setattr(self, 'threat_family_name', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -165,35 +165,35 @@ class Alert(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("actorDisplayName", self.actor_display_name)
-        writer.write_str_value("alertPolicyId", self.alert_policy_id)
-        writer.write_str_value("alertWebUrl", self.alert_web_url)
-        writer.write_str_value("assignedTo", self.assigned_to)
+        writer.write_str_value("actor_display_name", self.actor_display_name)
+        writer.write_str_value("alert_policy_id", self.alert_policy_id)
+        writer.write_str_value("alert_web_url", self.alert_web_url)
+        writer.write_str_value("assigned_to", self.assigned_to)
         writer.write_str_value("category", self.category)
         writer.write_enum_value("classification", self.classification)
         writer.write_collection_of_object_values("comments", self.comments)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_enum_value("detectionSource", self.detection_source)
-        writer.write_str_value("detectorId", self.detector_id)
+        writer.write_enum_value("detection_source", self.detection_source)
+        writer.write_str_value("detector_id", self.detector_id)
         writer.write_enum_value("determination", self.determination)
         writer.write_collection_of_object_values("evidence", self.evidence)
-        writer.write_datetime_value("firstActivityDateTime", self.first_activity_date_time)
-        writer.write_str_value("incidentId", self.incident_id)
-        writer.write_str_value("incidentWebUrl", self.incident_web_url)
-        writer.write_datetime_value("lastActivityDateTime", self.last_activity_date_time)
-        writer.write_datetime_value("lastUpdateDateTime", self.last_update_date_time)
-        writer.write_collection_of_primitive_values("mitreTechniques", self.mitre_techniques)
-        writer.write_str_value("productName", self.product_name)
-        writer.write_str_value("providerAlertId", self.provider_alert_id)
-        writer.write_str_value("recommendedActions", self.recommended_actions)
-        writer.write_datetime_value("resolvedDateTime", self.resolved_date_time)
-        writer.write_enum_value("serviceSource", self.service_source)
+        writer.write_datetime_value("first_activity_date_time", self.first_activity_date_time)
+        writer.write_str_value("incident_id", self.incident_id)
+        writer.write_str_value("incident_web_url", self.incident_web_url)
+        writer.write_datetime_value("last_activity_date_time", self.last_activity_date_time)
+        writer.write_datetime_value("last_update_date_time", self.last_update_date_time)
+        writer.write_collection_of_primitive_values("mitre_techniques", self.mitre_techniques)
+        writer.write_str_value("product_name", self.product_name)
+        writer.write_str_value("provider_alert_id", self.provider_alert_id)
+        writer.write_str_value("recommended_actions", self.recommended_actions)
+        writer.write_datetime_value("resolved_date_time", self.resolved_date_time)
+        writer.write_enum_value("service_source", self.service_source)
         writer.write_enum_value("severity", self.severity)
         writer.write_enum_value("status", self.status)
-        writer.write_str_value("tenantId", self.tenant_id)
-        writer.write_str_value("threatDisplayName", self.threat_display_name)
-        writer.write_str_value("threatFamilyName", self.threat_family_name)
+        writer.write_str_value("tenant_id", self.tenant_id)
+        writer.write_str_value("threat_display_name", self.threat_display_name)
+        writer.write_str_value("threat_family_name", self.threat_family_name)
         writer.write_str_value("title", self.title)
     
 

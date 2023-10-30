@@ -54,15 +54,15 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, BackedModel
         from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowCustomAssignmentSchedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
-            "enableOnBehalfRequestorsToAddAccess": lambda n : setattr(self, 'enable_on_behalf_requestors_to_add_access', n.get_bool_value()),
-            "enableOnBehalfRequestorsToRemoveAccess": lambda n : setattr(self, 'enable_on_behalf_requestors_to_remove_access', n.get_bool_value()),
-            "enableOnBehalfRequestorsToUpdateAccess": lambda n : setattr(self, 'enable_on_behalf_requestors_to_update_access', n.get_bool_value()),
-            "enableTargetsToSelfAddAccess": lambda n : setattr(self, 'enable_targets_to_self_add_access', n.get_bool_value()),
-            "enableTargetsToSelfRemoveAccess": lambda n : setattr(self, 'enable_targets_to_self_remove_access', n.get_bool_value()),
-            "enableTargetsToSelfUpdateAccess": lambda n : setattr(self, 'enable_targets_to_self_update_access', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "onBehalfRequestors": lambda n : setattr(self, 'on_behalf_requestors', n.get_collection_of_object_values(SubjectSet)),
+            "allow_custom_assignment_schedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
+            "enable_on_behalf_requestors_to_add_access": lambda n : setattr(self, 'enable_on_behalf_requestors_to_add_access', n.get_bool_value()),
+            "enable_on_behalf_requestors_to_remove_access": lambda n : setattr(self, 'enable_on_behalf_requestors_to_remove_access', n.get_bool_value()),
+            "enable_on_behalf_requestors_to_update_access": lambda n : setattr(self, 'enable_on_behalf_requestors_to_update_access', n.get_bool_value()),
+            "enable_targets_to_self_add_access": lambda n : setattr(self, 'enable_targets_to_self_add_access', n.get_bool_value()),
+            "enable_targets_to_self_remove_access": lambda n : setattr(self, 'enable_targets_to_self_remove_access', n.get_bool_value()),
+            "enable_targets_to_self_update_access": lambda n : setattr(self, 'enable_targets_to_self_update_access', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "on_behalf_requestors": lambda n : setattr(self, 'on_behalf_requestors', n.get_collection_of_object_values(SubjectSet)),
         }
         return fields
     
@@ -74,15 +74,15 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, BackedModel
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("allowCustomAssignmentSchedule", self.allow_custom_assignment_schedule)
-        writer.write_bool_value("enableOnBehalfRequestorsToAddAccess", self.enable_on_behalf_requestors_to_add_access)
-        writer.write_bool_value("enableOnBehalfRequestorsToRemoveAccess", self.enable_on_behalf_requestors_to_remove_access)
-        writer.write_bool_value("enableOnBehalfRequestorsToUpdateAccess", self.enable_on_behalf_requestors_to_update_access)
-        writer.write_bool_value("enableTargetsToSelfAddAccess", self.enable_targets_to_self_add_access)
-        writer.write_bool_value("enableTargetsToSelfRemoveAccess", self.enable_targets_to_self_remove_access)
-        writer.write_bool_value("enableTargetsToSelfUpdateAccess", self.enable_targets_to_self_update_access)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("onBehalfRequestors", self.on_behalf_requestors)
+        writer.write_bool_value("allow_custom_assignment_schedule", self.allow_custom_assignment_schedule)
+        writer.write_bool_value("enable_on_behalf_requestors_to_add_access", self.enable_on_behalf_requestors_to_add_access)
+        writer.write_bool_value("enable_on_behalf_requestors_to_remove_access", self.enable_on_behalf_requestors_to_remove_access)
+        writer.write_bool_value("enable_on_behalf_requestors_to_update_access", self.enable_on_behalf_requestors_to_update_access)
+        writer.write_bool_value("enable_targets_to_self_add_access", self.enable_targets_to_self_add_access)
+        writer.write_bool_value("enable_targets_to_self_remove_access", self.enable_targets_to_self_remove_access)
+        writer.write_bool_value("enable_targets_to_self_update_access", self.enable_targets_to_self_update_access)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("on_behalf_requestors", self.on_behalf_requestors)
         writer.write_additional_data_value(self.additional_data)
     
 

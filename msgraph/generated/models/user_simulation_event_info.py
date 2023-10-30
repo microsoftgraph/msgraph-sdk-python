@@ -43,11 +43,11 @@ class UserSimulationEventInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "browser": lambda n : setattr(self, 'browser', n.get_str_value()),
-            "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
-            "eventName": lambda n : setattr(self, 'event_name', n.get_str_value()),
-            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "osPlatformDeviceDetails": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
+            "event_date_time": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
+            "event_name": lambda n : setattr(self, 'event_name', n.get_str_value()),
+            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "os_platform_device_details": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
         }
         return fields
     
@@ -60,11 +60,11 @@ class UserSimulationEventInfo(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("browser", self.browser)
-        writer.write_datetime_value("eventDateTime", self.event_date_time)
-        writer.write_str_value("eventName", self.event_name)
-        writer.write_str_value("ipAddress", self.ip_address)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("osPlatformDeviceDetails", self.os_platform_device_details)
+        writer.write_datetime_value("event_date_time", self.event_date_time)
+        writer.write_str_value("event_name", self.event_name)
+        writer.write_str_value("ip_address", self.ip_address)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("os_platform_device_details", self.os_platform_device_details)
         writer.write_additional_data_value(self.additional_data)
     
 

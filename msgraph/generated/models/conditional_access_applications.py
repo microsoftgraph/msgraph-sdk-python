@@ -48,12 +48,12 @@ class ConditionalAccessApplications(AdditionalDataHolder, BackedModel, Parsable)
         from .conditional_access_filter import ConditionalAccessFilter
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicationFilter": lambda n : setattr(self, 'application_filter', n.get_object_value(ConditionalAccessFilter)),
-            "excludeApplications": lambda n : setattr(self, 'exclude_applications', n.get_collection_of_primitive_values(str)),
-            "includeApplications": lambda n : setattr(self, 'include_applications', n.get_collection_of_primitive_values(str)),
-            "includeAuthenticationContextClassReferences": lambda n : setattr(self, 'include_authentication_context_class_references', n.get_collection_of_primitive_values(str)),
-            "includeUserActions": lambda n : setattr(self, 'include_user_actions', n.get_collection_of_primitive_values(str)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "application_filter": lambda n : setattr(self, 'application_filter', n.get_object_value(ConditionalAccessFilter)),
+            "exclude_applications": lambda n : setattr(self, 'exclude_applications', n.get_collection_of_primitive_values(str)),
+            "include_applications": lambda n : setattr(self, 'include_applications', n.get_collection_of_primitive_values(str)),
+            "include_authentication_context_class_references": lambda n : setattr(self, 'include_authentication_context_class_references', n.get_collection_of_primitive_values(str)),
+            "include_user_actions": lambda n : setattr(self, 'include_user_actions', n.get_collection_of_primitive_values(str)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -65,12 +65,12 @@ class ConditionalAccessApplications(AdditionalDataHolder, BackedModel, Parsable)
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("applicationFilter", self.application_filter)
-        writer.write_collection_of_primitive_values("excludeApplications", self.exclude_applications)
-        writer.write_collection_of_primitive_values("includeApplications", self.include_applications)
-        writer.write_collection_of_primitive_values("includeAuthenticationContextClassReferences", self.include_authentication_context_class_references)
-        writer.write_collection_of_primitive_values("includeUserActions", self.include_user_actions)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_object_value("application_filter", self.application_filter)
+        writer.write_collection_of_primitive_values("exclude_applications", self.exclude_applications)
+        writer.write_collection_of_primitive_values("include_applications", self.include_applications)
+        writer.write_collection_of_primitive_values("include_authentication_context_class_references", self.include_authentication_context_class_references)
+        writer.write_collection_of_primitive_values("include_user_actions", self.include_user_actions)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

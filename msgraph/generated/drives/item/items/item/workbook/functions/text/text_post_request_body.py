@@ -40,7 +40,7 @@ class TextPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "formatText": lambda n : setattr(self, 'format_text', n.get_object_value(Json)),
+            "format_text": lambda n : setattr(self, 'format_text', n.get_object_value(Json)),
             "value": lambda n : setattr(self, 'value', n.get_object_value(Json)),
         }
         return fields
@@ -53,7 +53,7 @@ class TextPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("formatText", self.format_text)
+        writer.write_object_value("format_text", self.format_text)
         writer.write_object_value("value", self.value)
         writer.write_additional_data_value(self.additional_data)
     

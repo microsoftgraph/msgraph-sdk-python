@@ -43,7 +43,7 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         from ........models.security.ediscovery_search import EdiscoverySearch
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "additionalDataOptions": lambda n : setattr(self, 'additional_data_options', n.get_collection_of_enum_values(AdditionalDataOptions)),
+            "additional_data_options": lambda n : setattr(self, 'additional_data_options', n.get_collection_of_enum_values(AdditionalDataOptions)),
             "search": lambda n : setattr(self, 'search', n.get_object_value(EdiscoverySearch)),
         }
         return fields
@@ -56,7 +56,7 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("additionalDataOptions", self.additional_data_options)
+        writer.write_enum_value("additional_data_options", self.additional_data_options)
         writer.write_object_value("search", self.search)
         writer.write_additional_data_value(self.additional_data)
     

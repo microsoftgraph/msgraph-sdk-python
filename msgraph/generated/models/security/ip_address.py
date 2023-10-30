@@ -45,9 +45,9 @@ class IpAddress(Host):
         from .host import Host
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "autonomousSystem": lambda n : setattr(self, 'autonomous_system', n.get_object_value(AutonomousSystem)),
-            "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
-            "hostingProvider": lambda n : setattr(self, 'hosting_provider', n.get_str_value()),
+            "autonomous_system": lambda n : setattr(self, 'autonomous_system', n.get_object_value(AutonomousSystem)),
+            "country_or_region": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
+            "hosting_provider": lambda n : setattr(self, 'hosting_provider', n.get_str_value()),
             "netblock": lambda n : setattr(self, 'netblock', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -63,9 +63,9 @@ class IpAddress(Host):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("autonomousSystem", self.autonomous_system)
-        writer.write_str_value("countryOrRegion", self.country_or_region)
-        writer.write_str_value("hostingProvider", self.hosting_provider)
+        writer.write_object_value("autonomous_system", self.autonomous_system)
+        writer.write_str_value("country_or_region", self.country_or_region)
+        writer.write_str_value("hosting_provider", self.hosting_provider)
         writer.write_str_value("netblock", self.netblock)
     
 

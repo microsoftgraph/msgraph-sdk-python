@@ -16,6 +16,8 @@ class ExtensionProperty(DirectoryObject):
     app_display_name: Optional[str] = None
     # Specifies the data type of the value the extension property can hold. Following values are supported. Not nullable. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximum
     data_type: Optional[str] = None
+    # The isMultiValued property
+    is_multi_valued: Optional[bool] = None
     # Indicates if this extension property was synced from on-premises active directory using Microsoft Entra Connect. Read-only.
     is_synced_from_on_premises: Optional[bool] = None
     # Name of the extension property. Not nullable. Supports $filter (eq).
@@ -44,11 +46,12 @@ class ExtensionProperty(DirectoryObject):
         from .directory_object import DirectoryObject
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "dataType": lambda n : setattr(self, 'data_type', n.get_str_value()),
-            "isSyncedFromOnPremises": lambda n : setattr(self, 'is_synced_from_on_premises', n.get_bool_value()),
+            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "data_type": lambda n : setattr(self, 'data_type', n.get_str_value()),
+            "is_multi_valued": lambda n : setattr(self, 'is_multi_valued', n.get_bool_value()),
+            "is_synced_from_on_premises": lambda n : setattr(self, 'is_synced_from_on_premises', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "targetObjects": lambda n : setattr(self, 'target_objects', n.get_collection_of_primitive_values(str)),
+            "target_objects": lambda n : setattr(self, 'target_objects', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,10 +66,11 @@ class ExtensionProperty(DirectoryObject):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("appDisplayName", self.app_display_name)
-        writer.write_str_value("dataType", self.data_type)
-        writer.write_bool_value("isSyncedFromOnPremises", self.is_synced_from_on_premises)
+        writer.write_str_value("app_display_name", self.app_display_name)
+        writer.write_str_value("data_type", self.data_type)
+        writer.write_bool_value("is_multi_valued", self.is_multi_valued)
+        writer.write_bool_value("is_synced_from_on_premises", self.is_synced_from_on_premises)
         writer.write_str_value("name", self.name)
-        writer.write_collection_of_primitive_values("targetObjects", self.target_objects)
+        writer.write_collection_of_primitive_values("target_objects", self.target_objects)
     
 

@@ -75,16 +75,16 @@ class AttributeDefinition(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "anchor": lambda n : setattr(self, 'anchor', n.get_bool_value()),
-            "apiExpressions": lambda n : setattr(self, 'api_expressions', n.get_collection_of_object_values(StringKeyStringValuePair)),
-            "caseExact": lambda n : setattr(self, 'case_exact', n.get_bool_value()),
-            "defaultValue": lambda n : setattr(self, 'default_value', n.get_str_value()),
-            "flowNullValues": lambda n : setattr(self, 'flow_null_values', n.get_bool_value()),
+            "api_expressions": lambda n : setattr(self, 'api_expressions', n.get_collection_of_object_values(StringKeyStringValuePair)),
+            "case_exact": lambda n : setattr(self, 'case_exact', n.get_bool_value()),
+            "default_value": lambda n : setattr(self, 'default_value', n.get_str_value()),
+            "flow_null_values": lambda n : setattr(self, 'flow_null_values', n.get_bool_value()),
             "metadata": lambda n : setattr(self, 'metadata', n.get_collection_of_object_values(AttributeDefinitionMetadataEntry)),
             "multivalued": lambda n : setattr(self, 'multivalued', n.get_bool_value()),
             "mutability": lambda n : setattr(self, 'mutability', n.get_enum_value(Mutability)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "referencedObjects": lambda n : setattr(self, 'referenced_objects', n.get_collection_of_object_values(ReferencedObject)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "referenced_objects": lambda n : setattr(self, 'referenced_objects', n.get_collection_of_object_values(ReferencedObject)),
             "required": lambda n : setattr(self, 'required', n.get_bool_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(AttributeType)),
         }
@@ -99,16 +99,16 @@ class AttributeDefinition(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("anchor", self.anchor)
-        writer.write_collection_of_object_values("apiExpressions", self.api_expressions)
-        writer.write_bool_value("caseExact", self.case_exact)
-        writer.write_str_value("defaultValue", self.default_value)
-        writer.write_bool_value("flowNullValues", self.flow_null_values)
+        writer.write_collection_of_object_values("api_expressions", self.api_expressions)
+        writer.write_bool_value("case_exact", self.case_exact)
+        writer.write_str_value("default_value", self.default_value)
+        writer.write_bool_value("flow_null_values", self.flow_null_values)
         writer.write_collection_of_object_values("metadata", self.metadata)
         writer.write_bool_value("multivalued", self.multivalued)
         writer.write_enum_value("mutability", self.mutability)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("referencedObjects", self.referenced_objects)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("referenced_objects", self.referenced_objects)
         writer.write_bool_value("required", self.required)
         writer.write_enum_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)

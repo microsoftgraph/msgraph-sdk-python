@@ -114,40 +114,40 @@ class AndroidWorkProfileGeneralDeviceConfiguration(DeviceConfiguration):
         from .device_configuration import DeviceConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "passwordBlockFingerprintUnlock": lambda n : setattr(self, 'password_block_fingerprint_unlock', n.get_bool_value()),
-            "passwordBlockTrustAgents": lambda n : setattr(self, 'password_block_trust_agents', n.get_bool_value()),
-            "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
-            "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
-            "passwordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
-            "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(AndroidWorkProfileRequiredPasswordType)),
-            "passwordSignInFailureCountBeforeFactoryReset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
-            "securityRequireVerifyApps": lambda n : setattr(self, 'security_require_verify_apps', n.get_bool_value()),
-            "workProfileBlockAddingAccounts": lambda n : setattr(self, 'work_profile_block_adding_accounts', n.get_bool_value()),
-            "workProfileBlockCamera": lambda n : setattr(self, 'work_profile_block_camera', n.get_bool_value()),
-            "workProfileBlockCrossProfileCallerId": lambda n : setattr(self, 'work_profile_block_cross_profile_caller_id', n.get_bool_value()),
-            "workProfileBlockCrossProfileContactsSearch": lambda n : setattr(self, 'work_profile_block_cross_profile_contacts_search', n.get_bool_value()),
-            "workProfileBlockCrossProfileCopyPaste": lambda n : setattr(self, 'work_profile_block_cross_profile_copy_paste', n.get_bool_value()),
-            "workProfileBlockNotificationsWhileDeviceLocked": lambda n : setattr(self, 'work_profile_block_notifications_while_device_locked', n.get_bool_value()),
-            "workProfileBlockScreenCapture": lambda n : setattr(self, 'work_profile_block_screen_capture', n.get_bool_value()),
-            "workProfileBluetoothEnableContactSharing": lambda n : setattr(self, 'work_profile_bluetooth_enable_contact_sharing', n.get_bool_value()),
-            "workProfileDataSharingType": lambda n : setattr(self, 'work_profile_data_sharing_type', n.get_enum_value(AndroidWorkProfileCrossProfileDataSharingType)),
-            "workProfileDefaultAppPermissionPolicy": lambda n : setattr(self, 'work_profile_default_app_permission_policy', n.get_enum_value(AndroidWorkProfileDefaultAppPermissionPolicyType)),
-            "workProfilePasswordBlockFingerprintUnlock": lambda n : setattr(self, 'work_profile_password_block_fingerprint_unlock', n.get_bool_value()),
-            "workProfilePasswordBlockTrustAgents": lambda n : setattr(self, 'work_profile_password_block_trust_agents', n.get_bool_value()),
-            "workProfilePasswordExpirationDays": lambda n : setattr(self, 'work_profile_password_expiration_days', n.get_int_value()),
-            "workProfilePasswordMinLetterCharacters": lambda n : setattr(self, 'work_profile_password_min_letter_characters', n.get_int_value()),
-            "workProfilePasswordMinLowerCaseCharacters": lambda n : setattr(self, 'work_profile_password_min_lower_case_characters', n.get_int_value()),
-            "workProfilePasswordMinNonLetterCharacters": lambda n : setattr(self, 'work_profile_password_min_non_letter_characters', n.get_int_value()),
-            "workProfilePasswordMinNumericCharacters": lambda n : setattr(self, 'work_profile_password_min_numeric_characters', n.get_int_value()),
-            "workProfilePasswordMinSymbolCharacters": lambda n : setattr(self, 'work_profile_password_min_symbol_characters', n.get_int_value()),
-            "workProfilePasswordMinUpperCaseCharacters": lambda n : setattr(self, 'work_profile_password_min_upper_case_characters', n.get_int_value()),
-            "workProfilePasswordMinimumLength": lambda n : setattr(self, 'work_profile_password_minimum_length', n.get_int_value()),
-            "workProfilePasswordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'work_profile_password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
-            "workProfilePasswordPreviousPasswordBlockCount": lambda n : setattr(self, 'work_profile_password_previous_password_block_count', n.get_int_value()),
-            "workProfilePasswordRequiredType": lambda n : setattr(self, 'work_profile_password_required_type', n.get_enum_value(AndroidWorkProfileRequiredPasswordType)),
-            "workProfilePasswordSignInFailureCountBeforeFactoryReset": lambda n : setattr(self, 'work_profile_password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
-            "workProfileRequirePassword": lambda n : setattr(self, 'work_profile_require_password', n.get_bool_value()),
+            "password_block_fingerprint_unlock": lambda n : setattr(self, 'password_block_fingerprint_unlock', n.get_bool_value()),
+            "password_block_trust_agents": lambda n : setattr(self, 'password_block_trust_agents', n.get_bool_value()),
+            "password_expiration_days": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
+            "password_minimum_length": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
+            "password_minutes_of_inactivity_before_screen_timeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
+            "password_previous_password_block_count": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
+            "password_required_type": lambda n : setattr(self, 'password_required_type', n.get_enum_value(AndroidWorkProfileRequiredPasswordType)),
+            "password_sign_in_failure_count_before_factory_reset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
+            "security_require_verify_apps": lambda n : setattr(self, 'security_require_verify_apps', n.get_bool_value()),
+            "work_profile_block_adding_accounts": lambda n : setattr(self, 'work_profile_block_adding_accounts', n.get_bool_value()),
+            "work_profile_block_camera": lambda n : setattr(self, 'work_profile_block_camera', n.get_bool_value()),
+            "work_profile_block_cross_profile_caller_id": lambda n : setattr(self, 'work_profile_block_cross_profile_caller_id', n.get_bool_value()),
+            "work_profile_block_cross_profile_contacts_search": lambda n : setattr(self, 'work_profile_block_cross_profile_contacts_search', n.get_bool_value()),
+            "work_profile_block_cross_profile_copy_paste": lambda n : setattr(self, 'work_profile_block_cross_profile_copy_paste', n.get_bool_value()),
+            "work_profile_block_notifications_while_device_locked": lambda n : setattr(self, 'work_profile_block_notifications_while_device_locked', n.get_bool_value()),
+            "work_profile_block_screen_capture": lambda n : setattr(self, 'work_profile_block_screen_capture', n.get_bool_value()),
+            "work_profile_bluetooth_enable_contact_sharing": lambda n : setattr(self, 'work_profile_bluetooth_enable_contact_sharing', n.get_bool_value()),
+            "work_profile_data_sharing_type": lambda n : setattr(self, 'work_profile_data_sharing_type', n.get_enum_value(AndroidWorkProfileCrossProfileDataSharingType)),
+            "work_profile_default_app_permission_policy": lambda n : setattr(self, 'work_profile_default_app_permission_policy', n.get_enum_value(AndroidWorkProfileDefaultAppPermissionPolicyType)),
+            "work_profile_password_block_fingerprint_unlock": lambda n : setattr(self, 'work_profile_password_block_fingerprint_unlock', n.get_bool_value()),
+            "work_profile_password_block_trust_agents": lambda n : setattr(self, 'work_profile_password_block_trust_agents', n.get_bool_value()),
+            "work_profile_password_expiration_days": lambda n : setattr(self, 'work_profile_password_expiration_days', n.get_int_value()),
+            "work_profile_password_min_letter_characters": lambda n : setattr(self, 'work_profile_password_min_letter_characters', n.get_int_value()),
+            "work_profile_password_min_lower_case_characters": lambda n : setattr(self, 'work_profile_password_min_lower_case_characters', n.get_int_value()),
+            "work_profile_password_min_non_letter_characters": lambda n : setattr(self, 'work_profile_password_min_non_letter_characters', n.get_int_value()),
+            "work_profile_password_min_numeric_characters": lambda n : setattr(self, 'work_profile_password_min_numeric_characters', n.get_int_value()),
+            "work_profile_password_min_symbol_characters": lambda n : setattr(self, 'work_profile_password_min_symbol_characters', n.get_int_value()),
+            "work_profile_password_min_upper_case_characters": lambda n : setattr(self, 'work_profile_password_min_upper_case_characters', n.get_int_value()),
+            "work_profile_password_minimum_length": lambda n : setattr(self, 'work_profile_password_minimum_length', n.get_int_value()),
+            "work_profile_password_minutes_of_inactivity_before_screen_timeout": lambda n : setattr(self, 'work_profile_password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
+            "work_profile_password_previous_password_block_count": lambda n : setattr(self, 'work_profile_password_previous_password_block_count', n.get_int_value()),
+            "work_profile_password_required_type": lambda n : setattr(self, 'work_profile_password_required_type', n.get_enum_value(AndroidWorkProfileRequiredPasswordType)),
+            "work_profile_password_sign_in_failure_count_before_factory_reset": lambda n : setattr(self, 'work_profile_password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
+            "work_profile_require_password": lambda n : setattr(self, 'work_profile_require_password', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -162,39 +162,39 @@ class AndroidWorkProfileGeneralDeviceConfiguration(DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("passwordBlockFingerprintUnlock", self.password_block_fingerprint_unlock)
-        writer.write_bool_value("passwordBlockTrustAgents", self.password_block_trust_agents)
-        writer.write_int_value("passwordExpirationDays", self.password_expiration_days)
-        writer.write_int_value("passwordMinimumLength", self.password_minimum_length)
-        writer.write_int_value("passwordMinutesOfInactivityBeforeScreenTimeout", self.password_minutes_of_inactivity_before_screen_timeout)
-        writer.write_int_value("passwordPreviousPasswordBlockCount", self.password_previous_password_block_count)
-        writer.write_enum_value("passwordRequiredType", self.password_required_type)
-        writer.write_int_value("passwordSignInFailureCountBeforeFactoryReset", self.password_sign_in_failure_count_before_factory_reset)
-        writer.write_bool_value("securityRequireVerifyApps", self.security_require_verify_apps)
-        writer.write_bool_value("workProfileBlockAddingAccounts", self.work_profile_block_adding_accounts)
-        writer.write_bool_value("workProfileBlockCamera", self.work_profile_block_camera)
-        writer.write_bool_value("workProfileBlockCrossProfileCallerId", self.work_profile_block_cross_profile_caller_id)
-        writer.write_bool_value("workProfileBlockCrossProfileContactsSearch", self.work_profile_block_cross_profile_contacts_search)
-        writer.write_bool_value("workProfileBlockCrossProfileCopyPaste", self.work_profile_block_cross_profile_copy_paste)
-        writer.write_bool_value("workProfileBlockNotificationsWhileDeviceLocked", self.work_profile_block_notifications_while_device_locked)
-        writer.write_bool_value("workProfileBlockScreenCapture", self.work_profile_block_screen_capture)
-        writer.write_bool_value("workProfileBluetoothEnableContactSharing", self.work_profile_bluetooth_enable_contact_sharing)
-        writer.write_enum_value("workProfileDataSharingType", self.work_profile_data_sharing_type)
-        writer.write_enum_value("workProfileDefaultAppPermissionPolicy", self.work_profile_default_app_permission_policy)
-        writer.write_bool_value("workProfilePasswordBlockFingerprintUnlock", self.work_profile_password_block_fingerprint_unlock)
-        writer.write_bool_value("workProfilePasswordBlockTrustAgents", self.work_profile_password_block_trust_agents)
-        writer.write_int_value("workProfilePasswordExpirationDays", self.work_profile_password_expiration_days)
-        writer.write_int_value("workProfilePasswordMinLetterCharacters", self.work_profile_password_min_letter_characters)
-        writer.write_int_value("workProfilePasswordMinLowerCaseCharacters", self.work_profile_password_min_lower_case_characters)
-        writer.write_int_value("workProfilePasswordMinNonLetterCharacters", self.work_profile_password_min_non_letter_characters)
-        writer.write_int_value("workProfilePasswordMinNumericCharacters", self.work_profile_password_min_numeric_characters)
-        writer.write_int_value("workProfilePasswordMinSymbolCharacters", self.work_profile_password_min_symbol_characters)
-        writer.write_int_value("workProfilePasswordMinUpperCaseCharacters", self.work_profile_password_min_upper_case_characters)
-        writer.write_int_value("workProfilePasswordMinimumLength", self.work_profile_password_minimum_length)
-        writer.write_int_value("workProfilePasswordMinutesOfInactivityBeforeScreenTimeout", self.work_profile_password_minutes_of_inactivity_before_screen_timeout)
-        writer.write_int_value("workProfilePasswordPreviousPasswordBlockCount", self.work_profile_password_previous_password_block_count)
-        writer.write_enum_value("workProfilePasswordRequiredType", self.work_profile_password_required_type)
-        writer.write_int_value("workProfilePasswordSignInFailureCountBeforeFactoryReset", self.work_profile_password_sign_in_failure_count_before_factory_reset)
-        writer.write_bool_value("workProfileRequirePassword", self.work_profile_require_password)
+        writer.write_bool_value("password_block_fingerprint_unlock", self.password_block_fingerprint_unlock)
+        writer.write_bool_value("password_block_trust_agents", self.password_block_trust_agents)
+        writer.write_int_value("password_expiration_days", self.password_expiration_days)
+        writer.write_int_value("password_minimum_length", self.password_minimum_length)
+        writer.write_int_value("password_minutes_of_inactivity_before_screen_timeout", self.password_minutes_of_inactivity_before_screen_timeout)
+        writer.write_int_value("password_previous_password_block_count", self.password_previous_password_block_count)
+        writer.write_enum_value("password_required_type", self.password_required_type)
+        writer.write_int_value("password_sign_in_failure_count_before_factory_reset", self.password_sign_in_failure_count_before_factory_reset)
+        writer.write_bool_value("security_require_verify_apps", self.security_require_verify_apps)
+        writer.write_bool_value("work_profile_block_adding_accounts", self.work_profile_block_adding_accounts)
+        writer.write_bool_value("work_profile_block_camera", self.work_profile_block_camera)
+        writer.write_bool_value("work_profile_block_cross_profile_caller_id", self.work_profile_block_cross_profile_caller_id)
+        writer.write_bool_value("work_profile_block_cross_profile_contacts_search", self.work_profile_block_cross_profile_contacts_search)
+        writer.write_bool_value("work_profile_block_cross_profile_copy_paste", self.work_profile_block_cross_profile_copy_paste)
+        writer.write_bool_value("work_profile_block_notifications_while_device_locked", self.work_profile_block_notifications_while_device_locked)
+        writer.write_bool_value("work_profile_block_screen_capture", self.work_profile_block_screen_capture)
+        writer.write_bool_value("work_profile_bluetooth_enable_contact_sharing", self.work_profile_bluetooth_enable_contact_sharing)
+        writer.write_enum_value("work_profile_data_sharing_type", self.work_profile_data_sharing_type)
+        writer.write_enum_value("work_profile_default_app_permission_policy", self.work_profile_default_app_permission_policy)
+        writer.write_bool_value("work_profile_password_block_fingerprint_unlock", self.work_profile_password_block_fingerprint_unlock)
+        writer.write_bool_value("work_profile_password_block_trust_agents", self.work_profile_password_block_trust_agents)
+        writer.write_int_value("work_profile_password_expiration_days", self.work_profile_password_expiration_days)
+        writer.write_int_value("work_profile_password_min_letter_characters", self.work_profile_password_min_letter_characters)
+        writer.write_int_value("work_profile_password_min_lower_case_characters", self.work_profile_password_min_lower_case_characters)
+        writer.write_int_value("work_profile_password_min_non_letter_characters", self.work_profile_password_min_non_letter_characters)
+        writer.write_int_value("work_profile_password_min_numeric_characters", self.work_profile_password_min_numeric_characters)
+        writer.write_int_value("work_profile_password_min_symbol_characters", self.work_profile_password_min_symbol_characters)
+        writer.write_int_value("work_profile_password_min_upper_case_characters", self.work_profile_password_min_upper_case_characters)
+        writer.write_int_value("work_profile_password_minimum_length", self.work_profile_password_minimum_length)
+        writer.write_int_value("work_profile_password_minutes_of_inactivity_before_screen_timeout", self.work_profile_password_minutes_of_inactivity_before_screen_timeout)
+        writer.write_int_value("work_profile_password_previous_password_block_count", self.work_profile_password_previous_password_block_count)
+        writer.write_enum_value("work_profile_password_required_type", self.work_profile_password_required_type)
+        writer.write_int_value("work_profile_password_sign_in_failure_count_before_factory_reset", self.work_profile_password_sign_in_failure_count_before_factory_reset)
+        writer.write_bool_value("work_profile_require_password", self.work_profile_require_password)
     
 

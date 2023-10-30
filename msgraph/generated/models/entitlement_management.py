@@ -94,16 +94,16 @@ class EntitlementManagement(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessPackageAssignmentApprovals": lambda n : setattr(self, 'access_package_assignment_approvals', n.get_collection_of_object_values(Approval)),
-            "accessPackages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(AccessPackage)),
-            "assignmentPolicies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(AccessPackageAssignmentPolicy)),
-            "assignmentRequests": lambda n : setattr(self, 'assignment_requests', n.get_collection_of_object_values(AccessPackageAssignmentRequest)),
+            "access_package_assignment_approvals": lambda n : setattr(self, 'access_package_assignment_approvals', n.get_collection_of_object_values(Approval)),
+            "access_packages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(AccessPackage)),
+            "assignment_policies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(AccessPackageAssignmentPolicy)),
+            "assignment_requests": lambda n : setattr(self, 'assignment_requests', n.get_collection_of_object_values(AccessPackageAssignmentRequest)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(AccessPackageAssignment)),
             "catalogs": lambda n : setattr(self, 'catalogs', n.get_collection_of_object_values(AccessPackageCatalog)),
-            "connectedOrganizations": lambda n : setattr(self, 'connected_organizations', n.get_collection_of_object_values(ConnectedOrganization)),
-            "resourceEnvironments": lambda n : setattr(self, 'resource_environments', n.get_collection_of_object_values(AccessPackageResourceEnvironment)),
-            "resourceRequests": lambda n : setattr(self, 'resource_requests', n.get_collection_of_object_values(AccessPackageResourceRequest)),
-            "resourceRoleScopes": lambda n : setattr(self, 'resource_role_scopes', n.get_collection_of_object_values(AccessPackageResourceRoleScope)),
+            "connected_organizations": lambda n : setattr(self, 'connected_organizations', n.get_collection_of_object_values(ConnectedOrganization)),
+            "resource_environments": lambda n : setattr(self, 'resource_environments', n.get_collection_of_object_values(AccessPackageResourceEnvironment)),
+            "resource_requests": lambda n : setattr(self, 'resource_requests', n.get_collection_of_object_values(AccessPackageResourceRequest)),
+            "resource_role_scopes": lambda n : setattr(self, 'resource_role_scopes', n.get_collection_of_object_values(AccessPackageResourceRoleScope)),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(AccessPackageResource)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(EntitlementManagementSettings)),
         }
@@ -120,16 +120,16 @@ class EntitlementManagement(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("accessPackageAssignmentApprovals", self.access_package_assignment_approvals)
-        writer.write_collection_of_object_values("accessPackages", self.access_packages)
-        writer.write_collection_of_object_values("assignmentPolicies", self.assignment_policies)
-        writer.write_collection_of_object_values("assignmentRequests", self.assignment_requests)
+        writer.write_collection_of_object_values("access_package_assignment_approvals", self.access_package_assignment_approvals)
+        writer.write_collection_of_object_values("access_packages", self.access_packages)
+        writer.write_collection_of_object_values("assignment_policies", self.assignment_policies)
+        writer.write_collection_of_object_values("assignment_requests", self.assignment_requests)
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_collection_of_object_values("catalogs", self.catalogs)
-        writer.write_collection_of_object_values("connectedOrganizations", self.connected_organizations)
-        writer.write_collection_of_object_values("resourceEnvironments", self.resource_environments)
-        writer.write_collection_of_object_values("resourceRequests", self.resource_requests)
-        writer.write_collection_of_object_values("resourceRoleScopes", self.resource_role_scopes)
+        writer.write_collection_of_object_values("connected_organizations", self.connected_organizations)
+        writer.write_collection_of_object_values("resource_environments", self.resource_environments)
+        writer.write_collection_of_object_values("resource_requests", self.resource_requests)
+        writer.write_collection_of_object_values("resource_role_scopes", self.resource_role_scopes)
         writer.write_collection_of_object_values("resources", self.resources)
         writer.write_object_value("settings", self.settings)
     

@@ -31,7 +31,7 @@ class ConfirmCompromisedPostRequestBody(AdditionalDataHolder, BackedModel, Parsa
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "servicePrincipalIds": lambda n : setattr(self, 'service_principal_ids', n.get_collection_of_primitive_values(str)),
+            "service_principal_ids": lambda n : setattr(self, 'service_principal_ids', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -43,7 +43,7 @@ class ConfirmCompromisedPostRequestBody(AdditionalDataHolder, BackedModel, Parsa
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("servicePrincipalIds", self.service_principal_ids)
+        writer.write_collection_of_primitive_values("service_principal_ids", self.service_principal_ids)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -43,9 +43,9 @@ class IosLobAppAssignmentSettings(MobileAppAssignmentSettings):
         from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isRemovable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
-            "uninstallOnDeviceRemoval": lambda n : setattr(self, 'uninstall_on_device_removal', n.get_bool_value()),
-            "vpnConfigurationId": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
+            "is_removable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
+            "uninstall_on_device_removal": lambda n : setattr(self, 'uninstall_on_device_removal', n.get_bool_value()),
+            "vpn_configuration_id": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class IosLobAppAssignmentSettings(MobileAppAssignmentSettings):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isRemovable", self.is_removable)
-        writer.write_bool_value("uninstallOnDeviceRemoval", self.uninstall_on_device_removal)
-        writer.write_str_value("vpnConfigurationId", self.vpn_configuration_id)
+        writer.write_bool_value("is_removable", self.is_removable)
+        writer.write_bool_value("uninstall_on_device_removal", self.uninstall_on_device_removal)
+        writer.write_str_value("vpn_configuration_id", self.vpn_configuration_id)
     
 

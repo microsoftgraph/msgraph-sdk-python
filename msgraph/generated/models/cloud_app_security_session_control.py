@@ -39,7 +39,7 @@ class CloudAppSecuritySessionControl(ConditionalAccessSessionControl):
         from .conditional_access_session_control import ConditionalAccessSessionControl
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "cloudAppSecurityType": lambda n : setattr(self, 'cloud_app_security_type', n.get_enum_value(CloudAppSecuritySessionControlType)),
+            "cloud_app_security_type": lambda n : setattr(self, 'cloud_app_security_type', n.get_enum_value(CloudAppSecuritySessionControlType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class CloudAppSecuritySessionControl(ConditionalAccessSessionControl):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("cloudAppSecurityType", self.cloud_app_security_type)
+        writer.write_enum_value("cloud_app_security_type", self.cloud_app_security_type)
     
 

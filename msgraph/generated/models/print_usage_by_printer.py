@@ -38,8 +38,8 @@ class PrintUsageByPrinter(PrintUsage):
         from .print_usage import PrintUsage
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "printerId": lambda n : setattr(self, 'printer_id', n.get_str_value()),
-            "printerName": lambda n : setattr(self, 'printer_name', n.get_str_value()),
+            "printer_id": lambda n : setattr(self, 'printer_id', n.get_str_value()),
+            "printer_name": lambda n : setattr(self, 'printer_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class PrintUsageByPrinter(PrintUsage):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("printerId", self.printer_id)
-        writer.write_str_value("printerName", self.printer_name)
+        writer.write_str_value("printer_id", self.printer_id)
+        writer.write_str_value("printer_name", self.printer_name)
     
 

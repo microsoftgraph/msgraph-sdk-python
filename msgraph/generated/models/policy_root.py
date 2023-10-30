@@ -129,25 +129,25 @@ class PolicyRoot(Entity):
         from .unified_role_management_policy_assignment import UnifiedRoleManagementPolicyAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activityBasedTimeoutPolicies": lambda n : setattr(self, 'activity_based_timeout_policies', n.get_collection_of_object_values(ActivityBasedTimeoutPolicy)),
-            "adminConsentRequestPolicy": lambda n : setattr(self, 'admin_consent_request_policy', n.get_object_value(AdminConsentRequestPolicy)),
-            "appManagementPolicies": lambda n : setattr(self, 'app_management_policies', n.get_collection_of_object_values(AppManagementPolicy)),
-            "authenticationFlowsPolicy": lambda n : setattr(self, 'authentication_flows_policy', n.get_object_value(AuthenticationFlowsPolicy)),
-            "authenticationMethodsPolicy": lambda n : setattr(self, 'authentication_methods_policy', n.get_object_value(AuthenticationMethodsPolicy)),
-            "authenticationStrengthPolicies": lambda n : setattr(self, 'authentication_strength_policies', n.get_collection_of_object_values(AuthenticationStrengthPolicy)),
-            "authorizationPolicy": lambda n : setattr(self, 'authorization_policy', n.get_object_value(AuthorizationPolicy)),
-            "claimsMappingPolicies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(ClaimsMappingPolicy)),
-            "conditionalAccessPolicies": lambda n : setattr(self, 'conditional_access_policies', n.get_collection_of_object_values(ConditionalAccessPolicy)),
-            "crossTenantAccessPolicy": lambda n : setattr(self, 'cross_tenant_access_policy', n.get_object_value(CrossTenantAccessPolicy)),
-            "defaultAppManagementPolicy": lambda n : setattr(self, 'default_app_management_policy', n.get_object_value(TenantAppManagementPolicy)),
-            "featureRolloutPolicies": lambda n : setattr(self, 'feature_rollout_policies', n.get_collection_of_object_values(FeatureRolloutPolicy)),
-            "homeRealmDiscoveryPolicies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(HomeRealmDiscoveryPolicy)),
-            "identitySecurityDefaultsEnforcementPolicy": lambda n : setattr(self, 'identity_security_defaults_enforcement_policy', n.get_object_value(IdentitySecurityDefaultsEnforcementPolicy)),
-            "permissionGrantPolicies": lambda n : setattr(self, 'permission_grant_policies', n.get_collection_of_object_values(PermissionGrantPolicy)),
-            "roleManagementPolicies": lambda n : setattr(self, 'role_management_policies', n.get_collection_of_object_values(UnifiedRoleManagementPolicy)),
-            "roleManagementPolicyAssignments": lambda n : setattr(self, 'role_management_policy_assignments', n.get_collection_of_object_values(UnifiedRoleManagementPolicyAssignment)),
-            "tokenIssuancePolicies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(TokenIssuancePolicy)),
-            "tokenLifetimePolicies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(TokenLifetimePolicy)),
+            "activity_based_timeout_policies": lambda n : setattr(self, 'activity_based_timeout_policies', n.get_collection_of_object_values(ActivityBasedTimeoutPolicy)),
+            "admin_consent_request_policy": lambda n : setattr(self, 'admin_consent_request_policy', n.get_object_value(AdminConsentRequestPolicy)),
+            "app_management_policies": lambda n : setattr(self, 'app_management_policies', n.get_collection_of_object_values(AppManagementPolicy)),
+            "authentication_flows_policy": lambda n : setattr(self, 'authentication_flows_policy', n.get_object_value(AuthenticationFlowsPolicy)),
+            "authentication_methods_policy": lambda n : setattr(self, 'authentication_methods_policy', n.get_object_value(AuthenticationMethodsPolicy)),
+            "authentication_strength_policies": lambda n : setattr(self, 'authentication_strength_policies', n.get_collection_of_object_values(AuthenticationStrengthPolicy)),
+            "authorization_policy": lambda n : setattr(self, 'authorization_policy', n.get_object_value(AuthorizationPolicy)),
+            "claims_mapping_policies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(ClaimsMappingPolicy)),
+            "conditional_access_policies": lambda n : setattr(self, 'conditional_access_policies', n.get_collection_of_object_values(ConditionalAccessPolicy)),
+            "cross_tenant_access_policy": lambda n : setattr(self, 'cross_tenant_access_policy', n.get_object_value(CrossTenantAccessPolicy)),
+            "default_app_management_policy": lambda n : setattr(self, 'default_app_management_policy', n.get_object_value(TenantAppManagementPolicy)),
+            "feature_rollout_policies": lambda n : setattr(self, 'feature_rollout_policies', n.get_collection_of_object_values(FeatureRolloutPolicy)),
+            "home_realm_discovery_policies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(HomeRealmDiscoveryPolicy)),
+            "identity_security_defaults_enforcement_policy": lambda n : setattr(self, 'identity_security_defaults_enforcement_policy', n.get_object_value(IdentitySecurityDefaultsEnforcementPolicy)),
+            "permission_grant_policies": lambda n : setattr(self, 'permission_grant_policies', n.get_collection_of_object_values(PermissionGrantPolicy)),
+            "role_management_policies": lambda n : setattr(self, 'role_management_policies', n.get_collection_of_object_values(UnifiedRoleManagementPolicy)),
+            "role_management_policy_assignments": lambda n : setattr(self, 'role_management_policy_assignments', n.get_collection_of_object_values(UnifiedRoleManagementPolicyAssignment)),
+            "token_issuance_policies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(TokenIssuancePolicy)),
+            "token_lifetime_policies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(TokenLifetimePolicy)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -162,24 +162,24 @@ class PolicyRoot(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("activityBasedTimeoutPolicies", self.activity_based_timeout_policies)
-        writer.write_object_value("adminConsentRequestPolicy", self.admin_consent_request_policy)
-        writer.write_collection_of_object_values("appManagementPolicies", self.app_management_policies)
-        writer.write_object_value("authenticationFlowsPolicy", self.authentication_flows_policy)
-        writer.write_object_value("authenticationMethodsPolicy", self.authentication_methods_policy)
-        writer.write_collection_of_object_values("authenticationStrengthPolicies", self.authentication_strength_policies)
-        writer.write_object_value("authorizationPolicy", self.authorization_policy)
-        writer.write_collection_of_object_values("claimsMappingPolicies", self.claims_mapping_policies)
-        writer.write_collection_of_object_values("conditionalAccessPolicies", self.conditional_access_policies)
-        writer.write_object_value("crossTenantAccessPolicy", self.cross_tenant_access_policy)
-        writer.write_object_value("defaultAppManagementPolicy", self.default_app_management_policy)
-        writer.write_collection_of_object_values("featureRolloutPolicies", self.feature_rollout_policies)
-        writer.write_collection_of_object_values("homeRealmDiscoveryPolicies", self.home_realm_discovery_policies)
-        writer.write_object_value("identitySecurityDefaultsEnforcementPolicy", self.identity_security_defaults_enforcement_policy)
-        writer.write_collection_of_object_values("permissionGrantPolicies", self.permission_grant_policies)
-        writer.write_collection_of_object_values("roleManagementPolicies", self.role_management_policies)
-        writer.write_collection_of_object_values("roleManagementPolicyAssignments", self.role_management_policy_assignments)
-        writer.write_collection_of_object_values("tokenIssuancePolicies", self.token_issuance_policies)
-        writer.write_collection_of_object_values("tokenLifetimePolicies", self.token_lifetime_policies)
+        writer.write_collection_of_object_values("activity_based_timeout_policies", self.activity_based_timeout_policies)
+        writer.write_object_value("admin_consent_request_policy", self.admin_consent_request_policy)
+        writer.write_collection_of_object_values("app_management_policies", self.app_management_policies)
+        writer.write_object_value("authentication_flows_policy", self.authentication_flows_policy)
+        writer.write_object_value("authentication_methods_policy", self.authentication_methods_policy)
+        writer.write_collection_of_object_values("authentication_strength_policies", self.authentication_strength_policies)
+        writer.write_object_value("authorization_policy", self.authorization_policy)
+        writer.write_collection_of_object_values("claims_mapping_policies", self.claims_mapping_policies)
+        writer.write_collection_of_object_values("conditional_access_policies", self.conditional_access_policies)
+        writer.write_object_value("cross_tenant_access_policy", self.cross_tenant_access_policy)
+        writer.write_object_value("default_app_management_policy", self.default_app_management_policy)
+        writer.write_collection_of_object_values("feature_rollout_policies", self.feature_rollout_policies)
+        writer.write_collection_of_object_values("home_realm_discovery_policies", self.home_realm_discovery_policies)
+        writer.write_object_value("identity_security_defaults_enforcement_policy", self.identity_security_defaults_enforcement_policy)
+        writer.write_collection_of_object_values("permission_grant_policies", self.permission_grant_policies)
+        writer.write_collection_of_object_values("role_management_policies", self.role_management_policies)
+        writer.write_collection_of_object_values("role_management_policy_assignments", self.role_management_policy_assignments)
+        writer.write_collection_of_object_values("token_issuance_policies", self.token_issuance_policies)
+        writer.write_collection_of_object_values("token_lifetime_policies", self.token_lifetime_policies)
     
 

@@ -75,20 +75,20 @@ class UserActivity(Entity):
         from .visual_info import VisualInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activationUrl": lambda n : setattr(self, 'activation_url', n.get_str_value()),
-            "activitySourceHost": lambda n : setattr(self, 'activity_source_host', n.get_str_value()),
-            "appActivityId": lambda n : setattr(self, 'app_activity_id', n.get_str_value()),
-            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "contentInfo": lambda n : setattr(self, 'content_info', n.get_object_value(Json)),
-            "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "fallbackUrl": lambda n : setattr(self, 'fallback_url', n.get_str_value()),
-            "historyItems": lambda n : setattr(self, 'history_items', n.get_collection_of_object_values(ActivityHistoryItem)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "activation_url": lambda n : setattr(self, 'activation_url', n.get_str_value()),
+            "activity_source_host": lambda n : setattr(self, 'activity_source_host', n.get_str_value()),
+            "app_activity_id": lambda n : setattr(self, 'app_activity_id', n.get_str_value()),
+            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "content_info": lambda n : setattr(self, 'content_info', n.get_object_value(Json)),
+            "content_url": lambda n : setattr(self, 'content_url', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "fallback_url": lambda n : setattr(self, 'fallback_url', n.get_str_value()),
+            "history_items": lambda n : setattr(self, 'history_items', n.get_collection_of_object_values(ActivityHistoryItem)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(Status)),
-            "userTimezone": lambda n : setattr(self, 'user_timezone', n.get_str_value()),
-            "visualElements": lambda n : setattr(self, 'visual_elements', n.get_object_value(VisualInfo)),
+            "user_timezone": lambda n : setattr(self, 'user_timezone', n.get_str_value()),
+            "visual_elements": lambda n : setattr(self, 'visual_elements', n.get_object_value(VisualInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -103,19 +103,19 @@ class UserActivity(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("activationUrl", self.activation_url)
-        writer.write_str_value("activitySourceHost", self.activity_source_host)
-        writer.write_str_value("appActivityId", self.app_activity_id)
-        writer.write_str_value("appDisplayName", self.app_display_name)
-        writer.write_object_value("contentInfo", self.content_info)
-        writer.write_str_value("contentUrl", self.content_url)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
-        writer.write_str_value("fallbackUrl", self.fallback_url)
-        writer.write_collection_of_object_values("historyItems", self.history_items)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_str_value("activation_url", self.activation_url)
+        writer.write_str_value("activity_source_host", self.activity_source_host)
+        writer.write_str_value("app_activity_id", self.app_activity_id)
+        writer.write_str_value("app_display_name", self.app_display_name)
+        writer.write_object_value("content_info", self.content_info)
+        writer.write_str_value("content_url", self.content_url)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_datetime_value("expiration_date_time", self.expiration_date_time)
+        writer.write_str_value("fallback_url", self.fallback_url)
+        writer.write_collection_of_object_values("history_items", self.history_items)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_enum_value("status", self.status)
-        writer.write_str_value("userTimezone", self.user_timezone)
-        writer.write_object_value("visualElements", self.visual_elements)
+        writer.write_str_value("user_timezone", self.user_timezone)
+        writer.write_object_value("visual_elements", self.visual_elements)
     
 

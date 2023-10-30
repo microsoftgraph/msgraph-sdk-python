@@ -89,22 +89,22 @@ class SearchRequest(AdditionalDataHolder, BackedModel, Parsable):
         from .sort_property import SortProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "aggregationFilters": lambda n : setattr(self, 'aggregation_filters', n.get_collection_of_primitive_values(str)),
+            "aggregation_filters": lambda n : setattr(self, 'aggregation_filters', n.get_collection_of_primitive_values(str)),
             "aggregations": lambda n : setattr(self, 'aggregations', n.get_collection_of_object_values(AggregationOption)),
-            "collapseProperties": lambda n : setattr(self, 'collapse_properties', n.get_collection_of_object_values(CollapseProperty)),
-            "contentSources": lambda n : setattr(self, 'content_sources', n.get_collection_of_primitive_values(str)),
-            "enableTopResults": lambda n : setattr(self, 'enable_top_results', n.get_bool_value()),
-            "entityTypes": lambda n : setattr(self, 'entity_types', n.get_collection_of_enum_values(EntityType)),
+            "collapse_properties": lambda n : setattr(self, 'collapse_properties', n.get_collection_of_object_values(CollapseProperty)),
+            "content_sources": lambda n : setattr(self, 'content_sources', n.get_collection_of_primitive_values(str)),
+            "enable_top_results": lambda n : setattr(self, 'enable_top_results', n.get_bool_value()),
+            "entity_types": lambda n : setattr(self, 'entity_types', n.get_collection_of_enum_values(EntityType)),
             "fields": lambda n : setattr(self, 'fields', n.get_collection_of_primitive_values(str)),
             "from": lambda n : setattr(self, 'from_', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "query": lambda n : setattr(self, 'query', n.get_object_value(SearchQuery)),
-            "queryAlterationOptions": lambda n : setattr(self, 'query_alteration_options', n.get_object_value(SearchAlterationOptions)),
+            "query_alteration_options": lambda n : setattr(self, 'query_alteration_options', n.get_object_value(SearchAlterationOptions)),
             "region": lambda n : setattr(self, 'region', n.get_str_value()),
-            "resultTemplateOptions": lambda n : setattr(self, 'result_template_options', n.get_object_value(ResultTemplateOption)),
-            "sharePointOneDriveOptions": lambda n : setattr(self, 'share_point_one_drive_options', n.get_object_value(SharePointOneDriveOptions)),
+            "result_template_options": lambda n : setattr(self, 'result_template_options', n.get_object_value(ResultTemplateOption)),
+            "share_point_one_drive_options": lambda n : setattr(self, 'share_point_one_drive_options', n.get_object_value(SharePointOneDriveOptions)),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
-            "sortProperties": lambda n : setattr(self, 'sort_properties', n.get_collection_of_object_values(SortProperty)),
+            "sort_properties": lambda n : setattr(self, 'sort_properties', n.get_collection_of_object_values(SortProperty)),
         }
         return fields
     
@@ -116,22 +116,22 @@ class SearchRequest(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("aggregationFilters", self.aggregation_filters)
+        writer.write_collection_of_primitive_values("aggregation_filters", self.aggregation_filters)
         writer.write_collection_of_object_values("aggregations", self.aggregations)
-        writer.write_collection_of_object_values("collapseProperties", self.collapse_properties)
-        writer.write_collection_of_primitive_values("contentSources", self.content_sources)
-        writer.write_bool_value("enableTopResults", self.enable_top_results)
-        writer.write_collection_of_enum_values("entityTypes", self.entity_types)
+        writer.write_collection_of_object_values("collapse_properties", self.collapse_properties)
+        writer.write_collection_of_primitive_values("content_sources", self.content_sources)
+        writer.write_bool_value("enable_top_results", self.enable_top_results)
+        writer.write_collection_of_enum_values("entity_types", self.entity_types)
         writer.write_collection_of_primitive_values("fields", self.fields)
         writer.write_int_value("from", self.from_)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("query", self.query)
-        writer.write_object_value("queryAlterationOptions", self.query_alteration_options)
+        writer.write_object_value("query_alteration_options", self.query_alteration_options)
         writer.write_str_value("region", self.region)
-        writer.write_object_value("resultTemplateOptions", self.result_template_options)
-        writer.write_object_value("sharePointOneDriveOptions", self.share_point_one_drive_options)
+        writer.write_object_value("result_template_options", self.result_template_options)
+        writer.write_object_value("share_point_one_drive_options", self.share_point_one_drive_options)
         writer.write_int_value("size", self.size)
-        writer.write_collection_of_object_values("sortProperties", self.sort_properties)
+        writer.write_collection_of_object_values("sort_properties", self.sort_properties)
         writer.write_additional_data_value(self.additional_data)
     
 

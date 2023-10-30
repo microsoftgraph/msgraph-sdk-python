@@ -51,10 +51,10 @@ class IosStoreApp(MobileApp):
         from .mobile_app import MobileApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
-            "applicableDeviceType": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(IosDeviceType)),
-            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(IosMinimumOperatingSystem)),
+            "app_store_url": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
+            "applicable_device_type": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(IosDeviceType)),
+            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(IosMinimumOperatingSystem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,9 +69,9 @@ class IosStoreApp(MobileApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("appStoreUrl", self.app_store_url)
-        writer.write_object_value("applicableDeviceType", self.applicable_device_type)
-        writer.write_str_value("bundleId", self.bundle_id)
-        writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
+        writer.write_str_value("app_store_url", self.app_store_url)
+        writer.write_object_value("applicable_device_type", self.applicable_device_type)
+        writer.write_str_value("bundle_id", self.bundle_id)
+        writer.write_object_value("minimum_supported_operating_system", self.minimum_supported_operating_system)
     
 

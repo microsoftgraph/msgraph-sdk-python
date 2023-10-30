@@ -44,10 +44,10 @@ class Filter(AdditionalDataHolder, BackedModel, Parsable):
         from .filter_group import FilterGroup
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "categoryFilterGroups": lambda n : setattr(self, 'category_filter_groups', n.get_collection_of_object_values(FilterGroup)),
+            "category_filter_groups": lambda n : setattr(self, 'category_filter_groups', n.get_collection_of_object_values(FilterGroup)),
             "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(FilterGroup)),
-            "inputFilterGroups": lambda n : setattr(self, 'input_filter_groups', n.get_collection_of_object_values(FilterGroup)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "input_filter_groups": lambda n : setattr(self, 'input_filter_groups', n.get_collection_of_object_values(FilterGroup)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -59,10 +59,10 @@ class Filter(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("categoryFilterGroups", self.category_filter_groups)
+        writer.write_collection_of_object_values("category_filter_groups", self.category_filter_groups)
         writer.write_collection_of_object_values("groups", self.groups)
-        writer.write_collection_of_object_values("inputFilterGroups", self.input_filter_groups)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_collection_of_object_values("input_filter_groups", self.input_filter_groups)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -44,10 +44,10 @@ class TeamworkActivityTopic(AdditionalDataHolder, BackedModel, Parsable):
         from .teamwork_activity_topic_source import TeamworkActivityTopicSource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "source": lambda n : setattr(self, 'source', n.get_enum_value(TeamworkActivityTopicSource)),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         return fields
     
@@ -59,10 +59,10 @@ class TeamworkActivityTopic(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("source", self.source)
         writer.write_str_value("value", self.value)
-        writer.write_str_value("webUrl", self.web_url)
+        writer.write_str_value("web_url", self.web_url)
         writer.write_additional_data_value(self.additional_data)
     
 

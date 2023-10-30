@@ -40,8 +40,8 @@ class PrintDocument(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -57,8 +57,8 @@ class PrintDocument(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("contentType", self.content_type)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("content_type", self.content_type)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_int_value("size", self.size)
     
 

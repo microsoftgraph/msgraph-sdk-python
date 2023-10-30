@@ -50,13 +50,13 @@ class UnifiedApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
         from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "approvalStageTimeOutInDays": lambda n : setattr(self, 'approval_stage_time_out_in_days', n.get_int_value()),
-            "escalationApprovers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(SubjectSet)),
-            "escalationTimeInMinutes": lambda n : setattr(self, 'escalation_time_in_minutes', n.get_int_value()),
-            "isApproverJustificationRequired": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
-            "isEscalationEnabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "primaryApprovers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(SubjectSet)),
+            "approval_stage_time_out_in_days": lambda n : setattr(self, 'approval_stage_time_out_in_days', n.get_int_value()),
+            "escalation_approvers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(SubjectSet)),
+            "escalation_time_in_minutes": lambda n : setattr(self, 'escalation_time_in_minutes', n.get_int_value()),
+            "is_approver_justification_required": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
+            "is_escalation_enabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "primary_approvers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(SubjectSet)),
         }
         return fields
     
@@ -68,13 +68,13 @@ class UnifiedApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("approvalStageTimeOutInDays", self.approval_stage_time_out_in_days)
-        writer.write_collection_of_object_values("escalationApprovers", self.escalation_approvers)
-        writer.write_int_value("escalationTimeInMinutes", self.escalation_time_in_minutes)
-        writer.write_bool_value("isApproverJustificationRequired", self.is_approver_justification_required)
-        writer.write_bool_value("isEscalationEnabled", self.is_escalation_enabled)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("primaryApprovers", self.primary_approvers)
+        writer.write_int_value("approval_stage_time_out_in_days", self.approval_stage_time_out_in_days)
+        writer.write_collection_of_object_values("escalation_approvers", self.escalation_approvers)
+        writer.write_int_value("escalation_time_in_minutes", self.escalation_time_in_minutes)
+        writer.write_bool_value("is_approver_justification_required", self.is_approver_justification_required)
+        writer.write_bool_value("is_escalation_enabled", self.is_escalation_enabled)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("primary_approvers", self.primary_approvers)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -34,8 +34,8 @@ class PendingContentUpdate(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "queuedDateTime": lambda n : setattr(self, 'queued_date_time', n.get_datetime_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "queued_date_time": lambda n : setattr(self, 'queued_date_time', n.get_datetime_value()),
         }
         return fields
     
@@ -47,8 +47,8 @@ class PendingContentUpdate(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_datetime_value("queuedDateTime", self.queued_date_time)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_datetime_value("queued_date_time", self.queued_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

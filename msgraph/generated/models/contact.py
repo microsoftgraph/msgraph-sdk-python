@@ -127,43 +127,43 @@ class Contact(OutlookItem):
         from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assistantName": lambda n : setattr(self, 'assistant_name', n.get_str_value()),
+            "assistant_name": lambda n : setattr(self, 'assistant_name', n.get_str_value()),
             "birthday": lambda n : setattr(self, 'birthday', n.get_datetime_value()),
-            "businessAddress": lambda n : setattr(self, 'business_address', n.get_object_value(PhysicalAddress)),
-            "businessHomePage": lambda n : setattr(self, 'business_home_page', n.get_str_value()),
-            "businessPhones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
+            "business_address": lambda n : setattr(self, 'business_address', n.get_object_value(PhysicalAddress)),
+            "business_home_page": lambda n : setattr(self, 'business_home_page', n.get_str_value()),
+            "business_phones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
             "children": lambda n : setattr(self, 'children', n.get_collection_of_primitive_values(str)),
-            "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
+            "company_name": lambda n : setattr(self, 'company_name', n.get_str_value()),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "emailAddresses": lambda n : setattr(self, 'email_addresses', n.get_collection_of_object_values(EmailAddress)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "email_addresses": lambda n : setattr(self, 'email_addresses', n.get_collection_of_object_values(EmailAddress)),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
-            "fileAs": lambda n : setattr(self, 'file_as', n.get_str_value()),
+            "file_as": lambda n : setattr(self, 'file_as', n.get_str_value()),
             "generation": lambda n : setattr(self, 'generation', n.get_str_value()),
-            "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
-            "homeAddress": lambda n : setattr(self, 'home_address', n.get_object_value(PhysicalAddress)),
-            "homePhones": lambda n : setattr(self, 'home_phones', n.get_collection_of_primitive_values(str)),
-            "imAddresses": lambda n : setattr(self, 'im_addresses', n.get_collection_of_primitive_values(str)),
+            "given_name": lambda n : setattr(self, 'given_name', n.get_str_value()),
+            "home_address": lambda n : setattr(self, 'home_address', n.get_object_value(PhysicalAddress)),
+            "home_phones": lambda n : setattr(self, 'home_phones', n.get_collection_of_primitive_values(str)),
+            "im_addresses": lambda n : setattr(self, 'im_addresses', n.get_collection_of_primitive_values(str)),
             "initials": lambda n : setattr(self, 'initials', n.get_str_value()),
-            "jobTitle": lambda n : setattr(self, 'job_title', n.get_str_value()),
+            "job_title": lambda n : setattr(self, 'job_title', n.get_str_value()),
             "manager": lambda n : setattr(self, 'manager', n.get_str_value()),
-            "middleName": lambda n : setattr(self, 'middle_name', n.get_str_value()),
-            "mobilePhone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
-            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
-            "nickName": lambda n : setattr(self, 'nick_name', n.get_str_value()),
-            "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
-            "otherAddress": lambda n : setattr(self, 'other_address', n.get_object_value(PhysicalAddress)),
-            "parentFolderId": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
-            "personalNotes": lambda n : setattr(self, 'personal_notes', n.get_str_value()),
+            "middle_name": lambda n : setattr(self, 'middle_name', n.get_str_value()),
+            "mobile_phone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
+            "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
+            "nick_name": lambda n : setattr(self, 'nick_name', n.get_str_value()),
+            "office_location": lambda n : setattr(self, 'office_location', n.get_str_value()),
+            "other_address": lambda n : setattr(self, 'other_address', n.get_object_value(PhysicalAddress)),
+            "parent_folder_id": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
+            "personal_notes": lambda n : setattr(self, 'personal_notes', n.get_str_value()),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(ProfilePhoto)),
             "profession": lambda n : setattr(self, 'profession', n.get_str_value()),
-            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
-            "spouseName": lambda n : setattr(self, 'spouse_name', n.get_str_value()),
+            "single_value_extended_properties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
+            "spouse_name": lambda n : setattr(self, 'spouse_name', n.get_str_value()),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
-            "yomiCompanyName": lambda n : setattr(self, 'yomi_company_name', n.get_str_value()),
-            "yomiGivenName": lambda n : setattr(self, 'yomi_given_name', n.get_str_value()),
-            "yomiSurname": lambda n : setattr(self, 'yomi_surname', n.get_str_value()),
+            "yomi_company_name": lambda n : setattr(self, 'yomi_company_name', n.get_str_value()),
+            "yomi_given_name": lambda n : setattr(self, 'yomi_given_name', n.get_str_value()),
+            "yomi_surname": lambda n : setattr(self, 'yomi_surname', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -178,42 +178,42 @@ class Contact(OutlookItem):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("assistantName", self.assistant_name)
+        writer.write_str_value("assistant_name", self.assistant_name)
         writer.write_datetime_value("birthday", self.birthday)
-        writer.write_object_value("businessAddress", self.business_address)
-        writer.write_str_value("businessHomePage", self.business_home_page)
-        writer.write_collection_of_primitive_values("businessPhones", self.business_phones)
+        writer.write_object_value("business_address", self.business_address)
+        writer.write_str_value("business_home_page", self.business_home_page)
+        writer.write_collection_of_primitive_values("business_phones", self.business_phones)
         writer.write_collection_of_primitive_values("children", self.children)
-        writer.write_str_value("companyName", self.company_name)
+        writer.write_str_value("company_name", self.company_name)
         writer.write_str_value("department", self.department)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_object_values("emailAddresses", self.email_addresses)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_object_values("email_addresses", self.email_addresses)
         writer.write_collection_of_object_values("extensions", self.extensions)
-        writer.write_str_value("fileAs", self.file_as)
+        writer.write_str_value("file_as", self.file_as)
         writer.write_str_value("generation", self.generation)
-        writer.write_str_value("givenName", self.given_name)
-        writer.write_object_value("homeAddress", self.home_address)
-        writer.write_collection_of_primitive_values("homePhones", self.home_phones)
-        writer.write_collection_of_primitive_values("imAddresses", self.im_addresses)
+        writer.write_str_value("given_name", self.given_name)
+        writer.write_object_value("home_address", self.home_address)
+        writer.write_collection_of_primitive_values("home_phones", self.home_phones)
+        writer.write_collection_of_primitive_values("im_addresses", self.im_addresses)
         writer.write_str_value("initials", self.initials)
-        writer.write_str_value("jobTitle", self.job_title)
+        writer.write_str_value("job_title", self.job_title)
         writer.write_str_value("manager", self.manager)
-        writer.write_str_value("middleName", self.middle_name)
-        writer.write_str_value("mobilePhone", self.mobile_phone)
-        writer.write_collection_of_object_values("multiValueExtendedProperties", self.multi_value_extended_properties)
-        writer.write_str_value("nickName", self.nick_name)
-        writer.write_str_value("officeLocation", self.office_location)
-        writer.write_object_value("otherAddress", self.other_address)
-        writer.write_str_value("parentFolderId", self.parent_folder_id)
-        writer.write_str_value("personalNotes", self.personal_notes)
+        writer.write_str_value("middle_name", self.middle_name)
+        writer.write_str_value("mobile_phone", self.mobile_phone)
+        writer.write_collection_of_object_values("multi_value_extended_properties", self.multi_value_extended_properties)
+        writer.write_str_value("nick_name", self.nick_name)
+        writer.write_str_value("office_location", self.office_location)
+        writer.write_object_value("other_address", self.other_address)
+        writer.write_str_value("parent_folder_id", self.parent_folder_id)
+        writer.write_str_value("personal_notes", self.personal_notes)
         writer.write_object_value("photo", self.photo)
         writer.write_str_value("profession", self.profession)
-        writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
-        writer.write_str_value("spouseName", self.spouse_name)
+        writer.write_collection_of_object_values("single_value_extended_properties", self.single_value_extended_properties)
+        writer.write_str_value("spouse_name", self.spouse_name)
         writer.write_str_value("surname", self.surname)
         writer.write_str_value("title", self.title)
-        writer.write_str_value("yomiCompanyName", self.yomi_company_name)
-        writer.write_str_value("yomiGivenName", self.yomi_given_name)
-        writer.write_str_value("yomiSurname", self.yomi_surname)
+        writer.write_str_value("yomi_company_name", self.yomi_company_name)
+        writer.write_str_value("yomi_given_name", self.yomi_given_name)
+        writer.write_str_value("yomi_surname", self.yomi_surname)
     
 

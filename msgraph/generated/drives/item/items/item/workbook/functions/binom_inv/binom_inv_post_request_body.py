@@ -43,7 +43,7 @@ class Binom_InvPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "alpha": lambda n : setattr(self, 'alpha', n.get_object_value(Json)),
-            "probabilityS": lambda n : setattr(self, 'probability_s', n.get_object_value(Json)),
+            "probability_s": lambda n : setattr(self, 'probability_s', n.get_object_value(Json)),
             "trials": lambda n : setattr(self, 'trials', n.get_object_value(Json)),
         }
         return fields
@@ -57,7 +57,7 @@ class Binom_InvPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("alpha", self.alpha)
-        writer.write_object_value("probabilityS", self.probability_s)
+        writer.write_object_value("probability_s", self.probability_s)
         writer.write_object_value("trials", self.trials)
         writer.write_additional_data_value(self.additional_data)
     

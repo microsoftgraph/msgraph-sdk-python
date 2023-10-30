@@ -46,9 +46,9 @@ class Win32LobAppProductCodeRule(Win32LobAppRule):
         from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "productCode": lambda n : setattr(self, 'product_code', n.get_str_value()),
-            "productVersion": lambda n : setattr(self, 'product_version', n.get_str_value()),
-            "productVersionOperator": lambda n : setattr(self, 'product_version_operator', n.get_enum_value(Win32LobAppRuleOperator)),
+            "product_code": lambda n : setattr(self, 'product_code', n.get_str_value()),
+            "product_version": lambda n : setattr(self, 'product_version', n.get_str_value()),
+            "product_version_operator": lambda n : setattr(self, 'product_version_operator', n.get_enum_value(Win32LobAppRuleOperator)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,8 +63,8 @@ class Win32LobAppProductCodeRule(Win32LobAppRule):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("productCode", self.product_code)
-        writer.write_str_value("productVersion", self.product_version)
-        writer.write_enum_value("productVersionOperator", self.product_version_operator)
+        writer.write_str_value("product_code", self.product_code)
+        writer.write_str_value("product_version", self.product_version)
+        writer.write_enum_value("product_version_operator", self.product_version_operator)
     
 

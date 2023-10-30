@@ -53,7 +53,7 @@ class ManagedAppConfiguration(ManagedAppPolicy):
         from .targeted_managed_app_configuration import TargetedManagedAppConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "customSettings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(KeyValuePair)),
+            "custom_settings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(KeyValuePair)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -68,6 +68,6 @@ class ManagedAppConfiguration(ManagedAppPolicy):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("customSettings", self.custom_settings)
+        writer.write_collection_of_object_values("custom_settings", self.custom_settings)
     
 

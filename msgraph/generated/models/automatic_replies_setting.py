@@ -56,12 +56,12 @@ class AutomaticRepliesSetting(AdditionalDataHolder, BackedModel, Parsable):
         from .external_audience_scope import ExternalAudienceScope
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "externalAudience": lambda n : setattr(self, 'external_audience', n.get_enum_value(ExternalAudienceScope)),
-            "externalReplyMessage": lambda n : setattr(self, 'external_reply_message', n.get_str_value()),
-            "internalReplyMessage": lambda n : setattr(self, 'internal_reply_message', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "scheduledEndDateTime": lambda n : setattr(self, 'scheduled_end_date_time', n.get_object_value(DateTimeTimeZone)),
-            "scheduledStartDateTime": lambda n : setattr(self, 'scheduled_start_date_time', n.get_object_value(DateTimeTimeZone)),
+            "external_audience": lambda n : setattr(self, 'external_audience', n.get_enum_value(ExternalAudienceScope)),
+            "external_reply_message": lambda n : setattr(self, 'external_reply_message', n.get_str_value()),
+            "internal_reply_message": lambda n : setattr(self, 'internal_reply_message', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "scheduled_end_date_time": lambda n : setattr(self, 'scheduled_end_date_time', n.get_object_value(DateTimeTimeZone)),
+            "scheduled_start_date_time": lambda n : setattr(self, 'scheduled_start_date_time', n.get_object_value(DateTimeTimeZone)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(AutomaticRepliesStatus)),
         }
         return fields
@@ -74,12 +74,12 @@ class AutomaticRepliesSetting(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("externalAudience", self.external_audience)
-        writer.write_str_value("externalReplyMessage", self.external_reply_message)
-        writer.write_str_value("internalReplyMessage", self.internal_reply_message)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("scheduledEndDateTime", self.scheduled_end_date_time)
-        writer.write_object_value("scheduledStartDateTime", self.scheduled_start_date_time)
+        writer.write_enum_value("external_audience", self.external_audience)
+        writer.write_str_value("external_reply_message", self.external_reply_message)
+        writer.write_str_value("internal_reply_message", self.internal_reply_message)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("scheduled_end_date_time", self.scheduled_end_date_time)
+        writer.write_object_value("scheduled_start_date_time", self.scheduled_start_date_time)
         writer.write_enum_value("status", self.status)
         writer.write_additional_data_value(self.additional_data)
     

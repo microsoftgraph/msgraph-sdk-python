@@ -31,7 +31,7 @@ class CleanWindowsDevicePostRequestBody(AdditionalDataHolder, BackedModel, Parsa
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "keepUserData": lambda n : setattr(self, 'keep_user_data', n.get_bool_value()),
+            "keep_user_data": lambda n : setattr(self, 'keep_user_data', n.get_bool_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class CleanWindowsDevicePostRequestBody(AdditionalDataHolder, BackedModel, Parsa
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("keepUserData", self.keep_user_data)
+        writer.write_bool_value("keep_user_data", self.keep_user_data)
         writer.write_additional_data_value(self.additional_data)
     
 

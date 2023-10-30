@@ -78,19 +78,19 @@ class Win32LobApp(MobileLobApp):
         from .windows_architecture import WindowsArchitecture
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_collection_of_enum_values(WindowsArchitecture)),
-            "installCommandLine": lambda n : setattr(self, 'install_command_line', n.get_str_value()),
-            "installExperience": lambda n : setattr(self, 'install_experience', n.get_object_value(Win32LobAppInstallExperience)),
-            "minimumCpuSpeedInMHz": lambda n : setattr(self, 'minimum_cpu_speed_in_m_hz', n.get_int_value()),
-            "minimumFreeDiskSpaceInMB": lambda n : setattr(self, 'minimum_free_disk_space_in_m_b', n.get_int_value()),
-            "minimumMemoryInMB": lambda n : setattr(self, 'minimum_memory_in_m_b', n.get_int_value()),
-            "minimumNumberOfProcessors": lambda n : setattr(self, 'minimum_number_of_processors', n.get_int_value()),
-            "minimumSupportedWindowsRelease": lambda n : setattr(self, 'minimum_supported_windows_release', n.get_str_value()),
-            "msiInformation": lambda n : setattr(self, 'msi_information', n.get_object_value(Win32LobAppMsiInformation)),
-            "returnCodes": lambda n : setattr(self, 'return_codes', n.get_collection_of_object_values(Win32LobAppReturnCode)),
+            "applicable_architectures": lambda n : setattr(self, 'applicable_architectures', n.get_collection_of_enum_values(WindowsArchitecture)),
+            "install_command_line": lambda n : setattr(self, 'install_command_line', n.get_str_value()),
+            "install_experience": lambda n : setattr(self, 'install_experience', n.get_object_value(Win32LobAppInstallExperience)),
+            "minimum_cpu_speed_in_m_hz": lambda n : setattr(self, 'minimum_cpu_speed_in_m_hz', n.get_int_value()),
+            "minimum_free_disk_space_in_m_b": lambda n : setattr(self, 'minimum_free_disk_space_in_m_b', n.get_int_value()),
+            "minimum_memory_in_m_b": lambda n : setattr(self, 'minimum_memory_in_m_b', n.get_int_value()),
+            "minimum_number_of_processors": lambda n : setattr(self, 'minimum_number_of_processors', n.get_int_value()),
+            "minimum_supported_windows_release": lambda n : setattr(self, 'minimum_supported_windows_release', n.get_str_value()),
+            "msi_information": lambda n : setattr(self, 'msi_information', n.get_object_value(Win32LobAppMsiInformation)),
+            "return_codes": lambda n : setattr(self, 'return_codes', n.get_collection_of_object_values(Win32LobAppReturnCode)),
             "rules": lambda n : setattr(self, 'rules', n.get_collection_of_object_values(Win32LobAppRule)),
-            "setupFilePath": lambda n : setattr(self, 'setup_file_path', n.get_str_value()),
-            "uninstallCommandLine": lambda n : setattr(self, 'uninstall_command_line', n.get_str_value()),
+            "setup_file_path": lambda n : setattr(self, 'setup_file_path', n.get_str_value()),
+            "uninstall_command_line": lambda n : setattr(self, 'uninstall_command_line', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -105,18 +105,18 @@ class Win32LobApp(MobileLobApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("applicableArchitectures", self.applicable_architectures)
-        writer.write_str_value("installCommandLine", self.install_command_line)
-        writer.write_object_value("installExperience", self.install_experience)
-        writer.write_int_value("minimumCpuSpeedInMHz", self.minimum_cpu_speed_in_m_hz)
-        writer.write_int_value("minimumFreeDiskSpaceInMB", self.minimum_free_disk_space_in_m_b)
-        writer.write_int_value("minimumMemoryInMB", self.minimum_memory_in_m_b)
-        writer.write_int_value("minimumNumberOfProcessors", self.minimum_number_of_processors)
-        writer.write_str_value("minimumSupportedWindowsRelease", self.minimum_supported_windows_release)
-        writer.write_object_value("msiInformation", self.msi_information)
-        writer.write_collection_of_object_values("returnCodes", self.return_codes)
+        writer.write_enum_value("applicable_architectures", self.applicable_architectures)
+        writer.write_str_value("install_command_line", self.install_command_line)
+        writer.write_object_value("install_experience", self.install_experience)
+        writer.write_int_value("minimum_cpu_speed_in_m_hz", self.minimum_cpu_speed_in_m_hz)
+        writer.write_int_value("minimum_free_disk_space_in_m_b", self.minimum_free_disk_space_in_m_b)
+        writer.write_int_value("minimum_memory_in_m_b", self.minimum_memory_in_m_b)
+        writer.write_int_value("minimum_number_of_processors", self.minimum_number_of_processors)
+        writer.write_str_value("minimum_supported_windows_release", self.minimum_supported_windows_release)
+        writer.write_object_value("msi_information", self.msi_information)
+        writer.write_collection_of_object_values("return_codes", self.return_codes)
         writer.write_collection_of_object_values("rules", self.rules)
-        writer.write_str_value("setupFilePath", self.setup_file_path)
-        writer.write_str_value("uninstallCommandLine", self.uninstall_command_line)
+        writer.write_str_value("setup_file_path", self.setup_file_path)
+        writer.write_str_value("uninstall_command_line", self.uninstall_command_line)
     
 

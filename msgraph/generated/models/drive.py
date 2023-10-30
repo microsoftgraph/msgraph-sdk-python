@@ -75,14 +75,14 @@ class Drive(BaseItem):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "bundles": lambda n : setattr(self, 'bundles', n.get_collection_of_object_values(DriveItem)),
-            "driveType": lambda n : setattr(self, 'drive_type', n.get_str_value()),
+            "drive_type": lambda n : setattr(self, 'drive_type', n.get_str_value()),
             "following": lambda n : setattr(self, 'following', n.get_collection_of_object_values(DriveItem)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(DriveItem)),
             "list": lambda n : setattr(self, 'list_', n.get_object_value(List_)),
             "owner": lambda n : setattr(self, 'owner', n.get_object_value(IdentitySet)),
             "quota": lambda n : setattr(self, 'quota', n.get_object_value(Quota)),
             "root": lambda n : setattr(self, 'root', n.get_object_value(DriveItem)),
-            "sharePointIds": lambda n : setattr(self, 'share_point_ids', n.get_object_value(SharepointIds)),
+            "share_point_ids": lambda n : setattr(self, 'share_point_ids', n.get_object_value(SharepointIds)),
             "special": lambda n : setattr(self, 'special', n.get_collection_of_object_values(DriveItem)),
             "system": lambda n : setattr(self, 'system', n.get_object_value(SystemFacet)),
         }
@@ -100,14 +100,14 @@ class Drive(BaseItem):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("bundles", self.bundles)
-        writer.write_str_value("driveType", self.drive_type)
+        writer.write_str_value("drive_type", self.drive_type)
         writer.write_collection_of_object_values("following", self.following)
         writer.write_collection_of_object_values("items", self.items)
         writer.write_object_value("list", self.list_)
         writer.write_object_value("owner", self.owner)
         writer.write_object_value("quota", self.quota)
         writer.write_object_value("root", self.root)
-        writer.write_object_value("sharePointIds", self.share_point_ids)
+        writer.write_object_value("share_point_ids", self.share_point_ids)
         writer.write_collection_of_object_values("special", self.special)
         writer.write_object_value("system", self.system)
     

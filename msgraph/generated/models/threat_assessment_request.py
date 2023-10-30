@@ -105,11 +105,11 @@ class ThreatAssessmentRequest(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "category": lambda n : setattr(self, 'category', n.get_enum_value(ThreatCategory)),
-            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(ThreatAssessmentContentType)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "expectedAssessment": lambda n : setattr(self, 'expected_assessment', n.get_enum_value(ThreatExpectedAssessment)),
-            "requestSource": lambda n : setattr(self, 'request_source', n.get_enum_value(ThreatAssessmentRequestSource)),
+            "content_type": lambda n : setattr(self, 'content_type', n.get_enum_value(ThreatAssessmentContentType)),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "expected_assessment": lambda n : setattr(self, 'expected_assessment', n.get_enum_value(ThreatExpectedAssessment)),
+            "request_source": lambda n : setattr(self, 'request_source', n.get_enum_value(ThreatAssessmentRequestSource)),
             "results": lambda n : setattr(self, 'results', n.get_collection_of_object_values(ThreatAssessmentResult)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(ThreatAssessmentStatus)),
         }
@@ -127,11 +127,11 @@ class ThreatAssessmentRequest(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("category", self.category)
-        writer.write_enum_value("contentType", self.content_type)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_enum_value("expectedAssessment", self.expected_assessment)
-        writer.write_enum_value("requestSource", self.request_source)
+        writer.write_enum_value("content_type", self.content_type)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_enum_value("expected_assessment", self.expected_assessment)
+        writer.write_enum_value("request_source", self.request_source)
         writer.write_collection_of_object_values("results", self.results)
         writer.write_enum_value("status", self.status)
     

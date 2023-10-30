@@ -40,9 +40,9 @@ class SocialIdentityProvider(IdentityProviderBase):
         from .identity_provider_base import IdentityProviderBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "clientId": lambda n : setattr(self, 'client_id', n.get_str_value()),
-            "clientSecret": lambda n : setattr(self, 'client_secret', n.get_str_value()),
-            "identityProviderType": lambda n : setattr(self, 'identity_provider_type', n.get_str_value()),
+            "client_id": lambda n : setattr(self, 'client_id', n.get_str_value()),
+            "client_secret": lambda n : setattr(self, 'client_secret', n.get_str_value()),
+            "identity_provider_type": lambda n : setattr(self, 'identity_provider_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,8 +57,8 @@ class SocialIdentityProvider(IdentityProviderBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("clientId", self.client_id)
-        writer.write_str_value("clientSecret", self.client_secret)
-        writer.write_str_value("identityProviderType", self.identity_provider_type)
+        writer.write_str_value("client_id", self.client_id)
+        writer.write_str_value("client_secret", self.client_secret)
+        writer.write_str_value("identity_provider_type", self.identity_provider_type)
     
 

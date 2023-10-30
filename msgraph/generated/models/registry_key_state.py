@@ -66,15 +66,15 @@ class RegistryKeyState(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "hive": lambda n : setattr(self, 'hive', n.get_enum_value(RegistryHive)),
             "key": lambda n : setattr(self, 'key', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "oldKey": lambda n : setattr(self, 'old_key', n.get_str_value()),
-            "oldValueData": lambda n : setattr(self, 'old_value_data', n.get_str_value()),
-            "oldValueName": lambda n : setattr(self, 'old_value_name', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "old_key": lambda n : setattr(self, 'old_key', n.get_str_value()),
+            "old_value_data": lambda n : setattr(self, 'old_value_data', n.get_str_value()),
+            "old_value_name": lambda n : setattr(self, 'old_value_name', n.get_str_value()),
             "operation": lambda n : setattr(self, 'operation', n.get_enum_value(RegistryOperation)),
-            "processId": lambda n : setattr(self, 'process_id', n.get_int_value()),
-            "valueData": lambda n : setattr(self, 'value_data', n.get_str_value()),
-            "valueName": lambda n : setattr(self, 'value_name', n.get_str_value()),
-            "valueType": lambda n : setattr(self, 'value_type', n.get_enum_value(RegistryValueType)),
+            "process_id": lambda n : setattr(self, 'process_id', n.get_int_value()),
+            "value_data": lambda n : setattr(self, 'value_data', n.get_str_value()),
+            "value_name": lambda n : setattr(self, 'value_name', n.get_str_value()),
+            "value_type": lambda n : setattr(self, 'value_type', n.get_enum_value(RegistryValueType)),
         }
         return fields
     
@@ -88,15 +88,15 @@ class RegistryKeyState(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("hive", self.hive)
         writer.write_str_value("key", self.key)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("oldKey", self.old_key)
-        writer.write_str_value("oldValueData", self.old_value_data)
-        writer.write_str_value("oldValueName", self.old_value_name)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("old_key", self.old_key)
+        writer.write_str_value("old_value_data", self.old_value_data)
+        writer.write_str_value("old_value_name", self.old_value_name)
         writer.write_enum_value("operation", self.operation)
-        writer.write_int_value("processId", self.process_id)
-        writer.write_str_value("valueData", self.value_data)
-        writer.write_str_value("valueName", self.value_name)
-        writer.write_enum_value("valueType", self.value_type)
+        writer.write_int_value("process_id", self.process_id)
+        writer.write_str_value("value_data", self.value_data)
+        writer.write_str_value("value_name", self.value_name)
+        writer.write_enum_value("value_type", self.value_type)
         writer.write_additional_data_value(self.additional_data)
     
 

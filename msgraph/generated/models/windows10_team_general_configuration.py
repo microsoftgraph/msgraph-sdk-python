@@ -84,26 +84,26 @@ class Windows10TeamGeneralConfiguration(DeviceConfiguration):
         from .welcome_screen_meeting_information import WelcomeScreenMeetingInformation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "azureOperationalInsightsBlockTelemetry": lambda n : setattr(self, 'azure_operational_insights_block_telemetry', n.get_bool_value()),
-            "azureOperationalInsightsWorkspaceId": lambda n : setattr(self, 'azure_operational_insights_workspace_id', n.get_str_value()),
-            "azureOperationalInsightsWorkspaceKey": lambda n : setattr(self, 'azure_operational_insights_workspace_key', n.get_str_value()),
-            "connectAppBlockAutoLaunch": lambda n : setattr(self, 'connect_app_block_auto_launch', n.get_bool_value()),
-            "maintenanceWindowBlocked": lambda n : setattr(self, 'maintenance_window_blocked', n.get_bool_value()),
-            "maintenanceWindowDurationInHours": lambda n : setattr(self, 'maintenance_window_duration_in_hours', n.get_int_value()),
-            "maintenanceWindowStartTime": lambda n : setattr(self, 'maintenance_window_start_time', n.get_time_value()),
-            "miracastBlocked": lambda n : setattr(self, 'miracast_blocked', n.get_bool_value()),
-            "miracastChannel": lambda n : setattr(self, 'miracast_channel', n.get_enum_value(MiracastChannel)),
-            "miracastRequirePin": lambda n : setattr(self, 'miracast_require_pin', n.get_bool_value()),
-            "settingsBlockMyMeetingsAndFiles": lambda n : setattr(self, 'settings_block_my_meetings_and_files', n.get_bool_value()),
-            "settingsBlockSessionResume": lambda n : setattr(self, 'settings_block_session_resume', n.get_bool_value()),
-            "settingsBlockSigninSuggestions": lambda n : setattr(self, 'settings_block_signin_suggestions', n.get_bool_value()),
-            "settingsDefaultVolume": lambda n : setattr(self, 'settings_default_volume', n.get_int_value()),
-            "settingsScreenTimeoutInMinutes": lambda n : setattr(self, 'settings_screen_timeout_in_minutes', n.get_int_value()),
-            "settingsSessionTimeoutInMinutes": lambda n : setattr(self, 'settings_session_timeout_in_minutes', n.get_int_value()),
-            "settingsSleepTimeoutInMinutes": lambda n : setattr(self, 'settings_sleep_timeout_in_minutes', n.get_int_value()),
-            "welcomeScreenBackgroundImageUrl": lambda n : setattr(self, 'welcome_screen_background_image_url', n.get_str_value()),
-            "welcomeScreenBlockAutomaticWakeUp": lambda n : setattr(self, 'welcome_screen_block_automatic_wake_up', n.get_bool_value()),
-            "welcomeScreenMeetingInformation": lambda n : setattr(self, 'welcome_screen_meeting_information', n.get_enum_value(WelcomeScreenMeetingInformation)),
+            "azure_operational_insights_block_telemetry": lambda n : setattr(self, 'azure_operational_insights_block_telemetry', n.get_bool_value()),
+            "azure_operational_insights_workspace_id": lambda n : setattr(self, 'azure_operational_insights_workspace_id', n.get_str_value()),
+            "azure_operational_insights_workspace_key": lambda n : setattr(self, 'azure_operational_insights_workspace_key', n.get_str_value()),
+            "connect_app_block_auto_launch": lambda n : setattr(self, 'connect_app_block_auto_launch', n.get_bool_value()),
+            "maintenance_window_blocked": lambda n : setattr(self, 'maintenance_window_blocked', n.get_bool_value()),
+            "maintenance_window_duration_in_hours": lambda n : setattr(self, 'maintenance_window_duration_in_hours', n.get_int_value()),
+            "maintenance_window_start_time": lambda n : setattr(self, 'maintenance_window_start_time', n.get_time_value()),
+            "miracast_blocked": lambda n : setattr(self, 'miracast_blocked', n.get_bool_value()),
+            "miracast_channel": lambda n : setattr(self, 'miracast_channel', n.get_enum_value(MiracastChannel)),
+            "miracast_require_pin": lambda n : setattr(self, 'miracast_require_pin', n.get_bool_value()),
+            "settings_block_my_meetings_and_files": lambda n : setattr(self, 'settings_block_my_meetings_and_files', n.get_bool_value()),
+            "settings_block_session_resume": lambda n : setattr(self, 'settings_block_session_resume', n.get_bool_value()),
+            "settings_block_signin_suggestions": lambda n : setattr(self, 'settings_block_signin_suggestions', n.get_bool_value()),
+            "settings_default_volume": lambda n : setattr(self, 'settings_default_volume', n.get_int_value()),
+            "settings_screen_timeout_in_minutes": lambda n : setattr(self, 'settings_screen_timeout_in_minutes', n.get_int_value()),
+            "settings_session_timeout_in_minutes": lambda n : setattr(self, 'settings_session_timeout_in_minutes', n.get_int_value()),
+            "settings_sleep_timeout_in_minutes": lambda n : setattr(self, 'settings_sleep_timeout_in_minutes', n.get_int_value()),
+            "welcome_screen_background_image_url": lambda n : setattr(self, 'welcome_screen_background_image_url', n.get_str_value()),
+            "welcome_screen_block_automatic_wake_up": lambda n : setattr(self, 'welcome_screen_block_automatic_wake_up', n.get_bool_value()),
+            "welcome_screen_meeting_information": lambda n : setattr(self, 'welcome_screen_meeting_information', n.get_enum_value(WelcomeScreenMeetingInformation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -118,25 +118,25 @@ class Windows10TeamGeneralConfiguration(DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("azureOperationalInsightsBlockTelemetry", self.azure_operational_insights_block_telemetry)
-        writer.write_str_value("azureOperationalInsightsWorkspaceId", self.azure_operational_insights_workspace_id)
-        writer.write_str_value("azureOperationalInsightsWorkspaceKey", self.azure_operational_insights_workspace_key)
-        writer.write_bool_value("connectAppBlockAutoLaunch", self.connect_app_block_auto_launch)
-        writer.write_bool_value("maintenanceWindowBlocked", self.maintenance_window_blocked)
-        writer.write_int_value("maintenanceWindowDurationInHours", self.maintenance_window_duration_in_hours)
-        writer.write_time_value("maintenanceWindowStartTime", self.maintenance_window_start_time)
-        writer.write_bool_value("miracastBlocked", self.miracast_blocked)
-        writer.write_enum_value("miracastChannel", self.miracast_channel)
-        writer.write_bool_value("miracastRequirePin", self.miracast_require_pin)
-        writer.write_bool_value("settingsBlockMyMeetingsAndFiles", self.settings_block_my_meetings_and_files)
-        writer.write_bool_value("settingsBlockSessionResume", self.settings_block_session_resume)
-        writer.write_bool_value("settingsBlockSigninSuggestions", self.settings_block_signin_suggestions)
-        writer.write_int_value("settingsDefaultVolume", self.settings_default_volume)
-        writer.write_int_value("settingsScreenTimeoutInMinutes", self.settings_screen_timeout_in_minutes)
-        writer.write_int_value("settingsSessionTimeoutInMinutes", self.settings_session_timeout_in_minutes)
-        writer.write_int_value("settingsSleepTimeoutInMinutes", self.settings_sleep_timeout_in_minutes)
-        writer.write_str_value("welcomeScreenBackgroundImageUrl", self.welcome_screen_background_image_url)
-        writer.write_bool_value("welcomeScreenBlockAutomaticWakeUp", self.welcome_screen_block_automatic_wake_up)
-        writer.write_enum_value("welcomeScreenMeetingInformation", self.welcome_screen_meeting_information)
+        writer.write_bool_value("azure_operational_insights_block_telemetry", self.azure_operational_insights_block_telemetry)
+        writer.write_str_value("azure_operational_insights_workspace_id", self.azure_operational_insights_workspace_id)
+        writer.write_str_value("azure_operational_insights_workspace_key", self.azure_operational_insights_workspace_key)
+        writer.write_bool_value("connect_app_block_auto_launch", self.connect_app_block_auto_launch)
+        writer.write_bool_value("maintenance_window_blocked", self.maintenance_window_blocked)
+        writer.write_int_value("maintenance_window_duration_in_hours", self.maintenance_window_duration_in_hours)
+        writer.write_time_value("maintenance_window_start_time", self.maintenance_window_start_time)
+        writer.write_bool_value("miracast_blocked", self.miracast_blocked)
+        writer.write_enum_value("miracast_channel", self.miracast_channel)
+        writer.write_bool_value("miracast_require_pin", self.miracast_require_pin)
+        writer.write_bool_value("settings_block_my_meetings_and_files", self.settings_block_my_meetings_and_files)
+        writer.write_bool_value("settings_block_session_resume", self.settings_block_session_resume)
+        writer.write_bool_value("settings_block_signin_suggestions", self.settings_block_signin_suggestions)
+        writer.write_int_value("settings_default_volume", self.settings_default_volume)
+        writer.write_int_value("settings_screen_timeout_in_minutes", self.settings_screen_timeout_in_minutes)
+        writer.write_int_value("settings_session_timeout_in_minutes", self.settings_session_timeout_in_minutes)
+        writer.write_int_value("settings_sleep_timeout_in_minutes", self.settings_sleep_timeout_in_minutes)
+        writer.write_str_value("welcome_screen_background_image_url", self.welcome_screen_background_image_url)
+        writer.write_bool_value("welcome_screen_block_automatic_wake_up", self.welcome_screen_block_automatic_wake_up)
+        writer.write_enum_value("welcome_screen_meeting_information", self.welcome_screen_meeting_information)
     
 

@@ -44,7 +44,7 @@ class WorkbookTableSort(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "fields": lambda n : setattr(self, 'fields', n.get_collection_of_object_values(WorkbookSortField)),
-            "matchCase": lambda n : setattr(self, 'match_case', n.get_bool_value()),
+            "match_case": lambda n : setattr(self, 'match_case', n.get_bool_value()),
             "method": lambda n : setattr(self, 'method', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -61,7 +61,7 @@ class WorkbookTableSort(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("fields", self.fields)
-        writer.write_bool_value("matchCase", self.match_case)
+        writer.write_bool_value("match_case", self.match_case)
         writer.write_str_value("method", self.method)
     
 

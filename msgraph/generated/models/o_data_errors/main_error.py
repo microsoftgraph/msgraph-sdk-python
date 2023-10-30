@@ -51,7 +51,7 @@ class MainError(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
             "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(ErrorDetails)),
-            "innerError": lambda n : setattr(self, 'inner_error', n.get_object_value(InnerError)),
+            "inner_error": lambda n : setattr(self, 'inner_error', n.get_object_value(InnerError)),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "target": lambda n : setattr(self, 'target', n.get_str_value()),
         }
@@ -67,7 +67,7 @@ class MainError(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_str_value("code", self.code)
         writer.write_collection_of_object_values("details", self.details)
-        writer.write_object_value("innerError", self.inner_error)
+        writer.write_object_value("inner_error", self.inner_error)
         writer.write_str_value("message", self.message)
         writer.write_str_value("target", self.target)
         writer.write_additional_data_value(self.additional_data)

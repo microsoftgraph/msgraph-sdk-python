@@ -36,7 +36,7 @@ class OpenShiftItem(ShiftItem):
         from .shift_item import ShiftItem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "openSlotCount": lambda n : setattr(self, 'open_slot_count', n.get_int_value()),
+            "open_slot_count": lambda n : setattr(self, 'open_slot_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class OpenShiftItem(ShiftItem):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("openSlotCount", self.open_slot_count)
+        writer.write_int_value("open_slot_count", self.open_slot_count)
     
 

@@ -72,8 +72,8 @@ class BaseItemVersion(Entity):
         from .publication_facet import PublicationFacet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "publication": lambda n : setattr(self, 'publication', n.get_object_value(PublicationFacet)),
         }
         super_fields = super().get_field_deserializers()
@@ -89,8 +89,8 @@ class BaseItemVersion(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_object_value("publication", self.publication)
     
 

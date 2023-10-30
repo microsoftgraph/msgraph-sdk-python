@@ -18,23 +18,23 @@ from .entity import Entity
 
 @dataclass
 class AttackSimulationRoot(Entity):
-    # The endUserNotifications property
+    # Represents an end user's notification for an attack simulation training.
     end_user_notifications: Optional[List[EndUserNotification]] = None
-    # The landingPages property
+    # Represents an attack simulation training landing page.
     landing_pages: Optional[List[LandingPage]] = None
-    # The loginPages property
+    # Represents an attack simulation training login page.
     login_pages: Optional[List[LoginPage]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The operations property
+    # Represents an attack simulation training operation.
     operations: Optional[List[AttackSimulationOperation]] = None
-    # The payloads property
+    # Represents an attack simulation training campaign payload in a tenant.
     payloads: Optional[List[Payload]] = None
     # Represents simulation automation created to run on a tenant.
     simulation_automations: Optional[List[SimulationAutomation]] = None
     # Represents an attack simulation training campaign in a tenant.
     simulations: Optional[List[Simulation]] = None
-    # The trainings property
+    # Represents details about attack simulation trainings.
     trainings: Optional[List[Training]] = None
     
     @staticmethod
@@ -74,12 +74,12 @@ class AttackSimulationRoot(Entity):
         from .training import Training
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endUserNotifications": lambda n : setattr(self, 'end_user_notifications', n.get_collection_of_object_values(EndUserNotification)),
-            "landingPages": lambda n : setattr(self, 'landing_pages', n.get_collection_of_object_values(LandingPage)),
-            "loginPages": lambda n : setattr(self, 'login_pages', n.get_collection_of_object_values(LoginPage)),
+            "end_user_notifications": lambda n : setattr(self, 'end_user_notifications', n.get_collection_of_object_values(EndUserNotification)),
+            "landing_pages": lambda n : setattr(self, 'landing_pages', n.get_collection_of_object_values(LandingPage)),
+            "login_pages": lambda n : setattr(self, 'login_pages', n.get_collection_of_object_values(LoginPage)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(AttackSimulationOperation)),
             "payloads": lambda n : setattr(self, 'payloads', n.get_collection_of_object_values(Payload)),
-            "simulationAutomations": lambda n : setattr(self, 'simulation_automations', n.get_collection_of_object_values(SimulationAutomation)),
+            "simulation_automations": lambda n : setattr(self, 'simulation_automations', n.get_collection_of_object_values(SimulationAutomation)),
             "simulations": lambda n : setattr(self, 'simulations', n.get_collection_of_object_values(Simulation)),
             "trainings": lambda n : setattr(self, 'trainings', n.get_collection_of_object_values(Training)),
         }
@@ -96,12 +96,12 @@ class AttackSimulationRoot(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("endUserNotifications", self.end_user_notifications)
-        writer.write_collection_of_object_values("landingPages", self.landing_pages)
-        writer.write_collection_of_object_values("loginPages", self.login_pages)
+        writer.write_collection_of_object_values("end_user_notifications", self.end_user_notifications)
+        writer.write_collection_of_object_values("landing_pages", self.landing_pages)
+        writer.write_collection_of_object_values("login_pages", self.login_pages)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_collection_of_object_values("payloads", self.payloads)
-        writer.write_collection_of_object_values("simulationAutomations", self.simulation_automations)
+        writer.write_collection_of_object_values("simulation_automations", self.simulation_automations)
         writer.write_collection_of_object_values("simulations", self.simulations)
         writer.write_collection_of_object_values("trainings", self.trainings)
     

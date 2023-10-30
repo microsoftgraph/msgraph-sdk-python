@@ -63,15 +63,15 @@ class ObjectMapping(AdditionalDataHolder, BackedModel, Parsable):
         from .object_mapping_metadata_entry import ObjectMappingMetadataEntry
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attributeMappings": lambda n : setattr(self, 'attribute_mappings', n.get_collection_of_object_values(AttributeMapping)),
+            "attribute_mappings": lambda n : setattr(self, 'attribute_mappings', n.get_collection_of_object_values(AttributeMapping)),
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "flowTypes": lambda n : setattr(self, 'flow_types', n.get_collection_of_enum_values(ObjectFlowTypes)),
+            "flow_types": lambda n : setattr(self, 'flow_types', n.get_collection_of_enum_values(ObjectFlowTypes)),
             "metadata": lambda n : setattr(self, 'metadata', n.get_collection_of_object_values(ObjectMappingMetadataEntry)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "scope": lambda n : setattr(self, 'scope', n.get_object_value(Filter)),
-            "sourceObjectName": lambda n : setattr(self, 'source_object_name', n.get_str_value()),
-            "targetObjectName": lambda n : setattr(self, 'target_object_name', n.get_str_value()),
+            "source_object_name": lambda n : setattr(self, 'source_object_name', n.get_str_value()),
+            "target_object_name": lambda n : setattr(self, 'target_object_name', n.get_str_value()),
         }
         return fields
     
@@ -83,15 +83,15 @@ class ObjectMapping(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("attributeMappings", self.attribute_mappings)
+        writer.write_collection_of_object_values("attribute_mappings", self.attribute_mappings)
         writer.write_bool_value("enabled", self.enabled)
-        writer.write_enum_value("flowTypes", self.flow_types)
+        writer.write_enum_value("flow_types", self.flow_types)
         writer.write_collection_of_object_values("metadata", self.metadata)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("scope", self.scope)
-        writer.write_str_value("sourceObjectName", self.source_object_name)
-        writer.write_str_value("targetObjectName", self.target_object_name)
+        writer.write_str_value("source_object_name", self.source_object_name)
+        writer.write_str_value("target_object_name", self.target_object_name)
         writer.write_additional_data_value(self.additional_data)
     
 

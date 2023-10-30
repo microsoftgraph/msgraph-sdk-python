@@ -60,14 +60,14 @@ class TeamsAsyncOperation(Entity):
         from .teams_async_operation_type import TeamsAsyncOperationType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attemptsCount": lambda n : setattr(self, 'attempts_count', n.get_int_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "attempts_count": lambda n : setattr(self, 'attempts_count', n.get_int_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(OperationError)),
-            "lastActionDateTime": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
-            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(TeamsAsyncOperationType)),
+            "last_action_date_time": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
+            "operation_type": lambda n : setattr(self, 'operation_type', n.get_enum_value(TeamsAsyncOperationType)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(TeamsAsyncOperationStatus)),
-            "targetResourceId": lambda n : setattr(self, 'target_resource_id', n.get_str_value()),
-            "targetResourceLocation": lambda n : setattr(self, 'target_resource_location', n.get_str_value()),
+            "target_resource_id": lambda n : setattr(self, 'target_resource_id', n.get_str_value()),
+            "target_resource_location": lambda n : setattr(self, 'target_resource_location', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -82,13 +82,13 @@ class TeamsAsyncOperation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("attemptsCount", self.attempts_count)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_int_value("attempts_count", self.attempts_count)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_object_value("error", self.error)
-        writer.write_datetime_value("lastActionDateTime", self.last_action_date_time)
-        writer.write_enum_value("operationType", self.operation_type)
+        writer.write_datetime_value("last_action_date_time", self.last_action_date_time)
+        writer.write_enum_value("operation_type", self.operation_type)
         writer.write_enum_value("status", self.status)
-        writer.write_str_value("targetResourceId", self.target_resource_id)
-        writer.write_str_value("targetResourceLocation", self.target_resource_location)
+        writer.write_str_value("target_resource_id", self.target_resource_id)
+        writer.write_str_value("target_resource_location", self.target_resource_location)
     
 

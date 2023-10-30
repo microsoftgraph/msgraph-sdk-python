@@ -51,10 +51,10 @@ class Trending(Entity):
         from .resource_visualization import ResourceVisualization
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(Entity)),
-            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(ResourceReference)),
-            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(ResourceVisualization)),
+            "resource_reference": lambda n : setattr(self, 'resource_reference', n.get_object_value(ResourceReference)),
+            "resource_visualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(ResourceVisualization)),
             "weight": lambda n : setattr(self, 'weight', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -70,7 +70,7 @@ class Trending(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_object_value("resource", self.resource)
         writer.write_float_value("weight", self.weight)
     

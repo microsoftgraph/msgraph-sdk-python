@@ -31,7 +31,7 @@ class SetVerifiedPublisherPostRequestBody(AdditionalDataHolder, BackedModel, Par
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "verifiedPublisherId": lambda n : setattr(self, 'verified_publisher_id', n.get_str_value()),
+            "verified_publisher_id": lambda n : setattr(self, 'verified_publisher_id', n.get_str_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class SetVerifiedPublisherPostRequestBody(AdditionalDataHolder, BackedModel, Par
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("verifiedPublisherId", self.verified_publisher_id)
+        writer.write_str_value("verified_publisher_id", self.verified_publisher_id)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -36,7 +36,7 @@ class SwapShiftsChangeRequest(OfferShiftRequest):
         from .offer_shift_request import OfferShiftRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "recipientShiftId": lambda n : setattr(self, 'recipient_shift_id', n.get_str_value()),
+            "recipient_shift_id": lambda n : setattr(self, 'recipient_shift_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class SwapShiftsChangeRequest(OfferShiftRequest):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("recipientShiftId", self.recipient_shift_id)
+        writer.write_str_value("recipient_shift_id", self.recipient_shift_id)
     
 

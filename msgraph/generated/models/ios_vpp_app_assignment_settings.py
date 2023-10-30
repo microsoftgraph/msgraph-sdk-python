@@ -41,8 +41,8 @@ class IosVppAppAssignmentSettings(MobileAppAssignmentSettings):
         from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "useDeviceLicensing": lambda n : setattr(self, 'use_device_licensing', n.get_bool_value()),
-            "vpnConfigurationId": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
+            "use_device_licensing": lambda n : setattr(self, 'use_device_licensing', n.get_bool_value()),
+            "vpn_configuration_id": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class IosVppAppAssignmentSettings(MobileAppAssignmentSettings):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("useDeviceLicensing", self.use_device_licensing)
-        writer.write_str_value("vpnConfigurationId", self.vpn_configuration_id)
+        writer.write_bool_value("use_device_licensing", self.use_device_licensing)
+        writer.write_str_value("vpn_configuration_id", self.vpn_configuration_id)
     
 

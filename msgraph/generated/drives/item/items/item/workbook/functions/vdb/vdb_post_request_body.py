@@ -51,12 +51,12 @@ class VdbPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "cost": lambda n : setattr(self, 'cost', n.get_object_value(Json)),
-            "endPeriod": lambda n : setattr(self, 'end_period', n.get_object_value(Json)),
+            "end_period": lambda n : setattr(self, 'end_period', n.get_object_value(Json)),
             "factor": lambda n : setattr(self, 'factor', n.get_object_value(Json)),
             "life": lambda n : setattr(self, 'life', n.get_object_value(Json)),
-            "noSwitch": lambda n : setattr(self, 'no_switch', n.get_object_value(Json)),
+            "no_switch": lambda n : setattr(self, 'no_switch', n.get_object_value(Json)),
             "salvage": lambda n : setattr(self, 'salvage', n.get_object_value(Json)),
-            "startPeriod": lambda n : setattr(self, 'start_period', n.get_object_value(Json)),
+            "start_period": lambda n : setattr(self, 'start_period', n.get_object_value(Json)),
         }
         return fields
     
@@ -69,12 +69,12 @@ class VdbPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("cost", self.cost)
-        writer.write_object_value("endPeriod", self.end_period)
+        writer.write_object_value("end_period", self.end_period)
         writer.write_object_value("factor", self.factor)
         writer.write_object_value("life", self.life)
-        writer.write_object_value("noSwitch", self.no_switch)
+        writer.write_object_value("no_switch", self.no_switch)
         writer.write_object_value("salvage", self.salvage)
-        writer.write_object_value("startPeriod", self.start_period)
+        writer.write_object_value("start_period", self.start_period)
         writer.write_additional_data_value(self.additional_data)
     
 

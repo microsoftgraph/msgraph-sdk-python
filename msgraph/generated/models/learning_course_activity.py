@@ -70,12 +70,12 @@ class LearningCourseActivity(Entity):
         from .learning_self_initiated_course import LearningSelfInitiatedCourse
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "completionPercentage": lambda n : setattr(self, 'completion_percentage', n.get_int_value()),
-            "externalcourseActivityId": lambda n : setattr(self, 'externalcourse_activity_id', n.get_str_value()),
-            "learnerUserId": lambda n : setattr(self, 'learner_user_id', n.get_str_value()),
-            "learningContentId": lambda n : setattr(self, 'learning_content_id', n.get_str_value()),
-            "learningProviderId": lambda n : setattr(self, 'learning_provider_id', n.get_str_value()),
+            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "completion_percentage": lambda n : setattr(self, 'completion_percentage', n.get_int_value()),
+            "externalcourse_activity_id": lambda n : setattr(self, 'externalcourse_activity_id', n.get_str_value()),
+            "learner_user_id": lambda n : setattr(self, 'learner_user_id', n.get_str_value()),
+            "learning_content_id": lambda n : setattr(self, 'learning_content_id', n.get_str_value()),
+            "learning_provider_id": lambda n : setattr(self, 'learning_provider_id', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(CourseStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -91,12 +91,12 @@ class LearningCourseActivity(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("completedDateTime", self.completed_date_time)
-        writer.write_int_value("completionPercentage", self.completion_percentage)
-        writer.write_str_value("externalcourseActivityId", self.externalcourse_activity_id)
-        writer.write_str_value("learnerUserId", self.learner_user_id)
-        writer.write_str_value("learningContentId", self.learning_content_id)
-        writer.write_str_value("learningProviderId", self.learning_provider_id)
+        writer.write_datetime_value("completed_date_time", self.completed_date_time)
+        writer.write_int_value("completion_percentage", self.completion_percentage)
+        writer.write_str_value("externalcourse_activity_id", self.externalcourse_activity_id)
+        writer.write_str_value("learner_user_id", self.learner_user_id)
+        writer.write_str_value("learning_content_id", self.learning_content_id)
+        writer.write_str_value("learning_provider_id", self.learning_provider_id)
         writer.write_enum_value("status", self.status)
     
 

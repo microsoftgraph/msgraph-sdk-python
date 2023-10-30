@@ -39,10 +39,10 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
-            "notAfter": lambda n : setattr(self, 'not_after', n.get_int_value()),
-            "notBefore": lambda n : setattr(self, 'not_before', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "is_active": lambda n : setattr(self, 'is_active', n.get_bool_value()),
+            "not_after": lambda n : setattr(self, 'not_after', n.get_int_value()),
+            "not_before": lambda n : setattr(self, 'not_before', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "thumbprint": lambda n : setattr(self, 'thumbprint', n.get_str_value()),
         }
         return fields
@@ -55,10 +55,10 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("isActive", self.is_active)
-        writer.write_int_value("notAfter", self.not_after)
-        writer.write_int_value("notBefore", self.not_before)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("is_active", self.is_active)
+        writer.write_int_value("not_after", self.not_after)
+        writer.write_int_value("not_before", self.not_before)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("thumbprint", self.thumbprint)
         writer.write_additional_data_value(self.additional_data)
     

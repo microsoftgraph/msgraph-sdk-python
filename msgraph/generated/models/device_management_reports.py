@@ -42,7 +42,7 @@ class DeviceManagementReports(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "exportJobs": lambda n : setattr(self, 'export_jobs', n.get_collection_of_object_values(DeviceManagementExportJob)),
+            "export_jobs": lambda n : setattr(self, 'export_jobs', n.get_collection_of_object_values(DeviceManagementExportJob)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,6 +57,6 @@ class DeviceManagementReports(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("exportJobs", self.export_jobs)
+        writer.write_collection_of_object_values("export_jobs", self.export_jobs)
     
 

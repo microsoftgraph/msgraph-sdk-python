@@ -48,7 +48,7 @@ class TrainingItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TrainingItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Training]:
         """
-        Get trainings from security
+        Represents details about attack simulation trainings.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Training]
         """
@@ -109,7 +109,7 @@ class TrainingItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TrainingItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get trainings from security
+        Represents details about attack simulation trainings.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -176,7 +176,7 @@ class TrainingItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TrainingItemRequestBuilderGetQueryParameters():
         """
-        Get trainings from security
+        Represents details about attack simulation trainings.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

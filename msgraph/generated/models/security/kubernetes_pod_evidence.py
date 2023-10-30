@@ -72,13 +72,13 @@ class KubernetesPodEvidence(AlertEvidence):
         fields: Dict[str, Callable[[Any], None]] = {
             "containers": lambda n : setattr(self, 'containers', n.get_collection_of_object_values(ContainerEvidence)),
             "controller": lambda n : setattr(self, 'controller', n.get_object_value(KubernetesControllerEvidence)),
-            "ephemeralContainers": lambda n : setattr(self, 'ephemeral_containers', n.get_collection_of_object_values(ContainerEvidence)),
-            "initContainers": lambda n : setattr(self, 'init_containers', n.get_collection_of_object_values(ContainerEvidence)),
+            "ephemeral_containers": lambda n : setattr(self, 'ephemeral_containers', n.get_collection_of_object_values(ContainerEvidence)),
+            "init_containers": lambda n : setattr(self, 'init_containers', n.get_collection_of_object_values(ContainerEvidence)),
             "labels": lambda n : setattr(self, 'labels', n.get_object_value(Dictionary)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "namespace": lambda n : setattr(self, 'namespace', n.get_object_value(KubernetesNamespaceEvidence)),
-            "podIp": lambda n : setattr(self, 'pod_ip', n.get_object_value(IpEvidence)),
-            "serviceAccount": lambda n : setattr(self, 'service_account', n.get_object_value(KubernetesServiceAccountEvidence)),
+            "pod_ip": lambda n : setattr(self, 'pod_ip', n.get_object_value(IpEvidence)),
+            "service_account": lambda n : setattr(self, 'service_account', n.get_object_value(KubernetesServiceAccountEvidence)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -95,12 +95,12 @@ class KubernetesPodEvidence(AlertEvidence):
         super().serialize(writer)
         writer.write_collection_of_object_values("containers", self.containers)
         writer.write_object_value("controller", self.controller)
-        writer.write_collection_of_object_values("ephemeralContainers", self.ephemeral_containers)
-        writer.write_collection_of_object_values("initContainers", self.init_containers)
+        writer.write_collection_of_object_values("ephemeral_containers", self.ephemeral_containers)
+        writer.write_collection_of_object_values("init_containers", self.init_containers)
         writer.write_object_value("labels", self.labels)
         writer.write_str_value("name", self.name)
         writer.write_object_value("namespace", self.namespace)
-        writer.write_object_value("podIp", self.pod_ip)
-        writer.write_object_value("serviceAccount", self.service_account)
+        writer.write_object_value("pod_ip", self.pod_ip)
+        writer.write_object_value("service_account", self.service_account)
     
 

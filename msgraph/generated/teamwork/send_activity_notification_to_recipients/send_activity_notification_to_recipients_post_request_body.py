@@ -59,12 +59,12 @@ class SendActivityNotificationToRecipientsPostRequestBody(AdditionalDataHolder, 
         from ...models.teamwork_notification_recipient import TeamworkNotificationRecipient
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activityType": lambda n : setattr(self, 'activity_type', n.get_str_value()),
-            "chainId": lambda n : setattr(self, 'chain_id', n.get_int_value()),
-            "previewText": lambda n : setattr(self, 'preview_text', n.get_object_value(ItemBody)),
+            "activity_type": lambda n : setattr(self, 'activity_type', n.get_str_value()),
+            "chain_id": lambda n : setattr(self, 'chain_id', n.get_int_value()),
+            "preview_text": lambda n : setattr(self, 'preview_text', n.get_object_value(ItemBody)),
             "recipients": lambda n : setattr(self, 'recipients', n.get_collection_of_object_values(TeamworkNotificationRecipient)),
-            "teamsAppId": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
-            "templateParameters": lambda n : setattr(self, 'template_parameters', n.get_collection_of_object_values(KeyValuePair)),
+            "teams_app_id": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
+            "template_parameters": lambda n : setattr(self, 'template_parameters', n.get_collection_of_object_values(KeyValuePair)),
             "topic": lambda n : setattr(self, 'topic', n.get_object_value(TeamworkActivityTopic)),
         }
         return fields
@@ -77,12 +77,12 @@ class SendActivityNotificationToRecipientsPostRequestBody(AdditionalDataHolder, 
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("activityType", self.activity_type)
-        writer.write_int_value("chainId", self.chain_id)
-        writer.write_object_value("previewText", self.preview_text)
+        writer.write_str_value("activity_type", self.activity_type)
+        writer.write_int_value("chain_id", self.chain_id)
+        writer.write_object_value("preview_text", self.preview_text)
         writer.write_collection_of_object_values("recipients", self.recipients)
-        writer.write_str_value("teamsAppId", self.teams_app_id)
-        writer.write_collection_of_object_values("templateParameters", self.template_parameters)
+        writer.write_str_value("teams_app_id", self.teams_app_id)
+        writer.write_collection_of_object_values("template_parameters", self.template_parameters)
         writer.write_object_value("topic", self.topic)
         writer.write_additional_data_value(self.additional_data)
     

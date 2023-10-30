@@ -53,18 +53,18 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, BackedModel, Pars
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowAutoFilter": lambda n : setattr(self, 'allow_auto_filter', n.get_bool_value()),
-            "allowDeleteColumns": lambda n : setattr(self, 'allow_delete_columns', n.get_bool_value()),
-            "allowDeleteRows": lambda n : setattr(self, 'allow_delete_rows', n.get_bool_value()),
-            "allowFormatCells": lambda n : setattr(self, 'allow_format_cells', n.get_bool_value()),
-            "allowFormatColumns": lambda n : setattr(self, 'allow_format_columns', n.get_bool_value()),
-            "allowFormatRows": lambda n : setattr(self, 'allow_format_rows', n.get_bool_value()),
-            "allowInsertColumns": lambda n : setattr(self, 'allow_insert_columns', n.get_bool_value()),
-            "allowInsertHyperlinks": lambda n : setattr(self, 'allow_insert_hyperlinks', n.get_bool_value()),
-            "allowInsertRows": lambda n : setattr(self, 'allow_insert_rows', n.get_bool_value()),
-            "allowPivotTables": lambda n : setattr(self, 'allow_pivot_tables', n.get_bool_value()),
-            "allowSort": lambda n : setattr(self, 'allow_sort', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "allow_auto_filter": lambda n : setattr(self, 'allow_auto_filter', n.get_bool_value()),
+            "allow_delete_columns": lambda n : setattr(self, 'allow_delete_columns', n.get_bool_value()),
+            "allow_delete_rows": lambda n : setattr(self, 'allow_delete_rows', n.get_bool_value()),
+            "allow_format_cells": lambda n : setattr(self, 'allow_format_cells', n.get_bool_value()),
+            "allow_format_columns": lambda n : setattr(self, 'allow_format_columns', n.get_bool_value()),
+            "allow_format_rows": lambda n : setattr(self, 'allow_format_rows', n.get_bool_value()),
+            "allow_insert_columns": lambda n : setattr(self, 'allow_insert_columns', n.get_bool_value()),
+            "allow_insert_hyperlinks": lambda n : setattr(self, 'allow_insert_hyperlinks', n.get_bool_value()),
+            "allow_insert_rows": lambda n : setattr(self, 'allow_insert_rows', n.get_bool_value()),
+            "allow_pivot_tables": lambda n : setattr(self, 'allow_pivot_tables', n.get_bool_value()),
+            "allow_sort": lambda n : setattr(self, 'allow_sort', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -76,18 +76,18 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, BackedModel, Pars
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("allowAutoFilter", self.allow_auto_filter)
-        writer.write_bool_value("allowDeleteColumns", self.allow_delete_columns)
-        writer.write_bool_value("allowDeleteRows", self.allow_delete_rows)
-        writer.write_bool_value("allowFormatCells", self.allow_format_cells)
-        writer.write_bool_value("allowFormatColumns", self.allow_format_columns)
-        writer.write_bool_value("allowFormatRows", self.allow_format_rows)
-        writer.write_bool_value("allowInsertColumns", self.allow_insert_columns)
-        writer.write_bool_value("allowInsertHyperlinks", self.allow_insert_hyperlinks)
-        writer.write_bool_value("allowInsertRows", self.allow_insert_rows)
-        writer.write_bool_value("allowPivotTables", self.allow_pivot_tables)
-        writer.write_bool_value("allowSort", self.allow_sort)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("allow_auto_filter", self.allow_auto_filter)
+        writer.write_bool_value("allow_delete_columns", self.allow_delete_columns)
+        writer.write_bool_value("allow_delete_rows", self.allow_delete_rows)
+        writer.write_bool_value("allow_format_cells", self.allow_format_cells)
+        writer.write_bool_value("allow_format_columns", self.allow_format_columns)
+        writer.write_bool_value("allow_format_rows", self.allow_format_rows)
+        writer.write_bool_value("allow_insert_columns", self.allow_insert_columns)
+        writer.write_bool_value("allow_insert_hyperlinks", self.allow_insert_hyperlinks)
+        writer.write_bool_value("allow_insert_rows", self.allow_insert_rows)
+        writer.write_bool_value("allow_pivot_tables", self.allow_pivot_tables)
+        writer.write_bool_value("allow_sort", self.allow_sort)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

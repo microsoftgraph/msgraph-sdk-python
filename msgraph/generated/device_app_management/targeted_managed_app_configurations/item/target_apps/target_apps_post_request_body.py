@@ -43,7 +43,7 @@ class TargetAppsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from .....models.targeted_managed_app_group_type import TargetedManagedAppGroupType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appGroupType": lambda n : setattr(self, 'app_group_type', n.get_enum_value(TargetedManagedAppGroupType)),
+            "app_group_type": lambda n : setattr(self, 'app_group_type', n.get_enum_value(TargetedManagedAppGroupType)),
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(ManagedMobileApp)),
         }
         return fields
@@ -56,7 +56,7 @@ class TargetAppsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("appGroupType", self.app_group_type)
+        writer.write_enum_value("app_group_type", self.app_group_type)
         writer.write_collection_of_object_values("apps", self.apps)
         writer.write_additional_data_value(self.additional_data)
     

@@ -86,24 +86,24 @@ class OrgContact(DirectoryObject):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "addresses": lambda n : setattr(self, 'addresses', n.get_collection_of_object_values(PhysicalOfficeAddress)),
-            "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
+            "company_name": lambda n : setattr(self, 'company_name', n.get_str_value()),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
-            "directReports": lambda n : setattr(self, 'direct_reports', n.get_collection_of_object_values(DirectoryObject)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
-            "jobTitle": lambda n : setattr(self, 'job_title', n.get_str_value()),
+            "direct_reports": lambda n : setattr(self, 'direct_reports', n.get_collection_of_object_values(DirectoryObject)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "given_name": lambda n : setattr(self, 'given_name', n.get_str_value()),
+            "job_title": lambda n : setattr(self, 'job_title', n.get_str_value()),
             "mail": lambda n : setattr(self, 'mail', n.get_str_value()),
-            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
             "manager": lambda n : setattr(self, 'manager', n.get_object_value(DirectoryObject)),
-            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
-            "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
-            "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(OnPremisesProvisioningError)),
-            "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
+            "member_of": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
+            "on_premises_last_sync_date_time": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
+            "on_premises_provisioning_errors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(OnPremisesProvisioningError)),
+            "on_premises_sync_enabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
             "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(Phone)),
-            "proxyAddresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
-            "serviceProvisioningErrors": lambda n : setattr(self, 'service_provisioning_errors', n.get_collection_of_object_values(ServiceProvisioningError)),
+            "proxy_addresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
+            "service_provisioning_errors": lambda n : setattr(self, 'service_provisioning_errors', n.get_collection_of_object_values(ServiceProvisioningError)),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
-            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
+            "transitive_member_of": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -119,23 +119,23 @@ class OrgContact(DirectoryObject):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("addresses", self.addresses)
-        writer.write_str_value("companyName", self.company_name)
+        writer.write_str_value("company_name", self.company_name)
         writer.write_str_value("department", self.department)
-        writer.write_collection_of_object_values("directReports", self.direct_reports)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("givenName", self.given_name)
-        writer.write_str_value("jobTitle", self.job_title)
+        writer.write_collection_of_object_values("direct_reports", self.direct_reports)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("given_name", self.given_name)
+        writer.write_str_value("job_title", self.job_title)
         writer.write_str_value("mail", self.mail)
-        writer.write_str_value("mailNickname", self.mail_nickname)
+        writer.write_str_value("mail_nickname", self.mail_nickname)
         writer.write_object_value("manager", self.manager)
-        writer.write_collection_of_object_values("memberOf", self.member_of)
-        writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
-        writer.write_collection_of_object_values("onPremisesProvisioningErrors", self.on_premises_provisioning_errors)
-        writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
+        writer.write_collection_of_object_values("member_of", self.member_of)
+        writer.write_datetime_value("on_premises_last_sync_date_time", self.on_premises_last_sync_date_time)
+        writer.write_collection_of_object_values("on_premises_provisioning_errors", self.on_premises_provisioning_errors)
+        writer.write_bool_value("on_premises_sync_enabled", self.on_premises_sync_enabled)
         writer.write_collection_of_object_values("phones", self.phones)
-        writer.write_collection_of_primitive_values("proxyAddresses", self.proxy_addresses)
-        writer.write_collection_of_object_values("serviceProvisioningErrors", self.service_provisioning_errors)
+        writer.write_collection_of_primitive_values("proxy_addresses", self.proxy_addresses)
+        writer.write_collection_of_object_values("service_provisioning_errors", self.service_provisioning_errors)
         writer.write_str_value("surname", self.surname)
-        writer.write_collection_of_object_values("transitiveMemberOf", self.transitive_member_of)
+        writer.write_collection_of_object_values("transitive_member_of", self.transitive_member_of)
     
 

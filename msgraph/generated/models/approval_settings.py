@@ -48,12 +48,12 @@ class ApprovalSettings(AdditionalDataHolder, BackedModel, Parsable):
         from .unified_approval_stage import UnifiedApprovalStage
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "approvalMode": lambda n : setattr(self, 'approval_mode', n.get_str_value()),
-            "approvalStages": lambda n : setattr(self, 'approval_stages', n.get_collection_of_object_values(UnifiedApprovalStage)),
-            "isApprovalRequired": lambda n : setattr(self, 'is_approval_required', n.get_bool_value()),
-            "isApprovalRequiredForExtension": lambda n : setattr(self, 'is_approval_required_for_extension', n.get_bool_value()),
-            "isRequestorJustificationRequired": lambda n : setattr(self, 'is_requestor_justification_required', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "approval_mode": lambda n : setattr(self, 'approval_mode', n.get_str_value()),
+            "approval_stages": lambda n : setattr(self, 'approval_stages', n.get_collection_of_object_values(UnifiedApprovalStage)),
+            "is_approval_required": lambda n : setattr(self, 'is_approval_required', n.get_bool_value()),
+            "is_approval_required_for_extension": lambda n : setattr(self, 'is_approval_required_for_extension', n.get_bool_value()),
+            "is_requestor_justification_required": lambda n : setattr(self, 'is_requestor_justification_required', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -65,12 +65,12 @@ class ApprovalSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("approvalMode", self.approval_mode)
-        writer.write_collection_of_object_values("approvalStages", self.approval_stages)
-        writer.write_bool_value("isApprovalRequired", self.is_approval_required)
-        writer.write_bool_value("isApprovalRequiredForExtension", self.is_approval_required_for_extension)
-        writer.write_bool_value("isRequestorJustificationRequired", self.is_requestor_justification_required)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("approval_mode", self.approval_mode)
+        writer.write_collection_of_object_values("approval_stages", self.approval_stages)
+        writer.write_bool_value("is_approval_required", self.is_approval_required)
+        writer.write_bool_value("is_approval_required_for_extension", self.is_approval_required_for_extension)
+        writer.write_bool_value("is_requestor_justification_required", self.is_requestor_justification_required)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

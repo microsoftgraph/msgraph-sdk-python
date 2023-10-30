@@ -71,20 +71,20 @@ class IosCompliancePolicy(DeviceCompliancePolicy):
         from .required_password_type import RequiredPasswordType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceThreatProtectionEnabled": lambda n : setattr(self, 'device_threat_protection_enabled', n.get_bool_value()),
-            "deviceThreatProtectionRequiredSecurityLevel": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(DeviceThreatProtectionLevel)),
-            "managedEmailProfileRequired": lambda n : setattr(self, 'managed_email_profile_required', n.get_bool_value()),
-            "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
-            "osMinimumVersion": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
-            "passcodeBlockSimple": lambda n : setattr(self, 'passcode_block_simple', n.get_bool_value()),
-            "passcodeExpirationDays": lambda n : setattr(self, 'passcode_expiration_days', n.get_int_value()),
-            "passcodeMinimumCharacterSetCount": lambda n : setattr(self, 'passcode_minimum_character_set_count', n.get_int_value()),
-            "passcodeMinimumLength": lambda n : setattr(self, 'passcode_minimum_length', n.get_int_value()),
-            "passcodeMinutesOfInactivityBeforeLock": lambda n : setattr(self, 'passcode_minutes_of_inactivity_before_lock', n.get_int_value()),
-            "passcodePreviousPasscodeBlockCount": lambda n : setattr(self, 'passcode_previous_passcode_block_count', n.get_int_value()),
-            "passcodeRequired": lambda n : setattr(self, 'passcode_required', n.get_bool_value()),
-            "passcodeRequiredType": lambda n : setattr(self, 'passcode_required_type', n.get_enum_value(RequiredPasswordType)),
-            "securityBlockJailbrokenDevices": lambda n : setattr(self, 'security_block_jailbroken_devices', n.get_bool_value()),
+            "device_threat_protection_enabled": lambda n : setattr(self, 'device_threat_protection_enabled', n.get_bool_value()),
+            "device_threat_protection_required_security_level": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(DeviceThreatProtectionLevel)),
+            "managed_email_profile_required": lambda n : setattr(self, 'managed_email_profile_required', n.get_bool_value()),
+            "os_maximum_version": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
+            "os_minimum_version": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
+            "passcode_block_simple": lambda n : setattr(self, 'passcode_block_simple', n.get_bool_value()),
+            "passcode_expiration_days": lambda n : setattr(self, 'passcode_expiration_days', n.get_int_value()),
+            "passcode_minimum_character_set_count": lambda n : setattr(self, 'passcode_minimum_character_set_count', n.get_int_value()),
+            "passcode_minimum_length": lambda n : setattr(self, 'passcode_minimum_length', n.get_int_value()),
+            "passcode_minutes_of_inactivity_before_lock": lambda n : setattr(self, 'passcode_minutes_of_inactivity_before_lock', n.get_int_value()),
+            "passcode_previous_passcode_block_count": lambda n : setattr(self, 'passcode_previous_passcode_block_count', n.get_int_value()),
+            "passcode_required": lambda n : setattr(self, 'passcode_required', n.get_bool_value()),
+            "passcode_required_type": lambda n : setattr(self, 'passcode_required_type', n.get_enum_value(RequiredPasswordType)),
+            "security_block_jailbroken_devices": lambda n : setattr(self, 'security_block_jailbroken_devices', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -99,19 +99,19 @@ class IosCompliancePolicy(DeviceCompliancePolicy):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("deviceThreatProtectionEnabled", self.device_threat_protection_enabled)
-        writer.write_enum_value("deviceThreatProtectionRequiredSecurityLevel", self.device_threat_protection_required_security_level)
-        writer.write_bool_value("managedEmailProfileRequired", self.managed_email_profile_required)
-        writer.write_str_value("osMaximumVersion", self.os_maximum_version)
-        writer.write_str_value("osMinimumVersion", self.os_minimum_version)
-        writer.write_bool_value("passcodeBlockSimple", self.passcode_block_simple)
-        writer.write_int_value("passcodeExpirationDays", self.passcode_expiration_days)
-        writer.write_int_value("passcodeMinimumCharacterSetCount", self.passcode_minimum_character_set_count)
-        writer.write_int_value("passcodeMinimumLength", self.passcode_minimum_length)
-        writer.write_int_value("passcodeMinutesOfInactivityBeforeLock", self.passcode_minutes_of_inactivity_before_lock)
-        writer.write_int_value("passcodePreviousPasscodeBlockCount", self.passcode_previous_passcode_block_count)
-        writer.write_bool_value("passcodeRequired", self.passcode_required)
-        writer.write_enum_value("passcodeRequiredType", self.passcode_required_type)
-        writer.write_bool_value("securityBlockJailbrokenDevices", self.security_block_jailbroken_devices)
+        writer.write_bool_value("device_threat_protection_enabled", self.device_threat_protection_enabled)
+        writer.write_enum_value("device_threat_protection_required_security_level", self.device_threat_protection_required_security_level)
+        writer.write_bool_value("managed_email_profile_required", self.managed_email_profile_required)
+        writer.write_str_value("os_maximum_version", self.os_maximum_version)
+        writer.write_str_value("os_minimum_version", self.os_minimum_version)
+        writer.write_bool_value("passcode_block_simple", self.passcode_block_simple)
+        writer.write_int_value("passcode_expiration_days", self.passcode_expiration_days)
+        writer.write_int_value("passcode_minimum_character_set_count", self.passcode_minimum_character_set_count)
+        writer.write_int_value("passcode_minimum_length", self.passcode_minimum_length)
+        writer.write_int_value("passcode_minutes_of_inactivity_before_lock", self.passcode_minutes_of_inactivity_before_lock)
+        writer.write_int_value("passcode_previous_passcode_block_count", self.passcode_previous_passcode_block_count)
+        writer.write_bool_value("passcode_required", self.passcode_required)
+        writer.write_enum_value("passcode_required_type", self.passcode_required_type)
+        writer.write_bool_value("security_block_jailbroken_devices", self.security_block_jailbroken_devices)
     
 

@@ -61,22 +61,22 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, BackedModel, Parsable)
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "extensionAttribute1": lambda n : setattr(self, 'extension_attribute1', n.get_str_value()),
-            "extensionAttribute10": lambda n : setattr(self, 'extension_attribute10', n.get_str_value()),
-            "extensionAttribute11": lambda n : setattr(self, 'extension_attribute11', n.get_str_value()),
-            "extensionAttribute12": lambda n : setattr(self, 'extension_attribute12', n.get_str_value()),
-            "extensionAttribute13": lambda n : setattr(self, 'extension_attribute13', n.get_str_value()),
-            "extensionAttribute14": lambda n : setattr(self, 'extension_attribute14', n.get_str_value()),
-            "extensionAttribute15": lambda n : setattr(self, 'extension_attribute15', n.get_str_value()),
-            "extensionAttribute2": lambda n : setattr(self, 'extension_attribute2', n.get_str_value()),
-            "extensionAttribute3": lambda n : setattr(self, 'extension_attribute3', n.get_str_value()),
-            "extensionAttribute4": lambda n : setattr(self, 'extension_attribute4', n.get_str_value()),
-            "extensionAttribute5": lambda n : setattr(self, 'extension_attribute5', n.get_str_value()),
-            "extensionAttribute6": lambda n : setattr(self, 'extension_attribute6', n.get_str_value()),
-            "extensionAttribute7": lambda n : setattr(self, 'extension_attribute7', n.get_str_value()),
-            "extensionAttribute8": lambda n : setattr(self, 'extension_attribute8', n.get_str_value()),
-            "extensionAttribute9": lambda n : setattr(self, 'extension_attribute9', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "extension_attribute1": lambda n : setattr(self, 'extension_attribute1', n.get_str_value()),
+            "extension_attribute10": lambda n : setattr(self, 'extension_attribute10', n.get_str_value()),
+            "extension_attribute11": lambda n : setattr(self, 'extension_attribute11', n.get_str_value()),
+            "extension_attribute12": lambda n : setattr(self, 'extension_attribute12', n.get_str_value()),
+            "extension_attribute13": lambda n : setattr(self, 'extension_attribute13', n.get_str_value()),
+            "extension_attribute14": lambda n : setattr(self, 'extension_attribute14', n.get_str_value()),
+            "extension_attribute15": lambda n : setattr(self, 'extension_attribute15', n.get_str_value()),
+            "extension_attribute2": lambda n : setattr(self, 'extension_attribute2', n.get_str_value()),
+            "extension_attribute3": lambda n : setattr(self, 'extension_attribute3', n.get_str_value()),
+            "extension_attribute4": lambda n : setattr(self, 'extension_attribute4', n.get_str_value()),
+            "extension_attribute5": lambda n : setattr(self, 'extension_attribute5', n.get_str_value()),
+            "extension_attribute6": lambda n : setattr(self, 'extension_attribute6', n.get_str_value()),
+            "extension_attribute7": lambda n : setattr(self, 'extension_attribute7', n.get_str_value()),
+            "extension_attribute8": lambda n : setattr(self, 'extension_attribute8', n.get_str_value()),
+            "extension_attribute9": lambda n : setattr(self, 'extension_attribute9', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -88,22 +88,22 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, BackedModel, Parsable)
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("extensionAttribute1", self.extension_attribute1)
-        writer.write_str_value("extensionAttribute10", self.extension_attribute10)
-        writer.write_str_value("extensionAttribute11", self.extension_attribute11)
-        writer.write_str_value("extensionAttribute12", self.extension_attribute12)
-        writer.write_str_value("extensionAttribute13", self.extension_attribute13)
-        writer.write_str_value("extensionAttribute14", self.extension_attribute14)
-        writer.write_str_value("extensionAttribute15", self.extension_attribute15)
-        writer.write_str_value("extensionAttribute2", self.extension_attribute2)
-        writer.write_str_value("extensionAttribute3", self.extension_attribute3)
-        writer.write_str_value("extensionAttribute4", self.extension_attribute4)
-        writer.write_str_value("extensionAttribute5", self.extension_attribute5)
-        writer.write_str_value("extensionAttribute6", self.extension_attribute6)
-        writer.write_str_value("extensionAttribute7", self.extension_attribute7)
-        writer.write_str_value("extensionAttribute8", self.extension_attribute8)
-        writer.write_str_value("extensionAttribute9", self.extension_attribute9)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("extension_attribute1", self.extension_attribute1)
+        writer.write_str_value("extension_attribute10", self.extension_attribute10)
+        writer.write_str_value("extension_attribute11", self.extension_attribute11)
+        writer.write_str_value("extension_attribute12", self.extension_attribute12)
+        writer.write_str_value("extension_attribute13", self.extension_attribute13)
+        writer.write_str_value("extension_attribute14", self.extension_attribute14)
+        writer.write_str_value("extension_attribute15", self.extension_attribute15)
+        writer.write_str_value("extension_attribute2", self.extension_attribute2)
+        writer.write_str_value("extension_attribute3", self.extension_attribute3)
+        writer.write_str_value("extension_attribute4", self.extension_attribute4)
+        writer.write_str_value("extension_attribute5", self.extension_attribute5)
+        writer.write_str_value("extension_attribute6", self.extension_attribute6)
+        writer.write_str_value("extension_attribute7", self.extension_attribute7)
+        writer.write_str_value("extension_attribute8", self.extension_attribute8)
+        writer.write_str_value("extension_attribute9", self.extension_attribute9)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

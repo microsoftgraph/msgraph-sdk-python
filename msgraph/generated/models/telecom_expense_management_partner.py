@@ -48,10 +48,10 @@ class TelecomExpenseManagementPartner(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appAuthorized": lambda n : setattr(self, 'app_authorized', n.get_bool_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "app_authorized": lambda n : setattr(self, 'app_authorized', n.get_bool_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "lastConnectionDateTime": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
+            "last_connection_date_time": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -67,10 +67,10 @@ class TelecomExpenseManagementPartner(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("appAuthorized", self.app_authorized)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_bool_value("app_authorized", self.app_authorized)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_bool_value("enabled", self.enabled)
-        writer.write_datetime_value("lastConnectionDateTime", self.last_connection_date_time)
+        writer.write_datetime_value("last_connection_date_time", self.last_connection_date_time)
         writer.write_str_value("url", self.url)
     
 

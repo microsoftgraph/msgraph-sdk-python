@@ -62,14 +62,14 @@ class Win32LobAppPowerShellScriptRule(Win32LobAppRule):
         from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "enforceSignatureCheck": lambda n : setattr(self, 'enforce_signature_check', n.get_bool_value()),
-            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(Win32LobAppPowerShellScriptRuleOperationType)),
+            "comparison_value": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "enforce_signature_check": lambda n : setattr(self, 'enforce_signature_check', n.get_bool_value()),
+            "operation_type": lambda n : setattr(self, 'operation_type', n.get_enum_value(Win32LobAppPowerShellScriptRuleOperationType)),
             "operator": lambda n : setattr(self, 'operator', n.get_enum_value(Win32LobAppRuleOperator)),
-            "runAsAccount": lambda n : setattr(self, 'run_as_account', n.get_enum_value(RunAsAccountType)),
-            "runAs32Bit": lambda n : setattr(self, 'run_as32_bit', n.get_bool_value()),
-            "scriptContent": lambda n : setattr(self, 'script_content', n.get_str_value()),
+            "run_as_account": lambda n : setattr(self, 'run_as_account', n.get_enum_value(RunAsAccountType)),
+            "run_as32_bit": lambda n : setattr(self, 'run_as32_bit', n.get_bool_value()),
+            "script_content": lambda n : setattr(self, 'script_content', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,13 +84,13 @@ class Win32LobAppPowerShellScriptRule(Win32LobAppRule):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("comparisonValue", self.comparison_value)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_bool_value("enforceSignatureCheck", self.enforce_signature_check)
-        writer.write_enum_value("operationType", self.operation_type)
+        writer.write_str_value("comparison_value", self.comparison_value)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_bool_value("enforce_signature_check", self.enforce_signature_check)
+        writer.write_enum_value("operation_type", self.operation_type)
         writer.write_enum_value("operator", self.operator)
-        writer.write_enum_value("runAsAccount", self.run_as_account)
-        writer.write_bool_value("runAs32Bit", self.run_as32_bit)
-        writer.write_str_value("scriptContent", self.script_content)
+        writer.write_enum_value("run_as_account", self.run_as_account)
+        writer.write_bool_value("run_as32_bit", self.run_as32_bit)
+        writer.write_str_value("script_content", self.script_content)
     
 

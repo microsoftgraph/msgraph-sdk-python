@@ -71,11 +71,11 @@ class DataSourceContainer(Entity):
         from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "holdStatus": lambda n : setattr(self, 'hold_status', n.get_enum_value(DataSourceHoldStatus)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "releasedDateTime": lambda n : setattr(self, 'released_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "hold_status": lambda n : setattr(self, 'hold_status', n.get_enum_value(DataSourceHoldStatus)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "released_date_time": lambda n : setattr(self, 'released_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(DataSourceContainerStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -91,11 +91,11 @@ class DataSourceContainer(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_enum_value("holdStatus", self.hold_status)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_datetime_value("releasedDateTime", self.released_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_enum_value("hold_status", self.hold_status)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_datetime_value("released_date_time", self.released_date_time)
         writer.write_enum_value("status", self.status)
     
 

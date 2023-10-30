@@ -56,12 +56,12 @@ class ManagedIOSLobApp(ManagedMobileLobApp):
         from .managed_mobile_lob_app import ManagedMobileLobApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicableDeviceType": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(IosDeviceType)),
-            "buildNumber": lambda n : setattr(self, 'build_number', n.get_str_value()),
-            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(IosMinimumOperatingSystem)),
-            "versionNumber": lambda n : setattr(self, 'version_number', n.get_str_value()),
+            "applicable_device_type": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(IosDeviceType)),
+            "build_number": lambda n : setattr(self, 'build_number', n.get_str_value()),
+            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(IosMinimumOperatingSystem)),
+            "version_number": lambda n : setattr(self, 'version_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -76,11 +76,11 @@ class ManagedIOSLobApp(ManagedMobileLobApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("applicableDeviceType", self.applicable_device_type)
-        writer.write_str_value("buildNumber", self.build_number)
-        writer.write_str_value("bundleId", self.bundle_id)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
-        writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
-        writer.write_str_value("versionNumber", self.version_number)
+        writer.write_object_value("applicable_device_type", self.applicable_device_type)
+        writer.write_str_value("build_number", self.build_number)
+        writer.write_str_value("bundle_id", self.bundle_id)
+        writer.write_datetime_value("expiration_date_time", self.expiration_date_time)
+        writer.write_object_value("minimum_supported_operating_system", self.minimum_supported_operating_system)
+        writer.write_str_value("version_number", self.version_number)
     
 

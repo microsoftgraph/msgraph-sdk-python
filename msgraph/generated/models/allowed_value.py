@@ -36,7 +36,7 @@ class AllowedValue(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
+            "is_active": lambda n : setattr(self, 'is_active', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class AllowedValue(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isActive", self.is_active)
+        writer.write_bool_value("is_active", self.is_active)
     
 

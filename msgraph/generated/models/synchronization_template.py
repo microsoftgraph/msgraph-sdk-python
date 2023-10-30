@@ -55,11 +55,11 @@ class SynchronizationTemplate(Entity):
         from .synchronization_schema import SynchronizationSchema
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicationId": lambda n : setattr(self, 'application_id', n.get_uuid_value()),
+            "application_id": lambda n : setattr(self, 'application_id', n.get_uuid_value()),
             "default": lambda n : setattr(self, 'default', n.get_bool_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "discoverable": lambda n : setattr(self, 'discoverable', n.get_bool_value()),
-            "factoryTag": lambda n : setattr(self, 'factory_tag', n.get_str_value()),
+            "factory_tag": lambda n : setattr(self, 'factory_tag', n.get_str_value()),
             "metadata": lambda n : setattr(self, 'metadata', n.get_collection_of_object_values(SynchronizationMetadataEntry)),
             "schema": lambda n : setattr(self, 'schema', n.get_object_value(SynchronizationSchema)),
         }
@@ -76,11 +76,11 @@ class SynchronizationTemplate(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_uuid_value("applicationId", self.application_id)
+        writer.write_uuid_value("application_id", self.application_id)
         writer.write_bool_value("default", self.default)
         writer.write_str_value("description", self.description)
         writer.write_bool_value("discoverable", self.discoverable)
-        writer.write_str_value("factoryTag", self.factory_tag)
+        writer.write_str_value("factory_tag", self.factory_tag)
         writer.write_collection_of_object_values("metadata", self.metadata)
         writer.write_object_value("schema", self.schema)
     

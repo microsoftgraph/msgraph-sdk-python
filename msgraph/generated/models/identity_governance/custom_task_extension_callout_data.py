@@ -56,7 +56,7 @@ class CustomTaskExtensionCalloutData(CustomExtensionData):
         fields: Dict[str, Callable[[Any], None]] = {
             "subject": lambda n : setattr(self, 'subject', n.get_object_value(User)),
             "task": lambda n : setattr(self, 'task', n.get_object_value(Task)),
-            "taskProcessingresult": lambda n : setattr(self, 'task_processingresult', n.get_object_value(TaskProcessingResult)),
+            "task_processingresult": lambda n : setattr(self, 'task_processingresult', n.get_object_value(TaskProcessingResult)),
             "workflow": lambda n : setattr(self, 'workflow', n.get_object_value(Workflow)),
         }
         super_fields = super().get_field_deserializers()
@@ -74,7 +74,7 @@ class CustomTaskExtensionCalloutData(CustomExtensionData):
         super().serialize(writer)
         writer.write_object_value("subject", self.subject)
         writer.write_object_value("task", self.task)
-        writer.write_object_value("taskProcessingresult", self.task_processingresult)
+        writer.write_object_value("task_processingresult", self.task_processingresult)
         writer.write_object_value("workflow", self.workflow)
     
 

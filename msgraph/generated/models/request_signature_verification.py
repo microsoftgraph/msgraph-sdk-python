@@ -42,9 +42,9 @@ class RequestSignatureVerification(AdditionalDataHolder, BackedModel, Parsable):
         from .weak_algorithms import WeakAlgorithms
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedWeakAlgorithms": lambda n : setattr(self, 'allowed_weak_algorithms', n.get_collection_of_enum_values(WeakAlgorithms)),
-            "isSignedRequestRequired": lambda n : setattr(self, 'is_signed_request_required', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "allowed_weak_algorithms": lambda n : setattr(self, 'allowed_weak_algorithms', n.get_collection_of_enum_values(WeakAlgorithms)),
+            "is_signed_request_required": lambda n : setattr(self, 'is_signed_request_required', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -56,9 +56,9 @@ class RequestSignatureVerification(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("allowedWeakAlgorithms", self.allowed_weak_algorithms)
-        writer.write_bool_value("isSignedRequestRequired", self.is_signed_request_required)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_enum_value("allowed_weak_algorithms", self.allowed_weak_algorithms)
+        writer.write_bool_value("is_signed_request_required", self.is_signed_request_required)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

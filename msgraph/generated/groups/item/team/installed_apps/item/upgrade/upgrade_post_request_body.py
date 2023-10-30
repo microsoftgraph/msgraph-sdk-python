@@ -38,7 +38,7 @@ class UpgradePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from .......models.teams_app_permission_set import TeamsAppPermissionSet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "consentedPermissionSet": lambda n : setattr(self, 'consented_permission_set', n.get_object_value(TeamsAppPermissionSet)),
+            "consented_permission_set": lambda n : setattr(self, 'consented_permission_set', n.get_object_value(TeamsAppPermissionSet)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class UpgradePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("consentedPermissionSet", self.consented_permission_set)
+        writer.write_object_value("consented_permission_set", self.consented_permission_set)
         writer.write_additional_data_value(self.additional_data)
     
 

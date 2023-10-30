@@ -54,14 +54,14 @@ class UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId(Entity)
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appCrashCount": lambda n : setattr(self, 'app_crash_count', n.get_int_value()),
-            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "appName": lambda n : setattr(self, 'app_name', n.get_str_value()),
-            "appPublisher": lambda n : setattr(self, 'app_publisher', n.get_str_value()),
-            "appVersion": lambda n : setattr(self, 'app_version', n.get_str_value()),
-            "deviceDisplayName": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
-            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "processedDateTime": lambda n : setattr(self, 'processed_date_time', n.get_datetime_value()),
+            "app_crash_count": lambda n : setattr(self, 'app_crash_count', n.get_int_value()),
+            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "app_name": lambda n : setattr(self, 'app_name', n.get_str_value()),
+            "app_publisher": lambda n : setattr(self, 'app_publisher', n.get_str_value()),
+            "app_version": lambda n : setattr(self, 'app_version', n.get_str_value()),
+            "device_display_name": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
+            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "processed_date_time": lambda n : setattr(self, 'processed_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -76,13 +76,13 @@ class UserExperienceAnalyticsAppHealthAppPerformanceByAppVersionDeviceId(Entity)
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("appCrashCount", self.app_crash_count)
-        writer.write_str_value("appDisplayName", self.app_display_name)
-        writer.write_str_value("appName", self.app_name)
-        writer.write_str_value("appPublisher", self.app_publisher)
-        writer.write_str_value("appVersion", self.app_version)
-        writer.write_str_value("deviceDisplayName", self.device_display_name)
-        writer.write_str_value("deviceId", self.device_id)
-        writer.write_datetime_value("processedDateTime", self.processed_date_time)
+        writer.write_int_value("app_crash_count", self.app_crash_count)
+        writer.write_str_value("app_display_name", self.app_display_name)
+        writer.write_str_value("app_name", self.app_name)
+        writer.write_str_value("app_publisher", self.app_publisher)
+        writer.write_str_value("app_version", self.app_version)
+        writer.write_str_value("device_display_name", self.device_display_name)
+        writer.write_str_value("device_id", self.device_id)
+        writer.write_datetime_value("processed_date_time", self.processed_date_time)
     
 

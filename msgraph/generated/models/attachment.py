@@ -70,9 +70,9 @@ class Attachment(Entity):
         from .reference_attachment import ReferenceAttachment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
-            "isInline": lambda n : setattr(self, 'is_inline', n.get_bool_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "is_inline": lambda n : setattr(self, 'is_inline', n.get_bool_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
@@ -89,9 +89,9 @@ class Attachment(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("contentType", self.content_type)
-        writer.write_bool_value("isInline", self.is_inline)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_str_value("content_type", self.content_type)
+        writer.write_bool_value("is_inline", self.is_inline)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_str_value("name", self.name)
         writer.write_int_value("size", self.size)
     

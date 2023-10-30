@@ -47,11 +47,11 @@ class Shared(AdditionalDataHolder, BackedModel, Parsable):
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "owner": lambda n : setattr(self, 'owner', n.get_object_value(IdentitySet)),
             "scope": lambda n : setattr(self, 'scope', n.get_str_value()),
-            "sharedBy": lambda n : setattr(self, 'shared_by', n.get_object_value(IdentitySet)),
-            "sharedDateTime": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
+            "shared_by": lambda n : setattr(self, 'shared_by', n.get_object_value(IdentitySet)),
+            "shared_date_time": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
         }
         return fields
     
@@ -63,11 +63,11 @@ class Shared(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("owner", self.owner)
         writer.write_str_value("scope", self.scope)
-        writer.write_object_value("sharedBy", self.shared_by)
-        writer.write_datetime_value("sharedDateTime", self.shared_date_time)
+        writer.write_object_value("shared_by", self.shared_by)
+        writer.write_datetime_value("shared_date_time", self.shared_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -42,7 +42,7 @@ class TabUpdatedEventMessageDetail(EventMessageDetail):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
-            "tabId": lambda n : setattr(self, 'tab_id', n.get_str_value()),
+            "tab_id": lambda n : setattr(self, 'tab_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,6 +58,6 @@ class TabUpdatedEventMessageDetail(EventMessageDetail):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("initiator", self.initiator)
-        writer.write_str_value("tabId", self.tab_id)
+        writer.write_str_value("tab_id", self.tab_id)
     
 

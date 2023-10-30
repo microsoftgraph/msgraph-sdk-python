@@ -49,13 +49,13 @@ class TemporaryAccessPassAuthenticationMethod(AuthenticationMethod):
         from .authentication_method import AuthenticationMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "isUsable": lambda n : setattr(self, 'is_usable', n.get_bool_value()),
-            "isUsableOnce": lambda n : setattr(self, 'is_usable_once', n.get_bool_value()),
-            "lifetimeInMinutes": lambda n : setattr(self, 'lifetime_in_minutes', n.get_int_value()),
-            "methodUsabilityReason": lambda n : setattr(self, 'method_usability_reason', n.get_str_value()),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "temporaryAccessPass": lambda n : setattr(self, 'temporary_access_pass', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "is_usable": lambda n : setattr(self, 'is_usable', n.get_bool_value()),
+            "is_usable_once": lambda n : setattr(self, 'is_usable_once', n.get_bool_value()),
+            "lifetime_in_minutes": lambda n : setattr(self, 'lifetime_in_minutes', n.get_int_value()),
+            "method_usability_reason": lambda n : setattr(self, 'method_usability_reason', n.get_str_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "temporary_access_pass": lambda n : setattr(self, 'temporary_access_pass', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -70,12 +70,12 @@ class TemporaryAccessPassAuthenticationMethod(AuthenticationMethod):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_bool_value("isUsable", self.is_usable)
-        writer.write_bool_value("isUsableOnce", self.is_usable_once)
-        writer.write_int_value("lifetimeInMinutes", self.lifetime_in_minutes)
-        writer.write_str_value("methodUsabilityReason", self.method_usability_reason)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
-        writer.write_str_value("temporaryAccessPass", self.temporary_access_pass)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_bool_value("is_usable", self.is_usable)
+        writer.write_bool_value("is_usable_once", self.is_usable_once)
+        writer.write_int_value("lifetime_in_minutes", self.lifetime_in_minutes)
+        writer.write_str_value("method_usability_reason", self.method_usability_reason)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
+        writer.write_str_value("temporary_access_pass", self.temporary_access_pass)
     
 

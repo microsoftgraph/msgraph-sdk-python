@@ -48,10 +48,10 @@ class DeviceComplianceActionItem(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "actionType": lambda n : setattr(self, 'action_type', n.get_enum_value(DeviceComplianceActionType)),
-            "gracePeriodHours": lambda n : setattr(self, 'grace_period_hours', n.get_int_value()),
-            "notificationMessageCCList": lambda n : setattr(self, 'notification_message_c_c_list', n.get_collection_of_primitive_values(str)),
-            "notificationTemplateId": lambda n : setattr(self, 'notification_template_id', n.get_str_value()),
+            "action_type": lambda n : setattr(self, 'action_type', n.get_enum_value(DeviceComplianceActionType)),
+            "grace_period_hours": lambda n : setattr(self, 'grace_period_hours', n.get_int_value()),
+            "notification_message_c_c_list": lambda n : setattr(self, 'notification_message_c_c_list', n.get_collection_of_primitive_values(str)),
+            "notification_template_id": lambda n : setattr(self, 'notification_template_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,9 +66,9 @@ class DeviceComplianceActionItem(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("actionType", self.action_type)
-        writer.write_int_value("gracePeriodHours", self.grace_period_hours)
-        writer.write_collection_of_primitive_values("notificationMessageCCList", self.notification_message_c_c_list)
-        writer.write_str_value("notificationTemplateId", self.notification_template_id)
+        writer.write_enum_value("action_type", self.action_type)
+        writer.write_int_value("grace_period_hours", self.grace_period_hours)
+        writer.write_collection_of_primitive_values("notification_message_c_c_list", self.notification_message_c_c_list)
+        writer.write_str_value("notification_template_id", self.notification_template_id)
     
 

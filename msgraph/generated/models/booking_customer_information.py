@@ -56,14 +56,14 @@ class BookingCustomerInformation(BookingCustomerInformationBase):
         from .location import Location
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "customQuestionAnswers": lambda n : setattr(self, 'custom_question_answers', n.get_collection_of_object_values(BookingQuestionAnswer)),
-            "customerId": lambda n : setattr(self, 'customer_id', n.get_str_value()),
-            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "custom_question_answers": lambda n : setattr(self, 'custom_question_answers', n.get_collection_of_object_values(BookingQuestionAnswer)),
+            "customer_id": lambda n : setattr(self, 'customer_id', n.get_str_value()),
+            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(Location)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
-            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,13 +78,13 @@ class BookingCustomerInformation(BookingCustomerInformationBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("customQuestionAnswers", self.custom_question_answers)
-        writer.write_str_value("customerId", self.customer_id)
-        writer.write_str_value("emailAddress", self.email_address)
+        writer.write_collection_of_object_values("custom_question_answers", self.custom_question_answers)
+        writer.write_str_value("customer_id", self.customer_id)
+        writer.write_str_value("email_address", self.email_address)
         writer.write_object_value("location", self.location)
         writer.write_str_value("name", self.name)
         writer.write_str_value("notes", self.notes)
         writer.write_str_value("phone", self.phone)
-        writer.write_str_value("timeZone", self.time_zone)
+        writer.write_str_value("time_zone", self.time_zone)
     
 

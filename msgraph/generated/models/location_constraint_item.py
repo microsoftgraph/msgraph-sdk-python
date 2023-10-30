@@ -36,7 +36,7 @@ class LocationConstraintItem(Location):
         from .location import Location
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "resolveAvailability": lambda n : setattr(self, 'resolve_availability', n.get_bool_value()),
+            "resolve_availability": lambda n : setattr(self, 'resolve_availability', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class LocationConstraintItem(Location):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("resolveAvailability", self.resolve_availability)
+        writer.write_bool_value("resolve_availability", self.resolve_availability)
     
 

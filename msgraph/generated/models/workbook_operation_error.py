@@ -38,9 +38,9 @@ class WorkbookOperationError(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
-            "innerError": lambda n : setattr(self, 'inner_error', n.get_object_value(WorkbookOperationError)),
+            "inner_error": lambda n : setattr(self, 'inner_error', n.get_object_value(WorkbookOperationError)),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -53,9 +53,9 @@ class WorkbookOperationError(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("code", self.code)
-        writer.write_object_value("innerError", self.inner_error)
+        writer.write_object_value("inner_error", self.inner_error)
         writer.write_str_value("message", self.message)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

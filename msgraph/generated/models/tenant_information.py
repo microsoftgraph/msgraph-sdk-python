@@ -39,11 +39,11 @@ class TenantInformation(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "defaultDomainName": lambda n : setattr(self, 'default_domain_name', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "federationBrandName": lambda n : setattr(self, 'federation_brand_name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "default_domain_name": lambda n : setattr(self, 'default_domain_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "federation_brand_name": lambda n : setattr(self, 'federation_brand_name', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         return fields
     
@@ -55,11 +55,11 @@ class TenantInformation(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("defaultDomainName", self.default_domain_name)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("federationBrandName", self.federation_brand_name)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("tenantId", self.tenant_id)
+        writer.write_str_value("default_domain_name", self.default_domain_name)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("federation_brand_name", self.federation_brand_name)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("tenant_id", self.tenant_id)
         writer.write_additional_data_value(self.additional_data)
     
 

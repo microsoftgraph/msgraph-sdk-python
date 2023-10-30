@@ -87,9 +87,9 @@ class ConversationMember(Entity):
         from .skype_user_conversation_member import SkypeUserConversationMember
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_primitive_values(str)),
-            "visibleHistoryStartDateTime": lambda n : setattr(self, 'visible_history_start_date_time', n.get_datetime_value()),
+            "visible_history_start_date_time": lambda n : setattr(self, 'visible_history_start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -104,8 +104,8 @@ class ConversationMember(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_collection_of_primitive_values("roles", self.roles)
-        writer.write_datetime_value("visibleHistoryStartDateTime", self.visible_history_start_date_time)
+        writer.write_datetime_value("visible_history_start_date_time", self.visible_history_start_date_time)
     
 

@@ -64,16 +64,16 @@ class ProcessEvidence(AlertEvidence):
         from .user_account import UserAccount
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(DetectionStatus)),
-            "imageFile": lambda n : setattr(self, 'image_file', n.get_object_value(FileDetails)),
-            "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
-            "parentProcessCreationDateTime": lambda n : setattr(self, 'parent_process_creation_date_time', n.get_datetime_value()),
-            "parentProcessId": lambda n : setattr(self, 'parent_process_id', n.get_int_value()),
-            "parentProcessImageFile": lambda n : setattr(self, 'parent_process_image_file', n.get_object_value(FileDetails)),
-            "processCommandLine": lambda n : setattr(self, 'process_command_line', n.get_str_value()),
-            "processCreationDateTime": lambda n : setattr(self, 'process_creation_date_time', n.get_datetime_value()),
-            "processId": lambda n : setattr(self, 'process_id', n.get_int_value()),
-            "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(UserAccount)),
+            "detection_status": lambda n : setattr(self, 'detection_status', n.get_enum_value(DetectionStatus)),
+            "image_file": lambda n : setattr(self, 'image_file', n.get_object_value(FileDetails)),
+            "mde_device_id": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
+            "parent_process_creation_date_time": lambda n : setattr(self, 'parent_process_creation_date_time', n.get_datetime_value()),
+            "parent_process_id": lambda n : setattr(self, 'parent_process_id', n.get_int_value()),
+            "parent_process_image_file": lambda n : setattr(self, 'parent_process_image_file', n.get_object_value(FileDetails)),
+            "process_command_line": lambda n : setattr(self, 'process_command_line', n.get_str_value()),
+            "process_creation_date_time": lambda n : setattr(self, 'process_creation_date_time', n.get_datetime_value()),
+            "process_id": lambda n : setattr(self, 'process_id', n.get_int_value()),
+            "user_account": lambda n : setattr(self, 'user_account', n.get_object_value(UserAccount)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -88,15 +88,15 @@ class ProcessEvidence(AlertEvidence):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("detectionStatus", self.detection_status)
-        writer.write_object_value("imageFile", self.image_file)
-        writer.write_str_value("mdeDeviceId", self.mde_device_id)
-        writer.write_datetime_value("parentProcessCreationDateTime", self.parent_process_creation_date_time)
-        writer.write_int_value("parentProcessId", self.parent_process_id)
-        writer.write_object_value("parentProcessImageFile", self.parent_process_image_file)
-        writer.write_str_value("processCommandLine", self.process_command_line)
-        writer.write_datetime_value("processCreationDateTime", self.process_creation_date_time)
-        writer.write_int_value("processId", self.process_id)
-        writer.write_object_value("userAccount", self.user_account)
+        writer.write_enum_value("detection_status", self.detection_status)
+        writer.write_object_value("image_file", self.image_file)
+        writer.write_str_value("mde_device_id", self.mde_device_id)
+        writer.write_datetime_value("parent_process_creation_date_time", self.parent_process_creation_date_time)
+        writer.write_int_value("parent_process_id", self.parent_process_id)
+        writer.write_object_value("parent_process_image_file", self.parent_process_image_file)
+        writer.write_str_value("process_command_line", self.process_command_line)
+        writer.write_datetime_value("process_creation_date_time", self.process_creation_date_time)
+        writer.write_int_value("process_id", self.process_id)
+        writer.write_object_value("user_account", self.user_account)
     
 

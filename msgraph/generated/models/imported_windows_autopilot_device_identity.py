@@ -54,12 +54,12 @@ class ImportedWindowsAutopilotDeviceIdentity(Entity):
         from .imported_windows_autopilot_device_identity_state import ImportedWindowsAutopilotDeviceIdentityState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignedUserPrincipalName": lambda n : setattr(self, 'assigned_user_principal_name', n.get_str_value()),
-            "groupTag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
-            "hardwareIdentifier": lambda n : setattr(self, 'hardware_identifier', n.get_bytes_value()),
-            "importId": lambda n : setattr(self, 'import_id', n.get_str_value()),
-            "productKey": lambda n : setattr(self, 'product_key', n.get_str_value()),
-            "serialNumber": lambda n : setattr(self, 'serial_number', n.get_str_value()),
+            "assigned_user_principal_name": lambda n : setattr(self, 'assigned_user_principal_name', n.get_str_value()),
+            "group_tag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
+            "hardware_identifier": lambda n : setattr(self, 'hardware_identifier', n.get_bytes_value()),
+            "import_id": lambda n : setattr(self, 'import_id', n.get_str_value()),
+            "product_key": lambda n : setattr(self, 'product_key', n.get_str_value()),
+            "serial_number": lambda n : setattr(self, 'serial_number', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_object_value(ImportedWindowsAutopilotDeviceIdentityState)),
         }
         super_fields = super().get_field_deserializers()
@@ -75,12 +75,12 @@ class ImportedWindowsAutopilotDeviceIdentity(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("assignedUserPrincipalName", self.assigned_user_principal_name)
-        writer.write_str_value("groupTag", self.group_tag)
-        writer.write_bytes_value("hardwareIdentifier", self.hardware_identifier)
-        writer.write_str_value("importId", self.import_id)
-        writer.write_str_value("productKey", self.product_key)
-        writer.write_str_value("serialNumber", self.serial_number)
+        writer.write_str_value("assigned_user_principal_name", self.assigned_user_principal_name)
+        writer.write_str_value("group_tag", self.group_tag)
+        writer.write_bytes_value("hardware_identifier", self.hardware_identifier)
+        writer.write_str_value("import_id", self.import_id)
+        writer.write_str_value("product_key", self.product_key)
+        writer.write_str_value("serial_number", self.serial_number)
         writer.write_object_value("state", self.state)
     
 

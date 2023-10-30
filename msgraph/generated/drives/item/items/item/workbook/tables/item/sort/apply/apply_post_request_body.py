@@ -43,7 +43,7 @@ class ApplyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "fields": lambda n : setattr(self, 'fields', n.get_collection_of_object_values(WorkbookSortField)),
-            "matchCase": lambda n : setattr(self, 'match_case', n.get_bool_value()),
+            "match_case": lambda n : setattr(self, 'match_case', n.get_bool_value()),
             "method": lambda n : setattr(self, 'method', n.get_str_value()),
         }
         return fields
@@ -57,7 +57,7 @@ class ApplyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("fields", self.fields)
-        writer.write_bool_value("matchCase", self.match_case)
+        writer.write_bool_value("match_case", self.match_case)
         writer.write_str_value("method", self.method)
         writer.write_additional_data_value(self.additional_data)
     

@@ -43,7 +43,7 @@ class MeetingParticipants(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(MeetingParticipantInfo)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(MeetingParticipantInfo)),
         }
         return fields
@@ -57,7 +57,7 @@ class MeetingParticipants(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("attendees", self.attendees)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("organizer", self.organizer)
         writer.write_additional_data_value(self.additional_data)
     

@@ -37,10 +37,10 @@ class IdleSessionSignOut(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "signOutAfterInSeconds": lambda n : setattr(self, 'sign_out_after_in_seconds', n.get_int_value()),
-            "warnAfterInSeconds": lambda n : setattr(self, 'warn_after_in_seconds', n.get_int_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "sign_out_after_in_seconds": lambda n : setattr(self, 'sign_out_after_in_seconds', n.get_int_value()),
+            "warn_after_in_seconds": lambda n : setattr(self, 'warn_after_in_seconds', n.get_int_value()),
         }
         return fields
     
@@ -52,10 +52,10 @@ class IdleSessionSignOut(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("signOutAfterInSeconds", self.sign_out_after_in_seconds)
-        writer.write_int_value("warnAfterInSeconds", self.warn_after_in_seconds)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("sign_out_after_in_seconds", self.sign_out_after_in_seconds)
+        writer.write_int_value("warn_after_in_seconds", self.warn_after_in_seconds)
         writer.write_additional_data_value(self.additional_data)
     
 

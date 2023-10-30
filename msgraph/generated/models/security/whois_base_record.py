@@ -101,20 +101,20 @@ class WhoisBaseRecord(Entity):
             "abuse": lambda n : setattr(self, 'abuse', n.get_object_value(WhoisContact)),
             "admin": lambda n : setattr(self, 'admin', n.get_object_value(WhoisContact)),
             "billing": lambda n : setattr(self, 'billing', n.get_object_value(WhoisContact)),
-            "domainStatus": lambda n : setattr(self, 'domain_status', n.get_str_value()),
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
+            "domain_status": lambda n : setattr(self, 'domain_status', n.get_str_value()),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "first_seen_date_time": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
             "host": lambda n : setattr(self, 'host', n.get_object_value(Host)),
-            "lastSeenDateTime": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
-            "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
+            "last_seen_date_time": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
+            "last_update_date_time": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
             "nameservers": lambda n : setattr(self, 'nameservers', n.get_collection_of_object_values(WhoisNameserver)),
             "noc": lambda n : setattr(self, 'noc', n.get_object_value(WhoisContact)),
-            "rawWhoisText": lambda n : setattr(self, 'raw_whois_text', n.get_str_value()),
+            "raw_whois_text": lambda n : setattr(self, 'raw_whois_text', n.get_str_value()),
             "registrant": lambda n : setattr(self, 'registrant', n.get_object_value(WhoisContact)),
             "registrar": lambda n : setattr(self, 'registrar', n.get_object_value(WhoisContact)),
-            "registrationDateTime": lambda n : setattr(self, 'registration_date_time', n.get_datetime_value()),
+            "registration_date_time": lambda n : setattr(self, 'registration_date_time', n.get_datetime_value()),
             "technical": lambda n : setattr(self, 'technical', n.get_object_value(WhoisContact)),
-            "whoisServer": lambda n : setattr(self, 'whois_server', n.get_str_value()),
+            "whois_server": lambda n : setattr(self, 'whois_server', n.get_str_value()),
             "zone": lambda n : setattr(self, 'zone', n.get_object_value(WhoisContact)),
         }
         super_fields = super().get_field_deserializers()
@@ -133,20 +133,20 @@ class WhoisBaseRecord(Entity):
         writer.write_object_value("abuse", self.abuse)
         writer.write_object_value("admin", self.admin)
         writer.write_object_value("billing", self.billing)
-        writer.write_str_value("domainStatus", self.domain_status)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
-        writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
+        writer.write_str_value("domain_status", self.domain_status)
+        writer.write_datetime_value("expiration_date_time", self.expiration_date_time)
+        writer.write_datetime_value("first_seen_date_time", self.first_seen_date_time)
         writer.write_object_value("host", self.host)
-        writer.write_datetime_value("lastSeenDateTime", self.last_seen_date_time)
-        writer.write_datetime_value("lastUpdateDateTime", self.last_update_date_time)
+        writer.write_datetime_value("last_seen_date_time", self.last_seen_date_time)
+        writer.write_datetime_value("last_update_date_time", self.last_update_date_time)
         writer.write_collection_of_object_values("nameservers", self.nameservers)
         writer.write_object_value("noc", self.noc)
-        writer.write_str_value("rawWhoisText", self.raw_whois_text)
+        writer.write_str_value("raw_whois_text", self.raw_whois_text)
         writer.write_object_value("registrant", self.registrant)
         writer.write_object_value("registrar", self.registrar)
-        writer.write_datetime_value("registrationDateTime", self.registration_date_time)
+        writer.write_datetime_value("registration_date_time", self.registration_date_time)
         writer.write_object_value("technical", self.technical)
-        writer.write_str_value("whoisServer", self.whois_server)
+        writer.write_str_value("whois_server", self.whois_server)
         writer.write_object_value("zone", self.zone)
     
 

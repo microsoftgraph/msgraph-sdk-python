@@ -47,10 +47,10 @@ class SharingInvitation(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "invitedBy": lambda n : setattr(self, 'invited_by', n.get_object_value(IdentitySet)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "redeemedBy": lambda n : setattr(self, 'redeemed_by', n.get_str_value()),
-            "signInRequired": lambda n : setattr(self, 'sign_in_required', n.get_bool_value()),
+            "invited_by": lambda n : setattr(self, 'invited_by', n.get_object_value(IdentitySet)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "redeemed_by": lambda n : setattr(self, 'redeemed_by', n.get_str_value()),
+            "sign_in_required": lambda n : setattr(self, 'sign_in_required', n.get_bool_value()),
         }
         return fields
     
@@ -63,10 +63,10 @@ class SharingInvitation(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("email", self.email)
-        writer.write_object_value("invitedBy", self.invited_by)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("redeemedBy", self.redeemed_by)
-        writer.write_bool_value("signInRequired", self.sign_in_required)
+        writer.write_object_value("invited_by", self.invited_by)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("redeemed_by", self.redeemed_by)
+        writer.write_bool_value("sign_in_required", self.sign_in_required)
         writer.write_additional_data_value(self.additional_data)
     
 

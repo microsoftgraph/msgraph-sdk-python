@@ -50,8 +50,8 @@ class FilterOperatorSchema(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "arity": lambda n : setattr(self, 'arity', n.get_enum_value(ScopeOperatorType)),
-            "multivaluedComparisonType": lambda n : setattr(self, 'multivalued_comparison_type', n.get_enum_value(ScopeOperatorMultiValuedComparisonType)),
-            "supportedAttributeTypes": lambda n : setattr(self, 'supported_attribute_types', n.get_collection_of_enum_values(AttributeType)),
+            "multivalued_comparison_type": lambda n : setattr(self, 'multivalued_comparison_type', n.get_enum_value(ScopeOperatorMultiValuedComparisonType)),
+            "supported_attribute_types": lambda n : setattr(self, 'supported_attribute_types', n.get_collection_of_enum_values(AttributeType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,7 +67,7 @@ class FilterOperatorSchema(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("arity", self.arity)
-        writer.write_enum_value("multivaluedComparisonType", self.multivalued_comparison_type)
-        writer.write_collection_of_enum_values("supportedAttributeTypes", self.supported_attribute_types)
+        writer.write_enum_value("multivalued_comparison_type", self.multivalued_comparison_type)
+        writer.write_collection_of_enum_values("supported_attribute_types", self.supported_attribute_types)
     
 

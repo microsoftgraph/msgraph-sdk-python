@@ -46,9 +46,9 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(AuthenticationMeth
         from .microsoft_authenticator_feature_settings import MicrosoftAuthenticatorFeatureSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "featureSettings": lambda n : setattr(self, 'feature_settings', n.get_object_value(MicrosoftAuthenticatorFeatureSettings)),
-            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(MicrosoftAuthenticatorAuthenticationMethodTarget)),
-            "isSoftwareOathEnabled": lambda n : setattr(self, 'is_software_oath_enabled', n.get_bool_value()),
+            "feature_settings": lambda n : setattr(self, 'feature_settings', n.get_object_value(MicrosoftAuthenticatorFeatureSettings)),
+            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(MicrosoftAuthenticatorAuthenticationMethodTarget)),
+            "is_software_oath_enabled": lambda n : setattr(self, 'is_software_oath_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,8 +63,8 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(AuthenticationMeth
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("featureSettings", self.feature_settings)
-        writer.write_collection_of_object_values("includeTargets", self.include_targets)
-        writer.write_bool_value("isSoftwareOathEnabled", self.is_software_oath_enabled)
+        writer.write_object_value("feature_settings", self.feature_settings)
+        writer.write_collection_of_object_values("include_targets", self.include_targets)
+        writer.write_bool_value("is_software_oath_enabled", self.is_software_oath_enabled)
     
 

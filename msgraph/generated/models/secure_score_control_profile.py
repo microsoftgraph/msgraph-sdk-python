@@ -82,25 +82,25 @@ class SecureScoreControlProfile(Entity):
         from .security_vendor_information import SecurityVendorInformation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "actionType": lambda n : setattr(self, 'action_type', n.get_str_value()),
-            "actionUrl": lambda n : setattr(self, 'action_url', n.get_str_value()),
-            "azureTenantId": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
-            "complianceInformation": lambda n : setattr(self, 'compliance_information', n.get_collection_of_object_values(ComplianceInformation)),
-            "controlCategory": lambda n : setattr(self, 'control_category', n.get_str_value()),
-            "controlStateUpdates": lambda n : setattr(self, 'control_state_updates', n.get_collection_of_object_values(SecureScoreControlStateUpdate)),
+            "action_type": lambda n : setattr(self, 'action_type', n.get_str_value()),
+            "action_url": lambda n : setattr(self, 'action_url', n.get_str_value()),
+            "azure_tenant_id": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
+            "compliance_information": lambda n : setattr(self, 'compliance_information', n.get_collection_of_object_values(ComplianceInformation)),
+            "control_category": lambda n : setattr(self, 'control_category', n.get_str_value()),
+            "control_state_updates": lambda n : setattr(self, 'control_state_updates', n.get_collection_of_object_values(SecureScoreControlStateUpdate)),
             "deprecated": lambda n : setattr(self, 'deprecated', n.get_bool_value()),
-            "implementationCost": lambda n : setattr(self, 'implementation_cost', n.get_str_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "maxScore": lambda n : setattr(self, 'max_score', n.get_float_value()),
+            "implementation_cost": lambda n : setattr(self, 'implementation_cost', n.get_str_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "max_score": lambda n : setattr(self, 'max_score', n.get_float_value()),
             "rank": lambda n : setattr(self, 'rank', n.get_int_value()),
             "remediation": lambda n : setattr(self, 'remediation', n.get_str_value()),
-            "remediationImpact": lambda n : setattr(self, 'remediation_impact', n.get_str_value()),
+            "remediation_impact": lambda n : setattr(self, 'remediation_impact', n.get_str_value()),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
             "threats": lambda n : setattr(self, 'threats', n.get_collection_of_primitive_values(str)),
             "tier": lambda n : setattr(self, 'tier', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
-            "userImpact": lambda n : setattr(self, 'user_impact', n.get_str_value()),
-            "vendorInformation": lambda n : setattr(self, 'vendor_information', n.get_object_value(SecurityVendorInformation)),
+            "user_impact": lambda n : setattr(self, 'user_impact', n.get_str_value()),
+            "vendor_information": lambda n : setattr(self, 'vendor_information', n.get_object_value(SecurityVendorInformation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -115,24 +115,24 @@ class SecureScoreControlProfile(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("actionType", self.action_type)
-        writer.write_str_value("actionUrl", self.action_url)
-        writer.write_str_value("azureTenantId", self.azure_tenant_id)
-        writer.write_collection_of_object_values("complianceInformation", self.compliance_information)
-        writer.write_str_value("controlCategory", self.control_category)
-        writer.write_collection_of_object_values("controlStateUpdates", self.control_state_updates)
+        writer.write_str_value("action_type", self.action_type)
+        writer.write_str_value("action_url", self.action_url)
+        writer.write_str_value("azure_tenant_id", self.azure_tenant_id)
+        writer.write_collection_of_object_values("compliance_information", self.compliance_information)
+        writer.write_str_value("control_category", self.control_category)
+        writer.write_collection_of_object_values("control_state_updates", self.control_state_updates)
         writer.write_bool_value("deprecated", self.deprecated)
-        writer.write_str_value("implementationCost", self.implementation_cost)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_float_value("maxScore", self.max_score)
+        writer.write_str_value("implementation_cost", self.implementation_cost)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_float_value("max_score", self.max_score)
         writer.write_int_value("rank", self.rank)
         writer.write_str_value("remediation", self.remediation)
-        writer.write_str_value("remediationImpact", self.remediation_impact)
+        writer.write_str_value("remediation_impact", self.remediation_impact)
         writer.write_str_value("service", self.service)
         writer.write_collection_of_primitive_values("threats", self.threats)
         writer.write_str_value("tier", self.tier)
         writer.write_str_value("title", self.title)
-        writer.write_str_value("userImpact", self.user_impact)
-        writer.write_object_value("vendorInformation", self.vendor_information)
+        writer.write_str_value("user_impact", self.user_impact)
+        writer.write_object_value("vendor_information", self.vendor_information)
     
 

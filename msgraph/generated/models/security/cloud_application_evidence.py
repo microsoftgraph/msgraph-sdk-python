@@ -44,11 +44,11 @@ class CloudApplicationEvidence(AlertEvidence):
         from .alert_evidence import AlertEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appId": lambda n : setattr(self, 'app_id', n.get_int_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "instanceId": lambda n : setattr(self, 'instance_id', n.get_int_value()),
-            "instanceName": lambda n : setattr(self, 'instance_name', n.get_str_value()),
-            "saasAppId": lambda n : setattr(self, 'saas_app_id', n.get_int_value()),
+            "app_id": lambda n : setattr(self, 'app_id', n.get_int_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "instance_id": lambda n : setattr(self, 'instance_id', n.get_int_value()),
+            "instance_name": lambda n : setattr(self, 'instance_name', n.get_str_value()),
+            "saas_app_id": lambda n : setattr(self, 'saas_app_id', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,10 +63,10 @@ class CloudApplicationEvidence(AlertEvidence):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("appId", self.app_id)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_int_value("instanceId", self.instance_id)
-        writer.write_str_value("instanceName", self.instance_name)
-        writer.write_int_value("saasAppId", self.saas_app_id)
+        writer.write_int_value("app_id", self.app_id)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_int_value("instance_id", self.instance_id)
+        writer.write_str_value("instance_name", self.instance_name)
+        writer.write_int_value("saas_app_id", self.saas_app_id)
     
 

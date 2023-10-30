@@ -31,7 +31,7 @@ class CalculatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "calculationType": lambda n : setattr(self, 'calculation_type', n.get_str_value()),
+            "calculation_type": lambda n : setattr(self, 'calculation_type', n.get_str_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class CalculatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("calculationType", self.calculation_type)
+        writer.write_str_value("calculation_type", self.calculation_type)
         writer.write_additional_data_value(self.additional_data)
     
 

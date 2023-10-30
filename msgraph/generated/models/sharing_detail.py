@@ -52,12 +52,12 @@ class SharingDetail(AdditionalDataHolder, BackedModel, Parsable):
         from .resource_reference import ResourceReference
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sharedBy": lambda n : setattr(self, 'shared_by', n.get_object_value(InsightIdentity)),
-            "sharedDateTime": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
-            "sharingReference": lambda n : setattr(self, 'sharing_reference', n.get_object_value(ResourceReference)),
-            "sharingSubject": lambda n : setattr(self, 'sharing_subject', n.get_str_value()),
-            "sharingType": lambda n : setattr(self, 'sharing_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "shared_by": lambda n : setattr(self, 'shared_by', n.get_object_value(InsightIdentity)),
+            "shared_date_time": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
+            "sharing_reference": lambda n : setattr(self, 'sharing_reference', n.get_object_value(ResourceReference)),
+            "sharing_subject": lambda n : setattr(self, 'sharing_subject', n.get_str_value()),
+            "sharing_type": lambda n : setattr(self, 'sharing_type', n.get_str_value()),
         }
         return fields
     
@@ -69,11 +69,11 @@ class SharingDetail(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("sharedBy", self.shared_by)
-        writer.write_datetime_value("sharedDateTime", self.shared_date_time)
-        writer.write_str_value("sharingSubject", self.sharing_subject)
-        writer.write_str_value("sharingType", self.sharing_type)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("shared_by", self.shared_by)
+        writer.write_datetime_value("shared_date_time", self.shared_date_time)
+        writer.write_str_value("sharing_subject", self.sharing_subject)
+        writer.write_str_value("sharing_type", self.sharing_type)
         writer.write_additional_data_value(self.additional_data)
     
 

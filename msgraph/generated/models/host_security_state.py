@@ -50,15 +50,15 @@ class HostSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "fqdn": lambda n : setattr(self, 'fqdn', n.get_str_value()),
-            "isAzureAdJoined": lambda n : setattr(self, 'is_azure_ad_joined', n.get_bool_value()),
-            "isAzureAdRegistered": lambda n : setattr(self, 'is_azure_ad_registered', n.get_bool_value()),
-            "isHybridAzureDomainJoined": lambda n : setattr(self, 'is_hybrid_azure_domain_joined', n.get_bool_value()),
-            "netBiosName": lambda n : setattr(self, 'net_bios_name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "is_azure_ad_joined": lambda n : setattr(self, 'is_azure_ad_joined', n.get_bool_value()),
+            "is_azure_ad_registered": lambda n : setattr(self, 'is_azure_ad_registered', n.get_bool_value()),
+            "is_hybrid_azure_domain_joined": lambda n : setattr(self, 'is_hybrid_azure_domain_joined', n.get_bool_value()),
+            "net_bios_name": lambda n : setattr(self, 'net_bios_name', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "os": lambda n : setattr(self, 'os', n.get_str_value()),
-            "privateIpAddress": lambda n : setattr(self, 'private_ip_address', n.get_str_value()),
-            "publicIpAddress": lambda n : setattr(self, 'public_ip_address', n.get_str_value()),
-            "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
+            "private_ip_address": lambda n : setattr(self, 'private_ip_address', n.get_str_value()),
+            "public_ip_address": lambda n : setattr(self, 'public_ip_address', n.get_str_value()),
+            "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
         }
         return fields
     
@@ -71,15 +71,15 @@ class HostSecurityState(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("fqdn", self.fqdn)
-        writer.write_bool_value("isAzureAdJoined", self.is_azure_ad_joined)
-        writer.write_bool_value("isAzureAdRegistered", self.is_azure_ad_registered)
-        writer.write_bool_value("isHybridAzureDomainJoined", self.is_hybrid_azure_domain_joined)
-        writer.write_str_value("netBiosName", self.net_bios_name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("is_azure_ad_joined", self.is_azure_ad_joined)
+        writer.write_bool_value("is_azure_ad_registered", self.is_azure_ad_registered)
+        writer.write_bool_value("is_hybrid_azure_domain_joined", self.is_hybrid_azure_domain_joined)
+        writer.write_str_value("net_bios_name", self.net_bios_name)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("os", self.os)
-        writer.write_str_value("privateIpAddress", self.private_ip_address)
-        writer.write_str_value("publicIpAddress", self.public_ip_address)
-        writer.write_str_value("riskScore", self.risk_score)
+        writer.write_str_value("private_ip_address", self.private_ip_address)
+        writer.write_str_value("public_ip_address", self.public_ip_address)
+        writer.write_str_value("risk_score", self.risk_score)
         writer.write_additional_data_value(self.additional_data)
     
 

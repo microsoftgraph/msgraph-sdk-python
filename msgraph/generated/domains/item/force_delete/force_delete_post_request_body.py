@@ -31,7 +31,7 @@ class ForceDeletePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "disableUserAccounts": lambda n : setattr(self, 'disable_user_accounts', n.get_bool_value()),
+            "disable_user_accounts": lambda n : setattr(self, 'disable_user_accounts', n.get_bool_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class ForceDeletePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("disableUserAccounts", self.disable_user_accounts)
+        writer.write_bool_value("disable_user_accounts", self.disable_user_accounts)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -57,12 +57,12 @@ class DetectedApp(Entity):
         from .managed_device import ManagedDevice
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(ManagedDevice)),
+            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "managed_devices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(ManagedDevice)),
             "platform": lambda n : setattr(self, 'platform', n.get_enum_value(DetectedAppPlatformType)),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "sizeInByte": lambda n : setattr(self, 'size_in_byte', n.get_int_value()),
+            "size_in_byte": lambda n : setattr(self, 'size_in_byte', n.get_int_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -78,12 +78,12 @@ class DetectedApp(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("deviceCount", self.device_count)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_object_values("managedDevices", self.managed_devices)
+        writer.write_int_value("device_count", self.device_count)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_object_values("managed_devices", self.managed_devices)
         writer.write_enum_value("platform", self.platform)
         writer.write_str_value("publisher", self.publisher)
-        writer.write_int_value("sizeInByte", self.size_in_byte)
+        writer.write_int_value("size_in_byte", self.size_in_byte)
         writer.write_str_value("version", self.version)
     
 

@@ -49,12 +49,12 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(AuthenticationMethodC
         from .authentication_method_target import AuthenticationMethodTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "defaultLength": lambda n : setattr(self, 'default_length', n.get_int_value()),
-            "defaultLifetimeInMinutes": lambda n : setattr(self, 'default_lifetime_in_minutes', n.get_int_value()),
-            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
-            "isUsableOnce": lambda n : setattr(self, 'is_usable_once', n.get_bool_value()),
-            "maximumLifetimeInMinutes": lambda n : setattr(self, 'maximum_lifetime_in_minutes', n.get_int_value()),
-            "minimumLifetimeInMinutes": lambda n : setattr(self, 'minimum_lifetime_in_minutes', n.get_int_value()),
+            "default_length": lambda n : setattr(self, 'default_length', n.get_int_value()),
+            "default_lifetime_in_minutes": lambda n : setattr(self, 'default_lifetime_in_minutes', n.get_int_value()),
+            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
+            "is_usable_once": lambda n : setattr(self, 'is_usable_once', n.get_bool_value()),
+            "maximum_lifetime_in_minutes": lambda n : setattr(self, 'maximum_lifetime_in_minutes', n.get_int_value()),
+            "minimum_lifetime_in_minutes": lambda n : setattr(self, 'minimum_lifetime_in_minutes', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,11 +69,11 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(AuthenticationMethodC
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("defaultLength", self.default_length)
-        writer.write_int_value("defaultLifetimeInMinutes", self.default_lifetime_in_minutes)
-        writer.write_collection_of_object_values("includeTargets", self.include_targets)
-        writer.write_bool_value("isUsableOnce", self.is_usable_once)
-        writer.write_int_value("maximumLifetimeInMinutes", self.maximum_lifetime_in_minutes)
-        writer.write_int_value("minimumLifetimeInMinutes", self.minimum_lifetime_in_minutes)
+        writer.write_int_value("default_length", self.default_length)
+        writer.write_int_value("default_lifetime_in_minutes", self.default_lifetime_in_minutes)
+        writer.write_collection_of_object_values("include_targets", self.include_targets)
+        writer.write_bool_value("is_usable_once", self.is_usable_once)
+        writer.write_int_value("maximum_lifetime_in_minutes", self.maximum_lifetime_in_minutes)
+        writer.write_int_value("minimum_lifetime_in_minutes", self.minimum_lifetime_in_minutes)
     
 

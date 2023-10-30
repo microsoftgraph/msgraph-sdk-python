@@ -55,12 +55,12 @@ class IdentityUserFlowAttributeAssignment(Entity):
         from .user_attribute_values_item import UserAttributeValuesItem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "isOptional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
-            "requiresVerification": lambda n : setattr(self, 'requires_verification', n.get_bool_value()),
-            "userAttribute": lambda n : setattr(self, 'user_attribute', n.get_object_value(IdentityUserFlowAttribute)),
-            "userAttributeValues": lambda n : setattr(self, 'user_attribute_values', n.get_collection_of_object_values(UserAttributeValuesItem)),
-            "userInputType": lambda n : setattr(self, 'user_input_type', n.get_enum_value(IdentityUserFlowAttributeInputType)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "is_optional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
+            "requires_verification": lambda n : setattr(self, 'requires_verification', n.get_bool_value()),
+            "user_attribute": lambda n : setattr(self, 'user_attribute', n.get_object_value(IdentityUserFlowAttribute)),
+            "user_attribute_values": lambda n : setattr(self, 'user_attribute_values', n.get_collection_of_object_values(UserAttributeValuesItem)),
+            "user_input_type": lambda n : setattr(self, 'user_input_type', n.get_enum_value(IdentityUserFlowAttributeInputType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,11 +75,11 @@ class IdentityUserFlowAttributeAssignment(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_bool_value("isOptional", self.is_optional)
-        writer.write_bool_value("requiresVerification", self.requires_verification)
-        writer.write_object_value("userAttribute", self.user_attribute)
-        writer.write_collection_of_object_values("userAttributeValues", self.user_attribute_values)
-        writer.write_enum_value("userInputType", self.user_input_type)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_bool_value("is_optional", self.is_optional)
+        writer.write_bool_value("requires_verification", self.requires_verification)
+        writer.write_object_value("user_attribute", self.user_attribute)
+        writer.write_collection_of_object_values("user_attribute_values", self.user_attribute_values)
+        writer.write_enum_value("user_input_type", self.user_input_type)
     
 

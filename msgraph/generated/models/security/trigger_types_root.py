@@ -39,7 +39,7 @@ class TriggerTypesRoot(Entity):
         from .retention_event_type import RetentionEventType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "retentionEventTypes": lambda n : setattr(self, 'retention_event_types', n.get_collection_of_object_values(RetentionEventType)),
+            "retention_event_types": lambda n : setattr(self, 'retention_event_types', n.get_collection_of_object_values(RetentionEventType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class TriggerTypesRoot(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("retentionEventTypes", self.retention_event_types)
+        writer.write_collection_of_object_values("retention_event_types", self.retention_event_types)
     
 

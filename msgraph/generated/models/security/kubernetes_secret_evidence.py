@@ -45,7 +45,7 @@ class KubernetesSecretEvidence(AlertEvidence):
         fields: Dict[str, Callable[[Any], None]] = {
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "namespace": lambda n : setattr(self, 'namespace', n.get_object_value(KubernetesNamespaceEvidence)),
-            "secretType": lambda n : setattr(self, 'secret_type', n.get_str_value()),
+            "secret_type": lambda n : setattr(self, 'secret_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -62,6 +62,6 @@ class KubernetesSecretEvidence(AlertEvidence):
         super().serialize(writer)
         writer.write_str_value("name", self.name)
         writer.write_object_value("namespace", self.namespace)
-        writer.write_str_value("secretType", self.secret_type)
+        writer.write_str_value("secret_type", self.secret_type)
     
 

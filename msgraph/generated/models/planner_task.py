@@ -109,30 +109,30 @@ class PlannerTask(Entity):
         from .planner_task_details import PlannerTaskDetails
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activeChecklistItemCount": lambda n : setattr(self, 'active_checklist_item_count', n.get_int_value()),
-            "appliedCategories": lambda n : setattr(self, 'applied_categories', n.get_object_value(PlannerAppliedCategories)),
-            "assignedToTaskBoardFormat": lambda n : setattr(self, 'assigned_to_task_board_format', n.get_object_value(PlannerAssignedToTaskBoardTaskFormat)),
-            "assigneePriority": lambda n : setattr(self, 'assignee_priority', n.get_str_value()),
+            "active_checklist_item_count": lambda n : setattr(self, 'active_checklist_item_count', n.get_int_value()),
+            "applied_categories": lambda n : setattr(self, 'applied_categories', n.get_object_value(PlannerAppliedCategories)),
+            "assigned_to_task_board_format": lambda n : setattr(self, 'assigned_to_task_board_format', n.get_object_value(PlannerAssignedToTaskBoardTaskFormat)),
+            "assignee_priority": lambda n : setattr(self, 'assignee_priority', n.get_str_value()),
             "assignments": lambda n : setattr(self, 'assignments', n.get_object_value(PlannerAssignments)),
-            "bucketId": lambda n : setattr(self, 'bucket_id', n.get_str_value()),
-            "bucketTaskBoardFormat": lambda n : setattr(self, 'bucket_task_board_format', n.get_object_value(PlannerBucketTaskBoardTaskFormat)),
-            "checklistItemCount": lambda n : setattr(self, 'checklist_item_count', n.get_int_value()),
-            "completedBy": lambda n : setattr(self, 'completed_by', n.get_object_value(IdentitySet)),
-            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "conversationThreadId": lambda n : setattr(self, 'conversation_thread_id', n.get_str_value()),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "bucket_id": lambda n : setattr(self, 'bucket_id', n.get_str_value()),
+            "bucket_task_board_format": lambda n : setattr(self, 'bucket_task_board_format', n.get_object_value(PlannerBucketTaskBoardTaskFormat)),
+            "checklist_item_count": lambda n : setattr(self, 'checklist_item_count', n.get_int_value()),
+            "completed_by": lambda n : setattr(self, 'completed_by', n.get_object_value(IdentitySet)),
+            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "conversation_thread_id": lambda n : setattr(self, 'conversation_thread_id', n.get_str_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "details": lambda n : setattr(self, 'details', n.get_object_value(PlannerTaskDetails)),
-            "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_datetime_value()),
-            "hasDescription": lambda n : setattr(self, 'has_description', n.get_bool_value()),
-            "orderHint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
-            "percentComplete": lambda n : setattr(self, 'percent_complete', n.get_int_value()),
-            "planId": lambda n : setattr(self, 'plan_id', n.get_str_value()),
-            "previewType": lambda n : setattr(self, 'preview_type', n.get_enum_value(PlannerPreviewType)),
+            "due_date_time": lambda n : setattr(self, 'due_date_time', n.get_datetime_value()),
+            "has_description": lambda n : setattr(self, 'has_description', n.get_bool_value()),
+            "order_hint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
+            "percent_complete": lambda n : setattr(self, 'percent_complete', n.get_int_value()),
+            "plan_id": lambda n : setattr(self, 'plan_id', n.get_str_value()),
+            "preview_type": lambda n : setattr(self, 'preview_type', n.get_enum_value(PlannerPreviewType)),
             "priority": lambda n : setattr(self, 'priority', n.get_int_value()),
-            "progressTaskBoardFormat": lambda n : setattr(self, 'progress_task_board_format', n.get_object_value(PlannerProgressTaskBoardTaskFormat)),
-            "referenceCount": lambda n : setattr(self, 'reference_count', n.get_int_value()),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "progress_task_board_format": lambda n : setattr(self, 'progress_task_board_format', n.get_object_value(PlannerProgressTaskBoardTaskFormat)),
+            "reference_count": lambda n : setattr(self, 'reference_count', n.get_int_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -148,30 +148,30 @@ class PlannerTask(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("activeChecklistItemCount", self.active_checklist_item_count)
-        writer.write_object_value("appliedCategories", self.applied_categories)
-        writer.write_object_value("assignedToTaskBoardFormat", self.assigned_to_task_board_format)
-        writer.write_str_value("assigneePriority", self.assignee_priority)
+        writer.write_int_value("active_checklist_item_count", self.active_checklist_item_count)
+        writer.write_object_value("applied_categories", self.applied_categories)
+        writer.write_object_value("assigned_to_task_board_format", self.assigned_to_task_board_format)
+        writer.write_str_value("assignee_priority", self.assignee_priority)
         writer.write_object_value("assignments", self.assignments)
-        writer.write_str_value("bucketId", self.bucket_id)
-        writer.write_object_value("bucketTaskBoardFormat", self.bucket_task_board_format)
-        writer.write_int_value("checklistItemCount", self.checklist_item_count)
-        writer.write_object_value("completedBy", self.completed_by)
-        writer.write_datetime_value("completedDateTime", self.completed_date_time)
-        writer.write_str_value("conversationThreadId", self.conversation_thread_id)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_str_value("bucket_id", self.bucket_id)
+        writer.write_object_value("bucket_task_board_format", self.bucket_task_board_format)
+        writer.write_int_value("checklist_item_count", self.checklist_item_count)
+        writer.write_object_value("completed_by", self.completed_by)
+        writer.write_datetime_value("completed_date_time", self.completed_date_time)
+        writer.write_str_value("conversation_thread_id", self.conversation_thread_id)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_object_value("details", self.details)
-        writer.write_datetime_value("dueDateTime", self.due_date_time)
-        writer.write_bool_value("hasDescription", self.has_description)
-        writer.write_str_value("orderHint", self.order_hint)
-        writer.write_int_value("percentComplete", self.percent_complete)
-        writer.write_str_value("planId", self.plan_id)
-        writer.write_enum_value("previewType", self.preview_type)
+        writer.write_datetime_value("due_date_time", self.due_date_time)
+        writer.write_bool_value("has_description", self.has_description)
+        writer.write_str_value("order_hint", self.order_hint)
+        writer.write_int_value("percent_complete", self.percent_complete)
+        writer.write_str_value("plan_id", self.plan_id)
+        writer.write_enum_value("preview_type", self.preview_type)
         writer.write_int_value("priority", self.priority)
-        writer.write_object_value("progressTaskBoardFormat", self.progress_task_board_format)
-        writer.write_int_value("referenceCount", self.reference_count)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_object_value("progress_task_board_format", self.progress_task_board_format)
+        writer.write_int_value("reference_count", self.reference_count)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
         writer.write_str_value("title", self.title)
     
 

@@ -38,8 +38,8 @@ class IpEvidence(AlertEvidence):
         from .alert_evidence import AlertEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "countryLetterCode": lambda n : setattr(self, 'country_letter_code', n.get_str_value()),
-            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "country_letter_code": lambda n : setattr(self, 'country_letter_code', n.get_str_value()),
+            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class IpEvidence(AlertEvidence):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("countryLetterCode", self.country_letter_code)
-        writer.write_str_value("ipAddress", self.ip_address)
+        writer.write_str_value("country_letter_code", self.country_letter_code)
+        writer.write_str_value("ip_address", self.ip_address)
     
 

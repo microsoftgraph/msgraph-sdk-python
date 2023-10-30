@@ -53,11 +53,11 @@ class TeamworkTag(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "memberCount": lambda n : setattr(self, 'member_count', n.get_int_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "member_count": lambda n : setattr(self, 'member_count', n.get_int_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(TeamworkTagMember)),
-            "tagType": lambda n : setattr(self, 'tag_type', n.get_enum_value(TeamworkTagType)),
-            "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),
+            "tag_type": lambda n : setattr(self, 'tag_type', n.get_enum_value(TeamworkTagType)),
+            "team_id": lambda n : setattr(self, 'team_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,10 +73,10 @@ class TeamworkTag(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_int_value("memberCount", self.member_count)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_int_value("member_count", self.member_count)
         writer.write_collection_of_object_values("members", self.members)
-        writer.write_enum_value("tagType", self.tag_type)
-        writer.write_str_value("teamId", self.team_id)
+        writer.write_enum_value("tag_type", self.tag_type)
+        writer.write_str_value("team_id", self.team_id)
     
 

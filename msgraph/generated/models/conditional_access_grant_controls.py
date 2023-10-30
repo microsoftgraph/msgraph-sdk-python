@@ -51,12 +51,12 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, BackedModel, Parsable
         from .conditional_access_grant_control import ConditionalAccessGrantControl
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationStrength": lambda n : setattr(self, 'authentication_strength', n.get_object_value(AuthenticationStrengthPolicy)),
-            "builtInControls": lambda n : setattr(self, 'built_in_controls', n.get_collection_of_enum_values(ConditionalAccessGrantControl)),
-            "customAuthenticationFactors": lambda n : setattr(self, 'custom_authentication_factors', n.get_collection_of_primitive_values(str)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "authentication_strength": lambda n : setattr(self, 'authentication_strength', n.get_object_value(AuthenticationStrengthPolicy)),
+            "built_in_controls": lambda n : setattr(self, 'built_in_controls', n.get_collection_of_enum_values(ConditionalAccessGrantControl)),
+            "custom_authentication_factors": lambda n : setattr(self, 'custom_authentication_factors', n.get_collection_of_primitive_values(str)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operator": lambda n : setattr(self, 'operator', n.get_str_value()),
-            "termsOfUse": lambda n : setattr(self, 'terms_of_use', n.get_collection_of_primitive_values(str)),
+            "terms_of_use": lambda n : setattr(self, 'terms_of_use', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -68,12 +68,12 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, BackedModel, Parsable
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("authenticationStrength", self.authentication_strength)
-        writer.write_collection_of_enum_values("builtInControls", self.built_in_controls)
-        writer.write_collection_of_primitive_values("customAuthenticationFactors", self.custom_authentication_factors)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_object_value("authentication_strength", self.authentication_strength)
+        writer.write_collection_of_enum_values("built_in_controls", self.built_in_controls)
+        writer.write_collection_of_primitive_values("custom_authentication_factors", self.custom_authentication_factors)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("operator", self.operator)
-        writer.write_collection_of_primitive_values("termsOfUse", self.terms_of_use)
+        writer.write_collection_of_primitive_values("terms_of_use", self.terms_of_use)
         writer.write_additional_data_value(self.additional_data)
     
 

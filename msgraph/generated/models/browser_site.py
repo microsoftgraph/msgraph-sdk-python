@@ -80,18 +80,18 @@ class BrowserSite(Entity):
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowRedirect": lambda n : setattr(self, 'allow_redirect', n.get_bool_value()),
+            "allow_redirect": lambda n : setattr(self, 'allow_redirect', n.get_bool_value()),
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "compatibilityMode": lambda n : setattr(self, 'compatibility_mode', n.get_enum_value(BrowserSiteCompatibilityMode)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
+            "compatibility_mode": lambda n : setattr(self, 'compatibility_mode', n.get_enum_value(BrowserSiteCompatibilityMode)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "deleted_date_time": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(BrowserSiteHistory)),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "mergeType": lambda n : setattr(self, 'merge_type', n.get_enum_value(BrowserSiteMergeType)),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "merge_type": lambda n : setattr(self, 'merge_type', n.get_enum_value(BrowserSiteMergeType)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(BrowserSiteStatus)),
-            "targetEnvironment": lambda n : setattr(self, 'target_environment', n.get_enum_value(BrowserSiteTargetEnvironment)),
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "target_environment": lambda n : setattr(self, 'target_environment', n.get_enum_value(BrowserSiteTargetEnvironment)),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -106,17 +106,17 @@ class BrowserSite(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("allowRedirect", self.allow_redirect)
+        writer.write_bool_value("allow_redirect", self.allow_redirect)
         writer.write_str_value("comment", self.comment)
-        writer.write_enum_value("compatibilityMode", self.compatibility_mode)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
+        writer.write_enum_value("compatibility_mode", self.compatibility_mode)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_datetime_value("deleted_date_time", self.deleted_date_time)
         writer.write_collection_of_object_values("history", self.history)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_enum_value("mergeType", self.merge_type)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_enum_value("merge_type", self.merge_type)
         writer.write_enum_value("status", self.status)
-        writer.write_enum_value("targetEnvironment", self.target_environment)
-        writer.write_str_value("webUrl", self.web_url)
+        writer.write_enum_value("target_environment", self.target_environment)
+        writer.write_str_value("web_url", self.web_url)
     
 

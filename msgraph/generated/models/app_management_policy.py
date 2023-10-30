@@ -46,8 +46,8 @@ class AppManagementPolicy(PolicyBase):
         from .policy_base import PolicyBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(DirectoryObject)),
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "applies_to": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(DirectoryObject)),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "restrictions": lambda n : setattr(self, 'restrictions', n.get_object_value(AppManagementConfiguration)),
         }
         super_fields = super().get_field_deserializers()
@@ -63,8 +63,8 @@ class AppManagementPolicy(PolicyBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("appliesTo", self.applies_to)
-        writer.write_bool_value("isEnabled", self.is_enabled)
+        writer.write_collection_of_object_values("applies_to", self.applies_to)
+        writer.write_bool_value("is_enabled", self.is_enabled)
         writer.write_object_value("restrictions", self.restrictions)
     
 

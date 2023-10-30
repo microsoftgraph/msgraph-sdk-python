@@ -42,9 +42,9 @@ class AttackSimulationRepeatOffender(AdditionalDataHolder, BackedModel, Parsable
         from .attack_simulation_user import AttackSimulationUser
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(AttackSimulationUser)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "repeatOffenceCount": lambda n : setattr(self, 'repeat_offence_count', n.get_int_value()),
+            "attack_simulation_user": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(AttackSimulationUser)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "repeat_offence_count": lambda n : setattr(self, 'repeat_offence_count', n.get_int_value()),
         }
         return fields
     
@@ -56,9 +56,9 @@ class AttackSimulationRepeatOffender(AdditionalDataHolder, BackedModel, Parsable
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("attackSimulationUser", self.attack_simulation_user)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("repeatOffenceCount", self.repeat_offence_count)
+        writer.write_object_value("attack_simulation_user", self.attack_simulation_user)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("repeat_offence_count", self.repeat_offence_count)
         writer.write_additional_data_value(self.additional_data)
     
 

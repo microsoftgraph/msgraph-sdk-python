@@ -58,19 +58,19 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "androidCorporateWorkProfileCount": lambda n : setattr(self, 'android_corporate_work_profile_count', n.get_int_value()),
-            "androidCount": lambda n : setattr(self, 'android_count', n.get_int_value()),
-            "androidDedicatedCount": lambda n : setattr(self, 'android_dedicated_count', n.get_int_value()),
-            "androidDeviceAdminCount": lambda n : setattr(self, 'android_device_admin_count', n.get_int_value()),
-            "androidFullyManagedCount": lambda n : setattr(self, 'android_fully_managed_count', n.get_int_value()),
-            "androidWorkProfileCount": lambda n : setattr(self, 'android_work_profile_count', n.get_int_value()),
-            "configMgrDeviceCount": lambda n : setattr(self, 'config_mgr_device_count', n.get_int_value()),
-            "iosCount": lambda n : setattr(self, 'ios_count', n.get_int_value()),
-            "macOSCount": lambda n : setattr(self, 'mac_o_s_count', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "unknownCount": lambda n : setattr(self, 'unknown_count', n.get_int_value()),
-            "windowsCount": lambda n : setattr(self, 'windows_count', n.get_int_value()),
-            "windowsMobileCount": lambda n : setattr(self, 'windows_mobile_count', n.get_int_value()),
+            "android_corporate_work_profile_count": lambda n : setattr(self, 'android_corporate_work_profile_count', n.get_int_value()),
+            "android_count": lambda n : setattr(self, 'android_count', n.get_int_value()),
+            "android_dedicated_count": lambda n : setattr(self, 'android_dedicated_count', n.get_int_value()),
+            "android_device_admin_count": lambda n : setattr(self, 'android_device_admin_count', n.get_int_value()),
+            "android_fully_managed_count": lambda n : setattr(self, 'android_fully_managed_count', n.get_int_value()),
+            "android_work_profile_count": lambda n : setattr(self, 'android_work_profile_count', n.get_int_value()),
+            "config_mgr_device_count": lambda n : setattr(self, 'config_mgr_device_count', n.get_int_value()),
+            "ios_count": lambda n : setattr(self, 'ios_count', n.get_int_value()),
+            "mac_o_s_count": lambda n : setattr(self, 'mac_o_s_count', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "unknown_count": lambda n : setattr(self, 'unknown_count', n.get_int_value()),
+            "windows_count": lambda n : setattr(self, 'windows_count', n.get_int_value()),
+            "windows_mobile_count": lambda n : setattr(self, 'windows_mobile_count', n.get_int_value()),
         }
         return fields
     
@@ -82,19 +82,19 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("androidCorporateWorkProfileCount", self.android_corporate_work_profile_count)
-        writer.write_int_value("androidCount", self.android_count)
-        writer.write_int_value("androidDedicatedCount", self.android_dedicated_count)
-        writer.write_int_value("androidDeviceAdminCount", self.android_device_admin_count)
-        writer.write_int_value("androidFullyManagedCount", self.android_fully_managed_count)
-        writer.write_int_value("androidWorkProfileCount", self.android_work_profile_count)
-        writer.write_int_value("configMgrDeviceCount", self.config_mgr_device_count)
-        writer.write_int_value("iosCount", self.ios_count)
-        writer.write_int_value("macOSCount", self.mac_o_s_count)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("unknownCount", self.unknown_count)
-        writer.write_int_value("windowsCount", self.windows_count)
-        writer.write_int_value("windowsMobileCount", self.windows_mobile_count)
+        writer.write_int_value("android_corporate_work_profile_count", self.android_corporate_work_profile_count)
+        writer.write_int_value("android_count", self.android_count)
+        writer.write_int_value("android_dedicated_count", self.android_dedicated_count)
+        writer.write_int_value("android_device_admin_count", self.android_device_admin_count)
+        writer.write_int_value("android_fully_managed_count", self.android_fully_managed_count)
+        writer.write_int_value("android_work_profile_count", self.android_work_profile_count)
+        writer.write_int_value("config_mgr_device_count", self.config_mgr_device_count)
+        writer.write_int_value("ios_count", self.ios_count)
+        writer.write_int_value("mac_o_s_count", self.mac_o_s_count)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("unknown_count", self.unknown_count)
+        writer.write_int_value("windows_count", self.windows_count)
+        writer.write_int_value("windows_mobile_count", self.windows_mobile_count)
         writer.write_additional_data_value(self.additional_data)
     
 

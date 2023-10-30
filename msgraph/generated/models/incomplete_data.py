@@ -36,9 +36,9 @@ class IncompleteData(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "missingDataBeforeDateTime": lambda n : setattr(self, 'missing_data_before_date_time', n.get_datetime_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "wasThrottled": lambda n : setattr(self, 'was_throttled', n.get_bool_value()),
+            "missing_data_before_date_time": lambda n : setattr(self, 'missing_data_before_date_time', n.get_datetime_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "was_throttled": lambda n : setattr(self, 'was_throttled', n.get_bool_value()),
         }
         return fields
     
@@ -50,9 +50,9 @@ class IncompleteData(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("missingDataBeforeDateTime", self.missing_data_before_date_time)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_bool_value("wasThrottled", self.was_throttled)
+        writer.write_datetime_value("missing_data_before_date_time", self.missing_data_before_date_time)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_bool_value("was_throttled", self.was_throttled)
         writer.write_additional_data_value(self.additional_data)
     
 

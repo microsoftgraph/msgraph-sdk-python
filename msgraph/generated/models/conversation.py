@@ -50,12 +50,12 @@ class Conversation(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "lastDeliveredDateTime": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
+            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "last_delivered_date_time": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
             "preview": lambda n : setattr(self, 'preview', n.get_str_value()),
             "threads": lambda n : setattr(self, 'threads', n.get_collection_of_object_values(ConversationThread)),
             "topic": lambda n : setattr(self, 'topic', n.get_str_value()),
-            "uniqueSenders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
+            "unique_senders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -70,11 +70,11 @@ class Conversation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("hasAttachments", self.has_attachments)
-        writer.write_datetime_value("lastDeliveredDateTime", self.last_delivered_date_time)
+        writer.write_bool_value("has_attachments", self.has_attachments)
+        writer.write_datetime_value("last_delivered_date_time", self.last_delivered_date_time)
         writer.write_str_value("preview", self.preview)
         writer.write_collection_of_object_values("threads", self.threads)
         writer.write_str_value("topic", self.topic)
-        writer.write_collection_of_primitive_values("uniqueSenders", self.unique_senders)
+        writer.write_collection_of_primitive_values("unique_senders", self.unique_senders)
     
 

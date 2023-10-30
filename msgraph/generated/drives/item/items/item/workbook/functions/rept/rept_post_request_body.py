@@ -40,7 +40,7 @@ class ReptPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "numberTimes": lambda n : setattr(self, 'number_times', n.get_object_value(Json)),
+            "number_times": lambda n : setattr(self, 'number_times', n.get_object_value(Json)),
             "text": lambda n : setattr(self, 'text', n.get_object_value(Json)),
         }
         return fields
@@ -53,7 +53,7 @@ class ReptPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("numberTimes", self.number_times)
+        writer.write_object_value("number_times", self.number_times)
         writer.write_object_value("text", self.text)
         writer.write_additional_data_value(self.additional_data)
     

@@ -36,7 +36,7 @@ class EducationAssignmentSettings(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "submissionAnimationDisabled": lambda n : setattr(self, 'submission_animation_disabled', n.get_bool_value()),
+            "submission_animation_disabled": lambda n : setattr(self, 'submission_animation_disabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class EducationAssignmentSettings(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("submissionAnimationDisabled", self.submission_animation_disabled)
+        writer.write_bool_value("submission_animation_disabled", self.submission_animation_disabled)
     
 

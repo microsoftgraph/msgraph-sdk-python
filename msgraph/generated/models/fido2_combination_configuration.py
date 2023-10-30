@@ -36,7 +36,7 @@ class Fido2CombinationConfiguration(AuthenticationCombinationConfiguration):
         from .authentication_combination_configuration import AuthenticationCombinationConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedAAGUIDs": lambda n : setattr(self, 'allowed_a_a_g_u_i_ds', n.get_collection_of_primitive_values(str)),
+            "allowed_a_a_g_u_i_ds": lambda n : setattr(self, 'allowed_a_a_g_u_i_ds', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class Fido2CombinationConfiguration(AuthenticationCombinationConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_primitive_values("allowedAAGUIDs", self.allowed_a_a_g_u_i_ds)
+        writer.write_collection_of_primitive_values("allowed_a_a_g_u_i_ds", self.allowed_a_a_g_u_i_ds)
     
 

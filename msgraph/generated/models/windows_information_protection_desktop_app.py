@@ -43,9 +43,9 @@ class WindowsInformationProtectionDesktopApp(WindowsInformationProtectionApp):
         from .windows_information_protection_app import WindowsInformationProtectionApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "binaryName": lambda n : setattr(self, 'binary_name', n.get_str_value()),
-            "binaryVersionHigh": lambda n : setattr(self, 'binary_version_high', n.get_str_value()),
-            "binaryVersionLow": lambda n : setattr(self, 'binary_version_low', n.get_str_value()),
+            "binary_name": lambda n : setattr(self, 'binary_name', n.get_str_value()),
+            "binary_version_high": lambda n : setattr(self, 'binary_version_high', n.get_str_value()),
+            "binary_version_low": lambda n : setattr(self, 'binary_version_low', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class WindowsInformationProtectionDesktopApp(WindowsInformationProtectionApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("binaryName", self.binary_name)
-        writer.write_str_value("binaryVersionHigh", self.binary_version_high)
-        writer.write_str_value("binaryVersionLow", self.binary_version_low)
+        writer.write_str_value("binary_name", self.binary_name)
+        writer.write_str_value("binary_version_high", self.binary_version_high)
+        writer.write_str_value("binary_version_low", self.binary_version_low)
     
 

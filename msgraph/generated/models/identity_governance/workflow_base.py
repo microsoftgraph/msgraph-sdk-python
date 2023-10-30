@@ -89,16 +89,16 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "category": lambda n : setattr(self, 'category', n.get_enum_value(LifecycleWorkflowCategory)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(User)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(User)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "executionConditions": lambda n : setattr(self, 'execution_conditions', n.get_object_value(WorkflowExecutionConditions)),
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "isSchedulingEnabled": lambda n : setattr(self, 'is_scheduling_enabled', n.get_bool_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(User)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "execution_conditions": lambda n : setattr(self, 'execution_conditions', n.get_object_value(WorkflowExecutionConditions)),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "is_scheduling_enabled": lambda n : setattr(self, 'is_scheduling_enabled', n.get_bool_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(User)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(Task)),
         }
         return fields
@@ -112,16 +112,16 @@ class WorkflowBase(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_enum_value("category", self.category)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("executionConditions", self.execution_conditions)
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_bool_value("isSchedulingEnabled", self.is_scheduling_enabled)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_object_value("execution_conditions", self.execution_conditions)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_bool_value("is_scheduling_enabled", self.is_scheduling_enabled)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("tasks", self.tasks)
         writer.write_additional_data_value(self.additional_data)
     

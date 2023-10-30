@@ -39,7 +39,7 @@ class UserEvidence(AlertEvidence):
         from .user_account import UserAccount
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(UserAccount)),
+            "user_account": lambda n : setattr(self, 'user_account', n.get_object_value(UserAccount)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class UserEvidence(AlertEvidence):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("userAccount", self.user_account)
+        writer.write_object_value("user_account", self.user_account)
     
 

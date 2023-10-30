@@ -42,7 +42,7 @@ class UserExperienceAnalyticsWorkFromAnywhereMetric(Entity):
         from .user_experience_analytics_work_from_anywhere_device import UserExperienceAnalyticsWorkFromAnywhereDevice
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "metricDevices": lambda n : setattr(self, 'metric_devices', n.get_collection_of_object_values(UserExperienceAnalyticsWorkFromAnywhereDevice)),
+            "metric_devices": lambda n : setattr(self, 'metric_devices', n.get_collection_of_object_values(UserExperienceAnalyticsWorkFromAnywhereDevice)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,6 +57,6 @@ class UserExperienceAnalyticsWorkFromAnywhereMetric(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("metricDevices", self.metric_devices)
+        writer.write_collection_of_object_values("metric_devices", self.metric_devices)
     
 

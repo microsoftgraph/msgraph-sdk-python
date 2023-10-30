@@ -46,12 +46,12 @@ class RegistryValueEvidence(AlertEvidence):
         from .alert_evidence import AlertEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
-            "registryHive": lambda n : setattr(self, 'registry_hive', n.get_str_value()),
-            "registryKey": lambda n : setattr(self, 'registry_key', n.get_str_value()),
-            "registryValue": lambda n : setattr(self, 'registry_value', n.get_str_value()),
-            "registryValueName": lambda n : setattr(self, 'registry_value_name', n.get_str_value()),
-            "registryValueType": lambda n : setattr(self, 'registry_value_type', n.get_str_value()),
+            "mde_device_id": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
+            "registry_hive": lambda n : setattr(self, 'registry_hive', n.get_str_value()),
+            "registry_key": lambda n : setattr(self, 'registry_key', n.get_str_value()),
+            "registry_value": lambda n : setattr(self, 'registry_value', n.get_str_value()),
+            "registry_value_name": lambda n : setattr(self, 'registry_value_name', n.get_str_value()),
+            "registry_value_type": lambda n : setattr(self, 'registry_value_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,11 +66,11 @@ class RegistryValueEvidence(AlertEvidence):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("mdeDeviceId", self.mde_device_id)
-        writer.write_str_value("registryHive", self.registry_hive)
-        writer.write_str_value("registryKey", self.registry_key)
-        writer.write_str_value("registryValue", self.registry_value)
-        writer.write_str_value("registryValueName", self.registry_value_name)
-        writer.write_str_value("registryValueType", self.registry_value_type)
+        writer.write_str_value("mde_device_id", self.mde_device_id)
+        writer.write_str_value("registry_hive", self.registry_hive)
+        writer.write_str_value("registry_key", self.registry_key)
+        writer.write_str_value("registry_value", self.registry_value)
+        writer.write_str_value("registry_value_name", self.registry_value_name)
+        writer.write_str_value("registry_value_type", self.registry_value_type)
     
 

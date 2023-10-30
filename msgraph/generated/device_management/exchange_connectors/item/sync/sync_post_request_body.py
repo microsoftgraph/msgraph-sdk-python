@@ -38,7 +38,7 @@ class SyncPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from .....models.device_management_exchange_connector_sync_type import DeviceManagementExchangeConnectorSyncType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "syncType": lambda n : setattr(self, 'sync_type', n.get_enum_value(DeviceManagementExchangeConnectorSyncType)),
+            "sync_type": lambda n : setattr(self, 'sync_type', n.get_enum_value(DeviceManagementExchangeConnectorSyncType)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class SyncPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("syncType", self.sync_type)
+        writer.write_enum_value("sync_type", self.sync_type)
         writer.write_additional_data_value(self.additional_data)
     
 

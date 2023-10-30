@@ -53,13 +53,13 @@ class TargetResource(AdditionalDataHolder, BackedModel, Parsable):
         from .modified_property import ModifiedProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "groupType": lambda n : setattr(self, 'group_type', n.get_enum_value(GroupType)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "group_type": lambda n : setattr(self, 'group_type', n.get_enum_value(GroupType)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(ModifiedProperty)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "modified_properties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(ModifiedProperty)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -71,13 +71,13 @@ class TargetResource(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_enum_value("groupType", self.group_type)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_enum_value("group_type", self.group_type)
         writer.write_str_value("id", self.id)
-        writer.write_collection_of_object_values("modifiedProperties", self.modified_properties)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_collection_of_object_values("modified_properties", self.modified_properties)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("type", self.type)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
     
 

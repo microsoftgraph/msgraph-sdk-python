@@ -54,14 +54,14 @@ class IosVppEBook(ManagedEBook):
         from .managed_e_book import ManagedEBook
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appleId": lambda n : setattr(self, 'apple_id', n.get_str_value()),
+            "apple_id": lambda n : setattr(self, 'apple_id', n.get_str_value()),
             "genres": lambda n : setattr(self, 'genres', n.get_collection_of_primitive_values(str)),
             "language": lambda n : setattr(self, 'language', n.get_str_value()),
             "seller": lambda n : setattr(self, 'seller', n.get_str_value()),
-            "totalLicenseCount": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
-            "usedLicenseCount": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
-            "vppOrganizationName": lambda n : setattr(self, 'vpp_organization_name', n.get_str_value()),
-            "vppTokenId": lambda n : setattr(self, 'vpp_token_id', n.get_uuid_value()),
+            "total_license_count": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
+            "used_license_count": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
+            "vpp_organization_name": lambda n : setattr(self, 'vpp_organization_name', n.get_str_value()),
+            "vpp_token_id": lambda n : setattr(self, 'vpp_token_id', n.get_uuid_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -76,13 +76,13 @@ class IosVppEBook(ManagedEBook):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("appleId", self.apple_id)
+        writer.write_str_value("apple_id", self.apple_id)
         writer.write_collection_of_primitive_values("genres", self.genres)
         writer.write_str_value("language", self.language)
         writer.write_str_value("seller", self.seller)
-        writer.write_int_value("totalLicenseCount", self.total_license_count)
-        writer.write_int_value("usedLicenseCount", self.used_license_count)
-        writer.write_str_value("vppOrganizationName", self.vpp_organization_name)
-        writer.write_uuid_value("vppTokenId", self.vpp_token_id)
+        writer.write_int_value("total_license_count", self.total_license_count)
+        writer.write_int_value("used_license_count", self.used_license_count)
+        writer.write_str_value("vpp_organization_name", self.vpp_organization_name)
+        writer.write_uuid_value("vpp_token_id", self.vpp_token_id)
     
 

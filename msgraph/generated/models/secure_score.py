@@ -64,16 +64,16 @@ class SecureScore(Entity):
         from .security_vendor_information import SecurityVendorInformation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activeUserCount": lambda n : setattr(self, 'active_user_count', n.get_int_value()),
-            "averageComparativeScores": lambda n : setattr(self, 'average_comparative_scores', n.get_collection_of_object_values(AverageComparativeScore)),
-            "azureTenantId": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
-            "controlScores": lambda n : setattr(self, 'control_scores', n.get_collection_of_object_values(ControlScore)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "currentScore": lambda n : setattr(self, 'current_score', n.get_float_value()),
-            "enabledServices": lambda n : setattr(self, 'enabled_services', n.get_collection_of_primitive_values(str)),
-            "licensedUserCount": lambda n : setattr(self, 'licensed_user_count', n.get_int_value()),
-            "maxScore": lambda n : setattr(self, 'max_score', n.get_float_value()),
-            "vendorInformation": lambda n : setattr(self, 'vendor_information', n.get_object_value(SecurityVendorInformation)),
+            "active_user_count": lambda n : setattr(self, 'active_user_count', n.get_int_value()),
+            "average_comparative_scores": lambda n : setattr(self, 'average_comparative_scores', n.get_collection_of_object_values(AverageComparativeScore)),
+            "azure_tenant_id": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
+            "control_scores": lambda n : setattr(self, 'control_scores', n.get_collection_of_object_values(ControlScore)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "current_score": lambda n : setattr(self, 'current_score', n.get_float_value()),
+            "enabled_services": lambda n : setattr(self, 'enabled_services', n.get_collection_of_primitive_values(str)),
+            "licensed_user_count": lambda n : setattr(self, 'licensed_user_count', n.get_int_value()),
+            "max_score": lambda n : setattr(self, 'max_score', n.get_float_value()),
+            "vendor_information": lambda n : setattr(self, 'vendor_information', n.get_object_value(SecurityVendorInformation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -88,15 +88,15 @@ class SecureScore(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("activeUserCount", self.active_user_count)
-        writer.write_collection_of_object_values("averageComparativeScores", self.average_comparative_scores)
-        writer.write_str_value("azureTenantId", self.azure_tenant_id)
-        writer.write_collection_of_object_values("controlScores", self.control_scores)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_float_value("currentScore", self.current_score)
-        writer.write_collection_of_primitive_values("enabledServices", self.enabled_services)
-        writer.write_int_value("licensedUserCount", self.licensed_user_count)
-        writer.write_float_value("maxScore", self.max_score)
-        writer.write_object_value("vendorInformation", self.vendor_information)
+        writer.write_int_value("active_user_count", self.active_user_count)
+        writer.write_collection_of_object_values("average_comparative_scores", self.average_comparative_scores)
+        writer.write_str_value("azure_tenant_id", self.azure_tenant_id)
+        writer.write_collection_of_object_values("control_scores", self.control_scores)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_float_value("current_score", self.current_score)
+        writer.write_collection_of_primitive_values("enabled_services", self.enabled_services)
+        writer.write_int_value("licensed_user_count", self.licensed_user_count)
+        writer.write_float_value("max_score", self.max_score)
+        writer.write_object_value("vendor_information", self.vendor_information)
     
 

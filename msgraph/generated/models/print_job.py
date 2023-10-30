@@ -69,12 +69,12 @@ class PrintJob(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(PrintJobConfiguration)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(UserIdentity)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(UserIdentity)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "documents": lambda n : setattr(self, 'documents', n.get_collection_of_object_values(PrintDocument)),
-            "isFetchable": lambda n : setattr(self, 'is_fetchable', n.get_bool_value()),
-            "redirectedFrom": lambda n : setattr(self, 'redirected_from', n.get_str_value()),
-            "redirectedTo": lambda n : setattr(self, 'redirected_to', n.get_str_value()),
+            "is_fetchable": lambda n : setattr(self, 'is_fetchable', n.get_bool_value()),
+            "redirected_from": lambda n : setattr(self, 'redirected_from', n.get_str_value()),
+            "redirected_to": lambda n : setattr(self, 'redirected_to', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_object_value(PrintJobStatus)),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(PrintTask)),
         }
@@ -92,12 +92,12 @@ class PrintJob(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("configuration", self.configuration)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_collection_of_object_values("documents", self.documents)
-        writer.write_bool_value("isFetchable", self.is_fetchable)
-        writer.write_str_value("redirectedFrom", self.redirected_from)
-        writer.write_str_value("redirectedTo", self.redirected_to)
+        writer.write_bool_value("is_fetchable", self.is_fetchable)
+        writer.write_str_value("redirected_from", self.redirected_from)
+        writer.write_str_value("redirected_to", self.redirected_to)
         writer.write_object_value("status", self.status)
         writer.write_collection_of_object_values("tasks", self.tasks)
     

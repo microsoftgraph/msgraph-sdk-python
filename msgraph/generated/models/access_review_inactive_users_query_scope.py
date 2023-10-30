@@ -37,7 +37,7 @@ class AccessReviewInactiveUsersQueryScope(AccessReviewQueryScope):
         from .access_review_query_scope import AccessReviewQueryScope
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "inactiveDuration": lambda n : setattr(self, 'inactive_duration', n.get_timedelta_value()),
+            "inactive_duration": lambda n : setattr(self, 'inactive_duration', n.get_timedelta_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,6 +52,6 @@ class AccessReviewInactiveUsersQueryScope(AccessReviewQueryScope):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_timedelta_value("inactiveDuration", self.inactive_duration)
+        writer.write_timedelta_value("inactive_duration", self.inactive_duration)
     
 

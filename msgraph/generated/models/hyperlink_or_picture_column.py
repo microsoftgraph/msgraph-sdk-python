@@ -33,8 +33,8 @@ class HyperlinkOrPictureColumn(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "isPicture": lambda n : setattr(self, 'is_picture', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "is_picture": lambda n : setattr(self, 'is_picture', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -46,8 +46,8 @@ class HyperlinkOrPictureColumn(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("isPicture", self.is_picture)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("is_picture", self.is_picture)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

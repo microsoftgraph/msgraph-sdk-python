@@ -55,12 +55,12 @@ class TodoTaskList(Entity):
         from .wellknown_list_name import WellknownListName
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
-            "isOwner": lambda n : setattr(self, 'is_owner', n.get_bool_value()),
-            "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
+            "is_owner": lambda n : setattr(self, 'is_owner', n.get_bool_value()),
+            "is_shared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(TodoTask)),
-            "wellknownListName": lambda n : setattr(self, 'wellknown_list_name', n.get_enum_value(WellknownListName)),
+            "wellknown_list_name": lambda n : setattr(self, 'wellknown_list_name', n.get_enum_value(WellknownListName)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,11 +75,11 @@ class TodoTaskList(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_collection_of_object_values("extensions", self.extensions)
-        writer.write_bool_value("isOwner", self.is_owner)
-        writer.write_bool_value("isShared", self.is_shared)
+        writer.write_bool_value("is_owner", self.is_owner)
+        writer.write_bool_value("is_shared", self.is_shared)
         writer.write_collection_of_object_values("tasks", self.tasks)
-        writer.write_enum_value("wellknownListName", self.wellknown_list_name)
+        writer.write_enum_value("wellknown_list_name", self.wellknown_list_name)
     
 

@@ -69,17 +69,17 @@ class UserProcessingResult(Entity):
         from .workflow_execution_type import WorkflowExecutionType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "failedTasksCount": lambda n : setattr(self, 'failed_tasks_count', n.get_int_value()),
-            "processingStatus": lambda n : setattr(self, 'processing_status', n.get_enum_value(LifecycleWorkflowProcessingStatus)),
-            "scheduledDateTime": lambda n : setattr(self, 'scheduled_date_time', n.get_datetime_value()),
-            "startedDateTime": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
+            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "failed_tasks_count": lambda n : setattr(self, 'failed_tasks_count', n.get_int_value()),
+            "processing_status": lambda n : setattr(self, 'processing_status', n.get_enum_value(LifecycleWorkflowProcessingStatus)),
+            "scheduled_date_time": lambda n : setattr(self, 'scheduled_date_time', n.get_datetime_value()),
+            "started_date_time": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_object_value(User)),
-            "taskProcessingResults": lambda n : setattr(self, 'task_processing_results', n.get_collection_of_object_values(TaskProcessingResult)),
-            "totalTasksCount": lambda n : setattr(self, 'total_tasks_count', n.get_int_value()),
-            "totalUnprocessedTasksCount": lambda n : setattr(self, 'total_unprocessed_tasks_count', n.get_int_value()),
-            "workflowExecutionType": lambda n : setattr(self, 'workflow_execution_type', n.get_enum_value(WorkflowExecutionType)),
-            "workflowVersion": lambda n : setattr(self, 'workflow_version', n.get_int_value()),
+            "task_processing_results": lambda n : setattr(self, 'task_processing_results', n.get_collection_of_object_values(TaskProcessingResult)),
+            "total_tasks_count": lambda n : setattr(self, 'total_tasks_count', n.get_int_value()),
+            "total_unprocessed_tasks_count": lambda n : setattr(self, 'total_unprocessed_tasks_count', n.get_int_value()),
+            "workflow_execution_type": lambda n : setattr(self, 'workflow_execution_type', n.get_enum_value(WorkflowExecutionType)),
+            "workflow_version": lambda n : setattr(self, 'workflow_version', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -94,16 +94,16 @@ class UserProcessingResult(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("completedDateTime", self.completed_date_time)
-        writer.write_int_value("failedTasksCount", self.failed_tasks_count)
-        writer.write_enum_value("processingStatus", self.processing_status)
-        writer.write_datetime_value("scheduledDateTime", self.scheduled_date_time)
-        writer.write_datetime_value("startedDateTime", self.started_date_time)
+        writer.write_datetime_value("completed_date_time", self.completed_date_time)
+        writer.write_int_value("failed_tasks_count", self.failed_tasks_count)
+        writer.write_enum_value("processing_status", self.processing_status)
+        writer.write_datetime_value("scheduled_date_time", self.scheduled_date_time)
+        writer.write_datetime_value("started_date_time", self.started_date_time)
         writer.write_object_value("subject", self.subject)
-        writer.write_collection_of_object_values("taskProcessingResults", self.task_processing_results)
-        writer.write_int_value("totalTasksCount", self.total_tasks_count)
-        writer.write_int_value("totalUnprocessedTasksCount", self.total_unprocessed_tasks_count)
-        writer.write_enum_value("workflowExecutionType", self.workflow_execution_type)
-        writer.write_int_value("workflowVersion", self.workflow_version)
+        writer.write_collection_of_object_values("task_processing_results", self.task_processing_results)
+        writer.write_int_value("total_tasks_count", self.total_tasks_count)
+        writer.write_int_value("total_unprocessed_tasks_count", self.total_unprocessed_tasks_count)
+        writer.write_enum_value("workflow_execution_type", self.workflow_execution_type)
+        writer.write_int_value("workflow_version", self.workflow_version)
     
 

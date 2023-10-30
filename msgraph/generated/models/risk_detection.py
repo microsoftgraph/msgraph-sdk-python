@@ -95,24 +95,24 @@ class RiskDetection(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_enum_value(ActivityType)),
-            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
-            "additionalInfo": lambda n : setattr(self, 'additional_info', n.get_str_value()),
-            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
-            "detectedDateTime": lambda n : setattr(self, 'detected_date_time', n.get_datetime_value()),
-            "detectionTimingType": lambda n : setattr(self, 'detection_timing_type', n.get_enum_value(RiskDetectionTimingType)),
-            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
+            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "additional_info": lambda n : setattr(self, 'additional_info', n.get_str_value()),
+            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "detected_date_time": lambda n : setattr(self, 'detected_date_time', n.get_datetime_value()),
+            "detection_timing_type": lambda n : setattr(self, 'detection_timing_type', n.get_enum_value(RiskDetectionTimingType)),
+            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "last_updated_date_time": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(SignInLocation)),
-            "requestId": lambda n : setattr(self, 'request_id', n.get_str_value()),
-            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetail)),
-            "riskEventType": lambda n : setattr(self, 'risk_event_type', n.get_str_value()),
-            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(RiskLevel)),
-            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskState)),
+            "request_id": lambda n : setattr(self, 'request_id', n.get_str_value()),
+            "risk_detail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetail)),
+            "risk_event_type": lambda n : setattr(self, 'risk_event_type', n.get_str_value()),
+            "risk_level": lambda n : setattr(self, 'risk_level', n.get_enum_value(RiskLevel)),
+            "risk_state": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskState)),
             "source": lambda n : setattr(self, 'source', n.get_str_value()),
-            "tokenIssuerType": lambda n : setattr(self, 'token_issuer_type', n.get_enum_value(TokenIssuerType)),
-            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "token_issuer_type": lambda n : setattr(self, 'token_issuer_type', n.get_enum_value(TokenIssuerType)),
+            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -128,23 +128,23 @@ class RiskDetection(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("activity", self.activity)
-        writer.write_datetime_value("activityDateTime", self.activity_date_time)
-        writer.write_str_value("additionalInfo", self.additional_info)
-        writer.write_str_value("correlationId", self.correlation_id)
-        writer.write_datetime_value("detectedDateTime", self.detected_date_time)
-        writer.write_enum_value("detectionTimingType", self.detection_timing_type)
-        writer.write_str_value("ipAddress", self.ip_address)
-        writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
+        writer.write_datetime_value("activity_date_time", self.activity_date_time)
+        writer.write_str_value("additional_info", self.additional_info)
+        writer.write_str_value("correlation_id", self.correlation_id)
+        writer.write_datetime_value("detected_date_time", self.detected_date_time)
+        writer.write_enum_value("detection_timing_type", self.detection_timing_type)
+        writer.write_str_value("ip_address", self.ip_address)
+        writer.write_datetime_value("last_updated_date_time", self.last_updated_date_time)
         writer.write_object_value("location", self.location)
-        writer.write_str_value("requestId", self.request_id)
-        writer.write_enum_value("riskDetail", self.risk_detail)
-        writer.write_str_value("riskEventType", self.risk_event_type)
-        writer.write_enum_value("riskLevel", self.risk_level)
-        writer.write_enum_value("riskState", self.risk_state)
+        writer.write_str_value("request_id", self.request_id)
+        writer.write_enum_value("risk_detail", self.risk_detail)
+        writer.write_str_value("risk_event_type", self.risk_event_type)
+        writer.write_enum_value("risk_level", self.risk_level)
+        writer.write_enum_value("risk_state", self.risk_state)
         writer.write_str_value("source", self.source)
-        writer.write_enum_value("tokenIssuerType", self.token_issuer_type)
-        writer.write_str_value("userDisplayName", self.user_display_name)
-        writer.write_str_value("userId", self.user_id)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_enum_value("token_issuer_type", self.token_issuer_type)
+        writer.write_str_value("user_display_name", self.user_display_name)
+        writer.write_str_value("user_id", self.user_id)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
     
 

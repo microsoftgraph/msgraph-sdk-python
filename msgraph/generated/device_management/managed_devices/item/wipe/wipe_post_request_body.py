@@ -37,10 +37,10 @@ class WipePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "keepEnrollmentData": lambda n : setattr(self, 'keep_enrollment_data', n.get_bool_value()),
-            "keepUserData": lambda n : setattr(self, 'keep_user_data', n.get_bool_value()),
-            "macOsUnlockCode": lambda n : setattr(self, 'mac_os_unlock_code', n.get_str_value()),
-            "persistEsimDataPlan": lambda n : setattr(self, 'persist_esim_data_plan', n.get_bool_value()),
+            "keep_enrollment_data": lambda n : setattr(self, 'keep_enrollment_data', n.get_bool_value()),
+            "keep_user_data": lambda n : setattr(self, 'keep_user_data', n.get_bool_value()),
+            "mac_os_unlock_code": lambda n : setattr(self, 'mac_os_unlock_code', n.get_str_value()),
+            "persist_esim_data_plan": lambda n : setattr(self, 'persist_esim_data_plan', n.get_bool_value()),
         }
         return fields
     
@@ -52,10 +52,10 @@ class WipePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("keepEnrollmentData", self.keep_enrollment_data)
-        writer.write_bool_value("keepUserData", self.keep_user_data)
-        writer.write_str_value("macOsUnlockCode", self.mac_os_unlock_code)
-        writer.write_bool_value("persistEsimDataPlan", self.persist_esim_data_plan)
+        writer.write_bool_value("keep_enrollment_data", self.keep_enrollment_data)
+        writer.write_bool_value("keep_user_data", self.keep_user_data)
+        writer.write_str_value("mac_os_unlock_code", self.mac_os_unlock_code)
+        writer.write_bool_value("persist_esim_data_plan", self.persist_esim_data_plan)
         writer.write_additional_data_value(self.additional_data)
     
 

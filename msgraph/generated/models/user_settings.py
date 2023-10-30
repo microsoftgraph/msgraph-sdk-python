@@ -43,9 +43,9 @@ class UserSettings(Entity):
         from .shift_preferences import ShiftPreferences
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "contributionToContentDiscoveryAsOrganizationDisabled": lambda n : setattr(self, 'contribution_to_content_discovery_as_organization_disabled', n.get_bool_value()),
-            "contributionToContentDiscoveryDisabled": lambda n : setattr(self, 'contribution_to_content_discovery_disabled', n.get_bool_value()),
-            "shiftPreferences": lambda n : setattr(self, 'shift_preferences', n.get_object_value(ShiftPreferences)),
+            "contribution_to_content_discovery_as_organization_disabled": lambda n : setattr(self, 'contribution_to_content_discovery_as_organization_disabled', n.get_bool_value()),
+            "contribution_to_content_discovery_disabled": lambda n : setattr(self, 'contribution_to_content_discovery_disabled', n.get_bool_value()),
+            "shift_preferences": lambda n : setattr(self, 'shift_preferences', n.get_object_value(ShiftPreferences)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class UserSettings(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("contributionToContentDiscoveryAsOrganizationDisabled", self.contribution_to_content_discovery_as_organization_disabled)
-        writer.write_bool_value("contributionToContentDiscoveryDisabled", self.contribution_to_content_discovery_disabled)
-        writer.write_object_value("shiftPreferences", self.shift_preferences)
+        writer.write_bool_value("contribution_to_content_discovery_as_organization_disabled", self.contribution_to_content_discovery_as_organization_disabled)
+        writer.write_bool_value("contribution_to_content_discovery_disabled", self.contribution_to_content_discovery_disabled)
+        writer.write_object_value("shift_preferences", self.shift_preferences)
     
 

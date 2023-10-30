@@ -61,16 +61,16 @@ class SubscribedSku(Entity):
         from .service_plan_info import ServicePlanInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accountId": lambda n : setattr(self, 'account_id', n.get_str_value()),
-            "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
-            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_str_value()),
-            "capabilityStatus": lambda n : setattr(self, 'capability_status', n.get_str_value()),
-            "consumedUnits": lambda n : setattr(self, 'consumed_units', n.get_int_value()),
-            "prepaidUnits": lambda n : setattr(self, 'prepaid_units', n.get_object_value(LicenseUnitsDetail)),
-            "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(ServicePlanInfo)),
-            "skuId": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
-            "skuPartNumber": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
-            "subscriptionIds": lambda n : setattr(self, 'subscription_ids', n.get_collection_of_primitive_values(str)),
+            "account_id": lambda n : setattr(self, 'account_id', n.get_str_value()),
+            "account_name": lambda n : setattr(self, 'account_name', n.get_str_value()),
+            "applies_to": lambda n : setattr(self, 'applies_to', n.get_str_value()),
+            "capability_status": lambda n : setattr(self, 'capability_status', n.get_str_value()),
+            "consumed_units": lambda n : setattr(self, 'consumed_units', n.get_int_value()),
+            "prepaid_units": lambda n : setattr(self, 'prepaid_units', n.get_object_value(LicenseUnitsDetail)),
+            "service_plans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(ServicePlanInfo)),
+            "sku_id": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
+            "sku_part_number": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
+            "subscription_ids": lambda n : setattr(self, 'subscription_ids', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -85,15 +85,15 @@ class SubscribedSku(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("accountId", self.account_id)
-        writer.write_str_value("accountName", self.account_name)
-        writer.write_str_value("appliesTo", self.applies_to)
-        writer.write_str_value("capabilityStatus", self.capability_status)
-        writer.write_int_value("consumedUnits", self.consumed_units)
-        writer.write_object_value("prepaidUnits", self.prepaid_units)
-        writer.write_collection_of_object_values("servicePlans", self.service_plans)
-        writer.write_uuid_value("skuId", self.sku_id)
-        writer.write_str_value("skuPartNumber", self.sku_part_number)
-        writer.write_collection_of_primitive_values("subscriptionIds", self.subscription_ids)
+        writer.write_str_value("account_id", self.account_id)
+        writer.write_str_value("account_name", self.account_name)
+        writer.write_str_value("applies_to", self.applies_to)
+        writer.write_str_value("capability_status", self.capability_status)
+        writer.write_int_value("consumed_units", self.consumed_units)
+        writer.write_object_value("prepaid_units", self.prepaid_units)
+        writer.write_collection_of_object_values("service_plans", self.service_plans)
+        writer.write_uuid_value("sku_id", self.sku_id)
+        writer.write_str_value("sku_part_number", self.sku_part_number)
+        writer.write_collection_of_primitive_values("subscription_ids", self.subscription_ids)
     
 

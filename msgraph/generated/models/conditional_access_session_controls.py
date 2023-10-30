@@ -57,12 +57,12 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, BackedModel, Parsab
         from .sign_in_frequency_session_control import SignInFrequencySessionControl
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicationEnforcedRestrictions": lambda n : setattr(self, 'application_enforced_restrictions', n.get_object_value(ApplicationEnforcedRestrictionsSessionControl)),
-            "cloudAppSecurity": lambda n : setattr(self, 'cloud_app_security', n.get_object_value(CloudAppSecuritySessionControl)),
-            "disableResilienceDefaults": lambda n : setattr(self, 'disable_resilience_defaults', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "persistentBrowser": lambda n : setattr(self, 'persistent_browser', n.get_object_value(PersistentBrowserSessionControl)),
-            "signInFrequency": lambda n : setattr(self, 'sign_in_frequency', n.get_object_value(SignInFrequencySessionControl)),
+            "application_enforced_restrictions": lambda n : setattr(self, 'application_enforced_restrictions', n.get_object_value(ApplicationEnforcedRestrictionsSessionControl)),
+            "cloud_app_security": lambda n : setattr(self, 'cloud_app_security', n.get_object_value(CloudAppSecuritySessionControl)),
+            "disable_resilience_defaults": lambda n : setattr(self, 'disable_resilience_defaults', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "persistent_browser": lambda n : setattr(self, 'persistent_browser', n.get_object_value(PersistentBrowserSessionControl)),
+            "sign_in_frequency": lambda n : setattr(self, 'sign_in_frequency', n.get_object_value(SignInFrequencySessionControl)),
         }
         return fields
     
@@ -74,12 +74,12 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, BackedModel, Parsab
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("applicationEnforcedRestrictions", self.application_enforced_restrictions)
-        writer.write_object_value("cloudAppSecurity", self.cloud_app_security)
-        writer.write_bool_value("disableResilienceDefaults", self.disable_resilience_defaults)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("persistentBrowser", self.persistent_browser)
-        writer.write_object_value("signInFrequency", self.sign_in_frequency)
+        writer.write_object_value("application_enforced_restrictions", self.application_enforced_restrictions)
+        writer.write_object_value("cloud_app_security", self.cloud_app_security)
+        writer.write_bool_value("disable_resilience_defaults", self.disable_resilience_defaults)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("persistent_browser", self.persistent_browser)
+        writer.write_object_value("sign_in_frequency", self.sign_in_frequency)
         writer.write_additional_data_value(self.additional_data)
     
 

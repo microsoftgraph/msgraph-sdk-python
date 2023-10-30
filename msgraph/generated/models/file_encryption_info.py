@@ -48,14 +48,14 @@ class FileEncryptionInfo(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "encryptionKey": lambda n : setattr(self, 'encryption_key', n.get_bytes_value()),
-            "fileDigest": lambda n : setattr(self, 'file_digest', n.get_bytes_value()),
-            "fileDigestAlgorithm": lambda n : setattr(self, 'file_digest_algorithm', n.get_str_value()),
-            "initializationVector": lambda n : setattr(self, 'initialization_vector', n.get_bytes_value()),
+            "encryption_key": lambda n : setattr(self, 'encryption_key', n.get_bytes_value()),
+            "file_digest": lambda n : setattr(self, 'file_digest', n.get_bytes_value()),
+            "file_digest_algorithm": lambda n : setattr(self, 'file_digest_algorithm', n.get_str_value()),
+            "initialization_vector": lambda n : setattr(self, 'initialization_vector', n.get_bytes_value()),
             "mac": lambda n : setattr(self, 'mac', n.get_bytes_value()),
-            "macKey": lambda n : setattr(self, 'mac_key', n.get_bytes_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "profileIdentifier": lambda n : setattr(self, 'profile_identifier', n.get_str_value()),
+            "mac_key": lambda n : setattr(self, 'mac_key', n.get_bytes_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "profile_identifier": lambda n : setattr(self, 'profile_identifier', n.get_str_value()),
         }
         return fields
     
@@ -67,14 +67,14 @@ class FileEncryptionInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bytes_value("encryptionKey", self.encryption_key)
-        writer.write_bytes_value("fileDigest", self.file_digest)
-        writer.write_str_value("fileDigestAlgorithm", self.file_digest_algorithm)
-        writer.write_bytes_value("initializationVector", self.initialization_vector)
+        writer.write_bytes_value("encryption_key", self.encryption_key)
+        writer.write_bytes_value("file_digest", self.file_digest)
+        writer.write_str_value("file_digest_algorithm", self.file_digest_algorithm)
+        writer.write_bytes_value("initialization_vector", self.initialization_vector)
         writer.write_bytes_value("mac", self.mac)
-        writer.write_bytes_value("macKey", self.mac_key)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("profileIdentifier", self.profile_identifier)
+        writer.write_bytes_value("mac_key", self.mac_key)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("profile_identifier", self.profile_identifier)
         writer.write_additional_data_value(self.additional_data)
     
 

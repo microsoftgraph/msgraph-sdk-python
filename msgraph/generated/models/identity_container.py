@@ -59,11 +59,11 @@ class IdentityContainer(Entity):
         from .identity_user_flow_attribute import IdentityUserFlowAttribute
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "apiConnectors": lambda n : setattr(self, 'api_connectors', n.get_collection_of_object_values(IdentityApiConnector)),
-            "b2xUserFlows": lambda n : setattr(self, 'b2x_user_flows', n.get_collection_of_object_values(B2xIdentityUserFlow)),
-            "conditionalAccess": lambda n : setattr(self, 'conditional_access', n.get_object_value(ConditionalAccessRoot)),
-            "identityProviders": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(IdentityProviderBase)),
-            "userFlowAttributes": lambda n : setattr(self, 'user_flow_attributes', n.get_collection_of_object_values(IdentityUserFlowAttribute)),
+            "api_connectors": lambda n : setattr(self, 'api_connectors', n.get_collection_of_object_values(IdentityApiConnector)),
+            "b2x_user_flows": lambda n : setattr(self, 'b2x_user_flows', n.get_collection_of_object_values(B2xIdentityUserFlow)),
+            "conditional_access": lambda n : setattr(self, 'conditional_access', n.get_object_value(ConditionalAccessRoot)),
+            "identity_providers": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(IdentityProviderBase)),
+            "user_flow_attributes": lambda n : setattr(self, 'user_flow_attributes', n.get_collection_of_object_values(IdentityUserFlowAttribute)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,10 +78,10 @@ class IdentityContainer(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("apiConnectors", self.api_connectors)
-        writer.write_collection_of_object_values("b2xUserFlows", self.b2x_user_flows)
-        writer.write_object_value("conditionalAccess", self.conditional_access)
-        writer.write_collection_of_object_values("identityProviders", self.identity_providers)
-        writer.write_collection_of_object_values("userFlowAttributes", self.user_flow_attributes)
+        writer.write_collection_of_object_values("api_connectors", self.api_connectors)
+        writer.write_collection_of_object_values("b2x_user_flows", self.b2x_user_flows)
+        writer.write_object_value("conditional_access", self.conditional_access)
+        writer.write_collection_of_object_values("identity_providers", self.identity_providers)
+        writer.write_collection_of_object_values("user_flow_attributes", self.user_flow_attributes)
     
 

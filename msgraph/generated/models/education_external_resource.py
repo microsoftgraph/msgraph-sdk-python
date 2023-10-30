@@ -36,7 +36,7 @@ class EducationExternalResource(EducationResource):
         from .education_resource import EducationResource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class EducationExternalResource(EducationResource):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("webUrl", self.web_url)
+        writer.write_str_value("web_url", self.web_url)
     
 

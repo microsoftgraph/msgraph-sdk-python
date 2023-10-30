@@ -65,13 +65,13 @@ class IdentityGovernance(AdditionalDataHolder, BackedModel, Parsable):
         from .lifecycle_workflows_container import LifecycleWorkflowsContainer
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessReviews": lambda n : setattr(self, 'access_reviews', n.get_object_value(AccessReviewSet)),
-            "appConsent": lambda n : setattr(self, 'app_consent', n.get_object_value(AppConsentApprovalRoute)),
-            "entitlementManagement": lambda n : setattr(self, 'entitlement_management', n.get_object_value(EntitlementManagement)),
-            "lifecycleWorkflows": lambda n : setattr(self, 'lifecycle_workflows', n.get_object_value(LifecycleWorkflowsContainer)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "privilegedAccess": lambda n : setattr(self, 'privileged_access', n.get_object_value(PrivilegedAccessRoot)),
-            "termsOfUse": lambda n : setattr(self, 'terms_of_use', n.get_object_value(TermsOfUseContainer)),
+            "access_reviews": lambda n : setattr(self, 'access_reviews', n.get_object_value(AccessReviewSet)),
+            "app_consent": lambda n : setattr(self, 'app_consent', n.get_object_value(AppConsentApprovalRoute)),
+            "entitlement_management": lambda n : setattr(self, 'entitlement_management', n.get_object_value(EntitlementManagement)),
+            "lifecycle_workflows": lambda n : setattr(self, 'lifecycle_workflows', n.get_object_value(LifecycleWorkflowsContainer)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "privileged_access": lambda n : setattr(self, 'privileged_access', n.get_object_value(PrivilegedAccessRoot)),
+            "terms_of_use": lambda n : setattr(self, 'terms_of_use', n.get_object_value(TermsOfUseContainer)),
         }
         return fields
     
@@ -83,13 +83,13 @@ class IdentityGovernance(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("accessReviews", self.access_reviews)
-        writer.write_object_value("appConsent", self.app_consent)
-        writer.write_object_value("entitlementManagement", self.entitlement_management)
-        writer.write_object_value("lifecycleWorkflows", self.lifecycle_workflows)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("privilegedAccess", self.privileged_access)
-        writer.write_object_value("termsOfUse", self.terms_of_use)
+        writer.write_object_value("access_reviews", self.access_reviews)
+        writer.write_object_value("app_consent", self.app_consent)
+        writer.write_object_value("entitlement_management", self.entitlement_management)
+        writer.write_object_value("lifecycle_workflows", self.lifecycle_workflows)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("privileged_access", self.privileged_access)
+        writer.write_object_value("terms_of_use", self.terms_of_use)
         writer.write_additional_data_value(self.additional_data)
     
 

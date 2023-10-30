@@ -39,7 +39,7 @@ class RemoteLockActionResult(DeviceActionResult):
         from .device_action_result import DeviceActionResult
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "unlockPin": lambda n : setattr(self, 'unlock_pin', n.get_str_value()),
+            "unlock_pin": lambda n : setattr(self, 'unlock_pin', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class RemoteLockActionResult(DeviceActionResult):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("unlockPin", self.unlock_pin)
+        writer.write_str_value("unlock_pin", self.unlock_pin)
     
 

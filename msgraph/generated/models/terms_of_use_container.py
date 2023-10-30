@@ -44,7 +44,7 @@ class TermsOfUseContainer(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "agreementAcceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(AgreementAcceptance)),
+            "agreement_acceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(AgreementAcceptance)),
             "agreements": lambda n : setattr(self, 'agreements', n.get_collection_of_object_values(Agreement)),
         }
         super_fields = super().get_field_deserializers()
@@ -60,7 +60,7 @@ class TermsOfUseContainer(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("agreementAcceptances", self.agreement_acceptances)
+        writer.write_collection_of_object_values("agreement_acceptances", self.agreement_acceptances)
         writer.write_collection_of_object_values("agreements", self.agreements)
     
 

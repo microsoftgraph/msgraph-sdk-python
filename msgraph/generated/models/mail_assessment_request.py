@@ -43,9 +43,9 @@ class MailAssessmentRequest(ThreatAssessmentRequest):
         from .threat_assessment_request import ThreatAssessmentRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "destinationRoutingReason": lambda n : setattr(self, 'destination_routing_reason', n.get_enum_value(MailDestinationRoutingReason)),
-            "messageUri": lambda n : setattr(self, 'message_uri', n.get_str_value()),
-            "recipientEmail": lambda n : setattr(self, 'recipient_email', n.get_str_value()),
+            "destination_routing_reason": lambda n : setattr(self, 'destination_routing_reason', n.get_enum_value(MailDestinationRoutingReason)),
+            "message_uri": lambda n : setattr(self, 'message_uri', n.get_str_value()),
+            "recipient_email": lambda n : setattr(self, 'recipient_email', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class MailAssessmentRequest(ThreatAssessmentRequest):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("destinationRoutingReason", self.destination_routing_reason)
-        writer.write_str_value("messageUri", self.message_uri)
-        writer.write_str_value("recipientEmail", self.recipient_email)
+        writer.write_enum_value("destination_routing_reason", self.destination_routing_reason)
+        writer.write_str_value("message_uri", self.message_uri)
+        writer.write_str_value("recipient_email", self.recipient_email)
     
 

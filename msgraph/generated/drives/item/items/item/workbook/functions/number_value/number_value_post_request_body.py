@@ -42,8 +42,8 @@ class NumberValuePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "decimalSeparator": lambda n : setattr(self, 'decimal_separator', n.get_object_value(Json)),
-            "groupSeparator": lambda n : setattr(self, 'group_separator', n.get_object_value(Json)),
+            "decimal_separator": lambda n : setattr(self, 'decimal_separator', n.get_object_value(Json)),
+            "group_separator": lambda n : setattr(self, 'group_separator', n.get_object_value(Json)),
             "text": lambda n : setattr(self, 'text', n.get_object_value(Json)),
         }
         return fields
@@ -56,8 +56,8 @@ class NumberValuePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("decimalSeparator", self.decimal_separator)
-        writer.write_object_value("groupSeparator", self.group_separator)
+        writer.write_object_value("decimal_separator", self.decimal_separator)
+        writer.write_object_value("group_separator", self.group_separator)
         writer.write_object_value("text", self.text)
         writer.write_additional_data_value(self.additional_data)
     

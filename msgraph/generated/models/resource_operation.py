@@ -43,9 +43,9 @@ class ResourceOperation(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "actionName": lambda n : setattr(self, 'action_name', n.get_str_value()),
+            "action_name": lambda n : setattr(self, 'action_name', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "resourceName": lambda n : setattr(self, 'resource_name', n.get_str_value()),
+            "resource_name": lambda n : setattr(self, 'resource_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class ResourceOperation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("actionName", self.action_name)
+        writer.write_str_value("action_name", self.action_name)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("resourceName", self.resource_name)
+        writer.write_str_value("resource_name", self.resource_name)
     
 

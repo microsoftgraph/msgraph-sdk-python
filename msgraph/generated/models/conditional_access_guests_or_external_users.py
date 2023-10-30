@@ -45,9 +45,9 @@ class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, BackedModel, 
         from .conditional_access_guest_or_external_user_types import ConditionalAccessGuestOrExternalUserTypes
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "externalTenants": lambda n : setattr(self, 'external_tenants', n.get_object_value(ConditionalAccessExternalTenants)),
-            "guestOrExternalUserTypes": lambda n : setattr(self, 'guest_or_external_user_types', n.get_collection_of_enum_values(ConditionalAccessGuestOrExternalUserTypes)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "external_tenants": lambda n : setattr(self, 'external_tenants', n.get_object_value(ConditionalAccessExternalTenants)),
+            "guest_or_external_user_types": lambda n : setattr(self, 'guest_or_external_user_types', n.get_collection_of_enum_values(ConditionalAccessGuestOrExternalUserTypes)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -59,9 +59,9 @@ class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, BackedModel, 
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("externalTenants", self.external_tenants)
-        writer.write_enum_value("guestOrExternalUserTypes", self.guest_or_external_user_types)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_object_value("external_tenants", self.external_tenants)
+        writer.write_enum_value("guest_or_external_user_types", self.guest_or_external_user_types)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

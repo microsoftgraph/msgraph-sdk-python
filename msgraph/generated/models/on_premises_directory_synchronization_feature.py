@@ -69,26 +69,26 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "blockCloudObjectTakeoverThroughHardMatchEnabled": lambda n : setattr(self, 'block_cloud_object_takeover_through_hard_match_enabled', n.get_bool_value()),
-            "blockSoftMatchEnabled": lambda n : setattr(self, 'block_soft_match_enabled', n.get_bool_value()),
-            "bypassDirSyncOverridesEnabled": lambda n : setattr(self, 'bypass_dir_sync_overrides_enabled', n.get_bool_value()),
-            "cloudPasswordPolicyForPasswordSyncedUsersEnabled": lambda n : setattr(self, 'cloud_password_policy_for_password_synced_users_enabled', n.get_bool_value()),
-            "concurrentCredentialUpdateEnabled": lambda n : setattr(self, 'concurrent_credential_update_enabled', n.get_bool_value()),
-            "concurrentOrgIdProvisioningEnabled": lambda n : setattr(self, 'concurrent_org_id_provisioning_enabled', n.get_bool_value()),
-            "deviceWritebackEnabled": lambda n : setattr(self, 'device_writeback_enabled', n.get_bool_value()),
-            "directoryExtensionsEnabled": lambda n : setattr(self, 'directory_extensions_enabled', n.get_bool_value()),
-            "fopeConflictResolutionEnabled": lambda n : setattr(self, 'fope_conflict_resolution_enabled', n.get_bool_value()),
-            "groupWriteBackEnabled": lambda n : setattr(self, 'group_write_back_enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "passwordSyncEnabled": lambda n : setattr(self, 'password_sync_enabled', n.get_bool_value()),
-            "passwordWritebackEnabled": lambda n : setattr(self, 'password_writeback_enabled', n.get_bool_value()),
-            "quarantineUponProxyAddressesConflictEnabled": lambda n : setattr(self, 'quarantine_upon_proxy_addresses_conflict_enabled', n.get_bool_value()),
-            "quarantineUponUpnConflictEnabled": lambda n : setattr(self, 'quarantine_upon_upn_conflict_enabled', n.get_bool_value()),
-            "softMatchOnUpnEnabled": lambda n : setattr(self, 'soft_match_on_upn_enabled', n.get_bool_value()),
-            "synchronizeUpnForManagedUsersEnabled": lambda n : setattr(self, 'synchronize_upn_for_managed_users_enabled', n.get_bool_value()),
-            "unifiedGroupWritebackEnabled": lambda n : setattr(self, 'unified_group_writeback_enabled', n.get_bool_value()),
-            "userForcePasswordChangeOnLogonEnabled": lambda n : setattr(self, 'user_force_password_change_on_logon_enabled', n.get_bool_value()),
-            "userWritebackEnabled": lambda n : setattr(self, 'user_writeback_enabled', n.get_bool_value()),
+            "block_cloud_object_takeover_through_hard_match_enabled": lambda n : setattr(self, 'block_cloud_object_takeover_through_hard_match_enabled', n.get_bool_value()),
+            "block_soft_match_enabled": lambda n : setattr(self, 'block_soft_match_enabled', n.get_bool_value()),
+            "bypass_dir_sync_overrides_enabled": lambda n : setattr(self, 'bypass_dir_sync_overrides_enabled', n.get_bool_value()),
+            "cloud_password_policy_for_password_synced_users_enabled": lambda n : setattr(self, 'cloud_password_policy_for_password_synced_users_enabled', n.get_bool_value()),
+            "concurrent_credential_update_enabled": lambda n : setattr(self, 'concurrent_credential_update_enabled', n.get_bool_value()),
+            "concurrent_org_id_provisioning_enabled": lambda n : setattr(self, 'concurrent_org_id_provisioning_enabled', n.get_bool_value()),
+            "device_writeback_enabled": lambda n : setattr(self, 'device_writeback_enabled', n.get_bool_value()),
+            "directory_extensions_enabled": lambda n : setattr(self, 'directory_extensions_enabled', n.get_bool_value()),
+            "fope_conflict_resolution_enabled": lambda n : setattr(self, 'fope_conflict_resolution_enabled', n.get_bool_value()),
+            "group_write_back_enabled": lambda n : setattr(self, 'group_write_back_enabled', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "password_sync_enabled": lambda n : setattr(self, 'password_sync_enabled', n.get_bool_value()),
+            "password_writeback_enabled": lambda n : setattr(self, 'password_writeback_enabled', n.get_bool_value()),
+            "quarantine_upon_proxy_addresses_conflict_enabled": lambda n : setattr(self, 'quarantine_upon_proxy_addresses_conflict_enabled', n.get_bool_value()),
+            "quarantine_upon_upn_conflict_enabled": lambda n : setattr(self, 'quarantine_upon_upn_conflict_enabled', n.get_bool_value()),
+            "soft_match_on_upn_enabled": lambda n : setattr(self, 'soft_match_on_upn_enabled', n.get_bool_value()),
+            "synchronize_upn_for_managed_users_enabled": lambda n : setattr(self, 'synchronize_upn_for_managed_users_enabled', n.get_bool_value()),
+            "unified_group_writeback_enabled": lambda n : setattr(self, 'unified_group_writeback_enabled', n.get_bool_value()),
+            "user_force_password_change_on_logon_enabled": lambda n : setattr(self, 'user_force_password_change_on_logon_enabled', n.get_bool_value()),
+            "user_writeback_enabled": lambda n : setattr(self, 'user_writeback_enabled', n.get_bool_value()),
         }
         return fields
     
@@ -100,26 +100,26 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, BackedMode
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("blockCloudObjectTakeoverThroughHardMatchEnabled", self.block_cloud_object_takeover_through_hard_match_enabled)
-        writer.write_bool_value("blockSoftMatchEnabled", self.block_soft_match_enabled)
-        writer.write_bool_value("bypassDirSyncOverridesEnabled", self.bypass_dir_sync_overrides_enabled)
-        writer.write_bool_value("cloudPasswordPolicyForPasswordSyncedUsersEnabled", self.cloud_password_policy_for_password_synced_users_enabled)
-        writer.write_bool_value("concurrentCredentialUpdateEnabled", self.concurrent_credential_update_enabled)
-        writer.write_bool_value("concurrentOrgIdProvisioningEnabled", self.concurrent_org_id_provisioning_enabled)
-        writer.write_bool_value("deviceWritebackEnabled", self.device_writeback_enabled)
-        writer.write_bool_value("directoryExtensionsEnabled", self.directory_extensions_enabled)
-        writer.write_bool_value("fopeConflictResolutionEnabled", self.fope_conflict_resolution_enabled)
-        writer.write_bool_value("groupWriteBackEnabled", self.group_write_back_enabled)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_bool_value("passwordSyncEnabled", self.password_sync_enabled)
-        writer.write_bool_value("passwordWritebackEnabled", self.password_writeback_enabled)
-        writer.write_bool_value("quarantineUponProxyAddressesConflictEnabled", self.quarantine_upon_proxy_addresses_conflict_enabled)
-        writer.write_bool_value("quarantineUponUpnConflictEnabled", self.quarantine_upon_upn_conflict_enabled)
-        writer.write_bool_value("softMatchOnUpnEnabled", self.soft_match_on_upn_enabled)
-        writer.write_bool_value("synchronizeUpnForManagedUsersEnabled", self.synchronize_upn_for_managed_users_enabled)
-        writer.write_bool_value("unifiedGroupWritebackEnabled", self.unified_group_writeback_enabled)
-        writer.write_bool_value("userForcePasswordChangeOnLogonEnabled", self.user_force_password_change_on_logon_enabled)
-        writer.write_bool_value("userWritebackEnabled", self.user_writeback_enabled)
+        writer.write_bool_value("block_cloud_object_takeover_through_hard_match_enabled", self.block_cloud_object_takeover_through_hard_match_enabled)
+        writer.write_bool_value("block_soft_match_enabled", self.block_soft_match_enabled)
+        writer.write_bool_value("bypass_dir_sync_overrides_enabled", self.bypass_dir_sync_overrides_enabled)
+        writer.write_bool_value("cloud_password_policy_for_password_synced_users_enabled", self.cloud_password_policy_for_password_synced_users_enabled)
+        writer.write_bool_value("concurrent_credential_update_enabled", self.concurrent_credential_update_enabled)
+        writer.write_bool_value("concurrent_org_id_provisioning_enabled", self.concurrent_org_id_provisioning_enabled)
+        writer.write_bool_value("device_writeback_enabled", self.device_writeback_enabled)
+        writer.write_bool_value("directory_extensions_enabled", self.directory_extensions_enabled)
+        writer.write_bool_value("fope_conflict_resolution_enabled", self.fope_conflict_resolution_enabled)
+        writer.write_bool_value("group_write_back_enabled", self.group_write_back_enabled)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_bool_value("password_sync_enabled", self.password_sync_enabled)
+        writer.write_bool_value("password_writeback_enabled", self.password_writeback_enabled)
+        writer.write_bool_value("quarantine_upon_proxy_addresses_conflict_enabled", self.quarantine_upon_proxy_addresses_conflict_enabled)
+        writer.write_bool_value("quarantine_upon_upn_conflict_enabled", self.quarantine_upon_upn_conflict_enabled)
+        writer.write_bool_value("soft_match_on_upn_enabled", self.soft_match_on_upn_enabled)
+        writer.write_bool_value("synchronize_upn_for_managed_users_enabled", self.synchronize_upn_for_managed_users_enabled)
+        writer.write_bool_value("unified_group_writeback_enabled", self.unified_group_writeback_enabled)
+        writer.write_bool_value("user_force_password_change_on_logon_enabled", self.user_force_password_change_on_logon_enabled)
+        writer.write_bool_value("user_writeback_enabled", self.user_writeback_enabled)
         writer.write_additional_data_value(self.additional_data)
     
 

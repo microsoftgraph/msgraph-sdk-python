@@ -44,8 +44,8 @@ class EventMessageResponse(EventMessage):
         from .time_slot import TimeSlot
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "proposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(TimeSlot)),
-            "responseType": lambda n : setattr(self, 'response_type', n.get_enum_value(ResponseType)),
+            "proposed_new_time": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(TimeSlot)),
+            "response_type": lambda n : setattr(self, 'response_type', n.get_enum_value(ResponseType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,7 +60,7 @@ class EventMessageResponse(EventMessage):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("proposedNewTime", self.proposed_new_time)
-        writer.write_enum_value("responseType", self.response_type)
+        writer.write_object_value("proposed_new_time", self.proposed_new_time)
+        writer.write_enum_value("response_type", self.response_type)
     
 

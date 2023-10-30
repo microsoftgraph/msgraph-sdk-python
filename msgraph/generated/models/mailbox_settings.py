@@ -68,16 +68,16 @@ class MailboxSettings(AdditionalDataHolder, BackedModel, Parsable):
         from .working_hours import WorkingHours
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "archiveFolder": lambda n : setattr(self, 'archive_folder', n.get_str_value()),
-            "automaticRepliesSetting": lambda n : setattr(self, 'automatic_replies_setting', n.get_object_value(AutomaticRepliesSetting)),
-            "dateFormat": lambda n : setattr(self, 'date_format', n.get_str_value()),
-            "delegateMeetingMessageDeliveryOptions": lambda n : setattr(self, 'delegate_meeting_message_delivery_options', n.get_enum_value(DelegateMeetingMessageDeliveryOptions)),
+            "archive_folder": lambda n : setattr(self, 'archive_folder', n.get_str_value()),
+            "automatic_replies_setting": lambda n : setattr(self, 'automatic_replies_setting', n.get_object_value(AutomaticRepliesSetting)),
+            "date_format": lambda n : setattr(self, 'date_format', n.get_str_value()),
+            "delegate_meeting_message_delivery_options": lambda n : setattr(self, 'delegate_meeting_message_delivery_options', n.get_enum_value(DelegateMeetingMessageDeliveryOptions)),
             "language": lambda n : setattr(self, 'language', n.get_object_value(LocaleInfo)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "timeFormat": lambda n : setattr(self, 'time_format', n.get_str_value()),
-            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
-            "userPurpose": lambda n : setattr(self, 'user_purpose', n.get_enum_value(UserPurpose)),
-            "workingHours": lambda n : setattr(self, 'working_hours', n.get_object_value(WorkingHours)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "time_format": lambda n : setattr(self, 'time_format', n.get_str_value()),
+            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "user_purpose": lambda n : setattr(self, 'user_purpose', n.get_enum_value(UserPurpose)),
+            "working_hours": lambda n : setattr(self, 'working_hours', n.get_object_value(WorkingHours)),
         }
         return fields
     
@@ -89,16 +89,16 @@ class MailboxSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("archiveFolder", self.archive_folder)
-        writer.write_object_value("automaticRepliesSetting", self.automatic_replies_setting)
-        writer.write_str_value("dateFormat", self.date_format)
-        writer.write_enum_value("delegateMeetingMessageDeliveryOptions", self.delegate_meeting_message_delivery_options)
+        writer.write_str_value("archive_folder", self.archive_folder)
+        writer.write_object_value("automatic_replies_setting", self.automatic_replies_setting)
+        writer.write_str_value("date_format", self.date_format)
+        writer.write_enum_value("delegate_meeting_message_delivery_options", self.delegate_meeting_message_delivery_options)
         writer.write_object_value("language", self.language)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("timeFormat", self.time_format)
-        writer.write_str_value("timeZone", self.time_zone)
-        writer.write_enum_value("userPurpose", self.user_purpose)
-        writer.write_object_value("workingHours", self.working_hours)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("time_format", self.time_format)
+        writer.write_str_value("time_zone", self.time_zone)
+        writer.write_enum_value("user_purpose", self.user_purpose)
+        writer.write_object_value("working_hours", self.working_hours)
         writer.write_additional_data_value(self.additional_data)
     
 

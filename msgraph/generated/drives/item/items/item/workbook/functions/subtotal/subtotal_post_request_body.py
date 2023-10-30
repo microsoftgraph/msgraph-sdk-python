@@ -40,7 +40,7 @@ class SubtotalPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "functionNum": lambda n : setattr(self, 'function_num', n.get_object_value(Json)),
+            "function_num": lambda n : setattr(self, 'function_num', n.get_object_value(Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
         }
         return fields
@@ -53,7 +53,7 @@ class SubtotalPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("functionNum", self.function_num)
+        writer.write_object_value("function_num", self.function_num)
         writer.write_object_value("values", self.values)
         writer.write_additional_data_value(self.additional_data)
     

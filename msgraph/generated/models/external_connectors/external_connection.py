@@ -80,16 +80,16 @@ class ExternalConnection(Entity):
         from .search_settings import SearchSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activitySettings": lambda n : setattr(self, 'activity_settings', n.get_object_value(ActivitySettings)),
+            "activity_settings": lambda n : setattr(self, 'activity_settings', n.get_object_value(ActivitySettings)),
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(Configuration)),
-            "connectorId": lambda n : setattr(self, 'connector_id', n.get_str_value()),
+            "connector_id": lambda n : setattr(self, 'connector_id', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(ExternalGroup)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(ExternalItem)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(ConnectionOperation)),
             "schema": lambda n : setattr(self, 'schema', n.get_object_value(Schema)),
-            "searchSettings": lambda n : setattr(self, 'search_settings', n.get_object_value(SearchSettings)),
+            "search_settings": lambda n : setattr(self, 'search_settings', n.get_object_value(SearchSettings)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(ConnectionState)),
         }
         super_fields = super().get_field_deserializers()
@@ -105,15 +105,15 @@ class ExternalConnection(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("activitySettings", self.activity_settings)
+        writer.write_object_value("activity_settings", self.activity_settings)
         writer.write_object_value("configuration", self.configuration)
-        writer.write_str_value("connectorId", self.connector_id)
+        writer.write_str_value("connector_id", self.connector_id)
         writer.write_str_value("description", self.description)
         writer.write_collection_of_object_values("groups", self.groups)
         writer.write_collection_of_object_values("items", self.items)
         writer.write_str_value("name", self.name)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_object_value("schema", self.schema)
-        writer.write_object_value("searchSettings", self.search_settings)
+        writer.write_object_value("search_settings", self.search_settings)
     
 

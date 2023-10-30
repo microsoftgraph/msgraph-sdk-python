@@ -58,14 +58,14 @@ class DocumentSet(AdditionalDataHolder, BackedModel, Parsable):
         from .document_set_content import DocumentSetContent
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedContentTypes": lambda n : setattr(self, 'allowed_content_types', n.get_collection_of_object_values(ContentTypeInfo)),
-            "defaultContents": lambda n : setattr(self, 'default_contents', n.get_collection_of_object_values(DocumentSetContent)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "propagateWelcomePageChanges": lambda n : setattr(self, 'propagate_welcome_page_changes', n.get_bool_value()),
-            "sharedColumns": lambda n : setattr(self, 'shared_columns', n.get_collection_of_object_values(ColumnDefinition)),
-            "shouldPrefixNameToFile": lambda n : setattr(self, 'should_prefix_name_to_file', n.get_bool_value()),
-            "welcomePageColumns": lambda n : setattr(self, 'welcome_page_columns', n.get_collection_of_object_values(ColumnDefinition)),
-            "welcomePageUrl": lambda n : setattr(self, 'welcome_page_url', n.get_str_value()),
+            "allowed_content_types": lambda n : setattr(self, 'allowed_content_types', n.get_collection_of_object_values(ContentTypeInfo)),
+            "default_contents": lambda n : setattr(self, 'default_contents', n.get_collection_of_object_values(DocumentSetContent)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "propagate_welcome_page_changes": lambda n : setattr(self, 'propagate_welcome_page_changes', n.get_bool_value()),
+            "shared_columns": lambda n : setattr(self, 'shared_columns', n.get_collection_of_object_values(ColumnDefinition)),
+            "should_prefix_name_to_file": lambda n : setattr(self, 'should_prefix_name_to_file', n.get_bool_value()),
+            "welcome_page_columns": lambda n : setattr(self, 'welcome_page_columns', n.get_collection_of_object_values(ColumnDefinition)),
+            "welcome_page_url": lambda n : setattr(self, 'welcome_page_url', n.get_str_value()),
         }
         return fields
     
@@ -77,14 +77,14 @@ class DocumentSet(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("allowedContentTypes", self.allowed_content_types)
-        writer.write_collection_of_object_values("defaultContents", self.default_contents)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_bool_value("propagateWelcomePageChanges", self.propagate_welcome_page_changes)
-        writer.write_collection_of_object_values("sharedColumns", self.shared_columns)
-        writer.write_bool_value("shouldPrefixNameToFile", self.should_prefix_name_to_file)
-        writer.write_collection_of_object_values("welcomePageColumns", self.welcome_page_columns)
-        writer.write_str_value("welcomePageUrl", self.welcome_page_url)
+        writer.write_collection_of_object_values("allowed_content_types", self.allowed_content_types)
+        writer.write_collection_of_object_values("default_contents", self.default_contents)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_bool_value("propagate_welcome_page_changes", self.propagate_welcome_page_changes)
+        writer.write_collection_of_object_values("shared_columns", self.shared_columns)
+        writer.write_bool_value("should_prefix_name_to_file", self.should_prefix_name_to_file)
+        writer.write_collection_of_object_values("welcome_page_columns", self.welcome_page_columns)
+        writer.write_str_value("welcome_page_url", self.welcome_page_url)
         writer.write_additional_data_value(self.additional_data)
     
 

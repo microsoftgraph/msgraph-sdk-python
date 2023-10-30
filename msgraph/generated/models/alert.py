@@ -173,45 +173,45 @@ class Alert(Entity):
         from .vulnerability_state import VulnerabilityState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activityGroupName": lambda n : setattr(self, 'activity_group_name', n.get_str_value()),
-            "alertDetections": lambda n : setattr(self, 'alert_detections', n.get_collection_of_object_values(AlertDetection)),
-            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
-            "azureSubscriptionId": lambda n : setattr(self, 'azure_subscription_id', n.get_str_value()),
-            "azureTenantId": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
+            "activity_group_name": lambda n : setattr(self, 'activity_group_name', n.get_str_value()),
+            "alert_detections": lambda n : setattr(self, 'alert_detections', n.get_collection_of_object_values(AlertDetection)),
+            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
+            "azure_subscription_id": lambda n : setattr(self, 'azure_subscription_id', n.get_str_value()),
+            "azure_tenant_id": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
-            "closedDateTime": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
-            "cloudAppStates": lambda n : setattr(self, 'cloud_app_states', n.get_collection_of_object_values(CloudAppSecurityState)),
+            "closed_date_time": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
+            "cloud_app_states": lambda n : setattr(self, 'cloud_app_states', n.get_collection_of_object_values(CloudAppSecurityState)),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_primitive_values(str)),
             "confidence": lambda n : setattr(self, 'confidence', n.get_int_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "detectionIds": lambda n : setattr(self, 'detection_ids', n.get_collection_of_primitive_values(str)),
-            "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
+            "detection_ids": lambda n : setattr(self, 'detection_ids', n.get_collection_of_primitive_values(str)),
+            "event_date_time": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
             "feedback": lambda n : setattr(self, 'feedback', n.get_enum_value(AlertFeedback)),
-            "fileStates": lambda n : setattr(self, 'file_states', n.get_collection_of_object_values(FileSecurityState)),
-            "historyStates": lambda n : setattr(self, 'history_states', n.get_collection_of_object_values(AlertHistoryState)),
-            "hostStates": lambda n : setattr(self, 'host_states', n.get_collection_of_object_values(HostSecurityState)),
-            "incidentIds": lambda n : setattr(self, 'incident_ids', n.get_collection_of_primitive_values(str)),
-            "investigationSecurityStates": lambda n : setattr(self, 'investigation_security_states', n.get_collection_of_object_values(InvestigationSecurityState)),
-            "lastEventDateTime": lambda n : setattr(self, 'last_event_date_time', n.get_datetime_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "malwareStates": lambda n : setattr(self, 'malware_states', n.get_collection_of_object_values(MalwareState)),
-            "messageSecurityStates": lambda n : setattr(self, 'message_security_states', n.get_collection_of_object_values(MessageSecurityState)),
-            "networkConnections": lambda n : setattr(self, 'network_connections', n.get_collection_of_object_values(NetworkConnection)),
+            "file_states": lambda n : setattr(self, 'file_states', n.get_collection_of_object_values(FileSecurityState)),
+            "history_states": lambda n : setattr(self, 'history_states', n.get_collection_of_object_values(AlertHistoryState)),
+            "host_states": lambda n : setattr(self, 'host_states', n.get_collection_of_object_values(HostSecurityState)),
+            "incident_ids": lambda n : setattr(self, 'incident_ids', n.get_collection_of_primitive_values(str)),
+            "investigation_security_states": lambda n : setattr(self, 'investigation_security_states', n.get_collection_of_object_values(InvestigationSecurityState)),
+            "last_event_date_time": lambda n : setattr(self, 'last_event_date_time', n.get_datetime_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "malware_states": lambda n : setattr(self, 'malware_states', n.get_collection_of_object_values(MalwareState)),
+            "message_security_states": lambda n : setattr(self, 'message_security_states', n.get_collection_of_object_values(MessageSecurityState)),
+            "network_connections": lambda n : setattr(self, 'network_connections', n.get_collection_of_object_values(NetworkConnection)),
             "processes": lambda n : setattr(self, 'processes', n.get_collection_of_object_values(Process)),
-            "recommendedActions": lambda n : setattr(self, 'recommended_actions', n.get_collection_of_primitive_values(str)),
-            "registryKeyStates": lambda n : setattr(self, 'registry_key_states', n.get_collection_of_object_values(RegistryKeyState)),
-            "securityResources": lambda n : setattr(self, 'security_resources', n.get_collection_of_object_values(SecurityResource)),
+            "recommended_actions": lambda n : setattr(self, 'recommended_actions', n.get_collection_of_primitive_values(str)),
+            "registry_key_states": lambda n : setattr(self, 'registry_key_states', n.get_collection_of_object_values(RegistryKeyState)),
+            "security_resources": lambda n : setattr(self, 'security_resources', n.get_collection_of_object_values(SecurityResource)),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(AlertSeverity)),
-            "sourceMaterials": lambda n : setattr(self, 'source_materials', n.get_collection_of_primitive_values(str)),
+            "source_materials": lambda n : setattr(self, 'source_materials', n.get_collection_of_primitive_values(str)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(AlertStatus)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
             "triggers": lambda n : setattr(self, 'triggers', n.get_collection_of_object_values(AlertTrigger)),
-            "uriClickSecurityStates": lambda n : setattr(self, 'uri_click_security_states', n.get_collection_of_object_values(UriClickSecurityState)),
-            "userStates": lambda n : setattr(self, 'user_states', n.get_collection_of_object_values(UserSecurityState)),
-            "vendorInformation": lambda n : setattr(self, 'vendor_information', n.get_object_value(SecurityVendorInformation)),
-            "vulnerabilityStates": lambda n : setattr(self, 'vulnerability_states', n.get_collection_of_object_values(VulnerabilityState)),
+            "uri_click_security_states": lambda n : setattr(self, 'uri_click_security_states', n.get_collection_of_object_values(UriClickSecurityState)),
+            "user_states": lambda n : setattr(self, 'user_states', n.get_collection_of_object_values(UserSecurityState)),
+            "vendor_information": lambda n : setattr(self, 'vendor_information', n.get_object_value(SecurityVendorInformation)),
+            "vulnerability_states": lambda n : setattr(self, 'vulnerability_states', n.get_collection_of_object_values(VulnerabilityState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -226,44 +226,44 @@ class Alert(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("activityGroupName", self.activity_group_name)
-        writer.write_collection_of_object_values("alertDetections", self.alert_detections)
-        writer.write_str_value("assignedTo", self.assigned_to)
-        writer.write_str_value("azureSubscriptionId", self.azure_subscription_id)
-        writer.write_str_value("azureTenantId", self.azure_tenant_id)
+        writer.write_str_value("activity_group_name", self.activity_group_name)
+        writer.write_collection_of_object_values("alert_detections", self.alert_detections)
+        writer.write_str_value("assigned_to", self.assigned_to)
+        writer.write_str_value("azure_subscription_id", self.azure_subscription_id)
+        writer.write_str_value("azure_tenant_id", self.azure_tenant_id)
         writer.write_str_value("category", self.category)
-        writer.write_datetime_value("closedDateTime", self.closed_date_time)
-        writer.write_collection_of_object_values("cloudAppStates", self.cloud_app_states)
+        writer.write_datetime_value("closed_date_time", self.closed_date_time)
+        writer.write_collection_of_object_values("cloud_app_states", self.cloud_app_states)
         writer.write_collection_of_primitive_values("comments", self.comments)
         writer.write_int_value("confidence", self.confidence)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_collection_of_primitive_values("detectionIds", self.detection_ids)
-        writer.write_datetime_value("eventDateTime", self.event_date_time)
+        writer.write_collection_of_primitive_values("detection_ids", self.detection_ids)
+        writer.write_datetime_value("event_date_time", self.event_date_time)
         writer.write_enum_value("feedback", self.feedback)
-        writer.write_collection_of_object_values("fileStates", self.file_states)
-        writer.write_collection_of_object_values("historyStates", self.history_states)
-        writer.write_collection_of_object_values("hostStates", self.host_states)
-        writer.write_collection_of_primitive_values("incidentIds", self.incident_ids)
-        writer.write_collection_of_object_values("investigationSecurityStates", self.investigation_security_states)
-        writer.write_datetime_value("lastEventDateTime", self.last_event_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_collection_of_object_values("malwareStates", self.malware_states)
-        writer.write_collection_of_object_values("messageSecurityStates", self.message_security_states)
-        writer.write_collection_of_object_values("networkConnections", self.network_connections)
+        writer.write_collection_of_object_values("file_states", self.file_states)
+        writer.write_collection_of_object_values("history_states", self.history_states)
+        writer.write_collection_of_object_values("host_states", self.host_states)
+        writer.write_collection_of_primitive_values("incident_ids", self.incident_ids)
+        writer.write_collection_of_object_values("investigation_security_states", self.investigation_security_states)
+        writer.write_datetime_value("last_event_date_time", self.last_event_date_time)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_collection_of_object_values("malware_states", self.malware_states)
+        writer.write_collection_of_object_values("message_security_states", self.message_security_states)
+        writer.write_collection_of_object_values("network_connections", self.network_connections)
         writer.write_collection_of_object_values("processes", self.processes)
-        writer.write_collection_of_primitive_values("recommendedActions", self.recommended_actions)
-        writer.write_collection_of_object_values("registryKeyStates", self.registry_key_states)
-        writer.write_collection_of_object_values("securityResources", self.security_resources)
+        writer.write_collection_of_primitive_values("recommended_actions", self.recommended_actions)
+        writer.write_collection_of_object_values("registry_key_states", self.registry_key_states)
+        writer.write_collection_of_object_values("security_resources", self.security_resources)
         writer.write_enum_value("severity", self.severity)
-        writer.write_collection_of_primitive_values("sourceMaterials", self.source_materials)
+        writer.write_collection_of_primitive_values("source_materials", self.source_materials)
         writer.write_enum_value("status", self.status)
         writer.write_collection_of_primitive_values("tags", self.tags)
         writer.write_str_value("title", self.title)
         writer.write_collection_of_object_values("triggers", self.triggers)
-        writer.write_collection_of_object_values("uriClickSecurityStates", self.uri_click_security_states)
-        writer.write_collection_of_object_values("userStates", self.user_states)
-        writer.write_object_value("vendorInformation", self.vendor_information)
-        writer.write_collection_of_object_values("vulnerabilityStates", self.vulnerability_states)
+        writer.write_collection_of_object_values("uri_click_security_states", self.uri_click_security_states)
+        writer.write_collection_of_object_values("user_states", self.user_states)
+        writer.write_object_value("vendor_information", self.vendor_information)
+        writer.write_collection_of_object_values("vulnerability_states", self.vulnerability_states)
     
 

@@ -50,11 +50,11 @@ class Fido2AuthenticationMethod(AuthenticationMethod):
         from .authentication_method import AuthenticationMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "aaGuid": lambda n : setattr(self, 'aa_guid', n.get_str_value()),
-            "attestationCertificates": lambda n : setattr(self, 'attestation_certificates', n.get_collection_of_primitive_values(str)),
-            "attestationLevel": lambda n : setattr(self, 'attestation_level', n.get_enum_value(AttestationLevel)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "aa_guid": lambda n : setattr(self, 'aa_guid', n.get_str_value()),
+            "attestation_certificates": lambda n : setattr(self, 'attestation_certificates', n.get_collection_of_primitive_values(str)),
+            "attestation_level": lambda n : setattr(self, 'attestation_level', n.get_enum_value(AttestationLevel)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -70,11 +70,11 @@ class Fido2AuthenticationMethod(AuthenticationMethod):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("aaGuid", self.aa_guid)
-        writer.write_collection_of_primitive_values("attestationCertificates", self.attestation_certificates)
-        writer.write_enum_value("attestationLevel", self.attestation_level)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("aa_guid", self.aa_guid)
+        writer.write_collection_of_primitive_values("attestation_certificates", self.attestation_certificates)
+        writer.write_enum_value("attestation_level", self.attestation_level)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_str_value("model", self.model)
     
 

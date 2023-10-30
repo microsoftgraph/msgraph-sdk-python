@@ -71,21 +71,21 @@ class MobileThreatDefenseConnector(Entity):
         from .mobile_threat_partner_tenant_state import MobileThreatPartnerTenantState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowPartnerToCollectIOSApplicationMetadata": lambda n : setattr(self, 'allow_partner_to_collect_i_o_s_application_metadata', n.get_bool_value()),
-            "allowPartnerToCollectIOSPersonalApplicationMetadata": lambda n : setattr(self, 'allow_partner_to_collect_i_o_s_personal_application_metadata', n.get_bool_value()),
-            "androidDeviceBlockedOnMissingPartnerData": lambda n : setattr(self, 'android_device_blocked_on_missing_partner_data', n.get_bool_value()),
-            "androidEnabled": lambda n : setattr(self, 'android_enabled', n.get_bool_value()),
-            "androidMobileApplicationManagementEnabled": lambda n : setattr(self, 'android_mobile_application_management_enabled', n.get_bool_value()),
-            "iosDeviceBlockedOnMissingPartnerData": lambda n : setattr(self, 'ios_device_blocked_on_missing_partner_data', n.get_bool_value()),
-            "iosEnabled": lambda n : setattr(self, 'ios_enabled', n.get_bool_value()),
-            "iosMobileApplicationManagementEnabled": lambda n : setattr(self, 'ios_mobile_application_management_enabled', n.get_bool_value()),
-            "lastHeartbeatDateTime": lambda n : setattr(self, 'last_heartbeat_date_time', n.get_datetime_value()),
-            "microsoftDefenderForEndpointAttachEnabled": lambda n : setattr(self, 'microsoft_defender_for_endpoint_attach_enabled', n.get_bool_value()),
-            "partnerState": lambda n : setattr(self, 'partner_state', n.get_enum_value(MobileThreatPartnerTenantState)),
-            "partnerUnresponsivenessThresholdInDays": lambda n : setattr(self, 'partner_unresponsiveness_threshold_in_days', n.get_int_value()),
-            "partnerUnsupportedOsVersionBlocked": lambda n : setattr(self, 'partner_unsupported_os_version_blocked', n.get_bool_value()),
-            "windowsDeviceBlockedOnMissingPartnerData": lambda n : setattr(self, 'windows_device_blocked_on_missing_partner_data', n.get_bool_value()),
-            "windowsEnabled": lambda n : setattr(self, 'windows_enabled', n.get_bool_value()),
+            "allow_partner_to_collect_i_o_s_application_metadata": lambda n : setattr(self, 'allow_partner_to_collect_i_o_s_application_metadata', n.get_bool_value()),
+            "allow_partner_to_collect_i_o_s_personal_application_metadata": lambda n : setattr(self, 'allow_partner_to_collect_i_o_s_personal_application_metadata', n.get_bool_value()),
+            "android_device_blocked_on_missing_partner_data": lambda n : setattr(self, 'android_device_blocked_on_missing_partner_data', n.get_bool_value()),
+            "android_enabled": lambda n : setattr(self, 'android_enabled', n.get_bool_value()),
+            "android_mobile_application_management_enabled": lambda n : setattr(self, 'android_mobile_application_management_enabled', n.get_bool_value()),
+            "ios_device_blocked_on_missing_partner_data": lambda n : setattr(self, 'ios_device_blocked_on_missing_partner_data', n.get_bool_value()),
+            "ios_enabled": lambda n : setattr(self, 'ios_enabled', n.get_bool_value()),
+            "ios_mobile_application_management_enabled": lambda n : setattr(self, 'ios_mobile_application_management_enabled', n.get_bool_value()),
+            "last_heartbeat_date_time": lambda n : setattr(self, 'last_heartbeat_date_time', n.get_datetime_value()),
+            "microsoft_defender_for_endpoint_attach_enabled": lambda n : setattr(self, 'microsoft_defender_for_endpoint_attach_enabled', n.get_bool_value()),
+            "partner_state": lambda n : setattr(self, 'partner_state', n.get_enum_value(MobileThreatPartnerTenantState)),
+            "partner_unresponsiveness_threshold_in_days": lambda n : setattr(self, 'partner_unresponsiveness_threshold_in_days', n.get_int_value()),
+            "partner_unsupported_os_version_blocked": lambda n : setattr(self, 'partner_unsupported_os_version_blocked', n.get_bool_value()),
+            "windows_device_blocked_on_missing_partner_data": lambda n : setattr(self, 'windows_device_blocked_on_missing_partner_data', n.get_bool_value()),
+            "windows_enabled": lambda n : setattr(self, 'windows_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -100,20 +100,20 @@ class MobileThreatDefenseConnector(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("allowPartnerToCollectIOSApplicationMetadata", self.allow_partner_to_collect_i_o_s_application_metadata)
-        writer.write_bool_value("allowPartnerToCollectIOSPersonalApplicationMetadata", self.allow_partner_to_collect_i_o_s_personal_application_metadata)
-        writer.write_bool_value("androidDeviceBlockedOnMissingPartnerData", self.android_device_blocked_on_missing_partner_data)
-        writer.write_bool_value("androidEnabled", self.android_enabled)
-        writer.write_bool_value("androidMobileApplicationManagementEnabled", self.android_mobile_application_management_enabled)
-        writer.write_bool_value("iosDeviceBlockedOnMissingPartnerData", self.ios_device_blocked_on_missing_partner_data)
-        writer.write_bool_value("iosEnabled", self.ios_enabled)
-        writer.write_bool_value("iosMobileApplicationManagementEnabled", self.ios_mobile_application_management_enabled)
-        writer.write_datetime_value("lastHeartbeatDateTime", self.last_heartbeat_date_time)
-        writer.write_bool_value("microsoftDefenderForEndpointAttachEnabled", self.microsoft_defender_for_endpoint_attach_enabled)
-        writer.write_enum_value("partnerState", self.partner_state)
-        writer.write_int_value("partnerUnresponsivenessThresholdInDays", self.partner_unresponsiveness_threshold_in_days)
-        writer.write_bool_value("partnerUnsupportedOsVersionBlocked", self.partner_unsupported_os_version_blocked)
-        writer.write_bool_value("windowsDeviceBlockedOnMissingPartnerData", self.windows_device_blocked_on_missing_partner_data)
-        writer.write_bool_value("windowsEnabled", self.windows_enabled)
+        writer.write_bool_value("allow_partner_to_collect_i_o_s_application_metadata", self.allow_partner_to_collect_i_o_s_application_metadata)
+        writer.write_bool_value("allow_partner_to_collect_i_o_s_personal_application_metadata", self.allow_partner_to_collect_i_o_s_personal_application_metadata)
+        writer.write_bool_value("android_device_blocked_on_missing_partner_data", self.android_device_blocked_on_missing_partner_data)
+        writer.write_bool_value("android_enabled", self.android_enabled)
+        writer.write_bool_value("android_mobile_application_management_enabled", self.android_mobile_application_management_enabled)
+        writer.write_bool_value("ios_device_blocked_on_missing_partner_data", self.ios_device_blocked_on_missing_partner_data)
+        writer.write_bool_value("ios_enabled", self.ios_enabled)
+        writer.write_bool_value("ios_mobile_application_management_enabled", self.ios_mobile_application_management_enabled)
+        writer.write_datetime_value("last_heartbeat_date_time", self.last_heartbeat_date_time)
+        writer.write_bool_value("microsoft_defender_for_endpoint_attach_enabled", self.microsoft_defender_for_endpoint_attach_enabled)
+        writer.write_enum_value("partner_state", self.partner_state)
+        writer.write_int_value("partner_unresponsiveness_threshold_in_days", self.partner_unresponsiveness_threshold_in_days)
+        writer.write_bool_value("partner_unsupported_os_version_blocked", self.partner_unsupported_os_version_blocked)
+        writer.write_bool_value("windows_device_blocked_on_missing_partner_data", self.windows_device_blocked_on_missing_partner_data)
+        writer.write_bool_value("windows_enabled", self.windows_enabled)
     
 

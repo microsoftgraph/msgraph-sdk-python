@@ -38,8 +38,8 @@ class RegistryKeyEvidence(AlertEvidence):
         from .alert_evidence import AlertEvidence
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "registryHive": lambda n : setattr(self, 'registry_hive', n.get_str_value()),
-            "registryKey": lambda n : setattr(self, 'registry_key', n.get_str_value()),
+            "registry_hive": lambda n : setattr(self, 'registry_hive', n.get_str_value()),
+            "registry_key": lambda n : setattr(self, 'registry_key', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class RegistryKeyEvidence(AlertEvidence):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("registryHive", self.registry_hive)
-        writer.write_str_value("registryKey", self.registry_key)
+        writer.write_str_value("registry_hive", self.registry_hive)
+        writer.write_str_value("registry_key", self.registry_key)
     
 

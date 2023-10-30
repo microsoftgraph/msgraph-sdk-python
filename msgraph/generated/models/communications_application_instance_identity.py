@@ -39,7 +39,7 @@ class CommunicationsApplicationInstanceIdentity(Identity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,6 +55,6 @@ class CommunicationsApplicationInstanceIdentity(Identity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("hidden", self.hidden)
-        writer.write_str_value("tenantId", self.tenant_id)
+        writer.write_str_value("tenant_id", self.tenant_id)
     
 

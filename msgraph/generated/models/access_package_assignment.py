@@ -69,10 +69,10 @@ class AccessPackageAssignment(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(AccessPackage)),
-            "assignmentPolicy": lambda n : setattr(self, 'assignment_policy', n.get_object_value(AccessPackageAssignmentPolicy)),
-            "customExtensionCalloutInstances": lambda n : setattr(self, 'custom_extension_callout_instances', n.get_collection_of_object_values(CustomExtensionCalloutInstance)),
-            "expiredDateTime": lambda n : setattr(self, 'expired_date_time', n.get_datetime_value()),
+            "access_package": lambda n : setattr(self, 'access_package', n.get_object_value(AccessPackage)),
+            "assignment_policy": lambda n : setattr(self, 'assignment_policy', n.get_object_value(AccessPackageAssignmentPolicy)),
+            "custom_extension_callout_instances": lambda n : setattr(self, 'custom_extension_callout_instances', n.get_collection_of_object_values(CustomExtensionCalloutInstance)),
+            "expired_date_time": lambda n : setattr(self, 'expired_date_time', n.get_datetime_value()),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(EntitlementManagementSchedule)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(AccessPackageAssignmentState)),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
@@ -91,10 +91,10 @@ class AccessPackageAssignment(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("accessPackage", self.access_package)
-        writer.write_object_value("assignmentPolicy", self.assignment_policy)
-        writer.write_collection_of_object_values("customExtensionCalloutInstances", self.custom_extension_callout_instances)
-        writer.write_datetime_value("expiredDateTime", self.expired_date_time)
+        writer.write_object_value("access_package", self.access_package)
+        writer.write_object_value("assignment_policy", self.assignment_policy)
+        writer.write_collection_of_object_values("custom_extension_callout_instances", self.custom_extension_callout_instances)
+        writer.write_datetime_value("expired_date_time", self.expired_date_time)
         writer.write_object_value("schedule", self.schedule)
         writer.write_enum_value("state", self.state)
         writer.write_str_value("status", self.status)

@@ -41,8 +41,8 @@ class IPv4Range(IpRange):
         from .ip_range import IpRange
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lowerAddress": lambda n : setattr(self, 'lower_address', n.get_str_value()),
-            "upperAddress": lambda n : setattr(self, 'upper_address', n.get_str_value()),
+            "lower_address": lambda n : setattr(self, 'lower_address', n.get_str_value()),
+            "upper_address": lambda n : setattr(self, 'upper_address', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class IPv4Range(IpRange):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("lowerAddress", self.lower_address)
-        writer.write_str_value("upperAddress", self.upper_address)
+        writer.write_str_value("lower_address", self.lower_address)
+        writer.write_str_value("upper_address", self.upper_address)
     
 

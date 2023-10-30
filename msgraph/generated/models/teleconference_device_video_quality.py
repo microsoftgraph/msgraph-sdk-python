@@ -53,10 +53,10 @@ class TeleconferenceDeviceVideoQuality(TeleconferenceDeviceMediaQuality):
         from .teleconference_device_screen_sharing_quality import TeleconferenceDeviceScreenSharingQuality
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "averageInboundBitRate": lambda n : setattr(self, 'average_inbound_bit_rate', n.get_float_value()),
-            "averageInboundFrameRate": lambda n : setattr(self, 'average_inbound_frame_rate', n.get_float_value()),
-            "averageOutboundBitRate": lambda n : setattr(self, 'average_outbound_bit_rate', n.get_float_value()),
-            "averageOutboundFrameRate": lambda n : setattr(self, 'average_outbound_frame_rate', n.get_float_value()),
+            "average_inbound_bit_rate": lambda n : setattr(self, 'average_inbound_bit_rate', n.get_float_value()),
+            "average_inbound_frame_rate": lambda n : setattr(self, 'average_inbound_frame_rate', n.get_float_value()),
+            "average_outbound_bit_rate": lambda n : setattr(self, 'average_outbound_bit_rate', n.get_float_value()),
+            "average_outbound_frame_rate": lambda n : setattr(self, 'average_outbound_frame_rate', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -71,9 +71,9 @@ class TeleconferenceDeviceVideoQuality(TeleconferenceDeviceMediaQuality):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_float_value("averageInboundBitRate", self.average_inbound_bit_rate)
-        writer.write_float_value("averageInboundFrameRate", self.average_inbound_frame_rate)
-        writer.write_float_value("averageOutboundBitRate", self.average_outbound_bit_rate)
-        writer.write_float_value("averageOutboundFrameRate", self.average_outbound_frame_rate)
+        writer.write_float_value("average_inbound_bit_rate", self.average_inbound_bit_rate)
+        writer.write_float_value("average_inbound_frame_rate", self.average_inbound_frame_rate)
+        writer.write_float_value("average_outbound_bit_rate", self.average_outbound_bit_rate)
+        writer.write_float_value("average_outbound_frame_rate", self.average_outbound_frame_rate)
     
 

@@ -61,12 +61,12 @@ class Participant(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "info": lambda n : setattr(self, 'info', n.get_object_value(ParticipantInfo)),
-            "isInLobby": lambda n : setattr(self, 'is_in_lobby', n.get_bool_value()),
-            "isMuted": lambda n : setattr(self, 'is_muted', n.get_bool_value()),
-            "mediaStreams": lambda n : setattr(self, 'media_streams', n.get_collection_of_object_values(MediaStream)),
+            "is_in_lobby": lambda n : setattr(self, 'is_in_lobby', n.get_bool_value()),
+            "is_muted": lambda n : setattr(self, 'is_muted', n.get_bool_value()),
+            "media_streams": lambda n : setattr(self, 'media_streams', n.get_collection_of_object_values(MediaStream)),
             "metadata": lambda n : setattr(self, 'metadata', n.get_str_value()),
-            "recordingInfo": lambda n : setattr(self, 'recording_info', n.get_object_value(RecordingInfo)),
-            "restrictedExperience": lambda n : setattr(self, 'restricted_experience', n.get_object_value(OnlineMeetingRestricted)),
+            "recording_info": lambda n : setattr(self, 'recording_info', n.get_object_value(RecordingInfo)),
+            "restricted_experience": lambda n : setattr(self, 'restricted_experience', n.get_object_value(OnlineMeetingRestricted)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -82,11 +82,11 @@ class Participant(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("info", self.info)
-        writer.write_bool_value("isInLobby", self.is_in_lobby)
-        writer.write_bool_value("isMuted", self.is_muted)
-        writer.write_collection_of_object_values("mediaStreams", self.media_streams)
+        writer.write_bool_value("is_in_lobby", self.is_in_lobby)
+        writer.write_bool_value("is_muted", self.is_muted)
+        writer.write_collection_of_object_values("media_streams", self.media_streams)
         writer.write_str_value("metadata", self.metadata)
-        writer.write_object_value("recordingInfo", self.recording_info)
-        writer.write_object_value("restrictedExperience", self.restricted_experience)
+        writer.write_object_value("recording_info", self.recording_info)
+        writer.write_object_value("restricted_experience", self.restricted_experience)
     
 

@@ -44,7 +44,7 @@ class SumIfPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "criteria": lambda n : setattr(self, 'criteria', n.get_object_value(Json)),
             "range": lambda n : setattr(self, 'range', n.get_object_value(Json)),
-            "sumRange": lambda n : setattr(self, 'sum_range', n.get_object_value(Json)),
+            "sum_range": lambda n : setattr(self, 'sum_range', n.get_object_value(Json)),
         }
         return fields
     
@@ -58,7 +58,7 @@ class SumIfPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("criteria", self.criteria)
         writer.write_object_value("range", self.range)
-        writer.write_object_value("sumRange", self.sum_range)
+        writer.write_object_value("sum_range", self.sum_range)
         writer.write_additional_data_value(self.additional_data)
     
 

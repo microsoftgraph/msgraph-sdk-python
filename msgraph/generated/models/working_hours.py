@@ -50,11 +50,11 @@ class WorkingHours(AdditionalDataHolder, BackedModel, Parsable):
         from .time_zone_base import TimeZoneBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(DayOfWeek)),
-            "endTime": lambda n : setattr(self, 'end_time', n.get_time_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "startTime": lambda n : setattr(self, 'start_time', n.get_time_value()),
-            "timeZone": lambda n : setattr(self, 'time_zone', n.get_object_value(TimeZoneBase)),
+            "days_of_week": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(DayOfWeek)),
+            "end_time": lambda n : setattr(self, 'end_time', n.get_time_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "start_time": lambda n : setattr(self, 'start_time', n.get_time_value()),
+            "time_zone": lambda n : setattr(self, 'time_zone', n.get_object_value(TimeZoneBase)),
         }
         return fields
     
@@ -66,11 +66,11 @@ class WorkingHours(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_enum_values("daysOfWeek", self.days_of_week)
-        writer.write_time_value("endTime", self.end_time)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_time_value("startTime", self.start_time)
-        writer.write_object_value("timeZone", self.time_zone)
+        writer.write_collection_of_enum_values("days_of_week", self.days_of_week)
+        writer.write_time_value("end_time", self.end_time)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_time_value("start_time", self.start_time)
+        writer.write_object_value("time_zone", self.time_zone)
         writer.write_additional_data_value(self.additional_data)
     
 

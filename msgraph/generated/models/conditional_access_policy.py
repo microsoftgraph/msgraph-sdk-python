@@ -66,14 +66,14 @@ class ConditionalAccessPolicy(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(ConditionalAccessConditionSet)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "grantControls": lambda n : setattr(self, 'grant_controls', n.get_object_value(ConditionalAccessGrantControls)),
-            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
-            "sessionControls": lambda n : setattr(self, 'session_controls', n.get_object_value(ConditionalAccessSessionControls)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "grant_controls": lambda n : setattr(self, 'grant_controls', n.get_object_value(ConditionalAccessGrantControls)),
+            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "session_controls": lambda n : setattr(self, 'session_controls', n.get_object_value(ConditionalAccessSessionControls)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(ConditionalAccessPolicyState)),
-            "templateId": lambda n : setattr(self, 'template_id', n.get_str_value()),
+            "template_id": lambda n : setattr(self, 'template_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -89,13 +89,13 @@ class ConditionalAccessPolicy(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("conditions", self.conditions)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("grantControls", self.grant_controls)
-        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
-        writer.write_object_value("sessionControls", self.session_controls)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_object_value("grant_controls", self.grant_controls)
+        writer.write_datetime_value("modified_date_time", self.modified_date_time)
+        writer.write_object_value("session_controls", self.session_controls)
         writer.write_enum_value("state", self.state)
-        writer.write_str_value("templateId", self.template_id)
+        writer.write_str_value("template_id", self.template_id)
     
 

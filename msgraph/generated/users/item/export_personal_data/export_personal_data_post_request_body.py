@@ -31,7 +31,7 @@ class ExportPersonalDataPostRequestBody(AdditionalDataHolder, BackedModel, Parsa
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "storageLocation": lambda n : setattr(self, 'storage_location', n.get_str_value()),
+            "storage_location": lambda n : setattr(self, 'storage_location', n.get_str_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class ExportPersonalDataPostRequestBody(AdditionalDataHolder, BackedModel, Parsa
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("storageLocation", self.storage_location)
+        writer.write_str_value("storage_location", self.storage_location)
         writer.write_additional_data_value(self.additional_data)
     
 

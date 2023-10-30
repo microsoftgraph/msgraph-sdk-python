@@ -42,7 +42,7 @@ class OutlookCategory(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "color": lambda n : setattr(self, 'color', n.get_enum_value(CategoryColor)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,6 +58,6 @@ class OutlookCategory(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("color", self.color)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
     
 

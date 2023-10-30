@@ -49,10 +49,10 @@ class IosUpdateConfiguration(DeviceConfiguration):
         from .device_configuration import DeviceConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activeHoursEnd": lambda n : setattr(self, 'active_hours_end', n.get_time_value()),
-            "activeHoursStart": lambda n : setattr(self, 'active_hours_start', n.get_time_value()),
-            "scheduledInstallDays": lambda n : setattr(self, 'scheduled_install_days', n.get_collection_of_enum_values(DayOfWeek)),
-            "utcTimeOffsetInMinutes": lambda n : setattr(self, 'utc_time_offset_in_minutes', n.get_int_value()),
+            "active_hours_end": lambda n : setattr(self, 'active_hours_end', n.get_time_value()),
+            "active_hours_start": lambda n : setattr(self, 'active_hours_start', n.get_time_value()),
+            "scheduled_install_days": lambda n : setattr(self, 'scheduled_install_days', n.get_collection_of_enum_values(DayOfWeek)),
+            "utc_time_offset_in_minutes": lambda n : setattr(self, 'utc_time_offset_in_minutes', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,9 +67,9 @@ class IosUpdateConfiguration(DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_time_value("activeHoursEnd", self.active_hours_end)
-        writer.write_time_value("activeHoursStart", self.active_hours_start)
-        writer.write_collection_of_enum_values("scheduledInstallDays", self.scheduled_install_days)
-        writer.write_int_value("utcTimeOffsetInMinutes", self.utc_time_offset_in_minutes)
+        writer.write_time_value("active_hours_end", self.active_hours_end)
+        writer.write_time_value("active_hours_start", self.active_hours_start)
+        writer.write_collection_of_enum_values("scheduled_install_days", self.scheduled_install_days)
+        writer.write_int_value("utc_time_offset_in_minutes", self.utc_time_offset_in_minutes)
     
 

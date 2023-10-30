@@ -69,17 +69,17 @@ class DirectoryAudit(Entity):
         from .target_resource import TargetResource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
-            "activityDisplayName": lambda n : setattr(self, 'activity_display_name', n.get_str_value()),
-            "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_collection_of_object_values(KeyValue)),
+            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "activity_display_name": lambda n : setattr(self, 'activity_display_name', n.get_str_value()),
+            "additional_details": lambda n : setattr(self, 'additional_details', n.get_collection_of_object_values(KeyValue)),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
-            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
-            "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_object_value(AuditActivityInitiator)),
-            "loggedByService": lambda n : setattr(self, 'logged_by_service', n.get_str_value()),
-            "operationType": lambda n : setattr(self, 'operation_type', n.get_str_value()),
+            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "initiated_by": lambda n : setattr(self, 'initiated_by', n.get_object_value(AuditActivityInitiator)),
+            "logged_by_service": lambda n : setattr(self, 'logged_by_service', n.get_str_value()),
+            "operation_type": lambda n : setattr(self, 'operation_type', n.get_str_value()),
             "result": lambda n : setattr(self, 'result', n.get_enum_value(OperationResult)),
-            "resultReason": lambda n : setattr(self, 'result_reason', n.get_str_value()),
-            "targetResources": lambda n : setattr(self, 'target_resources', n.get_collection_of_object_values(TargetResource)),
+            "result_reason": lambda n : setattr(self, 'result_reason', n.get_str_value()),
+            "target_resources": lambda n : setattr(self, 'target_resources', n.get_collection_of_object_values(TargetResource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -94,16 +94,16 @@ class DirectoryAudit(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("activityDateTime", self.activity_date_time)
-        writer.write_str_value("activityDisplayName", self.activity_display_name)
-        writer.write_collection_of_object_values("additionalDetails", self.additional_details)
+        writer.write_datetime_value("activity_date_time", self.activity_date_time)
+        writer.write_str_value("activity_display_name", self.activity_display_name)
+        writer.write_collection_of_object_values("additional_details", self.additional_details)
         writer.write_str_value("category", self.category)
-        writer.write_str_value("correlationId", self.correlation_id)
-        writer.write_object_value("initiatedBy", self.initiated_by)
-        writer.write_str_value("loggedByService", self.logged_by_service)
-        writer.write_str_value("operationType", self.operation_type)
+        writer.write_str_value("correlation_id", self.correlation_id)
+        writer.write_object_value("initiated_by", self.initiated_by)
+        writer.write_str_value("logged_by_service", self.logged_by_service)
+        writer.write_str_value("operation_type", self.operation_type)
         writer.write_enum_value("result", self.result)
-        writer.write_str_value("resultReason", self.result_reason)
-        writer.write_collection_of_object_values("targetResources", self.target_resources)
+        writer.write_str_value("result_reason", self.result_reason)
+        writer.write_collection_of_object_values("target_resources", self.target_resources)
     
 

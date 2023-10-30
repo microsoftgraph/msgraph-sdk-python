@@ -50,13 +50,13 @@ class CreatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ....models.print_certificate_signing_request import PrintCertificateSigningRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "certificateSigningRequest": lambda n : setattr(self, 'certificate_signing_request', n.get_object_value(PrintCertificateSigningRequest)),
-            "connectorId": lambda n : setattr(self, 'connector_id', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "hasPhysicalDevice": lambda n : setattr(self, 'has_physical_device', n.get_bool_value()),
+            "certificate_signing_request": lambda n : setattr(self, 'certificate_signing_request', n.get_object_value(PrintCertificateSigningRequest)),
+            "connector_id": lambda n : setattr(self, 'connector_id', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "has_physical_device": lambda n : setattr(self, 'has_physical_device', n.get_bool_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "physicalDeviceId": lambda n : setattr(self, 'physical_device_id', n.get_str_value()),
+            "physical_device_id": lambda n : setattr(self, 'physical_device_id', n.get_str_value()),
         }
         return fields
     
@@ -68,13 +68,13 @@ class CreatePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("certificateSigningRequest", self.certificate_signing_request)
-        writer.write_str_value("connectorId", self.connector_id)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_bool_value("hasPhysicalDevice", self.has_physical_device)
+        writer.write_object_value("certificate_signing_request", self.certificate_signing_request)
+        writer.write_str_value("connector_id", self.connector_id)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_bool_value("has_physical_device", self.has_physical_device)
         writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("model", self.model)
-        writer.write_str_value("physicalDeviceId", self.physical_device_id)
+        writer.write_str_value("physical_device_id", self.physical_device_id)
         writer.write_additional_data_value(self.additional_data)
     
 

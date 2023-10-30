@@ -40,7 +40,7 @@ class RejectPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from .....models.reject_reason import RejectReason
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callbackUri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
+            "callback_uri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
             "reason": lambda n : setattr(self, 'reason', n.get_enum_value(RejectReason)),
         }
         return fields
@@ -53,7 +53,7 @@ class RejectPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("callbackUri", self.callback_uri)
+        writer.write_str_value("callback_uri", self.callback_uri)
         writer.write_enum_value("reason", self.reason)
         writer.write_additional_data_value(self.additional_data)
     

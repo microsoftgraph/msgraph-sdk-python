@@ -42,8 +42,8 @@ class EntitlementManagementSettings(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "durationUntilExternalUserDeletedAfterBlocked": lambda n : setattr(self, 'duration_until_external_user_deleted_after_blocked', n.get_timedelta_value()),
-            "externalUserLifecycleAction": lambda n : setattr(self, 'external_user_lifecycle_action', n.get_enum_value(AccessPackageExternalUserLifecycleAction)),
+            "duration_until_external_user_deleted_after_blocked": lambda n : setattr(self, 'duration_until_external_user_deleted_after_blocked', n.get_timedelta_value()),
+            "external_user_lifecycle_action": lambda n : setattr(self, 'external_user_lifecycle_action', n.get_enum_value(AccessPackageExternalUserLifecycleAction)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,7 +58,7 @@ class EntitlementManagementSettings(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_timedelta_value("durationUntilExternalUserDeletedAfterBlocked", self.duration_until_external_user_deleted_after_blocked)
-        writer.write_enum_value("externalUserLifecycleAction", self.external_user_lifecycle_action)
+        writer.write_timedelta_value("duration_until_external_user_deleted_after_blocked", self.duration_until_external_user_deleted_after_blocked)
+        writer.write_enum_value("external_user_lifecycle_action", self.external_user_lifecycle_action)
     
 

@@ -44,7 +44,7 @@ class WorkbookComment(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
-            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "replies": lambda n : setattr(self, 'replies', n.get_collection_of_object_values(WorkbookCommentReply)),
         }
         super_fields = super().get_field_deserializers()
@@ -61,7 +61,7 @@ class WorkbookComment(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("content", self.content)
-        writer.write_str_value("contentType", self.content_type)
+        writer.write_str_value("content_type", self.content_type)
         writer.write_collection_of_object_values("replies", self.replies)
     
 

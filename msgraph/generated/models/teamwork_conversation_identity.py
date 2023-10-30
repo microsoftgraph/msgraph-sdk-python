@@ -39,7 +39,7 @@ class TeamworkConversationIdentity(Identity):
         from .teamwork_conversation_identity_type import TeamworkConversationIdentityType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "conversationIdentityType": lambda n : setattr(self, 'conversation_identity_type', n.get_enum_value(TeamworkConversationIdentityType)),
+            "conversation_identity_type": lambda n : setattr(self, 'conversation_identity_type', n.get_enum_value(TeamworkConversationIdentityType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class TeamworkConversationIdentity(Identity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("conversationIdentityType", self.conversation_identity_type)
+        writer.write_enum_value("conversation_identity_type", self.conversation_identity_type)
     
 

@@ -52,9 +52,9 @@ class ParticipantEndpoint(Endpoint):
         from .user_feedback import UserFeedback
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "cpuCoresCount": lambda n : setattr(self, 'cpu_cores_count', n.get_int_value()),
-            "cpuName": lambda n : setattr(self, 'cpu_name', n.get_str_value()),
-            "cpuProcessorSpeedInMhz": lambda n : setattr(self, 'cpu_processor_speed_in_mhz', n.get_int_value()),
+            "cpu_cores_count": lambda n : setattr(self, 'cpu_cores_count', n.get_int_value()),
+            "cpu_name": lambda n : setattr(self, 'cpu_name', n.get_str_value()),
+            "cpu_processor_speed_in_mhz": lambda n : setattr(self, 'cpu_processor_speed_in_mhz', n.get_int_value()),
             "feedback": lambda n : setattr(self, 'feedback', n.get_object_value(UserFeedback)),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(IdentitySet)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
@@ -72,9 +72,9 @@ class ParticipantEndpoint(Endpoint):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("cpuCoresCount", self.cpu_cores_count)
-        writer.write_str_value("cpuName", self.cpu_name)
-        writer.write_int_value("cpuProcessorSpeedInMhz", self.cpu_processor_speed_in_mhz)
+        writer.write_int_value("cpu_cores_count", self.cpu_cores_count)
+        writer.write_str_value("cpu_name", self.cpu_name)
+        writer.write_int_value("cpu_processor_speed_in_mhz", self.cpu_processor_speed_in_mhz)
         writer.write_object_value("feedback", self.feedback)
         writer.write_object_value("identity", self.identity)
         writer.write_str_value("name", self.name)

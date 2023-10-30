@@ -43,8 +43,8 @@ class EdiscoveryReviewTag(Tag):
         from .tag import Tag
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "childSelectability": lambda n : setattr(self, 'child_selectability', n.get_enum_value(ChildSelectability)),
-            "childTags": lambda n : setattr(self, 'child_tags', n.get_collection_of_object_values(EdiscoveryReviewTag)),
+            "child_selectability": lambda n : setattr(self, 'child_selectability', n.get_enum_value(ChildSelectability)),
+            "child_tags": lambda n : setattr(self, 'child_tags', n.get_collection_of_object_values(EdiscoveryReviewTag)),
             "parent": lambda n : setattr(self, 'parent', n.get_object_value(EdiscoveryReviewTag)),
         }
         super_fields = super().get_field_deserializers()
@@ -60,8 +60,8 @@ class EdiscoveryReviewTag(Tag):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("childSelectability", self.child_selectability)
-        writer.write_collection_of_object_values("childTags", self.child_tags)
+        writer.write_enum_value("child_selectability", self.child_selectability)
+        writer.write_collection_of_object_values("child_tags", self.child_tags)
         writer.write_object_value("parent", self.parent)
     
 

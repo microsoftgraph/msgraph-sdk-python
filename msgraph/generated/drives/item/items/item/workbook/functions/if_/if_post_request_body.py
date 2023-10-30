@@ -42,9 +42,9 @@ class IfPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "logicalTest": lambda n : setattr(self, 'logical_test', n.get_object_value(Json)),
-            "valueIfFalse": lambda n : setattr(self, 'value_if_false', n.get_object_value(Json)),
-            "valueIfTrue": lambda n : setattr(self, 'value_if_true', n.get_object_value(Json)),
+            "logical_test": lambda n : setattr(self, 'logical_test', n.get_object_value(Json)),
+            "value_if_false": lambda n : setattr(self, 'value_if_false', n.get_object_value(Json)),
+            "value_if_true": lambda n : setattr(self, 'value_if_true', n.get_object_value(Json)),
         }
         return fields
     
@@ -56,9 +56,9 @@ class IfPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("logicalTest", self.logical_test)
-        writer.write_object_value("valueIfFalse", self.value_if_false)
-        writer.write_object_value("valueIfTrue", self.value_if_true)
+        writer.write_object_value("logical_test", self.logical_test)
+        writer.write_object_value("value_if_false", self.value_if_false)
+        writer.write_object_value("value_if_true", self.value_if_true)
         writer.write_additional_data_value(self.additional_data)
     
 

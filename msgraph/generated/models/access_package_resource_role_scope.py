@@ -47,7 +47,7 @@ class AccessPackageResourceRoleScope(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "role": lambda n : setattr(self, 'role', n.get_object_value(AccessPackageResourceRole)),
             "scope": lambda n : setattr(self, 'scope', n.get_object_value(AccessPackageResourceScope)),
         }
@@ -64,7 +64,7 @@ class AccessPackageResourceRoleScope(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_object_value("role", self.role)
         writer.write_object_value("scope", self.scope)
     

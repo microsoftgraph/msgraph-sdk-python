@@ -40,8 +40,8 @@ class Privacy(AdditionalDataHolder, BackedModel, Parsable):
         from .subject_rights_request import SubjectRightsRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "subjectRightsRequests": lambda n : setattr(self, 'subject_rights_requests', n.get_collection_of_object_values(SubjectRightsRequest)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "subject_rights_requests": lambda n : setattr(self, 'subject_rights_requests', n.get_collection_of_object_values(SubjectRightsRequest)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class Privacy(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("subjectRightsRequests", self.subject_rights_requests)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("subject_rights_requests", self.subject_rights_requests)
         writer.write_additional_data_value(self.additional_data)
     
 

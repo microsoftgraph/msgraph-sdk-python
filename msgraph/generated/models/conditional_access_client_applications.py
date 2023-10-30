@@ -44,10 +44,10 @@ class ConditionalAccessClientApplications(AdditionalDataHolder, BackedModel, Par
         from .conditional_access_filter import ConditionalAccessFilter
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "excludeServicePrincipals": lambda n : setattr(self, 'exclude_service_principals', n.get_collection_of_primitive_values(str)),
-            "includeServicePrincipals": lambda n : setattr(self, 'include_service_principals', n.get_collection_of_primitive_values(str)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "servicePrincipalFilter": lambda n : setattr(self, 'service_principal_filter', n.get_object_value(ConditionalAccessFilter)),
+            "exclude_service_principals": lambda n : setattr(self, 'exclude_service_principals', n.get_collection_of_primitive_values(str)),
+            "include_service_principals": lambda n : setattr(self, 'include_service_principals', n.get_collection_of_primitive_values(str)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "service_principal_filter": lambda n : setattr(self, 'service_principal_filter', n.get_object_value(ConditionalAccessFilter)),
         }
         return fields
     
@@ -59,10 +59,10 @@ class ConditionalAccessClientApplications(AdditionalDataHolder, BackedModel, Par
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("excludeServicePrincipals", self.exclude_service_principals)
-        writer.write_collection_of_primitive_values("includeServicePrincipals", self.include_service_principals)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("servicePrincipalFilter", self.service_principal_filter)
+        writer.write_collection_of_primitive_values("exclude_service_principals", self.exclude_service_principals)
+        writer.write_collection_of_primitive_values("include_service_principals", self.include_service_principals)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("service_principal_filter", self.service_principal_filter)
         writer.write_additional_data_value(self.additional_data)
     
 

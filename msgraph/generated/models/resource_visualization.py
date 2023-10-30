@@ -47,13 +47,13 @@ class ResourceVisualization(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "containerDisplayName": lambda n : setattr(self, 'container_display_name', n.get_str_value()),
-            "containerType": lambda n : setattr(self, 'container_type', n.get_str_value()),
-            "containerWebUrl": lambda n : setattr(self, 'container_web_url', n.get_str_value()),
-            "mediaType": lambda n : setattr(self, 'media_type', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "previewImageUrl": lambda n : setattr(self, 'preview_image_url', n.get_str_value()),
-            "previewText": lambda n : setattr(self, 'preview_text', n.get_str_value()),
+            "container_display_name": lambda n : setattr(self, 'container_display_name', n.get_str_value()),
+            "container_type": lambda n : setattr(self, 'container_type', n.get_str_value()),
+            "container_web_url": lambda n : setattr(self, 'container_web_url', n.get_str_value()),
+            "media_type": lambda n : setattr(self, 'media_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "preview_image_url": lambda n : setattr(self, 'preview_image_url', n.get_str_value()),
+            "preview_text": lambda n : setattr(self, 'preview_text', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
@@ -67,13 +67,13 @@ class ResourceVisualization(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("containerDisplayName", self.container_display_name)
-        writer.write_str_value("containerType", self.container_type)
-        writer.write_str_value("containerWebUrl", self.container_web_url)
-        writer.write_str_value("mediaType", self.media_type)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("previewImageUrl", self.preview_image_url)
-        writer.write_str_value("previewText", self.preview_text)
+        writer.write_str_value("container_display_name", self.container_display_name)
+        writer.write_str_value("container_type", self.container_type)
+        writer.write_str_value("container_web_url", self.container_web_url)
+        writer.write_str_value("media_type", self.media_type)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("preview_image_url", self.preview_image_url)
+        writer.write_str_value("preview_text", self.preview_text)
         writer.write_str_value("title", self.title)
         writer.write_str_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)

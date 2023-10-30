@@ -91,18 +91,18 @@ class ManagedEBook(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(ManagedEBookAssignment)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "deviceStates": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(DeviceInstallState)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "informationUrl": lambda n : setattr(self, 'information_url', n.get_str_value()),
-            "installSummary": lambda n : setattr(self, 'install_summary', n.get_object_value(EBookInstallSummary)),
-            "largeCover": lambda n : setattr(self, 'large_cover', n.get_object_value(MimeContent)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "privacyInformationUrl": lambda n : setattr(self, 'privacy_information_url', n.get_str_value()),
-            "publishedDateTime": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
+            "device_states": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(DeviceInstallState)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "information_url": lambda n : setattr(self, 'information_url', n.get_str_value()),
+            "install_summary": lambda n : setattr(self, 'install_summary', n.get_object_value(EBookInstallSummary)),
+            "large_cover": lambda n : setattr(self, 'large_cover', n.get_object_value(MimeContent)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "privacy_information_url": lambda n : setattr(self, 'privacy_information_url', n.get_str_value()),
+            "published_date_time": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "userStateSummary": lambda n : setattr(self, 'user_state_summary', n.get_collection_of_object_values(UserInstallStateSummary)),
+            "user_state_summary": lambda n : setattr(self, 'user_state_summary', n.get_collection_of_object_values(UserInstallStateSummary)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -118,17 +118,17 @@ class ManagedEBook(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_collection_of_object_values("deviceStates", self.device_states)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("informationUrl", self.information_url)
-        writer.write_object_value("installSummary", self.install_summary)
-        writer.write_object_value("largeCover", self.large_cover)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_str_value("privacyInformationUrl", self.privacy_information_url)
-        writer.write_datetime_value("publishedDateTime", self.published_date_time)
+        writer.write_collection_of_object_values("device_states", self.device_states)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("information_url", self.information_url)
+        writer.write_object_value("install_summary", self.install_summary)
+        writer.write_object_value("large_cover", self.large_cover)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_str_value("privacy_information_url", self.privacy_information_url)
+        writer.write_datetime_value("published_date_time", self.published_date_time)
         writer.write_str_value("publisher", self.publisher)
-        writer.write_collection_of_object_values("userStateSummary", self.user_state_summary)
+        writer.write_collection_of_object_values("user_state_summary", self.user_state_summary)
     
 

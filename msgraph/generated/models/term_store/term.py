@@ -67,10 +67,10 @@ class Term(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "children": lambda n : setattr(self, 'children', n.get_collection_of_object_values(Term)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "descriptions": lambda n : setattr(self, 'descriptions', n.get_collection_of_object_values(LocalizedDescription)),
             "labels": lambda n : setattr(self, 'labels', n.get_collection_of_object_values(LocalizedLabel)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(KeyValue)),
             "relations": lambda n : setattr(self, 'relations', n.get_collection_of_object_values(Relation)),
             "set": lambda n : setattr(self, 'set', n.get_object_value(Set)),
@@ -89,10 +89,10 @@ class Term(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("children", self.children)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_collection_of_object_values("descriptions", self.descriptions)
         writer.write_collection_of_object_values("labels", self.labels)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_collection_of_object_values("properties", self.properties)
         writer.write_collection_of_object_values("relations", self.relations)
         writer.write_object_value("set", self.set)

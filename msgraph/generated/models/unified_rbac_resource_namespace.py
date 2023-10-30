@@ -42,7 +42,7 @@ class UnifiedRbacResourceNamespace(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "resourceActions": lambda n : setattr(self, 'resource_actions', n.get_collection_of_object_values(UnifiedRbacResourceAction)),
+            "resource_actions": lambda n : setattr(self, 'resource_actions', n.get_collection_of_object_values(UnifiedRbacResourceAction)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,6 +58,6 @@ class UnifiedRbacResourceNamespace(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("name", self.name)
-        writer.write_collection_of_object_values("resourceActions", self.resource_actions)
+        writer.write_collection_of_object_values("resource_actions", self.resource_actions)
     
 

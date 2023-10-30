@@ -38,7 +38,7 @@ class WorkbookFormatProtection(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "formulaHidden": lambda n : setattr(self, 'formula_hidden', n.get_bool_value()),
+            "formula_hidden": lambda n : setattr(self, 'formula_hidden', n.get_bool_value()),
             "locked": lambda n : setattr(self, 'locked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -54,7 +54,7 @@ class WorkbookFormatProtection(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("formulaHidden", self.formula_hidden)
+        writer.write_bool_value("formula_hidden", self.formula_hidden)
         writer.write_bool_value("locked", self.locked)
     
 

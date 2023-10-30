@@ -39,7 +39,7 @@ class AndroidMobileAppIdentifier(MobileAppIdentifier):
         from .mobile_app_identifier import MobileAppIdentifier
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "packageId": lambda n : setattr(self, 'package_id', n.get_str_value()),
+            "package_id": lambda n : setattr(self, 'package_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class AndroidMobileAppIdentifier(MobileAppIdentifier):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("packageId", self.package_id)
+        writer.write_str_value("package_id", self.package_id)
     
 

@@ -60,13 +60,13 @@ class IosManagedAppProtection(TargetedManagedAppProtection):
         from .targeted_managed_app_protection import TargetedManagedAppProtection
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appDataEncryptionType": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(ManagedAppDataEncryptionType)),
+            "app_data_encryption_type": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(ManagedAppDataEncryptionType)),
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(ManagedMobileApp)),
-            "customBrowserProtocol": lambda n : setattr(self, 'custom_browser_protocol', n.get_str_value()),
-            "deployedAppCount": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
-            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(ManagedAppPolicyDeploymentSummary)),
-            "faceIdBlocked": lambda n : setattr(self, 'face_id_blocked', n.get_bool_value()),
-            "minimumRequiredSdkVersion": lambda n : setattr(self, 'minimum_required_sdk_version', n.get_str_value()),
+            "custom_browser_protocol": lambda n : setattr(self, 'custom_browser_protocol', n.get_str_value()),
+            "deployed_app_count": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
+            "deployment_summary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(ManagedAppPolicyDeploymentSummary)),
+            "face_id_blocked": lambda n : setattr(self, 'face_id_blocked', n.get_bool_value()),
+            "minimum_required_sdk_version": lambda n : setattr(self, 'minimum_required_sdk_version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -81,12 +81,12 @@ class IosManagedAppProtection(TargetedManagedAppProtection):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("appDataEncryptionType", self.app_data_encryption_type)
+        writer.write_enum_value("app_data_encryption_type", self.app_data_encryption_type)
         writer.write_collection_of_object_values("apps", self.apps)
-        writer.write_str_value("customBrowserProtocol", self.custom_browser_protocol)
-        writer.write_int_value("deployedAppCount", self.deployed_app_count)
-        writer.write_object_value("deploymentSummary", self.deployment_summary)
-        writer.write_bool_value("faceIdBlocked", self.face_id_blocked)
-        writer.write_str_value("minimumRequiredSdkVersion", self.minimum_required_sdk_version)
+        writer.write_str_value("custom_browser_protocol", self.custom_browser_protocol)
+        writer.write_int_value("deployed_app_count", self.deployed_app_count)
+        writer.write_object_value("deployment_summary", self.deployment_summary)
+        writer.write_bool_value("face_id_blocked", self.face_id_blocked)
+        writer.write_str_value("minimum_required_sdk_version", self.minimum_required_sdk_version)
     
 

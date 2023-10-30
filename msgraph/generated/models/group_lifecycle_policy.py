@@ -40,9 +40,9 @@ class GroupLifecyclePolicy(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "alternateNotificationEmails": lambda n : setattr(self, 'alternate_notification_emails', n.get_str_value()),
-            "groupLifetimeInDays": lambda n : setattr(self, 'group_lifetime_in_days', n.get_int_value()),
-            "managedGroupTypes": lambda n : setattr(self, 'managed_group_types', n.get_str_value()),
+            "alternate_notification_emails": lambda n : setattr(self, 'alternate_notification_emails', n.get_str_value()),
+            "group_lifetime_in_days": lambda n : setattr(self, 'group_lifetime_in_days', n.get_int_value()),
+            "managed_group_types": lambda n : setattr(self, 'managed_group_types', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,8 +57,8 @@ class GroupLifecyclePolicy(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("alternateNotificationEmails", self.alternate_notification_emails)
-        writer.write_int_value("groupLifetimeInDays", self.group_lifetime_in_days)
-        writer.write_str_value("managedGroupTypes", self.managed_group_types)
+        writer.write_str_value("alternate_notification_emails", self.alternate_notification_emails)
+        writer.write_int_value("group_lifetime_in_days", self.group_lifetime_in_days)
+        writer.write_str_value("managed_group_types", self.managed_group_types)
     
 

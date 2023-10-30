@@ -61,9 +61,9 @@ class TeamInfo(Entity):
         from .team import Team
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "team": lambda n : setattr(self, 'team', n.get_object_value(Team)),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,8 +78,8 @@ class TeamInfo(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_object_value("team", self.team)
-        writer.write_str_value("tenantId", self.tenant_id)
+        writer.write_str_value("tenant_id", self.tenant_id)
     
 

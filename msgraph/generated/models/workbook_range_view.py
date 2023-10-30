@@ -61,17 +61,17 @@ class WorkbookRangeView(Entity):
         from .json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "cellAddresses": lambda n : setattr(self, 'cell_addresses', n.get_object_value(Json)),
-            "columnCount": lambda n : setattr(self, 'column_count', n.get_int_value()),
+            "cell_addresses": lambda n : setattr(self, 'cell_addresses', n.get_object_value(Json)),
+            "column_count": lambda n : setattr(self, 'column_count', n.get_int_value()),
             "formulas": lambda n : setattr(self, 'formulas', n.get_object_value(Json)),
-            "formulasLocal": lambda n : setattr(self, 'formulas_local', n.get_object_value(Json)),
-            "formulasR1C1": lambda n : setattr(self, 'formulas_r1_c1', n.get_object_value(Json)),
+            "formulas_local": lambda n : setattr(self, 'formulas_local', n.get_object_value(Json)),
+            "formulas_r1_c1": lambda n : setattr(self, 'formulas_r1_c1', n.get_object_value(Json)),
             "index": lambda n : setattr(self, 'index', n.get_int_value()),
-            "numberFormat": lambda n : setattr(self, 'number_format', n.get_object_value(Json)),
-            "rowCount": lambda n : setattr(self, 'row_count', n.get_int_value()),
+            "number_format": lambda n : setattr(self, 'number_format', n.get_object_value(Json)),
+            "row_count": lambda n : setattr(self, 'row_count', n.get_int_value()),
             "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(WorkbookRangeView)),
             "text": lambda n : setattr(self, 'text', n.get_object_value(Json)),
-            "valueTypes": lambda n : setattr(self, 'value_types', n.get_object_value(Json)),
+            "value_types": lambda n : setattr(self, 'value_types', n.get_object_value(Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
         }
         super_fields = super().get_field_deserializers()
@@ -87,17 +87,17 @@ class WorkbookRangeView(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("cellAddresses", self.cell_addresses)
-        writer.write_int_value("columnCount", self.column_count)
+        writer.write_object_value("cell_addresses", self.cell_addresses)
+        writer.write_int_value("column_count", self.column_count)
         writer.write_object_value("formulas", self.formulas)
-        writer.write_object_value("formulasLocal", self.formulas_local)
-        writer.write_object_value("formulasR1C1", self.formulas_r1_c1)
+        writer.write_object_value("formulas_local", self.formulas_local)
+        writer.write_object_value("formulas_r1_c1", self.formulas_r1_c1)
         writer.write_int_value("index", self.index)
-        writer.write_object_value("numberFormat", self.number_format)
-        writer.write_int_value("rowCount", self.row_count)
+        writer.write_object_value("number_format", self.number_format)
+        writer.write_int_value("row_count", self.row_count)
         writer.write_collection_of_object_values("rows", self.rows)
         writer.write_object_value("text", self.text)
-        writer.write_object_value("valueTypes", self.value_types)
+        writer.write_object_value("value_types", self.value_types)
         writer.write_object_value("values", self.values)
     
 

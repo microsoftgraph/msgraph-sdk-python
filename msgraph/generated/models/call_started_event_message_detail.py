@@ -46,8 +46,8 @@ class CallStartedEventMessageDetail(EventMessageDetail):
         from .teamwork_call_event_type import TeamworkCallEventType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callEventType": lambda n : setattr(self, 'call_event_type', n.get_enum_value(TeamworkCallEventType)),
-            "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
+            "call_event_type": lambda n : setattr(self, 'call_event_type', n.get_enum_value(TeamworkCallEventType)),
+            "call_id": lambda n : setattr(self, 'call_id', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
@@ -63,8 +63,8 @@ class CallStartedEventMessageDetail(EventMessageDetail):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("callEventType", self.call_event_type)
-        writer.write_str_value("callId", self.call_id)
+        writer.write_enum_value("call_event_type", self.call_event_type)
+        writer.write_str_value("call_id", self.call_id)
         writer.write_object_value("initiator", self.initiator)
     
 

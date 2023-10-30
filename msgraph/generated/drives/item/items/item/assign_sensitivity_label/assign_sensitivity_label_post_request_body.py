@@ -42,9 +42,9 @@ class AssignSensitivityLabelPostRequestBody(AdditionalDataHolder, BackedModel, P
         from ......models.sensitivity_label_assignment_method import SensitivityLabelAssignmentMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignmentMethod": lambda n : setattr(self, 'assignment_method', n.get_enum_value(SensitivityLabelAssignmentMethod)),
-            "justificationText": lambda n : setattr(self, 'justification_text', n.get_str_value()),
-            "sensitivityLabelId": lambda n : setattr(self, 'sensitivity_label_id', n.get_str_value()),
+            "assignment_method": lambda n : setattr(self, 'assignment_method', n.get_enum_value(SensitivityLabelAssignmentMethod)),
+            "justification_text": lambda n : setattr(self, 'justification_text', n.get_str_value()),
+            "sensitivity_label_id": lambda n : setattr(self, 'sensitivity_label_id', n.get_str_value()),
         }
         return fields
     
@@ -56,9 +56,9 @@ class AssignSensitivityLabelPostRequestBody(AdditionalDataHolder, BackedModel, P
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("assignmentMethod", self.assignment_method)
-        writer.write_str_value("justificationText", self.justification_text)
-        writer.write_str_value("sensitivityLabelId", self.sensitivity_label_id)
+        writer.write_enum_value("assignment_method", self.assignment_method)
+        writer.write_str_value("justification_text", self.justification_text)
+        writer.write_str_value("sensitivity_label_id", self.sensitivity_label_id)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -40,8 +40,8 @@ class SearchSettings(AdditionalDataHolder, BackedModel, Parsable):
         from .display_template import DisplayTemplate
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "searchResultTemplates": lambda n : setattr(self, 'search_result_templates', n.get_collection_of_object_values(DisplayTemplate)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "search_result_templates": lambda n : setattr(self, 'search_result_templates', n.get_collection_of_object_values(DisplayTemplate)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class SearchSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("searchResultTemplates", self.search_result_templates)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("search_result_templates", self.search_result_templates)
         writer.write_additional_data_value(self.additional_data)
     
 

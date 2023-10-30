@@ -65,8 +65,8 @@ class AccessPackageQuestion(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isAnswerEditable": lambda n : setattr(self, 'is_answer_editable', n.get_bool_value()),
-            "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
+            "is_answer_editable": lambda n : setattr(self, 'is_answer_editable', n.get_bool_value()),
+            "is_required": lambda n : setattr(self, 'is_required', n.get_bool_value()),
             "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(AccessPackageLocalizedText)),
             "sequence": lambda n : setattr(self, 'sequence', n.get_int_value()),
             "text": lambda n : setattr(self, 'text', n.get_str_value()),
@@ -84,8 +84,8 @@ class AccessPackageQuestion(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isAnswerEditable", self.is_answer_editable)
-        writer.write_bool_value("isRequired", self.is_required)
+        writer.write_bool_value("is_answer_editable", self.is_answer_editable)
+        writer.write_bool_value("is_required", self.is_required)
         writer.write_collection_of_object_values("localizations", self.localizations)
         writer.write_int_value("sequence", self.sequence)
         writer.write_str_value("text", self.text)

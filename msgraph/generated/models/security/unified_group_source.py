@@ -45,7 +45,7 @@ class UnifiedGroupSource(DataSource):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
-            "includedSources": lambda n : setattr(self, 'included_sources', n.get_collection_of_enum_values(SourceType)),
+            "included_sources": lambda n : setattr(self, 'included_sources', n.get_collection_of_enum_values(SourceType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,6 +61,6 @@ class UnifiedGroupSource(DataSource):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("group", self.group)
-        writer.write_enum_value("includedSources", self.included_sources)
+        writer.write_enum_value("included_sources", self.included_sources)
     
 

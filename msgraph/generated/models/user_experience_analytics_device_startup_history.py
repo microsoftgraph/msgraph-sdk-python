@@ -73,22 +73,22 @@ class UserExperienceAnalyticsDeviceStartupHistory(Entity):
         from .user_experience_analytics_operating_system_restart_category import UserExperienceAnalyticsOperatingSystemRestartCategory
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "coreBootTimeInMs": lambda n : setattr(self, 'core_boot_time_in_ms', n.get_int_value()),
-            "coreLoginTimeInMs": lambda n : setattr(self, 'core_login_time_in_ms', n.get_int_value()),
-            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "featureUpdateBootTimeInMs": lambda n : setattr(self, 'feature_update_boot_time_in_ms', n.get_int_value()),
-            "groupPolicyBootTimeInMs": lambda n : setattr(self, 'group_policy_boot_time_in_ms', n.get_int_value()),
-            "groupPolicyLoginTimeInMs": lambda n : setattr(self, 'group_policy_login_time_in_ms', n.get_int_value()),
-            "isFeatureUpdate": lambda n : setattr(self, 'is_feature_update', n.get_bool_value()),
-            "isFirstLogin": lambda n : setattr(self, 'is_first_login', n.get_bool_value()),
-            "operatingSystemVersion": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
-            "responsiveDesktopTimeInMs": lambda n : setattr(self, 'responsive_desktop_time_in_ms', n.get_int_value()),
-            "restartCategory": lambda n : setattr(self, 'restart_category', n.get_enum_value(UserExperienceAnalyticsOperatingSystemRestartCategory)),
-            "restartFaultBucket": lambda n : setattr(self, 'restart_fault_bucket', n.get_str_value()),
-            "restartStopCode": lambda n : setattr(self, 'restart_stop_code', n.get_str_value()),
-            "startTime": lambda n : setattr(self, 'start_time', n.get_datetime_value()),
-            "totalBootTimeInMs": lambda n : setattr(self, 'total_boot_time_in_ms', n.get_int_value()),
-            "totalLoginTimeInMs": lambda n : setattr(self, 'total_login_time_in_ms', n.get_int_value()),
+            "core_boot_time_in_ms": lambda n : setattr(self, 'core_boot_time_in_ms', n.get_int_value()),
+            "core_login_time_in_ms": lambda n : setattr(self, 'core_login_time_in_ms', n.get_int_value()),
+            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "feature_update_boot_time_in_ms": lambda n : setattr(self, 'feature_update_boot_time_in_ms', n.get_int_value()),
+            "group_policy_boot_time_in_ms": lambda n : setattr(self, 'group_policy_boot_time_in_ms', n.get_int_value()),
+            "group_policy_login_time_in_ms": lambda n : setattr(self, 'group_policy_login_time_in_ms', n.get_int_value()),
+            "is_feature_update": lambda n : setattr(self, 'is_feature_update', n.get_bool_value()),
+            "is_first_login": lambda n : setattr(self, 'is_first_login', n.get_bool_value()),
+            "operating_system_version": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
+            "responsive_desktop_time_in_ms": lambda n : setattr(self, 'responsive_desktop_time_in_ms', n.get_int_value()),
+            "restart_category": lambda n : setattr(self, 'restart_category', n.get_enum_value(UserExperienceAnalyticsOperatingSystemRestartCategory)),
+            "restart_fault_bucket": lambda n : setattr(self, 'restart_fault_bucket', n.get_str_value()),
+            "restart_stop_code": lambda n : setattr(self, 'restart_stop_code', n.get_str_value()),
+            "start_time": lambda n : setattr(self, 'start_time', n.get_datetime_value()),
+            "total_boot_time_in_ms": lambda n : setattr(self, 'total_boot_time_in_ms', n.get_int_value()),
+            "total_login_time_in_ms": lambda n : setattr(self, 'total_login_time_in_ms', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -103,21 +103,21 @@ class UserExperienceAnalyticsDeviceStartupHistory(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("coreBootTimeInMs", self.core_boot_time_in_ms)
-        writer.write_int_value("coreLoginTimeInMs", self.core_login_time_in_ms)
-        writer.write_str_value("deviceId", self.device_id)
-        writer.write_int_value("featureUpdateBootTimeInMs", self.feature_update_boot_time_in_ms)
-        writer.write_int_value("groupPolicyBootTimeInMs", self.group_policy_boot_time_in_ms)
-        writer.write_int_value("groupPolicyLoginTimeInMs", self.group_policy_login_time_in_ms)
-        writer.write_bool_value("isFeatureUpdate", self.is_feature_update)
-        writer.write_bool_value("isFirstLogin", self.is_first_login)
-        writer.write_str_value("operatingSystemVersion", self.operating_system_version)
-        writer.write_int_value("responsiveDesktopTimeInMs", self.responsive_desktop_time_in_ms)
-        writer.write_enum_value("restartCategory", self.restart_category)
-        writer.write_str_value("restartFaultBucket", self.restart_fault_bucket)
-        writer.write_str_value("restartStopCode", self.restart_stop_code)
-        writer.write_datetime_value("startTime", self.start_time)
-        writer.write_int_value("totalBootTimeInMs", self.total_boot_time_in_ms)
-        writer.write_int_value("totalLoginTimeInMs", self.total_login_time_in_ms)
+        writer.write_int_value("core_boot_time_in_ms", self.core_boot_time_in_ms)
+        writer.write_int_value("core_login_time_in_ms", self.core_login_time_in_ms)
+        writer.write_str_value("device_id", self.device_id)
+        writer.write_int_value("feature_update_boot_time_in_ms", self.feature_update_boot_time_in_ms)
+        writer.write_int_value("group_policy_boot_time_in_ms", self.group_policy_boot_time_in_ms)
+        writer.write_int_value("group_policy_login_time_in_ms", self.group_policy_login_time_in_ms)
+        writer.write_bool_value("is_feature_update", self.is_feature_update)
+        writer.write_bool_value("is_first_login", self.is_first_login)
+        writer.write_str_value("operating_system_version", self.operating_system_version)
+        writer.write_int_value("responsive_desktop_time_in_ms", self.responsive_desktop_time_in_ms)
+        writer.write_enum_value("restart_category", self.restart_category)
+        writer.write_str_value("restart_fault_bucket", self.restart_fault_bucket)
+        writer.write_str_value("restart_stop_code", self.restart_stop_code)
+        writer.write_datetime_value("start_time", self.start_time)
+        writer.write_int_value("total_boot_time_in_ms", self.total_boot_time_in_ms)
+        writer.write_int_value("total_login_time_in_ms", self.total_login_time_in_ms)
     
 

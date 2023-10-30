@@ -38,7 +38,7 @@ class ErfC_PrecisePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "X": lambda n : setattr(self, 'x', n.get_object_value(Json)),
+            "x": lambda n : setattr(self, 'x', n.get_object_value(Json)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class ErfC_PrecisePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("X", self.x)
+        writer.write_object_value("x", self.x)
         writer.write_additional_data_value(self.additional_data)
     
 

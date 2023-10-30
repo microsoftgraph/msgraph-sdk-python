@@ -49,7 +49,7 @@ class ServiceAnnouncement(Entity):
         from .service_update_message import ServiceUpdateMessage
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "healthOverviews": lambda n : setattr(self, 'health_overviews', n.get_collection_of_object_values(ServiceHealth)),
+            "health_overviews": lambda n : setattr(self, 'health_overviews', n.get_collection_of_object_values(ServiceHealth)),
             "issues": lambda n : setattr(self, 'issues', n.get_collection_of_object_values(ServiceHealthIssue)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(ServiceUpdateMessage)),
         }
@@ -66,7 +66,7 @@ class ServiceAnnouncement(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("healthOverviews", self.health_overviews)
+        writer.write_collection_of_object_values("health_overviews", self.health_overviews)
         writer.write_collection_of_object_values("issues", self.issues)
         writer.write_collection_of_object_values("messages", self.messages)
     

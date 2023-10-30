@@ -41,8 +41,8 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ....models.assigned_license import AssignedLicense
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "addLicenses": lambda n : setattr(self, 'add_licenses', n.get_collection_of_object_values(AssignedLicense)),
-            "removeLicenses": lambda n : setattr(self, 'remove_licenses', n.get_collection_of_primitive_values(UUID)),
+            "add_licenses": lambda n : setattr(self, 'add_licenses', n.get_collection_of_object_values(AssignedLicense)),
+            "remove_licenses": lambda n : setattr(self, 'remove_licenses', n.get_collection_of_primitive_values(UUID)),
         }
         return fields
     
@@ -54,8 +54,8 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("addLicenses", self.add_licenses)
-        writer.write_collection_of_primitive_values("removeLicenses", self.remove_licenses)
+        writer.write_collection_of_object_values("add_licenses", self.add_licenses)
+        writer.write_collection_of_primitive_values("remove_licenses", self.remove_licenses)
         writer.write_additional_data_value(self.additional_data)
     
 

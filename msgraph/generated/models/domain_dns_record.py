@@ -83,10 +83,10 @@ class DomainDnsRecord(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isOptional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
+            "is_optional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
-            "recordType": lambda n : setattr(self, 'record_type', n.get_str_value()),
-            "supportedService": lambda n : setattr(self, 'supported_service', n.get_str_value()),
+            "record_type": lambda n : setattr(self, 'record_type', n.get_str_value()),
+            "supported_service": lambda n : setattr(self, 'supported_service', n.get_str_value()),
             "ttl": lambda n : setattr(self, 'ttl', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -102,10 +102,10 @@ class DomainDnsRecord(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isOptional", self.is_optional)
+        writer.write_bool_value("is_optional", self.is_optional)
         writer.write_str_value("label", self.label)
-        writer.write_str_value("recordType", self.record_type)
-        writer.write_str_value("supportedService", self.supported_service)
+        writer.write_str_value("record_type", self.record_type)
+        writer.write_str_value("supported_service", self.supported_service)
         writer.write_int_value("ttl", self.ttl)
     
 

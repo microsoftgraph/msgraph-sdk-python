@@ -58,14 +58,14 @@ class AttributeMapping(AdditionalDataHolder, BackedModel, Parsable):
         from .attribute_mapping_source import AttributeMappingSource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "defaultValue": lambda n : setattr(self, 'default_value', n.get_str_value()),
-            "exportMissingReferences": lambda n : setattr(self, 'export_missing_references', n.get_bool_value()),
-            "flowBehavior": lambda n : setattr(self, 'flow_behavior', n.get_enum_value(AttributeFlowBehavior)),
-            "flowType": lambda n : setattr(self, 'flow_type', n.get_enum_value(AttributeFlowType)),
-            "matchingPriority": lambda n : setattr(self, 'matching_priority', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "default_value": lambda n : setattr(self, 'default_value', n.get_str_value()),
+            "export_missing_references": lambda n : setattr(self, 'export_missing_references', n.get_bool_value()),
+            "flow_behavior": lambda n : setattr(self, 'flow_behavior', n.get_enum_value(AttributeFlowBehavior)),
+            "flow_type": lambda n : setattr(self, 'flow_type', n.get_enum_value(AttributeFlowType)),
+            "matching_priority": lambda n : setattr(self, 'matching_priority', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "source": lambda n : setattr(self, 'source', n.get_object_value(AttributeMappingSource)),
-            "targetAttributeName": lambda n : setattr(self, 'target_attribute_name', n.get_str_value()),
+            "target_attribute_name": lambda n : setattr(self, 'target_attribute_name', n.get_str_value()),
         }
         return fields
     
@@ -77,14 +77,14 @@ class AttributeMapping(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("defaultValue", self.default_value)
-        writer.write_bool_value("exportMissingReferences", self.export_missing_references)
-        writer.write_enum_value("flowBehavior", self.flow_behavior)
-        writer.write_enum_value("flowType", self.flow_type)
-        writer.write_int_value("matchingPriority", self.matching_priority)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("default_value", self.default_value)
+        writer.write_bool_value("export_missing_references", self.export_missing_references)
+        writer.write_enum_value("flow_behavior", self.flow_behavior)
+        writer.write_enum_value("flow_type", self.flow_type)
+        writer.write_int_value("matching_priority", self.matching_priority)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("source", self.source)
-        writer.write_str_value("targetAttributeName", self.target_attribute_name)
+        writer.write_str_value("target_attribute_name", self.target_attribute_name)
         writer.write_additional_data_value(self.additional_data)
     
 

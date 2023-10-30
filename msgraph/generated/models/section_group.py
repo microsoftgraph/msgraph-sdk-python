@@ -52,12 +52,12 @@ class SectionGroup(OnenoteEntityHierarchyModel):
         from .onenote_section import OnenoteSection
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "parentNotebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(Notebook)),
-            "parentSectionGroup": lambda n : setattr(self, 'parent_section_group', n.get_object_value(SectionGroup)),
-            "sectionGroups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(SectionGroup)),
-            "sectionGroupsUrl": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
+            "parent_notebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(Notebook)),
+            "parent_section_group": lambda n : setattr(self, 'parent_section_group', n.get_object_value(SectionGroup)),
+            "section_groups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(SectionGroup)),
+            "section_groups_url": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
             "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(OnenoteSection)),
-            "sectionsUrl": lambda n : setattr(self, 'sections_url', n.get_str_value()),
+            "sections_url": lambda n : setattr(self, 'sections_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,11 +72,11 @@ class SectionGroup(OnenoteEntityHierarchyModel):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("parentNotebook", self.parent_notebook)
-        writer.write_object_value("parentSectionGroup", self.parent_section_group)
-        writer.write_collection_of_object_values("sectionGroups", self.section_groups)
-        writer.write_str_value("sectionGroupsUrl", self.section_groups_url)
+        writer.write_object_value("parent_notebook", self.parent_notebook)
+        writer.write_object_value("parent_section_group", self.parent_section_group)
+        writer.write_collection_of_object_values("section_groups", self.section_groups)
+        writer.write_str_value("section_groups_url", self.section_groups_url)
         writer.write_collection_of_object_values("sections", self.sections)
-        writer.write_str_value("sectionsUrl", self.sections_url)
+        writer.write_str_value("sections_url", self.sections_url)
     
 

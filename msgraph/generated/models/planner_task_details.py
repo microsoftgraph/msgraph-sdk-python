@@ -53,7 +53,7 @@ class PlannerTaskDetails(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "checklist": lambda n : setattr(self, 'checklist', n.get_object_value(PlannerChecklistItems)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "previewType": lambda n : setattr(self, 'preview_type', n.get_enum_value(PlannerPreviewType)),
+            "preview_type": lambda n : setattr(self, 'preview_type', n.get_enum_value(PlannerPreviewType)),
             "references": lambda n : setattr(self, 'references', n.get_object_value(PlannerExternalReferences)),
         }
         super_fields = super().get_field_deserializers()
@@ -71,7 +71,7 @@ class PlannerTaskDetails(Entity):
         super().serialize(writer)
         writer.write_object_value("checklist", self.checklist)
         writer.write_str_value("description", self.description)
-        writer.write_enum_value("previewType", self.preview_type)
+        writer.write_enum_value("preview_type", self.preview_type)
         writer.write_object_value("references", self.references)
     
 

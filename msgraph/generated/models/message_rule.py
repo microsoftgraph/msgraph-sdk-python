@@ -58,11 +58,11 @@ class MessageRule(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "actions": lambda n : setattr(self, 'actions', n.get_object_value(MessageRuleActions)),
             "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(MessageRulePredicates)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "exceptions": lambda n : setattr(self, 'exceptions', n.get_object_value(MessageRulePredicates)),
-            "hasError": lambda n : setattr(self, 'has_error', n.get_bool_value()),
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "isReadOnly": lambda n : setattr(self, 'is_read_only', n.get_bool_value()),
+            "has_error": lambda n : setattr(self, 'has_error', n.get_bool_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "is_read_only": lambda n : setattr(self, 'is_read_only', n.get_bool_value()),
             "sequence": lambda n : setattr(self, 'sequence', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -80,11 +80,11 @@ class MessageRule(Entity):
         super().serialize(writer)
         writer.write_object_value("actions", self.actions)
         writer.write_object_value("conditions", self.conditions)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_object_value("exceptions", self.exceptions)
-        writer.write_bool_value("hasError", self.has_error)
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_bool_value("isReadOnly", self.is_read_only)
+        writer.write_bool_value("has_error", self.has_error)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_bool_value("is_read_only", self.is_read_only)
         writer.write_int_value("sequence", self.sequence)
     
 

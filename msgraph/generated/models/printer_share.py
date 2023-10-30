@@ -59,12 +59,12 @@ class PrinterShare(PrinterBase):
         from .user import User
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowAllUsers": lambda n : setattr(self, 'allow_all_users', n.get_bool_value()),
-            "allowedGroups": lambda n : setattr(self, 'allowed_groups', n.get_collection_of_object_values(Group)),
-            "allowedUsers": lambda n : setattr(self, 'allowed_users', n.get_collection_of_object_values(User)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "allow_all_users": lambda n : setattr(self, 'allow_all_users', n.get_bool_value()),
+            "allowed_groups": lambda n : setattr(self, 'allowed_groups', n.get_collection_of_object_values(Group)),
+            "allowed_users": lambda n : setattr(self, 'allowed_users', n.get_collection_of_object_values(User)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "printer": lambda n : setattr(self, 'printer', n.get_object_value(Printer)),
-            "viewPoint": lambda n : setattr(self, 'view_point', n.get_object_value(PrinterShareViewpoint)),
+            "view_point": lambda n : setattr(self, 'view_point', n.get_object_value(PrinterShareViewpoint)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -79,11 +79,11 @@ class PrinterShare(PrinterBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("allowAllUsers", self.allow_all_users)
-        writer.write_collection_of_object_values("allowedGroups", self.allowed_groups)
-        writer.write_collection_of_object_values("allowedUsers", self.allowed_users)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_bool_value("allow_all_users", self.allow_all_users)
+        writer.write_collection_of_object_values("allowed_groups", self.allowed_groups)
+        writer.write_collection_of_object_values("allowed_users", self.allowed_users)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_object_value("printer", self.printer)
-        writer.write_object_value("viewPoint", self.view_point)
+        writer.write_object_value("view_point", self.view_point)
     
 

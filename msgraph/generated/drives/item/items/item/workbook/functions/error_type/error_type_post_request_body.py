@@ -38,7 +38,7 @@ class Error_TypePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "errorVal": lambda n : setattr(self, 'error_val', n.get_object_value(Json)),
+            "error_val": lambda n : setattr(self, 'error_val', n.get_object_value(Json)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class Error_TypePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("errorVal", self.error_val)
+        writer.write_object_value("error_val", self.error_val)
         writer.write_additional_data_value(self.additional_data)
     
 

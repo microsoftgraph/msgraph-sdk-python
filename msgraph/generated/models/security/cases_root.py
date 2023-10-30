@@ -39,7 +39,7 @@ class CasesRoot(Entity):
         from .ediscovery_case import EdiscoveryCase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "ediscoveryCases": lambda n : setattr(self, 'ediscovery_cases', n.get_collection_of_object_values(EdiscoveryCase)),
+            "ediscovery_cases": lambda n : setattr(self, 'ediscovery_cases', n.get_collection_of_object_values(EdiscoveryCase)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class CasesRoot(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("ediscoveryCases", self.ediscovery_cases)
+        writer.write_collection_of_object_values("ediscovery_cases", self.ediscovery_cases)
     
 

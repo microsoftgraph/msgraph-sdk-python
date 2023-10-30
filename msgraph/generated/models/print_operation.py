@@ -53,7 +53,7 @@ class PrintOperation(Entity):
         from .print_operation_status import PrintOperationStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_object_value(PrintOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -69,7 +69,7 @@ class PrintOperation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_object_value("status", self.status)
     
 

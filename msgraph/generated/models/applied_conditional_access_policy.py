@@ -48,11 +48,11 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, BackedModel, Parsable
         from .applied_conditional_access_policy_result import AppliedConditionalAccessPolicyResult
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "enforcedGrantControls": lambda n : setattr(self, 'enforced_grant_controls', n.get_collection_of_primitive_values(str)),
-            "enforcedSessionControls": lambda n : setattr(self, 'enforced_session_controls', n.get_collection_of_primitive_values(str)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "enforced_grant_controls": lambda n : setattr(self, 'enforced_grant_controls', n.get_collection_of_primitive_values(str)),
+            "enforced_session_controls": lambda n : setattr(self, 'enforced_session_controls', n.get_collection_of_primitive_values(str)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "result": lambda n : setattr(self, 'result', n.get_enum_value(AppliedConditionalAccessPolicyResult)),
         }
         return fields
@@ -65,11 +65,11 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, BackedModel, Parsable
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_primitive_values("enforcedGrantControls", self.enforced_grant_controls)
-        writer.write_collection_of_primitive_values("enforcedSessionControls", self.enforced_session_controls)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_primitive_values("enforced_grant_controls", self.enforced_grant_controls)
+        writer.write_collection_of_primitive_values("enforced_session_controls", self.enforced_session_controls)
         writer.write_str_value("id", self.id)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("result", self.result)
         writer.write_additional_data_value(self.additional_data)
     

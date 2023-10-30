@@ -45,9 +45,9 @@ class CreateForwardPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ..........models.recipient import Recipient
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "Comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "Message": lambda n : setattr(self, 'message', n.get_object_value(Message)),
-            "ToRecipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(Recipient)),
+            "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
+            "message": lambda n : setattr(self, 'message', n.get_object_value(Message)),
+            "to_recipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(Recipient)),
         }
         return fields
     
@@ -59,9 +59,9 @@ class CreateForwardPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("Comment", self.comment)
-        writer.write_object_value("Message", self.message)
-        writer.write_collection_of_object_values("ToRecipients", self.to_recipients)
+        writer.write_str_value("comment", self.comment)
+        writer.write_object_value("message", self.message)
+        writer.write_collection_of_object_values("to_recipients", self.to_recipients)
         writer.write_additional_data_value(self.additional_data)
     
 

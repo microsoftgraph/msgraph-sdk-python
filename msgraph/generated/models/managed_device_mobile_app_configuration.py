@@ -87,15 +87,15 @@ class ManagedDeviceMobileAppConfiguration(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(ManagedDeviceMobileAppConfigurationAssignment)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "deviceStatusSummary": lambda n : setattr(self, 'device_status_summary', n.get_object_value(ManagedDeviceMobileAppConfigurationDeviceSummary)),
-            "deviceStatuses": lambda n : setattr(self, 'device_statuses', n.get_collection_of_object_values(ManagedDeviceMobileAppConfigurationDeviceStatus)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "targetedMobileApps": lambda n : setattr(self, 'targeted_mobile_apps', n.get_collection_of_primitive_values(str)),
-            "userStatusSummary": lambda n : setattr(self, 'user_status_summary', n.get_object_value(ManagedDeviceMobileAppConfigurationUserSummary)),
-            "userStatuses": lambda n : setattr(self, 'user_statuses', n.get_collection_of_object_values(ManagedDeviceMobileAppConfigurationUserStatus)),
+            "device_status_summary": lambda n : setattr(self, 'device_status_summary', n.get_object_value(ManagedDeviceMobileAppConfigurationDeviceSummary)),
+            "device_statuses": lambda n : setattr(self, 'device_statuses', n.get_collection_of_object_values(ManagedDeviceMobileAppConfigurationDeviceStatus)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "targeted_mobile_apps": lambda n : setattr(self, 'targeted_mobile_apps', n.get_collection_of_primitive_values(str)),
+            "user_status_summary": lambda n : setattr(self, 'user_status_summary', n.get_object_value(ManagedDeviceMobileAppConfigurationUserSummary)),
+            "user_statuses": lambda n : setattr(self, 'user_statuses', n.get_collection_of_object_values(ManagedDeviceMobileAppConfigurationUserStatus)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -112,15 +112,15 @@ class ManagedDeviceMobileAppConfiguration(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_object_value("deviceStatusSummary", self.device_status_summary)
-        writer.write_collection_of_object_values("deviceStatuses", self.device_statuses)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_collection_of_primitive_values("targetedMobileApps", self.targeted_mobile_apps)
-        writer.write_object_value("userStatusSummary", self.user_status_summary)
-        writer.write_collection_of_object_values("userStatuses", self.user_statuses)
+        writer.write_object_value("device_status_summary", self.device_status_summary)
+        writer.write_collection_of_object_values("device_statuses", self.device_statuses)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_collection_of_primitive_values("targeted_mobile_apps", self.targeted_mobile_apps)
+        writer.write_object_value("user_status_summary", self.user_status_summary)
+        writer.write_collection_of_object_values("user_statuses", self.user_statuses)
         writer.write_int_value("version", self.version)
     
 

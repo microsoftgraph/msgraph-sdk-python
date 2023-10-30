@@ -51,9 +51,9 @@ class HostComponent(Artifact):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
-            "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
+            "first_seen_date_time": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
             "host": lambda n : setattr(self, 'host', n.get_object_value(Host)),
-            "lastSeenDateTime": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
+            "last_seen_date_time": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
@@ -71,9 +71,9 @@ class HostComponent(Artifact):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("category", self.category)
-        writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
+        writer.write_datetime_value("first_seen_date_time", self.first_seen_date_time)
         writer.write_object_value("host", self.host)
-        writer.write_datetime_value("lastSeenDateTime", self.last_seen_date_time)
+        writer.write_datetime_value("last_seen_date_time", self.last_seen_date_time)
         writer.write_str_value("name", self.name)
         writer.write_str_value("version", self.version)
     

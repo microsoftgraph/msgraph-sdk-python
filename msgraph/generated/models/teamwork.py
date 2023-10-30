@@ -49,9 +49,9 @@ class Teamwork(Entity):
         from .workforce_integration import WorkforceIntegration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deletedTeams": lambda n : setattr(self, 'deleted_teams', n.get_collection_of_object_values(DeletedTeam)),
-            "teamsAppSettings": lambda n : setattr(self, 'teams_app_settings', n.get_object_value(TeamsAppSettings)),
-            "workforceIntegrations": lambda n : setattr(self, 'workforce_integrations', n.get_collection_of_object_values(WorkforceIntegration)),
+            "deleted_teams": lambda n : setattr(self, 'deleted_teams', n.get_collection_of_object_values(DeletedTeam)),
+            "teams_app_settings": lambda n : setattr(self, 'teams_app_settings', n.get_object_value(TeamsAppSettings)),
+            "workforce_integrations": lambda n : setattr(self, 'workforce_integrations', n.get_collection_of_object_values(WorkforceIntegration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,8 +66,8 @@ class Teamwork(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("deletedTeams", self.deleted_teams)
-        writer.write_object_value("teamsAppSettings", self.teams_app_settings)
-        writer.write_collection_of_object_values("workforceIntegrations", self.workforce_integrations)
+        writer.write_collection_of_object_values("deleted_teams", self.deleted_teams)
+        writer.write_object_value("teams_app_settings", self.teams_app_settings)
+        writer.write_collection_of_object_values("workforce_integrations", self.workforce_integrations)
     
 

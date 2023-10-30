@@ -46,11 +46,11 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, BackedMo
         from .imported_windows_autopilot_device_identity_import_status import ImportedWindowsAutopilotDeviceIdentityImportStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceErrorCode": lambda n : setattr(self, 'device_error_code', n.get_int_value()),
-            "deviceErrorName": lambda n : setattr(self, 'device_error_name', n.get_str_value()),
-            "deviceImportStatus": lambda n : setattr(self, 'device_import_status', n.get_enum_value(ImportedWindowsAutopilotDeviceIdentityImportStatus)),
-            "deviceRegistrationId": lambda n : setattr(self, 'device_registration_id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "device_error_code": lambda n : setattr(self, 'device_error_code', n.get_int_value()),
+            "device_error_name": lambda n : setattr(self, 'device_error_name', n.get_str_value()),
+            "device_import_status": lambda n : setattr(self, 'device_import_status', n.get_enum_value(ImportedWindowsAutopilotDeviceIdentityImportStatus)),
+            "device_registration_id": lambda n : setattr(self, 'device_registration_id', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -62,11 +62,11 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, BackedMo
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("deviceErrorCode", self.device_error_code)
-        writer.write_str_value("deviceErrorName", self.device_error_name)
-        writer.write_enum_value("deviceImportStatus", self.device_import_status)
-        writer.write_str_value("deviceRegistrationId", self.device_registration_id)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_int_value("device_error_code", self.device_error_code)
+        writer.write_str_value("device_error_name", self.device_error_name)
+        writer.write_enum_value("device_import_status", self.device_import_status)
+        writer.write_str_value("device_registration_id", self.device_registration_id)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

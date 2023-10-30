@@ -39,7 +39,7 @@ class EmployeeExperienceUser(Entity):
         from .learning_course_activity import LearningCourseActivity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "learningCourseActivities": lambda n : setattr(self, 'learning_course_activities', n.get_collection_of_object_values(LearningCourseActivity)),
+            "learning_course_activities": lambda n : setattr(self, 'learning_course_activities', n.get_collection_of_object_values(LearningCourseActivity)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class EmployeeExperienceUser(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("learningCourseActivities", self.learning_course_activities)
+        writer.write_collection_of_object_values("learning_course_activities", self.learning_course_activities)
     
 

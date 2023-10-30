@@ -66,11 +66,11 @@ class LongRunningOperation(Entity):
         from .rich_long_running_operation import RichLongRunningOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "lastActionDateTime": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
-            "resourceLocation": lambda n : setattr(self, 'resource_location', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "last_action_date_time": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
+            "resource_location": lambda n : setattr(self, 'resource_location', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(LongRunningOperationStatus)),
-            "statusDetail": lambda n : setattr(self, 'status_detail', n.get_str_value()),
+            "status_detail": lambda n : setattr(self, 'status_detail', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -85,10 +85,10 @@ class LongRunningOperation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("lastActionDateTime", self.last_action_date_time)
-        writer.write_str_value("resourceLocation", self.resource_location)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_datetime_value("last_action_date_time", self.last_action_date_time)
+        writer.write_str_value("resource_location", self.resource_location)
         writer.write_enum_value("status", self.status)
-        writer.write_str_value("statusDetail", self.status_detail)
+        writer.write_str_value("status_detail", self.status_detail)
     
 

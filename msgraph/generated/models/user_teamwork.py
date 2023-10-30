@@ -44,8 +44,8 @@ class UserTeamwork(Entity):
         from .user_scope_teams_app_installation import UserScopeTeamsAppInstallation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "associatedTeams": lambda n : setattr(self, 'associated_teams', n.get_collection_of_object_values(AssociatedTeamInfo)),
-            "installedApps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(UserScopeTeamsAppInstallation)),
+            "associated_teams": lambda n : setattr(self, 'associated_teams', n.get_collection_of_object_values(AssociatedTeamInfo)),
+            "installed_apps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(UserScopeTeamsAppInstallation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,7 +60,7 @@ class UserTeamwork(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("associatedTeams", self.associated_teams)
-        writer.write_collection_of_object_values("installedApps", self.installed_apps)
+        writer.write_collection_of_object_values("associated_teams", self.associated_teams)
+        writer.write_collection_of_object_values("installed_apps", self.installed_apps)
     
 

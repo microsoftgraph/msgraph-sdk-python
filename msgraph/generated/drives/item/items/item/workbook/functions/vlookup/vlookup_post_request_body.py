@@ -44,10 +44,10 @@ class VlookupPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "colIndexNum": lambda n : setattr(self, 'col_index_num', n.get_object_value(Json)),
-            "lookupValue": lambda n : setattr(self, 'lookup_value', n.get_object_value(Json)),
-            "rangeLookup": lambda n : setattr(self, 'range_lookup', n.get_object_value(Json)),
-            "tableArray": lambda n : setattr(self, 'table_array', n.get_object_value(Json)),
+            "col_index_num": lambda n : setattr(self, 'col_index_num', n.get_object_value(Json)),
+            "lookup_value": lambda n : setattr(self, 'lookup_value', n.get_object_value(Json)),
+            "range_lookup": lambda n : setattr(self, 'range_lookup', n.get_object_value(Json)),
+            "table_array": lambda n : setattr(self, 'table_array', n.get_object_value(Json)),
         }
         return fields
     
@@ -59,10 +59,10 @@ class VlookupPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("colIndexNum", self.col_index_num)
-        writer.write_object_value("lookupValue", self.lookup_value)
-        writer.write_object_value("rangeLookup", self.range_lookup)
-        writer.write_object_value("tableArray", self.table_array)
+        writer.write_object_value("col_index_num", self.col_index_num)
+        writer.write_object_value("lookup_value", self.lookup_value)
+        writer.write_object_value("range_lookup", self.range_lookup)
+        writer.write_object_value("table_array", self.table_array)
         writer.write_additional_data_value(self.additional_data)
     
 

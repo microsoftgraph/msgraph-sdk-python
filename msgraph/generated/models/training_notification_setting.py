@@ -14,9 +14,9 @@ from .end_user_notification_setting import EndUserNotificationSetting
 class TrainingNotificationSetting(EndUserNotificationSetting):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.trainingNotificationSetting"
-    # The trainingAssignment property
+    # Training assignment details.
     training_assignment: Optional[BaseEndUserNotification] = None
-    # The trainingReminder property
+    # Training reminder details.
     training_reminder: Optional[TrainingReminderNotification] = None
     
     @staticmethod
@@ -44,8 +44,8 @@ class TrainingNotificationSetting(EndUserNotificationSetting):
         from .training_reminder_notification import TrainingReminderNotification
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "trainingAssignment": lambda n : setattr(self, 'training_assignment', n.get_object_value(BaseEndUserNotification)),
-            "trainingReminder": lambda n : setattr(self, 'training_reminder', n.get_object_value(TrainingReminderNotification)),
+            "training_assignment": lambda n : setattr(self, 'training_assignment', n.get_object_value(BaseEndUserNotification)),
+            "training_reminder": lambda n : setattr(self, 'training_reminder', n.get_object_value(TrainingReminderNotification)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,7 +60,7 @@ class TrainingNotificationSetting(EndUserNotificationSetting):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("trainingAssignment", self.training_assignment)
-        writer.write_object_value("trainingReminder", self.training_reminder)
+        writer.write_object_value("training_assignment", self.training_assignment)
+        writer.write_object_value("training_reminder", self.training_reminder)
     
 

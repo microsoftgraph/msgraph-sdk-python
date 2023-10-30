@@ -251,7 +251,7 @@ class DirectoryObject(Entity):
         from .user import User
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
+            "deleted_date_time": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -266,6 +266,6 @@ class DirectoryObject(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
+        writer.write_datetime_value("deleted_date_time", self.deleted_date_time)
     
 

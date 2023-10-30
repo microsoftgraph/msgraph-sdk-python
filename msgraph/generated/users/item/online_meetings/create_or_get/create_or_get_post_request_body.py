@@ -52,11 +52,11 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from .....models.meeting_participants import MeetingParticipants
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "chatInfo": lambda n : setattr(self, 'chat_info', n.get_object_value(ChatInfo)),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "chat_info": lambda n : setattr(self, 'chat_info', n.get_object_value(ChatInfo)),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "participants": lambda n : setattr(self, 'participants', n.get_object_value(MeetingParticipants)),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
         }
         return fields
@@ -69,11 +69,11 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("chatInfo", self.chat_info)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_str_value("externalId", self.external_id)
+        writer.write_object_value("chat_info", self.chat_info)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_str_value("external_id", self.external_id)
         writer.write_object_value("participants", self.participants)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
         writer.write_str_value("subject", self.subject)
         writer.write_additional_data_value(self.additional_data)
     

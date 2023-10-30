@@ -59,17 +59,17 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, BackedModel, Parsable):
         from .teleconference_device_media_quality import TeleconferenceDeviceMediaQuality
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callChainId": lambda n : setattr(self, 'call_chain_id', n.get_uuid_value()),
-            "cloudServiceDeploymentEnvironment": lambda n : setattr(self, 'cloud_service_deployment_environment', n.get_str_value()),
-            "cloudServiceDeploymentId": lambda n : setattr(self, 'cloud_service_deployment_id', n.get_str_value()),
-            "cloudServiceInstanceName": lambda n : setattr(self, 'cloud_service_instance_name', n.get_str_value()),
-            "cloudServiceName": lambda n : setattr(self, 'cloud_service_name', n.get_str_value()),
-            "deviceDescription": lambda n : setattr(self, 'device_description', n.get_str_value()),
-            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "mediaLegId": lambda n : setattr(self, 'media_leg_id', n.get_uuid_value()),
-            "mediaQualityList": lambda n : setattr(self, 'media_quality_list', n.get_collection_of_object_values(TeleconferenceDeviceMediaQuality)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "participantId": lambda n : setattr(self, 'participant_id', n.get_uuid_value()),
+            "call_chain_id": lambda n : setattr(self, 'call_chain_id', n.get_uuid_value()),
+            "cloud_service_deployment_environment": lambda n : setattr(self, 'cloud_service_deployment_environment', n.get_str_value()),
+            "cloud_service_deployment_id": lambda n : setattr(self, 'cloud_service_deployment_id', n.get_str_value()),
+            "cloud_service_instance_name": lambda n : setattr(self, 'cloud_service_instance_name', n.get_str_value()),
+            "cloud_service_name": lambda n : setattr(self, 'cloud_service_name', n.get_str_value()),
+            "device_description": lambda n : setattr(self, 'device_description', n.get_str_value()),
+            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "media_leg_id": lambda n : setattr(self, 'media_leg_id', n.get_uuid_value()),
+            "media_quality_list": lambda n : setattr(self, 'media_quality_list', n.get_collection_of_object_values(TeleconferenceDeviceMediaQuality)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "participant_id": lambda n : setattr(self, 'participant_id', n.get_uuid_value()),
         }
         return fields
     
@@ -81,17 +81,17 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_uuid_value("callChainId", self.call_chain_id)
-        writer.write_str_value("cloudServiceDeploymentEnvironment", self.cloud_service_deployment_environment)
-        writer.write_str_value("cloudServiceDeploymentId", self.cloud_service_deployment_id)
-        writer.write_str_value("cloudServiceInstanceName", self.cloud_service_instance_name)
-        writer.write_str_value("cloudServiceName", self.cloud_service_name)
-        writer.write_str_value("deviceDescription", self.device_description)
-        writer.write_str_value("deviceName", self.device_name)
-        writer.write_uuid_value("mediaLegId", self.media_leg_id)
-        writer.write_collection_of_object_values("mediaQualityList", self.media_quality_list)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_uuid_value("participantId", self.participant_id)
+        writer.write_uuid_value("call_chain_id", self.call_chain_id)
+        writer.write_str_value("cloud_service_deployment_environment", self.cloud_service_deployment_environment)
+        writer.write_str_value("cloud_service_deployment_id", self.cloud_service_deployment_id)
+        writer.write_str_value("cloud_service_instance_name", self.cloud_service_instance_name)
+        writer.write_str_value("cloud_service_name", self.cloud_service_name)
+        writer.write_str_value("device_description", self.device_description)
+        writer.write_str_value("device_name", self.device_name)
+        writer.write_uuid_value("media_leg_id", self.media_leg_id)
+        writer.write_collection_of_object_values("media_quality_list", self.media_quality_list)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_uuid_value("participant_id", self.participant_id)
         writer.write_additional_data_value(self.additional_data)
     
 

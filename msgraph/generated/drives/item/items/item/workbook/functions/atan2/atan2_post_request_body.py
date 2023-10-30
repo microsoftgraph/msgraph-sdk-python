@@ -40,8 +40,8 @@ class Atan2PostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "xNum": lambda n : setattr(self, 'x_num', n.get_object_value(Json)),
-            "yNum": lambda n : setattr(self, 'y_num', n.get_object_value(Json)),
+            "x_num": lambda n : setattr(self, 'x_num', n.get_object_value(Json)),
+            "y_num": lambda n : setattr(self, 'y_num', n.get_object_value(Json)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class Atan2PostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("xNum", self.x_num)
-        writer.write_object_value("yNum", self.y_num)
+        writer.write_object_value("x_num", self.x_num)
+        writer.write_object_value("y_num", self.y_num)
         writer.write_additional_data_value(self.additional_data)
     
 

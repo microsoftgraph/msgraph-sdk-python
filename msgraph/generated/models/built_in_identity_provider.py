@@ -36,7 +36,7 @@ class BuiltInIdentityProvider(IdentityProviderBase):
         from .identity_provider_base import IdentityProviderBase
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "identityProviderType": lambda n : setattr(self, 'identity_provider_type', n.get_str_value()),
+            "identity_provider_type": lambda n : setattr(self, 'identity_provider_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class BuiltInIdentityProvider(IdentityProviderBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("identityProviderType", self.identity_provider_type)
+        writer.write_str_value("identity_provider_type", self.identity_provider_type)
     
 

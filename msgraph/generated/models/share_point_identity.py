@@ -36,7 +36,7 @@ class SharePointIdentity(Identity):
         from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "loginName": lambda n : setattr(self, 'login_name', n.get_str_value()),
+            "login_name": lambda n : setattr(self, 'login_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class SharePointIdentity(Identity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("loginName", self.login_name)
+        writer.write_str_value("login_name", self.login_name)
     
 

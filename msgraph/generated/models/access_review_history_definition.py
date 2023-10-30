@@ -73,14 +73,14 @@ class AccessReviewHistoryDefinition(Entity):
         from .user_identity import UserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(UserIdentity)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(UserIdentity)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "decisions": lambda n : setattr(self, 'decisions', n.get_collection_of_enum_values(AccessReviewHistoryDecisionFilter)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "instances": lambda n : setattr(self, 'instances', n.get_collection_of_object_values(AccessReviewHistoryInstance)),
-            "reviewHistoryPeriodEndDateTime": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
-            "reviewHistoryPeriodStartDateTime": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
-            "scheduleSettings": lambda n : setattr(self, 'schedule_settings', n.get_object_value(AccessReviewHistoryScheduleSettings)),
+            "review_history_period_end_date_time": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
+            "review_history_period_start_date_time": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
+            "schedule_settings": lambda n : setattr(self, 'schedule_settings', n.get_object_value(AccessReviewHistoryScheduleSettings)),
             "scopes": lambda n : setattr(self, 'scopes', n.get_collection_of_object_values(AccessReviewScope)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(AccessReviewHistoryStatus)),
         }
@@ -97,14 +97,14 @@ class AccessReviewHistoryDefinition(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_collection_of_enum_values("decisions", self.decisions)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_collection_of_object_values("instances", self.instances)
-        writer.write_datetime_value("reviewHistoryPeriodEndDateTime", self.review_history_period_end_date_time)
-        writer.write_datetime_value("reviewHistoryPeriodStartDateTime", self.review_history_period_start_date_time)
-        writer.write_object_value("scheduleSettings", self.schedule_settings)
+        writer.write_datetime_value("review_history_period_end_date_time", self.review_history_period_end_date_time)
+        writer.write_datetime_value("review_history_period_start_date_time", self.review_history_period_start_date_time)
+        writer.write_object_value("schedule_settings", self.schedule_settings)
         writer.write_collection_of_object_values("scopes", self.scopes)
         writer.write_enum_value("status", self.status)
     

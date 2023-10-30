@@ -51,10 +51,10 @@ class ManagedAppPolicyDeploymentSummary(Entity):
         from .managed_app_policy_deployment_summary_per_app import ManagedAppPolicyDeploymentSummaryPerApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "configurationDeployedUserCount": lambda n : setattr(self, 'configuration_deployed_user_count', n.get_int_value()),
-            "configurationDeploymentSummaryPerApp": lambda n : setattr(self, 'configuration_deployment_summary_per_app', n.get_collection_of_object_values(ManagedAppPolicyDeploymentSummaryPerApp)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastRefreshTime": lambda n : setattr(self, 'last_refresh_time', n.get_datetime_value()),
+            "configuration_deployed_user_count": lambda n : setattr(self, 'configuration_deployed_user_count', n.get_int_value()),
+            "configuration_deployment_summary_per_app": lambda n : setattr(self, 'configuration_deployment_summary_per_app', n.get_collection_of_object_values(ManagedAppPolicyDeploymentSummaryPerApp)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "last_refresh_time": lambda n : setattr(self, 'last_refresh_time', n.get_datetime_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -70,10 +70,10 @@ class ManagedAppPolicyDeploymentSummary(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("configurationDeployedUserCount", self.configuration_deployed_user_count)
-        writer.write_collection_of_object_values("configurationDeploymentSummaryPerApp", self.configuration_deployment_summary_per_app)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastRefreshTime", self.last_refresh_time)
+        writer.write_int_value("configuration_deployed_user_count", self.configuration_deployed_user_count)
+        writer.write_collection_of_object_values("configuration_deployment_summary_per_app", self.configuration_deployment_summary_per_app)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_datetime_value("last_refresh_time", self.last_refresh_time)
         writer.write_str_value("version", self.version)
     
 

@@ -72,21 +72,21 @@ class IntuneBrand(AdditionalDataHolder, BackedModel, Parsable):
         from .rgb_color import RgbColor
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "contactITEmailAddress": lambda n : setattr(self, 'contact_i_t_email_address', n.get_str_value()),
-            "contactITName": lambda n : setattr(self, 'contact_i_t_name', n.get_str_value()),
-            "contactITNotes": lambda n : setattr(self, 'contact_i_t_notes', n.get_str_value()),
-            "contactITPhoneNumber": lambda n : setattr(self, 'contact_i_t_phone_number', n.get_str_value()),
-            "darkBackgroundLogo": lambda n : setattr(self, 'dark_background_logo', n.get_object_value(MimeContent)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lightBackgroundLogo": lambda n : setattr(self, 'light_background_logo', n.get_object_value(MimeContent)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "onlineSupportSiteName": lambda n : setattr(self, 'online_support_site_name', n.get_str_value()),
-            "onlineSupportSiteUrl": lambda n : setattr(self, 'online_support_site_url', n.get_str_value()),
-            "privacyUrl": lambda n : setattr(self, 'privacy_url', n.get_str_value()),
-            "showDisplayNameNextToLogo": lambda n : setattr(self, 'show_display_name_next_to_logo', n.get_bool_value()),
-            "showLogo": lambda n : setattr(self, 'show_logo', n.get_bool_value()),
-            "showNameNextToLogo": lambda n : setattr(self, 'show_name_next_to_logo', n.get_bool_value()),
-            "themeColor": lambda n : setattr(self, 'theme_color', n.get_object_value(RgbColor)),
+            "contact_i_t_email_address": lambda n : setattr(self, 'contact_i_t_email_address', n.get_str_value()),
+            "contact_i_t_name": lambda n : setattr(self, 'contact_i_t_name', n.get_str_value()),
+            "contact_i_t_notes": lambda n : setattr(self, 'contact_i_t_notes', n.get_str_value()),
+            "contact_i_t_phone_number": lambda n : setattr(self, 'contact_i_t_phone_number', n.get_str_value()),
+            "dark_background_logo": lambda n : setattr(self, 'dark_background_logo', n.get_object_value(MimeContent)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "light_background_logo": lambda n : setattr(self, 'light_background_logo', n.get_object_value(MimeContent)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "online_support_site_name": lambda n : setattr(self, 'online_support_site_name', n.get_str_value()),
+            "online_support_site_url": lambda n : setattr(self, 'online_support_site_url', n.get_str_value()),
+            "privacy_url": lambda n : setattr(self, 'privacy_url', n.get_str_value()),
+            "show_display_name_next_to_logo": lambda n : setattr(self, 'show_display_name_next_to_logo', n.get_bool_value()),
+            "show_logo": lambda n : setattr(self, 'show_logo', n.get_bool_value()),
+            "show_name_next_to_logo": lambda n : setattr(self, 'show_name_next_to_logo', n.get_bool_value()),
+            "theme_color": lambda n : setattr(self, 'theme_color', n.get_object_value(RgbColor)),
         }
         return fields
     
@@ -98,21 +98,21 @@ class IntuneBrand(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("contactITEmailAddress", self.contact_i_t_email_address)
-        writer.write_str_value("contactITName", self.contact_i_t_name)
-        writer.write_str_value("contactITNotes", self.contact_i_t_notes)
-        writer.write_str_value("contactITPhoneNumber", self.contact_i_t_phone_number)
-        writer.write_object_value("darkBackgroundLogo", self.dark_background_logo)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("lightBackgroundLogo", self.light_background_logo)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("onlineSupportSiteName", self.online_support_site_name)
-        writer.write_str_value("onlineSupportSiteUrl", self.online_support_site_url)
-        writer.write_str_value("privacyUrl", self.privacy_url)
-        writer.write_bool_value("showDisplayNameNextToLogo", self.show_display_name_next_to_logo)
-        writer.write_bool_value("showLogo", self.show_logo)
-        writer.write_bool_value("showNameNextToLogo", self.show_name_next_to_logo)
-        writer.write_object_value("themeColor", self.theme_color)
+        writer.write_str_value("contact_i_t_email_address", self.contact_i_t_email_address)
+        writer.write_str_value("contact_i_t_name", self.contact_i_t_name)
+        writer.write_str_value("contact_i_t_notes", self.contact_i_t_notes)
+        writer.write_str_value("contact_i_t_phone_number", self.contact_i_t_phone_number)
+        writer.write_object_value("dark_background_logo", self.dark_background_logo)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_object_value("light_background_logo", self.light_background_logo)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("online_support_site_name", self.online_support_site_name)
+        writer.write_str_value("online_support_site_url", self.online_support_site_url)
+        writer.write_str_value("privacy_url", self.privacy_url)
+        writer.write_bool_value("show_display_name_next_to_logo", self.show_display_name_next_to_logo)
+        writer.write_bool_value("show_logo", self.show_logo)
+        writer.write_bool_value("show_name_next_to_logo", self.show_name_next_to_logo)
+        writer.write_object_value("theme_color", self.theme_color)
         writer.write_additional_data_value(self.additional_data)
     
 

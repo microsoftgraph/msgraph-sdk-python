@@ -44,8 +44,8 @@ class RiskyUserHistoryItem(RiskyUser):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_object_value(RiskUserActivity)),
-            "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
-            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "initiated_by": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
+            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,7 +61,7 @@ class RiskyUserHistoryItem(RiskyUser):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("activity", self.activity)
-        writer.write_str_value("initiatedBy", self.initiated_by)
-        writer.write_str_value("userId", self.user_id)
+        writer.write_str_value("initiated_by", self.initiated_by)
+        writer.write_str_value("user_id", self.user_id)
     
 

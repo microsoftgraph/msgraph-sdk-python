@@ -59,15 +59,15 @@ class ActivityHistoryItem(Entity):
         from .user_activity import UserActivity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activeDurationSeconds": lambda n : setattr(self, 'active_duration_seconds', n.get_int_value()),
+            "active_duration_seconds": lambda n : setattr(self, 'active_duration_seconds', n.get_int_value()),
             "activity": lambda n : setattr(self, 'activity', n.get_object_value(UserActivity)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "lastActiveDateTime": lambda n : setattr(self, 'last_active_date_time', n.get_datetime_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "startedDateTime": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "last_active_date_time": lambda n : setattr(self, 'last_active_date_time', n.get_datetime_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "started_date_time": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(Status)),
-            "userTimezone": lambda n : setattr(self, 'user_timezone', n.get_str_value()),
+            "user_timezone": lambda n : setattr(self, 'user_timezone', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -82,14 +82,14 @@ class ActivityHistoryItem(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("activeDurationSeconds", self.active_duration_seconds)
+        writer.write_int_value("active_duration_seconds", self.active_duration_seconds)
         writer.write_object_value("activity", self.activity)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
-        writer.write_datetime_value("lastActiveDateTime", self.last_active_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_datetime_value("startedDateTime", self.started_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_datetime_value("expiration_date_time", self.expiration_date_time)
+        writer.write_datetime_value("last_active_date_time", self.last_active_date_time)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_datetime_value("started_date_time", self.started_date_time)
         writer.write_enum_value("status", self.status)
-        writer.write_str_value("userTimezone", self.user_timezone)
+        writer.write_str_value("user_timezone", self.user_timezone)
     
 

@@ -39,7 +39,7 @@ class CustomTaskExtensionCallbackConfiguration(CustomExtensionCallbackConfigurat
         from ..custom_extension_callback_configuration import CustomExtensionCallbackConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authorizedApps": lambda n : setattr(self, 'authorized_apps', n.get_collection_of_object_values(Application)),
+            "authorized_apps": lambda n : setattr(self, 'authorized_apps', n.get_collection_of_object_values(Application)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class CustomTaskExtensionCallbackConfiguration(CustomExtensionCallbackConfigurat
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("authorizedApps", self.authorized_apps)
+        writer.write_collection_of_object_values("authorized_apps", self.authorized_apps)
     
 

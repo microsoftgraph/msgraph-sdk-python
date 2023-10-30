@@ -91,22 +91,22 @@ class ProvisioningObjectSummary(Entity):
         from .provisioning_system import ProvisioningSystem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
-            "changeId": lambda n : setattr(self, 'change_id', n.get_str_value()),
-            "cycleId": lambda n : setattr(self, 'cycle_id', n.get_str_value()),
-            "durationInMilliseconds": lambda n : setattr(self, 'duration_in_milliseconds', n.get_int_value()),
-            "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_object_value(Initiator)),
-            "jobId": lambda n : setattr(self, 'job_id', n.get_str_value()),
-            "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(ModifiedProperty)),
-            "provisioningAction": lambda n : setattr(self, 'provisioning_action', n.get_enum_value(ProvisioningAction)),
-            "provisioningStatusInfo": lambda n : setattr(self, 'provisioning_status_info', n.get_object_value(ProvisioningStatusInfo)),
-            "provisioningSteps": lambda n : setattr(self, 'provisioning_steps', n.get_collection_of_object_values(ProvisioningStep)),
-            "servicePrincipal": lambda n : setattr(self, 'service_principal', n.get_object_value(ProvisioningServicePrincipal)),
-            "sourceIdentity": lambda n : setattr(self, 'source_identity', n.get_object_value(ProvisionedIdentity)),
-            "sourceSystem": lambda n : setattr(self, 'source_system', n.get_object_value(ProvisioningSystem)),
-            "targetIdentity": lambda n : setattr(self, 'target_identity', n.get_object_value(ProvisionedIdentity)),
-            "targetSystem": lambda n : setattr(self, 'target_system', n.get_object_value(ProvisioningSystem)),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "change_id": lambda n : setattr(self, 'change_id', n.get_str_value()),
+            "cycle_id": lambda n : setattr(self, 'cycle_id', n.get_str_value()),
+            "duration_in_milliseconds": lambda n : setattr(self, 'duration_in_milliseconds', n.get_int_value()),
+            "initiated_by": lambda n : setattr(self, 'initiated_by', n.get_object_value(Initiator)),
+            "job_id": lambda n : setattr(self, 'job_id', n.get_str_value()),
+            "modified_properties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(ModifiedProperty)),
+            "provisioning_action": lambda n : setattr(self, 'provisioning_action', n.get_enum_value(ProvisioningAction)),
+            "provisioning_status_info": lambda n : setattr(self, 'provisioning_status_info', n.get_object_value(ProvisioningStatusInfo)),
+            "provisioning_steps": lambda n : setattr(self, 'provisioning_steps', n.get_collection_of_object_values(ProvisioningStep)),
+            "service_principal": lambda n : setattr(self, 'service_principal', n.get_object_value(ProvisioningServicePrincipal)),
+            "source_identity": lambda n : setattr(self, 'source_identity', n.get_object_value(ProvisionedIdentity)),
+            "source_system": lambda n : setattr(self, 'source_system', n.get_object_value(ProvisioningSystem)),
+            "target_identity": lambda n : setattr(self, 'target_identity', n.get_object_value(ProvisionedIdentity)),
+            "target_system": lambda n : setattr(self, 'target_system', n.get_object_value(ProvisioningSystem)),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -121,21 +121,21 @@ class ProvisioningObjectSummary(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("activityDateTime", self.activity_date_time)
-        writer.write_str_value("changeId", self.change_id)
-        writer.write_str_value("cycleId", self.cycle_id)
-        writer.write_int_value("durationInMilliseconds", self.duration_in_milliseconds)
-        writer.write_object_value("initiatedBy", self.initiated_by)
-        writer.write_str_value("jobId", self.job_id)
-        writer.write_collection_of_object_values("modifiedProperties", self.modified_properties)
-        writer.write_enum_value("provisioningAction", self.provisioning_action)
-        writer.write_object_value("provisioningStatusInfo", self.provisioning_status_info)
-        writer.write_collection_of_object_values("provisioningSteps", self.provisioning_steps)
-        writer.write_object_value("servicePrincipal", self.service_principal)
-        writer.write_object_value("sourceIdentity", self.source_identity)
-        writer.write_object_value("sourceSystem", self.source_system)
-        writer.write_object_value("targetIdentity", self.target_identity)
-        writer.write_object_value("targetSystem", self.target_system)
-        writer.write_str_value("tenantId", self.tenant_id)
+        writer.write_datetime_value("activity_date_time", self.activity_date_time)
+        writer.write_str_value("change_id", self.change_id)
+        writer.write_str_value("cycle_id", self.cycle_id)
+        writer.write_int_value("duration_in_milliseconds", self.duration_in_milliseconds)
+        writer.write_object_value("initiated_by", self.initiated_by)
+        writer.write_str_value("job_id", self.job_id)
+        writer.write_collection_of_object_values("modified_properties", self.modified_properties)
+        writer.write_enum_value("provisioning_action", self.provisioning_action)
+        writer.write_object_value("provisioning_status_info", self.provisioning_status_info)
+        writer.write_collection_of_object_values("provisioning_steps", self.provisioning_steps)
+        writer.write_object_value("service_principal", self.service_principal)
+        writer.write_object_value("source_identity", self.source_identity)
+        writer.write_object_value("source_system", self.source_system)
+        writer.write_object_value("target_identity", self.target_identity)
+        writer.write_object_value("target_system", self.target_system)
+        writer.write_str_value("tenant_id", self.tenant_id)
     
 

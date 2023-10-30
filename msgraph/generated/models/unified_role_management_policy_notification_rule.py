@@ -44,11 +44,11 @@ class UnifiedRoleManagementPolicyNotificationRule(UnifiedRoleManagementPolicyRul
         from .unified_role_management_policy_rule import UnifiedRoleManagementPolicyRule
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isDefaultRecipientsEnabled": lambda n : setattr(self, 'is_default_recipients_enabled', n.get_bool_value()),
-            "notificationLevel": lambda n : setattr(self, 'notification_level', n.get_str_value()),
-            "notificationRecipients": lambda n : setattr(self, 'notification_recipients', n.get_collection_of_primitive_values(str)),
-            "notificationType": lambda n : setattr(self, 'notification_type', n.get_str_value()),
-            "recipientType": lambda n : setattr(self, 'recipient_type', n.get_str_value()),
+            "is_default_recipients_enabled": lambda n : setattr(self, 'is_default_recipients_enabled', n.get_bool_value()),
+            "notification_level": lambda n : setattr(self, 'notification_level', n.get_str_value()),
+            "notification_recipients": lambda n : setattr(self, 'notification_recipients', n.get_collection_of_primitive_values(str)),
+            "notification_type": lambda n : setattr(self, 'notification_type', n.get_str_value()),
+            "recipient_type": lambda n : setattr(self, 'recipient_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,10 +63,10 @@ class UnifiedRoleManagementPolicyNotificationRule(UnifiedRoleManagementPolicyRul
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isDefaultRecipientsEnabled", self.is_default_recipients_enabled)
-        writer.write_str_value("notificationLevel", self.notification_level)
-        writer.write_collection_of_primitive_values("notificationRecipients", self.notification_recipients)
-        writer.write_str_value("notificationType", self.notification_type)
-        writer.write_str_value("recipientType", self.recipient_type)
+        writer.write_bool_value("is_default_recipients_enabled", self.is_default_recipients_enabled)
+        writer.write_str_value("notification_level", self.notification_level)
+        writer.write_collection_of_primitive_values("notification_recipients", self.notification_recipients)
+        writer.write_str_value("notification_type", self.notification_type)
+        writer.write_str_value("recipient_type", self.recipient_type)
     
 

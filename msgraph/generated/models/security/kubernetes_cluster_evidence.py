@@ -47,7 +47,7 @@ class KubernetesClusterEvidence(AlertEvidence):
         from .kubernetes_platform import KubernetesPlatform
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "cloudResource": lambda n : setattr(self, 'cloud_resource', n.get_object_value(AlertEvidence)),
+            "cloud_resource": lambda n : setattr(self, 'cloud_resource', n.get_object_value(AlertEvidence)),
             "distribution": lambda n : setattr(self, 'distribution', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "platform": lambda n : setattr(self, 'platform', n.get_enum_value(KubernetesPlatform)),
@@ -66,7 +66,7 @@ class KubernetesClusterEvidence(AlertEvidence):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("cloudResource", self.cloud_resource)
+        writer.write_object_value("cloud_resource", self.cloud_resource)
         writer.write_str_value("distribution", self.distribution)
         writer.write_str_value("name", self.name)
         writer.write_enum_value("platform", self.platform)

@@ -52,7 +52,7 @@ class PrintTask(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "definition": lambda n : setattr(self, 'definition', n.get_object_value(PrintTaskDefinition)),
-            "parentUrl": lambda n : setattr(self, 'parent_url', n.get_str_value()),
+            "parent_url": lambda n : setattr(self, 'parent_url', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_object_value(PrintTaskStatus)),
             "trigger": lambda n : setattr(self, 'trigger', n.get_object_value(PrintTaskTrigger)),
         }
@@ -70,7 +70,7 @@ class PrintTask(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("definition", self.definition)
-        writer.write_str_value("parentUrl", self.parent_url)
+        writer.write_str_value("parent_url", self.parent_url)
         writer.write_object_value("status", self.status)
         writer.write_object_value("trigger", self.trigger)
     

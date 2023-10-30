@@ -46,9 +46,9 @@ class PhoneAuthenticationMethod(AuthenticationMethod):
         from .authentication_phone_type import AuthenticationPhoneType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "phoneNumber": lambda n : setattr(self, 'phone_number', n.get_str_value()),
-            "phoneType": lambda n : setattr(self, 'phone_type', n.get_enum_value(AuthenticationPhoneType)),
-            "smsSignInState": lambda n : setattr(self, 'sms_sign_in_state', n.get_enum_value(AuthenticationMethodSignInState)),
+            "phone_number": lambda n : setattr(self, 'phone_number', n.get_str_value()),
+            "phone_type": lambda n : setattr(self, 'phone_type', n.get_enum_value(AuthenticationPhoneType)),
+            "sms_sign_in_state": lambda n : setattr(self, 'sms_sign_in_state', n.get_enum_value(AuthenticationMethodSignInState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,8 +63,8 @@ class PhoneAuthenticationMethod(AuthenticationMethod):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("phoneNumber", self.phone_number)
-        writer.write_enum_value("phoneType", self.phone_type)
-        writer.write_enum_value("smsSignInState", self.sms_sign_in_state)
+        writer.write_str_value("phone_number", self.phone_number)
+        writer.write_enum_value("phone_type", self.phone_type)
+        writer.write_enum_value("sms_sign_in_state", self.sms_sign_in_state)
     
 

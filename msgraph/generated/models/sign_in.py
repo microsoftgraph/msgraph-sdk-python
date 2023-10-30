@@ -24,7 +24,7 @@ class SignIn(Entity):
     app_display_name: Optional[str] = None
     # Unique GUID representing the app ID in the Microsoft Entra ID.  Supports $filter (eq).
     app_id: Optional[str] = None
-    # Provides a list of conditional access policies that are triggered by the corresponding sign-in activity.
+    # Provides a list of conditional access policies that are triggered by the corresponding sign-in activity. Apps need additional Conditional Access-related privileges to read the details of this property. For more information, see Viewing applied conditional access (CA) policies in sign-ins.
     applied_conditional_access_policies: Optional[List[AppliedConditionalAccessPolicy]] = None
     # Identifies the client used for the sign-in activity. Modern authentication clients include Browser, modern clients. Legacy authentication clients include Exchange ActiveSync, IMAP, MAPI, SMTP, POP, and other clients.  Supports $filter (eq).
     client_app_used: Optional[str] = None
@@ -108,29 +108,29 @@ class SignIn(Entity):
         from .sign_in_status import SignInStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "appliedConditionalAccessPolicies": lambda n : setattr(self, 'applied_conditional_access_policies', n.get_collection_of_object_values(AppliedConditionalAccessPolicy)),
-            "clientAppUsed": lambda n : setattr(self, 'client_app_used', n.get_str_value()),
-            "conditionalAccessStatus": lambda n : setattr(self, 'conditional_access_status', n.get_enum_value(ConditionalAccessStatus)),
-            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "deviceDetail": lambda n : setattr(self, 'device_detail', n.get_object_value(DeviceDetail)),
-            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "isInteractive": lambda n : setattr(self, 'is_interactive', n.get_bool_value()),
+            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "applied_conditional_access_policies": lambda n : setattr(self, 'applied_conditional_access_policies', n.get_collection_of_object_values(AppliedConditionalAccessPolicy)),
+            "client_app_used": lambda n : setattr(self, 'client_app_used', n.get_str_value()),
+            "conditional_access_status": lambda n : setattr(self, 'conditional_access_status', n.get_enum_value(ConditionalAccessStatus)),
+            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "device_detail": lambda n : setattr(self, 'device_detail', n.get_object_value(DeviceDetail)),
+            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "is_interactive": lambda n : setattr(self, 'is_interactive', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(SignInLocation)),
-            "resourceDisplayName": lambda n : setattr(self, 'resource_display_name', n.get_str_value()),
-            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
-            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetail)),
-            "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_enum_values(RiskEventType)),
-            "riskEventTypes_v2": lambda n : setattr(self, 'risk_event_types_v2', n.get_collection_of_primitive_values(str)),
-            "riskLevelAggregated": lambda n : setattr(self, 'risk_level_aggregated', n.get_enum_value(RiskLevel)),
-            "riskLevelDuringSignIn": lambda n : setattr(self, 'risk_level_during_sign_in', n.get_enum_value(RiskLevel)),
-            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskState)),
+            "resource_display_name": lambda n : setattr(self, 'resource_display_name', n.get_str_value()),
+            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "risk_detail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetail)),
+            "risk_event_types": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_enum_values(RiskEventType)),
+            "risk_event_types_v2": lambda n : setattr(self, 'risk_event_types_v2', n.get_collection_of_primitive_values(str)),
+            "risk_level_aggregated": lambda n : setattr(self, 'risk_level_aggregated', n.get_enum_value(RiskLevel)),
+            "risk_level_during_sign_in": lambda n : setattr(self, 'risk_level_during_sign_in', n.get_enum_value(RiskLevel)),
+            "risk_state": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskState)),
             "status": lambda n : setattr(self, 'status', n.get_object_value(SignInStatus)),
-            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -145,28 +145,28 @@ class SignIn(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("appDisplayName", self.app_display_name)
-        writer.write_str_value("appId", self.app_id)
-        writer.write_collection_of_object_values("appliedConditionalAccessPolicies", self.applied_conditional_access_policies)
-        writer.write_str_value("clientAppUsed", self.client_app_used)
-        writer.write_enum_value("conditionalAccessStatus", self.conditional_access_status)
-        writer.write_str_value("correlationId", self.correlation_id)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_object_value("deviceDetail", self.device_detail)
-        writer.write_str_value("ipAddress", self.ip_address)
-        writer.write_bool_value("isInteractive", self.is_interactive)
+        writer.write_str_value("app_display_name", self.app_display_name)
+        writer.write_str_value("app_id", self.app_id)
+        writer.write_collection_of_object_values("applied_conditional_access_policies", self.applied_conditional_access_policies)
+        writer.write_str_value("client_app_used", self.client_app_used)
+        writer.write_enum_value("conditional_access_status", self.conditional_access_status)
+        writer.write_str_value("correlation_id", self.correlation_id)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_object_value("device_detail", self.device_detail)
+        writer.write_str_value("ip_address", self.ip_address)
+        writer.write_bool_value("is_interactive", self.is_interactive)
         writer.write_object_value("location", self.location)
-        writer.write_str_value("resourceDisplayName", self.resource_display_name)
-        writer.write_str_value("resourceId", self.resource_id)
-        writer.write_enum_value("riskDetail", self.risk_detail)
-        writer.write_collection_of_enum_values("riskEventTypes", self.risk_event_types)
-        writer.write_collection_of_primitive_values("riskEventTypes_v2", self.risk_event_types_v2)
-        writer.write_enum_value("riskLevelAggregated", self.risk_level_aggregated)
-        writer.write_enum_value("riskLevelDuringSignIn", self.risk_level_during_sign_in)
-        writer.write_enum_value("riskState", self.risk_state)
+        writer.write_str_value("resource_display_name", self.resource_display_name)
+        writer.write_str_value("resource_id", self.resource_id)
+        writer.write_enum_value("risk_detail", self.risk_detail)
+        writer.write_collection_of_enum_values("risk_event_types", self.risk_event_types)
+        writer.write_collection_of_primitive_values("risk_event_types_v2", self.risk_event_types_v2)
+        writer.write_enum_value("risk_level_aggregated", self.risk_level_aggregated)
+        writer.write_enum_value("risk_level_during_sign_in", self.risk_level_during_sign_in)
+        writer.write_enum_value("risk_state", self.risk_state)
         writer.write_object_value("status", self.status)
-        writer.write_str_value("userDisplayName", self.user_display_name)
-        writer.write_str_value("userId", self.user_id)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_str_value("user_display_name", self.user_display_name)
+        writer.write_str_value("user_id", self.user_id)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
     
 

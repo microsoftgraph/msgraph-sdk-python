@@ -40,8 +40,8 @@ class DaysPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endDate": lambda n : setattr(self, 'end_date', n.get_object_value(Json)),
-            "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(Json)),
+            "end_date": lambda n : setattr(self, 'end_date', n.get_object_value(Json)),
+            "start_date": lambda n : setattr(self, 'start_date', n.get_object_value(Json)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class DaysPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("endDate", self.end_date)
-        writer.write_object_value("startDate", self.start_date)
+        writer.write_object_value("end_date", self.end_date)
+        writer.write_object_value("start_date", self.start_date)
         writer.write_additional_data_value(self.additional_data)
     
 

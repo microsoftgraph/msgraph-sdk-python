@@ -103,24 +103,24 @@ class Schedule(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "offerShiftRequests": lambda n : setattr(self, 'offer_shift_requests', n.get_collection_of_object_values(OfferShiftRequest)),
-            "offerShiftRequestsEnabled": lambda n : setattr(self, 'offer_shift_requests_enabled', n.get_bool_value()),
-            "openShiftChangeRequests": lambda n : setattr(self, 'open_shift_change_requests', n.get_collection_of_object_values(OpenShiftChangeRequest)),
-            "openShifts": lambda n : setattr(self, 'open_shifts', n.get_collection_of_object_values(OpenShift)),
-            "openShiftsEnabled": lambda n : setattr(self, 'open_shifts_enabled', n.get_bool_value()),
-            "provisionStatus": lambda n : setattr(self, 'provision_status', n.get_enum_value(OperationStatus)),
-            "provisionStatusCode": lambda n : setattr(self, 'provision_status_code', n.get_str_value()),
-            "schedulingGroups": lambda n : setattr(self, 'scheduling_groups', n.get_collection_of_object_values(SchedulingGroup)),
+            "offer_shift_requests": lambda n : setattr(self, 'offer_shift_requests', n.get_collection_of_object_values(OfferShiftRequest)),
+            "offer_shift_requests_enabled": lambda n : setattr(self, 'offer_shift_requests_enabled', n.get_bool_value()),
+            "open_shift_change_requests": lambda n : setattr(self, 'open_shift_change_requests', n.get_collection_of_object_values(OpenShiftChangeRequest)),
+            "open_shifts": lambda n : setattr(self, 'open_shifts', n.get_collection_of_object_values(OpenShift)),
+            "open_shifts_enabled": lambda n : setattr(self, 'open_shifts_enabled', n.get_bool_value()),
+            "provision_status": lambda n : setattr(self, 'provision_status', n.get_enum_value(OperationStatus)),
+            "provision_status_code": lambda n : setattr(self, 'provision_status_code', n.get_str_value()),
+            "scheduling_groups": lambda n : setattr(self, 'scheduling_groups', n.get_collection_of_object_values(SchedulingGroup)),
             "shifts": lambda n : setattr(self, 'shifts', n.get_collection_of_object_values(Shift)),
-            "swapShiftsChangeRequests": lambda n : setattr(self, 'swap_shifts_change_requests', n.get_collection_of_object_values(SwapShiftsChangeRequest)),
-            "swapShiftsRequestsEnabled": lambda n : setattr(self, 'swap_shifts_requests_enabled', n.get_bool_value()),
-            "timeClockEnabled": lambda n : setattr(self, 'time_clock_enabled', n.get_bool_value()),
-            "timeOffReasons": lambda n : setattr(self, 'time_off_reasons', n.get_collection_of_object_values(TimeOffReason)),
-            "timeOffRequests": lambda n : setattr(self, 'time_off_requests', n.get_collection_of_object_values(TimeOffRequest)),
-            "timeOffRequestsEnabled": lambda n : setattr(self, 'time_off_requests_enabled', n.get_bool_value()),
-            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
-            "timesOff": lambda n : setattr(self, 'times_off', n.get_collection_of_object_values(TimeOff)),
-            "workforceIntegrationIds": lambda n : setattr(self, 'workforce_integration_ids', n.get_collection_of_primitive_values(str)),
+            "swap_shifts_change_requests": lambda n : setattr(self, 'swap_shifts_change_requests', n.get_collection_of_object_values(SwapShiftsChangeRequest)),
+            "swap_shifts_requests_enabled": lambda n : setattr(self, 'swap_shifts_requests_enabled', n.get_bool_value()),
+            "time_clock_enabled": lambda n : setattr(self, 'time_clock_enabled', n.get_bool_value()),
+            "time_off_reasons": lambda n : setattr(self, 'time_off_reasons', n.get_collection_of_object_values(TimeOffReason)),
+            "time_off_requests": lambda n : setattr(self, 'time_off_requests', n.get_collection_of_object_values(TimeOffRequest)),
+            "time_off_requests_enabled": lambda n : setattr(self, 'time_off_requests_enabled', n.get_bool_value()),
+            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "times_off": lambda n : setattr(self, 'times_off', n.get_collection_of_object_values(TimeOff)),
+            "workforce_integration_ids": lambda n : setattr(self, 'workforce_integration_ids', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -136,21 +136,21 @@ class Schedule(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("enabled", self.enabled)
-        writer.write_collection_of_object_values("offerShiftRequests", self.offer_shift_requests)
-        writer.write_bool_value("offerShiftRequestsEnabled", self.offer_shift_requests_enabled)
-        writer.write_collection_of_object_values("openShiftChangeRequests", self.open_shift_change_requests)
-        writer.write_collection_of_object_values("openShifts", self.open_shifts)
-        writer.write_bool_value("openShiftsEnabled", self.open_shifts_enabled)
-        writer.write_collection_of_object_values("schedulingGroups", self.scheduling_groups)
+        writer.write_collection_of_object_values("offer_shift_requests", self.offer_shift_requests)
+        writer.write_bool_value("offer_shift_requests_enabled", self.offer_shift_requests_enabled)
+        writer.write_collection_of_object_values("open_shift_change_requests", self.open_shift_change_requests)
+        writer.write_collection_of_object_values("open_shifts", self.open_shifts)
+        writer.write_bool_value("open_shifts_enabled", self.open_shifts_enabled)
+        writer.write_collection_of_object_values("scheduling_groups", self.scheduling_groups)
         writer.write_collection_of_object_values("shifts", self.shifts)
-        writer.write_collection_of_object_values("swapShiftsChangeRequests", self.swap_shifts_change_requests)
-        writer.write_bool_value("swapShiftsRequestsEnabled", self.swap_shifts_requests_enabled)
-        writer.write_bool_value("timeClockEnabled", self.time_clock_enabled)
-        writer.write_collection_of_object_values("timeOffReasons", self.time_off_reasons)
-        writer.write_collection_of_object_values("timeOffRequests", self.time_off_requests)
-        writer.write_bool_value("timeOffRequestsEnabled", self.time_off_requests_enabled)
-        writer.write_str_value("timeZone", self.time_zone)
-        writer.write_collection_of_object_values("timesOff", self.times_off)
-        writer.write_collection_of_primitive_values("workforceIntegrationIds", self.workforce_integration_ids)
+        writer.write_collection_of_object_values("swap_shifts_change_requests", self.swap_shifts_change_requests)
+        writer.write_bool_value("swap_shifts_requests_enabled", self.swap_shifts_requests_enabled)
+        writer.write_bool_value("time_clock_enabled", self.time_clock_enabled)
+        writer.write_collection_of_object_values("time_off_reasons", self.time_off_reasons)
+        writer.write_collection_of_object_values("time_off_requests", self.time_off_requests)
+        writer.write_bool_value("time_off_requests_enabled", self.time_off_requests_enabled)
+        writer.write_str_value("time_zone", self.time_zone)
+        writer.write_collection_of_object_values("times_off", self.times_off)
+        writer.write_collection_of_primitive_values("workforce_integration_ids", self.workforce_integration_ids)
     
 

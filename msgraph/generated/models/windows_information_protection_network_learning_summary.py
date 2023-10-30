@@ -41,7 +41,7 @@ class WindowsInformationProtectionNetworkLearningSummary(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -57,7 +57,7 @@ class WindowsInformationProtectionNetworkLearningSummary(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("deviceCount", self.device_count)
+        writer.write_int_value("device_count", self.device_count)
         writer.write_str_value("url", self.url)
     
 

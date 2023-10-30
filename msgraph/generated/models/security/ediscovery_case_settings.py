@@ -50,8 +50,8 @@ class EdiscoveryCaseSettings(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "ocr": lambda n : setattr(self, 'ocr', n.get_object_value(OcrSettings)),
-            "redundancyDetection": lambda n : setattr(self, 'redundancy_detection', n.get_object_value(RedundancyDetectionSettings)),
-            "topicModeling": lambda n : setattr(self, 'topic_modeling', n.get_object_value(TopicModelingSettings)),
+            "redundancy_detection": lambda n : setattr(self, 'redundancy_detection', n.get_object_value(RedundancyDetectionSettings)),
+            "topic_modeling": lambda n : setattr(self, 'topic_modeling', n.get_object_value(TopicModelingSettings)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,7 +67,7 @@ class EdiscoveryCaseSettings(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("ocr", self.ocr)
-        writer.write_object_value("redundancyDetection", self.redundancy_detection)
-        writer.write_object_value("topicModeling", self.topic_modeling)
+        writer.write_object_value("redundancy_detection", self.redundancy_detection)
+        writer.write_object_value("topic_modeling", self.topic_modeling)
     
 

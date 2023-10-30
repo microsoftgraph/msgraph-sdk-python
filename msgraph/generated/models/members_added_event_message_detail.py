@@ -49,7 +49,7 @@ class MembersAddedEventMessageDetail(EventMessageDetail):
         fields: Dict[str, Callable[[Any], None]] = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(TeamworkUserIdentity)),
-            "visibleHistoryStartDateTime": lambda n : setattr(self, 'visible_history_start_date_time', n.get_datetime_value()),
+            "visible_history_start_date_time": lambda n : setattr(self, 'visible_history_start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,6 +66,6 @@ class MembersAddedEventMessageDetail(EventMessageDetail):
         super().serialize(writer)
         writer.write_object_value("initiator", self.initiator)
         writer.write_collection_of_object_values("members", self.members)
-        writer.write_datetime_value("visibleHistoryStartDateTime", self.visible_history_start_date_time)
+        writer.write_datetime_value("visible_history_start_date_time", self.visible_history_start_date_time)
     
 

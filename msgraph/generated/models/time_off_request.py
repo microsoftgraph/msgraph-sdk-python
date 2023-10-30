@@ -41,9 +41,9 @@ class TimeOffRequest(ScheduleChangeRequest):
         from .schedule_change_request import ScheduleChangeRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "timeOffReasonId": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "time_off_reason_id": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,8 +58,8 @@ class TimeOffRequest(ScheduleChangeRequest):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
-        writer.write_str_value("timeOffReasonId", self.time_off_reason_id)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
+        writer.write_str_value("time_off_reason_id", self.time_off_reason_id)
     
 

@@ -51,8 +51,8 @@ class SignInFrequencySessionControl(ConditionalAccessSessionControl):
         from .sign_in_frequency_interval import SignInFrequencyInterval
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_enum_value(SignInFrequencyAuthenticationType)),
-            "frequencyInterval": lambda n : setattr(self, 'frequency_interval', n.get_enum_value(SignInFrequencyInterval)),
+            "authentication_type": lambda n : setattr(self, 'authentication_type', n.get_enum_value(SignInFrequencyAuthenticationType)),
+            "frequency_interval": lambda n : setattr(self, 'frequency_interval', n.get_enum_value(SignInFrequencyInterval)),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(SigninFrequencyType)),
             "value": lambda n : setattr(self, 'value', n.get_int_value()),
         }
@@ -69,8 +69,8 @@ class SignInFrequencySessionControl(ConditionalAccessSessionControl):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("authenticationType", self.authentication_type)
-        writer.write_enum_value("frequencyInterval", self.frequency_interval)
+        writer.write_enum_value("authentication_type", self.authentication_type)
+        writer.write_enum_value("frequency_interval", self.frequency_interval)
         writer.write_enum_value("type", self.type)
         writer.write_int_value("value", self.value)
     

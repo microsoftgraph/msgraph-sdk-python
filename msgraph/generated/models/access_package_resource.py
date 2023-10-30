@@ -62,13 +62,13 @@ class AccessPackageResource(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "environment": lambda n : setattr(self, 'environment', n.get_object_value(AccessPackageResourceEnvironment)),
-            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
-            "originId": lambda n : setattr(self, 'origin_id', n.get_str_value()),
-            "originSystem": lambda n : setattr(self, 'origin_system', n.get_str_value()),
+            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "origin_id": lambda n : setattr(self, 'origin_id', n.get_str_value()),
+            "origin_system": lambda n : setattr(self, 'origin_system', n.get_str_value()),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_object_values(AccessPackageResourceRole)),
             "scopes": lambda n : setattr(self, 'scopes', n.get_collection_of_object_values(AccessPackageResourceScope)),
         }
@@ -85,13 +85,13 @@ class AccessPackageResource(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_object_value("environment", self.environment)
-        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
-        writer.write_str_value("originId", self.origin_id)
-        writer.write_str_value("originSystem", self.origin_system)
+        writer.write_datetime_value("modified_date_time", self.modified_date_time)
+        writer.write_str_value("origin_id", self.origin_id)
+        writer.write_str_value("origin_system", self.origin_system)
         writer.write_collection_of_object_values("roles", self.roles)
         writer.write_collection_of_object_values("scopes", self.scopes)
     

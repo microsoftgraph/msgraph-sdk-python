@@ -63,13 +63,13 @@ class Task(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "arguments": lambda n : setattr(self, 'arguments', n.get_collection_of_object_values(KeyValuePair)),
             "category": lambda n : setattr(self, 'category', n.get_collection_of_enum_values(LifecycleTaskCategory)),
-            "continueOnError": lambda n : setattr(self, 'continue_on_error', n.get_bool_value()),
+            "continue_on_error": lambda n : setattr(self, 'continue_on_error', n.get_bool_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "executionSequence": lambda n : setattr(self, 'execution_sequence', n.get_int_value()),
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "taskDefinitionId": lambda n : setattr(self, 'task_definition_id', n.get_str_value()),
-            "taskProcessingResults": lambda n : setattr(self, 'task_processing_results', n.get_collection_of_object_values(TaskProcessingResult)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "execution_sequence": lambda n : setattr(self, 'execution_sequence', n.get_int_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "task_definition_id": lambda n : setattr(self, 'task_definition_id', n.get_str_value()),
+            "task_processing_results": lambda n : setattr(self, 'task_processing_results', n.get_collection_of_object_values(TaskProcessingResult)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -86,12 +86,12 @@ class Task(Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("arguments", self.arguments)
         writer.write_enum_value("category", self.category)
-        writer.write_bool_value("continueOnError", self.continue_on_error)
+        writer.write_bool_value("continue_on_error", self.continue_on_error)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_int_value("executionSequence", self.execution_sequence)
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_str_value("taskDefinitionId", self.task_definition_id)
-        writer.write_collection_of_object_values("taskProcessingResults", self.task_processing_results)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_int_value("execution_sequence", self.execution_sequence)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_str_value("task_definition_id", self.task_definition_id)
+        writer.write_collection_of_object_values("task_processing_results", self.task_processing_results)
     
 

@@ -42,10 +42,10 @@ class EducationTeamsAppResource(EducationResource):
         from .education_resource import EducationResource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appIconWebUrl": lambda n : setattr(self, 'app_icon_web_url', n.get_str_value()),
-            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "teamsEmbeddedContentUrl": lambda n : setattr(self, 'teams_embedded_content_url', n.get_str_value()),
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "app_icon_web_url": lambda n : setattr(self, 'app_icon_web_url', n.get_str_value()),
+            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "teams_embedded_content_url": lambda n : setattr(self, 'teams_embedded_content_url', n.get_str_value()),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,9 +60,9 @@ class EducationTeamsAppResource(EducationResource):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("appIconWebUrl", self.app_icon_web_url)
-        writer.write_str_value("appId", self.app_id)
-        writer.write_str_value("teamsEmbeddedContentUrl", self.teams_embedded_content_url)
-        writer.write_str_value("webUrl", self.web_url)
+        writer.write_str_value("app_icon_web_url", self.app_icon_web_url)
+        writer.write_str_value("app_id", self.app_id)
+        writer.write_str_value("teams_embedded_content_url", self.teams_embedded_content_url)
+        writer.write_str_value("web_url", self.web_url)
     
 

@@ -38,7 +38,7 @@ class DomainDnsMxRecord(DomainDnsRecord):
         from .domain_dns_record import DomainDnsRecord
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "mailExchange": lambda n : setattr(self, 'mail_exchange', n.get_str_value()),
+            "mail_exchange": lambda n : setattr(self, 'mail_exchange', n.get_str_value()),
             "preference": lambda n : setattr(self, 'preference', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -54,7 +54,7 @@ class DomainDnsMxRecord(DomainDnsRecord):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("mailExchange", self.mail_exchange)
+        writer.write_str_value("mail_exchange", self.mail_exchange)
         writer.write_int_value("preference", self.preference)
     
 

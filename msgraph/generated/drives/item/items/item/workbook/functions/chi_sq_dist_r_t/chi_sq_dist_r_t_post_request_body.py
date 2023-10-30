@@ -40,7 +40,7 @@ class ChiSq_Dist_RTPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "degFreedom": lambda n : setattr(self, 'deg_freedom', n.get_object_value(Json)),
+            "deg_freedom": lambda n : setattr(self, 'deg_freedom', n.get_object_value(Json)),
             "x": lambda n : setattr(self, 'x', n.get_object_value(Json)),
         }
         return fields
@@ -53,7 +53,7 @@ class ChiSq_Dist_RTPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("degFreedom", self.deg_freedom)
+        writer.write_object_value("deg_freedom", self.deg_freedom)
         writer.write_object_value("x", self.x)
         writer.write_additional_data_value(self.additional_data)
     

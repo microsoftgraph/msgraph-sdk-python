@@ -51,13 +51,13 @@ class EdiscoveryEstimateOperation(CaseOperation):
         from .ediscovery_search import EdiscoverySearch
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "indexedItemCount": lambda n : setattr(self, 'indexed_item_count', n.get_int_value()),
-            "indexedItemsSize": lambda n : setattr(self, 'indexed_items_size', n.get_int_value()),
-            "mailboxCount": lambda n : setattr(self, 'mailbox_count', n.get_int_value()),
+            "indexed_item_count": lambda n : setattr(self, 'indexed_item_count', n.get_int_value()),
+            "indexed_items_size": lambda n : setattr(self, 'indexed_items_size', n.get_int_value()),
+            "mailbox_count": lambda n : setattr(self, 'mailbox_count', n.get_int_value()),
             "search": lambda n : setattr(self, 'search', n.get_object_value(EdiscoverySearch)),
-            "siteCount": lambda n : setattr(self, 'site_count', n.get_int_value()),
-            "unindexedItemCount": lambda n : setattr(self, 'unindexed_item_count', n.get_int_value()),
-            "unindexedItemsSize": lambda n : setattr(self, 'unindexed_items_size', n.get_int_value()),
+            "site_count": lambda n : setattr(self, 'site_count', n.get_int_value()),
+            "unindexed_item_count": lambda n : setattr(self, 'unindexed_item_count', n.get_int_value()),
+            "unindexed_items_size": lambda n : setattr(self, 'unindexed_items_size', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,12 +72,12 @@ class EdiscoveryEstimateOperation(CaseOperation):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("indexedItemCount", self.indexed_item_count)
-        writer.write_int_value("indexedItemsSize", self.indexed_items_size)
-        writer.write_int_value("mailboxCount", self.mailbox_count)
+        writer.write_int_value("indexed_item_count", self.indexed_item_count)
+        writer.write_int_value("indexed_items_size", self.indexed_items_size)
+        writer.write_int_value("mailbox_count", self.mailbox_count)
         writer.write_object_value("search", self.search)
-        writer.write_int_value("siteCount", self.site_count)
-        writer.write_int_value("unindexedItemCount", self.unindexed_item_count)
-        writer.write_int_value("unindexedItemsSize", self.unindexed_items_size)
+        writer.write_int_value("site_count", self.site_count)
+        writer.write_int_value("unindexed_item_count", self.unindexed_item_count)
+        writer.write_int_value("unindexed_items_size", self.unindexed_items_size)
     
 

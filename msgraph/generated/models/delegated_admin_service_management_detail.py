@@ -38,8 +38,8 @@ class DelegatedAdminServiceManagementDetail(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "serviceManagementUrl": lambda n : setattr(self, 'service_management_url', n.get_str_value()),
-            "serviceName": lambda n : setattr(self, 'service_name', n.get_str_value()),
+            "service_management_url": lambda n : setattr(self, 'service_management_url', n.get_str_value()),
+            "service_name": lambda n : setattr(self, 'service_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class DelegatedAdminServiceManagementDetail(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("serviceManagementUrl", self.service_management_url)
-        writer.write_str_value("serviceName", self.service_name)
+        writer.write_str_value("service_management_url", self.service_management_url)
+        writer.write_str_value("service_name", self.service_name)
     
 

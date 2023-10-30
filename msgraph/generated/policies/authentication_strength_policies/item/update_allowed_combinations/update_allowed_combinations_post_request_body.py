@@ -38,7 +38,7 @@ class UpdateAllowedCombinationsPostRequestBody(AdditionalDataHolder, BackedModel
         from .....models.authentication_method_modes import AuthenticationMethodModes
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedCombinations": lambda n : setattr(self, 'allowed_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
+            "allowed_combinations": lambda n : setattr(self, 'allowed_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class UpdateAllowedCombinationsPostRequestBody(AdditionalDataHolder, BackedModel
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_enum_values("allowedCombinations", self.allowed_combinations)
+        writer.write_collection_of_enum_values("allowed_combinations", self.allowed_combinations)
         writer.write_additional_data_value(self.additional_data)
     
 

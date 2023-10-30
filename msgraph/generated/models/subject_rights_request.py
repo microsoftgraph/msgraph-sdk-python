@@ -134,29 +134,29 @@ class SubjectRightsRequest(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "approvers": lambda n : setattr(self, 'approvers', n.get_collection_of_object_values(User)),
-            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_object_value(Identity)),
-            "closedDateTime": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
+            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_object_value(Identity)),
+            "closed_date_time": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
             "collaborators": lambda n : setattr(self, 'collaborators', n.get_collection_of_object_values(User)),
-            "contentQuery": lambda n : setattr(self, 'content_query', n.get_str_value()),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "dataSubject": lambda n : setattr(self, 'data_subject', n.get_object_value(DataSubject)),
-            "dataSubjectType": lambda n : setattr(self, 'data_subject_type', n.get_enum_value(DataSubjectType)),
+            "content_query": lambda n : setattr(self, 'content_query', n.get_str_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "data_subject": lambda n : setattr(self, 'data_subject', n.get_object_value(DataSubject)),
+            "data_subject_type": lambda n : setattr(self, 'data_subject_type', n.get_enum_value(DataSubjectType)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(SubjectRightsRequestHistory)),
-            "includeAllVersions": lambda n : setattr(self, 'include_all_versions', n.get_bool_value()),
-            "includeAuthoredContent": lambda n : setattr(self, 'include_authored_content', n.get_bool_value()),
+            "include_all_versions": lambda n : setattr(self, 'include_all_versions', n.get_bool_value()),
+            "include_authored_content": lambda n : setattr(self, 'include_authored_content', n.get_bool_value()),
             "insight": lambda n : setattr(self, 'insight', n.get_object_value(SubjectRightsRequestDetail)),
-            "internalDueDateTime": lambda n : setattr(self, 'internal_due_date_time', n.get_datetime_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "mailboxLocations": lambda n : setattr(self, 'mailbox_locations', n.get_object_value(SubjectRightsRequestMailboxLocation)),
+            "internal_due_date_time": lambda n : setattr(self, 'internal_due_date_time', n.get_datetime_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "mailbox_locations": lambda n : setattr(self, 'mailbox_locations', n.get_object_value(SubjectRightsRequestMailboxLocation)),
             "notes": lambda n : setattr(self, 'notes', n.get_collection_of_object_values(AuthoredNote)),
-            "pauseAfterEstimate": lambda n : setattr(self, 'pause_after_estimate', n.get_bool_value()),
+            "pause_after_estimate": lambda n : setattr(self, 'pause_after_estimate', n.get_bool_value()),
             "regulations": lambda n : setattr(self, 'regulations', n.get_collection_of_primitive_values(str)),
-            "siteLocations": lambda n : setattr(self, 'site_locations', n.get_object_value(SubjectRightsRequestSiteLocation)),
+            "site_locations": lambda n : setattr(self, 'site_locations', n.get_object_value(SubjectRightsRequestSiteLocation)),
             "stages": lambda n : setattr(self, 'stages', n.get_collection_of_object_values(SubjectRightsRequestStageDetail)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(SubjectRightsRequestStatus)),
             "team": lambda n : setattr(self, 'team', n.get_object_value(Team)),
@@ -176,29 +176,29 @@ class SubjectRightsRequest(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("approvers", self.approvers)
-        writer.write_object_value("assignedTo", self.assigned_to)
-        writer.write_datetime_value("closedDateTime", self.closed_date_time)
+        writer.write_object_value("assigned_to", self.assigned_to)
+        writer.write_datetime_value("closed_date_time", self.closed_date_time)
         writer.write_collection_of_object_values("collaborators", self.collaborators)
-        writer.write_str_value("contentQuery", self.content_query)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_object_value("dataSubject", self.data_subject)
-        writer.write_enum_value("dataSubjectType", self.data_subject_type)
+        writer.write_str_value("content_query", self.content_query)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_object_value("data_subject", self.data_subject)
+        writer.write_enum_value("data_subject_type", self.data_subject_type)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("externalId", self.external_id)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("external_id", self.external_id)
         writer.write_collection_of_object_values("history", self.history)
-        writer.write_bool_value("includeAllVersions", self.include_all_versions)
-        writer.write_bool_value("includeAuthoredContent", self.include_authored_content)
+        writer.write_bool_value("include_all_versions", self.include_all_versions)
+        writer.write_bool_value("include_authored_content", self.include_authored_content)
         writer.write_object_value("insight", self.insight)
-        writer.write_datetime_value("internalDueDateTime", self.internal_due_date_time)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_object_value("mailboxLocations", self.mailbox_locations)
+        writer.write_datetime_value("internal_due_date_time", self.internal_due_date_time)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_object_value("mailbox_locations", self.mailbox_locations)
         writer.write_collection_of_object_values("notes", self.notes)
-        writer.write_bool_value("pauseAfterEstimate", self.pause_after_estimate)
+        writer.write_bool_value("pause_after_estimate", self.pause_after_estimate)
         writer.write_collection_of_primitive_values("regulations", self.regulations)
-        writer.write_object_value("siteLocations", self.site_locations)
+        writer.write_object_value("site_locations", self.site_locations)
         writer.write_collection_of_object_values("stages", self.stages)
         writer.write_enum_value("status", self.status)
         writer.write_object_value("team", self.team)

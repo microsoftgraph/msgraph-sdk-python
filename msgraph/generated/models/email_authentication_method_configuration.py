@@ -44,8 +44,8 @@ class EmailAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
         from .external_email_otp_state import ExternalEmailOtpState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowExternalIdToUseEmailOtp": lambda n : setattr(self, 'allow_external_id_to_use_email_otp', n.get_enum_value(ExternalEmailOtpState)),
-            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
+            "allow_external_id_to_use_email_otp": lambda n : setattr(self, 'allow_external_id_to_use_email_otp', n.get_enum_value(ExternalEmailOtpState)),
+            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,7 +60,7 @@ class EmailAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("allowExternalIdToUseEmailOtp", self.allow_external_id_to_use_email_otp)
-        writer.write_collection_of_object_values("includeTargets", self.include_targets)
+        writer.write_enum_value("allow_external_id_to_use_email_otp", self.allow_external_id_to_use_email_otp)
+        writer.write_collection_of_object_values("include_targets", self.include_targets)
     
 

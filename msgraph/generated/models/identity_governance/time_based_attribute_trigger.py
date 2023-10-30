@@ -41,8 +41,8 @@ class TimeBasedAttributeTrigger(WorkflowExecutionTrigger):
         from .workflow_trigger_time_based_attribute import WorkflowTriggerTimeBasedAttribute
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "offsetInDays": lambda n : setattr(self, 'offset_in_days', n.get_int_value()),
-            "timeBasedAttribute": lambda n : setattr(self, 'time_based_attribute', n.get_enum_value(WorkflowTriggerTimeBasedAttribute)),
+            "offset_in_days": lambda n : setattr(self, 'offset_in_days', n.get_int_value()),
+            "time_based_attribute": lambda n : setattr(self, 'time_based_attribute', n.get_enum_value(WorkflowTriggerTimeBasedAttribute)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class TimeBasedAttributeTrigger(WorkflowExecutionTrigger):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("offsetInDays", self.offset_in_days)
-        writer.write_enum_value("timeBasedAttribute", self.time_based_attribute)
+        writer.write_int_value("offset_in_days", self.offset_in_days)
+        writer.write_enum_value("time_based_attribute", self.time_based_attribute)
     
 

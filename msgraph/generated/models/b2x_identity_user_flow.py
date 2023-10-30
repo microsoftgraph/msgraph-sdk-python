@@ -59,11 +59,11 @@ class B2xIdentityUserFlow(IdentityUserFlow):
         from .user_flow_language_configuration import UserFlowLanguageConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "apiConnectorConfiguration": lambda n : setattr(self, 'api_connector_configuration', n.get_object_value(UserFlowApiConnectorConfiguration)),
-            "identityProviders": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(IdentityProvider)),
+            "api_connector_configuration": lambda n : setattr(self, 'api_connector_configuration', n.get_object_value(UserFlowApiConnectorConfiguration)),
+            "identity_providers": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(IdentityProvider)),
             "languages": lambda n : setattr(self, 'languages', n.get_collection_of_object_values(UserFlowLanguageConfiguration)),
-            "userAttributeAssignments": lambda n : setattr(self, 'user_attribute_assignments', n.get_collection_of_object_values(IdentityUserFlowAttributeAssignment)),
-            "userFlowIdentityProviders": lambda n : setattr(self, 'user_flow_identity_providers', n.get_collection_of_object_values(IdentityProviderBase)),
+            "user_attribute_assignments": lambda n : setattr(self, 'user_attribute_assignments', n.get_collection_of_object_values(IdentityUserFlowAttributeAssignment)),
+            "user_flow_identity_providers": lambda n : setattr(self, 'user_flow_identity_providers', n.get_collection_of_object_values(IdentityProviderBase)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,10 +78,10 @@ class B2xIdentityUserFlow(IdentityUserFlow):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("apiConnectorConfiguration", self.api_connector_configuration)
-        writer.write_collection_of_object_values("identityProviders", self.identity_providers)
+        writer.write_object_value("api_connector_configuration", self.api_connector_configuration)
+        writer.write_collection_of_object_values("identity_providers", self.identity_providers)
         writer.write_collection_of_object_values("languages", self.languages)
-        writer.write_collection_of_object_values("userAttributeAssignments", self.user_attribute_assignments)
-        writer.write_collection_of_object_values("userFlowIdentityProviders", self.user_flow_identity_providers)
+        writer.write_collection_of_object_values("user_attribute_assignments", self.user_attribute_assignments)
+        writer.write_collection_of_object_values("user_flow_identity_providers", self.user_flow_identity_providers)
     
 

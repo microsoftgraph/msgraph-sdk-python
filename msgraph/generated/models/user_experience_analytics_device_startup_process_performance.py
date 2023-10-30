@@ -49,12 +49,12 @@ class UserExperienceAnalyticsDeviceStartupProcessPerformance(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
-            "medianImpactInMs": lambda n : setattr(self, 'median_impact_in_ms', n.get_int_value()),
-            "processName": lambda n : setattr(self, 'process_name', n.get_str_value()),
-            "productName": lambda n : setattr(self, 'product_name', n.get_str_value()),
+            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "median_impact_in_ms": lambda n : setattr(self, 'median_impact_in_ms', n.get_int_value()),
+            "process_name": lambda n : setattr(self, 'process_name', n.get_str_value()),
+            "product_name": lambda n : setattr(self, 'product_name', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "totalImpactInMs": lambda n : setattr(self, 'total_impact_in_ms', n.get_int_value()),
+            "total_impact_in_ms": lambda n : setattr(self, 'total_impact_in_ms', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,11 +69,11 @@ class UserExperienceAnalyticsDeviceStartupProcessPerformance(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("deviceCount", self.device_count)
-        writer.write_int_value("medianImpactInMs", self.median_impact_in_ms)
-        writer.write_str_value("processName", self.process_name)
-        writer.write_str_value("productName", self.product_name)
+        writer.write_int_value("device_count", self.device_count)
+        writer.write_int_value("median_impact_in_ms", self.median_impact_in_ms)
+        writer.write_str_value("process_name", self.process_name)
+        writer.write_str_value("product_name", self.product_name)
         writer.write_str_value("publisher", self.publisher)
-        writer.write_int_value("totalImpactInMs", self.total_impact_in_ms)
+        writer.write_int_value("total_impact_in_ms", self.total_impact_in_ms)
     
 

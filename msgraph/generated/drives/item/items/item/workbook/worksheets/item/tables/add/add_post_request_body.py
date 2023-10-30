@@ -34,7 +34,7 @@ class AddPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
-            "hasHeaders": lambda n : setattr(self, 'has_headers', n.get_bool_value()),
+            "has_headers": lambda n : setattr(self, 'has_headers', n.get_bool_value()),
         }
         return fields
     
@@ -47,7 +47,7 @@ class AddPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("address", self.address)
-        writer.write_bool_value("hasHeaders", self.has_headers)
+        writer.write_bool_value("has_headers", self.has_headers)
         writer.write_additional_data_value(self.additional_data)
     
 

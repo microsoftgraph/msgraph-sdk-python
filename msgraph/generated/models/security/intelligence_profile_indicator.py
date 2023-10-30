@@ -39,8 +39,8 @@ class IntelligenceProfileIndicator(Indicator):
         from .indicator import Indicator
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
-            "lastSeenDateTime": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
+            "first_seen_date_time": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
+            "last_seen_date_time": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,7 +55,7 @@ class IntelligenceProfileIndicator(Indicator):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
-        writer.write_datetime_value("lastSeenDateTime", self.last_seen_date_time)
+        writer.write_datetime_value("first_seen_date_time", self.first_seen_date_time)
+        writer.write_datetime_value("last_seen_date_time", self.last_seen_date_time)
     
 

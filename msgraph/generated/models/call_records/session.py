@@ -65,12 +65,12 @@ class Session(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "callee": lambda n : setattr(self, 'callee', n.get_object_value(Endpoint)),
             "caller": lambda n : setattr(self, 'caller', n.get_object_value(Endpoint)),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "failureInfo": lambda n : setattr(self, 'failure_info', n.get_object_value(FailureInfo)),
-            "isTest": lambda n : setattr(self, 'is_test', n.get_bool_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "failure_info": lambda n : setattr(self, 'failure_info', n.get_object_value(FailureInfo)),
+            "is_test": lambda n : setattr(self, 'is_test', n.get_bool_value()),
             "modalities": lambda n : setattr(self, 'modalities', n.get_collection_of_enum_values(Modality)),
             "segments": lambda n : setattr(self, 'segments', n.get_collection_of_object_values(Segment)),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -87,11 +87,11 @@ class Session(Entity):
         super().serialize(writer)
         writer.write_object_value("callee", self.callee)
         writer.write_object_value("caller", self.caller)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_object_value("failureInfo", self.failure_info)
-        writer.write_bool_value("isTest", self.is_test)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_object_value("failure_info", self.failure_info)
+        writer.write_bool_value("is_test", self.is_test)
         writer.write_collection_of_enum_values("modalities", self.modalities)
         writer.write_collection_of_object_values("segments", self.segments)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
     
 

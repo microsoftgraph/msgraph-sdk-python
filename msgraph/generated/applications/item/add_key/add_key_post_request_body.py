@@ -45,8 +45,8 @@ class AddKeyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ....models.password_credential import PasswordCredential
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "keyCredential": lambda n : setattr(self, 'key_credential', n.get_object_value(KeyCredential)),
-            "passwordCredential": lambda n : setattr(self, 'password_credential', n.get_object_value(PasswordCredential)),
+            "key_credential": lambda n : setattr(self, 'key_credential', n.get_object_value(KeyCredential)),
+            "password_credential": lambda n : setattr(self, 'password_credential', n.get_object_value(PasswordCredential)),
             "proof": lambda n : setattr(self, 'proof', n.get_str_value()),
         }
         return fields
@@ -59,8 +59,8 @@ class AddKeyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("keyCredential", self.key_credential)
-        writer.write_object_value("passwordCredential", self.password_credential)
+        writer.write_object_value("key_credential", self.key_credential)
+        writer.write_object_value("password_credential", self.password_credential)
         writer.write_str_value("proof", self.proof)
         writer.write_additional_data_value(self.additional_data)
     

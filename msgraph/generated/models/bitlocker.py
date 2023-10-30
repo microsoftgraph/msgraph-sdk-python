@@ -39,7 +39,7 @@ class Bitlocker(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "recoveryKeys": lambda n : setattr(self, 'recovery_keys', n.get_collection_of_object_values(BitlockerRecoveryKey)),
+            "recovery_keys": lambda n : setattr(self, 'recovery_keys', n.get_collection_of_object_values(BitlockerRecoveryKey)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class Bitlocker(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("recoveryKeys", self.recovery_keys)
+        writer.write_collection_of_object_values("recovery_keys", self.recovery_keys)
     
 

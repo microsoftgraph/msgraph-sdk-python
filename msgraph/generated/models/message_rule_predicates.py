@@ -110,37 +110,37 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
         from .size_range import SizeRange
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "bodyContains": lambda n : setattr(self, 'body_contains', n.get_collection_of_primitive_values(str)),
-            "bodyOrSubjectContains": lambda n : setattr(self, 'body_or_subject_contains', n.get_collection_of_primitive_values(str)),
+            "body_contains": lambda n : setattr(self, 'body_contains', n.get_collection_of_primitive_values(str)),
+            "body_or_subject_contains": lambda n : setattr(self, 'body_or_subject_contains', n.get_collection_of_primitive_values(str)),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
-            "fromAddresses": lambda n : setattr(self, 'from_addresses', n.get_collection_of_object_values(Recipient)),
-            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "headerContains": lambda n : setattr(self, 'header_contains', n.get_collection_of_primitive_values(str)),
+            "from_addresses": lambda n : setattr(self, 'from_addresses', n.get_collection_of_object_values(Recipient)),
+            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "header_contains": lambda n : setattr(self, 'header_contains', n.get_collection_of_primitive_values(str)),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(Importance)),
-            "isApprovalRequest": lambda n : setattr(self, 'is_approval_request', n.get_bool_value()),
-            "isAutomaticForward": lambda n : setattr(self, 'is_automatic_forward', n.get_bool_value()),
-            "isAutomaticReply": lambda n : setattr(self, 'is_automatic_reply', n.get_bool_value()),
-            "isEncrypted": lambda n : setattr(self, 'is_encrypted', n.get_bool_value()),
-            "isMeetingRequest": lambda n : setattr(self, 'is_meeting_request', n.get_bool_value()),
-            "isMeetingResponse": lambda n : setattr(self, 'is_meeting_response', n.get_bool_value()),
-            "isNonDeliveryReport": lambda n : setattr(self, 'is_non_delivery_report', n.get_bool_value()),
-            "isPermissionControlled": lambda n : setattr(self, 'is_permission_controlled', n.get_bool_value()),
-            "isReadReceipt": lambda n : setattr(self, 'is_read_receipt', n.get_bool_value()),
-            "isSigned": lambda n : setattr(self, 'is_signed', n.get_bool_value()),
-            "isVoicemail": lambda n : setattr(self, 'is_voicemail', n.get_bool_value()),
-            "messageActionFlag": lambda n : setattr(self, 'message_action_flag', n.get_enum_value(MessageActionFlag)),
-            "notSentToMe": lambda n : setattr(self, 'not_sent_to_me', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recipientContains": lambda n : setattr(self, 'recipient_contains', n.get_collection_of_primitive_values(str)),
-            "senderContains": lambda n : setattr(self, 'sender_contains', n.get_collection_of_primitive_values(str)),
+            "is_approval_request": lambda n : setattr(self, 'is_approval_request', n.get_bool_value()),
+            "is_automatic_forward": lambda n : setattr(self, 'is_automatic_forward', n.get_bool_value()),
+            "is_automatic_reply": lambda n : setattr(self, 'is_automatic_reply', n.get_bool_value()),
+            "is_encrypted": lambda n : setattr(self, 'is_encrypted', n.get_bool_value()),
+            "is_meeting_request": lambda n : setattr(self, 'is_meeting_request', n.get_bool_value()),
+            "is_meeting_response": lambda n : setattr(self, 'is_meeting_response', n.get_bool_value()),
+            "is_non_delivery_report": lambda n : setattr(self, 'is_non_delivery_report', n.get_bool_value()),
+            "is_permission_controlled": lambda n : setattr(self, 'is_permission_controlled', n.get_bool_value()),
+            "is_read_receipt": lambda n : setattr(self, 'is_read_receipt', n.get_bool_value()),
+            "is_signed": lambda n : setattr(self, 'is_signed', n.get_bool_value()),
+            "is_voicemail": lambda n : setattr(self, 'is_voicemail', n.get_bool_value()),
+            "message_action_flag": lambda n : setattr(self, 'message_action_flag', n.get_enum_value(MessageActionFlag)),
+            "not_sent_to_me": lambda n : setattr(self, 'not_sent_to_me', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "recipient_contains": lambda n : setattr(self, 'recipient_contains', n.get_collection_of_primitive_values(str)),
+            "sender_contains": lambda n : setattr(self, 'sender_contains', n.get_collection_of_primitive_values(str)),
             "sensitivity": lambda n : setattr(self, 'sensitivity', n.get_enum_value(Sensitivity)),
-            "sentCcMe": lambda n : setattr(self, 'sent_cc_me', n.get_bool_value()),
-            "sentOnlyToMe": lambda n : setattr(self, 'sent_only_to_me', n.get_bool_value()),
-            "sentToAddresses": lambda n : setattr(self, 'sent_to_addresses', n.get_collection_of_object_values(Recipient)),
-            "sentToMe": lambda n : setattr(self, 'sent_to_me', n.get_bool_value()),
-            "sentToOrCcMe": lambda n : setattr(self, 'sent_to_or_cc_me', n.get_bool_value()),
-            "subjectContains": lambda n : setattr(self, 'subject_contains', n.get_collection_of_primitive_values(str)),
-            "withinSizeRange": lambda n : setattr(self, 'within_size_range', n.get_object_value(SizeRange)),
+            "sent_cc_me": lambda n : setattr(self, 'sent_cc_me', n.get_bool_value()),
+            "sent_only_to_me": lambda n : setattr(self, 'sent_only_to_me', n.get_bool_value()),
+            "sent_to_addresses": lambda n : setattr(self, 'sent_to_addresses', n.get_collection_of_object_values(Recipient)),
+            "sent_to_me": lambda n : setattr(self, 'sent_to_me', n.get_bool_value()),
+            "sent_to_or_cc_me": lambda n : setattr(self, 'sent_to_or_cc_me', n.get_bool_value()),
+            "subject_contains": lambda n : setattr(self, 'subject_contains', n.get_collection_of_primitive_values(str)),
+            "within_size_range": lambda n : setattr(self, 'within_size_range', n.get_object_value(SizeRange)),
         }
         return fields
     
@@ -152,37 +152,37 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("bodyContains", self.body_contains)
-        writer.write_collection_of_primitive_values("bodyOrSubjectContains", self.body_or_subject_contains)
+        writer.write_collection_of_primitive_values("body_contains", self.body_contains)
+        writer.write_collection_of_primitive_values("body_or_subject_contains", self.body_or_subject_contains)
         writer.write_collection_of_primitive_values("categories", self.categories)
-        writer.write_collection_of_object_values("fromAddresses", self.from_addresses)
-        writer.write_bool_value("hasAttachments", self.has_attachments)
-        writer.write_collection_of_primitive_values("headerContains", self.header_contains)
+        writer.write_collection_of_object_values("from_addresses", self.from_addresses)
+        writer.write_bool_value("has_attachments", self.has_attachments)
+        writer.write_collection_of_primitive_values("header_contains", self.header_contains)
         writer.write_enum_value("importance", self.importance)
-        writer.write_bool_value("isApprovalRequest", self.is_approval_request)
-        writer.write_bool_value("isAutomaticForward", self.is_automatic_forward)
-        writer.write_bool_value("isAutomaticReply", self.is_automatic_reply)
-        writer.write_bool_value("isEncrypted", self.is_encrypted)
-        writer.write_bool_value("isMeetingRequest", self.is_meeting_request)
-        writer.write_bool_value("isMeetingResponse", self.is_meeting_response)
-        writer.write_bool_value("isNonDeliveryReport", self.is_non_delivery_report)
-        writer.write_bool_value("isPermissionControlled", self.is_permission_controlled)
-        writer.write_bool_value("isReadReceipt", self.is_read_receipt)
-        writer.write_bool_value("isSigned", self.is_signed)
-        writer.write_bool_value("isVoicemail", self.is_voicemail)
-        writer.write_enum_value("messageActionFlag", self.message_action_flag)
-        writer.write_bool_value("notSentToMe", self.not_sent_to_me)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_primitive_values("recipientContains", self.recipient_contains)
-        writer.write_collection_of_primitive_values("senderContains", self.sender_contains)
+        writer.write_bool_value("is_approval_request", self.is_approval_request)
+        writer.write_bool_value("is_automatic_forward", self.is_automatic_forward)
+        writer.write_bool_value("is_automatic_reply", self.is_automatic_reply)
+        writer.write_bool_value("is_encrypted", self.is_encrypted)
+        writer.write_bool_value("is_meeting_request", self.is_meeting_request)
+        writer.write_bool_value("is_meeting_response", self.is_meeting_response)
+        writer.write_bool_value("is_non_delivery_report", self.is_non_delivery_report)
+        writer.write_bool_value("is_permission_controlled", self.is_permission_controlled)
+        writer.write_bool_value("is_read_receipt", self.is_read_receipt)
+        writer.write_bool_value("is_signed", self.is_signed)
+        writer.write_bool_value("is_voicemail", self.is_voicemail)
+        writer.write_enum_value("message_action_flag", self.message_action_flag)
+        writer.write_bool_value("not_sent_to_me", self.not_sent_to_me)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_primitive_values("recipient_contains", self.recipient_contains)
+        writer.write_collection_of_primitive_values("sender_contains", self.sender_contains)
         writer.write_enum_value("sensitivity", self.sensitivity)
-        writer.write_bool_value("sentCcMe", self.sent_cc_me)
-        writer.write_bool_value("sentOnlyToMe", self.sent_only_to_me)
-        writer.write_collection_of_object_values("sentToAddresses", self.sent_to_addresses)
-        writer.write_bool_value("sentToMe", self.sent_to_me)
-        writer.write_bool_value("sentToOrCcMe", self.sent_to_or_cc_me)
-        writer.write_collection_of_primitive_values("subjectContains", self.subject_contains)
-        writer.write_object_value("withinSizeRange", self.within_size_range)
+        writer.write_bool_value("sent_cc_me", self.sent_cc_me)
+        writer.write_bool_value("sent_only_to_me", self.sent_only_to_me)
+        writer.write_collection_of_object_values("sent_to_addresses", self.sent_to_addresses)
+        writer.write_bool_value("sent_to_me", self.sent_to_me)
+        writer.write_bool_value("sent_to_or_cc_me", self.sent_to_or_cc_me)
+        writer.write_collection_of_primitive_values("subject_contains", self.subject_contains)
+        writer.write_object_value("within_size_range", self.within_size_range)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -37,10 +37,10 @@ class ServiceUpdateMessageViewpoint(AdditionalDataHolder, BackedModel, Parsable)
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "isArchived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
-            "isFavorited": lambda n : setattr(self, 'is_favorited', n.get_bool_value()),
-            "isRead": lambda n : setattr(self, 'is_read', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "is_archived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
+            "is_favorited": lambda n : setattr(self, 'is_favorited', n.get_bool_value()),
+            "is_read": lambda n : setattr(self, 'is_read', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -52,10 +52,10 @@ class ServiceUpdateMessageViewpoint(AdditionalDataHolder, BackedModel, Parsable)
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("isArchived", self.is_archived)
-        writer.write_bool_value("isFavorited", self.is_favorited)
-        writer.write_bool_value("isRead", self.is_read)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("is_archived", self.is_archived)
+        writer.write_bool_value("is_favorited", self.is_favorited)
+        writer.write_bool_value("is_read", self.is_read)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

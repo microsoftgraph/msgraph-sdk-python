@@ -39,11 +39,11 @@ class TopicModelingSettings(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "dynamicallyAdjustTopicCount": lambda n : setattr(self, 'dynamically_adjust_topic_count', n.get_bool_value()),
-            "ignoreNumbers": lambda n : setattr(self, 'ignore_numbers', n.get_bool_value()),
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "topicCount": lambda n : setattr(self, 'topic_count', n.get_int_value()),
+            "dynamically_adjust_topic_count": lambda n : setattr(self, 'dynamically_adjust_topic_count', n.get_bool_value()),
+            "ignore_numbers": lambda n : setattr(self, 'ignore_numbers', n.get_bool_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "topic_count": lambda n : setattr(self, 'topic_count', n.get_int_value()),
         }
         return fields
     
@@ -55,11 +55,11 @@ class TopicModelingSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("dynamicallyAdjustTopicCount", self.dynamically_adjust_topic_count)
-        writer.write_bool_value("ignoreNumbers", self.ignore_numbers)
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("topicCount", self.topic_count)
+        writer.write_bool_value("dynamically_adjust_topic_count", self.dynamically_adjust_topic_count)
+        writer.write_bool_value("ignore_numbers", self.ignore_numbers)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("topic_count", self.topic_count)
         writer.write_additional_data_value(self.additional_data)
     
 

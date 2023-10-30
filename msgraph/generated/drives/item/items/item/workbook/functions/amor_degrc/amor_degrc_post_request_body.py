@@ -52,8 +52,8 @@ class AmorDegrcPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "basis": lambda n : setattr(self, 'basis', n.get_object_value(Json)),
             "cost": lambda n : setattr(self, 'cost', n.get_object_value(Json)),
-            "datePurchased": lambda n : setattr(self, 'date_purchased', n.get_object_value(Json)),
-            "firstPeriod": lambda n : setattr(self, 'first_period', n.get_object_value(Json)),
+            "date_purchased": lambda n : setattr(self, 'date_purchased', n.get_object_value(Json)),
+            "first_period": lambda n : setattr(self, 'first_period', n.get_object_value(Json)),
             "period": lambda n : setattr(self, 'period', n.get_object_value(Json)),
             "rate": lambda n : setattr(self, 'rate', n.get_object_value(Json)),
             "salvage": lambda n : setattr(self, 'salvage', n.get_object_value(Json)),
@@ -70,8 +70,8 @@ class AmorDegrcPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("basis", self.basis)
         writer.write_object_value("cost", self.cost)
-        writer.write_object_value("datePurchased", self.date_purchased)
-        writer.write_object_value("firstPeriod", self.first_period)
+        writer.write_object_value("date_purchased", self.date_purchased)
+        writer.write_object_value("first_period", self.first_period)
         writer.write_object_value("period", self.period)
         writer.write_object_value("rate", self.rate)
         writer.write_object_value("salvage", self.salvage)

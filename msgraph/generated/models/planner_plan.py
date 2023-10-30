@@ -68,8 +68,8 @@ class PlannerPlan(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "buckets": lambda n : setattr(self, 'buckets', n.get_collection_of_object_values(PlannerBucket)),
             "container": lambda n : setattr(self, 'container', n.get_object_value(PlannerPlanContainer)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "details": lambda n : setattr(self, 'details', n.get_object_value(PlannerPlanDetails)),
             "owner": lambda n : setattr(self, 'owner', n.get_str_value()),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(PlannerTask)),
@@ -90,8 +90,8 @@ class PlannerPlan(Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("buckets", self.buckets)
         writer.write_object_value("container", self.container)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_object_value("details", self.details)
         writer.write_str_value("owner", self.owner)
         writer.write_collection_of_object_values("tasks", self.tasks)

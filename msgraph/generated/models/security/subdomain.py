@@ -42,7 +42,7 @@ class Subdomain(Entity):
         from .host import Host
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
+            "first_seen_date_time": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
             "host": lambda n : setattr(self, 'host', n.get_object_value(Host)),
         }
         super_fields = super().get_field_deserializers()
@@ -58,7 +58,7 @@ class Subdomain(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
+        writer.write_datetime_value("first_seen_date_time", self.first_seen_date_time)
         writer.write_object_value("host", self.host)
     
 

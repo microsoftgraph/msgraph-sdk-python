@@ -45,10 +45,10 @@ class UserFlowLanguageConfiguration(Entity):
         from .user_flow_language_page import UserFlowLanguagePage
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "defaultPages": lambda n : setattr(self, 'default_pages', n.get_collection_of_object_values(UserFlowLanguagePage)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "overridesPages": lambda n : setattr(self, 'overrides_pages', n.get_collection_of_object_values(UserFlowLanguagePage)),
+            "default_pages": lambda n : setattr(self, 'default_pages', n.get_collection_of_object_values(UserFlowLanguagePage)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "overrides_pages": lambda n : setattr(self, 'overrides_pages', n.get_collection_of_object_values(UserFlowLanguagePage)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,9 +63,9 @@ class UserFlowLanguageConfiguration(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("defaultPages", self.default_pages)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_collection_of_object_values("overridesPages", self.overrides_pages)
+        writer.write_collection_of_object_values("default_pages", self.default_pages)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_collection_of_object_values("overrides_pages", self.overrides_pages)
     
 

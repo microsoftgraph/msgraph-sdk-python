@@ -60,13 +60,13 @@ class ConnectedOrganization(Entity):
         from .identity_source import IdentitySource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "externalSponsors": lambda n : setattr(self, 'external_sponsors', n.get_collection_of_object_values(DirectoryObject)),
-            "identitySources": lambda n : setattr(self, 'identity_sources', n.get_collection_of_object_values(IdentitySource)),
-            "internalSponsors": lambda n : setattr(self, 'internal_sponsors', n.get_collection_of_object_values(DirectoryObject)),
-            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "external_sponsors": lambda n : setattr(self, 'external_sponsors', n.get_collection_of_object_values(DirectoryObject)),
+            "identity_sources": lambda n : setattr(self, 'identity_sources', n.get_collection_of_object_values(IdentitySource)),
+            "internal_sponsors": lambda n : setattr(self, 'internal_sponsors', n.get_collection_of_object_values(DirectoryObject)),
+            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(ConnectedOrganizationState)),
         }
         super_fields = super().get_field_deserializers()
@@ -82,13 +82,13 @@ class ConnectedOrganization(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_object_values("externalSponsors", self.external_sponsors)
-        writer.write_collection_of_object_values("identitySources", self.identity_sources)
-        writer.write_collection_of_object_values("internalSponsors", self.internal_sponsors)
-        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_object_values("external_sponsors", self.external_sponsors)
+        writer.write_collection_of_object_values("identity_sources", self.identity_sources)
+        writer.write_collection_of_object_values("internal_sponsors", self.internal_sponsors)
+        writer.write_datetime_value("modified_date_time", self.modified_date_time)
         writer.write_enum_value("state", self.state)
     
 

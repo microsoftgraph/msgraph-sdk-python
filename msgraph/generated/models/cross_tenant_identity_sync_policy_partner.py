@@ -44,10 +44,10 @@ class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, BackedModel, Pa
         from .cross_tenant_user_sync_inbound import CrossTenantUserSyncInbound
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "userSyncInbound": lambda n : setattr(self, 'user_sync_inbound', n.get_object_value(CrossTenantUserSyncInbound)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "user_sync_inbound": lambda n : setattr(self, 'user_sync_inbound', n.get_object_value(CrossTenantUserSyncInbound)),
         }
         return fields
     
@@ -59,10 +59,10 @@ class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, BackedModel, Pa
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("tenantId", self.tenant_id)
-        writer.write_object_value("userSyncInbound", self.user_sync_inbound)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("tenant_id", self.tenant_id)
+        writer.write_object_value("user_sync_inbound", self.user_sync_inbound)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -59,16 +59,16 @@ class IosNotificationSettings(AdditionalDataHolder, BackedModel, Parsable):
         from .ios_notification_alert_type import IosNotificationAlertType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "alertType": lambda n : setattr(self, 'alert_type', n.get_enum_value(IosNotificationAlertType)),
-            "appName": lambda n : setattr(self, 'app_name', n.get_str_value()),
-            "badgesEnabled": lambda n : setattr(self, 'badges_enabled', n.get_bool_value()),
-            "bundleID": lambda n : setattr(self, 'bundle_i_d', n.get_str_value()),
+            "alert_type": lambda n : setattr(self, 'alert_type', n.get_enum_value(IosNotificationAlertType)),
+            "app_name": lambda n : setattr(self, 'app_name', n.get_str_value()),
+            "badges_enabled": lambda n : setattr(self, 'badges_enabled', n.get_bool_value()),
+            "bundle_i_d": lambda n : setattr(self, 'bundle_i_d', n.get_str_value()),
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "showInNotificationCenter": lambda n : setattr(self, 'show_in_notification_center', n.get_bool_value()),
-            "showOnLockScreen": lambda n : setattr(self, 'show_on_lock_screen', n.get_bool_value()),
-            "soundsEnabled": lambda n : setattr(self, 'sounds_enabled', n.get_bool_value()),
+            "show_in_notification_center": lambda n : setattr(self, 'show_in_notification_center', n.get_bool_value()),
+            "show_on_lock_screen": lambda n : setattr(self, 'show_on_lock_screen', n.get_bool_value()),
+            "sounds_enabled": lambda n : setattr(self, 'sounds_enabled', n.get_bool_value()),
         }
         return fields
     
@@ -80,16 +80,16 @@ class IosNotificationSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("alertType", self.alert_type)
-        writer.write_str_value("appName", self.app_name)
-        writer.write_bool_value("badgesEnabled", self.badges_enabled)
-        writer.write_str_value("bundleID", self.bundle_i_d)
+        writer.write_enum_value("alert_type", self.alert_type)
+        writer.write_str_value("app_name", self.app_name)
+        writer.write_bool_value("badges_enabled", self.badges_enabled)
+        writer.write_str_value("bundle_i_d", self.bundle_i_d)
         writer.write_bool_value("enabled", self.enabled)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("publisher", self.publisher)
-        writer.write_bool_value("showInNotificationCenter", self.show_in_notification_center)
-        writer.write_bool_value("showOnLockScreen", self.show_on_lock_screen)
-        writer.write_bool_value("soundsEnabled", self.sounds_enabled)
+        writer.write_bool_value("show_in_notification_center", self.show_in_notification_center)
+        writer.write_bool_value("show_on_lock_screen", self.show_on_lock_screen)
+        writer.write_bool_value("sounds_enabled", self.sounds_enabled)
         writer.write_additional_data_value(self.additional_data)
     
 

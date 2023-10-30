@@ -145,54 +145,54 @@ class AndroidGeneralDeviceConfiguration(DeviceConfiguration):
         from .web_browser_cookie_settings import WebBrowserCookieSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appsBlockClipboardSharing": lambda n : setattr(self, 'apps_block_clipboard_sharing', n.get_bool_value()),
-            "appsBlockCopyPaste": lambda n : setattr(self, 'apps_block_copy_paste', n.get_bool_value()),
-            "appsBlockYouTube": lambda n : setattr(self, 'apps_block_you_tube', n.get_bool_value()),
-            "appsHideList": lambda n : setattr(self, 'apps_hide_list', n.get_collection_of_object_values(AppListItem)),
-            "appsInstallAllowList": lambda n : setattr(self, 'apps_install_allow_list', n.get_collection_of_object_values(AppListItem)),
-            "appsLaunchBlockList": lambda n : setattr(self, 'apps_launch_block_list', n.get_collection_of_object_values(AppListItem)),
-            "bluetoothBlocked": lambda n : setattr(self, 'bluetooth_blocked', n.get_bool_value()),
-            "cameraBlocked": lambda n : setattr(self, 'camera_blocked', n.get_bool_value()),
-            "cellularBlockDataRoaming": lambda n : setattr(self, 'cellular_block_data_roaming', n.get_bool_value()),
-            "cellularBlockMessaging": lambda n : setattr(self, 'cellular_block_messaging', n.get_bool_value()),
-            "cellularBlockVoiceRoaming": lambda n : setattr(self, 'cellular_block_voice_roaming', n.get_bool_value()),
-            "cellularBlockWiFiTethering": lambda n : setattr(self, 'cellular_block_wi_fi_tethering', n.get_bool_value()),
-            "compliantAppListType": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(AppListType)),
-            "compliantAppsList": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(AppListItem)),
-            "deviceSharingAllowed": lambda n : setattr(self, 'device_sharing_allowed', n.get_bool_value()),
-            "diagnosticDataBlockSubmission": lambda n : setattr(self, 'diagnostic_data_block_submission', n.get_bool_value()),
-            "factoryResetBlocked": lambda n : setattr(self, 'factory_reset_blocked', n.get_bool_value()),
-            "googleAccountBlockAutoSync": lambda n : setattr(self, 'google_account_block_auto_sync', n.get_bool_value()),
-            "googlePlayStoreBlocked": lambda n : setattr(self, 'google_play_store_blocked', n.get_bool_value()),
-            "kioskModeApps": lambda n : setattr(self, 'kiosk_mode_apps', n.get_collection_of_object_values(AppListItem)),
-            "kioskModeBlockSleepButton": lambda n : setattr(self, 'kiosk_mode_block_sleep_button', n.get_bool_value()),
-            "kioskModeBlockVolumeButtons": lambda n : setattr(self, 'kiosk_mode_block_volume_buttons', n.get_bool_value()),
-            "locationServicesBlocked": lambda n : setattr(self, 'location_services_blocked', n.get_bool_value()),
-            "nfcBlocked": lambda n : setattr(self, 'nfc_blocked', n.get_bool_value()),
-            "passwordBlockFingerprintUnlock": lambda n : setattr(self, 'password_block_fingerprint_unlock', n.get_bool_value()),
-            "passwordBlockTrustAgents": lambda n : setattr(self, 'password_block_trust_agents', n.get_bool_value()),
-            "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
-            "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
-            "passwordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
-            "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(AndroidRequiredPasswordType)),
-            "passwordSignInFailureCountBeforeFactoryReset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
-            "powerOffBlocked": lambda n : setattr(self, 'power_off_blocked', n.get_bool_value()),
-            "screenCaptureBlocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
-            "securityRequireVerifyApps": lambda n : setattr(self, 'security_require_verify_apps', n.get_bool_value()),
-            "storageBlockGoogleBackup": lambda n : setattr(self, 'storage_block_google_backup', n.get_bool_value()),
-            "storageBlockRemovableStorage": lambda n : setattr(self, 'storage_block_removable_storage', n.get_bool_value()),
-            "storageRequireDeviceEncryption": lambda n : setattr(self, 'storage_require_device_encryption', n.get_bool_value()),
-            "storageRequireRemovableStorageEncryption": lambda n : setattr(self, 'storage_require_removable_storage_encryption', n.get_bool_value()),
-            "voiceAssistantBlocked": lambda n : setattr(self, 'voice_assistant_blocked', n.get_bool_value()),
-            "voiceDialingBlocked": lambda n : setattr(self, 'voice_dialing_blocked', n.get_bool_value()),
-            "webBrowserBlockAutofill": lambda n : setattr(self, 'web_browser_block_autofill', n.get_bool_value()),
-            "webBrowserBlockJavaScript": lambda n : setattr(self, 'web_browser_block_java_script', n.get_bool_value()),
-            "webBrowserBlockPopups": lambda n : setattr(self, 'web_browser_block_popups', n.get_bool_value()),
-            "webBrowserBlocked": lambda n : setattr(self, 'web_browser_blocked', n.get_bool_value()),
-            "webBrowserCookieSettings": lambda n : setattr(self, 'web_browser_cookie_settings', n.get_enum_value(WebBrowserCookieSettings)),
-            "wiFiBlocked": lambda n : setattr(self, 'wi_fi_blocked', n.get_bool_value()),
+            "apps_block_clipboard_sharing": lambda n : setattr(self, 'apps_block_clipboard_sharing', n.get_bool_value()),
+            "apps_block_copy_paste": lambda n : setattr(self, 'apps_block_copy_paste', n.get_bool_value()),
+            "apps_block_you_tube": lambda n : setattr(self, 'apps_block_you_tube', n.get_bool_value()),
+            "apps_hide_list": lambda n : setattr(self, 'apps_hide_list', n.get_collection_of_object_values(AppListItem)),
+            "apps_install_allow_list": lambda n : setattr(self, 'apps_install_allow_list', n.get_collection_of_object_values(AppListItem)),
+            "apps_launch_block_list": lambda n : setattr(self, 'apps_launch_block_list', n.get_collection_of_object_values(AppListItem)),
+            "bluetooth_blocked": lambda n : setattr(self, 'bluetooth_blocked', n.get_bool_value()),
+            "camera_blocked": lambda n : setattr(self, 'camera_blocked', n.get_bool_value()),
+            "cellular_block_data_roaming": lambda n : setattr(self, 'cellular_block_data_roaming', n.get_bool_value()),
+            "cellular_block_messaging": lambda n : setattr(self, 'cellular_block_messaging', n.get_bool_value()),
+            "cellular_block_voice_roaming": lambda n : setattr(self, 'cellular_block_voice_roaming', n.get_bool_value()),
+            "cellular_block_wi_fi_tethering": lambda n : setattr(self, 'cellular_block_wi_fi_tethering', n.get_bool_value()),
+            "compliant_app_list_type": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(AppListType)),
+            "compliant_apps_list": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(AppListItem)),
+            "device_sharing_allowed": lambda n : setattr(self, 'device_sharing_allowed', n.get_bool_value()),
+            "diagnostic_data_block_submission": lambda n : setattr(self, 'diagnostic_data_block_submission', n.get_bool_value()),
+            "factory_reset_blocked": lambda n : setattr(self, 'factory_reset_blocked', n.get_bool_value()),
+            "google_account_block_auto_sync": lambda n : setattr(self, 'google_account_block_auto_sync', n.get_bool_value()),
+            "google_play_store_blocked": lambda n : setattr(self, 'google_play_store_blocked', n.get_bool_value()),
+            "kiosk_mode_apps": lambda n : setattr(self, 'kiosk_mode_apps', n.get_collection_of_object_values(AppListItem)),
+            "kiosk_mode_block_sleep_button": lambda n : setattr(self, 'kiosk_mode_block_sleep_button', n.get_bool_value()),
+            "kiosk_mode_block_volume_buttons": lambda n : setattr(self, 'kiosk_mode_block_volume_buttons', n.get_bool_value()),
+            "location_services_blocked": lambda n : setattr(self, 'location_services_blocked', n.get_bool_value()),
+            "nfc_blocked": lambda n : setattr(self, 'nfc_blocked', n.get_bool_value()),
+            "password_block_fingerprint_unlock": lambda n : setattr(self, 'password_block_fingerprint_unlock', n.get_bool_value()),
+            "password_block_trust_agents": lambda n : setattr(self, 'password_block_trust_agents', n.get_bool_value()),
+            "password_expiration_days": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
+            "password_minimum_length": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
+            "password_minutes_of_inactivity_before_screen_timeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
+            "password_previous_password_block_count": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
+            "password_required": lambda n : setattr(self, 'password_required', n.get_bool_value()),
+            "password_required_type": lambda n : setattr(self, 'password_required_type', n.get_enum_value(AndroidRequiredPasswordType)),
+            "password_sign_in_failure_count_before_factory_reset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
+            "power_off_blocked": lambda n : setattr(self, 'power_off_blocked', n.get_bool_value()),
+            "screen_capture_blocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
+            "security_require_verify_apps": lambda n : setattr(self, 'security_require_verify_apps', n.get_bool_value()),
+            "storage_block_google_backup": lambda n : setattr(self, 'storage_block_google_backup', n.get_bool_value()),
+            "storage_block_removable_storage": lambda n : setattr(self, 'storage_block_removable_storage', n.get_bool_value()),
+            "storage_require_device_encryption": lambda n : setattr(self, 'storage_require_device_encryption', n.get_bool_value()),
+            "storage_require_removable_storage_encryption": lambda n : setattr(self, 'storage_require_removable_storage_encryption', n.get_bool_value()),
+            "voice_assistant_blocked": lambda n : setattr(self, 'voice_assistant_blocked', n.get_bool_value()),
+            "voice_dialing_blocked": lambda n : setattr(self, 'voice_dialing_blocked', n.get_bool_value()),
+            "web_browser_block_autofill": lambda n : setattr(self, 'web_browser_block_autofill', n.get_bool_value()),
+            "web_browser_block_java_script": lambda n : setattr(self, 'web_browser_block_java_script', n.get_bool_value()),
+            "web_browser_block_popups": lambda n : setattr(self, 'web_browser_block_popups', n.get_bool_value()),
+            "web_browser_blocked": lambda n : setattr(self, 'web_browser_blocked', n.get_bool_value()),
+            "web_browser_cookie_settings": lambda n : setattr(self, 'web_browser_cookie_settings', n.get_enum_value(WebBrowserCookieSettings)),
+            "wi_fi_blocked": lambda n : setattr(self, 'wi_fi_blocked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -207,53 +207,53 @@ class AndroidGeneralDeviceConfiguration(DeviceConfiguration):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("appsBlockClipboardSharing", self.apps_block_clipboard_sharing)
-        writer.write_bool_value("appsBlockCopyPaste", self.apps_block_copy_paste)
-        writer.write_bool_value("appsBlockYouTube", self.apps_block_you_tube)
-        writer.write_collection_of_object_values("appsHideList", self.apps_hide_list)
-        writer.write_collection_of_object_values("appsInstallAllowList", self.apps_install_allow_list)
-        writer.write_collection_of_object_values("appsLaunchBlockList", self.apps_launch_block_list)
-        writer.write_bool_value("bluetoothBlocked", self.bluetooth_blocked)
-        writer.write_bool_value("cameraBlocked", self.camera_blocked)
-        writer.write_bool_value("cellularBlockDataRoaming", self.cellular_block_data_roaming)
-        writer.write_bool_value("cellularBlockMessaging", self.cellular_block_messaging)
-        writer.write_bool_value("cellularBlockVoiceRoaming", self.cellular_block_voice_roaming)
-        writer.write_bool_value("cellularBlockWiFiTethering", self.cellular_block_wi_fi_tethering)
-        writer.write_enum_value("compliantAppListType", self.compliant_app_list_type)
-        writer.write_collection_of_object_values("compliantAppsList", self.compliant_apps_list)
-        writer.write_bool_value("deviceSharingAllowed", self.device_sharing_allowed)
-        writer.write_bool_value("diagnosticDataBlockSubmission", self.diagnostic_data_block_submission)
-        writer.write_bool_value("factoryResetBlocked", self.factory_reset_blocked)
-        writer.write_bool_value("googleAccountBlockAutoSync", self.google_account_block_auto_sync)
-        writer.write_bool_value("googlePlayStoreBlocked", self.google_play_store_blocked)
-        writer.write_collection_of_object_values("kioskModeApps", self.kiosk_mode_apps)
-        writer.write_bool_value("kioskModeBlockSleepButton", self.kiosk_mode_block_sleep_button)
-        writer.write_bool_value("kioskModeBlockVolumeButtons", self.kiosk_mode_block_volume_buttons)
-        writer.write_bool_value("locationServicesBlocked", self.location_services_blocked)
-        writer.write_bool_value("nfcBlocked", self.nfc_blocked)
-        writer.write_bool_value("passwordBlockFingerprintUnlock", self.password_block_fingerprint_unlock)
-        writer.write_bool_value("passwordBlockTrustAgents", self.password_block_trust_agents)
-        writer.write_int_value("passwordExpirationDays", self.password_expiration_days)
-        writer.write_int_value("passwordMinimumLength", self.password_minimum_length)
-        writer.write_int_value("passwordMinutesOfInactivityBeforeScreenTimeout", self.password_minutes_of_inactivity_before_screen_timeout)
-        writer.write_int_value("passwordPreviousPasswordBlockCount", self.password_previous_password_block_count)
-        writer.write_bool_value("passwordRequired", self.password_required)
-        writer.write_enum_value("passwordRequiredType", self.password_required_type)
-        writer.write_int_value("passwordSignInFailureCountBeforeFactoryReset", self.password_sign_in_failure_count_before_factory_reset)
-        writer.write_bool_value("powerOffBlocked", self.power_off_blocked)
-        writer.write_bool_value("screenCaptureBlocked", self.screen_capture_blocked)
-        writer.write_bool_value("securityRequireVerifyApps", self.security_require_verify_apps)
-        writer.write_bool_value("storageBlockGoogleBackup", self.storage_block_google_backup)
-        writer.write_bool_value("storageBlockRemovableStorage", self.storage_block_removable_storage)
-        writer.write_bool_value("storageRequireDeviceEncryption", self.storage_require_device_encryption)
-        writer.write_bool_value("storageRequireRemovableStorageEncryption", self.storage_require_removable_storage_encryption)
-        writer.write_bool_value("voiceAssistantBlocked", self.voice_assistant_blocked)
-        writer.write_bool_value("voiceDialingBlocked", self.voice_dialing_blocked)
-        writer.write_bool_value("webBrowserBlockAutofill", self.web_browser_block_autofill)
-        writer.write_bool_value("webBrowserBlockJavaScript", self.web_browser_block_java_script)
-        writer.write_bool_value("webBrowserBlockPopups", self.web_browser_block_popups)
-        writer.write_bool_value("webBrowserBlocked", self.web_browser_blocked)
-        writer.write_enum_value("webBrowserCookieSettings", self.web_browser_cookie_settings)
-        writer.write_bool_value("wiFiBlocked", self.wi_fi_blocked)
+        writer.write_bool_value("apps_block_clipboard_sharing", self.apps_block_clipboard_sharing)
+        writer.write_bool_value("apps_block_copy_paste", self.apps_block_copy_paste)
+        writer.write_bool_value("apps_block_you_tube", self.apps_block_you_tube)
+        writer.write_collection_of_object_values("apps_hide_list", self.apps_hide_list)
+        writer.write_collection_of_object_values("apps_install_allow_list", self.apps_install_allow_list)
+        writer.write_collection_of_object_values("apps_launch_block_list", self.apps_launch_block_list)
+        writer.write_bool_value("bluetooth_blocked", self.bluetooth_blocked)
+        writer.write_bool_value("camera_blocked", self.camera_blocked)
+        writer.write_bool_value("cellular_block_data_roaming", self.cellular_block_data_roaming)
+        writer.write_bool_value("cellular_block_messaging", self.cellular_block_messaging)
+        writer.write_bool_value("cellular_block_voice_roaming", self.cellular_block_voice_roaming)
+        writer.write_bool_value("cellular_block_wi_fi_tethering", self.cellular_block_wi_fi_tethering)
+        writer.write_enum_value("compliant_app_list_type", self.compliant_app_list_type)
+        writer.write_collection_of_object_values("compliant_apps_list", self.compliant_apps_list)
+        writer.write_bool_value("device_sharing_allowed", self.device_sharing_allowed)
+        writer.write_bool_value("diagnostic_data_block_submission", self.diagnostic_data_block_submission)
+        writer.write_bool_value("factory_reset_blocked", self.factory_reset_blocked)
+        writer.write_bool_value("google_account_block_auto_sync", self.google_account_block_auto_sync)
+        writer.write_bool_value("google_play_store_blocked", self.google_play_store_blocked)
+        writer.write_collection_of_object_values("kiosk_mode_apps", self.kiosk_mode_apps)
+        writer.write_bool_value("kiosk_mode_block_sleep_button", self.kiosk_mode_block_sleep_button)
+        writer.write_bool_value("kiosk_mode_block_volume_buttons", self.kiosk_mode_block_volume_buttons)
+        writer.write_bool_value("location_services_blocked", self.location_services_blocked)
+        writer.write_bool_value("nfc_blocked", self.nfc_blocked)
+        writer.write_bool_value("password_block_fingerprint_unlock", self.password_block_fingerprint_unlock)
+        writer.write_bool_value("password_block_trust_agents", self.password_block_trust_agents)
+        writer.write_int_value("password_expiration_days", self.password_expiration_days)
+        writer.write_int_value("password_minimum_length", self.password_minimum_length)
+        writer.write_int_value("password_minutes_of_inactivity_before_screen_timeout", self.password_minutes_of_inactivity_before_screen_timeout)
+        writer.write_int_value("password_previous_password_block_count", self.password_previous_password_block_count)
+        writer.write_bool_value("password_required", self.password_required)
+        writer.write_enum_value("password_required_type", self.password_required_type)
+        writer.write_int_value("password_sign_in_failure_count_before_factory_reset", self.password_sign_in_failure_count_before_factory_reset)
+        writer.write_bool_value("power_off_blocked", self.power_off_blocked)
+        writer.write_bool_value("screen_capture_blocked", self.screen_capture_blocked)
+        writer.write_bool_value("security_require_verify_apps", self.security_require_verify_apps)
+        writer.write_bool_value("storage_block_google_backup", self.storage_block_google_backup)
+        writer.write_bool_value("storage_block_removable_storage", self.storage_block_removable_storage)
+        writer.write_bool_value("storage_require_device_encryption", self.storage_require_device_encryption)
+        writer.write_bool_value("storage_require_removable_storage_encryption", self.storage_require_removable_storage_encryption)
+        writer.write_bool_value("voice_assistant_blocked", self.voice_assistant_blocked)
+        writer.write_bool_value("voice_dialing_blocked", self.voice_dialing_blocked)
+        writer.write_bool_value("web_browser_block_autofill", self.web_browser_block_autofill)
+        writer.write_bool_value("web_browser_block_java_script", self.web_browser_block_java_script)
+        writer.write_bool_value("web_browser_block_popups", self.web_browser_block_popups)
+        writer.write_bool_value("web_browser_blocked", self.web_browser_blocked)
+        writer.write_enum_value("web_browser_cookie_settings", self.web_browser_cookie_settings)
+        writer.write_bool_value("wi_fi_blocked", self.wi_fi_blocked)
     
 

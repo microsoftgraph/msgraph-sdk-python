@@ -38,7 +38,7 @@ class JoinMeetingIdMeetingInfo(MeetingInfo):
         from .meeting_info import MeetingInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "joinMeetingId": lambda n : setattr(self, 'join_meeting_id', n.get_str_value()),
+            "join_meeting_id": lambda n : setattr(self, 'join_meeting_id', n.get_str_value()),
             "passcode": lambda n : setattr(self, 'passcode', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -54,7 +54,7 @@ class JoinMeetingIdMeetingInfo(MeetingInfo):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("joinMeetingId", self.join_meeting_id)
+        writer.write_str_value("join_meeting_id", self.join_meeting_id)
         writer.write_str_value("passcode", self.passcode)
     
 

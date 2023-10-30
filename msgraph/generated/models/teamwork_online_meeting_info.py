@@ -44,9 +44,9 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, BackedModel, Parsable):
         from .teamwork_user_identity import TeamworkUserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "calendarEventId": lambda n : setattr(self, 'calendar_event_id', n.get_str_value()),
-            "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "calendar_event_id": lambda n : setattr(self, 'calendar_event_id', n.get_str_value()),
+            "join_web_url": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(TeamworkUserIdentity)),
         }
         return fields
@@ -59,9 +59,9 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("calendarEventId", self.calendar_event_id)
-        writer.write_str_value("joinWebUrl", self.join_web_url)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("calendar_event_id", self.calendar_event_id)
+        writer.write_str_value("join_web_url", self.join_web_url)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("organizer", self.organizer)
         writer.write_additional_data_value(self.additional_data)
     

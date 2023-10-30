@@ -76,7 +76,7 @@ class OnenoteEntitySchemaObjectModel(OnenoteEntityBaseModel):
         from .section_group import SectionGroup
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -91,6 +91,6 @@ class OnenoteEntitySchemaObjectModel(OnenoteEntityBaseModel):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
     
 

@@ -162,44 +162,44 @@ class EducationUser(Entity):
         from .user import User
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
-            "assignedLicenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(AssignedLicense)),
-            "assignedPlans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(AssignedPlan)),
+            "account_enabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
+            "assigned_licenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(AssignedLicense)),
+            "assigned_plans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(AssignedPlan)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(EducationAssignment)),
-            "businessPhones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
+            "business_phones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
             "classes": lambda n : setattr(self, 'classes', n.get_collection_of_object_values(EducationClass)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(EducationExternalSource)),
-            "externalSourceDetail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
-            "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "external_source": lambda n : setattr(self, 'external_source', n.get_enum_value(EducationExternalSource)),
+            "external_source_detail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
+            "given_name": lambda n : setattr(self, 'given_name', n.get_str_value()),
             "mail": lambda n : setattr(self, 'mail', n.get_str_value()),
-            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "mailingAddress": lambda n : setattr(self, 'mailing_address', n.get_object_value(PhysicalAddress)),
-            "middleName": lambda n : setattr(self, 'middle_name', n.get_str_value()),
-            "mobilePhone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
-            "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
-            "onPremisesInfo": lambda n : setattr(self, 'on_premises_info', n.get_object_value(EducationOnPremisesInfo)),
-            "passwordPolicies": lambda n : setattr(self, 'password_policies', n.get_str_value()),
-            "passwordProfile": lambda n : setattr(self, 'password_profile', n.get_object_value(PasswordProfile)),
-            "preferredLanguage": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
-            "primaryRole": lambda n : setattr(self, 'primary_role', n.get_enum_value(EducationUserRole)),
-            "provisionedPlans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(ProvisionedPlan)),
-            "refreshTokensValidFromDateTime": lambda n : setattr(self, 'refresh_tokens_valid_from_date_time', n.get_datetime_value()),
-            "relatedContacts": lambda n : setattr(self, 'related_contacts', n.get_collection_of_object_values(RelatedContact)),
-            "residenceAddress": lambda n : setattr(self, 'residence_address', n.get_object_value(PhysicalAddress)),
+            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "mailing_address": lambda n : setattr(self, 'mailing_address', n.get_object_value(PhysicalAddress)),
+            "middle_name": lambda n : setattr(self, 'middle_name', n.get_str_value()),
+            "mobile_phone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
+            "office_location": lambda n : setattr(self, 'office_location', n.get_str_value()),
+            "on_premises_info": lambda n : setattr(self, 'on_premises_info', n.get_object_value(EducationOnPremisesInfo)),
+            "password_policies": lambda n : setattr(self, 'password_policies', n.get_str_value()),
+            "password_profile": lambda n : setattr(self, 'password_profile', n.get_object_value(PasswordProfile)),
+            "preferred_language": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
+            "primary_role": lambda n : setattr(self, 'primary_role', n.get_enum_value(EducationUserRole)),
+            "provisioned_plans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(ProvisionedPlan)),
+            "refresh_tokens_valid_from_date_time": lambda n : setattr(self, 'refresh_tokens_valid_from_date_time', n.get_datetime_value()),
+            "related_contacts": lambda n : setattr(self, 'related_contacts', n.get_collection_of_object_values(RelatedContact)),
+            "residence_address": lambda n : setattr(self, 'residence_address', n.get_object_value(PhysicalAddress)),
             "rubrics": lambda n : setattr(self, 'rubrics', n.get_collection_of_object_values(EducationRubric)),
             "schools": lambda n : setattr(self, 'schools', n.get_collection_of_object_values(EducationSchool)),
-            "showInAddressList": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
+            "show_in_address_list": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
             "student": lambda n : setattr(self, 'student', n.get_object_value(EducationStudent)),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
-            "taughtClasses": lambda n : setattr(self, 'taught_classes', n.get_collection_of_object_values(EducationClass)),
+            "taught_classes": lambda n : setattr(self, 'taught_classes', n.get_collection_of_object_values(EducationClass)),
             "teacher": lambda n : setattr(self, 'teacher', n.get_object_value(EducationTeacher)),
-            "usageLocation": lambda n : setattr(self, 'usage_location', n.get_str_value()),
+            "usage_location": lambda n : setattr(self, 'usage_location', n.get_str_value()),
             "user": lambda n : setattr(self, 'user', n.get_object_value(User)),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
-            "userType": lambda n : setattr(self, 'user_type', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "user_type": lambda n : setattr(self, 'user_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -214,43 +214,43 @@ class EducationUser(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("accountEnabled", self.account_enabled)
-        writer.write_collection_of_object_values("assignedLicenses", self.assigned_licenses)
-        writer.write_collection_of_object_values("assignedPlans", self.assigned_plans)
+        writer.write_bool_value("account_enabled", self.account_enabled)
+        writer.write_collection_of_object_values("assigned_licenses", self.assigned_licenses)
+        writer.write_collection_of_object_values("assigned_plans", self.assigned_plans)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_collection_of_primitive_values("businessPhones", self.business_phones)
+        writer.write_collection_of_primitive_values("business_phones", self.business_phones)
         writer.write_collection_of_object_values("classes", self.classes)
-        writer.write_object_value("createdBy", self.created_by)
+        writer.write_object_value("created_by", self.created_by)
         writer.write_str_value("department", self.department)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_enum_value("externalSource", self.external_source)
-        writer.write_str_value("externalSourceDetail", self.external_source_detail)
-        writer.write_str_value("givenName", self.given_name)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_enum_value("external_source", self.external_source)
+        writer.write_str_value("external_source_detail", self.external_source_detail)
+        writer.write_str_value("given_name", self.given_name)
         writer.write_str_value("mail", self.mail)
-        writer.write_str_value("mailNickname", self.mail_nickname)
-        writer.write_object_value("mailingAddress", self.mailing_address)
-        writer.write_str_value("middleName", self.middle_name)
-        writer.write_str_value("mobilePhone", self.mobile_phone)
-        writer.write_str_value("officeLocation", self.office_location)
-        writer.write_object_value("onPremisesInfo", self.on_premises_info)
-        writer.write_str_value("passwordPolicies", self.password_policies)
-        writer.write_object_value("passwordProfile", self.password_profile)
-        writer.write_str_value("preferredLanguage", self.preferred_language)
-        writer.write_enum_value("primaryRole", self.primary_role)
-        writer.write_collection_of_object_values("provisionedPlans", self.provisioned_plans)
-        writer.write_datetime_value("refreshTokensValidFromDateTime", self.refresh_tokens_valid_from_date_time)
-        writer.write_collection_of_object_values("relatedContacts", self.related_contacts)
-        writer.write_object_value("residenceAddress", self.residence_address)
+        writer.write_str_value("mail_nickname", self.mail_nickname)
+        writer.write_object_value("mailing_address", self.mailing_address)
+        writer.write_str_value("middle_name", self.middle_name)
+        writer.write_str_value("mobile_phone", self.mobile_phone)
+        writer.write_str_value("office_location", self.office_location)
+        writer.write_object_value("on_premises_info", self.on_premises_info)
+        writer.write_str_value("password_policies", self.password_policies)
+        writer.write_object_value("password_profile", self.password_profile)
+        writer.write_str_value("preferred_language", self.preferred_language)
+        writer.write_enum_value("primary_role", self.primary_role)
+        writer.write_collection_of_object_values("provisioned_plans", self.provisioned_plans)
+        writer.write_datetime_value("refresh_tokens_valid_from_date_time", self.refresh_tokens_valid_from_date_time)
+        writer.write_collection_of_object_values("related_contacts", self.related_contacts)
+        writer.write_object_value("residence_address", self.residence_address)
         writer.write_collection_of_object_values("rubrics", self.rubrics)
         writer.write_collection_of_object_values("schools", self.schools)
-        writer.write_bool_value("showInAddressList", self.show_in_address_list)
+        writer.write_bool_value("show_in_address_list", self.show_in_address_list)
         writer.write_object_value("student", self.student)
         writer.write_str_value("surname", self.surname)
-        writer.write_collection_of_object_values("taughtClasses", self.taught_classes)
+        writer.write_collection_of_object_values("taught_classes", self.taught_classes)
         writer.write_object_value("teacher", self.teacher)
-        writer.write_str_value("usageLocation", self.usage_location)
+        writer.write_str_value("usage_location", self.usage_location)
         writer.write_object_value("user", self.user)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
-        writer.write_str_value("userType", self.user_type)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
+        writer.write_str_value("user_type", self.user_type)
     
 

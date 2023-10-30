@@ -52,10 +52,10 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, BackedMode
         from .exclude_target import ExcludeTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "excludeTargets": lambda n : setattr(self, 'exclude_targets', n.get_collection_of_object_values(ExcludeTarget)),
-            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodsRegistrationCampaignIncludeTarget)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "snoozeDurationInDays": lambda n : setattr(self, 'snooze_duration_in_days', n.get_int_value()),
+            "exclude_targets": lambda n : setattr(self, 'exclude_targets', n.get_collection_of_object_values(ExcludeTarget)),
+            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodsRegistrationCampaignIncludeTarget)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "snooze_duration_in_days": lambda n : setattr(self, 'snooze_duration_in_days', n.get_int_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(AdvancedConfigState)),
         }
         return fields
@@ -68,10 +68,10 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, BackedMode
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("excludeTargets", self.exclude_targets)
-        writer.write_collection_of_object_values("includeTargets", self.include_targets)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("snoozeDurationInDays", self.snooze_duration_in_days)
+        writer.write_collection_of_object_values("exclude_targets", self.exclude_targets)
+        writer.write_collection_of_object_values("include_targets", self.include_targets)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("snooze_duration_in_days", self.snooze_duration_in_days)
         writer.write_enum_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)
     

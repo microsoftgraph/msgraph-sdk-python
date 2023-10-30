@@ -39,7 +39,7 @@ class Initiator(Identity):
         from .initiator_type import InitiatorType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "initiatorType": lambda n : setattr(self, 'initiator_type', n.get_enum_value(InitiatorType)),
+            "initiator_type": lambda n : setattr(self, 'initiator_type', n.get_enum_value(InitiatorType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class Initiator(Identity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("initiatorType", self.initiator_type)
+        writer.write_enum_value("initiator_type", self.initiator_type)
     
 

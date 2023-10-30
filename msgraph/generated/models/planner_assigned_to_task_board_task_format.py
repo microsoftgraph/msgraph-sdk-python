@@ -41,8 +41,8 @@ class PlannerAssignedToTaskBoardTaskFormat(Entity):
         from .planner_order_hints_by_assignee import PlannerOrderHintsByAssignee
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "orderHintsByAssignee": lambda n : setattr(self, 'order_hints_by_assignee', n.get_object_value(PlannerOrderHintsByAssignee)),
-            "unassignedOrderHint": lambda n : setattr(self, 'unassigned_order_hint', n.get_str_value()),
+            "order_hints_by_assignee": lambda n : setattr(self, 'order_hints_by_assignee', n.get_object_value(PlannerOrderHintsByAssignee)),
+            "unassigned_order_hint": lambda n : setattr(self, 'unassigned_order_hint', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class PlannerAssignedToTaskBoardTaskFormat(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("orderHintsByAssignee", self.order_hints_by_assignee)
-        writer.write_str_value("unassignedOrderHint", self.unassigned_order_hint)
+        writer.write_object_value("order_hints_by_assignee", self.order_hints_by_assignee)
+        writer.write_str_value("unassigned_order_hint", self.unassigned_order_hint)
     
 

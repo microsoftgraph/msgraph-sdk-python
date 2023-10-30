@@ -58,12 +58,12 @@ class PrivilegedAccessGroupEligibilitySchedule(PrivilegedAccessSchedule):
         from .privileged_access_schedule import PrivilegedAccessSchedule
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessId": lambda n : setattr(self, 'access_id', n.get_enum_value(PrivilegedAccessGroupRelationships)),
+            "access_id": lambda n : setattr(self, 'access_id', n.get_enum_value(PrivilegedAccessGroupRelationships)),
             "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
-            "groupId": lambda n : setattr(self, 'group_id', n.get_str_value()),
-            "memberType": lambda n : setattr(self, 'member_type', n.get_enum_value(PrivilegedAccessGroupMemberType)),
+            "group_id": lambda n : setattr(self, 'group_id', n.get_str_value()),
+            "member_type": lambda n : setattr(self, 'member_type', n.get_enum_value(PrivilegedAccessGroupMemberType)),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(DirectoryObject)),
-            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,11 +78,11 @@ class PrivilegedAccessGroupEligibilitySchedule(PrivilegedAccessSchedule):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("accessId", self.access_id)
+        writer.write_enum_value("access_id", self.access_id)
         writer.write_object_value("group", self.group)
-        writer.write_str_value("groupId", self.group_id)
-        writer.write_enum_value("memberType", self.member_type)
+        writer.write_str_value("group_id", self.group_id)
+        writer.write_enum_value("member_type", self.member_type)
         writer.write_object_value("principal", self.principal)
-        writer.write_str_value("principalId", self.principal_id)
+        writer.write_str_value("principal_id", self.principal_id)
     
 

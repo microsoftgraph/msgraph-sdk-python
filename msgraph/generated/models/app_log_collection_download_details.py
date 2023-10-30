@@ -44,10 +44,10 @@ class AppLogCollectionDownloadDetails(AdditionalDataHolder, BackedModel, Parsabl
         from .app_log_decryption_algorithm import AppLogDecryptionAlgorithm
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appLogDecryptionAlgorithm": lambda n : setattr(self, 'app_log_decryption_algorithm', n.get_enum_value(AppLogDecryptionAlgorithm)),
-            "decryptionKey": lambda n : setattr(self, 'decryption_key', n.get_str_value()),
-            "downloadUrl": lambda n : setattr(self, 'download_url', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "app_log_decryption_algorithm": lambda n : setattr(self, 'app_log_decryption_algorithm', n.get_enum_value(AppLogDecryptionAlgorithm)),
+            "decryption_key": lambda n : setattr(self, 'decryption_key', n.get_str_value()),
+            "download_url": lambda n : setattr(self, 'download_url', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -59,10 +59,10 @@ class AppLogCollectionDownloadDetails(AdditionalDataHolder, BackedModel, Parsabl
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("appLogDecryptionAlgorithm", self.app_log_decryption_algorithm)
-        writer.write_str_value("decryptionKey", self.decryption_key)
-        writer.write_str_value("downloadUrl", self.download_url)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_enum_value("app_log_decryption_algorithm", self.app_log_decryption_algorithm)
+        writer.write_str_value("decryption_key", self.decryption_key)
+        writer.write_str_value("download_url", self.download_url)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

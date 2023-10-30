@@ -42,8 +42,8 @@ class ComplexPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "iNum": lambda n : setattr(self, 'i_num', n.get_object_value(Json)),
-            "realNum": lambda n : setattr(self, 'real_num', n.get_object_value(Json)),
+            "i_num": lambda n : setattr(self, 'i_num', n.get_object_value(Json)),
+            "real_num": lambda n : setattr(self, 'real_num', n.get_object_value(Json)),
             "suffix": lambda n : setattr(self, 'suffix', n.get_object_value(Json)),
         }
         return fields
@@ -56,8 +56,8 @@ class ComplexPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("iNum", self.i_num)
-        writer.write_object_value("realNum", self.real_num)
+        writer.write_object_value("i_num", self.i_num)
+        writer.write_object_value("real_num", self.real_num)
         writer.write_object_value("suffix", self.suffix)
         writer.write_additional_data_value(self.additional_data)
     

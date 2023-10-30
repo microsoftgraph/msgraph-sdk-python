@@ -72,17 +72,17 @@ class ServiceUpdateMessage(ServiceAnnouncementBase):
         from .service_update_severity import ServiceUpdateSeverity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "actionRequiredByDateTime": lambda n : setattr(self, 'action_required_by_date_time', n.get_datetime_value()),
+            "action_required_by_date_time": lambda n : setattr(self, 'action_required_by_date_time', n.get_datetime_value()),
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(ServiceAnnouncementAttachment)),
-            "attachmentsArchive": lambda n : setattr(self, 'attachments_archive', n.get_bytes_value()),
+            "attachments_archive": lambda n : setattr(self, 'attachments_archive', n.get_bytes_value()),
             "body": lambda n : setattr(self, 'body', n.get_object_value(ItemBody)),
             "category": lambda n : setattr(self, 'category', n.get_enum_value(ServiceUpdateCategory)),
-            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "isMajorChange": lambda n : setattr(self, 'is_major_change', n.get_bool_value()),
+            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "is_major_change": lambda n : setattr(self, 'is_major_change', n.get_bool_value()),
             "services": lambda n : setattr(self, 'services', n.get_collection_of_primitive_values(str)),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(ServiceUpdateSeverity)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
-            "viewPoint": lambda n : setattr(self, 'view_point', n.get_object_value(ServiceUpdateMessageViewpoint)),
+            "view_point": lambda n : setattr(self, 'view_point', n.get_object_value(ServiceUpdateMessageViewpoint)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -97,16 +97,16 @@ class ServiceUpdateMessage(ServiceAnnouncementBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("actionRequiredByDateTime", self.action_required_by_date_time)
+        writer.write_datetime_value("action_required_by_date_time", self.action_required_by_date_time)
         writer.write_collection_of_object_values("attachments", self.attachments)
-        writer.write_bytes_value("attachmentsArchive", self.attachments_archive)
+        writer.write_bytes_value("attachments_archive", self.attachments_archive)
         writer.write_object_value("body", self.body)
         writer.write_enum_value("category", self.category)
-        writer.write_bool_value("hasAttachments", self.has_attachments)
-        writer.write_bool_value("isMajorChange", self.is_major_change)
+        writer.write_bool_value("has_attachments", self.has_attachments)
+        writer.write_bool_value("is_major_change", self.is_major_change)
         writer.write_collection_of_primitive_values("services", self.services)
         writer.write_enum_value("severity", self.severity)
         writer.write_collection_of_primitive_values("tags", self.tags)
-        writer.write_object_value("viewPoint", self.view_point)
+        writer.write_object_value("view_point", self.view_point)
     
 

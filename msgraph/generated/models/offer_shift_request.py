@@ -54,10 +54,10 @@ class OfferShiftRequest(ScheduleChangeRequest):
         from .swap_shifts_change_request import SwapShiftsChangeRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "recipientActionDateTime": lambda n : setattr(self, 'recipient_action_date_time', n.get_datetime_value()),
-            "recipientActionMessage": lambda n : setattr(self, 'recipient_action_message', n.get_str_value()),
-            "recipientUserId": lambda n : setattr(self, 'recipient_user_id', n.get_str_value()),
-            "senderShiftId": lambda n : setattr(self, 'sender_shift_id', n.get_str_value()),
+            "recipient_action_date_time": lambda n : setattr(self, 'recipient_action_date_time', n.get_datetime_value()),
+            "recipient_action_message": lambda n : setattr(self, 'recipient_action_message', n.get_str_value()),
+            "recipient_user_id": lambda n : setattr(self, 'recipient_user_id', n.get_str_value()),
+            "sender_shift_id": lambda n : setattr(self, 'sender_shift_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,8 +72,8 @@ class OfferShiftRequest(ScheduleChangeRequest):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("recipientActionMessage", self.recipient_action_message)
-        writer.write_str_value("recipientUserId", self.recipient_user_id)
-        writer.write_str_value("senderShiftId", self.sender_shift_id)
+        writer.write_str_value("recipient_action_message", self.recipient_action_message)
+        writer.write_str_value("recipient_user_id", self.recipient_user_id)
+        writer.write_str_value("sender_shift_id", self.sender_shift_id)
     
 

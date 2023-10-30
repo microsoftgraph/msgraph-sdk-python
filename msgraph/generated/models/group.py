@@ -131,7 +131,7 @@ class Group(DirectoryObject):
     photos: Optional[List[ProfilePhoto]] = None
     # Entry-point to Planner resource that might exist for a Unified Group.
     planner: Optional[PlannerGroup] = None
-    # The preferred data location for the Microsoft 365 group. By default, the group inherits the group creator's preferred data location. To set this property, the calling user must be assigned one of the following Microsoft Entra roles:  Global Administrator  User Account Administrator Directory Writer  Exchange Administrator  SharePoint Administrator  For more information about this property, see OneDrive Online Multi-Geo. Nullable. Returned by default.
+    # The preferred data location for the Microsoft 365 group. By default, the group inherits the group creator's preferred data location. To set this property, the calling app must be granted the Directory.ReadWrite.All permission and the user be assigned one of the following Microsoft Entra roles:  Global Administrator  User Account Administrator Directory Writer  Exchange Administrator  SharePoint Administrator  For more information about this property, see OneDrive Online Multi-Geo. Nullable. Returned by default.
     preferred_data_location: Optional[str] = None
     # The preferred language for a Microsoft 365 group. Should follow ISO 639-1 Code; for example en-US. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     preferred_language: Optional[str] = None
@@ -227,71 +227,71 @@ class Group(DirectoryObject):
         from .team import Team
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "acceptedSenders": lambda n : setattr(self, 'accepted_senders', n.get_collection_of_object_values(DirectoryObject)),
-            "allowExternalSenders": lambda n : setattr(self, 'allow_external_senders', n.get_bool_value()),
-            "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(AppRoleAssignment)),
-            "assignedLabels": lambda n : setattr(self, 'assigned_labels', n.get_collection_of_object_values(AssignedLabel)),
-            "assignedLicenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(AssignedLicense)),
-            "autoSubscribeNewMembers": lambda n : setattr(self, 'auto_subscribe_new_members', n.get_bool_value()),
+            "accepted_senders": lambda n : setattr(self, 'accepted_senders', n.get_collection_of_object_values(DirectoryObject)),
+            "allow_external_senders": lambda n : setattr(self, 'allow_external_senders', n.get_bool_value()),
+            "app_role_assignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(AppRoleAssignment)),
+            "assigned_labels": lambda n : setattr(self, 'assigned_labels', n.get_collection_of_object_values(AssignedLabel)),
+            "assigned_licenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(AssignedLicense)),
+            "auto_subscribe_new_members": lambda n : setattr(self, 'auto_subscribe_new_members', n.get_bool_value()),
             "calendar": lambda n : setattr(self, 'calendar', n.get_object_value(Calendar)),
-            "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(Event)),
+            "calendar_view": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(Event)),
             "classification": lambda n : setattr(self, 'classification', n.get_str_value()),
             "conversations": lambda n : setattr(self, 'conversations', n.get_collection_of_object_values(Conversation)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "createdOnBehalfOf": lambda n : setattr(self, 'created_on_behalf_of', n.get_object_value(DirectoryObject)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_on_behalf_of": lambda n : setattr(self, 'created_on_behalf_of', n.get_object_value(DirectoryObject)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "drive": lambda n : setattr(self, 'drive', n.get_object_value(Drive)),
             "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(Drive)),
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(Event)),
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
-            "groupLifecyclePolicies": lambda n : setattr(self, 'group_lifecycle_policies', n.get_collection_of_object_values(GroupLifecyclePolicy)),
-            "groupTypes": lambda n : setattr(self, 'group_types', n.get_collection_of_primitive_values(str)),
-            "hasMembersWithLicenseErrors": lambda n : setattr(self, 'has_members_with_license_errors', n.get_bool_value()),
-            "hideFromAddressLists": lambda n : setattr(self, 'hide_from_address_lists', n.get_bool_value()),
-            "hideFromOutlookClients": lambda n : setattr(self, 'hide_from_outlook_clients', n.get_bool_value()),
-            "isArchived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
-            "isAssignableToRole": lambda n : setattr(self, 'is_assignable_to_role', n.get_bool_value()),
-            "isSubscribedByMail": lambda n : setattr(self, 'is_subscribed_by_mail', n.get_bool_value()),
-            "licenseProcessingState": lambda n : setattr(self, 'license_processing_state', n.get_object_value(LicenseProcessingState)),
+            "group_lifecycle_policies": lambda n : setattr(self, 'group_lifecycle_policies', n.get_collection_of_object_values(GroupLifecyclePolicy)),
+            "group_types": lambda n : setattr(self, 'group_types', n.get_collection_of_primitive_values(str)),
+            "has_members_with_license_errors": lambda n : setattr(self, 'has_members_with_license_errors', n.get_bool_value()),
+            "hide_from_address_lists": lambda n : setattr(self, 'hide_from_address_lists', n.get_bool_value()),
+            "hide_from_outlook_clients": lambda n : setattr(self, 'hide_from_outlook_clients', n.get_bool_value()),
+            "is_archived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
+            "is_assignable_to_role": lambda n : setattr(self, 'is_assignable_to_role', n.get_bool_value()),
+            "is_subscribed_by_mail": lambda n : setattr(self, 'is_subscribed_by_mail', n.get_bool_value()),
+            "license_processing_state": lambda n : setattr(self, 'license_processing_state', n.get_object_value(LicenseProcessingState)),
             "mail": lambda n : setattr(self, 'mail', n.get_str_value()),
-            "mailEnabled": lambda n : setattr(self, 'mail_enabled', n.get_bool_value()),
-            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
+            "mail_enabled": lambda n : setattr(self, 'mail_enabled', n.get_bool_value()),
+            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "member_of": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(DirectoryObject)),
-            "membersWithLicenseErrors": lambda n : setattr(self, 'members_with_license_errors', n.get_collection_of_object_values(DirectoryObject)),
-            "membershipRule": lambda n : setattr(self, 'membership_rule', n.get_str_value()),
-            "membershipRuleProcessingState": lambda n : setattr(self, 'membership_rule_processing_state', n.get_str_value()),
-            "onPremisesDomainName": lambda n : setattr(self, 'on_premises_domain_name', n.get_str_value()),
-            "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
-            "onPremisesNetBiosName": lambda n : setattr(self, 'on_premises_net_bios_name', n.get_str_value()),
-            "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(OnPremisesProvisioningError)),
-            "onPremisesSamAccountName": lambda n : setattr(self, 'on_premises_sam_account_name', n.get_str_value()),
-            "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
-            "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
+            "members_with_license_errors": lambda n : setattr(self, 'members_with_license_errors', n.get_collection_of_object_values(DirectoryObject)),
+            "membership_rule": lambda n : setattr(self, 'membership_rule', n.get_str_value()),
+            "membership_rule_processing_state": lambda n : setattr(self, 'membership_rule_processing_state', n.get_str_value()),
+            "on_premises_domain_name": lambda n : setattr(self, 'on_premises_domain_name', n.get_str_value()),
+            "on_premises_last_sync_date_time": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
+            "on_premises_net_bios_name": lambda n : setattr(self, 'on_premises_net_bios_name', n.get_str_value()),
+            "on_premises_provisioning_errors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(OnPremisesProvisioningError)),
+            "on_premises_sam_account_name": lambda n : setattr(self, 'on_premises_sam_account_name', n.get_str_value()),
+            "on_premises_security_identifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
+            "on_premises_sync_enabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
             "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(Onenote)),
             "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(DirectoryObject)),
-            "permissionGrants": lambda n : setattr(self, 'permission_grants', n.get_collection_of_object_values(ResourceSpecificPermissionGrant)),
+            "permission_grants": lambda n : setattr(self, 'permission_grants', n.get_collection_of_object_values(ResourceSpecificPermissionGrant)),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(ProfilePhoto)),
             "photos": lambda n : setattr(self, 'photos', n.get_collection_of_object_values(ProfilePhoto)),
             "planner": lambda n : setattr(self, 'planner', n.get_object_value(PlannerGroup)),
-            "preferredDataLocation": lambda n : setattr(self, 'preferred_data_location', n.get_str_value()),
-            "preferredLanguage": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
-            "proxyAddresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
-            "rejectedSenders": lambda n : setattr(self, 'rejected_senders', n.get_collection_of_object_values(DirectoryObject)),
-            "renewedDateTime": lambda n : setattr(self, 'renewed_date_time', n.get_datetime_value()),
-            "securityEnabled": lambda n : setattr(self, 'security_enabled', n.get_bool_value()),
-            "securityIdentifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
-            "serviceProvisioningErrors": lambda n : setattr(self, 'service_provisioning_errors', n.get_collection_of_object_values(ServiceProvisioningError)),
+            "preferred_data_location": lambda n : setattr(self, 'preferred_data_location', n.get_str_value()),
+            "preferred_language": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
+            "proxy_addresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
+            "rejected_senders": lambda n : setattr(self, 'rejected_senders', n.get_collection_of_object_values(DirectoryObject)),
+            "renewed_date_time": lambda n : setattr(self, 'renewed_date_time', n.get_datetime_value()),
+            "security_enabled": lambda n : setattr(self, 'security_enabled', n.get_bool_value()),
+            "security_identifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
+            "service_provisioning_errors": lambda n : setattr(self, 'service_provisioning_errors', n.get_collection_of_object_values(ServiceProvisioningError)),
             "settings": lambda n : setattr(self, 'settings', n.get_collection_of_object_values(GroupSetting)),
             "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(Site)),
             "team": lambda n : setattr(self, 'team', n.get_object_value(Team)),
             "theme": lambda n : setattr(self, 'theme', n.get_str_value()),
             "threads": lambda n : setattr(self, 'threads', n.get_collection_of_object_values(ConversationThread)),
-            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
-            "transitiveMembers": lambda n : setattr(self, 'transitive_members', n.get_collection_of_object_values(DirectoryObject)),
-            "unseenCount": lambda n : setattr(self, 'unseen_count', n.get_int_value()),
+            "transitive_member_of": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
+            "transitive_members": lambda n : setattr(self, 'transitive_members', n.get_collection_of_object_values(DirectoryObject)),
+            "unseen_count": lambda n : setattr(self, 'unseen_count', n.get_int_value()),
             "visibility": lambda n : setattr(self, 'visibility', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -307,71 +307,71 @@ class Group(DirectoryObject):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("acceptedSenders", self.accepted_senders)
-        writer.write_bool_value("allowExternalSenders", self.allow_external_senders)
-        writer.write_collection_of_object_values("appRoleAssignments", self.app_role_assignments)
-        writer.write_collection_of_object_values("assignedLabels", self.assigned_labels)
-        writer.write_collection_of_object_values("assignedLicenses", self.assigned_licenses)
-        writer.write_bool_value("autoSubscribeNewMembers", self.auto_subscribe_new_members)
+        writer.write_collection_of_object_values("accepted_senders", self.accepted_senders)
+        writer.write_bool_value("allow_external_senders", self.allow_external_senders)
+        writer.write_collection_of_object_values("app_role_assignments", self.app_role_assignments)
+        writer.write_collection_of_object_values("assigned_labels", self.assigned_labels)
+        writer.write_collection_of_object_values("assigned_licenses", self.assigned_licenses)
+        writer.write_bool_value("auto_subscribe_new_members", self.auto_subscribe_new_members)
         writer.write_object_value("calendar", self.calendar)
-        writer.write_collection_of_object_values("calendarView", self.calendar_view)
+        writer.write_collection_of_object_values("calendar_view", self.calendar_view)
         writer.write_str_value("classification", self.classification)
         writer.write_collection_of_object_values("conversations", self.conversations)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_object_value("createdOnBehalfOf", self.created_on_behalf_of)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_object_value("created_on_behalf_of", self.created_on_behalf_of)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_object_value("drive", self.drive)
         writer.write_collection_of_object_values("drives", self.drives)
         writer.write_collection_of_object_values("events", self.events)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("expiration_date_time", self.expiration_date_time)
         writer.write_collection_of_object_values("extensions", self.extensions)
-        writer.write_collection_of_object_values("groupLifecyclePolicies", self.group_lifecycle_policies)
-        writer.write_collection_of_primitive_values("groupTypes", self.group_types)
-        writer.write_bool_value("hasMembersWithLicenseErrors", self.has_members_with_license_errors)
-        writer.write_bool_value("hideFromAddressLists", self.hide_from_address_lists)
-        writer.write_bool_value("hideFromOutlookClients", self.hide_from_outlook_clients)
-        writer.write_bool_value("isArchived", self.is_archived)
-        writer.write_bool_value("isAssignableToRole", self.is_assignable_to_role)
-        writer.write_bool_value("isSubscribedByMail", self.is_subscribed_by_mail)
-        writer.write_object_value("licenseProcessingState", self.license_processing_state)
+        writer.write_collection_of_object_values("group_lifecycle_policies", self.group_lifecycle_policies)
+        writer.write_collection_of_primitive_values("group_types", self.group_types)
+        writer.write_bool_value("has_members_with_license_errors", self.has_members_with_license_errors)
+        writer.write_bool_value("hide_from_address_lists", self.hide_from_address_lists)
+        writer.write_bool_value("hide_from_outlook_clients", self.hide_from_outlook_clients)
+        writer.write_bool_value("is_archived", self.is_archived)
+        writer.write_bool_value("is_assignable_to_role", self.is_assignable_to_role)
+        writer.write_bool_value("is_subscribed_by_mail", self.is_subscribed_by_mail)
+        writer.write_object_value("license_processing_state", self.license_processing_state)
         writer.write_str_value("mail", self.mail)
-        writer.write_bool_value("mailEnabled", self.mail_enabled)
-        writer.write_str_value("mailNickname", self.mail_nickname)
-        writer.write_collection_of_object_values("memberOf", self.member_of)
+        writer.write_bool_value("mail_enabled", self.mail_enabled)
+        writer.write_str_value("mail_nickname", self.mail_nickname)
+        writer.write_collection_of_object_values("member_of", self.member_of)
         writer.write_collection_of_object_values("members", self.members)
-        writer.write_collection_of_object_values("membersWithLicenseErrors", self.members_with_license_errors)
-        writer.write_str_value("membershipRule", self.membership_rule)
-        writer.write_str_value("membershipRuleProcessingState", self.membership_rule_processing_state)
-        writer.write_str_value("onPremisesDomainName", self.on_premises_domain_name)
-        writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
-        writer.write_str_value("onPremisesNetBiosName", self.on_premises_net_bios_name)
-        writer.write_collection_of_object_values("onPremisesProvisioningErrors", self.on_premises_provisioning_errors)
-        writer.write_str_value("onPremisesSamAccountName", self.on_premises_sam_account_name)
-        writer.write_str_value("onPremisesSecurityIdentifier", self.on_premises_security_identifier)
-        writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
+        writer.write_collection_of_object_values("members_with_license_errors", self.members_with_license_errors)
+        writer.write_str_value("membership_rule", self.membership_rule)
+        writer.write_str_value("membership_rule_processing_state", self.membership_rule_processing_state)
+        writer.write_str_value("on_premises_domain_name", self.on_premises_domain_name)
+        writer.write_datetime_value("on_premises_last_sync_date_time", self.on_premises_last_sync_date_time)
+        writer.write_str_value("on_premises_net_bios_name", self.on_premises_net_bios_name)
+        writer.write_collection_of_object_values("on_premises_provisioning_errors", self.on_premises_provisioning_errors)
+        writer.write_str_value("on_premises_sam_account_name", self.on_premises_sam_account_name)
+        writer.write_str_value("on_premises_security_identifier", self.on_premises_security_identifier)
+        writer.write_bool_value("on_premises_sync_enabled", self.on_premises_sync_enabled)
         writer.write_object_value("onenote", self.onenote)
         writer.write_collection_of_object_values("owners", self.owners)
-        writer.write_collection_of_object_values("permissionGrants", self.permission_grants)
+        writer.write_collection_of_object_values("permission_grants", self.permission_grants)
         writer.write_object_value("photo", self.photo)
         writer.write_collection_of_object_values("photos", self.photos)
         writer.write_object_value("planner", self.planner)
-        writer.write_str_value("preferredDataLocation", self.preferred_data_location)
-        writer.write_str_value("preferredLanguage", self.preferred_language)
-        writer.write_collection_of_primitive_values("proxyAddresses", self.proxy_addresses)
-        writer.write_collection_of_object_values("rejectedSenders", self.rejected_senders)
-        writer.write_datetime_value("renewedDateTime", self.renewed_date_time)
-        writer.write_bool_value("securityEnabled", self.security_enabled)
-        writer.write_str_value("securityIdentifier", self.security_identifier)
-        writer.write_collection_of_object_values("serviceProvisioningErrors", self.service_provisioning_errors)
+        writer.write_str_value("preferred_data_location", self.preferred_data_location)
+        writer.write_str_value("preferred_language", self.preferred_language)
+        writer.write_collection_of_primitive_values("proxy_addresses", self.proxy_addresses)
+        writer.write_collection_of_object_values("rejected_senders", self.rejected_senders)
+        writer.write_datetime_value("renewed_date_time", self.renewed_date_time)
+        writer.write_bool_value("security_enabled", self.security_enabled)
+        writer.write_str_value("security_identifier", self.security_identifier)
+        writer.write_collection_of_object_values("service_provisioning_errors", self.service_provisioning_errors)
         writer.write_collection_of_object_values("settings", self.settings)
         writer.write_collection_of_object_values("sites", self.sites)
         writer.write_object_value("team", self.team)
         writer.write_str_value("theme", self.theme)
         writer.write_collection_of_object_values("threads", self.threads)
-        writer.write_collection_of_object_values("transitiveMemberOf", self.transitive_member_of)
-        writer.write_collection_of_object_values("transitiveMembers", self.transitive_members)
-        writer.write_int_value("unseenCount", self.unseen_count)
+        writer.write_collection_of_object_values("transitive_member_of", self.transitive_member_of)
+        writer.write_collection_of_object_values("transitive_members", self.transitive_members)
+        writer.write_int_value("unseen_count", self.unseen_count)
         writer.write_str_value("visibility", self.visibility)
     
 

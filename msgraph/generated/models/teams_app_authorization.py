@@ -40,8 +40,8 @@ class TeamsAppAuthorization(AdditionalDataHolder, BackedModel, Parsable):
         from .teams_app_permission_set import TeamsAppPermissionSet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "requiredPermissionSet": lambda n : setattr(self, 'required_permission_set', n.get_object_value(TeamsAppPermissionSet)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "required_permission_set": lambda n : setattr(self, 'required_permission_set', n.get_object_value(TeamsAppPermissionSet)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class TeamsAppAuthorization(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("requiredPermissionSet", self.required_permission_set)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("required_permission_set", self.required_permission_set)
         writer.write_additional_data_value(self.additional_data)
     
 

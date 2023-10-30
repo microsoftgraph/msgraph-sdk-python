@@ -53,11 +53,11 @@ class MacOSDmgApp(MobileLobApp):
         from .mobile_lob_app import MobileLobApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "ignoreVersionDetection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
-            "includedApps": lambda n : setattr(self, 'included_apps', n.get_collection_of_object_values(MacOSIncludedApp)),
-            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(MacOSMinimumOperatingSystem)),
-            "primaryBundleId": lambda n : setattr(self, 'primary_bundle_id', n.get_str_value()),
-            "primaryBundleVersion": lambda n : setattr(self, 'primary_bundle_version', n.get_str_value()),
+            "ignore_version_detection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
+            "included_apps": lambda n : setattr(self, 'included_apps', n.get_collection_of_object_values(MacOSIncludedApp)),
+            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(MacOSMinimumOperatingSystem)),
+            "primary_bundle_id": lambda n : setattr(self, 'primary_bundle_id', n.get_str_value()),
+            "primary_bundle_version": lambda n : setattr(self, 'primary_bundle_version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,10 +72,10 @@ class MacOSDmgApp(MobileLobApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("ignoreVersionDetection", self.ignore_version_detection)
-        writer.write_collection_of_object_values("includedApps", self.included_apps)
-        writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
-        writer.write_str_value("primaryBundleId", self.primary_bundle_id)
-        writer.write_str_value("primaryBundleVersion", self.primary_bundle_version)
+        writer.write_bool_value("ignore_version_detection", self.ignore_version_detection)
+        writer.write_collection_of_object_values("included_apps", self.included_apps)
+        writer.write_object_value("minimum_supported_operating_system", self.minimum_supported_operating_system)
+        writer.write_str_value("primary_bundle_id", self.primary_bundle_id)
+        writer.write_str_value("primary_bundle_version", self.primary_bundle_version)
     
 

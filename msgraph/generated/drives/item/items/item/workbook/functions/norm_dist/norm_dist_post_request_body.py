@@ -46,7 +46,7 @@ class Norm_DistPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "cumulative": lambda n : setattr(self, 'cumulative', n.get_object_value(Json)),
             "mean": lambda n : setattr(self, 'mean', n.get_object_value(Json)),
-            "standardDev": lambda n : setattr(self, 'standard_dev', n.get_object_value(Json)),
+            "standard_dev": lambda n : setattr(self, 'standard_dev', n.get_object_value(Json)),
             "x": lambda n : setattr(self, 'x', n.get_object_value(Json)),
         }
         return fields
@@ -61,7 +61,7 @@ class Norm_DistPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("cumulative", self.cumulative)
         writer.write_object_value("mean", self.mean)
-        writer.write_object_value("standardDev", self.standard_dev)
+        writer.write_object_value("standard_dev", self.standard_dev)
         writer.write_object_value("x", self.x)
         writer.write_additional_data_value(self.additional_data)
     

@@ -40,9 +40,9 @@ class DataSubject(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "firstName": lambda n : setattr(self, 'first_name', n.get_str_value()),
-            "lastName": lambda n : setattr(self, 'last_name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "first_name": lambda n : setattr(self, 'first_name', n.get_str_value()),
+            "last_name": lambda n : setattr(self, 'last_name', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "residency": lambda n : setattr(self, 'residency', n.get_str_value()),
         }
         return fields
@@ -56,9 +56,9 @@ class DataSubject(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("email", self.email)
-        writer.write_str_value("firstName", self.first_name)
-        writer.write_str_value("lastName", self.last_name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("first_name", self.first_name)
+        writer.write_str_value("last_name", self.last_name)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("residency", self.residency)
         writer.write_additional_data_value(self.additional_data)
     

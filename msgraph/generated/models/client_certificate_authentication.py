@@ -39,7 +39,7 @@ class ClientCertificateAuthentication(ApiAuthenticationConfigurationBase):
         from .pkcs12_certificate_information import Pkcs12CertificateInformation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "certificateList": lambda n : setattr(self, 'certificate_list', n.get_collection_of_object_values(Pkcs12CertificateInformation)),
+            "certificate_list": lambda n : setattr(self, 'certificate_list', n.get_collection_of_object_values(Pkcs12CertificateInformation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class ClientCertificateAuthentication(ApiAuthenticationConfigurationBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("certificateList", self.certificate_list)
+        writer.write_collection_of_object_values("certificate_list", self.certificate_list)
     
 

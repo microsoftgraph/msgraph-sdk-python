@@ -42,12 +42,12 @@ class Certification(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "certificationDetailsUrl": lambda n : setattr(self, 'certification_details_url', n.get_str_value()),
-            "certificationExpirationDateTime": lambda n : setattr(self, 'certification_expiration_date_time', n.get_datetime_value()),
-            "isCertifiedByMicrosoft": lambda n : setattr(self, 'is_certified_by_microsoft', n.get_bool_value()),
-            "isPublisherAttested": lambda n : setattr(self, 'is_publisher_attested', n.get_bool_value()),
-            "lastCertificationDateTime": lambda n : setattr(self, 'last_certification_date_time', n.get_datetime_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "certification_details_url": lambda n : setattr(self, 'certification_details_url', n.get_str_value()),
+            "certification_expiration_date_time": lambda n : setattr(self, 'certification_expiration_date_time', n.get_datetime_value()),
+            "is_certified_by_microsoft": lambda n : setattr(self, 'is_certified_by_microsoft', n.get_bool_value()),
+            "is_publisher_attested": lambda n : setattr(self, 'is_publisher_attested', n.get_bool_value()),
+            "last_certification_date_time": lambda n : setattr(self, 'last_certification_date_time', n.get_datetime_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -59,10 +59,10 @@ class Certification(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("certificationExpirationDateTime", self.certification_expiration_date_time)
-        writer.write_bool_value("isPublisherAttested", self.is_publisher_attested)
-        writer.write_datetime_value("lastCertificationDateTime", self.last_certification_date_time)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_datetime_value("certification_expiration_date_time", self.certification_expiration_date_time)
+        writer.write_bool_value("is_publisher_attested", self.is_publisher_attested)
+        writer.write_datetime_value("last_certification_date_time", self.last_certification_date_time)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

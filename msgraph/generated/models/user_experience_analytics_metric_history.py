@@ -44,9 +44,9 @@ class UserExperienceAnalyticsMetricHistory(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "metricDateTime": lambda n : setattr(self, 'metric_date_time', n.get_datetime_value()),
-            "metricType": lambda n : setattr(self, 'metric_type', n.get_str_value()),
+            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "metric_date_time": lambda n : setattr(self, 'metric_date_time', n.get_datetime_value()),
+            "metric_type": lambda n : setattr(self, 'metric_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,8 +61,8 @@ class UserExperienceAnalyticsMetricHistory(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("deviceId", self.device_id)
-        writer.write_datetime_value("metricDateTime", self.metric_date_time)
-        writer.write_str_value("metricType", self.metric_type)
+        writer.write_str_value("device_id", self.device_id)
+        writer.write_datetime_value("metric_date_time", self.metric_date_time)
+        writer.write_str_value("metric_type", self.metric_type)
     
 

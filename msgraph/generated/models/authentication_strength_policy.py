@@ -63,14 +63,14 @@ class AuthenticationStrengthPolicy(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedCombinations": lambda n : setattr(self, 'allowed_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
-            "combinationConfigurations": lambda n : setattr(self, 'combination_configurations', n.get_collection_of_object_values(AuthenticationCombinationConfiguration)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "allowed_combinations": lambda n : setattr(self, 'allowed_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
+            "combination_configurations": lambda n : setattr(self, 'combination_configurations', n.get_collection_of_object_values(AuthenticationCombinationConfiguration)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
-            "policyType": lambda n : setattr(self, 'policy_type', n.get_enum_value(AuthenticationStrengthPolicyType)),
-            "requirementsSatisfied": lambda n : setattr(self, 'requirements_satisfied', n.get_collection_of_enum_values(AuthenticationStrengthRequirements)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "policy_type": lambda n : setattr(self, 'policy_type', n.get_enum_value(AuthenticationStrengthPolicyType)),
+            "requirements_satisfied": lambda n : setattr(self, 'requirements_satisfied', n.get_collection_of_enum_values(AuthenticationStrengthRequirements)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -85,13 +85,13 @@ class AuthenticationStrengthPolicy(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_enum_values("allowedCombinations", self.allowed_combinations)
-        writer.write_collection_of_object_values("combinationConfigurations", self.combination_configurations)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_collection_of_enum_values("allowed_combinations", self.allowed_combinations)
+        writer.write_collection_of_object_values("combination_configurations", self.combination_configurations)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
-        writer.write_enum_value("policyType", self.policy_type)
-        writer.write_enum_value("requirementsSatisfied", self.requirements_satisfied)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_datetime_value("modified_date_time", self.modified_date_time)
+        writer.write_enum_value("policy_type", self.policy_type)
+        writer.write_enum_value("requirements_satisfied", self.requirements_satisfied)
     
 

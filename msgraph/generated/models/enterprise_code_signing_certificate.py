@@ -55,13 +55,13 @@ class EnterpriseCodeSigningCertificate(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "issuer": lambda n : setattr(self, 'issuer', n.get_str_value()),
-            "issuerName": lambda n : setattr(self, 'issuer_name', n.get_str_value()),
+            "issuer_name": lambda n : setattr(self, 'issuer_name', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(CertificateStatus)),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
-            "subjectName": lambda n : setattr(self, 'subject_name', n.get_str_value()),
-            "uploadDateTime": lambda n : setattr(self, 'upload_date_time', n.get_datetime_value()),
+            "subject_name": lambda n : setattr(self, 'subject_name', n.get_str_value()),
+            "upload_date_time": lambda n : setattr(self, 'upload_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -77,12 +77,12 @@ class EnterpriseCodeSigningCertificate(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bytes_value("content", self.content)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("expiration_date_time", self.expiration_date_time)
         writer.write_str_value("issuer", self.issuer)
-        writer.write_str_value("issuerName", self.issuer_name)
+        writer.write_str_value("issuer_name", self.issuer_name)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("subject", self.subject)
-        writer.write_str_value("subjectName", self.subject_name)
-        writer.write_datetime_value("uploadDateTime", self.upload_date_time)
+        writer.write_str_value("subject_name", self.subject_name)
+        writer.write_datetime_value("upload_date_time", self.upload_date_time)
     
 

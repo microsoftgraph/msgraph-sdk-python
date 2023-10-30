@@ -45,10 +45,10 @@ class CalendarSharingMessage(Message):
         from .message import Message
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "canAccept": lambda n : setattr(self, 'can_accept', n.get_bool_value()),
-            "sharingMessageAction": lambda n : setattr(self, 'sharing_message_action', n.get_object_value(CalendarSharingMessageAction)),
-            "sharingMessageActions": lambda n : setattr(self, 'sharing_message_actions', n.get_collection_of_object_values(CalendarSharingMessageAction)),
-            "suggestedCalendarName": lambda n : setattr(self, 'suggested_calendar_name', n.get_str_value()),
+            "can_accept": lambda n : setattr(self, 'can_accept', n.get_bool_value()),
+            "sharing_message_action": lambda n : setattr(self, 'sharing_message_action', n.get_object_value(CalendarSharingMessageAction)),
+            "sharing_message_actions": lambda n : setattr(self, 'sharing_message_actions', n.get_collection_of_object_values(CalendarSharingMessageAction)),
+            "suggested_calendar_name": lambda n : setattr(self, 'suggested_calendar_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,9 +63,9 @@ class CalendarSharingMessage(Message):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("canAccept", self.can_accept)
-        writer.write_object_value("sharingMessageAction", self.sharing_message_action)
-        writer.write_collection_of_object_values("sharingMessageActions", self.sharing_message_actions)
-        writer.write_str_value("suggestedCalendarName", self.suggested_calendar_name)
+        writer.write_bool_value("can_accept", self.can_accept)
+        writer.write_object_value("sharing_message_action", self.sharing_message_action)
+        writer.write_collection_of_object_values("sharing_message_actions", self.sharing_message_actions)
+        writer.write_str_value("suggested_calendar_name", self.suggested_calendar_name)
     
 

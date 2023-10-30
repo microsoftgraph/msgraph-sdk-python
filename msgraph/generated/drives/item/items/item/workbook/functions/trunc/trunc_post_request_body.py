@@ -40,7 +40,7 @@ class TruncPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "numDigits": lambda n : setattr(self, 'num_digits', n.get_object_value(Json)),
+            "num_digits": lambda n : setattr(self, 'num_digits', n.get_object_value(Json)),
             "number": lambda n : setattr(self, 'number', n.get_object_value(Json)),
         }
         return fields
@@ -53,7 +53,7 @@ class TruncPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("numDigits", self.num_digits)
+        writer.write_object_value("num_digits", self.num_digits)
         writer.write_object_value("number", self.number)
         writer.write_additional_data_value(self.additional_data)
     

@@ -41,11 +41,11 @@ class EducationCourse(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "courseNumber": lambda n : setattr(self, 'course_number', n.get_str_value()),
+            "course_number": lambda n : setattr(self, 'course_number', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
         }
         return fields
@@ -58,11 +58,11 @@ class EducationCourse(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("courseNumber", self.course_number)
+        writer.write_str_value("course_number", self.course_number)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("externalId", self.external_id)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("external_id", self.external_id)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("subject", self.subject)
         writer.write_additional_data_value(self.additional_data)
     

@@ -37,7 +37,7 @@ class LearningSelfInitiatedCourse(LearningCourseActivity):
         from .learning_course_activity import LearningCourseActivity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "startedDateTime": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
+            "started_date_time": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,6 +52,6 @@ class LearningSelfInitiatedCourse(LearningCourseActivity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("startedDateTime", self.started_date_time)
+        writer.write_datetime_value("started_date_time", self.started_date_time)
     
 

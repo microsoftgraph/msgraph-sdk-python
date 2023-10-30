@@ -75,20 +75,20 @@ class AccessReviewInstanceDecisionItem(Entity):
         from .user_identity import UserIdentity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessReviewId": lambda n : setattr(self, 'access_review_id', n.get_str_value()),
-            "appliedBy": lambda n : setattr(self, 'applied_by', n.get_object_value(UserIdentity)),
-            "appliedDateTime": lambda n : setattr(self, 'applied_date_time', n.get_datetime_value()),
-            "applyResult": lambda n : setattr(self, 'apply_result', n.get_str_value()),
+            "access_review_id": lambda n : setattr(self, 'access_review_id', n.get_str_value()),
+            "applied_by": lambda n : setattr(self, 'applied_by', n.get_object_value(UserIdentity)),
+            "applied_date_time": lambda n : setattr(self, 'applied_date_time', n.get_datetime_value()),
+            "apply_result": lambda n : setattr(self, 'apply_result', n.get_str_value()),
             "decision": lambda n : setattr(self, 'decision', n.get_str_value()),
             "insights": lambda n : setattr(self, 'insights', n.get_collection_of_object_values(GovernanceInsight)),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(Identity)),
-            "principalLink": lambda n : setattr(self, 'principal_link', n.get_str_value()),
+            "principal_link": lambda n : setattr(self, 'principal_link', n.get_str_value()),
             "recommendation": lambda n : setattr(self, 'recommendation', n.get_str_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(AccessReviewInstanceDecisionItemResource)),
-            "resourceLink": lambda n : setattr(self, 'resource_link', n.get_str_value()),
-            "reviewedBy": lambda n : setattr(self, 'reviewed_by', n.get_object_value(UserIdentity)),
-            "reviewedDateTime": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
+            "resource_link": lambda n : setattr(self, 'resource_link', n.get_str_value()),
+            "reviewed_by": lambda n : setattr(self, 'reviewed_by', n.get_object_value(UserIdentity)),
+            "reviewed_date_time": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -103,19 +103,19 @@ class AccessReviewInstanceDecisionItem(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("accessReviewId", self.access_review_id)
-        writer.write_object_value("appliedBy", self.applied_by)
-        writer.write_datetime_value("appliedDateTime", self.applied_date_time)
-        writer.write_str_value("applyResult", self.apply_result)
+        writer.write_str_value("access_review_id", self.access_review_id)
+        writer.write_object_value("applied_by", self.applied_by)
+        writer.write_datetime_value("applied_date_time", self.applied_date_time)
+        writer.write_str_value("apply_result", self.apply_result)
         writer.write_str_value("decision", self.decision)
         writer.write_collection_of_object_values("insights", self.insights)
         writer.write_str_value("justification", self.justification)
         writer.write_object_value("principal", self.principal)
-        writer.write_str_value("principalLink", self.principal_link)
+        writer.write_str_value("principal_link", self.principal_link)
         writer.write_str_value("recommendation", self.recommendation)
         writer.write_object_value("resource", self.resource)
-        writer.write_str_value("resourceLink", self.resource_link)
-        writer.write_object_value("reviewedBy", self.reviewed_by)
-        writer.write_datetime_value("reviewedDateTime", self.reviewed_date_time)
+        writer.write_str_value("resource_link", self.resource_link)
+        writer.write_object_value("reviewed_by", self.reviewed_by)
+        writer.write_datetime_value("reviewed_date_time", self.reviewed_date_time)
     
 

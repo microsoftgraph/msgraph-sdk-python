@@ -31,7 +31,7 @@ class CreateSessionPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "persistChanges": lambda n : setattr(self, 'persist_changes', n.get_bool_value()),
+            "persist_changes": lambda n : setattr(self, 'persist_changes', n.get_bool_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class CreateSessionPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("persistChanges", self.persist_changes)
+        writer.write_bool_value("persist_changes", self.persist_changes)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -50,8 +50,8 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(Entity):
         from .imported_windows_autopilot_device_identity_upload_status import ImportedWindowsAutopilotDeviceIdentityUploadStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTimeUtc": lambda n : setattr(self, 'created_date_time_utc', n.get_datetime_value()),
-            "deviceIdentities": lambda n : setattr(self, 'device_identities', n.get_collection_of_object_values(ImportedWindowsAutopilotDeviceIdentity)),
+            "created_date_time_utc": lambda n : setattr(self, 'created_date_time_utc', n.get_datetime_value()),
+            "device_identities": lambda n : setattr(self, 'device_identities', n.get_collection_of_object_values(ImportedWindowsAutopilotDeviceIdentity)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(ImportedWindowsAutopilotDeviceIdentityUploadStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -67,8 +67,8 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTimeUtc", self.created_date_time_utc)
-        writer.write_collection_of_object_values("deviceIdentities", self.device_identities)
+        writer.write_datetime_value("created_date_time_utc", self.created_date_time_utc)
+        writer.write_collection_of_object_values("device_identities", self.device_identities)
         writer.write_enum_value("status", self.status)
     
 

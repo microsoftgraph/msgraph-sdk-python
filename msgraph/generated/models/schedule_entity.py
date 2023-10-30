@@ -70,9 +70,9 @@ class ScheduleEntity(AdditionalDataHolder, BackedModel, Parsable):
         from .time_off_item import TimeOffItem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "theme": lambda n : setattr(self, 'theme', n.get_enum_value(ScheduleEntityTheme)),
         }
         return fields
@@ -85,9 +85,9 @@ class ScheduleEntity(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
         writer.write_enum_value("theme", self.theme)
         writer.write_additional_data_value(self.additional_data)
     

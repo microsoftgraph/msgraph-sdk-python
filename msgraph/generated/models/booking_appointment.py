@@ -101,30 +101,30 @@ class BookingAppointment(Entity):
         from .location import Location
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
-            "anonymousJoinWebUrl": lambda n : setattr(self, 'anonymous_join_web_url', n.get_str_value()),
-            "customerTimeZone": lambda n : setattr(self, 'customer_time_zone', n.get_str_value()),
+            "additional_information": lambda n : setattr(self, 'additional_information', n.get_str_value()),
+            "anonymous_join_web_url": lambda n : setattr(self, 'anonymous_join_web_url', n.get_str_value()),
+            "customer_time_zone": lambda n : setattr(self, 'customer_time_zone', n.get_str_value()),
             "customers": lambda n : setattr(self, 'customers', n.get_collection_of_object_values(BookingCustomerInformationBase)),
             "duration": lambda n : setattr(self, 'duration', n.get_timedelta_value()),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
-            "filledAttendeesCount": lambda n : setattr(self, 'filled_attendees_count', n.get_int_value()),
-            "isLocationOnline": lambda n : setattr(self, 'is_location_online', n.get_bool_value()),
-            "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
-            "maximumAttendeesCount": lambda n : setattr(self, 'maximum_attendees_count', n.get_int_value()),
-            "optOutOfCustomerEmail": lambda n : setattr(self, 'opt_out_of_customer_email', n.get_bool_value()),
-            "postBuffer": lambda n : setattr(self, 'post_buffer', n.get_timedelta_value()),
-            "preBuffer": lambda n : setattr(self, 'pre_buffer', n.get_timedelta_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_object_value(DateTimeTimeZone)),
+            "filled_attendees_count": lambda n : setattr(self, 'filled_attendees_count', n.get_int_value()),
+            "is_location_online": lambda n : setattr(self, 'is_location_online', n.get_bool_value()),
+            "join_web_url": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
+            "maximum_attendees_count": lambda n : setattr(self, 'maximum_attendees_count', n.get_int_value()),
+            "opt_out_of_customer_email": lambda n : setattr(self, 'opt_out_of_customer_email', n.get_bool_value()),
+            "post_buffer": lambda n : setattr(self, 'post_buffer', n.get_timedelta_value()),
+            "pre_buffer": lambda n : setattr(self, 'pre_buffer', n.get_timedelta_value()),
             "price": lambda n : setattr(self, 'price', n.get_float_value()),
-            "priceType": lambda n : setattr(self, 'price_type', n.get_enum_value(BookingPriceType)),
+            "price_type": lambda n : setattr(self, 'price_type', n.get_enum_value(BookingPriceType)),
             "reminders": lambda n : setattr(self, 'reminders', n.get_collection_of_object_values(BookingReminder)),
-            "selfServiceAppointmentId": lambda n : setattr(self, 'self_service_appointment_id', n.get_str_value()),
-            "serviceId": lambda n : setattr(self, 'service_id', n.get_str_value()),
-            "serviceLocation": lambda n : setattr(self, 'service_location', n.get_object_value(Location)),
-            "serviceName": lambda n : setattr(self, 'service_name', n.get_str_value()),
-            "serviceNotes": lambda n : setattr(self, 'service_notes', n.get_str_value()),
-            "smsNotificationsEnabled": lambda n : setattr(self, 'sms_notifications_enabled', n.get_bool_value()),
-            "staffMemberIds": lambda n : setattr(self, 'staff_member_ids', n.get_collection_of_primitive_values(str)),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
+            "self_service_appointment_id": lambda n : setattr(self, 'self_service_appointment_id', n.get_str_value()),
+            "service_id": lambda n : setattr(self, 'service_id', n.get_str_value()),
+            "service_location": lambda n : setattr(self, 'service_location', n.get_object_value(Location)),
+            "service_name": lambda n : setattr(self, 'service_name', n.get_str_value()),
+            "service_notes": lambda n : setattr(self, 'service_notes', n.get_str_value()),
+            "sms_notifications_enabled": lambda n : setattr(self, 'sms_notifications_enabled', n.get_bool_value()),
+            "staff_member_ids": lambda n : setattr(self, 'staff_member_ids', n.get_collection_of_primitive_values(str)),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -139,27 +139,27 @@ class BookingAppointment(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("additionalInformation", self.additional_information)
-        writer.write_str_value("anonymousJoinWebUrl", self.anonymous_join_web_url)
-        writer.write_str_value("customerTimeZone", self.customer_time_zone)
+        writer.write_str_value("additional_information", self.additional_information)
+        writer.write_str_value("anonymous_join_web_url", self.anonymous_join_web_url)
+        writer.write_str_value("customer_time_zone", self.customer_time_zone)
         writer.write_collection_of_object_values("customers", self.customers)
-        writer.write_object_value("endDateTime", self.end_date_time)
-        writer.write_bool_value("isLocationOnline", self.is_location_online)
-        writer.write_str_value("joinWebUrl", self.join_web_url)
-        writer.write_int_value("maximumAttendeesCount", self.maximum_attendees_count)
-        writer.write_bool_value("optOutOfCustomerEmail", self.opt_out_of_customer_email)
-        writer.write_timedelta_value("postBuffer", self.post_buffer)
-        writer.write_timedelta_value("preBuffer", self.pre_buffer)
+        writer.write_object_value("end_date_time", self.end_date_time)
+        writer.write_bool_value("is_location_online", self.is_location_online)
+        writer.write_str_value("join_web_url", self.join_web_url)
+        writer.write_int_value("maximum_attendees_count", self.maximum_attendees_count)
+        writer.write_bool_value("opt_out_of_customer_email", self.opt_out_of_customer_email)
+        writer.write_timedelta_value("post_buffer", self.post_buffer)
+        writer.write_timedelta_value("pre_buffer", self.pre_buffer)
         writer.write_float_value("price", self.price)
-        writer.write_enum_value("priceType", self.price_type)
+        writer.write_enum_value("price_type", self.price_type)
         writer.write_collection_of_object_values("reminders", self.reminders)
-        writer.write_str_value("selfServiceAppointmentId", self.self_service_appointment_id)
-        writer.write_str_value("serviceId", self.service_id)
-        writer.write_object_value("serviceLocation", self.service_location)
-        writer.write_str_value("serviceName", self.service_name)
-        writer.write_str_value("serviceNotes", self.service_notes)
-        writer.write_bool_value("smsNotificationsEnabled", self.sms_notifications_enabled)
-        writer.write_collection_of_primitive_values("staffMemberIds", self.staff_member_ids)
-        writer.write_object_value("startDateTime", self.start_date_time)
+        writer.write_str_value("self_service_appointment_id", self.self_service_appointment_id)
+        writer.write_str_value("service_id", self.service_id)
+        writer.write_object_value("service_location", self.service_location)
+        writer.write_str_value("service_name", self.service_name)
+        writer.write_str_value("service_notes", self.service_notes)
+        writer.write_bool_value("sms_notifications_enabled", self.sms_notifications_enabled)
+        writer.write_collection_of_primitive_values("staff_member_ids", self.staff_member_ids)
+        writer.write_object_value("start_date_time", self.start_date_time)
     
 

@@ -46,10 +46,10 @@ class IncomingContext(AdditionalDataHolder, BackedModel, Parsable):
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "observedParticipantId": lambda n : setattr(self, 'observed_participant_id', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "onBehalfOf": lambda n : setattr(self, 'on_behalf_of', n.get_object_value(IdentitySet)),
-            "sourceParticipantId": lambda n : setattr(self, 'source_participant_id', n.get_str_value()),
+            "observed_participant_id": lambda n : setattr(self, 'observed_participant_id', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "on_behalf_of": lambda n : setattr(self, 'on_behalf_of', n.get_object_value(IdentitySet)),
+            "source_participant_id": lambda n : setattr(self, 'source_participant_id', n.get_str_value()),
             "transferor": lambda n : setattr(self, 'transferor', n.get_object_value(IdentitySet)),
         }
         return fields
@@ -62,10 +62,10 @@ class IncomingContext(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("observedParticipantId", self.observed_participant_id)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("onBehalfOf", self.on_behalf_of)
-        writer.write_str_value("sourceParticipantId", self.source_participant_id)
+        writer.write_str_value("observed_participant_id", self.observed_participant_id)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("on_behalf_of", self.on_behalf_of)
+        writer.write_str_value("source_participant_id", self.source_participant_id)
         writer.write_object_value("transferor", self.transferor)
         writer.write_additional_data_value(self.additional_data)
     

@@ -207,65 +207,65 @@ class ManagedDevice(Entity):
         from .windows_protection_state import WindowsProtectionState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activationLockBypassCode": lambda n : setattr(self, 'activation_lock_bypass_code', n.get_str_value()),
-            "androidSecurityPatchLevel": lambda n : setattr(self, 'android_security_patch_level', n.get_str_value()),
-            "azureADDeviceId": lambda n : setattr(self, 'azure_a_d_device_id', n.get_str_value()),
-            "azureADRegistered": lambda n : setattr(self, 'azure_a_d_registered', n.get_bool_value()),
-            "complianceGracePeriodExpirationDateTime": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
-            "complianceState": lambda n : setattr(self, 'compliance_state', n.get_enum_value(ComplianceState)),
-            "configurationManagerClientEnabledFeatures": lambda n : setattr(self, 'configuration_manager_client_enabled_features', n.get_object_value(ConfigurationManagerClientEnabledFeatures)),
-            "deviceActionResults": lambda n : setattr(self, 'device_action_results', n.get_collection_of_object_values(DeviceActionResult)),
-            "deviceCategory": lambda n : setattr(self, 'device_category', n.get_object_value(DeviceCategory)),
-            "deviceCategoryDisplayName": lambda n : setattr(self, 'device_category_display_name', n.get_str_value()),
-            "deviceCompliancePolicyStates": lambda n : setattr(self, 'device_compliance_policy_states', n.get_collection_of_object_values(DeviceCompliancePolicyState)),
-            "deviceConfigurationStates": lambda n : setattr(self, 'device_configuration_states', n.get_collection_of_object_values(DeviceConfigurationState)),
-            "deviceEnrollmentType": lambda n : setattr(self, 'device_enrollment_type', n.get_enum_value(DeviceEnrollmentType)),
-            "deviceHealthAttestationState": lambda n : setattr(self, 'device_health_attestation_state', n.get_object_value(DeviceHealthAttestationState)),
-            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "deviceRegistrationState": lambda n : setattr(self, 'device_registration_state', n.get_enum_value(DeviceRegistrationState)),
-            "easActivated": lambda n : setattr(self, 'eas_activated', n.get_bool_value()),
-            "easActivationDateTime": lambda n : setattr(self, 'eas_activation_date_time', n.get_datetime_value()),
-            "easDeviceId": lambda n : setattr(self, 'eas_device_id', n.get_str_value()),
-            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
-            "enrolledDateTime": lambda n : setattr(self, 'enrolled_date_time', n.get_datetime_value()),
-            "ethernetMacAddress": lambda n : setattr(self, 'ethernet_mac_address', n.get_str_value()),
-            "exchangeAccessState": lambda n : setattr(self, 'exchange_access_state', n.get_enum_value(DeviceManagementExchangeAccessState)),
-            "exchangeAccessStateReason": lambda n : setattr(self, 'exchange_access_state_reason', n.get_enum_value(DeviceManagementExchangeAccessStateReason)),
-            "exchangeLastSuccessfulSyncDateTime": lambda n : setattr(self, 'exchange_last_successful_sync_date_time', n.get_datetime_value()),
-            "freeStorageSpaceInBytes": lambda n : setattr(self, 'free_storage_space_in_bytes', n.get_int_value()),
+            "activation_lock_bypass_code": lambda n : setattr(self, 'activation_lock_bypass_code', n.get_str_value()),
+            "android_security_patch_level": lambda n : setattr(self, 'android_security_patch_level', n.get_str_value()),
+            "azure_a_d_device_id": lambda n : setattr(self, 'azure_a_d_device_id', n.get_str_value()),
+            "azure_a_d_registered": lambda n : setattr(self, 'azure_a_d_registered', n.get_bool_value()),
+            "compliance_grace_period_expiration_date_time": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
+            "compliance_state": lambda n : setattr(self, 'compliance_state', n.get_enum_value(ComplianceState)),
+            "configuration_manager_client_enabled_features": lambda n : setattr(self, 'configuration_manager_client_enabled_features', n.get_object_value(ConfigurationManagerClientEnabledFeatures)),
+            "device_action_results": lambda n : setattr(self, 'device_action_results', n.get_collection_of_object_values(DeviceActionResult)),
+            "device_category": lambda n : setattr(self, 'device_category', n.get_object_value(DeviceCategory)),
+            "device_category_display_name": lambda n : setattr(self, 'device_category_display_name', n.get_str_value()),
+            "device_compliance_policy_states": lambda n : setattr(self, 'device_compliance_policy_states', n.get_collection_of_object_values(DeviceCompliancePolicyState)),
+            "device_configuration_states": lambda n : setattr(self, 'device_configuration_states', n.get_collection_of_object_values(DeviceConfigurationState)),
+            "device_enrollment_type": lambda n : setattr(self, 'device_enrollment_type', n.get_enum_value(DeviceEnrollmentType)),
+            "device_health_attestation_state": lambda n : setattr(self, 'device_health_attestation_state', n.get_object_value(DeviceHealthAttestationState)),
+            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "device_registration_state": lambda n : setattr(self, 'device_registration_state', n.get_enum_value(DeviceRegistrationState)),
+            "eas_activated": lambda n : setattr(self, 'eas_activated', n.get_bool_value()),
+            "eas_activation_date_time": lambda n : setattr(self, 'eas_activation_date_time', n.get_datetime_value()),
+            "eas_device_id": lambda n : setattr(self, 'eas_device_id', n.get_str_value()),
+            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "enrolled_date_time": lambda n : setattr(self, 'enrolled_date_time', n.get_datetime_value()),
+            "ethernet_mac_address": lambda n : setattr(self, 'ethernet_mac_address', n.get_str_value()),
+            "exchange_access_state": lambda n : setattr(self, 'exchange_access_state', n.get_enum_value(DeviceManagementExchangeAccessState)),
+            "exchange_access_state_reason": lambda n : setattr(self, 'exchange_access_state_reason', n.get_enum_value(DeviceManagementExchangeAccessStateReason)),
+            "exchange_last_successful_sync_date_time": lambda n : setattr(self, 'exchange_last_successful_sync_date_time', n.get_datetime_value()),
+            "free_storage_space_in_bytes": lambda n : setattr(self, 'free_storage_space_in_bytes', n.get_int_value()),
             "iccid": lambda n : setattr(self, 'iccid', n.get_str_value()),
             "imei": lambda n : setattr(self, 'imei', n.get_str_value()),
-            "isEncrypted": lambda n : setattr(self, 'is_encrypted', n.get_bool_value()),
-            "isSupervised": lambda n : setattr(self, 'is_supervised', n.get_bool_value()),
-            "jailBroken": lambda n : setattr(self, 'jail_broken', n.get_str_value()),
-            "lastSyncDateTime": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
-            "logCollectionRequests": lambda n : setattr(self, 'log_collection_requests', n.get_collection_of_object_values(DeviceLogCollectionResponse)),
-            "managedDeviceName": lambda n : setattr(self, 'managed_device_name', n.get_str_value()),
-            "managedDeviceOwnerType": lambda n : setattr(self, 'managed_device_owner_type', n.get_enum_value(ManagedDeviceOwnerType)),
-            "managementAgent": lambda n : setattr(self, 'management_agent', n.get_enum_value(ManagementAgentType)),
-            "managementCertificateExpirationDate": lambda n : setattr(self, 'management_certificate_expiration_date', n.get_datetime_value()),
+            "is_encrypted": lambda n : setattr(self, 'is_encrypted', n.get_bool_value()),
+            "is_supervised": lambda n : setattr(self, 'is_supervised', n.get_bool_value()),
+            "jail_broken": lambda n : setattr(self, 'jail_broken', n.get_str_value()),
+            "last_sync_date_time": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
+            "log_collection_requests": lambda n : setattr(self, 'log_collection_requests', n.get_collection_of_object_values(DeviceLogCollectionResponse)),
+            "managed_device_name": lambda n : setattr(self, 'managed_device_name', n.get_str_value()),
+            "managed_device_owner_type": lambda n : setattr(self, 'managed_device_owner_type', n.get_enum_value(ManagedDeviceOwnerType)),
+            "management_agent": lambda n : setattr(self, 'management_agent', n.get_enum_value(ManagementAgentType)),
+            "management_certificate_expiration_date": lambda n : setattr(self, 'management_certificate_expiration_date', n.get_datetime_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "meid": lambda n : setattr(self, 'meid', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
-            "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),
-            "osVersion": lambda n : setattr(self, 'os_version', n.get_str_value()),
-            "partnerReportedThreatState": lambda n : setattr(self, 'partner_reported_threat_state', n.get_enum_value(ManagedDevicePartnerReportedHealthState)),
-            "phoneNumber": lambda n : setattr(self, 'phone_number', n.get_str_value()),
-            "physicalMemoryInBytes": lambda n : setattr(self, 'physical_memory_in_bytes', n.get_int_value()),
-            "remoteAssistanceSessionErrorDetails": lambda n : setattr(self, 'remote_assistance_session_error_details', n.get_str_value()),
-            "remoteAssistanceSessionUrl": lambda n : setattr(self, 'remote_assistance_session_url', n.get_str_value()),
-            "requireUserEnrollmentApproval": lambda n : setattr(self, 'require_user_enrollment_approval', n.get_bool_value()),
-            "serialNumber": lambda n : setattr(self, 'serial_number', n.get_str_value()),
-            "subscriberCarrier": lambda n : setattr(self, 'subscriber_carrier', n.get_str_value()),
-            "totalStorageSpaceInBytes": lambda n : setattr(self, 'total_storage_space_in_bytes', n.get_int_value()),
+            "operating_system": lambda n : setattr(self, 'operating_system', n.get_str_value()),
+            "os_version": lambda n : setattr(self, 'os_version', n.get_str_value()),
+            "partner_reported_threat_state": lambda n : setattr(self, 'partner_reported_threat_state', n.get_enum_value(ManagedDevicePartnerReportedHealthState)),
+            "phone_number": lambda n : setattr(self, 'phone_number', n.get_str_value()),
+            "physical_memory_in_bytes": lambda n : setattr(self, 'physical_memory_in_bytes', n.get_int_value()),
+            "remote_assistance_session_error_details": lambda n : setattr(self, 'remote_assistance_session_error_details', n.get_str_value()),
+            "remote_assistance_session_url": lambda n : setattr(self, 'remote_assistance_session_url', n.get_str_value()),
+            "require_user_enrollment_approval": lambda n : setattr(self, 'require_user_enrollment_approval', n.get_bool_value()),
+            "serial_number": lambda n : setattr(self, 'serial_number', n.get_str_value()),
+            "subscriber_carrier": lambda n : setattr(self, 'subscriber_carrier', n.get_str_value()),
+            "total_storage_space_in_bytes": lambda n : setattr(self, 'total_storage_space_in_bytes', n.get_int_value()),
             "udid": lambda n : setattr(self, 'udid', n.get_str_value()),
-            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
             "users": lambda n : setattr(self, 'users', n.get_collection_of_object_values(User)),
-            "wiFiMacAddress": lambda n : setattr(self, 'wi_fi_mac_address', n.get_str_value()),
-            "windowsProtectionState": lambda n : setattr(self, 'windows_protection_state', n.get_object_value(WindowsProtectionState)),
+            "wi_fi_mac_address": lambda n : setattr(self, 'wi_fi_mac_address', n.get_str_value()),
+            "windows_protection_state": lambda n : setattr(self, 'windows_protection_state', n.get_object_value(WindowsProtectionState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -280,21 +280,21 @@ class ManagedDevice(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("complianceState", self.compliance_state)
-        writer.write_object_value("deviceCategory", self.device_category)
-        writer.write_collection_of_object_values("deviceCompliancePolicyStates", self.device_compliance_policy_states)
-        writer.write_collection_of_object_values("deviceConfigurationStates", self.device_configuration_states)
-        writer.write_enum_value("deviceEnrollmentType", self.device_enrollment_type)
-        writer.write_enum_value("deviceRegistrationState", self.device_registration_state)
-        writer.write_enum_value("exchangeAccessState", self.exchange_access_state)
-        writer.write_enum_value("exchangeAccessStateReason", self.exchange_access_state_reason)
-        writer.write_collection_of_object_values("logCollectionRequests", self.log_collection_requests)
-        writer.write_str_value("managedDeviceName", self.managed_device_name)
-        writer.write_enum_value("managedDeviceOwnerType", self.managed_device_owner_type)
-        writer.write_enum_value("managementAgent", self.management_agent)
+        writer.write_enum_value("compliance_state", self.compliance_state)
+        writer.write_object_value("device_category", self.device_category)
+        writer.write_collection_of_object_values("device_compliance_policy_states", self.device_compliance_policy_states)
+        writer.write_collection_of_object_values("device_configuration_states", self.device_configuration_states)
+        writer.write_enum_value("device_enrollment_type", self.device_enrollment_type)
+        writer.write_enum_value("device_registration_state", self.device_registration_state)
+        writer.write_enum_value("exchange_access_state", self.exchange_access_state)
+        writer.write_enum_value("exchange_access_state_reason", self.exchange_access_state_reason)
+        writer.write_collection_of_object_values("log_collection_requests", self.log_collection_requests)
+        writer.write_str_value("managed_device_name", self.managed_device_name)
+        writer.write_enum_value("managed_device_owner_type", self.managed_device_owner_type)
+        writer.write_enum_value("management_agent", self.management_agent)
         writer.write_str_value("notes", self.notes)
-        writer.write_enum_value("partnerReportedThreatState", self.partner_reported_threat_state)
+        writer.write_enum_value("partner_reported_threat_state", self.partner_reported_threat_state)
         writer.write_collection_of_object_values("users", self.users)
-        writer.write_object_value("windowsProtectionState", self.windows_protection_state)
+        writer.write_object_value("windows_protection_state", self.windows_protection_state)
     
 

@@ -43,7 +43,7 @@ class StandardizePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "mean": lambda n : setattr(self, 'mean', n.get_object_value(Json)),
-            "standardDev": lambda n : setattr(self, 'standard_dev', n.get_object_value(Json)),
+            "standard_dev": lambda n : setattr(self, 'standard_dev', n.get_object_value(Json)),
             "x": lambda n : setattr(self, 'x', n.get_object_value(Json)),
         }
         return fields
@@ -57,7 +57,7 @@ class StandardizePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("mean", self.mean)
-        writer.write_object_value("standardDev", self.standard_dev)
+        writer.write_object_value("standard_dev", self.standard_dev)
         writer.write_object_value("x", self.x)
         writer.write_additional_data_value(self.additional_data)
     

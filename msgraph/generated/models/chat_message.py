@@ -121,28 +121,28 @@ class ChatMessage(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(ChatMessageAttachment)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(ItemBody)),
-            "channelIdentity": lambda n : setattr(self, 'channel_identity', n.get_object_value(ChannelIdentity)),
-            "chatId": lambda n : setattr(self, 'chat_id', n.get_str_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
+            "channel_identity": lambda n : setattr(self, 'channel_identity', n.get_object_value(ChannelIdentity)),
+            "chat_id": lambda n : setattr(self, 'chat_id', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "deleted_date_time": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
             "etag": lambda n : setattr(self, 'etag', n.get_str_value()),
-            "eventDetail": lambda n : setattr(self, 'event_detail', n.get_object_value(EventMessageDetail)),
+            "event_detail": lambda n : setattr(self, 'event_detail', n.get_object_value(EventMessageDetail)),
             "from": lambda n : setattr(self, 'from_', n.get_object_value(ChatMessageFromIdentitySet)),
-            "hostedContents": lambda n : setattr(self, 'hosted_contents', n.get_collection_of_object_values(ChatMessageHostedContent)),
+            "hosted_contents": lambda n : setattr(self, 'hosted_contents', n.get_collection_of_object_values(ChatMessageHostedContent)),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(ChatMessageImportance)),
-            "lastEditedDateTime": lambda n : setattr(self, 'last_edited_date_time', n.get_datetime_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "last_edited_date_time": lambda n : setattr(self, 'last_edited_date_time', n.get_datetime_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "locale": lambda n : setattr(self, 'locale', n.get_str_value()),
             "mentions": lambda n : setattr(self, 'mentions', n.get_collection_of_object_values(ChatMessageMention)),
-            "messageHistory": lambda n : setattr(self, 'message_history', n.get_collection_of_object_values(ChatMessageHistoryItem)),
-            "messageType": lambda n : setattr(self, 'message_type', n.get_enum_value(ChatMessageType)),
-            "policyViolation": lambda n : setattr(self, 'policy_violation', n.get_object_value(ChatMessagePolicyViolation)),
+            "message_history": lambda n : setattr(self, 'message_history', n.get_collection_of_object_values(ChatMessageHistoryItem)),
+            "message_type": lambda n : setattr(self, 'message_type', n.get_enum_value(ChatMessageType)),
+            "policy_violation": lambda n : setattr(self, 'policy_violation', n.get_object_value(ChatMessagePolicyViolation)),
             "reactions": lambda n : setattr(self, 'reactions', n.get_collection_of_object_values(ChatMessageReaction)),
             "replies": lambda n : setattr(self, 'replies', n.get_collection_of_object_values(ChatMessage)),
-            "replyToId": lambda n : setattr(self, 'reply_to_id', n.get_str_value()),
+            "reply_to_id": lambda n : setattr(self, 'reply_to_id', n.get_str_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
             "summary": lambda n : setattr(self, 'summary', n.get_str_value()),
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -159,27 +159,27 @@ class ChatMessage(Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_object_value("body", self.body)
-        writer.write_object_value("channelIdentity", self.channel_identity)
-        writer.write_str_value("chatId", self.chat_id)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
+        writer.write_object_value("channel_identity", self.channel_identity)
+        writer.write_str_value("chat_id", self.chat_id)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_datetime_value("deleted_date_time", self.deleted_date_time)
         writer.write_str_value("etag", self.etag)
-        writer.write_object_value("eventDetail", self.event_detail)
+        writer.write_object_value("event_detail", self.event_detail)
         writer.write_object_value("from", self.from_)
-        writer.write_collection_of_object_values("hostedContents", self.hosted_contents)
+        writer.write_collection_of_object_values("hosted_contents", self.hosted_contents)
         writer.write_enum_value("importance", self.importance)
-        writer.write_datetime_value("lastEditedDateTime", self.last_edited_date_time)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("last_edited_date_time", self.last_edited_date_time)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_str_value("locale", self.locale)
         writer.write_collection_of_object_values("mentions", self.mentions)
-        writer.write_collection_of_object_values("messageHistory", self.message_history)
-        writer.write_enum_value("messageType", self.message_type)
-        writer.write_object_value("policyViolation", self.policy_violation)
+        writer.write_collection_of_object_values("message_history", self.message_history)
+        writer.write_enum_value("message_type", self.message_type)
+        writer.write_object_value("policy_violation", self.policy_violation)
         writer.write_collection_of_object_values("reactions", self.reactions)
         writer.write_collection_of_object_values("replies", self.replies)
-        writer.write_str_value("replyToId", self.reply_to_id)
+        writer.write_str_value("reply_to_id", self.reply_to_id)
         writer.write_str_value("subject", self.subject)
         writer.write_str_value("summary", self.summary)
-        writer.write_str_value("webUrl", self.web_url)
+        writer.write_str_value("web_url", self.web_url)
     
 

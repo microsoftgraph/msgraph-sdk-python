@@ -97,34 +97,34 @@ class Device(DirectoryObject):
         from .extension import Extension
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
-            "alternativeSecurityIds": lambda n : setattr(self, 'alternative_security_ids', n.get_collection_of_object_values(AlternativeSecurityId)),
-            "approximateLastSignInDateTime": lambda n : setattr(self, 'approximate_last_sign_in_date_time', n.get_datetime_value()),
-            "complianceExpirationDateTime": lambda n : setattr(self, 'compliance_expiration_date_time', n.get_datetime_value()),
-            "deviceCategory": lambda n : setattr(self, 'device_category', n.get_str_value()),
-            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "deviceMetadata": lambda n : setattr(self, 'device_metadata', n.get_str_value()),
-            "deviceOwnership": lambda n : setattr(self, 'device_ownership', n.get_str_value()),
-            "deviceVersion": lambda n : setattr(self, 'device_version', n.get_int_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "enrollmentProfileName": lambda n : setattr(self, 'enrollment_profile_name', n.get_str_value()),
+            "account_enabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
+            "alternative_security_ids": lambda n : setattr(self, 'alternative_security_ids', n.get_collection_of_object_values(AlternativeSecurityId)),
+            "approximate_last_sign_in_date_time": lambda n : setattr(self, 'approximate_last_sign_in_date_time', n.get_datetime_value()),
+            "compliance_expiration_date_time": lambda n : setattr(self, 'compliance_expiration_date_time', n.get_datetime_value()),
+            "device_category": lambda n : setattr(self, 'device_category', n.get_str_value()),
+            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "device_metadata": lambda n : setattr(self, 'device_metadata', n.get_str_value()),
+            "device_ownership": lambda n : setattr(self, 'device_ownership', n.get_str_value()),
+            "device_version": lambda n : setattr(self, 'device_version', n.get_int_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "enrollment_profile_name": lambda n : setattr(self, 'enrollment_profile_name', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
-            "isCompliant": lambda n : setattr(self, 'is_compliant', n.get_bool_value()),
-            "isManaged": lambda n : setattr(self, 'is_managed', n.get_bool_value()),
-            "mdmAppId": lambda n : setattr(self, 'mdm_app_id', n.get_str_value()),
-            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
-            "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
-            "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
-            "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),
-            "operatingSystemVersion": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
-            "physicalIds": lambda n : setattr(self, 'physical_ids', n.get_collection_of_primitive_values(str)),
-            "profileType": lambda n : setattr(self, 'profile_type', n.get_str_value()),
-            "registeredOwners": lambda n : setattr(self, 'registered_owners', n.get_collection_of_object_values(DirectoryObject)),
-            "registeredUsers": lambda n : setattr(self, 'registered_users', n.get_collection_of_object_values(DirectoryObject)),
-            "registrationDateTime": lambda n : setattr(self, 'registration_date_time', n.get_datetime_value()),
-            "systemLabels": lambda n : setattr(self, 'system_labels', n.get_collection_of_primitive_values(str)),
-            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
-            "trustType": lambda n : setattr(self, 'trust_type', n.get_str_value()),
+            "is_compliant": lambda n : setattr(self, 'is_compliant', n.get_bool_value()),
+            "is_managed": lambda n : setattr(self, 'is_managed', n.get_bool_value()),
+            "mdm_app_id": lambda n : setattr(self, 'mdm_app_id', n.get_str_value()),
+            "member_of": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
+            "on_premises_last_sync_date_time": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
+            "on_premises_sync_enabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
+            "operating_system": lambda n : setattr(self, 'operating_system', n.get_str_value()),
+            "operating_system_version": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
+            "physical_ids": lambda n : setattr(self, 'physical_ids', n.get_collection_of_primitive_values(str)),
+            "profile_type": lambda n : setattr(self, 'profile_type', n.get_str_value()),
+            "registered_owners": lambda n : setattr(self, 'registered_owners', n.get_collection_of_object_values(DirectoryObject)),
+            "registered_users": lambda n : setattr(self, 'registered_users', n.get_collection_of_object_values(DirectoryObject)),
+            "registration_date_time": lambda n : setattr(self, 'registration_date_time', n.get_datetime_value()),
+            "system_labels": lambda n : setattr(self, 'system_labels', n.get_collection_of_primitive_values(str)),
+            "transitive_member_of": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
+            "trust_type": lambda n : setattr(self, 'trust_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -139,33 +139,33 @@ class Device(DirectoryObject):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("accountEnabled", self.account_enabled)
-        writer.write_collection_of_object_values("alternativeSecurityIds", self.alternative_security_ids)
-        writer.write_datetime_value("approximateLastSignInDateTime", self.approximate_last_sign_in_date_time)
-        writer.write_datetime_value("complianceExpirationDateTime", self.compliance_expiration_date_time)
-        writer.write_str_value("deviceCategory", self.device_category)
-        writer.write_str_value("deviceId", self.device_id)
-        writer.write_str_value("deviceMetadata", self.device_metadata)
-        writer.write_str_value("deviceOwnership", self.device_ownership)
-        writer.write_int_value("deviceVersion", self.device_version)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("enrollmentProfileName", self.enrollment_profile_name)
+        writer.write_bool_value("account_enabled", self.account_enabled)
+        writer.write_collection_of_object_values("alternative_security_ids", self.alternative_security_ids)
+        writer.write_datetime_value("approximate_last_sign_in_date_time", self.approximate_last_sign_in_date_time)
+        writer.write_datetime_value("compliance_expiration_date_time", self.compliance_expiration_date_time)
+        writer.write_str_value("device_category", self.device_category)
+        writer.write_str_value("device_id", self.device_id)
+        writer.write_str_value("device_metadata", self.device_metadata)
+        writer.write_str_value("device_ownership", self.device_ownership)
+        writer.write_int_value("device_version", self.device_version)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("enrollment_profile_name", self.enrollment_profile_name)
         writer.write_collection_of_object_values("extensions", self.extensions)
-        writer.write_bool_value("isCompliant", self.is_compliant)
-        writer.write_bool_value("isManaged", self.is_managed)
-        writer.write_str_value("mdmAppId", self.mdm_app_id)
-        writer.write_collection_of_object_values("memberOf", self.member_of)
-        writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
-        writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
-        writer.write_str_value("operatingSystem", self.operating_system)
-        writer.write_str_value("operatingSystemVersion", self.operating_system_version)
-        writer.write_collection_of_primitive_values("physicalIds", self.physical_ids)
-        writer.write_str_value("profileType", self.profile_type)
-        writer.write_collection_of_object_values("registeredOwners", self.registered_owners)
-        writer.write_collection_of_object_values("registeredUsers", self.registered_users)
-        writer.write_datetime_value("registrationDateTime", self.registration_date_time)
-        writer.write_collection_of_primitive_values("systemLabels", self.system_labels)
-        writer.write_collection_of_object_values("transitiveMemberOf", self.transitive_member_of)
-        writer.write_str_value("trustType", self.trust_type)
+        writer.write_bool_value("is_compliant", self.is_compliant)
+        writer.write_bool_value("is_managed", self.is_managed)
+        writer.write_str_value("mdm_app_id", self.mdm_app_id)
+        writer.write_collection_of_object_values("member_of", self.member_of)
+        writer.write_datetime_value("on_premises_last_sync_date_time", self.on_premises_last_sync_date_time)
+        writer.write_bool_value("on_premises_sync_enabled", self.on_premises_sync_enabled)
+        writer.write_str_value("operating_system", self.operating_system)
+        writer.write_str_value("operating_system_version", self.operating_system_version)
+        writer.write_collection_of_primitive_values("physical_ids", self.physical_ids)
+        writer.write_str_value("profile_type", self.profile_type)
+        writer.write_collection_of_object_values("registered_owners", self.registered_owners)
+        writer.write_collection_of_object_values("registered_users", self.registered_users)
+        writer.write_datetime_value("registration_date_time", self.registration_date_time)
+        writer.write_collection_of_primitive_values("system_labels", self.system_labels)
+        writer.write_collection_of_object_values("transitive_member_of", self.transitive_member_of)
+        writer.write_str_value("trust_type", self.trust_type)
     
 

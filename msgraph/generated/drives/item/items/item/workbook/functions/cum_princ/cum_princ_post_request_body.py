@@ -48,11 +48,11 @@ class CumPrincPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endPeriod": lambda n : setattr(self, 'end_period', n.get_object_value(Json)),
+            "end_period": lambda n : setattr(self, 'end_period', n.get_object_value(Json)),
             "nper": lambda n : setattr(self, 'nper', n.get_object_value(Json)),
             "pv": lambda n : setattr(self, 'pv', n.get_object_value(Json)),
             "rate": lambda n : setattr(self, 'rate', n.get_object_value(Json)),
-            "startPeriod": lambda n : setattr(self, 'start_period', n.get_object_value(Json)),
+            "start_period": lambda n : setattr(self, 'start_period', n.get_object_value(Json)),
             "type": lambda n : setattr(self, 'type', n.get_object_value(Json)),
         }
         return fields
@@ -65,11 +65,11 @@ class CumPrincPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("endPeriod", self.end_period)
+        writer.write_object_value("end_period", self.end_period)
         writer.write_object_value("nper", self.nper)
         writer.write_object_value("pv", self.pv)
         writer.write_object_value("rate", self.rate)
-        writer.write_object_value("startPeriod", self.start_period)
+        writer.write_object_value("start_period", self.start_period)
         writer.write_object_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
     

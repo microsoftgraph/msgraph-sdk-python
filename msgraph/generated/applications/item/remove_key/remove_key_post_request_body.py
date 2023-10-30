@@ -34,7 +34,7 @@ class RemoveKeyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "keyId": lambda n : setattr(self, 'key_id', n.get_uuid_value()),
+            "key_id": lambda n : setattr(self, 'key_id', n.get_uuid_value()),
             "proof": lambda n : setattr(self, 'proof', n.get_str_value()),
         }
         return fields
@@ -47,7 +47,7 @@ class RemoveKeyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_uuid_value("keyId", self.key_id)
+        writer.write_uuid_value("key_id", self.key_id)
         writer.write_str_value("proof", self.proof)
         writer.write_additional_data_value(self.additional_data)
     

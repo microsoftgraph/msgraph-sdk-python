@@ -88,24 +88,24 @@ class Person(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "birthday": lambda n : setattr(self, 'birthday', n.get_str_value()),
-            "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
+            "company_name": lambda n : setattr(self, 'company_name', n.get_str_value()),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
-            "imAddress": lambda n : setattr(self, 'im_address', n.get_str_value()),
-            "isFavorite": lambda n : setattr(self, 'is_favorite', n.get_bool_value()),
-            "jobTitle": lambda n : setattr(self, 'job_title', n.get_str_value()),
-            "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
-            "personNotes": lambda n : setattr(self, 'person_notes', n.get_str_value()),
-            "personType": lambda n : setattr(self, 'person_type', n.get_object_value(PersonType)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "given_name": lambda n : setattr(self, 'given_name', n.get_str_value()),
+            "im_address": lambda n : setattr(self, 'im_address', n.get_str_value()),
+            "is_favorite": lambda n : setattr(self, 'is_favorite', n.get_bool_value()),
+            "job_title": lambda n : setattr(self, 'job_title', n.get_str_value()),
+            "office_location": lambda n : setattr(self, 'office_location', n.get_str_value()),
+            "person_notes": lambda n : setattr(self, 'person_notes', n.get_str_value()),
+            "person_type": lambda n : setattr(self, 'person_type', n.get_object_value(PersonType)),
             "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(Phone)),
-            "postalAddresses": lambda n : setattr(self, 'postal_addresses', n.get_collection_of_object_values(Location)),
+            "postal_addresses": lambda n : setattr(self, 'postal_addresses', n.get_collection_of_object_values(Location)),
             "profession": lambda n : setattr(self, 'profession', n.get_str_value()),
-            "scoredEmailAddresses": lambda n : setattr(self, 'scored_email_addresses', n.get_collection_of_object_values(ScoredEmailAddress)),
+            "scored_email_addresses": lambda n : setattr(self, 'scored_email_addresses', n.get_collection_of_object_values(ScoredEmailAddress)),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
             "websites": lambda n : setattr(self, 'websites', n.get_collection_of_object_values(Website)),
-            "yomiCompany": lambda n : setattr(self, 'yomi_company', n.get_str_value()),
+            "yomi_company": lambda n : setattr(self, 'yomi_company', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -121,23 +121,23 @@ class Person(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("birthday", self.birthday)
-        writer.write_str_value("companyName", self.company_name)
+        writer.write_str_value("company_name", self.company_name)
         writer.write_str_value("department", self.department)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("givenName", self.given_name)
-        writer.write_str_value("imAddress", self.im_address)
-        writer.write_bool_value("isFavorite", self.is_favorite)
-        writer.write_str_value("jobTitle", self.job_title)
-        writer.write_str_value("officeLocation", self.office_location)
-        writer.write_str_value("personNotes", self.person_notes)
-        writer.write_object_value("personType", self.person_type)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("given_name", self.given_name)
+        writer.write_str_value("im_address", self.im_address)
+        writer.write_bool_value("is_favorite", self.is_favorite)
+        writer.write_str_value("job_title", self.job_title)
+        writer.write_str_value("office_location", self.office_location)
+        writer.write_str_value("person_notes", self.person_notes)
+        writer.write_object_value("person_type", self.person_type)
         writer.write_collection_of_object_values("phones", self.phones)
-        writer.write_collection_of_object_values("postalAddresses", self.postal_addresses)
+        writer.write_collection_of_object_values("postal_addresses", self.postal_addresses)
         writer.write_str_value("profession", self.profession)
-        writer.write_collection_of_object_values("scoredEmailAddresses", self.scored_email_addresses)
+        writer.write_collection_of_object_values("scored_email_addresses", self.scored_email_addresses)
         writer.write_str_value("surname", self.surname)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
         writer.write_collection_of_object_values("websites", self.websites)
-        writer.write_str_value("yomiCompany", self.yomi_company)
+        writer.write_str_value("yomi_company", self.yomi_company)
     
 

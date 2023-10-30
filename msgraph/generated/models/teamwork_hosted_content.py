@@ -49,8 +49,8 @@ class TeamworkHostedContent(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "contentBytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
-            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "content_bytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
+            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -65,7 +65,7 @@ class TeamworkHostedContent(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bytes_value("contentBytes", self.content_bytes)
-        writer.write_str_value("contentType", self.content_type)
+        writer.write_bytes_value("content_bytes", self.content_bytes)
+        writer.write_str_value("content_type", self.content_type)
     
 

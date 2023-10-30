@@ -55,12 +55,12 @@ class EventMessageRequest(EventMessage):
         from .meeting_request_type import MeetingRequestType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowNewTimeProposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
-            "meetingRequestType": lambda n : setattr(self, 'meeting_request_type', n.get_enum_value(MeetingRequestType)),
-            "previousEndDateTime": lambda n : setattr(self, 'previous_end_date_time', n.get_object_value(DateTimeTimeZone)),
-            "previousLocation": lambda n : setattr(self, 'previous_location', n.get_object_value(Location)),
-            "previousStartDateTime": lambda n : setattr(self, 'previous_start_date_time', n.get_object_value(DateTimeTimeZone)),
-            "responseRequested": lambda n : setattr(self, 'response_requested', n.get_bool_value()),
+            "allow_new_time_proposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
+            "meeting_request_type": lambda n : setattr(self, 'meeting_request_type', n.get_enum_value(MeetingRequestType)),
+            "previous_end_date_time": lambda n : setattr(self, 'previous_end_date_time', n.get_object_value(DateTimeTimeZone)),
+            "previous_location": lambda n : setattr(self, 'previous_location', n.get_object_value(Location)),
+            "previous_start_date_time": lambda n : setattr(self, 'previous_start_date_time', n.get_object_value(DateTimeTimeZone)),
+            "response_requested": lambda n : setattr(self, 'response_requested', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,11 +75,11 @@ class EventMessageRequest(EventMessage):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("allowNewTimeProposals", self.allow_new_time_proposals)
-        writer.write_enum_value("meetingRequestType", self.meeting_request_type)
-        writer.write_object_value("previousEndDateTime", self.previous_end_date_time)
-        writer.write_object_value("previousLocation", self.previous_location)
-        writer.write_object_value("previousStartDateTime", self.previous_start_date_time)
-        writer.write_bool_value("responseRequested", self.response_requested)
+        writer.write_bool_value("allow_new_time_proposals", self.allow_new_time_proposals)
+        writer.write_enum_value("meeting_request_type", self.meeting_request_type)
+        writer.write_object_value("previous_end_date_time", self.previous_end_date_time)
+        writer.write_object_value("previous_location", self.previous_location)
+        writer.write_object_value("previous_start_date_time", self.previous_start_date_time)
+        writer.write_bool_value("response_requested", self.response_requested)
     
 

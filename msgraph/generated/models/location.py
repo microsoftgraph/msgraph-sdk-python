@@ -76,13 +76,13 @@ class Location(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(PhysicalAddress)),
             "coordinates": lambda n : setattr(self, 'coordinates', n.get_object_value(OutlookGeoCoordinates)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "locationEmailAddress": lambda n : setattr(self, 'location_email_address', n.get_str_value()),
-            "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(LocationType)),
-            "locationUri": lambda n : setattr(self, 'location_uri', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "uniqueId": lambda n : setattr(self, 'unique_id', n.get_str_value()),
-            "uniqueIdType": lambda n : setattr(self, 'unique_id_type', n.get_enum_value(LocationUniqueIdType)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "location_email_address": lambda n : setattr(self, 'location_email_address', n.get_str_value()),
+            "location_type": lambda n : setattr(self, 'location_type', n.get_enum_value(LocationType)),
+            "location_uri": lambda n : setattr(self, 'location_uri', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "unique_id": lambda n : setattr(self, 'unique_id', n.get_str_value()),
+            "unique_id_type": lambda n : setattr(self, 'unique_id_type', n.get_enum_value(LocationUniqueIdType)),
         }
         return fields
     
@@ -96,13 +96,13 @@ class Location(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("address", self.address)
         writer.write_object_value("coordinates", self.coordinates)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("locationEmailAddress", self.location_email_address)
-        writer.write_enum_value("locationType", self.location_type)
-        writer.write_str_value("locationUri", self.location_uri)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("uniqueId", self.unique_id)
-        writer.write_enum_value("uniqueIdType", self.unique_id_type)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("location_email_address", self.location_email_address)
+        writer.write_enum_value("location_type", self.location_type)
+        writer.write_str_value("location_uri", self.location_uri)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("unique_id", self.unique_id)
+        writer.write_enum_value("unique_id_type", self.unique_id_type)
         writer.write_additional_data_value(self.additional_data)
     
 

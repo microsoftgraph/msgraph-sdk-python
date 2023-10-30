@@ -42,9 +42,9 @@ class RequiredResourceAccess(AdditionalDataHolder, BackedModel, Parsable):
         from .resource_access import ResourceAccess
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resourceAccess": lambda n : setattr(self, 'resource_access', n.get_collection_of_object_values(ResourceAccess)),
-            "resourceAppId": lambda n : setattr(self, 'resource_app_id', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "resource_access": lambda n : setattr(self, 'resource_access', n.get_collection_of_object_values(ResourceAccess)),
+            "resource_app_id": lambda n : setattr(self, 'resource_app_id', n.get_str_value()),
         }
         return fields
     
@@ -56,9 +56,9 @@ class RequiredResourceAccess(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("resourceAccess", self.resource_access)
-        writer.write_str_value("resourceAppId", self.resource_app_id)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("resource_access", self.resource_access)
+        writer.write_str_value("resource_app_id", self.resource_app_id)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -51,10 +51,10 @@ class Relation(Entity):
         from .term import Term
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fromTerm": lambda n : setattr(self, 'from_term', n.get_object_value(Term)),
+            "from_term": lambda n : setattr(self, 'from_term', n.get_object_value(Term)),
             "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(RelationType)),
             "set": lambda n : setattr(self, 'set', n.get_object_value(Set)),
-            "toTerm": lambda n : setattr(self, 'to_term', n.get_object_value(Term)),
+            "to_term": lambda n : setattr(self, 'to_term', n.get_object_value(Term)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,9 +69,9 @@ class Relation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("fromTerm", self.from_term)
+        writer.write_object_value("from_term", self.from_term)
         writer.write_enum_value("relationship", self.relationship)
         writer.write_object_value("set", self.set)
-        writer.write_object_value("toTerm", self.to_term)
+        writer.write_object_value("to_term", self.to_term)
     
 

@@ -43,9 +43,9 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "groupBy": lambda n : setattr(self, 'group_by', n.get_collection_of_primitive_values(str)),
+            "group_by": lambda n : setattr(self, 'group_by', n.get_collection_of_primitive_values(str)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "orderBy": lambda n : setattr(self, 'order_by', n.get_collection_of_primitive_values(str)),
+            "order_by": lambda n : setattr(self, 'order_by', n.get_collection_of_primitive_values(str)),
             "search": lambda n : setattr(self, 'search', n.get_str_value()),
             "select": lambda n : setattr(self, 'select', n.get_collection_of_primitive_values(str)),
             "skip": lambda n : setattr(self, 'skip', n.get_int_value()),
@@ -61,9 +61,9 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("groupBy", self.group_by)
+        writer.write_collection_of_primitive_values("group_by", self.group_by)
         writer.write_str_value("id", self.id)
-        writer.write_collection_of_primitive_values("orderBy", self.order_by)
+        writer.write_collection_of_primitive_values("order_by", self.order_by)
         writer.write_str_value("search", self.search)
         writer.write_collection_of_primitive_values("select", self.select)
         writer.write_int_value("skip", self.skip)

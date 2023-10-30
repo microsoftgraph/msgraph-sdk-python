@@ -58,12 +58,12 @@ class WorkbookChartDataLabels(Entity):
             "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookChartDataLabelFormat)),
             "position": lambda n : setattr(self, 'position', n.get_str_value()),
             "separator": lambda n : setattr(self, 'separator', n.get_str_value()),
-            "showBubbleSize": lambda n : setattr(self, 'show_bubble_size', n.get_bool_value()),
-            "showCategoryName": lambda n : setattr(self, 'show_category_name', n.get_bool_value()),
-            "showLegendKey": lambda n : setattr(self, 'show_legend_key', n.get_bool_value()),
-            "showPercentage": lambda n : setattr(self, 'show_percentage', n.get_bool_value()),
-            "showSeriesName": lambda n : setattr(self, 'show_series_name', n.get_bool_value()),
-            "showValue": lambda n : setattr(self, 'show_value', n.get_bool_value()),
+            "show_bubble_size": lambda n : setattr(self, 'show_bubble_size', n.get_bool_value()),
+            "show_category_name": lambda n : setattr(self, 'show_category_name', n.get_bool_value()),
+            "show_legend_key": lambda n : setattr(self, 'show_legend_key', n.get_bool_value()),
+            "show_percentage": lambda n : setattr(self, 'show_percentage', n.get_bool_value()),
+            "show_series_name": lambda n : setattr(self, 'show_series_name', n.get_bool_value()),
+            "show_value": lambda n : setattr(self, 'show_value', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -81,11 +81,11 @@ class WorkbookChartDataLabels(Entity):
         writer.write_object_value("format", self.format)
         writer.write_str_value("position", self.position)
         writer.write_str_value("separator", self.separator)
-        writer.write_bool_value("showBubbleSize", self.show_bubble_size)
-        writer.write_bool_value("showCategoryName", self.show_category_name)
-        writer.write_bool_value("showLegendKey", self.show_legend_key)
-        writer.write_bool_value("showPercentage", self.show_percentage)
-        writer.write_bool_value("showSeriesName", self.show_series_name)
-        writer.write_bool_value("showValue", self.show_value)
+        writer.write_bool_value("show_bubble_size", self.show_bubble_size)
+        writer.write_bool_value("show_category_name", self.show_category_name)
+        writer.write_bool_value("show_legend_key", self.show_legend_key)
+        writer.write_bool_value("show_percentage", self.show_percentage)
+        writer.write_bool_value("show_series_name", self.show_series_name)
+        writer.write_bool_value("show_value", self.show_value)
     
 

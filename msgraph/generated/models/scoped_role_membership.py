@@ -43,9 +43,9 @@ class ScopedRoleMembership(Entity):
         from .identity import Identity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "administrativeUnitId": lambda n : setattr(self, 'administrative_unit_id', n.get_str_value()),
-            "roleId": lambda n : setattr(self, 'role_id', n.get_str_value()),
-            "roleMemberInfo": lambda n : setattr(self, 'role_member_info', n.get_object_value(Identity)),
+            "administrative_unit_id": lambda n : setattr(self, 'administrative_unit_id', n.get_str_value()),
+            "role_id": lambda n : setattr(self, 'role_id', n.get_str_value()),
+            "role_member_info": lambda n : setattr(self, 'role_member_info', n.get_object_value(Identity)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class ScopedRoleMembership(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("administrativeUnitId", self.administrative_unit_id)
-        writer.write_str_value("roleId", self.role_id)
-        writer.write_object_value("roleMemberInfo", self.role_member_info)
+        writer.write_str_value("administrative_unit_id", self.administrative_unit_id)
+        writer.write_str_value("role_id", self.role_id)
+        writer.write_object_value("role_member_info", self.role_member_info)
     
 

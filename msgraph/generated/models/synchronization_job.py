@@ -59,8 +59,8 @@ class SynchronizationJob(Entity):
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(SynchronizationSchedule)),
             "schema": lambda n : setattr(self, 'schema', n.get_object_value(SynchronizationSchema)),
             "status": lambda n : setattr(self, 'status', n.get_object_value(SynchronizationStatus)),
-            "synchronizationJobSettings": lambda n : setattr(self, 'synchronization_job_settings', n.get_collection_of_object_values(KeyValuePair)),
-            "templateId": lambda n : setattr(self, 'template_id', n.get_str_value()),
+            "synchronization_job_settings": lambda n : setattr(self, 'synchronization_job_settings', n.get_collection_of_object_values(KeyValuePair)),
+            "template_id": lambda n : setattr(self, 'template_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,7 +78,7 @@ class SynchronizationJob(Entity):
         writer.write_object_value("schedule", self.schedule)
         writer.write_object_value("schema", self.schema)
         writer.write_object_value("status", self.status)
-        writer.write_collection_of_object_values("synchronizationJobSettings", self.synchronization_job_settings)
-        writer.write_str_value("templateId", self.template_id)
+        writer.write_collection_of_object_values("synchronization_job_settings", self.synchronization_job_settings)
+        writer.write_str_value("template_id", self.template_id)
     
 

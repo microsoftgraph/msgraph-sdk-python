@@ -49,12 +49,12 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, BackedModel, 
         from .attack_simulation_user import AttackSimulationUser
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(AttackSimulationUser)),
-            "clickCount": lambda n : setattr(self, 'click_count', n.get_int_value()),
-            "compromisedCount": lambda n : setattr(self, 'compromised_count', n.get_int_value()),
-            "latestSimulationDateTime": lambda n : setattr(self, 'latest_simulation_date_time', n.get_datetime_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "simulationCount": lambda n : setattr(self, 'simulation_count', n.get_int_value()),
+            "attack_simulation_user": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(AttackSimulationUser)),
+            "click_count": lambda n : setattr(self, 'click_count', n.get_int_value()),
+            "compromised_count": lambda n : setattr(self, 'compromised_count', n.get_int_value()),
+            "latest_simulation_date_time": lambda n : setattr(self, 'latest_simulation_date_time', n.get_datetime_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "simulation_count": lambda n : setattr(self, 'simulation_count', n.get_int_value()),
         }
         return fields
     
@@ -66,12 +66,12 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, BackedModel, 
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("attackSimulationUser", self.attack_simulation_user)
-        writer.write_int_value("clickCount", self.click_count)
-        writer.write_int_value("compromisedCount", self.compromised_count)
-        writer.write_datetime_value("latestSimulationDateTime", self.latest_simulation_date_time)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("simulationCount", self.simulation_count)
+        writer.write_object_value("attack_simulation_user", self.attack_simulation_user)
+        writer.write_int_value("click_count", self.click_count)
+        writer.write_int_value("compromised_count", self.compromised_count)
+        writer.write_datetime_value("latest_simulation_date_time", self.latest_simulation_date_time)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("simulation_count", self.simulation_count)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -39,7 +39,7 @@ class CustomTaskExtensionCallbackData(CustomExtensionData):
         from .custom_task_extension_operation_status import CustomTaskExtensionOperationStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "operationStatus": lambda n : setattr(self, 'operation_status', n.get_enum_value(CustomTaskExtensionOperationStatus)),
+            "operation_status": lambda n : setattr(self, 'operation_status', n.get_enum_value(CustomTaskExtensionOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class CustomTaskExtensionCallbackData(CustomExtensionData):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("operationStatus", self.operation_status)
+        writer.write_enum_value("operation_status", self.operation_status)
     
 

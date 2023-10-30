@@ -42,8 +42,8 @@ class AttachmentSession(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "nextExpectedRanges": lambda n : setattr(self, 'next_expected_ranges', n.get_collection_of_primitive_values(str)),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "next_expected_ranges": lambda n : setattr(self, 'next_expected_ranges', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -59,7 +59,7 @@ class AttachmentSession(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bytes_value("content", self.content)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
-        writer.write_collection_of_primitive_values("nextExpectedRanges", self.next_expected_ranges)
+        writer.write_datetime_value("expiration_date_time", self.expiration_date_time)
+        writer.write_collection_of_primitive_values("next_expected_ranges", self.next_expected_ranges)
     
 

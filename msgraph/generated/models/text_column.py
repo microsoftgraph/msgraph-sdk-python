@@ -41,12 +41,12 @@ class TextColumn(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowMultipleLines": lambda n : setattr(self, 'allow_multiple_lines', n.get_bool_value()),
-            "appendChangesToExistingText": lambda n : setattr(self, 'append_changes_to_existing_text', n.get_bool_value()),
-            "linesForEditing": lambda n : setattr(self, 'lines_for_editing', n.get_int_value()),
-            "maxLength": lambda n : setattr(self, 'max_length', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "textType": lambda n : setattr(self, 'text_type', n.get_str_value()),
+            "allow_multiple_lines": lambda n : setattr(self, 'allow_multiple_lines', n.get_bool_value()),
+            "append_changes_to_existing_text": lambda n : setattr(self, 'append_changes_to_existing_text', n.get_bool_value()),
+            "lines_for_editing": lambda n : setattr(self, 'lines_for_editing', n.get_int_value()),
+            "max_length": lambda n : setattr(self, 'max_length', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "text_type": lambda n : setattr(self, 'text_type', n.get_str_value()),
         }
         return fields
     
@@ -58,12 +58,12 @@ class TextColumn(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("allowMultipleLines", self.allow_multiple_lines)
-        writer.write_bool_value("appendChangesToExistingText", self.append_changes_to_existing_text)
-        writer.write_int_value("linesForEditing", self.lines_for_editing)
-        writer.write_int_value("maxLength", self.max_length)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("textType", self.text_type)
+        writer.write_bool_value("allow_multiple_lines", self.allow_multiple_lines)
+        writer.write_bool_value("append_changes_to_existing_text", self.append_changes_to_existing_text)
+        writer.write_int_value("lines_for_editing", self.lines_for_editing)
+        writer.write_int_value("max_length", self.max_length)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("text_type", self.text_type)
         writer.write_additional_data_value(self.additional_data)
     
 

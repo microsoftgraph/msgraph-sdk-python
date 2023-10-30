@@ -39,11 +39,11 @@ class Hashes(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "crc32Hash": lambda n : setattr(self, 'crc32_hash', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "quickXorHash": lambda n : setattr(self, 'quick_xor_hash', n.get_str_value()),
-            "sha1Hash": lambda n : setattr(self, 'sha1_hash', n.get_str_value()),
-            "sha256Hash": lambda n : setattr(self, 'sha256_hash', n.get_str_value()),
+            "crc32_hash": lambda n : setattr(self, 'crc32_hash', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "quick_xor_hash": lambda n : setattr(self, 'quick_xor_hash', n.get_str_value()),
+            "sha1_hash": lambda n : setattr(self, 'sha1_hash', n.get_str_value()),
+            "sha256_hash": lambda n : setattr(self, 'sha256_hash', n.get_str_value()),
         }
         return fields
     
@@ -55,11 +55,11 @@ class Hashes(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("crc32Hash", self.crc32_hash)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("quickXorHash", self.quick_xor_hash)
-        writer.write_str_value("sha1Hash", self.sha1_hash)
-        writer.write_str_value("sha256Hash", self.sha256_hash)
+        writer.write_str_value("crc32_hash", self.crc32_hash)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("quick_xor_hash", self.quick_xor_hash)
+        writer.write_str_value("sha1_hash", self.sha1_hash)
+        writer.write_str_value("sha256_hash", self.sha256_hash)
         writer.write_additional_data_value(self.additional_data)
     
 

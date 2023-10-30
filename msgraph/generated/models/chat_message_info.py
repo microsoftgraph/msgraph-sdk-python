@@ -60,11 +60,11 @@ class ChatMessageInfo(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "body": lambda n : setattr(self, 'body', n.get_object_value(ItemBody)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "eventDetail": lambda n : setattr(self, 'event_detail', n.get_object_value(EventMessageDetail)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "event_detail": lambda n : setattr(self, 'event_detail', n.get_object_value(EventMessageDetail)),
             "from": lambda n : setattr(self, 'from_', n.get_object_value(ChatMessageFromIdentitySet)),
-            "isDeleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
-            "messageType": lambda n : setattr(self, 'message_type', n.get_enum_value(ChatMessageType)),
+            "is_deleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
+            "message_type": lambda n : setattr(self, 'message_type', n.get_enum_value(ChatMessageType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -80,10 +80,10 @@ class ChatMessageInfo(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("body", self.body)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_object_value("eventDetail", self.event_detail)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_object_value("event_detail", self.event_detail)
         writer.write_object_value("from", self.from_)
-        writer.write_bool_value("isDeleted", self.is_deleted)
-        writer.write_enum_value("messageType", self.message_type)
+        writer.write_bool_value("is_deleted", self.is_deleted)
+        writer.write_enum_value("message_type", self.message_type)
     
 

@@ -58,7 +58,7 @@ class ManagedEBookAssignment(Entity):
         from .ios_vpp_e_book_assignment import IosVppEBookAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "installIntent": lambda n : setattr(self, 'install_intent', n.get_enum_value(InstallIntent)),
+            "install_intent": lambda n : setattr(self, 'install_intent', n.get_enum_value(InstallIntent)),
             "target": lambda n : setattr(self, 'target', n.get_object_value(DeviceAndAppManagementAssignmentTarget)),
         }
         super_fields = super().get_field_deserializers()
@@ -74,7 +74,7 @@ class ManagedEBookAssignment(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("installIntent", self.install_intent)
+        writer.write_enum_value("install_intent", self.install_intent)
         writer.write_object_value("target", self.target)
     
 

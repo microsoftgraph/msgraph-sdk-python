@@ -40,7 +40,7 @@ class AverageIfsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "averageRange": lambda n : setattr(self, 'average_range', n.get_object_value(Json)),
+            "average_range": lambda n : setattr(self, 'average_range', n.get_object_value(Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
         }
         return fields
@@ -53,7 +53,7 @@ class AverageIfsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("averageRange", self.average_range)
+        writer.write_object_value("average_range", self.average_range)
         writer.write_object_value("values", self.values)
         writer.write_additional_data_value(self.additional_data)
     

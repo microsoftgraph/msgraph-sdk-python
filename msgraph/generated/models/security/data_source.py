@@ -74,10 +74,10 @@ class DataSource(Entity):
         from .user_source import UserSource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "holdStatus": lambda n : setattr(self, 'hold_status', n.get_enum_value(DataSourceHoldStatus)),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "hold_status": lambda n : setattr(self, 'hold_status', n.get_enum_value(DataSourceHoldStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -92,9 +92,9 @@ class DataSource(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_enum_value("holdStatus", self.hold_status)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_enum_value("hold_status", self.hold_status)
     
 

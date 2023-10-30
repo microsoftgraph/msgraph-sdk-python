@@ -42,7 +42,7 @@ class EducationPointsOutcome(EducationOutcome):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "points": lambda n : setattr(self, 'points', n.get_object_value(EducationAssignmentPointsGrade)),
-            "publishedPoints": lambda n : setattr(self, 'published_points', n.get_object_value(EducationAssignmentPointsGrade)),
+            "published_points": lambda n : setattr(self, 'published_points', n.get_object_value(EducationAssignmentPointsGrade)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,6 +58,6 @@ class EducationPointsOutcome(EducationOutcome):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("points", self.points)
-        writer.write_object_value("publishedPoints", self.published_points)
+        writer.write_object_value("published_points", self.published_points)
     
 

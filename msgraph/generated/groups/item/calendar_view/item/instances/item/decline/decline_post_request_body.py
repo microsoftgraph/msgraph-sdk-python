@@ -42,9 +42,9 @@ class DeclinePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.time_slot import TimeSlot
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "Comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "ProposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(TimeSlot)),
-            "SendResponse": lambda n : setattr(self, 'send_response', n.get_bool_value()),
+            "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
+            "proposed_new_time": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(TimeSlot)),
+            "send_response": lambda n : setattr(self, 'send_response', n.get_bool_value()),
         }
         return fields
     
@@ -56,9 +56,9 @@ class DeclinePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("Comment", self.comment)
-        writer.write_object_value("ProposedNewTime", self.proposed_new_time)
-        writer.write_bool_value("SendResponse", self.send_response)
+        writer.write_str_value("comment", self.comment)
+        writer.write_object_value("proposed_new_time", self.proposed_new_time)
+        writer.write_bool_value("send_response", self.send_response)
         writer.write_additional_data_value(self.additional_data)
     
 

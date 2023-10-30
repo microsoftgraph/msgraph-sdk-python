@@ -81,17 +81,17 @@ class Post(OutlookItem):
         fields: Dict[str, Callable[[Any], None]] = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(Attachment)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(ItemBody)),
-            "conversationId": lambda n : setattr(self, 'conversation_id', n.get_str_value()),
-            "conversationThreadId": lambda n : setattr(self, 'conversation_thread_id', n.get_str_value()),
+            "conversation_id": lambda n : setattr(self, 'conversation_id', n.get_str_value()),
+            "conversation_thread_id": lambda n : setattr(self, 'conversation_thread_id', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
             "from": lambda n : setattr(self, 'from_', n.get_object_value(Recipient)),
-            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "inReplyTo": lambda n : setattr(self, 'in_reply_to', n.get_object_value(Post)),
-            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
-            "newParticipants": lambda n : setattr(self, 'new_participants', n.get_collection_of_object_values(Recipient)),
-            "receivedDateTime": lambda n : setattr(self, 'received_date_time', n.get_datetime_value()),
+            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "in_reply_to": lambda n : setattr(self, 'in_reply_to', n.get_object_value(Post)),
+            "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
+            "new_participants": lambda n : setattr(self, 'new_participants', n.get_collection_of_object_values(Recipient)),
+            "received_date_time": lambda n : setattr(self, 'received_date_time', n.get_datetime_value()),
             "sender": lambda n : setattr(self, 'sender', n.get_object_value(Recipient)),
-            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
+            "single_value_extended_properties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -108,16 +108,16 @@ class Post(OutlookItem):
         super().serialize(writer)
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_object_value("body", self.body)
-        writer.write_str_value("conversationId", self.conversation_id)
-        writer.write_str_value("conversationThreadId", self.conversation_thread_id)
+        writer.write_str_value("conversation_id", self.conversation_id)
+        writer.write_str_value("conversation_thread_id", self.conversation_thread_id)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_object_value("from", self.from_)
-        writer.write_bool_value("hasAttachments", self.has_attachments)
-        writer.write_object_value("inReplyTo", self.in_reply_to)
-        writer.write_collection_of_object_values("multiValueExtendedProperties", self.multi_value_extended_properties)
-        writer.write_collection_of_object_values("newParticipants", self.new_participants)
-        writer.write_datetime_value("receivedDateTime", self.received_date_time)
+        writer.write_bool_value("has_attachments", self.has_attachments)
+        writer.write_object_value("in_reply_to", self.in_reply_to)
+        writer.write_collection_of_object_values("multi_value_extended_properties", self.multi_value_extended_properties)
+        writer.write_collection_of_object_values("new_participants", self.new_participants)
+        writer.write_datetime_value("received_date_time", self.received_date_time)
         writer.write_object_value("sender", self.sender)
-        writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
+        writer.write_collection_of_object_values("single_value_extended_properties", self.single_value_extended_properties)
     
 

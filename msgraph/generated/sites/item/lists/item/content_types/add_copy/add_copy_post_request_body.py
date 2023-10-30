@@ -31,7 +31,7 @@ class AddCopyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class AddCopyPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("contentType", self.content_type)
+        writer.write_str_value("content_type", self.content_type)
         writer.write_additional_data_value(self.additional_data)
     
 

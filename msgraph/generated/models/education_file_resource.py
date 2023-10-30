@@ -36,7 +36,7 @@ class EducationFileResource(EducationResource):
         from .education_resource import EducationResource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fileUrl": lambda n : setattr(self, 'file_url', n.get_str_value()),
+            "file_url": lambda n : setattr(self, 'file_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class EducationFileResource(EducationResource):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("fileUrl", self.file_url)
+        writer.write_str_value("file_url", self.file_url)
     
 

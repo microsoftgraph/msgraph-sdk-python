@@ -46,8 +46,8 @@ class ParseExpressionPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
 
         fields: Dict[str, Callable[[Any], None]] = {
             "expression": lambda n : setattr(self, 'expression', n.get_str_value()),
-            "targetAttributeDefinition": lambda n : setattr(self, 'target_attribute_definition', n.get_object_value(AttributeDefinition)),
-            "testInputObject": lambda n : setattr(self, 'test_input_object', n.get_object_value(ExpressionInputObject)),
+            "target_attribute_definition": lambda n : setattr(self, 'target_attribute_definition', n.get_object_value(AttributeDefinition)),
+            "test_input_object": lambda n : setattr(self, 'test_input_object', n.get_object_value(ExpressionInputObject)),
         }
         return fields
     
@@ -60,8 +60,8 @@ class ParseExpressionPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("expression", self.expression)
-        writer.write_object_value("targetAttributeDefinition", self.target_attribute_definition)
-        writer.write_object_value("testInputObject", self.test_input_object)
+        writer.write_object_value("target_attribute_definition", self.target_attribute_definition)
+        writer.write_object_value("test_input_object", self.test_input_object)
         writer.write_additional_data_value(self.additional_data)
     
 

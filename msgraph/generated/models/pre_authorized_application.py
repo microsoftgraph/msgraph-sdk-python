@@ -35,9 +35,9 @@ class PreAuthorizedApplication(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "delegatedPermissionIds": lambda n : setattr(self, 'delegated_permission_ids', n.get_collection_of_primitive_values(str)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "delegated_permission_ids": lambda n : setattr(self, 'delegated_permission_ids', n.get_collection_of_primitive_values(str)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -49,9 +49,9 @@ class PreAuthorizedApplication(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("appId", self.app_id)
-        writer.write_collection_of_primitive_values("delegatedPermissionIds", self.delegated_permission_ids)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("app_id", self.app_id)
+        writer.write_collection_of_primitive_values("delegated_permission_ids", self.delegated_permission_ids)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

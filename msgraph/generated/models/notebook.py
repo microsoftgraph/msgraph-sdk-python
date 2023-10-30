@@ -62,14 +62,14 @@ class Notebook(OnenoteEntityHierarchyModel):
         from .section_group import SectionGroup
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
+            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "is_shared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(NotebookLinks)),
-            "sectionGroups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(SectionGroup)),
-            "sectionGroupsUrl": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
+            "section_groups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(SectionGroup)),
+            "section_groups_url": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
             "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(OnenoteSection)),
-            "sectionsUrl": lambda n : setattr(self, 'sections_url', n.get_str_value()),
-            "userRole": lambda n : setattr(self, 'user_role', n.get_enum_value(OnenoteUserRole)),
+            "sections_url": lambda n : setattr(self, 'sections_url', n.get_str_value()),
+            "user_role": lambda n : setattr(self, 'user_role', n.get_enum_value(OnenoteUserRole)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,13 +84,13 @@ class Notebook(OnenoteEntityHierarchyModel):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isDefault", self.is_default)
-        writer.write_bool_value("isShared", self.is_shared)
+        writer.write_bool_value("is_default", self.is_default)
+        writer.write_bool_value("is_shared", self.is_shared)
         writer.write_object_value("links", self.links)
-        writer.write_collection_of_object_values("sectionGroups", self.section_groups)
-        writer.write_str_value("sectionGroupsUrl", self.section_groups_url)
+        writer.write_collection_of_object_values("section_groups", self.section_groups)
+        writer.write_str_value("section_groups_url", self.section_groups_url)
         writer.write_collection_of_object_values("sections", self.sections)
-        writer.write_str_value("sectionsUrl", self.sections_url)
-        writer.write_enum_value("userRole", self.user_role)
+        writer.write_str_value("sections_url", self.sections_url)
+        writer.write_enum_value("user_role", self.user_role)
     
 

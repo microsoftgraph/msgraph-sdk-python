@@ -45,7 +45,7 @@ class AccessReviewSet(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "definitions": lambda n : setattr(self, 'definitions', n.get_collection_of_object_values(AccessReviewScheduleDefinition)),
-            "historyDefinitions": lambda n : setattr(self, 'history_definitions', n.get_collection_of_object_values(AccessReviewHistoryDefinition)),
+            "history_definitions": lambda n : setattr(self, 'history_definitions', n.get_collection_of_object_values(AccessReviewHistoryDefinition)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,6 +61,6 @@ class AccessReviewSet(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("definitions", self.definitions)
-        writer.write_collection_of_object_values("historyDefinitions", self.history_definitions)
+        writer.write_collection_of_object_values("history_definitions", self.history_definitions)
     
 

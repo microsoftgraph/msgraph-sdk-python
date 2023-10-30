@@ -33,8 +33,8 @@ class AssignUserToDevicePostRequestBody(AdditionalDataHolder, BackedModel, Parsa
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "addressableUserName": lambda n : setattr(self, 'addressable_user_name', n.get_str_value()),
-            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "addressable_user_name": lambda n : setattr(self, 'addressable_user_name', n.get_str_value()),
+            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -46,8 +46,8 @@ class AssignUserToDevicePostRequestBody(AdditionalDataHolder, BackedModel, Parsa
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("addressableUserName", self.addressable_user_name)
-        writer.write_str_value("userPrincipalName", self.user_principal_name)
+        writer.write_str_value("addressable_user_name", self.addressable_user_name)
+        writer.write_str_value("user_principal_name", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
     
 

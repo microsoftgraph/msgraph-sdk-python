@@ -39,7 +39,7 @@ class SoftwareOathAuthenticationMethodConfiguration(AuthenticationMethodConfigur
         from .authentication_method_target import AuthenticationMethodTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
+            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class SoftwareOathAuthenticationMethodConfiguration(AuthenticationMethodConfigur
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("includeTargets", self.include_targets)
+        writer.write_collection_of_object_values("include_targets", self.include_targets)
     
 

@@ -39,7 +39,7 @@ class AppConsentApprovalRoute(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appConsentRequests": lambda n : setattr(self, 'app_consent_requests', n.get_collection_of_object_values(AppConsentRequest)),
+            "app_consent_requests": lambda n : setattr(self, 'app_consent_requests', n.get_collection_of_object_values(AppConsentRequest)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class AppConsentApprovalRoute(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("appConsentRequests", self.app_consent_requests)
+        writer.write_collection_of_object_values("app_consent_requests", self.app_consent_requests)
     
 

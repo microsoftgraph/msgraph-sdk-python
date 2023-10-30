@@ -48,10 +48,10 @@ class ServiceHealthIssuePost(AdditionalDataHolder, BackedModel, Parsable):
         from .post_type import PostType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_object_value(ItemBody)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "postType": lambda n : setattr(self, 'post_type', n.get_enum_value(PostType)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "post_type": lambda n : setattr(self, 'post_type', n.get_enum_value(PostType)),
         }
         return fields
     
@@ -63,10 +63,10 @@ class ServiceHealthIssuePost(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_object_value("description", self.description)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_enum_value("postType", self.post_type)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_enum_value("post_type", self.post_type)
         writer.write_additional_data_value(self.additional_data)
     
 

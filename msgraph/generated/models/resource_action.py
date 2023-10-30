@@ -38,9 +38,9 @@ class ResourceAction(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedResourceActions": lambda n : setattr(self, 'allowed_resource_actions', n.get_collection_of_primitive_values(str)),
-            "notAllowedResourceActions": lambda n : setattr(self, 'not_allowed_resource_actions', n.get_collection_of_primitive_values(str)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "allowed_resource_actions": lambda n : setattr(self, 'allowed_resource_actions', n.get_collection_of_primitive_values(str)),
+            "not_allowed_resource_actions": lambda n : setattr(self, 'not_allowed_resource_actions', n.get_collection_of_primitive_values(str)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -52,9 +52,9 @@ class ResourceAction(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("allowedResourceActions", self.allowed_resource_actions)
-        writer.write_collection_of_primitive_values("notAllowedResourceActions", self.not_allowed_resource_actions)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_collection_of_primitive_values("allowed_resource_actions", self.allowed_resource_actions)
+        writer.write_collection_of_primitive_values("not_allowed_resource_actions", self.not_allowed_resource_actions)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

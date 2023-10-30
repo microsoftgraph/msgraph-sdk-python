@@ -52,13 +52,13 @@ class ManagedDeviceMobileAppConfigurationUserSummary(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "configurationVersion": lambda n : setattr(self, 'configuration_version', n.get_int_value()),
-            "errorCount": lambda n : setattr(self, 'error_count', n.get_int_value()),
-            "failedCount": lambda n : setattr(self, 'failed_count', n.get_int_value()),
-            "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
-            "notApplicableCount": lambda n : setattr(self, 'not_applicable_count', n.get_int_value()),
-            "pendingCount": lambda n : setattr(self, 'pending_count', n.get_int_value()),
-            "successCount": lambda n : setattr(self, 'success_count', n.get_int_value()),
+            "configuration_version": lambda n : setattr(self, 'configuration_version', n.get_int_value()),
+            "error_count": lambda n : setattr(self, 'error_count', n.get_int_value()),
+            "failed_count": lambda n : setattr(self, 'failed_count', n.get_int_value()),
+            "last_update_date_time": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
+            "not_applicable_count": lambda n : setattr(self, 'not_applicable_count', n.get_int_value()),
+            "pending_count": lambda n : setattr(self, 'pending_count', n.get_int_value()),
+            "success_count": lambda n : setattr(self, 'success_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,12 +73,12 @@ class ManagedDeviceMobileAppConfigurationUserSummary(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("configurationVersion", self.configuration_version)
-        writer.write_int_value("errorCount", self.error_count)
-        writer.write_int_value("failedCount", self.failed_count)
-        writer.write_datetime_value("lastUpdateDateTime", self.last_update_date_time)
-        writer.write_int_value("notApplicableCount", self.not_applicable_count)
-        writer.write_int_value("pendingCount", self.pending_count)
-        writer.write_int_value("successCount", self.success_count)
+        writer.write_int_value("configuration_version", self.configuration_version)
+        writer.write_int_value("error_count", self.error_count)
+        writer.write_int_value("failed_count", self.failed_count)
+        writer.write_datetime_value("last_update_date_time", self.last_update_date_time)
+        writer.write_int_value("not_applicable_count", self.not_applicable_count)
+        writer.write_int_value("pending_count", self.pending_count)
+        writer.write_int_value("success_count", self.success_count)
     
 

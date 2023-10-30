@@ -49,7 +49,7 @@ class AuthenticationStrengthRoot(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationMethodModes": lambda n : setattr(self, 'authentication_method_modes', n.get_collection_of_object_values(AuthenticationMethodModeDetail)),
+            "authentication_method_modes": lambda n : setattr(self, 'authentication_method_modes', n.get_collection_of_object_values(AuthenticationMethodModeDetail)),
             "combinations": lambda n : setattr(self, 'combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
             "policies": lambda n : setattr(self, 'policies', n.get_collection_of_object_values(AuthenticationStrengthPolicy)),
         }
@@ -66,7 +66,7 @@ class AuthenticationStrengthRoot(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("authenticationMethodModes", self.authentication_method_modes)
+        writer.write_collection_of_object_values("authentication_method_modes", self.authentication_method_modes)
         writer.write_collection_of_enum_values("combinations", self.combinations)
         writer.write_collection_of_object_values("policies", self.policies)
     

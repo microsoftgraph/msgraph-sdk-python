@@ -65,14 +65,14 @@ class WorkbookRangeFormat(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "borders": lambda n : setattr(self, 'borders', n.get_collection_of_object_values(WorkbookRangeBorder)),
-            "columnWidth": lambda n : setattr(self, 'column_width', n.get_float_value()),
+            "column_width": lambda n : setattr(self, 'column_width', n.get_float_value()),
             "fill": lambda n : setattr(self, 'fill', n.get_object_value(WorkbookRangeFill)),
             "font": lambda n : setattr(self, 'font', n.get_object_value(WorkbookRangeFont)),
-            "horizontalAlignment": lambda n : setattr(self, 'horizontal_alignment', n.get_str_value()),
+            "horizontal_alignment": lambda n : setattr(self, 'horizontal_alignment', n.get_str_value()),
             "protection": lambda n : setattr(self, 'protection', n.get_object_value(WorkbookFormatProtection)),
-            "rowHeight": lambda n : setattr(self, 'row_height', n.get_float_value()),
-            "verticalAlignment": lambda n : setattr(self, 'vertical_alignment', n.get_str_value()),
-            "wrapText": lambda n : setattr(self, 'wrap_text', n.get_bool_value()),
+            "row_height": lambda n : setattr(self, 'row_height', n.get_float_value()),
+            "vertical_alignment": lambda n : setattr(self, 'vertical_alignment', n.get_str_value()),
+            "wrap_text": lambda n : setattr(self, 'wrap_text', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -88,13 +88,13 @@ class WorkbookRangeFormat(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("borders", self.borders)
-        writer.write_float_value("columnWidth", self.column_width)
+        writer.write_float_value("column_width", self.column_width)
         writer.write_object_value("fill", self.fill)
         writer.write_object_value("font", self.font)
-        writer.write_str_value("horizontalAlignment", self.horizontal_alignment)
+        writer.write_str_value("horizontal_alignment", self.horizontal_alignment)
         writer.write_object_value("protection", self.protection)
-        writer.write_float_value("rowHeight", self.row_height)
-        writer.write_str_value("verticalAlignment", self.vertical_alignment)
-        writer.write_bool_value("wrapText", self.wrap_text)
+        writer.write_float_value("row_height", self.row_height)
+        writer.write_str_value("vertical_alignment", self.vertical_alignment)
+        writer.write_bool_value("wrap_text", self.wrap_text)
     
 

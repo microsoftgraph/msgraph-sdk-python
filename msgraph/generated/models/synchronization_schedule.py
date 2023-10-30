@@ -47,7 +47,7 @@ class SynchronizationSchedule(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "expiration": lambda n : setattr(self, 'expiration', n.get_datetime_value()),
             "interval": lambda n : setattr(self, 'interval', n.get_timedelta_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(SynchronizationScheduleState)),
         }
         return fields
@@ -62,7 +62,7 @@ class SynchronizationSchedule(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_datetime_value("expiration", self.expiration)
         writer.write_timedelta_value("interval", self.interval)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)
     

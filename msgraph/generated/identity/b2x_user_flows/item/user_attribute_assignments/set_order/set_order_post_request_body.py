@@ -38,7 +38,7 @@ class SetOrderPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ......models.assignment_order import AssignmentOrder
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "newAssignmentOrder": lambda n : setattr(self, 'new_assignment_order', n.get_object_value(AssignmentOrder)),
+            "new_assignment_order": lambda n : setattr(self, 'new_assignment_order', n.get_object_value(AssignmentOrder)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class SetOrderPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("newAssignmentOrder", self.new_assignment_order)
+        writer.write_object_value("new_assignment_order", self.new_assignment_order)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -56,11 +56,11 @@ class IosDeviceFeaturesConfiguration(AppleDeviceFeaturesConfigurationBase):
         from .ios_notification_settings import IosNotificationSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assetTagTemplate": lambda n : setattr(self, 'asset_tag_template', n.get_str_value()),
-            "homeScreenDockIcons": lambda n : setattr(self, 'home_screen_dock_icons', n.get_collection_of_object_values(IosHomeScreenItem)),
-            "homeScreenPages": lambda n : setattr(self, 'home_screen_pages', n.get_collection_of_object_values(IosHomeScreenPage)),
-            "lockScreenFootnote": lambda n : setattr(self, 'lock_screen_footnote', n.get_str_value()),
-            "notificationSettings": lambda n : setattr(self, 'notification_settings', n.get_collection_of_object_values(IosNotificationSettings)),
+            "asset_tag_template": lambda n : setattr(self, 'asset_tag_template', n.get_str_value()),
+            "home_screen_dock_icons": lambda n : setattr(self, 'home_screen_dock_icons', n.get_collection_of_object_values(IosHomeScreenItem)),
+            "home_screen_pages": lambda n : setattr(self, 'home_screen_pages', n.get_collection_of_object_values(IosHomeScreenPage)),
+            "lock_screen_footnote": lambda n : setattr(self, 'lock_screen_footnote', n.get_str_value()),
+            "notification_settings": lambda n : setattr(self, 'notification_settings', n.get_collection_of_object_values(IosNotificationSettings)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,10 +75,10 @@ class IosDeviceFeaturesConfiguration(AppleDeviceFeaturesConfigurationBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("assetTagTemplate", self.asset_tag_template)
-        writer.write_collection_of_object_values("homeScreenDockIcons", self.home_screen_dock_icons)
-        writer.write_collection_of_object_values("homeScreenPages", self.home_screen_pages)
-        writer.write_str_value("lockScreenFootnote", self.lock_screen_footnote)
-        writer.write_collection_of_object_values("notificationSettings", self.notification_settings)
+        writer.write_str_value("asset_tag_template", self.asset_tag_template)
+        writer.write_collection_of_object_values("home_screen_dock_icons", self.home_screen_dock_icons)
+        writer.write_collection_of_object_values("home_screen_pages", self.home_screen_pages)
+        writer.write_str_value("lock_screen_footnote", self.lock_screen_footnote)
+        writer.write_collection_of_object_values("notification_settings", self.notification_settings)
     
 

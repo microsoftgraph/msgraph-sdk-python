@@ -36,7 +36,7 @@ class ChatMembersNotificationRecipient(TeamworkNotificationRecipient):
         from .teamwork_notification_recipient import TeamworkNotificationRecipient
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "chatId": lambda n : setattr(self, 'chat_id', n.get_str_value()),
+            "chat_id": lambda n : setattr(self, 'chat_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class ChatMembersNotificationRecipient(TeamworkNotificationRecipient):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("chatId", self.chat_id)
+        writer.write_str_value("chat_id", self.chat_id)
     
 

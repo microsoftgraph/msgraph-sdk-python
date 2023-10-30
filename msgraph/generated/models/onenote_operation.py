@@ -46,9 +46,9 @@ class OnenoteOperation(Operation):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(OnenoteOperationError)),
-            "percentComplete": lambda n : setattr(self, 'percent_complete', n.get_str_value()),
-            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
-            "resourceLocation": lambda n : setattr(self, 'resource_location', n.get_str_value()),
+            "percent_complete": lambda n : setattr(self, 'percent_complete', n.get_str_value()),
+            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "resource_location": lambda n : setattr(self, 'resource_location', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -64,8 +64,8 @@ class OnenoteOperation(Operation):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("error", self.error)
-        writer.write_str_value("percentComplete", self.percent_complete)
-        writer.write_str_value("resourceId", self.resource_id)
-        writer.write_str_value("resourceLocation", self.resource_location)
+        writer.write_str_value("percent_complete", self.percent_complete)
+        writer.write_str_value("resource_id", self.resource_id)
+        writer.write_str_value("resource_location", self.resource_location)
     
 

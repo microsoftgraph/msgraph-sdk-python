@@ -14,9 +14,9 @@ from .training_setting import TrainingSetting
 class MicrosoftManagedTrainingSetting(TrainingSetting):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.microsoftManagedTrainingSetting"
-    # The completionDateTime property
+    # The completion date for the training. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     completion_date_time: Optional[datetime.datetime] = None
-    # The trainingCompletionDuration property
+    # The training completion duration that needs to be provided before scheduling the training. The possible values are: week, fortnite, month, unknownFutureValue.
     training_completion_duration: Optional[TrainingCompletionDuration] = None
     
     @staticmethod
@@ -42,8 +42,8 @@ class MicrosoftManagedTrainingSetting(TrainingSetting):
         from .training_setting import TrainingSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
-            "trainingCompletionDuration": lambda n : setattr(self, 'training_completion_duration', n.get_enum_value(TrainingCompletionDuration)),
+            "completion_date_time": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
+            "training_completion_duration": lambda n : setattr(self, 'training_completion_duration', n.get_enum_value(TrainingCompletionDuration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,7 +58,7 @@ class MicrosoftManagedTrainingSetting(TrainingSetting):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("completionDateTime", self.completion_date_time)
-        writer.write_enum_value("trainingCompletionDuration", self.training_completion_duration)
+        writer.write_datetime_value("completion_date_time", self.completion_date_time)
+        writer.write_enum_value("training_completion_duration", self.training_completion_duration)
     
 

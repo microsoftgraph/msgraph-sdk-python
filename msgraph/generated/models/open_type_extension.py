@@ -36,7 +36,7 @@ class OpenTypeExtension(Extension):
         from .extension import Extension
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "extensionName": lambda n : setattr(self, 'extension_name', n.get_str_value()),
+            "extension_name": lambda n : setattr(self, 'extension_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class OpenTypeExtension(Extension):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("extensionName", self.extension_name)
+        writer.write_str_value("extension_name", self.extension_name)
     
 

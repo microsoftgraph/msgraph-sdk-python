@@ -173,48 +173,48 @@ class Event(OutlookItem):
         from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowNewTimeProposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
+            "allow_new_time_proposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(Attachment)),
             "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(Attendee)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(ItemBody)),
-            "bodyPreview": lambda n : setattr(self, 'body_preview', n.get_str_value()),
+            "body_preview": lambda n : setattr(self, 'body_preview', n.get_str_value()),
             "calendar": lambda n : setattr(self, 'calendar', n.get_object_value(Calendar)),
             "end": lambda n : setattr(self, 'end', n.get_object_value(DateTimeTimeZone)),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
-            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "hideAttendees": lambda n : setattr(self, 'hide_attendees', n.get_bool_value()),
-            "iCalUId": lambda n : setattr(self, 'i_cal_u_id', n.get_str_value()),
+            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "hide_attendees": lambda n : setattr(self, 'hide_attendees', n.get_bool_value()),
+            "i_cal_u_id": lambda n : setattr(self, 'i_cal_u_id', n.get_str_value()),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(Importance)),
             "instances": lambda n : setattr(self, 'instances', n.get_collection_of_object_values(Event)),
-            "isAllDay": lambda n : setattr(self, 'is_all_day', n.get_bool_value()),
-            "isCancelled": lambda n : setattr(self, 'is_cancelled', n.get_bool_value()),
-            "isDraft": lambda n : setattr(self, 'is_draft', n.get_bool_value()),
-            "isOnlineMeeting": lambda n : setattr(self, 'is_online_meeting', n.get_bool_value()),
-            "isOrganizer": lambda n : setattr(self, 'is_organizer', n.get_bool_value()),
-            "isReminderOn": lambda n : setattr(self, 'is_reminder_on', n.get_bool_value()),
+            "is_all_day": lambda n : setattr(self, 'is_all_day', n.get_bool_value()),
+            "is_cancelled": lambda n : setattr(self, 'is_cancelled', n.get_bool_value()),
+            "is_draft": lambda n : setattr(self, 'is_draft', n.get_bool_value()),
+            "is_online_meeting": lambda n : setattr(self, 'is_online_meeting', n.get_bool_value()),
+            "is_organizer": lambda n : setattr(self, 'is_organizer', n.get_bool_value()),
+            "is_reminder_on": lambda n : setattr(self, 'is_reminder_on', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(Location)),
             "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(Location)),
-            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
-            "onlineMeeting": lambda n : setattr(self, 'online_meeting', n.get_object_value(OnlineMeetingInfo)),
-            "onlineMeetingProvider": lambda n : setattr(self, 'online_meeting_provider', n.get_enum_value(OnlineMeetingProviderType)),
-            "onlineMeetingUrl": lambda n : setattr(self, 'online_meeting_url', n.get_str_value()),
+            "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
+            "online_meeting": lambda n : setattr(self, 'online_meeting', n.get_object_value(OnlineMeetingInfo)),
+            "online_meeting_provider": lambda n : setattr(self, 'online_meeting_provider', n.get_enum_value(OnlineMeetingProviderType)),
+            "online_meeting_url": lambda n : setattr(self, 'online_meeting_url', n.get_str_value()),
             "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(Recipient)),
-            "originalEndTimeZone": lambda n : setattr(self, 'original_end_time_zone', n.get_str_value()),
-            "originalStart": lambda n : setattr(self, 'original_start', n.get_datetime_value()),
-            "originalStartTimeZone": lambda n : setattr(self, 'original_start_time_zone', n.get_str_value()),
+            "original_end_time_zone": lambda n : setattr(self, 'original_end_time_zone', n.get_str_value()),
+            "original_start": lambda n : setattr(self, 'original_start', n.get_datetime_value()),
+            "original_start_time_zone": lambda n : setattr(self, 'original_start_time_zone', n.get_str_value()),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(PatternedRecurrence)),
-            "reminderMinutesBeforeStart": lambda n : setattr(self, 'reminder_minutes_before_start', n.get_int_value()),
-            "responseRequested": lambda n : setattr(self, 'response_requested', n.get_bool_value()),
-            "responseStatus": lambda n : setattr(self, 'response_status', n.get_object_value(ResponseStatus)),
+            "reminder_minutes_before_start": lambda n : setattr(self, 'reminder_minutes_before_start', n.get_int_value()),
+            "response_requested": lambda n : setattr(self, 'response_requested', n.get_bool_value()),
+            "response_status": lambda n : setattr(self, 'response_status', n.get_object_value(ResponseStatus)),
             "sensitivity": lambda n : setattr(self, 'sensitivity', n.get_enum_value(Sensitivity)),
-            "seriesMasterId": lambda n : setattr(self, 'series_master_id', n.get_str_value()),
-            "showAs": lambda n : setattr(self, 'show_as', n.get_enum_value(FreeBusyStatus)),
-            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
+            "series_master_id": lambda n : setattr(self, 'series_master_id', n.get_str_value()),
+            "show_as": lambda n : setattr(self, 'show_as', n.get_enum_value(FreeBusyStatus)),
+            "single_value_extended_properties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
             "start": lambda n : setattr(self, 'start', n.get_object_value(DateTimeTimeZone)),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
-            "transactionId": lambda n : setattr(self, 'transaction_id', n.get_str_value()),
+            "transaction_id": lambda n : setattr(self, 'transaction_id', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(EventType)),
-            "webLink": lambda n : setattr(self, 'web_link', n.get_str_value()),
+            "web_link": lambda n : setattr(self, 'web_link', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -229,47 +229,47 @@ class Event(OutlookItem):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("allowNewTimeProposals", self.allow_new_time_proposals)
+        writer.write_bool_value("allow_new_time_proposals", self.allow_new_time_proposals)
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_collection_of_object_values("attendees", self.attendees)
         writer.write_object_value("body", self.body)
-        writer.write_str_value("bodyPreview", self.body_preview)
+        writer.write_str_value("body_preview", self.body_preview)
         writer.write_object_value("calendar", self.calendar)
         writer.write_object_value("end", self.end)
         writer.write_collection_of_object_values("extensions", self.extensions)
-        writer.write_bool_value("hasAttachments", self.has_attachments)
-        writer.write_bool_value("hideAttendees", self.hide_attendees)
-        writer.write_str_value("iCalUId", self.i_cal_u_id)
+        writer.write_bool_value("has_attachments", self.has_attachments)
+        writer.write_bool_value("hide_attendees", self.hide_attendees)
+        writer.write_str_value("i_cal_u_id", self.i_cal_u_id)
         writer.write_enum_value("importance", self.importance)
         writer.write_collection_of_object_values("instances", self.instances)
-        writer.write_bool_value("isAllDay", self.is_all_day)
-        writer.write_bool_value("isCancelled", self.is_cancelled)
-        writer.write_bool_value("isDraft", self.is_draft)
-        writer.write_bool_value("isOnlineMeeting", self.is_online_meeting)
-        writer.write_bool_value("isOrganizer", self.is_organizer)
-        writer.write_bool_value("isReminderOn", self.is_reminder_on)
+        writer.write_bool_value("is_all_day", self.is_all_day)
+        writer.write_bool_value("is_cancelled", self.is_cancelled)
+        writer.write_bool_value("is_draft", self.is_draft)
+        writer.write_bool_value("is_online_meeting", self.is_online_meeting)
+        writer.write_bool_value("is_organizer", self.is_organizer)
+        writer.write_bool_value("is_reminder_on", self.is_reminder_on)
         writer.write_object_value("location", self.location)
         writer.write_collection_of_object_values("locations", self.locations)
-        writer.write_collection_of_object_values("multiValueExtendedProperties", self.multi_value_extended_properties)
-        writer.write_object_value("onlineMeeting", self.online_meeting)
-        writer.write_enum_value("onlineMeetingProvider", self.online_meeting_provider)
-        writer.write_str_value("onlineMeetingUrl", self.online_meeting_url)
+        writer.write_collection_of_object_values("multi_value_extended_properties", self.multi_value_extended_properties)
+        writer.write_object_value("online_meeting", self.online_meeting)
+        writer.write_enum_value("online_meeting_provider", self.online_meeting_provider)
+        writer.write_str_value("online_meeting_url", self.online_meeting_url)
         writer.write_object_value("organizer", self.organizer)
-        writer.write_str_value("originalEndTimeZone", self.original_end_time_zone)
-        writer.write_datetime_value("originalStart", self.original_start)
-        writer.write_str_value("originalStartTimeZone", self.original_start_time_zone)
+        writer.write_str_value("original_end_time_zone", self.original_end_time_zone)
+        writer.write_datetime_value("original_start", self.original_start)
+        writer.write_str_value("original_start_time_zone", self.original_start_time_zone)
         writer.write_object_value("recurrence", self.recurrence)
-        writer.write_int_value("reminderMinutesBeforeStart", self.reminder_minutes_before_start)
-        writer.write_bool_value("responseRequested", self.response_requested)
-        writer.write_object_value("responseStatus", self.response_status)
+        writer.write_int_value("reminder_minutes_before_start", self.reminder_minutes_before_start)
+        writer.write_bool_value("response_requested", self.response_requested)
+        writer.write_object_value("response_status", self.response_status)
         writer.write_enum_value("sensitivity", self.sensitivity)
-        writer.write_str_value("seriesMasterId", self.series_master_id)
-        writer.write_enum_value("showAs", self.show_as)
-        writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
+        writer.write_str_value("series_master_id", self.series_master_id)
+        writer.write_enum_value("show_as", self.show_as)
+        writer.write_collection_of_object_values("single_value_extended_properties", self.single_value_extended_properties)
         writer.write_object_value("start", self.start)
         writer.write_str_value("subject", self.subject)
-        writer.write_str_value("transactionId", self.transaction_id)
+        writer.write_str_value("transaction_id", self.transaction_id)
         writer.write_enum_value("type", self.type)
-        writer.write_str_value("webLink", self.web_link)
+        writer.write_str_value("web_link", self.web_link)
     
 

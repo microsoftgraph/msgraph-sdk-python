@@ -38,7 +38,7 @@ class SetStatusMessagePostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
         from .....models.presence_status_message import PresenceStatusMessage
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "statusMessage": lambda n : setattr(self, 'status_message', n.get_object_value(PresenceStatusMessage)),
+            "status_message": lambda n : setattr(self, 'status_message', n.get_object_value(PresenceStatusMessage)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class SetStatusMessagePostRequestBody(AdditionalDataHolder, BackedModel, Parsabl
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("statusMessage", self.status_message)
+        writer.write_object_value("status_message", self.status_message)
         writer.write_additional_data_value(self.additional_data)
     
 

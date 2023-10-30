@@ -55,8 +55,8 @@ class Operation(Entity):
         from .operation_status import OperationStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "lastActionDateTime": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "last_action_date_time": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(OperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -72,8 +72,8 @@ class Operation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("lastActionDateTime", self.last_action_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_datetime_value("last_action_date_time", self.last_action_date_time)
         writer.write_enum_value("status", self.status)
     
 

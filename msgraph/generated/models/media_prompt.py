@@ -39,7 +39,7 @@ class MediaPrompt(Prompt):
         from .prompt import Prompt
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "mediaInfo": lambda n : setattr(self, 'media_info', n.get_object_value(MediaInfo)),
+            "media_info": lambda n : setattr(self, 'media_info', n.get_object_value(MediaInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class MediaPrompt(Prompt):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("mediaInfo", self.media_info)
+        writer.write_object_value("media_info", self.media_info)
     
 

@@ -103,28 +103,28 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, BackedModel, Parsab
         from .teleconference_device_video_quality import TeleconferenceDeviceVideoQuality
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "averageInboundJitter": lambda n : setattr(self, 'average_inbound_jitter', n.get_timedelta_value()),
-            "averageInboundPacketLossRateInPercentage": lambda n : setattr(self, 'average_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
-            "averageInboundRoundTripDelay": lambda n : setattr(self, 'average_inbound_round_trip_delay', n.get_timedelta_value()),
-            "averageOutboundJitter": lambda n : setattr(self, 'average_outbound_jitter', n.get_timedelta_value()),
-            "averageOutboundPacketLossRateInPercentage": lambda n : setattr(self, 'average_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
-            "averageOutboundRoundTripDelay": lambda n : setattr(self, 'average_outbound_round_trip_delay', n.get_timedelta_value()),
-            "channelIndex": lambda n : setattr(self, 'channel_index', n.get_int_value()),
-            "inboundPackets": lambda n : setattr(self, 'inbound_packets', n.get_int_value()),
-            "localIPAddress": lambda n : setattr(self, 'local_i_p_address', n.get_str_value()),
-            "localPort": lambda n : setattr(self, 'local_port', n.get_int_value()),
-            "maximumInboundJitter": lambda n : setattr(self, 'maximum_inbound_jitter', n.get_timedelta_value()),
-            "maximumInboundPacketLossRateInPercentage": lambda n : setattr(self, 'maximum_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
-            "maximumInboundRoundTripDelay": lambda n : setattr(self, 'maximum_inbound_round_trip_delay', n.get_timedelta_value()),
-            "maximumOutboundJitter": lambda n : setattr(self, 'maximum_outbound_jitter', n.get_timedelta_value()),
-            "maximumOutboundPacketLossRateInPercentage": lambda n : setattr(self, 'maximum_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
-            "maximumOutboundRoundTripDelay": lambda n : setattr(self, 'maximum_outbound_round_trip_delay', n.get_timedelta_value()),
-            "mediaDuration": lambda n : setattr(self, 'media_duration', n.get_timedelta_value()),
-            "networkLinkSpeedInBytes": lambda n : setattr(self, 'network_link_speed_in_bytes', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "outboundPackets": lambda n : setattr(self, 'outbound_packets', n.get_int_value()),
-            "remoteIPAddress": lambda n : setattr(self, 'remote_i_p_address', n.get_str_value()),
-            "remotePort": lambda n : setattr(self, 'remote_port', n.get_int_value()),
+            "average_inbound_jitter": lambda n : setattr(self, 'average_inbound_jitter', n.get_timedelta_value()),
+            "average_inbound_packet_loss_rate_in_percentage": lambda n : setattr(self, 'average_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "average_inbound_round_trip_delay": lambda n : setattr(self, 'average_inbound_round_trip_delay', n.get_timedelta_value()),
+            "average_outbound_jitter": lambda n : setattr(self, 'average_outbound_jitter', n.get_timedelta_value()),
+            "average_outbound_packet_loss_rate_in_percentage": lambda n : setattr(self, 'average_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "average_outbound_round_trip_delay": lambda n : setattr(self, 'average_outbound_round_trip_delay', n.get_timedelta_value()),
+            "channel_index": lambda n : setattr(self, 'channel_index', n.get_int_value()),
+            "inbound_packets": lambda n : setattr(self, 'inbound_packets', n.get_int_value()),
+            "local_i_p_address": lambda n : setattr(self, 'local_i_p_address', n.get_str_value()),
+            "local_port": lambda n : setattr(self, 'local_port', n.get_int_value()),
+            "maximum_inbound_jitter": lambda n : setattr(self, 'maximum_inbound_jitter', n.get_timedelta_value()),
+            "maximum_inbound_packet_loss_rate_in_percentage": lambda n : setattr(self, 'maximum_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "maximum_inbound_round_trip_delay": lambda n : setattr(self, 'maximum_inbound_round_trip_delay', n.get_timedelta_value()),
+            "maximum_outbound_jitter": lambda n : setattr(self, 'maximum_outbound_jitter', n.get_timedelta_value()),
+            "maximum_outbound_packet_loss_rate_in_percentage": lambda n : setattr(self, 'maximum_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "maximum_outbound_round_trip_delay": lambda n : setattr(self, 'maximum_outbound_round_trip_delay', n.get_timedelta_value()),
+            "media_duration": lambda n : setattr(self, 'media_duration', n.get_timedelta_value()),
+            "network_link_speed_in_bytes": lambda n : setattr(self, 'network_link_speed_in_bytes', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "outbound_packets": lambda n : setattr(self, 'outbound_packets', n.get_int_value()),
+            "remote_i_p_address": lambda n : setattr(self, 'remote_i_p_address', n.get_str_value()),
+            "remote_port": lambda n : setattr(self, 'remote_port', n.get_int_value()),
         }
         return fields
     
@@ -136,28 +136,28 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, BackedModel, Parsab
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_timedelta_value("averageInboundJitter", self.average_inbound_jitter)
-        writer.write_float_value("averageInboundPacketLossRateInPercentage", self.average_inbound_packet_loss_rate_in_percentage)
-        writer.write_timedelta_value("averageInboundRoundTripDelay", self.average_inbound_round_trip_delay)
-        writer.write_timedelta_value("averageOutboundJitter", self.average_outbound_jitter)
-        writer.write_float_value("averageOutboundPacketLossRateInPercentage", self.average_outbound_packet_loss_rate_in_percentage)
-        writer.write_timedelta_value("averageOutboundRoundTripDelay", self.average_outbound_round_trip_delay)
-        writer.write_int_value("channelIndex", self.channel_index)
-        writer.write_int_value("inboundPackets", self.inbound_packets)
-        writer.write_str_value("localIPAddress", self.local_i_p_address)
-        writer.write_int_value("localPort", self.local_port)
-        writer.write_timedelta_value("maximumInboundJitter", self.maximum_inbound_jitter)
-        writer.write_float_value("maximumInboundPacketLossRateInPercentage", self.maximum_inbound_packet_loss_rate_in_percentage)
-        writer.write_timedelta_value("maximumInboundRoundTripDelay", self.maximum_inbound_round_trip_delay)
-        writer.write_timedelta_value("maximumOutboundJitter", self.maximum_outbound_jitter)
-        writer.write_float_value("maximumOutboundPacketLossRateInPercentage", self.maximum_outbound_packet_loss_rate_in_percentage)
-        writer.write_timedelta_value("maximumOutboundRoundTripDelay", self.maximum_outbound_round_trip_delay)
-        writer.write_timedelta_value("mediaDuration", self.media_duration)
-        writer.write_int_value("networkLinkSpeedInBytes", self.network_link_speed_in_bytes)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("outboundPackets", self.outbound_packets)
-        writer.write_str_value("remoteIPAddress", self.remote_i_p_address)
-        writer.write_int_value("remotePort", self.remote_port)
+        writer.write_timedelta_value("average_inbound_jitter", self.average_inbound_jitter)
+        writer.write_float_value("average_inbound_packet_loss_rate_in_percentage", self.average_inbound_packet_loss_rate_in_percentage)
+        writer.write_timedelta_value("average_inbound_round_trip_delay", self.average_inbound_round_trip_delay)
+        writer.write_timedelta_value("average_outbound_jitter", self.average_outbound_jitter)
+        writer.write_float_value("average_outbound_packet_loss_rate_in_percentage", self.average_outbound_packet_loss_rate_in_percentage)
+        writer.write_timedelta_value("average_outbound_round_trip_delay", self.average_outbound_round_trip_delay)
+        writer.write_int_value("channel_index", self.channel_index)
+        writer.write_int_value("inbound_packets", self.inbound_packets)
+        writer.write_str_value("local_i_p_address", self.local_i_p_address)
+        writer.write_int_value("local_port", self.local_port)
+        writer.write_timedelta_value("maximum_inbound_jitter", self.maximum_inbound_jitter)
+        writer.write_float_value("maximum_inbound_packet_loss_rate_in_percentage", self.maximum_inbound_packet_loss_rate_in_percentage)
+        writer.write_timedelta_value("maximum_inbound_round_trip_delay", self.maximum_inbound_round_trip_delay)
+        writer.write_timedelta_value("maximum_outbound_jitter", self.maximum_outbound_jitter)
+        writer.write_float_value("maximum_outbound_packet_loss_rate_in_percentage", self.maximum_outbound_packet_loss_rate_in_percentage)
+        writer.write_timedelta_value("maximum_outbound_round_trip_delay", self.maximum_outbound_round_trip_delay)
+        writer.write_timedelta_value("media_duration", self.media_duration)
+        writer.write_int_value("network_link_speed_in_bytes", self.network_link_speed_in_bytes)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("outbound_packets", self.outbound_packets)
+        writer.write_str_value("remote_i_p_address", self.remote_i_p_address)
+        writer.write_int_value("remote_port", self.remote_port)
         writer.write_additional_data_value(self.additional_data)
     
 

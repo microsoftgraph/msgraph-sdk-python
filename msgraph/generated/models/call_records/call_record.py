@@ -67,14 +67,14 @@ class CallRecord(Entity):
         from .session import Session
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "join_web_url": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "modalities": lambda n : setattr(self, 'modalities', n.get_collection_of_enum_values(Modality)),
             "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(IdentitySet)),
             "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(IdentitySet)),
             "sessions": lambda n : setattr(self, 'sessions', n.get_collection_of_object_values(Session)),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(CallType)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
@@ -91,14 +91,14 @@ class CallRecord(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_str_value("joinWebUrl", self.join_web_url)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_str_value("join_web_url", self.join_web_url)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_collection_of_enum_values("modalities", self.modalities)
         writer.write_object_value("organizer", self.organizer)
         writer.write_collection_of_object_values("participants", self.participants)
         writer.write_collection_of_object_values("sessions", self.sessions)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
         writer.write_enum_value("type", self.type)
         writer.write_int_value("version", self.version)
     

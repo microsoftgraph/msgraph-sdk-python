@@ -39,7 +39,7 @@ class GroupMembers(SubjectSet):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "groupId": lambda n : setattr(self, 'group_id', n.get_str_value()),
+            "group_id": lambda n : setattr(self, 'group_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,6 +55,6 @@ class GroupMembers(SubjectSet):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("groupId", self.group_id)
+        writer.write_str_value("group_id", self.group_id)
     
 

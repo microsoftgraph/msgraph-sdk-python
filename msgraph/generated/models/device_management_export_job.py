@@ -67,14 +67,14 @@ class DeviceManagementExportJob(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "filter": lambda n : setattr(self, 'filter', n.get_str_value()),
             "format": lambda n : setattr(self, 'format', n.get_enum_value(DeviceManagementReportFileFormat)),
-            "localizationType": lambda n : setattr(self, 'localization_type', n.get_enum_value(DeviceManagementExportJobLocalizationType)),
-            "reportName": lambda n : setattr(self, 'report_name', n.get_str_value()),
-            "requestDateTime": lambda n : setattr(self, 'request_date_time', n.get_datetime_value()),
+            "localization_type": lambda n : setattr(self, 'localization_type', n.get_enum_value(DeviceManagementExportJobLocalizationType)),
+            "report_name": lambda n : setattr(self, 'report_name', n.get_str_value()),
+            "request_date_time": lambda n : setattr(self, 'request_date_time', n.get_datetime_value()),
             "select": lambda n : setattr(self, 'select', n.get_collection_of_primitive_values(str)),
-            "snapshotId": lambda n : setattr(self, 'snapshot_id', n.get_str_value()),
+            "snapshot_id": lambda n : setattr(self, 'snapshot_id', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(DeviceManagementReportStatus)),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
@@ -91,14 +91,14 @@ class DeviceManagementExportJob(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_datetime_value("expiration_date_time", self.expiration_date_time)
         writer.write_str_value("filter", self.filter)
         writer.write_enum_value("format", self.format)
-        writer.write_enum_value("localizationType", self.localization_type)
-        writer.write_str_value("reportName", self.report_name)
-        writer.write_datetime_value("requestDateTime", self.request_date_time)
+        writer.write_enum_value("localization_type", self.localization_type)
+        writer.write_str_value("report_name", self.report_name)
+        writer.write_datetime_value("request_date_time", self.request_date_time)
         writer.write_collection_of_primitive_values("select", self.select)
-        writer.write_str_value("snapshotId", self.snapshot_id)
+        writer.write_str_value("snapshot_id", self.snapshot_id)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("url", self.url)
     

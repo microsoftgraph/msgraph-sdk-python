@@ -37,10 +37,10 @@ class BroadcastMeetingCaptionSettings(AdditionalDataHolder, BackedModel, Parsabl
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "isCaptionEnabled": lambda n : setattr(self, 'is_caption_enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "spokenLanguage": lambda n : setattr(self, 'spoken_language', n.get_str_value()),
-            "translationLanguages": lambda n : setattr(self, 'translation_languages', n.get_collection_of_primitive_values(str)),
+            "is_caption_enabled": lambda n : setattr(self, 'is_caption_enabled', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "spoken_language": lambda n : setattr(self, 'spoken_language', n.get_str_value()),
+            "translation_languages": lambda n : setattr(self, 'translation_languages', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -52,10 +52,10 @@ class BroadcastMeetingCaptionSettings(AdditionalDataHolder, BackedModel, Parsabl
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("isCaptionEnabled", self.is_caption_enabled)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("spokenLanguage", self.spoken_language)
-        writer.write_collection_of_primitive_values("translationLanguages", self.translation_languages)
+        writer.write_bool_value("is_caption_enabled", self.is_caption_enabled)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("spoken_language", self.spoken_language)
+        writer.write_collection_of_primitive_values("translation_languages", self.translation_languages)
         writer.write_additional_data_value(self.additional_data)
     
 

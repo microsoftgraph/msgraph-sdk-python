@@ -40,8 +40,8 @@ class ErfPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lowerLimit": lambda n : setattr(self, 'lower_limit', n.get_object_value(Json)),
-            "upperLimit": lambda n : setattr(self, 'upper_limit', n.get_object_value(Json)),
+            "lower_limit": lambda n : setattr(self, 'lower_limit', n.get_object_value(Json)),
+            "upper_limit": lambda n : setattr(self, 'upper_limit', n.get_object_value(Json)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class ErfPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("lowerLimit", self.lower_limit)
-        writer.write_object_value("upperLimit", self.upper_limit)
+        writer.write_object_value("lower_limit", self.lower_limit)
+        writer.write_object_value("upper_limit", self.upper_limit)
         writer.write_additional_data_value(self.additional_data)
     
 

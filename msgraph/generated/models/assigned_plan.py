@@ -41,11 +41,11 @@ class AssignedPlan(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignedDateTime": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
-            "capabilityStatus": lambda n : setattr(self, 'capability_status', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "assigned_date_time": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
+            "capability_status": lambda n : setattr(self, 'capability_status', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
-            "servicePlanId": lambda n : setattr(self, 'service_plan_id', n.get_uuid_value()),
+            "service_plan_id": lambda n : setattr(self, 'service_plan_id', n.get_uuid_value()),
         }
         return fields
     
@@ -57,11 +57,11 @@ class AssignedPlan(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_datetime_value("assignedDateTime", self.assigned_date_time)
-        writer.write_str_value("capabilityStatus", self.capability_status)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_datetime_value("assigned_date_time", self.assigned_date_time)
+        writer.write_str_value("capability_status", self.capability_status)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("service", self.service)
-        writer.write_uuid_value("servicePlanId", self.service_plan_id)
+        writer.write_uuid_value("service_plan_id", self.service_plan_id)
         writer.write_additional_data_value(self.additional_data)
     
 

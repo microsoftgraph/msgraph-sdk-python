@@ -54,10 +54,10 @@ class AccessReviewStage(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "decisions": lambda n : setattr(self, 'decisions', n.get_collection_of_object_values(AccessReviewInstanceDecisionItem)),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "fallback_reviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
             "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(AccessReviewReviewerScope)),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -74,10 +74,10 @@ class AccessReviewStage(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("decisions", self.decisions)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_collection_of_object_values("fallbackReviewers", self.fallback_reviewers)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_collection_of_object_values("fallback_reviewers", self.fallback_reviewers)
         writer.write_collection_of_object_values("reviewers", self.reviewers)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
         writer.write_str_value("status", self.status)
     
 

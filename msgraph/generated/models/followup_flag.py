@@ -49,11 +49,11 @@ class FollowupFlag(AdditionalDataHolder, BackedModel, Parsable):
         from .followup_flag_status import FollowupFlagStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_object_value(DateTimeTimeZone)),
-            "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_object_value(DateTimeTimeZone)),
-            "flagStatus": lambda n : setattr(self, 'flag_status', n.get_enum_value(FollowupFlagStatus)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
+            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_object_value(DateTimeTimeZone)),
+            "due_date_time": lambda n : setattr(self, 'due_date_time', n.get_object_value(DateTimeTimeZone)),
+            "flag_status": lambda n : setattr(self, 'flag_status', n.get_enum_value(FollowupFlagStatus)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
         }
         return fields
     
@@ -65,11 +65,11 @@ class FollowupFlag(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("completedDateTime", self.completed_date_time)
-        writer.write_object_value("dueDateTime", self.due_date_time)
-        writer.write_enum_value("flagStatus", self.flag_status)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("startDateTime", self.start_date_time)
+        writer.write_object_value("completed_date_time", self.completed_date_time)
+        writer.write_object_value("due_date_time", self.due_date_time)
+        writer.write_enum_value("flag_status", self.flag_status)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("start_date_time", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -43,9 +43,9 @@ class CallTranscriptEventMessageDetail(EventMessageDetail):
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
-            "callTranscriptICalUid": lambda n : setattr(self, 'call_transcript_i_cal_uid', n.get_str_value()),
-            "meetingOrganizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(IdentitySet)),
+            "call_id": lambda n : setattr(self, 'call_id', n.get_str_value()),
+            "call_transcript_i_cal_uid": lambda n : setattr(self, 'call_transcript_i_cal_uid', n.get_str_value()),
+            "meeting_organizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class CallTranscriptEventMessageDetail(EventMessageDetail):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("callId", self.call_id)
-        writer.write_str_value("callTranscriptICalUid", self.call_transcript_i_cal_uid)
-        writer.write_object_value("meetingOrganizer", self.meeting_organizer)
+        writer.write_str_value("call_id", self.call_id)
+        writer.write_str_value("call_transcript_i_cal_uid", self.call_transcript_i_cal_uid)
+        writer.write_object_value("meeting_organizer", self.meeting_organizer)
     
 

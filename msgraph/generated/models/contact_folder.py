@@ -55,12 +55,12 @@ class ContactFolder(Entity):
         from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "childFolders": lambda n : setattr(self, 'child_folders', n.get_collection_of_object_values(ContactFolder)),
+            "child_folders": lambda n : setattr(self, 'child_folders', n.get_collection_of_object_values(ContactFolder)),
             "contacts": lambda n : setattr(self, 'contacts', n.get_collection_of_object_values(Contact)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
-            "parentFolderId": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
-            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
+            "parent_folder_id": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
+            "single_value_extended_properties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,11 +75,11 @@ class ContactFolder(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("childFolders", self.child_folders)
+        writer.write_collection_of_object_values("child_folders", self.child_folders)
         writer.write_collection_of_object_values("contacts", self.contacts)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_object_values("multiValueExtendedProperties", self.multi_value_extended_properties)
-        writer.write_str_value("parentFolderId", self.parent_folder_id)
-        writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_object_values("multi_value_extended_properties", self.multi_value_extended_properties)
+        writer.write_str_value("parent_folder_id", self.parent_folder_id)
+        writer.write_collection_of_object_values("single_value_extended_properties", self.single_value_extended_properties)
     
 

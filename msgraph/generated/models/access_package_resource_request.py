@@ -58,8 +58,8 @@ class AccessPackageResourceRequest(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(AccessPackageCatalog)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "requestType": lambda n : setattr(self, 'request_type', n.get_enum_value(AccessPackageRequestType)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "request_type": lambda n : setattr(self, 'request_type', n.get_enum_value(AccessPackageRequestType)),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(AccessPackageResource)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(AccessPackageRequestState)),
         }
@@ -77,8 +77,8 @@ class AccessPackageResourceRequest(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("catalog", self.catalog)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_enum_value("requestType", self.request_type)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_enum_value("request_type", self.request_type)
         writer.write_object_value("resource", self.resource)
         writer.write_enum_value("state", self.state)
     

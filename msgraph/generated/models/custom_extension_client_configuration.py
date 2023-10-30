@@ -33,8 +33,8 @@ class CustomExtensionClientConfiguration(AdditionalDataHolder, BackedModel, Pars
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "timeoutInMilliseconds": lambda n : setattr(self, 'timeout_in_milliseconds', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "timeout_in_milliseconds": lambda n : setattr(self, 'timeout_in_milliseconds', n.get_int_value()),
         }
         return fields
     
@@ -46,8 +46,8 @@ class CustomExtensionClientConfiguration(AdditionalDataHolder, BackedModel, Pars
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("timeoutInMilliseconds", self.timeout_in_milliseconds)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("timeout_in_milliseconds", self.timeout_in_milliseconds)
         writer.write_additional_data_value(self.additional_data)
     
 

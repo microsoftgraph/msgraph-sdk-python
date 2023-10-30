@@ -47,9 +47,9 @@ class OnPremisesConditionalAccessSettings(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "excludedGroups": lambda n : setattr(self, 'excluded_groups', n.get_collection_of_primitive_values(UUID)),
-            "includedGroups": lambda n : setattr(self, 'included_groups', n.get_collection_of_primitive_values(UUID)),
-            "overrideDefaultRule": lambda n : setattr(self, 'override_default_rule', n.get_bool_value()),
+            "excluded_groups": lambda n : setattr(self, 'excluded_groups', n.get_collection_of_primitive_values(UUID)),
+            "included_groups": lambda n : setattr(self, 'included_groups', n.get_collection_of_primitive_values(UUID)),
+            "override_default_rule": lambda n : setattr(self, 'override_default_rule', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -65,8 +65,8 @@ class OnPremisesConditionalAccessSettings(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("enabled", self.enabled)
-        writer.write_collection_of_primitive_values("excludedGroups", self.excluded_groups)
-        writer.write_collection_of_primitive_values("includedGroups", self.included_groups)
-        writer.write_bool_value("overrideDefaultRule", self.override_default_rule)
+        writer.write_collection_of_primitive_values("excluded_groups", self.excluded_groups)
+        writer.write_collection_of_primitive_values("included_groups", self.included_groups)
+        writer.write_bool_value("override_default_rule", self.override_default_rule)
     
 

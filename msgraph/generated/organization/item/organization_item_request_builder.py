@@ -56,10 +56,10 @@ class OrganizationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OrganizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Organization]:
         """
-        Read properties and relationships of the organization object.
+        Get the properties and relationships of the currently authenticated organization. Since the organization resource supports extensions, you can also use the GET operation to get custom properties and extension data in an organization instance. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Organization]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-organization-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/organization-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -119,7 +119,7 @@ class OrganizationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OrganizationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the organization object.
+        Get the properties and relationships of the currently authenticated organization. Since the organization resource supports extensions, you can also use the GET operation to get custom properties and extension data in an organization instance. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -258,7 +258,7 @@ class OrganizationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OrganizationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the organization object.
+        Get the properties and relationships of the currently authenticated organization. Since the organization resource supports extensions, you can also use the GET operation to get custom properties and extension data in an organization instance. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

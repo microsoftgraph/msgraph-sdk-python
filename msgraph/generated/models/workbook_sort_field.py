@@ -52,11 +52,11 @@ class WorkbookSortField(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "ascending": lambda n : setattr(self, 'ascending', n.get_bool_value()),
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
-            "dataOption": lambda n : setattr(self, 'data_option', n.get_str_value()),
+            "data_option": lambda n : setattr(self, 'data_option', n.get_str_value()),
             "icon": lambda n : setattr(self, 'icon', n.get_object_value(WorkbookIcon)),
             "key": lambda n : setattr(self, 'key', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sortOn": lambda n : setattr(self, 'sort_on', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "sort_on": lambda n : setattr(self, 'sort_on', n.get_str_value()),
         }
         return fields
     
@@ -70,11 +70,11 @@ class WorkbookSortField(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_bool_value("ascending", self.ascending)
         writer.write_str_value("color", self.color)
-        writer.write_str_value("dataOption", self.data_option)
+        writer.write_str_value("data_option", self.data_option)
         writer.write_object_value("icon", self.icon)
         writer.write_int_value("key", self.key)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("sortOn", self.sort_on)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("sort_on", self.sort_on)
         writer.write_additional_data_value(self.additional_data)
     
 

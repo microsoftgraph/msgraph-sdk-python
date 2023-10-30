@@ -35,9 +35,9 @@ class DateTimeTimeZone(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "dateTime": lambda n : setattr(self, 'date_time', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "date_time": lambda n : setattr(self, 'date_time', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
         }
         return fields
     
@@ -49,9 +49,9 @@ class DateTimeTimeZone(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("dateTime", self.date_time)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("timeZone", self.time_zone)
+        writer.write_str_value("date_time", self.date_time)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("time_zone", self.time_zone)
         writer.write_additional_data_value(self.additional_data)
     
 

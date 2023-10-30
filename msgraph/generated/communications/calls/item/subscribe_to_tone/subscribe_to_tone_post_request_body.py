@@ -31,7 +31,7 @@ class SubscribeToTonePostRequestBody(AdditionalDataHolder, BackedModel, Parsable
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
+            "client_context": lambda n : setattr(self, 'client_context', n.get_str_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class SubscribeToTonePostRequestBody(AdditionalDataHolder, BackedModel, Parsable
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("clientContext", self.client_context)
+        writer.write_str_value("client_context", self.client_context)
         writer.write_additional_data_value(self.additional_data)
     
 

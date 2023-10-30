@@ -58,10 +58,10 @@ class DeviceCompliancePolicyState(Entity):
         from .policy_platform_type import PolicyPlatformType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "platformType": lambda n : setattr(self, 'platform_type', n.get_enum_value(PolicyPlatformType)),
-            "settingCount": lambda n : setattr(self, 'setting_count', n.get_int_value()),
-            "settingStates": lambda n : setattr(self, 'setting_states', n.get_collection_of_object_values(DeviceCompliancePolicySettingState)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "platform_type": lambda n : setattr(self, 'platform_type', n.get_enum_value(PolicyPlatformType)),
+            "setting_count": lambda n : setattr(self, 'setting_count', n.get_int_value()),
+            "setting_states": lambda n : setattr(self, 'setting_states', n.get_collection_of_object_values(DeviceCompliancePolicySettingState)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(ComplianceStatus)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
@@ -78,10 +78,10 @@ class DeviceCompliancePolicyState(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_enum_value("platformType", self.platform_type)
-        writer.write_int_value("settingCount", self.setting_count)
-        writer.write_collection_of_object_values("settingStates", self.setting_states)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_enum_value("platform_type", self.platform_type)
+        writer.write_int_value("setting_count", self.setting_count)
+        writer.write_collection_of_object_values("setting_states", self.setting_states)
         writer.write_enum_value("state", self.state)
         writer.write_int_value("version", self.version)
     

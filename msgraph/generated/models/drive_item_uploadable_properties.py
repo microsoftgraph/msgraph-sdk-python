@@ -47,10 +47,10 @@ class DriveItemUploadableProperties(AdditionalDataHolder, BackedModel, Parsable)
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "fileSize": lambda n : setattr(self, 'file_size', n.get_int_value()),
-            "fileSystemInfo": lambda n : setattr(self, 'file_system_info', n.get_object_value(FileSystemInfo)),
+            "file_size": lambda n : setattr(self, 'file_size', n.get_int_value()),
+            "file_system_info": lambda n : setattr(self, 'file_system_info', n.get_object_value(FileSystemInfo)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -63,10 +63,10 @@ class DriveItemUploadableProperties(AdditionalDataHolder, BackedModel, Parsable)
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("description", self.description)
-        writer.write_int_value("fileSize", self.file_size)
-        writer.write_object_value("fileSystemInfo", self.file_system_info)
+        writer.write_int_value("file_size", self.file_size)
+        writer.write_object_value("file_system_info", self.file_system_info)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

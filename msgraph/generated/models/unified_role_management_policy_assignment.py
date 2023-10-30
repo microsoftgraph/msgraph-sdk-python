@@ -48,10 +48,10 @@ class UnifiedRoleManagementPolicyAssignment(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "policy": lambda n : setattr(self, 'policy', n.get_object_value(UnifiedRoleManagementPolicy)),
-            "policyId": lambda n : setattr(self, 'policy_id', n.get_str_value()),
-            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
-            "scopeId": lambda n : setattr(self, 'scope_id', n.get_str_value()),
-            "scopeType": lambda n : setattr(self, 'scope_type', n.get_str_value()),
+            "policy_id": lambda n : setattr(self, 'policy_id', n.get_str_value()),
+            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "scope_id": lambda n : setattr(self, 'scope_id', n.get_str_value()),
+            "scope_type": lambda n : setattr(self, 'scope_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,9 +67,9 @@ class UnifiedRoleManagementPolicyAssignment(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("policy", self.policy)
-        writer.write_str_value("policyId", self.policy_id)
-        writer.write_str_value("roleDefinitionId", self.role_definition_id)
-        writer.write_str_value("scopeId", self.scope_id)
-        writer.write_str_value("scopeType", self.scope_type)
+        writer.write_str_value("policy_id", self.policy_id)
+        writer.write_str_value("role_definition_id", self.role_definition_id)
+        writer.write_str_value("scope_id", self.scope_id)
+        writer.write_str_value("scope_type", self.scope_type)
     
 

@@ -108,9 +108,9 @@ class MobileLobApp(MobileApp):
         from .windows_universal_app_x import WindowsUniversalAppX
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "committedContentVersion": lambda n : setattr(self, 'committed_content_version', n.get_str_value()),
-            "contentVersions": lambda n : setattr(self, 'content_versions', n.get_collection_of_object_values(MobileAppContent)),
-            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "committed_content_version": lambda n : setattr(self, 'committed_content_version', n.get_str_value()),
+            "content_versions": lambda n : setattr(self, 'content_versions', n.get_collection_of_object_values(MobileAppContent)),
+            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -126,9 +126,9 @@ class MobileLobApp(MobileApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("committedContentVersion", self.committed_content_version)
-        writer.write_collection_of_object_values("contentVersions", self.content_versions)
-        writer.write_str_value("fileName", self.file_name)
+        writer.write_str_value("committed_content_version", self.committed_content_version)
+        writer.write_collection_of_object_values("content_versions", self.content_versions)
+        writer.write_str_value("file_name", self.file_name)
         writer.write_int_value("size", self.size)
     
 

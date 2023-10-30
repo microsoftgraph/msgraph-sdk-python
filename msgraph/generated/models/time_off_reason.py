@@ -43,9 +43,9 @@ class TimeOffReason(ChangeTrackedEntity):
         from .time_off_reason_icon_type import TimeOffReasonIconType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "iconType": lambda n : setattr(self, 'icon_type', n.get_enum_value(TimeOffReasonIconType)),
-            "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "icon_type": lambda n : setattr(self, 'icon_type', n.get_enum_value(TimeOffReasonIconType)),
+            "is_active": lambda n : setattr(self, 'is_active', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class TimeOffReason(ChangeTrackedEntity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_enum_value("iconType", self.icon_type)
-        writer.write_bool_value("isActive", self.is_active)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_enum_value("icon_type", self.icon_type)
+        writer.write_bool_value("is_active", self.is_active)
     
 

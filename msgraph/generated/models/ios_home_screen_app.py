@@ -39,7 +39,7 @@ class IosHomeScreenApp(IosHomeScreenItem):
         from .ios_home_screen_item import IosHomeScreenItem
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "bundleID": lambda n : setattr(self, 'bundle_i_d', n.get_str_value()),
+            "bundle_i_d": lambda n : setattr(self, 'bundle_i_d', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class IosHomeScreenApp(IosHomeScreenItem):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("bundleID", self.bundle_i_d)
+        writer.write_str_value("bundle_i_d", self.bundle_i_d)
     
 

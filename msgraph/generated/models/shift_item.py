@@ -55,7 +55,7 @@ class ShiftItem(ScheduleEntity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(ShiftActivity)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -72,7 +72,7 @@ class ShiftItem(ScheduleEntity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("activities", self.activities)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_str_value("notes", self.notes)
     
 

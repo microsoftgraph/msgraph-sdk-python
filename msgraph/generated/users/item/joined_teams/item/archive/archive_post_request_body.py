@@ -31,7 +31,7 @@ class ArchivePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "shouldSetSpoSiteReadOnlyForMembers": lambda n : setattr(self, 'should_set_spo_site_read_only_for_members', n.get_bool_value()),
+            "should_set_spo_site_read_only_for_members": lambda n : setattr(self, 'should_set_spo_site_read_only_for_members', n.get_bool_value()),
         }
         return fields
     
@@ -43,7 +43,7 @@ class ArchivePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("shouldSetSpoSiteReadOnlyForMembers", self.should_set_spo_site_read_only_for_members)
+        writer.write_bool_value("should_set_spo_site_read_only_for_members", self.should_set_spo_site_read_only_for_members)
         writer.write_additional_data_value(self.additional_data)
     
 

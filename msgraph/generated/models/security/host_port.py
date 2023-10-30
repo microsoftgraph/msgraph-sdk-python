@@ -76,16 +76,16 @@ class HostPort(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "banners": lambda n : setattr(self, 'banners', n.get_collection_of_object_values(HostPortBanner)),
-            "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
+            "first_seen_date_time": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
             "host": lambda n : setattr(self, 'host', n.get_object_value(Host)),
-            "lastScanDateTime": lambda n : setattr(self, 'last_scan_date_time', n.get_datetime_value()),
-            "lastSeenDateTime": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
-            "mostRecentSslCertificate": lambda n : setattr(self, 'most_recent_ssl_certificate', n.get_object_value(SslCertificate)),
+            "last_scan_date_time": lambda n : setattr(self, 'last_scan_date_time', n.get_datetime_value()),
+            "last_seen_date_time": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
+            "most_recent_ssl_certificate": lambda n : setattr(self, 'most_recent_ssl_certificate', n.get_object_value(SslCertificate)),
             "port": lambda n : setattr(self, 'port', n.get_int_value()),
             "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(HostPortProtocol)),
             "services": lambda n : setattr(self, 'services', n.get_collection_of_object_values(HostPortComponent)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(HostPortStatus)),
-            "timesObserved": lambda n : setattr(self, 'times_observed', n.get_int_value()),
+            "times_observed": lambda n : setattr(self, 'times_observed', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -101,15 +101,15 @@ class HostPort(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("banners", self.banners)
-        writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
+        writer.write_datetime_value("first_seen_date_time", self.first_seen_date_time)
         writer.write_object_value("host", self.host)
-        writer.write_datetime_value("lastScanDateTime", self.last_scan_date_time)
-        writer.write_datetime_value("lastSeenDateTime", self.last_seen_date_time)
-        writer.write_object_value("mostRecentSslCertificate", self.most_recent_ssl_certificate)
+        writer.write_datetime_value("last_scan_date_time", self.last_scan_date_time)
+        writer.write_datetime_value("last_seen_date_time", self.last_seen_date_time)
+        writer.write_object_value("most_recent_ssl_certificate", self.most_recent_ssl_certificate)
         writer.write_int_value("port", self.port)
         writer.write_enum_value("protocol", self.protocol)
         writer.write_collection_of_object_values("services", self.services)
         writer.write_enum_value("status", self.status)
-        writer.write_int_value("timesObserved", self.times_observed)
+        writer.write_int_value("times_observed", self.times_observed)
     
 

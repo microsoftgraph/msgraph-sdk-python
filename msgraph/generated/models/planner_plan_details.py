@@ -44,8 +44,8 @@ class PlannerPlanDetails(Entity):
         from .planner_user_ids import PlannerUserIds
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "categoryDescriptions": lambda n : setattr(self, 'category_descriptions', n.get_object_value(PlannerCategoryDescriptions)),
-            "sharedWith": lambda n : setattr(self, 'shared_with', n.get_object_value(PlannerUserIds)),
+            "category_descriptions": lambda n : setattr(self, 'category_descriptions', n.get_object_value(PlannerCategoryDescriptions)),
+            "shared_with": lambda n : setattr(self, 'shared_with', n.get_object_value(PlannerUserIds)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,7 +60,7 @@ class PlannerPlanDetails(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("categoryDescriptions", self.category_descriptions)
-        writer.write_object_value("sharedWith", self.shared_with)
+        writer.write_object_value("category_descriptions", self.category_descriptions)
+        writer.write_object_value("shared_with", self.shared_with)
     
 

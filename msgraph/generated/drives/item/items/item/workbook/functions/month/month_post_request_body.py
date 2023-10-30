@@ -38,7 +38,7 @@ class MonthPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "serialNumber": lambda n : setattr(self, 'serial_number', n.get_object_value(Json)),
+            "serial_number": lambda n : setattr(self, 'serial_number', n.get_object_value(Json)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class MonthPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("serialNumber", self.serial_number)
+        writer.write_object_value("serial_number", self.serial_number)
         writer.write_additional_data_value(self.additional_data)
     
 

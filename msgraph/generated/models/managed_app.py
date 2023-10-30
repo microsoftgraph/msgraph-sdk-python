@@ -83,7 +83,7 @@ class ManagedApp(MobileApp):
         from .mobile_app import MobileApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appAvailability": lambda n : setattr(self, 'app_availability', n.get_enum_value(ManagedAppAvailability)),
+            "app_availability": lambda n : setattr(self, 'app_availability', n.get_enum_value(ManagedAppAvailability)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -99,7 +99,7 @@ class ManagedApp(MobileApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("appAvailability", self.app_availability)
+        writer.write_enum_value("app_availability", self.app_availability)
         writer.write_str_value("version", self.version)
     
 

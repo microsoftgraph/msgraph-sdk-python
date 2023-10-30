@@ -67,17 +67,17 @@ class SynchronizationRule(AdditionalDataHolder, BackedModel, Parsable):
         from .string_key_string_value_pair import StringKeyStringValuePair
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "containerFilter": lambda n : setattr(self, 'container_filter', n.get_object_value(ContainerFilter)),
+            "container_filter": lambda n : setattr(self, 'container_filter', n.get_object_value(ContainerFilter)),
             "editable": lambda n : setattr(self, 'editable', n.get_bool_value()),
-            "groupFilter": lambda n : setattr(self, 'group_filter', n.get_object_value(GroupFilter)),
+            "group_filter": lambda n : setattr(self, 'group_filter', n.get_object_value(GroupFilter)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "metadata": lambda n : setattr(self, 'metadata', n.get_collection_of_object_values(StringKeyStringValuePair)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "objectMappings": lambda n : setattr(self, 'object_mappings', n.get_collection_of_object_values(ObjectMapping)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "object_mappings": lambda n : setattr(self, 'object_mappings', n.get_collection_of_object_values(ObjectMapping)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "priority": lambda n : setattr(self, 'priority', n.get_int_value()),
-            "sourceDirectoryName": lambda n : setattr(self, 'source_directory_name', n.get_str_value()),
-            "targetDirectoryName": lambda n : setattr(self, 'target_directory_name', n.get_str_value()),
+            "source_directory_name": lambda n : setattr(self, 'source_directory_name', n.get_str_value()),
+            "target_directory_name": lambda n : setattr(self, 'target_directory_name', n.get_str_value()),
         }
         return fields
     
@@ -89,17 +89,17 @@ class SynchronizationRule(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("containerFilter", self.container_filter)
+        writer.write_object_value("container_filter", self.container_filter)
         writer.write_bool_value("editable", self.editable)
-        writer.write_object_value("groupFilter", self.group_filter)
+        writer.write_object_value("group_filter", self.group_filter)
         writer.write_str_value("id", self.id)
         writer.write_collection_of_object_values("metadata", self.metadata)
         writer.write_str_value("name", self.name)
-        writer.write_collection_of_object_values("objectMappings", self.object_mappings)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_collection_of_object_values("object_mappings", self.object_mappings)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("priority", self.priority)
-        writer.write_str_value("sourceDirectoryName", self.source_directory_name)
-        writer.write_str_value("targetDirectoryName", self.target_directory_name)
+        writer.write_str_value("source_directory_name", self.source_directory_name)
+        writer.write_str_value("target_directory_name", self.target_directory_name)
         writer.write_additional_data_value(self.additional_data)
     
 

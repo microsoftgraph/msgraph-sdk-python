@@ -61,15 +61,15 @@ class MacOSLobApp(MobileLobApp):
         from .mobile_lob_app import MobileLobApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "buildNumber": lambda n : setattr(self, 'build_number', n.get_str_value()),
-            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "childApps": lambda n : setattr(self, 'child_apps', n.get_collection_of_object_values(MacOSLobChildApp)),
-            "ignoreVersionDetection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
-            "installAsManaged": lambda n : setattr(self, 'install_as_managed', n.get_bool_value()),
-            "md5Hash": lambda n : setattr(self, 'md5_hash', n.get_collection_of_primitive_values(str)),
-            "md5HashChunkSize": lambda n : setattr(self, 'md5_hash_chunk_size', n.get_int_value()),
-            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(MacOSMinimumOperatingSystem)),
-            "versionNumber": lambda n : setattr(self, 'version_number', n.get_str_value()),
+            "build_number": lambda n : setattr(self, 'build_number', n.get_str_value()),
+            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "child_apps": lambda n : setattr(self, 'child_apps', n.get_collection_of_object_values(MacOSLobChildApp)),
+            "ignore_version_detection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
+            "install_as_managed": lambda n : setattr(self, 'install_as_managed', n.get_bool_value()),
+            "md5_hash": lambda n : setattr(self, 'md5_hash', n.get_collection_of_primitive_values(str)),
+            "md5_hash_chunk_size": lambda n : setattr(self, 'md5_hash_chunk_size', n.get_int_value()),
+            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(MacOSMinimumOperatingSystem)),
+            "version_number": lambda n : setattr(self, 'version_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,14 +84,14 @@ class MacOSLobApp(MobileLobApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("buildNumber", self.build_number)
-        writer.write_str_value("bundleId", self.bundle_id)
-        writer.write_collection_of_object_values("childApps", self.child_apps)
-        writer.write_bool_value("ignoreVersionDetection", self.ignore_version_detection)
-        writer.write_bool_value("installAsManaged", self.install_as_managed)
-        writer.write_collection_of_primitive_values("md5Hash", self.md5_hash)
-        writer.write_int_value("md5HashChunkSize", self.md5_hash_chunk_size)
-        writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
-        writer.write_str_value("versionNumber", self.version_number)
+        writer.write_str_value("build_number", self.build_number)
+        writer.write_str_value("bundle_id", self.bundle_id)
+        writer.write_collection_of_object_values("child_apps", self.child_apps)
+        writer.write_bool_value("ignore_version_detection", self.ignore_version_detection)
+        writer.write_bool_value("install_as_managed", self.install_as_managed)
+        writer.write_collection_of_primitive_values("md5_hash", self.md5_hash)
+        writer.write_int_value("md5_hash_chunk_size", self.md5_hash_chunk_size)
+        writer.write_object_value("minimum_supported_operating_system", self.minimum_supported_operating_system)
+        writer.write_str_value("version_number", self.version_number)
     
 

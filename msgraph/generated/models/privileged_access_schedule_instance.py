@@ -57,8 +57,8 @@ class PrivilegedAccessScheduleInstance(Entity):
         from .privileged_access_group_eligibility_schedule_instance import PrivilegedAccessGroupEligibilityScheduleInstance
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,7 +73,7 @@ class PrivilegedAccessScheduleInstance(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
     
 

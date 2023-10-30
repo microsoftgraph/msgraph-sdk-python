@@ -38,8 +38,8 @@ class RecordOperation(CommsOperation):
         from .comms_operation import CommsOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "recordingAccessToken": lambda n : setattr(self, 'recording_access_token', n.get_str_value()),
-            "recordingLocation": lambda n : setattr(self, 'recording_location', n.get_str_value()),
+            "recording_access_token": lambda n : setattr(self, 'recording_access_token', n.get_str_value()),
+            "recording_location": lambda n : setattr(self, 'recording_location', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class RecordOperation(CommsOperation):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("recordingAccessToken", self.recording_access_token)
-        writer.write_str_value("recordingLocation", self.recording_location)
+        writer.write_str_value("recording_access_token", self.recording_access_token)
+        writer.write_str_value("recording_location", self.recording_location)
     
 

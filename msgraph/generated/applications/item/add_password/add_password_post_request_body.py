@@ -38,7 +38,7 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ....models.password_credential import PasswordCredential
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "passwordCredential": lambda n : setattr(self, 'password_credential', n.get_object_value(PasswordCredential)),
+            "password_credential": lambda n : setattr(self, 'password_credential', n.get_object_value(PasswordCredential)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("passwordCredential", self.password_credential)
+        writer.write_object_value("password_credential", self.password_credential)
         writer.write_additional_data_value(self.additional_data)
     
 

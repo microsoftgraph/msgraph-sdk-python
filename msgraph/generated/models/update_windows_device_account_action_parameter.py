@@ -50,13 +50,13 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, BackedMode
         from .windows_device_account import WindowsDeviceAccount
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "calendarSyncEnabled": lambda n : setattr(self, 'calendar_sync_enabled', n.get_bool_value()),
-            "deviceAccount": lambda n : setattr(self, 'device_account', n.get_object_value(WindowsDeviceAccount)),
-            "deviceAccountEmail": lambda n : setattr(self, 'device_account_email', n.get_str_value()),
-            "exchangeServer": lambda n : setattr(self, 'exchange_server', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "passwordRotationEnabled": lambda n : setattr(self, 'password_rotation_enabled', n.get_bool_value()),
-            "sessionInitiationProtocalAddress": lambda n : setattr(self, 'session_initiation_protocal_address', n.get_str_value()),
+            "calendar_sync_enabled": lambda n : setattr(self, 'calendar_sync_enabled', n.get_bool_value()),
+            "device_account": lambda n : setattr(self, 'device_account', n.get_object_value(WindowsDeviceAccount)),
+            "device_account_email": lambda n : setattr(self, 'device_account_email', n.get_str_value()),
+            "exchange_server": lambda n : setattr(self, 'exchange_server', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "password_rotation_enabled": lambda n : setattr(self, 'password_rotation_enabled', n.get_bool_value()),
+            "session_initiation_protocal_address": lambda n : setattr(self, 'session_initiation_protocal_address', n.get_str_value()),
         }
         return fields
     
@@ -68,13 +68,13 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, BackedMode
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("calendarSyncEnabled", self.calendar_sync_enabled)
-        writer.write_object_value("deviceAccount", self.device_account)
-        writer.write_str_value("deviceAccountEmail", self.device_account_email)
-        writer.write_str_value("exchangeServer", self.exchange_server)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_bool_value("passwordRotationEnabled", self.password_rotation_enabled)
-        writer.write_str_value("sessionInitiationProtocalAddress", self.session_initiation_protocal_address)
+        writer.write_bool_value("calendar_sync_enabled", self.calendar_sync_enabled)
+        writer.write_object_value("device_account", self.device_account)
+        writer.write_str_value("device_account_email", self.device_account_email)
+        writer.write_str_value("exchange_server", self.exchange_server)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_bool_value("password_rotation_enabled", self.password_rotation_enabled)
+        writer.write_str_value("session_initiation_protocal_address", self.session_initiation_protocal_address)
         writer.write_additional_data_value(self.additional_data)
     
 

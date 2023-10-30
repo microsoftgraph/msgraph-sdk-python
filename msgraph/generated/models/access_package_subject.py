@@ -54,13 +54,13 @@ class AccessPackageSubject(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "connectedOrganization": lambda n : setattr(self, 'connected_organization', n.get_object_value(ConnectedOrganization)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "connected_organization": lambda n : setattr(self, 'connected_organization', n.get_object_value(ConnectedOrganization)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
-            "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
-            "principalName": lambda n : setattr(self, 'principal_name', n.get_str_value()),
-            "subjectType": lambda n : setattr(self, 'subject_type', n.get_enum_value(AccessPackageSubjectType)),
+            "object_id": lambda n : setattr(self, 'object_id', n.get_str_value()),
+            "on_premises_security_identifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
+            "principal_name": lambda n : setattr(self, 'principal_name', n.get_str_value()),
+            "subject_type": lambda n : setattr(self, 'subject_type', n.get_enum_value(AccessPackageSubjectType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,12 +75,12 @@ class AccessPackageSubject(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("connectedOrganization", self.connected_organization)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_object_value("connected_organization", self.connected_organization)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_str_value("email", self.email)
-        writer.write_str_value("objectId", self.object_id)
-        writer.write_str_value("onPremisesSecurityIdentifier", self.on_premises_security_identifier)
-        writer.write_str_value("principalName", self.principal_name)
-        writer.write_enum_value("subjectType", self.subject_type)
+        writer.write_str_value("object_id", self.object_id)
+        writer.write_str_value("on_premises_security_identifier", self.on_premises_security_identifier)
+        writer.write_str_value("principal_name", self.principal_name)
+        writer.write_enum_value("subject_type", self.subject_type)
     
 

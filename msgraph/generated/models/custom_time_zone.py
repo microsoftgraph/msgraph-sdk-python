@@ -47,8 +47,8 @@ class CustomTimeZone(TimeZoneBase):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "bias": lambda n : setattr(self, 'bias', n.get_int_value()),
-            "daylightOffset": lambda n : setattr(self, 'daylight_offset', n.get_object_value(DaylightTimeZoneOffset)),
-            "standardOffset": lambda n : setattr(self, 'standard_offset', n.get_object_value(StandardTimeZoneOffset)),
+            "daylight_offset": lambda n : setattr(self, 'daylight_offset', n.get_object_value(DaylightTimeZoneOffset)),
+            "standard_offset": lambda n : setattr(self, 'standard_offset', n.get_object_value(StandardTimeZoneOffset)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -64,7 +64,7 @@ class CustomTimeZone(TimeZoneBase):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_int_value("bias", self.bias)
-        writer.write_object_value("daylightOffset", self.daylight_offset)
-        writer.write_object_value("standardOffset", self.standard_offset)
+        writer.write_object_value("daylight_offset", self.daylight_offset)
+        writer.write_object_value("standard_offset", self.standard_offset)
     
 

@@ -40,10 +40,10 @@ class UserExperienceAnalyticsAutopilotDevicesSummary(AdditionalDataHolder, Backe
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "devicesNotAutopilotRegistered": lambda n : setattr(self, 'devices_not_autopilot_registered', n.get_int_value()),
-            "devicesWithoutAutopilotProfileAssigned": lambda n : setattr(self, 'devices_without_autopilot_profile_assigned', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "totalWindows10DevicesWithoutTenantAttached": lambda n : setattr(self, 'total_windows10_devices_without_tenant_attached', n.get_int_value()),
+            "devices_not_autopilot_registered": lambda n : setattr(self, 'devices_not_autopilot_registered', n.get_int_value()),
+            "devices_without_autopilot_profile_assigned": lambda n : setattr(self, 'devices_without_autopilot_profile_assigned', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "total_windows10_devices_without_tenant_attached": lambda n : setattr(self, 'total_windows10_devices_without_tenant_attached', n.get_int_value()),
         }
         return fields
     
@@ -55,10 +55,10 @@ class UserExperienceAnalyticsAutopilotDevicesSummary(AdditionalDataHolder, Backe
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("devicesNotAutopilotRegistered", self.devices_not_autopilot_registered)
-        writer.write_int_value("devicesWithoutAutopilotProfileAssigned", self.devices_without_autopilot_profile_assigned)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("totalWindows10DevicesWithoutTenantAttached", self.total_windows10_devices_without_tenant_attached)
+        writer.write_int_value("devices_not_autopilot_registered", self.devices_not_autopilot_registered)
+        writer.write_int_value("devices_without_autopilot_profile_assigned", self.devices_without_autopilot_profile_assigned)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("total_windows10_devices_without_tenant_attached", self.total_windows10_devices_without_tenant_attached)
         writer.write_additional_data_value(self.additional_data)
     
 

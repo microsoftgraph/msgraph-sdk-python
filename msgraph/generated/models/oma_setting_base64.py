@@ -41,7 +41,7 @@ class OmaSettingBase64(OmaSetting):
         from .oma_setting import OmaSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -57,7 +57,7 @@ class OmaSettingBase64(OmaSetting):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("fileName", self.file_name)
+        writer.write_str_value("file_name", self.file_name)
         writer.write_str_value("value", self.value)
     
 

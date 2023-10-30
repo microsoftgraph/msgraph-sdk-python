@@ -43,9 +43,9 @@ class IdentityApiConnector(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationConfiguration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(ApiAuthenticationConfigurationBase)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "targetUrl": lambda n : setattr(self, 'target_url', n.get_str_value()),
+            "authentication_configuration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(ApiAuthenticationConfigurationBase)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "target_url": lambda n : setattr(self, 'target_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class IdentityApiConnector(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("authenticationConfiguration", self.authentication_configuration)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("targetUrl", self.target_url)
+        writer.write_object_value("authentication_configuration", self.authentication_configuration)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("target_url", self.target_url)
     
 

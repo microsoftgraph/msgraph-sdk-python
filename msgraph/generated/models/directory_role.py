@@ -48,10 +48,10 @@ class DirectoryRole(DirectoryObject):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(DirectoryObject)),
-            "roleTemplateId": lambda n : setattr(self, 'role_template_id', n.get_str_value()),
-            "scopedMembers": lambda n : setattr(self, 'scoped_members', n.get_collection_of_object_values(ScopedRoleMembership)),
+            "role_template_id": lambda n : setattr(self, 'role_template_id', n.get_str_value()),
+            "scoped_members": lambda n : setattr(self, 'scoped_members', n.get_collection_of_object_values(ScopedRoleMembership)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,9 +67,9 @@ class DirectoryRole(DirectoryObject):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_collection_of_object_values("members", self.members)
-        writer.write_str_value("roleTemplateId", self.role_template_id)
-        writer.write_collection_of_object_values("scopedMembers", self.scoped_members)
+        writer.write_str_value("role_template_id", self.role_template_id)
+        writer.write_collection_of_object_values("scoped_members", self.scoped_members)
     
 

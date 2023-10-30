@@ -195,50 +195,50 @@ class Application(DirectoryObject):
         from .web_application import WebApplication
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "addIns": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(AddIn)),
+            "add_ins": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(AddIn)),
             "api": lambda n : setattr(self, 'api', n.get_object_value(ApiApplication)),
-            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "appManagementPolicies": lambda n : setattr(self, 'app_management_policies', n.get_collection_of_object_values(AppManagementPolicy)),
-            "appRoles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(AppRole)),
-            "applicationTemplateId": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
+            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "app_management_policies": lambda n : setattr(self, 'app_management_policies', n.get_collection_of_object_values(AppManagementPolicy)),
+            "app_roles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(AppRole)),
+            "application_template_id": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
             "certification": lambda n : setattr(self, 'certification', n.get_object_value(Certification)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "createdOnBehalfOf": lambda n : setattr(self, 'created_on_behalf_of', n.get_object_value(DirectoryObject)),
-            "defaultRedirectUri": lambda n : setattr(self, 'default_redirect_uri', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_on_behalf_of": lambda n : setattr(self, 'created_on_behalf_of', n.get_object_value(DirectoryObject)),
+            "default_redirect_uri": lambda n : setattr(self, 'default_redirect_uri', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "disabledByMicrosoftStatus": lambda n : setattr(self, 'disabled_by_microsoft_status', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "extensionProperties": lambda n : setattr(self, 'extension_properties', n.get_collection_of_object_values(ExtensionProperty)),
-            "federatedIdentityCredentials": lambda n : setattr(self, 'federated_identity_credentials', n.get_collection_of_object_values(FederatedIdentityCredential)),
-            "groupMembershipClaims": lambda n : setattr(self, 'group_membership_claims', n.get_str_value()),
-            "homeRealmDiscoveryPolicies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(HomeRealmDiscoveryPolicy)),
-            "identifierUris": lambda n : setattr(self, 'identifier_uris', n.get_collection_of_primitive_values(str)),
+            "disabled_by_microsoft_status": lambda n : setattr(self, 'disabled_by_microsoft_status', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "extension_properties": lambda n : setattr(self, 'extension_properties', n.get_collection_of_object_values(ExtensionProperty)),
+            "federated_identity_credentials": lambda n : setattr(self, 'federated_identity_credentials', n.get_collection_of_object_values(FederatedIdentityCredential)),
+            "group_membership_claims": lambda n : setattr(self, 'group_membership_claims', n.get_str_value()),
+            "home_realm_discovery_policies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(HomeRealmDiscoveryPolicy)),
+            "identifier_uris": lambda n : setattr(self, 'identifier_uris', n.get_collection_of_primitive_values(str)),
             "info": lambda n : setattr(self, 'info', n.get_object_value(InformationalUrl)),
-            "isDeviceOnlyAuthSupported": lambda n : setattr(self, 'is_device_only_auth_supported', n.get_bool_value()),
-            "isFallbackPublicClient": lambda n : setattr(self, 'is_fallback_public_client', n.get_bool_value()),
-            "keyCredentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(KeyCredential)),
+            "is_device_only_auth_supported": lambda n : setattr(self, 'is_device_only_auth_supported', n.get_bool_value()),
+            "is_fallback_public_client": lambda n : setattr(self, 'is_fallback_public_client', n.get_bool_value()),
+            "key_credentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(KeyCredential)),
             "logo": lambda n : setattr(self, 'logo', n.get_bytes_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
-            "oauth2RequirePostResponse": lambda n : setattr(self, 'oauth2_require_post_response', n.get_bool_value()),
-            "optionalClaims": lambda n : setattr(self, 'optional_claims', n.get_object_value(OptionalClaims)),
+            "oauth2_require_post_response": lambda n : setattr(self, 'oauth2_require_post_response', n.get_bool_value()),
+            "optional_claims": lambda n : setattr(self, 'optional_claims', n.get_object_value(OptionalClaims)),
             "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(DirectoryObject)),
-            "parentalControlSettings": lambda n : setattr(self, 'parental_control_settings', n.get_object_value(ParentalControlSettings)),
-            "passwordCredentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(PasswordCredential)),
-            "publicClient": lambda n : setattr(self, 'public_client', n.get_object_value(PublicClientApplication)),
-            "publisherDomain": lambda n : setattr(self, 'publisher_domain', n.get_str_value()),
-            "requestSignatureVerification": lambda n : setattr(self, 'request_signature_verification', n.get_object_value(RequestSignatureVerification)),
-            "requiredResourceAccess": lambda n : setattr(self, 'required_resource_access', n.get_collection_of_object_values(RequiredResourceAccess)),
-            "samlMetadataUrl": lambda n : setattr(self, 'saml_metadata_url', n.get_str_value()),
-            "serviceManagementReference": lambda n : setattr(self, 'service_management_reference', n.get_str_value()),
-            "servicePrincipalLockConfiguration": lambda n : setattr(self, 'service_principal_lock_configuration', n.get_object_value(ServicePrincipalLockConfiguration)),
-            "signInAudience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
+            "parental_control_settings": lambda n : setattr(self, 'parental_control_settings', n.get_object_value(ParentalControlSettings)),
+            "password_credentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(PasswordCredential)),
+            "public_client": lambda n : setattr(self, 'public_client', n.get_object_value(PublicClientApplication)),
+            "publisher_domain": lambda n : setattr(self, 'publisher_domain', n.get_str_value()),
+            "request_signature_verification": lambda n : setattr(self, 'request_signature_verification', n.get_object_value(RequestSignatureVerification)),
+            "required_resource_access": lambda n : setattr(self, 'required_resource_access', n.get_collection_of_object_values(RequiredResourceAccess)),
+            "saml_metadata_url": lambda n : setattr(self, 'saml_metadata_url', n.get_str_value()),
+            "service_management_reference": lambda n : setattr(self, 'service_management_reference', n.get_str_value()),
+            "service_principal_lock_configuration": lambda n : setattr(self, 'service_principal_lock_configuration', n.get_object_value(ServicePrincipalLockConfiguration)),
+            "sign_in_audience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
             "spa": lambda n : setattr(self, 'spa', n.get_object_value(SpaApplication)),
             "synchronization": lambda n : setattr(self, 'synchronization', n.get_object_value(Synchronization)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
-            "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_uuid_value()),
-            "tokenIssuancePolicies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(TokenIssuancePolicy)),
-            "tokenLifetimePolicies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(TokenLifetimePolicy)),
-            "verifiedPublisher": lambda n : setattr(self, 'verified_publisher', n.get_object_value(VerifiedPublisher)),
+            "token_encryption_key_id": lambda n : setattr(self, 'token_encryption_key_id', n.get_uuid_value()),
+            "token_issuance_policies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(TokenIssuancePolicy)),
+            "token_lifetime_policies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(TokenLifetimePolicy)),
+            "verified_publisher": lambda n : setattr(self, 'verified_publisher', n.get_object_value(VerifiedPublisher)),
             "web": lambda n : setattr(self, 'web', n.get_object_value(WebApplication)),
         }
         super_fields = super().get_field_deserializers()
@@ -254,50 +254,50 @@ class Application(DirectoryObject):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("addIns", self.add_ins)
+        writer.write_collection_of_object_values("add_ins", self.add_ins)
         writer.write_object_value("api", self.api)
-        writer.write_str_value("appId", self.app_id)
-        writer.write_collection_of_object_values("appManagementPolicies", self.app_management_policies)
-        writer.write_collection_of_object_values("appRoles", self.app_roles)
-        writer.write_str_value("applicationTemplateId", self.application_template_id)
+        writer.write_str_value("app_id", self.app_id)
+        writer.write_collection_of_object_values("app_management_policies", self.app_management_policies)
+        writer.write_collection_of_object_values("app_roles", self.app_roles)
+        writer.write_str_value("application_template_id", self.application_template_id)
         writer.write_object_value("certification", self.certification)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_object_value("createdOnBehalfOf", self.created_on_behalf_of)
-        writer.write_str_value("defaultRedirectUri", self.default_redirect_uri)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_object_value("created_on_behalf_of", self.created_on_behalf_of)
+        writer.write_str_value("default_redirect_uri", self.default_redirect_uri)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("disabledByMicrosoftStatus", self.disabled_by_microsoft_status)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_object_values("extensionProperties", self.extension_properties)
-        writer.write_collection_of_object_values("federatedIdentityCredentials", self.federated_identity_credentials)
-        writer.write_str_value("groupMembershipClaims", self.group_membership_claims)
-        writer.write_collection_of_object_values("homeRealmDiscoveryPolicies", self.home_realm_discovery_policies)
-        writer.write_collection_of_primitive_values("identifierUris", self.identifier_uris)
+        writer.write_str_value("disabled_by_microsoft_status", self.disabled_by_microsoft_status)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_object_values("extension_properties", self.extension_properties)
+        writer.write_collection_of_object_values("federated_identity_credentials", self.federated_identity_credentials)
+        writer.write_str_value("group_membership_claims", self.group_membership_claims)
+        writer.write_collection_of_object_values("home_realm_discovery_policies", self.home_realm_discovery_policies)
+        writer.write_collection_of_primitive_values("identifier_uris", self.identifier_uris)
         writer.write_object_value("info", self.info)
-        writer.write_bool_value("isDeviceOnlyAuthSupported", self.is_device_only_auth_supported)
-        writer.write_bool_value("isFallbackPublicClient", self.is_fallback_public_client)
-        writer.write_collection_of_object_values("keyCredentials", self.key_credentials)
+        writer.write_bool_value("is_device_only_auth_supported", self.is_device_only_auth_supported)
+        writer.write_bool_value("is_fallback_public_client", self.is_fallback_public_client)
+        writer.write_collection_of_object_values("key_credentials", self.key_credentials)
         writer.write_bytes_value("logo", self.logo)
         writer.write_str_value("notes", self.notes)
-        writer.write_bool_value("oauth2RequirePostResponse", self.oauth2_require_post_response)
-        writer.write_object_value("optionalClaims", self.optional_claims)
+        writer.write_bool_value("oauth2_require_post_response", self.oauth2_require_post_response)
+        writer.write_object_value("optional_claims", self.optional_claims)
         writer.write_collection_of_object_values("owners", self.owners)
-        writer.write_object_value("parentalControlSettings", self.parental_control_settings)
-        writer.write_collection_of_object_values("passwordCredentials", self.password_credentials)
-        writer.write_object_value("publicClient", self.public_client)
-        writer.write_str_value("publisherDomain", self.publisher_domain)
-        writer.write_object_value("requestSignatureVerification", self.request_signature_verification)
-        writer.write_collection_of_object_values("requiredResourceAccess", self.required_resource_access)
-        writer.write_str_value("samlMetadataUrl", self.saml_metadata_url)
-        writer.write_str_value("serviceManagementReference", self.service_management_reference)
-        writer.write_object_value("servicePrincipalLockConfiguration", self.service_principal_lock_configuration)
-        writer.write_str_value("signInAudience", self.sign_in_audience)
+        writer.write_object_value("parental_control_settings", self.parental_control_settings)
+        writer.write_collection_of_object_values("password_credentials", self.password_credentials)
+        writer.write_object_value("public_client", self.public_client)
+        writer.write_str_value("publisher_domain", self.publisher_domain)
+        writer.write_object_value("request_signature_verification", self.request_signature_verification)
+        writer.write_collection_of_object_values("required_resource_access", self.required_resource_access)
+        writer.write_str_value("saml_metadata_url", self.saml_metadata_url)
+        writer.write_str_value("service_management_reference", self.service_management_reference)
+        writer.write_object_value("service_principal_lock_configuration", self.service_principal_lock_configuration)
+        writer.write_str_value("sign_in_audience", self.sign_in_audience)
         writer.write_object_value("spa", self.spa)
         writer.write_object_value("synchronization", self.synchronization)
         writer.write_collection_of_primitive_values("tags", self.tags)
-        writer.write_uuid_value("tokenEncryptionKeyId", self.token_encryption_key_id)
-        writer.write_collection_of_object_values("tokenIssuancePolicies", self.token_issuance_policies)
-        writer.write_collection_of_object_values("tokenLifetimePolicies", self.token_lifetime_policies)
-        writer.write_object_value("verifiedPublisher", self.verified_publisher)
+        writer.write_uuid_value("token_encryption_key_id", self.token_encryption_key_id)
+        writer.write_collection_of_object_values("token_issuance_policies", self.token_issuance_policies)
+        writer.write_collection_of_object_values("token_lifetime_policies", self.token_lifetime_policies)
+        writer.write_object_value("verified_publisher", self.verified_publisher)
         writer.write_object_value("web", self.web)
     
 

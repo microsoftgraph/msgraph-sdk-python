@@ -46,7 +46,7 @@ class WorkDay_IntlPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "days": lambda n : setattr(self, 'days', n.get_object_value(Json)),
             "holidays": lambda n : setattr(self, 'holidays', n.get_object_value(Json)),
-            "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(Json)),
+            "start_date": lambda n : setattr(self, 'start_date', n.get_object_value(Json)),
             "weekend": lambda n : setattr(self, 'weekend', n.get_object_value(Json)),
         }
         return fields
@@ -61,7 +61,7 @@ class WorkDay_IntlPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
             raise TypeError("writer cannot be null.")
         writer.write_object_value("days", self.days)
         writer.write_object_value("holidays", self.holidays)
-        writer.write_object_value("startDate", self.start_date)
+        writer.write_object_value("start_date", self.start_date)
         writer.write_object_value("weekend", self.weekend)
         writer.write_additional_data_value(self.additional_data)
     

@@ -74,18 +74,18 @@ class RetentionEvent(Entity):
         from .retention_event_type import RetentionEventType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "eventPropagationResults": lambda n : setattr(self, 'event_propagation_results', n.get_collection_of_object_values(EventPropagationResult)),
-            "eventQueries": lambda n : setattr(self, 'event_queries', n.get_collection_of_object_values(EventQuery)),
-            "eventStatus": lambda n : setattr(self, 'event_status', n.get_object_value(RetentionEventStatus)),
-            "eventTriggerDateTime": lambda n : setattr(self, 'event_trigger_date_time', n.get_datetime_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "lastStatusUpdateDateTime": lambda n : setattr(self, 'last_status_update_date_time', n.get_datetime_value()),
-            "retentionEventType": lambda n : setattr(self, 'retention_event_type', n.get_object_value(RetentionEventType)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "event_propagation_results": lambda n : setattr(self, 'event_propagation_results', n.get_collection_of_object_values(EventPropagationResult)),
+            "event_queries": lambda n : setattr(self, 'event_queries', n.get_collection_of_object_values(EventQuery)),
+            "event_status": lambda n : setattr(self, 'event_status', n.get_object_value(RetentionEventStatus)),
+            "event_trigger_date_time": lambda n : setattr(self, 'event_trigger_date_time', n.get_datetime_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "last_status_update_date_time": lambda n : setattr(self, 'last_status_update_date_time', n.get_datetime_value()),
+            "retention_event_type": lambda n : setattr(self, 'retention_event_type', n.get_object_value(RetentionEventType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -100,17 +100,17 @@ class RetentionEvent(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_object_values("eventPropagationResults", self.event_propagation_results)
-        writer.write_collection_of_object_values("eventQueries", self.event_queries)
-        writer.write_object_value("eventStatus", self.event_status)
-        writer.write_datetime_value("eventTriggerDateTime", self.event_trigger_date_time)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_datetime_value("lastStatusUpdateDateTime", self.last_status_update_date_time)
-        writer.write_object_value("retentionEventType", self.retention_event_type)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_object_values("event_propagation_results", self.event_propagation_results)
+        writer.write_collection_of_object_values("event_queries", self.event_queries)
+        writer.write_object_value("event_status", self.event_status)
+        writer.write_datetime_value("event_trigger_date_time", self.event_trigger_date_time)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_datetime_value("last_status_update_date_time", self.last_status_update_date_time)
+        writer.write_object_value("retention_event_type", self.retention_event_type)
     
 

@@ -51,16 +51,16 @@ class Video(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "audioBitsPerSample": lambda n : setattr(self, 'audio_bits_per_sample', n.get_int_value()),
-            "audioChannels": lambda n : setattr(self, 'audio_channels', n.get_int_value()),
-            "audioFormat": lambda n : setattr(self, 'audio_format', n.get_str_value()),
-            "audioSamplesPerSecond": lambda n : setattr(self, 'audio_samples_per_second', n.get_int_value()),
+            "audio_bits_per_sample": lambda n : setattr(self, 'audio_bits_per_sample', n.get_int_value()),
+            "audio_channels": lambda n : setattr(self, 'audio_channels', n.get_int_value()),
+            "audio_format": lambda n : setattr(self, 'audio_format', n.get_str_value()),
+            "audio_samples_per_second": lambda n : setattr(self, 'audio_samples_per_second', n.get_int_value()),
             "bitrate": lambda n : setattr(self, 'bitrate', n.get_int_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_int_value()),
-            "fourCC": lambda n : setattr(self, 'four_c_c', n.get_str_value()),
-            "frameRate": lambda n : setattr(self, 'frame_rate', n.get_float_value()),
+            "four_c_c": lambda n : setattr(self, 'four_c_c', n.get_str_value()),
+            "frame_rate": lambda n : setattr(self, 'frame_rate', n.get_float_value()),
             "height": lambda n : setattr(self, 'height', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "width": lambda n : setattr(self, 'width', n.get_int_value()),
         }
         return fields
@@ -73,16 +73,16 @@ class Video(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("audioBitsPerSample", self.audio_bits_per_sample)
-        writer.write_int_value("audioChannels", self.audio_channels)
-        writer.write_str_value("audioFormat", self.audio_format)
-        writer.write_int_value("audioSamplesPerSecond", self.audio_samples_per_second)
+        writer.write_int_value("audio_bits_per_sample", self.audio_bits_per_sample)
+        writer.write_int_value("audio_channels", self.audio_channels)
+        writer.write_str_value("audio_format", self.audio_format)
+        writer.write_int_value("audio_samples_per_second", self.audio_samples_per_second)
         writer.write_int_value("bitrate", self.bitrate)
         writer.write_int_value("duration", self.duration)
-        writer.write_str_value("fourCC", self.four_c_c)
-        writer.write_float_value("frameRate", self.frame_rate)
+        writer.write_str_value("four_c_c", self.four_c_c)
+        writer.write_float_value("frame_rate", self.frame_rate)
         writer.write_int_value("height", self.height)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("width", self.width)
         writer.write_additional_data_value(self.additional_data)
     

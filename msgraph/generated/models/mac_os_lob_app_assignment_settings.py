@@ -39,7 +39,7 @@ class MacOsLobAppAssignmentSettings(MobileAppAssignmentSettings):
         from .mobile_app_assignment_settings import MobileAppAssignmentSettings
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "uninstallOnDeviceRemoval": lambda n : setattr(self, 'uninstall_on_device_removal', n.get_bool_value()),
+            "uninstall_on_device_removal": lambda n : setattr(self, 'uninstall_on_device_removal', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class MacOsLobAppAssignmentSettings(MobileAppAssignmentSettings):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("uninstallOnDeviceRemoval", self.uninstall_on_device_removal)
+        writer.write_bool_value("uninstall_on_device_removal", self.uninstall_on_device_removal)
     
 

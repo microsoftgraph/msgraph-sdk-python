@@ -95,27 +95,27 @@ class BookingService(Entity):
         from .location import Location
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
-            "customQuestions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(BookingQuestionAssignment)),
-            "defaultDuration": lambda n : setattr(self, 'default_duration', n.get_timedelta_value()),
-            "defaultLocation": lambda n : setattr(self, 'default_location', n.get_object_value(Location)),
-            "defaultPrice": lambda n : setattr(self, 'default_price', n.get_float_value()),
-            "defaultPriceType": lambda n : setattr(self, 'default_price_type', n.get_enum_value(BookingPriceType)),
-            "defaultReminders": lambda n : setattr(self, 'default_reminders', n.get_collection_of_object_values(BookingReminder)),
+            "additional_information": lambda n : setattr(self, 'additional_information', n.get_str_value()),
+            "custom_questions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(BookingQuestionAssignment)),
+            "default_duration": lambda n : setattr(self, 'default_duration', n.get_timedelta_value()),
+            "default_location": lambda n : setattr(self, 'default_location', n.get_object_value(Location)),
+            "default_price": lambda n : setattr(self, 'default_price', n.get_float_value()),
+            "default_price_type": lambda n : setattr(self, 'default_price_type', n.get_enum_value(BookingPriceType)),
+            "default_reminders": lambda n : setattr(self, 'default_reminders', n.get_collection_of_object_values(BookingReminder)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "isAnonymousJoinEnabled": lambda n : setattr(self, 'is_anonymous_join_enabled', n.get_bool_value()),
-            "isHiddenFromCustomers": lambda n : setattr(self, 'is_hidden_from_customers', n.get_bool_value()),
-            "isLocationOnline": lambda n : setattr(self, 'is_location_online', n.get_bool_value()),
-            "languageTag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
-            "maximumAttendeesCount": lambda n : setattr(self, 'maximum_attendees_count', n.get_int_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "is_anonymous_join_enabled": lambda n : setattr(self, 'is_anonymous_join_enabled', n.get_bool_value()),
+            "is_hidden_from_customers": lambda n : setattr(self, 'is_hidden_from_customers', n.get_bool_value()),
+            "is_location_online": lambda n : setattr(self, 'is_location_online', n.get_bool_value()),
+            "language_tag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
+            "maximum_attendees_count": lambda n : setattr(self, 'maximum_attendees_count', n.get_int_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
-            "postBuffer": lambda n : setattr(self, 'post_buffer', n.get_timedelta_value()),
-            "preBuffer": lambda n : setattr(self, 'pre_buffer', n.get_timedelta_value()),
-            "schedulingPolicy": lambda n : setattr(self, 'scheduling_policy', n.get_object_value(BookingSchedulingPolicy)),
-            "smsNotificationsEnabled": lambda n : setattr(self, 'sms_notifications_enabled', n.get_bool_value()),
-            "staffMemberIds": lambda n : setattr(self, 'staff_member_ids', n.get_collection_of_primitive_values(str)),
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "post_buffer": lambda n : setattr(self, 'post_buffer', n.get_timedelta_value()),
+            "pre_buffer": lambda n : setattr(self, 'pre_buffer', n.get_timedelta_value()),
+            "scheduling_policy": lambda n : setattr(self, 'scheduling_policy', n.get_object_value(BookingSchedulingPolicy)),
+            "sms_notifications_enabled": lambda n : setattr(self, 'sms_notifications_enabled', n.get_bool_value()),
+            "staff_member_ids": lambda n : setattr(self, 'staff_member_ids', n.get_collection_of_primitive_values(str)),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -130,25 +130,25 @@ class BookingService(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("additionalInformation", self.additional_information)
-        writer.write_collection_of_object_values("customQuestions", self.custom_questions)
-        writer.write_timedelta_value("defaultDuration", self.default_duration)
-        writer.write_object_value("defaultLocation", self.default_location)
-        writer.write_float_value("defaultPrice", self.default_price)
-        writer.write_enum_value("defaultPriceType", self.default_price_type)
-        writer.write_collection_of_object_values("defaultReminders", self.default_reminders)
+        writer.write_str_value("additional_information", self.additional_information)
+        writer.write_collection_of_object_values("custom_questions", self.custom_questions)
+        writer.write_timedelta_value("default_duration", self.default_duration)
+        writer.write_object_value("default_location", self.default_location)
+        writer.write_float_value("default_price", self.default_price)
+        writer.write_enum_value("default_price_type", self.default_price_type)
+        writer.write_collection_of_object_values("default_reminders", self.default_reminders)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_bool_value("isAnonymousJoinEnabled", self.is_anonymous_join_enabled)
-        writer.write_bool_value("isHiddenFromCustomers", self.is_hidden_from_customers)
-        writer.write_bool_value("isLocationOnline", self.is_location_online)
-        writer.write_str_value("languageTag", self.language_tag)
-        writer.write_int_value("maximumAttendeesCount", self.maximum_attendees_count)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_bool_value("is_anonymous_join_enabled", self.is_anonymous_join_enabled)
+        writer.write_bool_value("is_hidden_from_customers", self.is_hidden_from_customers)
+        writer.write_bool_value("is_location_online", self.is_location_online)
+        writer.write_str_value("language_tag", self.language_tag)
+        writer.write_int_value("maximum_attendees_count", self.maximum_attendees_count)
         writer.write_str_value("notes", self.notes)
-        writer.write_timedelta_value("postBuffer", self.post_buffer)
-        writer.write_timedelta_value("preBuffer", self.pre_buffer)
-        writer.write_object_value("schedulingPolicy", self.scheduling_policy)
-        writer.write_bool_value("smsNotificationsEnabled", self.sms_notifications_enabled)
-        writer.write_collection_of_primitive_values("staffMemberIds", self.staff_member_ids)
+        writer.write_timedelta_value("post_buffer", self.post_buffer)
+        writer.write_timedelta_value("pre_buffer", self.pre_buffer)
+        writer.write_object_value("scheduling_policy", self.scheduling_policy)
+        writer.write_bool_value("sms_notifications_enabled", self.sms_notifications_enabled)
+        writer.write_collection_of_primitive_values("staff_member_ids", self.staff_member_ids)
     
 

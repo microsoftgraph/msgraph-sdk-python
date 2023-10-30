@@ -35,9 +35,9 @@ class SizeRange(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "maximumSize": lambda n : setattr(self, 'maximum_size', n.get_int_value()),
-            "minimumSize": lambda n : setattr(self, 'minimum_size', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "maximum_size": lambda n : setattr(self, 'maximum_size', n.get_int_value()),
+            "minimum_size": lambda n : setattr(self, 'minimum_size', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -49,9 +49,9 @@ class SizeRange(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("maximumSize", self.maximum_size)
-        writer.write_int_value("minimumSize", self.minimum_size)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_int_value("maximum_size", self.maximum_size)
+        writer.write_int_value("minimum_size", self.minimum_size)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

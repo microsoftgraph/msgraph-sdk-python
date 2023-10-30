@@ -64,21 +64,21 @@ class Audio(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "album": lambda n : setattr(self, 'album', n.get_str_value()),
-            "albumArtist": lambda n : setattr(self, 'album_artist', n.get_str_value()),
+            "album_artist": lambda n : setattr(self, 'album_artist', n.get_str_value()),
             "artist": lambda n : setattr(self, 'artist', n.get_str_value()),
             "bitrate": lambda n : setattr(self, 'bitrate', n.get_int_value()),
             "composers": lambda n : setattr(self, 'composers', n.get_str_value()),
             "copyright": lambda n : setattr(self, 'copyright', n.get_str_value()),
             "disc": lambda n : setattr(self, 'disc', n.get_int_value()),
-            "discCount": lambda n : setattr(self, 'disc_count', n.get_int_value()),
+            "disc_count": lambda n : setattr(self, 'disc_count', n.get_int_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_int_value()),
             "genre": lambda n : setattr(self, 'genre', n.get_str_value()),
-            "hasDrm": lambda n : setattr(self, 'has_drm', n.get_bool_value()),
-            "isVariableBitrate": lambda n : setattr(self, 'is_variable_bitrate', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "has_drm": lambda n : setattr(self, 'has_drm', n.get_bool_value()),
+            "is_variable_bitrate": lambda n : setattr(self, 'is_variable_bitrate', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
             "track": lambda n : setattr(self, 'track', n.get_int_value()),
-            "trackCount": lambda n : setattr(self, 'track_count', n.get_int_value()),
+            "track_count": lambda n : setattr(self, 'track_count', n.get_int_value()),
             "year": lambda n : setattr(self, 'year', n.get_int_value()),
         }
         return fields
@@ -92,21 +92,21 @@ class Audio(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("album", self.album)
-        writer.write_str_value("albumArtist", self.album_artist)
+        writer.write_str_value("album_artist", self.album_artist)
         writer.write_str_value("artist", self.artist)
         writer.write_int_value("bitrate", self.bitrate)
         writer.write_str_value("composers", self.composers)
         writer.write_str_value("copyright", self.copyright)
         writer.write_int_value("disc", self.disc)
-        writer.write_int_value("discCount", self.disc_count)
+        writer.write_int_value("disc_count", self.disc_count)
         writer.write_int_value("duration", self.duration)
         writer.write_str_value("genre", self.genre)
-        writer.write_bool_value("hasDrm", self.has_drm)
-        writer.write_bool_value("isVariableBitrate", self.is_variable_bitrate)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("has_drm", self.has_drm)
+        writer.write_bool_value("is_variable_bitrate", self.is_variable_bitrate)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("title", self.title)
         writer.write_int_value("track", self.track)
-        writer.write_int_value("trackCount", self.track_count)
+        writer.write_int_value("track_count", self.track_count)
         writer.write_int_value("year", self.year)
         writer.write_additional_data_value(self.additional_data)
     

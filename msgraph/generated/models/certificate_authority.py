@@ -44,12 +44,12 @@ class CertificateAuthority(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "certificate": lambda n : setattr(self, 'certificate', n.get_bytes_value()),
-            "certificateRevocationListUrl": lambda n : setattr(self, 'certificate_revocation_list_url', n.get_str_value()),
-            "deltaCertificateRevocationListUrl": lambda n : setattr(self, 'delta_certificate_revocation_list_url', n.get_str_value()),
-            "isRootAuthority": lambda n : setattr(self, 'is_root_authority', n.get_bool_value()),
+            "certificate_revocation_list_url": lambda n : setattr(self, 'certificate_revocation_list_url', n.get_str_value()),
+            "delta_certificate_revocation_list_url": lambda n : setattr(self, 'delta_certificate_revocation_list_url', n.get_str_value()),
+            "is_root_authority": lambda n : setattr(self, 'is_root_authority', n.get_bool_value()),
             "issuer": lambda n : setattr(self, 'issuer', n.get_str_value()),
-            "issuerSki": lambda n : setattr(self, 'issuer_ski', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "issuer_ski": lambda n : setattr(self, 'issuer_ski', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -62,12 +62,12 @@ class CertificateAuthority(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_bytes_value("certificate", self.certificate)
-        writer.write_str_value("certificateRevocationListUrl", self.certificate_revocation_list_url)
-        writer.write_str_value("deltaCertificateRevocationListUrl", self.delta_certificate_revocation_list_url)
-        writer.write_bool_value("isRootAuthority", self.is_root_authority)
+        writer.write_str_value("certificate_revocation_list_url", self.certificate_revocation_list_url)
+        writer.write_str_value("delta_certificate_revocation_list_url", self.delta_certificate_revocation_list_url)
+        writer.write_bool_value("is_root_authority", self.is_root_authority)
         writer.write_str_value("issuer", self.issuer)
-        writer.write_str_value("issuerSki", self.issuer_ski)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("issuer_ski", self.issuer_ski)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

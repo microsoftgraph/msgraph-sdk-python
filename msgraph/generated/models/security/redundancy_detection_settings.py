@@ -39,11 +39,11 @@ class RedundancyDetectionSettings(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "maxWords": lambda n : setattr(self, 'max_words', n.get_int_value()),
-            "minWords": lambda n : setattr(self, 'min_words', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "similarityThreshold": lambda n : setattr(self, 'similarity_threshold', n.get_int_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "max_words": lambda n : setattr(self, 'max_words', n.get_int_value()),
+            "min_words": lambda n : setattr(self, 'min_words', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "similarity_threshold": lambda n : setattr(self, 'similarity_threshold', n.get_int_value()),
         }
         return fields
     
@@ -55,11 +55,11 @@ class RedundancyDetectionSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_int_value("maxWords", self.max_words)
-        writer.write_int_value("minWords", self.min_words)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("similarityThreshold", self.similarity_threshold)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_int_value("max_words", self.max_words)
+        writer.write_int_value("min_words", self.min_words)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("similarity_threshold", self.similarity_threshold)
         writer.write_additional_data_value(self.additional_data)
     
 

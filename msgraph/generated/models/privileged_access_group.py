@@ -69,13 +69,13 @@ class PrivilegedAccessGroup(Entity):
         from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignmentApprovals": lambda n : setattr(self, 'assignment_approvals', n.get_collection_of_object_values(Approval)),
-            "assignmentScheduleInstances": lambda n : setattr(self, 'assignment_schedule_instances', n.get_collection_of_object_values(PrivilegedAccessGroupAssignmentScheduleInstance)),
-            "assignmentScheduleRequests": lambda n : setattr(self, 'assignment_schedule_requests', n.get_collection_of_object_values(PrivilegedAccessGroupAssignmentScheduleRequest)),
-            "assignmentSchedules": lambda n : setattr(self, 'assignment_schedules', n.get_collection_of_object_values(PrivilegedAccessGroupAssignmentSchedule)),
-            "eligibilityScheduleInstances": lambda n : setattr(self, 'eligibility_schedule_instances', n.get_collection_of_object_values(PrivilegedAccessGroupEligibilityScheduleInstance)),
-            "eligibilityScheduleRequests": lambda n : setattr(self, 'eligibility_schedule_requests', n.get_collection_of_object_values(PrivilegedAccessGroupEligibilityScheduleRequest)),
-            "eligibilitySchedules": lambda n : setattr(self, 'eligibility_schedules', n.get_collection_of_object_values(PrivilegedAccessGroupEligibilitySchedule)),
+            "assignment_approvals": lambda n : setattr(self, 'assignment_approvals', n.get_collection_of_object_values(Approval)),
+            "assignment_schedule_instances": lambda n : setattr(self, 'assignment_schedule_instances', n.get_collection_of_object_values(PrivilegedAccessGroupAssignmentScheduleInstance)),
+            "assignment_schedule_requests": lambda n : setattr(self, 'assignment_schedule_requests', n.get_collection_of_object_values(PrivilegedAccessGroupAssignmentScheduleRequest)),
+            "assignment_schedules": lambda n : setattr(self, 'assignment_schedules', n.get_collection_of_object_values(PrivilegedAccessGroupAssignmentSchedule)),
+            "eligibility_schedule_instances": lambda n : setattr(self, 'eligibility_schedule_instances', n.get_collection_of_object_values(PrivilegedAccessGroupEligibilityScheduleInstance)),
+            "eligibility_schedule_requests": lambda n : setattr(self, 'eligibility_schedule_requests', n.get_collection_of_object_values(PrivilegedAccessGroupEligibilityScheduleRequest)),
+            "eligibility_schedules": lambda n : setattr(self, 'eligibility_schedules', n.get_collection_of_object_values(PrivilegedAccessGroupEligibilitySchedule)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -90,12 +90,12 @@ class PrivilegedAccessGroup(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("assignmentApprovals", self.assignment_approvals)
-        writer.write_collection_of_object_values("assignmentScheduleInstances", self.assignment_schedule_instances)
-        writer.write_collection_of_object_values("assignmentScheduleRequests", self.assignment_schedule_requests)
-        writer.write_collection_of_object_values("assignmentSchedules", self.assignment_schedules)
-        writer.write_collection_of_object_values("eligibilityScheduleInstances", self.eligibility_schedule_instances)
-        writer.write_collection_of_object_values("eligibilityScheduleRequests", self.eligibility_schedule_requests)
-        writer.write_collection_of_object_values("eligibilitySchedules", self.eligibility_schedules)
+        writer.write_collection_of_object_values("assignment_approvals", self.assignment_approvals)
+        writer.write_collection_of_object_values("assignment_schedule_instances", self.assignment_schedule_instances)
+        writer.write_collection_of_object_values("assignment_schedule_requests", self.assignment_schedule_requests)
+        writer.write_collection_of_object_values("assignment_schedules", self.assignment_schedules)
+        writer.write_collection_of_object_values("eligibility_schedule_instances", self.eligibility_schedule_instances)
+        writer.write_collection_of_object_values("eligibility_schedule_requests", self.eligibility_schedule_requests)
+        writer.write_collection_of_object_values("eligibility_schedules", self.eligibility_schedules)
     
 

@@ -82,9 +82,9 @@ class StsPolicy(PolicyBase):
         from .token_lifetime_policy import TokenLifetimePolicy
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(DirectoryObject)),
+            "applies_to": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(DirectoryObject)),
             "definition": lambda n : setattr(self, 'definition', n.get_collection_of_primitive_values(str)),
-            "isOrganizationDefault": lambda n : setattr(self, 'is_organization_default', n.get_bool_value()),
+            "is_organization_default": lambda n : setattr(self, 'is_organization_default', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -99,8 +99,8 @@ class StsPolicy(PolicyBase):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("appliesTo", self.applies_to)
+        writer.write_collection_of_object_values("applies_to", self.applies_to)
         writer.write_collection_of_primitive_values("definition", self.definition)
-        writer.write_bool_value("isOrganizationDefault", self.is_organization_default)
+        writer.write_bool_value("is_organization_default", self.is_organization_default)
     
 

@@ -43,13 +43,13 @@ class LoginPageTextVisibilitySettings(AdditionalDataHolder, BackedModel, Parsabl
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "hideAccountResetCredentials": lambda n : setattr(self, 'hide_account_reset_credentials', n.get_bool_value()),
-            "hideCannotAccessYourAccount": lambda n : setattr(self, 'hide_cannot_access_your_account', n.get_bool_value()),
-            "hideForgotMyPassword": lambda n : setattr(self, 'hide_forgot_my_password', n.get_bool_value()),
-            "hidePrivacyAndCookies": lambda n : setattr(self, 'hide_privacy_and_cookies', n.get_bool_value()),
-            "hideResetItNow": lambda n : setattr(self, 'hide_reset_it_now', n.get_bool_value()),
-            "hideTermsOfUse": lambda n : setattr(self, 'hide_terms_of_use', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "hide_account_reset_credentials": lambda n : setattr(self, 'hide_account_reset_credentials', n.get_bool_value()),
+            "hide_cannot_access_your_account": lambda n : setattr(self, 'hide_cannot_access_your_account', n.get_bool_value()),
+            "hide_forgot_my_password": lambda n : setattr(self, 'hide_forgot_my_password', n.get_bool_value()),
+            "hide_privacy_and_cookies": lambda n : setattr(self, 'hide_privacy_and_cookies', n.get_bool_value()),
+            "hide_reset_it_now": lambda n : setattr(self, 'hide_reset_it_now', n.get_bool_value()),
+            "hide_terms_of_use": lambda n : setattr(self, 'hide_terms_of_use', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -61,13 +61,13 @@ class LoginPageTextVisibilitySettings(AdditionalDataHolder, BackedModel, Parsabl
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("hideAccountResetCredentials", self.hide_account_reset_credentials)
-        writer.write_bool_value("hideCannotAccessYourAccount", self.hide_cannot_access_your_account)
-        writer.write_bool_value("hideForgotMyPassword", self.hide_forgot_my_password)
-        writer.write_bool_value("hidePrivacyAndCookies", self.hide_privacy_and_cookies)
-        writer.write_bool_value("hideResetItNow", self.hide_reset_it_now)
-        writer.write_bool_value("hideTermsOfUse", self.hide_terms_of_use)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("hide_account_reset_credentials", self.hide_account_reset_credentials)
+        writer.write_bool_value("hide_cannot_access_your_account", self.hide_cannot_access_your_account)
+        writer.write_bool_value("hide_forgot_my_password", self.hide_forgot_my_password)
+        writer.write_bool_value("hide_privacy_and_cookies", self.hide_privacy_and_cookies)
+        writer.write_bool_value("hide_reset_it_now", self.hide_reset_it_now)
+        writer.write_bool_value("hide_terms_of_use", self.hide_terms_of_use)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

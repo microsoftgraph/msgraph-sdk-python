@@ -49,9 +49,9 @@ class TeamsTab(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(TeamsTabConfiguration)),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "teamsApp": lambda n : setattr(self, 'teams_app', n.get_object_value(TeamsApp)),
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "teams_app": lambda n : setattr(self, 'teams_app', n.get_object_value(TeamsApp)),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,8 +67,8 @@ class TeamsTab(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("configuration", self.configuration)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("teamsApp", self.teams_app)
-        writer.write_str_value("webUrl", self.web_url)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_object_value("teams_app", self.teams_app)
+        writer.write_str_value("web_url", self.web_url)
     
 

@@ -49,9 +49,9 @@ class AuditLogRoot(Entity):
         from .sign_in import SignIn
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "directoryAudits": lambda n : setattr(self, 'directory_audits', n.get_collection_of_object_values(DirectoryAudit)),
+            "directory_audits": lambda n : setattr(self, 'directory_audits', n.get_collection_of_object_values(DirectoryAudit)),
             "provisioning": lambda n : setattr(self, 'provisioning', n.get_collection_of_object_values(ProvisioningObjectSummary)),
-            "signIns": lambda n : setattr(self, 'sign_ins', n.get_collection_of_object_values(SignIn)),
+            "sign_ins": lambda n : setattr(self, 'sign_ins', n.get_collection_of_object_values(SignIn)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,8 +66,8 @@ class AuditLogRoot(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("directoryAudits", self.directory_audits)
+        writer.write_collection_of_object_values("directory_audits", self.directory_audits)
         writer.write_collection_of_object_values("provisioning", self.provisioning)
-        writer.write_collection_of_object_values("signIns", self.sign_ins)
+        writer.write_collection_of_object_values("sign_ins", self.sign_ins)
     
 

@@ -89,13 +89,13 @@ class ScheduleChangeRequest(ChangeTrackedEntity):
         from .time_off_request import TimeOffRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_enum_value(ScheduleChangeRequestActor)),
-            "managerActionDateTime": lambda n : setattr(self, 'manager_action_date_time', n.get_datetime_value()),
-            "managerActionMessage": lambda n : setattr(self, 'manager_action_message', n.get_str_value()),
-            "managerUserId": lambda n : setattr(self, 'manager_user_id', n.get_str_value()),
-            "senderDateTime": lambda n : setattr(self, 'sender_date_time', n.get_datetime_value()),
-            "senderMessage": lambda n : setattr(self, 'sender_message', n.get_str_value()),
-            "senderUserId": lambda n : setattr(self, 'sender_user_id', n.get_str_value()),
+            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_enum_value(ScheduleChangeRequestActor)),
+            "manager_action_date_time": lambda n : setattr(self, 'manager_action_date_time', n.get_datetime_value()),
+            "manager_action_message": lambda n : setattr(self, 'manager_action_message', n.get_str_value()),
+            "manager_user_id": lambda n : setattr(self, 'manager_user_id', n.get_str_value()),
+            "sender_date_time": lambda n : setattr(self, 'sender_date_time', n.get_datetime_value()),
+            "sender_message": lambda n : setattr(self, 'sender_message', n.get_str_value()),
+            "sender_user_id": lambda n : setattr(self, 'sender_user_id', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(ScheduleChangeState)),
         }
         super_fields = super().get_field_deserializers()
@@ -111,9 +111,9 @@ class ScheduleChangeRequest(ChangeTrackedEntity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("assignedTo", self.assigned_to)
-        writer.write_str_value("managerActionMessage", self.manager_action_message)
-        writer.write_str_value("senderMessage", self.sender_message)
+        writer.write_enum_value("assigned_to", self.assigned_to)
+        writer.write_str_value("manager_action_message", self.manager_action_message)
+        writer.write_str_value("sender_message", self.sender_message)
         writer.write_enum_value("state", self.state)
     
 

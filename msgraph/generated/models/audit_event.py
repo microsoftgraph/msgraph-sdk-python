@@ -68,15 +68,15 @@ class AuditEvent(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),
-            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
-            "activityOperationType": lambda n : setattr(self, 'activity_operation_type', n.get_str_value()),
-            "activityResult": lambda n : setattr(self, 'activity_result', n.get_str_value()),
-            "activityType": lambda n : setattr(self, 'activity_type', n.get_str_value()),
+            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "activity_operation_type": lambda n : setattr(self, 'activity_operation_type', n.get_str_value()),
+            "activity_result": lambda n : setattr(self, 'activity_result', n.get_str_value()),
+            "activity_type": lambda n : setattr(self, 'activity_type', n.get_str_value()),
             "actor": lambda n : setattr(self, 'actor', n.get_object_value(AuditActor)),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
-            "componentName": lambda n : setattr(self, 'component_name', n.get_str_value()),
-            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_uuid_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "component_name": lambda n : setattr(self, 'component_name', n.get_str_value()),
+            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_uuid_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(AuditResource)),
         }
         super_fields = super().get_field_deserializers()
@@ -93,15 +93,15 @@ class AuditEvent(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("activity", self.activity)
-        writer.write_datetime_value("activityDateTime", self.activity_date_time)
-        writer.write_str_value("activityOperationType", self.activity_operation_type)
-        writer.write_str_value("activityResult", self.activity_result)
-        writer.write_str_value("activityType", self.activity_type)
+        writer.write_datetime_value("activity_date_time", self.activity_date_time)
+        writer.write_str_value("activity_operation_type", self.activity_operation_type)
+        writer.write_str_value("activity_result", self.activity_result)
+        writer.write_str_value("activity_type", self.activity_type)
         writer.write_object_value("actor", self.actor)
         writer.write_str_value("category", self.category)
-        writer.write_str_value("componentName", self.component_name)
-        writer.write_uuid_value("correlationId", self.correlation_id)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("component_name", self.component_name)
+        writer.write_uuid_value("correlation_id", self.correlation_id)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_collection_of_object_values("resources", self.resources)
     
 

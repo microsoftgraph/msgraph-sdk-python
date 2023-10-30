@@ -112,17 +112,17 @@ class BaseItem(Entity):
         from .user import User
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
-            "createdByUser": lambda n : setattr(self, 'created_by_user', n.get_object_value(User)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_by_user": lambda n : setattr(self, 'created_by_user', n.get_object_value(User)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "eTag": lambda n : setattr(self, 'e_tag', n.get_str_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
-            "lastModifiedByUser": lambda n : setattr(self, 'last_modified_by_user', n.get_object_value(User)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "e_tag": lambda n : setattr(self, 'e_tag', n.get_str_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
+            "last_modified_by_user": lambda n : setattr(self, 'last_modified_by_user', n.get_object_value(User)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "parentReference": lambda n : setattr(self, 'parent_reference', n.get_object_value(ItemReference)),
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "parent_reference": lambda n : setattr(self, 'parent_reference', n.get_object_value(ItemReference)),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -137,16 +137,16 @@ class BaseItem(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_object_value("createdByUser", self.created_by_user)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_object_value("created_by_user", self.created_by_user)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("eTag", self.e_tag)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_object_value("lastModifiedByUser", self.last_modified_by_user)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_str_value("e_tag", self.e_tag)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
+        writer.write_object_value("last_modified_by_user", self.last_modified_by_user)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_str_value("name", self.name)
-        writer.write_object_value("parentReference", self.parent_reference)
-        writer.write_str_value("webUrl", self.web_url)
+        writer.write_object_value("parent_reference", self.parent_reference)
+        writer.write_str_value("web_url", self.web_url)
     
 

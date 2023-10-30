@@ -89,27 +89,27 @@ class WindowsProtectionState(Entity):
         from .windows_device_malware_state import WindowsDeviceMalwareState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "antiMalwareVersion": lambda n : setattr(self, 'anti_malware_version', n.get_str_value()),
-            "detectedMalwareState": lambda n : setattr(self, 'detected_malware_state', n.get_collection_of_object_values(WindowsDeviceMalwareState)),
-            "deviceState": lambda n : setattr(self, 'device_state', n.get_collection_of_enum_values(WindowsDeviceHealthState)),
-            "engineVersion": lambda n : setattr(self, 'engine_version', n.get_str_value()),
-            "fullScanOverdue": lambda n : setattr(self, 'full_scan_overdue', n.get_bool_value()),
-            "fullScanRequired": lambda n : setattr(self, 'full_scan_required', n.get_bool_value()),
-            "isVirtualMachine": lambda n : setattr(self, 'is_virtual_machine', n.get_bool_value()),
-            "lastFullScanDateTime": lambda n : setattr(self, 'last_full_scan_date_time', n.get_datetime_value()),
-            "lastFullScanSignatureVersion": lambda n : setattr(self, 'last_full_scan_signature_version', n.get_str_value()),
-            "lastQuickScanDateTime": lambda n : setattr(self, 'last_quick_scan_date_time', n.get_datetime_value()),
-            "lastQuickScanSignatureVersion": lambda n : setattr(self, 'last_quick_scan_signature_version', n.get_str_value()),
-            "lastReportedDateTime": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
-            "malwareProtectionEnabled": lambda n : setattr(self, 'malware_protection_enabled', n.get_bool_value()),
-            "networkInspectionSystemEnabled": lambda n : setattr(self, 'network_inspection_system_enabled', n.get_bool_value()),
-            "productStatus": lambda n : setattr(self, 'product_status', n.get_collection_of_enum_values(WindowsDefenderProductStatus)),
-            "quickScanOverdue": lambda n : setattr(self, 'quick_scan_overdue', n.get_bool_value()),
-            "realTimeProtectionEnabled": lambda n : setattr(self, 'real_time_protection_enabled', n.get_bool_value()),
-            "rebootRequired": lambda n : setattr(self, 'reboot_required', n.get_bool_value()),
-            "signatureUpdateOverdue": lambda n : setattr(self, 'signature_update_overdue', n.get_bool_value()),
-            "signatureVersion": lambda n : setattr(self, 'signature_version', n.get_str_value()),
-            "tamperProtectionEnabled": lambda n : setattr(self, 'tamper_protection_enabled', n.get_bool_value()),
+            "anti_malware_version": lambda n : setattr(self, 'anti_malware_version', n.get_str_value()),
+            "detected_malware_state": lambda n : setattr(self, 'detected_malware_state', n.get_collection_of_object_values(WindowsDeviceMalwareState)),
+            "device_state": lambda n : setattr(self, 'device_state', n.get_collection_of_enum_values(WindowsDeviceHealthState)),
+            "engine_version": lambda n : setattr(self, 'engine_version', n.get_str_value()),
+            "full_scan_overdue": lambda n : setattr(self, 'full_scan_overdue', n.get_bool_value()),
+            "full_scan_required": lambda n : setattr(self, 'full_scan_required', n.get_bool_value()),
+            "is_virtual_machine": lambda n : setattr(self, 'is_virtual_machine', n.get_bool_value()),
+            "last_full_scan_date_time": lambda n : setattr(self, 'last_full_scan_date_time', n.get_datetime_value()),
+            "last_full_scan_signature_version": lambda n : setattr(self, 'last_full_scan_signature_version', n.get_str_value()),
+            "last_quick_scan_date_time": lambda n : setattr(self, 'last_quick_scan_date_time', n.get_datetime_value()),
+            "last_quick_scan_signature_version": lambda n : setattr(self, 'last_quick_scan_signature_version', n.get_str_value()),
+            "last_reported_date_time": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
+            "malware_protection_enabled": lambda n : setattr(self, 'malware_protection_enabled', n.get_bool_value()),
+            "network_inspection_system_enabled": lambda n : setattr(self, 'network_inspection_system_enabled', n.get_bool_value()),
+            "product_status": lambda n : setattr(self, 'product_status', n.get_collection_of_enum_values(WindowsDefenderProductStatus)),
+            "quick_scan_overdue": lambda n : setattr(self, 'quick_scan_overdue', n.get_bool_value()),
+            "real_time_protection_enabled": lambda n : setattr(self, 'real_time_protection_enabled', n.get_bool_value()),
+            "reboot_required": lambda n : setattr(self, 'reboot_required', n.get_bool_value()),
+            "signature_update_overdue": lambda n : setattr(self, 'signature_update_overdue', n.get_bool_value()),
+            "signature_version": lambda n : setattr(self, 'signature_version', n.get_str_value()),
+            "tamper_protection_enabled": lambda n : setattr(self, 'tamper_protection_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -124,26 +124,26 @@ class WindowsProtectionState(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("antiMalwareVersion", self.anti_malware_version)
-        writer.write_collection_of_object_values("detectedMalwareState", self.detected_malware_state)
-        writer.write_enum_value("deviceState", self.device_state)
-        writer.write_str_value("engineVersion", self.engine_version)
-        writer.write_bool_value("fullScanOverdue", self.full_scan_overdue)
-        writer.write_bool_value("fullScanRequired", self.full_scan_required)
-        writer.write_bool_value("isVirtualMachine", self.is_virtual_machine)
-        writer.write_datetime_value("lastFullScanDateTime", self.last_full_scan_date_time)
-        writer.write_str_value("lastFullScanSignatureVersion", self.last_full_scan_signature_version)
-        writer.write_datetime_value("lastQuickScanDateTime", self.last_quick_scan_date_time)
-        writer.write_str_value("lastQuickScanSignatureVersion", self.last_quick_scan_signature_version)
-        writer.write_datetime_value("lastReportedDateTime", self.last_reported_date_time)
-        writer.write_bool_value("malwareProtectionEnabled", self.malware_protection_enabled)
-        writer.write_bool_value("networkInspectionSystemEnabled", self.network_inspection_system_enabled)
-        writer.write_enum_value("productStatus", self.product_status)
-        writer.write_bool_value("quickScanOverdue", self.quick_scan_overdue)
-        writer.write_bool_value("realTimeProtectionEnabled", self.real_time_protection_enabled)
-        writer.write_bool_value("rebootRequired", self.reboot_required)
-        writer.write_bool_value("signatureUpdateOverdue", self.signature_update_overdue)
-        writer.write_str_value("signatureVersion", self.signature_version)
-        writer.write_bool_value("tamperProtectionEnabled", self.tamper_protection_enabled)
+        writer.write_str_value("anti_malware_version", self.anti_malware_version)
+        writer.write_collection_of_object_values("detected_malware_state", self.detected_malware_state)
+        writer.write_enum_value("device_state", self.device_state)
+        writer.write_str_value("engine_version", self.engine_version)
+        writer.write_bool_value("full_scan_overdue", self.full_scan_overdue)
+        writer.write_bool_value("full_scan_required", self.full_scan_required)
+        writer.write_bool_value("is_virtual_machine", self.is_virtual_machine)
+        writer.write_datetime_value("last_full_scan_date_time", self.last_full_scan_date_time)
+        writer.write_str_value("last_full_scan_signature_version", self.last_full_scan_signature_version)
+        writer.write_datetime_value("last_quick_scan_date_time", self.last_quick_scan_date_time)
+        writer.write_str_value("last_quick_scan_signature_version", self.last_quick_scan_signature_version)
+        writer.write_datetime_value("last_reported_date_time", self.last_reported_date_time)
+        writer.write_bool_value("malware_protection_enabled", self.malware_protection_enabled)
+        writer.write_bool_value("network_inspection_system_enabled", self.network_inspection_system_enabled)
+        writer.write_enum_value("product_status", self.product_status)
+        writer.write_bool_value("quick_scan_overdue", self.quick_scan_overdue)
+        writer.write_bool_value("real_time_protection_enabled", self.real_time_protection_enabled)
+        writer.write_bool_value("reboot_required", self.reboot_required)
+        writer.write_bool_value("signature_update_overdue", self.signature_update_overdue)
+        writer.write_str_value("signature_version", self.signature_version)
+        writer.write_bool_value("tamper_protection_enabled", self.tamper_protection_enabled)
     
 

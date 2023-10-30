@@ -59,15 +59,15 @@ class MobileAppContentFile(Entity):
         from .mobile_app_content_file_upload_state import MobileAppContentFileUploadState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "azureStorageUri": lambda n : setattr(self, 'azure_storage_uri', n.get_str_value()),
-            "azureStorageUriExpirationDateTime": lambda n : setattr(self, 'azure_storage_uri_expiration_date_time', n.get_datetime_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "isCommitted": lambda n : setattr(self, 'is_committed', n.get_bool_value()),
+            "azure_storage_uri": lambda n : setattr(self, 'azure_storage_uri', n.get_str_value()),
+            "azure_storage_uri_expiration_date_time": lambda n : setattr(self, 'azure_storage_uri_expiration_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "is_committed": lambda n : setattr(self, 'is_committed', n.get_bool_value()),
             "manifest": lambda n : setattr(self, 'manifest', n.get_bytes_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
-            "sizeEncrypted": lambda n : setattr(self, 'size_encrypted', n.get_int_value()),
-            "uploadState": lambda n : setattr(self, 'upload_state', n.get_enum_value(MobileAppContentFileUploadState)),
+            "size_encrypted": lambda n : setattr(self, 'size_encrypted', n.get_int_value()),
+            "upload_state": lambda n : setattr(self, 'upload_state', n.get_enum_value(MobileAppContentFileUploadState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -82,14 +82,14 @@ class MobileAppContentFile(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("azureStorageUri", self.azure_storage_uri)
-        writer.write_datetime_value("azureStorageUriExpirationDateTime", self.azure_storage_uri_expiration_date_time)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_bool_value("isCommitted", self.is_committed)
+        writer.write_str_value("azure_storage_uri", self.azure_storage_uri)
+        writer.write_datetime_value("azure_storage_uri_expiration_date_time", self.azure_storage_uri_expiration_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_bool_value("is_committed", self.is_committed)
         writer.write_bytes_value("manifest", self.manifest)
         writer.write_str_value("name", self.name)
         writer.write_int_value("size", self.size)
-        writer.write_int_value("sizeEncrypted", self.size_encrypted)
-        writer.write_enum_value("uploadState", self.upload_state)
+        writer.write_int_value("size_encrypted", self.size_encrypted)
+        writer.write_enum_value("upload_state", self.upload_state)
     
 

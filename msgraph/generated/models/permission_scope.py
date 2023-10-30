@@ -50,15 +50,15 @@ class PermissionScope(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "adminConsentDescription": lambda n : setattr(self, 'admin_consent_description', n.get_str_value()),
-            "adminConsentDisplayName": lambda n : setattr(self, 'admin_consent_display_name', n.get_str_value()),
+            "admin_consent_description": lambda n : setattr(self, 'admin_consent_description', n.get_str_value()),
+            "admin_consent_display_name": lambda n : setattr(self, 'admin_consent_display_name', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_uuid_value()),
-            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "origin": lambda n : setattr(self, 'origin', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
-            "userConsentDescription": lambda n : setattr(self, 'user_consent_description', n.get_str_value()),
-            "userConsentDisplayName": lambda n : setattr(self, 'user_consent_display_name', n.get_str_value()),
+            "user_consent_description": lambda n : setattr(self, 'user_consent_description', n.get_str_value()),
+            "user_consent_display_name": lambda n : setattr(self, 'user_consent_display_name', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
         return fields
@@ -71,15 +71,15 @@ class PermissionScope(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("adminConsentDescription", self.admin_consent_description)
-        writer.write_str_value("adminConsentDisplayName", self.admin_consent_display_name)
+        writer.write_str_value("admin_consent_description", self.admin_consent_description)
+        writer.write_str_value("admin_consent_display_name", self.admin_consent_display_name)
         writer.write_uuid_value("id", self.id)
-        writer.write_bool_value("isEnabled", self.is_enabled)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_bool_value("is_enabled", self.is_enabled)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("origin", self.origin)
         writer.write_str_value("type", self.type)
-        writer.write_str_value("userConsentDescription", self.user_consent_description)
-        writer.write_str_value("userConsentDisplayName", self.user_consent_display_name)
+        writer.write_str_value("user_consent_description", self.user_consent_description)
+        writer.write_str_value("user_consent_display_name", self.user_consent_display_name)
         writer.write_str_value("value", self.value)
         writer.write_additional_data_value(self.additional_data)
     

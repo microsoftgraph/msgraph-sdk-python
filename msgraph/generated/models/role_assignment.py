@@ -60,9 +60,9 @@ class RoleAssignment(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_primitive_values(str)),
-            "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(RoleDefinition)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "resource_scopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_primitive_values(str)),
+            "role_definition": lambda n : setattr(self, 'role_definition', n.get_object_value(RoleDefinition)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,8 +78,8 @@ class RoleAssignment(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_primitive_values("resourceScopes", self.resource_scopes)
-        writer.write_object_value("roleDefinition", self.role_definition)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_primitive_values("resource_scopes", self.resource_scopes)
+        writer.write_object_value("role_definition", self.role_definition)
     
 

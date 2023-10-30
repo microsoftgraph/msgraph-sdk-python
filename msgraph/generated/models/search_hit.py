@@ -52,13 +52,13 @@ class SearchHit(AdditionalDataHolder, BackedModel, Parsable):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "contentSource": lambda n : setattr(self, 'content_source', n.get_str_value()),
-            "hitId": lambda n : setattr(self, 'hit_id', n.get_str_value()),
-            "isCollapsed": lambda n : setattr(self, 'is_collapsed', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "content_source": lambda n : setattr(self, 'content_source', n.get_str_value()),
+            "hit_id": lambda n : setattr(self, 'hit_id', n.get_str_value()),
+            "is_collapsed": lambda n : setattr(self, 'is_collapsed', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rank": lambda n : setattr(self, 'rank', n.get_int_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(Entity)),
-            "resultTemplateId": lambda n : setattr(self, 'result_template_id', n.get_str_value()),
+            "result_template_id": lambda n : setattr(self, 'result_template_id', n.get_str_value()),
             "summary": lambda n : setattr(self, 'summary', n.get_str_value()),
         }
         return fields
@@ -71,13 +71,13 @@ class SearchHit(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("contentSource", self.content_source)
-        writer.write_str_value("hitId", self.hit_id)
-        writer.write_bool_value("isCollapsed", self.is_collapsed)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("content_source", self.content_source)
+        writer.write_str_value("hit_id", self.hit_id)
+        writer.write_bool_value("is_collapsed", self.is_collapsed)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("rank", self.rank)
         writer.write_object_value("resource", self.resource)
-        writer.write_str_value("resultTemplateId", self.result_template_id)
+        writer.write_str_value("result_template_id", self.result_template_id)
         writer.write_str_value("summary", self.summary)
         writer.write_additional_data_value(self.additional_data)
     

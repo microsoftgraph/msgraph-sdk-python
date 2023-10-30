@@ -40,8 +40,8 @@ class HyperlinkPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "friendlyName": lambda n : setattr(self, 'friendly_name', n.get_object_value(Json)),
-            "linkLocation": lambda n : setattr(self, 'link_location', n.get_object_value(Json)),
+            "friendly_name": lambda n : setattr(self, 'friendly_name', n.get_object_value(Json)),
+            "link_location": lambda n : setattr(self, 'link_location', n.get_object_value(Json)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class HyperlinkPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("friendlyName", self.friendly_name)
-        writer.write_object_value("linkLocation", self.link_location)
+        writer.write_object_value("friendly_name", self.friendly_name)
+        writer.write_object_value("link_location", self.link_location)
         writer.write_additional_data_value(self.additional_data)
     
 

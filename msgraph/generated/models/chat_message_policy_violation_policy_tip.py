@@ -37,10 +37,10 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, BackedModel, Par
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "complianceUrl": lambda n : setattr(self, 'compliance_url', n.get_str_value()),
-            "generalText": lambda n : setattr(self, 'general_text', n.get_str_value()),
-            "matchedConditionDescriptions": lambda n : setattr(self, 'matched_condition_descriptions', n.get_collection_of_primitive_values(str)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "compliance_url": lambda n : setattr(self, 'compliance_url', n.get_str_value()),
+            "general_text": lambda n : setattr(self, 'general_text', n.get_str_value()),
+            "matched_condition_descriptions": lambda n : setattr(self, 'matched_condition_descriptions', n.get_collection_of_primitive_values(str)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -52,10 +52,10 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, BackedModel, Par
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("complianceUrl", self.compliance_url)
-        writer.write_str_value("generalText", self.general_text)
-        writer.write_collection_of_primitive_values("matchedConditionDescriptions", self.matched_condition_descriptions)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("compliance_url", self.compliance_url)
+        writer.write_str_value("general_text", self.general_text)
+        writer.write_collection_of_primitive_values("matched_condition_descriptions", self.matched_condition_descriptions)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

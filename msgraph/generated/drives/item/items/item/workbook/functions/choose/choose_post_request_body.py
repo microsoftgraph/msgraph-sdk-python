@@ -40,7 +40,7 @@ class ChoosePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "indexNum": lambda n : setattr(self, 'index_num', n.get_object_value(Json)),
+            "index_num": lambda n : setattr(self, 'index_num', n.get_object_value(Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
         }
         return fields
@@ -53,7 +53,7 @@ class ChoosePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("indexNum", self.index_num)
+        writer.write_object_value("index_num", self.index_num)
         writer.write_object_value("values", self.values)
         writer.write_additional_data_value(self.additional_data)
     

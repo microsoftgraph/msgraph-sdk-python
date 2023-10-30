@@ -48,10 +48,10 @@ class ClientUserAgent(UserAgent):
         from .user_agent import UserAgent
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "azureADAppId": lambda n : setattr(self, 'azure_a_d_app_id', n.get_str_value()),
-            "communicationServiceId": lambda n : setattr(self, 'communication_service_id', n.get_str_value()),
+            "azure_a_d_app_id": lambda n : setattr(self, 'azure_a_d_app_id', n.get_str_value()),
+            "communication_service_id": lambda n : setattr(self, 'communication_service_id', n.get_str_value()),
             "platform": lambda n : setattr(self, 'platform', n.get_enum_value(ClientPlatform)),
-            "productFamily": lambda n : setattr(self, 'product_family', n.get_enum_value(ProductFamily)),
+            "product_family": lambda n : setattr(self, 'product_family', n.get_enum_value(ProductFamily)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,9 +66,9 @@ class ClientUserAgent(UserAgent):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("azureADAppId", self.azure_a_d_app_id)
-        writer.write_str_value("communicationServiceId", self.communication_service_id)
+        writer.write_str_value("azure_a_d_app_id", self.azure_a_d_app_id)
+        writer.write_str_value("communication_service_id", self.communication_service_id)
         writer.write_enum_value("platform", self.platform)
-        writer.write_enum_value("productFamily", self.product_family)
+        writer.write_enum_value("product_family", self.product_family)
     
 

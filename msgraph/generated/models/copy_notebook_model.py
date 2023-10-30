@@ -75,22 +75,22 @@ class CopyNotebookModel(AdditionalDataHolder, BackedModel, Parsable):
         from .onenote_user_role import OnenoteUserRole
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_str_value()),
-            "createdByIdentity": lambda n : setattr(self, 'created_by_identity', n.get_object_value(IdentitySet)),
-            "createdTime": lambda n : setattr(self, 'created_time', n.get_datetime_value()),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_str_value()),
+            "created_by_identity": lambda n : setattr(self, 'created_by_identity', n.get_object_value(IdentitySet)),
+            "created_time": lambda n : setattr(self, 'created_time', n.get_datetime_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_str_value()),
-            "lastModifiedByIdentity": lambda n : setattr(self, 'last_modified_by_identity', n.get_object_value(IdentitySet)),
-            "lastModifiedTime": lambda n : setattr(self, 'last_modified_time', n.get_datetime_value()),
+            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "is_shared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_str_value()),
+            "last_modified_by_identity": lambda n : setattr(self, 'last_modified_by_identity', n.get_object_value(IdentitySet)),
+            "last_modified_time": lambda n : setattr(self, 'last_modified_time', n.get_datetime_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(NotebookLinks)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sectionGroupsUrl": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
-            "sectionsUrl": lambda n : setattr(self, 'sections_url', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "section_groups_url": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
+            "sections_url": lambda n : setattr(self, 'sections_url', n.get_str_value()),
             "self": lambda n : setattr(self, 'self', n.get_str_value()),
-            "userRole": lambda n : setattr(self, 'user_role', n.get_enum_value(OnenoteUserRole)),
+            "user_role": lambda n : setattr(self, 'user_role', n.get_enum_value(OnenoteUserRole)),
         }
         return fields
     
@@ -102,22 +102,22 @@ class CopyNotebookModel(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("createdBy", self.created_by)
-        writer.write_object_value("createdByIdentity", self.created_by_identity)
-        writer.write_datetime_value("createdTime", self.created_time)
+        writer.write_str_value("created_by", self.created_by)
+        writer.write_object_value("created_by_identity", self.created_by_identity)
+        writer.write_datetime_value("created_time", self.created_time)
         writer.write_str_value("id", self.id)
-        writer.write_bool_value("isDefault", self.is_default)
-        writer.write_bool_value("isShared", self.is_shared)
-        writer.write_str_value("lastModifiedBy", self.last_modified_by)
-        writer.write_object_value("lastModifiedByIdentity", self.last_modified_by_identity)
-        writer.write_datetime_value("lastModifiedTime", self.last_modified_time)
+        writer.write_bool_value("is_default", self.is_default)
+        writer.write_bool_value("is_shared", self.is_shared)
+        writer.write_str_value("last_modified_by", self.last_modified_by)
+        writer.write_object_value("last_modified_by_identity", self.last_modified_by_identity)
+        writer.write_datetime_value("last_modified_time", self.last_modified_time)
         writer.write_object_value("links", self.links)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("sectionGroupsUrl", self.section_groups_url)
-        writer.write_str_value("sectionsUrl", self.sections_url)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("section_groups_url", self.section_groups_url)
+        writer.write_str_value("sections_url", self.sections_url)
         writer.write_str_value("self", self.self)
-        writer.write_enum_value("userRole", self.user_role)
+        writer.write_enum_value("user_role", self.user_role)
         writer.write_additional_data_value(self.additional_data)
     
 

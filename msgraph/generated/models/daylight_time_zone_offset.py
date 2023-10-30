@@ -36,7 +36,7 @@ class DaylightTimeZoneOffset(StandardTimeZoneOffset):
         from .standard_time_zone_offset import StandardTimeZoneOffset
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "daylightBias": lambda n : setattr(self, 'daylight_bias', n.get_int_value()),
+            "daylight_bias": lambda n : setattr(self, 'daylight_bias', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,6 +51,6 @@ class DaylightTimeZoneOffset(StandardTimeZoneOffset):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_int_value("daylightBias", self.daylight_bias)
+        writer.write_int_value("daylight_bias", self.daylight_bias)
     
 

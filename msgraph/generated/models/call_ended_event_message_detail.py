@@ -54,10 +54,10 @@ class CallEndedEventMessageDetail(EventMessageDetail):
         from .teamwork_call_event_type import TeamworkCallEventType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callDuration": lambda n : setattr(self, 'call_duration', n.get_timedelta_value()),
-            "callEventType": lambda n : setattr(self, 'call_event_type', n.get_enum_value(TeamworkCallEventType)),
-            "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
-            "callParticipants": lambda n : setattr(self, 'call_participants', n.get_collection_of_object_values(CallParticipantInfo)),
+            "call_duration": lambda n : setattr(self, 'call_duration', n.get_timedelta_value()),
+            "call_event_type": lambda n : setattr(self, 'call_event_type', n.get_enum_value(TeamworkCallEventType)),
+            "call_id": lambda n : setattr(self, 'call_id', n.get_str_value()),
+            "call_participants": lambda n : setattr(self, 'call_participants', n.get_collection_of_object_values(CallParticipantInfo)),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
@@ -73,10 +73,10 @@ class CallEndedEventMessageDetail(EventMessageDetail):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_timedelta_value("callDuration", self.call_duration)
-        writer.write_enum_value("callEventType", self.call_event_type)
-        writer.write_str_value("callId", self.call_id)
-        writer.write_collection_of_object_values("callParticipants", self.call_participants)
+        writer.write_timedelta_value("call_duration", self.call_duration)
+        writer.write_enum_value("call_event_type", self.call_event_type)
+        writer.write_str_value("call_id", self.call_id)
+        writer.write_collection_of_object_values("call_participants", self.call_participants)
         writer.write_object_value("initiator", self.initiator)
     
 

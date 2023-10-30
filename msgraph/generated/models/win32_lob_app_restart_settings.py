@@ -40,10 +40,10 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "countdownDisplayBeforeRestartInMinutes": lambda n : setattr(self, 'countdown_display_before_restart_in_minutes', n.get_int_value()),
-            "gracePeriodInMinutes": lambda n : setattr(self, 'grace_period_in_minutes', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "restartNotificationSnoozeDurationInMinutes": lambda n : setattr(self, 'restart_notification_snooze_duration_in_minutes', n.get_int_value()),
+            "countdown_display_before_restart_in_minutes": lambda n : setattr(self, 'countdown_display_before_restart_in_minutes', n.get_int_value()),
+            "grace_period_in_minutes": lambda n : setattr(self, 'grace_period_in_minutes', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "restart_notification_snooze_duration_in_minutes": lambda n : setattr(self, 'restart_notification_snooze_duration_in_minutes', n.get_int_value()),
         }
         return fields
     
@@ -55,10 +55,10 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("countdownDisplayBeforeRestartInMinutes", self.countdown_display_before_restart_in_minutes)
-        writer.write_int_value("gracePeriodInMinutes", self.grace_period_in_minutes)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("restartNotificationSnoozeDurationInMinutes", self.restart_notification_snooze_duration_in_minutes)
+        writer.write_int_value("countdown_display_before_restart_in_minutes", self.countdown_display_before_restart_in_minutes)
+        writer.write_int_value("grace_period_in_minutes", self.grace_period_in_minutes)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("restart_notification_snooze_duration_in_minutes", self.restart_notification_snooze_duration_in_minutes)
         writer.write_additional_data_value(self.additional_data)
     
 

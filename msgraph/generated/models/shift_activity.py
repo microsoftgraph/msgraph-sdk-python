@@ -52,11 +52,11 @@ class ShiftActivity(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "isPaid": lambda n : setattr(self, 'is_paid', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "is_paid": lambda n : setattr(self, 'is_paid', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "theme": lambda n : setattr(self, 'theme', n.get_enum_value(ScheduleEntityTheme)),
         }
         return fields
@@ -70,11 +70,11 @@ class ShiftActivity(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("code", self.code)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("endDateTime", self.end_date_time)
-        writer.write_bool_value("isPaid", self.is_paid)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_datetime_value("startDateTime", self.start_date_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_datetime_value("end_date_time", self.end_date_time)
+        writer.write_bool_value("is_paid", self.is_paid)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_datetime_value("start_date_time", self.start_date_time)
         writer.write_enum_value("theme", self.theme)
         writer.write_additional_data_value(self.additional_data)
     

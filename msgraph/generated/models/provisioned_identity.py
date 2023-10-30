@@ -42,7 +42,7 @@ class ProvisionedIdentity(Identity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "details": lambda n : setattr(self, 'details', n.get_object_value(DetailsInfo)),
-            "identityType": lambda n : setattr(self, 'identity_type', n.get_str_value()),
+            "identity_type": lambda n : setattr(self, 'identity_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,6 +58,6 @@ class ProvisionedIdentity(Identity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("details", self.details)
-        writer.write_str_value("identityType", self.identity_type)
+        writer.write_str_value("identity_type", self.identity_type)
     
 

@@ -42,10 +42,10 @@ class AppListItem(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
+            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "app_store_url": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
         }
         return fields
@@ -58,10 +58,10 @@ class AppListItem(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("appId", self.app_id)
-        writer.write_str_value("appStoreUrl", self.app_store_url)
+        writer.write_str_value("app_id", self.app_id)
+        writer.write_str_value("app_store_url", self.app_store_url)
         writer.write_str_value("name", self.name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("publisher", self.publisher)
         writer.write_additional_data_value(self.additional_data)
     

@@ -43,8 +43,8 @@ class RolePermission(AdditionalDataHolder, BackedModel, Parsable):
         from .resource_action import ResourceAction
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resourceActions": lambda n : setattr(self, 'resource_actions', n.get_collection_of_object_values(ResourceAction)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "resource_actions": lambda n : setattr(self, 'resource_actions', n.get_collection_of_object_values(ResourceAction)),
         }
         return fields
     
@@ -56,8 +56,8 @@ class RolePermission(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("resourceActions", self.resource_actions)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("resource_actions", self.resource_actions)
         writer.write_additional_data_value(self.additional_data)
     
 

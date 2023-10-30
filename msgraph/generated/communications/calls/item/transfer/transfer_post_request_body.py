@@ -43,7 +43,7 @@ class TransferPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from .....models.participant_info import ParticipantInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "transferTarget": lambda n : setattr(self, 'transfer_target', n.get_object_value(InvitationParticipantInfo)),
+            "transfer_target": lambda n : setattr(self, 'transfer_target', n.get_object_value(InvitationParticipantInfo)),
             "transferee": lambda n : setattr(self, 'transferee', n.get_object_value(ParticipantInfo)),
         }
         return fields
@@ -56,7 +56,7 @@ class TransferPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("transferTarget", self.transfer_target)
+        writer.write_object_value("transfer_target", self.transfer_target)
         writer.write_object_value("transferee", self.transferee)
         writer.write_additional_data_value(self.additional_data)
     

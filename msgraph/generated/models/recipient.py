@@ -58,8 +58,8 @@ class Recipient(AdditionalDataHolder, BackedModel, Parsable):
         from .email_address import EmailAddress
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(EmailAddress)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "email_address": lambda n : setattr(self, 'email_address', n.get_object_value(EmailAddress)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -71,8 +71,8 @@ class Recipient(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("emailAddress", self.email_address)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_object_value("email_address", self.email_address)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

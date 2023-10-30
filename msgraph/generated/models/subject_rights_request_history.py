@@ -55,11 +55,11 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, BackedModel, Parsable):
         from .subject_rights_request_stage_status import SubjectRightsRequestStageStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "changedBy": lambda n : setattr(self, 'changed_by', n.get_object_value(IdentitySet)),
-            "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "changed_by": lambda n : setattr(self, 'changed_by', n.get_object_value(IdentitySet)),
+            "event_date_time": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "stage": lambda n : setattr(self, 'stage', n.get_enum_value(SubjectRightsRequestStage)),
-            "stageStatus": lambda n : setattr(self, 'stage_status', n.get_enum_value(SubjectRightsRequestStageStatus)),
+            "stage_status": lambda n : setattr(self, 'stage_status', n.get_enum_value(SubjectRightsRequestStageStatus)),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         return fields
@@ -72,11 +72,11 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("changedBy", self.changed_by)
-        writer.write_datetime_value("eventDateTime", self.event_date_time)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_object_value("changed_by", self.changed_by)
+        writer.write_datetime_value("event_date_time", self.event_date_time)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("stage", self.stage)
-        writer.write_enum_value("stageStatus", self.stage_status)
+        writer.write_enum_value("stage_status", self.stage_status)
         writer.write_str_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
     

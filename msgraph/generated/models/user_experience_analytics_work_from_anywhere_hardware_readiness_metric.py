@@ -59,17 +59,17 @@ class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "osCheckFailedPercentage": lambda n : setattr(self, 'os_check_failed_percentage', n.get_float_value()),
-            "processorCoreCountCheckFailedPercentage": lambda n : setattr(self, 'processor_core_count_check_failed_percentage', n.get_float_value()),
-            "processorFamilyCheckFailedPercentage": lambda n : setattr(self, 'processor_family_check_failed_percentage', n.get_float_value()),
-            "processorSpeedCheckFailedPercentage": lambda n : setattr(self, 'processor_speed_check_failed_percentage', n.get_float_value()),
-            "processor64BitCheckFailedPercentage": lambda n : setattr(self, 'processor64_bit_check_failed_percentage', n.get_float_value()),
-            "ramCheckFailedPercentage": lambda n : setattr(self, 'ram_check_failed_percentage', n.get_float_value()),
-            "secureBootCheckFailedPercentage": lambda n : setattr(self, 'secure_boot_check_failed_percentage', n.get_float_value()),
-            "storageCheckFailedPercentage": lambda n : setattr(self, 'storage_check_failed_percentage', n.get_float_value()),
-            "totalDeviceCount": lambda n : setattr(self, 'total_device_count', n.get_int_value()),
-            "tpmCheckFailedPercentage": lambda n : setattr(self, 'tpm_check_failed_percentage', n.get_float_value()),
-            "upgradeEligibleDeviceCount": lambda n : setattr(self, 'upgrade_eligible_device_count', n.get_int_value()),
+            "os_check_failed_percentage": lambda n : setattr(self, 'os_check_failed_percentage', n.get_float_value()),
+            "processor_core_count_check_failed_percentage": lambda n : setattr(self, 'processor_core_count_check_failed_percentage', n.get_float_value()),
+            "processor_family_check_failed_percentage": lambda n : setattr(self, 'processor_family_check_failed_percentage', n.get_float_value()),
+            "processor_speed_check_failed_percentage": lambda n : setattr(self, 'processor_speed_check_failed_percentage', n.get_float_value()),
+            "processor64_bit_check_failed_percentage": lambda n : setattr(self, 'processor64_bit_check_failed_percentage', n.get_float_value()),
+            "ram_check_failed_percentage": lambda n : setattr(self, 'ram_check_failed_percentage', n.get_float_value()),
+            "secure_boot_check_failed_percentage": lambda n : setattr(self, 'secure_boot_check_failed_percentage', n.get_float_value()),
+            "storage_check_failed_percentage": lambda n : setattr(self, 'storage_check_failed_percentage', n.get_float_value()),
+            "total_device_count": lambda n : setattr(self, 'total_device_count', n.get_int_value()),
+            "tpm_check_failed_percentage": lambda n : setattr(self, 'tpm_check_failed_percentage', n.get_float_value()),
+            "upgrade_eligible_device_count": lambda n : setattr(self, 'upgrade_eligible_device_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,16 +84,16 @@ class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_float_value("osCheckFailedPercentage", self.os_check_failed_percentage)
-        writer.write_float_value("processorCoreCountCheckFailedPercentage", self.processor_core_count_check_failed_percentage)
-        writer.write_float_value("processorFamilyCheckFailedPercentage", self.processor_family_check_failed_percentage)
-        writer.write_float_value("processorSpeedCheckFailedPercentage", self.processor_speed_check_failed_percentage)
-        writer.write_float_value("processor64BitCheckFailedPercentage", self.processor64_bit_check_failed_percentage)
-        writer.write_float_value("ramCheckFailedPercentage", self.ram_check_failed_percentage)
-        writer.write_float_value("secureBootCheckFailedPercentage", self.secure_boot_check_failed_percentage)
-        writer.write_float_value("storageCheckFailedPercentage", self.storage_check_failed_percentage)
-        writer.write_int_value("totalDeviceCount", self.total_device_count)
-        writer.write_float_value("tpmCheckFailedPercentage", self.tpm_check_failed_percentage)
-        writer.write_int_value("upgradeEligibleDeviceCount", self.upgrade_eligible_device_count)
+        writer.write_float_value("os_check_failed_percentage", self.os_check_failed_percentage)
+        writer.write_float_value("processor_core_count_check_failed_percentage", self.processor_core_count_check_failed_percentage)
+        writer.write_float_value("processor_family_check_failed_percentage", self.processor_family_check_failed_percentage)
+        writer.write_float_value("processor_speed_check_failed_percentage", self.processor_speed_check_failed_percentage)
+        writer.write_float_value("processor64_bit_check_failed_percentage", self.processor64_bit_check_failed_percentage)
+        writer.write_float_value("ram_check_failed_percentage", self.ram_check_failed_percentage)
+        writer.write_float_value("secure_boot_check_failed_percentage", self.secure_boot_check_failed_percentage)
+        writer.write_float_value("storage_check_failed_percentage", self.storage_check_failed_percentage)
+        writer.write_int_value("total_device_count", self.total_device_count)
+        writer.write_float_value("tpm_check_failed_percentage", self.tpm_check_failed_percentage)
+        writer.write_int_value("upgrade_eligible_device_count", self.upgrade_eligible_device_count)
     
 

@@ -51,12 +51,12 @@ class UserTrainingEventInfo(AdditionalDataHolder, BackedModel, Parsable):
         from .user_training_content_event_info import UserTrainingContentEventInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "latestTrainingStatus": lambda n : setattr(self, 'latest_training_status', n.get_enum_value(TrainingStatus)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "trainingAssignedProperties": lambda n : setattr(self, 'training_assigned_properties', n.get_object_value(UserTrainingContentEventInfo)),
-            "trainingCompletedProperties": lambda n : setattr(self, 'training_completed_properties', n.get_object_value(UserTrainingContentEventInfo)),
-            "trainingUpdatedProperties": lambda n : setattr(self, 'training_updated_properties', n.get_object_value(UserTrainingContentEventInfo)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "latest_training_status": lambda n : setattr(self, 'latest_training_status', n.get_enum_value(TrainingStatus)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "training_assigned_properties": lambda n : setattr(self, 'training_assigned_properties', n.get_object_value(UserTrainingContentEventInfo)),
+            "training_completed_properties": lambda n : setattr(self, 'training_completed_properties', n.get_object_value(UserTrainingContentEventInfo)),
+            "training_updated_properties": lambda n : setattr(self, 'training_updated_properties', n.get_object_value(UserTrainingContentEventInfo)),
         }
         return fields
     
@@ -68,12 +68,12 @@ class UserTrainingEventInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_enum_value("latestTrainingStatus", self.latest_training_status)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_object_value("trainingAssignedProperties", self.training_assigned_properties)
-        writer.write_object_value("trainingCompletedProperties", self.training_completed_properties)
-        writer.write_object_value("trainingUpdatedProperties", self.training_updated_properties)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_enum_value("latest_training_status", self.latest_training_status)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("training_assigned_properties", self.training_assigned_properties)
+        writer.write_object_value("training_completed_properties", self.training_completed_properties)
+        writer.write_object_value("training_updated_properties", self.training_updated_properties)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -35,9 +35,9 @@ class ParentalControlSettings(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "countriesBlockedForMinors": lambda n : setattr(self, 'countries_blocked_for_minors', n.get_collection_of_primitive_values(str)),
-            "legalAgeGroupRule": lambda n : setattr(self, 'legal_age_group_rule', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "countries_blocked_for_minors": lambda n : setattr(self, 'countries_blocked_for_minors', n.get_collection_of_primitive_values(str)),
+            "legal_age_group_rule": lambda n : setattr(self, 'legal_age_group_rule', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -49,9 +49,9 @@ class ParentalControlSettings(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("countriesBlockedForMinors", self.countries_blocked_for_minors)
-        writer.write_str_value("legalAgeGroupRule", self.legal_age_group_rule)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_collection_of_primitive_values("countries_blocked_for_minors", self.countries_blocked_for_minors)
+        writer.write_str_value("legal_age_group_rule", self.legal_age_group_rule)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

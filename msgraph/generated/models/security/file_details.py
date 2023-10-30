@@ -47,12 +47,12 @@ class FileDetails(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
-            "filePath": lambda n : setattr(self, 'file_path', n.get_str_value()),
-            "filePublisher": lambda n : setattr(self, 'file_publisher', n.get_str_value()),
-            "fileSize": lambda n : setattr(self, 'file_size', n.get_int_value()),
+            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "file_path": lambda n : setattr(self, 'file_path', n.get_str_value()),
+            "file_publisher": lambda n : setattr(self, 'file_publisher', n.get_str_value()),
+            "file_size": lambda n : setattr(self, 'file_size', n.get_int_value()),
             "issuer": lambda n : setattr(self, 'issuer', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sha1": lambda n : setattr(self, 'sha1', n.get_str_value()),
             "sha256": lambda n : setattr(self, 'sha256', n.get_str_value()),
             "signer": lambda n : setattr(self, 'signer', n.get_str_value()),
@@ -67,12 +67,12 @@ class FileDetails(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("fileName", self.file_name)
-        writer.write_str_value("filePath", self.file_path)
-        writer.write_str_value("filePublisher", self.file_publisher)
-        writer.write_int_value("fileSize", self.file_size)
+        writer.write_str_value("file_name", self.file_name)
+        writer.write_str_value("file_path", self.file_path)
+        writer.write_str_value("file_publisher", self.file_publisher)
+        writer.write_int_value("file_size", self.file_size)
         writer.write_str_value("issuer", self.issuer)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("sha1", self.sha1)
         writer.write_str_value("sha256", self.sha256)
         writer.write_str_value("signer", self.signer)

@@ -38,7 +38,7 @@ class AssignPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from .....models.mobile_app_assignment import MobileAppAssignment
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "mobileAppAssignments": lambda n : setattr(self, 'mobile_app_assignments', n.get_collection_of_object_values(MobileAppAssignment)),
+            "mobile_app_assignments": lambda n : setattr(self, 'mobile_app_assignments', n.get_collection_of_object_values(MobileAppAssignment)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class AssignPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_object_values("mobileAppAssignments", self.mobile_app_assignments)
+        writer.write_collection_of_object_values("mobile_app_assignments", self.mobile_app_assignments)
         writer.write_additional_data_value(self.additional_data)
     
 

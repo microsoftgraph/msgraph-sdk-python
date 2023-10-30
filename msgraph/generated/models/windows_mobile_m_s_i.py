@@ -45,10 +45,10 @@ class WindowsMobileMSI(MobileLobApp):
         from .mobile_lob_app import MobileLobApp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "commandLine": lambda n : setattr(self, 'command_line', n.get_str_value()),
-            "ignoreVersionDetection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
-            "productCode": lambda n : setattr(self, 'product_code', n.get_str_value()),
-            "productVersion": lambda n : setattr(self, 'product_version', n.get_str_value()),
+            "command_line": lambda n : setattr(self, 'command_line', n.get_str_value()),
+            "ignore_version_detection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
+            "product_code": lambda n : setattr(self, 'product_code', n.get_str_value()),
+            "product_version": lambda n : setattr(self, 'product_version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,9 +63,9 @@ class WindowsMobileMSI(MobileLobApp):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("commandLine", self.command_line)
-        writer.write_bool_value("ignoreVersionDetection", self.ignore_version_detection)
-        writer.write_str_value("productCode", self.product_code)
-        writer.write_str_value("productVersion", self.product_version)
+        writer.write_str_value("command_line", self.command_line)
+        writer.write_bool_value("ignore_version_detection", self.ignore_version_detection)
+        writer.write_str_value("product_code", self.product_code)
+        writer.write_str_value("product_version", self.product_version)
     
 

@@ -51,10 +51,10 @@ class DelegatedAdminRelationshipOperation(Entity):
         from .long_running_operation_status import LongRunningOperationStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "data": lambda n : setattr(self, 'data', n.get_str_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(DelegatedAdminRelationshipOperationType)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "operation_type": lambda n : setattr(self, 'operation_type', n.get_enum_value(DelegatedAdminRelationshipOperationType)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(LongRunningOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -70,10 +70,10 @@ class DelegatedAdminRelationshipOperation(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("data", self.data)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_enum_value("operationType", self.operation_type)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_enum_value("operation_type", self.operation_type)
         writer.write_enum_value("status", self.status)
     
 

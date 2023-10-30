@@ -49,9 +49,9 @@ class X509CertificateAuthenticationMethodConfiguration(AuthenticationMethodConfi
         from .x509_certificate_user_binding import X509CertificateUserBinding
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationModeConfiguration": lambda n : setattr(self, 'authentication_mode_configuration', n.get_object_value(X509CertificateAuthenticationModeConfiguration)),
-            "certificateUserBindings": lambda n : setattr(self, 'certificate_user_bindings', n.get_collection_of_object_values(X509CertificateUserBinding)),
-            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
+            "authentication_mode_configuration": lambda n : setattr(self, 'authentication_mode_configuration', n.get_object_value(X509CertificateAuthenticationModeConfiguration)),
+            "certificate_user_bindings": lambda n : setattr(self, 'certificate_user_bindings', n.get_collection_of_object_values(X509CertificateUserBinding)),
+            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -66,8 +66,8 @@ class X509CertificateAuthenticationMethodConfiguration(AuthenticationMethodConfi
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("authenticationModeConfiguration", self.authentication_mode_configuration)
-        writer.write_collection_of_object_values("certificateUserBindings", self.certificate_user_bindings)
-        writer.write_collection_of_object_values("includeTargets", self.include_targets)
+        writer.write_object_value("authentication_mode_configuration", self.authentication_mode_configuration)
+        writer.write_collection_of_object_values("certificate_user_bindings", self.certificate_user_bindings)
+        writer.write_collection_of_object_values("include_targets", self.include_targets)
     
 

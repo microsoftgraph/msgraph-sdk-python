@@ -55,11 +55,11 @@ class IdentityProtectionRoot(AdditionalDataHolder, BackedModel, Parsable):
         from .service_principal_risk_detection import ServicePrincipalRiskDetection
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "riskDetections": lambda n : setattr(self, 'risk_detections', n.get_collection_of_object_values(RiskDetection)),
-            "riskyServicePrincipals": lambda n : setattr(self, 'risky_service_principals', n.get_collection_of_object_values(RiskyServicePrincipal)),
-            "riskyUsers": lambda n : setattr(self, 'risky_users', n.get_collection_of_object_values(RiskyUser)),
-            "servicePrincipalRiskDetections": lambda n : setattr(self, 'service_principal_risk_detections', n.get_collection_of_object_values(ServicePrincipalRiskDetection)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "risk_detections": lambda n : setattr(self, 'risk_detections', n.get_collection_of_object_values(RiskDetection)),
+            "risky_service_principals": lambda n : setattr(self, 'risky_service_principals', n.get_collection_of_object_values(RiskyServicePrincipal)),
+            "risky_users": lambda n : setattr(self, 'risky_users', n.get_collection_of_object_values(RiskyUser)),
+            "service_principal_risk_detections": lambda n : setattr(self, 'service_principal_risk_detections', n.get_collection_of_object_values(ServicePrincipalRiskDetection)),
         }
         return fields
     
@@ -71,11 +71,11 @@ class IdentityProtectionRoot(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("riskDetections", self.risk_detections)
-        writer.write_collection_of_object_values("riskyServicePrincipals", self.risky_service_principals)
-        writer.write_collection_of_object_values("riskyUsers", self.risky_users)
-        writer.write_collection_of_object_values("servicePrincipalRiskDetections", self.service_principal_risk_detections)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("risk_detections", self.risk_detections)
+        writer.write_collection_of_object_values("risky_service_principals", self.risky_service_principals)
+        writer.write_collection_of_object_values("risky_users", self.risky_users)
+        writer.write_collection_of_object_values("service_principal_risk_detections", self.service_principal_risk_detections)
         writer.write_additional_data_value(self.additional_data)
     
 

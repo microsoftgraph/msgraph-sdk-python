@@ -48,10 +48,10 @@ class PresenceStatusMessage(AdditionalDataHolder, BackedModel, Parsable):
         from .item_body import ItemBody
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "expiryDateTime": lambda n : setattr(self, 'expiry_date_time', n.get_object_value(DateTimeTimeZone)),
+            "expiry_date_time": lambda n : setattr(self, 'expiry_date_time', n.get_object_value(DateTimeTimeZone)),
             "message": lambda n : setattr(self, 'message', n.get_object_value(ItemBody)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "publishedDateTime": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "published_date_time": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
         }
         return fields
     
@@ -63,10 +63,10 @@ class PresenceStatusMessage(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("expiryDateTime", self.expiry_date_time)
+        writer.write_object_value("expiry_date_time", self.expiry_date_time)
         writer.write_object_value("message", self.message)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_datetime_value("publishedDateTime", self.published_date_time)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_datetime_value("published_date_time", self.published_date_time)
         writer.write_additional_data_value(self.additional_data)
     
 

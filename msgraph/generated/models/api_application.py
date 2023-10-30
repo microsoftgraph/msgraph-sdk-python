@@ -52,12 +52,12 @@ class ApiApplication(AdditionalDataHolder, BackedModel, Parsable):
         from .pre_authorized_application import PreAuthorizedApplication
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "acceptMappedClaims": lambda n : setattr(self, 'accept_mapped_claims', n.get_bool_value()),
-            "knownClientApplications": lambda n : setattr(self, 'known_client_applications', n.get_collection_of_primitive_values(UUID)),
-            "oauth2PermissionScopes": lambda n : setattr(self, 'oauth2_permission_scopes', n.get_collection_of_object_values(PermissionScope)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "preAuthorizedApplications": lambda n : setattr(self, 'pre_authorized_applications', n.get_collection_of_object_values(PreAuthorizedApplication)),
-            "requestedAccessTokenVersion": lambda n : setattr(self, 'requested_access_token_version', n.get_int_value()),
+            "accept_mapped_claims": lambda n : setattr(self, 'accept_mapped_claims', n.get_bool_value()),
+            "known_client_applications": lambda n : setattr(self, 'known_client_applications', n.get_collection_of_primitive_values(UUID)),
+            "oauth2_permission_scopes": lambda n : setattr(self, 'oauth2_permission_scopes', n.get_collection_of_object_values(PermissionScope)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "pre_authorized_applications": lambda n : setattr(self, 'pre_authorized_applications', n.get_collection_of_object_values(PreAuthorizedApplication)),
+            "requested_access_token_version": lambda n : setattr(self, 'requested_access_token_version', n.get_int_value()),
         }
         return fields
     
@@ -69,12 +69,12 @@ class ApiApplication(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("acceptMappedClaims", self.accept_mapped_claims)
-        writer.write_collection_of_primitive_values("knownClientApplications", self.known_client_applications)
-        writer.write_collection_of_object_values("oauth2PermissionScopes", self.oauth2_permission_scopes)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("preAuthorizedApplications", self.pre_authorized_applications)
-        writer.write_int_value("requestedAccessTokenVersion", self.requested_access_token_version)
+        writer.write_bool_value("accept_mapped_claims", self.accept_mapped_claims)
+        writer.write_collection_of_primitive_values("known_client_applications", self.known_client_applications)
+        writer.write_collection_of_object_values("oauth2_permission_scopes", self.oauth2_permission_scopes)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("pre_authorized_applications", self.pre_authorized_applications)
+        writer.write_int_value("requested_access_token_version", self.requested_access_token_version)
         writer.write_additional_data_value(self.additional_data)
     
 

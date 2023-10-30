@@ -42,9 +42,9 @@ class FindBPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "findText": lambda n : setattr(self, 'find_text', n.get_object_value(Json)),
-            "startNum": lambda n : setattr(self, 'start_num', n.get_object_value(Json)),
-            "withinText": lambda n : setattr(self, 'within_text', n.get_object_value(Json)),
+            "find_text": lambda n : setattr(self, 'find_text', n.get_object_value(Json)),
+            "start_num": lambda n : setattr(self, 'start_num', n.get_object_value(Json)),
+            "within_text": lambda n : setattr(self, 'within_text', n.get_object_value(Json)),
         }
         return fields
     
@@ -56,9 +56,9 @@ class FindBPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("findText", self.find_text)
-        writer.write_object_value("startNum", self.start_num)
-        writer.write_object_value("withinText", self.within_text)
+        writer.write_object_value("find_text", self.find_text)
+        writer.write_object_value("start_num", self.start_num)
+        writer.write_object_value("within_text", self.within_text)
         writer.write_additional_data_value(self.additional_data)
     
 

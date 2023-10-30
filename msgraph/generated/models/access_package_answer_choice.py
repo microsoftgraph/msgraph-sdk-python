@@ -44,9 +44,9 @@ class AccessPackageAnswerChoice(AdditionalDataHolder, BackedModel, Parsable):
         from .access_package_localized_text import AccessPackageLocalizedText
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "actualValue": lambda n : setattr(self, 'actual_value', n.get_str_value()),
+            "actual_value": lambda n : setattr(self, 'actual_value', n.get_str_value()),
             "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(AccessPackageLocalizedText)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "text": lambda n : setattr(self, 'text', n.get_str_value()),
         }
         return fields
@@ -59,9 +59,9 @@ class AccessPackageAnswerChoice(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("actualValue", self.actual_value)
+        writer.write_str_value("actual_value", self.actual_value)
         writer.write_collection_of_object_values("localizations", self.localizations)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("text", self.text)
         writer.write_additional_data_value(self.additional_data)
     

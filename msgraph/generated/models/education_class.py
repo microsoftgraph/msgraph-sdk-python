@@ -107,22 +107,22 @@ class EducationClass(Entity):
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignmentCategories": lambda n : setattr(self, 'assignment_categories', n.get_collection_of_object_values(EducationCategory)),
-            "assignmentDefaults": lambda n : setattr(self, 'assignment_defaults', n.get_object_value(EducationAssignmentDefaults)),
-            "assignmentSettings": lambda n : setattr(self, 'assignment_settings', n.get_object_value(EducationAssignmentSettings)),
+            "assignment_categories": lambda n : setattr(self, 'assignment_categories', n.get_collection_of_object_values(EducationCategory)),
+            "assignment_defaults": lambda n : setattr(self, 'assignment_defaults', n.get_object_value(EducationAssignmentDefaults)),
+            "assignment_settings": lambda n : setattr(self, 'assignment_settings', n.get_object_value(EducationAssignmentSettings)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(EducationAssignment)),
-            "classCode": lambda n : setattr(self, 'class_code', n.get_str_value()),
+            "class_code": lambda n : setattr(self, 'class_code', n.get_str_value()),
             "course": lambda n : setattr(self, 'course', n.get_object_value(EducationCourse)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "externalName": lambda n : setattr(self, 'external_name', n.get_str_value()),
-            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(EducationExternalSource)),
-            "externalSourceDetail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "external_name": lambda n : setattr(self, 'external_name', n.get_str_value()),
+            "external_source": lambda n : setattr(self, 'external_source', n.get_enum_value(EducationExternalSource)),
+            "external_source_detail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
             "grade": lambda n : setattr(self, 'grade', n.get_str_value()),
             "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
-            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(EducationUser)),
             "schools": lambda n : setattr(self, 'schools', n.get_collection_of_object_values(EducationSchool)),
             "teachers": lambda n : setattr(self, 'teachers', n.get_collection_of_object_values(EducationUser)),
@@ -141,22 +141,22 @@ class EducationClass(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("assignmentCategories", self.assignment_categories)
-        writer.write_object_value("assignmentDefaults", self.assignment_defaults)
-        writer.write_object_value("assignmentSettings", self.assignment_settings)
+        writer.write_collection_of_object_values("assignment_categories", self.assignment_categories)
+        writer.write_object_value("assignment_defaults", self.assignment_defaults)
+        writer.write_object_value("assignment_settings", self.assignment_settings)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_str_value("classCode", self.class_code)
+        writer.write_str_value("class_code", self.class_code)
         writer.write_object_value("course", self.course)
-        writer.write_object_value("createdBy", self.created_by)
+        writer.write_object_value("created_by", self.created_by)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("externalId", self.external_id)
-        writer.write_str_value("externalName", self.external_name)
-        writer.write_enum_value("externalSource", self.external_source)
-        writer.write_str_value("externalSourceDetail", self.external_source_detail)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("external_id", self.external_id)
+        writer.write_str_value("external_name", self.external_name)
+        writer.write_enum_value("external_source", self.external_source)
+        writer.write_str_value("external_source_detail", self.external_source_detail)
         writer.write_str_value("grade", self.grade)
         writer.write_object_value("group", self.group)
-        writer.write_str_value("mailNickname", self.mail_nickname)
+        writer.write_str_value("mail_nickname", self.mail_nickname)
         writer.write_collection_of_object_values("members", self.members)
         writer.write_collection_of_object_values("schools", self.schools)
         writer.write_collection_of_object_values("teachers", self.teachers)

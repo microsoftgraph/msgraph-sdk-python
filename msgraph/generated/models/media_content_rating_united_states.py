@@ -45,9 +45,9 @@ class MediaContentRatingUnitedStates(AdditionalDataHolder, BackedModel, Parsable
         from .rating_united_states_television_type import RatingUnitedStatesTelevisionType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(RatingUnitedStatesMoviesType)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(RatingUnitedStatesTelevisionType)),
+            "movie_rating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(RatingUnitedStatesMoviesType)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "tv_rating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(RatingUnitedStatesTelevisionType)),
         }
         return fields
     
@@ -59,9 +59,9 @@ class MediaContentRatingUnitedStates(AdditionalDataHolder, BackedModel, Parsable
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("movieRating", self.movie_rating)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_enum_value("tvRating", self.tv_rating)
+        writer.write_enum_value("movie_rating", self.movie_rating)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_enum_value("tv_rating", self.tv_rating)
         writer.write_additional_data_value(self.additional_data)
     
 

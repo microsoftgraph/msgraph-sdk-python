@@ -87,23 +87,23 @@ class WorkbookRange(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
-            "addressLocal": lambda n : setattr(self, 'address_local', n.get_str_value()),
-            "cellCount": lambda n : setattr(self, 'cell_count', n.get_int_value()),
-            "columnCount": lambda n : setattr(self, 'column_count', n.get_int_value()),
-            "columnHidden": lambda n : setattr(self, 'column_hidden', n.get_bool_value()),
-            "columnIndex": lambda n : setattr(self, 'column_index', n.get_int_value()),
+            "address_local": lambda n : setattr(self, 'address_local', n.get_str_value()),
+            "cell_count": lambda n : setattr(self, 'cell_count', n.get_int_value()),
+            "column_count": lambda n : setattr(self, 'column_count', n.get_int_value()),
+            "column_hidden": lambda n : setattr(self, 'column_hidden', n.get_bool_value()),
+            "column_index": lambda n : setattr(self, 'column_index', n.get_int_value()),
             "format": lambda n : setattr(self, 'format', n.get_object_value(WorkbookRangeFormat)),
             "formulas": lambda n : setattr(self, 'formulas', n.get_object_value(Json)),
-            "formulasLocal": lambda n : setattr(self, 'formulas_local', n.get_object_value(Json)),
-            "formulasR1C1": lambda n : setattr(self, 'formulas_r1_c1', n.get_object_value(Json)),
+            "formulas_local": lambda n : setattr(self, 'formulas_local', n.get_object_value(Json)),
+            "formulas_r1_c1": lambda n : setattr(self, 'formulas_r1_c1', n.get_object_value(Json)),
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
-            "numberFormat": lambda n : setattr(self, 'number_format', n.get_object_value(Json)),
-            "rowCount": lambda n : setattr(self, 'row_count', n.get_int_value()),
-            "rowHidden": lambda n : setattr(self, 'row_hidden', n.get_bool_value()),
-            "rowIndex": lambda n : setattr(self, 'row_index', n.get_int_value()),
+            "number_format": lambda n : setattr(self, 'number_format', n.get_object_value(Json)),
+            "row_count": lambda n : setattr(self, 'row_count', n.get_int_value()),
+            "row_hidden": lambda n : setattr(self, 'row_hidden', n.get_bool_value()),
+            "row_index": lambda n : setattr(self, 'row_index', n.get_int_value()),
             "sort": lambda n : setattr(self, 'sort', n.get_object_value(WorkbookRangeSort)),
             "text": lambda n : setattr(self, 'text', n.get_object_value(Json)),
-            "valueTypes": lambda n : setattr(self, 'value_types', n.get_object_value(Json)),
+            "value_types": lambda n : setattr(self, 'value_types', n.get_object_value(Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(Json)),
             "worksheet": lambda n : setattr(self, 'worksheet', n.get_object_value(WorkbookWorksheet)),
         }
@@ -121,23 +121,23 @@ class WorkbookRange(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("address", self.address)
-        writer.write_str_value("addressLocal", self.address_local)
-        writer.write_int_value("cellCount", self.cell_count)
-        writer.write_int_value("columnCount", self.column_count)
-        writer.write_bool_value("columnHidden", self.column_hidden)
-        writer.write_int_value("columnIndex", self.column_index)
+        writer.write_str_value("address_local", self.address_local)
+        writer.write_int_value("cell_count", self.cell_count)
+        writer.write_int_value("column_count", self.column_count)
+        writer.write_bool_value("column_hidden", self.column_hidden)
+        writer.write_int_value("column_index", self.column_index)
         writer.write_object_value("format", self.format)
         writer.write_object_value("formulas", self.formulas)
-        writer.write_object_value("formulasLocal", self.formulas_local)
-        writer.write_object_value("formulasR1C1", self.formulas_r1_c1)
+        writer.write_object_value("formulas_local", self.formulas_local)
+        writer.write_object_value("formulas_r1_c1", self.formulas_r1_c1)
         writer.write_bool_value("hidden", self.hidden)
-        writer.write_object_value("numberFormat", self.number_format)
-        writer.write_int_value("rowCount", self.row_count)
-        writer.write_bool_value("rowHidden", self.row_hidden)
-        writer.write_int_value("rowIndex", self.row_index)
+        writer.write_object_value("number_format", self.number_format)
+        writer.write_int_value("row_count", self.row_count)
+        writer.write_bool_value("row_hidden", self.row_hidden)
+        writer.write_int_value("row_index", self.row_index)
         writer.write_object_value("sort", self.sort)
         writer.write_object_value("text", self.text)
-        writer.write_object_value("valueTypes", self.value_types)
+        writer.write_object_value("value_types", self.value_types)
         writer.write_object_value("values", self.values)
         writer.write_object_value("worksheet", self.worksheet)
     

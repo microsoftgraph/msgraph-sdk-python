@@ -41,7 +41,7 @@ class RoomList(Place):
         from .room import Room
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "rooms": lambda n : setattr(self, 'rooms', n.get_collection_of_object_values(Room)),
         }
         super_fields = super().get_field_deserializers()
@@ -57,7 +57,7 @@ class RoomList(Place):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("emailAddress", self.email_address)
+        writer.write_str_value("email_address", self.email_address)
         writer.write_collection_of_object_values("rooms", self.rooms)
     
 

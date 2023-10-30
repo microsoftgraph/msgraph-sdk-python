@@ -59,8 +59,8 @@ class AuthenticationMethodTarget(Entity):
         from .sms_authentication_method_target import SmsAuthenticationMethodTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "isRegistrationRequired": lambda n : setattr(self, 'is_registration_required', n.get_bool_value()),
-            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(AuthenticationMethodTargetType)),
+            "is_registration_required": lambda n : setattr(self, 'is_registration_required', n.get_bool_value()),
+            "target_type": lambda n : setattr(self, 'target_type', n.get_enum_value(AuthenticationMethodTargetType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,7 +75,7 @@ class AuthenticationMethodTarget(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_bool_value("isRegistrationRequired", self.is_registration_required)
-        writer.write_enum_value("targetType", self.target_type)
+        writer.write_bool_value("is_registration_required", self.is_registration_required)
+        writer.write_enum_value("target_type", self.target_type)
     
 

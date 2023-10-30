@@ -43,11 +43,11 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, BackedModel, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "browser": lambda n : setattr(self, 'browser', n.get_str_value()),
-            "contentDateTime": lambda n : setattr(self, 'content_date_time', n.get_datetime_value()),
-            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "osPlatformDeviceDetails": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
-            "potentialScoreImpact": lambda n : setattr(self, 'potential_score_impact', n.get_float_value()),
+            "content_date_time": lambda n : setattr(self, 'content_date_time', n.get_datetime_value()),
+            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "os_platform_device_details": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
+            "potential_score_impact": lambda n : setattr(self, 'potential_score_impact', n.get_float_value()),
         }
         return fields
     
@@ -60,11 +60,11 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("browser", self.browser)
-        writer.write_datetime_value("contentDateTime", self.content_date_time)
-        writer.write_str_value("ipAddress", self.ip_address)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_str_value("osPlatformDeviceDetails", self.os_platform_device_details)
-        writer.write_float_value("potentialScoreImpact", self.potential_score_impact)
+        writer.write_datetime_value("content_date_time", self.content_date_time)
+        writer.write_str_value("ip_address", self.ip_address)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("os_platform_device_details", self.os_platform_device_details)
+        writer.write_float_value("potential_score_impact", self.potential_score_impact)
         writer.write_additional_data_value(self.additional_data)
     
 

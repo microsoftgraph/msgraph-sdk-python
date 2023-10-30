@@ -35,9 +35,9 @@ class ItemActionStat(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "actionCount": lambda n : setattr(self, 'action_count', n.get_int_value()),
-            "actorCount": lambda n : setattr(self, 'actor_count', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "action_count": lambda n : setattr(self, 'action_count', n.get_int_value()),
+            "actor_count": lambda n : setattr(self, 'actor_count', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -49,9 +49,9 @@ class ItemActionStat(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("actionCount", self.action_count)
-        writer.write_int_value("actorCount", self.actor_count)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_int_value("action_count", self.action_count)
+        writer.write_int_value("actor_count", self.actor_count)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

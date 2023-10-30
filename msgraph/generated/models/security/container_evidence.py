@@ -56,9 +56,9 @@ class ContainerEvidence(AlertEvidence):
         fields: Dict[str, Callable[[Any], None]] = {
             "args": lambda n : setattr(self, 'args', n.get_collection_of_primitive_values(str)),
             "command": lambda n : setattr(self, 'command', n.get_collection_of_primitive_values(str)),
-            "containerId": lambda n : setattr(self, 'container_id', n.get_str_value()),
+            "container_id": lambda n : setattr(self, 'container_id', n.get_str_value()),
             "image": lambda n : setattr(self, 'image', n.get_object_value(ContainerImageEvidence)),
-            "isPrivileged": lambda n : setattr(self, 'is_privileged', n.get_bool_value()),
+            "is_privileged": lambda n : setattr(self, 'is_privileged', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "pod": lambda n : setattr(self, 'pod', n.get_object_value(KubernetesPodEvidence)),
         }
@@ -77,9 +77,9 @@ class ContainerEvidence(AlertEvidence):
         super().serialize(writer)
         writer.write_collection_of_primitive_values("args", self.args)
         writer.write_collection_of_primitive_values("command", self.command)
-        writer.write_str_value("containerId", self.container_id)
+        writer.write_str_value("container_id", self.container_id)
         writer.write_object_value("image", self.image)
-        writer.write_bool_value("isPrivileged", self.is_privileged)
+        writer.write_bool_value("is_privileged", self.is_privileged)
         writer.write_str_value("name", self.name)
         writer.write_object_value("pod", self.pod)
     

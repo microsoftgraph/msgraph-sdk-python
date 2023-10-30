@@ -58,15 +58,15 @@ class UserExperienceAnalyticsDeviceScores(Entity):
         from .user_experience_analytics_health_state import UserExperienceAnalyticsHealthState
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appReliabilityScore": lambda n : setattr(self, 'app_reliability_score', n.get_float_value()),
-            "batteryHealthScore": lambda n : setattr(self, 'battery_health_score', n.get_float_value()),
-            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "endpointAnalyticsScore": lambda n : setattr(self, 'endpoint_analytics_score', n.get_float_value()),
-            "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(UserExperienceAnalyticsHealthState)),
+            "app_reliability_score": lambda n : setattr(self, 'app_reliability_score', n.get_float_value()),
+            "battery_health_score": lambda n : setattr(self, 'battery_health_score', n.get_float_value()),
+            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "endpoint_analytics_score": lambda n : setattr(self, 'endpoint_analytics_score', n.get_float_value()),
+            "health_status": lambda n : setattr(self, 'health_status', n.get_enum_value(UserExperienceAnalyticsHealthState)),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "startupPerformanceScore": lambda n : setattr(self, 'startup_performance_score', n.get_float_value()),
-            "workFromAnywhereScore": lambda n : setattr(self, 'work_from_anywhere_score', n.get_float_value()),
+            "startup_performance_score": lambda n : setattr(self, 'startup_performance_score', n.get_float_value()),
+            "work_from_anywhere_score": lambda n : setattr(self, 'work_from_anywhere_score', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -81,14 +81,14 @@ class UserExperienceAnalyticsDeviceScores(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_float_value("appReliabilityScore", self.app_reliability_score)
-        writer.write_float_value("batteryHealthScore", self.battery_health_score)
-        writer.write_str_value("deviceName", self.device_name)
-        writer.write_float_value("endpointAnalyticsScore", self.endpoint_analytics_score)
-        writer.write_enum_value("healthStatus", self.health_status)
+        writer.write_float_value("app_reliability_score", self.app_reliability_score)
+        writer.write_float_value("battery_health_score", self.battery_health_score)
+        writer.write_str_value("device_name", self.device_name)
+        writer.write_float_value("endpoint_analytics_score", self.endpoint_analytics_score)
+        writer.write_enum_value("health_status", self.health_status)
         writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("model", self.model)
-        writer.write_float_value("startupPerformanceScore", self.startup_performance_score)
-        writer.write_float_value("workFromAnywhereScore", self.work_from_anywhere_score)
+        writer.write_float_value("startup_performance_score", self.startup_performance_score)
+        writer.write_float_value("work_from_anywhere_score", self.work_from_anywhere_score)
     
 

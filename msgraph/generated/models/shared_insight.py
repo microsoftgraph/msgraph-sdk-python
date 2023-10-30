@@ -55,12 +55,12 @@ class SharedInsight(Entity):
         from .sharing_detail import SharingDetail
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "lastShared": lambda n : setattr(self, 'last_shared', n.get_object_value(SharingDetail)),
-            "lastSharedMethod": lambda n : setattr(self, 'last_shared_method', n.get_object_value(Entity)),
+            "last_shared": lambda n : setattr(self, 'last_shared', n.get_object_value(SharingDetail)),
+            "last_shared_method": lambda n : setattr(self, 'last_shared_method', n.get_object_value(Entity)),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(Entity)),
-            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(ResourceReference)),
-            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(ResourceVisualization)),
-            "sharingHistory": lambda n : setattr(self, 'sharing_history', n.get_collection_of_object_values(SharingDetail)),
+            "resource_reference": lambda n : setattr(self, 'resource_reference', n.get_object_value(ResourceReference)),
+            "resource_visualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(ResourceVisualization)),
+            "sharing_history": lambda n : setattr(self, 'sharing_history', n.get_collection_of_object_values(SharingDetail)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,9 +75,9 @@ class SharedInsight(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("lastShared", self.last_shared)
-        writer.write_object_value("lastSharedMethod", self.last_shared_method)
+        writer.write_object_value("last_shared", self.last_shared)
+        writer.write_object_value("last_shared_method", self.last_shared_method)
         writer.write_object_value("resource", self.resource)
-        writer.write_collection_of_object_values("sharingHistory", self.sharing_history)
+        writer.write_collection_of_object_values("sharing_history", self.sharing_history)
     
 

@@ -16,35 +16,35 @@ from .entity import Entity
 
 @dataclass
 class Training(Entity):
-    # The availabilityStatus property
+    # Training availability status. Possible values are: unknown, notAvailable, available, archive, delete, unknownFutureValue.
     availability_status: Optional[TrainingAvailabilityStatus] = None
-    # The createdBy property
+    # Identity of the user who created the training.
     created_by: Optional[EmailIdentity] = None
-    # The createdDateTime property
+    # Date and time when the training was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
-    # The description property
+    # The description for the training.
     description: Optional[str] = None
-    # The displayName property
+    # The display name for the training.
     display_name: Optional[str] = None
-    # The durationInMinutes property
+    # Training duration.
     duration_in_minutes: Optional[int] = None
-    # The hasEvaluation property
+    # Indicates whether the training has any evaluation.
     has_evaluation: Optional[bool] = None
-    # The languageDetails property
+    # Language specific details on a training.
     language_details: Optional[List[TrainingLanguageDetail]] = None
-    # The lastModifiedBy property
+    # Identity of the user who last modified the training.
     last_modified_by: Optional[EmailIdentity] = None
-    # The lastModifiedDateTime property
+    # Date and time when the training was last modified. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The source property
+    # Training content source. Possible values are: unknown, global, tenant, unknownFutureValue.
     source: Optional[SimulationContentSource] = None
-    # The supportedLocales property
+    # Supported locales for content for the associated training.
     supported_locales: Optional[List[str]] = None
-    # The tags property
+    # Training tags.
     tags: Optional[List[str]] = None
-    # The type property
+    # The type of training. Possible values are: unknown, phishing, unknownFutureValue.
     type: Optional[TrainingType] = None
     
     @staticmethod
@@ -78,18 +78,18 @@ class Training(Entity):
         from .training_type import TrainingType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "availabilityStatus": lambda n : setattr(self, 'availability_status', n.get_enum_value(TrainingAvailabilityStatus)),
-            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(EmailIdentity)),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "availability_status": lambda n : setattr(self, 'availability_status', n.get_enum_value(TrainingAvailabilityStatus)),
+            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(EmailIdentity)),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "durationInMinutes": lambda n : setattr(self, 'duration_in_minutes', n.get_int_value()),
-            "hasEvaluation": lambda n : setattr(self, 'has_evaluation', n.get_bool_value()),
-            "languageDetails": lambda n : setattr(self, 'language_details', n.get_collection_of_object_values(TrainingLanguageDetail)),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(EmailIdentity)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "duration_in_minutes": lambda n : setattr(self, 'duration_in_minutes', n.get_int_value()),
+            "has_evaluation": lambda n : setattr(self, 'has_evaluation', n.get_bool_value()),
+            "language_details": lambda n : setattr(self, 'language_details', n.get_collection_of_object_values(TrainingLanguageDetail)),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(EmailIdentity)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "source": lambda n : setattr(self, 'source', n.get_enum_value(SimulationContentSource)),
-            "supportedLocales": lambda n : setattr(self, 'supported_locales', n.get_collection_of_primitive_values(str)),
+            "supported_locales": lambda n : setattr(self, 'supported_locales', n.get_collection_of_primitive_values(str)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(TrainingType)),
         }
@@ -106,18 +106,18 @@ class Training(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("availabilityStatus", self.availability_status)
-        writer.write_object_value("createdBy", self.created_by)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_enum_value("availability_status", self.availability_status)
+        writer.write_object_value("created_by", self.created_by)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_int_value("durationInMinutes", self.duration_in_minutes)
-        writer.write_bool_value("hasEvaluation", self.has_evaluation)
-        writer.write_collection_of_object_values("languageDetails", self.language_details)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_int_value("duration_in_minutes", self.duration_in_minutes)
+        writer.write_bool_value("has_evaluation", self.has_evaluation)
+        writer.write_collection_of_object_values("language_details", self.language_details)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_enum_value("source", self.source)
-        writer.write_collection_of_primitive_values("supportedLocales", self.supported_locales)
+        writer.write_collection_of_primitive_values("supported_locales", self.supported_locales)
         writer.write_collection_of_primitive_values("tags", self.tags)
         writer.write_enum_value("type", self.type)
     

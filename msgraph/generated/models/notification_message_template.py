@@ -56,12 +56,12 @@ class NotificationMessageTemplate(Entity):
         from .notification_template_branding_options import NotificationTemplateBrandingOptions
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "brandingOptions": lambda n : setattr(self, 'branding_options', n.get_collection_of_enum_values(NotificationTemplateBrandingOptions)),
-            "defaultLocale": lambda n : setattr(self, 'default_locale', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "localizedNotificationMessages": lambda n : setattr(self, 'localized_notification_messages', n.get_collection_of_object_values(LocalizedNotificationMessage)),
-            "roleScopeTagIds": lambda n : setattr(self, 'role_scope_tag_ids', n.get_collection_of_primitive_values(str)),
+            "branding_options": lambda n : setattr(self, 'branding_options', n.get_collection_of_enum_values(NotificationTemplateBrandingOptions)),
+            "default_locale": lambda n : setattr(self, 'default_locale', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "localized_notification_messages": lambda n : setattr(self, 'localized_notification_messages', n.get_collection_of_object_values(LocalizedNotificationMessage)),
+            "role_scope_tag_ids": lambda n : setattr(self, 'role_scope_tag_ids', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -76,11 +76,11 @@ class NotificationMessageTemplate(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("brandingOptions", self.branding_options)
-        writer.write_str_value("defaultLocale", self.default_locale)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-        writer.write_collection_of_object_values("localizedNotificationMessages", self.localized_notification_messages)
-        writer.write_collection_of_primitive_values("roleScopeTagIds", self.role_scope_tag_ids)
+        writer.write_enum_value("branding_options", self.branding_options)
+        writer.write_str_value("default_locale", self.default_locale)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
+        writer.write_collection_of_object_values("localized_notification_messages", self.localized_notification_messages)
+        writer.write_collection_of_primitive_values("role_scope_tag_ids", self.role_scope_tag_ids)
     
 

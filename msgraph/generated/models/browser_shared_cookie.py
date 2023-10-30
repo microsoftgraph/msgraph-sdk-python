@@ -72,16 +72,16 @@ class BrowserSharedCookie(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "deleted_date_time": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(BrowserSharedCookieHistory)),
-            "hostOnly": lambda n : setattr(self, 'host_only', n.get_bool_value()),
-            "hostOrDomain": lambda n : setattr(self, 'host_or_domain', n.get_str_value()),
-            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
-            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "host_only": lambda n : setattr(self, 'host_only', n.get_bool_value()),
+            "host_or_domain": lambda n : setattr(self, 'host_or_domain', n.get_str_value()),
+            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
+            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
-            "sourceEnvironment": lambda n : setattr(self, 'source_environment', n.get_enum_value(BrowserSharedCookieSourceEnvironment)),
+            "source_environment": lambda n : setattr(self, 'source_environment', n.get_enum_value(BrowserSharedCookieSourceEnvironment)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(BrowserSharedCookieStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -98,16 +98,16 @@ class BrowserSharedCookie(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("comment", self.comment)
-        writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
-        writer.write_str_value("displayName", self.display_name)
+        writer.write_datetime_value("created_date_time", self.created_date_time)
+        writer.write_datetime_value("deleted_date_time", self.deleted_date_time)
+        writer.write_str_value("display_name", self.display_name)
         writer.write_collection_of_object_values("history", self.history)
-        writer.write_bool_value("hostOnly", self.host_only)
-        writer.write_str_value("hostOrDomain", self.host_or_domain)
-        writer.write_object_value("lastModifiedBy", self.last_modified_by)
-        writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_bool_value("host_only", self.host_only)
+        writer.write_str_value("host_or_domain", self.host_or_domain)
+        writer.write_object_value("last_modified_by", self.last_modified_by)
+        writer.write_datetime_value("last_modified_date_time", self.last_modified_date_time)
         writer.write_str_value("path", self.path)
-        writer.write_enum_value("sourceEnvironment", self.source_environment)
+        writer.write_enum_value("source_environment", self.source_environment)
         writer.write_enum_value("status", self.status)
     
 

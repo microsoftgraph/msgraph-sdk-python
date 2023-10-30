@@ -66,10 +66,10 @@ class IdentityUserFlowAttribute(Entity):
         from .identity_user_flow_attribute_type import IdentityUserFlowAttributeType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "dataType": lambda n : setattr(self, 'data_type', n.get_enum_value(IdentityUserFlowAttributeDataType)),
+            "data_type": lambda n : setattr(self, 'data_type', n.get_enum_value(IdentityUserFlowAttributeDataType)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "userFlowAttributeType": lambda n : setattr(self, 'user_flow_attribute_type', n.get_enum_value(IdentityUserFlowAttributeType)),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "user_flow_attribute_type": lambda n : setattr(self, 'user_flow_attribute_type', n.get_enum_value(IdentityUserFlowAttributeType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,9 +84,9 @@ class IdentityUserFlowAttribute(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_enum_value("dataType", self.data_type)
+        writer.write_enum_value("data_type", self.data_type)
         writer.write_str_value("description", self.description)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_enum_value("userFlowAttributeType", self.user_flow_attribute_type)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_enum_value("user_flow_attribute_type", self.user_flow_attribute_type)
     
 

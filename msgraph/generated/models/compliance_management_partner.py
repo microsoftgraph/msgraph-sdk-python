@@ -62,15 +62,15 @@ class ComplianceManagementPartner(Entity):
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "androidEnrollmentAssignments": lambda n : setattr(self, 'android_enrollment_assignments', n.get_collection_of_object_values(ComplianceManagementPartnerAssignment)),
-            "androidOnboarded": lambda n : setattr(self, 'android_onboarded', n.get_bool_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "iosEnrollmentAssignments": lambda n : setattr(self, 'ios_enrollment_assignments', n.get_collection_of_object_values(ComplianceManagementPartnerAssignment)),
-            "iosOnboarded": lambda n : setattr(self, 'ios_onboarded', n.get_bool_value()),
-            "lastHeartbeatDateTime": lambda n : setattr(self, 'last_heartbeat_date_time', n.get_datetime_value()),
-            "macOsEnrollmentAssignments": lambda n : setattr(self, 'mac_os_enrollment_assignments', n.get_collection_of_object_values(ComplianceManagementPartnerAssignment)),
-            "macOsOnboarded": lambda n : setattr(self, 'mac_os_onboarded', n.get_bool_value()),
-            "partnerState": lambda n : setattr(self, 'partner_state', n.get_enum_value(DeviceManagementPartnerTenantState)),
+            "android_enrollment_assignments": lambda n : setattr(self, 'android_enrollment_assignments', n.get_collection_of_object_values(ComplianceManagementPartnerAssignment)),
+            "android_onboarded": lambda n : setattr(self, 'android_onboarded', n.get_bool_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "ios_enrollment_assignments": lambda n : setattr(self, 'ios_enrollment_assignments', n.get_collection_of_object_values(ComplianceManagementPartnerAssignment)),
+            "ios_onboarded": lambda n : setattr(self, 'ios_onboarded', n.get_bool_value()),
+            "last_heartbeat_date_time": lambda n : setattr(self, 'last_heartbeat_date_time', n.get_datetime_value()),
+            "mac_os_enrollment_assignments": lambda n : setattr(self, 'mac_os_enrollment_assignments', n.get_collection_of_object_values(ComplianceManagementPartnerAssignment)),
+            "mac_os_onboarded": lambda n : setattr(self, 'mac_os_onboarded', n.get_bool_value()),
+            "partner_state": lambda n : setattr(self, 'partner_state', n.get_enum_value(DeviceManagementPartnerTenantState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -85,14 +85,14 @@ class ComplianceManagementPartner(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("androidEnrollmentAssignments", self.android_enrollment_assignments)
-        writer.write_bool_value("androidOnboarded", self.android_onboarded)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_collection_of_object_values("iosEnrollmentAssignments", self.ios_enrollment_assignments)
-        writer.write_bool_value("iosOnboarded", self.ios_onboarded)
-        writer.write_datetime_value("lastHeartbeatDateTime", self.last_heartbeat_date_time)
-        writer.write_collection_of_object_values("macOsEnrollmentAssignments", self.mac_os_enrollment_assignments)
-        writer.write_bool_value("macOsOnboarded", self.mac_os_onboarded)
-        writer.write_enum_value("partnerState", self.partner_state)
+        writer.write_collection_of_object_values("android_enrollment_assignments", self.android_enrollment_assignments)
+        writer.write_bool_value("android_onboarded", self.android_onboarded)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_collection_of_object_values("ios_enrollment_assignments", self.ios_enrollment_assignments)
+        writer.write_bool_value("ios_onboarded", self.ios_onboarded)
+        writer.write_datetime_value("last_heartbeat_date_time", self.last_heartbeat_date_time)
+        writer.write_collection_of_object_values("mac_os_enrollment_assignments", self.mac_os_enrollment_assignments)
+        writer.write_bool_value("mac_os_onboarded", self.mac_os_onboarded)
+        writer.write_enum_value("partner_state", self.partner_state)
     
 

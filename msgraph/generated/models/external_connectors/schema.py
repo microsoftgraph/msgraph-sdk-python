@@ -41,7 +41,7 @@ class Schema(Entity):
         from .property_ import Property_
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "baseType": lambda n : setattr(self, 'base_type', n.get_str_value()),
+            "base_type": lambda n : setattr(self, 'base_type', n.get_str_value()),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(Property_)),
         }
         super_fields = super().get_field_deserializers()
@@ -57,7 +57,7 @@ class Schema(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("baseType", self.base_type)
+        writer.write_str_value("base_type", self.base_type)
         writer.write_collection_of_object_values("properties", self.properties)
     
 

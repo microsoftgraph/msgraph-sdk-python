@@ -40,8 +40,8 @@ class TeamsAppPermissionSet(AdditionalDataHolder, BackedModel, Parsable):
         from .teams_app_resource_specific_permission import TeamsAppResourceSpecificPermission
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resourceSpecificPermissions": lambda n : setattr(self, 'resource_specific_permissions', n.get_collection_of_object_values(TeamsAppResourceSpecificPermission)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "resource_specific_permissions": lambda n : setattr(self, 'resource_specific_permissions', n.get_collection_of_object_values(TeamsAppResourceSpecificPermission)),
         }
         return fields
     
@@ -53,8 +53,8 @@ class TeamsAppPermissionSet(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_collection_of_object_values("resourceSpecificPermissions", self.resource_specific_permissions)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_collection_of_object_values("resource_specific_permissions", self.resource_specific_permissions)
         writer.write_additional_data_value(self.additional_data)
     
 

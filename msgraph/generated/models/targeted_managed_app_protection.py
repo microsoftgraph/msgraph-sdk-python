@@ -63,7 +63,7 @@ class TargetedManagedAppProtection(ManagedAppProtection):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(TargetedManagedAppPolicyAssignment)),
-            "isAssigned": lambda n : setattr(self, 'is_assigned', n.get_bool_value()),
+            "is_assigned": lambda n : setattr(self, 'is_assigned', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -79,6 +79,6 @@ class TargetedManagedAppProtection(ManagedAppProtection):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)
-        writer.write_bool_value("isAssigned", self.is_assigned)
+        writer.write_bool_value("is_assigned", self.is_assigned)
     
 

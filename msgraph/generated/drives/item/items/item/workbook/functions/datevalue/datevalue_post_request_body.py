@@ -38,7 +38,7 @@ class DatevaluePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         from ........models.json import Json
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "dateText": lambda n : setattr(self, 'date_text', n.get_object_value(Json)),
+            "date_text": lambda n : setattr(self, 'date_text', n.get_object_value(Json)),
         }
         return fields
     
@@ -50,7 +50,7 @@ class DatevaluePostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_object_value("dateText", self.date_text)
+        writer.write_object_value("date_text", self.date_text)
         writer.write_additional_data_value(self.additional_data)
     
 

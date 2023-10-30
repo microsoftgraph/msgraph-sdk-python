@@ -43,9 +43,9 @@ class ItemAnalytics(Entity):
         from .item_activity_stat import ItemActivityStat
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allTime": lambda n : setattr(self, 'all_time', n.get_object_value(ItemActivityStat)),
-            "itemActivityStats": lambda n : setattr(self, 'item_activity_stats', n.get_collection_of_object_values(ItemActivityStat)),
-            "lastSevenDays": lambda n : setattr(self, 'last_seven_days', n.get_object_value(ItemActivityStat)),
+            "all_time": lambda n : setattr(self, 'all_time', n.get_object_value(ItemActivityStat)),
+            "item_activity_stats": lambda n : setattr(self, 'item_activity_stats', n.get_collection_of_object_values(ItemActivityStat)),
+            "last_seven_days": lambda n : setattr(self, 'last_seven_days', n.get_object_value(ItemActivityStat)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,8 +60,8 @@ class ItemAnalytics(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_object_value("allTime", self.all_time)
-        writer.write_collection_of_object_values("itemActivityStats", self.item_activity_stats)
-        writer.write_object_value("lastSevenDays", self.last_seven_days)
+        writer.write_object_value("all_time", self.all_time)
+        writer.write_collection_of_object_values("item_activity_stats", self.item_activity_stats)
+        writer.write_object_value("last_seven_days", self.last_seven_days)
     
 

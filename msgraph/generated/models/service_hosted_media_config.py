@@ -39,7 +39,7 @@ class ServiceHostedMediaConfig(MediaConfig):
         from .media_info import MediaInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "preFetchMedia": lambda n : setattr(self, 'pre_fetch_media', n.get_collection_of_object_values(MediaInfo)),
+            "pre_fetch_media": lambda n : setattr(self, 'pre_fetch_media', n.get_collection_of_object_values(MediaInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class ServiceHostedMediaConfig(MediaConfig):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("preFetchMedia", self.pre_fetch_media)
+        writer.write_collection_of_object_values("pre_fetch_media", self.pre_fetch_media)
     
 

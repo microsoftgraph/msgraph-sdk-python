@@ -51,12 +51,12 @@ class SharingLink(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "application": lambda n : setattr(self, 'application', n.get_object_value(Identity)),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "preventsDownload": lambda n : setattr(self, 'prevents_download', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "prevents_download": lambda n : setattr(self, 'prevents_download', n.get_bool_value()),
             "scope": lambda n : setattr(self, 'scope', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
-            "webHtml": lambda n : setattr(self, 'web_html', n.get_str_value()),
-            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "web_html": lambda n : setattr(self, 'web_html', n.get_str_value()),
+            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         return fields
     
@@ -69,12 +69,12 @@ class SharingLink(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("application", self.application)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_bool_value("preventsDownload", self.prevents_download)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_bool_value("prevents_download", self.prevents_download)
         writer.write_str_value("scope", self.scope)
         writer.write_str_value("type", self.type)
-        writer.write_str_value("webHtml", self.web_html)
-        writer.write_str_value("webUrl", self.web_url)
+        writer.write_str_value("web_html", self.web_html)
+        writer.write_str_value("web_url", self.web_url)
         writer.write_additional_data_value(self.additional_data)
     
 

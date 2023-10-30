@@ -59,15 +59,15 @@ class ConversationThread(Entity):
         from .recipient import Recipient
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(Recipient)),
-            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "isLocked": lambda n : setattr(self, 'is_locked', n.get_bool_value()),
-            "lastDeliveredDateTime": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
+            "cc_recipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(Recipient)),
+            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "is_locked": lambda n : setattr(self, 'is_locked', n.get_bool_value()),
+            "last_delivered_date_time": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
             "posts": lambda n : setattr(self, 'posts', n.get_collection_of_object_values(Post)),
             "preview": lambda n : setattr(self, 'preview', n.get_str_value()),
-            "toRecipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(Recipient)),
+            "to_recipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(Recipient)),
             "topic": lambda n : setattr(self, 'topic', n.get_str_value()),
-            "uniqueSenders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
+            "unique_senders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -82,14 +82,14 @@ class ConversationThread(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_collection_of_object_values("ccRecipients", self.cc_recipients)
-        writer.write_bool_value("hasAttachments", self.has_attachments)
-        writer.write_bool_value("isLocked", self.is_locked)
-        writer.write_datetime_value("lastDeliveredDateTime", self.last_delivered_date_time)
+        writer.write_collection_of_object_values("cc_recipients", self.cc_recipients)
+        writer.write_bool_value("has_attachments", self.has_attachments)
+        writer.write_bool_value("is_locked", self.is_locked)
+        writer.write_datetime_value("last_delivered_date_time", self.last_delivered_date_time)
         writer.write_collection_of_object_values("posts", self.posts)
         writer.write_str_value("preview", self.preview)
-        writer.write_collection_of_object_values("toRecipients", self.to_recipients)
+        writer.write_collection_of_object_values("to_recipients", self.to_recipients)
         writer.write_str_value("topic", self.topic)
-        writer.write_collection_of_primitive_values("uniqueSenders", self.unique_senders)
+        writer.write_collection_of_primitive_values("unique_senders", self.unique_senders)
     
 

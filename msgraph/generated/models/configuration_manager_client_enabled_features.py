@@ -46,13 +46,13 @@ class ConfigurationManagerClientEnabledFeatures(AdditionalDataHolder, BackedMode
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "compliancePolicy": lambda n : setattr(self, 'compliance_policy', n.get_bool_value()),
-            "deviceConfiguration": lambda n : setattr(self, 'device_configuration', n.get_bool_value()),
+            "compliance_policy": lambda n : setattr(self, 'compliance_policy', n.get_bool_value()),
+            "device_configuration": lambda n : setattr(self, 'device_configuration', n.get_bool_value()),
             "inventory": lambda n : setattr(self, 'inventory', n.get_bool_value()),
-            "modernApps": lambda n : setattr(self, 'modern_apps', n.get_bool_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resourceAccess": lambda n : setattr(self, 'resource_access', n.get_bool_value()),
-            "windowsUpdateForBusiness": lambda n : setattr(self, 'windows_update_for_business', n.get_bool_value()),
+            "modern_apps": lambda n : setattr(self, 'modern_apps', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "resource_access": lambda n : setattr(self, 'resource_access', n.get_bool_value()),
+            "windows_update_for_business": lambda n : setattr(self, 'windows_update_for_business', n.get_bool_value()),
         }
         return fields
     
@@ -64,13 +64,13 @@ class ConfigurationManagerClientEnabledFeatures(AdditionalDataHolder, BackedMode
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_bool_value("compliancePolicy", self.compliance_policy)
-        writer.write_bool_value("deviceConfiguration", self.device_configuration)
+        writer.write_bool_value("compliance_policy", self.compliance_policy)
+        writer.write_bool_value("device_configuration", self.device_configuration)
         writer.write_bool_value("inventory", self.inventory)
-        writer.write_bool_value("modernApps", self.modern_apps)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_bool_value("resourceAccess", self.resource_access)
-        writer.write_bool_value("windowsUpdateForBusiness", self.windows_update_for_business)
+        writer.write_bool_value("modern_apps", self.modern_apps)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_bool_value("resource_access", self.resource_access)
+        writer.write_bool_value("windows_update_for_business", self.windows_update_for_business)
         writer.write_additional_data_value(self.additional_data)
     
 

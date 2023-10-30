@@ -43,13 +43,13 @@ class RunSummary(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "failedRuns": lambda n : setattr(self, 'failed_runs', n.get_int_value()),
-            "failedTasks": lambda n : setattr(self, 'failed_tasks', n.get_int_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "successfulRuns": lambda n : setattr(self, 'successful_runs', n.get_int_value()),
-            "totalRuns": lambda n : setattr(self, 'total_runs', n.get_int_value()),
-            "totalTasks": lambda n : setattr(self, 'total_tasks', n.get_int_value()),
-            "totalUsers": lambda n : setattr(self, 'total_users', n.get_int_value()),
+            "failed_runs": lambda n : setattr(self, 'failed_runs', n.get_int_value()),
+            "failed_tasks": lambda n : setattr(self, 'failed_tasks', n.get_int_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "successful_runs": lambda n : setattr(self, 'successful_runs', n.get_int_value()),
+            "total_runs": lambda n : setattr(self, 'total_runs', n.get_int_value()),
+            "total_tasks": lambda n : setattr(self, 'total_tasks', n.get_int_value()),
+            "total_users": lambda n : setattr(self, 'total_users', n.get_int_value()),
         }
         return fields
     
@@ -61,13 +61,13 @@ class RunSummary(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_int_value("failedRuns", self.failed_runs)
-        writer.write_int_value("failedTasks", self.failed_tasks)
-        writer.write_str_value("OdataType", self.odata_type)
-        writer.write_int_value("successfulRuns", self.successful_runs)
-        writer.write_int_value("totalRuns", self.total_runs)
-        writer.write_int_value("totalTasks", self.total_tasks)
-        writer.write_int_value("totalUsers", self.total_users)
+        writer.write_int_value("failed_runs", self.failed_runs)
+        writer.write_int_value("failed_tasks", self.failed_tasks)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_int_value("successful_runs", self.successful_runs)
+        writer.write_int_value("total_runs", self.total_runs)
+        writer.write_int_value("total_tasks", self.total_tasks)
+        writer.write_int_value("total_users", self.total_users)
         writer.write_additional_data_value(self.additional_data)
     
 

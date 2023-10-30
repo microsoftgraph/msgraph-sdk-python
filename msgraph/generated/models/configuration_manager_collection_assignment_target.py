@@ -39,7 +39,7 @@ class ConfigurationManagerCollectionAssignmentTarget(DeviceAndAppManagementAssig
         from .device_and_app_management_assignment_target import DeviceAndAppManagementAssignmentTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "collectionId": lambda n : setattr(self, 'collection_id', n.get_str_value()),
+            "collection_id": lambda n : setattr(self, 'collection_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,6 +54,6 @@ class ConfigurationManagerCollectionAssignmentTarget(DeviceAndAppManagementAssig
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_str_value("collectionId", self.collection_id)
+        writer.write_str_value("collection_id", self.collection_id)
     
 

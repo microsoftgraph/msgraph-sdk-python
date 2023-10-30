@@ -31,7 +31,7 @@ class CheckMemberGroupsPostRequestBody(AdditionalDataHolder, BackedModel, Parsab
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "groupIds": lambda n : setattr(self, 'group_ids', n.get_collection_of_primitive_values(str)),
+            "group_ids": lambda n : setattr(self, 'group_ids', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -43,7 +43,7 @@ class CheckMemberGroupsPostRequestBody(AdditionalDataHolder, BackedModel, Parsab
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_collection_of_primitive_values("groupIds", self.group_ids)
+        writer.write_collection_of_primitive_values("group_ids", self.group_ids)
         writer.write_additional_data_value(self.additional_data)
     
 

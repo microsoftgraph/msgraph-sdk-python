@@ -15,11 +15,11 @@ from .training_setting import TrainingSetting
 class MicrosoftCustomTrainingSetting(TrainingSetting):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.microsoftCustomTrainingSetting"
-    # The completionDateTime property
+    # The completion date and time of the training. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     completion_date_time: Optional[datetime.datetime] = None
-    # The trainingAssignmentMappings property
+    # The mapping details of the associated training.
     training_assignment_mappings: Optional[List[MicrosoftTrainingAssignmentMapping]] = None
-    # The trainingCompletionDuration property
+    # The training completion duration that needs to be provided before scheduling the training. Possible values are: week, fortnite, month, unknownFutureValue.
     training_completion_duration: Optional[TrainingCompletionDuration] = None
     
     @staticmethod
@@ -47,9 +47,9 @@ class MicrosoftCustomTrainingSetting(TrainingSetting):
         from .training_setting import TrainingSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
-            "trainingAssignmentMappings": lambda n : setattr(self, 'training_assignment_mappings', n.get_collection_of_object_values(MicrosoftTrainingAssignmentMapping)),
-            "trainingCompletionDuration": lambda n : setattr(self, 'training_completion_duration', n.get_enum_value(TrainingCompletionDuration)),
+            "completion_date_time": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
+            "training_assignment_mappings": lambda n : setattr(self, 'training_assignment_mappings', n.get_collection_of_object_values(MicrosoftTrainingAssignmentMapping)),
+            "training_completion_duration": lambda n : setattr(self, 'training_completion_duration', n.get_enum_value(TrainingCompletionDuration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -64,8 +64,8 @@ class MicrosoftCustomTrainingSetting(TrainingSetting):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
-        writer.write_datetime_value("completionDateTime", self.completion_date_time)
-        writer.write_collection_of_object_values("trainingAssignmentMappings", self.training_assignment_mappings)
-        writer.write_enum_value("trainingCompletionDuration", self.training_completion_duration)
+        writer.write_datetime_value("completion_date_time", self.completion_date_time)
+        writer.write_collection_of_object_values("training_assignment_mappings", self.training_assignment_mappings)
+        writer.write_enum_value("training_completion_duration", self.training_completion_duration)
     
 

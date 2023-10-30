@@ -14,11 +14,11 @@ class OAuthConsentAppDetail(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The appScope property
+    # App scope. Possible values are: unknown, readCalendar, readContact, readMail, readAllChat, readAllFile, readAndWriteMail, sendMail, unknownFutureValue.
     app_scope: Optional[OAuthAppScope] = None
-    # The displayLogo property
+    # App display logo.
     display_logo: Optional[str] = None
-    # The displayName property
+    # App name.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -44,10 +44,10 @@ class OAuthConsentAppDetail(AdditionalDataHolder, BackedModel, Parsable):
         from .o_auth_app_scope import OAuthAppScope
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appScope": lambda n : setattr(self, 'app_scope', n.get_enum_value(OAuthAppScope)),
-            "displayLogo": lambda n : setattr(self, 'display_logo', n.get_str_value()),
-            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "OdataType": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "app_scope": lambda n : setattr(self, 'app_scope', n.get_enum_value(OAuthAppScope)),
+            "display_logo": lambda n : setattr(self, 'display_logo', n.get_str_value()),
+            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
     
@@ -59,10 +59,10 @@ class OAuthConsentAppDetail(AdditionalDataHolder, BackedModel, Parsable):
         """
         if not writer:
             raise TypeError("writer cannot be null.")
-        writer.write_enum_value("appScope", self.app_scope)
-        writer.write_str_value("displayLogo", self.display_logo)
-        writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("OdataType", self.odata_type)
+        writer.write_enum_value("app_scope", self.app_scope)
+        writer.write_str_value("display_logo", self.display_logo)
+        writer.write_str_value("display_name", self.display_name)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     
 

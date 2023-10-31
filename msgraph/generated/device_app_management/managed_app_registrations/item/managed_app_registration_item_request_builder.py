@@ -50,10 +50,10 @@ class ManagedAppRegistrationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedAppRegistrationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppRegistration]:
         """
-        Read properties and relationships of the iosManagedAppRegistration object.
+        Read properties and relationships of the androidManagedAppRegistration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppRegistration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-iosmanagedappregistration-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-androidmanagedappregistration-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -112,7 +112,7 @@ class ManagedAppRegistrationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppRegistrationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the iosManagedAppRegistration object.
+        Read properties and relationships of the androidManagedAppRegistration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -197,7 +197,7 @@ class ManagedAppRegistrationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppRegistrationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the iosManagedAppRegistration object.
+        Read properties and relationships of the androidManagedAppRegistration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

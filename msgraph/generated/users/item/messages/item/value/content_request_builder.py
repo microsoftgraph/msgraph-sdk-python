@@ -30,7 +30,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
         Get media content for the navigation property messages from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
-        Find more info here: https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

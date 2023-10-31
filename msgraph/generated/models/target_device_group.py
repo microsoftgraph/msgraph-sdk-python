@@ -10,7 +10,7 @@ from .entity import Entity
 
 @dataclass
 class TargetDeviceGroup(Entity):
-    # The displayName property
+    # Display name for the target device group.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

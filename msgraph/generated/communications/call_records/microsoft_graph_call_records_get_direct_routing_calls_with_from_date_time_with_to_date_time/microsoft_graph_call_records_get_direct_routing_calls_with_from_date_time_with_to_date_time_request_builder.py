@@ -28,8 +28,8 @@ class MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTi
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['from_date_time'] = str(from_date_time)
-            path_parameters['to_date_time'] = str(to_date_time)
+            path_parameters['fromDateTime'] = str(from_date_time)
+            path_parameters['toDateTime'] = str(to_date_time)
         super().__init__(request_adapter, "{+baseurl}/communications/callRecords/microsoft.graph.callRecords.getDirectRoutingCalls(fromDateTime={fromDateTime},toDateTime={toDateTime}){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
     
     async def get(self,request_configuration: Optional[MicrosoftGraphCallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilderGetRequestConfiguration] = None) -> Optional[GetDirectRoutingCallsWithFromDateTimeWithToDateTimeGetResponse]:

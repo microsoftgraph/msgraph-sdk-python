@@ -31,7 +31,7 @@ class ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipToke
         if isinstance(path_parameters, dict):
             path_parameters['filter'] = str(filter)
             path_parameters['skip'] = str(skip)
-            path_parameters['skip_token'] = str(skip_token)
+            path_parameters['skipToken'] = str(skip_token)
             path_parameters['top'] = str(top)
         super().__init__(request_adapter, "{+baseurl}/reports/managedDeviceEnrollmentFailureDetails(skip={skip},top={top},filter='{filter}',skipToken='{skipToken}')", path_parameters)
     

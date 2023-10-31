@@ -75,11 +75,11 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[MailFolder] = None, request_configuration: Optional[MailFolderItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[MailFolder]:
         """
-        Update the writable properties of a mailSearchFolder object. This API is available in the following national cloud deployments.
+        Update the properties of mailfolder object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolder]
-        Find more info here: https://learn.microsoft.com/graph/api/mailsearchfolder-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/mailfolder-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -133,7 +133,7 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[MailFolder] = None, request_configuration: Optional[MailFolderItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the writable properties of a mailSearchFolder object. This API is available in the following national cloud deployments.
+        Update the properties of mailfolder object. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

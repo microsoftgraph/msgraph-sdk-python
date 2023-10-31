@@ -26,7 +26,7 @@ class FindTenantInformationByTenantIdWithTenantIdRequestBuilder(BaseRequestBuild
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['tenant_id'] = str(tenant_id)
+            path_parameters['tenantId'] = str(tenant_id)
         super().__init__(request_adapter, "{+baseurl}/tenantRelationships/findTenantInformationByTenantId(tenantId='{tenantId}')", path_parameters)
     
     async def get(self,request_configuration: Optional[FindTenantInformationByTenantIdWithTenantIdRequestBuilderGetRequestConfiguration] = None) -> Optional[TenantInformation]:

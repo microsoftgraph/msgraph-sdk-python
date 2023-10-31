@@ -55,10 +55,10 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ListItemRequestBuilderGetRequestConfiguration] = None) -> Optional[List_]:
         """
-        Get a list of rich long-running operations associated with a list. This API is available in the following national cloud deployments.
+        Returns the metadata for a list][]. This API is available in the following [national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[List_]
-        Find more info here: https://learn.microsoft.com/graph/api/list-list-operations?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/list-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -117,7 +117,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ListItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of rich long-running operations associated with a list. This API is available in the following national cloud deployments.
+        Returns the metadata for a list][]. This API is available in the following [national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -247,7 +247,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ListItemRequestBuilderGetQueryParameters():
         """
-        Get a list of rich long-running operations associated with a list. This API is available in the following national cloud deployments.
+        Returns the metadata for a list][]. This API is available in the following [national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

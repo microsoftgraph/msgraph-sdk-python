@@ -27,8 +27,8 @@ class UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBu
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['included_user_roles'] = str(included_user_roles)
-            path_parameters['included_user_types'] = str(included_user_types)
+            path_parameters['includedUserRoles'] = str(included_user_roles)
+            path_parameters['includedUserTypes'] = str(included_user_types)
         super().__init__(request_adapter, "{+baseurl}/reports/authenticationMethods/usersRegisteredByMethod(includedUserTypes='{includedUserTypes}',includedUserRoles='{includedUserRoles}')", path_parameters)
     
     async def get(self,request_configuration: Optional[UsersRegisteredByMethodWithIncludedUserTypesWithIncludedUserRolesRequestBuilderGetRequestConfiguration] = None) -> Optional[UserRegistrationMethodSummary]:

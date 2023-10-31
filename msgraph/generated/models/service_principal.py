@@ -111,7 +111,7 @@ class ServicePrincipal(DirectoryObject):
     preferred_single_sign_on_mode: Optional[str] = None
     # This property can be used on SAML applications (apps that have preferredSingleSignOnMode set to saml) to control which certificate is used to sign the SAML responses. For applications that are not SAML, do not write or otherwise rely on this property.
     preferred_token_signing_key_thumbprint: Optional[str] = None
-    # The remoteDesktopSecurityConfiguration property
+    # The remoteDesktopSecurityConfiguration object applied to this service principal. Supports $filter (eq) for isRemoteDesktopProtocolEnabled property.
     remote_desktop_security_configuration: Optional[RemoteDesktopSecurityConfiguration] = None
     # The URLs that user tokens are sent to for sign in with the associated application, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to for the associated application. Not nullable.
     reply_urls: Optional[List[str]] = None

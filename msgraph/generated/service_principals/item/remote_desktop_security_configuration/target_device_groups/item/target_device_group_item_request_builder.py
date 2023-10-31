@@ -28,9 +28,10 @@ class TargetDeviceGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TargetDeviceGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property targetDeviceGroups for servicePrincipals
+        Delete a targetDeviceGroup object for the remoteDesktopSecurityConfiguration object on the servicePrincipal. Any user authenticating using the Microsoft Entra ID Remote Desktop Services (RDS) authentication protocol to a Microsoft Entra joined or Microsoft Entra hybrid joined device that's in the removed targetDeviceGroup doesn't get SSO prompts.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/remotedesktopsecurityconfiguration-delete-targetdevicegroups?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -47,9 +48,10 @@ class TargetDeviceGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TargetDeviceGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TargetDeviceGroup]:
         """
-        Get targetDeviceGroups from servicePrincipals
+        Read the properties and relationships of a targetDeviceGroup object for the remoteDesktopSecurityConfiguration object on the servicePrincipal.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TargetDeviceGroup]
+        Find more info here: https://learn.microsoft.com/graph/api/targetdevicegroup-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,10 +70,11 @@ class TargetDeviceGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TargetDeviceGroup] = None, request_configuration: Optional[TargetDeviceGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TargetDeviceGroup]:
         """
-        Update the navigation property targetDeviceGroups in servicePrincipals
+        Update the properties of a targetDeviceGroup object for remoteDesktopSecurityConfiguration object on the servicePrincipal. You can configure a maximum of 10 target device groups for the remoteDesktopSecurityConfiguraiton object on the servicePrincipal.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TargetDeviceGroup]
+        Find more info here: https://learn.microsoft.com/graph/api/targetdevicegroup-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +95,7 @@ class TargetDeviceGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TargetDeviceGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property targetDeviceGroups for servicePrincipals
+        Delete a targetDeviceGroup object for the remoteDesktopSecurityConfiguration object on the servicePrincipal. Any user authenticating using the Microsoft Entra ID Remote Desktop Services (RDS) authentication protocol to a Microsoft Entra joined or Microsoft Entra hybrid joined device that's in the removed targetDeviceGroup doesn't get SSO prompts.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,7 +111,7 @@ class TargetDeviceGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TargetDeviceGroupItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get targetDeviceGroups from servicePrincipals
+        Read the properties and relationships of a targetDeviceGroup object for the remoteDesktopSecurityConfiguration object on the servicePrincipal.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -125,7 +128,7 @@ class TargetDeviceGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TargetDeviceGroup] = None, request_configuration: Optional[TargetDeviceGroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property targetDeviceGroups in servicePrincipals
+        Update the properties of a targetDeviceGroup object for remoteDesktopSecurityConfiguration object on the servicePrincipal. You can configure a maximum of 10 target device groups for the remoteDesktopSecurityConfiguraiton object on the servicePrincipal.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -166,7 +169,7 @@ class TargetDeviceGroupItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TargetDeviceGroupItemRequestBuilderGetQueryParameters():
         """
-        Get targetDeviceGroups from servicePrincipals
+        Read the properties and relationships of a targetDeviceGroup object for the remoteDesktopSecurityConfiguration object on the servicePrincipal.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

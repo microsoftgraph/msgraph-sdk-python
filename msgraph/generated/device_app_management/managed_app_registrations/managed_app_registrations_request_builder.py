@@ -46,10 +46,10 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedAppRegistrationsRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppRegistrationCollectionResponse]:
         """
-        List properties and relationships of the managedAppRegistration objects.
+        List properties and relationships of the androidManagedAppRegistration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppRegistrationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappregistration-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-androidmanagedappregistration-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -93,7 +93,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppRegistrationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedAppRegistration objects.
+        List properties and relationships of the androidManagedAppRegistration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +159,7 @@ class ManagedAppRegistrationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppRegistrationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedAppRegistration objects.
+        List properties and relationships of the androidManagedAppRegistration objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

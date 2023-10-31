@@ -45,9 +45,10 @@ class TargetDeviceGroupsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TargetDeviceGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[TargetDeviceGroupCollectionResponse]:
         """
-        Get targetDeviceGroups from servicePrincipals
+        Get a list of the targetDeviceGroup objects and their properties on the remoteDesktopSecurityConfiguration resource on the servicePrincipal. Any user authenticating using the Microsoft Entra ID Remote Desktop Services (RDS) authentication protocol to a Microsoft Entra joined or Microsoft Entra hybrid joined device that belongs to the targetDeviceGroup will get SSO.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TargetDeviceGroupCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/remotedesktopsecurityconfiguration-list-targetdevicegroups?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,10 +67,11 @@ class TargetDeviceGroupsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TargetDeviceGroup] = None, request_configuration: Optional[TargetDeviceGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[TargetDeviceGroup]:
         """
-        Create new navigation property to targetDeviceGroups for servicePrincipals
+        Create a new targetDeviceGroup object for the remoteDesktopSecurityConfiguration object on the servicePrincipal. You can configure a maximum of 10 target device groups for the remoteDesktopSecurityConfiguraiton object on the servicePrincipal.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TargetDeviceGroup]
+        Find more info here: https://learn.microsoft.com/graph/api/remotedesktopsecurityconfiguration-post-targetdevicegroups?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,7 +92,7 @@ class TargetDeviceGroupsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TargetDeviceGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get targetDeviceGroups from servicePrincipals
+        Get a list of the targetDeviceGroup objects and their properties on the remoteDesktopSecurityConfiguration resource on the servicePrincipal. Any user authenticating using the Microsoft Entra ID Remote Desktop Services (RDS) authentication protocol to a Microsoft Entra joined or Microsoft Entra hybrid joined device that belongs to the targetDeviceGroup will get SSO.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +109,7 @@ class TargetDeviceGroupsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[TargetDeviceGroup] = None, request_configuration: Optional[TargetDeviceGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to targetDeviceGroups for servicePrincipals
+        Create a new targetDeviceGroup object for the remoteDesktopSecurityConfiguration object on the servicePrincipal. You can configure a maximum of 10 target device groups for the remoteDesktopSecurityConfiguraiton object on the servicePrincipal.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +149,7 @@ class TargetDeviceGroupsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TargetDeviceGroupsRequestBuilderGetQueryParameters():
         """
-        Get targetDeviceGroups from servicePrincipals
+        Get a list of the targetDeviceGroup objects and their properties on the remoteDesktopSecurityConfiguration resource on the servicePrincipal. Any user authenticating using the Microsoft Entra ID Remote Desktop Services (RDS) authentication protocol to a Microsoft Entra joined or Microsoft Entra hybrid joined device that belongs to the targetDeviceGroup will get SSO.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

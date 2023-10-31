@@ -51,7 +51,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         Retrieve a list of chart objects. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/chart-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/worksheet-list-charts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

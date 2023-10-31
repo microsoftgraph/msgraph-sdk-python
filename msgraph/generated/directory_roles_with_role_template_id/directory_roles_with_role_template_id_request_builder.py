@@ -26,7 +26,7 @@ class DirectoryRolesWithRoleTemplateIdRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['role_template_id'] = str(role_template_id)
+            path_parameters['roleTemplateId'] = str(role_template_id)
         super().__init__(request_adapter, "{+baseurl}/directoryRoles(roleTemplateId='{roleTemplateId}'){?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[DirectoryRolesWithRoleTemplateIdRequestBuilderDeleteRequestConfiguration] = None) -> None:

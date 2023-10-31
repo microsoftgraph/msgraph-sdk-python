@@ -26,7 +26,7 @@ class ServicePrincipalsWithAppIdRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['app_id'] = str(app_id)
+            path_parameters['appId'] = str(app_id)
         super().__init__(request_adapter, "{+baseurl}/servicePrincipals(appId='{appId}'){?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ServicePrincipalsWithAppIdRequestBuilderDeleteRequestConfiguration] = None) -> None:

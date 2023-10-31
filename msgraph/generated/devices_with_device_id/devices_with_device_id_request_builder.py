@@ -26,7 +26,7 @@ class DevicesWithDeviceIdRequestBuilder(BaseRequestBuilder):
         Returns: None
         """
         if isinstance(path_parameters, dict):
-            path_parameters['device_id'] = str(device_id)
+            path_parameters['deviceId'] = str(device_id)
         super().__init__(request_adapter, "{+baseurl}/devices(deviceId='{deviceId}'){?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[DevicesWithDeviceIdRequestBuilderDeleteRequestConfiguration] = None) -> None:

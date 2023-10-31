@@ -1,18 +1,23 @@
+[![PyPI version](https://badge.fury.io/py/msgraph-sdk.svg)](https://badge.fury.io/py/msgraph-sdk)
+[![Downloads](https://pepy.tech/badge/msgraph-sdk)](https://pepy.tech/project/msgraph-sdk)
+[![Supported Versions](https://img.shields.io/pypi/pyversions/msgraph-sdk.svg)](https://pypi.org/project/msgraph-sdk)
+[![Contributors](https://img.shields.io/github/contributors/microsoftgraph/msgraph-sdk-python.svg)](https://github.com/microsoftgraph/msgraph-sdk-python/graphs/contributors)
+
 # Microsoft Graph SDK for Python
 
 Get started with the Microsoft Graph SDK for Python by integrating the [Microsoft Graph API](https://docs.microsoft.com/graph/overview) into your Python application.
 
 > **Note:** 
 > * This SDK allows you to build applications using the [v1.0](https://docs.microsoft.com/graph/use-the-api#version) of Microsoft Graph. If you want to try the latest Microsoft Graph APIs, try the [beta](https://github.com/microsoftgraph/msgraph-beta-sdk-python) SDK.  
->
-> * The Microsoft Graph Python SDK is currently in community preview. During this period we're expecting breaking changes to happen to the SDK as we make updates based on feedback. Don't use this SDK in production environments. For details see [SDKs in preview or GA status](https://learn.microsoft.com/en-us/graph/sdks/sdks-overview#sdks-in-preview-or-ga-status).
 
 ## 1. Installation
 
 ```py
 pip install msgraph-sdk
 ```
-> Note: Enable long paths in your environment if you receive a `Could not install packages due to an OSError`. For details, see [Enable Long Paths in Windows 10, Version 1607, and Later](https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=powershell#enable-long-paths-in-windows-10-version-1607-and-later).
+> **Note:** 
+> * The Microsoft Graph SDK for Python is a fairly large package. It may take a few minutes for the initial installation to complete.
+> * Enable long paths in your environment if you receive a `Could not install packages due to an OSError`. For details, see [Enable Long Paths in Windows 10, Version 1607, and Later](https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=powershell#enable-long-paths-in-windows-10-version-1607-and-later).
 
 ## 2. Getting started with Microsoft Graph
 

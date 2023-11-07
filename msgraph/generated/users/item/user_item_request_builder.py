@@ -100,10 +100,10 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[UserItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a user.
+        Delete user.   When deleted, user resources are moved to a temporary container and can be restored within 30 days.  After that time, they are permanently deleted.  To learn more, see deletedItems. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/user-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -157,11 +157,11 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[User] = None, request_configuration: Optional[UserItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[User]:
         """
-        Update the properties of a user object.
+        Update the properties of a user object. Not all properties can be updated by Member or Guest users with their default permissions without Administrator roles. Compare member and guest default permissions to see properties they can manage. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/user-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -197,7 +197,7 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[UserItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a user.
+        Delete user.   When deleted, user resources are moved to a temporary container and can be restored within 30 days.  After that time, they are permanently deleted.  To learn more, see deletedItems. This API is available in the following national cloud deployments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -230,7 +230,7 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[User] = None, request_configuration: Optional[UserItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a user object.
+        Update the properties of a user object. Not all properties can be updated by Member or Guest users with their default permissions without Administrator roles. Compare member and guest default permissions to see properties they can manage. This API is available in the following national cloud deployments.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

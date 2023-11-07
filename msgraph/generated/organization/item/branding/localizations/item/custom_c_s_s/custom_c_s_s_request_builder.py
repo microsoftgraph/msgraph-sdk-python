@@ -49,6 +49,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
         """
         CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
         param body: Binary request body
+        param content_type: The request body content type.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         """
@@ -57,7 +58,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
         if not content_type:
             raise TypeError("content_type cannot be null.")
         request_info = self.to_put_request_information(
-            body, request_configuration
+            body, content_type, request_configuration
         )
         from .......models.o_data_errors.o_data_error import ODataError
 
@@ -89,6 +90,7 @@ class CustomCSSRequestBuilder(BaseRequestBuilder):
         """
         CSS styling that appears on the sign-in page. The allowed format is .css format only and not larger than 25 KB.
         param body: Binary request body
+        param content_type: The request body content type.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

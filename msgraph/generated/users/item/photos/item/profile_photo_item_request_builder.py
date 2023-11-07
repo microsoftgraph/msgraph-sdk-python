@@ -29,7 +29,7 @@ class ProfilePhotoItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ProfilePhotoItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ProfilePhoto]:
         """
-        Get photos from users
+        The collection of the user's profile photos in different sizes. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProfilePhoto]
         """
@@ -50,7 +50,7 @@ class ProfilePhotoItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ProfilePhotoItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get photos from users
+        The collection of the user's profile photos in different sizes. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -87,7 +87,7 @@ class ProfilePhotoItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ProfilePhotoItemRequestBuilderGetQueryParameters():
         """
-        Get photos from users
+        The collection of the user's profile photos in different sizes. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

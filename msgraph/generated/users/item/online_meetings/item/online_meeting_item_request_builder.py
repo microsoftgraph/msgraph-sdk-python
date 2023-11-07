@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .attendance_reports.attendance_reports_request_builder import AttendanceReportsRequestBuilder
     from .attendee_report.attendee_report_request_builder import AttendeeReportRequestBuilder
     from .get_virtual_appointment_join_web_url.get_virtual_appointment_join_web_url_request_builder import GetVirtualAppointmentJoinWebUrlRequestBuilder
+    from .recordings.recordings_request_builder import RecordingsRequestBuilder
     from .transcripts.transcripts_request_builder import TranscriptsRequestBuilder
 
 class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
@@ -186,6 +187,15 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
         from .get_virtual_appointment_join_web_url.get_virtual_appointment_join_web_url_request_builder import GetVirtualAppointmentJoinWebUrlRequestBuilder
 
         return GetVirtualAppointmentJoinWebUrlRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def recordings(self) -> RecordingsRequestBuilder:
+        """
+        Provides operations to manage the recordings property of the microsoft.graph.onlineMeeting entity.
+        """
+        from .recordings.recordings_request_builder import RecordingsRequestBuilder
+
+        return RecordingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def transcripts(self) -> TranscriptsRequestBuilder:

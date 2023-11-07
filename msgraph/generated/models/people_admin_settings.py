@@ -13,7 +13,7 @@ from .entity import Entity
 class PeopleAdminSettings(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The profileCardProperties property
+    # Contains a collection of the properties an administrator has defined as visible on the Microsoft 365 profile card.
     profile_card_properties: Optional[List[ProfileCardProperty]] = None
     
     @staticmethod

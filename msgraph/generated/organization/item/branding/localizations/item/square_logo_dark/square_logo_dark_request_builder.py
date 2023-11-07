@@ -49,6 +49,7 @@ class SquareLogoDarkRequestBuilder(BaseRequestBuilder):
         """
         A square dark version of your company logo that appears in Windows 10 out-of-box experiences (OOBE) and when Windows Autopilot is enabled for deployment. Allowed types are PNG or JPEG not larger than 240 x 240 pixels and not more than 10 KB in size. We recommend using a transparent image with no padding around the logo.
         param body: Binary request body
+        param content_type: The request body content type.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         """
@@ -57,7 +58,7 @@ class SquareLogoDarkRequestBuilder(BaseRequestBuilder):
         if not content_type:
             raise TypeError("content_type cannot be null.")
         request_info = self.to_put_request_information(
-            body, request_configuration
+            body, content_type, request_configuration
         )
         from .......models.o_data_errors.o_data_error import ODataError
 
@@ -89,6 +90,7 @@ class SquareLogoDarkRequestBuilder(BaseRequestBuilder):
         """
         A square dark version of your company logo that appears in Windows 10 out-of-box experiences (OOBE) and when Windows Autopilot is enabled for deployment. Allowed types are PNG or JPEG not larger than 240 x 240 pixels and not more than 10 KB in size. We recommend using a transparent image with no padding around the logo.
         param body: Binary request body
+        param content_type: The request body content type.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

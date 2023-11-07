@@ -251,7 +251,7 @@ class User(DirectoryObject):
     people: Optional[List[Person]] = None
     # The user's profile photo. Read-only.
     photo: Optional[ProfilePhoto] = None
-    # The photos property
+    # The collection of the user's profile photos in different sizes. Read-only.
     photos: Optional[List[ProfilePhoto]] = None
     # Entry-point to the Planner resource that might exist for a user. Read-only.
     planner: Optional[PlannerUser] = None

@@ -71,11 +71,11 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[RoleDefinition] = None, request_configuration: Optional[RoleDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[RoleDefinition]:
         """
-        Update the properties of a deviceAndAppManagementRoleDefinition object.
+        Update the properties of a roleDefinition object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-deviceandappmanagementroledefinition-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-roledefinition-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -129,7 +129,7 @@ class RoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[RoleDefinition] = None, request_configuration: Optional[RoleDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceAndAppManagementRoleDefinition object.
+        Update the properties of a roleDefinition object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

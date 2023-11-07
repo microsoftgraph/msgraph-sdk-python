@@ -7,6 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .audio_conferencing import AudioConferencing
     from .broadcast_meeting_settings import BroadcastMeetingSettings
+    from .call_recording import CallRecording
     from .call_transcript import CallTranscript
     from .chat_info import ChatInfo
     from .entity import Entity
@@ -70,6 +71,8 @@ class OnlineMeeting(Entity):
     participants: Optional[MeetingParticipants] = None
     # Indicates whether to record the meeting automatically.
     record_automatically: Optional[bool] = None
+    # The recordings property
+    recordings: Optional[List[CallRecording]] = None
     # Specifies whether meeting chat history is shared with participants. Possible values are: all, none, unknownFutureValue.
     share_meeting_chat_history_default: Optional[MeetingChatHistoryDefaultMode] = None
     # The meeting start time in UTC.
@@ -101,6 +104,7 @@ class OnlineMeeting(Entity):
         """
         from .audio_conferencing import AudioConferencing
         from .broadcast_meeting_settings import BroadcastMeetingSettings
+        from .call_recording import CallRecording
         from .call_transcript import CallTranscript
         from .chat_info import ChatInfo
         from .entity import Entity
@@ -116,6 +120,7 @@ class OnlineMeeting(Entity):
 
         from .audio_conferencing import AudioConferencing
         from .broadcast_meeting_settings import BroadcastMeetingSettings
+        from .call_recording import CallRecording
         from .call_transcript import CallTranscript
         from .chat_info import ChatInfo
         from .entity import Entity
@@ -152,6 +157,7 @@ class OnlineMeeting(Entity):
             "lobbyBypassSettings": lambda n : setattr(self, 'lobby_bypass_settings', n.get_object_value(LobbyBypassSettings)),
             "participants": lambda n : setattr(self, 'participants', n.get_object_value(MeetingParticipants)),
             "recordAutomatically": lambda n : setattr(self, 'record_automatically', n.get_bool_value()),
+            "recordings": lambda n : setattr(self, 'recordings', n.get_collection_of_object_values(CallRecording)),
             "shareMeetingChatHistoryDefault": lambda n : setattr(self, 'share_meeting_chat_history_default', n.get_enum_value(MeetingChatHistoryDefaultMode)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
@@ -194,6 +200,7 @@ class OnlineMeeting(Entity):
         writer.write_object_value("lobbyBypassSettings", self.lobby_bypass_settings)
         writer.write_object_value("participants", self.participants)
         writer.write_bool_value("recordAutomatically", self.record_automatically)
+        writer.write_collection_of_object_values("recordings", self.recordings)
         writer.write_enum_value("shareMeetingChatHistoryDefault", self.share_meeting_chat_history_default)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("subject", self.subject)

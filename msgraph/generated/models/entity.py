@@ -119,6 +119,7 @@ if TYPE_CHECKING:
     from .calendar_permission import CalendarPermission
     from .calendar_sharing_message import CalendarSharingMessage
     from .call import Call
+    from .call_recording import CallRecording
     from .call_records.call_record import CallRecord
     from .call_records.segment import Segment
     from .call_records.session import Session
@@ -1301,6 +1302,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .call import Call
 
             return Call()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecording".casefold():
+            from .call_recording import CallRecording
+
+            return CallRecording()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.callRecord".casefold():
             from .call_records.call_record import CallRecord
 
@@ -4221,6 +4226,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .calendar_permission import CalendarPermission
         from .calendar_sharing_message import CalendarSharingMessage
         from .call import Call
+        from .call_recording import CallRecording
         from .call_records.call_record import CallRecord
         from .call_records.segment import Segment
         from .call_records.session import Session
@@ -5035,6 +5041,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .calendar_permission import CalendarPermission
         from .calendar_sharing_message import CalendarSharingMessage
         from .call import Call
+        from .call_recording import CallRecording
         from .call_records.call_record import CallRecord
         from .call_records.segment import Segment
         from .call_records.session import Session

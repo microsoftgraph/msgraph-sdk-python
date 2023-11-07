@@ -14,21 +14,21 @@ from .identity_set import IdentitySet
 class CommunicationsIdentitySet(IdentitySet):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.communicationsIdentitySet"
-    # The applicationInstance property
+    # The application instance associated with this action.
     application_instance: Optional[Identity] = None
-    # The assertedIdentity property
+    # An identity the participant would like to present itself as to the other participants in the call.
     asserted_identity: Optional[Identity] = None
-    # The azureCommunicationServicesUser property
+    # The Azure Communication Services user associated with this action.
     azure_communication_services_user: Optional[Identity] = None
-    # The encrypted property
+    # The encrypted user associated with this action.
     encrypted: Optional[Identity] = None
-    # The endpointType property
+    # Type of endpoint that the participant uses. Possible values are: default, voicemail, skypeForBusiness, skypeForBusinessVoipPhone, unknownFutureValue.
     endpoint_type: Optional[EndpointType] = None
-    # The guest property
+    # The guest user associated with this action.
     guest: Optional[Identity] = None
-    # The onPremises property
+    # The Skype for Business on-premises user associated with this action.
     on_premises: Optional[Identity] = None
-    # The phone property
+    # The phone user associated with this action.
     phone: Optional[Identity] = None
     
     @staticmethod

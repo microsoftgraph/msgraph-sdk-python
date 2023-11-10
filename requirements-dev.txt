@@ -50,7 +50,7 @@ tomlkit==0.12.2 ; python_version >= '3.7'
 
 typing-extensions==4.8.0 ; python_version >= '3.7'
 
-wrapt==1.15.0 ; python_version >= '3.11'
+wrapt==1.16.0 ; python_version >= '3.11'
 
 yapf==0.40.2
 

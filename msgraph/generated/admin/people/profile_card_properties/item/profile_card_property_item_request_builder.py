@@ -28,9 +28,10 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ProfileCardPropertyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property profileCardProperties for admin
+        Delete the profileCardProperty object specified by its directoryPropertyName from the organization's profile card, and remove any localized customizations for that property.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/profilecardproperty-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -47,9 +48,10 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ProfileCardPropertyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ProfileCardProperty]:
         """
-        Get profileCardProperties from admin
+        Retrieve the properties of a profileCardProperty entity. The profileCardProperty is identified by its directoryPropertyName property.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProfileCardProperty]
+        Find more info here: https://learn.microsoft.com/graph/api/profilecardproperty-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,10 +70,11 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ProfileCardProperty] = None, request_configuration: Optional[ProfileCardPropertyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ProfileCardProperty]:
         """
-        Update the navigation property profileCardProperties in admin
+        Update the properties of a profileCardProperty object, identified by its directoryPropertyName property.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProfileCardProperty]
+        Find more info here: https://learn.microsoft.com/graph/api/profilecardproperty-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +95,7 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ProfileCardPropertyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property profileCardProperties for admin
+        Delete the profileCardProperty object specified by its directoryPropertyName from the organization's profile card, and remove any localized customizations for that property.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,12 +106,12 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[ProfileCardPropertyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get profileCardProperties from admin
+        Retrieve the properties of a profileCardProperty entity. The profileCardProperty is identified by its directoryPropertyName property.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,12 +123,12 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[ProfileCardProperty] = None, request_configuration: Optional[ProfileCardPropertyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property profileCardProperties in admin
+        Update the properties of a profileCardProperty object, identified by its directoryPropertyName property.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -139,7 +142,7 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -166,7 +169,7 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ProfileCardPropertyItemRequestBuilderGetQueryParameters():
         """
-        Get profileCardProperties from admin
+        Retrieve the properties of a profileCardProperty entity. The profileCardProperty is identified by its directoryPropertyName property.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

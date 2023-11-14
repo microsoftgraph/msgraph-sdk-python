@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .attendance_reports.attendance_reports_request_builder import AttendanceReportsRequestBuilder
     from .attendee_report.attendee_report_request_builder import AttendeeReportRequestBuilder
     from .get_virtual_appointment_join_web_url.get_virtual_appointment_join_web_url_request_builder import GetVirtualAppointmentJoinWebUrlRequestBuilder
+    from .recordings.recordings_request_builder import RecordingsRequestBuilder
     from .transcripts.transcripts_request_builder import TranscriptsRequestBuilder
 
 class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
@@ -110,7 +111,7 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -127,7 +128,7 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[OnlineMeeting] = None, request_configuration: Optional[OnlineMeetingItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -146,7 +147,7 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -163,7 +164,7 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
     @property
     def attendance_reports(self) -> AttendanceReportsRequestBuilder:
         """
-        Provides operations to manage the attendanceReports property of the microsoft.graph.onlineMeeting entity.
+        Provides operations to manage the attendanceReports property of the microsoft.graph.onlineMeetingBase entity.
         """
         from .attendance_reports.attendance_reports_request_builder import AttendanceReportsRequestBuilder
 
@@ -186,6 +187,15 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
         from .get_virtual_appointment_join_web_url.get_virtual_appointment_join_web_url_request_builder import GetVirtualAppointmentJoinWebUrlRequestBuilder
 
         return GetVirtualAppointmentJoinWebUrlRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def recordings(self) -> RecordingsRequestBuilder:
+        """
+        Provides operations to manage the recordings property of the microsoft.graph.onlineMeeting entity.
+        """
+        from .recordings.recordings_request_builder import RecordingsRequestBuilder
+
+        return RecordingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def transcripts(self) -> TranscriptsRequestBuilder:

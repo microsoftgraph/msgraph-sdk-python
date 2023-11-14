@@ -49,6 +49,7 @@ class FaviconRequestBuilder(BaseRequestBuilder):
         """
         A custom icon (favicon) to replace a default Microsoft product favicon on a Microsoft Entra tenant.
         param body: Binary request body
+        param content_type: The request body content type.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
         """
@@ -57,7 +58,7 @@ class FaviconRequestBuilder(BaseRequestBuilder):
         if not content_type:
             raise TypeError("content_type cannot be null.")
         request_info = self.to_put_request_information(
-            body, request_configuration
+            body, content_type, request_configuration
         )
         from .....models.o_data_errors.o_data_error import ODataError
 
@@ -82,13 +83,14 @@ class FaviconRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "image/bmp, image/jpg, image/jpeg, image/gif, image/vnd.microsoft.icon, image/png, image/tiff, application/json, application/json")
+        request_info.headers.try_add("Accept", "image/bmp, image/jpg, image/jpeg, image/gif, image/vnd.microsoft.icon, image/png, image/tiff, application/json")
         return request_info
     
     def to_put_request_information(self,body: bytes, content_type: str, request_configuration: Optional[FaviconRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         A custom icon (favicon) to replace a default Microsoft product favicon on a Microsoft Entra tenant.
         param body: Binary request body
+        param content_type: The request body content type.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +105,7 @@ class FaviconRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PUT
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_stream_content(body, content_type)
         return request_info
     

@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .online_meeting_restricted import OnlineMeetingRestricted
     from .participant_info import ParticipantInfo
     from .recording_info import RecordingInfo
+    from .removed_state import RemovedState
 
 from .entity import Entity
 
@@ -28,8 +29,12 @@ class Participant(Entity):
     odata_type: Optional[str] = None
     # Information about whether the participant has recording capability.
     recording_info: Optional[RecordingInfo] = None
+    # The removedState property
+    removed_state: Optional[RemovedState] = None
     # Indicates the reason or reasons media content from this participant is restricted.
     restricted_experience: Optional[OnlineMeetingRestricted] = None
+    # The rosterSequenceNumber property
+    roster_sequence_number: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Participant:
@@ -52,12 +57,14 @@ class Participant(Entity):
         from .online_meeting_restricted import OnlineMeetingRestricted
         from .participant_info import ParticipantInfo
         from .recording_info import RecordingInfo
+        from .removed_state import RemovedState
 
         from .entity import Entity
         from .media_stream import MediaStream
         from .online_meeting_restricted import OnlineMeetingRestricted
         from .participant_info import ParticipantInfo
         from .recording_info import RecordingInfo
+        from .removed_state import RemovedState
 
         fields: Dict[str, Callable[[Any], None]] = {
             "info": lambda n : setattr(self, 'info', n.get_object_value(ParticipantInfo)),
@@ -66,7 +73,9 @@ class Participant(Entity):
             "mediaStreams": lambda n : setattr(self, 'media_streams', n.get_collection_of_object_values(MediaStream)),
             "metadata": lambda n : setattr(self, 'metadata', n.get_str_value()),
             "recordingInfo": lambda n : setattr(self, 'recording_info', n.get_object_value(RecordingInfo)),
+            "removedState": lambda n : setattr(self, 'removed_state', n.get_object_value(RemovedState)),
             "restrictedExperience": lambda n : setattr(self, 'restricted_experience', n.get_object_value(OnlineMeetingRestricted)),
+            "rosterSequenceNumber": lambda n : setattr(self, 'roster_sequence_number', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -87,6 +96,8 @@ class Participant(Entity):
         writer.write_collection_of_object_values("mediaStreams", self.media_streams)
         writer.write_str_value("metadata", self.metadata)
         writer.write_object_value("recordingInfo", self.recording_info)
+        writer.write_object_value("removedState", self.removed_state)
         writer.write_object_value("restrictedExperience", self.restricted_experience)
+        writer.write_int_value("rosterSequenceNumber", self.roster_sequence_number)
     
 

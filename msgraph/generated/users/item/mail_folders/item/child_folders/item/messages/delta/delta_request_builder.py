@@ -24,7 +24,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/delta(){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/delta(){?changeType*,%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
     
     async def get(self,request_configuration: Optional[DeltaRequestBuilderGetRequestConfiguration] = None) -> Optional[DeltaGetResponse]:
         """
@@ -62,7 +62,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> DeltaRequestBuilder:
@@ -88,6 +88,8 @@ class DeltaRequestBuilder(BaseRequestBuilder):
             """
             if not original_name:
                 raise TypeError("original_name cannot be null.")
+            if original_name == "change_type":
+                return "changeType"
             if original_name == "count":
                 return "%24count"
             if original_name == "filter":
@@ -104,6 +106,9 @@ class DeltaRequestBuilder(BaseRequestBuilder):
                 return "%24top"
             return original_name
         
+        # A custom query option to filter the delta response based on the type of change. Supported values are created, updated or deleted.
+        change_type: Optional[str] = None
+
         # Include count of items
         count: Optional[bool] = None
 

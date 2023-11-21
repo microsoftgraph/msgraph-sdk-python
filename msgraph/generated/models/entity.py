@@ -119,6 +119,7 @@ if TYPE_CHECKING:
     from .calendar_permission import CalendarPermission
     from .calendar_sharing_message import CalendarSharingMessage
     from .call import Call
+    from .call_recording import CallRecording
     from .call_records.call_record import CallRecord
     from .call_records.segment import Segment
     from .call_records.session import Session
@@ -166,6 +167,7 @@ if TYPE_CHECKING:
     from .delegated_permission_classification import DelegatedPermissionClassification
     from .deleted_item_container import DeletedItemContainer
     from .deleted_team import DeletedTeam
+    from .delta_participants import DeltaParticipants
     from .detected_app import DetectedApp
     from .device import Device
     from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
@@ -335,6 +337,7 @@ if TYPE_CHECKING:
     from .item_activity_stat import ItemActivityStat
     from .item_analytics import ItemAnalytics
     from .item_attachment import ItemAttachment
+    from .item_retention_label import ItemRetentionLabel
     from .landing_page import LandingPage
     from .landing_page_detail import LandingPageDetail
     from .learning_assignment import LearningAssignment
@@ -423,6 +426,7 @@ if TYPE_CHECKING:
     from .onenote_resource import OnenoteResource
     from .onenote_section import OnenoteSection
     from .online_meeting import OnlineMeeting
+    from .online_meeting_base import OnlineMeetingBase
     from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
     from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
     from .open_shift import OpenShift
@@ -735,6 +739,11 @@ if TYPE_CHECKING:
     from .user_settings import UserSettings
     from .user_sign_in_insight import UserSignInInsight
     from .user_teamwork import UserTeamwork
+    from .virtual_event import VirtualEvent
+    from .virtual_events_root import VirtualEventsRoot
+    from .virtual_event_registration import VirtualEventRegistration
+    from .virtual_event_session import VirtualEventSession
+    from .virtual_event_webinar import VirtualEventWebinar
     from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
     from .vpp_token import VppToken
     from .web_app import WebApp
@@ -1301,6 +1310,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .call import Call
 
             return Call()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecording".casefold():
+            from .call_recording import CallRecording
+
+            return CallRecording()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.callRecords.callRecord".casefold():
             from .call_records.call_record import CallRecord
 
@@ -1489,6 +1502,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .deleted_team import DeletedTeam
 
             return DeletedTeam()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deltaParticipants".casefold():
+            from .delta_participants import DeltaParticipants
+
+            return DeltaParticipants()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.detectedApp".casefold():
             from .detected_app import DetectedApp
 
@@ -2166,6 +2183,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .item_attachment import ItemAttachment
 
             return ItemAttachment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.itemRetentionLabel".casefold():
+            from .item_retention_label import ItemRetentionLabel
+
+            return ItemRetentionLabel()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.landingPage".casefold():
             from .landing_page import LandingPage
 
@@ -2522,6 +2543,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .online_meeting import OnlineMeeting
 
             return OnlineMeeting()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onlineMeetingBase".casefold():
+            from .online_meeting_base import OnlineMeetingBase
+
+            return OnlineMeetingBase()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.onPremisesConditionalAccessSettings".casefold():
             from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
 
@@ -3768,6 +3793,26 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .user_teamwork import UserTeamwork
 
             return UserTeamwork()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEvent".casefold():
+            from .virtual_event import VirtualEvent
+
+            return VirtualEvent()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventRegistration".casefold():
+            from .virtual_event_registration import VirtualEventRegistration
+
+            return VirtualEventRegistration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventSession".casefold():
+            from .virtual_event_session import VirtualEventSession
+
+            return VirtualEventSession()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventsRoot".casefold():
+            from .virtual_events_root import VirtualEventsRoot
+
+            return VirtualEventsRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEventWebinar".casefold():
+            from .virtual_event_webinar import VirtualEventWebinar
+
+            return VirtualEventWebinar()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.voiceAuthenticationMethodConfiguration".casefold():
             from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
 
@@ -4221,6 +4266,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .calendar_permission import CalendarPermission
         from .calendar_sharing_message import CalendarSharingMessage
         from .call import Call
+        from .call_recording import CallRecording
         from .call_records.call_record import CallRecord
         from .call_records.segment import Segment
         from .call_records.session import Session
@@ -4268,6 +4314,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .delegated_permission_classification import DelegatedPermissionClassification
         from .deleted_item_container import DeletedItemContainer
         from .deleted_team import DeletedTeam
+        from .delta_participants import DeltaParticipants
         from .detected_app import DetectedApp
         from .device import Device
         from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
@@ -4437,6 +4484,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .item_activity_stat import ItemActivityStat
         from .item_analytics import ItemAnalytics
         from .item_attachment import ItemAttachment
+        from .item_retention_label import ItemRetentionLabel
         from .landing_page import LandingPage
         from .landing_page_detail import LandingPageDetail
         from .learning_assignment import LearningAssignment
@@ -4525,6 +4573,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .onenote_resource import OnenoteResource
         from .onenote_section import OnenoteSection
         from .online_meeting import OnlineMeeting
+        from .online_meeting_base import OnlineMeetingBase
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
         from .open_shift import OpenShift
@@ -4837,6 +4886,11 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_settings import UserSettings
         from .user_sign_in_insight import UserSignInInsight
         from .user_teamwork import UserTeamwork
+        from .virtual_event import VirtualEvent
+        from .virtual_events_root import VirtualEventsRoot
+        from .virtual_event_registration import VirtualEventRegistration
+        from .virtual_event_session import VirtualEventSession
+        from .virtual_event_webinar import VirtualEventWebinar
         from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
         from .vpp_token import VppToken
         from .web_app import WebApp
@@ -5035,6 +5089,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .calendar_permission import CalendarPermission
         from .calendar_sharing_message import CalendarSharingMessage
         from .call import Call
+        from .call_recording import CallRecording
         from .call_records.call_record import CallRecord
         from .call_records.segment import Segment
         from .call_records.session import Session
@@ -5082,6 +5137,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .delegated_permission_classification import DelegatedPermissionClassification
         from .deleted_item_container import DeletedItemContainer
         from .deleted_team import DeletedTeam
+        from .delta_participants import DeltaParticipants
         from .detected_app import DetectedApp
         from .device import Device
         from .device_and_app_management_role_assignment import DeviceAndAppManagementRoleAssignment
@@ -5251,6 +5307,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .item_activity_stat import ItemActivityStat
         from .item_analytics import ItemAnalytics
         from .item_attachment import ItemAttachment
+        from .item_retention_label import ItemRetentionLabel
         from .landing_page import LandingPage
         from .landing_page_detail import LandingPageDetail
         from .learning_assignment import LearningAssignment
@@ -5339,6 +5396,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .onenote_resource import OnenoteResource
         from .onenote_section import OnenoteSection
         from .online_meeting import OnlineMeeting
+        from .online_meeting_base import OnlineMeetingBase
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
         from .open_shift import OpenShift
@@ -5651,6 +5709,11 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_settings import UserSettings
         from .user_sign_in_insight import UserSignInInsight
         from .user_teamwork import UserTeamwork
+        from .virtual_event import VirtualEvent
+        from .virtual_events_root import VirtualEventsRoot
+        from .virtual_event_registration import VirtualEventRegistration
+        from .virtual_event_session import VirtualEventSession
+        from .virtual_event_webinar import VirtualEventWebinar
         from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
         from .vpp_token import VppToken
         from .web_app import WebApp

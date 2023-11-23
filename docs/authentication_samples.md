@@ -27,7 +27,7 @@ async def get_user():
 asyncio.run(get_user())
 ```
 
-## 2. INTERACTIVE BROSWER FLOW
+## 2. INTERACTIVE BROWSER FLOW
 
 ```py
 import asyncio

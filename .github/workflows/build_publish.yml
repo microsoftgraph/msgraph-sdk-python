@@ -25,7 +25,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements-dev.txt
     - name: Lint with Pylint
-      run: pylint msgraph_beta --disable=W --rcfile=.pylintrc
+      run: pylint msgraph --disable=W --rcfile=.pylintrc
 
   deploy:
     name: Publish distribution to PyPI

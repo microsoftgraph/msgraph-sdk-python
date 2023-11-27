@@ -1,6 +1,6 @@
 # ------------------------------------
 # Copyright (c) Microsoft Corporation. All Rights Reserved.
-# Licensed under the MIT License. 
+# Licensed under the MIT License.
 # See License in the project root for license information.
 # -----------------------------------
 
@@ -35,27 +35,27 @@ class GraphServiceClient(BaseGraphServiceClient):
             request_adapter (Optional[GraphRequestAdapter], optional): The request
             adapter to use for requests. Defaults to None.
         """
-        
+
         if not request_adapter:
             if not credentials:
                 raise ValueError("Missing request adapter or valid credentials")
-            
+
             if scopes:
                 auth_provider = AzureIdentityAuthenticationProvider(credentials, scopes=scopes)
             else:
                 auth_provider = AzureIdentityAuthenticationProvider(credentials)
-    
+
             request_adapter = GraphRequestAdapter(auth_provider)
-        
+
         super().__init__(request_adapter)
-        
+
     @property
     def me(self) -> UserItemRequestBuilder:
         """
         Maps requests to /me endpoint to /users/{{user-id}}
         """
         from .generated.users.item.user_item_request_builder import UserItemRequestBuilder
-        
+
         url_tpl_parameters = self.path_parameters
         url_tpl_parameters["user%2Did"] = "me-token-to-replace"
 

@@ -92,7 +92,7 @@ httpx[http2]==0.25.1 ; python_version >= '3.7'
 
 hyperframe==6.0.1 ; python_full_version >= '3.6.1'
 
-idna==3.4 ; python_version >= '3.5'
+idna==3.6 ; python_version >= '3.5'
 
 microsoft-kiota-abstractions==1.0.0
 

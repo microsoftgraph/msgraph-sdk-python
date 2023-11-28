@@ -28,7 +28,7 @@ class MicrosoftGraphSecurityExportRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ExportPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityExportRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Initiate an export from a ediscoveryReviewSetQuery. For details, see Export documents from a review set in eDiscovery (Premium). This API is available in the following national cloud deployments.
+        Initiate an export from a ediscoveryReviewSetQuery. For details, see Export documents from a review set in eDiscovery (Premium).
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class MicrosoftGraphSecurityExportRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ExportPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityExportRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Initiate an export from a ediscoveryReviewSetQuery. For details, see Export documents from a review set in eDiscovery (Premium). This API is available in the following national cloud deployments.
+        Initiate an export from a ediscoveryReviewSetQuery. For details, see Export documents from a review set in eDiscovery (Premium).
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -65,7 +65,7 @@ class MicrosoftGraphSecurityExportRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

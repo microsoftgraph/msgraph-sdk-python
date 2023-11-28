@@ -30,7 +30,7 @@ class UserRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserRequestBuilderGetRequestConfiguration] = None) -> Optional[User]:
         """
-        Retrieve the simple directory user that corresponds to this educationUser. This API is available in the following national cloud deployments.
+        Retrieve the simple directory user that corresponds to this educationUser.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
         Find more info here: https://learn.microsoft.com/graph/api/educationuser-get-user?view=graph-rest-1.0
@@ -52,7 +52,7 @@ class UserRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UserRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the simple directory user that corresponds to this educationUser. This API is available in the following national cloud deployments.
+        Retrieve the simple directory user that corresponds to this educationUser.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -64,7 +64,7 @@ class UserRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> UserRequestBuilder:
@@ -98,7 +98,7 @@ class UserRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserRequestBuilderGetQueryParameters():
         """
-        Retrieve the simple directory user that corresponds to this educationUser. This API is available in the following national cloud deployments.
+        Retrieve the simple directory user that corresponds to this educationUser.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

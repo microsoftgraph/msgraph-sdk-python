@@ -12,7 +12,7 @@ from .identity import Identity
 class CommunicationsUserIdentity(Identity):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.communicationsUserIdentity"
-    # The tenantId property
+    # The user's tenant ID.
     tenant_id: Optional[str] = None
     
     @staticmethod

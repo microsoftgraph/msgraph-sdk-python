@@ -28,7 +28,7 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AdministrativeUnitRequestBuilderGetRequestConfiguration] = None) -> Optional[AdministrativeUnit]:
         """
-        Get a list of administrativeUnits associated with an educationSchool object. This API is available in the following national cloud deployments.
+        Get a list of administrativeUnits associated with an educationSchool object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AdministrativeUnit]
         Find more info here: https://learn.microsoft.com/graph/api/educationschool-list-administrativeunit?view=graph-rest-1.0
@@ -74,7 +74,7 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AdministrativeUnitRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of administrativeUnits associated with an educationSchool object. This API is available in the following national cloud deployments.
+        Get a list of administrativeUnits associated with an educationSchool object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -86,7 +86,7 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -105,7 +105,7 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -122,7 +122,7 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AdministrativeUnitRequestBuilderGetQueryParameters():
         """
-        Get a list of administrativeUnits associated with an educationSchool object. This API is available in the following national cloud deployments.
+        Get a list of administrativeUnits associated with an educationSchool object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

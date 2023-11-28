@@ -45,7 +45,7 @@ class ConnectedOrganizationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ConnectedOrganizationsRequestBuilderGetRequestConfiguration] = None) -> Optional[ConnectedOrganizationCollectionResponse]:
         """
-        Retrieve a list of connectedOrganization objects. This API is available in the following national cloud deployments.
+        Retrieve a list of connectedOrganization objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConnectedOrganizationCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/entitlementmanagement-list-connectedorganizations?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ConnectedOrganizationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ConnectedOrganization] = None, request_configuration: Optional[ConnectedOrganizationsRequestBuilderPostRequestConfiguration] = None) -> Optional[ConnectedOrganization]:
         """
-        Create a new connectedOrganization object. This API is available in the following national cloud deployments.
+        Create a new connectedOrganization object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConnectedOrganization]
@@ -92,7 +92,7 @@ class ConnectedOrganizationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ConnectedOrganizationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of connectedOrganization objects. This API is available in the following national cloud deployments.
+        Retrieve a list of connectedOrganization objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class ConnectedOrganizationsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[ConnectedOrganization] = None, request_configuration: Optional[ConnectedOrganizationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new connectedOrganization object. This API is available in the following national cloud deployments.
+        Create a new connectedOrganization object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class ConnectedOrganizationsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class ConnectedOrganizationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConnectedOrganizationsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of connectedOrganization objects. This API is available in the following national cloud deployments.
+        Retrieve a list of connectedOrganization objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -28,7 +28,7 @@ class SetDataRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SetDataPostRequestBody] = None, request_configuration: Optional[SetDataRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Resets the source data for the chart. This API is available in the following national cloud deployments.
+        Resets the source data for the chart.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class SetDataRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SetDataPostRequestBody] = None, request_configuration: Optional[SetDataRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Resets the source data for the chart. This API is available in the following national cloud deployments.
+        Resets the source data for the chart.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -65,7 +65,7 @@ class SetDataRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

@@ -47,7 +47,7 @@ class RiskyUsersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RiskyUsersRequestBuilderGetRequestConfiguration] = None) -> Optional[RiskyUserCollectionResponse]:
         """
-        Get a list of the riskyUser objects and their properties. This API is available in the following national cloud deployments.
+        Get a list of the riskyUser objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RiskyUserCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/riskyuser-list?view=graph-rest-1.0
@@ -93,7 +93,7 @@ class RiskyUsersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RiskyUsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the riskyUser objects and their properties. This API is available in the following national cloud deployments.
+        Get a list of the riskyUser objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +105,7 @@ class RiskyUsersRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[RiskyUser] = None, request_configuration: Optional[RiskyUsersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
@@ -124,7 +124,7 @@ class RiskyUsersRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -168,7 +168,7 @@ class RiskyUsersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RiskyUsersRequestBuilderGetQueryParameters():
         """
-        Get a list of the riskyUser objects and their properties. This API is available in the following national cloud deployments.
+        Get a list of the riskyUser objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

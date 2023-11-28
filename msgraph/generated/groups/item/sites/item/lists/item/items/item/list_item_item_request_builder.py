@@ -37,7 +37,7 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ListItemItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Removes an item from a list][]. This API is available in the following [national cloud deployments.
+        Removes an item from a [list][].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/listitem-delete?view=graph-rest-1.0
@@ -57,7 +57,7 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ListItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ListItem]:
         """
-        Returns the metadata for an item][] in a [list][]. This API is available in the following [national cloud deployments.
+        Returns the metadata for an [item][] in a [list][].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ListItem]
         Find more info here: https://learn.microsoft.com/graph/api/listitem-get?view=graph-rest-1.0
@@ -121,7 +121,7 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ListItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Removes an item from a list][]. This API is available in the following [national cloud deployments.
+        Removes an item from a [list][].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -132,12 +132,12 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[ListItemItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Returns the metadata for an item][] in a [list][]. This API is available in the following [national cloud deployments.
+        Returns the metadata for an [item][] in a [list][].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -149,7 +149,7 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[ListItem] = None, request_configuration: Optional[ListItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -168,7 +168,7 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -267,7 +267,7 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ListItemItemRequestBuilderGetQueryParameters():
         """
-        Returns the metadata for an item][] in a [list][]. This API is available in the following [national cloud deployments.
+        Returns the metadata for an [item][] in a [list][].
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

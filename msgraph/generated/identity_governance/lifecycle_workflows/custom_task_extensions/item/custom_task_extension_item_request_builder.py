@@ -30,7 +30,7 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[CustomTaskExtensionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a customTaskExtension object. A custom task extension  can only be deleted if it is not referenced in any task objects in a lifecycle workflow. This API is available in the following national cloud deployments.
+        Delete a customTaskExtension object. A custom task extension  can only be deleted if it is not referenced in any task objects in a lifecycle workflow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-customtaskextension-delete?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CustomTaskExtensionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CustomTaskExtension]:
         """
-        Read the properties and relationships of a customTaskExtension object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of a customTaskExtension object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomTaskExtension]
         Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-customtaskextension-get?view=graph-rest-1.0
@@ -72,7 +72,7 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[CustomTaskExtension] = None, request_configuration: Optional[CustomTaskExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[CustomTaskExtension]:
         """
-        Update the properties of a customTaskExtension object. This API is available in the following national cloud deployments.
+        Update the properties of a customTaskExtension object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomTaskExtension]
@@ -97,7 +97,7 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[CustomTaskExtensionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a customTaskExtension object. A custom task extension  can only be deleted if it is not referenced in any task objects in a lifecycle workflow. This API is available in the following national cloud deployments.
+        Delete a customTaskExtension object. A custom task extension  can only be deleted if it is not referenced in any task objects in a lifecycle workflow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,12 +108,12 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[CustomTaskExtensionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a customTaskExtension object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of a customTaskExtension object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -125,12 +125,12 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[CustomTaskExtension] = None, request_configuration: Optional[CustomTaskExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a customTaskExtension object. This API is available in the following national cloud deployments.
+        Update the properties of a customTaskExtension object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -144,7 +144,7 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -189,7 +189,7 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CustomTaskExtensionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a customTaskExtension object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of a customTaskExtension object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

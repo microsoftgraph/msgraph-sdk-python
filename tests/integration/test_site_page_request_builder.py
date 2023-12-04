@@ -11,6 +11,7 @@ from msgraph_core import GraphClientFactory
 from msgraph import GraphServiceClient, GraphRequestAdapter
 from msgraph.generated.models.page import Page
 from msgraph.generated.models.site import Site
+from msgraph.generated.models.site_pages_collection_response import SitePagesCollectionResponse
 
 TENANT_ID = getenv("TENANT_ID")
 CLIENT_ID = getenv("CLIENT_ID")
@@ -39,6 +40,12 @@ class SitePageRequestBuilderIntegrationTestCase(unittest.TestCase):
     def tearDownClass(cls):
         cls._loop.close()
 
+    def test_get_site_pages(self):
+        actual = self._loop.run_until_complete(client.sites.by_site_id(site_id).pages.get())
+
+        assert_that(actual).is_type_of(SitePagesCollectionResponse)
+        assert_that(actual.value).is_length(6)
+
     def test_get_site_by_id(self):
         actual = self._loop.run_until_complete(client.sites.by_site_id(site_id).get())
 
@@ -55,6 +62,7 @@ class SitePageRequestBuilderIntegrationTestCase(unittest.TestCase):
         actual = self._loop.run_until_complete(client.sites.by_site_id(site_id).by_page_id(page_id).get())
 
         assert_that(actual).is_type_of(Page)
+        assert_that(actual.odata_type).is_equal_to("#microsoft.graph.sitePage")
         assert_that(actual.id).is_equal_to("b37ac897-12de-4c26-ae49-d5eed75abb16")
         assert_that(actual.title).is_equal_to("A Task Force for Change")
         assert_that(actual.name).is_equal_to("A-Task-Force-for-Change.aspx")

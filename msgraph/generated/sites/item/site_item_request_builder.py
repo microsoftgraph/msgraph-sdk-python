@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 from dataclasses import dataclass
+from functools import cached_property
 from typing import Any, Dict, List, Optional, TYPE_CHECKING, Union
 
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
@@ -32,7 +33,7 @@ if TYPE_CHECKING:
     from .operations.operations_request_builder import OperationsRequestBuilder
     from .permissions.permissions_request_builder import PermissionsRequestBuilder
     from .sites.sites_request_builder import SitesRequestBuilder
-    from ..page.site_page_request_builder import SitePageRequestBuilder
+    from ..page.site_page_request_builder import SitePageRequestBuilder, SitePagesRequestBuilder
     from .term_store.term_store_request_builder import TermStoreRequestBuilder
     from .term_stores.term_stores_request_builder import TermStoresRequestBuilder
 
@@ -71,19 +72,33 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Site, error_mapping)
 
+    @cached_property
+    def beta_request_adapter(self):
+        request_adapter = copy.copy(self.request_adapter)
+        request_adapter.base_url = "https://graph.microsoft.com/beta"
+        return request_adapter
+
+    @property
+    def pages(self) -> SitePagesRequestBuilder:
+        """
+        Provides operations to manage the collection of site pages entities.
+        Returns: SitePagesRequestBuilder
+        """
+        from ..page.site_page_request_builder import SitePagesRequestBuilder
+
+        return SitePagesRequestBuilder(self.beta_request_adapter, self.path_parameters)
+
     def by_page_id(self, page_id: str) -> SitePageRequestBuilder:
         """
         Provides operations to manage the collection of site page entities.
-        param site_id: The unique identifier of site
+        param page_id: The unique identifier of page
         Returns: SitePageRequestBuilder
         """
         from ..page.site_page_request_builder import SitePageRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["page%2Did"] = page_id
-        request_adapter = copy.copy(self.request_adapter)
-        request_adapter.base_url = "https://graph.microsoft.com/beta"
-        return SitePageRequestBuilder(request_adapter, url_tpl_params)
+        return SitePageRequestBuilder(self.beta_request_adapter, url_tpl_params)
 
     def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
         """

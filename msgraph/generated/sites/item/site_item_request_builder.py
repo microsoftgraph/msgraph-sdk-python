@@ -1,13 +1,15 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
+
+import copy
+from dataclasses import dataclass
+from typing import Any, Dict, List, Optional, TYPE_CHECKING, Union
+
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
-from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.serialization import ParsableFactory
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
@@ -30,6 +32,7 @@ if TYPE_CHECKING:
     from .operations.operations_request_builder import OperationsRequestBuilder
     from .permissions.permissions_request_builder import PermissionsRequestBuilder
     from .sites.sites_request_builder import SitesRequestBuilder
+    from ..page.site_page_request_builder import SitePageRequestBuilder
     from .term_store.term_store_request_builder import TermStoreRequestBuilder
     from .term_stores.term_stores_request_builder import TermStoresRequestBuilder
 
@@ -67,7 +70,21 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from ...models.site import Site
 
         return await self.request_adapter.send_async(request_info, Site, error_mapping)
-    
+
+    def by_page_id(self, page_id: str) -> SitePageRequestBuilder:
+        """
+        Provides operations to manage the collection of site page entities.
+        param site_id: The unique identifier of site
+        Returns: SitePageRequestBuilder
+        """
+        from ..page.site_page_request_builder import SitePageRequestBuilder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["page%2Did"] = page_id
+        request_adapter = copy.copy(self.request_adapter)
+        request_adapter.base_url = "https://graph.microsoft.com/beta"
+        return SitePageRequestBuilder(request_adapter, url_tpl_params)
+
     def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
@@ -85,7 +102,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder import GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
 
         return GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, interval, start_date_time)
-    
+
     def get_applicable_content_types_for_list_with_list_id(self,list_id: Optional[str] = None) -> GetApplicableContentTypesForListWithListIdRequestBuilder:
         """
         Provides operations to call the getApplicableContentTypesForList method.
@@ -97,7 +114,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .get_applicable_content_types_for_list_with_list_id.get_applicable_content_types_for_list_with_list_id_request_builder import GetApplicableContentTypesForListWithListIdRequestBuilder
 
         return GetApplicableContentTypesForListWithListIdRequestBuilder(self.request_adapter, self.path_parameters, list_id)
-    
+
     def get_by_path_with_path(self,path: Optional[str] = None) -> GetByPathWithPathRequestBuilder:
         """
         Provides operations to call the getByPath method.
@@ -109,7 +126,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .get_by_path_with_path.get_by_path_with_path_request_builder import GetByPathWithPathRequestBuilder
 
         return GetByPathWithPathRequestBuilder(self.request_adapter, self.path_parameters, path)
-    
+
     async def patch(self,body: Optional[Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Site]:
         """
         Update entity in sites
@@ -129,11 +146,11 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
             "5XX": ODataError,
         }
         if not self.request_adapter:
-            raise Exception("Http core is null") 
+            raise Exception("Http core is null")
         from ...models.site import Site
 
         return await self.request_adapter.send_async(request_info, Site, error_mapping)
-    
+
     def to_get_request_information(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve properties and relationships for a [site][] resource.A site resource represents a team site in SharePoint.
@@ -150,7 +167,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         request_info.http_method = Method.GET
         request_info.headers.try_add("Accept", "application/json;q=1")
         return request_info
-    
+
     def to_patch_request_information(self,body: Optional[Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update entity in sites
@@ -170,7 +187,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json;q=1")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
+
     def with_url(self,raw_url: Optional[str] = None) -> SiteItemRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
@@ -180,7 +197,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return SiteItemRequestBuilder(self.request_adapter, raw_url)
-    
+
     @property
     def analytics(self) -> AnalyticsRequestBuilder:
         """
@@ -189,7 +206,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .analytics.analytics_request_builder import AnalyticsRequestBuilder
 
         return AnalyticsRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def columns(self) -> ColumnsRequestBuilder:
         """
@@ -198,7 +215,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .columns.columns_request_builder import ColumnsRequestBuilder
 
         return ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def content_types(self) -> ContentTypesRequestBuilder:
         """
@@ -207,7 +224,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .content_types.content_types_request_builder import ContentTypesRequestBuilder
 
         return ContentTypesRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def created_by_user(self) -> CreatedByUserRequestBuilder:
         """
@@ -216,7 +233,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .created_by_user.created_by_user_request_builder import CreatedByUserRequestBuilder
 
         return CreatedByUserRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def drive(self) -> DriveRequestBuilder:
         """
@@ -225,7 +242,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .drive.drive_request_builder import DriveRequestBuilder
 
         return DriveRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def drives(self) -> DrivesRequestBuilder:
         """
@@ -234,7 +251,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .drives.drives_request_builder import DrivesRequestBuilder
 
         return DrivesRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def external_columns(self) -> ExternalColumnsRequestBuilder:
         """
@@ -243,7 +260,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .external_columns.external_columns_request_builder import ExternalColumnsRequestBuilder
 
         return ExternalColumnsRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def get_activities_by_interval(self) -> GetActivitiesByIntervalRequestBuilder:
         """
@@ -252,7 +269,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .get_activities_by_interval.get_activities_by_interval_request_builder import GetActivitiesByIntervalRequestBuilder
 
         return GetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def items(self) -> ItemsRequestBuilder:
         """
@@ -261,7 +278,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .items.items_request_builder import ItemsRequestBuilder
 
         return ItemsRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def last_modified_by_user(self) -> LastModifiedByUserRequestBuilder:
         """
@@ -270,7 +287,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .last_modified_by_user.last_modified_by_user_request_builder import LastModifiedByUserRequestBuilder
 
         return LastModifiedByUserRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def lists(self) -> ListsRequestBuilder:
         """
@@ -279,7 +296,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .lists.lists_request_builder import ListsRequestBuilder
 
         return ListsRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def onenote(self) -> OnenoteRequestBuilder:
         """
@@ -288,7 +305,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .onenote.onenote_request_builder import OnenoteRequestBuilder
 
         return OnenoteRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def operations(self) -> OperationsRequestBuilder:
         """
@@ -297,7 +314,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .operations.operations_request_builder import OperationsRequestBuilder
 
         return OperationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def permissions(self) -> PermissionsRequestBuilder:
         """
@@ -306,7 +323,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .permissions.permissions_request_builder import PermissionsRequestBuilder
 
         return PermissionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def sites(self) -> SitesRequestBuilder:
         """
@@ -315,7 +332,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .sites.sites_request_builder import SitesRequestBuilder
 
         return SitesRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def term_store(self) -> TermStoreRequestBuilder:
         """
@@ -324,7 +341,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .term_store.term_store_request_builder import TermStoreRequestBuilder
 
         return TermStoreRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @property
     def term_stores(self) -> TermStoresRequestBuilder:
         """
@@ -333,7 +350,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .term_stores.term_stores_request_builder import TermStoresRequestBuilder
 
         return TermStoresRequestBuilder(self.request_adapter, self.path_parameters)
-    
+
     @dataclass
     class SiteItemRequestBuilderGetQueryParameters():
         """
@@ -352,19 +369,18 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
             if original_name == "select":
                 return "%24select"
             return original_name
-        
+
         # Expand related entities
         expand: Optional[List[str]] = None
 
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
+
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
     @dataclass
     class SiteItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
         """
         Configuration for the request such as headers, query parameters, and middleware options.
@@ -372,15 +388,14 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         # Request query parameters
         query_parameters: Optional[SiteItemRequestBuilder.SiteItemRequestBuilderGetQueryParameters] = None
 
-    
+
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
     @dataclass
     class SiteItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-    
+
 

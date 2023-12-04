@@ -130,3 +130,6 @@ dmypy.json
 
 # test files
 .app.py
+
+# Pycharm
+.idea

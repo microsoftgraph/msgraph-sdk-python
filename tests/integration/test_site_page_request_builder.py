@@ -67,3 +67,8 @@ class SitePageRequestBuilderIntegrationTestCase(unittest.TestCase):
         assert_that(actual.title).is_equal_to("A Task Force for Change")
         assert_that(actual.name).is_equal_to("A-Task-Force-for-Change.aspx")
         assert_that(actual.web_url).is_equal_to("SitePages/A-Task-Force-for-Change.aspx")
+
+    def test_get_users_delta(self):
+        actual = self._loop.run_until_complete(client.users.get())
+
+        assert_that(actual).is_not_none()

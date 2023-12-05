@@ -4,7 +4,7 @@ from os import getenv
 
 from assertpy import assert_that
 from azure.identity.aio import ClientSecretCredential
-from httpx import AsyncClient
+from httpx import AsyncClient, Timeout
 from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
 from msgraph_core import GraphClientFactory
 
@@ -24,7 +24,7 @@ credentials = ClientSecretCredential(
 )
 scopes = ["https://graph.microsoft.com/.default"]
 # TODO: If you're behind a proxy, you need to specify it twice for the client as well as the auth provider!
-http_client = GraphClientFactory.create_with_default_middleware(client=AsyncClient(proxies=None))
+http_client = GraphClientFactory.create_with_default_middleware(client=AsyncClient(proxies=None, timeout=Timeout(timeout=60.0)))
 auth_provider = AzureIdentityAuthenticationProvider(credentials=credentials, scopes=scopes, options={"proxies": None})
 request_adapter = GraphRequestAdapter(auth_provider=auth_provider, client=http_client)
 client = GraphServiceClient(request_adapter=request_adapter)
@@ -68,7 +68,15 @@ class SitePageRequestBuilderIntegrationTestCase(unittest.TestCase):
         assert_that(actual.name).is_equal_to("A-Task-Force-for-Change.aspx")
         assert_that(actual.web_url).is_equal_to("SitePages/A-Task-Force-for-Change.aspx")
 
+    async def get_users_delta(self):
+        result = []
+        users = await client.users.delta.get()
+        async for u in users:
+            result.extend(u)
+
+        return result
+
     def test_get_users_delta(self):
-        actual = self._loop.run_until_complete(client.users.get())
+        actual = self._loop.run_until_complete(self.get_users_delta())
 
         assert_that(actual).is_not_none()

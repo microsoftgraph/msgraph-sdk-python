@@ -35,6 +35,7 @@ if TYPE_CHECKING:
     from .permissions.permissions_request_builder import PermissionsRequestBuilder
     from .preview.preview_request_builder import PreviewRequestBuilder
     from .restore.restore_request_builder import RestoreRequestBuilder
+    from .retention_label.retention_label_request_builder import RetentionLabelRequestBuilder
     from .search_with_q.search_with_q_request_builder import SearchWithQRequestBuilder
     from .subscriptions.subscriptions_request_builder import SubscriptionsRequestBuilder
     from .thumbnails.thumbnails_request_builder import ThumbnailsRequestBuilder
@@ -58,7 +59,7 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DriveItemItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a DriveItem by using its ID or path.Deleting items using this method moves the items to the recycle bin instead of permanently deleting the item. This API is available in the following national cloud deployments.
+        Delete a DriveItem by using its ID or path.Deleting items using this method moves the items to the recycle bin instead of permanently deleting the item.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/driveitem-delete?view=graph-rest-1.0
@@ -129,11 +130,11 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DriveItem] = None, request_configuration: Optional[DriveItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DriveItem]:
         """
-        To move a DriveItem to a new parent item, your app requests to update the parentReference of the DriveItem to move. This is a special case of the Update method.Your app can combine moving an item to a new container and updating other properties of the item into a single request. Items cannot be moved between Drives using this request. This API is available in the following national cloud deployments.
+        Update the metadata for a driveItem by ID or path. You can also use update to move an item to another parent by updating the item's parentReference property.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItem]
-        Find more info here: https://learn.microsoft.com/graph/api/driveitem-move?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/driveitem-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -166,7 +167,7 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DriveItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a DriveItem by using its ID or path.Deleting items using this method moves the items to the recycle bin instead of permanently deleting the item. This API is available in the following national cloud deployments.
+        Delete a DriveItem by using its ID or path.Deleting items using this method moves the items to the recycle bin instead of permanently deleting the item.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -177,7 +178,7 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[DriveItemItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -194,12 +195,12 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[DriveItem] = None, request_configuration: Optional[DriveItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        To move a DriveItem to a new parent item, your app requests to update the parentReference of the DriveItem to move. This is a special case of the Update method.Your app can combine moving an item to a new container and updating other properties of the item into a single request. Items cannot be moved between Drives using this request. This API is available in the following national cloud deployments.
+        Update the metadata for a driveItem by ID or path. You can also use update to move an item to another parent by updating the item's parentReference property.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -213,7 +214,7 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -415,6 +416,15 @@ class DriveItemItemRequestBuilder(BaseRequestBuilder):
         from .restore.restore_request_builder import RestoreRequestBuilder
 
         return RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def retention_label(self) -> RetentionLabelRequestBuilder:
+        """
+        Provides operations to manage the retentionLabel property of the microsoft.graph.driveItem entity.
+        """
+        from .retention_label.retention_label_request_builder import RetentionLabelRequestBuilder
+
+        return RetentionLabelRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def subscriptions(self) -> SubscriptionsRequestBuilder:

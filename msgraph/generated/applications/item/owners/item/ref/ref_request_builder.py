@@ -27,7 +27,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove an owner from an application. As a recommended best practice, apps should have at least two owners. This API is available in the following national cloud deployments.
+        Remove an owner from an application. As a recommended best practice, apps should have at least two owners.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/application-delete-owners?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove an owner from an application. As a recommended best practice, apps should have at least two owners. This API is available in the following national cloud deployments.
+        Remove an owner from an application. As a recommended best practice, apps should have at least two owners.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -59,7 +59,7 @@ class RefRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> RefRequestBuilder:
@@ -75,7 +75,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():
         """
-        Remove an owner from an application. As a recommended best practice, apps should have at least two owners. This API is available in the following national cloud deployments.
+        Remove an owner from an application. As a recommended best practice, apps should have at least two owners.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

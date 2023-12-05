@@ -32,7 +32,7 @@ class ExternalConnectionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes an externalConnection object. This API is available in the following national cloud deployments.
+        Deletes an externalConnection object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-delete?view=graph-rest-1.0
@@ -52,7 +52,7 @@ class ExternalConnectionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ExternalConnection]:
         """
-        Read the properties and relationships of an externalConnection object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of an externalConnection object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExternalConnection]
         Find more info here: https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-get?view=graph-rest-1.0
@@ -74,7 +74,7 @@ class ExternalConnectionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ExternalConnection] = None, request_configuration: Optional[ExternalConnectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ExternalConnection]:
         """
-        Update the properties of an externalConnection object. This API is available in the following national cloud deployments.
+        Update the properties of an externalConnection object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExternalConnection]
@@ -99,7 +99,7 @@ class ExternalConnectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes an externalConnection object. This API is available in the following national cloud deployments.
+        Deletes an externalConnection object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,12 +110,12 @@ class ExternalConnectionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an externalConnection object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of an externalConnection object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,12 +127,12 @@ class ExternalConnectionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[ExternalConnection] = None, request_configuration: Optional[ExternalConnectionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an externalConnection object. This API is available in the following national cloud deployments.
+        Update the properties of an externalConnection object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -146,7 +146,7 @@ class ExternalConnectionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -209,7 +209,7 @@ class ExternalConnectionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExternalConnectionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an externalConnection object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of an externalConnection object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

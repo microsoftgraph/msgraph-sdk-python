@@ -28,7 +28,7 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a custom identityUserFlowAttribute. This API is available in the following national cloud deployments.
+        Delete a custom identityUserFlowAttribute.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/identityuserflowattribute-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityUserFlowAttribute]:
         """
-        Retrieve the properties and relationships of a identityUserFlowAttribute object. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a identityUserFlowAttribute object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityUserFlowAttribute]
         Find more info here: https://learn.microsoft.com/graph/api/identityuserflowattribute-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[IdentityUserFlowAttribute] = None, request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[IdentityUserFlowAttribute]:
         """
-        Update the properties of a custom identityUserFlowAttribute object. This API is available in the following national cloud deployments.
+        Update the properties of a custom identityUserFlowAttribute object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityUserFlowAttribute]
@@ -95,7 +95,7 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a custom identityUserFlowAttribute. This API is available in the following national cloud deployments.
+        Delete a custom identityUserFlowAttribute.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -106,12 +106,12 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a identityUserFlowAttribute object. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a identityUserFlowAttribute object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -123,12 +123,12 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[IdentityUserFlowAttribute] = None, request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a custom identityUserFlowAttribute object. This API is available in the following national cloud deployments.
+        Update the properties of a custom identityUserFlowAttribute object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -142,7 +142,7 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -169,7 +169,7 @@ class IdentityUserFlowAttributeItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IdentityUserFlowAttributeItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a identityUserFlowAttribute object. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a identityUserFlowAttribute object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -30,7 +30,7 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ContactFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete contactFolder other than the default contactFolder. This API is available in the following national cloud deployments.
+        Delete contactFolder other than the default contactFolder.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/contactfolder-delete?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ContactFolderItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ContactFolder]:
         """
-        Get a contact folder by using the contact folder ID. There are two scenarios where an app can get another user's contact folder: This API is available in the following national cloud deployments.
+        Get a contact folder by using the contact folder ID. There are two scenarios where an app can get another user's contact folder:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContactFolder]
         Find more info here: https://learn.microsoft.com/graph/api/contactfolder-get?view=graph-rest-1.0
@@ -72,7 +72,7 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ContactFolder] = None, request_configuration: Optional[ContactFolderItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ContactFolder]:
         """
-        Update the properties of contactfolder object. This API is available in the following national cloud deployments.
+        Update the properties of contactfolder object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContactFolder]
@@ -97,7 +97,7 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ContactFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete contactFolder other than the default contactFolder. This API is available in the following national cloud deployments.
+        Delete contactFolder other than the default contactFolder.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,12 +108,12 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[ContactFolderItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a contact folder by using the contact folder ID. There are two scenarios where an app can get another user's contact folder: This API is available in the following national cloud deployments.
+        Get a contact folder by using the contact folder ID. There are two scenarios where an app can get another user's contact folder:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -125,12 +125,12 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[ContactFolder] = None, request_configuration: Optional[ContactFolderItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of contactfolder object. This API is available in the following national cloud deployments.
+        Update the properties of contactfolder object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -144,7 +144,7 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -189,7 +189,7 @@ class ContactFolderItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ContactFolderItemRequestBuilderGetQueryParameters():
         """
-        Get a contact folder by using the contact folder ID. There are two scenarios where an app can get another user's contact folder: This API is available in the following national cloud deployments.
+        Get a contact folder by using the contact folder ID. There are two scenarios where an app can get another user's contact folder:
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

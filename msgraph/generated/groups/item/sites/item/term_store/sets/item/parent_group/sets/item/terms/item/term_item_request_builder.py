@@ -31,7 +31,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TermItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a term object. This API is available in the following national cloud deployments.
+        Delete a term object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/termstore-term-delete?view=graph-rest-1.0
@@ -51,7 +51,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TermItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Term]:
         """
-        Read the properties and relationships of a term object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of a term object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Term]
         Find more info here: https://learn.microsoft.com/graph/api/termstore-term-get?view=graph-rest-1.0
@@ -73,7 +73,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Term] = None, request_configuration: Optional[TermItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Term]:
         """
-        Update the properties of a term object. This API is available in the following national cloud deployments.
+        Update the properties of a term object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Term]
@@ -98,7 +98,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TermItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a term object. This API is available in the following national cloud deployments.
+        Delete a term object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,12 +109,12 @@ class TermItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[TermItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a term object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of a term object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -126,12 +126,12 @@ class TermItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[Term] = None, request_configuration: Optional[TermItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a term object. This API is available in the following national cloud deployments.
+        Update the properties of a term object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -145,7 +145,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -199,7 +199,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TermItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a term object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of a term object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -28,10 +28,10 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[CustomCalloutExtensionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an accessPackageAssignmentWorkflowExtension object. The custom workflow extension must first be removed from any associated policies before it can be deleted. Follow these steps to remove the custom workflow extension from any associated policies: This API is available in the following national cloud deployments.
+        Delete an accessPackageAssignmentRequestWorkflowExtension object. The custom workflow extension must first be removed from any associated policies before it can be deleted. Follow these steps to remove the custom workflow extension from any associated policies:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentworkflowextension-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentrequestworkflowextension-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +48,10 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CustomCalloutExtensionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CustomCalloutExtension]:
         """
-        Read the properties and relationships of an accessPackageAssignmentWorkflowExtension object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of an accessPackageAssignmentRequestWorkflowExtension object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomCalloutExtension]
-        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentworkflowextension-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentrequestworkflowextension-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +70,11 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[CustomCalloutExtension] = None, request_configuration: Optional[CustomCalloutExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[CustomCalloutExtension]:
         """
-        Update the properties of an accessPackageAssignmentRequestWorkflowExtension object.
+        Update the properties of an accessPackageAssignmentWorkflowExtension object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomCalloutExtension]
-        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentrequestworkflowextension-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/accesspackageassignmentworkflowextension-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -95,7 +95,7 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[CustomCalloutExtensionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an accessPackageAssignmentWorkflowExtension object. The custom workflow extension must first be removed from any associated policies before it can be deleted. Follow these steps to remove the custom workflow extension from any associated policies: This API is available in the following national cloud deployments.
+        Delete an accessPackageAssignmentRequestWorkflowExtension object. The custom workflow extension must first be removed from any associated policies before it can be deleted. Follow these steps to remove the custom workflow extension from any associated policies:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -106,12 +106,12 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[CustomCalloutExtensionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an accessPackageAssignmentWorkflowExtension object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of an accessPackageAssignmentRequestWorkflowExtension object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -123,12 +123,12 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[CustomCalloutExtension] = None, request_configuration: Optional[CustomCalloutExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an accessPackageAssignmentRequestWorkflowExtension object.
+        Update the properties of an accessPackageAssignmentWorkflowExtension object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -142,7 +142,7 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -169,7 +169,7 @@ class CustomCalloutExtensionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CustomCalloutExtensionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an accessPackageAssignmentWorkflowExtension object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of an accessPackageAssignmentRequestWorkflowExtension object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

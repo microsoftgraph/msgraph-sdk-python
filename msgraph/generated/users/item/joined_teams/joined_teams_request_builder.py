@@ -46,7 +46,7 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[JoinedTeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamCollectionResponse]:
         """
-        Get the teams in Microsoft Teams that the user is a direct member of. This API is available in the following national cloud deployments.
+        Get the teams in Microsoft Teams that the user is a direct member of.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/user-list-joinedteams?view=graph-rest-1.0
@@ -92,7 +92,7 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[JoinedTeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the teams in Microsoft Teams that the user is a direct member of. This API is available in the following national cloud deployments.
+        Get the teams in Microsoft Teams that the user is a direct member of.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +104,7 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[Team] = None, request_configuration: Optional[JoinedTeamsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
@@ -123,7 +123,7 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -158,7 +158,7 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class JoinedTeamsRequestBuilderGetQueryParameters():
         """
-        Get the teams in Microsoft Teams that the user is a direct member of. This API is available in the following national cloud deployments.
+        Get the teams in Microsoft Teams that the user is a direct member of.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

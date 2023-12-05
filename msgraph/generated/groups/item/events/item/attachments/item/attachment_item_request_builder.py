@@ -28,7 +28,7 @@ class AttachmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AttachmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an attachment from a user calendar event, mail message, or group post. This API is available in the following national cloud deployments.
+        Delete an attachment from a user calendar event, mail message, or group post.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/attachment-delete?view=graph-rest-1.0
@@ -69,7 +69,7 @@ class AttachmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AttachmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an attachment from a user calendar event, mail message, or group post. This API is available in the following national cloud deployments.
+        Delete an attachment from a user calendar event, mail message, or group post.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -80,7 +80,7 @@ class AttachmentItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[AttachmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -97,7 +97,7 @@ class AttachmentItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> AttachmentItemRequestBuilder:

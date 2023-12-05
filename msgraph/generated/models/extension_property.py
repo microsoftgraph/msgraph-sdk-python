@@ -16,7 +16,7 @@ class ExtensionProperty(DirectoryObject):
     app_display_name: Optional[str] = None
     # Specifies the data type of the value the extension property can hold. Following values are supported. Not nullable. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximum
     data_type: Optional[str] = None
-    # The isMultiValued property
+    # Defines the directory extension as a multi-valued property. When true, the directory extension property can store a collection of objects of the dataType; for example, a collection of integers. The default value is false. Supports $filter (eq).
     is_multi_valued: Optional[bool] = None
     # Indicates if this extension property was synced from on-premises active directory using Microsoft Entra Connect. Read-only.
     is_synced_from_on_premises: Optional[bool] = None

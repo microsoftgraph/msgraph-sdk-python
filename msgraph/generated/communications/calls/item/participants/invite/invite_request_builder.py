@@ -29,7 +29,7 @@ class InviteRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> Optional[InviteParticipantsOperation]:
         """
-        Delete a specific participant in a call. In some situations, it is appropriate for an application to remove a participant from an active call. This action can be done before or after the participant answers the call. When an active caller is removed, they are immediately dropped from the call with no pre- or post-removal notification. When an invited participant is removed, any outstanding add participant request is canceled.  This API is available in the following national cloud deployments.
+        Delete a specific participant in a call. In some situations, it is appropriate for an application to remove a participant from an active call. This action can be done before or after the participant answers the call. When an active caller is removed, they are immediately dropped from the call with no pre- or post-removal notification. When an invited participant is removed, any outstanding add participant request is canceled. 
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[InviteParticipantsOperation]
@@ -54,7 +54,7 @@ class InviteRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a specific participant in a call. In some situations, it is appropriate for an application to remove a participant from an active call. This action can be done before or after the participant answers the call. When an active caller is removed, they are immediately dropped from the call with no pre- or post-removal notification. When an invited participant is removed, any outstanding add participant request is canceled.  This API is available in the following national cloud deployments.
+        Delete a specific participant in a call. In some situations, it is appropriate for an application to remove a participant from an active call. This action can be done before or after the participant answers the call. When an active caller is removed, they are immediately dropped from the call with no pre- or post-removal notification. When an invited participant is removed, any outstanding add participant request is canceled. 
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -68,7 +68,7 @@ class InviteRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

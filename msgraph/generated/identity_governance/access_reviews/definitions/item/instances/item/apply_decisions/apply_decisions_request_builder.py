@@ -27,7 +27,7 @@ class ApplyDecisionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[ApplyDecisionsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Apply review decisions on an accessReviewInstance if the decisions were not applied automatically because the autoApplyDecisionsEnabled property is false in the review's accessReviewScheduleSettings. The status of the accessReviewInstance must be Completed to call this method. This API is available in the following national cloud deployments.
+        Apply review decisions on an accessReviewInstance if the decisions were not applied automatically because the autoApplyDecisionsEnabled property is false in the review's accessReviewScheduleSettings. The status of the accessReviewInstance must be Completed to call this method.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/accessreviewinstance-applydecisions?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class ApplyDecisionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[ApplyDecisionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Apply review decisions on an accessReviewInstance if the decisions were not applied automatically because the autoApplyDecisionsEnabled property is false in the review's accessReviewScheduleSettings. The status of the accessReviewInstance must be Completed to call this method. This API is available in the following national cloud deployments.
+        Apply review decisions on an accessReviewInstance if the decisions were not applied automatically because the autoApplyDecisionsEnabled property is false in the review's accessReviewScheduleSettings. The status of the accessReviewInstance must be Completed to call this method.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -58,7 +58,7 @@ class ApplyDecisionsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> ApplyDecisionsRequestBuilder:

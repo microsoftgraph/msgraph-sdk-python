@@ -29,7 +29,7 @@ class ColumnDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ColumnDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove a column][columndefinition] from a [site][], a [list][], or a [content type][contentType]. This API is available in the following [national cloud deployments.
+        Remove a [column][columndefinition] from a [site][], a [list][], or a [content type][contentType].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/columndefinition-delete?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class ColumnDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ColumnDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ColumnDefinition]:
         """
-        Retrieve the metadata for a site][], a [list][], or a [contentType][] [column][columnDefinition]. This API is available in the following [national cloud deployments.
+        Retrieve the metadata for a [site][], a [list][], or a [contentType][] [column][columnDefinition].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ColumnDefinition]
         Find more info here: https://learn.microsoft.com/graph/api/columndefinition-get?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class ColumnDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ColumnDefinition] = None, request_configuration: Optional[ColumnDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ColumnDefinition]:
         """
-        Update a site][], a [list][], or a [content type][contentType] [column][columnDefinition]. This API is available in the following [national cloud deployments.
+        Update a [site][], a [list][], or a [content type][contentType] [column][columnDefinition].
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ColumnDefinition]
@@ -96,7 +96,7 @@ class ColumnDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ColumnDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a column][columndefinition] from a [site][], a [list][], or a [content type][contentType]. This API is available in the following [national cloud deployments.
+        Remove a [column][columndefinition] from a [site][], a [list][], or a [content type][contentType].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,12 +107,12 @@ class ColumnDefinitionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[ColumnDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the metadata for a site][], a [list][], or a [contentType][] [column][columnDefinition]. This API is available in the following [national cloud deployments.
+        Retrieve the metadata for a [site][], a [list][], or a [contentType][] [column][columnDefinition].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -124,12 +124,12 @@ class ColumnDefinitionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[ColumnDefinition] = None, request_configuration: Optional[ColumnDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update a site][], a [list][], or a [content type][contentType] [column][columnDefinition]. This API is available in the following [national cloud deployments.
+        Update a [site][], a [list][], or a [content type][contentType] [column][columnDefinition].
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class ColumnDefinitionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -179,7 +179,7 @@ class ColumnDefinitionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ColumnDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the metadata for a site][], a [list][], or a [contentType][] [column][columnDefinition]. This API is available in the following [national cloud deployments.
+        Retrieve the metadata for a [site][], a [list][], or a [contentType][] [column][columnDefinition].
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

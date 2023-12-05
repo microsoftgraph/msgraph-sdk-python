@@ -45,7 +45,7 @@ class AcceptedSendersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AcceptedSendersRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryObjectCollectionResponse]:
         """
-        Users in the accepted senders list can post to conversations of the group (identified in the GET request URL).Make sure you do not specify the same user or group in the accepted senders and rejected senders lists, otherwise you will get an error. This API is available in the following national cloud deployments.
+        Users in the accepted senders list can post to conversations of the group (identified in the GET request URL).Make sure you do not specify the same user or group in the accepted senders and rejected senders lists, otherwise you will get an error.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/group-list-acceptedsenders?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class AcceptedSendersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AcceptedSendersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Users in the accepted senders list can post to conversations of the group (identified in the GET request URL).Make sure you do not specify the same user or group in the accepted senders and rejected senders lists, otherwise you will get an error. This API is available in the following national cloud deployments.
+        Users in the accepted senders list can post to conversations of the group (identified in the GET request URL).Make sure you do not specify the same user or group in the accepted senders and rejected senders lists, otherwise you will get an error.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -79,7 +79,7 @@ class AcceptedSendersRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> AcceptedSendersRequestBuilder:
@@ -113,7 +113,7 @@ class AcceptedSendersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AcceptedSendersRequestBuilderGetQueryParameters():
         """
-        Users in the accepted senders list can post to conversations of the group (identified in the GET request URL).Make sure you do not specify the same user or group in the accepted senders and rejected senders lists, otherwise you will get an error. This API is available in the following national cloud deployments.
+        Users in the accepted senders list can post to conversations of the group (identified in the GET request URL).Make sure you do not specify the same user or group in the accepted senders and rejected senders lists, otherwise you will get an error.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

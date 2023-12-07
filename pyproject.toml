@@ -31,7 +31,7 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-dev = ["yapf", "bumpver", "isort", "pylint", "pytest", "mypy", "mockito", "black"]
+dev = ["yapf", "bumpver", "isort", "pylint", "pytest", "mypy", "mockito", "black", "assertpy"]
 
 [project.urls]
 homepage = "https://github.com/microsoftgraph/msgraph-sdk-python#readme"

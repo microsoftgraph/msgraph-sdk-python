@@ -7,22 +7,26 @@ from typing import Set
 import astunparse
 import black
 import isort
+from more_itertools import flatten
 
 
 def import_modules_from_directory(directory):
-    modules = []
+    def import_module(root, file):
+        if file.endswith('.py') and not file.startswith('__'):
+            module_path = os.path.join(root, file)
+            parent_module = root.split(directory)[-1].replace("\\", ".")
+            module_path = module_path.replace(root, ".".join(filter(None, [directory, parent_module])))
+            full_module_name = module_path.replace(os.path.sep, '.')[:-3]
+            full_module_name = full_module_name.replace("..", ".")
+            return importlib.import_module(full_module_name)
+        return None
+
+    def import_modules(value):
+        root, dirs, files = value
+        return filter(None, map(lambda file: import_module(root, file), files))
+
     project_directory = __file__.replace(f"tests\\integration\\{os.path.basename(__file__)}", "")
-    for root, dirs, files in os.walk(f"{project_directory}{directory}"):
-        for file in files:
-            if file.endswith('.py') and not file.startswith('__'):
-                module_path = os.path.join(root, file)
-                parent_module = root.split(directory)[-1].replace("\\", ".")
-                module_path = module_path.replace(root, ".".join(filter(None, [directory, parent_module])))
-                full_module_name = module_path.replace(os.path.sep, '.')[:-3]
-                full_module_name = full_module_name.replace("..", ".")
-                module = importlib.import_module(full_module_name)
-                modules.append(module)
-    return modules
+    return flatten(map(import_modules, os.walk(f"{project_directory}{directory}")))
 
 
 class RefactorVisitor(ast.NodeTransformer):
@@ -98,14 +102,13 @@ class RefactorVisitor(ast.NodeTransformer):
 
         return node
 
-def get_subclasses(modules):
+def get_subclasses(module):
     subclasses = []
-    for module in modules:
-        for name, obj in inspect.getmembers(module, inspect.isclass):
-            orig_bases = dict(inspect.getmembers(obj)).get("__orig_bases__", [])
-            for orig_base in orig_bases:
-                if orig_base.__name__.startswith("BaseCollectionPagination"):
-                    subclasses.append((module, name, obj))
+    for name, obj in inspect.getmembers(module, inspect.isclass):
+        orig_bases = dict(inspect.getmembers(obj)).get("__orig_bases__", [])
+        for orig_base in orig_bases:
+            if orig_base.__name__.startswith("BaseCollectionPagination"):
+                subclasses.append((module, name, obj))
     return subclasses
 
 def refactor_code(source_code):
@@ -115,10 +118,8 @@ def refactor_code(source_code):
 
 # Example usage:
 
-def do_refactor(modules):
-    subclasses = get_subclasses(modules)
-
-    for module, name, subclass in subclasses:
+def do_refactor(module):
+    for module, name, subclass in get_subclasses(module):
         source_code = inspect.getsource(module)
         refactored_code = refactor_code(source_code)
 
@@ -135,5 +136,5 @@ def do_refactor(modules):
 
 
 if __name__ == "__main__":
-    modules = import_modules_from_directory("msgraph")
-    do_refactor(modules)
+    for module in import_modules_from_directory("msgraph"):
+        do_refactor(module)

@@ -128,5 +128,5 @@ uritemplate==4.1.1 ; python_version >= '3.6'
 
 urllib3==2.1.0 ; python_version >= '3.7'
 
-yarl==1.9.3 ; python_version >= '3.7'
+yarl==1.9.4 ; python_version >= '3.7'
 

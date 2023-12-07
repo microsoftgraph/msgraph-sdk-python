@@ -32,7 +32,7 @@ packaging==23.2 ; python_version >= '3.7'
 
 pathlib2==2.3.7.post1
 
-platformdirs==4.0.0 ; python_version >= '3.7'
+platformdirs==4.1.0 ; python_version >= '3.7'
 
 pylint==3.0.2
 
@@ -104,7 +104,7 @@ microsoft-kiota-serialization-json==1.0.0
 
 microsoft-kiota-serialization-text==1.0.0
 
-msal==1.25.0
+msal==1.26.0
 
 msal-extensions==1.0.0
 
@@ -128,5 +128,5 @@ uritemplate==4.1.1 ; python_version >= '3.6'
 
 urllib3==2.1.0 ; python_version >= '3.7'
 
-yarl==1.9.3 ; python_version >= '3.7'
+yarl==1.9.4 ; python_version >= '3.7'
 

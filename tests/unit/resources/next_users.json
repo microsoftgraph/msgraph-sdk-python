@@ -1,0 +1,46 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users(displayName,description,mailNickname)",
+  "value": [
+
+    {
+      "@odata.id": "https://graph.microsoft.com/v2/c34aa217-8e78-4c5f-91a7-29e01e0d97d8/directoryObjects/6794f45f-949e-4e8b-b01c-03d777e1cbf8/Microsoft.DirectoryServices.User",
+      "displayName": "David Blain",
+      "mailNickname": "dabla"
+    },
+    {
+      "@odata.id": "https://graph.microsoft.com/v2/c34aa217-8e78-4c5f-91a7-29e01e0d97d8/directoryObjects/ad31af2e-b69a-4ff7-8aee-b962cc739210/Microsoft.DirectoryServices.User",
+      "displayName": "Diego Siciliani",
+      "mailNickname": "DiegoS"
+    },
+    {
+      "@odata.id": "https://graph.microsoft.com/v2/c34aa217-8e78-4c5f-91a7-29e01e0d97d8/directoryObjects/6aed18fc-f39b-4762-85d1-1525ccdf4823/Microsoft.DirectoryServices.User",
+      "displayName": "Grady Archie",
+      "mailNickname": "GradyA"
+    },
+    {
+      "@odata.id": "https://graph.microsoft.com/v2/c34aa217-8e78-4c5f-91a7-29e01e0d97d8/directoryObjects/44c76cb8-7118-4211-99d0-dd6651ce2fe6/Microsoft.DirectoryServices.User",
+      "displayName": "Henrietta Mueller",
+      "mailNickname": "HenriettaM"
+    },
+    {
+      "@odata.id": "https://graph.microsoft.com/v2/c34aa217-8e78-4c5f-91a7-29e01e0d97d8/directoryObjects/d1db76e3-06e7-430a-a97e-7b6572f5fb15/Microsoft.DirectoryServices.User",
+      "displayName": "Isaiah Langer",
+      "mailNickname": "IsaiahL"
+    },
+    {
+      "@odata.id": "https://graph.microsoft.com/v2/c34aa217-8e78-4c5f-91a7-29e01e0d97d8/directoryObjects/2b62c4a9-3c0c-4d60-8e3f-cb698d8ba9fc/Microsoft.DirectoryServices.User",
+      "displayName": "Johanna Lorenz",
+      "mailNickname": "JohannaL"
+    },
+    {
+      "@odata.id": "https://graph.microsoft.com/v2/c34aa217-8e78-4c5f-91a7-29e01e0d97d8/directoryObjects/d982d3c5-4ea8-47bb-81b1-77ed0b107f30/Microsoft.DirectoryServices.User",
+      "displayName": "Joni Sherman",
+      "mailNickname": "JoniS"
+    },
+    {
+      "@odata.id": "https://graph.microsoft.com/v2/c34aa217-8e78-4c5f-91a7-29e01e0d97d8/directoryObjects/f66aba7d-5284-418d-a025-6d6f0639350b/Microsoft.DirectoryServices.User",
+      "displayName": "Lee Gu",
+      "mailNickname": "LeeG"
+    }
+  ]
+}

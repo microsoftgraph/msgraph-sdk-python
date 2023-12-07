@@ -95,3 +95,6 @@ class BaseCollectionPaginationResponse(AdditionalDataHolder, BackedModel, Parsab
 
     def __aiter__(self):
         return self
+
+    def __len__(self):
+        return len(self.value)

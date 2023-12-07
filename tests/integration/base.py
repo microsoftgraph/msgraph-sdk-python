@@ -1,6 +1,4 @@
-import asyncio
 from os import getenv
-from unittest import TestCase
 
 from azure.identity.aio import ClientSecretCredential
 from httpx import AsyncClient, Timeout
@@ -8,6 +6,7 @@ from kiota_authentication_azure.azure_identity_authentication_provider import Az
 from msgraph_core import GraphClientFactory
 
 from msgraph import GraphServiceClient, GraphRequestAdapter
+from tests.base import BaseTestCase
 
 TENANT_ID = getenv("TENANT_ID")
 CLIENT_ID = getenv("CLIENT_ID")
@@ -21,7 +20,7 @@ credentials = ClientSecretCredential(
 scopes = ["https://graph.microsoft.com/.default"]
 
 
-class BaseIntegrationTestCase(TestCase):
+class BaseIntegrationTestCase(BaseTestCase):
     @classmethod
     def setUpClass(cls):
         # TODO: If you're behind a proxy, you need to specify it twice for the client as well as the auth provider!
@@ -29,8 +28,4 @@ class BaseIntegrationTestCase(TestCase):
         auth_provider = AzureIdentityAuthenticationProvider(credentials=credentials, scopes=scopes,options={"proxies": None})
         request_adapter = GraphRequestAdapter(auth_provider=auth_provider, client=http_client)
         cls.client = GraphServiceClient(request_adapter=request_adapter)
-        cls._loop = asyncio.get_event_loop()
-
-    @classmethod
-    def tearDownClass(cls):
-        cls._loop.close()
+        BaseTestCase.setUpClass()

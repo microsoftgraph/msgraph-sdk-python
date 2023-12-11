@@ -106,7 +106,7 @@ microsoft-kiota-serialization-text==1.0.0
 
 msal==1.26.0
 
-msal-extensions==1.0.0
+msal-extensions==1.1.0
 
 msgraph-core==1.0.0a4
 

@@ -44,7 +44,7 @@ class IndicatorsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IndicatorsRequestBuilderGetRequestConfiguration] = None) -> Optional[IntelligenceProfileIndicatorCollectionResponse]:
         """
-        Get the intelligenceProfileIndicator resources from the indicators navigation property of an intelligenceProfile. This API is available in the following national cloud deployments.
+        Get the intelligenceProfileIndicator resources from the indicators navigation property of an intelligenceProfile.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IntelligenceProfileIndicatorCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/security-intelligenceprofile-list-indicators?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class IndicatorsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IndicatorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the intelligenceProfileIndicator resources from the indicators navigation property of an intelligenceProfile. This API is available in the following national cloud deployments.
+        Get the intelligenceProfileIndicator resources from the indicators navigation property of an intelligenceProfile.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -78,7 +78,7 @@ class IndicatorsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> IndicatorsRequestBuilder:
@@ -103,7 +103,7 @@ class IndicatorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IndicatorsRequestBuilderGetQueryParameters():
         """
-        Get the intelligenceProfileIndicator resources from the indicators navigation property of an intelligenceProfile. This API is available in the following national cloud deployments.
+        Get the intelligenceProfileIndicator resources from the indicators navigation property of an intelligenceProfile.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

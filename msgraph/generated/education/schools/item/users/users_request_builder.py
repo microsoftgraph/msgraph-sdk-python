@@ -32,7 +32,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     def by_education_user_id(self,education_user_id: str) -> EducationUserItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.education.schools.item.users.item collection
-        param education_user_id: Unique identifier of the item
+        param education_user_id: The unique identifier of educationUser
         Returns: EducationUserItemRequestBuilder
         """
         if not education_user_id:
@@ -45,7 +45,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationUserCollectionResponse]:
         """
-        Get the educationUser resources associated with an educationSchool. This API is available in the following national cloud deployments.
+        Get the educationUser resources associated with an educationSchool.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationUserCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/educationschool-list-users?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the educationUser resources associated with an educationSchool. This API is available in the following national cloud deployments.
+        Get the educationUser resources associated with an educationSchool.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -79,7 +79,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> UsersRequestBuilder:
@@ -113,7 +113,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UsersRequestBuilderGetQueryParameters():
         """
-        Get the educationUser resources associated with an educationSchool. This API is available in the following national cloud deployments.
+        Get the educationUser resources associated with an educationSchool.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

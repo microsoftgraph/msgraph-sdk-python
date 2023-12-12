@@ -58,7 +58,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[StagesRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessReviewStageCollectionResponse]:
         """
-        Retrieve the stages in a multi-stage access review instance. This API is available in the following national cloud deployments.
+        Retrieve the stages in a multi-stage access review instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewStageCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/accessreviewinstance-list-stages?view=graph-rest-1.0
@@ -104,7 +104,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[StagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the stages in a multi-stage access review instance. This API is available in the following national cloud deployments.
+        Retrieve the stages in a multi-stage access review instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +116,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[AccessReviewStage] = None, request_configuration: Optional[StagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
@@ -135,7 +135,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -161,7 +161,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class StagesRequestBuilderGetQueryParameters():
         """
-        Retrieve the stages in a multi-stage access review instance. This API is available in the following national cloud deployments.
+        Retrieve the stages in a multi-stage access review instance.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

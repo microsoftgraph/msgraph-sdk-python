@@ -49,7 +49,7 @@ class DevicesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DevicesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCollectionResponse]:
         """
-        Retrieve a list of device objects registered in the organization. This API is available in the following national cloud deployments.
+        Retrieve a list of device objects registered in the organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/device-list?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class DevicesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Device] = None, request_configuration: Optional[DevicesRequestBuilderPostRequestConfiguration] = None) -> Optional[Device]:
         """
-        Create and register a new device in the organization. This API is available in the following national cloud deployments.
+        Create and register a new device in the organization.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Device]
@@ -96,7 +96,7 @@ class DevicesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DevicesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of device objects registered in the organization. This API is available in the following national cloud deployments.
+        Retrieve a list of device objects registered in the organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,12 +108,12 @@ class DevicesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[Device] = None, request_configuration: Optional[DevicesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create and register a new device in the organization. This API is available in the following national cloud deployments.
+        Create and register a new device in the organization.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -127,7 +127,7 @@ class DevicesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -189,7 +189,7 @@ class DevicesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DevicesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of device objects registered in the organization. This API is available in the following national cloud deployments.
+        Retrieve a list of device objects registered in the organization.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

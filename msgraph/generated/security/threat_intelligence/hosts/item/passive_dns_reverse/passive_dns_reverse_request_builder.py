@@ -44,7 +44,7 @@ class PassiveDnsReverseRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PassiveDnsReverseRequestBuilderGetRequestConfiguration] = None) -> Optional[PassiveDnsRecordCollectionResponse]:
         """
-        Get a collection of passiveDnsRecord resources from a reverse passive DNS retrieval.  A reverse DNS lookup queries the hostname of a host using an IP address. This API is available in the following national cloud deployments.
+        Get a collection of passiveDnsRecord resources from a reverse passive DNS retrieval.  A reverse DNS lookup queries the hostname of a host using an IP address.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PassiveDnsRecordCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/security-host-list-passivednsreverse?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class PassiveDnsReverseRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[PassiveDnsReverseRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a collection of passiveDnsRecord resources from a reverse passive DNS retrieval.  A reverse DNS lookup queries the hostname of a host using an IP address. This API is available in the following national cloud deployments.
+        Get a collection of passiveDnsRecord resources from a reverse passive DNS retrieval.  A reverse DNS lookup queries the hostname of a host using an IP address.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -78,7 +78,7 @@ class PassiveDnsReverseRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> PassiveDnsReverseRequestBuilder:
@@ -103,7 +103,7 @@ class PassiveDnsReverseRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PassiveDnsReverseRequestBuilderGetQueryParameters():
         """
-        Get a collection of passiveDnsRecord resources from a reverse passive DNS retrieval.  A reverse DNS lookup queries the hostname of a host using an IP address. This API is available in the following national cloud deployments.
+        Get a collection of passiveDnsRecord resources from a reverse passive DNS retrieval.  A reverse DNS lookup queries the hostname of a host using an IP address.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -77,13 +77,13 @@ You must create **GraphServiceClient** object to make requests against the servi
 from azure.identity.aio import ClientSecretCredential
 from msgraph import GraphServiceClient
 
-credential = ClientSecretCredential(
+credentials = ClientSecretCredential(
     'TENANT_ID',
     'CLIENT_ID',
     'CLIENT_SECRET',
 )
 scopes = ['https://graph.microsoft.com/.default']
-client = GraphServiceClient(credentials=credential, scopes=scopes)
+client = GraphServiceClient(credentials=credentials, scopes=scopes)
 ```
 
 The above example uses default scopes for [app-only access](https://learn.microsoft.com/en-us/graph/permissions-overview?tabs=http#application-permissions).  If using [delegated access](https://learn.microsoft.com/en-us/graph/permissions-overview#delegated-permissions) you can provide custom scopes:
@@ -93,13 +93,44 @@ The above example uses default scopes for [app-only access](https://learn.micros
 from azure.identity import DeviceCodeCredential
 from msgraph import GraphServiceClient
 
-credential=DeviceCodeCredential(
+credentials = DeviceCodeCredential(
     'CLIENT_ID',
     'TENANT_ID',
 )
 scopes = ['User.Read', 'Mail.Read']
-client = GraphServiceClient(credentials=credential, scopes=scopes)
+client = GraphServiceClient(credentials=credentials, scopes=scopes)
 ```
+
+Below is a more advanced way to configure the GraphServiceClient when you're behind a HTTP proxy:
+
+```py
+# Example using sync credentials and delegated access.
+from azure.identity.aio import ClientSecretCredential
+from httpx import AsyncClient, Timeout
+from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
+from msgraph_core import GraphClientFactory
+
+from msgraph import GraphServiceClient, GraphRequestAdapter
+
+proxies = {'http': 'http://proxy:80', 'https': 'https://proxy:80'}
+credentials = ClientSecretCredential(
+    tenant_id='TENANT_ID',
+    client_id='CLIENT_ID',
+    client_secret='CLIENT_SECRET',
+    proxies=proxies.copy(),
+)
+proxies['http://'] = proxies.pop('http')
+proxies['https://'] = proxies.pop('https')
+scopes = ['https://graph.microsoft.com/.default']
+http_client = GraphClientFactory.create_with_default_middleware(
+    client=AsyncClient(proxies=proxies, timeout=Timeout(timeout=60.0)))
+auth_provider = AzureIdentityAuthenticationProvider(credentials=credentials, scopes=scopes)
+client = GraphServiceClient(request_adapter=GraphRequestAdapter(auth_provider=auth_provider, client=http_client))
+```
+
+Be carefull as the ClientSecretCredential isn't based on the httpx client but is rather using the requests library
+underneath to make it's authentication calls, so the dict is a bit different for the ClientSecretCredential class as
+opposed for the httpx AsyncClient.  That's why we need to adapt the proxies dict before passing it to the httpx AsyncClient.
 
 ## 3. Make requests against the service
 

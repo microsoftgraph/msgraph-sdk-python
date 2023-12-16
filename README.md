@@ -128,9 +128,9 @@ auth_provider = AzureIdentityAuthenticationProvider(credentials=credentials, sco
 client = GraphServiceClient(request_adapter=GraphRequestAdapter(auth_provider=auth_provider, client=http_client))
 ```
 
-Be carefull as the ClientSecretCredential isn't based on the httpx client but is rather using the requests library
-underneath to make it's authentication calls, so the dict is a bit different for the ClientSecretCredential class as
-opposed for the httpx AsyncClient.  That's why we need to adapt the proxies dict before passing it to the httpx AsyncClient.
+> **Note**: Be careful as the ClientSecretCredential isn't based on the httpx client but is rather using the [requests](https://requests.readthedocs.io/en/latest/) library
+underneath to make the authentication calls, so the proxies dict is a bit different for the ClientSecretCredential class as
+opposed to the httpx AsyncClient.  That's why we need to adapt the proxies dict before passing it to the httpx AsyncClient.
 
 ## 3. Make requests against the service
 

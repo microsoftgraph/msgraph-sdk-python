@@ -123,7 +123,7 @@ proxies['http://'] = proxies.pop('http')
 proxies['https://'] = proxies.pop('https')
 scopes = ['https://graph.microsoft.com/.default']
 http_client = GraphClientFactory.create_with_default_middleware(
-    client=AsyncClient(proxies=proxies, timeout=Timeout(timeout=60.0)))
+    client=AsyncClient(proxies=proxies, timeout=Timeout(timeout=60.0)))  # HTTP timeout connection set to 60 seconds
 auth_provider = AzureIdentityAuthenticationProvider(credentials=credentials, scopes=scopes)
 client = GraphServiceClient(request_adapter=GraphRequestAdapter(auth_provider=auth_provider, client=http_client))
 ```

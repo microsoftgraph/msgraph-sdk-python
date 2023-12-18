@@ -117,20 +117,20 @@ credentials = ClientSecretCredential(
     tenant_id='TENANT_ID',
     client_id='CLIENT_ID',
     client_secret='CLIENT_SECRET',
-    proxies=proxies.copy(),
+    proxies=proxies,
 )
-proxies['http://'] = proxies.pop('http')
-proxies['https://'] = proxies.pop('https')
+httpx_proxies = {'http://': proxies['http'], 'https://': proxies['https']}
 scopes = ['https://graph.microsoft.com/.default']
 http_client = GraphClientFactory.create_with_default_middleware(
-    client=AsyncClient(proxies=proxies, timeout=Timeout(timeout=60.0)))  # HTTP timeout connection set to 60 seconds
+    client=AsyncClient(proxies=httpx_proxies,
+                       timeout=Timeout(timeout=60.0)))  # HTTP timeout connection set to 60 seconds
 auth_provider = AzureIdentityAuthenticationProvider(credentials=credentials, scopes=scopes)
 client = GraphServiceClient(request_adapter=GraphRequestAdapter(auth_provider=auth_provider, client=http_client))
 ```
 
-> **Note**: Be careful as the ClientSecretCredential isn't based on the httpx client but is rather using the [requests](https://requests.readthedocs.io/en/latest/) library
+> **Note**: Be careful as the ClientSecretCredential isn't based on the [httpx](https://www.python-httpx.org/) client but is rather using the [requests](https://requests.readthedocs.io/en/latest/) library
 underneath to make the authentication calls, so the proxies dict is a bit different for the ClientSecretCredential class as
-opposed to the httpx AsyncClient.  That's why we need to adapt the proxies dict before passing it to the httpx AsyncClient.
+opposed to the [httpx](https://www.python-httpx.org/) AsyncClient.  That's why we need to adapt the proxies dict before passing it to the [httpx](https://www.python-httpx.org/) AsyncClient.
 
 ## 3. Make requests against the service
 

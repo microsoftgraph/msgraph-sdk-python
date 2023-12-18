@@ -16,7 +16,7 @@ importlib-metadata==6.8.0 ; python_version >= '3.8'
 
 isort==5.13.2
 
-lazy-object-proxy==1.9.0 ; python_version >= '3.7'
+lazy-object-proxy==1.10.0 ; python_version >= '3.7'
 
 lexid==2021.1006 ; python_version >= '2.7'
 

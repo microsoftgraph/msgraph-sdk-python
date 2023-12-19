@@ -44,7 +44,7 @@ class SslCertificatesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SslCertificatesRequestBuilderGetRequestConfiguration] = None) -> Optional[HostSslCertificateCollectionResponse]:
         """
-        Get a list of hostSslCertificate objects from the host navigation property. This API is available in the following national cloud deployments.
+        Get a list of hostSslCertificate objects from the host navigation property.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostSslCertificateCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/security-host-list-sslcertificates?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class SslCertificatesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SslCertificatesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of hostSslCertificate objects from the host navigation property. This API is available in the following national cloud deployments.
+        Get a list of hostSslCertificate objects from the host navigation property.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -78,7 +78,7 @@ class SslCertificatesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> SslCertificatesRequestBuilder:
@@ -103,7 +103,7 @@ class SslCertificatesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SslCertificatesRequestBuilderGetQueryParameters():
         """
-        Get a list of hostSslCertificate objects from the host navigation property. This API is available in the following national cloud deployments.
+        Get a list of hostSslCertificate objects from the host navigation property.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -27,7 +27,7 @@ class ClearUserPreferredPresenceRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[ClearUserPreferredPresenceRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Clear the preferred availability and activity status for a user. This API is available in the following national cloud deployments.
+        Clear the preferred availability and activity status for a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/presence-clearuserpreferredpresence?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class ClearUserPreferredPresenceRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[ClearUserPreferredPresenceRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Clear the preferred availability and activity status for a user. This API is available in the following national cloud deployments.
+        Clear the preferred availability and activity status for a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -58,7 +58,7 @@ class ClearUserPreferredPresenceRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> ClearUserPreferredPresenceRequestBuilder:

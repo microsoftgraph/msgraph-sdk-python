@@ -63,6 +63,7 @@ if TYPE_CHECKING:
     from .user_experience_analytics_work_from_anywhere_hardware_readiness_metric import UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric
     from .user_experience_analytics_work_from_anywhere_metric import UserExperienceAnalyticsWorkFromAnywhereMetric
     from .user_experience_analytics_work_from_anywhere_model_performance import UserExperienceAnalyticsWorkFromAnywhereModelPerformance
+    from .virtual_endpoint import VirtualEndpoint
     from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
     from .windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
     from .windows_information_protection_network_learning_summary import WindowsInformationProtectionNetworkLearningSummary
@@ -196,6 +197,8 @@ class DeviceManagement(Entity):
     user_experience_analytics_work_from_anywhere_metrics: Optional[List[UserExperienceAnalyticsWorkFromAnywhereMetric]] = None
     # The user experience analytics work from anywhere model performance
     user_experience_analytics_work_from_anywhere_model_performance: Optional[List[UserExperienceAnalyticsWorkFromAnywhereModelPerformance]] = None
+    # The virtualEndpoint property
+    virtual_endpoint: Optional[VirtualEndpoint] = None
     # The Windows autopilot device identities contained collection.
     windows_autopilot_device_identities: Optional[List[WindowsAutopilotDeviceIdentity]] = None
     # The windows information protection app learning summaries.
@@ -281,6 +284,7 @@ class DeviceManagement(Entity):
         from .user_experience_analytics_work_from_anywhere_hardware_readiness_metric import UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric
         from .user_experience_analytics_work_from_anywhere_metric import UserExperienceAnalyticsWorkFromAnywhereMetric
         from .user_experience_analytics_work_from_anywhere_model_performance import UserExperienceAnalyticsWorkFromAnywhereModelPerformance
+        from .virtual_endpoint import VirtualEndpoint
         from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
         from .windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
         from .windows_information_protection_network_learning_summary import WindowsInformationProtectionNetworkLearningSummary
@@ -345,6 +349,7 @@ class DeviceManagement(Entity):
         from .user_experience_analytics_work_from_anywhere_hardware_readiness_metric import UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric
         from .user_experience_analytics_work_from_anywhere_metric import UserExperienceAnalyticsWorkFromAnywhereMetric
         from .user_experience_analytics_work_from_anywhere_model_performance import UserExperienceAnalyticsWorkFromAnywhereModelPerformance
+        from .virtual_endpoint import VirtualEndpoint
         from .windows_autopilot_device_identity import WindowsAutopilotDeviceIdentity
         from .windows_information_protection_app_learning_summary import WindowsInformationProtectionAppLearningSummary
         from .windows_information_protection_network_learning_summary import WindowsInformationProtectionNetworkLearningSummary
@@ -411,6 +416,7 @@ class DeviceManagement(Entity):
             "userExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric": lambda n : setattr(self, 'user_experience_analytics_work_from_anywhere_hardware_readiness_metric', n.get_object_value(UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric)),
             "userExperienceAnalyticsWorkFromAnywhereMetrics": lambda n : setattr(self, 'user_experience_analytics_work_from_anywhere_metrics', n.get_collection_of_object_values(UserExperienceAnalyticsWorkFromAnywhereMetric)),
             "userExperienceAnalyticsWorkFromAnywhereModelPerformance": lambda n : setattr(self, 'user_experience_analytics_work_from_anywhere_model_performance', n.get_collection_of_object_values(UserExperienceAnalyticsWorkFromAnywhereModelPerformance)),
+            "virtualEndpoint": lambda n : setattr(self, 'virtual_endpoint', n.get_object_value(VirtualEndpoint)),
             "windowsAutopilotDeviceIdentities": lambda n : setattr(self, 'windows_autopilot_device_identities', n.get_collection_of_object_values(WindowsAutopilotDeviceIdentity)),
             "windowsInformationProtectionAppLearningSummaries": lambda n : setattr(self, 'windows_information_protection_app_learning_summaries', n.get_collection_of_object_values(WindowsInformationProtectionAppLearningSummary)),
             "windowsInformationProtectionNetworkLearningSummaries": lambda n : setattr(self, 'windows_information_protection_network_learning_summaries', n.get_collection_of_object_values(WindowsInformationProtectionNetworkLearningSummary)),
@@ -489,6 +495,7 @@ class DeviceManagement(Entity):
         writer.write_object_value("userExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric", self.user_experience_analytics_work_from_anywhere_hardware_readiness_metric)
         writer.write_collection_of_object_values("userExperienceAnalyticsWorkFromAnywhereMetrics", self.user_experience_analytics_work_from_anywhere_metrics)
         writer.write_collection_of_object_values("userExperienceAnalyticsWorkFromAnywhereModelPerformance", self.user_experience_analytics_work_from_anywhere_model_performance)
+        writer.write_object_value("virtualEndpoint", self.virtual_endpoint)
         writer.write_collection_of_object_values("windowsAutopilotDeviceIdentities", self.windows_autopilot_device_identities)
         writer.write_collection_of_object_values("windowsInformationProtectionAppLearningSummaries", self.windows_information_protection_app_learning_summaries)
         writer.write_collection_of_object_values("windowsInformationProtectionNetworkLearningSummaries", self.windows_information_protection_network_learning_summaries)

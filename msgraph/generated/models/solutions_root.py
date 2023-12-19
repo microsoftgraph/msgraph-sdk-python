@@ -7,6 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .booking_business import BookingBusiness
     from .booking_currency import BookingCurrency
+    from .virtual_events_root import VirtualEventsRoot
 
 @dataclass
 class SolutionsRoot(AdditionalDataHolder, BackedModel, Parsable):
@@ -21,6 +22,8 @@ class SolutionsRoot(AdditionalDataHolder, BackedModel, Parsable):
     booking_currencies: Optional[List[BookingCurrency]] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The virtualEvents property
+    virtual_events: Optional[VirtualEventsRoot] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SolutionsRoot:
@@ -40,14 +43,17 @@ class SolutionsRoot(AdditionalDataHolder, BackedModel, Parsable):
         """
         from .booking_business import BookingBusiness
         from .booking_currency import BookingCurrency
+        from .virtual_events_root import VirtualEventsRoot
 
         from .booking_business import BookingBusiness
         from .booking_currency import BookingCurrency
+        from .virtual_events_root import VirtualEventsRoot
 
         fields: Dict[str, Callable[[Any], None]] = {
             "bookingBusinesses": lambda n : setattr(self, 'booking_businesses', n.get_collection_of_object_values(BookingBusiness)),
             "bookingCurrencies": lambda n : setattr(self, 'booking_currencies', n.get_collection_of_object_values(BookingCurrency)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "virtualEvents": lambda n : setattr(self, 'virtual_events', n.get_object_value(VirtualEventsRoot)),
         }
         return fields
     
@@ -62,6 +68,7 @@ class SolutionsRoot(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_object_values("bookingBusinesses", self.booking_businesses)
         writer.write_collection_of_object_values("bookingCurrencies", self.booking_currencies)
         writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("virtualEvents", self.virtual_events)
         writer.write_additional_data_value(self.additional_data)
     
 

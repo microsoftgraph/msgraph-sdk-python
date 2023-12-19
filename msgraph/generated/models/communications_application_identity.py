@@ -12,9 +12,9 @@ from .identity import Identity
 class CommunicationsApplicationIdentity(Identity):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.communicationsApplicationIdentity"
-    # The applicationType property
+    # First-party Microsoft application that presents this identity.
     application_type: Optional[str] = None
-    # The hidden property
+    # True if the participant shouldn't be shown in other participants' rosters.
     hidden: Optional[bool] = None
     
     @staticmethod

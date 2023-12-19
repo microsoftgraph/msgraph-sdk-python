@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.solutions_root import SolutionsRoot
     from .booking_businesses.booking_businesses_request_builder import BookingBusinessesRequestBuilder
     from .booking_currencies.booking_currencies_request_builder import BookingCurrenciesRequestBuilder
+    from .virtual_events.virtual_events_request_builder import VirtualEventsRequestBuilder
 
 class SolutionsRequestBuilder(BaseRequestBuilder):
     """
@@ -87,7 +88,7 @@ class SolutionsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[SolutionsRoot] = None, request_configuration: Optional[SolutionsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -106,7 +107,7 @@ class SolutionsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -137,6 +138,15 @@ class SolutionsRequestBuilder(BaseRequestBuilder):
         from .booking_currencies.booking_currencies_request_builder import BookingCurrenciesRequestBuilder
 
         return BookingCurrenciesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def virtual_events(self) -> VirtualEventsRequestBuilder:
+        """
+        Provides operations to manage the virtualEvents property of the microsoft.graph.solutionsRoot entity.
+        """
+        from .virtual_events.virtual_events_request_builder import VirtualEventsRequestBuilder
+
+        return VirtualEventsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SolutionsRequestBuilderGetQueryParameters():

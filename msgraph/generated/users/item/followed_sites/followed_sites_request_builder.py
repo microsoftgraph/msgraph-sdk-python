@@ -44,7 +44,7 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[FollowedSitesRequestBuilderGetRequestConfiguration] = None) -> Optional[SiteCollectionResponse]:
         """
-        List the sites that have been followed by the signed in user. This API is available in the following national cloud deployments.
+        List the sites that have been followed by the signed in user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SiteCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/sites-list-followed?view=graph-rest-1.0
@@ -66,7 +66,7 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[FollowedSitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List the sites that have been followed by the signed in user. This API is available in the following national cloud deployments.
+        List the sites that have been followed by the signed in user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -78,7 +78,7 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> FollowedSitesRequestBuilder:
@@ -103,7 +103,7 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FollowedSitesRequestBuilderGetQueryParameters():
         """
-        List the sites that have been followed by the signed in user. This API is available in the following national cloud deployments.
+        List the sites that have been followed by the signed in user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

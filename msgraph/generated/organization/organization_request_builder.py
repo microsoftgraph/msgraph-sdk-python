@@ -49,10 +49,10 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OrganizationRequestBuilderGetRequestConfiguration] = None) -> Optional[OrganizationCollectionResponse]:
         """
-        Retrieve a list of organization objects. There's only one organization object in the collection. This API is available in the following national cloud deployments.
+        List properties and relationships of the organization objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OrganizationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/organization-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-organization-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -95,7 +95,7 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[OrganizationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of organization objects. There's only one organization object in the collection. This API is available in the following national cloud deployments.
+        List properties and relationships of the organization objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +107,7 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[Organization] = None, request_configuration: Optional[OrganizationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
@@ -126,7 +126,7 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -188,7 +188,7 @@ class OrganizationRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OrganizationRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of organization objects. There's only one organization object in the collection. This API is available in the following national cloud deployments.
+        List properties and relationships of the organization objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

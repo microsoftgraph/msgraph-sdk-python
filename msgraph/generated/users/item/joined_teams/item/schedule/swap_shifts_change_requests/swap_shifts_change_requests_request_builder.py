@@ -45,7 +45,7 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SwapShiftsChangeRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[SwapShiftsChangeRequestCollectionResponse]:
         """
-        Retrieve a list of swapShiftsChangeRequest objects in the team. This API is available in the following national cloud deployments.
+        Retrieve a list of swapShiftsChangeRequest objects in the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SwapShiftsChangeRequestCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/swapshiftschangerequest-list?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SwapShiftsChangeRequest] = None, request_configuration: Optional[SwapShiftsChangeRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[SwapShiftsChangeRequest]:
         """
-        Create an instance of a swapShiftsChangeRequest object. This API is available in the following national cloud deployments.
+        Create an instance of a swapShiftsChangeRequest object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SwapShiftsChangeRequest]
@@ -92,7 +92,7 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SwapShiftsChangeRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of swapShiftsChangeRequest objects in the team. This API is available in the following national cloud deployments.
+        Retrieve a list of swapShiftsChangeRequest objects in the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[SwapShiftsChangeRequest] = None, request_configuration: Optional[SwapShiftsChangeRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an instance of a swapShiftsChangeRequest object. This API is available in the following national cloud deployments.
+        Create an instance of a swapShiftsChangeRequest object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SwapShiftsChangeRequestsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of swapShiftsChangeRequest objects in the team. This API is available in the following national cloud deployments.
+        Retrieve a list of swapShiftsChangeRequest objects in the team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

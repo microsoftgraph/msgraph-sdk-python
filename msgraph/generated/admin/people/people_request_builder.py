@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.people_admin_settings import PeopleAdminSettings
     from .profile_card_properties.profile_card_properties_request_builder import ProfileCardPropertiesRequestBuilder
+    from .pronouns.pronouns_request_builder import PronounsRequestBuilder
 
 class PeopleRequestBuilder(BaseRequestBuilder):
     """
@@ -29,9 +30,10 @@ class PeopleRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PeopleRequestBuilderGetRequestConfiguration] = None) -> Optional[PeopleAdminSettings]:
         """
-        Get people from admin
+        Retrieve the properties and relationships of a peopleAdminSettings object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PeopleAdminSettings]
+        Find more info here: https://learn.microsoft.com/graph/api/peopleadminsettings-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,33 +50,9 @@ class PeopleRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PeopleAdminSettings, error_mapping)
     
-    async def patch(self,body: Optional[PeopleAdminSettings] = None, request_configuration: Optional[PeopleRequestBuilderPatchRequestConfiguration] = None) -> Optional[PeopleAdminSettings]:
-        """
-        Update the navigation property people in admin
-        param body: The request body
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[PeopleAdminSettings]
-        """
-        if not body:
-            raise TypeError("body cannot be null.")
-        request_info = self.to_patch_request_information(
-            body, request_configuration
-        )
-        from ...models.o_data_errors.o_data_error import ODataError
-
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        from ...models.people_admin_settings import PeopleAdminSettings
-
-        return await self.request_adapter.send_async(request_info, PeopleAdminSettings, error_mapping)
-    
     def to_get_request_information(self,request_configuration: Optional[PeopleRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get people from admin
+        Retrieve the properties and relationships of a peopleAdminSettings object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -86,27 +64,7 @@ class PeopleRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
-        return request_info
-    
-    def to_patch_request_information(self,body: Optional[PeopleAdminSettings] = None, request_configuration: Optional[PeopleRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
-        """
-        Update the navigation property people in admin
-        param body: The request body
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if not body:
-            raise TypeError("body cannot be null.")
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
-        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> PeopleRequestBuilder:
@@ -128,10 +86,19 @@ class PeopleRequestBuilder(BaseRequestBuilder):
 
         return ProfileCardPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
+    def pronouns(self) -> PronounsRequestBuilder:
+        """
+        Provides operations to manage the pronouns property of the microsoft.graph.peopleAdminSettings entity.
+        """
+        from .pronouns.pronouns_request_builder import PronounsRequestBuilder
+
+        return PronounsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class PeopleRequestBuilderGetQueryParameters():
         """
-        Get people from admin
+        Retrieve the properties and relationships of a peopleAdminSettings object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -166,15 +133,5 @@ class PeopleRequestBuilder(BaseRequestBuilder):
         # Request query parameters
         query_parameters: Optional[PeopleRequestBuilder.PeopleRequestBuilderGetQueryParameters] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PeopleRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

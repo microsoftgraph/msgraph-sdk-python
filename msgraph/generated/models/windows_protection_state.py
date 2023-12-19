@@ -6,9 +6,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .windows_defender_product_status import WindowsDefenderProductStatus
-    from .windows_device_health_state import WindowsDeviceHealthState
     from .windows_device_malware_state import WindowsDeviceMalwareState
+    from .windows_protection_state_device_state import WindowsProtectionState_deviceState
+    from .windows_protection_state_product_status import WindowsProtectionState_productStatus
 
 from .entity import Entity
 
@@ -22,7 +22,7 @@ class WindowsProtectionState(Entity):
     # Device malware list
     detected_malware_state: Optional[List[WindowsDeviceMalwareState]] = None
     # Indicates device's health state. Possible values are: clean, fullScanPending, rebootPending, manualStepsPending, offlineScanPending, critical. Possible values are: clean, fullScanPending, rebootPending, manualStepsPending, offlineScanPending, critical.
-    device_state: Optional[WindowsDeviceHealthState] = None
+    device_state: Optional[WindowsProtectionState_deviceState] = None
     # Current endpoint protection engine's version
     engine_version: Optional[str] = None
     # When TRUE indicates full scan is overdue, when FALSE indicates full scan is not overdue. Defaults to setting on client device.
@@ -48,7 +48,7 @@ class WindowsProtectionState(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Product Status of Windows Defender Antivirus. Possible values are: noStatus, serviceNotRunning, serviceStartedWithoutMalwareProtection, pendingFullScanDueToThreatAction, pendingRebootDueToThreatAction, pendingManualStepsDueToThreatAction, avSignaturesOutOfDate, asSignaturesOutOfDate, noQuickScanHappenedForSpecifiedPeriod, noFullScanHappenedForSpecifiedPeriod, systemInitiatedScanInProgress, systemInitiatedCleanInProgress, samplesPendingSubmission, productRunningInEvaluationMode, productRunningInNonGenuineMode, productExpired, offlineScanRequired, serviceShutdownAsPartOfSystemShutdown, threatRemediationFailedCritically, threatRemediationFailedNonCritically, noStatusFlagsSet, platformOutOfDate, platformUpdateInProgress, platformAboutToBeOutdated, signatureOrPlatformEndOfLifeIsPastOrIsImpending, windowsSModeSignaturesInUseOnNonWin10SInstall. Possible values are: noStatus, serviceNotRunning, serviceStartedWithoutMalwareProtection, pendingFullScanDueToThreatAction, pendingRebootDueToThreatAction, pendingManualStepsDueToThreatAction, avSignaturesOutOfDate, asSignaturesOutOfDate, noQuickScanHappenedForSpecifiedPeriod, noFullScanHappenedForSpecifiedPeriod, systemInitiatedScanInProgress, systemInitiatedCleanInProgress, samplesPendingSubmission, productRunningInEvaluationMode, productRunningInNonGenuineMode, productExpired, offlineScanRequired, serviceShutdownAsPartOfSystemShutdown, threatRemediationFailedCritically, threatRemediationFailedNonCritically, noStatusFlagsSet, platformOutOfDate, platformUpdateInProgress, platformAboutToBeOutdated, signatureOrPlatformEndOfLifeIsPastOrIsImpending, windowsSModeSignaturesInUseOnNonWin10SInstall.
-    product_status: Optional[WindowsDefenderProductStatus] = None
+    product_status: Optional[WindowsProtectionState_productStatus] = None
     # When TRUE indicates quick scan is overdue, when FALSE indicates quick scan is not overdue. Defaults to setting on client device.
     quick_scan_overdue: Optional[bool] = None
     # When TRUE indicates real time protection is enabled, when FALSE indicates real time protection is not enabled. Defaults to setting on client device.
@@ -79,19 +79,19 @@ class WindowsProtectionState(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .windows_defender_product_status import WindowsDefenderProductStatus
-        from .windows_device_health_state import WindowsDeviceHealthState
         from .windows_device_malware_state import WindowsDeviceMalwareState
+        from .windows_protection_state_device_state import WindowsProtectionState_deviceState
+        from .windows_protection_state_product_status import WindowsProtectionState_productStatus
 
         from .entity import Entity
-        from .windows_defender_product_status import WindowsDefenderProductStatus
-        from .windows_device_health_state import WindowsDeviceHealthState
         from .windows_device_malware_state import WindowsDeviceMalwareState
+        from .windows_protection_state_device_state import WindowsProtectionState_deviceState
+        from .windows_protection_state_product_status import WindowsProtectionState_productStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
             "antiMalwareVersion": lambda n : setattr(self, 'anti_malware_version', n.get_str_value()),
             "detectedMalwareState": lambda n : setattr(self, 'detected_malware_state', n.get_collection_of_object_values(WindowsDeviceMalwareState)),
-            "deviceState": lambda n : setattr(self, 'device_state', n.get_collection_of_enum_values(WindowsDeviceHealthState)),
+            "deviceState": lambda n : setattr(self, 'device_state', n.get_enum_value(WindowsProtectionState_deviceState)),
             "engineVersion": lambda n : setattr(self, 'engine_version', n.get_str_value()),
             "fullScanOverdue": lambda n : setattr(self, 'full_scan_overdue', n.get_bool_value()),
             "fullScanRequired": lambda n : setattr(self, 'full_scan_required', n.get_bool_value()),
@@ -103,7 +103,7 @@ class WindowsProtectionState(Entity):
             "lastReportedDateTime": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
             "malwareProtectionEnabled": lambda n : setattr(self, 'malware_protection_enabled', n.get_bool_value()),
             "networkInspectionSystemEnabled": lambda n : setattr(self, 'network_inspection_system_enabled', n.get_bool_value()),
-            "productStatus": lambda n : setattr(self, 'product_status', n.get_collection_of_enum_values(WindowsDefenderProductStatus)),
+            "productStatus": lambda n : setattr(self, 'product_status', n.get_enum_value(WindowsProtectionState_productStatus)),
             "quickScanOverdue": lambda n : setattr(self, 'quick_scan_overdue', n.get_bool_value()),
             "realTimeProtectionEnabled": lambda n : setattr(self, 'real_time_protection_enabled', n.get_bool_value()),
             "rebootRequired": lambda n : setattr(self, 'reboot_required', n.get_bool_value()),

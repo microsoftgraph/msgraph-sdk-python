@@ -5,8 +5,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .microsoft_custom_training_setting_training_completion_duration import MicrosoftCustomTrainingSetting_trainingCompletionDuration
     from .microsoft_training_assignment_mapping import MicrosoftTrainingAssignmentMapping
-    from .training_completion_duration import TrainingCompletionDuration
     from .training_setting import TrainingSetting
 
 from .training_setting import TrainingSetting
@@ -20,7 +20,7 @@ class MicrosoftCustomTrainingSetting(TrainingSetting):
     # The mapping details of the associated training.
     training_assignment_mappings: Optional[List[MicrosoftTrainingAssignmentMapping]] = None
     # The training completion duration that needs to be provided before scheduling the training. Possible values are: week, fortnite, month, unknownFutureValue.
-    training_completion_duration: Optional[TrainingCompletionDuration] = None
+    training_completion_duration: Optional[MicrosoftCustomTrainingSetting_trainingCompletionDuration] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MicrosoftCustomTrainingSetting:
@@ -38,18 +38,18 @@ class MicrosoftCustomTrainingSetting(TrainingSetting):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .microsoft_custom_training_setting_training_completion_duration import MicrosoftCustomTrainingSetting_trainingCompletionDuration
         from .microsoft_training_assignment_mapping import MicrosoftTrainingAssignmentMapping
-        from .training_completion_duration import TrainingCompletionDuration
         from .training_setting import TrainingSetting
 
+        from .microsoft_custom_training_setting_training_completion_duration import MicrosoftCustomTrainingSetting_trainingCompletionDuration
         from .microsoft_training_assignment_mapping import MicrosoftTrainingAssignmentMapping
-        from .training_completion_duration import TrainingCompletionDuration
         from .training_setting import TrainingSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
             "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
             "trainingAssignmentMappings": lambda n : setattr(self, 'training_assignment_mappings', n.get_collection_of_object_values(MicrosoftTrainingAssignmentMapping)),
-            "trainingCompletionDuration": lambda n : setattr(self, 'training_completion_duration', n.get_enum_value(TrainingCompletionDuration)),
+            "trainingCompletionDuration": lambda n : setattr(self, 'training_completion_duration', n.get_enum_value(MicrosoftCustomTrainingSetting_trainingCompletionDuration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

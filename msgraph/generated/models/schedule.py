@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from .offer_shift_request import OfferShiftRequest
     from .open_shift import OpenShift
     from .open_shift_change_request import OpenShiftChangeRequest
-    from .operation_status import OperationStatus
+    from .schedule_provision_status import Schedule_provisionStatus
     from .scheduling_group import SchedulingGroup
     from .shift import Shift
     from .swap_shifts_change_request import SwapShiftsChangeRequest
@@ -35,7 +35,7 @@ class Schedule(Entity):
     # Indicates whether open shifts are enabled for the schedule.
     open_shifts_enabled: Optional[bool] = None
     # The status of the schedule provisioning. The possible values are notStarted, running, completed, failed.
-    provision_status: Optional[OperationStatus] = None
+    provision_status: Optional[Schedule_provisionStatus] = None
     # Additional information about why schedule provisioning failed.
     provision_status_code: Optional[str] = None
     # The logical grouping of users in the schedule (usually by role).
@@ -81,7 +81,7 @@ class Schedule(Entity):
         from .offer_shift_request import OfferShiftRequest
         from .open_shift import OpenShift
         from .open_shift_change_request import OpenShiftChangeRequest
-        from .operation_status import OperationStatus
+        from .schedule_provision_status import Schedule_provisionStatus
         from .scheduling_group import SchedulingGroup
         from .shift import Shift
         from .swap_shifts_change_request import SwapShiftsChangeRequest
@@ -93,7 +93,7 @@ class Schedule(Entity):
         from .offer_shift_request import OfferShiftRequest
         from .open_shift import OpenShift
         from .open_shift_change_request import OpenShiftChangeRequest
-        from .operation_status import OperationStatus
+        from .schedule_provision_status import Schedule_provisionStatus
         from .scheduling_group import SchedulingGroup
         from .shift import Shift
         from .swap_shifts_change_request import SwapShiftsChangeRequest
@@ -108,7 +108,7 @@ class Schedule(Entity):
             "openShiftChangeRequests": lambda n : setattr(self, 'open_shift_change_requests', n.get_collection_of_object_values(OpenShiftChangeRequest)),
             "openShifts": lambda n : setattr(self, 'open_shifts', n.get_collection_of_object_values(OpenShift)),
             "openShiftsEnabled": lambda n : setattr(self, 'open_shifts_enabled', n.get_bool_value()),
-            "provisionStatus": lambda n : setattr(self, 'provision_status', n.get_enum_value(OperationStatus)),
+            "provisionStatus": lambda n : setattr(self, 'provision_status', n.get_enum_value(Schedule_provisionStatus)),
             "provisionStatusCode": lambda n : setattr(self, 'provision_status_code', n.get_str_value()),
             "schedulingGroups": lambda n : setattr(self, 'scheduling_groups', n.get_collection_of_object_values(SchedulingGroup)),
             "shifts": lambda n : setattr(self, 'shifts', n.get_collection_of_object_values(Shift)),

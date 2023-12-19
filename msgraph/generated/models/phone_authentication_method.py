@@ -5,8 +5,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_method import AuthenticationMethod
-    from .authentication_method_sign_in_state import AuthenticationMethodSignInState
-    from .authentication_phone_type import AuthenticationPhoneType
+    from .phone_authentication_method_phone_type import PhoneAuthenticationMethod_phoneType
+    from .phone_authentication_method_sms_sign_in_state import PhoneAuthenticationMethod_smsSignInState
 
 from .authentication_method import AuthenticationMethod
 
@@ -17,9 +17,9 @@ class PhoneAuthenticationMethod(AuthenticationMethod):
     # The phone number to text or call for authentication. Phone numbers use the format +{country code} {number}x{extension}, with extension optional. For example, +1 5555551234 or +1 5555551234x123 are valid. Numbers are rejected when creating or updating if they don't match the required format.
     phone_number: Optional[str] = None
     # The type of this phone. Possible values are: mobile, alternateMobile, or office.
-    phone_type: Optional[AuthenticationPhoneType] = None
+    phone_type: Optional[PhoneAuthenticationMethod_phoneType] = None
     # Whether a phone is ready to be used for SMS sign-in or not. Possible values are: notSupported, notAllowedByPolicy, notEnabled, phoneNumberNotUnique, ready, or notConfigured, unknownFutureValue.
-    sms_sign_in_state: Optional[AuthenticationMethodSignInState] = None
+    sms_sign_in_state: Optional[PhoneAuthenticationMethod_smsSignInState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PhoneAuthenticationMethod:
@@ -38,17 +38,17 @@ class PhoneAuthenticationMethod(AuthenticationMethod):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_method import AuthenticationMethod
-        from .authentication_method_sign_in_state import AuthenticationMethodSignInState
-        from .authentication_phone_type import AuthenticationPhoneType
+        from .phone_authentication_method_phone_type import PhoneAuthenticationMethod_phoneType
+        from .phone_authentication_method_sms_sign_in_state import PhoneAuthenticationMethod_smsSignInState
 
         from .authentication_method import AuthenticationMethod
-        from .authentication_method_sign_in_state import AuthenticationMethodSignInState
-        from .authentication_phone_type import AuthenticationPhoneType
+        from .phone_authentication_method_phone_type import PhoneAuthenticationMethod_phoneType
+        from .phone_authentication_method_sms_sign_in_state import PhoneAuthenticationMethod_smsSignInState
 
         fields: Dict[str, Callable[[Any], None]] = {
             "phoneNumber": lambda n : setattr(self, 'phone_number', n.get_str_value()),
-            "phoneType": lambda n : setattr(self, 'phone_type', n.get_enum_value(AuthenticationPhoneType)),
-            "smsSignInState": lambda n : setattr(self, 'sms_sign_in_state', n.get_enum_value(AuthenticationMethodSignInState)),
+            "phoneType": lambda n : setattr(self, 'phone_type', n.get_enum_value(PhoneAuthenticationMethod_phoneType)),
+            "smsSignInState": lambda n : setattr(self, 'sms_sign_in_state', n.get_enum_value(PhoneAuthenticationMethod_smsSignInState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

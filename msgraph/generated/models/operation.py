@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .onenote_operation import OnenoteOperation
-    from .operation_status import OperationStatus
+    from .operation_status import Operation_status
 
 from .entity import Entity
 
@@ -20,7 +20,7 @@ class Operation(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The current status of the operation: notStarted, running, completed, failed
-    status: Optional[OperationStatus] = None
+    status: Optional[Operation_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Operation:
@@ -48,16 +48,16 @@ class Operation(Entity):
         """
         from .entity import Entity
         from .onenote_operation import OnenoteOperation
-        from .operation_status import OperationStatus
+        from .operation_status import Operation_status
 
         from .entity import Entity
         from .onenote_operation import OnenoteOperation
-        from .operation_status import OperationStatus
+        from .operation_status import Operation_status
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "lastActionDateTime": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(OperationStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(Operation_status)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

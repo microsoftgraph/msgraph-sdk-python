@@ -5,8 +5,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
-    from .detection_status import DetectionStatus
     from .file_details import FileDetails
+    from .file_evidence_detection_status import FileEvidence_detectionStatus
 
 from .alert_evidence import AlertEvidence
 
@@ -15,7 +15,7 @@ class FileEvidence(AlertEvidence):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.fileEvidence"
     # The status of the detection.The possible values are: detected, blocked, prevented, unknownFutureValue.
-    detection_status: Optional[DetectionStatus] = None
+    detection_status: Optional[FileEvidence_detectionStatus] = None
     # The file details.
     file_details: Optional[FileDetails] = None
     # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
@@ -38,15 +38,15 @@ class FileEvidence(AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
-        from .detection_status import DetectionStatus
         from .file_details import FileDetails
+        from .file_evidence_detection_status import FileEvidence_detectionStatus
 
         from .alert_evidence import AlertEvidence
-        from .detection_status import DetectionStatus
         from .file_details import FileDetails
+        from .file_evidence_detection_status import FileEvidence_detectionStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(DetectionStatus)),
+            "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(FileEvidence_detectionStatus)),
             "fileDetails": lambda n : setattr(self, 'file_details', n.get_object_value(FileDetails)),
             "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
         }

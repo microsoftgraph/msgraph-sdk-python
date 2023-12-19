@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .file_hash import FileHash
-    from .process_integrity_level import ProcessIntegrityLevel
+    from .process_integrity_level import Process_integrityLevel
 
 @dataclass
 class Process(AdditionalDataHolder, BackedModel, Parsable):
@@ -25,7 +25,7 @@ class Process(AdditionalDataHolder, BackedModel, Parsable):
     # Complex type containing file hashes (cryptographic and location-sensitive).
     file_hash: Optional[FileHash] = None
     # The integrity level of the process. Possible values are: unknown, untrusted, low, medium, high, system.
-    integrity_level: Optional[ProcessIntegrityLevel] = None
+    integrity_level: Optional[Process_integrityLevel] = None
     # True if the process is elevated.
     is_elevated: Optional[bool] = None
     # The name of the process' Image file.
@@ -60,17 +60,17 @@ class Process(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .file_hash import FileHash
-        from .process_integrity_level import ProcessIntegrityLevel
+        from .process_integrity_level import Process_integrityLevel
 
         from .file_hash import FileHash
-        from .process_integrity_level import ProcessIntegrityLevel
+        from .process_integrity_level import Process_integrityLevel
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
             "commandLine": lambda n : setattr(self, 'command_line', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "fileHash": lambda n : setattr(self, 'file_hash', n.get_object_value(FileHash)),
-            "integrityLevel": lambda n : setattr(self, 'integrity_level', n.get_enum_value(ProcessIntegrityLevel)),
+            "integrityLevel": lambda n : setattr(self, 'integrity_level', n.get_enum_value(Process_integrityLevel)),
             "isElevated": lambda n : setattr(self, 'is_elevated', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

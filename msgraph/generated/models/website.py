@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .website_type import WebsiteType
+    from .website_type import Website_type
 
 @dataclass
 class Website(AdditionalDataHolder, BackedModel, Parsable):
@@ -21,7 +21,7 @@ class Website(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The possible values are: other, home, work, blog, profile.
-    type: Optional[WebsiteType] = None
+    type: Optional[Website_type] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Website:
@@ -39,15 +39,15 @@ class Website(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .website_type import WebsiteType
+        from .website_type import Website_type
 
-        from .website_type import WebsiteType
+        from .website_type import Website_type
 
         fields: Dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(WebsiteType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(Website_type)),
         }
         return fields
     

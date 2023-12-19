@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .access_package import AccessPackage
     from .access_package_assignment_policy import AccessPackageAssignmentPolicy
-    from .access_package_assignment_state import AccessPackageAssignmentState
+    from .access_package_assignment_state import AccessPackageAssignment_state
     from .access_package_subject import AccessPackageSubject
     from .custom_extension_callout_instance import CustomExtensionCalloutInstance
     from .entitlement_management_schedule import EntitlementManagementSchedule
@@ -30,7 +30,7 @@ class AccessPackageAssignment(Entity):
     # When the access assignment is to be in place. Read-only.
     schedule: Optional[EntitlementManagementSchedule] = None
     # The state of the access package assignment. The possible values are: delivering, partiallyDelivered, delivered, expired, deliveryFailed, unknownFutureValue. Read-only. Supports $filter (eq).
-    state: Optional[AccessPackageAssignmentState] = None
+    state: Optional[AccessPackageAssignment_state] = None
     # More information about the assignment lifecycle.  Possible values include Delivering, Delivered, NearExpiry1DayNotificationTriggered, or ExpiredNotificationTriggered.  Read-only.
     status: Optional[str] = None
     # The subject of the access package assignment. Read-only. Nullable. Supports $expand. Supports $filter (eq) on objectId.
@@ -54,7 +54,7 @@ class AccessPackageAssignment(Entity):
         """
         from .access_package import AccessPackage
         from .access_package_assignment_policy import AccessPackageAssignmentPolicy
-        from .access_package_assignment_state import AccessPackageAssignmentState
+        from .access_package_assignment_state import AccessPackageAssignment_state
         from .access_package_subject import AccessPackageSubject
         from .custom_extension_callout_instance import CustomExtensionCalloutInstance
         from .entitlement_management_schedule import EntitlementManagementSchedule
@@ -62,7 +62,7 @@ class AccessPackageAssignment(Entity):
 
         from .access_package import AccessPackage
         from .access_package_assignment_policy import AccessPackageAssignmentPolicy
-        from .access_package_assignment_state import AccessPackageAssignmentState
+        from .access_package_assignment_state import AccessPackageAssignment_state
         from .access_package_subject import AccessPackageSubject
         from .custom_extension_callout_instance import CustomExtensionCalloutInstance
         from .entitlement_management_schedule import EntitlementManagementSchedule
@@ -74,7 +74,7 @@ class AccessPackageAssignment(Entity):
             "customExtensionCalloutInstances": lambda n : setattr(self, 'custom_extension_callout_instances', n.get_collection_of_object_values(CustomExtensionCalloutInstance)),
             "expiredDateTime": lambda n : setattr(self, 'expired_date_time', n.get_datetime_value()),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(EntitlementManagementSchedule)),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(AccessPackageAssignmentState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(AccessPackageAssignment_state)),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
             "target": lambda n : setattr(self, 'target', n.get_object_value(AccessPackageSubject)),
         }

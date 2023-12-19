@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .data_source import DataSource
-    from .source_type import SourceType
+    from .user_source_included_sources import UserSource_includedSources
 
 from .data_source import DataSource
 
@@ -16,7 +16,7 @@ class UserSource(DataSource):
     # Email address of the user's mailbox.
     email: Optional[str] = None
     # Specifies which sources are included in this group. Possible values are: mailbox, site.
-    included_sources: Optional[SourceType] = None
+    included_sources: Optional[UserSource_includedSources] = None
     # The URL of the user's OneDrive for Business site. Read-only.
     site_web_url: Optional[str] = None
     
@@ -37,14 +37,14 @@ class UserSource(DataSource):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .data_source import DataSource
-        from .source_type import SourceType
+        from .user_source_included_sources import UserSource_includedSources
 
         from .data_source import DataSource
-        from .source_type import SourceType
+        from .user_source_included_sources import UserSource_includedSources
 
         fields: Dict[str, Callable[[Any], None]] = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "includedSources": lambda n : setattr(self, 'included_sources', n.get_collection_of_enum_values(SourceType)),
+            "includedSources": lambda n : setattr(self, 'included_sources', n.get_enum_value(UserSource_includedSources)),
             "siteWebUrl": lambda n : setattr(self, 'site_web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

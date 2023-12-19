@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .identity_set import IdentitySet
-    from .online_meeting_role import OnlineMeetingRole
+    from .meeting_participant_info_role import MeetingParticipantInfo_role
 
 @dataclass
 class MeetingParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
@@ -20,7 +20,7 @@ class MeetingParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Specifies the participant's role in the meeting.
-    role: Optional[OnlineMeetingRole] = None
+    role: Optional[MeetingParticipantInfo_role] = None
     # User principal name of the participant.
     upn: Optional[str] = None
     
@@ -41,15 +41,15 @@ class MeetingParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .identity_set import IdentitySet
-        from .online_meeting_role import OnlineMeetingRole
+        from .meeting_participant_info_role import MeetingParticipantInfo_role
 
         from .identity_set import IdentitySet
-        from .online_meeting_role import OnlineMeetingRole
+        from .meeting_participant_info_role import MeetingParticipantInfo_role
 
         fields: Dict[str, Callable[[Any], None]] = {
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "role": lambda n : setattr(self, 'role', n.get_enum_value(OnlineMeetingRole)),
+            "role": lambda n : setattr(self, 'role', n.get_enum_value(MeetingParticipantInfo_role)),
             "upn": lambda n : setattr(self, 'upn', n.get_str_value()),
         }
         return fields

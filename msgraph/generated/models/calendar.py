@@ -4,13 +4,14 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .calendar_color import CalendarColor
+    from .calendar_allowed_online_meeting_providers import Calendar_allowedOnlineMeetingProviders
+    from .calendar_color import Calendar_color
+    from .calendar_default_online_meeting_provider import Calendar_defaultOnlineMeetingProvider
     from .calendar_permission import CalendarPermission
     from .email_address import EmailAddress
     from .entity import Entity
     from .event import Event
     from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
-    from .online_meeting_provider_type import OnlineMeetingProviderType
     from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
 from .entity import Entity
@@ -18,7 +19,7 @@ from .entity import Entity
 @dataclass
 class Calendar(Entity):
     # Represent the online meeting service providers that can be used to create online meetings in this calendar. Possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.
-    allowed_online_meeting_providers: Optional[List[OnlineMeetingProviderType]] = None
+    allowed_online_meeting_providers: Optional[List[Calendar_allowedOnlineMeetingProviders]] = None
     # The permissions of the users with whom the calendar is shared.
     calendar_permissions: Optional[List[CalendarPermission]] = None
     # The calendar view for the calendar. Navigation property. Read-only.
@@ -32,9 +33,9 @@ class Calendar(Entity):
     # Identifies the version of the calendar object. Every time the calendar is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
     change_key: Optional[str] = None
     # Specifies the color theme to distinguish the calendar from other calendars in a UI. The property values are: auto, lightBlue, lightGreen, lightOrange, lightGray, lightYellow, lightTeal, lightPink, lightBrown, lightRed, maxColor.
-    color: Optional[CalendarColor] = None
+    color: Optional[Calendar_color] = None
     # The default online meeting provider for meetings sent from this calendar. Possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.
-    default_online_meeting_provider: Optional[OnlineMeetingProviderType] = None
+    default_online_meeting_provider: Optional[Calendar_defaultOnlineMeetingProvider] = None
     # The events in the calendar. Navigation property. Read-only.
     events: Optional[List[Event]] = None
     # The calendar color, expressed in a hex color code of three hexadecimal values, each ranging from 00 to FF and representing the red, green, or blue components of the color in the RGB color space. If the user has never explicitly set a color for the calendar, this property is empty. Read-only.
@@ -72,34 +73,36 @@ class Calendar(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .calendar_color import CalendarColor
+        from .calendar_allowed_online_meeting_providers import Calendar_allowedOnlineMeetingProviders
+        from .calendar_color import Calendar_color
+        from .calendar_default_online_meeting_provider import Calendar_defaultOnlineMeetingProvider
         from .calendar_permission import CalendarPermission
         from .email_address import EmailAddress
         from .entity import Entity
         from .event import Event
         from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
-        from .online_meeting_provider_type import OnlineMeetingProviderType
         from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
-        from .calendar_color import CalendarColor
+        from .calendar_allowed_online_meeting_providers import Calendar_allowedOnlineMeetingProviders
+        from .calendar_color import Calendar_color
+        from .calendar_default_online_meeting_provider import Calendar_defaultOnlineMeetingProvider
         from .calendar_permission import CalendarPermission
         from .email_address import EmailAddress
         from .entity import Entity
         from .event import Event
         from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
-        from .online_meeting_provider_type import OnlineMeetingProviderType
         from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedOnlineMeetingProviders": lambda n : setattr(self, 'allowed_online_meeting_providers', n.get_collection_of_enum_values(OnlineMeetingProviderType)),
+            "allowedOnlineMeetingProviders": lambda n : setattr(self, 'allowed_online_meeting_providers', n.get_collection_of_enum_values(Calendar_allowedOnlineMeetingProviders)),
             "calendarPermissions": lambda n : setattr(self, 'calendar_permissions', n.get_collection_of_object_values(CalendarPermission)),
             "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(Event)),
             "canEdit": lambda n : setattr(self, 'can_edit', n.get_bool_value()),
             "canShare": lambda n : setattr(self, 'can_share', n.get_bool_value()),
             "canViewPrivateItems": lambda n : setattr(self, 'can_view_private_items', n.get_bool_value()),
             "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
-            "color": lambda n : setattr(self, 'color', n.get_enum_value(CalendarColor)),
-            "defaultOnlineMeetingProvider": lambda n : setattr(self, 'default_online_meeting_provider', n.get_enum_value(OnlineMeetingProviderType)),
+            "color": lambda n : setattr(self, 'color', n.get_enum_value(Calendar_color)),
+            "defaultOnlineMeetingProvider": lambda n : setattr(self, 'default_online_meeting_provider', n.get_enum_value(Calendar_defaultOnlineMeetingProvider)),
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(Event)),
             "hexColor": lambda n : setattr(self, 'hex_color', n.get_str_value()),
             "isDefaultCalendar": lambda n : setattr(self, 'is_default_calendar', n.get_bool_value()),

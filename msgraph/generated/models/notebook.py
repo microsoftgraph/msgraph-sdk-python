@@ -5,9 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .notebook_links import NotebookLinks
+    from .notebook_user_role import Notebook_userRole
     from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
     from .onenote_section import OnenoteSection
-    from .onenote_user_role import OnenoteUserRole
     from .section_group import SectionGroup
 
 from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
@@ -31,7 +31,7 @@ class Notebook(OnenoteEntityHierarchyModel):
     # The URL for the sections navigation property, which returns all the sections in the notebook. Read-only.
     sections_url: Optional[str] = None
     # Possible values are: Owner, Contributor, Reader, None. Owner represents owner-level access to the notebook. Contributor represents read/write access to the notebook. Reader represents read-only access to the notebook. Read-only.
-    user_role: Optional[OnenoteUserRole] = None
+    user_role: Optional[Notebook_userRole] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Notebook:
@@ -50,15 +50,15 @@ class Notebook(OnenoteEntityHierarchyModel):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .notebook_links import NotebookLinks
+        from .notebook_user_role import Notebook_userRole
         from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
         from .onenote_section import OnenoteSection
-        from .onenote_user_role import OnenoteUserRole
         from .section_group import SectionGroup
 
         from .notebook_links import NotebookLinks
+        from .notebook_user_role import Notebook_userRole
         from .onenote_entity_hierarchy_model import OnenoteEntityHierarchyModel
         from .onenote_section import OnenoteSection
-        from .onenote_user_role import OnenoteUserRole
         from .section_group import SectionGroup
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -69,7 +69,7 @@ class Notebook(OnenoteEntityHierarchyModel):
             "sectionGroupsUrl": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
             "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(OnenoteSection)),
             "sectionsUrl": lambda n : setattr(self, 'sections_url', n.get_str_value()),
-            "userRole": lambda n : setattr(self, 'user_role', n.get_enum_value(OnenoteUserRole)),
+            "userRole": lambda n : setattr(self, 'user_role', n.get_enum_value(Notebook_userRole)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

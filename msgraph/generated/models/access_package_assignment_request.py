@@ -8,8 +8,8 @@ if TYPE_CHECKING:
     from .access_package import AccessPackage
     from .access_package_answer import AccessPackageAnswer
     from .access_package_assignment import AccessPackageAssignment
-    from .access_package_request_state import AccessPackageRequestState
-    from .access_package_request_type import AccessPackageRequestType
+    from .access_package_assignment_request_request_type import AccessPackageAssignmentRequest_requestType
+    from .access_package_assignment_request_state import AccessPackageAssignmentRequest_state
     from .access_package_subject import AccessPackageSubject
     from .custom_extension_callout_instance import CustomExtensionCalloutInstance
     from .entitlement_management_schedule import EntitlementManagementSchedule
@@ -34,13 +34,13 @@ class AccessPackageAssignmentRequest(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property can't be changed once set.
-    request_type: Optional[AccessPackageRequestType] = None
+    request_type: Optional[AccessPackageAssignmentRequest_requestType] = None
     # The subject who requested or, if a direct assignment, was assigned. Read-only. Nullable. Supports $expand.
     requestor: Optional[AccessPackageSubject] = None
     # The range of dates that access is to be assigned to the requestor. This property can't be changed once set.
     schedule: Optional[EntitlementManagementSchedule] = None
     # The state of the request. The possible values are: submitted, pendingApproval, delivering, delivered, deliveryFailed, denied, scheduled, canceled, partiallyDelivered, unknownFutureValue. Read-only. Supports $filter (eq).
-    state: Optional[AccessPackageRequestState] = None
+    state: Optional[AccessPackageAssignmentRequest_state] = None
     # More information on the request processing status. Read-only.
     status: Optional[str] = None
     
@@ -63,8 +63,8 @@ class AccessPackageAssignmentRequest(Entity):
         from .access_package import AccessPackage
         from .access_package_answer import AccessPackageAnswer
         from .access_package_assignment import AccessPackageAssignment
-        from .access_package_request_state import AccessPackageRequestState
-        from .access_package_request_type import AccessPackageRequestType
+        from .access_package_assignment_request_request_type import AccessPackageAssignmentRequest_requestType
+        from .access_package_assignment_request_state import AccessPackageAssignmentRequest_state
         from .access_package_subject import AccessPackageSubject
         from .custom_extension_callout_instance import CustomExtensionCalloutInstance
         from .entitlement_management_schedule import EntitlementManagementSchedule
@@ -73,8 +73,8 @@ class AccessPackageAssignmentRequest(Entity):
         from .access_package import AccessPackage
         from .access_package_answer import AccessPackageAnswer
         from .access_package_assignment import AccessPackageAssignment
-        from .access_package_request_state import AccessPackageRequestState
-        from .access_package_request_type import AccessPackageRequestType
+        from .access_package_assignment_request_request_type import AccessPackageAssignmentRequest_requestType
+        from .access_package_assignment_request_state import AccessPackageAssignmentRequest_state
         from .access_package_subject import AccessPackageSubject
         from .custom_extension_callout_instance import CustomExtensionCalloutInstance
         from .entitlement_management_schedule import EntitlementManagementSchedule
@@ -87,10 +87,10 @@ class AccessPackageAssignmentRequest(Entity):
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customExtensionCalloutInstances": lambda n : setattr(self, 'custom_extension_callout_instances', n.get_collection_of_object_values(CustomExtensionCalloutInstance)),
-            "requestType": lambda n : setattr(self, 'request_type', n.get_enum_value(AccessPackageRequestType)),
+            "requestType": lambda n : setattr(self, 'request_type', n.get_enum_value(AccessPackageAssignmentRequest_requestType)),
             "requestor": lambda n : setattr(self, 'requestor', n.get_object_value(AccessPackageSubject)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(EntitlementManagementSchedule)),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(AccessPackageRequestState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(AccessPackageAssignmentRequest_state)),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

@@ -5,8 +5,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.security.export_file_structure import ExportFileStructure
-    from ........models.security.export_options import ExportOptions
+    from .export_post_request_body_export_options import ExportPostRequestBody_exportOptions
+    from .export_post_request_body_export_structure import ExportPostRequestBody_exportStructure
 
 @dataclass
 class ExportPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
@@ -18,9 +18,9 @@ class ExportPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # The description property
     description: Optional[str] = None
     # The exportOptions property
-    export_options: Optional[ExportOptions] = None
+    export_options: Optional[ExportPostRequestBody_exportOptions] = None
     # The exportStructure property
-    export_structure: Optional[ExportFileStructure] = None
+    export_structure: Optional[ExportPostRequestBody_exportStructure] = None
     # The outputName property
     output_name: Optional[str] = None
     
@@ -40,16 +40,16 @@ class ExportPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.security.export_file_structure import ExportFileStructure
-        from ........models.security.export_options import ExportOptions
+        from .export_post_request_body_export_options import ExportPostRequestBody_exportOptions
+        from .export_post_request_body_export_structure import ExportPostRequestBody_exportStructure
 
-        from ........models.security.export_file_structure import ExportFileStructure
-        from ........models.security.export_options import ExportOptions
+        from .export_post_request_body_export_options import ExportPostRequestBody_exportOptions
+        from .export_post_request_body_export_structure import ExportPostRequestBody_exportStructure
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "exportOptions": lambda n : setattr(self, 'export_options', n.get_collection_of_enum_values(ExportOptions)),
-            "exportStructure": lambda n : setattr(self, 'export_structure', n.get_enum_value(ExportFileStructure)),
+            "exportOptions": lambda n : setattr(self, 'export_options', n.get_enum_value(ExportPostRequestBody_exportOptions)),
+            "exportStructure": lambda n : setattr(self, 'export_structure', n.get_enum_value(ExportPostRequestBody_exportStructure)),
             "outputName": lambda n : setattr(self, 'output_name', n.get_str_value()),
         }
         return fields

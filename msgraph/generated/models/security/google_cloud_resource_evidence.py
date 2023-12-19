@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
-    from .google_cloud_location_type import GoogleCloudLocationType
+    from .google_cloud_resource_evidence_location_type import GoogleCloudResourceEvidence_locationType
 
 from .alert_evidence import AlertEvidence
 
@@ -16,7 +16,7 @@ class GoogleCloudResourceEvidence(AlertEvidence):
     # The zone or region where the resource is located.
     location: Optional[str] = None
     # The type of location. Possible values are: unknown, regional, zonal, global, unknownFutureValue.
-    location_type: Optional[GoogleCloudLocationType] = None
+    location_type: Optional[GoogleCloudResourceEvidence_locationType] = None
     # The Google project ID as defined by the user.
     project_id: Optional[str] = None
     # The project number assigned by Google.
@@ -43,14 +43,14 @@ class GoogleCloudResourceEvidence(AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
-        from .google_cloud_location_type import GoogleCloudLocationType
+        from .google_cloud_resource_evidence_location_type import GoogleCloudResourceEvidence_locationType
 
         from .alert_evidence import AlertEvidence
-        from .google_cloud_location_type import GoogleCloudLocationType
+        from .google_cloud_resource_evidence_location_type import GoogleCloudResourceEvidence_locationType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "location": lambda n : setattr(self, 'location', n.get_str_value()),
-            "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(GoogleCloudLocationType)),
+            "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(GoogleCloudResourceEvidence_locationType)),
             "projectId": lambda n : setattr(self, 'project_id', n.get_str_value()),
             "projectNumber": lambda n : setattr(self, 'project_number', n.get_int_value()),
             "resourceName": lambda n : setattr(self, 'resource_name', n.get_str_value()),

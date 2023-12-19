@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .identity import Identity
-    from .teamwork_application_identity_type import TeamworkApplicationIdentityType
+    from .teamwork_application_identity_application_identity_type import TeamworkApplicationIdentity_applicationIdentityType
 
 from .identity import Identity
 
@@ -14,7 +14,7 @@ class TeamworkApplicationIdentity(Identity):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.teamworkApplicationIdentity"
     # Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, outgoingWebhook, and unknownFutureValue.
-    application_identity_type: Optional[TeamworkApplicationIdentityType] = None
+    application_identity_type: Optional[TeamworkApplicationIdentity_applicationIdentityType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkApplicationIdentity:
@@ -33,13 +33,13 @@ class TeamworkApplicationIdentity(Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .identity import Identity
-        from .teamwork_application_identity_type import TeamworkApplicationIdentityType
+        from .teamwork_application_identity_application_identity_type import TeamworkApplicationIdentity_applicationIdentityType
 
         from .identity import Identity
-        from .teamwork_application_identity_type import TeamworkApplicationIdentityType
+        from .teamwork_application_identity_application_identity_type import TeamworkApplicationIdentity_applicationIdentityType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "applicationIdentityType": lambda n : setattr(self, 'application_identity_type', n.get_enum_value(TeamworkApplicationIdentityType)),
+            "applicationIdentityType": lambda n : setattr(self, 'application_identity_type', n.get_enum_value(TeamworkApplicationIdentity_applicationIdentityType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

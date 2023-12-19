@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .onenote_patch_action_type import OnenotePatchActionType
-    from .onenote_patch_insert_position import OnenotePatchInsertPosition
+    from .onenote_patch_content_command_position import OnenotePatchContentCommand_position
 
 @dataclass
 class OnenotePatchContentCommand(AdditionalDataHolder, BackedModel, Parsable):
@@ -22,7 +22,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The location to add the supplied content, relative to the target element. The possible values are: after (default) or before.
-    position: Optional[OnenotePatchInsertPosition] = None
+    position: Optional[OnenotePatchContentCommand_position] = None
     # The element to update. Must be the #<data-id> or the generated <id> of the element, or the body or title keyword.
     target: Optional[str] = None
     
@@ -43,16 +43,16 @@ class OnenotePatchContentCommand(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .onenote_patch_action_type import OnenotePatchActionType
-        from .onenote_patch_insert_position import OnenotePatchInsertPosition
+        from .onenote_patch_content_command_position import OnenotePatchContentCommand_position
 
         from .onenote_patch_action_type import OnenotePatchActionType
-        from .onenote_patch_insert_position import OnenotePatchInsertPosition
+        from .onenote_patch_content_command_position import OnenotePatchContentCommand_position
 
         fields: Dict[str, Callable[[Any], None]] = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(OnenotePatchActionType)),
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "position": lambda n : setattr(self, 'position', n.get_enum_value(OnenotePatchInsertPosition)),
+            "position": lambda n : setattr(self, 'position', n.get_enum_value(OnenotePatchContentCommand_position)),
             "target": lambda n : setattr(self, 'target', n.get_str_value()),
         }
         return fields

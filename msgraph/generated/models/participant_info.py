@@ -5,8 +5,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .endpoint_type import EndpointType
     from .identity_set import IdentitySet
+    from .participant_info_endpoint_type import ParticipantInfo_endpointType
 
 @dataclass
 class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
@@ -18,7 +18,7 @@ class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
     # The ISO 3166-1 Alpha-2 country code of the participant's best estimated physical location at the start of the call. Read-only.
     country_code: Optional[str] = None
     # The type of endpoint the participant is using. Possible values are: default, skypeForBusiness, or skypeForBusinessVoipPhone. Read-only.
-    endpoint_type: Optional[EndpointType] = None
+    endpoint_type: Optional[ParticipantInfo_endpointType] = None
     # The identity property
     identity: Optional[IdentitySet] = None
     # The language culture string. Read-only.
@@ -46,15 +46,15 @@ class ParticipantInfo(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .endpoint_type import EndpointType
         from .identity_set import IdentitySet
+        from .participant_info_endpoint_type import ParticipantInfo_endpointType
 
-        from .endpoint_type import EndpointType
         from .identity_set import IdentitySet
+        from .participant_info_endpoint_type import ParticipantInfo_endpointType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "countryCode": lambda n : setattr(self, 'country_code', n.get_str_value()),
-            "endpointType": lambda n : setattr(self, 'endpoint_type', n.get_enum_value(EndpointType)),
+            "endpointType": lambda n : setattr(self, 'endpoint_type', n.get_enum_value(ParticipantInfo_endpointType)),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(IdentitySet)),
             "languageId": lambda n : setattr(self, 'language_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

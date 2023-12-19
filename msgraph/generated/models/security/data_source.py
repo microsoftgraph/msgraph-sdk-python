@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..entity import Entity
     from ..identity_set import IdentitySet
-    from .data_source_hold_status import DataSourceHoldStatus
+    from .data_source_hold_status import DataSource_holdStatus
     from .site_source import SiteSource
     from .unified_group_source import UnifiedGroupSource
     from .user_source import UserSource
@@ -23,7 +23,7 @@ class DataSource(Entity):
     # The display name of the dataSource and is the name of the SharePoint site.
     display_name: Optional[str] = None
     # The hold status of the dataSource.The possible values are: notApplied, applied, applying, removing, partial
-    hold_status: Optional[DataSourceHoldStatus] = None
+    hold_status: Optional[DataSource_holdStatus] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -61,14 +61,14 @@ class DataSource(Entity):
         """
         from ..entity import Entity
         from ..identity_set import IdentitySet
-        from .data_source_hold_status import DataSourceHoldStatus
+        from .data_source_hold_status import DataSource_holdStatus
         from .site_source import SiteSource
         from .unified_group_source import UnifiedGroupSource
         from .user_source import UserSource
 
         from ..entity import Entity
         from ..identity_set import IdentitySet
-        from .data_source_hold_status import DataSourceHoldStatus
+        from .data_source_hold_status import DataSource_holdStatus
         from .site_source import SiteSource
         from .unified_group_source import UnifiedGroupSource
         from .user_source import UserSource
@@ -77,7 +77,7 @@ class DataSource(Entity):
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "holdStatus": lambda n : setattr(self, 'hold_status', n.get_enum_value(DataSourceHoldStatus)),
+            "holdStatus": lambda n : setattr(self, 'hold_status', n.get_enum_value(DataSource_holdStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

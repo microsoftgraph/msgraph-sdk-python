@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .change_tracked_entity import ChangeTrackedEntity
     from .workforce_integration_encryption import WorkforceIntegrationEncryption
-    from .workforce_integration_supported_entities import WorkforceIntegrationSupportedEntities
+    from .workforce_integration_supported_entities import WorkforceIntegration_supportedEntities
 
 from .change_tracked_entity import ChangeTrackedEntity
 
@@ -23,7 +23,7 @@ class WorkforceIntegration(ChangeTrackedEntity):
     # Indicates whether this workforce integration is currently active and available.
     is_active: Optional[bool] = None
     # The Shifts entities supported for synchronous change notifications. Shifts will make a call back to the url provided on client changes on those entities added here. By default, no entities are supported for change notifications. Possible values are: none, shift, swapRequest, userShiftPreferences, openshift, openShiftRequest, offerShiftRequest, unknownFutureValue.
-    supported_entities: Optional[WorkforceIntegrationSupportedEntities] = None
+    supported_entities: Optional[WorkforceIntegration_supportedEntities] = None
     # Workforce Integration URL for callbacks from the Shifts service.
     url: Optional[str] = None
     
@@ -45,18 +45,18 @@ class WorkforceIntegration(ChangeTrackedEntity):
         """
         from .change_tracked_entity import ChangeTrackedEntity
         from .workforce_integration_encryption import WorkforceIntegrationEncryption
-        from .workforce_integration_supported_entities import WorkforceIntegrationSupportedEntities
+        from .workforce_integration_supported_entities import WorkforceIntegration_supportedEntities
 
         from .change_tracked_entity import ChangeTrackedEntity
         from .workforce_integration_encryption import WorkforceIntegrationEncryption
-        from .workforce_integration_supported_entities import WorkforceIntegrationSupportedEntities
+        from .workforce_integration_supported_entities import WorkforceIntegration_supportedEntities
 
         fields: Dict[str, Callable[[Any], None]] = {
             "apiVersion": lambda n : setattr(self, 'api_version', n.get_int_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "encryption": lambda n : setattr(self, 'encryption', n.get_object_value(WorkforceIntegrationEncryption)),
             "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
-            "supportedEntities": lambda n : setattr(self, 'supported_entities', n.get_collection_of_enum_values(WorkforceIntegrationSupportedEntities)),
+            "supportedEntities": lambda n : setattr(self, 'supported_entities', n.get_enum_value(WorkforceIntegration_supportedEntities)),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

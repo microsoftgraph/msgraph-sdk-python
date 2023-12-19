@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .date_time_time_zone import DateTimeTimeZone
-    from .free_busy_status import FreeBusyStatus
+    from .schedule_item_status import ScheduleItem_status
 
 @dataclass
 class ScheduleItem(AdditionalDataHolder, BackedModel, Parsable):
@@ -26,7 +26,7 @@ class ScheduleItem(AdditionalDataHolder, BackedModel, Parsable):
     # The date, time, and time zone that the corresponding event starts.
     start: Optional[DateTimeTimeZone] = None
     # The availability status of the user or resource during the corresponding event. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
-    status: Optional[FreeBusyStatus] = None
+    status: Optional[ScheduleItem_status] = None
     # The corresponding event's subject line. Optional.
     subject: Optional[str] = None
     
@@ -47,10 +47,10 @@ class ScheduleItem(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .date_time_time_zone import DateTimeTimeZone
-        from .free_busy_status import FreeBusyStatus
+        from .schedule_item_status import ScheduleItem_status
 
         from .date_time_time_zone import DateTimeTimeZone
-        from .free_busy_status import FreeBusyStatus
+        from .schedule_item_status import ScheduleItem_status
 
         fields: Dict[str, Callable[[Any], None]] = {
             "end": lambda n : setattr(self, 'end', n.get_object_value(DateTimeTimeZone)),
@@ -58,7 +58,7 @@ class ScheduleItem(AdditionalDataHolder, BackedModel, Parsable):
             "location": lambda n : setattr(self, 'location', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "start": lambda n : setattr(self, 'start', n.get_object_value(DateTimeTimeZone)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(FreeBusyStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(ScheduleItem_status)),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
         }
         return fields

@@ -5,7 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .connected_organization_state import ConnectedOrganizationState
+    from .connected_organization_state import ConnectedOrganization_state
     from .directory_object import DirectoryObject
     from .entity import Entity
     from .identity_source import IdentitySource
@@ -22,7 +22,7 @@ class ConnectedOrganization(Entity):
     display_name: Optional[str] = None
     # The externalSponsors property
     external_sponsors: Optional[List[DirectoryObject]] = None
-    # The identity sources in this connected organization, one of azureActiveDirectoryTenant, domainIdentitySource, externalDomainFederation or crossCloudAzureActiveDirectoryTenant. Nullable.
+    # The identity sources in this connected organization, one of azureActiveDirectoryTenant, crossCloudAzureActiveDirectoryTenant, domainIdentitySource, externalDomainFederation, or socialIdentitySource. Nullable.
     identity_sources: Optional[List[IdentitySource]] = None
     # The internalSponsors property
     internal_sponsors: Optional[List[DirectoryObject]] = None
@@ -31,7 +31,7 @@ class ConnectedOrganization(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The state of a connected organization defines whether assignment policies with requestor scope type AllConfiguredConnectedOrganizationSubjects are applicable or not.  The possible values are: configured, proposed, unknownFutureValue.
-    state: Optional[ConnectedOrganizationState] = None
+    state: Optional[ConnectedOrganization_state] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConnectedOrganization:
@@ -49,12 +49,12 @@ class ConnectedOrganization(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .connected_organization_state import ConnectedOrganizationState
+        from .connected_organization_state import ConnectedOrganization_state
         from .directory_object import DirectoryObject
         from .entity import Entity
         from .identity_source import IdentitySource
 
-        from .connected_organization_state import ConnectedOrganizationState
+        from .connected_organization_state import ConnectedOrganization_state
         from .directory_object import DirectoryObject
         from .entity import Entity
         from .identity_source import IdentitySource
@@ -67,7 +67,7 @@ class ConnectedOrganization(Entity):
             "identitySources": lambda n : setattr(self, 'identity_sources', n.get_collection_of_object_values(IdentitySource)),
             "internalSponsors": lambda n : setattr(self, 'internal_sponsors', n.get_collection_of_object_values(DirectoryObject)),
             "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(ConnectedOrganizationState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(ConnectedOrganization_state)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

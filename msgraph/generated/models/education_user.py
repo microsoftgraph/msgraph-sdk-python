@@ -9,12 +9,12 @@ if TYPE_CHECKING:
     from .assigned_plan import AssignedPlan
     from .education_assignment import EducationAssignment
     from .education_class import EducationClass
-    from .education_external_source import EducationExternalSource
     from .education_on_premises_info import EducationOnPremisesInfo
     from .education_rubric import EducationRubric
     from .education_school import EducationSchool
     from .education_student import EducationStudent
     from .education_teacher import EducationTeacher
+    from .education_user_external_source import EducationUser_externalSource
     from .education_user_role import EducationUserRole
     from .entity import Entity
     from .identity_set import IdentitySet
@@ -47,7 +47,7 @@ class EducationUser(Entity):
     # The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Supports $filter and $orderby.
     display_name: Optional[str] = None
     # Where this user was created from. Possible values are: sis, manual.
-    external_source: Optional[EducationExternalSource] = None
+    external_source: Optional[EducationUser_externalSource] = None
     # The name of the external source this resource was generated from.
     external_source_detail: Optional[str] = None
     # The given name (first name) of the user. Supports $filter.
@@ -127,12 +127,12 @@ class EducationUser(Entity):
         from .assigned_plan import AssignedPlan
         from .education_assignment import EducationAssignment
         from .education_class import EducationClass
-        from .education_external_source import EducationExternalSource
         from .education_on_premises_info import EducationOnPremisesInfo
         from .education_rubric import EducationRubric
         from .education_school import EducationSchool
         from .education_student import EducationStudent
         from .education_teacher import EducationTeacher
+        from .education_user_external_source import EducationUser_externalSource
         from .education_user_role import EducationUserRole
         from .entity import Entity
         from .identity_set import IdentitySet
@@ -146,12 +146,12 @@ class EducationUser(Entity):
         from .assigned_plan import AssignedPlan
         from .education_assignment import EducationAssignment
         from .education_class import EducationClass
-        from .education_external_source import EducationExternalSource
         from .education_on_premises_info import EducationOnPremisesInfo
         from .education_rubric import EducationRubric
         from .education_school import EducationSchool
         from .education_student import EducationStudent
         from .education_teacher import EducationTeacher
+        from .education_user_external_source import EducationUser_externalSource
         from .education_user_role import EducationUserRole
         from .entity import Entity
         from .identity_set import IdentitySet
@@ -171,7 +171,7 @@ class EducationUser(Entity):
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(EducationExternalSource)),
+            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(EducationUser_externalSource)),
             "externalSourceDetail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
             "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
             "mail": lambda n : setattr(self, 'mail', n.get_str_value()),

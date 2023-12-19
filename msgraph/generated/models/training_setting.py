@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from .microsoft_managed_training_setting import MicrosoftManagedTrainingSetting
     from .microsoft_training_assignment_mapping import MicrosoftTrainingAssignmentMapping
     from .no_training_setting import NoTrainingSetting
-    from .training_setting_type import TrainingSettingType
+    from .training_setting_setting_type import TrainingSetting_settingType
 
 @dataclass
 class TrainingSetting(AdditionalDataHolder, BackedModel, Parsable):
@@ -22,7 +22,7 @@ class TrainingSetting(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Type of setting. Possible values are: microsoftCustom, microsoftManaged, noTraining, custom, unknownFutureValue.
-    setting_type: Optional[TrainingSettingType] = None
+    setting_type: Optional[TrainingSetting_settingType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TrainingSetting:
@@ -69,18 +69,18 @@ class TrainingSetting(AdditionalDataHolder, BackedModel, Parsable):
         from .microsoft_managed_training_setting import MicrosoftManagedTrainingSetting
         from .microsoft_training_assignment_mapping import MicrosoftTrainingAssignmentMapping
         from .no_training_setting import NoTrainingSetting
-        from .training_setting_type import TrainingSettingType
+        from .training_setting_setting_type import TrainingSetting_settingType
 
         from .custom_training_setting import CustomTrainingSetting
         from .microsoft_custom_training_setting import MicrosoftCustomTrainingSetting
         from .microsoft_managed_training_setting import MicrosoftManagedTrainingSetting
         from .microsoft_training_assignment_mapping import MicrosoftTrainingAssignmentMapping
         from .no_training_setting import NoTrainingSetting
-        from .training_setting_type import TrainingSettingType
+        from .training_setting_setting_type import TrainingSetting_settingType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "settingType": lambda n : setattr(self, 'setting_type', n.get_enum_value(TrainingSettingType)),
+            "settingType": lambda n : setattr(self, 'setting_type', n.get_enum_value(TrainingSetting_settingType)),
         }
         return fields
     

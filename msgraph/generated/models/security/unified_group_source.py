@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..group import Group
     from .data_source import DataSource
-    from .source_type import SourceType
+    from .unified_group_source_included_sources import UnifiedGroupSource_includedSources
 
 from .data_source import DataSource
 
@@ -17,7 +17,7 @@ class UnifiedGroupSource(DataSource):
     # The group property
     group: Optional[Group] = None
     # Specifies which sources are included in this group. Possible values are: mailbox, site.
-    included_sources: Optional[SourceType] = None
+    included_sources: Optional[UnifiedGroupSource_includedSources] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedGroupSource:
@@ -37,15 +37,15 @@ class UnifiedGroupSource(DataSource):
         """
         from ..group import Group
         from .data_source import DataSource
-        from .source_type import SourceType
+        from .unified_group_source_included_sources import UnifiedGroupSource_includedSources
 
         from ..group import Group
         from .data_source import DataSource
-        from .source_type import SourceType
+        from .unified_group_source_included_sources import UnifiedGroupSource_includedSources
 
         fields: Dict[str, Callable[[Any], None]] = {
             "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
-            "includedSources": lambda n : setattr(self, 'included_sources', n.get_collection_of_enum_values(SourceType)),
+            "includedSources": lambda n : setattr(self, 'included_sources', n.get_enum_value(UnifiedGroupSource_includedSources)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

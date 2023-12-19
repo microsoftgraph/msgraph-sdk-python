@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .delegated_admin_relationship_request_action import DelegatedAdminRelationshipRequestAction
-    from .delegated_admin_relationship_request_status import DelegatedAdminRelationshipRequestStatus
+    from .delegated_admin_relationship_request_status import DelegatedAdminRelationshipRequest_status
     from .entity import Entity
 
 from .entity import Entity
@@ -22,7 +22,7 @@ class DelegatedAdminRelationshipRequest(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The status of the request. Read-only. The possible values are: created, pending, succeeded, failed, unknownFutureValue.
-    status: Optional[DelegatedAdminRelationshipRequestStatus] = None
+    status: Optional[DelegatedAdminRelationshipRequest_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedAdminRelationshipRequest:
@@ -41,18 +41,18 @@ class DelegatedAdminRelationshipRequest(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .delegated_admin_relationship_request_action import DelegatedAdminRelationshipRequestAction
-        from .delegated_admin_relationship_request_status import DelegatedAdminRelationshipRequestStatus
+        from .delegated_admin_relationship_request_status import DelegatedAdminRelationshipRequest_status
         from .entity import Entity
 
         from .delegated_admin_relationship_request_action import DelegatedAdminRelationshipRequestAction
-        from .delegated_admin_relationship_request_status import DelegatedAdminRelationshipRequestStatus
+        from .delegated_admin_relationship_request_status import DelegatedAdminRelationshipRequest_status
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(DelegatedAdminRelationshipRequestAction)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(DelegatedAdminRelationshipRequestStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(DelegatedAdminRelationshipRequest_status)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

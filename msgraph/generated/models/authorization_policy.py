@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from .allow_invites_from import AllowInvitesFrom
+    from .authorization_policy_allow_invites_from import AuthorizationPolicy_allowInvitesFrom
     from .default_user_role_permissions import DefaultUserRolePermissions
     from .policy_base import PolicyBase
 
@@ -18,7 +18,7 @@ class AuthorizationPolicy(PolicyBase):
     # Indicates whether a user can join the tenant by email validation.
     allow_email_verified_users_to_join_organization: Optional[bool] = None
     # Indicates who can invite external users to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. For more information, see allowInvitesFrom values.
-    allow_invites_from: Optional[AllowInvitesFrom] = None
+    allow_invites_from: Optional[AuthorizationPolicy_allowInvitesFrom] = None
     # Indicates whether user consent for risky apps is allowed. We recommend keeping allowUserConsentForRiskyApps as false. Default value is false.
     allow_user_consent_for_risky_apps: Optional[bool] = None
     # Indicates whether users can sign up for email based subscriptions.
@@ -48,17 +48,17 @@ class AuthorizationPolicy(PolicyBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .allow_invites_from import AllowInvitesFrom
+        from .authorization_policy_allow_invites_from import AuthorizationPolicy_allowInvitesFrom
         from .default_user_role_permissions import DefaultUserRolePermissions
         from .policy_base import PolicyBase
 
-        from .allow_invites_from import AllowInvitesFrom
+        from .authorization_policy_allow_invites_from import AuthorizationPolicy_allowInvitesFrom
         from .default_user_role_permissions import DefaultUserRolePermissions
         from .policy_base import PolicyBase
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowEmailVerifiedUsersToJoinOrganization": lambda n : setattr(self, 'allow_email_verified_users_to_join_organization', n.get_bool_value()),
-            "allowInvitesFrom": lambda n : setattr(self, 'allow_invites_from', n.get_enum_value(AllowInvitesFrom)),
+            "allowInvitesFrom": lambda n : setattr(self, 'allow_invites_from', n.get_enum_value(AuthorizationPolicy_allowInvitesFrom)),
             "allowUserConsentForRiskyApps": lambda n : setattr(self, 'allow_user_consent_for_risky_apps', n.get_bool_value()),
             "allowedToSignUpEmailBasedSubscriptions": lambda n : setattr(self, 'allowed_to_sign_up_email_based_subscriptions', n.get_bool_value()),
             "allowedToUseSSPR": lambda n : setattr(self, 'allowed_to_use_s_s_p_r', n.get_bool_value()),

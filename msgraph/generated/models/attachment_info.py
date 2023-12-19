@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .attachment_type import AttachmentType
+    from .attachment_info_attachment_type import AttachmentInfo_attachmentType
 
 @dataclass
 class AttachmentInfo(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,7 +15,7 @@ class AttachmentInfo(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The type of the attachment. The possible values are: file, item, reference. Required.
-    attachment_type: Optional[AttachmentType] = None
+    attachment_type: Optional[AttachmentInfo_attachmentType] = None
     # The nature of the data in the attachment. Optional.
     content_type: Optional[str] = None
     # The display name of the attachment. This can be a descriptive string and doesn't have to be the actual file name. Required.
@@ -41,12 +41,12 @@ class AttachmentInfo(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .attachment_type import AttachmentType
+        from .attachment_info_attachment_type import AttachmentInfo_attachmentType
 
-        from .attachment_type import AttachmentType
+        from .attachment_info_attachment_type import AttachmentInfo_attachmentType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attachmentType": lambda n : setattr(self, 'attachment_type', n.get_enum_value(AttachmentType)),
+            "attachmentType": lambda n : setattr(self, 'attachment_type', n.get_enum_value(AttachmentInfo_attachmentType)),
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

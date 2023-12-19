@@ -5,8 +5,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.security.purge_areas import PurgeAreas
-    from ........models.security.purge_type import PurgeType
+    from .purge_data_post_request_body_purge_areas import PurgeDataPostRequestBody_purgeAreas
+    from .purge_data_post_request_body_purge_type import PurgeDataPostRequestBody_purgeType
 
 @dataclass
 class PurgeDataPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
@@ -16,9 +16,9 @@ class PurgeDataPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The purgeAreas property
-    purge_areas: Optional[PurgeAreas] = None
+    purge_areas: Optional[PurgeDataPostRequestBody_purgeAreas] = None
     # The purgeType property
-    purge_type: Optional[PurgeType] = None
+    purge_type: Optional[PurgeDataPostRequestBody_purgeType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PurgeDataPostRequestBody:
@@ -36,15 +36,15 @@ class PurgeDataPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.security.purge_areas import PurgeAreas
-        from ........models.security.purge_type import PurgeType
+        from .purge_data_post_request_body_purge_areas import PurgeDataPostRequestBody_purgeAreas
+        from .purge_data_post_request_body_purge_type import PurgeDataPostRequestBody_purgeType
 
-        from ........models.security.purge_areas import PurgeAreas
-        from ........models.security.purge_type import PurgeType
+        from .purge_data_post_request_body_purge_areas import PurgeDataPostRequestBody_purgeAreas
+        from .purge_data_post_request_body_purge_type import PurgeDataPostRequestBody_purgeType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "purgeAreas": lambda n : setattr(self, 'purge_areas', n.get_collection_of_enum_values(PurgeAreas)),
-            "purgeType": lambda n : setattr(self, 'purge_type', n.get_enum_value(PurgeType)),
+            "purgeAreas": lambda n : setattr(self, 'purge_areas', n.get_enum_value(PurgeDataPostRequestBody_purgeAreas)),
+            "purgeType": lambda n : setattr(self, 'purge_type', n.get_enum_value(PurgeDataPostRequestBody_purgeType)),
         }
         return fields
     

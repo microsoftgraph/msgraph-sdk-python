@@ -8,8 +8,8 @@ if TYPE_CHECKING:
     from .change_tracked_entity import ChangeTrackedEntity
     from .offer_shift_request import OfferShiftRequest
     from .open_shift_change_request import OpenShiftChangeRequest
-    from .schedule_change_request_actor import ScheduleChangeRequestActor
-    from .schedule_change_state import ScheduleChangeState
+    from .schedule_change_request_assigned_to import ScheduleChangeRequest_assignedTo
+    from .schedule_change_request_state import ScheduleChangeRequest_state
     from .swap_shifts_change_request import SwapShiftsChangeRequest
     from .time_off_request import TimeOffRequest
 
@@ -20,7 +20,7 @@ class ScheduleChangeRequest(ChangeTrackedEntity):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.scheduleChangeRequest"
     # The assignedTo property
-    assigned_to: Optional[ScheduleChangeRequestActor] = None
+    assigned_to: Optional[ScheduleChangeRequest_assignedTo] = None
     # The managerActionDateTime property
     manager_action_date_time: Optional[datetime.datetime] = None
     # The managerActionMessage property
@@ -34,7 +34,7 @@ class ScheduleChangeRequest(ChangeTrackedEntity):
     # The senderUserId property
     sender_user_id: Optional[str] = None
     # The state property
-    state: Optional[ScheduleChangeState] = None
+    state: Optional[ScheduleChangeRequest_state] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleChangeRequest:
@@ -75,28 +75,28 @@ class ScheduleChangeRequest(ChangeTrackedEntity):
         from .change_tracked_entity import ChangeTrackedEntity
         from .offer_shift_request import OfferShiftRequest
         from .open_shift_change_request import OpenShiftChangeRequest
-        from .schedule_change_request_actor import ScheduleChangeRequestActor
-        from .schedule_change_state import ScheduleChangeState
+        from .schedule_change_request_assigned_to import ScheduleChangeRequest_assignedTo
+        from .schedule_change_request_state import ScheduleChangeRequest_state
         from .swap_shifts_change_request import SwapShiftsChangeRequest
         from .time_off_request import TimeOffRequest
 
         from .change_tracked_entity import ChangeTrackedEntity
         from .offer_shift_request import OfferShiftRequest
         from .open_shift_change_request import OpenShiftChangeRequest
-        from .schedule_change_request_actor import ScheduleChangeRequestActor
-        from .schedule_change_state import ScheduleChangeState
+        from .schedule_change_request_assigned_to import ScheduleChangeRequest_assignedTo
+        from .schedule_change_request_state import ScheduleChangeRequest_state
         from .swap_shifts_change_request import SwapShiftsChangeRequest
         from .time_off_request import TimeOffRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_enum_value(ScheduleChangeRequestActor)),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_enum_value(ScheduleChangeRequest_assignedTo)),
             "managerActionDateTime": lambda n : setattr(self, 'manager_action_date_time', n.get_datetime_value()),
             "managerActionMessage": lambda n : setattr(self, 'manager_action_message', n.get_str_value()),
             "managerUserId": lambda n : setattr(self, 'manager_user_id', n.get_str_value()),
             "senderDateTime": lambda n : setattr(self, 'sender_date_time', n.get_datetime_value()),
             "senderMessage": lambda n : setattr(self, 'sender_message', n.get_str_value()),
             "senderUserId": lambda n : setattr(self, 'sender_user_id', n.get_str_value()),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(ScheduleChangeState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(ScheduleChangeRequest_state)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .phone_type import PhoneType
+    from .phone_type import Phone_type
 
 @dataclass
 class Phone(AdditionalDataHolder, BackedModel, Parsable):
@@ -23,7 +23,7 @@ class Phone(AdditionalDataHolder, BackedModel, Parsable):
     # The region property
     region: Optional[str] = None
     # The type of phone number. The possible values are: home, business, mobile, other, assistant, homeFax, businessFax, otherFax, pager, radio.
-    type: Optional[PhoneType] = None
+    type: Optional[Phone_type] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Phone:
@@ -41,16 +41,16 @@ class Phone(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .phone_type import PhoneType
+        from .phone_type import Phone_type
 
-        from .phone_type import PhoneType
+        from .phone_type import Phone_type
 
         fields: Dict[str, Callable[[Any], None]] = {
             "language": lambda n : setattr(self, 'language', n.get_str_value()),
             "number": lambda n : setattr(self, 'number', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "region": lambda n : setattr(self, 'region', n.get_str_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(PhoneType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(Phone_type)),
         }
         return fields
     

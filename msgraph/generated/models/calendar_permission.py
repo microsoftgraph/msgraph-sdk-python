@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .calendar_role_type import CalendarRoleType
+    from .calendar_permission_allowed_roles import CalendarPermission_allowedRoles
+    from .calendar_permission_role import CalendarPermission_role
     from .email_address import EmailAddress
     from .entity import Entity
 
@@ -13,7 +14,7 @@ from .entity import Entity
 @dataclass
 class CalendarPermission(Entity):
     # List of allowed sharing or delegating permission levels for the calendar. Possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.
-    allowed_roles: Optional[List[CalendarRoleType]] = None
+    allowed_roles: Optional[List[CalendarPermission_allowedRoles]] = None
     # Represents a share recipient or delegate who has access to the calendar. For the 'My Organization' share recipient, the address property is null. Read-only.
     email_address: Optional[EmailAddress] = None
     # True if the user in context (recipient or delegate) is inside the same organization as the calendar owner.
@@ -23,7 +24,7 @@ class CalendarPermission(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Current permission level of the calendar share recipient or delegate.
-    role: Optional[CalendarRoleType] = None
+    role: Optional[CalendarPermission_role] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CalendarPermission:
@@ -41,20 +42,22 @@ class CalendarPermission(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .calendar_role_type import CalendarRoleType
+        from .calendar_permission_allowed_roles import CalendarPermission_allowedRoles
+        from .calendar_permission_role import CalendarPermission_role
         from .email_address import EmailAddress
         from .entity import Entity
 
-        from .calendar_role_type import CalendarRoleType
+        from .calendar_permission_allowed_roles import CalendarPermission_allowedRoles
+        from .calendar_permission_role import CalendarPermission_role
         from .email_address import EmailAddress
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedRoles": lambda n : setattr(self, 'allowed_roles', n.get_collection_of_enum_values(CalendarRoleType)),
+            "allowedRoles": lambda n : setattr(self, 'allowed_roles', n.get_collection_of_enum_values(CalendarPermission_allowedRoles)),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(EmailAddress)),
             "isInsideOrganization": lambda n : setattr(self, 'is_inside_organization', n.get_bool_value()),
             "isRemovable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
-            "role": lambda n : setattr(self, 'role', n.get_enum_value(CalendarRoleType)),
+            "role": lambda n : setattr(self, 'role', n.get_enum_value(CalendarPermission_role)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

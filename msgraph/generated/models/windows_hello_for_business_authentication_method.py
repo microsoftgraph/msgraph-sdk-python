@@ -6,8 +6,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_method import AuthenticationMethod
-    from .authentication_method_key_strength import AuthenticationMethodKeyStrength
     from .device import Device
+    from .windows_hello_for_business_authentication_method_key_strength import WindowsHelloForBusinessAuthenticationMethod_keyStrength
 
 from .authentication_method import AuthenticationMethod
 
@@ -22,7 +22,7 @@ class WindowsHelloForBusinessAuthenticationMethod(AuthenticationMethod):
     # The name of the device on which Windows Hello for Business is registered
     display_name: Optional[str] = None
     # Key strength of this Windows Hello for Business key. Possible values are: normal, weak, unknown.
-    key_strength: Optional[AuthenticationMethodKeyStrength] = None
+    key_strength: Optional[WindowsHelloForBusinessAuthenticationMethod_keyStrength] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsHelloForBusinessAuthenticationMethod:
@@ -41,18 +41,18 @@ class WindowsHelloForBusinessAuthenticationMethod(AuthenticationMethod):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_method import AuthenticationMethod
-        from .authentication_method_key_strength import AuthenticationMethodKeyStrength
         from .device import Device
+        from .windows_hello_for_business_authentication_method_key_strength import WindowsHelloForBusinessAuthenticationMethod_keyStrength
 
         from .authentication_method import AuthenticationMethod
-        from .authentication_method_key_strength import AuthenticationMethodKeyStrength
         from .device import Device
+        from .windows_hello_for_business_authentication_method_key_strength import WindowsHelloForBusinessAuthenticationMethod_keyStrength
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "device": lambda n : setattr(self, 'device', n.get_object_value(Device)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "keyStrength": lambda n : setattr(self, 'key_strength', n.get_enum_value(AuthenticationMethodKeyStrength)),
+            "keyStrength": lambda n : setattr(self, 'key_strength', n.get_enum_value(WindowsHelloForBusinessAuthenticationMethod_keyStrength)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

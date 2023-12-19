@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from .activity_settings import ActivitySettings
     from .configuration import Configuration
     from .connection_operation import ConnectionOperation
-    from .connection_state import ConnectionState
+    from .external_connection_state import ExternalConnection_state
     from .external_group import ExternalGroup
     from .external_item import ExternalItem
     from .schema import Schema
@@ -41,7 +41,7 @@ class ExternalConnection(Entity):
     # The settings configuring the search experience for content in this connection, such as the display templates for search results.
     search_settings: Optional[SearchSettings] = None
     # Indicates the current state of the connection. Possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
-    state: Optional[ConnectionState] = None
+    state: Optional[ExternalConnection_state] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExternalConnection:
@@ -63,7 +63,7 @@ class ExternalConnection(Entity):
         from .activity_settings import ActivitySettings
         from .configuration import Configuration
         from .connection_operation import ConnectionOperation
-        from .connection_state import ConnectionState
+        from .external_connection_state import ExternalConnection_state
         from .external_group import ExternalGroup
         from .external_item import ExternalItem
         from .schema import Schema
@@ -73,7 +73,7 @@ class ExternalConnection(Entity):
         from .activity_settings import ActivitySettings
         from .configuration import Configuration
         from .connection_operation import ConnectionOperation
-        from .connection_state import ConnectionState
+        from .external_connection_state import ExternalConnection_state
         from .external_group import ExternalGroup
         from .external_item import ExternalItem
         from .schema import Schema
@@ -90,7 +90,7 @@ class ExternalConnection(Entity):
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(ConnectionOperation)),
             "schema": lambda n : setattr(self, 'schema', n.get_object_value(Schema)),
             "searchSettings": lambda n : setattr(self, 'search_settings', n.get_object_value(SearchSettings)),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(ConnectionState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(ExternalConnection_state)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

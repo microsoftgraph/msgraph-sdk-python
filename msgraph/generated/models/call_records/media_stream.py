@@ -6,9 +6,9 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .audio_codec import AudioCodec
+    from .media_stream_audio_codec import MediaStream_audioCodec
     from .media_stream_direction import MediaStreamDirection
-    from .video_codec import VideoCodec
+    from .media_stream_video_codec import MediaStream_videoCodec
 
 @dataclass
 class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
@@ -18,7 +18,7 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Codec name used to encode audio for transmission on the network. Possible values are: unknown, invalid, cn, pcma, pcmu, amrWide, g722, g7221, g7221c, g729, multiChannelAudio, muchv2, opus, satin, satinFullband, rtAudio8, rtAudio16, silk, silkNarrow, silkWide, siren, xmsRta, unknownFutureValue.
-    audio_codec: Optional[AudioCodec] = None
+    audio_codec: Optional[MediaStream_audioCodec] = None
     # Average Network Mean Opinion Score degradation for stream. Represents how much the network loss and jitter has impacted the quality of received audio.
     average_audio_degradation: Optional[float] = None
     # Average jitter for the stream computed as specified in [RFC 3550][], denoted in [ISO 8601][] format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
@@ -76,7 +76,7 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
     # Unique identifier for the stream.
     stream_id: Optional[str] = None
     # Codec name used to encode video for transmission on the network. Possible values are: unknown, invalid, av1, h263, h264, h264s, h264uc, h265, rtvc1, rtVideo, xrtvc1, unknownFutureValue.
-    video_codec: Optional[VideoCodec] = None
+    video_codec: Optional[MediaStream_videoCodec] = None
     # True if the media stream bypassed the Mediation Server and went straight between client and PSTN Gateway/PBX, false otherwise.
     was_media_bypassed: Optional[bool] = None
     
@@ -96,16 +96,16 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .audio_codec import AudioCodec
+        from .media_stream_audio_codec import MediaStream_audioCodec
         from .media_stream_direction import MediaStreamDirection
-        from .video_codec import VideoCodec
+        from .media_stream_video_codec import MediaStream_videoCodec
 
-        from .audio_codec import AudioCodec
+        from .media_stream_audio_codec import MediaStream_audioCodec
         from .media_stream_direction import MediaStreamDirection
-        from .video_codec import VideoCodec
+        from .media_stream_video_codec import MediaStream_videoCodec
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "audioCodec": lambda n : setattr(self, 'audio_codec', n.get_enum_value(AudioCodec)),
+            "audioCodec": lambda n : setattr(self, 'audio_codec', n.get_enum_value(MediaStream_audioCodec)),
             "averageAudioDegradation": lambda n : setattr(self, 'average_audio_degradation', n.get_float_value()),
             "averageAudioNetworkJitter": lambda n : setattr(self, 'average_audio_network_jitter', n.get_timedelta_value()),
             "averageBandwidthEstimate": lambda n : setattr(self, 'average_bandwidth_estimate', n.get_int_value()),
@@ -134,7 +134,7 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "streamDirection": lambda n : setattr(self, 'stream_direction', n.get_enum_value(MediaStreamDirection)),
             "streamId": lambda n : setattr(self, 'stream_id', n.get_str_value()),
-            "videoCodec": lambda n : setattr(self, 'video_codec', n.get_enum_value(VideoCodec)),
+            "videoCodec": lambda n : setattr(self, 'video_codec', n.get_enum_value(MediaStream_videoCodec)),
             "wasMediaBypassed": lambda n : setattr(self, 'was_media_bypassed', n.get_bool_value()),
         }
         return fields

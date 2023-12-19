@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .authentication_method_state import AuthenticationMethodState
+    from .authentication_method_configuration_state import AuthenticationMethodConfiguration_state
     from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
     from .entity import Entity
     from .exclude_target import ExcludeTarget
@@ -25,7 +25,7 @@ class AuthenticationMethodConfiguration(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The state of the policy. Possible values are: enabled, disabled.
-    state: Optional[AuthenticationMethodState] = None
+    state: Optional[AuthenticationMethodConfiguration_state] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodConfiguration:
@@ -79,7 +79,7 @@ class AuthenticationMethodConfiguration(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .authentication_method_state import AuthenticationMethodState
+        from .authentication_method_configuration_state import AuthenticationMethodConfiguration_state
         from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
         from .entity import Entity
         from .exclude_target import ExcludeTarget
@@ -91,7 +91,7 @@ class AuthenticationMethodConfiguration(Entity):
         from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
         from .x509_certificate_authentication_method_configuration import X509CertificateAuthenticationMethodConfiguration
 
-        from .authentication_method_state import AuthenticationMethodState
+        from .authentication_method_configuration_state import AuthenticationMethodConfiguration_state
         from .email_authentication_method_configuration import EmailAuthenticationMethodConfiguration
         from .entity import Entity
         from .exclude_target import ExcludeTarget
@@ -105,7 +105,7 @@ class AuthenticationMethodConfiguration(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "excludeTargets": lambda n : setattr(self, 'exclude_targets', n.get_collection_of_object_values(ExcludeTarget)),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(AuthenticationMethodState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(AuthenticationMethodConfiguration_state)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -1,7 +1,5 @@
 from enum import Enum
 
-class ConditionalAccessExternalTenantsMembershipKind(str, Enum):
-    All = "all",
-    Enumerated = "enumerated",
-    UnknownFutureValue = "unknownFutureValue",
+class ConditionalAccessExternalTenants_membershipKind(str, Enum):
+    pass
 

@@ -1,6 +1,5 @@
 from enum import Enum
 
-class CallDirection(str, Enum):
-    Incoming = "incoming",
-    Outgoing = "outgoing",
+class Call_direction(str, Enum):
+    pass
 

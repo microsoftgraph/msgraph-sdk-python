@@ -5,21 +5,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .activity_type import ActivityType
     from .entity import Entity
-    from .risk_detail import RiskDetail
-    from .risk_detection_timing_type import RiskDetectionTimingType
-    from .risk_level import RiskLevel
-    from .risk_state import RiskState
+    from .service_principal_risk_detection_activity import ServicePrincipalRiskDetection_activity
+    from .service_principal_risk_detection_detection_timing_type import ServicePrincipalRiskDetection_detectionTimingType
+    from .service_principal_risk_detection_risk_detail import ServicePrincipalRiskDetection_riskDetail
+    from .service_principal_risk_detection_risk_level import ServicePrincipalRiskDetection_riskLevel
+    from .service_principal_risk_detection_risk_state import ServicePrincipalRiskDetection_riskState
+    from .service_principal_risk_detection_token_issuer_type import ServicePrincipalRiskDetection_tokenIssuerType
     from .sign_in_location import SignInLocation
-    from .token_issuer_type import TokenIssuerType
 
 from .entity import Entity
 
 @dataclass
 class ServicePrincipalRiskDetection(Entity):
     # Indicates the activity type the detected risk is linked to.  The possible values are: signin, servicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: servicePrincipal.
-    activity: Optional[ActivityType] = None
+    activity: Optional[ServicePrincipalRiskDetection_activity] = None
     # Date and time when the risky activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     activity_date_time: Optional[datetime.datetime] = None
     # Additional information associated with the risk detection. This string value is represented as a JSON object with the quotations escaped.
@@ -31,7 +31,7 @@ class ServicePrincipalRiskDetection(Entity):
     # Date and time when the risk was detected. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     detected_date_time: Optional[datetime.datetime] = None
     # Timing of the detected risk , whether real-time or offline. The possible values are: notDefined, realtime, nearRealtime, offline, unknownFutureValue.
-    detection_timing_type: Optional[RiskDetectionTimingType] = None
+    detection_timing_type: Optional[ServicePrincipalRiskDetection_detectionTimingType] = None
     # Provides the IP address of the client from where the risk occurred.
     ip_address: Optional[str] = None
     # The unique identifier for the key credential associated with the risk detection.
@@ -45,13 +45,13 @@ class ServicePrincipalRiskDetection(Entity):
     # Request identifier of the sign-in activity associated with the risk detection. This property is null if the risk detection is not associated with a sign-in activity. Supports $filter (eq).
     request_id: Optional[str] = None
     # Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
-    risk_detail: Optional[RiskDetail] = None
+    risk_detail: Optional[ServicePrincipalRiskDetection_riskDetail] = None
     # The type of risk event detected. The possible values are: investigationsThreatIntelligence, generic, adminConfirmedServicePrincipalCompromised, suspiciousSignins, leakedCredentials, anomalousServicePrincipalActivity, maliciousApplication, suspiciousApplication.
     risk_event_type: Optional[str] = None
     # Level of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: low, medium, high, hidden, none.
-    risk_level: Optional[RiskLevel] = None
+    risk_level: Optional[ServicePrincipalRiskDetection_riskLevel] = None
     # The state of a detected risky service principal or sign-in activity. The possible values are: none, dismissed, atRisk, confirmedCompromised.
-    risk_state: Optional[RiskState] = None
+    risk_state: Optional[ServicePrincipalRiskDetection_riskState] = None
     # The display name for the service principal.
     service_principal_display_name: Optional[str] = None
     # The unique identifier for the service principal. Supports $filter (eq).
@@ -59,7 +59,7 @@ class ServicePrincipalRiskDetection(Entity):
     # Source of the risk detection. For example, identityProtection.
     source: Optional[str] = None
     # Indicates the type of token issuer for the detected sign-in risk. The possible values are: AzureAD.
-    token_issuer_type: Optional[TokenIssuerType] = None
+    token_issuer_type: Optional[ServicePrincipalRiskDetection_tokenIssuerType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServicePrincipalRiskDetection:
@@ -77,45 +77,45 @@ class ServicePrincipalRiskDetection(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .activity_type import ActivityType
         from .entity import Entity
-        from .risk_detail import RiskDetail
-        from .risk_detection_timing_type import RiskDetectionTimingType
-        from .risk_level import RiskLevel
-        from .risk_state import RiskState
+        from .service_principal_risk_detection_activity import ServicePrincipalRiskDetection_activity
+        from .service_principal_risk_detection_detection_timing_type import ServicePrincipalRiskDetection_detectionTimingType
+        from .service_principal_risk_detection_risk_detail import ServicePrincipalRiskDetection_riskDetail
+        from .service_principal_risk_detection_risk_level import ServicePrincipalRiskDetection_riskLevel
+        from .service_principal_risk_detection_risk_state import ServicePrincipalRiskDetection_riskState
+        from .service_principal_risk_detection_token_issuer_type import ServicePrincipalRiskDetection_tokenIssuerType
         from .sign_in_location import SignInLocation
-        from .token_issuer_type import TokenIssuerType
 
-        from .activity_type import ActivityType
         from .entity import Entity
-        from .risk_detail import RiskDetail
-        from .risk_detection_timing_type import RiskDetectionTimingType
-        from .risk_level import RiskLevel
-        from .risk_state import RiskState
+        from .service_principal_risk_detection_activity import ServicePrincipalRiskDetection_activity
+        from .service_principal_risk_detection_detection_timing_type import ServicePrincipalRiskDetection_detectionTimingType
+        from .service_principal_risk_detection_risk_detail import ServicePrincipalRiskDetection_riskDetail
+        from .service_principal_risk_detection_risk_level import ServicePrincipalRiskDetection_riskLevel
+        from .service_principal_risk_detection_risk_state import ServicePrincipalRiskDetection_riskState
+        from .service_principal_risk_detection_token_issuer_type import ServicePrincipalRiskDetection_tokenIssuerType
         from .sign_in_location import SignInLocation
-        from .token_issuer_type import TokenIssuerType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activity": lambda n : setattr(self, 'activity', n.get_enum_value(ActivityType)),
+            "activity": lambda n : setattr(self, 'activity', n.get_enum_value(ServicePrincipalRiskDetection_activity)),
             "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "additionalInfo": lambda n : setattr(self, 'additional_info', n.get_str_value()),
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
             "detectedDateTime": lambda n : setattr(self, 'detected_date_time', n.get_datetime_value()),
-            "detectionTimingType": lambda n : setattr(self, 'detection_timing_type', n.get_enum_value(RiskDetectionTimingType)),
+            "detectionTimingType": lambda n : setattr(self, 'detection_timing_type', n.get_enum_value(ServicePrincipalRiskDetection_detectionTimingType)),
             "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "keyIds": lambda n : setattr(self, 'key_ids', n.get_collection_of_primitive_values(str)),
             "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(SignInLocation)),
             "requestId": lambda n : setattr(self, 'request_id', n.get_str_value()),
-            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetail)),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(ServicePrincipalRiskDetection_riskDetail)),
             "riskEventType": lambda n : setattr(self, 'risk_event_type', n.get_str_value()),
-            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(RiskLevel)),
-            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskState)),
+            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(ServicePrincipalRiskDetection_riskLevel)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(ServicePrincipalRiskDetection_riskState)),
             "servicePrincipalDisplayName": lambda n : setattr(self, 'service_principal_display_name', n.get_str_value()),
             "servicePrincipalId": lambda n : setattr(self, 'service_principal_id', n.get_str_value()),
             "source": lambda n : setattr(self, 'source', n.get_str_value()),
-            "tokenIssuerType": lambda n : setattr(self, 'token_issuer_type', n.get_enum_value(TokenIssuerType)),
+            "tokenIssuerType": lambda n : setattr(self, 'token_issuer_type', n.get_enum_value(ServicePrincipalRiskDetection_tokenIssuerType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

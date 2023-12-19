@@ -5,7 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .call_recording_status import CallRecordingStatus
+    from .call_recording_event_message_detail_call_recording_status import CallRecordingEventMessageDetail_callRecordingStatus
     from .event_message_detail import EventMessageDetail
     from .identity_set import IdentitySet
 
@@ -22,7 +22,7 @@ class CallRecordingEventMessageDetail(EventMessageDetail):
     # Duration of the call recording.
     call_recording_duration: Optional[datetime.timedelta] = None
     # Status of the call recording. Possible values are: success, failure, initial, chunkFinished, unknownFutureValue.
-    call_recording_status: Optional[CallRecordingStatus] = None
+    call_recording_status: Optional[CallRecordingEventMessageDetail_callRecordingStatus] = None
     # Call recording URL.
     call_recording_url: Optional[str] = None
     # Initiator of the event.
@@ -46,11 +46,11 @@ class CallRecordingEventMessageDetail(EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .call_recording_status import CallRecordingStatus
+        from .call_recording_event_message_detail_call_recording_status import CallRecordingEventMessageDetail_callRecordingStatus
         from .event_message_detail import EventMessageDetail
         from .identity_set import IdentitySet
 
-        from .call_recording_status import CallRecordingStatus
+        from .call_recording_event_message_detail_call_recording_status import CallRecordingEventMessageDetail_callRecordingStatus
         from .event_message_detail import EventMessageDetail
         from .identity_set import IdentitySet
 
@@ -58,7 +58,7 @@ class CallRecordingEventMessageDetail(EventMessageDetail):
             "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
             "callRecordingDisplayName": lambda n : setattr(self, 'call_recording_display_name', n.get_str_value()),
             "callRecordingDuration": lambda n : setattr(self, 'call_recording_duration', n.get_timedelta_value()),
-            "callRecordingStatus": lambda n : setattr(self, 'call_recording_status', n.get_enum_value(CallRecordingStatus)),
+            "callRecordingStatus": lambda n : setattr(self, 'call_recording_status', n.get_enum_value(CallRecordingEventMessageDetail_callRecordingStatus)),
             "callRecordingUrl": lambda n : setattr(self, 'call_recording_url', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
             "meetingOrganizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(IdentitySet)),

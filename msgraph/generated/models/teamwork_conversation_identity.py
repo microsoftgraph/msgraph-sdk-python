@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .identity import Identity
-    from .teamwork_conversation_identity_type import TeamworkConversationIdentityType
+    from .teamwork_conversation_identity_conversation_identity_type import TeamworkConversationIdentity_conversationIdentityType
 
 from .identity import Identity
 
@@ -14,7 +14,7 @@ class TeamworkConversationIdentity(Identity):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.teamworkConversationIdentity"
     # Type of conversation. Possible values are: team, channel, chat, and unknownFutureValue.
-    conversation_identity_type: Optional[TeamworkConversationIdentityType] = None
+    conversation_identity_type: Optional[TeamworkConversationIdentity_conversationIdentityType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkConversationIdentity:
@@ -33,13 +33,13 @@ class TeamworkConversationIdentity(Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .identity import Identity
-        from .teamwork_conversation_identity_type import TeamworkConversationIdentityType
+        from .teamwork_conversation_identity_conversation_identity_type import TeamworkConversationIdentity_conversationIdentityType
 
         from .identity import Identity
-        from .teamwork_conversation_identity_type import TeamworkConversationIdentityType
+        from .teamwork_conversation_identity_conversation_identity_type import TeamworkConversationIdentity_conversationIdentityType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "conversationIdentityType": lambda n : setattr(self, 'conversation_identity_type', n.get_enum_value(TeamworkConversationIdentityType)),
+            "conversationIdentityType": lambda n : setattr(self, 'conversation_identity_type', n.get_enum_value(TeamworkConversationIdentity_conversationIdentityType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

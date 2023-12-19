@@ -13,11 +13,11 @@ if TYPE_CHECKING:
     from .login_page import LoginPage
     from .o_auth_consent_app_detail import OAuthConsentAppDetail
     from .payload import Payload
-    from .payload_delivery_platform import PayloadDeliveryPlatform
-    from .simulation_attack_technique import SimulationAttackTechnique
-    from .simulation_attack_type import SimulationAttackType
+    from .simulation_attack_technique import Simulation_attackTechnique
+    from .simulation_attack_type import Simulation_attackType
+    from .simulation_payload_delivery_platform import Simulation_payloadDeliveryPlatform
     from .simulation_report import SimulationReport
-    from .simulation_status import SimulationStatus
+    from .simulation_status import Simulation_status
     from .training_setting import TrainingSetting
 
 from .entity import Entity
@@ -25,9 +25,9 @@ from .entity import Entity
 @dataclass
 class Simulation(Entity):
     # The social engineering technique used in the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, credentialHarvesting, attachmentMalware, driveByUrl, linkInAttachment, linkToMalwareFile, unknownFutureValue, oAuthConsentGrant. Note that you must use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: oAuthConsentGrant. For more information on the types of social engineering attack techniques, see simulations.
-    attack_technique: Optional[SimulationAttackTechnique] = None
+    attack_technique: Optional[Simulation_attackTechnique] = None
     # Attack type of the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, social, cloud, endpoint, unknownFutureValue.
-    attack_type: Optional[SimulationAttackType] = None
+    attack_type: Optional[Simulation_attackType] = None
     # Unique identifier for the attack simulation automation.
     automation_id: Optional[str] = None
     # Date and time of completion of the attack simulation and training campaign. Supports $filter and $orderby.
@@ -67,11 +67,11 @@ class Simulation(Entity):
     # The payload associated with a simulation during its creation.
     payload: Optional[Payload] = None
     # Method of delivery of the phishing payload used in the attack simulation and training campaign. Possible values are: unknown, sms, email, teams, unknownFutureValue.
-    payload_delivery_platform: Optional[PayloadDeliveryPlatform] = None
+    payload_delivery_platform: Optional[Simulation_payloadDeliveryPlatform] = None
     # Report of the attack simulation and training campaign.
     report: Optional[SimulationReport] = None
     # Status of the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, draft, running, scheduled, succeeded, failed, cancelled, excluded, unknownFutureValue.
-    status: Optional[SimulationStatus] = None
+    status: Optional[Simulation_status] = None
     # Details about the training settings for a simulation.
     training_setting: Optional[TrainingSetting] = None
     
@@ -99,11 +99,11 @@ class Simulation(Entity):
         from .login_page import LoginPage
         from .o_auth_consent_app_detail import OAuthConsentAppDetail
         from .payload import Payload
-        from .payload_delivery_platform import PayloadDeliveryPlatform
-        from .simulation_attack_technique import SimulationAttackTechnique
-        from .simulation_attack_type import SimulationAttackType
+        from .simulation_attack_technique import Simulation_attackTechnique
+        from .simulation_attack_type import Simulation_attackType
+        from .simulation_payload_delivery_platform import Simulation_payloadDeliveryPlatform
         from .simulation_report import SimulationReport
-        from .simulation_status import SimulationStatus
+        from .simulation_status import Simulation_status
         from .training_setting import TrainingSetting
 
         from .account_target_content import AccountTargetContent
@@ -114,16 +114,16 @@ class Simulation(Entity):
         from .login_page import LoginPage
         from .o_auth_consent_app_detail import OAuthConsentAppDetail
         from .payload import Payload
-        from .payload_delivery_platform import PayloadDeliveryPlatform
-        from .simulation_attack_technique import SimulationAttackTechnique
-        from .simulation_attack_type import SimulationAttackType
+        from .simulation_attack_technique import Simulation_attackTechnique
+        from .simulation_attack_type import Simulation_attackType
+        from .simulation_payload_delivery_platform import Simulation_payloadDeliveryPlatform
         from .simulation_report import SimulationReport
-        from .simulation_status import SimulationStatus
+        from .simulation_status import Simulation_status
         from .training_setting import TrainingSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attackTechnique": lambda n : setattr(self, 'attack_technique', n.get_enum_value(SimulationAttackTechnique)),
-            "attackType": lambda n : setattr(self, 'attack_type', n.get_enum_value(SimulationAttackType)),
+            "attackTechnique": lambda n : setattr(self, 'attack_technique', n.get_enum_value(Simulation_attackTechnique)),
+            "attackType": lambda n : setattr(self, 'attack_type', n.get_enum_value(Simulation_attackType)),
             "automationId": lambda n : setattr(self, 'automation_id', n.get_str_value()),
             "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(EmailIdentity)),
@@ -142,9 +142,9 @@ class Simulation(Entity):
             "loginPage": lambda n : setattr(self, 'login_page', n.get_object_value(LoginPage)),
             "oAuthConsentAppDetail": lambda n : setattr(self, 'o_auth_consent_app_detail', n.get_object_value(OAuthConsentAppDetail)),
             "payload": lambda n : setattr(self, 'payload', n.get_object_value(Payload)),
-            "payloadDeliveryPlatform": lambda n : setattr(self, 'payload_delivery_platform', n.get_enum_value(PayloadDeliveryPlatform)),
+            "payloadDeliveryPlatform": lambda n : setattr(self, 'payload_delivery_platform', n.get_enum_value(Simulation_payloadDeliveryPlatform)),
             "report": lambda n : setattr(self, 'report', n.get_object_value(SimulationReport)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(SimulationStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(Simulation_status)),
             "trainingSetting": lambda n : setattr(self, 'training_setting', n.get_object_value(TrainingSetting)),
         }
         super_fields = super().get_field_deserializers()

@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..public_error import PublicError
-    from .event_status_type import EventStatusType
+    from .retention_event_status_status import RetentionEventStatus_status
 
 @dataclass
 class RetentionEventStatus(AdditionalDataHolder, BackedModel, Parsable):
@@ -20,7 +20,7 @@ class RetentionEventStatus(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The status of the distribution. The possible values are: pending, error, success, notAvaliable.
-    status: Optional[EventStatusType] = None
+    status: Optional[RetentionEventStatus_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RetentionEventStatus:
@@ -39,15 +39,15 @@ class RetentionEventStatus(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from ..public_error import PublicError
-        from .event_status_type import EventStatusType
+        from .retention_event_status_status import RetentionEventStatus_status
 
         from ..public_error import PublicError
-        from .event_status_type import EventStatusType
+        from .retention_event_status_status import RetentionEventStatus_status
 
         fields: Dict[str, Callable[[Any], None]] = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(EventStatusType)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(RetentionEventStatus_status)),
         }
         return fields
     

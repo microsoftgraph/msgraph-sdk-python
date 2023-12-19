@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from .initiator import Initiator
     from .modified_property import ModifiedProperty
     from .provisioned_identity import ProvisionedIdentity
-    from .provisioning_action import ProvisioningAction
+    from .provisioning_object_summary_provisioning_action import ProvisioningObjectSummary_provisioningAction
     from .provisioning_service_principal import ProvisioningServicePrincipal
     from .provisioning_status_info import ProvisioningStatusInfo
     from .provisioning_step import ProvisioningStep
@@ -36,7 +36,7 @@ class ProvisioningObjectSummary(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates the activity name or the operation name. Possible values are: create, update, delete, stageddelete, disable, other and unknownFutureValue. For a list of activities logged, refer to Microsoft Entra activity list. Supports $filter (eq, contains).
-    provisioning_action: Optional[ProvisioningAction] = None
+    provisioning_action: Optional[ProvisioningObjectSummary_provisioningAction] = None
     # Details of provisioning status.
     provisioning_status_info: Optional[ProvisioningStatusInfo] = None
     # Details of each step in provisioning.
@@ -74,7 +74,7 @@ class ProvisioningObjectSummary(Entity):
         from .initiator import Initiator
         from .modified_property import ModifiedProperty
         from .provisioned_identity import ProvisionedIdentity
-        from .provisioning_action import ProvisioningAction
+        from .provisioning_object_summary_provisioning_action import ProvisioningObjectSummary_provisioningAction
         from .provisioning_service_principal import ProvisioningServicePrincipal
         from .provisioning_status_info import ProvisioningStatusInfo
         from .provisioning_step import ProvisioningStep
@@ -84,7 +84,7 @@ class ProvisioningObjectSummary(Entity):
         from .initiator import Initiator
         from .modified_property import ModifiedProperty
         from .provisioned_identity import ProvisionedIdentity
-        from .provisioning_action import ProvisioningAction
+        from .provisioning_object_summary_provisioning_action import ProvisioningObjectSummary_provisioningAction
         from .provisioning_service_principal import ProvisioningServicePrincipal
         from .provisioning_status_info import ProvisioningStatusInfo
         from .provisioning_step import ProvisioningStep
@@ -98,7 +98,7 @@ class ProvisioningObjectSummary(Entity):
             "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_object_value(Initiator)),
             "jobId": lambda n : setattr(self, 'job_id', n.get_str_value()),
             "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(ModifiedProperty)),
-            "provisioningAction": lambda n : setattr(self, 'provisioning_action', n.get_enum_value(ProvisioningAction)),
+            "provisioningAction": lambda n : setattr(self, 'provisioning_action', n.get_enum_value(ProvisioningObjectSummary_provisioningAction)),
             "provisioningStatusInfo": lambda n : setattr(self, 'provisioning_status_info', n.get_object_value(ProvisioningStatusInfo)),
             "provisioningSteps": lambda n : setattr(self, 'provisioning_steps', n.get_collection_of_object_values(ProvisioningStep)),
             "servicePrincipal": lambda n : setattr(self, 'service_principal', n.get_object_value(ProvisioningServicePrincipal)),

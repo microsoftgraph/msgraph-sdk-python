@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .teams_app_definition import TeamsAppDefinition
-    from .teams_app_distribution_method import TeamsAppDistributionMethod
+    from .teams_app_distribution_method import TeamsApp_distributionMethod
 
 from .entity import Entity
 
@@ -17,7 +17,7 @@ class TeamsApp(Entity):
     # The name of the catalog app provided by the app developer in the Microsoft Teams zip app package.
     display_name: Optional[str] = None
     # The method of distribution for the app. Read-only.
-    distribution_method: Optional[TeamsAppDistributionMethod] = None
+    distribution_method: Optional[TeamsApp_distributionMethod] = None
     # The ID of the catalog provided by the app developer in the Microsoft Teams zip app package.
     external_id: Optional[str] = None
     # The OdataType property
@@ -41,16 +41,16 @@ class TeamsApp(Entity):
         """
         from .entity import Entity
         from .teams_app_definition import TeamsAppDefinition
-        from .teams_app_distribution_method import TeamsAppDistributionMethod
+        from .teams_app_distribution_method import TeamsApp_distributionMethod
 
         from .entity import Entity
         from .teams_app_definition import TeamsAppDefinition
-        from .teams_app_distribution_method import TeamsAppDistributionMethod
+        from .teams_app_distribution_method import TeamsApp_distributionMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appDefinitions": lambda n : setattr(self, 'app_definitions', n.get_collection_of_object_values(TeamsAppDefinition)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "distributionMethod": lambda n : setattr(self, 'distribution_method', n.get_enum_value(TeamsAppDistributionMethod)),
+            "distributionMethod": lambda n : setattr(self, 'distribution_method', n.get_enum_value(TeamsApp_distributionMethod)),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

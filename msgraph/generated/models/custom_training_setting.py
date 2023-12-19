@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .training_assigned_to import TrainingAssignedTo
+    from .custom_training_setting_assigned_to import CustomTrainingSetting_assignedTo
     from .training_setting import TrainingSetting
 
 from .training_setting import TrainingSetting
@@ -14,7 +14,7 @@ class CustomTrainingSetting(TrainingSetting):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.customTrainingSetting"
     # A user collection that specifies to whom the training should be assigned. Possible values are: none, allUsers, clickedPayload, compromised, reportedPhish, readButNotClicked, didNothing, unknownFutureValue.
-    assigned_to: Optional[List[TrainingAssignedTo]] = None
+    assigned_to: Optional[List[CustomTrainingSetting_assignedTo]] = None
     # The description of the custom training setting.
     description: Optional[str] = None
     # The display name of the custom training setting.
@@ -40,14 +40,14 @@ class CustomTrainingSetting(TrainingSetting):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .training_assigned_to import TrainingAssignedTo
+        from .custom_training_setting_assigned_to import CustomTrainingSetting_assignedTo
         from .training_setting import TrainingSetting
 
-        from .training_assigned_to import TrainingAssignedTo
+        from .custom_training_setting_assigned_to import CustomTrainingSetting_assignedTo
         from .training_setting import TrainingSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_collection_of_enum_values(TrainingAssignedTo)),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_collection_of_enum_values(CustomTrainingSetting_assignedTo)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "durationInMinutes": lambda n : setattr(self, 'duration_in_minutes', n.get_int_value()),

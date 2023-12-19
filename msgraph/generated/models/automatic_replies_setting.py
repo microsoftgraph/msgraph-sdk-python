@@ -5,9 +5,9 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .automatic_replies_status import AutomaticRepliesStatus
+    from .automatic_replies_setting_external_audience import AutomaticRepliesSetting_externalAudience
+    from .automatic_replies_setting_status import AutomaticRepliesSetting_status
     from .date_time_time_zone import DateTimeTimeZone
-    from .external_audience_scope import ExternalAudienceScope
 
 @dataclass
 class AutomaticRepliesSetting(AdditionalDataHolder, BackedModel, Parsable):
@@ -17,7 +17,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The set of audience external to the signed-in user's organization who will receive the ExternalReplyMessage, if Status is AlwaysEnabled or Scheduled. The possible values are: none, contactsOnly, all.
-    external_audience: Optional[ExternalAudienceScope] = None
+    external_audience: Optional[AutomaticRepliesSetting_externalAudience] = None
     # The automatic reply to send to the specified external audience, if Status is AlwaysEnabled or Scheduled.
     external_reply_message: Optional[str] = None
     # The automatic reply to send to the audience internal to the signed-in user's organization, if Status is AlwaysEnabled or Scheduled.
@@ -29,7 +29,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, BackedModel, Parsable):
     # The date and time that automatic replies are set to begin, if Status is set to Scheduled.
     scheduled_start_date_time: Optional[DateTimeTimeZone] = None
     # Configurations status for automatic replies. The possible values are: disabled, alwaysEnabled, scheduled.
-    status: Optional[AutomaticRepliesStatus] = None
+    status: Optional[AutomaticRepliesSetting_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AutomaticRepliesSetting:
@@ -47,22 +47,22 @@ class AutomaticRepliesSetting(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .automatic_replies_status import AutomaticRepliesStatus
+        from .automatic_replies_setting_external_audience import AutomaticRepliesSetting_externalAudience
+        from .automatic_replies_setting_status import AutomaticRepliesSetting_status
         from .date_time_time_zone import DateTimeTimeZone
-        from .external_audience_scope import ExternalAudienceScope
 
-        from .automatic_replies_status import AutomaticRepliesStatus
+        from .automatic_replies_setting_external_audience import AutomaticRepliesSetting_externalAudience
+        from .automatic_replies_setting_status import AutomaticRepliesSetting_status
         from .date_time_time_zone import DateTimeTimeZone
-        from .external_audience_scope import ExternalAudienceScope
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "externalAudience": lambda n : setattr(self, 'external_audience', n.get_enum_value(ExternalAudienceScope)),
+            "externalAudience": lambda n : setattr(self, 'external_audience', n.get_enum_value(AutomaticRepliesSetting_externalAudience)),
             "externalReplyMessage": lambda n : setattr(self, 'external_reply_message', n.get_str_value()),
             "internalReplyMessage": lambda n : setattr(self, 'internal_reply_message', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "scheduledEndDateTime": lambda n : setattr(self, 'scheduled_end_date_time', n.get_object_value(DateTimeTimeZone)),
             "scheduledStartDateTime": lambda n : setattr(self, 'scheduled_start_date_time', n.get_object_value(DateTimeTimeZone)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(AutomaticRepliesStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(AutomaticRepliesSetting_status)),
         }
         return fields
     

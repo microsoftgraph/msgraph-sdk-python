@@ -6,7 +6,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .education_gender import EducationGender
+    from .education_student_gender import EducationStudent_gender
 
 @dataclass
 class EducationStudent(AdditionalDataHolder, BackedModel, Parsable):
@@ -20,7 +20,7 @@ class EducationStudent(AdditionalDataHolder, BackedModel, Parsable):
     # ID of the student in the source system.
     external_id: Optional[str] = None
     # The possible values are: female, male, other, unknownFutureValue.
-    gender: Optional[EducationGender] = None
+    gender: Optional[EducationStudent_gender] = None
     # Current grade level of the student.
     grade: Optional[str] = None
     # Year the student is graduating from the school.
@@ -46,14 +46,14 @@ class EducationStudent(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .education_gender import EducationGender
+        from .education_student_gender import EducationStudent_gender
 
-        from .education_gender import EducationGender
+        from .education_student_gender import EducationStudent_gender
 
         fields: Dict[str, Callable[[Any], None]] = {
             "birthDate": lambda n : setattr(self, 'birth_date', n.get_date_value()),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "gender": lambda n : setattr(self, 'gender', n.get_enum_value(EducationGender)),
+            "gender": lambda n : setattr(self, 'gender', n.get_enum_value(EducationStudent_gender)),
             "grade": lambda n : setattr(self, 'grade', n.get_str_value()),
             "graduationYear": lambda n : setattr(self, 'graduation_year', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

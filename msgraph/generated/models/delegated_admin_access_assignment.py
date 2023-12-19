@@ -5,7 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .delegated_admin_access_assignment_status import DelegatedAdminAccessAssignmentStatus
+    from .delegated_admin_access_assignment_status import DelegatedAdminAccessAssignment_status
     from .delegated_admin_access_container import DelegatedAdminAccessContainer
     from .delegated_admin_access_details import DelegatedAdminAccessDetails
     from .entity import Entity
@@ -25,7 +25,7 @@ class DelegatedAdminAccessAssignment(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The status of the access assignment. Read-only. The possible values are: pending, active, deleting, deleted, error, unknownFutureValue.
-    status: Optional[DelegatedAdminAccessAssignmentStatus] = None
+    status: Optional[DelegatedAdminAccessAssignment_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedAdminAccessAssignment:
@@ -43,12 +43,12 @@ class DelegatedAdminAccessAssignment(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .delegated_admin_access_assignment_status import DelegatedAdminAccessAssignmentStatus
+        from .delegated_admin_access_assignment_status import DelegatedAdminAccessAssignment_status
         from .delegated_admin_access_container import DelegatedAdminAccessContainer
         from .delegated_admin_access_details import DelegatedAdminAccessDetails
         from .entity import Entity
 
-        from .delegated_admin_access_assignment_status import DelegatedAdminAccessAssignmentStatus
+        from .delegated_admin_access_assignment_status import DelegatedAdminAccessAssignment_status
         from .delegated_admin_access_container import DelegatedAdminAccessContainer
         from .delegated_admin_access_details import DelegatedAdminAccessDetails
         from .entity import Entity
@@ -58,7 +58,7 @@ class DelegatedAdminAccessAssignment(Entity):
             "accessDetails": lambda n : setattr(self, 'access_details', n.get_object_value(DelegatedAdminAccessDetails)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(DelegatedAdminAccessAssignmentStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(DelegatedAdminAccessAssignment_status)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

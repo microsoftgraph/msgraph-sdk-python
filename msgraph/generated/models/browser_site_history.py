@@ -6,9 +6,9 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .browser_site_compatibility_mode import BrowserSiteCompatibilityMode
-    from .browser_site_merge_type import BrowserSiteMergeType
-    from .browser_site_target_environment import BrowserSiteTargetEnvironment
+    from .browser_site_history_compatibility_mode import BrowserSiteHistory_compatibilityMode
+    from .browser_site_history_merge_type import BrowserSiteHistory_mergeType
+    from .browser_site_history_target_environment import BrowserSiteHistory_targetEnvironment
     from .identity_set import IdentitySet
 
 @dataclass
@@ -26,17 +26,17 @@ class BrowserSiteHistory(AdditionalDataHolder, BackedModel, Parsable):
     # The comment for the site.
     comment: Optional[str] = None
     # Controls what compatibility setting is used for specific sites or domains. The possible values are: default, internetExplorer8Enterprise, internetExplorer7Enterprise, internetExplorer11, internetExplorer10, internetExplorer9, internetExplorer8, internetExplorer7, internetExplorer5, unknownFutureValue.
-    compatibility_mode: Optional[BrowserSiteCompatibilityMode] = None
+    compatibility_mode: Optional[BrowserSiteHistory_compatibilityMode] = None
     # The user who last modified the site.
     last_modified_by: Optional[IdentitySet] = None
     # The merge type of the site. The possible values are: noMerge, default, unknownFutureValue.
-    merge_type: Optional[BrowserSiteMergeType] = None
+    merge_type: Optional[BrowserSiteHistory_mergeType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The date and time when the site was last published.
     published_date_time: Optional[datetime.datetime] = None
     # The target environment that the site should open in. The possible values are: internetExplorerMode, internetExplorer11, microsoftEdge, configurable, none, unknownFutureValue.Prior to June 15, 2022, the internetExplorer11 option would allow opening a site in the Internet Explorer 11 (IE11) desktop application. Following the retirement of IE11 on June 15, 2022, the internetExplorer11 option will no longer open an IE11 window and will instead behave the same as the internetExplorerMode option.
-    target_environment: Optional[BrowserSiteTargetEnvironment] = None
+    target_environment: Optional[BrowserSiteHistory_targetEnvironment] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BrowserSiteHistory:
@@ -54,25 +54,25 @@ class BrowserSiteHistory(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .browser_site_compatibility_mode import BrowserSiteCompatibilityMode
-        from .browser_site_merge_type import BrowserSiteMergeType
-        from .browser_site_target_environment import BrowserSiteTargetEnvironment
+        from .browser_site_history_compatibility_mode import BrowserSiteHistory_compatibilityMode
+        from .browser_site_history_merge_type import BrowserSiteHistory_mergeType
+        from .browser_site_history_target_environment import BrowserSiteHistory_targetEnvironment
         from .identity_set import IdentitySet
 
-        from .browser_site_compatibility_mode import BrowserSiteCompatibilityMode
-        from .browser_site_merge_type import BrowserSiteMergeType
-        from .browser_site_target_environment import BrowserSiteTargetEnvironment
+        from .browser_site_history_compatibility_mode import BrowserSiteHistory_compatibilityMode
+        from .browser_site_history_merge_type import BrowserSiteHistory_mergeType
+        from .browser_site_history_target_environment import BrowserSiteHistory_targetEnvironment
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowRedirect": lambda n : setattr(self, 'allow_redirect', n.get_bool_value()),
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "compatibilityMode": lambda n : setattr(self, 'compatibility_mode', n.get_enum_value(BrowserSiteCompatibilityMode)),
+            "compatibilityMode": lambda n : setattr(self, 'compatibility_mode', n.get_enum_value(BrowserSiteHistory_compatibilityMode)),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
-            "mergeType": lambda n : setattr(self, 'merge_type', n.get_enum_value(BrowserSiteMergeType)),
+            "mergeType": lambda n : setattr(self, 'merge_type', n.get_enum_value(BrowserSiteHistory_mergeType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "publishedDateTime": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
-            "targetEnvironment": lambda n : setattr(self, 'target_environment', n.get_enum_value(BrowserSiteTargetEnvironment)),
+            "targetEnvironment": lambda n : setattr(self, 'target_environment', n.get_enum_value(BrowserSiteHistory_targetEnvironment)),
         }
         return fields
     

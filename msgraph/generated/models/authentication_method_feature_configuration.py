@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .advanced_config_state import AdvancedConfigState
+    from .authentication_method_feature_configuration_state import AuthenticationMethodFeatureConfiguration_state
     from .feature_target import FeatureTarget
 
 @dataclass
@@ -22,7 +22,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, BackedModel
     # The OdataType property
     odata_type: Optional[str] = None
     # Enable or disable the feature. Possible values are: default, enabled, disabled, unknownFutureValue. The default value is used when the configuration hasn't been explicitly set and uses the default behavior of Microsoft Entra ID for the setting. The default value is disabled.
-    state: Optional[AdvancedConfigState] = None
+    state: Optional[AuthenticationMethodFeatureConfiguration_state] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodFeatureConfiguration:
@@ -40,17 +40,17 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, BackedModel
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .advanced_config_state import AdvancedConfigState
+        from .authentication_method_feature_configuration_state import AuthenticationMethodFeatureConfiguration_state
         from .feature_target import FeatureTarget
 
-        from .advanced_config_state import AdvancedConfigState
+        from .authentication_method_feature_configuration_state import AuthenticationMethodFeatureConfiguration_state
         from .feature_target import FeatureTarget
 
         fields: Dict[str, Callable[[Any], None]] = {
             "excludeTarget": lambda n : setattr(self, 'exclude_target', n.get_object_value(FeatureTarget)),
             "includeTarget": lambda n : setattr(self, 'include_target', n.get_object_value(FeatureTarget)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(AdvancedConfigState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(AuthenticationMethodFeatureConfiguration_state)),
         }
         return fields
     

@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .o_auth_app_scope import OAuthAppScope
+    from .o_auth_consent_app_detail_app_scope import OAuthConsentAppDetail_appScope
 
 @dataclass
 class OAuthConsentAppDetail(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,7 +15,7 @@ class OAuthConsentAppDetail(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # App scope. Possible values are: unknown, readCalendar, readContact, readMail, readAllChat, readAllFile, readAndWriteMail, sendMail, unknownFutureValue.
-    app_scope: Optional[OAuthAppScope] = None
+    app_scope: Optional[OAuthConsentAppDetail_appScope] = None
     # App display logo.
     display_logo: Optional[str] = None
     # App name.
@@ -39,12 +39,12 @@ class OAuthConsentAppDetail(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .o_auth_app_scope import OAuthAppScope
+        from .o_auth_consent_app_detail_app_scope import OAuthConsentAppDetail_appScope
 
-        from .o_auth_app_scope import OAuthAppScope
+        from .o_auth_consent_app_detail_app_scope import OAuthConsentAppDetail_appScope
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appScope": lambda n : setattr(self, 'app_scope', n.get_enum_value(OAuthAppScope)),
+            "appScope": lambda n : setattr(self, 'app_scope', n.get_enum_value(OAuthConsentAppDetail_appScope)),
             "displayLogo": lambda n : setattr(self, 'display_logo', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .risk_detail import RiskDetail
+    from .risk_service_principal_activity_detail import RiskServicePrincipalActivity_detail
 
 @dataclass
 class RiskServicePrincipalActivity(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,7 +15,7 @@ class RiskServicePrincipalActivity(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
-    detail: Optional[RiskDetail] = None
+    detail: Optional[RiskServicePrincipalActivity_detail] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The riskEventTypes property
@@ -37,12 +37,12 @@ class RiskServicePrincipalActivity(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .risk_detail import RiskDetail
+        from .risk_service_principal_activity_detail import RiskServicePrincipalActivity_detail
 
-        from .risk_detail import RiskDetail
+        from .risk_service_principal_activity_detail import RiskServicePrincipalActivity_detail
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "detail": lambda n : setattr(self, 'detail', n.get_enum_value(RiskDetail)),
+            "detail": lambda n : setattr(self, 'detail', n.get_enum_value(RiskServicePrincipalActivity_detail)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_primitive_values(str)),
         }

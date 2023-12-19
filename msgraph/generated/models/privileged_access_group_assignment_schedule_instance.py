@@ -6,10 +6,10 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .directory_object import DirectoryObject
     from .group import Group
-    from .privileged_access_group_assignment_type import PrivilegedAccessGroupAssignmentType
+    from .privileged_access_group_assignment_schedule_instance_access_id import PrivilegedAccessGroupAssignmentScheduleInstance_accessId
+    from .privileged_access_group_assignment_schedule_instance_assignment_type import PrivilegedAccessGroupAssignmentScheduleInstance_assignmentType
+    from .privileged_access_group_assignment_schedule_instance_member_type import PrivilegedAccessGroupAssignmentScheduleInstance_memberType
     from .privileged_access_group_eligibility_schedule_instance import PrivilegedAccessGroupEligibilityScheduleInstance
-    from .privileged_access_group_member_type import PrivilegedAccessGroupMemberType
-    from .privileged_access_group_relationships import PrivilegedAccessGroupRelationships
     from .privileged_access_schedule_instance import PrivilegedAccessScheduleInstance
 
 from .privileged_access_schedule_instance import PrivilegedAccessScheduleInstance
@@ -19,19 +19,19 @@ class PrivilegedAccessGroupAssignmentScheduleInstance(PrivilegedAccessScheduleIn
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.privilegedAccessGroupAssignmentScheduleInstance"
     # The identifier of the membership or ownership assignment relationship to the group. Required. The possible values are: owner, member,  unknownFutureValue. Supports $filter (eq).
-    access_id: Optional[PrivilegedAccessGroupRelationships] = None
+    access_id: Optional[PrivilegedAccessGroupAssignmentScheduleInstance_accessId] = None
     # When the request activates a membership or ownership in PIM for groups, this object represents the eligibility request for the group. Otherwise, it is null.
     activated_using: Optional[PrivilegedAccessGroupEligibilityScheduleInstance] = None
     # The identifier of the privilegedAccessGroupAssignmentSchedule from which this instance was created. Required. Supports $filter (eq, ne).
     assignment_schedule_id: Optional[str] = None
     # Indicates whether the membership or ownership assignment is granted through activation of an eligibility or through direct assignment. Required. The possible values are: assigned, activated, unknownFutureValue. Supports $filter (eq).
-    assignment_type: Optional[PrivilegedAccessGroupAssignmentType] = None
+    assignment_type: Optional[PrivilegedAccessGroupAssignmentScheduleInstance_assignmentType] = None
     # References the group that is the scope of the membership or ownership assignment through PIM for groups. Supports $expand.
     group: Optional[Group] = None
     # The identifier of the group representing the scope of the membership or ownership assignment through PIM for groups. Optional. Supports $filter (eq).
     group_id: Optional[str] = None
     # Indicates whether the assignment is derived from a group assignment. It can further imply whether the caller can manage the assignment schedule. Required. The possible values are: direct, group, unknownFutureValue. Supports $filter (eq).
-    member_type: Optional[PrivilegedAccessGroupMemberType] = None
+    member_type: Optional[PrivilegedAccessGroupAssignmentScheduleInstance_memberType] = None
     # References the principal that's in the scope of the membership or ownership assignment request through the group that's governed by PIM. Supports $expand.
     principal: Optional[DirectoryObject] = None
     # The identifier of the principal whose membership or ownership assignment to the group is managed through PIM for groups. Required. Supports $filter (eq).
@@ -55,28 +55,28 @@ class PrivilegedAccessGroupAssignmentScheduleInstance(PrivilegedAccessScheduleIn
         """
         from .directory_object import DirectoryObject
         from .group import Group
-        from .privileged_access_group_assignment_type import PrivilegedAccessGroupAssignmentType
+        from .privileged_access_group_assignment_schedule_instance_access_id import PrivilegedAccessGroupAssignmentScheduleInstance_accessId
+        from .privileged_access_group_assignment_schedule_instance_assignment_type import PrivilegedAccessGroupAssignmentScheduleInstance_assignmentType
+        from .privileged_access_group_assignment_schedule_instance_member_type import PrivilegedAccessGroupAssignmentScheduleInstance_memberType
         from .privileged_access_group_eligibility_schedule_instance import PrivilegedAccessGroupEligibilityScheduleInstance
-        from .privileged_access_group_member_type import PrivilegedAccessGroupMemberType
-        from .privileged_access_group_relationships import PrivilegedAccessGroupRelationships
         from .privileged_access_schedule_instance import PrivilegedAccessScheduleInstance
 
         from .directory_object import DirectoryObject
         from .group import Group
-        from .privileged_access_group_assignment_type import PrivilegedAccessGroupAssignmentType
+        from .privileged_access_group_assignment_schedule_instance_access_id import PrivilegedAccessGroupAssignmentScheduleInstance_accessId
+        from .privileged_access_group_assignment_schedule_instance_assignment_type import PrivilegedAccessGroupAssignmentScheduleInstance_assignmentType
+        from .privileged_access_group_assignment_schedule_instance_member_type import PrivilegedAccessGroupAssignmentScheduleInstance_memberType
         from .privileged_access_group_eligibility_schedule_instance import PrivilegedAccessGroupEligibilityScheduleInstance
-        from .privileged_access_group_member_type import PrivilegedAccessGroupMemberType
-        from .privileged_access_group_relationships import PrivilegedAccessGroupRelationships
         from .privileged_access_schedule_instance import PrivilegedAccessScheduleInstance
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessId": lambda n : setattr(self, 'access_id', n.get_enum_value(PrivilegedAccessGroupRelationships)),
+            "accessId": lambda n : setattr(self, 'access_id', n.get_enum_value(PrivilegedAccessGroupAssignmentScheduleInstance_accessId)),
             "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(PrivilegedAccessGroupEligibilityScheduleInstance)),
             "assignmentScheduleId": lambda n : setattr(self, 'assignment_schedule_id', n.get_str_value()),
-            "assignmentType": lambda n : setattr(self, 'assignment_type', n.get_enum_value(PrivilegedAccessGroupAssignmentType)),
+            "assignmentType": lambda n : setattr(self, 'assignment_type', n.get_enum_value(PrivilegedAccessGroupAssignmentScheduleInstance_assignmentType)),
             "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
             "groupId": lambda n : setattr(self, 'group_id', n.get_str_value()),
-            "memberType": lambda n : setattr(self, 'member_type', n.get_enum_value(PrivilegedAccessGroupMemberType)),
+            "memberType": lambda n : setattr(self, 'member_type', n.get_enum_value(PrivilegedAccessGroupAssignmentScheduleInstance_memberType)),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(DirectoryObject)),
             "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
         }

@@ -6,9 +6,9 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .copy_notebook_model_user_role import CopyNotebookModel_userRole
     from .identity_set import IdentitySet
     from .notebook_links import NotebookLinks
-    from .onenote_user_role import OnenoteUserRole
 
 @dataclass
 class CopyNotebookModel(AdditionalDataHolder, BackedModel, Parsable):
@@ -48,7 +48,7 @@ class CopyNotebookModel(AdditionalDataHolder, BackedModel, Parsable):
     # The self property
     self: Optional[str] = None
     # The userRole property
-    user_role: Optional[OnenoteUserRole] = None
+    user_role: Optional[CopyNotebookModel_userRole] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CopyNotebookModel:
@@ -66,13 +66,13 @@ class CopyNotebookModel(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .copy_notebook_model_user_role import CopyNotebookModel_userRole
         from .identity_set import IdentitySet
         from .notebook_links import NotebookLinks
-        from .onenote_user_role import OnenoteUserRole
 
+        from .copy_notebook_model_user_role import CopyNotebookModel_userRole
         from .identity_set import IdentitySet
         from .notebook_links import NotebookLinks
-        from .onenote_user_role import OnenoteUserRole
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_str_value()),
@@ -90,7 +90,7 @@ class CopyNotebookModel(AdditionalDataHolder, BackedModel, Parsable):
             "sectionGroupsUrl": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
             "sectionsUrl": lambda n : setattr(self, 'sections_url', n.get_str_value()),
             "self": lambda n : setattr(self, 'self', n.get_str_value()),
-            "userRole": lambda n : setattr(self, 'user_role', n.get_enum_value(OnenoteUserRole)),
+            "userRole": lambda n : setattr(self, 'user_role', n.get_enum_value(CopyNotebookModel_userRole)),
         }
         return fields
     

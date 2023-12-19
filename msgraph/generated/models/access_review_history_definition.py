@@ -5,10 +5,10 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .access_review_history_decision_filter import AccessReviewHistoryDecisionFilter
+    from .access_review_history_definition_decisions import AccessReviewHistoryDefinition_decisions
+    from .access_review_history_definition_status import AccessReviewHistoryDefinition_status
     from .access_review_history_instance import AccessReviewHistoryInstance
     from .access_review_history_schedule_settings import AccessReviewHistoryScheduleSettings
-    from .access_review_history_status import AccessReviewHistoryStatus
     from .access_review_scope import AccessReviewScope
     from .entity import Entity
     from .user_identity import UserIdentity
@@ -22,7 +22,7 @@ class AccessReviewHistoryDefinition(Entity):
     # Timestamp when the access review definition was created.
     created_date_time: Optional[datetime.datetime] = None
     # Determines which review decisions will be included in the fetched review history data if specified. Optional on create. All decisions are included by default if no decisions are provided on create. Possible values are: approve, deny, dontKnow, notReviewed, and notNotified.
-    decisions: Optional[List[AccessReviewHistoryDecisionFilter]] = None
+    decisions: Optional[List[AccessReviewHistoryDefinition_decisions]] = None
     # Name for the access review history data collection. Required.
     display_name: Optional[str] = None
     # If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that doesn't recur will have exactly one instance.
@@ -38,7 +38,7 @@ class AccessReviewHistoryDefinition(Entity):
     # Used to scope what reviews are included in the fetched history data. Fetches reviews whose scope matches with this provided scope. Required.
     scopes: Optional[List[AccessReviewScope]] = None
     # Represents the status of the review history data collection. The possible values are: done, inProgress, error, requested, unknownFutureValue.
-    status: Optional[AccessReviewHistoryStatus] = None
+    status: Optional[AccessReviewHistoryDefinition_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewHistoryDefinition:
@@ -56,18 +56,18 @@ class AccessReviewHistoryDefinition(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .access_review_history_decision_filter import AccessReviewHistoryDecisionFilter
+        from .access_review_history_definition_decisions import AccessReviewHistoryDefinition_decisions
+        from .access_review_history_definition_status import AccessReviewHistoryDefinition_status
         from .access_review_history_instance import AccessReviewHistoryInstance
         from .access_review_history_schedule_settings import AccessReviewHistoryScheduleSettings
-        from .access_review_history_status import AccessReviewHistoryStatus
         from .access_review_scope import AccessReviewScope
         from .entity import Entity
         from .user_identity import UserIdentity
 
-        from .access_review_history_decision_filter import AccessReviewHistoryDecisionFilter
+        from .access_review_history_definition_decisions import AccessReviewHistoryDefinition_decisions
+        from .access_review_history_definition_status import AccessReviewHistoryDefinition_status
         from .access_review_history_instance import AccessReviewHistoryInstance
         from .access_review_history_schedule_settings import AccessReviewHistoryScheduleSettings
-        from .access_review_history_status import AccessReviewHistoryStatus
         from .access_review_scope import AccessReviewScope
         from .entity import Entity
         from .user_identity import UserIdentity
@@ -75,14 +75,14 @@ class AccessReviewHistoryDefinition(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(UserIdentity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "decisions": lambda n : setattr(self, 'decisions', n.get_collection_of_enum_values(AccessReviewHistoryDecisionFilter)),
+            "decisions": lambda n : setattr(self, 'decisions', n.get_collection_of_enum_values(AccessReviewHistoryDefinition_decisions)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "instances": lambda n : setattr(self, 'instances', n.get_collection_of_object_values(AccessReviewHistoryInstance)),
             "reviewHistoryPeriodEndDateTime": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
             "reviewHistoryPeriodStartDateTime": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
             "scheduleSettings": lambda n : setattr(self, 'schedule_settings', n.get_object_value(AccessReviewHistoryScheduleSettings)),
             "scopes": lambda n : setattr(self, 'scopes', n.get_collection_of_object_values(AccessReviewScope)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(AccessReviewHistoryStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(AccessReviewHistoryDefinition_status)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

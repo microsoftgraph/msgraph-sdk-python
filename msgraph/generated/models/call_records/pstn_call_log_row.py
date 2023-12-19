@@ -6,7 +6,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .pstn_call_duration_source import PstnCallDurationSource
+    from .pstn_call_log_row_call_duration_source import PstnCallLogRow_callDurationSource
 
 @dataclass
 class PstnCallLogRow(AdditionalDataHolder, BackedModel, Parsable):
@@ -16,7 +16,7 @@ class PstnCallLogRow(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The source of the call duration data. If the call uses a third-party telecommunications operator via the Operator Connect Program, the operator can provide their own call duration data. In this case, the property value is operator. Otherwise, the value is microsoft.
-    call_duration_source: Optional[PstnCallDurationSource] = None
+    call_duration_source: Optional[PstnCallLogRow_callDurationSource] = None
     # Call identifier. Not guaranteed to be unique.
     call_id: Optional[str] = None
     # Indicates whether the call was a PSTN outbound or inbound call and the type of call, such as a call placed by a user or an audio conference.
@@ -80,12 +80,12 @@ class PstnCallLogRow(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .pstn_call_duration_source import PstnCallDurationSource
+        from .pstn_call_log_row_call_duration_source import PstnCallLogRow_callDurationSource
 
-        from .pstn_call_duration_source import PstnCallDurationSource
+        from .pstn_call_log_row_call_duration_source import PstnCallLogRow_callDurationSource
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callDurationSource": lambda n : setattr(self, 'call_duration_source', n.get_enum_value(PstnCallDurationSource)),
+            "callDurationSource": lambda n : setattr(self, 'call_duration_source', n.get_enum_value(PstnCallLogRow_callDurationSource)),
             "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
             "callType": lambda n : setattr(self, 'call_type', n.get_str_value()),
             "calleeNumber": lambda n : setattr(self, 'callee_number', n.get_str_value()),

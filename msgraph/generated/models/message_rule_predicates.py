@@ -5,10 +5,10 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .importance import Importance
-    from .message_action_flag import MessageActionFlag
+    from .message_rule_predicates_importance import MessageRulePredicates_importance
+    from .message_rule_predicates_message_action_flag import MessageRulePredicates_messageActionFlag
+    from .message_rule_predicates_sensitivity import MessageRulePredicates_sensitivity
     from .recipient import Recipient
-    from .sensitivity import Sensitivity
     from .size_range import SizeRange
 
 @dataclass
@@ -31,7 +31,7 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
     # Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
     header_contains: Optional[List[str]] = None
     # The importance that is stamped on an incoming message in order for the condition or exception to apply: low, normal, high.
-    importance: Optional[Importance] = None
+    importance: Optional[MessageRulePredicates_importance] = None
     # Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
     is_approval_request: Optional[bool] = None
     # Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
@@ -55,7 +55,7 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
     # Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
     is_voicemail: Optional[bool] = None
     # Represents the flag-for-action value that appears on an incoming message in order for the condition or exception to apply. The possible values are: any, call, doNotForward, followUp, fyi, forward, noResponseNecessary, read, reply, replyToAll, review.
-    message_action_flag: Optional[MessageActionFlag] = None
+    message_action_flag: Optional[MessageRulePredicates_messageActionFlag] = None
     # Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
     not_sent_to_me: Optional[bool] = None
     # The OdataType property
@@ -65,7 +65,7 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
     # Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
     sender_contains: Optional[List[str]] = None
     # Represents the sensitivity level that must be stamped on an incoming message in order for the condition or exception to apply. The possible values are: normal, personal, private, confidential.
-    sensitivity: Optional[Sensitivity] = None
+    sensitivity: Optional[MessageRulePredicates_sensitivity] = None
     # Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
     sent_cc_me: Optional[bool] = None
     # Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
@@ -97,16 +97,16 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .importance import Importance
-        from .message_action_flag import MessageActionFlag
+        from .message_rule_predicates_importance import MessageRulePredicates_importance
+        from .message_rule_predicates_message_action_flag import MessageRulePredicates_messageActionFlag
+        from .message_rule_predicates_sensitivity import MessageRulePredicates_sensitivity
         from .recipient import Recipient
-        from .sensitivity import Sensitivity
         from .size_range import SizeRange
 
-        from .importance import Importance
-        from .message_action_flag import MessageActionFlag
+        from .message_rule_predicates_importance import MessageRulePredicates_importance
+        from .message_rule_predicates_message_action_flag import MessageRulePredicates_messageActionFlag
+        from .message_rule_predicates_sensitivity import MessageRulePredicates_sensitivity
         from .recipient import Recipient
-        from .sensitivity import Sensitivity
         from .size_range import SizeRange
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -116,7 +116,7 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
             "fromAddresses": lambda n : setattr(self, 'from_addresses', n.get_collection_of_object_values(Recipient)),
             "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "headerContains": lambda n : setattr(self, 'header_contains', n.get_collection_of_primitive_values(str)),
-            "importance": lambda n : setattr(self, 'importance', n.get_enum_value(Importance)),
+            "importance": lambda n : setattr(self, 'importance', n.get_enum_value(MessageRulePredicates_importance)),
             "isApprovalRequest": lambda n : setattr(self, 'is_approval_request', n.get_bool_value()),
             "isAutomaticForward": lambda n : setattr(self, 'is_automatic_forward', n.get_bool_value()),
             "isAutomaticReply": lambda n : setattr(self, 'is_automatic_reply', n.get_bool_value()),
@@ -128,12 +128,12 @@ class MessageRulePredicates(AdditionalDataHolder, BackedModel, Parsable):
             "isReadReceipt": lambda n : setattr(self, 'is_read_receipt', n.get_bool_value()),
             "isSigned": lambda n : setattr(self, 'is_signed', n.get_bool_value()),
             "isVoicemail": lambda n : setattr(self, 'is_voicemail', n.get_bool_value()),
-            "messageActionFlag": lambda n : setattr(self, 'message_action_flag', n.get_enum_value(MessageActionFlag)),
+            "messageActionFlag": lambda n : setattr(self, 'message_action_flag', n.get_enum_value(MessageRulePredicates_messageActionFlag)),
             "notSentToMe": lambda n : setattr(self, 'not_sent_to_me', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recipientContains": lambda n : setattr(self, 'recipient_contains', n.get_collection_of_primitive_values(str)),
             "senderContains": lambda n : setattr(self, 'sender_contains', n.get_collection_of_primitive_values(str)),
-            "sensitivity": lambda n : setattr(self, 'sensitivity', n.get_enum_value(Sensitivity)),
+            "sensitivity": lambda n : setattr(self, 'sensitivity', n.get_enum_value(MessageRulePredicates_sensitivity)),
             "sentCcMe": lambda n : setattr(self, 'sent_cc_me', n.get_bool_value()),
             "sentOnlyToMe": lambda n : setattr(self, 'sent_only_to_me', n.get_bool_value()),
             "sentToAddresses": lambda n : setattr(self, 'sent_to_addresses', n.get_collection_of_object_values(Recipient)),

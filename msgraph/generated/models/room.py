@@ -4,8 +4,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .booking_type import BookingType
     from .place import Place
+    from .room_booking_type import Room_bookingType
 
 from .place import Place
 
@@ -16,7 +16,7 @@ class Room(Place):
     # Specifies the name of the audio device in the room.
     audio_device_name: Optional[str] = None
     # Type of room. Possible values are standard, and reserved.
-    booking_type: Optional[BookingType] = None
+    booking_type: Optional[Room_bookingType] = None
     # Specifies the building name or building number that the room is in.
     building: Optional[str] = None
     # Specifies the capacity of the room.
@@ -56,15 +56,15 @@ class Room(Place):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .booking_type import BookingType
         from .place import Place
+        from .room_booking_type import Room_bookingType
 
-        from .booking_type import BookingType
         from .place import Place
+        from .room_booking_type import Room_bookingType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "audioDeviceName": lambda n : setattr(self, 'audio_device_name', n.get_str_value()),
-            "bookingType": lambda n : setattr(self, 'booking_type', n.get_enum_value(BookingType)),
+            "bookingType": lambda n : setattr(self, 'booking_type', n.get_enum_value(Room_bookingType)),
             "building": lambda n : setattr(self, 'building', n.get_str_value()),
             "capacity": lambda n : setattr(self, 'capacity', n.get_int_value()),
             "displayDeviceName": lambda n : setattr(self, 'display_device_name', n.get_str_value()),

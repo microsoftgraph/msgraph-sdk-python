@@ -29,7 +29,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[PermissionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a permission object on a site. This API is available in the following national cloud deployments.
+        Delete a permission object on a site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/site-delete-permission?view=graph-rest-1.0
@@ -49,7 +49,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PermissionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Permission]:
         """
-        Retrieve the properties and relationships of a permission object on a site. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a permission object on a site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Permission]
         Find more info here: https://learn.microsoft.com/graph/api/site-get-permission?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Permission] = None, request_configuration: Optional[PermissionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Permission]:
         """
-        Update an application permission object on a site.  This API is available in the following national cloud deployments.
+        Update an application permission object on a site. 
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Permission]
@@ -96,7 +96,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[PermissionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a permission object on a site. This API is available in the following national cloud deployments.
+        Delete a permission object on a site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,12 +107,12 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[PermissionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a permission object on a site. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a permission object on a site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -124,12 +124,12 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[Permission] = None, request_configuration: Optional[PermissionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update an application permission object on a site.  This API is available in the following national cloud deployments.
+        Update an application permission object on a site. 
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -179,7 +179,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PermissionItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a permission object on a site. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a permission object on a site.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

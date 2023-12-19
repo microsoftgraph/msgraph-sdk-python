@@ -4,8 +4,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .microsoft_training_assignment_mapping_assigned_to import MicrosoftTrainingAssignmentMapping_assignedTo
     from .training import Training
-    from .training_assigned_to import TrainingAssignedTo
     from .training_setting import TrainingSetting
 
 from .training_setting import TrainingSetting
@@ -15,7 +15,7 @@ class MicrosoftTrainingAssignmentMapping(TrainingSetting):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.microsoftTrainingAssignmentMapping"
     # A user collection that specifies to whom the training should be assigned. Possible values are: none, allUsers, clickedPayload, compromised, reportedPhish, readButNotClicked, didNothing, unknownFutureValue.
-    assigned_to: Optional[List[TrainingAssignedTo]] = None
+    assigned_to: Optional[List[MicrosoftTrainingAssignmentMapping_assignedTo]] = None
     # The training property
     training: Optional[Training] = None
     
@@ -35,16 +35,16 @@ class MicrosoftTrainingAssignmentMapping(TrainingSetting):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .microsoft_training_assignment_mapping_assigned_to import MicrosoftTrainingAssignmentMapping_assignedTo
         from .training import Training
-        from .training_assigned_to import TrainingAssignedTo
         from .training_setting import TrainingSetting
 
+        from .microsoft_training_assignment_mapping_assigned_to import MicrosoftTrainingAssignmentMapping_assignedTo
         from .training import Training
-        from .training_assigned_to import TrainingAssignedTo
         from .training_setting import TrainingSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_collection_of_enum_values(TrainingAssignedTo)),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_collection_of_enum_values(MicrosoftTrainingAssignmentMapping_assignedTo)),
             "training": lambda n : setattr(self, 'training', n.get_object_value(Training)),
         }
         super_fields = super().get_field_deserializers()

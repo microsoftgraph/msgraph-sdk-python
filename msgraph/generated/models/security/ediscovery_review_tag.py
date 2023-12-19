@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .child_selectability import ChildSelectability
+    from .ediscovery_review_tag_child_selectability import EdiscoveryReviewTag_childSelectability
     from .tag import Tag
 
 from .tag import Tag
@@ -14,7 +14,7 @@ class EdiscoveryReviewTag(Tag):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.ediscoveryReviewTag"
     # Indicates whether a single or multiple child tags can be associated with a document. Possible values are: One, Many.  This value controls whether the UX presents the tags as checkboxes or a radio button group.
-    child_selectability: Optional[ChildSelectability] = None
+    child_selectability: Optional[EdiscoveryReviewTag_childSelectability] = None
     # Returns the tags that are a child of a tag.
     child_tags: Optional[List[EdiscoveryReviewTag]] = None
     # Returns the parent tag of the specified tag.
@@ -36,14 +36,14 @@ class EdiscoveryReviewTag(Tag):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .child_selectability import ChildSelectability
+        from .ediscovery_review_tag_child_selectability import EdiscoveryReviewTag_childSelectability
         from .tag import Tag
 
-        from .child_selectability import ChildSelectability
+        from .ediscovery_review_tag_child_selectability import EdiscoveryReviewTag_childSelectability
         from .tag import Tag
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "childSelectability": lambda n : setattr(self, 'child_selectability', n.get_enum_value(ChildSelectability)),
+            "childSelectability": lambda n : setattr(self, 'child_selectability', n.get_enum_value(EdiscoveryReviewTag_childSelectability)),
             "childTags": lambda n : setattr(self, 'child_tags', n.get_collection_of_object_values(EdiscoveryReviewTag)),
             "parent": lambda n : setattr(self, 'parent', n.get_object_value(EdiscoveryReviewTag)),
         }

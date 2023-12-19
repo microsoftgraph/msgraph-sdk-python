@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .item_body import ItemBody
-    from .post_type import PostType
+    from .service_health_issue_post_post_type import ServiceHealthIssuePost_postType
 
 @dataclass
 class ServiceHealthIssuePost(AdditionalDataHolder, BackedModel, Parsable):
@@ -23,7 +23,7 @@ class ServiceHealthIssuePost(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The post type of the service issue historical post. Possible values are: regular, quick, strategic, unknownFutureValue.
-    post_type: Optional[PostType] = None
+    post_type: Optional[ServiceHealthIssuePost_postType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceHealthIssuePost:
@@ -42,16 +42,16 @@ class ServiceHealthIssuePost(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .item_body import ItemBody
-        from .post_type import PostType
+        from .service_health_issue_post_post_type import ServiceHealthIssuePost_postType
 
         from .item_body import ItemBody
-        from .post_type import PostType
+        from .service_health_issue_post_post_type import ServiceHealthIssuePost_postType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_object_value(ItemBody)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "postType": lambda n : setattr(self, 'post_type', n.get_enum_value(PostType)),
+            "postType": lambda n : setattr(self, 'post_type', n.get_enum_value(ServiceHealthIssuePost_postType)),
         }
         return fields
     

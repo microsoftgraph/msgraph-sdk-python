@@ -31,7 +31,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Uninstall an app from the personal scope of the specified user. This API is available in the following national cloud deployments.
+        Uninstall an app from the personal scope of the specified user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/userteamwork-delete-installedapps?view=graph-rest-1.0
@@ -51,7 +51,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UserScopeTeamsAppInstallation]:
         """
-        Retrieve the app installed in the personal scope of the specified user. This API is available in the following national cloud deployments.
+        Retrieve the app installed in the personal scope of the specified user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserScopeTeamsAppInstallation]
         Find more info here: https://learn.microsoft.com/graph/api/userteamwork-get-installedapps?view=graph-rest-1.0
@@ -97,7 +97,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Uninstall an app from the personal scope of the specified user. This API is available in the following national cloud deployments.
+        Uninstall an app from the personal scope of the specified user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,12 +108,12 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the app installed in the personal scope of the specified user. This API is available in the following national cloud deployments.
+        Retrieve the app installed in the personal scope of the specified user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -125,7 +125,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[UserScopeTeamsAppInstallation] = None, request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -144,7 +144,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -198,7 +198,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserScopeTeamsAppInstallationItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the app installed in the personal scope of the specified user. This API is available in the following national cloud deployments.
+        Retrieve the app installed in the personal scope of the specified user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

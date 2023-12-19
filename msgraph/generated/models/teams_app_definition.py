@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from .entity import Entity
     from .identity_set import IdentitySet
     from .teams_app_authorization import TeamsAppAuthorization
-    from .teams_app_publishing_state import TeamsAppPublishingState
+    from .teams_app_definition_publishing_state import TeamsAppDefinition_publishingState
     from .teamwork_bot import TeamworkBot
 
 from .entity import Entity
@@ -30,7 +30,7 @@ class TeamsAppDefinition(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The published status of a specific version of a Teams app. Possible values are:submitted—The specific version of the Teams app has been submitted and is under review. published—The request to publish the specific version of the Teams app has been approved by the admin and the app is published.  rejected—The admin rejected the request to publish the specific version of the Teams app.
-    publishing_state: Optional[TeamsAppPublishingState] = None
+    publishing_state: Optional[TeamsAppDefinition_publishingState] = None
     # Short description of the application.
     short_description: Optional[str] = None
     # The ID from the Teams app manifest.
@@ -57,13 +57,13 @@ class TeamsAppDefinition(Entity):
         from .entity import Entity
         from .identity_set import IdentitySet
         from .teams_app_authorization import TeamsAppAuthorization
-        from .teams_app_publishing_state import TeamsAppPublishingState
+        from .teams_app_definition_publishing_state import TeamsAppDefinition_publishingState
         from .teamwork_bot import TeamworkBot
 
         from .entity import Entity
         from .identity_set import IdentitySet
         from .teams_app_authorization import TeamsAppAuthorization
-        from .teams_app_publishing_state import TeamsAppPublishingState
+        from .teams_app_definition_publishing_state import TeamsAppDefinition_publishingState
         from .teamwork_bot import TeamworkBot
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -73,7 +73,7 @@ class TeamsAppDefinition(Entity):
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "publishingState": lambda n : setattr(self, 'publishing_state', n.get_enum_value(TeamsAppPublishingState)),
+            "publishingState": lambda n : setattr(self, 'publishing_state', n.get_enum_value(TeamsAppDefinition_publishingState)),
             "shortDescription": lambda n : setattr(self, 'short_description', n.get_str_value()),
             "teamsAppId": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),

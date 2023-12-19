@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .conditional_access_all_external_tenants import ConditionalAccessAllExternalTenants
     from .conditional_access_enumerated_external_tenants import ConditionalAccessEnumeratedExternalTenants
-    from .conditional_access_external_tenants_membership_kind import ConditionalAccessExternalTenantsMembershipKind
+    from .conditional_access_external_tenants_membership_kind import ConditionalAccessExternalTenants_membershipKind
 
 @dataclass
 class ConditionalAccessExternalTenants(AdditionalDataHolder, BackedModel, Parsable):
@@ -17,7 +17,7 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, BackedModel, Parsab
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The membership kind. Possible values are: all, enumerated, unknownFutureValue. The enumerated member references an conditionalAccessEnumeratedExternalTenants object.
-    membership_kind: Optional[ConditionalAccessExternalTenantsMembershipKind] = None
+    membership_kind: Optional[ConditionalAccessExternalTenants_membershipKind] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -51,14 +51,14 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, BackedModel, Parsab
         """
         from .conditional_access_all_external_tenants import ConditionalAccessAllExternalTenants
         from .conditional_access_enumerated_external_tenants import ConditionalAccessEnumeratedExternalTenants
-        from .conditional_access_external_tenants_membership_kind import ConditionalAccessExternalTenantsMembershipKind
+        from .conditional_access_external_tenants_membership_kind import ConditionalAccessExternalTenants_membershipKind
 
         from .conditional_access_all_external_tenants import ConditionalAccessAllExternalTenants
         from .conditional_access_enumerated_external_tenants import ConditionalAccessEnumeratedExternalTenants
-        from .conditional_access_external_tenants_membership_kind import ConditionalAccessExternalTenantsMembershipKind
+        from .conditional_access_external_tenants_membership_kind import ConditionalAccessExternalTenants_membershipKind
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "membershipKind": lambda n : setattr(self, 'membership_kind', n.get_enum_value(ConditionalAccessExternalTenantsMembershipKind)),
+            "membershipKind": lambda n : setattr(self, 'membership_kind', n.get_enum_value(ConditionalAccessExternalTenants_membershipKind)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

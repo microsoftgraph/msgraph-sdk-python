@@ -6,8 +6,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package import AccessPackage
-    from .access_package_catalog_state import AccessPackageCatalogState
-    from .access_package_catalog_type import AccessPackageCatalogType
+    from .access_package_catalog_catalog_type import AccessPackageCatalog_catalogType
+    from .access_package_catalog_state import AccessPackageCatalog_state
     from .access_package_resource import AccessPackageResource
     from .access_package_resource_role import AccessPackageResourceRole
     from .access_package_resource_scope import AccessPackageResourceScope
@@ -21,7 +21,7 @@ class AccessPackageCatalog(Entity):
     # The access packages in this catalog. Read-only. Nullable.
     access_packages: Optional[List[AccessPackage]] = None
     # Whether the catalog is created by a user or entitlement management. The possible values are: userManaged, serviceDefault, serviceManaged, unknownFutureValue.
-    catalog_type: Optional[AccessPackageCatalogType] = None
+    catalog_type: Optional[AccessPackageCatalog_catalogType] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # The customWorkflowExtensions property
@@ -43,7 +43,7 @@ class AccessPackageCatalog(Entity):
     # Access package resources in this catalog.
     resources: Optional[List[AccessPackageResource]] = None
     # Has the value published if the access packages are available for management. The possible values are: unpublished, published, unknownFutureValue.
-    state: Optional[AccessPackageCatalogState] = None
+    state: Optional[AccessPackageCatalog_state] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageCatalog:
@@ -62,8 +62,8 @@ class AccessPackageCatalog(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .access_package import AccessPackage
-        from .access_package_catalog_state import AccessPackageCatalogState
-        from .access_package_catalog_type import AccessPackageCatalogType
+        from .access_package_catalog_catalog_type import AccessPackageCatalog_catalogType
+        from .access_package_catalog_state import AccessPackageCatalog_state
         from .access_package_resource import AccessPackageResource
         from .access_package_resource_role import AccessPackageResourceRole
         from .access_package_resource_scope import AccessPackageResourceScope
@@ -71,8 +71,8 @@ class AccessPackageCatalog(Entity):
         from .entity import Entity
 
         from .access_package import AccessPackage
-        from .access_package_catalog_state import AccessPackageCatalogState
-        from .access_package_catalog_type import AccessPackageCatalogType
+        from .access_package_catalog_catalog_type import AccessPackageCatalog_catalogType
+        from .access_package_catalog_state import AccessPackageCatalog_state
         from .access_package_resource import AccessPackageResource
         from .access_package_resource_role import AccessPackageResourceRole
         from .access_package_resource_scope import AccessPackageResourceScope
@@ -81,7 +81,7 @@ class AccessPackageCatalog(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accessPackages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(AccessPackage)),
-            "catalogType": lambda n : setattr(self, 'catalog_type', n.get_enum_value(AccessPackageCatalogType)),
+            "catalogType": lambda n : setattr(self, 'catalog_type', n.get_enum_value(AccessPackageCatalog_catalogType)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customWorkflowExtensions": lambda n : setattr(self, 'custom_workflow_extensions', n.get_collection_of_object_values(CustomCalloutExtension)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
@@ -91,7 +91,7 @@ class AccessPackageCatalog(Entity):
             "resourceRoles": lambda n : setattr(self, 'resource_roles', n.get_collection_of_object_values(AccessPackageResourceRole)),
             "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_object_values(AccessPackageResourceScope)),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(AccessPackageResource)),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(AccessPackageCatalogState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(AccessPackageCatalog_state)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

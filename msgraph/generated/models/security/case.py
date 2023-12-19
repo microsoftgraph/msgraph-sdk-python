@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..entity import Entity
     from ..identity_set import IdentitySet
-    from .case_status import CaseStatus
+    from .case_status import Case_status
     from .ediscovery_case import EdiscoveryCase
 
 from ..entity import Entity
@@ -27,7 +27,7 @@ class Case(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The status property
-    status: Optional[CaseStatus] = None
+    status: Optional[Case_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Case:
@@ -55,12 +55,12 @@ class Case(Entity):
         """
         from ..entity import Entity
         from ..identity_set import IdentitySet
-        from .case_status import CaseStatus
+        from .case_status import Case_status
         from .ediscovery_case import EdiscoveryCase
 
         from ..entity import Entity
         from ..identity_set import IdentitySet
-        from .case_status import CaseStatus
+        from .case_status import Case_status
         from .ediscovery_case import EdiscoveryCase
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -69,7 +69,7 @@ class Case(Entity):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(CaseStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(Case_status)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

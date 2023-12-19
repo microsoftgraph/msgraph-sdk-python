@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .coachmark_location_type import CoachmarkLocationType
+    from .coachmark_location_type import CoachmarkLocation_type
 
 @dataclass
 class CoachmarkLocation(AdditionalDataHolder, BackedModel, Parsable):
@@ -21,7 +21,7 @@ class CoachmarkLocation(AdditionalDataHolder, BackedModel, Parsable):
     # Offset of coachmark.
     offset: Optional[int] = None
     # Type of coachmark location. The possible values are: unknown, fromEmail, subject, externalTag, displayName, messageBody, unknownFutureValue.
-    type: Optional[CoachmarkLocationType] = None
+    type: Optional[CoachmarkLocation_type] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CoachmarkLocation:
@@ -39,15 +39,15 @@ class CoachmarkLocation(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .coachmark_location_type import CoachmarkLocationType
+        from .coachmark_location_type import CoachmarkLocation_type
 
-        from .coachmark_location_type import CoachmarkLocationType
+        from .coachmark_location_type import CoachmarkLocation_type
 
         fields: Dict[str, Callable[[Any], None]] = {
             "length": lambda n : setattr(self, 'length', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "offset": lambda n : setattr(self, 'offset', n.get_int_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(CoachmarkLocationType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(CoachmarkLocation_type)),
         }
         return fields
     

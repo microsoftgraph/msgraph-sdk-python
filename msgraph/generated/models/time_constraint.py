@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .activity_domain import ActivityDomain
+    from .time_constraint_activity_domain import TimeConstraint_activityDomain
     from .time_slot import TimeSlot
 
 @dataclass
@@ -16,7 +16,7 @@ class TimeConstraint(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The nature of the activity, optional. The possible values are: work, personal, unrestricted, or unknown.
-    activity_domain: Optional[ActivityDomain] = None
+    activity_domain: Optional[TimeConstraint_activityDomain] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The timeSlots property
@@ -38,14 +38,14 @@ class TimeConstraint(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .activity_domain import ActivityDomain
+        from .time_constraint_activity_domain import TimeConstraint_activityDomain
         from .time_slot import TimeSlot
 
-        from .activity_domain import ActivityDomain
+        from .time_constraint_activity_domain import TimeConstraint_activityDomain
         from .time_slot import TimeSlot
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activityDomain": lambda n : setattr(self, 'activity_domain', n.get_enum_value(ActivityDomain)),
+            "activityDomain": lambda n : setattr(self, 'activity_domain', n.get_enum_value(TimeConstraint_activityDomain)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(TimeSlot)),
         }

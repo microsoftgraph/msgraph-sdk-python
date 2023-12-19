@@ -10,10 +10,10 @@ if TYPE_CHECKING:
     from .file_assessment_request import FileAssessmentRequest
     from .identity_set import IdentitySet
     from .mail_assessment_request import MailAssessmentRequest
-    from .threat_assessment_content_type import ThreatAssessmentContentType
-    from .threat_assessment_request_source import ThreatAssessmentRequestSource
+    from .threat_assessment_request_content_type import ThreatAssessmentRequest_contentType
+    from .threat_assessment_request_request_source import ThreatAssessmentRequest_requestSource
+    from .threat_assessment_request_status import ThreatAssessmentRequest_status
     from .threat_assessment_result import ThreatAssessmentResult
-    from .threat_assessment_status import ThreatAssessmentStatus
     from .threat_category import ThreatCategory
     from .threat_expected_assessment import ThreatExpectedAssessment
     from .url_assessment_request import UrlAssessmentRequest
@@ -25,7 +25,7 @@ class ThreatAssessmentRequest(Entity):
     # The category property
     category: Optional[ThreatCategory] = None
     # The content type of threat assessment. Possible values are: mail, url, file.
-    content_type: Optional[ThreatAssessmentContentType] = None
+    content_type: Optional[ThreatAssessmentRequest_contentType] = None
     # The threat assessment request creator.
     created_by: Optional[IdentitySet] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -35,11 +35,11 @@ class ThreatAssessmentRequest(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The source of the threat assessment request. Possible values are: administrator.
-    request_source: Optional[ThreatAssessmentRequestSource] = None
+    request_source: Optional[ThreatAssessmentRequest_requestSource] = None
     # A collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it.
     results: Optional[List[ThreatAssessmentResult]] = None
     # The assessment process status. Possible values are: pending, completed.
-    status: Optional[ThreatAssessmentStatus] = None
+    status: Optional[ThreatAssessmentRequest_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ThreatAssessmentRequest:
@@ -82,10 +82,10 @@ class ThreatAssessmentRequest(Entity):
         from .file_assessment_request import FileAssessmentRequest
         from .identity_set import IdentitySet
         from .mail_assessment_request import MailAssessmentRequest
-        from .threat_assessment_content_type import ThreatAssessmentContentType
-        from .threat_assessment_request_source import ThreatAssessmentRequestSource
+        from .threat_assessment_request_content_type import ThreatAssessmentRequest_contentType
+        from .threat_assessment_request_request_source import ThreatAssessmentRequest_requestSource
+        from .threat_assessment_request_status import ThreatAssessmentRequest_status
         from .threat_assessment_result import ThreatAssessmentResult
-        from .threat_assessment_status import ThreatAssessmentStatus
         from .threat_category import ThreatCategory
         from .threat_expected_assessment import ThreatExpectedAssessment
         from .url_assessment_request import UrlAssessmentRequest
@@ -95,23 +95,23 @@ class ThreatAssessmentRequest(Entity):
         from .file_assessment_request import FileAssessmentRequest
         from .identity_set import IdentitySet
         from .mail_assessment_request import MailAssessmentRequest
-        from .threat_assessment_content_type import ThreatAssessmentContentType
-        from .threat_assessment_request_source import ThreatAssessmentRequestSource
+        from .threat_assessment_request_content_type import ThreatAssessmentRequest_contentType
+        from .threat_assessment_request_request_source import ThreatAssessmentRequest_requestSource
+        from .threat_assessment_request_status import ThreatAssessmentRequest_status
         from .threat_assessment_result import ThreatAssessmentResult
-        from .threat_assessment_status import ThreatAssessmentStatus
         from .threat_category import ThreatCategory
         from .threat_expected_assessment import ThreatExpectedAssessment
         from .url_assessment_request import UrlAssessmentRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
             "category": lambda n : setattr(self, 'category', n.get_enum_value(ThreatCategory)),
-            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(ThreatAssessmentContentType)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(ThreatAssessmentRequest_contentType)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "expectedAssessment": lambda n : setattr(self, 'expected_assessment', n.get_enum_value(ThreatExpectedAssessment)),
-            "requestSource": lambda n : setattr(self, 'request_source', n.get_enum_value(ThreatAssessmentRequestSource)),
+            "requestSource": lambda n : setattr(self, 'request_source', n.get_enum_value(ThreatAssessmentRequest_requestSource)),
             "results": lambda n : setattr(self, 'results', n.get_collection_of_object_values(ThreatAssessmentResult)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(ThreatAssessmentStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(ThreatAssessmentRequest_status)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

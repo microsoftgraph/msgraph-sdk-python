@@ -49,7 +49,7 @@ class ServicePrincipalsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ServicePrincipalsRequestBuilderGetRequestConfiguration] = None) -> Optional[ServicePrincipalCollectionResponse]:
         """
-        Retrieve a list of servicePrincipal objects. This API is available in the following national cloud deployments.
+        Retrieve a list of servicePrincipal objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServicePrincipalCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-list?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class ServicePrincipalsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ServicePrincipal] = None, request_configuration: Optional[ServicePrincipalsRequestBuilderPostRequestConfiguration] = None) -> Optional[ServicePrincipal]:
         """
-        Create a new servicePrincipal object. This API is available in the following national cloud deployments.
+        Create a new servicePrincipal object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServicePrincipal]
@@ -96,7 +96,7 @@ class ServicePrincipalsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ServicePrincipalsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of servicePrincipal objects. This API is available in the following national cloud deployments.
+        Retrieve a list of servicePrincipal objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,12 +108,12 @@ class ServicePrincipalsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[ServicePrincipal] = None, request_configuration: Optional[ServicePrincipalsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new servicePrincipal object. This API is available in the following national cloud deployments.
+        Create a new servicePrincipal object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -127,7 +127,7 @@ class ServicePrincipalsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -189,7 +189,7 @@ class ServicePrincipalsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ServicePrincipalsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of servicePrincipal objects. This API is available in the following national cloud deployments.
+        Retrieve a list of servicePrincipal objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

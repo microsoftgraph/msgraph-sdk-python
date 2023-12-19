@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .threat_assessment_result_type import ThreatAssessmentResultType
+    from .threat_assessment_result_result_type import ThreatAssessmentResult_resultType
 
 from .entity import Entity
 
@@ -19,7 +19,7 @@ class ThreatAssessmentResult(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The threat assessment result type. Possible values are: checkPolicy, rescan.
-    result_type: Optional[ThreatAssessmentResultType] = None
+    result_type: Optional[ThreatAssessmentResult_resultType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ThreatAssessmentResult:
@@ -38,15 +38,15 @@ class ThreatAssessmentResult(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .threat_assessment_result_type import ThreatAssessmentResultType
+        from .threat_assessment_result_result_type import ThreatAssessmentResult_resultType
 
         from .entity import Entity
-        from .threat_assessment_result_type import ThreatAssessmentResultType
+        from .threat_assessment_result_result_type import ThreatAssessmentResult_resultType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
-            "resultType": lambda n : setattr(self, 'result_type', n.get_enum_value(ThreatAssessmentResultType)),
+            "resultType": lambda n : setattr(self, 'result_type', n.get_enum_value(ThreatAssessmentResult_resultType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

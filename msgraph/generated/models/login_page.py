@@ -7,8 +7,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .email_identity import EmailIdentity
     from .entity import Entity
-    from .simulation_content_source import SimulationContentSource
-    from .simulation_content_status import SimulationContentStatus
+    from .login_page_source import LoginPage_source
+    from .login_page_status import LoginPage_status
 
 from .entity import Entity
 
@@ -33,9 +33,9 @@ class LoginPage(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The source of the content. Possible values are: unknown, global, tenant, unknownFutureValue.
-    source: Optional[SimulationContentSource] = None
+    source: Optional[LoginPage_source] = None
     # The login page status. Possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
-    status: Optional[SimulationContentStatus] = None
+    status: Optional[LoginPage_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LoginPage:
@@ -55,13 +55,13 @@ class LoginPage(Entity):
         """
         from .email_identity import EmailIdentity
         from .entity import Entity
-        from .simulation_content_source import SimulationContentSource
-        from .simulation_content_status import SimulationContentStatus
+        from .login_page_source import LoginPage_source
+        from .login_page_status import LoginPage_status
 
         from .email_identity import EmailIdentity
         from .entity import Entity
-        from .simulation_content_source import SimulationContentSource
-        from .simulation_content_status import SimulationContentStatus
+        from .login_page_source import LoginPage_source
+        from .login_page_status import LoginPage_status
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
@@ -72,8 +72,8 @@ class LoginPage(Entity):
             "language": lambda n : setattr(self, 'language', n.get_str_value()),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(EmailIdentity)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "source": lambda n : setattr(self, 'source', n.get_enum_value(SimulationContentSource)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(SimulationContentStatus)),
+            "source": lambda n : setattr(self, 'source', n.get_enum_value(LoginPage_source)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(LoginPage_status)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

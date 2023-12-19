@@ -27,7 +27,7 @@ class RestoreVersionRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RestoreVersionRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Restore a previous version of a DriveItem to be the current version. This will create a new version with the contents of the previous version, but preserves all existing versions of the file. This API is available in the following national cloud deployments.
+        Restore a previous version of a DriveItem to be the current version. This will create a new version with the contents of the previous version, but preserves all existing versions of the file.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/driveitemversion-restore?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class RestoreVersionRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RestoreVersionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Restore a previous version of a DriveItem to be the current version. This will create a new version with the contents of the previous version, but preserves all existing versions of the file. This API is available in the following national cloud deployments.
+        Restore a previous version of a DriveItem to be the current version. This will create a new version with the contents of the previous version, but preserves all existing versions of the file.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -58,7 +58,7 @@ class RestoreVersionRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> RestoreVersionRequestBuilder:

@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .attribute_definition_metadata import AttributeDefinitionMetadata
+    from .attribute_definition_metadata_entry_key import AttributeDefinitionMetadataEntry_key
 
 @dataclass
 class AttributeDefinitionMetadataEntry(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,7 +15,7 @@ class AttributeDefinitionMetadataEntry(AdditionalDataHolder, BackedModel, Parsab
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Possible values are: BaseAttributeName, ComplexObjectDefinition, IsContainer, IsCustomerDefined, IsDomainQualified, LinkPropertyNames, LinkTypeName, MaximumLength, ReferencedProperty.
-    key: Optional[AttributeDefinitionMetadata] = None
+    key: Optional[AttributeDefinitionMetadataEntry_key] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Value of the metadata property.
@@ -37,12 +37,12 @@ class AttributeDefinitionMetadataEntry(AdditionalDataHolder, BackedModel, Parsab
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .attribute_definition_metadata import AttributeDefinitionMetadata
+        from .attribute_definition_metadata_entry_key import AttributeDefinitionMetadataEntry_key
 
-        from .attribute_definition_metadata import AttributeDefinitionMetadata
+        from .attribute_definition_metadata_entry_key import AttributeDefinitionMetadataEntry_key
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "key": lambda n : setattr(self, 'key', n.get_enum_value(AttributeDefinitionMetadata)),
+            "key": lambda n : setattr(self, 'key', n.get_enum_value(AttributeDefinitionMetadataEntry_key)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }

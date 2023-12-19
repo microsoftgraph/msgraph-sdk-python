@@ -5,8 +5,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .broadcast_meeting_audience import BroadcastMeetingAudience
     from .broadcast_meeting_caption_settings import BroadcastMeetingCaptionSettings
+    from .broadcast_meeting_settings_allowed_audience import BroadcastMeetingSettings_allowedAudience
 
 @dataclass
 class BroadcastMeetingSettings(AdditionalDataHolder, BackedModel, Parsable):
@@ -16,7 +16,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Defines who can join the Teams live event. Possible values are listed in the following table.
-    allowed_audience: Optional[BroadcastMeetingAudience] = None
+    allowed_audience: Optional[BroadcastMeetingSettings_allowedAudience] = None
     # Caption settings of a Teams live event.
     captions: Optional[BroadcastMeetingCaptionSettings] = None
     # Indicates whether attendee report is enabled for this Teams live event. Default value is false.
@@ -46,14 +46,14 @@ class BroadcastMeetingSettings(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .broadcast_meeting_audience import BroadcastMeetingAudience
         from .broadcast_meeting_caption_settings import BroadcastMeetingCaptionSettings
+        from .broadcast_meeting_settings_allowed_audience import BroadcastMeetingSettings_allowedAudience
 
-        from .broadcast_meeting_audience import BroadcastMeetingAudience
         from .broadcast_meeting_caption_settings import BroadcastMeetingCaptionSettings
+        from .broadcast_meeting_settings_allowed_audience import BroadcastMeetingSettings_allowedAudience
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedAudience": lambda n : setattr(self, 'allowed_audience', n.get_enum_value(BroadcastMeetingAudience)),
+            "allowedAudience": lambda n : setattr(self, 'allowed_audience', n.get_enum_value(BroadcastMeetingSettings_allowedAudience)),
             "captions": lambda n : setattr(self, 'captions', n.get_object_value(BroadcastMeetingCaptionSettings)),
             "isAttendeeReportEnabled": lambda n : setattr(self, 'is_attendee_report_enabled', n.get_bool_value()),
             "isQuestionAndAnswerEnabled": lambda n : setattr(self, 'is_question_and_answer_enabled', n.get_bool_value()),

@@ -30,7 +30,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes an accessReviewScheduleDefinition object. This API is available in the following national cloud deployments.
+        Deletes an accessReviewScheduleDefinition object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/accessreviewscheduledefinition-delete?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessReviewScheduleDefinition]:
         """
-        Read the properties and relationships of an accessReviewScheduleDefinition object. To retrieve the instances of the access review series, use the list accessReviewInstance API. This API is available in the following national cloud deployments.
+        Read the properties and relationships of an accessReviewScheduleDefinition object. To retrieve the instances of the access review series, use the list accessReviewInstance API.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewScheduleDefinition]
         Find more info here: https://learn.microsoft.com/graph/api/accessreviewscheduledefinition-get?view=graph-rest-1.0
@@ -70,17 +70,16 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessReviewScheduleDefinition, error_mapping)
     
-    async def patch(self,body: Optional[AccessReviewScheduleDefinition] = None, request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AccessReviewScheduleDefinition]:
+    async def put(self,body: Optional[AccessReviewScheduleDefinition] = None, request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderPutRequestConfiguration] = None) -> Optional[AccessReviewScheduleDefinition]:
         """
-        Update an existing accessReviewScheduleDefinition object to change one or more of its properties.
+        Update the navigation property definitions in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewScheduleDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/accessreviewscheduledefinition-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = self.to_patch_request_information(
+        request_info = self.to_put_request_information(
             body, request_configuration
         )
         from .....models.o_data_errors.o_data_error import ODataError
@@ -97,7 +96,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes an accessReviewScheduleDefinition object. This API is available in the following national cloud deployments.
+        Deletes an accessReviewScheduleDefinition object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,12 +107,12 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an accessReviewScheduleDefinition object. To retrieve the instances of the access review series, use the list accessReviewInstance API. This API is available in the following national cloud deployments.
+        Read the properties and relationships of an accessReviewScheduleDefinition object. To retrieve the instances of the access review series, use the list accessReviewInstance API.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -125,12 +124,12 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AccessReviewScheduleDefinition] = None, request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: Optional[AccessReviewScheduleDefinition] = None, request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        Update an existing accessReviewScheduleDefinition object to change one or more of its properties.
+        Update the navigation property definitions in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,8 +142,8 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
             request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.http_method = Method.PUT
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -189,7 +188,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessReviewScheduleDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an accessReviewScheduleDefinition object. To retrieve the instances of the access review series, use the list accessReviewInstance API. This API is available in the following national cloud deployments.
+        Read the properties and relationships of an accessReviewScheduleDefinition object. To retrieve the instances of the access review series, use the list accessReviewInstance API.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -228,7 +227,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
     @dataclass
-    class AccessReviewScheduleDefinitionItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+    class AccessReviewScheduleDefinitionItemRequestBuilderPutRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
         """

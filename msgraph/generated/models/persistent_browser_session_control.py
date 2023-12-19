@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .conditional_access_session_control import ConditionalAccessSessionControl
-    from .persistent_browser_session_mode import PersistentBrowserSessionMode
+    from .persistent_browser_session_control_mode import PersistentBrowserSessionControl_mode
 
 from .conditional_access_session_control import ConditionalAccessSessionControl
 
@@ -14,7 +14,7 @@ class PersistentBrowserSessionControl(ConditionalAccessSessionControl):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.persistentBrowserSessionControl"
     # Possible values are: always, never.
-    mode: Optional[PersistentBrowserSessionMode] = None
+    mode: Optional[PersistentBrowserSessionControl_mode] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PersistentBrowserSessionControl:
@@ -33,13 +33,13 @@ class PersistentBrowserSessionControl(ConditionalAccessSessionControl):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .conditional_access_session_control import ConditionalAccessSessionControl
-        from .persistent_browser_session_mode import PersistentBrowserSessionMode
+        from .persistent_browser_session_control_mode import PersistentBrowserSessionControl_mode
 
         from .conditional_access_session_control import ConditionalAccessSessionControl
-        from .persistent_browser_session_mode import PersistentBrowserSessionMode
+        from .persistent_browser_session_control_mode import PersistentBrowserSessionControl_mode
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "mode": lambda n : setattr(self, 'mode', n.get_enum_value(PersistentBrowserSessionMode)),
+            "mode": lambda n : setattr(self, 'mode', n.get_enum_value(PersistentBrowserSessionControl_mode)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

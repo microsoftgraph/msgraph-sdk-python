@@ -5,9 +5,9 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .included_user_roles import IncludedUserRoles
-    from .included_user_types import IncludedUserTypes
     from .user_registration_method_count import UserRegistrationMethodCount
+    from .user_registration_method_summary_user_roles import UserRegistrationMethodSummary_userRoles
+    from .user_registration_method_summary_user_types import UserRegistrationMethodSummary_userTypes
 
 @dataclass
 class UserRegistrationMethodSummary(AdditionalDataHolder, BackedModel, Parsable):
@@ -23,9 +23,9 @@ class UserRegistrationMethodSummary(AdditionalDataHolder, BackedModel, Parsable)
     # Number of users registered for each authentication method.
     user_registration_method_counts: Optional[List[UserRegistrationMethodCount]] = None
     # The role type of the user. Possible values are: all, privilegedAdmin, admin, user, unknownFutureValue.
-    user_roles: Optional[IncludedUserRoles] = None
+    user_roles: Optional[UserRegistrationMethodSummary_userRoles] = None
     # User type. Possible values are: all, member, guest, unknownFutureValue.
-    user_types: Optional[IncludedUserTypes] = None
+    user_types: Optional[UserRegistrationMethodSummary_userTypes] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserRegistrationMethodSummary:
@@ -43,20 +43,20 @@ class UserRegistrationMethodSummary(AdditionalDataHolder, BackedModel, Parsable)
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .included_user_roles import IncludedUserRoles
-        from .included_user_types import IncludedUserTypes
         from .user_registration_method_count import UserRegistrationMethodCount
+        from .user_registration_method_summary_user_roles import UserRegistrationMethodSummary_userRoles
+        from .user_registration_method_summary_user_types import UserRegistrationMethodSummary_userTypes
 
-        from .included_user_roles import IncludedUserRoles
-        from .included_user_types import IncludedUserTypes
         from .user_registration_method_count import UserRegistrationMethodCount
+        from .user_registration_method_summary_user_roles import UserRegistrationMethodSummary_userRoles
+        from .user_registration_method_summary_user_types import UserRegistrationMethodSummary_userTypes
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "totalUserCount": lambda n : setattr(self, 'total_user_count', n.get_int_value()),
             "userRegistrationMethodCounts": lambda n : setattr(self, 'user_registration_method_counts', n.get_collection_of_object_values(UserRegistrationMethodCount)),
-            "userRoles": lambda n : setattr(self, 'user_roles', n.get_enum_value(IncludedUserRoles)),
-            "userTypes": lambda n : setattr(self, 'user_types', n.get_enum_value(IncludedUserTypes)),
+            "userRoles": lambda n : setattr(self, 'user_roles', n.get_enum_value(UserRegistrationMethodSummary_userRoles)),
+            "userTypes": lambda n : setattr(self, 'user_types', n.get_enum_value(UserRegistrationMethodSummary_userTypes)),
         }
         return fields
     

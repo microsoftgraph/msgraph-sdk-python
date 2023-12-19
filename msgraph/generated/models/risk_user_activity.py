@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .risk_detail import RiskDetail
+    from .risk_user_activity_detail import RiskUserActivity_detail
 
 @dataclass
 class RiskUserActivity(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,7 +15,7 @@ class RiskUserActivity(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
-    detail: Optional[RiskDetail] = None
+    detail: Optional[RiskUserActivity_detail] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of risk event detected.
@@ -37,12 +37,12 @@ class RiskUserActivity(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .risk_detail import RiskDetail
+        from .risk_user_activity_detail import RiskUserActivity_detail
 
-        from .risk_detail import RiskDetail
+        from .risk_user_activity_detail import RiskUserActivity_detail
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "detail": lambda n : setattr(self, 'detail', n.get_enum_value(RiskDetail)),
+            "detail": lambda n : setattr(self, 'detail', n.get_enum_value(RiskUserActivity_detail)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_primitive_values(str)),
         }

@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .importance import Importance
+    from .message_rule_actions_mark_importance import MessageRuleActions_markImportance
     from .recipient import Recipient
 
 @dataclass
@@ -28,7 +28,7 @@ class MessageRuleActions(AdditionalDataHolder, BackedModel, Parsable):
     # Indicates whether a message should be marked as read.
     mark_as_read: Optional[bool] = None
     # Sets the importance of the message, which can be: low, normal, high.
-    mark_importance: Optional[Importance] = None
+    mark_importance: Optional[MessageRuleActions_markImportance] = None
     # The ID of the folder that a message will be moved to.
     move_to_folder: Optional[str] = None
     # The OdataType property
@@ -56,10 +56,10 @@ class MessageRuleActions(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .importance import Importance
+        from .message_rule_actions_mark_importance import MessageRuleActions_markImportance
         from .recipient import Recipient
 
-        from .importance import Importance
+        from .message_rule_actions_mark_importance import MessageRuleActions_markImportance
         from .recipient import Recipient
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -69,7 +69,7 @@ class MessageRuleActions(AdditionalDataHolder, BackedModel, Parsable):
             "forwardAsAttachmentTo": lambda n : setattr(self, 'forward_as_attachment_to', n.get_collection_of_object_values(Recipient)),
             "forwardTo": lambda n : setattr(self, 'forward_to', n.get_collection_of_object_values(Recipient)),
             "markAsRead": lambda n : setattr(self, 'mark_as_read', n.get_bool_value()),
-            "markImportance": lambda n : setattr(self, 'mark_importance', n.get_enum_value(Importance)),
+            "markImportance": lambda n : setattr(self, 'mark_importance', n.get_enum_value(MessageRuleActions_markImportance)),
             "moveToFolder": lambda n : setattr(self, 'move_to_folder', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "permanentDelete": lambda n : setattr(self, 'permanent_delete', n.get_bool_value()),

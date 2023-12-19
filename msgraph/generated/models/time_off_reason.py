@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .change_tracked_entity import ChangeTrackedEntity
-    from .time_off_reason_icon_type import TimeOffReasonIconType
+    from .time_off_reason_icon_type import TimeOffReason_iconType
 
 from .change_tracked_entity import ChangeTrackedEntity
 
@@ -16,7 +16,7 @@ class TimeOffReason(ChangeTrackedEntity):
     # The name of the timeOffReason. Required.
     display_name: Optional[str] = None
     # Supported icon types are: none, car, calendar, running, plane, firstAid, doctor, notWorking, clock, juryDuty, globe, cup, phone, weather, umbrella, piggyBank, dog, cake, trafficCone, pin, sunny. Required.
-    icon_type: Optional[TimeOffReasonIconType] = None
+    icon_type: Optional[TimeOffReason_iconType] = None
     # Indicates whether the timeOffReason can be used when creating new entities or updating existing ones. Required.
     is_active: Optional[bool] = None
     
@@ -37,14 +37,14 @@ class TimeOffReason(ChangeTrackedEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .change_tracked_entity import ChangeTrackedEntity
-        from .time_off_reason_icon_type import TimeOffReasonIconType
+        from .time_off_reason_icon_type import TimeOffReason_iconType
 
         from .change_tracked_entity import ChangeTrackedEntity
-        from .time_off_reason_icon_type import TimeOffReasonIconType
+        from .time_off_reason_icon_type import TimeOffReason_iconType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "iconType": lambda n : setattr(self, 'icon_type', n.get_enum_value(TimeOffReasonIconType)),
+            "iconType": lambda n : setattr(self, 'icon_type', n.get_enum_value(TimeOffReason_iconType)),
             "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

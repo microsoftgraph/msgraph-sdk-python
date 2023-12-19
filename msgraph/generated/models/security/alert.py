@@ -6,13 +6,13 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
-    from .alert_classification import AlertClassification
+    from .alert_classification import Alert_classification
     from .alert_comment import AlertComment
-    from .alert_determination import AlertDetermination
+    from .alert_detection_source import Alert_detectionSource
+    from .alert_determination import Alert_determination
     from .alert_evidence import AlertEvidence
     from .alert_severity import AlertSeverity
     from .alert_status import AlertStatus
-    from .detection_source import DetectionSource
     from .service_source import ServiceSource
 
 from ..entity import Entity
@@ -32,19 +32,19 @@ class Alert(Entity):
     # The attack kill-chain category that the alert belongs to. Aligned with the MITRE ATT&CK framework.
     category: Optional[str] = None
     # Specifies whether the alert represents a true threat. Possible values are: unknown, falsePositive, truePositive, informationalExpectedActivity, unknownFutureValue.
-    classification: Optional[AlertClassification] = None
+    classification: Optional[Alert_classification] = None
     # Array of comments created by the Security Operations (SecOps) team during the alert management process.
     comments: Optional[List[AlertComment]] = None
     # Time when Microsoft 365 Defender created the alert.
     created_date_time: Optional[datetime.datetime] = None
     # String value describing each alert.
     description: Optional[str] = None
-    # Detection technology or sensor that identified the notable component or activity. Possible values are: unknown, microsoftDefenderForEndpoint, antivirus, smartScreen, customTi, microsoftDefenderForOffice365, automatedInvestigation, microsoftThreatExperts, customDetection, microsoftDefenderForIdentity, cloudAppSecurity, microsoft365Defender, azureAdIdentityProtection, manual, microsoftDataLossPrevention, appGovernancePolicy, appGovernanceDetection, unknownFutureValue, microsoftDefenderForCloud. You must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: microsoftDefenderForCloud.
-    detection_source: Optional[DetectionSource] = None
+    # Detection technology or sensor that identified the notable component or activity. Possible values are: unknown, microsoftDefenderForEndpoint, antivirus, smartScreen, customTi, microsoftDefenderForOffice365, automatedInvestigation, microsoftThreatExperts, customDetection, microsoftDefenderForIdentity, cloudAppSecurity, microsoft365Defender, azureAdIdentityProtection, manual, microsoftDataLossPrevention, appGovernancePolicy, appGovernanceDetection, unknownFutureValue, microsoftDefenderForCloud, microsoftDefenderForIoT, microsoftDefenderForServers, microsoftDefenderForStorage, microsoftDefenderForDNS, microsoftDefenderForDatabases, microsoftDefenderForContainers, microsoftDefenderForNetwork, microsoftDefenderForAppService, microsoftDefenderForKeyVault, microsoftDefenderForResourceManager, microsoftDefenderForApiManagement. You must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: microsoftDefenderForCloud, microsoftDefenderForIoT, microsoftDefenderForServers, microsoftDefenderForStorage, microsoftDefenderForDNS, microsoftDefenderForDatabases, microsoftDefenderForContainers, microsoftDefenderForNetwork, microsoftDefenderForAppService, microsoftDefenderForKeyVault, microsoftDefenderForResourceManager, microsoftDefenderForApiManagement.
+    detection_source: Optional[Alert_detectionSource] = None
     # The ID of the detector that triggered the alert.
     detector_id: Optional[str] = None
     # Specifies the result of the investigation, whether the alert represents a true attack and if so, the nature of the attack. Possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
-    determination: Optional[AlertDetermination] = None
+    determination: Optional[Alert_determination] = None
     # Collection of evidence related to the alert.
     evidence: Optional[List[AlertEvidence]] = None
     # The earliest activity associated with the alert.
@@ -101,23 +101,23 @@ class Alert(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
-        from .alert_classification import AlertClassification
+        from .alert_classification import Alert_classification
         from .alert_comment import AlertComment
-        from .alert_determination import AlertDetermination
+        from .alert_detection_source import Alert_detectionSource
+        from .alert_determination import Alert_determination
         from .alert_evidence import AlertEvidence
         from .alert_severity import AlertSeverity
         from .alert_status import AlertStatus
-        from .detection_source import DetectionSource
         from .service_source import ServiceSource
 
         from ..entity import Entity
-        from .alert_classification import AlertClassification
+        from .alert_classification import Alert_classification
         from .alert_comment import AlertComment
-        from .alert_determination import AlertDetermination
+        from .alert_detection_source import Alert_detectionSource
+        from .alert_determination import Alert_determination
         from .alert_evidence import AlertEvidence
         from .alert_severity import AlertSeverity
         from .alert_status import AlertStatus
-        from .detection_source import DetectionSource
         from .service_source import ServiceSource
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -126,13 +126,13 @@ class Alert(Entity):
             "alertWebUrl": lambda n : setattr(self, 'alert_web_url', n.get_str_value()),
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
-            "classification": lambda n : setattr(self, 'classification', n.get_enum_value(AlertClassification)),
+            "classification": lambda n : setattr(self, 'classification', n.get_enum_value(Alert_classification)),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_object_values(AlertComment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "detectionSource": lambda n : setattr(self, 'detection_source', n.get_enum_value(DetectionSource)),
+            "detectionSource": lambda n : setattr(self, 'detection_source', n.get_enum_value(Alert_detectionSource)),
             "detectorId": lambda n : setattr(self, 'detector_id', n.get_str_value()),
-            "determination": lambda n : setattr(self, 'determination', n.get_enum_value(AlertDetermination)),
+            "determination": lambda n : setattr(self, 'determination', n.get_enum_value(Alert_determination)),
             "evidence": lambda n : setattr(self, 'evidence', n.get_collection_of_object_values(AlertEvidence)),
             "firstActivityDateTime": lambda n : setattr(self, 'first_activity_date_time', n.get_datetime_value()),
             "incidentId": lambda n : setattr(self, 'incident_id', n.get_str_value()),

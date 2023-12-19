@@ -5,10 +5,10 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .data_source import DataSource
-    from .data_source_scopes import DataSourceScopes
     from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
     from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
     from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
+    from .ediscovery_search_data_source_scopes import EdiscoverySearch_dataSourceScopes
     from .search import Search
 
 from .search import Search
@@ -24,7 +24,7 @@ class EdiscoverySearch(Search):
     # Custodian sources that are included in the eDiscovery search.
     custodian_sources: Optional[List[DataSource]] = None
     # When specified, the collection will span across a service for an entire workload. Possible values are: none, allTenantMailboxes, allTenantSites, allCaseCustodians, allCaseNoncustodialDataSources.
-    data_source_scopes: Optional[DataSourceScopes] = None
+    data_source_scopes: Optional[EdiscoverySearch_dataSourceScopes] = None
     # The last estimate operation associated with the eDiscovery search.
     last_estimate_statistics_operation: Optional[EdiscoveryEstimateOperation] = None
     # noncustodialDataSource sources that are included in the eDiscovery search
@@ -47,24 +47,24 @@ class EdiscoverySearch(Search):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .data_source import DataSource
-        from .data_source_scopes import DataSourceScopes
         from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
         from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
         from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
+        from .ediscovery_search_data_source_scopes import EdiscoverySearch_dataSourceScopes
         from .search import Search
 
         from .data_source import DataSource
-        from .data_source_scopes import DataSourceScopes
         from .ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
         from .ediscovery_estimate_operation import EdiscoveryEstimateOperation
         from .ediscovery_noncustodial_data_source import EdiscoveryNoncustodialDataSource
+        from .ediscovery_search_data_source_scopes import EdiscoverySearch_dataSourceScopes
         from .search import Search
 
         fields: Dict[str, Callable[[Any], None]] = {
             "addToReviewSetOperation": lambda n : setattr(self, 'add_to_review_set_operation', n.get_object_value(EdiscoveryAddToReviewSetOperation)),
             "additionalSources": lambda n : setattr(self, 'additional_sources', n.get_collection_of_object_values(DataSource)),
             "custodianSources": lambda n : setattr(self, 'custodian_sources', n.get_collection_of_object_values(DataSource)),
-            "dataSourceScopes": lambda n : setattr(self, 'data_source_scopes', n.get_collection_of_enum_values(DataSourceScopes)),
+            "dataSourceScopes": lambda n : setattr(self, 'data_source_scopes', n.get_enum_value(EdiscoverySearch_dataSourceScopes)),
             "lastEstimateStatisticsOperation": lambda n : setattr(self, 'last_estimate_statistics_operation', n.get_object_value(EdiscoveryEstimateOperation)),
             "noncustodialSources": lambda n : setattr(self, 'noncustodial_sources', n.get_collection_of_object_values(EdiscoveryNoncustodialDataSource)),
         }

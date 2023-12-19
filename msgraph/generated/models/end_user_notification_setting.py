@@ -5,8 +5,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .end_user_notification_preference import EndUserNotificationPreference
-    from .end_user_notification_setting_type import EndUserNotificationSettingType
+    from .end_user_notification_setting_notification_preference import EndUserNotificationSetting_notificationPreference
+    from .end_user_notification_setting_setting_type import EndUserNotificationSetting_settingType
     from .no_training_notification_setting import NoTrainingNotificationSetting
     from .positive_reinforcement_notification import PositiveReinforcementNotification
     from .training_notification_setting import TrainingNotificationSetting
@@ -19,13 +19,13 @@ class EndUserNotificationSetting(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Notification preference. Possible values are: unknown, microsoft, custom, unknownFutureValue.
-    notification_preference: Optional[EndUserNotificationPreference] = None
+    notification_preference: Optional[EndUserNotificationSetting_notificationPreference] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Positive reinforcement detail.
     positive_reinforcement: Optional[PositiveReinforcementNotification] = None
     # End user notification type. Possible values are: unknown, noTraining, trainingSelected, noNotification, unknownFutureValue.
-    setting_type: Optional[EndUserNotificationSettingType] = None
+    setting_type: Optional[EndUserNotificationSetting_settingType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EndUserNotificationSetting:
@@ -55,23 +55,23 @@ class EndUserNotificationSetting(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .end_user_notification_preference import EndUserNotificationPreference
-        from .end_user_notification_setting_type import EndUserNotificationSettingType
+        from .end_user_notification_setting_notification_preference import EndUserNotificationSetting_notificationPreference
+        from .end_user_notification_setting_setting_type import EndUserNotificationSetting_settingType
         from .no_training_notification_setting import NoTrainingNotificationSetting
         from .positive_reinforcement_notification import PositiveReinforcementNotification
         from .training_notification_setting import TrainingNotificationSetting
 
-        from .end_user_notification_preference import EndUserNotificationPreference
-        from .end_user_notification_setting_type import EndUserNotificationSettingType
+        from .end_user_notification_setting_notification_preference import EndUserNotificationSetting_notificationPreference
+        from .end_user_notification_setting_setting_type import EndUserNotificationSetting_settingType
         from .no_training_notification_setting import NoTrainingNotificationSetting
         from .positive_reinforcement_notification import PositiveReinforcementNotification
         from .training_notification_setting import TrainingNotificationSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "notificationPreference": lambda n : setattr(self, 'notification_preference', n.get_enum_value(EndUserNotificationPreference)),
+            "notificationPreference": lambda n : setattr(self, 'notification_preference', n.get_enum_value(EndUserNotificationSetting_notificationPreference)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "positiveReinforcement": lambda n : setattr(self, 'positive_reinforcement', n.get_object_value(PositiveReinforcementNotification)),
-            "settingType": lambda n : setattr(self, 'setting_type', n.get_enum_value(EndUserNotificationSettingType)),
+            "settingType": lambda n : setattr(self, 'setting_type', n.get_enum_value(EndUserNotificationSetting_settingType)),
         }
         return fields
     

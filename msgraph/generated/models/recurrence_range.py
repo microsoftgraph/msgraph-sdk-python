@@ -6,7 +6,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .recurrence_range_type import RecurrenceRangeType
+    from .recurrence_range_type import RecurrenceRange_type
 
 @dataclass
 class RecurrenceRange(AdditionalDataHolder, BackedModel, Parsable):
@@ -26,7 +26,7 @@ class RecurrenceRange(AdditionalDataHolder, BackedModel, Parsable):
     # The date to start applying the recurrence pattern. The first occurrence of the meeting may be this date or later, depending on the recurrence pattern of the event. Must be the same value as the start property of the recurring event. Required.
     start_date: Optional[datetime.date] = None
     # The recurrence range. The possible values are: endDate, noEnd, numbered. Required.
-    type: Optional[RecurrenceRangeType] = None
+    type: Optional[RecurrenceRange_type] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecurrenceRange:
@@ -44,9 +44,9 @@ class RecurrenceRange(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .recurrence_range_type import RecurrenceRangeType
+        from .recurrence_range_type import RecurrenceRange_type
 
-        from .recurrence_range_type import RecurrenceRangeType
+        from .recurrence_range_type import RecurrenceRange_type
 
         fields: Dict[str, Callable[[Any], None]] = {
             "endDate": lambda n : setattr(self, 'end_date', n.get_date_value()),
@@ -54,7 +54,7 @@ class RecurrenceRange(AdditionalDataHolder, BackedModel, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recurrenceTimeZone": lambda n : setattr(self, 'recurrence_time_zone', n.get_str_value()),
             "startDate": lambda n : setattr(self, 'start_date', n.get_date_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(RecurrenceRangeType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(RecurrenceRange_type)),
         }
         return fields
     

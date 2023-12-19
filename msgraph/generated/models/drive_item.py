@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .geo_coordinates import GeoCoordinates
     from .image import Image
     from .item_analytics import ItemAnalytics
+    from .item_retention_label import ItemRetentionLabel
     from .list_item import ListItem
     from .malware import Malware
     from .package import Package
@@ -45,7 +46,7 @@ class DriveItem(BaseItem):
     audio: Optional[Audio] = None
     # Bundle metadata, if the item is a bundle. Read-only.
     bundle: Optional[Bundle] = None
-    # An eTag for the content of the item. This eTag is not changed if only the metadata is changed. Note This property is not returned if the item is a folder. Read-only.
+    # An eTag for the content of the item. This eTag isn't changed if only the metadata is changed. Note This property isn't returned if the item is a folder. Read-only.
     c_tag: Optional[str] = None
     # Collection containing Item objects for the immediate children of Item. Only items representing folders have children. Read-only. Nullable.
     children: Optional[List[DriveItem]] = None
@@ -75,15 +76,17 @@ class DriveItem(BaseItem):
     permissions: Optional[List[Permission]] = None
     # Photo metadata, if the item is a photo. Read-only.
     photo: Optional[Photo] = None
-    # Provides information about the published or checked-out state of an item, in locations that support such actions. This property is not returned by default. Read-only.
+    # Provides information about the published or checked-out state of an item, in locations that support such actions. This property isn't returned by default. Read-only.
     publication: Optional[PublicationFacet] = None
     # Remote item data, if the item is shared from a drive other than the one being accessed. Read-only.
     remote_item: Optional[RemoteItem] = None
+    # Information about retention label and settings enforced on the driveItem. Read-write.
+    retention_label: Optional[ItemRetentionLabel] = None
     # If this property is non-null, it indicates that the driveItem is the top-most driveItem in the drive.
     root: Optional[Root] = None
     # Search metadata, if the item is from a search result. Read-only.
     search_result: Optional[SearchResult] = None
-    # Indicates that the item has been shared with others and provides information about the shared state of the item. Read-only.
+    # Indicates that the item was shared with others and provides information about the shared state of the item. Read-only.
     shared: Optional[Shared] = None
     # Returns identifiers useful for SharePoint REST compatibility. Read-only.
     sharepoint_ids: Optional[SharepointIds] = None
@@ -93,7 +96,7 @@ class DriveItem(BaseItem):
     special_folder: Optional[SpecialFolder] = None
     # The set of subscriptions on the item. Only supported on the root of a drive.
     subscriptions: Optional[List[Subscription]] = None
-    # Collection containing [ThumbnailSet][] objects associated with the item. For more info, see [getting thumbnails][]. Read-only. Nullable.
+    # Collection of [thumbnailSet][] objects associated with the item. For more information, see [getting thumbnails][]. Read-only. Nullable.
     thumbnails: Optional[List[ThumbnailSet]] = None
     # The list of previous versions of the item. For more info, see [getting previous versions][]. Read-only. Nullable.
     versions: Optional[List[DriveItemVersion]] = None
@@ -101,7 +104,7 @@ class DriveItem(BaseItem):
     video: Optional[Video] = None
     # WebDAV compatible URL for the item.
     web_dav_url: Optional[str] = None
-    # For files that are Excel spreadsheets, accesses the workbook API to work with the spreadsheet's contents. Nullable.
+    # For files that are Excel spreadsheets, access to the workbook API to work with the spreadsheet's contents. Nullable.
     workbook: Optional[Workbook] = None
     
     @staticmethod
@@ -131,6 +134,7 @@ class DriveItem(BaseItem):
         from .geo_coordinates import GeoCoordinates
         from .image import Image
         from .item_analytics import ItemAnalytics
+        from .item_retention_label import ItemRetentionLabel
         from .list_item import ListItem
         from .malware import Malware
         from .package import Package
@@ -160,6 +164,7 @@ class DriveItem(BaseItem):
         from .geo_coordinates import GeoCoordinates
         from .image import Image
         from .item_analytics import ItemAnalytics
+        from .item_retention_label import ItemRetentionLabel
         from .list_item import ListItem
         from .malware import Malware
         from .package import Package
@@ -199,6 +204,7 @@ class DriveItem(BaseItem):
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(Photo)),
             "publication": lambda n : setattr(self, 'publication', n.get_object_value(PublicationFacet)),
             "remoteItem": lambda n : setattr(self, 'remote_item', n.get_object_value(RemoteItem)),
+            "retentionLabel": lambda n : setattr(self, 'retention_label', n.get_object_value(ItemRetentionLabel)),
             "root": lambda n : setattr(self, 'root', n.get_object_value(Root)),
             "searchResult": lambda n : setattr(self, 'search_result', n.get_object_value(SearchResult)),
             "shared": lambda n : setattr(self, 'shared', n.get_object_value(Shared)),
@@ -245,6 +251,7 @@ class DriveItem(BaseItem):
         writer.write_object_value("photo", self.photo)
         writer.write_object_value("publication", self.publication)
         writer.write_object_value("remoteItem", self.remote_item)
+        writer.write_object_value("retentionLabel", self.retention_label)
         writer.write_object_value("root", self.root)
         writer.write_object_value("searchResult", self.search_result)
         writer.write_object_value("shared", self.shared)

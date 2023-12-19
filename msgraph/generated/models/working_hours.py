@@ -6,8 +6,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .day_of_week import DayOfWeek
     from .time_zone_base import TimeZoneBase
+    from .working_hours_days_of_week import WorkingHours_daysOfWeek
 
 @dataclass
 class WorkingHours(AdditionalDataHolder, BackedModel, Parsable):
@@ -17,7 +17,7 @@ class WorkingHours(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The days of the week on which the user works.
-    days_of_week: Optional[List[DayOfWeek]] = None
+    days_of_week: Optional[List[WorkingHours_daysOfWeek]] = None
     # The time of the day that the user stops working.
     end_time: Optional[datetime.time] = None
     # The OdataType property
@@ -43,14 +43,14 @@ class WorkingHours(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .day_of_week import DayOfWeek
         from .time_zone_base import TimeZoneBase
+        from .working_hours_days_of_week import WorkingHours_daysOfWeek
 
-        from .day_of_week import DayOfWeek
         from .time_zone_base import TimeZoneBase
+        from .working_hours_days_of_week import WorkingHours_daysOfWeek
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(DayOfWeek)),
+            "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(WorkingHours_daysOfWeek)),
             "endTime": lambda n : setattr(self, 'end_time', n.get_time_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "startTime": lambda n : setattr(self, 'start_time', n.get_time_value()),

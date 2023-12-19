@@ -7,10 +7,10 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..entity import Entity
     from .alert import Alert
-    from .alert_classification import AlertClassification
     from .alert_comment import AlertComment
-    from .alert_determination import AlertDetermination
     from .alert_severity import AlertSeverity
+    from .incident_classification import Incident_classification
+    from .incident_determination import Incident_determination
     from .incident_status import IncidentStatus
 
 from ..entity import Entity
@@ -22,7 +22,7 @@ class Incident(Entity):
     # Owner of the incident, or null if no owner is assigned. Free editable text.
     assigned_to: Optional[str] = None
     # The specification for the incident. Possible values are: unknown, falsePositive, truePositive, informationalExpectedActivity, unknownFutureValue.
-    classification: Optional[AlertClassification] = None
+    classification: Optional[Incident_classification] = None
     # Array of comments created by the Security Operations (SecOps) team when the incident is managed.
     comments: Optional[List[AlertComment]] = None
     # Time when the incident was first created.
@@ -32,7 +32,7 @@ class Incident(Entity):
     # The description property
     description: Optional[str] = None
     # Specifies the determination of the incident. Possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
-    determination: Optional[AlertDetermination] = None
+    determination: Optional[Incident_determination] = None
     # The incident name.
     display_name: Optional[str] = None
     # The URL for the incident page in the Microsoft 365 Defender portal.
@@ -72,29 +72,29 @@ class Incident(Entity):
         """
         from ..entity import Entity
         from .alert import Alert
-        from .alert_classification import AlertClassification
         from .alert_comment import AlertComment
-        from .alert_determination import AlertDetermination
         from .alert_severity import AlertSeverity
+        from .incident_classification import Incident_classification
+        from .incident_determination import Incident_determination
         from .incident_status import IncidentStatus
 
         from ..entity import Entity
         from .alert import Alert
-        from .alert_classification import AlertClassification
         from .alert_comment import AlertComment
-        from .alert_determination import AlertDetermination
         from .alert_severity import AlertSeverity
+        from .incident_classification import Incident_classification
+        from .incident_determination import Incident_determination
         from .incident_status import IncidentStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
             "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(Alert)),
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
-            "classification": lambda n : setattr(self, 'classification', n.get_enum_value(AlertClassification)),
+            "classification": lambda n : setattr(self, 'classification', n.get_enum_value(Incident_classification)),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_object_values(AlertComment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customTags": lambda n : setattr(self, 'custom_tags', n.get_collection_of_primitive_values(str)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "determination": lambda n : setattr(self, 'determination', n.get_enum_value(AlertDetermination)),
+            "determination": lambda n : setattr(self, 'determination', n.get_enum_value(Incident_determination)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "incidentWebUrl": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_str_value()),

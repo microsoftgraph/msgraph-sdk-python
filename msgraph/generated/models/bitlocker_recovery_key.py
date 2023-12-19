@@ -5,8 +5,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .bitlocker_recovery_key_volume_type import BitlockerRecoveryKey_volumeType
     from .entity import Entity
-    from .volume_type import VolumeType
 
 from .entity import Entity
 
@@ -21,7 +21,7 @@ class BitlockerRecoveryKey(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates the type of volume the BitLocker key is associated with. The possible values are: 1 (for operatingSystemVolume), 2 (for fixedDataVolume), 3 (for removableDataVolume), and 4 (for unknownFutureValue).
-    volume_type: Optional[VolumeType] = None
+    volume_type: Optional[BitlockerRecoveryKey_volumeType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BitlockerRecoveryKey:
@@ -39,17 +39,17 @@ class BitlockerRecoveryKey(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .bitlocker_recovery_key_volume_type import BitlockerRecoveryKey_volumeType
         from .entity import Entity
-        from .volume_type import VolumeType
 
+        from .bitlocker_recovery_key_volume_type import BitlockerRecoveryKey_volumeType
         from .entity import Entity
-        from .volume_type import VolumeType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
             "key": lambda n : setattr(self, 'key', n.get_str_value()),
-            "volumeType": lambda n : setattr(self, 'volume_type', n.get_enum_value(VolumeType)),
+            "volumeType": lambda n : setattr(self, 'volume_type', n.get_enum_value(BitlockerRecoveryKey_volumeType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .bit_locker_encryption_method import BitLockerEncryptionMethod
+    from .bit_locker_removable_drive_policy_encryption_method import BitLockerRemovableDrivePolicy_encryptionMethod
 
 @dataclass
 class BitLockerRemovableDrivePolicy(AdditionalDataHolder, BackedModel, Parsable):
@@ -20,7 +20,7 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, BackedModel, Parsable)
     # This policy setting determines whether BitLocker protection is required for removable data drives to be writable on a computer.
     block_cross_organization_write_access: Optional[bool] = None
     # Select the encryption method for removable  drives. Possible values are: aesCbc128, aesCbc256, xtsAes128, xtsAes256.
-    encryption_method: Optional[BitLockerEncryptionMethod] = None
+    encryption_method: Optional[BitLockerRemovableDrivePolicy_encryptionMethod] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates whether to block write access to devices configured in another organization.  If requireEncryptionForWriteAccess is false, this value does not affect.
@@ -42,13 +42,13 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, BackedModel, Parsable)
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .bit_locker_encryption_method import BitLockerEncryptionMethod
+        from .bit_locker_removable_drive_policy_encryption_method import BitLockerRemovableDrivePolicy_encryptionMethod
 
-        from .bit_locker_encryption_method import BitLockerEncryptionMethod
+        from .bit_locker_removable_drive_policy_encryption_method import BitLockerRemovableDrivePolicy_encryptionMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
             "blockCrossOrganizationWriteAccess": lambda n : setattr(self, 'block_cross_organization_write_access', n.get_bool_value()),
-            "encryptionMethod": lambda n : setattr(self, 'encryption_method', n.get_enum_value(BitLockerEncryptionMethod)),
+            "encryptionMethod": lambda n : setattr(self, 'encryption_method', n.get_enum_value(BitLockerRemovableDrivePolicy_encryptionMethod)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "requireEncryptionForWriteAccess": lambda n : setattr(self, 'require_encryption_for_write_access', n.get_bool_value()),
         }

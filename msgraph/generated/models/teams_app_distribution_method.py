@@ -1,8 +1,5 @@
 from enum import Enum
 
-class TeamsAppDistributionMethod(str, Enum):
-    Store = "store",
-    Organization = "organization",
-    Sideloaded = "sideloaded",
-    UnknownFutureValue = "unknownFutureValue",
+class TeamsApp_distributionMethod(str, Enum):
+    pass
 

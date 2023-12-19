@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .identity import Identity
-    from .initiator_type import InitiatorType
+    from .initiator_initiator_type import Initiator_initiatorType
 
 from .identity import Identity
 
@@ -14,7 +14,7 @@ class Initiator(Identity):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.initiator"
     # Type of initiator. Possible values are: user, application, system, unknownFutureValue.
-    initiator_type: Optional[InitiatorType] = None
+    initiator_type: Optional[Initiator_initiatorType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Initiator:
@@ -33,13 +33,13 @@ class Initiator(Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .identity import Identity
-        from .initiator_type import InitiatorType
+        from .initiator_initiator_type import Initiator_initiatorType
 
         from .identity import Identity
-        from .initiator_type import InitiatorType
+        from .initiator_initiator_type import Initiator_initiatorType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "initiatorType": lambda n : setattr(self, 'initiator_type', n.get_enum_value(InitiatorType)),
+            "initiatorType": lambda n : setattr(self, 'initiator_type', n.get_enum_value(Initiator_initiatorType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

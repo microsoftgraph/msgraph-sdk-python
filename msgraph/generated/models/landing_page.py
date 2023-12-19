@@ -8,8 +8,8 @@ if TYPE_CHECKING:
     from .email_identity import EmailIdentity
     from .entity import Entity
     from .landing_page_detail import LandingPageDetail
-    from .simulation_content_source import SimulationContentSource
-    from .simulation_content_status import SimulationContentStatus
+    from .landing_page_source import LandingPage_source
+    from .landing_page_status import LandingPage_status
 
 from .entity import Entity
 
@@ -34,9 +34,9 @@ class LandingPage(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The source of the content. Possible values are: unknown, global, tenant, unknownFutureValue.
-    source: Optional[SimulationContentSource] = None
+    source: Optional[LandingPage_source] = None
     # The status of the simulation. Possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
-    status: Optional[SimulationContentStatus] = None
+    status: Optional[LandingPage_status] = None
     # Supported locales.
     supported_locales: Optional[List[str]] = None
     
@@ -59,14 +59,14 @@ class LandingPage(Entity):
         from .email_identity import EmailIdentity
         from .entity import Entity
         from .landing_page_detail import LandingPageDetail
-        from .simulation_content_source import SimulationContentSource
-        from .simulation_content_status import SimulationContentStatus
+        from .landing_page_source import LandingPage_source
+        from .landing_page_status import LandingPage_status
 
         from .email_identity import EmailIdentity
         from .entity import Entity
         from .landing_page_detail import LandingPageDetail
-        from .simulation_content_source import SimulationContentSource
-        from .simulation_content_status import SimulationContentStatus
+        from .landing_page_source import LandingPage_source
+        from .landing_page_status import LandingPage_status
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(EmailIdentity)),
@@ -77,8 +77,8 @@ class LandingPage(Entity):
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(EmailIdentity)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "locale": lambda n : setattr(self, 'locale', n.get_str_value()),
-            "source": lambda n : setattr(self, 'source', n.get_enum_value(SimulationContentSource)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(SimulationContentStatus)),
+            "source": lambda n : setattr(self, 'source', n.get_enum_value(LandingPage_source)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(LandingPage_status)),
             "supportedLocales": lambda n : setattr(self, 'supported_locales', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()

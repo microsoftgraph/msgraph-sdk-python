@@ -6,8 +6,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
-    from .detection_status import DetectionStatus
     from .file_details import FileDetails
+    from .process_evidence_detection_status import ProcessEvidence_detectionStatus
     from .user_account import UserAccount
 
 from .alert_evidence import AlertEvidence
@@ -17,7 +17,7 @@ class ProcessEvidence(AlertEvidence):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.security.processEvidence"
     # The status of the detection.The possible values are: detected, blocked, prevented, unknownFutureValue.
-    detection_status: Optional[DetectionStatus] = None
+    detection_status: Optional[ProcessEvidence_detectionStatus] = None
     # Image file details.
     image_file: Optional[FileDetails] = None
     # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
@@ -54,17 +54,17 @@ class ProcessEvidence(AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
-        from .detection_status import DetectionStatus
         from .file_details import FileDetails
+        from .process_evidence_detection_status import ProcessEvidence_detectionStatus
         from .user_account import UserAccount
 
         from .alert_evidence import AlertEvidence
-        from .detection_status import DetectionStatus
         from .file_details import FileDetails
+        from .process_evidence_detection_status import ProcessEvidence_detectionStatus
         from .user_account import UserAccount
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(DetectionStatus)),
+            "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(ProcessEvidence_detectionStatus)),
             "imageFile": lambda n : setattr(self, 'image_file', n.get_object_value(FileDetails)),
             "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
             "parentProcessCreationDateTime": lambda n : setattr(self, 'parent_process_creation_date_time', n.get_datetime_value()),

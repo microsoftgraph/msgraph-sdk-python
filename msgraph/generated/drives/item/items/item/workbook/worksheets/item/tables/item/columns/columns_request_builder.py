@@ -47,10 +47,10 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookTableColumnCollectionResponse]:
         """
-        Retrieve a list of tablecolumn objects. This API is available in the following national cloud deployments.
+        Retrieve a list of tablecolumn objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumnCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/table-list-columns?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/tablecolumn-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -81,7 +81,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[WorkbookTableColumn] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookTableColumn]:
         """
-        Use this API to create a new TableColumn. This API is available in the following national cloud deployments.
+        Use this API to create a new TableColumn.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumn]
@@ -106,7 +106,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of tablecolumn objects. This API is available in the following national cloud deployments.
+        Retrieve a list of tablecolumn objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,12 +118,12 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[WorkbookTableColumn] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new TableColumn. This API is available in the following national cloud deployments.
+        Use this API to create a new TableColumn.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -172,7 +172,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ColumnsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of tablecolumn objects. This API is available in the following national cloud deployments.
+        Retrieve a list of tablecolumn objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

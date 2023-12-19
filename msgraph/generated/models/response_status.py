@@ -6,7 +6,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .response_type import ResponseType
+    from .response_status_response import ResponseStatus_response
 
 @dataclass
 class ResponseStatus(AdditionalDataHolder, BackedModel, Parsable):
@@ -18,7 +18,7 @@ class ResponseStatus(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The response type. Possible values are: none, organizer, tentativelyAccepted, accepted, declined, notResponded.To differentiate between none and notResponded:  none – from organizer's perspective. This value is used when the status of an attendee/participant is reported to the organizer of a meeting.  notResponded – from attendee's perspective. Indicates the attendee has not responded to the meeting request.  Clients can treat notResponded == none.  As an example, if attendee Alex hasn't responded to a meeting request, getting Alex' response status for that event in Alex' calendar returns notResponded. Getting Alex' response from the calendar of any other attendee or the organizer's returns none. Getting the organizer's response for the event in anybody's calendar also returns none.
-    response: Optional[ResponseType] = None
+    response: Optional[ResponseStatus_response] = None
     # The date and time when the response was returned. It uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     time: Optional[datetime.datetime] = None
     
@@ -38,13 +38,13 @@ class ResponseStatus(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .response_type import ResponseType
+        from .response_status_response import ResponseStatus_response
 
-        from .response_type import ResponseType
+        from .response_status_response import ResponseStatus_response
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "response": lambda n : setattr(self, 'response', n.get_enum_value(ResponseType)),
+            "response": lambda n : setattr(self, 'response', n.get_enum_value(ResponseStatus_response)),
             "time": lambda n : setattr(self, 'time', n.get_datetime_value()),
         }
         return fields

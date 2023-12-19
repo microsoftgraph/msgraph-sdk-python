@@ -6,8 +6,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .alert_feedback import AlertFeedback
-    from .alert_status import AlertStatus
+    from .alert_history_state_feedback import AlertHistoryState_feedback
+    from .alert_history_state_status import AlertHistoryState_status
 
 @dataclass
 class AlertHistoryState(AdditionalDataHolder, BackedModel, Parsable):
@@ -23,11 +23,11 @@ class AlertHistoryState(AdditionalDataHolder, BackedModel, Parsable):
     # The comments property
     comments: Optional[List[str]] = None
     # The feedback property
-    feedback: Optional[AlertFeedback] = None
+    feedback: Optional[AlertHistoryState_feedback] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The status property
-    status: Optional[AlertStatus] = None
+    status: Optional[AlertHistoryState_status] = None
     # The updatedDateTime property
     updated_date_time: Optional[datetime.datetime] = None
     # The user property
@@ -49,19 +49,19 @@ class AlertHistoryState(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .alert_feedback import AlertFeedback
-        from .alert_status import AlertStatus
+        from .alert_history_state_feedback import AlertHistoryState_feedback
+        from .alert_history_state_status import AlertHistoryState_status
 
-        from .alert_feedback import AlertFeedback
-        from .alert_status import AlertStatus
+        from .alert_history_state_feedback import AlertHistoryState_feedback
+        from .alert_history_state_status import AlertHistoryState_status
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_primitive_values(str)),
-            "feedback": lambda n : setattr(self, 'feedback', n.get_enum_value(AlertFeedback)),
+            "feedback": lambda n : setattr(self, 'feedback', n.get_enum_value(AlertHistoryState_feedback)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(AlertStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(AlertHistoryState_status)),
             "updatedDateTime": lambda n : setattr(self, 'updated_date_time', n.get_datetime_value()),
             "user": lambda n : setattr(self, 'user', n.get_str_value()),
         }

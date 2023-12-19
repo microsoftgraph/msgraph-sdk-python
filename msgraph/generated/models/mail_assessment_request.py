@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .mail_destination_routing_reason import MailDestinationRoutingReason
+    from .mail_assessment_request_destination_routing_reason import MailAssessmentRequest_destinationRoutingReason
     from .threat_assessment_request import ThreatAssessmentRequest
 
 from .threat_assessment_request import ThreatAssessmentRequest
@@ -14,7 +14,7 @@ class MailAssessmentRequest(ThreatAssessmentRequest):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.mailAssessmentRequest"
     # The reason for mail routed to its destination. Possible values are: none, mailFlowRule, safeSender, blockedSender, advancedSpamFiltering, domainAllowList, domainBlockList, notInAddressBook, firstTimeSender, autoPurgeToInbox, autoPurgeToJunk, autoPurgeToDeleted, outbound, notJunk, junk.
-    destination_routing_reason: Optional[MailDestinationRoutingReason] = None
+    destination_routing_reason: Optional[MailAssessmentRequest_destinationRoutingReason] = None
     # The resource URI of the mail message for assessment.
     message_uri: Optional[str] = None
     # The mail recipient whose policies are used to assess the mail.
@@ -36,14 +36,14 @@ class MailAssessmentRequest(ThreatAssessmentRequest):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .mail_destination_routing_reason import MailDestinationRoutingReason
+        from .mail_assessment_request_destination_routing_reason import MailAssessmentRequest_destinationRoutingReason
         from .threat_assessment_request import ThreatAssessmentRequest
 
-        from .mail_destination_routing_reason import MailDestinationRoutingReason
+        from .mail_assessment_request_destination_routing_reason import MailAssessmentRequest_destinationRoutingReason
         from .threat_assessment_request import ThreatAssessmentRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "destinationRoutingReason": lambda n : setattr(self, 'destination_routing_reason', n.get_enum_value(MailDestinationRoutingReason)),
+            "destinationRoutingReason": lambda n : setattr(self, 'destination_routing_reason', n.get_enum_value(MailAssessmentRequest_destinationRoutingReason)),
             "messageUri": lambda n : setattr(self, 'message_uri', n.get_str_value()),
             "recipientEmail": lambda n : setattr(self, 'recipient_email', n.get_str_value()),
         }

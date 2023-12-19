@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from .enablement import Enablement
     from .prerelease_features import PrereleaseFeatures
     from .windows_delivery_optimization_mode import WindowsDeliveryOptimizationMode
-    from .windows_update_for_business_update_weeks import WindowsUpdateForBusinessUpdateWeeks
+    from .windows_update_for_business_configuration_update_weeks import WindowsUpdateForBusinessConfiguration_updateWeeks
     from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
     from .windows_update_notification_display_option import WindowsUpdateNotificationDisplayOption
     from .windows_update_type import WindowsUpdateType
@@ -92,7 +92,7 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration):
     # Windows Update Notification Display Options
     update_notification_level: Optional[WindowsUpdateNotificationDisplayOption] = None
     # Schedule the update installation on the weeks of the month. Possible values are: UserDefined, FirstWeek, SecondWeek, ThirdWeek, FourthWeek, EveryWeek. Returned by default. Query parameters are not supported. Possible values are: userDefined, firstWeek, secondWeek, thirdWeek, fourthWeek, everyWeek, unknownFutureValue.
-    update_weeks: Optional[WindowsUpdateForBusinessUpdateWeeks] = None
+    update_weeks: Optional[WindowsUpdateForBusinessConfiguration_updateWeeks] = None
     # Possible values of a property
     user_pause_access: Optional[Enablement] = None
     # Possible values of a property
@@ -120,7 +120,7 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration):
         from .enablement import Enablement
         from .prerelease_features import PrereleaseFeatures
         from .windows_delivery_optimization_mode import WindowsDeliveryOptimizationMode
-        from .windows_update_for_business_update_weeks import WindowsUpdateForBusinessUpdateWeeks
+        from .windows_update_for_business_configuration_update_weeks import WindowsUpdateForBusinessConfiguration_updateWeeks
         from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
         from .windows_update_notification_display_option import WindowsUpdateNotificationDisplayOption
         from .windows_update_type import WindowsUpdateType
@@ -131,7 +131,7 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration):
         from .enablement import Enablement
         from .prerelease_features import PrereleaseFeatures
         from .windows_delivery_optimization_mode import WindowsDeliveryOptimizationMode
-        from .windows_update_for_business_update_weeks import WindowsUpdateForBusinessUpdateWeeks
+        from .windows_update_for_business_configuration_update_weeks import WindowsUpdateForBusinessConfiguration_updateWeeks
         from .windows_update_install_schedule_type import WindowsUpdateInstallScheduleType
         from .windows_update_notification_display_option import WindowsUpdateNotificationDisplayOption
         from .windows_update_type import WindowsUpdateType
@@ -170,7 +170,7 @@ class WindowsUpdateForBusinessConfiguration(DeviceConfiguration):
             "scheduleRestartWarningInHours": lambda n : setattr(self, 'schedule_restart_warning_in_hours', n.get_int_value()),
             "skipChecksBeforeRestart": lambda n : setattr(self, 'skip_checks_before_restart', n.get_bool_value()),
             "updateNotificationLevel": lambda n : setattr(self, 'update_notification_level', n.get_enum_value(WindowsUpdateNotificationDisplayOption)),
-            "updateWeeks": lambda n : setattr(self, 'update_weeks', n.get_collection_of_enum_values(WindowsUpdateForBusinessUpdateWeeks)),
+            "updateWeeks": lambda n : setattr(self, 'update_weeks', n.get_enum_value(WindowsUpdateForBusinessConfiguration_updateWeeks)),
             "userPauseAccess": lambda n : setattr(self, 'user_pause_access', n.get_enum_value(Enablement)),
             "userWindowsUpdateScanAccess": lambda n : setattr(self, 'user_windows_update_scan_access', n.get_enum_value(Enablement)),
         }

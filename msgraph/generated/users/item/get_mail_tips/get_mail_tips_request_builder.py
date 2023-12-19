@@ -29,7 +29,7 @@ class GetMailTipsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[GetMailTipsPostRequestBody] = None, request_configuration: Optional[GetMailTipsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetMailTipsPostResponse]:
         """
-        Get the MailTips of one or more recipients as available to the signed-in user. Note that by making a POST call to the getMailTips action, you can request specific types of MailTips tobe returned for more than one recipient at one time. The requested MailTips are returned in a mailTips collection. This API is available in the following national cloud deployments.
+        Get the MailTips of one or more recipients as available to the signed-in user. Note that by making a POST call to the getMailTips action, you can request specific types of MailTips tobe returned for more than one recipient at one time. The requested MailTips are returned in a mailTips collection.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetMailTipsPostResponse]
@@ -54,7 +54,7 @@ class GetMailTipsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[GetMailTipsPostRequestBody] = None, request_configuration: Optional[GetMailTipsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the MailTips of one or more recipients as available to the signed-in user. Note that by making a POST call to the getMailTips action, you can request specific types of MailTips tobe returned for more than one recipient at one time. The requested MailTips are returned in a mailTips collection. This API is available in the following national cloud deployments.
+        Get the MailTips of one or more recipients as available to the signed-in user. Note that by making a POST call to the getMailTips action, you can request specific types of MailTips tobe returned for more than one recipient at one time. The requested MailTips are returned in a mailTips collection.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -68,7 +68,7 @@ class GetMailTipsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

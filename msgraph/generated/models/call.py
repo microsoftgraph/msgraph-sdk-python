@@ -5,11 +5,12 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .audio_routing_group import AudioRoutingGroup
-    from .call_direction import CallDirection
+    from .call_direction import Call_direction
     from .call_media_state import CallMediaState
     from .call_options import CallOptions
+    from .call_requested_modalities import Call_requestedModalities
     from .call_route import CallRoute
-    from .call_state import CallState
+    from .call_state import Call_state
     from .call_transcription_info import CallTranscriptionInfo
     from .chat_info import ChatInfo
     from .comms_operation import CommsOperation
@@ -19,7 +20,6 @@ if TYPE_CHECKING:
     from .invitation_participant_info import InvitationParticipantInfo
     from .media_config import MediaConfig
     from .meeting_info import MeetingInfo
-    from .modality import Modality
     from .participant import Participant
     from .participant_info import ParticipantInfo
     from .result_info import ResultInfo
@@ -44,7 +44,7 @@ class Call(Entity):
     # The contentSharingSessions property
     content_sharing_sessions: Optional[List[ContentSharingSession]] = None
     # The direction of the call. The possible values are incoming or outgoing. Read-only.
-    direction: Optional[CallDirection] = None
+    direction: Optional[Call_direction] = None
     # Call context associated with an incoming call.
     incoming_context: Optional[IncomingContext] = None
     # The media configuration. Required.
@@ -62,13 +62,13 @@ class Call(Entity):
     # The participants property
     participants: Optional[List[Participant]] = None
     # The list of requested modalities. Possible values are: unknown, audio, video, videoBasedScreenSharing, data.
-    requested_modalities: Optional[List[Modality]] = None
+    requested_modalities: Optional[List[Call_requestedModalities]] = None
     # The result information. For example, the result can hold termination reason. Read-only.
     result_info: Optional[ResultInfo] = None
     # The originator of the call.
     source: Optional[ParticipantInfo] = None
     # The call state. Possible values are: incoming, establishing, ringing, established, hold, transferring, transferAccepted, redirecting, terminating, terminated. Read-only.
-    state: Optional[CallState] = None
+    state: Optional[Call_state] = None
     # The subject of the conversation.
     subject: Optional[str] = None
     # The targets of the call. Required information for creating peer to peer call.
@@ -97,11 +97,12 @@ class Call(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .audio_routing_group import AudioRoutingGroup
-        from .call_direction import CallDirection
+        from .call_direction import Call_direction
         from .call_media_state import CallMediaState
         from .call_options import CallOptions
+        from .call_requested_modalities import Call_requestedModalities
         from .call_route import CallRoute
-        from .call_state import CallState
+        from .call_state import Call_state
         from .call_transcription_info import CallTranscriptionInfo
         from .chat_info import ChatInfo
         from .comms_operation import CommsOperation
@@ -111,18 +112,18 @@ class Call(Entity):
         from .invitation_participant_info import InvitationParticipantInfo
         from .media_config import MediaConfig
         from .meeting_info import MeetingInfo
-        from .modality import Modality
         from .participant import Participant
         from .participant_info import ParticipantInfo
         from .result_info import ResultInfo
         from .tone_info import ToneInfo
 
         from .audio_routing_group import AudioRoutingGroup
-        from .call_direction import CallDirection
+        from .call_direction import Call_direction
         from .call_media_state import CallMediaState
         from .call_options import CallOptions
+        from .call_requested_modalities import Call_requestedModalities
         from .call_route import CallRoute
-        from .call_state import CallState
+        from .call_state import Call_state
         from .call_transcription_info import CallTranscriptionInfo
         from .chat_info import ChatInfo
         from .comms_operation import CommsOperation
@@ -132,7 +133,6 @@ class Call(Entity):
         from .invitation_participant_info import InvitationParticipantInfo
         from .media_config import MediaConfig
         from .meeting_info import MeetingInfo
-        from .modality import Modality
         from .participant import Participant
         from .participant_info import ParticipantInfo
         from .result_info import ResultInfo
@@ -146,7 +146,7 @@ class Call(Entity):
             "callbackUri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
             "chatInfo": lambda n : setattr(self, 'chat_info', n.get_object_value(ChatInfo)),
             "contentSharingSessions": lambda n : setattr(self, 'content_sharing_sessions', n.get_collection_of_object_values(ContentSharingSession)),
-            "direction": lambda n : setattr(self, 'direction', n.get_enum_value(CallDirection)),
+            "direction": lambda n : setattr(self, 'direction', n.get_enum_value(Call_direction)),
             "incomingContext": lambda n : setattr(self, 'incoming_context', n.get_object_value(IncomingContext)),
             "mediaConfig": lambda n : setattr(self, 'media_config', n.get_object_value(MediaConfig)),
             "mediaState": lambda n : setattr(self, 'media_state', n.get_object_value(CallMediaState)),
@@ -154,10 +154,10 @@ class Call(Entity):
             "myParticipantId": lambda n : setattr(self, 'my_participant_id', n.get_str_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(CommsOperation)),
             "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(Participant)),
-            "requestedModalities": lambda n : setattr(self, 'requested_modalities', n.get_collection_of_enum_values(Modality)),
+            "requestedModalities": lambda n : setattr(self, 'requested_modalities', n.get_collection_of_enum_values(Call_requestedModalities)),
             "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(ResultInfo)),
             "source": lambda n : setattr(self, 'source', n.get_object_value(ParticipantInfo)),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(CallState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(Call_state)),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
             "targets": lambda n : setattr(self, 'targets', n.get_collection_of_object_values(InvitationParticipantInfo)),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),

@@ -6,11 +6,11 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .date_time_time_zone import DateTimeTimeZone
     from .event import Event
+    from .event_message_meeting_message_type import EventMessage_meetingMessageType
     from .event_message_request import EventMessageRequest
     from .event_message_response import EventMessageResponse
-    from .event_type import EventType
+    from .event_message_type import EventMessage_type
     from .location import Location
-    from .meeting_message_type import MeetingMessageType
     from .message import Message
     from .patterned_recurrence import PatternedRecurrence
 
@@ -33,13 +33,13 @@ class EventMessage(Message):
     # The location property
     location: Optional[Location] = None
     # The meetingMessageType property
-    meeting_message_type: Optional[MeetingMessageType] = None
+    meeting_message_type: Optional[EventMessage_meetingMessageType] = None
     # The recurrence property
     recurrence: Optional[PatternedRecurrence] = None
     # The startDateTime property
     start_date_time: Optional[DateTimeTimeZone] = None
     # The type property
-    type: Optional[EventType] = None
+    type: Optional[EventMessage_type] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EventMessage:
@@ -71,21 +71,21 @@ class EventMessage(Message):
         """
         from .date_time_time_zone import DateTimeTimeZone
         from .event import Event
+        from .event_message_meeting_message_type import EventMessage_meetingMessageType
         from .event_message_request import EventMessageRequest
         from .event_message_response import EventMessageResponse
-        from .event_type import EventType
+        from .event_message_type import EventMessage_type
         from .location import Location
-        from .meeting_message_type import MeetingMessageType
         from .message import Message
         from .patterned_recurrence import PatternedRecurrence
 
         from .date_time_time_zone import DateTimeTimeZone
         from .event import Event
+        from .event_message_meeting_message_type import EventMessage_meetingMessageType
         from .event_message_request import EventMessageRequest
         from .event_message_response import EventMessageResponse
-        from .event_type import EventType
+        from .event_message_type import EventMessage_type
         from .location import Location
-        from .meeting_message_type import MeetingMessageType
         from .message import Message
         from .patterned_recurrence import PatternedRecurrence
 
@@ -96,10 +96,10 @@ class EventMessage(Message):
             "isDelegated": lambda n : setattr(self, 'is_delegated', n.get_bool_value()),
             "isOutOfDate": lambda n : setattr(self, 'is_out_of_date', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(Location)),
-            "meetingMessageType": lambda n : setattr(self, 'meeting_message_type', n.get_enum_value(MeetingMessageType)),
+            "meetingMessageType": lambda n : setattr(self, 'meeting_message_type', n.get_enum_value(EventMessage_meetingMessageType)),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(PatternedRecurrence)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(EventType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(EventMessage_type)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

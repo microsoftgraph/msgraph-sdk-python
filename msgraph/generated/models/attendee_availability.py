@@ -5,8 +5,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .attendee_availability_availability import AttendeeAvailability_availability
     from .attendee_base import AttendeeBase
-    from .free_busy_status import FreeBusyStatus
 
 @dataclass
 class AttendeeAvailability(AdditionalDataHolder, BackedModel, Parsable):
@@ -18,7 +18,7 @@ class AttendeeAvailability(AdditionalDataHolder, BackedModel, Parsable):
     # The email address and type of attendee - whether it's a person or a resource, and whether required or optional if it's a person.
     attendee: Optional[AttendeeBase] = None
     # The availability status of the attendee. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
-    availability: Optional[FreeBusyStatus] = None
+    availability: Optional[AttendeeAvailability_availability] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -38,15 +38,15 @@ class AttendeeAvailability(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .attendee_availability_availability import AttendeeAvailability_availability
         from .attendee_base import AttendeeBase
-        from .free_busy_status import FreeBusyStatus
 
+        from .attendee_availability_availability import AttendeeAvailability_availability
         from .attendee_base import AttendeeBase
-        from .free_busy_status import FreeBusyStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
             "attendee": lambda n : setattr(self, 'attendee', n.get_object_value(AttendeeBase)),
-            "availability": lambda n : setattr(self, 'availability', n.get_enum_value(FreeBusyStatus)),
+            "availability": lambda n : setattr(self, 'availability', n.get_enum_value(AttendeeAvailability_availability)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

@@ -9,20 +9,20 @@ if TYPE_CHECKING:
     from .attendee import Attendee
     from .calendar import Calendar
     from .date_time_time_zone import DateTimeTimeZone
-    from .event_type import EventType
+    from .event_importance import Event_importance
+    from .event_online_meeting_provider import Event_onlineMeetingProvider
+    from .event_sensitivity import Event_sensitivity
+    from .event_show_as import Event_showAs
+    from .event_type import Event_type
     from .extension import Extension
-    from .free_busy_status import FreeBusyStatus
-    from .importance import Importance
     from .item_body import ItemBody
     from .location import Location
     from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
     from .online_meeting_info import OnlineMeetingInfo
-    from .online_meeting_provider_type import OnlineMeetingProviderType
     from .outlook_item import OutlookItem
     from .patterned_recurrence import PatternedRecurrence
     from .recipient import Recipient
     from .response_status import ResponseStatus
-    from .sensitivity import Sensitivity
     from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
 from .outlook_item import OutlookItem
@@ -54,7 +54,7 @@ class Event(OutlookItem):
     # A unique identifier for an event across calendars. This ID is different for each occurrence in a recurring series. Read-only.
     i_cal_u_id: Optional[str] = None
     # The importance property
-    importance: Optional[Importance] = None
+    importance: Optional[Event_importance] = None
     # The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.
     instances: Optional[List[Event]] = None
     # The isAllDay property
@@ -78,7 +78,7 @@ class Event(OutlookItem):
     # The onlineMeeting property
     online_meeting: Optional[OnlineMeetingInfo] = None
     # The onlineMeetingProvider property
-    online_meeting_provider: Optional[OnlineMeetingProviderType] = None
+    online_meeting_provider: Optional[Event_onlineMeetingProvider] = None
     # The onlineMeetingUrl property
     online_meeting_url: Optional[str] = None
     # The organizer property
@@ -98,11 +98,11 @@ class Event(OutlookItem):
     # The responseStatus property
     response_status: Optional[ResponseStatus] = None
     # The sensitivity property
-    sensitivity: Optional[Sensitivity] = None
+    sensitivity: Optional[Event_sensitivity] = None
     # The seriesMasterId property
     series_master_id: Optional[str] = None
     # The showAs property
-    show_as: Optional[FreeBusyStatus] = None
+    show_as: Optional[Event_showAs] = None
     # The collection of single-value extended properties defined for the event. Read-only. Nullable.
     single_value_extended_properties: Optional[List[SingleValueLegacyExtendedProperty]] = None
     # The start property
@@ -112,7 +112,7 @@ class Event(OutlookItem):
     # The transactionId property
     transaction_id: Optional[str] = None
     # The type property
-    type: Optional[EventType] = None
+    type: Optional[Event_type] = None
     # The webLink property
     web_link: Optional[str] = None
     
@@ -136,40 +136,40 @@ class Event(OutlookItem):
         from .attendee import Attendee
         from .calendar import Calendar
         from .date_time_time_zone import DateTimeTimeZone
-        from .event_type import EventType
+        from .event_importance import Event_importance
+        from .event_online_meeting_provider import Event_onlineMeetingProvider
+        from .event_sensitivity import Event_sensitivity
+        from .event_show_as import Event_showAs
+        from .event_type import Event_type
         from .extension import Extension
-        from .free_busy_status import FreeBusyStatus
-        from .importance import Importance
         from .item_body import ItemBody
         from .location import Location
         from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
         from .online_meeting_info import OnlineMeetingInfo
-        from .online_meeting_provider_type import OnlineMeetingProviderType
         from .outlook_item import OutlookItem
         from .patterned_recurrence import PatternedRecurrence
         from .recipient import Recipient
         from .response_status import ResponseStatus
-        from .sensitivity import Sensitivity
         from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
         from .attachment import Attachment
         from .attendee import Attendee
         from .calendar import Calendar
         from .date_time_time_zone import DateTimeTimeZone
-        from .event_type import EventType
+        from .event_importance import Event_importance
+        from .event_online_meeting_provider import Event_onlineMeetingProvider
+        from .event_sensitivity import Event_sensitivity
+        from .event_show_as import Event_showAs
+        from .event_type import Event_type
         from .extension import Extension
-        from .free_busy_status import FreeBusyStatus
-        from .importance import Importance
         from .item_body import ItemBody
         from .location import Location
         from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
         from .online_meeting_info import OnlineMeetingInfo
-        from .online_meeting_provider_type import OnlineMeetingProviderType
         from .outlook_item import OutlookItem
         from .patterned_recurrence import PatternedRecurrence
         from .recipient import Recipient
         from .response_status import ResponseStatus
-        from .sensitivity import Sensitivity
         from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -184,7 +184,7 @@ class Event(OutlookItem):
             "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "hideAttendees": lambda n : setattr(self, 'hide_attendees', n.get_bool_value()),
             "iCalUId": lambda n : setattr(self, 'i_cal_u_id', n.get_str_value()),
-            "importance": lambda n : setattr(self, 'importance', n.get_enum_value(Importance)),
+            "importance": lambda n : setattr(self, 'importance', n.get_enum_value(Event_importance)),
             "instances": lambda n : setattr(self, 'instances', n.get_collection_of_object_values(Event)),
             "isAllDay": lambda n : setattr(self, 'is_all_day', n.get_bool_value()),
             "isCancelled": lambda n : setattr(self, 'is_cancelled', n.get_bool_value()),
@@ -196,7 +196,7 @@ class Event(OutlookItem):
             "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(Location)),
             "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
             "onlineMeeting": lambda n : setattr(self, 'online_meeting', n.get_object_value(OnlineMeetingInfo)),
-            "onlineMeetingProvider": lambda n : setattr(self, 'online_meeting_provider', n.get_enum_value(OnlineMeetingProviderType)),
+            "onlineMeetingProvider": lambda n : setattr(self, 'online_meeting_provider', n.get_enum_value(Event_onlineMeetingProvider)),
             "onlineMeetingUrl": lambda n : setattr(self, 'online_meeting_url', n.get_str_value()),
             "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(Recipient)),
             "originalEndTimeZone": lambda n : setattr(self, 'original_end_time_zone', n.get_str_value()),
@@ -206,14 +206,14 @@ class Event(OutlookItem):
             "reminderMinutesBeforeStart": lambda n : setattr(self, 'reminder_minutes_before_start', n.get_int_value()),
             "responseRequested": lambda n : setattr(self, 'response_requested', n.get_bool_value()),
             "responseStatus": lambda n : setattr(self, 'response_status', n.get_object_value(ResponseStatus)),
-            "sensitivity": lambda n : setattr(self, 'sensitivity', n.get_enum_value(Sensitivity)),
+            "sensitivity": lambda n : setattr(self, 'sensitivity', n.get_enum_value(Event_sensitivity)),
             "seriesMasterId": lambda n : setattr(self, 'series_master_id', n.get_str_value()),
-            "showAs": lambda n : setattr(self, 'show_as', n.get_enum_value(FreeBusyStatus)),
+            "showAs": lambda n : setattr(self, 'show_as', n.get_enum_value(Event_showAs)),
             "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(SingleValueLegacyExtendedProperty)),
             "start": lambda n : setattr(self, 'start', n.get_object_value(DateTimeTimeZone)),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
             "transactionId": lambda n : setattr(self, 'transaction_id', n.get_str_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(EventType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(Event_type)),
             "webLink": lambda n : setattr(self, 'web_link', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

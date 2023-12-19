@@ -7,17 +7,17 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .authored_note import AuthoredNote
     from .data_subject import DataSubject
-    from .data_subject_type import DataSubjectType
     from .entity import Entity
     from .identity import Identity
     from .identity_set import IdentitySet
+    from .subject_rights_request_data_subject_type import SubjectRightsRequest_dataSubjectType
     from .subject_rights_request_detail import SubjectRightsRequestDetail
     from .subject_rights_request_history import SubjectRightsRequestHistory
     from .subject_rights_request_mailbox_location import SubjectRightsRequestMailboxLocation
     from .subject_rights_request_site_location import SubjectRightsRequestSiteLocation
     from .subject_rights_request_stage_detail import SubjectRightsRequestStageDetail
-    from .subject_rights_request_status import SubjectRightsRequestStatus
-    from .subject_rights_request_type import SubjectRightsRequestType
+    from .subject_rights_request_status import SubjectRightsRequest_status
+    from .subject_rights_request_type import SubjectRightsRequest_type
     from .team import Team
     from .user import User
 
@@ -42,7 +42,7 @@ class SubjectRightsRequest(Entity):
     # Information about the data subject.
     data_subject: Optional[DataSubject] = None
     # The type of the data subject. Possible values are: customer, currentEmployee, formerEmployee, prospectiveEmployee, student, teacher, faculty, other, unknownFutureValue.
-    data_subject_type: Optional[DataSubjectType] = None
+    data_subject_type: Optional[SubjectRightsRequest_dataSubjectType] = None
     # Description for the request.
     description: Optional[str] = None
     # The name of the request.
@@ -78,11 +78,11 @@ class SubjectRightsRequest(Entity):
     # Information about the different stages for the request.
     stages: Optional[List[SubjectRightsRequestStageDetail]] = None
     # The status of the request. Possible values are: active, closed, unknownFutureValue.
-    status: Optional[SubjectRightsRequestStatus] = None
+    status: Optional[SubjectRightsRequest_status] = None
     # Information about the Microsoft Teams team that was created for the request.
     team: Optional[Team] = None
     # The type of the request. Possible values are: export, delete, access, tagForAction, unknownFutureValue.
-    type: Optional[SubjectRightsRequestType] = None
+    type: Optional[SubjectRightsRequest_type] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SubjectRightsRequest:
@@ -102,33 +102,33 @@ class SubjectRightsRequest(Entity):
         """
         from .authored_note import AuthoredNote
         from .data_subject import DataSubject
-        from .data_subject_type import DataSubjectType
         from .entity import Entity
         from .identity import Identity
         from .identity_set import IdentitySet
+        from .subject_rights_request_data_subject_type import SubjectRightsRequest_dataSubjectType
         from .subject_rights_request_detail import SubjectRightsRequestDetail
         from .subject_rights_request_history import SubjectRightsRequestHistory
         from .subject_rights_request_mailbox_location import SubjectRightsRequestMailboxLocation
         from .subject_rights_request_site_location import SubjectRightsRequestSiteLocation
         from .subject_rights_request_stage_detail import SubjectRightsRequestStageDetail
-        from .subject_rights_request_status import SubjectRightsRequestStatus
-        from .subject_rights_request_type import SubjectRightsRequestType
+        from .subject_rights_request_status import SubjectRightsRequest_status
+        from .subject_rights_request_type import SubjectRightsRequest_type
         from .team import Team
         from .user import User
 
         from .authored_note import AuthoredNote
         from .data_subject import DataSubject
-        from .data_subject_type import DataSubjectType
         from .entity import Entity
         from .identity import Identity
         from .identity_set import IdentitySet
+        from .subject_rights_request_data_subject_type import SubjectRightsRequest_dataSubjectType
         from .subject_rights_request_detail import SubjectRightsRequestDetail
         from .subject_rights_request_history import SubjectRightsRequestHistory
         from .subject_rights_request_mailbox_location import SubjectRightsRequestMailboxLocation
         from .subject_rights_request_site_location import SubjectRightsRequestSiteLocation
         from .subject_rights_request_stage_detail import SubjectRightsRequestStageDetail
-        from .subject_rights_request_status import SubjectRightsRequestStatus
-        from .subject_rights_request_type import SubjectRightsRequestType
+        from .subject_rights_request_status import SubjectRightsRequest_status
+        from .subject_rights_request_type import SubjectRightsRequest_type
         from .team import Team
         from .user import User
 
@@ -141,7 +141,7 @@ class SubjectRightsRequest(Entity):
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "dataSubject": lambda n : setattr(self, 'data_subject', n.get_object_value(DataSubject)),
-            "dataSubjectType": lambda n : setattr(self, 'data_subject_type', n.get_enum_value(DataSubjectType)),
+            "dataSubjectType": lambda n : setattr(self, 'data_subject_type', n.get_enum_value(SubjectRightsRequest_dataSubjectType)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
@@ -158,9 +158,9 @@ class SubjectRightsRequest(Entity):
             "regulations": lambda n : setattr(self, 'regulations', n.get_collection_of_primitive_values(str)),
             "siteLocations": lambda n : setattr(self, 'site_locations', n.get_object_value(SubjectRightsRequestSiteLocation)),
             "stages": lambda n : setattr(self, 'stages', n.get_collection_of_object_values(SubjectRightsRequestStageDetail)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(SubjectRightsRequestStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(SubjectRightsRequest_status)),
             "team": lambda n : setattr(self, 'team', n.get_object_value(Team)),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(SubjectRightsRequestType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(SubjectRightsRequest_type)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

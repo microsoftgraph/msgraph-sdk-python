@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .account_target_content_type import AccountTargetContentType
+    from .account_target_content_type import AccountTargetContent_type
     from .address_book_account_target_content import AddressBookAccountTargetContent
     from .include_all_account_target_content import IncludeAllAccountTargetContent
 
@@ -19,7 +19,7 @@ class AccountTargetContent(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of account target content. Possible values are: unknown, includeAll, addressBook, unknownFutureValue.
-    type: Optional[AccountTargetContentType] = None
+    type: Optional[AccountTargetContent_type] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccountTargetContent:
@@ -49,17 +49,17 @@ class AccountTargetContent(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .account_target_content_type import AccountTargetContentType
+        from .account_target_content_type import AccountTargetContent_type
         from .address_book_account_target_content import AddressBookAccountTargetContent
         from .include_all_account_target_content import IncludeAllAccountTargetContent
 
-        from .account_target_content_type import AccountTargetContentType
+        from .account_target_content_type import AccountTargetContent_type
         from .address_book_account_target_content import AddressBookAccountTargetContent
         from .include_all_account_target_content import IncludeAllAccountTargetContent
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(AccountTargetContentType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(AccountTargetContent_type)),
         }
         return fields
     

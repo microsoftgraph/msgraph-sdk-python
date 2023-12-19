@@ -6,8 +6,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attendee_availability import AttendeeAvailability
-    from .free_busy_status import FreeBusyStatus
     from .location import Location
+    from .meeting_time_suggestion_organizer_availability import MeetingTimeSuggestion_organizerAvailability
     from .time_slot import TimeSlot
 
 @dataclass
@@ -30,7 +30,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, BackedModel, Parsable):
     # Order of meeting time suggestions sorted by their computed confidence value from high to low, then by chronology if there are suggestions with the same confidence.
     order: Optional[int] = None
     # Availability of the meeting organizer for this meeting suggestion. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
-    organizer_availability: Optional[FreeBusyStatus] = None
+    organizer_availability: Optional[MeetingTimeSuggestion_organizerAvailability] = None
     # Reason for suggesting the meeting time.
     suggestion_reason: Optional[str] = None
     
@@ -51,13 +51,13 @@ class MeetingTimeSuggestion(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .attendee_availability import AttendeeAvailability
-        from .free_busy_status import FreeBusyStatus
         from .location import Location
+        from .meeting_time_suggestion_organizer_availability import MeetingTimeSuggestion_organizerAvailability
         from .time_slot import TimeSlot
 
         from .attendee_availability import AttendeeAvailability
-        from .free_busy_status import FreeBusyStatus
         from .location import Location
+        from .meeting_time_suggestion_organizer_availability import MeetingTimeSuggestion_organizerAvailability
         from .time_slot import TimeSlot
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -67,7 +67,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, BackedModel, Parsable):
             "meetingTimeSlot": lambda n : setattr(self, 'meeting_time_slot', n.get_object_value(TimeSlot)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "order": lambda n : setattr(self, 'order', n.get_int_value()),
-            "organizerAvailability": lambda n : setattr(self, 'organizer_availability', n.get_enum_value(FreeBusyStatus)),
+            "organizerAvailability": lambda n : setattr(self, 'organizer_availability', n.get_enum_value(MeetingTimeSuggestion_organizerAvailability)),
             "suggestionReason": lambda n : setattr(self, 'suggestion_reason', n.get_str_value()),
         }
         return fields

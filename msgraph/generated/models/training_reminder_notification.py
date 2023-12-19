@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .base_end_user_notification import BaseEndUserNotification
-    from .notification_delivery_frequency import NotificationDeliveryFrequency
+    from .training_reminder_notification_delivery_frequency import TrainingReminderNotification_deliveryFrequency
 
 from .base_end_user_notification import BaseEndUserNotification
 
@@ -14,7 +14,7 @@ class TrainingReminderNotification(BaseEndUserNotification):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.trainingReminderNotification"
     # Configurable frequency for the reminder email introduced during simulation creation. Possible values are: unknown, weekly, biWeekly, unknownFutureValue.
-    delivery_frequency: Optional[NotificationDeliveryFrequency] = None
+    delivery_frequency: Optional[TrainingReminderNotification_deliveryFrequency] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TrainingReminderNotification:
@@ -33,13 +33,13 @@ class TrainingReminderNotification(BaseEndUserNotification):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .base_end_user_notification import BaseEndUserNotification
-        from .notification_delivery_frequency import NotificationDeliveryFrequency
+        from .training_reminder_notification_delivery_frequency import TrainingReminderNotification_deliveryFrequency
 
         from .base_end_user_notification import BaseEndUserNotification
-        from .notification_delivery_frequency import NotificationDeliveryFrequency
+        from .training_reminder_notification_delivery_frequency import TrainingReminderNotification_deliveryFrequency
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deliveryFrequency": lambda n : setattr(self, 'delivery_frequency', n.get_enum_value(NotificationDeliveryFrequency)),
+            "deliveryFrequency": lambda n : setattr(self, 'delivery_frequency', n.get_enum_value(TrainingReminderNotification_deliveryFrequency)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

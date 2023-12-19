@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
-    from .identity_type import IdentityType
+    from .identity_type import Identity_type
 
 from ..entity import Entity
 
@@ -14,7 +14,7 @@ class Identity(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of identity. Possible values are: user or group for Microsoft Entra identities and externalgroup for groups in an external system.
-    type: Optional[IdentityType] = None
+    type: Optional[Identity_type] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Identity:
@@ -33,13 +33,13 @@ class Identity(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
-        from .identity_type import IdentityType
+        from .identity_type import Identity_type
 
         from ..entity import Entity
-        from .identity_type import IdentityType
+        from .identity_type import Identity_type
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(IdentityType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(Identity_type)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

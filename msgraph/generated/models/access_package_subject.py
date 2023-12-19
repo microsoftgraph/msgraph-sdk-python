@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .access_package_subject_type import AccessPackageSubjectType
+    from .access_package_subject_subject_type import AccessPackageSubject_subjectType
     from .connected_organization import ConnectedOrganization
     from .entity import Entity
 
@@ -27,7 +27,7 @@ class AccessPackageSubject(Entity):
     # The principal name, if known, of the subject.
     principal_name: Optional[str] = None
     # The resource type of the subject. The possible values are: notSpecified, user, servicePrincipal, unknownFutureValue.
-    subject_type: Optional[AccessPackageSubjectType] = None
+    subject_type: Optional[AccessPackageSubject_subjectType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageSubject:
@@ -45,11 +45,11 @@ class AccessPackageSubject(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .access_package_subject_type import AccessPackageSubjectType
+        from .access_package_subject_subject_type import AccessPackageSubject_subjectType
         from .connected_organization import ConnectedOrganization
         from .entity import Entity
 
-        from .access_package_subject_type import AccessPackageSubjectType
+        from .access_package_subject_subject_type import AccessPackageSubject_subjectType
         from .connected_organization import ConnectedOrganization
         from .entity import Entity
 
@@ -60,7 +60,7 @@ class AccessPackageSubject(Entity):
             "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
             "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
             "principalName": lambda n : setattr(self, 'principal_name', n.get_str_value()),
-            "subjectType": lambda n : setattr(self, 'subject_type', n.get_enum_value(AccessPackageSubjectType)),
+            "subjectType": lambda n : setattr(self, 'subject_type', n.get_enum_value(AccessPackageSubject_subjectType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

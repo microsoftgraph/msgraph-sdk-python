@@ -5,8 +5,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .activity_history_item_status import ActivityHistoryItem_status
     from .entity import Entity
-    from .status import Status
     from .user_activity import UserActivity
 
 from .entity import Entity
@@ -30,7 +30,7 @@ class ActivityHistoryItem(Entity):
     # Required. UTC DateTime when the historyItem (activity session) was started. Required for timeline history.
     started_date_time: Optional[datetime.datetime] = None
     # Set by the server. A status code used to identify valid objects. Values: active, updated, deleted, ignored.
-    status: Optional[Status] = None
+    status: Optional[ActivityHistoryItem_status] = None
     # Optional. The timezone in which the user's device used to generate the activity was located at activity creation time. Values supplied as Olson IDs in order to support cross-platform representation.
     user_timezone: Optional[str] = None
     
@@ -50,12 +50,12 @@ class ActivityHistoryItem(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .activity_history_item_status import ActivityHistoryItem_status
         from .entity import Entity
-        from .status import Status
         from .user_activity import UserActivity
 
+        from .activity_history_item_status import ActivityHistoryItem_status
         from .entity import Entity
-        from .status import Status
         from .user_activity import UserActivity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -66,7 +66,7 @@ class ActivityHistoryItem(Entity):
             "lastActiveDateTime": lambda n : setattr(self, 'last_active_date_time', n.get_datetime_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "startedDateTime": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(Status)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(ActivityHistoryItem_status)),
             "userTimezone": lambda n : setattr(self, 'user_timezone', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

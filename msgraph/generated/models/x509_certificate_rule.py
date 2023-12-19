@@ -5,8 +5,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .x509_certificate_authentication_mode import X509CertificateAuthenticationMode
-    from .x509_certificate_rule_type import X509CertificateRuleType
+    from .x509_certificate_rule_x509_certificate_authentication_mode import X509CertificateRule_x509CertificateAuthenticationMode
+    from .x509_certificate_rule_x509_certificate_rule_type import X509CertificateRule_x509CertificateRuleType
 
 @dataclass
 class X509CertificateRule(AdditionalDataHolder, BackedModel, Parsable):
@@ -20,9 +20,9 @@ class X509CertificateRule(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of strong authentication mode. The possible values are: x509CertificateSingleFactor, x509CertificateMultiFactor, unknownFutureValue. Required.
-    x509_certificate_authentication_mode: Optional[X509CertificateAuthenticationMode] = None
+    x509_certificate_authentication_mode: Optional[X509CertificateRule_x509CertificateAuthenticationMode] = None
     # The type of the X.509 certificate mode configuration rule. The possible values are: issuerSubject, policyOID, unknownFutureValue. Required.
-    x509_certificate_rule_type: Optional[X509CertificateRuleType] = None
+    x509_certificate_rule_type: Optional[X509CertificateRule_x509CertificateRuleType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> X509CertificateRule:
@@ -40,17 +40,17 @@ class X509CertificateRule(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .x509_certificate_authentication_mode import X509CertificateAuthenticationMode
-        from .x509_certificate_rule_type import X509CertificateRuleType
+        from .x509_certificate_rule_x509_certificate_authentication_mode import X509CertificateRule_x509CertificateAuthenticationMode
+        from .x509_certificate_rule_x509_certificate_rule_type import X509CertificateRule_x509CertificateRuleType
 
-        from .x509_certificate_authentication_mode import X509CertificateAuthenticationMode
-        from .x509_certificate_rule_type import X509CertificateRuleType
+        from .x509_certificate_rule_x509_certificate_authentication_mode import X509CertificateRule_x509CertificateAuthenticationMode
+        from .x509_certificate_rule_x509_certificate_rule_type import X509CertificateRule_x509CertificateRuleType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "identifier": lambda n : setattr(self, 'identifier', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "x509CertificateAuthenticationMode": lambda n : setattr(self, 'x509_certificate_authentication_mode', n.get_enum_value(X509CertificateAuthenticationMode)),
-            "x509CertificateRuleType": lambda n : setattr(self, 'x509_certificate_rule_type', n.get_enum_value(X509CertificateRuleType)),
+            "x509CertificateAuthenticationMode": lambda n : setattr(self, 'x509_certificate_authentication_mode', n.get_enum_value(X509CertificateRule_x509CertificateAuthenticationMode)),
+            "x509CertificateRuleType": lambda n : setattr(self, 'x509_certificate_rule_type', n.get_enum_value(X509CertificateRule_x509CertificateRuleType)),
         }
         return fields
     

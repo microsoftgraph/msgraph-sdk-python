@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .label import Label
+    from .property_labels import Property_labels
     from .property_type import PropertyType
 
 @dataclass
@@ -26,7 +26,7 @@ class Property_(AdditionalDataHolder, BackedModel, Parsable):
     # Specifies if the property is searchable. Only properties of type String or StringCollection can be searchable. Nonsearchable properties aren't added to the search index. Optional.
     is_searchable: Optional[bool] = None
     # Specifies one or more well-known tags added against a property. Labels help Microsoft Search understand the semantics of the data in the connection. Adding appropriate labels would result in an enhanced search experience (for example, better relevance). Optional.The possible values are: title, url, createdBy, lastModifiedBy, authors, createdDateTime, lastModifiedDateTime, fileName, fileExtension, unknownFutureValue, iconUrl. You must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: iconUrl.
-    labels: Optional[List[Label]] = None
+    labels: Optional[List[Property_labels]] = None
     # The name of the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^.  Required.
     name: Optional[str] = None
     # The OdataType property
@@ -50,10 +50,10 @@ class Property_(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .label import Label
+        from .property_labels import Property_labels
         from .property_type import PropertyType
 
-        from .label import Label
+        from .property_labels import Property_labels
         from .property_type import PropertyType
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -62,7 +62,7 @@ class Property_(AdditionalDataHolder, BackedModel, Parsable):
             "isRefinable": lambda n : setattr(self, 'is_refinable', n.get_bool_value()),
             "isRetrievable": lambda n : setattr(self, 'is_retrievable', n.get_bool_value()),
             "isSearchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
-            "labels": lambda n : setattr(self, 'labels', n.get_collection_of_enum_values(Label)),
+            "labels": lambda n : setattr(self, 'labels', n.get_collection_of_enum_values(Property_labels)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(PropertyType)),

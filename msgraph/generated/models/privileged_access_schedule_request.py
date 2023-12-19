@@ -6,9 +6,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
     from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+    from .privileged_access_schedule_request_action import PrivilegedAccessScheduleRequest_action
     from .request import Request
     from .request_schedule import RequestSchedule
-    from .schedule_request_actions import ScheduleRequestActions
     from .ticket_info import TicketInfo
 
 from .request import Request
@@ -16,7 +16,7 @@ from .request import Request
 @dataclass
 class PrivilegedAccessScheduleRequest(Request):
     # Represents the type of operation on the group membership or ownership assignment request. The possible values are: adminAssign, adminUpdate, adminRemove, selfActivate, selfDeactivate, adminExtend, adminRenew. adminAssign: For administrators to assign group membership or ownership to principals.adminRemove: For administrators to remove principals from group membership or ownership. adminUpdate: For administrators to change existing group membership or ownership assignments.adminExtend: For administrators to extend expiring assignments.adminRenew: For administrators to renew expired assignments.selfActivate: For principals to activate their assignments.selfDeactivate: For principals to deactivate their active assignments.
-    action: Optional[ScheduleRequestActions] = None
+    action: Optional[PrivilegedAccessScheduleRequest_action] = None
     # Determines whether the call is a validation or an actual call. Only set this property if you want to check whether an activation is subject to additional rules like MFA before actually submitting the request.
     is_validation_only: Optional[bool] = None
     # A message provided by users and administrators when create they create the privilegedAccessGroupAssignmentScheduleRequest object.
@@ -58,20 +58,20 @@ class PrivilegedAccessScheduleRequest(Request):
         """
         from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
         from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+        from .privileged_access_schedule_request_action import PrivilegedAccessScheduleRequest_action
         from .request import Request
         from .request_schedule import RequestSchedule
-        from .schedule_request_actions import ScheduleRequestActions
         from .ticket_info import TicketInfo
 
         from .privileged_access_group_assignment_schedule_request import PrivilegedAccessGroupAssignmentScheduleRequest
         from .privileged_access_group_eligibility_schedule_request import PrivilegedAccessGroupEligibilityScheduleRequest
+        from .privileged_access_schedule_request_action import PrivilegedAccessScheduleRequest_action
         from .request import Request
         from .request_schedule import RequestSchedule
-        from .schedule_request_actions import ScheduleRequestActions
         from .ticket_info import TicketInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "action": lambda n : setattr(self, 'action', n.get_enum_value(ScheduleRequestActions)),
+            "action": lambda n : setattr(self, 'action', n.get_enum_value(PrivilegedAccessScheduleRequest_action)),
             "isValidationOnly": lambda n : setattr(self, 'is_validation_only', n.get_bool_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
             "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(RequestSchedule)),

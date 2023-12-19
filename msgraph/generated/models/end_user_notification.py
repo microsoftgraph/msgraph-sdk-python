@@ -7,10 +7,10 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .email_identity import EmailIdentity
     from .end_user_notification_detail import EndUserNotificationDetail
-    from .end_user_notification_type import EndUserNotificationType
+    from .end_user_notification_notification_type import EndUserNotification_notificationType
+    from .end_user_notification_source import EndUserNotification_source
+    from .end_user_notification_status import EndUserNotification_status
     from .entity import Entity
-    from .simulation_content_source import SimulationContentSource
-    from .simulation_content_status import SimulationContentStatus
 
 from .entity import Entity
 
@@ -31,13 +31,13 @@ class EndUserNotification(Entity):
     # Date and time when the notification was last modified. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_modified_date_time: Optional[datetime.datetime] = None
     # Type of notification. Possible values are: unknown, positiveReinforcement, noTraining, trainingAssignment, trainingReminder, unknownFutureValue.
-    notification_type: Optional[EndUserNotificationType] = None
+    notification_type: Optional[EndUserNotification_notificationType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The source of the content. Possible values are: unknown, global, tenant, unknownFutureValue.
-    source: Optional[SimulationContentSource] = None
+    source: Optional[EndUserNotification_source] = None
     # The status of the notification. Possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
-    status: Optional[SimulationContentStatus] = None
+    status: Optional[EndUserNotification_status] = None
     # Supported locales for endUserNotification content.
     supported_locales: Optional[List[str]] = None
     
@@ -59,17 +59,17 @@ class EndUserNotification(Entity):
         """
         from .email_identity import EmailIdentity
         from .end_user_notification_detail import EndUserNotificationDetail
-        from .end_user_notification_type import EndUserNotificationType
+        from .end_user_notification_notification_type import EndUserNotification_notificationType
+        from .end_user_notification_source import EndUserNotification_source
+        from .end_user_notification_status import EndUserNotification_status
         from .entity import Entity
-        from .simulation_content_source import SimulationContentSource
-        from .simulation_content_status import SimulationContentStatus
 
         from .email_identity import EmailIdentity
         from .end_user_notification_detail import EndUserNotificationDetail
-        from .end_user_notification_type import EndUserNotificationType
+        from .end_user_notification_notification_type import EndUserNotification_notificationType
+        from .end_user_notification_source import EndUserNotification_source
+        from .end_user_notification_status import EndUserNotification_status
         from .entity import Entity
-        from .simulation_content_source import SimulationContentSource
-        from .simulation_content_status import SimulationContentStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(EmailIdentity)),
@@ -79,9 +79,9 @@ class EndUserNotification(Entity):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(EmailIdentity)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "notificationType": lambda n : setattr(self, 'notification_type', n.get_enum_value(EndUserNotificationType)),
-            "source": lambda n : setattr(self, 'source', n.get_enum_value(SimulationContentSource)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(SimulationContentStatus)),
+            "notificationType": lambda n : setattr(self, 'notification_type', n.get_enum_value(EndUserNotification_notificationType)),
+            "source": lambda n : setattr(self, 'source', n.get_enum_value(EndUserNotification_source)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(EndUserNotification_status)),
             "supportedLocales": lambda n : setattr(self, 'supported_locales', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()

@@ -6,7 +6,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .app_key_credential_restriction_type import AppKeyCredentialRestrictionType
+    from .key_credential_configuration_restriction_type import KeyCredentialConfiguration_restrictionType
 
 @dataclass
 class KeyCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsable):
@@ -22,7 +22,7 @@ class KeyCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsable):
     # Timestamp when the policy is enforced for all apps created on or after the specified date. For existing applications, the enforcement date would be back dated. To apply to all applications regardless of their creation date, this property would be null. Nullable.
     restrict_for_apps_created_after_date_time: Optional[datetime.datetime] = None
     # The type of restriction being applied. Possible values are asymmetricKeyLifetime, unknownFutureValue. Each value of restrictionType can be used only once per policy.
-    restriction_type: Optional[AppKeyCredentialRestrictionType] = None
+    restriction_type: Optional[KeyCredentialConfiguration_restrictionType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> KeyCredentialConfiguration:
@@ -40,15 +40,15 @@ class KeyCredentialConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .app_key_credential_restriction_type import AppKeyCredentialRestrictionType
+        from .key_credential_configuration_restriction_type import KeyCredentialConfiguration_restrictionType
 
-        from .app_key_credential_restriction_type import AppKeyCredentialRestrictionType
+        from .key_credential_configuration_restriction_type import KeyCredentialConfiguration_restrictionType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "maxLifetime": lambda n : setattr(self, 'max_lifetime', n.get_timedelta_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "restrictForAppsCreatedAfterDateTime": lambda n : setattr(self, 'restrict_for_apps_created_after_date_time', n.get_datetime_value()),
-            "restrictionType": lambda n : setattr(self, 'restriction_type', n.get_enum_value(AppKeyCredentialRestrictionType)),
+            "restrictionType": lambda n : setattr(self, 'restriction_type', n.get_enum_value(KeyCredentialConfiguration_restrictionType)),
         }
         return fields
     

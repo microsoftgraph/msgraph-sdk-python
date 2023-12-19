@@ -45,7 +45,7 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DocumentSetVersionsRequestBuilderGetRequestConfiguration] = None) -> Optional[DocumentSetVersionCollectionResponse]:
         """
-        Get a list of the versions of a document set item in a list. This API is available in the following national cloud deployments.
+        Get a list of the versions of a document set item in a list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DocumentSetVersionCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/listitem-list-documentsetversions?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DocumentSetVersion] = None, request_configuration: Optional[DocumentSetVersionsRequestBuilderPostRequestConfiguration] = None) -> Optional[DocumentSetVersion]:
         """
-        Create a new version of a document set item in a list. This API is available in the following national cloud deployments.
+        Create a new version of a document set item in a list.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DocumentSetVersion]
@@ -92,7 +92,7 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DocumentSetVersionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the versions of a document set item in a list. This API is available in the following national cloud deployments.
+        Get a list of the versions of a document set item in a list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[DocumentSetVersion] = None, request_configuration: Optional[DocumentSetVersionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new version of a document set item in a list. This API is available in the following national cloud deployments.
+        Create a new version of a document set item in a list.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class DocumentSetVersionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DocumentSetVersionsRequestBuilderGetQueryParameters():
         """
-        Get a list of the versions of a document set item in a list. This API is available in the following national cloud deployments.
+        Get a list of the versions of a document set item in a list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

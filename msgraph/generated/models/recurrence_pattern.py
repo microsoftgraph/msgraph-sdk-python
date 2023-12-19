@@ -5,9 +5,10 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .day_of_week import DayOfWeek
-    from .recurrence_pattern_type import RecurrencePatternType
-    from .week_index import WeekIndex
+    from .recurrence_pattern_days_of_week import RecurrencePattern_daysOfWeek
+    from .recurrence_pattern_first_day_of_week import RecurrencePattern_firstDayOfWeek
+    from .recurrence_pattern_index import RecurrencePattern_index
+    from .recurrence_pattern_type import RecurrencePattern_type
 
 @dataclass
 class RecurrencePattern(AdditionalDataHolder, BackedModel, Parsable):
@@ -19,11 +20,11 @@ class RecurrencePattern(AdditionalDataHolder, BackedModel, Parsable):
     # The day of the month on which the event occurs. Required if type is absoluteMonthly or absoluteYearly.
     day_of_month: Optional[int] = None
     # A collection of the days of the week on which the event occurs. The possible values are: sunday, monday, tuesday, wednesday, thursday, friday, saturday. If type is relativeMonthly or relativeYearly, and daysOfWeek specifies more than one day, the event falls on the first day that satisfies the pattern.  Required if type is weekly, relativeMonthly, or relativeYearly.
-    days_of_week: Optional[List[DayOfWeek]] = None
+    days_of_week: Optional[List[RecurrencePattern_daysOfWeek]] = None
     # The first day of the week. The possible values are: sunday, monday, tuesday, wednesday, thursday, friday, saturday. Default is sunday. Required if type is weekly.
-    first_day_of_week: Optional[DayOfWeek] = None
+    first_day_of_week: Optional[RecurrencePattern_firstDayOfWeek] = None
     # Specifies on which instance of the allowed days specified in daysOfWeek the event occurs, counted from the first instance in the month. The possible values are: first, second, third, fourth, last. Default is first. Optional and used if type is relativeMonthly or relativeYearly.
-    index: Optional[WeekIndex] = None
+    index: Optional[RecurrencePattern_index] = None
     # The number of units between occurrences, where units can be in days, weeks, months, or years, depending on the type. Required.
     interval: Optional[int] = None
     # The month in which the event occurs.  This is a number from 1 to 12.
@@ -31,7 +32,7 @@ class RecurrencePattern(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The recurrence pattern type: daily, weekly, absoluteMonthly, relativeMonthly, absoluteYearly, relativeYearly. Required. For more information, see values of type property.
-    type: Optional[RecurrencePatternType] = None
+    type: Optional[RecurrencePattern_type] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecurrencePattern:
@@ -49,23 +50,25 @@ class RecurrencePattern(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .day_of_week import DayOfWeek
-        from .recurrence_pattern_type import RecurrencePatternType
-        from .week_index import WeekIndex
+        from .recurrence_pattern_days_of_week import RecurrencePattern_daysOfWeek
+        from .recurrence_pattern_first_day_of_week import RecurrencePattern_firstDayOfWeek
+        from .recurrence_pattern_index import RecurrencePattern_index
+        from .recurrence_pattern_type import RecurrencePattern_type
 
-        from .day_of_week import DayOfWeek
-        from .recurrence_pattern_type import RecurrencePatternType
-        from .week_index import WeekIndex
+        from .recurrence_pattern_days_of_week import RecurrencePattern_daysOfWeek
+        from .recurrence_pattern_first_day_of_week import RecurrencePattern_firstDayOfWeek
+        from .recurrence_pattern_index import RecurrencePattern_index
+        from .recurrence_pattern_type import RecurrencePattern_type
 
         fields: Dict[str, Callable[[Any], None]] = {
             "dayOfMonth": lambda n : setattr(self, 'day_of_month', n.get_int_value()),
-            "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(DayOfWeek)),
-            "firstDayOfWeek": lambda n : setattr(self, 'first_day_of_week', n.get_enum_value(DayOfWeek)),
-            "index": lambda n : setattr(self, 'index', n.get_enum_value(WeekIndex)),
+            "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(RecurrencePattern_daysOfWeek)),
+            "firstDayOfWeek": lambda n : setattr(self, 'first_day_of_week', n.get_enum_value(RecurrencePattern_firstDayOfWeek)),
+            "index": lambda n : setattr(self, 'index', n.get_enum_value(RecurrencePattern_index)),
             "interval": lambda n : setattr(self, 'interval', n.get_int_value()),
             "month": lambda n : setattr(self, 'month', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(RecurrencePatternType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(RecurrencePattern_type)),
         }
         return fields
     

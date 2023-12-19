@@ -6,14 +6,15 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .applied_conditional_access_policy import AppliedConditionalAccessPolicy
-    from .conditional_access_status import ConditionalAccessStatus
     from .device_detail import DeviceDetail
     from .entity import Entity
-    from .risk_detail import RiskDetail
-    from .risk_event_type import RiskEventType
-    from .risk_level import RiskLevel
-    from .risk_state import RiskState
+    from .sign_in_conditional_access_status import SignIn_conditionalAccessStatus
     from .sign_in_location import SignInLocation
+    from .sign_in_risk_detail import SignIn_riskDetail
+    from .sign_in_risk_event_types import SignIn_riskEventTypes
+    from .sign_in_risk_level_aggregated import SignIn_riskLevelAggregated
+    from .sign_in_risk_level_during_sign_in import SignIn_riskLevelDuringSignIn
+    from .sign_in_risk_state import SignIn_riskState
     from .sign_in_status import SignInStatus
 
 from .entity import Entity
@@ -29,7 +30,7 @@ class SignIn(Entity):
     # Identifies the client used for the sign-in activity. Modern authentication clients include Browser, modern clients. Legacy authentication clients include Exchange ActiveSync, IMAP, MAPI, SMTP, POP, and other clients.  Supports $filter (eq).
     client_app_used: Optional[str] = None
     # Reports status of an activated conditional access policy. Possible values are: success, failure, notApplied, and unknownFutureValue.  Supports $filter (eq).
-    conditional_access_status: Optional[ConditionalAccessStatus] = None
+    conditional_access_status: Optional[SignIn_conditionalAccessStatus] = None
     # The request ID sent from the client when the sign-in is initiated; used to troubleshoot sign-in activity.  Supports $filter (eq).
     correlation_id: Optional[str] = None
     # Date and time (UTC) the sign-in was initiated. Example: midnight on Jan 1, 2014 is reported as 2014-01-01T00:00:00Z.  Supports $orderby, $filter (eq, le, and ge).
@@ -49,17 +50,17 @@ class SignIn(Entity):
     # ID of the resource that the user signed into.  Supports $filter (eq).
     resource_id: Optional[str] = None
     # Provides the 'reason' behind a specific state of a risky user, sign-in or a risk event. The possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, unknownFutureValue. The value none means that no action has been performed on the user or sign-in so far.  Supports $filter (eq).Note: Details for this property require a Microsoft Entra ID P2 license. Other licenses return the value hidden.
-    risk_detail: Optional[RiskDetail] = None
+    risk_detail: Optional[SignIn_riskDetail] = None
     # Risk event types associated with the sign-in. The possible values are: unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence,  generic, and unknownFutureValue.  Supports $filter (eq).
-    risk_event_types: Optional[List[RiskEventType]] = None
+    risk_event_types: Optional[List[SignIn_riskEventTypes]] = None
     # The list of risk event types associated with the sign-in. Possible values: unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence,  generic, or unknownFutureValue.  Supports $filter (eq, startsWith).
     risk_event_types_v2: Optional[List[str]] = None
     # Aggregated risk level. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Microsoft Entra ID Protection.  Supports $filter (eq).  Note: Details for this property are only available for Microsoft Entra ID P2 customers. All other customers are returned hidden.
-    risk_level_aggregated: Optional[RiskLevel] = None
+    risk_level_aggregated: Optional[SignIn_riskLevelAggregated] = None
     # Risk level during sign-in. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Microsoft Entra ID Protection.  Supports $filter (eq).  Note: Details for this property are only available for Microsoft Entra ID P2 customers. All other customers are returned hidden.
-    risk_level_during_sign_in: Optional[RiskLevel] = None
+    risk_level_during_sign_in: Optional[SignIn_riskLevelDuringSignIn] = None
     # Reports status of the risky user, sign-in, or a risk event. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.  Supports $filter (eq).
-    risk_state: Optional[RiskState] = None
+    risk_state: Optional[SignIn_riskState] = None
     # Sign-in status. Includes the error code and description of the error (if there's a sign-in failure).  Supports $filter (eq) on errorCode property.
     status: Optional[SignInStatus] = None
     # Display name of the user that initiated the sign-in.  Supports $filter (eq, startsWith).
@@ -86,25 +87,27 @@ class SignIn(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .applied_conditional_access_policy import AppliedConditionalAccessPolicy
-        from .conditional_access_status import ConditionalAccessStatus
         from .device_detail import DeviceDetail
         from .entity import Entity
-        from .risk_detail import RiskDetail
-        from .risk_event_type import RiskEventType
-        from .risk_level import RiskLevel
-        from .risk_state import RiskState
+        from .sign_in_conditional_access_status import SignIn_conditionalAccessStatus
         from .sign_in_location import SignInLocation
+        from .sign_in_risk_detail import SignIn_riskDetail
+        from .sign_in_risk_event_types import SignIn_riskEventTypes
+        from .sign_in_risk_level_aggregated import SignIn_riskLevelAggregated
+        from .sign_in_risk_level_during_sign_in import SignIn_riskLevelDuringSignIn
+        from .sign_in_risk_state import SignIn_riskState
         from .sign_in_status import SignInStatus
 
         from .applied_conditional_access_policy import AppliedConditionalAccessPolicy
-        from .conditional_access_status import ConditionalAccessStatus
         from .device_detail import DeviceDetail
         from .entity import Entity
-        from .risk_detail import RiskDetail
-        from .risk_event_type import RiskEventType
-        from .risk_level import RiskLevel
-        from .risk_state import RiskState
+        from .sign_in_conditional_access_status import SignIn_conditionalAccessStatus
         from .sign_in_location import SignInLocation
+        from .sign_in_risk_detail import SignIn_riskDetail
+        from .sign_in_risk_event_types import SignIn_riskEventTypes
+        from .sign_in_risk_level_aggregated import SignIn_riskLevelAggregated
+        from .sign_in_risk_level_during_sign_in import SignIn_riskLevelDuringSignIn
+        from .sign_in_risk_state import SignIn_riskState
         from .sign_in_status import SignInStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -112,7 +115,7 @@ class SignIn(Entity):
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "appliedConditionalAccessPolicies": lambda n : setattr(self, 'applied_conditional_access_policies', n.get_collection_of_object_values(AppliedConditionalAccessPolicy)),
             "clientAppUsed": lambda n : setattr(self, 'client_app_used', n.get_str_value()),
-            "conditionalAccessStatus": lambda n : setattr(self, 'conditional_access_status', n.get_enum_value(ConditionalAccessStatus)),
+            "conditionalAccessStatus": lambda n : setattr(self, 'conditional_access_status', n.get_enum_value(SignIn_conditionalAccessStatus)),
             "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "deviceDetail": lambda n : setattr(self, 'device_detail', n.get_object_value(DeviceDetail)),
@@ -121,12 +124,12 @@ class SignIn(Entity):
             "location": lambda n : setattr(self, 'location', n.get_object_value(SignInLocation)),
             "resourceDisplayName": lambda n : setattr(self, 'resource_display_name', n.get_str_value()),
             "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
-            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetail)),
-            "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_enum_values(RiskEventType)),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(SignIn_riskDetail)),
+            "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_enum_values(SignIn_riskEventTypes)),
             "riskEventTypes_v2": lambda n : setattr(self, 'risk_event_types_v2', n.get_collection_of_primitive_values(str)),
-            "riskLevelAggregated": lambda n : setattr(self, 'risk_level_aggregated', n.get_enum_value(RiskLevel)),
-            "riskLevelDuringSignIn": lambda n : setattr(self, 'risk_level_during_sign_in', n.get_enum_value(RiskLevel)),
-            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskState)),
+            "riskLevelAggregated": lambda n : setattr(self, 'risk_level_aggregated', n.get_enum_value(SignIn_riskLevelAggregated)),
+            "riskLevelDuringSignIn": lambda n : setattr(self, 'risk_level_during_sign_in', n.get_enum_value(SignIn_riskLevelDuringSignIn)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(SignIn_riskState)),
             "status": lambda n : setattr(self, 'status', n.get_object_value(SignInStatus)),
             "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),

@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .object_mapping_metadata import ObjectMappingMetadata
+    from .object_mapping_metadata_entry_key import ObjectMappingMetadataEntry_key
 
 @dataclass
 class ObjectMappingMetadataEntry(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,7 +15,7 @@ class ObjectMappingMetadataEntry(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Possible values are: EscrowBehavior, DisableMonitoringForChanges, OriginalJoiningProperty, Disposition, IsCustomerDefined, ExcludeFromReporting, Unsynchronized.
-    key: Optional[ObjectMappingMetadata] = None
+    key: Optional[ObjectMappingMetadataEntry_key] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Value of the metadata property.
@@ -37,12 +37,12 @@ class ObjectMappingMetadataEntry(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .object_mapping_metadata import ObjectMappingMetadata
+        from .object_mapping_metadata_entry_key import ObjectMappingMetadataEntry_key
 
-        from .object_mapping_metadata import ObjectMappingMetadata
+        from .object_mapping_metadata_entry_key import ObjectMappingMetadataEntry_key
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "key": lambda n : setattr(self, 'key', n.get_enum_value(ObjectMappingMetadata)),
+            "key": lambda n : setattr(self, 'key', n.get_enum_value(ObjectMappingMetadataEntry_key)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }

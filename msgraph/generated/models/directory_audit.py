@@ -6,9 +6,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .audit_activity_initiator import AuditActivityInitiator
+    from .directory_audit_result import DirectoryAudit_result
     from .entity import Entity
     from .key_value import KeyValue
-    from .operation_result import OperationResult
     from .target_resource import TargetResource
 
 from .entity import Entity
@@ -34,7 +34,7 @@ class DirectoryAudit(Entity):
     # Indicates the type of operation that was performed. The possible values include but are not limited to the following: Add, Assign, Update, Unassign, and Delete.
     operation_type: Optional[str] = None
     # Indicates the result of the activity. Possible values are: success, failure, timeout, unknownFutureValue.
-    result: Optional[OperationResult] = None
+    result: Optional[DirectoryAudit_result] = None
     # Indicates the reason for failure if the result is failure or timeout.
     result_reason: Optional[str] = None
     # Indicates information on which resource was changed due to the activity. Target Resource Type can be User, Device, Directory, App, Role, Group, Policy or Other. Supports $filter (eq) for id and displayName; and $filter (startswith) for displayName.
@@ -57,15 +57,15 @@ class DirectoryAudit(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .audit_activity_initiator import AuditActivityInitiator
+        from .directory_audit_result import DirectoryAudit_result
         from .entity import Entity
         from .key_value import KeyValue
-        from .operation_result import OperationResult
         from .target_resource import TargetResource
 
         from .audit_activity_initiator import AuditActivityInitiator
+        from .directory_audit_result import DirectoryAudit_result
         from .entity import Entity
         from .key_value import KeyValue
-        from .operation_result import OperationResult
         from .target_resource import TargetResource
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -77,7 +77,7 @@ class DirectoryAudit(Entity):
             "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_object_value(AuditActivityInitiator)),
             "loggedByService": lambda n : setattr(self, 'logged_by_service', n.get_str_value()),
             "operationType": lambda n : setattr(self, 'operation_type', n.get_str_value()),
-            "result": lambda n : setattr(self, 'result', n.get_enum_value(OperationResult)),
+            "result": lambda n : setattr(self, 'result', n.get_enum_value(DirectoryAudit_result)),
             "resultReason": lambda n : setattr(self, 'result_reason', n.get_str_value()),
             "targetResources": lambda n : setattr(self, 'target_resources', n.get_collection_of_object_values(TargetResource)),
         }

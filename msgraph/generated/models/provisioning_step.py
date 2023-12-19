@@ -6,8 +6,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .details_info import DetailsInfo
-    from .provisioning_result import ProvisioningResult
-    from .provisioning_step_type import ProvisioningStepType
+    from .provisioning_step_provisioning_step_type import ProvisioningStep_provisioningStepType
+    from .provisioning_step_status import ProvisioningStep_status
 
 @dataclass
 class ProvisioningStep(AdditionalDataHolder, BackedModel, Parsable):
@@ -25,9 +25,9 @@ class ProvisioningStep(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # Type of step. Possible values are: import, scoping, matching, processing, referenceResolution, export, unknownFutureValue.
-    provisioning_step_type: Optional[ProvisioningStepType] = None
+    provisioning_step_type: Optional[ProvisioningStep_provisioningStepType] = None
     # Status of the step. Possible values are: success, warning,  failure, skipped, unknownFutureValue.
-    status: Optional[ProvisioningResult] = None
+    status: Optional[ProvisioningStep_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisioningStep:
@@ -46,20 +46,20 @@ class ProvisioningStep(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .details_info import DetailsInfo
-        from .provisioning_result import ProvisioningResult
-        from .provisioning_step_type import ProvisioningStepType
+        from .provisioning_step_provisioning_step_type import ProvisioningStep_provisioningStepType
+        from .provisioning_step_status import ProvisioningStep_status
 
         from .details_info import DetailsInfo
-        from .provisioning_result import ProvisioningResult
-        from .provisioning_step_type import ProvisioningStepType
+        from .provisioning_step_provisioning_step_type import ProvisioningStep_provisioningStepType
+        from .provisioning_step_status import ProvisioningStep_status
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "details": lambda n : setattr(self, 'details', n.get_object_value(DetailsInfo)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "provisioningStepType": lambda n : setattr(self, 'provisioning_step_type', n.get_enum_value(ProvisioningStepType)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(ProvisioningResult)),
+            "provisioningStepType": lambda n : setattr(self, 'provisioning_step_type', n.get_enum_value(ProvisioningStep_provisioningStepType)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(ProvisioningStep_status)),
         }
         return fields
     

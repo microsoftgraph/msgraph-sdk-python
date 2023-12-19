@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .teamwork_tag_member import TeamworkTagMember
-    from .teamwork_tag_type import TeamworkTagType
+    from .teamwork_tag_tag_type import TeamworkTag_tagType
 
 from .entity import Entity
 
@@ -23,7 +23,7 @@ class TeamworkTag(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of the tag. Default is standard.
-    tag_type: Optional[TeamworkTagType] = None
+    tag_type: Optional[TeamworkTag_tagType] = None
     # ID of the team in which the tag is defined.
     team_id: Optional[str] = None
     
@@ -45,18 +45,18 @@ class TeamworkTag(Entity):
         """
         from .entity import Entity
         from .teamwork_tag_member import TeamworkTagMember
-        from .teamwork_tag_type import TeamworkTagType
+        from .teamwork_tag_tag_type import TeamworkTag_tagType
 
         from .entity import Entity
         from .teamwork_tag_member import TeamworkTagMember
-        from .teamwork_tag_type import TeamworkTagType
+        from .teamwork_tag_tag_type import TeamworkTag_tagType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "memberCount": lambda n : setattr(self, 'member_count', n.get_int_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(TeamworkTagMember)),
-            "tagType": lambda n : setattr(self, 'tag_type', n.get_enum_value(TeamworkTagType)),
+            "tagType": lambda n : setattr(self, 'tag_type', n.get_enum_value(TeamworkTag_tagType)),
             "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

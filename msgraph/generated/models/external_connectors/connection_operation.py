@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..entity import Entity
     from ..public_error import PublicError
-    from .connection_operation_status import ConnectionOperationStatus
+    from .connection_operation_status import ConnectionOperation_status
 
 from ..entity import Entity
 
@@ -17,7 +17,7 @@ class ConnectionOperation(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates the status of the asynchronous operation. Possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.
-    status: Optional[ConnectionOperationStatus] = None
+    status: Optional[ConnectionOperation_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConnectionOperation:
@@ -37,15 +37,15 @@ class ConnectionOperation(Entity):
         """
         from ..entity import Entity
         from ..public_error import PublicError
-        from .connection_operation_status import ConnectionOperationStatus
+        from .connection_operation_status import ConnectionOperation_status
 
         from ..entity import Entity
         from ..public_error import PublicError
-        from .connection_operation_status import ConnectionOperationStatus
+        from .connection_operation_status import ConnectionOperation_status
 
         fields: Dict[str, Callable[[Any], None]] = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(ConnectionOperationStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(ConnectionOperation_status)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

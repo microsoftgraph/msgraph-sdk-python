@@ -4,15 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .delegated_permission_classification_classification import DelegatedPermissionClassification_classification
     from .entity import Entity
-    from .permission_classification_type import PermissionClassificationType
 
 from .entity import Entity
 
 @dataclass
 class DelegatedPermissionClassification(Entity):
     # The classification value being given. Possible value: low. Doesn't support $filter.
-    classification: Optional[PermissionClassificationType] = None
+    classification: Optional[DelegatedPermissionClassification_classification] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Doesn't support $filter.
@@ -36,14 +36,14 @@ class DelegatedPermissionClassification(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .delegated_permission_classification_classification import DelegatedPermissionClassification_classification
         from .entity import Entity
-        from .permission_classification_type import PermissionClassificationType
 
+        from .delegated_permission_classification_classification import DelegatedPermissionClassification_classification
         from .entity import Entity
-        from .permission_classification_type import PermissionClassificationType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "classification": lambda n : setattr(self, 'classification', n.get_enum_value(PermissionClassificationType)),
+            "classification": lambda n : setattr(self, 'classification', n.get_enum_value(DelegatedPermissionClassification_classification)),
             "permissionId": lambda n : setattr(self, 'permission_id', n.get_str_value()),
             "permissionName": lambda n : setattr(self, 'permission_name', n.get_str_value()),
         }

@@ -6,14 +6,14 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .email_address import EmailAddress
     from .entity import Entity
-    from .inference_classification_type import InferenceClassificationType
+    from .inference_classification_override_classify_as import InferenceClassificationOverride_classifyAs
 
 from .entity import Entity
 
 @dataclass
 class InferenceClassificationOverride(Entity):
     # Specifies how incoming messages from a specific sender should always be classified as. The possible values are: focused, other.
-    classify_as: Optional[InferenceClassificationType] = None
+    classify_as: Optional[InferenceClassificationOverride_classifyAs] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The email address information of the sender for whom the override is created.
@@ -37,14 +37,14 @@ class InferenceClassificationOverride(Entity):
         """
         from .email_address import EmailAddress
         from .entity import Entity
-        from .inference_classification_type import InferenceClassificationType
+        from .inference_classification_override_classify_as import InferenceClassificationOverride_classifyAs
 
         from .email_address import EmailAddress
         from .entity import Entity
-        from .inference_classification_type import InferenceClassificationType
+        from .inference_classification_override_classify_as import InferenceClassificationOverride_classifyAs
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "classifyAs": lambda n : setattr(self, 'classify_as', n.get_enum_value(InferenceClassificationType)),
+            "classifyAs": lambda n : setattr(self, 'classify_as', n.get_enum_value(InferenceClassificationOverride_classifyAs)),
             "senderEmailAddress": lambda n : setattr(self, 'sender_email_address', n.get_object_value(EmailAddress)),
         }
         super_fields = super().get_field_deserializers()

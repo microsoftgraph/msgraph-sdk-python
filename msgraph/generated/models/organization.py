@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from .extension import Extension
     from .mdm_authority import MdmAuthority
     from .organizational_branding import OrganizationalBranding
-    from .partner_tenant_type import PartnerTenantType
+    from .organization_partner_tenant_type import Organization_partnerTenantType
     from .privacy_profile import PrivacyProfile
     from .provisioned_plan import ProvisionedPlan
     from .verified_domain import VerifiedDomain
@@ -53,7 +53,7 @@ class Organization(DirectoryObject):
     # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     on_premises_sync_enabled: Optional[bool] = None
     # The type of partnership this tenant has with Microsoft. The possible values are: microsoftSupport, syndicatePartner, breadthPartner, breadthPartnerDelegatedAdmin, resellerPartnerDelegatedAdmin, valueAddedResellerPartnerDelegatedAdmin, unknownFutureValue. Nullable. For more information about the possible types, see partnerTenantType values.
-    partner_tenant_type: Optional[PartnerTenantType] = None
+    partner_tenant_type: Optional[Organization_partnerTenantType] = None
     # Postal code of the address for the organization.
     postal_code: Optional[str] = None
     # The preferred language for the organization. Should follow ISO 639-1 Code; for example, en.
@@ -99,7 +99,7 @@ class Organization(DirectoryObject):
         from .extension import Extension
         from .mdm_authority import MdmAuthority
         from .organizational_branding import OrganizationalBranding
-        from .partner_tenant_type import PartnerTenantType
+        from .organization_partner_tenant_type import Organization_partnerTenantType
         from .privacy_profile import PrivacyProfile
         from .provisioned_plan import ProvisionedPlan
         from .verified_domain import VerifiedDomain
@@ -110,7 +110,7 @@ class Organization(DirectoryObject):
         from .extension import Extension
         from .mdm_authority import MdmAuthority
         from .organizational_branding import OrganizationalBranding
-        from .partner_tenant_type import PartnerTenantType
+        from .organization_partner_tenant_type import Organization_partnerTenantType
         from .privacy_profile import PrivacyProfile
         from .provisioned_plan import ProvisionedPlan
         from .verified_domain import VerifiedDomain
@@ -131,7 +131,7 @@ class Organization(DirectoryObject):
             "mobileDeviceManagementAuthority": lambda n : setattr(self, 'mobile_device_management_authority', n.get_enum_value(MdmAuthority)),
             "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
             "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
-            "partnerTenantType": lambda n : setattr(self, 'partner_tenant_type', n.get_enum_value(PartnerTenantType)),
+            "partnerTenantType": lambda n : setattr(self, 'partner_tenant_type', n.get_enum_value(Organization_partnerTenantType)),
             "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
             "preferredLanguage": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
             "privacyProfile": lambda n : setattr(self, 'privacy_profile', n.get_object_value(PrivacyProfile)),

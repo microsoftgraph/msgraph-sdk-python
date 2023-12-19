@@ -5,21 +5,21 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .activity_type import ActivityType
     from .entity import Entity
-    from .risk_detail import RiskDetail
-    from .risk_detection_timing_type import RiskDetectionTimingType
-    from .risk_level import RiskLevel
-    from .risk_state import RiskState
+    from .risk_detection_activity import RiskDetection_activity
+    from .risk_detection_detection_timing_type import RiskDetection_detectionTimingType
+    from .risk_detection_risk_detail import RiskDetection_riskDetail
+    from .risk_detection_risk_level import RiskDetection_riskLevel
+    from .risk_detection_risk_state import RiskDetection_riskState
+    from .risk_detection_token_issuer_type import RiskDetection_tokenIssuerType
     from .sign_in_location import SignInLocation
-    from .token_issuer_type import TokenIssuerType
 
 from .entity import Entity
 
 @dataclass
 class RiskDetection(Entity):
     # Indicates the activity type the detected risk is linked to. Possible values are: signin, user, unknownFutureValue.
-    activity: Optional[ActivityType] = None
+    activity: Optional[RiskDetection_activity] = None
     # Date and time that the risky activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is look like this: 2014-01-01T00:00:00Z
     activity_date_time: Optional[datetime.datetime] = None
     # Additional information associated with the risk detection in JSON format. For example, '[{/'Key/':/'userAgent/',/'Value/':/'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36/'}]'. Possible keys in the additionalInfo JSON string are: userAgent, alertUrl, relatedEventTimeInUtc, relatedUserAgent, deviceInformation, relatedLocation, requestId, correlationId, lastActivityTimeInUtc, malwareName, clientLocation, clientIp, riskReasons. For more information about riskReasons and possible values, see riskReasons values.
@@ -29,7 +29,7 @@ class RiskDetection(Entity):
     # Date and time that the risk was detected. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 looks like this: 2014-01-01T00:00:00Z
     detected_date_time: Optional[datetime.datetime] = None
     # Timing of the detected risk (real-time/offline). Possible values are: notDefined, realtime, nearRealtime, offline, unknownFutureValue.
-    detection_timing_type: Optional[RiskDetectionTimingType] = None
+    detection_timing_type: Optional[RiskDetection_detectionTimingType] = None
     # Provides the IP address of the client from where the risk occurred.
     ip_address: Optional[str] = None
     # Date and time that the risk detection was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is look like this: 2014-01-01T00:00:00Z
@@ -41,17 +41,17 @@ class RiskDetection(Entity):
     # Request ID of the sign-in associated with the risk detection. This property is null if the risk detection is not associated with a sign-in.
     request_id: Optional[str] = None
     # Details of the detected risk. The possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue, m365DAdminDismissedDetection. Note that you must use the Prefer: include - unknown -enum-members request header to get the following value(s) in this evolvable enum: m365DAdminDismissedDetection.
-    risk_detail: Optional[RiskDetail] = None
+    risk_detail: Optional[RiskDetection_riskDetail] = None
     # The type of risk event detected. The possible values are unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence, generic,adminConfirmedUserCompromised, passwordSpray, impossibleTravel, newCountry, anomalousToken, tokenIssuerAnomaly,suspiciousBrowser, riskyIPAddress, mcasSuspiciousInboxManipulationRules, suspiciousInboxForwarding, and anomalousUserActivity. If the risk detection is a premium detection, will show generic. For more information about each value, see riskEventType values.
     risk_event_type: Optional[str] = None
     # Level of the detected risk. Possible values are: low, medium, high, hidden, none, unknownFutureValue.
-    risk_level: Optional[RiskLevel] = None
+    risk_level: Optional[RiskDetection_riskLevel] = None
     # The state of a detected risky user or sign-in. Possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
-    risk_state: Optional[RiskState] = None
+    risk_state: Optional[RiskDetection_riskState] = None
     # Source of the risk detection. For example, activeDirectory.
     source: Optional[str] = None
     # Indicates the type of token issuer for the detected sign-in risk. Possible values are: AzureAD, ADFederationServices, UnknownFutureValue.
-    token_issuer_type: Optional[TokenIssuerType] = None
+    token_issuer_type: Optional[RiskDetection_tokenIssuerType] = None
     # The user principal name (UPN) of the user.
     user_display_name: Optional[str] = None
     # Unique ID of the user.
@@ -75,41 +75,41 @@ class RiskDetection(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .activity_type import ActivityType
         from .entity import Entity
-        from .risk_detail import RiskDetail
-        from .risk_detection_timing_type import RiskDetectionTimingType
-        from .risk_level import RiskLevel
-        from .risk_state import RiskState
+        from .risk_detection_activity import RiskDetection_activity
+        from .risk_detection_detection_timing_type import RiskDetection_detectionTimingType
+        from .risk_detection_risk_detail import RiskDetection_riskDetail
+        from .risk_detection_risk_level import RiskDetection_riskLevel
+        from .risk_detection_risk_state import RiskDetection_riskState
+        from .risk_detection_token_issuer_type import RiskDetection_tokenIssuerType
         from .sign_in_location import SignInLocation
-        from .token_issuer_type import TokenIssuerType
 
-        from .activity_type import ActivityType
         from .entity import Entity
-        from .risk_detail import RiskDetail
-        from .risk_detection_timing_type import RiskDetectionTimingType
-        from .risk_level import RiskLevel
-        from .risk_state import RiskState
+        from .risk_detection_activity import RiskDetection_activity
+        from .risk_detection_detection_timing_type import RiskDetection_detectionTimingType
+        from .risk_detection_risk_detail import RiskDetection_riskDetail
+        from .risk_detection_risk_level import RiskDetection_riskLevel
+        from .risk_detection_risk_state import RiskDetection_riskState
+        from .risk_detection_token_issuer_type import RiskDetection_tokenIssuerType
         from .sign_in_location import SignInLocation
-        from .token_issuer_type import TokenIssuerType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activity": lambda n : setattr(self, 'activity', n.get_enum_value(ActivityType)),
+            "activity": lambda n : setattr(self, 'activity', n.get_enum_value(RiskDetection_activity)),
             "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "additionalInfo": lambda n : setattr(self, 'additional_info', n.get_str_value()),
             "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
             "detectedDateTime": lambda n : setattr(self, 'detected_date_time', n.get_datetime_value()),
-            "detectionTimingType": lambda n : setattr(self, 'detection_timing_type', n.get_enum_value(RiskDetectionTimingType)),
+            "detectionTimingType": lambda n : setattr(self, 'detection_timing_type', n.get_enum_value(RiskDetection_detectionTimingType)),
             "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(SignInLocation)),
             "requestId": lambda n : setattr(self, 'request_id', n.get_str_value()),
-            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetail)),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetection_riskDetail)),
             "riskEventType": lambda n : setattr(self, 'risk_event_type', n.get_str_value()),
-            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(RiskLevel)),
-            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskState)),
+            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(RiskDetection_riskLevel)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskDetection_riskState)),
             "source": lambda n : setattr(self, 'source', n.get_str_value()),
-            "tokenIssuerType": lambda n : setattr(self, 'token_issuer_type', n.get_enum_value(TokenIssuerType)),
+            "tokenIssuerType": lambda n : setattr(self, 'token_issuer_type', n.get_enum_value(RiskDetection_tokenIssuerType)),
             "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),

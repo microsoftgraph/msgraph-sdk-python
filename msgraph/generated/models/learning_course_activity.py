@@ -5,9 +5,9 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .course_status import CourseStatus
     from .entity import Entity
     from .learning_assignment import LearningAssignment
+    from .learning_course_activity_status import LearningCourseActivity_status
     from .learning_self_initiated_course import LearningSelfInitiatedCourse
 
 from .entity import Entity
@@ -29,7 +29,7 @@ class LearningCourseActivity(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The status of the course activity. Possible values are: notStarted, inProgress, completed. Required.
-    status: Optional[CourseStatus] = None
+    status: Optional[LearningCourseActivity_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LearningCourseActivity:
@@ -59,14 +59,14 @@ class LearningCourseActivity(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .course_status import CourseStatus
         from .entity import Entity
         from .learning_assignment import LearningAssignment
+        from .learning_course_activity_status import LearningCourseActivity_status
         from .learning_self_initiated_course import LearningSelfInitiatedCourse
 
-        from .course_status import CourseStatus
         from .entity import Entity
         from .learning_assignment import LearningAssignment
+        from .learning_course_activity_status import LearningCourseActivity_status
         from .learning_self_initiated_course import LearningSelfInitiatedCourse
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -76,7 +76,7 @@ class LearningCourseActivity(Entity):
             "learnerUserId": lambda n : setattr(self, 'learner_user_id', n.get_str_value()),
             "learningContentId": lambda n : setattr(self, 'learning_content_id', n.get_str_value()),
             "learningProviderId": lambda n : setattr(self, 'learning_provider_id', n.get_str_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(CourseStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(LearningCourseActivity_status)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

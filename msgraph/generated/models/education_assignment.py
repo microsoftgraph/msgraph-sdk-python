@@ -5,12 +5,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .education_added_student_action import EducationAddedStudentAction
-    from .education_add_to_calendar_options import EducationAddToCalendarOptions
+    from .education_assignment_added_student_action import EducationAssignment_addedStudentAction
+    from .education_assignment_add_to_calendar_action import EducationAssignment_addToCalendarAction
     from .education_assignment_grade_type import EducationAssignmentGradeType
     from .education_assignment_recipient import EducationAssignmentRecipient
     from .education_assignment_resource import EducationAssignmentResource
-    from .education_assignment_status import EducationAssignmentStatus
+    from .education_assignment_status import EducationAssignment_status
     from .education_category import EducationCategory
     from .education_item_body import EducationItemBody
     from .education_rubric import EducationRubric
@@ -23,9 +23,9 @@ from .entity import Entity
 @dataclass
 class EducationAssignment(Entity):
     # Optional field to control the assignment behavior  for adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
-    add_to_calendar_action: Optional[EducationAddToCalendarOptions] = None
+    add_to_calendar_action: Optional[EducationAssignment_addToCalendarAction] = None
     # Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
-    added_student_action: Optional[EducationAddedStudentAction] = None
+    added_student_action: Optional[EducationAssignment_addedStudentAction] = None
     # Identifies whether students can submit after the due date. If this property isn't specified during create, it defaults to true.
     allow_late_submissions: Optional[bool] = None
     # Identifies whether students can add their own resources to a submission or if they can only modify resources added by the teacher.
@@ -71,7 +71,7 @@ class EducationAssignment(Entity):
     # When set, the grading rubric attached to this assignment.
     rubric: Optional[EducationRubric] = None
     # Status of the Assignment.  You can't PATCH this value.  Possible values are: draft, scheduled, published, assigned.
-    status: Optional[EducationAssignmentStatus] = None
+    status: Optional[EducationAssignment_status] = None
     # Once published, there is a submission object for each student representing their work and grade.  Read-only. Nullable.
     submissions: Optional[List[EducationSubmission]] = None
     # The deep link URL for the given assignment.
@@ -93,12 +93,12 @@ class EducationAssignment(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .education_added_student_action import EducationAddedStudentAction
-        from .education_add_to_calendar_options import EducationAddToCalendarOptions
+        from .education_assignment_added_student_action import EducationAssignment_addedStudentAction
+        from .education_assignment_add_to_calendar_action import EducationAssignment_addToCalendarAction
         from .education_assignment_grade_type import EducationAssignmentGradeType
         from .education_assignment_recipient import EducationAssignmentRecipient
         from .education_assignment_resource import EducationAssignmentResource
-        from .education_assignment_status import EducationAssignmentStatus
+        from .education_assignment_status import EducationAssignment_status
         from .education_category import EducationCategory
         from .education_item_body import EducationItemBody
         from .education_rubric import EducationRubric
@@ -106,12 +106,12 @@ class EducationAssignment(Entity):
         from .entity import Entity
         from .identity_set import IdentitySet
 
-        from .education_added_student_action import EducationAddedStudentAction
-        from .education_add_to_calendar_options import EducationAddToCalendarOptions
+        from .education_assignment_added_student_action import EducationAssignment_addedStudentAction
+        from .education_assignment_add_to_calendar_action import EducationAssignment_addToCalendarAction
         from .education_assignment_grade_type import EducationAssignmentGradeType
         from .education_assignment_recipient import EducationAssignmentRecipient
         from .education_assignment_resource import EducationAssignmentResource
-        from .education_assignment_status import EducationAssignmentStatus
+        from .education_assignment_status import EducationAssignment_status
         from .education_category import EducationCategory
         from .education_item_body import EducationItemBody
         from .education_rubric import EducationRubric
@@ -120,8 +120,8 @@ class EducationAssignment(Entity):
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "addToCalendarAction": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(EducationAddToCalendarOptions)),
-            "addedStudentAction": lambda n : setattr(self, 'added_student_action', n.get_enum_value(EducationAddedStudentAction)),
+            "addToCalendarAction": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(EducationAssignment_addToCalendarAction)),
+            "addedStudentAction": lambda n : setattr(self, 'added_student_action', n.get_enum_value(EducationAssignment_addedStudentAction)),
             "allowLateSubmissions": lambda n : setattr(self, 'allow_late_submissions', n.get_bool_value()),
             "allowStudentsToAddResourcesToSubmission": lambda n : setattr(self, 'allow_students_to_add_resources_to_submission', n.get_bool_value()),
             "assignDateTime": lambda n : setattr(self, 'assign_date_time', n.get_datetime_value()),
@@ -143,7 +143,7 @@ class EducationAssignment(Entity):
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(EducationAssignmentResource)),
             "resourcesFolderUrl": lambda n : setattr(self, 'resources_folder_url', n.get_str_value()),
             "rubric": lambda n : setattr(self, 'rubric', n.get_object_value(EducationRubric)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(EducationAssignmentStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(EducationAssignment_status)),
             "submissions": lambda n : setattr(self, 'submissions', n.get_collection_of_object_values(EducationSubmission)),
             "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }

@@ -32,7 +32,7 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
     def by_token_issuance_policy_id(self,token_issuance_policy_id: str) -> TokenIssuancePolicyItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.applications.item.tokenIssuancePolicies.item collection
-        param token_issuance_policy_id: Unique identifier of the item
+        param token_issuance_policy_id: The unique identifier of tokenIssuancePolicy
         Returns: TokenIssuancePolicyItemRequestBuilder
         """
         if not token_issuance_policy_id:
@@ -45,7 +45,7 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TokenIssuancePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[TokenIssuancePolicyCollectionResponse]:
         """
-        List the tokenIssuancePolicy objects that are assigned to an application. This API is available in the following national cloud deployments.
+        List the tokenIssuancePolicy objects that are assigned to an application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TokenIssuancePolicyCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/application-list-tokenissuancepolicies?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TokenIssuancePoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List the tokenIssuancePolicy objects that are assigned to an application. This API is available in the following national cloud deployments.
+        List the tokenIssuancePolicy objects that are assigned to an application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -79,7 +79,7 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> TokenIssuancePoliciesRequestBuilder:
@@ -113,7 +113,7 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TokenIssuancePoliciesRequestBuilderGetQueryParameters():
         """
-        List the tokenIssuancePolicy objects that are assigned to an application. This API is available in the following national cloud deployments.
+        List the tokenIssuancePolicy objects that are assigned to an application.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .bookings_availability_status import BookingsAvailabilityStatus
+    from .availability_item_status import AvailabilityItem_status
     from .date_time_time_zone import DateTimeTimeZone
 
 @dataclass
@@ -24,7 +24,7 @@ class AvailabilityItem(AdditionalDataHolder, BackedModel, Parsable):
     # The startDateTime property
     start_date_time: Optional[DateTimeTimeZone] = None
     # The status of the staff member. Possible values are: available, busy, slotsAvailable, outOfOffice, unknownFutureValue.
-    status: Optional[BookingsAvailabilityStatus] = None
+    status: Optional[AvailabilityItem_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AvailabilityItem:
@@ -42,10 +42,10 @@ class AvailabilityItem(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .bookings_availability_status import BookingsAvailabilityStatus
+        from .availability_item_status import AvailabilityItem_status
         from .date_time_time_zone import DateTimeTimeZone
 
-        from .bookings_availability_status import BookingsAvailabilityStatus
+        from .availability_item_status import AvailabilityItem_status
         from .date_time_time_zone import DateTimeTimeZone
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -53,7 +53,7 @@ class AvailabilityItem(AdditionalDataHolder, BackedModel, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "serviceId": lambda n : setattr(self, 'service_id', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(BookingsAvailabilityStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(AvailabilityItem_status)),
         }
         return fields
     

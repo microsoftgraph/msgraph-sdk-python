@@ -7,7 +7,7 @@ if TYPE_CHECKING:
     from .directory_object import DirectoryObject
     from .group import Group
     from .privileged_access_group_eligibility_schedule import PrivilegedAccessGroupEligibilitySchedule
-    from .privileged_access_group_relationships import PrivilegedAccessGroupRelationships
+    from .privileged_access_group_eligibility_schedule_request_access_id import PrivilegedAccessGroupEligibilityScheduleRequest_accessId
     from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
 
 from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
@@ -17,7 +17,7 @@ class PrivilegedAccessGroupEligibilityScheduleRequest(PrivilegedAccessScheduleRe
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.privilegedAccessGroupEligibilityScheduleRequest"
     # The identifier of membership or ownership eligibility relationship to the group. Required. The possible values are: owner, member, unknownFutureValue.
-    access_id: Optional[PrivilegedAccessGroupRelationships] = None
+    access_id: Optional[PrivilegedAccessGroupEligibilityScheduleRequest_accessId] = None
     # References the group that is the scope of the membership or ownership eligibility request through PIM for groups. Supports $expand.
     group: Optional[Group] = None
     # The identifier of the group representing the scope of the membership and ownership eligibility through PIM for groups. Required.
@@ -50,17 +50,17 @@ class PrivilegedAccessGroupEligibilityScheduleRequest(PrivilegedAccessScheduleRe
         from .directory_object import DirectoryObject
         from .group import Group
         from .privileged_access_group_eligibility_schedule import PrivilegedAccessGroupEligibilitySchedule
-        from .privileged_access_group_relationships import PrivilegedAccessGroupRelationships
+        from .privileged_access_group_eligibility_schedule_request_access_id import PrivilegedAccessGroupEligibilityScheduleRequest_accessId
         from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
 
         from .directory_object import DirectoryObject
         from .group import Group
         from .privileged_access_group_eligibility_schedule import PrivilegedAccessGroupEligibilitySchedule
-        from .privileged_access_group_relationships import PrivilegedAccessGroupRelationships
+        from .privileged_access_group_eligibility_schedule_request_access_id import PrivilegedAccessGroupEligibilityScheduleRequest_accessId
         from .privileged_access_schedule_request import PrivilegedAccessScheduleRequest
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessId": lambda n : setattr(self, 'access_id', n.get_enum_value(PrivilegedAccessGroupRelationships)),
+            "accessId": lambda n : setattr(self, 'access_id', n.get_enum_value(PrivilegedAccessGroupEligibilityScheduleRequest_accessId)),
             "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
             "groupId": lambda n : setattr(self, 'group_id', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(DirectoryObject)),

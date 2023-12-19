@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .container_port_protocol import ContainerPortProtocol
+    from .kubernetes_service_port_protocol import KubernetesServicePort_protocol
 
 @dataclass
 class KubernetesServicePort(AdditionalDataHolder, BackedModel, Parsable):
@@ -25,7 +25,7 @@ class KubernetesServicePort(AdditionalDataHolder, BackedModel, Parsable):
     # The port that this service exposes.
     port: Optional[int] = None
     # The protocol name. Possible values are: udp, tcp, sctp, unknownFutureValue.
-    protocol: Optional[ContainerPortProtocol] = None
+    protocol: Optional[KubernetesServicePort_protocol] = None
     # The name or number of the port to access on the pods targeted by the service. The port number must be in the range 1 to 65535. The name must be an IANASVCNAME.
     target_port: Optional[str] = None
     
@@ -45,9 +45,9 @@ class KubernetesServicePort(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .container_port_protocol import ContainerPortProtocol
+        from .kubernetes_service_port_protocol import KubernetesServicePort_protocol
 
-        from .container_port_protocol import ContainerPortProtocol
+        from .kubernetes_service_port_protocol import KubernetesServicePort_protocol
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appProtocol": lambda n : setattr(self, 'app_protocol', n.get_str_value()),
@@ -55,7 +55,7 @@ class KubernetesServicePort(AdditionalDataHolder, BackedModel, Parsable):
             "nodePort": lambda n : setattr(self, 'node_port', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "port": lambda n : setattr(self, 'port', n.get_int_value()),
-            "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(ContainerPortProtocol)),
+            "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(KubernetesServicePort_protocol)),
             "targetPort": lambda n : setattr(self, 'target_port', n.get_str_value()),
         }
         return fields

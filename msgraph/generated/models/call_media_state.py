@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .media_state import MediaState
+    from .call_media_state_audio import CallMediaState_audio
 
 @dataclass
 class CallMediaState(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,7 +15,7 @@ class CallMediaState(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The audio media state. Possible values are: active, inactive, unknownFutureValue.
-    audio: Optional[MediaState] = None
+    audio: Optional[CallMediaState_audio] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,12 +35,12 @@ class CallMediaState(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .media_state import MediaState
+        from .call_media_state_audio import CallMediaState_audio
 
-        from .media_state import MediaState
+        from .call_media_state_audio import CallMediaState_audio
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "audio": lambda n : setattr(self, 'audio', n.get_enum_value(MediaState)),
+            "audio": lambda n : setattr(self, 'audio', n.get_enum_value(CallMediaState_audio)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

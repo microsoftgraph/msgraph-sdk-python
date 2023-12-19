@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .event_message import EventMessage
-    from .response_type import ResponseType
+    from .event_message_response_response_type import EventMessageResponse_responseType
     from .time_slot import TimeSlot
 
 from .event_message import EventMessage
@@ -17,7 +17,7 @@ class EventMessageResponse(EventMessage):
     # The proposedNewTime property
     proposed_new_time: Optional[TimeSlot] = None
     # The responseType property
-    response_type: Optional[ResponseType] = None
+    response_type: Optional[EventMessageResponse_responseType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EventMessageResponse:
@@ -36,16 +36,16 @@ class EventMessageResponse(EventMessage):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .event_message import EventMessage
-        from .response_type import ResponseType
+        from .event_message_response_response_type import EventMessageResponse_responseType
         from .time_slot import TimeSlot
 
         from .event_message import EventMessage
-        from .response_type import ResponseType
+        from .event_message_response_response_type import EventMessageResponse_responseType
         from .time_slot import TimeSlot
 
         fields: Dict[str, Callable[[Any], None]] = {
             "proposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(TimeSlot)),
-            "responseType": lambda n : setattr(self, 'response_type', n.get_enum_value(ResponseType)),
+            "responseType": lambda n : setattr(self, 'response_type', n.get_enum_value(EventMessageResponse_responseType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

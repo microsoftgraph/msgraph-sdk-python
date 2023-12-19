@@ -5,10 +5,10 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .call_ended_event_message_detail_call_event_type import CallEndedEventMessageDetail_callEventType
     from .call_participant_info import CallParticipantInfo
     from .event_message_detail import EventMessageDetail
     from .identity_set import IdentitySet
-    from .teamwork_call_event_type import TeamworkCallEventType
 
 from .event_message_detail import EventMessageDetail
 
@@ -19,7 +19,7 @@ class CallEndedEventMessageDetail(EventMessageDetail):
     # Duration of the call.
     call_duration: Optional[datetime.timedelta] = None
     # Represents the call event type. Possible values are: call, meeting, screenShare, unknownFutureValue.
-    call_event_type: Optional[TeamworkCallEventType] = None
+    call_event_type: Optional[CallEndedEventMessageDetail_callEventType] = None
     # Unique identifier of the call.
     call_id: Optional[str] = None
     # List of call participants.
@@ -43,19 +43,19 @@ class CallEndedEventMessageDetail(EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .call_ended_event_message_detail_call_event_type import CallEndedEventMessageDetail_callEventType
         from .call_participant_info import CallParticipantInfo
         from .event_message_detail import EventMessageDetail
         from .identity_set import IdentitySet
-        from .teamwork_call_event_type import TeamworkCallEventType
 
+        from .call_ended_event_message_detail_call_event_type import CallEndedEventMessageDetail_callEventType
         from .call_participant_info import CallParticipantInfo
         from .event_message_detail import EventMessageDetail
         from .identity_set import IdentitySet
-        from .teamwork_call_event_type import TeamworkCallEventType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "callDuration": lambda n : setattr(self, 'call_duration', n.get_timedelta_value()),
-            "callEventType": lambda n : setattr(self, 'call_event_type', n.get_enum_value(TeamworkCallEventType)),
+            "callEventType": lambda n : setattr(self, 'call_event_type', n.get_enum_value(CallEndedEventMessageDetail_callEventType)),
             "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
             "callParticipants": lambda n : setattr(self, 'call_participants', n.get_collection_of_object_values(CallParticipantInfo)),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),

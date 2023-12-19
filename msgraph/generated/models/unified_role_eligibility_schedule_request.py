@@ -11,14 +11,14 @@ if TYPE_CHECKING:
     from .ticket_info import TicketInfo
     from .unified_role_definition import UnifiedRoleDefinition
     from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
-    from .unified_role_schedule_request_actions import UnifiedRoleScheduleRequestActions
+    from .unified_role_eligibility_schedule_request_action import UnifiedRoleEligibilityScheduleRequest_action
 
 from .request import Request
 
 @dataclass
 class UnifiedRoleEligibilityScheduleRequest(Request):
     # Represents the type of operation on the role eligibility request. The possible values are: adminAssign, adminUpdate, adminRemove, selfActivate, selfDeactivate, adminExtend, adminRenew, selfExtend, selfRenew, unknownFutureValue. adminAssign: For administrators to assign eligible roles to principals.adminRemove: For administrators to remove eligible roles from principals. adminUpdate: For administrators to change existing role eligibilities.adminExtend: For administrators to extend expiring role eligibilities.adminRenew: For administrators to renew expired eligibilities.selfActivate: For users to activate their assignments.selfDeactivate: For users to deactivate their active assignments.selfExtend: For users to request to extend their expiring assignments.selfRenew: For users to request to renew their expired assignments.
-    action: Optional[UnifiedRoleScheduleRequestActions] = None
+    action: Optional[UnifiedRoleEligibilityScheduleRequest_action] = None
     # Read-only property with details of the app-specific scope when the role eligibility is scoped to an app. Nullable. Supports $expand.
     app_scope: Optional[AppScope] = None
     # Identifier of the app-specific scope when the role eligibility is scoped to an app. The scope of a role eligibility determines the set of resources for which the principal is eligible to access. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units. Supports $filter (eq, ne, and on null values).
@@ -73,7 +73,7 @@ class UnifiedRoleEligibilityScheduleRequest(Request):
         from .ticket_info import TicketInfo
         from .unified_role_definition import UnifiedRoleDefinition
         from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
-        from .unified_role_schedule_request_actions import UnifiedRoleScheduleRequestActions
+        from .unified_role_eligibility_schedule_request_action import UnifiedRoleEligibilityScheduleRequest_action
 
         from .app_scope import AppScope
         from .directory_object import DirectoryObject
@@ -82,10 +82,10 @@ class UnifiedRoleEligibilityScheduleRequest(Request):
         from .ticket_info import TicketInfo
         from .unified_role_definition import UnifiedRoleDefinition
         from .unified_role_eligibility_schedule import UnifiedRoleEligibilitySchedule
-        from .unified_role_schedule_request_actions import UnifiedRoleScheduleRequestActions
+        from .unified_role_eligibility_schedule_request_action import UnifiedRoleEligibilityScheduleRequest_action
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "action": lambda n : setattr(self, 'action', n.get_enum_value(UnifiedRoleScheduleRequestActions)),
+            "action": lambda n : setattr(self, 'action', n.get_enum_value(UnifiedRoleEligibilityScheduleRequest_action)),
             "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(AppScope)),
             "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
             "directoryScope": lambda n : setattr(self, 'directory_scope', n.get_object_value(DirectoryObject)),

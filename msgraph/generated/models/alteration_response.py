@@ -5,8 +5,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .alteration_response_query_alteration_type import AlterationResponse_queryAlterationType
     from .search_alteration import SearchAlteration
-    from .search_alteration_type import SearchAlterationType
 
 @dataclass
 class AlterationResponse(AdditionalDataHolder, BackedModel, Parsable):
@@ -22,7 +22,7 @@ class AlterationResponse(AdditionalDataHolder, BackedModel, Parsable):
     # Defines the details of the alteration information for the spelling correction.
     query_alteration: Optional[SearchAlteration] = None
     # Defines the type of the spelling correction. Possible values are: suggestion, modification.
-    query_alteration_type: Optional[SearchAlterationType] = None
+    query_alteration_type: Optional[AlterationResponse_queryAlterationType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AlterationResponse:
@@ -40,17 +40,17 @@ class AlterationResponse(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .alteration_response_query_alteration_type import AlterationResponse_queryAlterationType
         from .search_alteration import SearchAlteration
-        from .search_alteration_type import SearchAlterationType
 
+        from .alteration_response_query_alteration_type import AlterationResponse_queryAlterationType
         from .search_alteration import SearchAlteration
-        from .search_alteration_type import SearchAlterationType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "originalQueryString": lambda n : setattr(self, 'original_query_string', n.get_str_value()),
             "queryAlteration": lambda n : setattr(self, 'query_alteration', n.get_object_value(SearchAlteration)),
-            "queryAlterationType": lambda n : setattr(self, 'query_alteration_type', n.get_enum_value(SearchAlterationType)),
+            "queryAlterationType": lambda n : setattr(self, 'query_alteration_type', n.get_enum_value(AlterationResponse_queryAlterationType)),
         }
         return fields
     

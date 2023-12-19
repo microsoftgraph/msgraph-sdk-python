@@ -7,9 +7,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .risky_user_history_item import RiskyUserHistoryItem
-    from .risk_detail import RiskDetail
-    from .risk_level import RiskLevel
-    from .risk_state import RiskState
+    from .risky_user_risk_detail import RiskyUser_riskDetail
+    from .risky_user_risk_level import RiskyUser_riskLevel
+    from .risky_user_risk_state import RiskyUser_riskState
 
 from .entity import Entity
 
@@ -24,13 +24,13 @@ class RiskyUser(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
-    risk_detail: Optional[RiskDetail] = None
+    risk_detail: Optional[RiskyUser_riskDetail] = None
     # The date and time that the risky user was last updated.  The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     risk_last_updated_date_time: Optional[datetime.datetime] = None
     # Level of the detected risky user. Possible values are: low, medium, high, hidden, none, unknownFutureValue.
-    risk_level: Optional[RiskLevel] = None
+    risk_level: Optional[RiskyUser_riskLevel] = None
     # State of the user's risk. Possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
-    risk_state: Optional[RiskState] = None
+    risk_state: Optional[RiskyUser_riskState] = None
     # Risky user display name.
     user_display_name: Optional[str] = None
     # Risky user principal name.
@@ -62,24 +62,24 @@ class RiskyUser(Entity):
         """
         from .entity import Entity
         from .risky_user_history_item import RiskyUserHistoryItem
-        from .risk_detail import RiskDetail
-        from .risk_level import RiskLevel
-        from .risk_state import RiskState
+        from .risky_user_risk_detail import RiskyUser_riskDetail
+        from .risky_user_risk_level import RiskyUser_riskLevel
+        from .risky_user_risk_state import RiskyUser_riskState
 
         from .entity import Entity
         from .risky_user_history_item import RiskyUserHistoryItem
-        from .risk_detail import RiskDetail
-        from .risk_level import RiskLevel
-        from .risk_state import RiskState
+        from .risky_user_risk_detail import RiskyUser_riskDetail
+        from .risky_user_risk_level import RiskyUser_riskLevel
+        from .risky_user_risk_state import RiskyUser_riskState
 
         fields: Dict[str, Callable[[Any], None]] = {
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(RiskyUserHistoryItem)),
             "isDeleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
             "isProcessing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
-            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskDetail)),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(RiskyUser_riskDetail)),
             "riskLastUpdatedDateTime": lambda n : setattr(self, 'risk_last_updated_date_time', n.get_datetime_value()),
-            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(RiskLevel)),
-            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskState)),
+            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(RiskyUser_riskLevel)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(RiskyUser_riskState)),
             "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }

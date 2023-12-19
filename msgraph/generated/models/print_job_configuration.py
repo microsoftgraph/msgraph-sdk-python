@@ -6,15 +6,15 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .integer_range import IntegerRange
-    from .printer_feed_orientation import PrinterFeedOrientation
-    from .print_color_mode import PrintColorMode
-    from .print_duplex_mode import PrintDuplexMode
-    from .print_finishing import PrintFinishing
+    from .print_job_configuration_color_mode import PrintJobConfiguration_colorMode
+    from .print_job_configuration_duplex_mode import PrintJobConfiguration_duplexMode
+    from .print_job_configuration_feed_orientation import PrintJobConfiguration_feedOrientation
+    from .print_job_configuration_finishings import PrintJobConfiguration_finishings
+    from .print_job_configuration_multipage_layout import PrintJobConfiguration_multipageLayout
+    from .print_job_configuration_orientation import PrintJobConfiguration_orientation
+    from .print_job_configuration_quality import PrintJobConfiguration_quality
+    from .print_job_configuration_scaling import PrintJobConfiguration_scaling
     from .print_margin import PrintMargin
-    from .print_multipage_layout import PrintMultipageLayout
-    from .print_orientation import PrintOrientation
-    from .print_quality import PrintQuality
-    from .print_scaling import PrintScaling
 
 @dataclass
 class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
@@ -26,17 +26,17 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
     # Whether the printer should collate pages wehen printing multiple copies of a multi-page document.
     collate: Optional[bool] = None
     # The color mode the printer should use to print the job. Valid values are described in the table below. Read-only.
-    color_mode: Optional[PrintColorMode] = None
+    color_mode: Optional[PrintJobConfiguration_colorMode] = None
     # The number of copies that should be printed. Read-only.
     copies: Optional[int] = None
     # The resolution to use when printing the job, expressed in dots per inch (DPI). Read-only.
     dpi: Optional[int] = None
     # The duplex mode the printer should use when printing the job. Valid values are described in the table below. Read-only.
-    duplex_mode: Optional[PrintDuplexMode] = None
+    duplex_mode: Optional[PrintJobConfiguration_duplexMode] = None
     # The orientation to use when feeding media into the printer. Valid values are described in the following table. Read-only.
-    feed_orientation: Optional[PrinterFeedOrientation] = None
+    feed_orientation: Optional[PrintJobConfiguration_feedOrientation] = None
     # Finishing processes to use when printing.
-    finishings: Optional[List[PrintFinishing]] = None
+    finishings: Optional[List[PrintJobConfiguration_finishings]] = None
     # The fitPdfToPage property
     fit_pdf_to_page: Optional[bool] = None
     # The input bin (tray) to use when printing. See the printer's capabilities for a list of supported input bins.
@@ -48,11 +48,11 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
     # The mediaType property
     media_type: Optional[str] = None
     # The multipageLayout property
-    multipage_layout: Optional[PrintMultipageLayout] = None
+    multipage_layout: Optional[PrintJobConfiguration_multipageLayout] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The orientation property
-    orientation: Optional[PrintOrientation] = None
+    orientation: Optional[PrintJobConfiguration_orientation] = None
     # The outputBin property
     output_bin: Optional[str] = None
     # The pageRanges property
@@ -60,9 +60,9 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
     # The pagesPerSheet property
     pages_per_sheet: Optional[int] = None
     # The quality property
-    quality: Optional[PrintQuality] = None
+    quality: Optional[PrintJobConfiguration_quality] = None
     # The scaling property
-    scaling: Optional[PrintScaling] = None
+    scaling: Optional[PrintJobConfiguration_scaling] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintJobConfiguration:
@@ -81,48 +81,48 @@ class PrintJobConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .integer_range import IntegerRange
-        from .printer_feed_orientation import PrinterFeedOrientation
-        from .print_color_mode import PrintColorMode
-        from .print_duplex_mode import PrintDuplexMode
-        from .print_finishing import PrintFinishing
+        from .print_job_configuration_color_mode import PrintJobConfiguration_colorMode
+        from .print_job_configuration_duplex_mode import PrintJobConfiguration_duplexMode
+        from .print_job_configuration_feed_orientation import PrintJobConfiguration_feedOrientation
+        from .print_job_configuration_finishings import PrintJobConfiguration_finishings
+        from .print_job_configuration_multipage_layout import PrintJobConfiguration_multipageLayout
+        from .print_job_configuration_orientation import PrintJobConfiguration_orientation
+        from .print_job_configuration_quality import PrintJobConfiguration_quality
+        from .print_job_configuration_scaling import PrintJobConfiguration_scaling
         from .print_margin import PrintMargin
-        from .print_multipage_layout import PrintMultipageLayout
-        from .print_orientation import PrintOrientation
-        from .print_quality import PrintQuality
-        from .print_scaling import PrintScaling
 
         from .integer_range import IntegerRange
-        from .printer_feed_orientation import PrinterFeedOrientation
-        from .print_color_mode import PrintColorMode
-        from .print_duplex_mode import PrintDuplexMode
-        from .print_finishing import PrintFinishing
+        from .print_job_configuration_color_mode import PrintJobConfiguration_colorMode
+        from .print_job_configuration_duplex_mode import PrintJobConfiguration_duplexMode
+        from .print_job_configuration_feed_orientation import PrintJobConfiguration_feedOrientation
+        from .print_job_configuration_finishings import PrintJobConfiguration_finishings
+        from .print_job_configuration_multipage_layout import PrintJobConfiguration_multipageLayout
+        from .print_job_configuration_orientation import PrintJobConfiguration_orientation
+        from .print_job_configuration_quality import PrintJobConfiguration_quality
+        from .print_job_configuration_scaling import PrintJobConfiguration_scaling
         from .print_margin import PrintMargin
-        from .print_multipage_layout import PrintMultipageLayout
-        from .print_orientation import PrintOrientation
-        from .print_quality import PrintQuality
-        from .print_scaling import PrintScaling
 
         fields: Dict[str, Callable[[Any], None]] = {
             "collate": lambda n : setattr(self, 'collate', n.get_bool_value()),
-            "colorMode": lambda n : setattr(self, 'color_mode', n.get_enum_value(PrintColorMode)),
+            "colorMode": lambda n : setattr(self, 'color_mode', n.get_enum_value(PrintJobConfiguration_colorMode)),
             "copies": lambda n : setattr(self, 'copies', n.get_int_value()),
             "dpi": lambda n : setattr(self, 'dpi', n.get_int_value()),
-            "duplexMode": lambda n : setattr(self, 'duplex_mode', n.get_enum_value(PrintDuplexMode)),
-            "feedOrientation": lambda n : setattr(self, 'feed_orientation', n.get_enum_value(PrinterFeedOrientation)),
-            "finishings": lambda n : setattr(self, 'finishings', n.get_collection_of_enum_values(PrintFinishing)),
+            "duplexMode": lambda n : setattr(self, 'duplex_mode', n.get_enum_value(PrintJobConfiguration_duplexMode)),
+            "feedOrientation": lambda n : setattr(self, 'feed_orientation', n.get_enum_value(PrintJobConfiguration_feedOrientation)),
+            "finishings": lambda n : setattr(self, 'finishings', n.get_collection_of_enum_values(PrintJobConfiguration_finishings)),
             "fitPdfToPage": lambda n : setattr(self, 'fit_pdf_to_page', n.get_bool_value()),
             "inputBin": lambda n : setattr(self, 'input_bin', n.get_str_value()),
             "margin": lambda n : setattr(self, 'margin', n.get_object_value(PrintMargin)),
             "mediaSize": lambda n : setattr(self, 'media_size', n.get_str_value()),
             "mediaType": lambda n : setattr(self, 'media_type', n.get_str_value()),
-            "multipageLayout": lambda n : setattr(self, 'multipage_layout', n.get_enum_value(PrintMultipageLayout)),
+            "multipageLayout": lambda n : setattr(self, 'multipage_layout', n.get_enum_value(PrintJobConfiguration_multipageLayout)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "orientation": lambda n : setattr(self, 'orientation', n.get_enum_value(PrintOrientation)),
+            "orientation": lambda n : setattr(self, 'orientation', n.get_enum_value(PrintJobConfiguration_orientation)),
             "outputBin": lambda n : setattr(self, 'output_bin', n.get_str_value()),
             "pageRanges": lambda n : setattr(self, 'page_ranges', n.get_collection_of_object_values(IntegerRange)),
             "pagesPerSheet": lambda n : setattr(self, 'pages_per_sheet', n.get_int_value()),
-            "quality": lambda n : setattr(self, 'quality', n.get_enum_value(PrintQuality)),
-            "scaling": lambda n : setattr(self, 'scaling', n.get_enum_value(PrintScaling)),
+            "quality": lambda n : setattr(self, 'quality', n.get_enum_value(PrintJobConfiguration_quality)),
+            "scaling": lambda n : setattr(self, 'scaling', n.get_enum_value(PrintJobConfiguration_scaling)),
         }
         return fields
     

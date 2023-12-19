@@ -5,7 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .access_package_external_user_lifecycle_action import AccessPackageExternalUserLifecycleAction
+    from .entitlement_management_settings_external_user_lifecycle_action import EntitlementManagementSettings_externalUserLifecycleAction
     from .entity import Entity
 
 from .entity import Entity
@@ -15,7 +15,7 @@ class EntitlementManagementSettings(Entity):
     # If externalUserLifecycleAction is blockSignInAndDelete, the duration, typically many days, after an external user is blocked from sign in before their account is deleted.
     duration_until_external_user_deleted_after_blocked: Optional[datetime.timedelta] = None
     # Automatic action that the service should take when an external user's last access package assignment is removed. The possible values are: none, blockSignIn, blockSignInAndDelete, unknownFutureValue.
-    external_user_lifecycle_action: Optional[AccessPackageExternalUserLifecycleAction] = None
+    external_user_lifecycle_action: Optional[EntitlementManagementSettings_externalUserLifecycleAction] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,15 +35,15 @@ class EntitlementManagementSettings(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .access_package_external_user_lifecycle_action import AccessPackageExternalUserLifecycleAction
+        from .entitlement_management_settings_external_user_lifecycle_action import EntitlementManagementSettings_externalUserLifecycleAction
         from .entity import Entity
 
-        from .access_package_external_user_lifecycle_action import AccessPackageExternalUserLifecycleAction
+        from .entitlement_management_settings_external_user_lifecycle_action import EntitlementManagementSettings_externalUserLifecycleAction
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "durationUntilExternalUserDeletedAfterBlocked": lambda n : setattr(self, 'duration_until_external_user_deleted_after_blocked', n.get_timedelta_value()),
-            "externalUserLifecycleAction": lambda n : setattr(self, 'external_user_lifecycle_action', n.get_enum_value(AccessPackageExternalUserLifecycleAction)),
+            "externalUserLifecycleAction": lambda n : setattr(self, 'external_user_lifecycle_action', n.get_enum_value(EntitlementManagementSettings_externalUserLifecycleAction)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

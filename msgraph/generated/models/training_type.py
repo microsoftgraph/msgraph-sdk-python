@@ -1,7 +1,5 @@
 from enum import Enum
 
-class TrainingType(str, Enum):
-    Unknown = "unknown",
-    Phishing = "phishing",
-    UnknownFutureValue = "unknownFutureValue",
+class Training_type(str, Enum):
+    pass
 

@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .file_hash_type import FileHashType
+    from .file_hash_hash_type import FileHash_hashType
 
 @dataclass
 class FileHash(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,7 +15,7 @@ class FileHash(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # File hash type. Possible values are: unknown, sha1, sha256, md5, authenticodeHash256, lsHash, ctph, peSha1, peSha256.
-    hash_type: Optional[FileHashType] = None
+    hash_type: Optional[FileHash_hashType] = None
     # Value of the file hash.
     hash_value: Optional[str] = None
     # The OdataType property
@@ -37,12 +37,12 @@ class FileHash(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .file_hash_type import FileHashType
+        from .file_hash_hash_type import FileHash_hashType
 
-        from .file_hash_type import FileHashType
+        from .file_hash_hash_type import FileHash_hashType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "hashType": lambda n : setattr(self, 'hash_type', n.get_enum_value(FileHashType)),
+            "hashType": lambda n : setattr(self, 'hash_type', n.get_enum_value(FileHash_hashType)),
             "hashValue": lambda n : setattr(self, 'hash_value', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

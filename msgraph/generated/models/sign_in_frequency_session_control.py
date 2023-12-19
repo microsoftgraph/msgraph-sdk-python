@@ -5,9 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .conditional_access_session_control import ConditionalAccessSessionControl
-    from .signin_frequency_type import SigninFrequencyType
-    from .sign_in_frequency_authentication_type import SignInFrequencyAuthenticationType
-    from .sign_in_frequency_interval import SignInFrequencyInterval
+    from .sign_in_frequency_session_control_authentication_type import SignInFrequencySessionControl_authenticationType
+    from .sign_in_frequency_session_control_frequency_interval import SignInFrequencySessionControl_frequencyInterval
+    from .sign_in_frequency_session_control_type import SignInFrequencySessionControl_type
 
 from .conditional_access_session_control import ConditionalAccessSessionControl
 
@@ -16,11 +16,11 @@ class SignInFrequencySessionControl(ConditionalAccessSessionControl):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.signInFrequencySessionControl"
     # The possible values are primaryAndSecondaryAuthentication, secondaryAuthentication, unknownFutureValue.
-    authentication_type: Optional[SignInFrequencyAuthenticationType] = None
+    authentication_type: Optional[SignInFrequencySessionControl_authenticationType] = None
     # The possible values are timeBased, everyTime, unknownFutureValue.
-    frequency_interval: Optional[SignInFrequencyInterval] = None
+    frequency_interval: Optional[SignInFrequencySessionControl_frequencyInterval] = None
     # Possible values are: days, hours.
-    type: Optional[SigninFrequencyType] = None
+    type: Optional[SignInFrequencySessionControl_type] = None
     # The number of days or hours.
     value: Optional[int] = None
     
@@ -41,19 +41,19 @@ class SignInFrequencySessionControl(ConditionalAccessSessionControl):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .conditional_access_session_control import ConditionalAccessSessionControl
-        from .signin_frequency_type import SigninFrequencyType
-        from .sign_in_frequency_authentication_type import SignInFrequencyAuthenticationType
-        from .sign_in_frequency_interval import SignInFrequencyInterval
+        from .sign_in_frequency_session_control_authentication_type import SignInFrequencySessionControl_authenticationType
+        from .sign_in_frequency_session_control_frequency_interval import SignInFrequencySessionControl_frequencyInterval
+        from .sign_in_frequency_session_control_type import SignInFrequencySessionControl_type
 
         from .conditional_access_session_control import ConditionalAccessSessionControl
-        from .signin_frequency_type import SigninFrequencyType
-        from .sign_in_frequency_authentication_type import SignInFrequencyAuthenticationType
-        from .sign_in_frequency_interval import SignInFrequencyInterval
+        from .sign_in_frequency_session_control_authentication_type import SignInFrequencySessionControl_authenticationType
+        from .sign_in_frequency_session_control_frequency_interval import SignInFrequencySessionControl_frequencyInterval
+        from .sign_in_frequency_session_control_type import SignInFrequencySessionControl_type
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_enum_value(SignInFrequencyAuthenticationType)),
-            "frequencyInterval": lambda n : setattr(self, 'frequency_interval', n.get_enum_value(SignInFrequencyInterval)),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(SigninFrequencyType)),
+            "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_enum_value(SignInFrequencySessionControl_authenticationType)),
+            "frequencyInterval": lambda n : setattr(self, 'frequency_interval', n.get_enum_value(SignInFrequencySessionControl_frequencyInterval)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(SignInFrequencySessionControl_type)),
             "value": lambda n : setattr(self, 'value', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

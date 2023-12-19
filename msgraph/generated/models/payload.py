@@ -7,25 +7,25 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .email_identity import EmailIdentity
     from .entity import Entity
-    from .payload_brand import PayloadBrand
-    from .payload_complexity import PayloadComplexity
-    from .payload_delivery_platform import PayloadDeliveryPlatform
+    from .payload_brand import Payload_brand
+    from .payload_complexity import Payload_complexity
     from .payload_detail import PayloadDetail
-    from .payload_industry import PayloadIndustry
-    from .payload_theme import PayloadTheme
-    from .simulation_attack_technique import SimulationAttackTechnique
-    from .simulation_attack_type import SimulationAttackType
+    from .payload_industry import Payload_industry
+    from .payload_platform import Payload_platform
+    from .payload_simulation_attack_type import Payload_simulationAttackType
+    from .payload_status import Payload_status
+    from .payload_technique import Payload_technique
+    from .payload_theme import Payload_theme
     from .simulation_content_source import SimulationContentSource
-    from .simulation_content_status import SimulationContentStatus
 
 from .entity import Entity
 
 @dataclass
 class Payload(Entity):
     # The branch of a payload. Possible values are: unknown, other, americanExpress, capitalOne, dhl, docuSign, dropbox, facebook, firstAmerican, microsoft, netflix, scotiabank, sendGrid, stewartTitle, tesco, wellsFargo, syrinxCloud, adobe, teams, zoom, unknownFutureValue.
-    brand: Optional[PayloadBrand] = None
+    brand: Optional[Payload_brand] = None
     # The complexity of a payload. Possible values are: unknown, low, medium, high, unknownFutureValue.
-    complexity: Optional[PayloadComplexity] = None
+    complexity: Optional[Payload_complexity] = None
     # Identity of the user who created the attack simulation and training campaign payload.
     created_by: Optional[EmailIdentity] = None
     # Date and time when the attack simulation and training campaign payload. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -37,7 +37,7 @@ class Payload(Entity):
     # Display name of the attack simulation and training campaign payload. Supports $filter and $orderby.
     display_name: Optional[str] = None
     # Industry of a payload. Possible values are: unknown, other, banking, businessServices, consumerServices, education, energy, construction, consulting, financialServices, government, hospitality, insurance, legal, courierServices, IT, healthcare, manufacturing, retail, telecom, realEstate, unknownFutureValue.
-    industry: Optional[PayloadIndustry] = None
+    industry: Optional[Payload_industry] = None
     # Indicates whether the attack simulation and training campaign payload was created from an automation flow. Supports $filter and $orderby.
     is_automated: Optional[bool] = None
     # Indicates whether the payload is controversial.
@@ -55,19 +55,19 @@ class Payload(Entity):
     # Free text tags for a payload.
     payload_tags: Optional[List[str]] = None
     # The payload delivery platform for a simulation. Possible values are: unknown, sms, email, teams, unknownFutureValue.
-    platform: Optional[PayloadDeliveryPlatform] = None
+    platform: Optional[Payload_platform] = None
     # Predicted probability for a payload to phish a targeted user.
     predicted_compromise_rate: Optional[float] = None
     # Attack type of the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, social, cloud, endpoint, unknownFutureValue.
-    simulation_attack_type: Optional[SimulationAttackType] = None
+    simulation_attack_type: Optional[Payload_simulationAttackType] = None
     # The source property
     source: Optional[SimulationContentSource] = None
     # Simulation content status. Supports $filter and $orderby. Possible values are: unknown, draft, ready, archive, delete, unknownFutureValue.
-    status: Optional[SimulationContentStatus] = None
+    status: Optional[Payload_status] = None
     # The social engineering technique used in the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, credentialHarvesting, attachmentMalware, driveByUrl, linkInAttachment, linkToMalwareFile, unknownFutureValue, oAuthConsentGrant. Note that you must use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: oAuthConsentGrant. For more information on the types of social engineering attack techniques, see simulations.
-    technique: Optional[SimulationAttackTechnique] = None
+    technique: Optional[Payload_technique] = None
     # The theme of a payload. Possible values are: unknown, other, accountActivation, accountVerification, billing, cleanUpMail, controversial, documentReceived, expense, fax, financeReport, incomingMessages, invoice, itemReceived, loginAlert, mailReceived, password, payment, payroll, personalizedOffer, quarantine, remoteWork, reviewMessage, securityUpdate, serviceSuspended, signatureRequired, upgradeMailboxStorage, verifyMailbox, voicemail, advertisement, employeeEngagement, unknownFutureValue.
-    theme: Optional[PayloadTheme] = None
+    theme: Optional[Payload_theme] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Payload:
@@ -87,39 +87,39 @@ class Payload(Entity):
         """
         from .email_identity import EmailIdentity
         from .entity import Entity
-        from .payload_brand import PayloadBrand
-        from .payload_complexity import PayloadComplexity
-        from .payload_delivery_platform import PayloadDeliveryPlatform
+        from .payload_brand import Payload_brand
+        from .payload_complexity import Payload_complexity
         from .payload_detail import PayloadDetail
-        from .payload_industry import PayloadIndustry
-        from .payload_theme import PayloadTheme
-        from .simulation_attack_technique import SimulationAttackTechnique
-        from .simulation_attack_type import SimulationAttackType
+        from .payload_industry import Payload_industry
+        from .payload_platform import Payload_platform
+        from .payload_simulation_attack_type import Payload_simulationAttackType
+        from .payload_status import Payload_status
+        from .payload_technique import Payload_technique
+        from .payload_theme import Payload_theme
         from .simulation_content_source import SimulationContentSource
-        from .simulation_content_status import SimulationContentStatus
 
         from .email_identity import EmailIdentity
         from .entity import Entity
-        from .payload_brand import PayloadBrand
-        from .payload_complexity import PayloadComplexity
-        from .payload_delivery_platform import PayloadDeliveryPlatform
+        from .payload_brand import Payload_brand
+        from .payload_complexity import Payload_complexity
         from .payload_detail import PayloadDetail
-        from .payload_industry import PayloadIndustry
-        from .payload_theme import PayloadTheme
-        from .simulation_attack_technique import SimulationAttackTechnique
-        from .simulation_attack_type import SimulationAttackType
+        from .payload_industry import Payload_industry
+        from .payload_platform import Payload_platform
+        from .payload_simulation_attack_type import Payload_simulationAttackType
+        from .payload_status import Payload_status
+        from .payload_technique import Payload_technique
+        from .payload_theme import Payload_theme
         from .simulation_content_source import SimulationContentSource
-        from .simulation_content_status import SimulationContentStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "brand": lambda n : setattr(self, 'brand', n.get_enum_value(PayloadBrand)),
-            "complexity": lambda n : setattr(self, 'complexity', n.get_enum_value(PayloadComplexity)),
+            "brand": lambda n : setattr(self, 'brand', n.get_enum_value(Payload_brand)),
+            "complexity": lambda n : setattr(self, 'complexity', n.get_enum_value(Payload_complexity)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(EmailIdentity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "detail": lambda n : setattr(self, 'detail', n.get_object_value(PayloadDetail)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "industry": lambda n : setattr(self, 'industry', n.get_enum_value(PayloadIndustry)),
+            "industry": lambda n : setattr(self, 'industry', n.get_enum_value(Payload_industry)),
             "isAutomated": lambda n : setattr(self, 'is_automated', n.get_bool_value()),
             "isControversial": lambda n : setattr(self, 'is_controversial', n.get_bool_value()),
             "isCurrentEvent": lambda n : setattr(self, 'is_current_event', n.get_bool_value()),
@@ -127,13 +127,13 @@ class Payload(Entity):
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(EmailIdentity)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "payloadTags": lambda n : setattr(self, 'payload_tags', n.get_collection_of_primitive_values(str)),
-            "platform": lambda n : setattr(self, 'platform', n.get_enum_value(PayloadDeliveryPlatform)),
+            "platform": lambda n : setattr(self, 'platform', n.get_enum_value(Payload_platform)),
             "predictedCompromiseRate": lambda n : setattr(self, 'predicted_compromise_rate', n.get_float_value()),
-            "simulationAttackType": lambda n : setattr(self, 'simulation_attack_type', n.get_enum_value(SimulationAttackType)),
+            "simulationAttackType": lambda n : setattr(self, 'simulation_attack_type', n.get_enum_value(Payload_simulationAttackType)),
             "source": lambda n : setattr(self, 'source', n.get_enum_value(SimulationContentSource)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(SimulationContentStatus)),
-            "technique": lambda n : setattr(self, 'technique', n.get_enum_value(SimulationAttackTechnique)),
-            "theme": lambda n : setattr(self, 'theme', n.get_enum_value(PayloadTheme)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(Payload_status)),
+            "technique": lambda n : setattr(self, 'technique', n.get_enum_value(Payload_technique)),
+            "theme": lambda n : setattr(self, 'theme', n.get_enum_value(Payload_theme)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

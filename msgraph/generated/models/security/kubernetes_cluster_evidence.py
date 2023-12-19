@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
-    from .kubernetes_platform import KubernetesPlatform
+    from .kubernetes_cluster_evidence_platform import KubernetesClusterEvidence_platform
 
 from .alert_evidence import AlertEvidence
 
@@ -20,7 +20,7 @@ class KubernetesClusterEvidence(AlertEvidence):
     # The cluster name.
     name: Optional[str] = None
     # The platform the cluster runs on. Possible values are: unknown, aks, eks, gke, arc, unknownFutureValue.
-    platform: Optional[KubernetesPlatform] = None
+    platform: Optional[KubernetesClusterEvidence_platform] = None
     # The kubernetes version of the cluster.
     version: Optional[str] = None
     
@@ -41,16 +41,16 @@ class KubernetesClusterEvidence(AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
-        from .kubernetes_platform import KubernetesPlatform
+        from .kubernetes_cluster_evidence_platform import KubernetesClusterEvidence_platform
 
         from .alert_evidence import AlertEvidence
-        from .kubernetes_platform import KubernetesPlatform
+        from .kubernetes_cluster_evidence_platform import KubernetesClusterEvidence_platform
 
         fields: Dict[str, Callable[[Any], None]] = {
             "cloudResource": lambda n : setattr(self, 'cloud_resource', n.get_object_value(AlertEvidence)),
             "distribution": lambda n : setattr(self, 'distribution', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "platform": lambda n : setattr(self, 'platform', n.get_enum_value(KubernetesPlatform)),
+            "platform": lambda n : setattr(self, 'platform', n.get_enum_value(KubernetesClusterEvidence_platform)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

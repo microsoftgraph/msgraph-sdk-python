@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .body_type import BodyType
+    from .education_item_body_content_type import EducationItemBody_contentType
 
 @dataclass
 class EducationItemBody(AdditionalDataHolder, BackedModel, Parsable):
@@ -17,7 +17,7 @@ class EducationItemBody(AdditionalDataHolder, BackedModel, Parsable):
     # The content property
     content: Optional[str] = None
     # The contentType property
-    content_type: Optional[BodyType] = None
+    content_type: Optional[EducationItemBody_contentType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -37,13 +37,13 @@ class EducationItemBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .body_type import BodyType
+        from .education_item_body_content_type import EducationItemBody_contentType
 
-        from .body_type import BodyType
+        from .education_item_body_content_type import EducationItemBody_contentType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
-            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(BodyType)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(EducationItemBody_contentType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

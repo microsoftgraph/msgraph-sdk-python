@@ -6,8 +6,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .public_error import PublicError
-    from .subject_rights_request_stage import SubjectRightsRequestStage
-    from .subject_rights_request_stage_status import SubjectRightsRequestStageStatus
+    from .subject_rights_request_stage_detail_stage import SubjectRightsRequestStageDetail_stage
+    from .subject_rights_request_stage_detail_status import SubjectRightsRequestStageDetail_status
 
 @dataclass
 class SubjectRightsRequestStageDetail(AdditionalDataHolder, BackedModel, Parsable):
@@ -21,9 +21,9 @@ class SubjectRightsRequestStageDetail(AdditionalDataHolder, BackedModel, Parsabl
     # The OdataType property
     odata_type: Optional[str] = None
     # The stage of the subject rights request. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue, approval. You must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: approval.
-    stage: Optional[SubjectRightsRequestStage] = None
+    stage: Optional[SubjectRightsRequestStageDetail_stage] = None
     # Status of the current stage. Possible values are: notStarted, current, completed, failed, unknownFutureValue.
-    status: Optional[SubjectRightsRequestStageStatus] = None
+    status: Optional[SubjectRightsRequestStageDetail_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SubjectRightsRequestStageDetail:
@@ -42,18 +42,18 @@ class SubjectRightsRequestStageDetail(AdditionalDataHolder, BackedModel, Parsabl
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .public_error import PublicError
-        from .subject_rights_request_stage import SubjectRightsRequestStage
-        from .subject_rights_request_stage_status import SubjectRightsRequestStageStatus
+        from .subject_rights_request_stage_detail_stage import SubjectRightsRequestStageDetail_stage
+        from .subject_rights_request_stage_detail_status import SubjectRightsRequestStageDetail_status
 
         from .public_error import PublicError
-        from .subject_rights_request_stage import SubjectRightsRequestStage
-        from .subject_rights_request_stage_status import SubjectRightsRequestStageStatus
+        from .subject_rights_request_stage_detail_stage import SubjectRightsRequestStageDetail_stage
+        from .subject_rights_request_stage_detail_status import SubjectRightsRequestStageDetail_status
 
         fields: Dict[str, Callable[[Any], None]] = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(PublicError)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "stage": lambda n : setattr(self, 'stage', n.get_enum_value(SubjectRightsRequestStage)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(SubjectRightsRequestStageStatus)),
+            "stage": lambda n : setattr(self, 'stage', n.get_enum_value(SubjectRightsRequestStageDetail_stage)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(SubjectRightsRequestStageDetail_status)),
         }
         return fields
     

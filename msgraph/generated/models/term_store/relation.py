@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
-    from .relation_type import RelationType
+    from .relation_relationship import Relation_relationship
     from .set import Set
     from .term import Term
 
@@ -18,7 +18,7 @@ class Relation(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of relation. Possible values are: pin, reuse.
-    relationship: Optional[RelationType] = None
+    relationship: Optional[Relation_relationship] = None
     # The [set] in which the relation is relevant.
     set: Optional[Set] = None
     # The to [term] of the relation. The term to which the relationship is defined.
@@ -41,18 +41,18 @@ class Relation(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
-        from .relation_type import RelationType
+        from .relation_relationship import Relation_relationship
         from .set import Set
         from .term import Term
 
         from ..entity import Entity
-        from .relation_type import RelationType
+        from .relation_relationship import Relation_relationship
         from .set import Set
         from .term import Term
 
         fields: Dict[str, Callable[[Any], None]] = {
             "fromTerm": lambda n : setattr(self, 'from_term', n.get_object_value(Term)),
-            "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(RelationType)),
+            "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(Relation_relationship)),
             "set": lambda n : setattr(self, 'set', n.get_object_value(Set)),
             "toTerm": lambda n : setattr(self, 'to_term', n.get_object_value(Term)),
         }

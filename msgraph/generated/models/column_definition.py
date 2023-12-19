@@ -7,7 +7,7 @@ if TYPE_CHECKING:
     from .boolean_column import BooleanColumn
     from .calculated_column import CalculatedColumn
     from .choice_column import ChoiceColumn
-    from .column_types import ColumnTypes
+    from .column_definition_type import ColumnDefinition_type
     from .column_validation import ColumnValidation
     from .content_approval_status_column import ContentApprovalStatusColumn
     from .content_type_info import ContentTypeInfo
@@ -91,7 +91,7 @@ class ColumnDefinition(Entity):
     # This column stores thumbnail values.
     thumbnail: Optional[ThumbnailColumn] = None
     # For site columns, the type of column. Read-only.
-    type: Optional[ColumnTypes] = None
+    type: Optional[ColumnDefinition_type] = None
     # This column stores validation formula and message for the column.
     validation: Optional[ColumnValidation] = None
     
@@ -114,7 +114,7 @@ class ColumnDefinition(Entity):
         from .boolean_column import BooleanColumn
         from .calculated_column import CalculatedColumn
         from .choice_column import ChoiceColumn
-        from .column_types import ColumnTypes
+        from .column_definition_type import ColumnDefinition_type
         from .column_validation import ColumnValidation
         from .content_approval_status_column import ContentApprovalStatusColumn
         from .content_type_info import ContentTypeInfo
@@ -134,7 +134,7 @@ class ColumnDefinition(Entity):
         from .boolean_column import BooleanColumn
         from .calculated_column import CalculatedColumn
         from .choice_column import ChoiceColumn
-        from .column_types import ColumnTypes
+        from .column_definition_type import ColumnDefinition_type
         from .column_validation import ColumnValidation
         from .content_approval_status_column import ContentApprovalStatusColumn
         from .content_type_info import ContentTypeInfo
@@ -182,7 +182,7 @@ class ColumnDefinition(Entity):
             "term": lambda n : setattr(self, 'term', n.get_object_value(TermColumn)),
             "text": lambda n : setattr(self, 'text', n.get_object_value(TextColumn)),
             "thumbnail": lambda n : setattr(self, 'thumbnail', n.get_object_value(ThumbnailColumn)),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(ColumnTypes)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(ColumnDefinition_type)),
             "validation": lambda n : setattr(self, 'validation', n.get_object_value(ColumnValidation)),
         }
         super_fields = super().get_field_deserializers()

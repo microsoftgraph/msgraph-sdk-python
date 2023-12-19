@@ -1,7 +1,5 @@
 from enum import Enum
 
-class HostPortProtocol(str, Enum):
-    Tcp = "tcp",
-    Udp = "udp",
-    UnknownFutureValue = "unknownFutureValue",
+class HostPort_protocol(str, Enum):
+    pass
 

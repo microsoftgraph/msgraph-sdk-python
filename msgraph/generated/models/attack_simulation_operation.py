@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .attack_simulation_operation_type import AttackSimulationOperationType
+    from .attack_simulation_operation_type import AttackSimulationOperation_type
     from .long_running_operation import LongRunningOperation
 
 from .long_running_operation import LongRunningOperation
@@ -18,7 +18,7 @@ class AttackSimulationOperation(LongRunningOperation):
     # Tenant identifier.
     tenant_id: Optional[str] = None
     # The attack simulation operation type. Possible values are: createSimulation, updateSimulation, unknownFutureValue.
-    type: Optional[AttackSimulationOperationType] = None
+    type: Optional[AttackSimulationOperation_type] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttackSimulationOperation:
@@ -36,16 +36,16 @@ class AttackSimulationOperation(LongRunningOperation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .attack_simulation_operation_type import AttackSimulationOperationType
+        from .attack_simulation_operation_type import AttackSimulationOperation_type
         from .long_running_operation import LongRunningOperation
 
-        from .attack_simulation_operation_type import AttackSimulationOperationType
+        from .attack_simulation_operation_type import AttackSimulationOperation_type
         from .long_running_operation import LongRunningOperation
 
         fields: Dict[str, Callable[[Any], None]] = {
             "percentageCompleted": lambda n : setattr(self, 'percentage_completed', n.get_int_value()),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(AttackSimulationOperationType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(AttackSimulationOperation_type)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

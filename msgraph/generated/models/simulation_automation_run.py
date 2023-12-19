@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .simulation_automation_run_status import SimulationAutomationRunStatus
+    from .simulation_automation_run_status import SimulationAutomationRun_status
 
 from .entity import Entity
 
@@ -21,7 +21,7 @@ class SimulationAutomationRun(Entity):
     # Date and time when the run starts in an attack simulation automation.
     start_date_time: Optional[datetime.datetime] = None
     # Status of the attack simulation automation run. The possible values are: unknown, running, succeeded, failed, skipped, unknownFutureValue.
-    status: Optional[SimulationAutomationRunStatus] = None
+    status: Optional[SimulationAutomationRun_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SimulationAutomationRun:
@@ -40,16 +40,16 @@ class SimulationAutomationRun(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .simulation_automation_run_status import SimulationAutomationRunStatus
+        from .simulation_automation_run_status import SimulationAutomationRun_status
 
         from .entity import Entity
-        from .simulation_automation_run_status import SimulationAutomationRunStatus
+        from .simulation_automation_run_status import SimulationAutomationRun_status
 
         fields: Dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "simulationId": lambda n : setattr(self, 'simulation_id', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(SimulationAutomationRunStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(SimulationAutomationRun_status)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

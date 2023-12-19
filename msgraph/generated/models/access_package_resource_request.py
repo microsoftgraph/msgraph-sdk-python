@@ -6,9 +6,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_catalog import AccessPackageCatalog
-    from .access_package_request_state import AccessPackageRequestState
-    from .access_package_request_type import AccessPackageRequestType
     from .access_package_resource import AccessPackageResource
+    from .access_package_resource_request_request_type import AccessPackageResourceRequest_requestType
+    from .access_package_resource_request_state import AccessPackageResourceRequest_state
     from .entity import Entity
 
 from .entity import Entity
@@ -22,11 +22,11 @@ class AccessPackageResourceRequest(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # The type of the request. Use adminAdd to add a resource, if the caller is an administrator or resource owner, adminUpdate to update a resource, or adminRemove to remove a resource.
-    request_type: Optional[AccessPackageRequestType] = None
+    request_type: Optional[AccessPackageResourceRequest_requestType] = None
     # The resource property
     resource: Optional[AccessPackageResource] = None
     # The outcome of whether the service was able to add the resource to the catalog.  The value is delivered if the resource was added or removed, and deliveryFailed if it could not be added or removed. Read-only.
-    state: Optional[AccessPackageRequestState] = None
+    state: Optional[AccessPackageResourceRequest_state] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageResourceRequest:
@@ -45,23 +45,23 @@ class AccessPackageResourceRequest(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_catalog import AccessPackageCatalog
-        from .access_package_request_state import AccessPackageRequestState
-        from .access_package_request_type import AccessPackageRequestType
         from .access_package_resource import AccessPackageResource
+        from .access_package_resource_request_request_type import AccessPackageResourceRequest_requestType
+        from .access_package_resource_request_state import AccessPackageResourceRequest_state
         from .entity import Entity
 
         from .access_package_catalog import AccessPackageCatalog
-        from .access_package_request_state import AccessPackageRequestState
-        from .access_package_request_type import AccessPackageRequestType
         from .access_package_resource import AccessPackageResource
+        from .access_package_resource_request_request_type import AccessPackageResourceRequest_requestType
+        from .access_package_resource_request_state import AccessPackageResourceRequest_state
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(AccessPackageCatalog)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "requestType": lambda n : setattr(self, 'request_type', n.get_enum_value(AccessPackageRequestType)),
+            "requestType": lambda n : setattr(self, 'request_type', n.get_enum_value(AccessPackageResourceRequest_requestType)),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(AccessPackageResource)),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(AccessPackageRequestState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(AccessPackageResourceRequest_state)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

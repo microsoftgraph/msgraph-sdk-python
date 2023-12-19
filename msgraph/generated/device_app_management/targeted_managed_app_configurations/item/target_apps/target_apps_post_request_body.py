@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .....models.managed_mobile_app import ManagedMobileApp
-    from .....models.targeted_managed_app_group_type import TargetedManagedAppGroupType
+    from .target_apps_post_request_body_app_group_type import TargetAppsPostRequestBody_appGroupType
 
 @dataclass
 class TargetAppsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
@@ -16,7 +16,7 @@ class TargetAppsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The appGroupType property
-    app_group_type: Optional[TargetedManagedAppGroupType] = None
+    app_group_type: Optional[TargetAppsPostRequestBody_appGroupType] = None
     # The apps property
     apps: Optional[List[ManagedMobileApp]] = None
     
@@ -37,13 +37,13 @@ class TargetAppsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .....models.managed_mobile_app import ManagedMobileApp
-        from .....models.targeted_managed_app_group_type import TargetedManagedAppGroupType
+        from .target_apps_post_request_body_app_group_type import TargetAppsPostRequestBody_appGroupType
 
         from .....models.managed_mobile_app import ManagedMobileApp
-        from .....models.targeted_managed_app_group_type import TargetedManagedAppGroupType
+        from .target_apps_post_request_body_app_group_type import TargetAppsPostRequestBody_appGroupType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "appGroupType": lambda n : setattr(self, 'app_group_type', n.get_enum_value(TargetedManagedAppGroupType)),
+            "appGroupType": lambda n : setattr(self, 'app_group_type', n.get_enum_value(TargetAppsPostRequestBody_appGroupType)),
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(ManagedMobileApp)),
         }
         return fields

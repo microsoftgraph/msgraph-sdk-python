@@ -5,8 +5,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .group_type import GroupType
     from .modified_property import ModifiedProperty
+    from .target_resource_group_type import TargetResource_groupType
 
 @dataclass
 class TargetResource(AdditionalDataHolder, BackedModel, Parsable):
@@ -18,7 +18,7 @@ class TargetResource(AdditionalDataHolder, BackedModel, Parsable):
     # Indicates the visible name defined for the resource. Typically specified when the resource is created.
     display_name: Optional[str] = None
     # When type is set to Group, this indicates the group type. Possible values are: unifiedGroups, azureAD, and unknownFutureValue
-    group_type: Optional[GroupType] = None
+    group_type: Optional[TargetResource_groupType] = None
     # Indicates the unique ID of the resource.
     id: Optional[str] = None
     # Indicates name, old value and new value of each attribute that changed. Property values depend on the operation type.
@@ -46,15 +46,15 @@ class TargetResource(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .group_type import GroupType
         from .modified_property import ModifiedProperty
+        from .target_resource_group_type import TargetResource_groupType
 
-        from .group_type import GroupType
         from .modified_property import ModifiedProperty
+        from .target_resource_group_type import TargetResource_groupType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "groupType": lambda n : setattr(self, 'group_type', n.get_enum_value(GroupType)),
+            "groupType": lambda n : setattr(self, 'group_type', n.get_enum_value(TargetResource_groupType)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(ModifiedProperty)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from .email_identity import EmailIdentity
     from .entity import Entity
     from .simulation_automation_run import SimulationAutomationRun
-    from .simulation_automation_status import SimulationAutomationStatus
+    from .simulation_automation_status import SimulationAutomation_status
 
 from .entity import Entity
 
@@ -35,7 +35,7 @@ class SimulationAutomation(Entity):
     # A collection of simulation automation runs.
     runs: Optional[List[SimulationAutomationRun]] = None
     # Status of the attack simulation automation. Supports $filter and $orderby. The possible values are: unknown, draft, notRunning, running, completed, unknownFutureValue.
-    status: Optional[SimulationAutomationStatus] = None
+    status: Optional[SimulationAutomation_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SimulationAutomation:
@@ -56,12 +56,12 @@ class SimulationAutomation(Entity):
         from .email_identity import EmailIdentity
         from .entity import Entity
         from .simulation_automation_run import SimulationAutomationRun
-        from .simulation_automation_status import SimulationAutomationStatus
+        from .simulation_automation_status import SimulationAutomation_status
 
         from .email_identity import EmailIdentity
         from .entity import Entity
         from .simulation_automation_run import SimulationAutomationRun
-        from .simulation_automation_status import SimulationAutomationStatus
+        from .simulation_automation_status import SimulationAutomation_status
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(EmailIdentity)),
@@ -73,7 +73,7 @@ class SimulationAutomation(Entity):
             "lastRunDateTime": lambda n : setattr(self, 'last_run_date_time', n.get_datetime_value()),
             "nextRunDateTime": lambda n : setattr(self, 'next_run_date_time', n.get_datetime_value()),
             "runs": lambda n : setattr(self, 'runs', n.get_collection_of_object_values(SimulationAutomationRun)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(SimulationAutomationStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(SimulationAutomation_status)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

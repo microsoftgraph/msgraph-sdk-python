@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from .activity_history_item import ActivityHistoryItem
     from .entity import Entity
     from .json import Json
-    from .status import Status
+    from .user_activity_status import UserActivity_status
     from .visual_info import VisualInfo
 
 from .entity import Entity
@@ -40,7 +40,7 @@ class UserActivity(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # Set by the server. A status code used to identify valid objects. Values: active, updated, deleted, ignored.
-    status: Optional[Status] = None
+    status: Optional[UserActivity_status] = None
     # Optional. The timezone in which the user's device used to generate the activity was located at activity creation time; values supplied as Olson IDs in order to support cross-platform representation.
     user_timezone: Optional[str] = None
     # The visualElements property
@@ -65,13 +65,13 @@ class UserActivity(Entity):
         from .activity_history_item import ActivityHistoryItem
         from .entity import Entity
         from .json import Json
-        from .status import Status
+        from .user_activity_status import UserActivity_status
         from .visual_info import VisualInfo
 
         from .activity_history_item import ActivityHistoryItem
         from .entity import Entity
         from .json import Json
-        from .status import Status
+        from .user_activity_status import UserActivity_status
         from .visual_info import VisualInfo
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -86,7 +86,7 @@ class UserActivity(Entity):
             "fallbackUrl": lambda n : setattr(self, 'fallback_url', n.get_str_value()),
             "historyItems": lambda n : setattr(self, 'history_items', n.get_collection_of_object_values(ActivityHistoryItem)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(Status)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(UserActivity_status)),
             "userTimezone": lambda n : setattr(self, 'user_timezone', n.get_str_value()),
             "visualElements": lambda n : setattr(self, 'visual_elements', n.get_object_value(VisualInfo)),
         }

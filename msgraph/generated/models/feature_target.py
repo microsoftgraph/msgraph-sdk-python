@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .feature_target_type import FeatureTargetType
+    from .feature_target_target_type import FeatureTarget_targetType
 
 @dataclass
 class FeatureTarget(AdditionalDataHolder, BackedModel, Parsable):
@@ -19,7 +19,7 @@ class FeatureTarget(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The kind of entity that's targeted. The possible values are: group, administrativeUnit, role, unknownFutureValue.
-    target_type: Optional[FeatureTargetType] = None
+    target_type: Optional[FeatureTarget_targetType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FeatureTarget:
@@ -37,14 +37,14 @@ class FeatureTarget(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .feature_target_type import FeatureTargetType
+        from .feature_target_target_type import FeatureTarget_targetType
 
-        from .feature_target_type import FeatureTargetType
+        from .feature_target_target_type import FeatureTarget_targetType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(FeatureTargetType)),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(FeatureTarget_targetType)),
         }
         return fields
     

@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .base_end_user_notification import BaseEndUserNotification
-    from .notification_delivery_preference import NotificationDeliveryPreference
+    from .positive_reinforcement_notification_delivery_preference import PositiveReinforcementNotification_deliveryPreference
 
 from .base_end_user_notification import BaseEndUserNotification
 
@@ -14,7 +14,7 @@ class PositiveReinforcementNotification(BaseEndUserNotification):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.positiveReinforcementNotification"
     # Delivery preference. Possible values are: unknown, deliverImmedietly, deliverAfterCampaignEnd, unknownFutureValue.
-    delivery_preference: Optional[NotificationDeliveryPreference] = None
+    delivery_preference: Optional[PositiveReinforcementNotification_deliveryPreference] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PositiveReinforcementNotification:
@@ -33,13 +33,13 @@ class PositiveReinforcementNotification(BaseEndUserNotification):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .base_end_user_notification import BaseEndUserNotification
-        from .notification_delivery_preference import NotificationDeliveryPreference
+        from .positive_reinforcement_notification_delivery_preference import PositiveReinforcementNotification_deliveryPreference
 
         from .base_end_user_notification import BaseEndUserNotification
-        from .notification_delivery_preference import NotificationDeliveryPreference
+        from .positive_reinforcement_notification_delivery_preference import PositiveReinforcementNotification_deliveryPreference
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "deliveryPreference": lambda n : setattr(self, 'delivery_preference', n.get_enum_value(NotificationDeliveryPreference)),
+            "deliveryPreference": lambda n : setattr(self, 'delivery_preference', n.get_enum_value(PositiveReinforcementNotification_deliveryPreference)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

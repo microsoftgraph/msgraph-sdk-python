@@ -5,9 +5,9 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .calendar_sharing_action import CalendarSharingAction
-    from .calendar_sharing_action_importance import CalendarSharingActionImportance
-    from .calendar_sharing_action_type import CalendarSharingActionType
+    from .calendar_sharing_message_action_action import CalendarSharingMessageAction_action
+    from .calendar_sharing_message_action_action_type import CalendarSharingMessageAction_actionType
+    from .calendar_sharing_message_action_importance import CalendarSharingMessageAction_importance
 
 @dataclass
 class CalendarSharingMessageAction(AdditionalDataHolder, BackedModel, Parsable):
@@ -17,11 +17,11 @@ class CalendarSharingMessageAction(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The action property
-    action: Optional[CalendarSharingAction] = None
+    action: Optional[CalendarSharingMessageAction_action] = None
     # The actionType property
-    action_type: Optional[CalendarSharingActionType] = None
+    action_type: Optional[CalendarSharingMessageAction_actionType] = None
     # The importance property
-    importance: Optional[CalendarSharingActionImportance] = None
+    importance: Optional[CalendarSharingMessageAction_importance] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -41,18 +41,18 @@ class CalendarSharingMessageAction(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .calendar_sharing_action import CalendarSharingAction
-        from .calendar_sharing_action_importance import CalendarSharingActionImportance
-        from .calendar_sharing_action_type import CalendarSharingActionType
+        from .calendar_sharing_message_action_action import CalendarSharingMessageAction_action
+        from .calendar_sharing_message_action_action_type import CalendarSharingMessageAction_actionType
+        from .calendar_sharing_message_action_importance import CalendarSharingMessageAction_importance
 
-        from .calendar_sharing_action import CalendarSharingAction
-        from .calendar_sharing_action_importance import CalendarSharingActionImportance
-        from .calendar_sharing_action_type import CalendarSharingActionType
+        from .calendar_sharing_message_action_action import CalendarSharingMessageAction_action
+        from .calendar_sharing_message_action_action_type import CalendarSharingMessageAction_actionType
+        from .calendar_sharing_message_action_importance import CalendarSharingMessageAction_importance
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "action": lambda n : setattr(self, 'action', n.get_enum_value(CalendarSharingAction)),
-            "actionType": lambda n : setattr(self, 'action_type', n.get_enum_value(CalendarSharingActionType)),
-            "importance": lambda n : setattr(self, 'importance', n.get_enum_value(CalendarSharingActionImportance)),
+            "action": lambda n : setattr(self, 'action', n.get_enum_value(CalendarSharingMessageAction_action)),
+            "actionType": lambda n : setattr(self, 'action_type', n.get_enum_value(CalendarSharingMessageAction_actionType)),
+            "importance": lambda n : setattr(self, 'importance', n.get_enum_value(CalendarSharingMessageAction_importance)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

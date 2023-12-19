@@ -6,8 +6,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .location_constraint_item import LocationConstraintItem
-    from .location_type import LocationType
-    from .location_unique_id_type import LocationUniqueIdType
+    from .location_location_type import Location_locationType
+    from .location_unique_id_type import Location_uniqueIdType
     from .outlook_geo_coordinates import OutlookGeoCoordinates
     from .physical_address import PhysicalAddress
 
@@ -27,7 +27,7 @@ class Location(AdditionalDataHolder, BackedModel, Parsable):
     # Optional email address of the location.
     location_email_address: Optional[str] = None
     # The type of location. The possible values are: default, conferenceRoom, homeAddress, businessAddress,geoCoordinates, streetAddress, hotel, restaurant, localBusiness, postalAddress. Read-only.
-    location_type: Optional[LocationType] = None
+    location_type: Optional[Location_locationType] = None
     # Optional URI representing the location.
     location_uri: Optional[str] = None
     # The OdataType property
@@ -35,7 +35,7 @@ class Location(AdditionalDataHolder, BackedModel, Parsable):
     # For internal use only.
     unique_id: Optional[str] = None
     # For internal use only.
-    unique_id_type: Optional[LocationUniqueIdType] = None
+    unique_id_type: Optional[Location_uniqueIdType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Location:
@@ -62,14 +62,14 @@ class Location(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .location_constraint_item import LocationConstraintItem
-        from .location_type import LocationType
-        from .location_unique_id_type import LocationUniqueIdType
+        from .location_location_type import Location_locationType
+        from .location_unique_id_type import Location_uniqueIdType
         from .outlook_geo_coordinates import OutlookGeoCoordinates
         from .physical_address import PhysicalAddress
 
         from .location_constraint_item import LocationConstraintItem
-        from .location_type import LocationType
-        from .location_unique_id_type import LocationUniqueIdType
+        from .location_location_type import Location_locationType
+        from .location_unique_id_type import Location_uniqueIdType
         from .outlook_geo_coordinates import OutlookGeoCoordinates
         from .physical_address import PhysicalAddress
 
@@ -78,11 +78,11 @@ class Location(AdditionalDataHolder, BackedModel, Parsable):
             "coordinates": lambda n : setattr(self, 'coordinates', n.get_object_value(OutlookGeoCoordinates)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "locationEmailAddress": lambda n : setattr(self, 'location_email_address', n.get_str_value()),
-            "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(LocationType)),
+            "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(Location_locationType)),
             "locationUri": lambda n : setattr(self, 'location_uri', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "uniqueId": lambda n : setattr(self, 'unique_id', n.get_str_value()),
-            "uniqueIdType": lambda n : setattr(self, 'unique_id_type', n.get_enum_value(LocationUniqueIdType)),
+            "uniqueIdType": lambda n : setattr(self, 'unique_id_type', n.get_enum_value(Location_uniqueIdType)),
         }
         return fields
     

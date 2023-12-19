@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .provisioning_status_error_category import ProvisioningStatusErrorCategory
+    from .provisioning_error_info_error_category import ProvisioningErrorInfo_errorCategory
 
 @dataclass
 class ProvisioningErrorInfo(AdditionalDataHolder, BackedModel, Parsable):
@@ -17,7 +17,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, BackedModel, Parsable):
     # Additional details if there's error.
     additional_details: Optional[str] = None
     # Categorizes the error code. Possible values are failure, nonServiceFailure, success, unknownFutureValue
-    error_category: Optional[ProvisioningStatusErrorCategory] = None
+    error_category: Optional[ProvisioningErrorInfo_errorCategory] = None
     # Unique error code if any occurred. Learn more
     error_code: Optional[str] = None
     # The OdataType property
@@ -43,13 +43,13 @@ class ProvisioningErrorInfo(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .provisioning_status_error_category import ProvisioningStatusErrorCategory
+        from .provisioning_error_info_error_category import ProvisioningErrorInfo_errorCategory
 
-        from .provisioning_status_error_category import ProvisioningStatusErrorCategory
+        from .provisioning_error_info_error_category import ProvisioningErrorInfo_errorCategory
 
         fields: Dict[str, Callable[[Any], None]] = {
             "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_str_value()),
-            "errorCategory": lambda n : setattr(self, 'error_category', n.get_enum_value(ProvisioningStatusErrorCategory)),
+            "errorCategory": lambda n : setattr(self, 'error_category', n.get_enum_value(ProvisioningErrorInfo_errorCategory)),
             "errorCode": lambda n : setattr(self, 'error_code', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "reason": lambda n : setattr(self, 'reason', n.get_str_value()),

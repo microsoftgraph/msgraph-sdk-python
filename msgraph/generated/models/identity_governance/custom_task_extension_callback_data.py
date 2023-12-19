@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..custom_extension_data import CustomExtensionData
-    from .custom_task_extension_operation_status import CustomTaskExtensionOperationStatus
+    from .custom_task_extension_callback_data_operation_status import CustomTaskExtensionCallbackData_operationStatus
 
 from ..custom_extension_data import CustomExtensionData
 
@@ -14,7 +14,7 @@ class CustomTaskExtensionCallbackData(CustomExtensionData):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.identityGovernance.customTaskExtensionCallbackData"
     # Operation status that's provided by the Azure Logic App indicating whenever the Azure Logic App has run successfully or not. Supported values: completed, failed, unknownFutureValue.
-    operation_status: Optional[CustomTaskExtensionOperationStatus] = None
+    operation_status: Optional[CustomTaskExtensionCallbackData_operationStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CustomTaskExtensionCallbackData:
@@ -33,13 +33,13 @@ class CustomTaskExtensionCallbackData(CustomExtensionData):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from ..custom_extension_data import CustomExtensionData
-        from .custom_task_extension_operation_status import CustomTaskExtensionOperationStatus
+        from .custom_task_extension_callback_data_operation_status import CustomTaskExtensionCallbackData_operationStatus
 
         from ..custom_extension_data import CustomExtensionData
-        from .custom_task_extension_operation_status import CustomTaskExtensionOperationStatus
+        from .custom_task_extension_callback_data_operation_status import CustomTaskExtensionCallbackData_operationStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "operationStatus": lambda n : setattr(self, 'operation_status', n.get_enum_value(CustomTaskExtensionOperationStatus)),
+            "operationStatus": lambda n : setattr(self, 'operation_status', n.get_enum_value(CustomTaskExtensionCallbackData_operationStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

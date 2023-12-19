@@ -7,8 +7,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .identity_set import IdentitySet
-    from .subject_rights_request_stage import SubjectRightsRequestStage
-    from .subject_rights_request_stage_status import SubjectRightsRequestStageStatus
+    from .subject_rights_request_history_stage import SubjectRightsRequestHistory_stage
+    from .subject_rights_request_history_stage_status import SubjectRightsRequestHistory_stageStatus
 
 @dataclass
 class SubjectRightsRequestHistory(AdditionalDataHolder, BackedModel, Parsable):
@@ -24,9 +24,9 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The stage when the entity was changed. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue, approval. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: approval.
-    stage: Optional[SubjectRightsRequestStage] = None
+    stage: Optional[SubjectRightsRequestHistory_stage] = None
     # The status of the stage when the entity was changed. Possible values are: notStarted, current, completed, failed, unknownFutureValue.
-    stage_status: Optional[SubjectRightsRequestStageStatus] = None
+    stage_status: Optional[SubjectRightsRequestHistory_stageStatus] = None
     # Type of history.
     type: Optional[str] = None
     
@@ -47,19 +47,19 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .identity_set import IdentitySet
-        from .subject_rights_request_stage import SubjectRightsRequestStage
-        from .subject_rights_request_stage_status import SubjectRightsRequestStageStatus
+        from .subject_rights_request_history_stage import SubjectRightsRequestHistory_stage
+        from .subject_rights_request_history_stage_status import SubjectRightsRequestHistory_stageStatus
 
         from .identity_set import IdentitySet
-        from .subject_rights_request_stage import SubjectRightsRequestStage
-        from .subject_rights_request_stage_status import SubjectRightsRequestStageStatus
+        from .subject_rights_request_history_stage import SubjectRightsRequestHistory_stage
+        from .subject_rights_request_history_stage_status import SubjectRightsRequestHistory_stageStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
             "changedBy": lambda n : setattr(self, 'changed_by', n.get_object_value(IdentitySet)),
             "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "stage": lambda n : setattr(self, 'stage', n.get_enum_value(SubjectRightsRequestStage)),
-            "stageStatus": lambda n : setattr(self, 'stage_status', n.get_enum_value(SubjectRightsRequestStageStatus)),
+            "stage": lambda n : setattr(self, 'stage', n.get_enum_value(SubjectRightsRequestHistory_stage)),
+            "stageStatus": lambda n : setattr(self, 'stage_status', n.get_enum_value(SubjectRightsRequestHistory_stageStatus)),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         return fields

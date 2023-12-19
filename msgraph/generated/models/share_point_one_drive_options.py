@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .search_content import SearchContent
+    from .share_point_one_drive_options_include_content import SharePointOneDriveOptions_includeContent
 
 @dataclass
 class SharePointOneDriveOptions(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,7 +15,7 @@ class SharePointOneDriveOptions(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The type of search content. The possible values are: sharedContent, privateContent, unknownFutureValue. Read-only.
-    include_content: Optional[SearchContent] = None
+    include_content: Optional[SharePointOneDriveOptions_includeContent] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -35,12 +35,12 @@ class SharePointOneDriveOptions(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .search_content import SearchContent
+        from .share_point_one_drive_options_include_content import SharePointOneDriveOptions_includeContent
 
-        from .search_content import SearchContent
+        from .share_point_one_drive_options_include_content import SharePointOneDriveOptions_includeContent
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "includeContent": lambda n : setattr(self, 'include_content', n.get_collection_of_enum_values(SearchContent)),
+            "includeContent": lambda n : setattr(self, 'include_content', n.get_enum_value(SharePointOneDriveOptions_includeContent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

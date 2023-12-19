@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models.authentication_method_modes import AuthenticationMethodModes
+    from .update_allowed_combinations_post_request_body_allowed_combinations import UpdateAllowedCombinationsPostRequestBody_allowedCombinations
 
 @dataclass
 class UpdateAllowedCombinationsPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,7 +15,7 @@ class UpdateAllowedCombinationsPostRequestBody(AdditionalDataHolder, BackedModel
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The allowedCombinations property
-    allowed_combinations: Optional[List[AuthenticationMethodModes]] = None
+    allowed_combinations: Optional[List[UpdateAllowedCombinationsPostRequestBody_allowedCombinations]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UpdateAllowedCombinationsPostRequestBody:
@@ -33,12 +33,12 @@ class UpdateAllowedCombinationsPostRequestBody(AdditionalDataHolder, BackedModel
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .......models.authentication_method_modes import AuthenticationMethodModes
+        from .update_allowed_combinations_post_request_body_allowed_combinations import UpdateAllowedCombinationsPostRequestBody_allowedCombinations
 
-        from .......models.authentication_method_modes import AuthenticationMethodModes
+        from .update_allowed_combinations_post_request_body_allowed_combinations import UpdateAllowedCombinationsPostRequestBody_allowedCombinations
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowedCombinations": lambda n : setattr(self, 'allowed_combinations', n.get_collection_of_enum_values(AuthenticationMethodModes)),
+            "allowedCombinations": lambda n : setattr(self, 'allowed_combinations', n.get_collection_of_enum_values(UpdateAllowedCombinationsPostRequestBody_allowedCombinations)),
         }
         return fields
     

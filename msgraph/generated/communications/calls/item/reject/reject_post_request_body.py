@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models.reject_reason import RejectReason
+    from .reject_post_request_body_reason import RejectPostRequestBody_reason
 
 @dataclass
 class RejectPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
@@ -17,7 +17,7 @@ class RejectPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # The callbackUri property
     callback_uri: Optional[str] = None
     # The reason property
-    reason: Optional[RejectReason] = None
+    reason: Optional[RejectPostRequestBody_reason] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RejectPostRequestBody:
@@ -35,13 +35,13 @@ class RejectPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models.reject_reason import RejectReason
+        from .reject_post_request_body_reason import RejectPostRequestBody_reason
 
-        from .....models.reject_reason import RejectReason
+        from .reject_post_request_body_reason import RejectPostRequestBody_reason
 
         fields: Dict[str, Callable[[Any], None]] = {
             "callbackUri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
-            "reason": lambda n : setattr(self, 'reason', n.get_enum_value(RejectReason)),
+            "reason": lambda n : setattr(self, 'reason', n.get_enum_value(RejectPostRequestBody_reason)),
         }
         return fields
     

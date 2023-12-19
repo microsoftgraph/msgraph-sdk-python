@@ -48,7 +48,7 @@ class HostTrackerItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[HostTrackerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[HostTracker]:
         """
-        Read the properties and relationships of a hostTracker object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of a hostTracker object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostTracker]
         Find more info here: https://learn.microsoft.com/graph/api/security-hosttracker-get?view=graph-rest-1.0
@@ -105,12 +105,12 @@ class HostTrackerItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[HostTrackerItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a hostTracker object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of a hostTracker object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -122,7 +122,7 @@ class HostTrackerItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[HostTracker] = None, request_configuration: Optional[HostTrackerItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -141,7 +141,7 @@ class HostTrackerItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -177,7 +177,7 @@ class HostTrackerItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HostTrackerItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a hostTracker object. This API is available in the following national cloud deployments.
+        Read the properties and relationships of a hostTracker object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

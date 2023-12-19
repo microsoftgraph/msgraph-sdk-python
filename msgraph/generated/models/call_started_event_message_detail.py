@@ -4,9 +4,9 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .call_started_event_message_detail_call_event_type import CallStartedEventMessageDetail_callEventType
     from .event_message_detail import EventMessageDetail
     from .identity_set import IdentitySet
-    from .teamwork_call_event_type import TeamworkCallEventType
 
 from .event_message_detail import EventMessageDetail
 
@@ -15,7 +15,7 @@ class CallStartedEventMessageDetail(EventMessageDetail):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.callStartedEventMessageDetail"
     # Represents the call event type. Possible values are: call, meeting, screenShare, unknownFutureValue.
-    call_event_type: Optional[TeamworkCallEventType] = None
+    call_event_type: Optional[CallStartedEventMessageDetail_callEventType] = None
     # Unique identifier of the call.
     call_id: Optional[str] = None
     # Initiator of the event.
@@ -37,16 +37,16 @@ class CallStartedEventMessageDetail(EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .call_started_event_message_detail_call_event_type import CallStartedEventMessageDetail_callEventType
         from .event_message_detail import EventMessageDetail
         from .identity_set import IdentitySet
-        from .teamwork_call_event_type import TeamworkCallEventType
 
+        from .call_started_event_message_detail_call_event_type import CallStartedEventMessageDetail_callEventType
         from .event_message_detail import EventMessageDetail
         from .identity_set import IdentitySet
-        from .teamwork_call_event_type import TeamworkCallEventType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callEventType": lambda n : setattr(self, 'call_event_type', n.get_enum_value(TeamworkCallEventType)),
+            "callEventType": lambda n : setattr(self, 'call_event_type', n.get_enum_value(CallStartedEventMessageDetail_callEventType)),
             "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(IdentitySet)),
         }

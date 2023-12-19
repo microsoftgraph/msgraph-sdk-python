@@ -6,7 +6,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .expiration_pattern_type import ExpirationPatternType
+    from .expiration_pattern_type import ExpirationPattern_type
 
 @dataclass
 class ExpirationPattern(AdditionalDataHolder, BackedModel, Parsable):
@@ -22,7 +22,7 @@ class ExpirationPattern(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The requestor's desired expiration pattern type. The possible values are: notSpecified, noExpiration, afterDateTime, afterDuration.
-    type: Optional[ExpirationPatternType] = None
+    type: Optional[ExpirationPattern_type] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExpirationPattern:
@@ -40,15 +40,15 @@ class ExpirationPattern(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .expiration_pattern_type import ExpirationPatternType
+        from .expiration_pattern_type import ExpirationPattern_type
 
-        from .expiration_pattern_type import ExpirationPatternType
+        from .expiration_pattern_type import ExpirationPattern_type
 
         fields: Dict[str, Callable[[Any], None]] = {
             "duration": lambda n : setattr(self, 'duration', n.get_timedelta_value()),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(ExpirationPatternType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(ExpirationPattern_type)),
         }
         return fields
     

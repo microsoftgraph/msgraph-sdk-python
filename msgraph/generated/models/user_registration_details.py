@@ -6,8 +6,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .sign_in_user_type import SignInUserType
-    from .user_default_authentication_method import UserDefaultAuthenticationMethod
+    from .user_registration_details_user_preferred_method_for_secondary_authentication import UserRegistrationDetails_userPreferredMethodForSecondaryAuthentication
+    from .user_registration_details_user_type import UserRegistrationDetails_userType
 
 from .entity import Entity
 
@@ -31,7 +31,7 @@ class UserRegistrationDetails(Entity):
     is_system_preferred_authentication_method_enabled: Optional[bool] = None
     # The date and time (UTC) when the record was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_updated_date_time: Optional[datetime.datetime] = None
-    # Collection of authentication methods registered, such as mobilePhone, email, fido2. Supports $filter (any with eq).
+    # Collection of authentication methods registered, such as mobilePhone, email, passKeyDeviceBound. Supports $filter (any with eq).
     methods_registered: Optional[List[str]] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -40,11 +40,11 @@ class UserRegistrationDetails(Entity):
     # The user display name, such as Adele Vance. Supports $filter (eq, startsWith) and $orderby.
     user_display_name: Optional[str] = None
     # The method the user selected as the default second-factor for performing multifactor authentication. Possible values are: push, oath, voiceMobile, voiceAlternateMobile, voiceOffice, sms, none, unknownFutureValue. This property is used as preferred MFA method when isSystemPreferredAuthenticationMethodEnabled is false. Supports $filter (any with eq).
-    user_preferred_method_for_secondary_authentication: Optional[UserDefaultAuthenticationMethod] = None
+    user_preferred_method_for_secondary_authentication: Optional[UserRegistrationDetails_userPreferredMethodForSecondaryAuthentication] = None
     # The user principal name, such as AdeleV@contoso.com. Supports $filter (eq, startsWith) and $orderby.
     user_principal_name: Optional[str] = None
     # Identifies whether the user is a member or guest in the tenant. The possible values are: member, guest, unknownFutureValue.
-    user_type: Optional[SignInUserType] = None
+    user_type: Optional[UserRegistrationDetails_userType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserRegistrationDetails:
@@ -63,12 +63,12 @@ class UserRegistrationDetails(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .sign_in_user_type import SignInUserType
-        from .user_default_authentication_method import UserDefaultAuthenticationMethod
+        from .user_registration_details_user_preferred_method_for_secondary_authentication import UserRegistrationDetails_userPreferredMethodForSecondaryAuthentication
+        from .user_registration_details_user_type import UserRegistrationDetails_userType
 
         from .entity import Entity
-        from .sign_in_user_type import SignInUserType
-        from .user_default_authentication_method import UserDefaultAuthenticationMethod
+        from .user_registration_details_user_preferred_method_for_secondary_authentication import UserRegistrationDetails_userPreferredMethodForSecondaryAuthentication
+        from .user_registration_details_user_type import UserRegistrationDetails_userType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isAdmin": lambda n : setattr(self, 'is_admin', n.get_bool_value()),
@@ -83,9 +83,9 @@ class UserRegistrationDetails(Entity):
             "methodsRegistered": lambda n : setattr(self, 'methods_registered', n.get_collection_of_primitive_values(str)),
             "systemPreferredAuthenticationMethods": lambda n : setattr(self, 'system_preferred_authentication_methods', n.get_collection_of_primitive_values(str)),
             "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "userPreferredMethodForSecondaryAuthentication": lambda n : setattr(self, 'user_preferred_method_for_secondary_authentication', n.get_enum_value(UserDefaultAuthenticationMethod)),
+            "userPreferredMethodForSecondaryAuthentication": lambda n : setattr(self, 'user_preferred_method_for_secondary_authentication', n.get_enum_value(UserRegistrationDetails_userPreferredMethodForSecondaryAuthentication)),
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
-            "userType": lambda n : setattr(self, 'user_type', n.get_enum_value(SignInUserType)),
+            "userType": lambda n : setattr(self, 'user_type', n.get_enum_value(UserRegistrationDetails_userType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

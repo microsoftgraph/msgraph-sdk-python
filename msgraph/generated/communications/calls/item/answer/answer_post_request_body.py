@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models.incoming_call_options import IncomingCallOptions
     from .....models.media_config import MediaConfig
-    from .....models.modality import Modality
+    from .answer_post_request_body_accepted_modalities import AnswerPostRequestBody_acceptedModalities
 
 @dataclass
 class AnswerPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
@@ -17,7 +17,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The acceptedModalities property
-    accepted_modalities: Optional[List[Modality]] = None
+    accepted_modalities: Optional[List[AnswerPostRequestBody_acceptedModalities]] = None
     # The callOptions property
     call_options: Optional[IncomingCallOptions] = None
     # The callbackUri property
@@ -45,14 +45,14 @@ class AnswerPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         """
         from .....models.incoming_call_options import IncomingCallOptions
         from .....models.media_config import MediaConfig
-        from .....models.modality import Modality
+        from .answer_post_request_body_accepted_modalities import AnswerPostRequestBody_acceptedModalities
 
         from .....models.incoming_call_options import IncomingCallOptions
         from .....models.media_config import MediaConfig
-        from .....models.modality import Modality
+        from .answer_post_request_body_accepted_modalities import AnswerPostRequestBody_acceptedModalities
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "acceptedModalities": lambda n : setattr(self, 'accepted_modalities', n.get_collection_of_enum_values(Modality)),
+            "acceptedModalities": lambda n : setattr(self, 'accepted_modalities', n.get_collection_of_enum_values(AnswerPostRequestBody_acceptedModalities)),
             "callOptions": lambda n : setattr(self, 'call_options', n.get_object_value(IncomingCallOptions)),
             "callbackUri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
             "mediaConfig": lambda n : setattr(self, 'media_config', n.get_object_value(MediaConfig)),

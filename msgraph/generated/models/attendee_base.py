@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .attendee import Attendee
-    from .attendee_type import AttendeeType
+    from .attendee_base_type import AttendeeBase_type
     from .recipient import Recipient
 
 from .recipient import Recipient
@@ -15,7 +15,7 @@ class AttendeeBase(Recipient):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.attendeeBase"
     # The type of attendee. The possible values are: required, optional, resource. Currently if the attendee is a person, findMeetingTimes always considers the person is of the Required type.
-    type: Optional[AttendeeType] = None
+    type: Optional[AttendeeBase_type] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttendeeBase:
@@ -42,15 +42,15 @@ class AttendeeBase(Recipient):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .attendee import Attendee
-        from .attendee_type import AttendeeType
+        from .attendee_base_type import AttendeeBase_type
         from .recipient import Recipient
 
         from .attendee import Attendee
-        from .attendee_type import AttendeeType
+        from .attendee_base_type import AttendeeBase_type
         from .recipient import Recipient
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "type": lambda n : setattr(self, 'type', n.get_enum_value(AttendeeType)),
+            "type": lambda n : setattr(self, 'type', n.get_enum_value(AttendeeBase_type)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

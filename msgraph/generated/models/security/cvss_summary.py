@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .vulnerability_severity import VulnerabilitySeverity
+    from .cvss_summary_severity import CvssSummary_severity
 
 @dataclass
 class CvssSummary(AdditionalDataHolder, BackedModel, Parsable):
@@ -19,7 +19,7 @@ class CvssSummary(AdditionalDataHolder, BackedModel, Parsable):
     # The CVSS score about this vulnerability.
     score: Optional[float] = None
     # The CVSS severity rating for this vulnerability. The possible values are: none, low, medium, high, critical, unknownFutureValue.
-    severity: Optional[VulnerabilitySeverity] = None
+    severity: Optional[CvssSummary_severity] = None
     # The CVSS vector string for this vulnerability.
     vector_string: Optional[str] = None
     
@@ -39,14 +39,14 @@ class CvssSummary(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .vulnerability_severity import VulnerabilitySeverity
+        from .cvss_summary_severity import CvssSummary_severity
 
-        from .vulnerability_severity import VulnerabilitySeverity
+        from .cvss_summary_severity import CvssSummary_severity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "score": lambda n : setattr(self, 'score', n.get_float_value()),
-            "severity": lambda n : setattr(self, 'severity', n.get_enum_value(VulnerabilitySeverity)),
+            "severity": lambda n : setattr(self, 'severity', n.get_enum_value(CvssSummary_severity)),
             "vectorString": lambda n : setattr(self, 'vector_string', n.get_str_value()),
         }
         return fields

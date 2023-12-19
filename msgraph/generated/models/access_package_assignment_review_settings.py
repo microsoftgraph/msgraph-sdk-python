@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .access_review_expiration_behavior import AccessReviewExpirationBehavior
+    from .access_package_assignment_review_settings_expiration_behavior import AccessPackageAssignmentReviewSettings_expirationBehavior
     from .entitlement_management_schedule import EntitlementManagementSchedule
     from .subject_set import SubjectSet
 
@@ -17,7 +17,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, BackedModel, P
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The default decision to apply if the access is not reviewed. The possible values are: keepAccess, removeAccess, acceptAccessRecommendation, unknownFutureValue.
-    expiration_behavior: Optional[AccessReviewExpirationBehavior] = None
+    expiration_behavior: Optional[AccessPackageAssignmentReviewSettings_expirationBehavior] = None
     # This collection specifies the users who will be the fallback reviewers when the primary reviewers don't respond.
     fallback_reviewers: Optional[List[SubjectSet]] = None
     # If true, access reviews are required for assignments through this policy.
@@ -51,16 +51,16 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, BackedModel, P
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .access_review_expiration_behavior import AccessReviewExpirationBehavior
+        from .access_package_assignment_review_settings_expiration_behavior import AccessPackageAssignmentReviewSettings_expirationBehavior
         from .entitlement_management_schedule import EntitlementManagementSchedule
         from .subject_set import SubjectSet
 
-        from .access_review_expiration_behavior import AccessReviewExpirationBehavior
+        from .access_package_assignment_review_settings_expiration_behavior import AccessPackageAssignmentReviewSettings_expirationBehavior
         from .entitlement_management_schedule import EntitlementManagementSchedule
         from .subject_set import SubjectSet
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "expirationBehavior": lambda n : setattr(self, 'expiration_behavior', n.get_enum_value(AccessReviewExpirationBehavior)),
+            "expirationBehavior": lambda n : setattr(self, 'expiration_behavior', n.get_enum_value(AccessPackageAssignmentReviewSettings_expirationBehavior)),
             "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(SubjectSet)),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "isRecommendationEnabled": lambda n : setattr(self, 'is_recommendation_enabled', n.get_bool_value()),

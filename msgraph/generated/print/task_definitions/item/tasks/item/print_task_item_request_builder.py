@@ -49,7 +49,7 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[PrintTaskItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintTask]:
         """
-        Get details about a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing. This API is available in the following national cloud deployments.
+        Get details about a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintTask]
         Find more info here: https://learn.microsoft.com/graph/api/printtask-get?view=graph-rest-1.0
@@ -71,7 +71,7 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[PrintTask] = None, request_configuration: Optional[PrintTaskItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PrintTask]:
         """
-        Update a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing. This API is available in the following national cloud deployments.
+        Update a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintTask]
@@ -107,12 +107,12 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[PrintTaskItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get details about a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing. This API is available in the following national cloud deployments.
+        Get details about a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -124,12 +124,12 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[PrintTask] = None, request_configuration: Optional[PrintTaskItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing. This API is available in the following national cloud deployments.
+        Update a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -188,7 +188,7 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PrintTaskItemRequestBuilderGetQueryParameters():
         """
-        Get details about a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing. This API is available in the following national cloud deployments.
+        Get details about a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -9,8 +9,8 @@ if TYPE_CHECKING:
     from .host import Host
     from .host_port_banner import HostPortBanner
     from .host_port_component import HostPortComponent
-    from .host_port_protocol import HostPortProtocol
-    from .host_port_status import HostPortStatus
+    from .host_port_protocol import HostPort_protocol
+    from .host_port_status import HostPort_status
     from .ssl_certificate import SslCertificate
 
 from ..entity import Entity
@@ -34,11 +34,11 @@ class HostPort(Entity):
     # The numerical identifier of the port which is standardized across the internet.
     port: Optional[int] = None
     # The general protocol used to scan the port. The possible values are: tcp, udp, unknownFutureValue.
-    protocol: Optional[HostPortProtocol] = None
+    protocol: Optional[HostPort_protocol] = None
     # The hostPortComponents retrieved from scanning the port.
     services: Optional[List[HostPortComponent]] = None
     # The status of the port. The possible values are: open, filtered, closed, unknownFutureValue.
-    status: Optional[HostPortStatus] = None
+    status: Optional[HostPort_status] = None
     # The total amount of times that Microsoft Defender Threat Intelligence has observed the hostPort in all its scans.
     times_observed: Optional[int] = None
     
@@ -62,16 +62,16 @@ class HostPort(Entity):
         from .host import Host
         from .host_port_banner import HostPortBanner
         from .host_port_component import HostPortComponent
-        from .host_port_protocol import HostPortProtocol
-        from .host_port_status import HostPortStatus
+        from .host_port_protocol import HostPort_protocol
+        from .host_port_status import HostPort_status
         from .ssl_certificate import SslCertificate
 
         from ..entity import Entity
         from .host import Host
         from .host_port_banner import HostPortBanner
         from .host_port_component import HostPortComponent
-        from .host_port_protocol import HostPortProtocol
-        from .host_port_status import HostPortStatus
+        from .host_port_protocol import HostPort_protocol
+        from .host_port_status import HostPort_status
         from .ssl_certificate import SslCertificate
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -82,9 +82,9 @@ class HostPort(Entity):
             "lastSeenDateTime": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
             "mostRecentSslCertificate": lambda n : setattr(self, 'most_recent_ssl_certificate', n.get_object_value(SslCertificate)),
             "port": lambda n : setattr(self, 'port', n.get_int_value()),
-            "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(HostPortProtocol)),
+            "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(HostPort_protocol)),
             "services": lambda n : setattr(self, 'services', n.get_collection_of_object_values(HostPortComponent)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(HostPortStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(HostPort_status)),
             "timesObserved": lambda n : setattr(self, 'times_observed', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

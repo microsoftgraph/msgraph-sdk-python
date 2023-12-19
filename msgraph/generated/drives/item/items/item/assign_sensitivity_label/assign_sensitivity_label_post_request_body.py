@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models.sensitivity_label_assignment_method import SensitivityLabelAssignmentMethod
+    from .assign_sensitivity_label_post_request_body_assignment_method import AssignSensitivityLabelPostRequestBody_assignmentMethod
 
 @dataclass
 class AssignSensitivityLabelPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,7 +15,7 @@ class AssignSensitivityLabelPostRequestBody(AdditionalDataHolder, BackedModel, P
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The assignmentMethod property
-    assignment_method: Optional[SensitivityLabelAssignmentMethod] = None
+    assignment_method: Optional[AssignSensitivityLabelPostRequestBody_assignmentMethod] = None
     # The justificationText property
     justification_text: Optional[str] = None
     # The sensitivityLabelId property
@@ -37,12 +37,12 @@ class AssignSensitivityLabelPostRequestBody(AdditionalDataHolder, BackedModel, P
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ......models.sensitivity_label_assignment_method import SensitivityLabelAssignmentMethod
+        from .assign_sensitivity_label_post_request_body_assignment_method import AssignSensitivityLabelPostRequestBody_assignmentMethod
 
-        from ......models.sensitivity_label_assignment_method import SensitivityLabelAssignmentMethod
+        from .assign_sensitivity_label_post_request_body_assignment_method import AssignSensitivityLabelPostRequestBody_assignmentMethod
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "assignmentMethod": lambda n : setattr(self, 'assignment_method', n.get_enum_value(SensitivityLabelAssignmentMethod)),
+            "assignmentMethod": lambda n : setattr(self, 'assignment_method', n.get_enum_value(AssignSensitivityLabelPostRequestBody_assignmentMethod)),
             "justificationText": lambda n : setattr(self, 'justification_text', n.get_str_value()),
             "sensitivityLabelId": lambda n : setattr(self, 'sensitivity_label_id', n.get_str_value()),
         }

@@ -8,8 +8,8 @@ if TYPE_CHECKING:
     from .automatic_replies_mail_tips import AutomaticRepliesMailTips
     from .email_address import EmailAddress
     from .mail_tips_error import MailTipsError
+    from .mail_tips_recipient_scope import MailTips_recipientScope
     from .recipient import Recipient
-    from .recipient_scope_type import RecipientScopeType
 
 @dataclass
 class MailTips(AdditionalDataHolder, BackedModel, Parsable):
@@ -39,7 +39,7 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The scope of the recipient. Possible values are: none, internal, external, externalPartner, externalNonParther. For example, an administrator can set another organization to be its 'partner'. The scope is useful if an administrator wants certain mailtips to be accessible to certain scopes. It's also useful to senders to inform them that their message may leave the organization, helping them make the correct decisions about wording, tone and content.
-    recipient_scope: Optional[RecipientScopeType] = None
+    recipient_scope: Optional[MailTips_recipientScope] = None
     # Recipients suggested based on previous contexts where they appear in the same message.
     recipient_suggestions: Optional[List[Recipient]] = None
     # The number of members if the recipient is a distribution list.
@@ -64,14 +64,14 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
         from .automatic_replies_mail_tips import AutomaticRepliesMailTips
         from .email_address import EmailAddress
         from .mail_tips_error import MailTipsError
+        from .mail_tips_recipient_scope import MailTips_recipientScope
         from .recipient import Recipient
-        from .recipient_scope_type import RecipientScopeType
 
         from .automatic_replies_mail_tips import AutomaticRepliesMailTips
         from .email_address import EmailAddress
         from .mail_tips_error import MailTipsError
+        from .mail_tips_recipient_scope import MailTips_recipientScope
         from .recipient import Recipient
-        from .recipient_scope_type import RecipientScopeType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "automaticReplies": lambda n : setattr(self, 'automatic_replies', n.get_object_value(AutomaticRepliesMailTips)),
@@ -84,7 +84,7 @@ class MailTips(AdditionalDataHolder, BackedModel, Parsable):
             "mailboxFull": lambda n : setattr(self, 'mailbox_full', n.get_bool_value()),
             "maxMessageSize": lambda n : setattr(self, 'max_message_size', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recipientScope": lambda n : setattr(self, 'recipient_scope', n.get_collection_of_enum_values(RecipientScopeType)),
+            "recipientScope": lambda n : setattr(self, 'recipient_scope', n.get_enum_value(MailTips_recipientScope)),
             "recipientSuggestions": lambda n : setattr(self, 'recipient_suggestions', n.get_collection_of_object_values(Recipient)),
             "totalMemberCount": lambda n : setattr(self, 'total_member_count', n.get_int_value()),
         }

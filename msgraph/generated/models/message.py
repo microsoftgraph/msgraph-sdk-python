@@ -12,10 +12,10 @@ if TYPE_CHECKING:
     from .event_message_response import EventMessageResponse
     from .extension import Extension
     from .followup_flag import FollowupFlag
-    from .importance import Importance
-    from .inference_classification_type import InferenceClassificationType
     from .internet_message_header import InternetMessageHeader
     from .item_body import ItemBody
+    from .message_importance import Message_importance
+    from .message_inference_classification import Message_inferenceClassification
     from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
     from .outlook_item import OutlookItem
     from .recipient import Recipient
@@ -50,9 +50,9 @@ class Message(OutlookItem):
     # Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
     has_attachments: Optional[bool] = None
     # The importance property
-    importance: Optional[Importance] = None
+    importance: Optional[Message_importance] = None
     # The inferenceClassification property
-    inference_classification: Optional[InferenceClassificationType] = None
+    inference_classification: Optional[Message_inferenceClassification] = None
     # The internetMessageHeaders property
     internet_message_headers: Optional[List[InternetMessageHeader]] = None
     # The internetMessageId property
@@ -131,10 +131,10 @@ class Message(OutlookItem):
         from .event_message_response import EventMessageResponse
         from .extension import Extension
         from .followup_flag import FollowupFlag
-        from .importance import Importance
-        from .inference_classification_type import InferenceClassificationType
         from .internet_message_header import InternetMessageHeader
         from .item_body import ItemBody
+        from .message_importance import Message_importance
+        from .message_inference_classification import Message_inferenceClassification
         from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
         from .outlook_item import OutlookItem
         from .recipient import Recipient
@@ -147,10 +147,10 @@ class Message(OutlookItem):
         from .event_message_response import EventMessageResponse
         from .extension import Extension
         from .followup_flag import FollowupFlag
-        from .importance import Importance
-        from .inference_classification_type import InferenceClassificationType
         from .internet_message_header import InternetMessageHeader
         from .item_body import ItemBody
+        from .message_importance import Message_importance
+        from .message_inference_classification import Message_inferenceClassification
         from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
         from .outlook_item import OutlookItem
         from .recipient import Recipient
@@ -168,8 +168,8 @@ class Message(OutlookItem):
             "flag": lambda n : setattr(self, 'flag', n.get_object_value(FollowupFlag)),
             "from": lambda n : setattr(self, 'from_', n.get_object_value(Recipient)),
             "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "importance": lambda n : setattr(self, 'importance', n.get_enum_value(Importance)),
-            "inferenceClassification": lambda n : setattr(self, 'inference_classification', n.get_enum_value(InferenceClassificationType)),
+            "importance": lambda n : setattr(self, 'importance', n.get_enum_value(Message_importance)),
+            "inferenceClassification": lambda n : setattr(self, 'inference_classification', n.get_enum_value(Message_inferenceClassification)),
             "internetMessageHeaders": lambda n : setattr(self, 'internet_message_headers', n.get_collection_of_object_values(InternetMessageHeader)),
             "internetMessageId": lambda n : setattr(self, 'internet_message_id', n.get_str_value()),
             "isDeliveryReceiptRequested": lambda n : setattr(self, 'is_delivery_receipt_requested', n.get_bool_value()),

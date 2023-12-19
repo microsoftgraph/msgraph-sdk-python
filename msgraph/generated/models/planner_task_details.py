@@ -7,7 +7,7 @@ if TYPE_CHECKING:
     from .entity import Entity
     from .planner_checklist_items import PlannerChecklistItems
     from .planner_external_references import PlannerExternalReferences
-    from .planner_preview_type import PlannerPreviewType
+    from .planner_task_details_preview_type import PlannerTaskDetails_previewType
 
 from .entity import Entity
 
@@ -20,7 +20,7 @@ class PlannerTaskDetails(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
     # This sets the type of preview that shows up on the task. The possible values are: automatic, noPreview, checklist, description, reference. When set to automatic the displayed preview is chosen by the app viewing the task.
-    preview_type: Optional[PlannerPreviewType] = None
+    preview_type: Optional[PlannerTaskDetails_previewType] = None
     # The collection of references on the task.
     references: Optional[PlannerExternalReferences] = None
     
@@ -43,17 +43,17 @@ class PlannerTaskDetails(Entity):
         from .entity import Entity
         from .planner_checklist_items import PlannerChecklistItems
         from .planner_external_references import PlannerExternalReferences
-        from .planner_preview_type import PlannerPreviewType
+        from .planner_task_details_preview_type import PlannerTaskDetails_previewType
 
         from .entity import Entity
         from .planner_checklist_items import PlannerChecklistItems
         from .planner_external_references import PlannerExternalReferences
-        from .planner_preview_type import PlannerPreviewType
+        from .planner_task_details_preview_type import PlannerTaskDetails_previewType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "checklist": lambda n : setattr(self, 'checklist', n.get_object_value(PlannerChecklistItems)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "previewType": lambda n : setattr(self, 'preview_type', n.get_enum_value(PlannerPreviewType)),
+            "previewType": lambda n : setattr(self, 'preview_type', n.get_enum_value(PlannerTaskDetails_previewType)),
             "references": lambda n : setattr(self, 'references', n.get_object_value(PlannerExternalReferences)),
         }
         super_fields = super().get_field_deserializers()

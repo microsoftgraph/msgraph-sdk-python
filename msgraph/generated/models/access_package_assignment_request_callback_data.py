@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .access_package_custom_extension_stage import AccessPackageCustomExtensionStage
+    from .access_package_assignment_request_callback_data_stage import AccessPackageAssignmentRequestCallbackData_stage
     from .custom_extension_data import CustomExtensionData
 
 from .custom_extension_data import CustomExtensionData
@@ -18,7 +18,7 @@ class AccessPackageAssignmentRequestCallbackData(CustomExtensionData):
     # Unique identifier of the callout to the custom extension.
     custom_extension_stage_instance_id: Optional[str] = None
     # Indicates the stage at which the custom callout extension is executed. The possible values are: assignmentRequestCreated, assignmentRequestApproved, assignmentRequestGranted, assignmentRequestRemoved, assignmentFourteenDaysBeforeExpiration, assignmentOneDayBeforeExpiration, unknownFutureValue.
-    stage: Optional[AccessPackageCustomExtensionStage] = None
+    stage: Optional[AccessPackageAssignmentRequestCallbackData_stage] = None
     # Allow the extension to be able to deny or cancel the request submitted by the requestor. The supported values are Denied and Canceled. This property can only be set for an assignmentRequestCreated stage.
     state: Optional[str] = None
     
@@ -38,16 +38,16 @@ class AccessPackageAssignmentRequestCallbackData(CustomExtensionData):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .access_package_custom_extension_stage import AccessPackageCustomExtensionStage
+        from .access_package_assignment_request_callback_data_stage import AccessPackageAssignmentRequestCallbackData_stage
         from .custom_extension_data import CustomExtensionData
 
-        from .access_package_custom_extension_stage import AccessPackageCustomExtensionStage
+        from .access_package_assignment_request_callback_data_stage import AccessPackageAssignmentRequestCallbackData_stage
         from .custom_extension_data import CustomExtensionData
 
         fields: Dict[str, Callable[[Any], None]] = {
             "customExtensionStageInstanceDetail": lambda n : setattr(self, 'custom_extension_stage_instance_detail', n.get_str_value()),
             "customExtensionStageInstanceId": lambda n : setattr(self, 'custom_extension_stage_instance_id', n.get_str_value()),
-            "stage": lambda n : setattr(self, 'stage', n.get_enum_value(AccessPackageCustomExtensionStage)),
+            "stage": lambda n : setattr(self, 'stage', n.get_enum_value(AccessPackageAssignmentRequestCallbackData_stage)),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

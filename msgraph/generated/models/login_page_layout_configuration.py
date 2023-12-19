@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .layout_template_type import LayoutTemplateType
+    from .login_page_layout_configuration_layout_template_type import LoginPageLayoutConfiguration_layoutTemplateType
 
 @dataclass
 class LoginPageLayoutConfiguration(AdditionalDataHolder, BackedModel, Parsable):
@@ -19,7 +19,7 @@ class LoginPageLayoutConfiguration(AdditionalDataHolder, BackedModel, Parsable):
     # Option to show the header on the sign-in page.
     is_header_shown: Optional[bool] = None
     # Represents the layout template to be displayed on the login page for a tenant. The possible values are  default - Represents the default Microsoft layout with a centered lightbox.  verticalSplit - Represents a layout with a background on the left side and a full-height lightbox to the right.  unknownFutureValue - Evolvable enumeration sentinel value. Don't use.
-    layout_template_type: Optional[LayoutTemplateType] = None
+    layout_template_type: Optional[LoginPageLayoutConfiguration_layoutTemplateType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -39,14 +39,14 @@ class LoginPageLayoutConfiguration(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .layout_template_type import LayoutTemplateType
+        from .login_page_layout_configuration_layout_template_type import LoginPageLayoutConfiguration_layoutTemplateType
 
-        from .layout_template_type import LayoutTemplateType
+        from .login_page_layout_configuration_layout_template_type import LoginPageLayoutConfiguration_layoutTemplateType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isFooterShown": lambda n : setattr(self, 'is_footer_shown', n.get_bool_value()),
             "isHeaderShown": lambda n : setattr(self, 'is_header_shown', n.get_bool_value()),
-            "layoutTemplateType": lambda n : setattr(self, 'layout_template_type', n.get_enum_value(LayoutTemplateType)),
+            "layoutTemplateType": lambda n : setattr(self, 'layout_template_type', n.get_enum_value(LoginPageLayoutConfiguration_layoutTemplateType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

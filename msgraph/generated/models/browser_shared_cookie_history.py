@@ -6,7 +6,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .browser_shared_cookie_source_environment import BrowserSharedCookieSourceEnvironment
+    from .browser_shared_cookie_history_source_environment import BrowserSharedCookieHistory_sourceEnvironment
     from .identity_set import IdentitySet
 
 @dataclass
@@ -33,7 +33,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, BackedModel, Parsable):
     # The date and time when the cookie was last published.
     published_date_time: Optional[datetime.datetime] = None
     # Specifies how the cookies are shared between Microsoft Edge and Internet Explorer. The possible values are: microsoftEdge, internetExplorer11, both, unknownFutureValue.
-    source_environment: Optional[BrowserSharedCookieSourceEnvironment] = None
+    source_environment: Optional[BrowserSharedCookieHistory_sourceEnvironment] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BrowserSharedCookieHistory:
@@ -51,10 +51,10 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .browser_shared_cookie_source_environment import BrowserSharedCookieSourceEnvironment
+        from .browser_shared_cookie_history_source_environment import BrowserSharedCookieHistory_sourceEnvironment
         from .identity_set import IdentitySet
 
-        from .browser_shared_cookie_source_environment import BrowserSharedCookieSourceEnvironment
+        from .browser_shared_cookie_history_source_environment import BrowserSharedCookieHistory_sourceEnvironment
         from .identity_set import IdentitySet
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -66,7 +66,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, BackedModel, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
             "publishedDateTime": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
-            "sourceEnvironment": lambda n : setattr(self, 'source_environment', n.get_enum_value(BrowserSharedCookieSourceEnvironment)),
+            "sourceEnvironment": lambda n : setattr(self, 'source_environment', n.get_enum_value(BrowserSharedCookieHistory_sourceEnvironment)),
         }
         return fields
     

@@ -5,7 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .access_review_history_status import AccessReviewHistoryStatus
+    from .access_review_history_instance_status import AccessReviewHistoryInstance_status
     from .entity import Entity
 
 from .entity import Entity
@@ -27,7 +27,7 @@ class AccessReviewHistoryInstance(Entity):
     # Timestamp when the instance's history data is scheduled to be generated.
     run_date_time: Optional[datetime.datetime] = None
     # Represents the status of the review history data collection. The possible values are: done, inProgress, error, requested, unknownFutureValue. Once the status has been marked as done, a link can be generated to retrieve the instance's data by calling generateDownloadUri method.
-    status: Optional[AccessReviewHistoryStatus] = None
+    status: Optional[AccessReviewHistoryInstance_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewHistoryInstance:
@@ -45,10 +45,10 @@ class AccessReviewHistoryInstance(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .access_review_history_status import AccessReviewHistoryStatus
+        from .access_review_history_instance_status import AccessReviewHistoryInstance_status
         from .entity import Entity
 
-        from .access_review_history_status import AccessReviewHistoryStatus
+        from .access_review_history_instance_status import AccessReviewHistoryInstance_status
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -58,7 +58,7 @@ class AccessReviewHistoryInstance(Entity):
             "reviewHistoryPeriodEndDateTime": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
             "reviewHistoryPeriodStartDateTime": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
             "runDateTime": lambda n : setattr(self, 'run_date_time', n.get_datetime_value()),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(AccessReviewHistoryStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(AccessReviewHistoryInstance_status)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

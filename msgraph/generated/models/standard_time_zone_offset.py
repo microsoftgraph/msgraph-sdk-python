@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .daylight_time_zone_offset import DaylightTimeZoneOffset
-    from .day_of_week import DayOfWeek
+    from .standard_time_zone_offset_day_of_week import StandardTimeZoneOffset_dayOfWeek
 
 @dataclass
 class StandardTimeZoneOffset(AdditionalDataHolder, BackedModel, Parsable):
@@ -19,7 +19,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, BackedModel, Parsable):
     # Represents the nth occurrence of the day of week that the transition from daylight saving time to standard time occurs.
     day_occurrence: Optional[int] = None
     # Represents the day of the week when the transition from daylight saving time to standard time.
-    day_of_week: Optional[DayOfWeek] = None
+    day_of_week: Optional[StandardTimeZoneOffset_dayOfWeek] = None
     # Represents the month of the year when the transition from daylight saving time to standard time occurs.
     month: Optional[int] = None
     # The OdataType property
@@ -54,14 +54,14 @@ class StandardTimeZoneOffset(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .daylight_time_zone_offset import DaylightTimeZoneOffset
-        from .day_of_week import DayOfWeek
+        from .standard_time_zone_offset_day_of_week import StandardTimeZoneOffset_dayOfWeek
 
         from .daylight_time_zone_offset import DaylightTimeZoneOffset
-        from .day_of_week import DayOfWeek
+        from .standard_time_zone_offset_day_of_week import StandardTimeZoneOffset_dayOfWeek
 
         fields: Dict[str, Callable[[Any], None]] = {
             "dayOccurrence": lambda n : setattr(self, 'day_occurrence', n.get_int_value()),
-            "dayOfWeek": lambda n : setattr(self, 'day_of_week', n.get_enum_value(DayOfWeek)),
+            "dayOfWeek": lambda n : setattr(self, 'day_of_week', n.get_enum_value(StandardTimeZoneOffset_dayOfWeek)),
             "month": lambda n : setattr(self, 'month', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "time": lambda n : setattr(self, 'time', n.get_time_value()),

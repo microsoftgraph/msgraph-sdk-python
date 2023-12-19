@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
-    from .permission_type import PermissionType
+    from .permission_grant_condition_set_permission_type import PermissionGrantConditionSet_permissionType
 
 from .entity import Entity
 
@@ -24,7 +24,7 @@ class PermissionGrantConditionSet(Entity):
     # The permission classification for the permission being granted, or all to match with any permission classification (including permissions that aren't classified). Default is all.
     permission_classification: Optional[str] = None
     # The permission type of the permission being granted. Possible values: application for application permissions (for example app roles), or delegated for delegated permissions. The value delegatedUserConsentable indicates delegated permissions that haven't been configured by the API publisher to require admin consent—this value may be used in built-in permission grant policies, but can't be used in custom permission grant policies. Required.
-    permission_type: Optional[PermissionType] = None
+    permission_type: Optional[PermissionGrantConditionSet_permissionType] = None
     # The list of id values for the specific permissions to match with, or a list with the single value all to match with any permission. The id of delegated permissions can be found in the oauth2PermissionScopes property of the API's servicePrincipal object. The id of application permissions can be found in the appRoles property of the API's servicePrincipal object. The id of resource-specific application permissions can be found in the resourceSpecificApplicationPermissions property of the API's servicePrincipal object. Default is the single value all.
     permissions: Optional[List[str]] = None
     # The appId of the resource application (for example the API) for which a permission is being granted, or any to match with any resource application or API. Default is any.
@@ -47,10 +47,10 @@ class PermissionGrantConditionSet(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
-        from .permission_type import PermissionType
+        from .permission_grant_condition_set_permission_type import PermissionGrantConditionSet_permissionType
 
         from .entity import Entity
-        from .permission_type import PermissionType
+        from .permission_grant_condition_set_permission_type import PermissionGrantConditionSet_permissionType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "clientApplicationIds": lambda n : setattr(self, 'client_application_ids', n.get_collection_of_primitive_values(str)),
@@ -58,7 +58,7 @@ class PermissionGrantConditionSet(Entity):
             "clientApplicationTenantIds": lambda n : setattr(self, 'client_application_tenant_ids', n.get_collection_of_primitive_values(str)),
             "clientApplicationsFromVerifiedPublisherOnly": lambda n : setattr(self, 'client_applications_from_verified_publisher_only', n.get_bool_value()),
             "permissionClassification": lambda n : setattr(self, 'permission_classification', n.get_str_value()),
-            "permissionType": lambda n : setattr(self, 'permission_type', n.get_enum_value(PermissionType)),
+            "permissionType": lambda n : setattr(self, 'permission_type', n.get_enum_value(PermissionGrantConditionSet_permissionType)),
             "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_primitive_values(str)),
             "resourceApplication": lambda n : setattr(self, 'resource_application', n.get_str_value()),
         }

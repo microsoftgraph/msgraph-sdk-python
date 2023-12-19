@@ -1,8 +1,5 @@
 from enum import Enum
 
-class ChannelMembershipType(str, Enum):
-    Standard = "standard",
-    Private = "private",
-    UnknownFutureValue = "unknownFutureValue",
-    Shared = "shared",
+class Channel_membershipType(str, Enum):
+    pass
 

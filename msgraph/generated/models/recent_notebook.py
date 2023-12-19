@@ -6,8 +6,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .onenote_source_service import OnenoteSourceService
     from .recent_notebook_links import RecentNotebookLinks
+    from .recent_notebook_source_service import RecentNotebook_sourceService
 
 @dataclass
 class RecentNotebook(AdditionalDataHolder, BackedModel, Parsable):
@@ -25,7 +25,7 @@ class RecentNotebook(AdditionalDataHolder, BackedModel, Parsable):
     # The OdataType property
     odata_type: Optional[str] = None
     # The backend store where the Notebook resides, either OneDriveForBusiness or OneDrive.
-    source_service: Optional[OnenoteSourceService] = None
+    source_service: Optional[RecentNotebook_sourceService] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecentNotebook:
@@ -43,18 +43,18 @@ class RecentNotebook(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .onenote_source_service import OnenoteSourceService
         from .recent_notebook_links import RecentNotebookLinks
+        from .recent_notebook_source_service import RecentNotebook_sourceService
 
-        from .onenote_source_service import OnenoteSourceService
         from .recent_notebook_links import RecentNotebookLinks
+        from .recent_notebook_source_service import RecentNotebook_sourceService
 
         fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastAccessedTime": lambda n : setattr(self, 'last_accessed_time', n.get_datetime_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(RecentNotebookLinks)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sourceService": lambda n : setattr(self, 'source_service', n.get_enum_value(OnenoteSourceService)),
+            "sourceService": lambda n : setattr(self, 'source_service', n.get_enum_value(RecentNotebook_sourceService)),
         }
         return fields
     

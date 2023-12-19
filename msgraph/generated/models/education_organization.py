@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .education_external_source import EducationExternalSource
+    from .education_organization_external_source import EducationOrganization_externalSource
     from .education_school import EducationSchool
     from .entity import Entity
 
@@ -17,7 +17,7 @@ class EducationOrganization(Entity):
     # Organization display name.
     display_name: Optional[str] = None
     # Source where this organization was created from. Possible values are: sis, manual.
-    external_source: Optional[EducationExternalSource] = None
+    external_source: Optional[EducationOrganization_externalSource] = None
     # The name of the external source this resource was generated from.
     external_source_detail: Optional[str] = None
     # The OdataType property
@@ -47,18 +47,18 @@ class EducationOrganization(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .education_external_source import EducationExternalSource
+        from .education_organization_external_source import EducationOrganization_externalSource
         from .education_school import EducationSchool
         from .entity import Entity
 
-        from .education_external_source import EducationExternalSource
+        from .education_organization_external_source import EducationOrganization_externalSource
         from .education_school import EducationSchool
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(EducationExternalSource)),
+            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(EducationOrganization_externalSource)),
             "externalSourceDetail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

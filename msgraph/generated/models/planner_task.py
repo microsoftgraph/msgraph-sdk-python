@@ -11,9 +11,9 @@ if TYPE_CHECKING:
     from .planner_assigned_to_task_board_task_format import PlannerAssignedToTaskBoardTaskFormat
     from .planner_assignments import PlannerAssignments
     from .planner_bucket_task_board_task_format import PlannerBucketTaskBoardTaskFormat
-    from .planner_preview_type import PlannerPreviewType
     from .planner_progress_task_board_task_format import PlannerProgressTaskBoardTaskFormat
     from .planner_task_details import PlannerTaskDetails
+    from .planner_task_preview_type import PlannerTask_previewType
 
 from .entity import Entity
 
@@ -60,7 +60,7 @@ class PlannerTask(Entity):
     # Plan ID to which the task belongs.
     plan_id: Optional[str] = None
     # This sets the type of preview that shows up on the task. The possible values are: automatic, noPreview, checklist, description, reference.
-    preview_type: Optional[PlannerPreviewType] = None
+    preview_type: Optional[PlannerTask_previewType] = None
     # Priority of the task. The valid range of values is between 0 and 10, with the increasing value being lower priority (0 has the highest priority and 10 has the lowest priority).  Currently, Planner interprets values 0 and 1 as 'urgent', 2, 3 and 4 as 'important', 5, 6, and 7 as 'medium', and 8, 9, and 10 as 'low'.  Additionally, Planner sets the value 1 for 'urgent', 3 for 'important', 5 for 'medium', and 9 for 'low'.
     priority: Optional[int] = None
     # Read-only. Nullable. Used to render the task correctly in the task board view when grouped by progress.
@@ -94,9 +94,9 @@ class PlannerTask(Entity):
         from .planner_assigned_to_task_board_task_format import PlannerAssignedToTaskBoardTaskFormat
         from .planner_assignments import PlannerAssignments
         from .planner_bucket_task_board_task_format import PlannerBucketTaskBoardTaskFormat
-        from .planner_preview_type import PlannerPreviewType
         from .planner_progress_task_board_task_format import PlannerProgressTaskBoardTaskFormat
         from .planner_task_details import PlannerTaskDetails
+        from .planner_task_preview_type import PlannerTask_previewType
 
         from .entity import Entity
         from .identity_set import IdentitySet
@@ -104,9 +104,9 @@ class PlannerTask(Entity):
         from .planner_assigned_to_task_board_task_format import PlannerAssignedToTaskBoardTaskFormat
         from .planner_assignments import PlannerAssignments
         from .planner_bucket_task_board_task_format import PlannerBucketTaskBoardTaskFormat
-        from .planner_preview_type import PlannerPreviewType
         from .planner_progress_task_board_task_format import PlannerProgressTaskBoardTaskFormat
         from .planner_task_details import PlannerTaskDetails
+        from .planner_task_preview_type import PlannerTask_previewType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "activeChecklistItemCount": lambda n : setattr(self, 'active_checklist_item_count', n.get_int_value()),
@@ -128,7 +128,7 @@ class PlannerTask(Entity):
             "orderHint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
             "percentComplete": lambda n : setattr(self, 'percent_complete', n.get_int_value()),
             "planId": lambda n : setattr(self, 'plan_id', n.get_str_value()),
-            "previewType": lambda n : setattr(self, 'preview_type', n.get_enum_value(PlannerPreviewType)),
+            "previewType": lambda n : setattr(self, 'preview_type', n.get_enum_value(PlannerTask_previewType)),
             "priority": lambda n : setattr(self, 'priority', n.get_int_value()),
             "progressTaskBoardFormat": lambda n : setattr(self, 'progress_task_board_format', n.get_object_value(PlannerProgressTaskBoardTaskFormat)),
             "referenceCount": lambda n : setattr(self, 'reference_count', n.get_int_value()),

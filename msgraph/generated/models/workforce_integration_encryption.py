@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .workforce_integration_encryption_protocol import WorkforceIntegrationEncryptionProtocol
+    from .workforce_integration_encryption_protocol import WorkforceIntegrationEncryption_protocol
 
 @dataclass
 class WorkforceIntegrationEncryption(AdditionalDataHolder, BackedModel, Parsable):
@@ -17,7 +17,7 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, BackedModel, Parsable
     # The OdataType property
     odata_type: Optional[str] = None
     # Possible values are: sharedSecret, unknownFutureValue.
-    protocol: Optional[WorkforceIntegrationEncryptionProtocol] = None
+    protocol: Optional[WorkforceIntegrationEncryption_protocol] = None
     # Encryption shared secret.
     secret: Optional[str] = None
     
@@ -37,13 +37,13 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, BackedModel, Parsable
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .workforce_integration_encryption_protocol import WorkforceIntegrationEncryptionProtocol
+        from .workforce_integration_encryption_protocol import WorkforceIntegrationEncryption_protocol
 
-        from .workforce_integration_encryption_protocol import WorkforceIntegrationEncryptionProtocol
+        from .workforce_integration_encryption_protocol import WorkforceIntegrationEncryption_protocol
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(WorkforceIntegrationEncryptionProtocol)),
+            "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(WorkforceIntegrationEncryption_protocol)),
             "secret": lambda n : setattr(self, 'secret', n.get_str_value()),
         }
         return fields

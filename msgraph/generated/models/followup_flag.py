@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .date_time_time_zone import DateTimeTimeZone
-    from .followup_flag_status import FollowupFlagStatus
+    from .followup_flag_flag_status import FollowupFlag_flagStatus
 
 @dataclass
 class FollowupFlag(AdditionalDataHolder, BackedModel, Parsable):
@@ -20,7 +20,7 @@ class FollowupFlag(AdditionalDataHolder, BackedModel, Parsable):
     # The date and time that the follow-up is to be finished. Note: To set the due date, you must also specify the startDateTime; otherwise, you get a 400 Bad Request response.
     due_date_time: Optional[DateTimeTimeZone] = None
     # The status for follow-up for an item. Possible values are notFlagged, complete, and flagged.
-    flag_status: Optional[FollowupFlagStatus] = None
+    flag_status: Optional[FollowupFlag_flagStatus] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # The date and time that the follow-up is to begin.
@@ -43,15 +43,15 @@ class FollowupFlag(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .date_time_time_zone import DateTimeTimeZone
-        from .followup_flag_status import FollowupFlagStatus
+        from .followup_flag_flag_status import FollowupFlag_flagStatus
 
         from .date_time_time_zone import DateTimeTimeZone
-        from .followup_flag_status import FollowupFlagStatus
+        from .followup_flag_flag_status import FollowupFlag_flagStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_object_value(DateTimeTimeZone)),
             "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_object_value(DateTimeTimeZone)),
-            "flagStatus": lambda n : setattr(self, 'flag_status', n.get_enum_value(FollowupFlagStatus)),
+            "flagStatus": lambda n : setattr(self, 'flag_status', n.get_enum_value(FollowupFlag_flagStatus)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(DateTimeTimeZone)),
         }

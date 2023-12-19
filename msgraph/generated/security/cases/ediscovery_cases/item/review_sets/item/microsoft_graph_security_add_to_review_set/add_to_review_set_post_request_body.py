@@ -5,8 +5,8 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ........models.security.additional_data_options import AdditionalDataOptions
     from ........models.security.ediscovery_search import EdiscoverySearch
+    from .add_to_review_set_post_request_body_additional_data_options import AddToReviewSetPostRequestBody_additionalDataOptions
 
 @dataclass
 class AddToReviewSetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
@@ -16,7 +16,7 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The additionalDataOptions property
-    additional_data_options: Optional[AdditionalDataOptions] = None
+    additional_data_options: Optional[AddToReviewSetPostRequestBody_additionalDataOptions] = None
     # The search property
     search: Optional[EdiscoverySearch] = None
     
@@ -36,14 +36,14 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, BackedModel, Parsable)
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.security.additional_data_options import AdditionalDataOptions
         from ........models.security.ediscovery_search import EdiscoverySearch
+        from .add_to_review_set_post_request_body_additional_data_options import AddToReviewSetPostRequestBody_additionalDataOptions
 
-        from ........models.security.additional_data_options import AdditionalDataOptions
         from ........models.security.ediscovery_search import EdiscoverySearch
+        from .add_to_review_set_post_request_body_additional_data_options import AddToReviewSetPostRequestBody_additionalDataOptions
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "additionalDataOptions": lambda n : setattr(self, 'additional_data_options', n.get_collection_of_enum_values(AdditionalDataOptions)),
+            "additionalDataOptions": lambda n : setattr(self, 'additional_data_options', n.get_enum_value(AddToReviewSetPostRequestBody_additionalDataOptions)),
             "search": lambda n : setattr(self, 'search', n.get_object_value(EdiscoverySearch)),
         }
         return fields

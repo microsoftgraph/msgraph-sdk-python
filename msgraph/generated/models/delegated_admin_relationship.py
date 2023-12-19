@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from .delegated_admin_relationship_customer_participant import DelegatedAdminRelationshipCustomerParticipant
     from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
     from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
-    from .delegated_admin_relationship_status import DelegatedAdminRelationshipStatus
+    from .delegated_admin_relationship_status import DelegatedAdminRelationship_status
     from .entity import Entity
     from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
 
@@ -45,7 +45,7 @@ class DelegatedAdminRelationship(Entity):
     # The requests associated with the delegated admin relationship.
     requests: Optional[List[DelegatedAdminRelationshipRequest]] = None
     # The status of the relationship. Read Only. The possible values are: activating, active, approvalPending, approved, created, expired, expiring, terminated, terminating, terminationRequested, unknownFutureValue. Supports $orderby.
-    status: Optional[DelegatedAdminRelationshipStatus] = None
+    status: Optional[DelegatedAdminRelationship_status] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedAdminRelationship:
@@ -76,7 +76,7 @@ class DelegatedAdminRelationship(Entity):
         from .delegated_admin_relationship_customer_participant import DelegatedAdminRelationshipCustomerParticipant
         from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
         from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
-        from .delegated_admin_relationship_status import DelegatedAdminRelationshipStatus
+        from .delegated_admin_relationship_status import DelegatedAdminRelationship_status
         from .entity import Entity
         from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
 
@@ -85,7 +85,7 @@ class DelegatedAdminRelationship(Entity):
         from .delegated_admin_relationship_customer_participant import DelegatedAdminRelationshipCustomerParticipant
         from .delegated_admin_relationship_operation import DelegatedAdminRelationshipOperation
         from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
-        from .delegated_admin_relationship_status import DelegatedAdminRelationshipStatus
+        from .delegated_admin_relationship_status import DelegatedAdminRelationship_status
         from .entity import Entity
         from .reseller_delegated_admin_relationship import ResellerDelegatedAdminRelationship
 
@@ -102,7 +102,7 @@ class DelegatedAdminRelationship(Entity):
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(DelegatedAdminRelationshipOperation)),
             "requests": lambda n : setattr(self, 'requests', n.get_collection_of_object_values(DelegatedAdminRelationshipRequest)),
-            "status": lambda n : setattr(self, 'status', n.get_enum_value(DelegatedAdminRelationshipStatus)),
+            "status": lambda n : setattr(self, 'status', n.get_enum_value(DelegatedAdminRelationship_status)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

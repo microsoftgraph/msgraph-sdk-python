@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .identity import Identity
-    from .teamwork_user_identity_type import TeamworkUserIdentityType
+    from .teamwork_user_identity_user_identity_type import TeamworkUserIdentity_userIdentityType
 
 from .identity import Identity
 
@@ -14,7 +14,7 @@ class TeamworkUserIdentity(Identity):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.teamworkUserIdentity"
     # Type of user. Possible values are: aadUser, onPremiseAadUser, anonymousGuest, federatedUser, personalMicrosoftAccountUser, skypeUser, phoneUser, unknownFutureValue and emailUser.
-    user_identity_type: Optional[TeamworkUserIdentityType] = None
+    user_identity_type: Optional[TeamworkUserIdentity_userIdentityType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkUserIdentity:
@@ -33,13 +33,13 @@ class TeamworkUserIdentity(Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .identity import Identity
-        from .teamwork_user_identity_type import TeamworkUserIdentityType
+        from .teamwork_user_identity_user_identity_type import TeamworkUserIdentity_userIdentityType
 
         from .identity import Identity
-        from .teamwork_user_identity_type import TeamworkUserIdentityType
+        from .teamwork_user_identity_user_identity_type import TeamworkUserIdentity_userIdentityType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "userIdentityType": lambda n : setattr(self, 'user_identity_type', n.get_enum_value(TeamworkUserIdentityType)),
+            "userIdentityType": lambda n : setattr(self, 'user_identity_type', n.get_enum_value(TeamworkUserIdentity_userIdentityType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

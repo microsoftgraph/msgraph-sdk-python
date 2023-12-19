@@ -5,8 +5,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .attestation_level import AttestationLevel
     from .authentication_method import AuthenticationMethod
+    from .fido2_authentication_method_attestation_level import Fido2AuthenticationMethod_attestationLevel
 
 from .authentication_method import AuthenticationMethod
 
@@ -19,7 +19,7 @@ class Fido2AuthenticationMethod(AuthenticationMethod):
     # The attestation certificate(s) attached to this security key.
     attestation_certificates: Optional[List[str]] = None
     # The attestation level of this FIDO2 security key. Possible values are: attested, or notAttested.
-    attestation_level: Optional[AttestationLevel] = None
+    attestation_level: Optional[Fido2AuthenticationMethod_attestationLevel] = None
     # The timestamp when this key was registered to the user.
     created_date_time: Optional[datetime.datetime] = None
     # The display name of the key as given by the user.
@@ -43,16 +43,16 @@ class Fido2AuthenticationMethod(AuthenticationMethod):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .attestation_level import AttestationLevel
         from .authentication_method import AuthenticationMethod
+        from .fido2_authentication_method_attestation_level import Fido2AuthenticationMethod_attestationLevel
 
-        from .attestation_level import AttestationLevel
         from .authentication_method import AuthenticationMethod
+        from .fido2_authentication_method_attestation_level import Fido2AuthenticationMethod_attestationLevel
 
         fields: Dict[str, Callable[[Any], None]] = {
             "aaGuid": lambda n : setattr(self, 'aa_guid', n.get_str_value()),
             "attestationCertificates": lambda n : setattr(self, 'attestation_certificates', n.get_collection_of_primitive_values(str)),
-            "attestationLevel": lambda n : setattr(self, 'attestation_level', n.get_enum_value(AttestationLevel)),
+            "attestationLevel": lambda n : setattr(self, 'attestation_level', n.get_enum_value(Fido2AuthenticationMethod_attestationLevel)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),

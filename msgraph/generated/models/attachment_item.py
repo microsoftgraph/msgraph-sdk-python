@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .attachment_type import AttachmentType
+    from .attachment_item_attachment_type import AttachmentItem_attachmentType
 
 @dataclass
 class AttachmentItem(AdditionalDataHolder, BackedModel, Parsable):
@@ -15,7 +15,7 @@ class AttachmentItem(AdditionalDataHolder, BackedModel, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The type of attachment. Possible values are: file, item, reference. Required.
-    attachment_type: Optional[AttachmentType] = None
+    attachment_type: Optional[AttachmentItem_attachmentType] = None
     # The CID or Content-Id of the attachment for referencing for the in-line attachments using the <img src='cid:contentId'> tag in HTML messages. Optional.
     content_id: Optional[str] = None
     # The nature of the data in the attachment. Optional.
@@ -45,12 +45,12 @@ class AttachmentItem(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .attachment_type import AttachmentType
+        from .attachment_item_attachment_type import AttachmentItem_attachmentType
 
-        from .attachment_type import AttachmentType
+        from .attachment_item_attachment_type import AttachmentItem_attachmentType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "attachmentType": lambda n : setattr(self, 'attachment_type', n.get_enum_value(AttachmentType)),
+            "attachmentType": lambda n : setattr(self, 'attachment_type', n.get_enum_value(AttachmentItem_attachmentType)),
             "contentId": lambda n : setattr(self, 'content_id', n.get_str_value()),
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "isInline": lambda n : setattr(self, 'is_inline', n.get_bool_value()),

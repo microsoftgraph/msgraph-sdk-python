@@ -1,7 +1,5 @@
 from enum import Enum
 
-class RecurrenceRangeType(str, Enum):
-    EndDate = "endDate",
-    NoEnd = "noEnd",
-    Numbered = "numbered",
+class RecurrenceRange_type(str, Enum):
+    pass
 

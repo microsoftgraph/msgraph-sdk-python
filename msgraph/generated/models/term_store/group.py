@@ -6,8 +6,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..entity import Entity
+    from .group_scope import Group_scope
     from .set import Set
-    from .term_group_scope import TermGroupScope
 
 from ..entity import Entity
 
@@ -24,7 +24,7 @@ class Group(Entity):
     # ID of the parent site of this group.
     parent_site_id: Optional[str] = None
     # Returns the type of the group. Possible values are: global, system, and siteCollection.
-    scope: Optional[TermGroupScope] = None
+    scope: Optional[Group_scope] = None
     # All sets under the group in a term [store].
     sets: Optional[List[Set]] = None
     
@@ -45,19 +45,19 @@ class Group(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from ..entity import Entity
+        from .group_scope import Group_scope
         from .set import Set
-        from .term_group_scope import TermGroupScope
 
         from ..entity import Entity
+        from .group_scope import Group_scope
         from .set import Set
-        from .term_group_scope import TermGroupScope
 
         fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "parentSiteId": lambda n : setattr(self, 'parent_site_id', n.get_str_value()),
-            "scope": lambda n : setattr(self, 'scope', n.get_enum_value(TermGroupScope)),
+            "scope": lambda n : setattr(self, 'scope', n.get_enum_value(Group_scope)),
             "sets": lambda n : setattr(self, 'sets', n.get_collection_of_object_values(Set)),
         }
         super_fields = super().get_field_deserializers()

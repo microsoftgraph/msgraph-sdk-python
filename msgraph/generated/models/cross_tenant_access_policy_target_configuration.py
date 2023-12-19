@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .cross_tenant_access_policy_target import CrossTenantAccessPolicyTarget
-    from .cross_tenant_access_policy_target_configuration_access_type import CrossTenantAccessPolicyTargetConfigurationAccessType
+    from .cross_tenant_access_policy_target_configuration_access_type import CrossTenantAccessPolicyTargetConfiguration_accessType
 
 @dataclass
 class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, BackedModel, Parsable):
@@ -16,7 +16,7 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, BackedMod
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Defines whether access is allowed or blocked. The possible values are: allowed, blocked, unknownFutureValue.
-    access_type: Optional[CrossTenantAccessPolicyTargetConfigurationAccessType] = None
+    access_type: Optional[CrossTenantAccessPolicyTargetConfiguration_accessType] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Specifies whether to target users, groups, or applications with this rule.
@@ -39,13 +39,13 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, BackedMod
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .cross_tenant_access_policy_target import CrossTenantAccessPolicyTarget
-        from .cross_tenant_access_policy_target_configuration_access_type import CrossTenantAccessPolicyTargetConfigurationAccessType
+        from .cross_tenant_access_policy_target_configuration_access_type import CrossTenantAccessPolicyTargetConfiguration_accessType
 
         from .cross_tenant_access_policy_target import CrossTenantAccessPolicyTarget
-        from .cross_tenant_access_policy_target_configuration_access_type import CrossTenantAccessPolicyTargetConfigurationAccessType
+        from .cross_tenant_access_policy_target_configuration_access_type import CrossTenantAccessPolicyTargetConfiguration_accessType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "accessType": lambda n : setattr(self, 'access_type', n.get_enum_value(CrossTenantAccessPolicyTargetConfigurationAccessType)),
+            "accessType": lambda n : setattr(self, 'access_type', n.get_enum_value(CrossTenantAccessPolicyTargetConfiguration_accessType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "targets": lambda n : setattr(self, 'targets', n.get_collection_of_object_values(CrossTenantAccessPolicyTarget)),
         }

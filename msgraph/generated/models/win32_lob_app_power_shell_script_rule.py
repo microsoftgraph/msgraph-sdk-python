@@ -4,8 +4,8 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .run_as_account_type import RunAsAccountType
     from .win32_lob_app_power_shell_script_rule_operation_type import Win32LobAppPowerShellScriptRuleOperationType
+    from .win32_lob_app_power_shell_script_rule_run_as_account import Win32LobAppPowerShellScriptRule_runAsAccount
     from .win32_lob_app_rule import Win32LobAppRule
     from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
@@ -29,7 +29,7 @@ class Win32LobAppPowerShellScriptRule(Win32LobAppRule):
     # Contains properties for detection operator.
     operator: Optional[Win32LobAppRuleOperator] = None
     # The execution context of the script. Do not specify this value if the rule is used for detection. Script detection rules will run in the same context as the associated app install context. Possible values are: system, user.
-    run_as_account: Optional[RunAsAccountType] = None
+    run_as_account: Optional[Win32LobAppPowerShellScriptRule_runAsAccount] = None
     # A value indicating whether the script should run as 32-bit.
     run_as32_bit: Optional[bool] = None
     # The base64-encoded script content.
@@ -51,13 +51,13 @@ class Win32LobAppPowerShellScriptRule(Win32LobAppRule):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .run_as_account_type import RunAsAccountType
         from .win32_lob_app_power_shell_script_rule_operation_type import Win32LobAppPowerShellScriptRuleOperationType
+        from .win32_lob_app_power_shell_script_rule_run_as_account import Win32LobAppPowerShellScriptRule_runAsAccount
         from .win32_lob_app_rule import Win32LobAppRule
         from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
-        from .run_as_account_type import RunAsAccountType
         from .win32_lob_app_power_shell_script_rule_operation_type import Win32LobAppPowerShellScriptRuleOperationType
+        from .win32_lob_app_power_shell_script_rule_run_as_account import Win32LobAppPowerShellScriptRule_runAsAccount
         from .win32_lob_app_rule import Win32LobAppRule
         from .win32_lob_app_rule_operator import Win32LobAppRuleOperator
 
@@ -67,7 +67,7 @@ class Win32LobAppPowerShellScriptRule(Win32LobAppRule):
             "enforceSignatureCheck": lambda n : setattr(self, 'enforce_signature_check', n.get_bool_value()),
             "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(Win32LobAppPowerShellScriptRuleOperationType)),
             "operator": lambda n : setattr(self, 'operator', n.get_enum_value(Win32LobAppRuleOperator)),
-            "runAsAccount": lambda n : setattr(self, 'run_as_account', n.get_enum_value(RunAsAccountType)),
+            "runAsAccount": lambda n : setattr(self, 'run_as_account', n.get_enum_value(Win32LobAppPowerShellScriptRule_runAsAccount)),
             "runAs32Bit": lambda n : setattr(self, 'run_as32_bit', n.get_bool_value()),
             "scriptContent": lambda n : setattr(self, 'script_content', n.get_str_value()),
         }

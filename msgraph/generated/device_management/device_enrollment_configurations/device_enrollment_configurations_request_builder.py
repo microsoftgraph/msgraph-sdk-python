@@ -45,10 +45,10 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceEnrollmentConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceEnrollmentConfigurationCollectionResponse]:
         """
-        List properties and relationships of the deviceEnrollmentConfiguration objects.
+        List properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceEnrollmentConfigurationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentconfiguration-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentwindowshelloforbusinessconfiguration-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +67,11 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceEnrollmentConfiguration]:
         """
-        Create a new deviceEnrollmentPlatformRestrictionsConfiguration object.
+        Create a new deviceEnrollmentLimitConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceEnrollmentConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentplatformrestrictionsconfiguration-create?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentlimitconfiguration-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +92,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceEnrollmentConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceEnrollmentConfiguration objects.
+        List properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceEnrollmentPlatformRestrictionsConfiguration object.
+        Create a new deviceEnrollmentLimitConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceEnrollmentConfigurationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceEnrollmentConfiguration objects.
+        List properties and relationships of the deviceEnrollmentWindowsHelloForBusinessConfiguration objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

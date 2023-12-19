@@ -6,8 +6,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .date_time_time_zone import DateTimeTimeZone
     from .event_message import EventMessage
+    from .event_message_request_meeting_request_type import EventMessageRequest_meetingRequestType
     from .location import Location
-    from .meeting_request_type import MeetingRequestType
 
 from .event_message import EventMessage
 
@@ -18,7 +18,7 @@ class EventMessageRequest(EventMessage):
     # True if the meeting organizer allows invitees to propose a new time when responding, false otherwise. Optional. Default is true.
     allow_new_time_proposals: Optional[bool] = None
     # The meetingRequestType property
-    meeting_request_type: Optional[MeetingRequestType] = None
+    meeting_request_type: Optional[EventMessageRequest_meetingRequestType] = None
     # If the meeting update changes the meeting end time, this property specifies the previous meeting end time.
     previous_end_date_time: Optional[DateTimeTimeZone] = None
     # If the meeting update changes the meeting location, this property specifies the previous meeting location.
@@ -46,17 +46,17 @@ class EventMessageRequest(EventMessage):
         """
         from .date_time_time_zone import DateTimeTimeZone
         from .event_message import EventMessage
+        from .event_message_request_meeting_request_type import EventMessageRequest_meetingRequestType
         from .location import Location
-        from .meeting_request_type import MeetingRequestType
 
         from .date_time_time_zone import DateTimeTimeZone
         from .event_message import EventMessage
+        from .event_message_request_meeting_request_type import EventMessageRequest_meetingRequestType
         from .location import Location
-        from .meeting_request_type import MeetingRequestType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowNewTimeProposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
-            "meetingRequestType": lambda n : setattr(self, 'meeting_request_type', n.get_enum_value(MeetingRequestType)),
+            "meetingRequestType": lambda n : setattr(self, 'meeting_request_type', n.get_enum_value(EventMessageRequest_meetingRequestType)),
             "previousEndDateTime": lambda n : setattr(self, 'previous_end_date_time', n.get_object_value(DateTimeTimeZone)),
             "previousLocation": lambda n : setattr(self, 'previous_location', n.get_object_value(Location)),
             "previousStartDateTime": lambda n : setattr(self, 'previous_start_date_time', n.get_object_value(DateTimeTimeZone)),

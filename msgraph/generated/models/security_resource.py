@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .security_resource_type import SecurityResourceType
+    from .security_resource_resource_type import SecurityResource_resourceType
 
 @dataclass
 class SecurityResource(AdditionalDataHolder, BackedModel, Parsable):
@@ -19,7 +19,7 @@ class SecurityResource(AdditionalDataHolder, BackedModel, Parsable):
     # Name of the resource that is related to current alert. Required.
     resource: Optional[str] = None
     # Represents type of security resources related to an alert. Possible values are: attacked, related.
-    resource_type: Optional[SecurityResourceType] = None
+    resource_type: Optional[SecurityResource_resourceType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SecurityResource:
@@ -37,14 +37,14 @@ class SecurityResource(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .security_resource_type import SecurityResourceType
+        from .security_resource_resource_type import SecurityResource_resourceType
 
-        from .security_resource_type import SecurityResourceType
+        from .security_resource_resource_type import SecurityResource_resourceType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_str_value()),
-            "resourceType": lambda n : setattr(self, 'resource_type', n.get_enum_value(SecurityResourceType)),
+            "resourceType": lambda n : setattr(self, 'resource_type', n.get_enum_value(SecurityResource_resourceType)),
         }
         return fields
     

@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .authentication_method_configuration import AuthenticationMethodConfiguration
     from .authentication_method_target import AuthenticationMethodTarget
-    from .external_email_otp_state import ExternalEmailOtpState
+    from .email_authentication_method_configuration_allow_external_id_to_use_email_otp import EmailAuthenticationMethodConfiguration_allowExternalIdToUseEmailOtp
 
 from .authentication_method_configuration import AuthenticationMethodConfiguration
 
@@ -15,7 +15,7 @@ class EmailAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.emailAuthenticationMethodConfiguration"
     # Determines whether email OTP is usable by external users for authentication. Possible values are: default, enabled, disabled, unknownFutureValue. Tenants in the default state who didn't use public preview have email OTP enabled beginning in October 2021.
-    allow_external_id_to_use_email_otp: Optional[ExternalEmailOtpState] = None
+    allow_external_id_to_use_email_otp: Optional[EmailAuthenticationMethodConfiguration_allowExternalIdToUseEmailOtp] = None
     # A collection of groups that are enabled to use the authentication method.
     include_targets: Optional[List[AuthenticationMethodTarget]] = None
     
@@ -37,14 +37,14 @@ class EmailAuthenticationMethodConfiguration(AuthenticationMethodConfiguration):
         """
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
-        from .external_email_otp_state import ExternalEmailOtpState
+        from .email_authentication_method_configuration_allow_external_id_to_use_email_otp import EmailAuthenticationMethodConfiguration_allowExternalIdToUseEmailOtp
 
         from .authentication_method_configuration import AuthenticationMethodConfiguration
         from .authentication_method_target import AuthenticationMethodTarget
-        from .external_email_otp_state import ExternalEmailOtpState
+        from .email_authentication_method_configuration_allow_external_id_to_use_email_otp import EmailAuthenticationMethodConfiguration_allowExternalIdToUseEmailOtp
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "allowExternalIdToUseEmailOtp": lambda n : setattr(self, 'allow_external_id_to_use_email_otp', n.get_enum_value(ExternalEmailOtpState)),
+            "allowExternalIdToUseEmailOtp": lambda n : setattr(self, 'allow_external_id_to_use_email_otp', n.get_enum_value(EmailAuthenticationMethodConfiguration_allowExternalIdToUseEmailOtp)),
             "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(AuthenticationMethodTarget)),
         }
         super_fields = super().get_field_deserializers()

@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .cross_tenant_access_policy_target_type import CrossTenantAccessPolicyTargetType
+    from .cross_tenant_access_policy_target_target_type import CrossTenantAccessPolicyTarget_targetType
 
 @dataclass
 class CrossTenantAccessPolicyTarget(AdditionalDataHolder, BackedModel, Parsable):
@@ -19,7 +19,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, BackedModel, Parsable)
     # The unique identifier of the user, group, or application; one of the following keywords: AllUsers and AllApplications; or for targets that are applications, you may use reserved values.
     target: Optional[str] = None
     # The type of resource that you want to target. The possible values are: user, group, application, unknownFutureValue.
-    target_type: Optional[CrossTenantAccessPolicyTargetType] = None
+    target_type: Optional[CrossTenantAccessPolicyTarget_targetType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyTarget:
@@ -37,14 +37,14 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, BackedModel, Parsable)
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .cross_tenant_access_policy_target_type import CrossTenantAccessPolicyTargetType
+        from .cross_tenant_access_policy_target_target_type import CrossTenantAccessPolicyTarget_targetType
 
-        from .cross_tenant_access_policy_target_type import CrossTenantAccessPolicyTargetType
+        from .cross_tenant_access_policy_target_target_type import CrossTenantAccessPolicyTarget_targetType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "target": lambda n : setattr(self, 'target', n.get_str_value()),
-            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(CrossTenantAccessPolicyTargetType)),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(CrossTenantAccessPolicyTarget_targetType)),
         }
         return fields
     

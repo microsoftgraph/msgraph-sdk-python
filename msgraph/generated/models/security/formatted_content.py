@@ -5,7 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .content_format import ContentFormat
+    from .formatted_content_format import FormattedContent_format
 
 @dataclass
 class FormattedContent(AdditionalDataHolder, BackedModel, Parsable):
@@ -17,7 +17,7 @@ class FormattedContent(AdditionalDataHolder, BackedModel, Parsable):
     # The content of this formattedContent.
     content: Optional[str] = None
     # The format of the content. The possible values are: text, html, markdown, unknownFutureValue.
-    format: Optional[ContentFormat] = None
+    format: Optional[FormattedContent_format] = None
     # The OdataType property
     odata_type: Optional[str] = None
     
@@ -37,13 +37,13 @@ class FormattedContent(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .content_format import ContentFormat
+        from .formatted_content_format import FormattedContent_format
 
-        from .content_format import ContentFormat
+        from .formatted_content_format import FormattedContent_format
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
-            "format": lambda n : setattr(self, 'format', n.get_enum_value(ContentFormat)),
+            "format": lambda n : setattr(self, 'format', n.get_enum_value(FormattedContent_format)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

@@ -7,12 +7,12 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .access_package import AccessPackage
     from .access_package_assignment_approval_settings import AccessPackageAssignmentApprovalSettings
+    from .access_package_assignment_policy_allowed_target_scope import AccessPackageAssignmentPolicy_allowedTargetScope
     from .access_package_assignment_requestor_settings import AccessPackageAssignmentRequestorSettings
     from .access_package_assignment_review_settings import AccessPackageAssignmentReviewSettings
     from .access_package_automatic_request_settings import AccessPackageAutomaticRequestSettings
     from .access_package_catalog import AccessPackageCatalog
     from .access_package_question import AccessPackageQuestion
-    from .allowed_target_scope import AllowedTargetScope
     from .custom_extension_stage_setting import CustomExtensionStageSetting
     from .entity import Entity
     from .expiration_pattern import ExpirationPattern
@@ -25,7 +25,7 @@ class AccessPackageAssignmentPolicy(Entity):
     # Access package containing this policy. Read-only.  Supports $expand.
     access_package: Optional[AccessPackage] = None
     # Principals that can be assigned the access package through this policy. The possible values are: notSpecified, specificDirectoryUsers, specificConnectedOrganizationUsers, specificDirectoryServicePrincipals, allMemberUsers, allDirectoryUsers, allDirectoryServicePrincipals, allConfiguredConnectedOrganizationUsers, allExternalUsers, unknownFutureValue.
-    allowed_target_scope: Optional[AllowedTargetScope] = None
+    allowed_target_scope: Optional[AccessPackageAssignmentPolicy_allowedTargetScope] = None
     # This property is only present for an auto assignment policy; if absent, this is a request-based policy.
     automatic_request_settings: Optional[AccessPackageAutomaticRequestSettings] = None
     # Catalog of the access package containing this policy. Read-only.
@@ -73,12 +73,12 @@ class AccessPackageAssignmentPolicy(Entity):
         """
         from .access_package import AccessPackage
         from .access_package_assignment_approval_settings import AccessPackageAssignmentApprovalSettings
+        from .access_package_assignment_policy_allowed_target_scope import AccessPackageAssignmentPolicy_allowedTargetScope
         from .access_package_assignment_requestor_settings import AccessPackageAssignmentRequestorSettings
         from .access_package_assignment_review_settings import AccessPackageAssignmentReviewSettings
         from .access_package_automatic_request_settings import AccessPackageAutomaticRequestSettings
         from .access_package_catalog import AccessPackageCatalog
         from .access_package_question import AccessPackageQuestion
-        from .allowed_target_scope import AllowedTargetScope
         from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .entity import Entity
         from .expiration_pattern import ExpirationPattern
@@ -86,12 +86,12 @@ class AccessPackageAssignmentPolicy(Entity):
 
         from .access_package import AccessPackage
         from .access_package_assignment_approval_settings import AccessPackageAssignmentApprovalSettings
+        from .access_package_assignment_policy_allowed_target_scope import AccessPackageAssignmentPolicy_allowedTargetScope
         from .access_package_assignment_requestor_settings import AccessPackageAssignmentRequestorSettings
         from .access_package_assignment_review_settings import AccessPackageAssignmentReviewSettings
         from .access_package_automatic_request_settings import AccessPackageAutomaticRequestSettings
         from .access_package_catalog import AccessPackageCatalog
         from .access_package_question import AccessPackageQuestion
-        from .allowed_target_scope import AllowedTargetScope
         from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .entity import Entity
         from .expiration_pattern import ExpirationPattern
@@ -99,7 +99,7 @@ class AccessPackageAssignmentPolicy(Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(AccessPackage)),
-            "allowedTargetScope": lambda n : setattr(self, 'allowed_target_scope', n.get_enum_value(AllowedTargetScope)),
+            "allowedTargetScope": lambda n : setattr(self, 'allowed_target_scope', n.get_enum_value(AccessPackageAssignmentPolicy_allowedTargetScope)),
             "automaticRequestSettings": lambda n : setattr(self, 'automatic_request_settings', n.get_object_value(AccessPackageAutomaticRequestSettings)),
             "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(AccessPackageCatalog)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

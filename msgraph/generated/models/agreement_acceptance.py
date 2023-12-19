@@ -5,7 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .agreement_acceptance_state import AgreementAcceptanceState
+    from .agreement_acceptance_state import AgreementAcceptance_state
     from .entity import Entity
 
 from .entity import Entity
@@ -31,7 +31,7 @@ class AgreementAcceptance(Entity):
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     recorded_date_time: Optional[datetime.datetime] = None
     # The state of the agreement acceptance. Possible values are: accepted, declined. Supports $filter (eq).
-    state: Optional[AgreementAcceptanceState] = None
+    state: Optional[AgreementAcceptance_state] = None
     # Display name of the user when the acceptance was recorded.
     user_display_name: Optional[str] = None
     # Email of the user when the acceptance was recorded.
@@ -57,10 +57,10 @@ class AgreementAcceptance(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .agreement_acceptance_state import AgreementAcceptanceState
+        from .agreement_acceptance_state import AgreementAcceptance_state
         from .entity import Entity
 
-        from .agreement_acceptance_state import AgreementAcceptanceState
+        from .agreement_acceptance_state import AgreementAcceptance_state
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -72,7 +72,7 @@ class AgreementAcceptance(Entity):
             "deviceOSVersion": lambda n : setattr(self, 'device_o_s_version', n.get_str_value()),
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "recordedDateTime": lambda n : setattr(self, 'recorded_date_time', n.get_datetime_value()),
-            "state": lambda n : setattr(self, 'state', n.get_enum_value(AgreementAcceptanceState)),
+            "state": lambda n : setattr(self, 'state', n.get_enum_value(AgreementAcceptance_state)),
             "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
             "userEmail": lambda n : setattr(self, 'user_email', n.get_str_value()),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),

@@ -27,7 +27,7 @@ class RenewRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[RenewRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Renews a group's expiration. When a group is renewed, the group expiration is extended by the number of days defined in the policy. This API is available in the following national cloud deployments.
+        Renews a group's expiration. When a group is renewed, the group expiration is extended by the number of days defined in the policy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/group-renew?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class RenewRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[RenewRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Renews a group's expiration. When a group is renewed, the group expiration is extended by the number of days defined in the policy. This API is available in the following national cloud deployments.
+        Renews a group's expiration. When a group is renewed, the group expiration is extended by the number of days defined in the policy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -58,7 +58,7 @@ class RenewRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> RenewRequestBuilder:

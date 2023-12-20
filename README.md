@@ -101,36 +101,7 @@ scopes = ['User.Read', 'Mail.Read']
 client = GraphServiceClient(credentials=credentials, scopes=scopes)
 ```
 
-Below is a more advanced way to configure the GraphServiceClient when you're behind a HTTP proxy:
-
-```py
-# Example using sync credentials and delegated access.
-from azure.identity.aio import ClientSecretCredential
-from httpx import AsyncClient, Timeout
-from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from msgraph_core import GraphClientFactory
-
-from msgraph import GraphServiceClient, GraphRequestAdapter
-
-proxies = {'http': 'http://proxy:80', 'https': 'https://proxy:80'}
-credentials = ClientSecretCredential(
-    tenant_id='TENANT_ID',
-    client_id='CLIENT_ID',
-    client_secret='CLIENT_SECRET',
-    proxies=proxies,
-)
-httpx_proxies = {'http://': proxies['http'], 'https://': proxies['https']}
-scopes = ['https://graph.microsoft.com/.default']
-http_client = GraphClientFactory.create_with_default_middleware(
-    client=AsyncClient(proxies=httpx_proxies,
-                       timeout=Timeout(timeout=60.0)))  # HTTP timeout connection set to 60 seconds
-auth_provider = AzureIdentityAuthenticationProvider(credentials=credentials, scopes=scopes)
-client = GraphServiceClient(request_adapter=GraphRequestAdapter(auth_provider=auth_provider, client=http_client))
-```
-
-> **Note**: Be careful as the ClientSecretCredential isn't based on the [httpx](https://www.python-httpx.org/) client but is rather using the [requests](https://requests.readthedocs.io/en/latest/) library
-underneath to make the authentication calls, so the proxies dict is a bit different for the ClientSecretCredential class as
-opposed to the [httpx](https://www.python-httpx.org/) AsyncClient.  That's why we need to adapt the proxies dict before passing it to the [httpx](https://www.python-httpx.org/) AsyncClient.
+> **Note**: Refer to the [following documentation page](https://learn.microsoft.com/graph/sdks/customize-client?tabs=python#configuring-the-http-proxy-for-the-client) if you need to configure an HTTP proxy.
 
 ## 3. Make requests against the service
 

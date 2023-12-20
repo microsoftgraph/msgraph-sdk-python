@@ -77,13 +77,13 @@ You must create **GraphServiceClient** object to make requests against the servi
 from azure.identity.aio import ClientSecretCredential
 from msgraph import GraphServiceClient
 
-credential = ClientSecretCredential(
+credentials = ClientSecretCredential(
     'TENANT_ID',
     'CLIENT_ID',
     'CLIENT_SECRET',
 )
 scopes = ['https://graph.microsoft.com/.default']
-client = GraphServiceClient(credentials=credential, scopes=scopes)
+client = GraphServiceClient(credentials=credentials, scopes=scopes)
 ```
 
 The above example uses default scopes for [app-only access](https://learn.microsoft.com/en-us/graph/permissions-overview?tabs=http#application-permissions).  If using [delegated access](https://learn.microsoft.com/en-us/graph/permissions-overview#delegated-permissions) you can provide custom scopes:
@@ -93,13 +93,15 @@ The above example uses default scopes for [app-only access](https://learn.micros
 from azure.identity import DeviceCodeCredential
 from msgraph import GraphServiceClient
 
-credential=DeviceCodeCredential(
+credentials = DeviceCodeCredential(
     'CLIENT_ID',
     'TENANT_ID',
 )
 scopes = ['User.Read', 'Mail.Read']
-client = GraphServiceClient(credentials=credential, scopes=scopes)
+client = GraphServiceClient(credentials=credentials, scopes=scopes)
 ```
+
+> **Note**: Refer to the [following documentation page](https://learn.microsoft.com/graph/sdks/customize-client?tabs=python#configuring-the-http-proxy-for-the-client) if you need to configure an HTTP proxy.
 
 ## 3. Make requests against the service
 

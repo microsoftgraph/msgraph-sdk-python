@@ -45,7 +45,7 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CalendarsRequestBuilderGetRequestConfiguration] = None) -> Optional[CalendarCollectionResponse]:
         """
-        Retrieve a list of calendars belonging to a calendar group. This API is available in the following national cloud deployments.
+        Retrieve a list of calendars belonging to a calendar group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CalendarCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/calendargroup-list-calendars?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Calendar] = None, request_configuration: Optional[CalendarsRequestBuilderPostRequestConfiguration] = None) -> Optional[Calendar]:
         """
-        Use this API to create a new calendar in a calendar group for a user. This API is available in the following national cloud deployments.
+        Use this API to create a new calendar in a calendar group for a user.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Calendar]
@@ -92,7 +92,7 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CalendarsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of calendars belonging to a calendar group. This API is available in the following national cloud deployments.
+        Retrieve a list of calendars belonging to a calendar group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[Calendar] = None, request_configuration: Optional[CalendarsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new calendar in a calendar group for a user. This API is available in the following national cloud deployments.
+        Use this API to create a new calendar in a calendar group for a user.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CalendarsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of calendars belonging to a calendar group. This API is available in the following national cloud deployments.
+        Retrieve a list of calendars belonging to a calendar group.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

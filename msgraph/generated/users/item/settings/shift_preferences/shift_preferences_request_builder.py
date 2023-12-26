@@ -47,7 +47,7 @@ class ShiftPreferencesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ShiftPreferencesRequestBuilderGetRequestConfiguration] = None) -> Optional[ShiftPreferences]:
         """
-        Retrieve the properties and relationships of a shiftPreferences object by ID. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a shiftPreferences object by ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ShiftPreferences]
         Find more info here: https://learn.microsoft.com/graph/api/shiftpreferences-get?view=graph-rest-1.0
@@ -69,7 +69,7 @@ class ShiftPreferencesRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ShiftPreferences] = None, request_configuration: Optional[ShiftPreferencesRequestBuilderPatchRequestConfiguration] = None) -> Optional[ShiftPreferences]:
         """
-        Update the properties and relationships of a shiftPreferences object. This API is available in the following national cloud deployments.
+        Update the properties and relationships of a shiftPreferences object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ShiftPreferences]
@@ -105,12 +105,12 @@ class ShiftPreferencesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[ShiftPreferencesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a shiftPreferences object by ID. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a shiftPreferences object by ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -122,12 +122,12 @@ class ShiftPreferencesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[ShiftPreferences] = None, request_configuration: Optional[ShiftPreferencesRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties and relationships of a shiftPreferences object. This API is available in the following national cloud deployments.
+        Update the properties and relationships of a shiftPreferences object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +141,7 @@ class ShiftPreferencesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -168,7 +168,7 @@ class ShiftPreferencesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ShiftPreferencesRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a shiftPreferences object by ID. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a shiftPreferences object by ID.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

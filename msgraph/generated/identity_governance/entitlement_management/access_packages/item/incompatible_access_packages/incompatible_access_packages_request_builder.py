@@ -32,7 +32,7 @@ class IncompatibleAccessPackagesRequestBuilder(BaseRequestBuilder):
     def by_access_package_id1(self,access_package_id1: str) -> AccessPackageItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.identityGovernance.entitlementManagement.accessPackages.item.incompatibleAccessPackages.item collection
-        param access_package_id1: Unique identifier of the item
+        param access_package_id1: The unique identifier of accessPackage
         Returns: AccessPackageItemRequestBuilder
         """
         if not access_package_id1:
@@ -45,7 +45,7 @@ class IncompatibleAccessPackagesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[IncompatibleAccessPackagesRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageCollectionResponse]:
         """
-        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.   This API is available in the following national cloud deployments.
+        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.  
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/accesspackage-list-incompatibleaccesspackages?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class IncompatibleAccessPackagesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[IncompatibleAccessPackagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.   This API is available in the following national cloud deployments.
+        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.  
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -79,7 +79,7 @@ class IncompatibleAccessPackagesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> IncompatibleAccessPackagesRequestBuilder:
@@ -113,7 +113,7 @@ class IncompatibleAccessPackagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IncompatibleAccessPackagesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.   This API is available in the following national cloud deployments.
+        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.  
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -15,13 +15,13 @@ class ServiceProvisioningError(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The createdDateTime property
+    # The date and time at which the error occurred.
     created_date_time: Optional[datetime.datetime] = None
-    # The isResolved property
+    # Indicates whether the error has been attended to.
     is_resolved: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The serviceInstance property
+    # Qualified service instance (for example, 'SharePoint/Dublin') that published the service error information.
     service_instance: Optional[str] = None
     
     @staticmethod

@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from .education_assignment_resource import EducationAssignmentResource
     from .education_assignment_status import EducationAssignmentStatus
     from .education_category import EducationCategory
+    from .education_grading_category import EducationGradingCategory
     from .education_item_body import EducationItemBody
     from .education_rubric import EducationRubric
     from .education_submission import EducationSubmission
@@ -54,6 +55,8 @@ class EducationAssignment(Entity):
     feedback_resources_folder_url: Optional[str] = None
     # How the assignment will be graded.
     grading: Optional[EducationAssignmentGradeType] = None
+    # The gradingCategory property
+    grading_category: Optional[EducationGradingCategory] = None
     # Instructions for the assignment.  This along with the display name tell the student what to do.
     instructions: Optional[EducationItemBody] = None
     # Who last modified the assignment.
@@ -100,6 +103,7 @@ class EducationAssignment(Entity):
         from .education_assignment_resource import EducationAssignmentResource
         from .education_assignment_status import EducationAssignmentStatus
         from .education_category import EducationCategory
+        from .education_grading_category import EducationGradingCategory
         from .education_item_body import EducationItemBody
         from .education_rubric import EducationRubric
         from .education_submission import EducationSubmission
@@ -113,6 +117,7 @@ class EducationAssignment(Entity):
         from .education_assignment_resource import EducationAssignmentResource
         from .education_assignment_status import EducationAssignmentStatus
         from .education_category import EducationCategory
+        from .education_grading_category import EducationGradingCategory
         from .education_item_body import EducationItemBody
         from .education_rubric import EducationRubric
         from .education_submission import EducationSubmission
@@ -136,6 +141,7 @@ class EducationAssignment(Entity):
             "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_datetime_value()),
             "feedbackResourcesFolderUrl": lambda n : setattr(self, 'feedback_resources_folder_url', n.get_str_value()),
             "grading": lambda n : setattr(self, 'grading', n.get_object_value(EducationAssignmentGradeType)),
+            "gradingCategory": lambda n : setattr(self, 'grading_category', n.get_object_value(EducationGradingCategory)),
             "instructions": lambda n : setattr(self, 'instructions', n.get_object_value(EducationItemBody)),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
@@ -171,6 +177,7 @@ class EducationAssignment(Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("dueDateTime", self.due_date_time)
         writer.write_object_value("grading", self.grading)
+        writer.write_object_value("gradingCategory", self.grading_category)
         writer.write_object_value("instructions", self.instructions)
         writer.write_str_value("notificationChannelUrl", self.notification_channel_url)
         writer.write_collection_of_object_values("resources", self.resources)

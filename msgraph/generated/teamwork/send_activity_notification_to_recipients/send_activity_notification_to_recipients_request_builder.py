@@ -28,7 +28,7 @@ class SendActivityNotificationToRecipientsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SendActivityNotificationToRecipientsPostRequestBody] = None, request_configuration: Optional[SendActivityNotificationToRecipientsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Send activity feed notifications to multiple users, in bulk.  For more details about sending notifications and the requirements for doing so, seesending Teams activity notifications. This API is available in the following national cloud deployments.
+        Send activity feed notifications to multiple users, in bulk.  For more information, see sending Teams activity notifications.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class SendActivityNotificationToRecipientsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SendActivityNotificationToRecipientsPostRequestBody] = None, request_configuration: Optional[SendActivityNotificationToRecipientsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Send activity feed notifications to multiple users, in bulk.  For more details about sending notifications and the requirements for doing so, seesending Teams activity notifications. This API is available in the following national cloud deployments.
+        Send activity feed notifications to multiple users, in bulk.  For more information, see sending Teams activity notifications.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -65,7 +65,7 @@ class SendActivityNotificationToRecipientsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

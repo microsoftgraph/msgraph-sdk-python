@@ -12,9 +12,9 @@ from .identity import Identity
 class CommunicationsApplicationInstanceIdentity(Identity):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.communicationsApplicationInstanceIdentity"
-    # The hidden property
+    # True if the participant shouldn't be shown in other participants' rosters.
     hidden: Optional[bool] = None
-    # The tenantId property
+    # The tenant ID of the application.
     tenant_id: Optional[str] = None
     
     @staticmethod

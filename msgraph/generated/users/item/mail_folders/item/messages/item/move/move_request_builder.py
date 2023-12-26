@@ -29,7 +29,7 @@ class MoveRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MovePostRequestBody] = None, request_configuration: Optional[MoveRequestBuilderPostRequestConfiguration] = None) -> Optional[Message]:
         """
-        Move a message to another folder within the specified user's mailbox. This creates a new copy of the message in the destination folder and removes the original message. This API is available in the following national cloud deployments.
+        Move a message to another folder within the specified user's mailbox. This creates a new copy of the message in the destination folder and removes the original message.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Message]
@@ -54,7 +54,7 @@ class MoveRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[MovePostRequestBody] = None, request_configuration: Optional[MoveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Move a message to another folder within the specified user's mailbox. This creates a new copy of the message in the destination folder and removes the original message. This API is available in the following national cloud deployments.
+        Move a message to another folder within the specified user's mailbox. This creates a new copy of the message in the destination folder and removes the original message.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -68,7 +68,7 @@ class MoveRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

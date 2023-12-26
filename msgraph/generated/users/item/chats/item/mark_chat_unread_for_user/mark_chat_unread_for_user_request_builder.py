@@ -28,7 +28,7 @@ class MarkChatUnreadForUserRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MarkChatUnreadForUserPostRequestBody] = None, request_configuration: Optional[MarkChatUnreadForUserRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Mark a chat as unread for a user. This API is available in the following national cloud deployments.
+        Mark a chat as unread for a user.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class MarkChatUnreadForUserRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[MarkChatUnreadForUserPostRequestBody] = None, request_configuration: Optional[MarkChatUnreadForUserRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Mark a chat as unread for a user. This API is available in the following national cloud deployments.
+        Mark a chat as unread for a user.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -65,7 +65,7 @@ class MarkChatUnreadForUserRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

@@ -28,7 +28,7 @@ class RemovePasswordRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[RemovePasswordPostRequestBody] = None, request_configuration: Optional[RemovePasswordRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Remove a password from an application. This API is available in the following national cloud deployments.
+        Remove a password from an application.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class RemovePasswordRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[RemovePasswordPostRequestBody] = None, request_configuration: Optional[RemovePasswordRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a password from an application. This API is available in the following national cloud deployments.
+        Remove a password from an application.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -65,7 +65,7 @@ class RemovePasswordRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

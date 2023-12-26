@@ -28,7 +28,7 @@ class OpenShiftItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[OpenShiftItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an openShift object. This API is available in the following national cloud deployments.
+        Delete an openShift object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/openshift-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class OpenShiftItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OpenShiftItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OpenShift]:
         """
-        Retrieve the properties and relationships of an openshift object. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of an openshift object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OpenShift]
         Find more info here: https://learn.microsoft.com/graph/api/openshift-get?view=graph-rest-1.0
@@ -95,7 +95,7 @@ class OpenShiftItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[OpenShiftItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an openShift object. This API is available in the following national cloud deployments.
+        Delete an openShift object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -106,12 +106,12 @@ class OpenShiftItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[OpenShiftItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an openshift object. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of an openshift object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -123,7 +123,7 @@ class OpenShiftItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[OpenShift] = None, request_configuration: Optional[OpenShiftItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -142,7 +142,7 @@ class OpenShiftItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -169,7 +169,7 @@ class OpenShiftItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OpenShiftItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an openshift object. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of an openshift object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

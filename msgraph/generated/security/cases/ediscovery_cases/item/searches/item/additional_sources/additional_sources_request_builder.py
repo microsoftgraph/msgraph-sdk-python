@@ -45,7 +45,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AdditionalSourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[DataSourceCollectionResponse]:
         """
-        Get the list of additional sources associated with an eDiscovery search. This API is available in the following national cloud deployments.
+        Get the list of additional sources associated with an eDiscovery search.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DataSourceCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverysearch-list-additionalsources?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DataSource] = None, request_configuration: Optional[AdditionalSourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[DataSource]:
         """
-        Create a new additional source associated with an eDiscovery search. This API is available in the following national cloud deployments.
+        Create a new additional source associated with an eDiscovery search.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DataSource]
@@ -92,7 +92,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AdditionalSourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of additional sources associated with an eDiscovery search. This API is available in the following national cloud deployments.
+        Get the list of additional sources associated with an eDiscovery search.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[DataSource] = None, request_configuration: Optional[AdditionalSourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new additional source associated with an eDiscovery search. This API is available in the following national cloud deployments.
+        Create a new additional source associated with an eDiscovery search.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class AdditionalSourcesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AdditionalSourcesRequestBuilderGetQueryParameters():
         """
-        Get the list of additional sources associated with an eDiscovery search. This API is available in the following national cloud deployments.
+        Get the list of additional sources associated with an eDiscovery search.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

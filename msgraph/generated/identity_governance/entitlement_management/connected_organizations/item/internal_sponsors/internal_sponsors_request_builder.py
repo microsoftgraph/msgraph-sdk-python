@@ -32,7 +32,7 @@ class InternalSponsorsRequestBuilder(BaseRequestBuilder):
     def by_directory_object_id(self,directory_object_id: str) -> DirectoryObjectItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.identityGovernance.entitlementManagement.connectedOrganizations.item.internalSponsors.item collection
-        param directory_object_id: Unique identifier of the item
+        param directory_object_id: The unique identifier of directoryObject
         Returns: DirectoryObjectItemRequestBuilder
         """
         if not directory_object_id:
@@ -45,7 +45,7 @@ class InternalSponsorsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[InternalSponsorsRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryObjectCollectionResponse]:
         """
-        Retrieve a list of a connectedOrganization's internal sponsors.  The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization. This API is available in the following national cloud deployments.
+        Retrieve a list of a connectedOrganization's internal sponsors.  The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/connectedorganization-list-internalsponsors?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class InternalSponsorsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[InternalSponsorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of a connectedOrganization's internal sponsors.  The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization. This API is available in the following national cloud deployments.
+        Retrieve a list of a connectedOrganization's internal sponsors.  The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -79,7 +79,7 @@ class InternalSponsorsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> InternalSponsorsRequestBuilder:
@@ -113,7 +113,7 @@ class InternalSponsorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class InternalSponsorsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of a connectedOrganization's internal sponsors.  The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization. This API is available in the following national cloud deployments.
+        Retrieve a list of a connectedOrganization's internal sponsors.  The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

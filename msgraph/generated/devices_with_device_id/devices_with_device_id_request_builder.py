@@ -31,7 +31,7 @@ class DevicesWithDeviceIdRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[DevicesWithDeviceIdRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a registered device. This API is available in the following national cloud deployments.
+        Delete a registered device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/device-delete?view=graph-rest-1.0
@@ -51,7 +51,7 @@ class DevicesWithDeviceIdRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DevicesWithDeviceIdRequestBuilderGetRequestConfiguration] = None) -> Optional[Device]:
         """
-        Get the properties and relationships of a device object. This API is available in the following national cloud deployments.
+        Get the properties and relationships of a device object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Device]
         Find more info here: https://learn.microsoft.com/graph/api/device-get?view=graph-rest-1.0
@@ -73,7 +73,7 @@ class DevicesWithDeviceIdRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Device] = None, request_configuration: Optional[DevicesWithDeviceIdRequestBuilderPatchRequestConfiguration] = None) -> Optional[Device]:
         """
-        Update the properties of a registered device. Only certain properties of a device can be updated through approved Mobile Device Managment (MDM) apps. This API is available in the following national cloud deployments.
+        Update the properties of a registered device. Only certain properties of a device can be updated through approved Mobile Device Managment (MDM) apps.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Device]
@@ -98,7 +98,7 @@ class DevicesWithDeviceIdRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[DevicesWithDeviceIdRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a registered device. This API is available in the following national cloud deployments.
+        Delete a registered device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,12 +109,12 @@ class DevicesWithDeviceIdRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[DevicesWithDeviceIdRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a device object. This API is available in the following national cloud deployments.
+        Get the properties and relationships of a device object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -126,12 +126,12 @@ class DevicesWithDeviceIdRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[Device] = None, request_configuration: Optional[DevicesWithDeviceIdRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a registered device. Only certain properties of a device can be updated through approved Mobile Device Managment (MDM) apps. This API is available in the following national cloud deployments.
+        Update the properties of a registered device. Only certain properties of a device can be updated through approved Mobile Device Managment (MDM) apps.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -145,7 +145,7 @@ class DevicesWithDeviceIdRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -172,7 +172,7 @@ class DevicesWithDeviceIdRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DevicesWithDeviceIdRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a device object. This API is available in the following national cloud deployments.
+        Get the properties and relationships of a device object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

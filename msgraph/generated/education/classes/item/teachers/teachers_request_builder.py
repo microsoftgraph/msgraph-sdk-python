@@ -32,7 +32,7 @@ class TeachersRequestBuilder(BaseRequestBuilder):
     def by_education_user_id(self,education_user_id: str) -> EducationUserItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.education.classes.item.teachers.item collection
-        param education_user_id: Unique identifier of the item
+        param education_user_id: The unique identifier of educationUser
         Returns: EducationUserItemRequestBuilder
         """
         if not education_user_id:
@@ -45,7 +45,7 @@ class TeachersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TeachersRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationUserCollectionResponse]:
         """
-        Retrieve a list of teachers for a class. Delegated tokens must be members of the class to get the teacher list. This API is available in the following national cloud deployments.
+        Retrieve a list of teachers for a class. Delegated tokens must be members of the class to get the teacher list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationUserCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/educationclass-list-teachers?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class TeachersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TeachersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of teachers for a class. Delegated tokens must be members of the class to get the teacher list. This API is available in the following national cloud deployments.
+        Retrieve a list of teachers for a class. Delegated tokens must be members of the class to get the teacher list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -79,7 +79,7 @@ class TeachersRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> TeachersRequestBuilder:
@@ -113,7 +113,7 @@ class TeachersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TeachersRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of teachers for a class. Delegated tokens must be members of the class to get the teacher list. This API is available in the following national cloud deployments.
+        Retrieve a list of teachers for a class. Delegated tokens must be members of the class to get the teacher list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -34,7 +34,7 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[OnenotePageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a OneNote page. This API is available in the following national cloud deployments.
+        Delete a OneNote page.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/page-delete?view=graph-rest-1.0
@@ -54,7 +54,7 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OnenotePageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OnenotePage]:
         """
-        Retrieve the properties and relationships of a page object. Getting page information Access a page's metadata by page identifier: Getting page content You can use the page's content endpoint to get the HTML content of a page: The includeIDs=true query option is used to update pages. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a page object. Getting page information Access a page's metadata by page identifier: Getting page content You can use the page's content endpoint to get the HTML content of a page: The includeIDs=true query option is used to update pages.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenotePage]
         Find more info here: https://learn.microsoft.com/graph/api/page-get?view=graph-rest-1.0
@@ -100,7 +100,7 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[OnenotePageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a OneNote page. This API is available in the following national cloud deployments.
+        Delete a OneNote page.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,12 +111,12 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[OnenotePageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a page object. Getting page information Access a page's metadata by page identifier: Getting page content You can use the page's content endpoint to get the HTML content of a page: The includeIDs=true query option is used to update pages. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a page object. Getting page information Access a page's metadata by page identifier: Getting page content You can use the page's content endpoint to get the HTML content of a page: The includeIDs=true query option is used to update pages.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -128,7 +128,7 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[OnenotePage] = None, request_configuration: Optional[OnenotePageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -147,7 +147,7 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -228,7 +228,7 @@ class OnenotePageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OnenotePageItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a page object. Getting page information Access a page's metadata by page identifier: Getting page content You can use the page's content endpoint to get the HTML content of a page: The includeIDs=true query option is used to update pages. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a page object. Getting page information Access a page's metadata by page identifier: Getting page content You can use the page's content endpoint to get the HTML content of a page: The includeIDs=true query option is used to update pages.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -58,7 +58,7 @@ class RoleAssignmentSchedulesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentScheduleCollectionResponse]:
         """
-        Get the schedules for active role assignment operations. This API is available in the following national cloud deployments.
+        Get the schedules for active role assignment operations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleAssignmentScheduleCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/rbacapplication-list-roleassignmentschedules?view=graph-rest-1.0
@@ -104,7 +104,7 @@ class RoleAssignmentSchedulesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the schedules for active role assignment operations. This API is available in the following national cloud deployments.
+        Get the schedules for active role assignment operations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +116,7 @@ class RoleAssignmentSchedulesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[UnifiedRoleAssignmentSchedule] = None, request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
@@ -135,7 +135,7 @@ class RoleAssignmentSchedulesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -161,7 +161,7 @@ class RoleAssignmentSchedulesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleAssignmentSchedulesRequestBuilderGetQueryParameters():
         """
-        Get the schedules for active role assignment operations. This API is available in the following national cloud deployments.
+        Get the schedules for active role assignment operations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -39,7 +39,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[EventItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an event object. This API is available in the following national cloud deployments.
+        Delete an event object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/group-delete-event?view=graph-rest-1.0
@@ -59,7 +59,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[EventItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Event]:
         """
-        Get an event object. This API is available in the following national cloud deployments.
+        Get an event object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Event]
         Find more info here: https://learn.microsoft.com/graph/api/group-get-event?view=graph-rest-1.0
@@ -105,7 +105,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[EventItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an event object. This API is available in the following national cloud deployments.
+        Delete an event object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,12 +116,12 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[EventItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get an event object. This API is available in the following national cloud deployments.
+        Get an event object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -133,7 +133,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[Event] = None, request_configuration: Optional[EventItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -152,7 +152,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -278,7 +278,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EventItemRequestBuilderGetQueryParameters():
         """
-        Get an event object. This API is available in the following national cloud deployments.
+        Get an event object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

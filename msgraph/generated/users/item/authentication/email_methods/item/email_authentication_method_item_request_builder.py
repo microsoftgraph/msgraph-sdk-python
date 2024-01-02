@@ -28,7 +28,7 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a user's emailAuthenticationMethod object. This API is available in the following national cloud deployments.
+        Deletes a user's emailAuthenticationMethod object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/emailauthenticationmethod-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EmailAuthenticationMethod]:
         """
-        Retrieve a user's single email authentication method object. This API is available in the following national cloud deployments.
+        Retrieve a user's single email authentication method object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EmailAuthenticationMethod]
         Find more info here: https://learn.microsoft.com/graph/api/emailauthenticationmethod-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EmailAuthenticationMethod] = None, request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EmailAuthenticationMethod]:
         """
-        Update a user's email address represented by an emailAuthenticationMethod object. This API is available in the following national cloud deployments.
+        Update a user's email address represented by an emailAuthenticationMethod object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EmailAuthenticationMethod]
@@ -95,7 +95,7 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a user's emailAuthenticationMethod object. This API is available in the following national cloud deployments.
+        Deletes a user's emailAuthenticationMethod object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -106,12 +106,12 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a user's single email authentication method object. This API is available in the following national cloud deployments.
+        Retrieve a user's single email authentication method object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -123,12 +123,12 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[EmailAuthenticationMethod] = None, request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update a user's email address represented by an emailAuthenticationMethod object. This API is available in the following national cloud deployments.
+        Update a user's email address represented by an emailAuthenticationMethod object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -142,7 +142,7 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -169,7 +169,7 @@ class EmailAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EmailAuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a user's single email authentication method object. This API is available in the following national cloud deployments.
+        Retrieve a user's single email authentication method object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models.education_assignment import EducationAssignment
     from .....models.o_data_errors.o_data_error import ODataError
     from .categories.categories_request_builder import CategoriesRequestBuilder
+    from .grading_category.grading_category_request_builder import GradingCategoryRequestBuilder
     from .publish.publish_request_builder import PublishRequestBuilder
     from .resources.resources_request_builder import ResourcesRequestBuilder
     from .rubric.rubric_request_builder import RubricRequestBuilder
@@ -110,7 +111,7 @@ class EducationAssignmentItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[EducationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -127,7 +128,7 @@ class EducationAssignmentItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[EducationAssignment] = None, request_configuration: Optional[EducationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -146,7 +147,7 @@ class EducationAssignmentItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -168,6 +169,15 @@ class EducationAssignmentItemRequestBuilder(BaseRequestBuilder):
         from .categories.categories_request_builder import CategoriesRequestBuilder
 
         return CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def grading_category(self) -> GradingCategoryRequestBuilder:
+        """
+        Provides operations to manage the gradingCategory property of the microsoft.graph.educationAssignment entity.
+        """
+        from .grading_category.grading_category_request_builder import GradingCategoryRequestBuilder
+
+        return GradingCategoryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def publish(self) -> PublishRequestBuilder:

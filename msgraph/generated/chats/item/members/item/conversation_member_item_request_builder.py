@@ -28,7 +28,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ConversationMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove a conversationMember from a chat. This API is available in the following national cloud deployments.
+        Remove a conversationMember from a chat.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/chat-delete-members?view=graph-rest-1.0
@@ -48,10 +48,10 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ConversationMemberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ConversationMember]:
         """
-        Retrieve a conversationMember from a chat. This API is available in the following national cloud deployments.
+        Retrieve a conversationMember from a chat or channel.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationMember]
-        Find more info here: https://learn.microsoft.com/graph/api/chat-get-members?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/conversationmember-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -94,7 +94,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ConversationMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a conversationMember from a chat. This API is available in the following national cloud deployments.
+        Remove a conversationMember from a chat.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,12 +105,12 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[ConversationMemberItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a conversationMember from a chat. This API is available in the following national cloud deployments.
+        Retrieve a conversationMember from a chat or channel.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -122,7 +122,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[ConversationMember] = None, request_configuration: Optional[ConversationMemberItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -141,7 +141,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -168,7 +168,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConversationMemberItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a conversationMember from a chat. This API is available in the following national cloud deployments.
+        Retrieve a conversationMember from a chat or channel.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

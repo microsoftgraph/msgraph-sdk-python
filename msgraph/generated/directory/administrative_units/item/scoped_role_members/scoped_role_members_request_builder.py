@@ -45,7 +45,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ScopedRoleMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[ScopedRoleMembershipCollectionResponse]:
         """
-        List Microsoft Entra role assignments with administrative unit scope. This API is available in the following national cloud deployments.
+        List Microsoft Entra role assignments with administrative unit scope.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ScopedRoleMembershipCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-list-scopedrolemembers?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembersRequestBuilderPostRequestConfiguration] = None) -> Optional[ScopedRoleMembership]:
         """
-        Assign a Microsoft Entra role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Microsoft Entra roles with administrative unit scope. This API is available in the following national cloud deployments.
+        Assign a Microsoft Entra role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Microsoft Entra roles with administrative unit scope.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ScopedRoleMembership]
@@ -92,7 +92,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ScopedRoleMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List Microsoft Entra role assignments with administrative unit scope. This API is available in the following national cloud deployments.
+        List Microsoft Entra role assignments with administrative unit scope.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Assign a Microsoft Entra role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Microsoft Entra roles with administrative unit scope. This API is available in the following national cloud deployments.
+        Assign a Microsoft Entra role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Microsoft Entra roles with administrative unit scope.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ScopedRoleMembersRequestBuilderGetQueryParameters():
         """
-        List Microsoft Entra role assignments with administrative unit scope. This API is available in the following national cloud deployments.
+        List Microsoft Entra role assignments with administrative unit scope.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

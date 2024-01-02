@@ -29,7 +29,7 @@ class GetMemberObjectsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[GetMemberObjectsPostRequestBody] = None, request_configuration: Optional[GetMemberObjectsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetMemberObjectsPostResponse]:
         """
-        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. Note: Only users and role-enabled groups can be members of directory roles. This API is available in the following national cloud deployments.
+        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. Note: Only users and role-enabled groups can be members of directory roles.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetMemberObjectsPostResponse]
@@ -54,7 +54,7 @@ class GetMemberObjectsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[GetMemberObjectsPostRequestBody] = None, request_configuration: Optional[GetMemberObjectsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. Note: Only users and role-enabled groups can be members of directory roles. This API is available in the following national cloud deployments.
+        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. Note: Only users and role-enabled groups can be members of directory roles.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -68,7 +68,7 @@ class GetMemberObjectsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

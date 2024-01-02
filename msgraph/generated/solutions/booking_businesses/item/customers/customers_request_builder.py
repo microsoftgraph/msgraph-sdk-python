@@ -45,7 +45,7 @@ class CustomersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CustomersRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingCustomerBaseCollectionResponse]:
         """
-        Get a list of bookingCustomer objects of a business. This API is available in the following national cloud deployments.
+        Get a list of bookingCustomer objects of a business.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingCustomerBaseCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-list-customers?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class CustomersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[BookingCustomerBase] = None, request_configuration: Optional[CustomersRequestBuilderPostRequestConfiguration] = None) -> Optional[BookingCustomerBase]:
         """
-        Create a new bookingCustomer object. This API is available in the following national cloud deployments.
+        Create a new bookingCustomer object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingCustomerBase]
@@ -92,7 +92,7 @@ class CustomersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CustomersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of bookingCustomer objects of a business. This API is available in the following national cloud deployments.
+        Get a list of bookingCustomer objects of a business.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class CustomersRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[BookingCustomerBase] = None, request_configuration: Optional[CustomersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new bookingCustomer object. This API is available in the following national cloud deployments.
+        Create a new bookingCustomer object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class CustomersRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class CustomersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CustomersRequestBuilderGetQueryParameters():
         """
-        Get a list of bookingCustomer objects of a business. This API is available in the following national cloud deployments.
+        Get a list of bookingCustomer objects of a business.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -32,7 +32,7 @@ class UserFlowIdentityProvidersRequestBuilder(BaseRequestBuilder):
     def by_identity_provider_base_id(self,identity_provider_base_id: str) -> IdentityProviderBaseItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.identity.b2xUserFlows.item.userFlowIdentityProviders.item collection
-        param identity_provider_base_id: Unique identifier of the item
+        param identity_provider_base_id: The unique identifier of identityProviderBase
         Returns: IdentityProviderBaseItemRequestBuilder
         """
         if not identity_provider_base_id:
@@ -78,7 +78,7 @@ class UserFlowIdentityProvidersRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> UserFlowIdentityProvidersRequestBuilder:

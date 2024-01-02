@@ -28,11 +28,11 @@ class ReplyRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ReplyPostRequestBody] = None, request_configuration: Optional[ReplyRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Reply to a post and add a new post to the specified thread in a group conversation.  You can specify both the parent conversation and thread in the request, or, you can specify just the parent thread without the parent conversation. This API is available in the following national cloud deployments.
+        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/post-reply?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -51,7 +51,7 @@ class ReplyRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ReplyPostRequestBody] = None, request_configuration: Optional[ReplyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Reply to a post and add a new post to the specified thread in a group conversation.  You can specify both the parent conversation and thread in the request, or, you can specify just the parent thread without the parent conversation. This API is available in the following national cloud deployments.
+        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -65,7 +65,7 @@ class ReplyRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

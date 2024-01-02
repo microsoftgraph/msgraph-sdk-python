@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .play_prompt_operation import PlayPromptOperation
     from .record_operation import RecordOperation
     from .result_info import ResultInfo
+    from .send_dtmf_tones_operation import SendDtmfTonesOperation
     from .start_hold_music_operation import StartHoldMusicOperation
     from .stop_hold_music_operation import StopHoldMusicOperation
     from .subscribe_to_tone_operation import SubscribeToToneOperation
@@ -69,6 +70,10 @@ class CommsOperation(Entity):
             from .record_operation import RecordOperation
 
             return RecordOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sendDtmfTonesOperation".casefold():
+            from .send_dtmf_tones_operation import SendDtmfTonesOperation
+
+            return SendDtmfTonesOperation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.startHoldMusicOperation".casefold():
             from .start_hold_music_operation import StartHoldMusicOperation
 
@@ -105,6 +110,7 @@ class CommsOperation(Entity):
         from .play_prompt_operation import PlayPromptOperation
         from .record_operation import RecordOperation
         from .result_info import ResultInfo
+        from .send_dtmf_tones_operation import SendDtmfTonesOperation
         from .start_hold_music_operation import StartHoldMusicOperation
         from .stop_hold_music_operation import StopHoldMusicOperation
         from .subscribe_to_tone_operation import SubscribeToToneOperation
@@ -120,6 +126,7 @@ class CommsOperation(Entity):
         from .play_prompt_operation import PlayPromptOperation
         from .record_operation import RecordOperation
         from .result_info import ResultInfo
+        from .send_dtmf_tones_operation import SendDtmfTonesOperation
         from .start_hold_music_operation import StartHoldMusicOperation
         from .stop_hold_music_operation import StopHoldMusicOperation
         from .subscribe_to_tone_operation import SubscribeToToneOperation

@@ -29,7 +29,7 @@ class QueryRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None) -> Optional[QueryPostResponse]:
         """
-        Runs the query specified in the request body. Search results are provided in the response. This API is available in the following national cloud deployments.
+        Runs the query specified in the request body. Search results are provided in the response.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[QueryPostResponse]
@@ -54,7 +54,7 @@ class QueryRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Runs the query specified in the request body. Search results are provided in the response. This API is available in the following national cloud deployments.
+        Runs the query specified in the request body. Search results are provided in the response.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -68,7 +68,7 @@ class QueryRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

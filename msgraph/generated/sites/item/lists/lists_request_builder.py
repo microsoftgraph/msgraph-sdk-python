@@ -45,7 +45,7 @@ class ListsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> Optional[ListCollectionResponse]:
         """
-        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement. This API is available in the following national cloud deployments.
+        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ListCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/list-list?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ListsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[List_] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> Optional[List_]:
         """
-        Create a new list][] in a [site][]. This API is available in the following [national cloud deployments.
+        Create a new [list][] in a [site][].
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[List_]
@@ -92,7 +92,7 @@ class ListsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement. This API is available in the following national cloud deployments.
+        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class ListsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[List_] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new list][] in a [site][]. This API is available in the following [national cloud deployments.
+        Create a new [list][] in a [site][].
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class ListsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class ListsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ListsRequestBuilderGetQueryParameters():
         """
-        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement. This API is available in the following national cloud deployments.
+        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

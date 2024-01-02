@@ -58,7 +58,7 @@ class AssignmentRequestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AssignmentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageAssignmentRequestCollectionResponse]:
         """
-        In Microsoft Entra entitlement management, retrieve a list of accessPackageAssignmentRequest objects.  The resulting list includes all the assignment requests, current and well as expired, that the caller has access to read, across all catalogs and access packages. This API is available in the following national cloud deployments.
+        In Microsoft Entra entitlement management, retrieve a list of accessPackageAssignmentRequest objects.  The resulting list includes all the assignment requests, current and well as expired, that the caller has access to read, across all catalogs and access packages.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageAssignmentRequestCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/entitlementmanagement-list-assignmentrequests?view=graph-rest-1.0
@@ -80,7 +80,7 @@ class AssignmentRequestsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AccessPackageAssignmentRequest] = None, request_configuration: Optional[AssignmentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessPackageAssignmentRequest]:
         """
-        In Microsoft Entra Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, update the assignment, or to remove an access package assignment. This API is available in the following national cloud deployments.
+        In Microsoft Entra Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, update the assignment, or to remove an access package assignment.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageAssignmentRequest]
@@ -105,7 +105,7 @@ class AssignmentRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        In Microsoft Entra entitlement management, retrieve a list of accessPackageAssignmentRequest objects.  The resulting list includes all the assignment requests, current and well as expired, that the caller has access to read, across all catalogs and access packages. This API is available in the following national cloud deployments.
+        In Microsoft Entra entitlement management, retrieve a list of accessPackageAssignmentRequest objects.  The resulting list includes all the assignment requests, current and well as expired, that the caller has access to read, across all catalogs and access packages.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,12 +117,12 @@ class AssignmentRequestsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[AccessPackageAssignmentRequest] = None, request_configuration: Optional[AssignmentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        In Microsoft Entra Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, update the assignment, or to remove an access package assignment. This API is available in the following national cloud deployments.
+        In Microsoft Entra Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, update the assignment, or to remove an access package assignment.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -136,7 +136,7 @@ class AssignmentRequestsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -162,7 +162,7 @@ class AssignmentRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AssignmentRequestsRequestBuilderGetQueryParameters():
         """
-        In Microsoft Entra entitlement management, retrieve a list of accessPackageAssignmentRequest objects.  The resulting list includes all the assignment requests, current and well as expired, that the caller has access to read, across all catalogs and access packages. This API is available in the following national cloud deployments.
+        In Microsoft Entra entitlement management, retrieve a list of accessPackageAssignmentRequest objects.  The resulting list includes all the assignment requests, current and well as expired, that the caller has access to read, across all catalogs and access packages.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -45,7 +45,7 @@ class TabsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TabsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsTabCollectionResponse]:
         """
-        Retrieve the list of tabs in the specified channel within a team.  This API is available in the following national cloud deployments.
+        Retrieve the list of tabs in the specified channel within a team. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsTabCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/channel-list-tabs?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class TabsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TeamsTab] = None, request_configuration: Optional[TabsRequestBuilderPostRequestConfiguration] = None) -> Optional[TeamsTab]:
         """
-        Adds (pins) a tab to the specified channel within a team. The corresponding app must already be installed in the team. This API is available in the following national cloud deployments.
+        Add (pin) a tab to the specified channel within a team. The app must be preinstalled in the team and have the configurableTabs property defined in the app manifest.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsTab]
@@ -92,7 +92,7 @@ class TabsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TabsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of tabs in the specified channel within a team.  This API is available in the following national cloud deployments.
+        Retrieve the list of tabs in the specified channel within a team. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class TabsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[TeamsTab] = None, request_configuration: Optional[TabsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Adds (pins) a tab to the specified channel within a team. The corresponding app must already be installed in the team. This API is available in the following national cloud deployments.
+        Add (pin) a tab to the specified channel within a team. The app must be preinstalled in the team and have the configurableTabs property defined in the app manifest.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class TabsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class TabsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TabsRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of tabs in the specified channel within a team.  This API is available in the following national cloud deployments.
+        Retrieve the list of tabs in the specified channel within a team. 
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,7 +29,7 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[ConversationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        This API is available in the following national cloud deployments.
+        Delete conversation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/group-delete-conversation?view=graph-rest-1.0
@@ -49,10 +49,10 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ConversationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Conversation]:
         """
-        This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of conversation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Conversation]
-        Find more info here: https://learn.microsoft.com/graph/api/group-get-conversation?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/conversation-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,7 +71,7 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[ConversationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        This API is available in the following national cloud deployments.
+        Delete conversation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -82,12 +82,12 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[ConversationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of conversation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +99,7 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> ConversationItemRequestBuilder:
@@ -134,7 +134,7 @@ class ConversationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConversationItemRequestBuilderGetQueryParameters():
         """
-        This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of conversation object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -45,7 +45,7 @@ class SchemaExtensionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SchemaExtensionsRequestBuilderGetRequestConfiguration] = None) -> Optional[SchemaExtensionCollectionResponse]:
         """
-        Get a list of schemaExtension objects in your tenant. The schema extensions can be InDevelopment, Available, or Deprecated and includes schema extensions: This API is available in the following national cloud deployments.
+        Get a list of schemaExtension objects in your tenant. The schema extensions can be InDevelopment, Available, or Deprecated and includes schema extensions:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SchemaExtensionCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/schemaextension-list?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class SchemaExtensionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SchemaExtension] = None, request_configuration: Optional[SchemaExtensionsRequestBuilderPostRequestConfiguration] = None) -> Optional[SchemaExtension]:
         """
-        Create a new schemaExtension definition and its associated schema extension property to extend a supporting resource type. Schema extensions let you add strongly-typed custom data to a resource. The app that creates a schema extension is the owner app. Depending on the state of the extension, the owner app, and only the owner app, may update or delete the extension.  See examples of how to define a schema extension that describes a training course, use the schema extension definition to create a new group with training course data, and add training course data to an existing group. This API is available in the following national cloud deployments.
+        Create a new schemaExtension definition and its associated schema extension property to extend a supporting resource type. Schema extensions let you add strongly-typed custom data to a resource. The app that creates a schema extension is the owner app. Depending on the state of the extension, the owner app, and only the owner app, may update or delete the extension.  See examples of how to define a schema extension that describes a training course, use the schema extension definition to create a new group with training course data, and add training course data to an existing group.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SchemaExtension]
@@ -92,7 +92,7 @@ class SchemaExtensionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SchemaExtensionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of schemaExtension objects in your tenant. The schema extensions can be InDevelopment, Available, or Deprecated and includes schema extensions: This API is available in the following national cloud deployments.
+        Get a list of schemaExtension objects in your tenant. The schema extensions can be InDevelopment, Available, or Deprecated and includes schema extensions:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class SchemaExtensionsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[SchemaExtension] = None, request_configuration: Optional[SchemaExtensionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new schemaExtension definition and its associated schema extension property to extend a supporting resource type. Schema extensions let you add strongly-typed custom data to a resource. The app that creates a schema extension is the owner app. Depending on the state of the extension, the owner app, and only the owner app, may update or delete the extension.  See examples of how to define a schema extension that describes a training course, use the schema extension definition to create a new group with training course data, and add training course data to an existing group. This API is available in the following national cloud deployments.
+        Create a new schemaExtension definition and its associated schema extension property to extend a supporting resource type. Schema extensions let you add strongly-typed custom data to a resource. The app that creates a schema extension is the owner app. Depending on the state of the extension, the owner app, and only the owner app, may update or delete the extension.  See examples of how to define a schema extension that describes a training course, use the schema extension definition to create a new group with training course data, and add training course data to an existing group.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class SchemaExtensionsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class SchemaExtensionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SchemaExtensionsRequestBuilderGetQueryParameters():
         """
-        Get a list of schemaExtension objects in your tenant. The schema extensions can be InDevelopment, Available, or Deprecated and includes schema extensions: This API is available in the following national cloud deployments.
+        Get a list of schemaExtension objects in your tenant. The schema extensions can be InDevelopment, Available, or Deprecated and includes schema extensions:
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

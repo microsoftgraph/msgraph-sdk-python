@@ -45,7 +45,7 @@ class ExcludesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ExcludesRequestBuilderGetRequestConfiguration] = None) -> Optional[PermissionGrantConditionSetCollectionResponse]:
         """
-        Retrieve the condition sets which are *excluded* in a permissionGrantPolicy. This API is available in the following national cloud deployments.
+        Retrieve the condition sets which are *excluded* in a permissionGrantPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PermissionGrantConditionSetCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/permissiongrantpolicy-list-excludes?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ExcludesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[ExcludesRequestBuilderPostRequestConfiguration] = None) -> Optional[PermissionGrantConditionSet]:
         """
-        Add conditions under which a permission grant event is *excluded* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the excludes collection of a  permissionGrantPolicy. This API is available in the following national cloud deployments.
+        Add conditions under which a permission grant event is *excluded* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the excludes collection of a  permissionGrantPolicy.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PermissionGrantConditionSet]
@@ -92,7 +92,7 @@ class ExcludesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ExcludesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the condition sets which are *excluded* in a permissionGrantPolicy. This API is available in the following national cloud deployments.
+        Retrieve the condition sets which are *excluded* in a permissionGrantPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class ExcludesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[ExcludesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add conditions under which a permission grant event is *excluded* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the excludes collection of a  permissionGrantPolicy. This API is available in the following national cloud deployments.
+        Add conditions under which a permission grant event is *excluded* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the excludes collection of a  permissionGrantPolicy.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class ExcludesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class ExcludesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExcludesRequestBuilderGetQueryParameters():
         """
-        Retrieve the condition sets which are *excluded* in a permissionGrantPolicy. This API is available in the following national cloud deployments.
+        Retrieve the condition sets which are *excluded* in a permissionGrantPolicy.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

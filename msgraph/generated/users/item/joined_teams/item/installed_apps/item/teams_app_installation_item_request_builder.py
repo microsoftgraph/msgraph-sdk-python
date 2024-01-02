@@ -31,7 +31,7 @@ class TeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[TeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Uninstalls an app from the specified team. This API is available in the following national cloud deployments.
+        Uninstalls an app from the specified team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/team-delete-installedapps?view=graph-rest-1.0
@@ -51,7 +51,7 @@ class TeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsAppInstallation]:
         """
-        Retrieve the app installed in the specified team. This API is available in the following national cloud deployments.
+        Retrieve the app installed in the specified team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppInstallation]
         Find more info here: https://learn.microsoft.com/graph/api/team-get-installedapps?view=graph-rest-1.0
@@ -97,7 +97,7 @@ class TeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[TeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Uninstalls an app from the specified team. This API is available in the following national cloud deployments.
+        Uninstalls an app from the specified team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,12 +108,12 @@ class TeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[TeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the app installed in the specified team. This API is available in the following national cloud deployments.
+        Retrieve the app installed in the specified team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -125,7 +125,7 @@ class TeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[TeamsAppInstallation] = None, request_configuration: Optional[TeamsAppInstallationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -144,7 +144,7 @@ class TeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -198,7 +198,7 @@ class TeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TeamsAppInstallationItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the app installed in the specified team. This API is available in the following national cloud deployments.
+        Retrieve the app installed in the specified team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

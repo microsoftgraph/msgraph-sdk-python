@@ -29,7 +29,7 @@ class RootRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RootRequestBuilderGetRequestConfiguration] = None) -> Optional[DriveItem]:
         """
-        Retrieve the metadata for a driveItem in a drive by file system path or ID.item-id is the ID of a driveItem. It may also be the unique ID of a SharePoint list item. This API is available in the following national cloud deployments.
+        Retrieve the metadata for a driveItem in a drive by file system path or ID.item-id is the ID of a driveItem. It may also be the unique ID of a SharePoint list item.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItem]
         Find more info here: https://learn.microsoft.com/graph/api/driveitem-get?view=graph-rest-1.0
@@ -51,7 +51,7 @@ class RootRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RootRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the metadata for a driveItem in a drive by file system path or ID.item-id is the ID of a driveItem. It may also be the unique ID of a SharePoint list item. This API is available in the following national cloud deployments.
+        Retrieve the metadata for a driveItem in a drive by file system path or ID.item-id is the ID of a driveItem. It may also be the unique ID of a SharePoint list item.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -63,7 +63,7 @@ class RootRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> RootRequestBuilder:
@@ -88,7 +88,7 @@ class RootRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RootRequestBuilderGetQueryParameters():
         """
-        Retrieve the metadata for a driveItem in a drive by file system path or ID.item-id is the ID of a driveItem. It may also be the unique ID of a SharePoint list item. This API is available in the following national cloud deployments.
+        Retrieve the metadata for a driveItem in a drive by file system path or ID.item-id is the ID of a driveItem. It may also be the unique ID of a SharePoint list item.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -28,7 +28,7 @@ class MicrosoftGraphSecurityAddToReviewSetRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AddToReviewSetPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityAddToReviewSetRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Start the process of adding a collection from Microsoft 365 services to a review set. After the operation is created, you can get the status of the operation by retrieving the Location parameter from the response headers. The location provides a URL that will return a Add to review set operation. This API is available in the following national cloud deployments.
+        Start the process of adding a collection from Microsoft 365 services to a review set. After the operation is created, you can get the status of the operation by retrieving the Location parameter from the response headers. The location provides a URL that will return a Add to review set operation.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class MicrosoftGraphSecurityAddToReviewSetRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AddToReviewSetPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityAddToReviewSetRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Start the process of adding a collection from Microsoft 365 services to a review set. After the operation is created, you can get the status of the operation by retrieving the Location parameter from the response headers. The location provides a URL that will return a Add to review set operation. This API is available in the following national cloud deployments.
+        Start the process of adding a collection from Microsoft 365 services to a review set. After the operation is created, you can get the status of the operation by retrieving the Location parameter from the response headers. The location provides a URL that will return a Add to review set operation.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -65,7 +65,7 @@ class MicrosoftGraphSecurityAddToReviewSetRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

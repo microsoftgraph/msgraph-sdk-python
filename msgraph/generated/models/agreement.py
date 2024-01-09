@@ -17,7 +17,7 @@ from .entity import Entity
 class Agreement(Entity):
     # Read-only. Information about acceptances of this agreement.
     acceptances: Optional[List[AgreementAcceptance]] = None
-    # Display name of the agreement. The display name is used for internal tracking of the agreement but is not shown to end users who view the agreement. Supports $filter (eq).
+    # Display name of the agreement. The display name is used for internal tracking of the agreement but isn't shown to end users who view the agreement. Supports $filter (eq).
     display_name: Optional[str] = None
     # Default PDF linked to this agreement.
     file: Optional[AgreementFile] = None
@@ -31,7 +31,7 @@ class Agreement(Entity):
     odata_type: Optional[str] = None
     # Expiration schedule and frequency of agreement for all users. Supports $filter (eq).
     terms_expiration: Optional[TermsExpiration] = None
-    # The duration after which the user must re-accept the terms of use. The value is represented in ISO 8601 format for durations. Supports $filter (eq).
+    # The duration after which the user must reaccept the terms of use. The value is represented in ISO 8601 format for durations. Supports $filter (eq).
     user_reaccept_required_frequency: Optional[datetime.timedelta] = None
     
     @staticmethod

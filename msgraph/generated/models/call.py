@@ -31,13 +31,13 @@ from .entity import Entity
 class Call(Entity):
     # The audioRoutingGroups property
     audio_routing_groups: Optional[List[AudioRoutingGroup]] = None
-    # A unique identifier for all the participant calls in a conference or a unique identifier for two participant calls in a P2P call.  This needs to be copied over from Microsoft.Graph.Call.CallChainId.
+    # A unique identifier for all the participant calls in a conference or a unique identifier for two participant calls in a P2P call.  This identifier must be copied over from Microsoft.Graph.Call.CallChainId.
     call_chain_id: Optional[str] = None
     # Contains the optional features for the call.
     call_options: Optional[CallOptions] = None
     # The routing information on how the call was retargeted. Read-only.
     call_routes: Optional[List[CallRoute]] = None
-    # The callback URL on which callbacks will be delivered. Must be https.
+    # The callback URL on which callbacks are delivered. Must be an HTTPS URL.
     callback_uri: Optional[str] = None
     # The chat information. Required information for joining a meeting.
     chat_info: Optional[ChatInfo] = None

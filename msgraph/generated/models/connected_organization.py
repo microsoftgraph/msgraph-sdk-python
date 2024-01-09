@@ -22,7 +22,7 @@ class ConnectedOrganization(Entity):
     display_name: Optional[str] = None
     # The externalSponsors property
     external_sponsors: Optional[List[DirectoryObject]] = None
-    # The identity sources in this connected organization, one of azureActiveDirectoryTenant, domainIdentitySource, externalDomainFederation or crossCloudAzureActiveDirectoryTenant. Nullable.
+    # The identity sources in this connected organization, one of azureActiveDirectoryTenant, crossCloudAzureActiveDirectoryTenant, domainIdentitySource, externalDomainFederation, or socialIdentitySource. Nullable.
     identity_sources: Optional[List[IdentitySource]] = None
     # The internalSponsors property
     internal_sponsors: Optional[List[DirectoryObject]] = None

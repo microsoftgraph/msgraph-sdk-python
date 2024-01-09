@@ -28,7 +28,7 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[OutlookCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete the specified outlookCategory object. This API is available in the following national cloud deployments.
+        Delete the specified outlookCategory object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/outlookcategory-delete?view=graph-rest-1.0
@@ -48,7 +48,7 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[OutlookCategoryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OutlookCategory]:
         """
-        Get the properties and relationships of the specified outlookCategory object. This API is available in the following national cloud deployments.
+        Get the properties and relationships of the specified outlookCategory object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OutlookCategory]
         Find more info here: https://learn.microsoft.com/graph/api/outlookcategory-get?view=graph-rest-1.0
@@ -70,7 +70,7 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[OutlookCategory] = None, request_configuration: Optional[OutlookCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[OutlookCategory]:
         """
-        Update the writable property, color, of the specified outlookCategory object. You can't modify the displayName propertyonce you have created the category. This API is available in the following national cloud deployments.
+        Update the writable property, color, of the specified outlookCategory object. You can't modify the displayName propertyonce you have created the category.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OutlookCategory]
@@ -95,7 +95,7 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[OutlookCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete the specified outlookCategory object. This API is available in the following national cloud deployments.
+        Delete the specified outlookCategory object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -106,12 +106,12 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[OutlookCategoryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of the specified outlookCategory object. This API is available in the following national cloud deployments.
+        Get the properties and relationships of the specified outlookCategory object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -123,12 +123,12 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[OutlookCategory] = None, request_configuration: Optional[OutlookCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the writable property, color, of the specified outlookCategory object. You can't modify the displayName propertyonce you have created the category. This API is available in the following national cloud deployments.
+        Update the writable property, color, of the specified outlookCategory object. You can't modify the displayName propertyonce you have created the category.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -142,7 +142,7 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -169,7 +169,7 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OutlookCategoryItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of the specified outlookCategory object. This API is available in the following national cloud deployments.
+        Get the properties and relationships of the specified outlookCategory object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

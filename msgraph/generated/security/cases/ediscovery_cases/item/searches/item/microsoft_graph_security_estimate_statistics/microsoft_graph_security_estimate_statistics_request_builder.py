@@ -27,7 +27,7 @@ class MicrosoftGraphSecurityEstimateStatisticsRequestBuilder(BaseRequestBuilder)
     
     async def post(self,request_configuration: Optional[MicrosoftGraphSecurityEstimateStatisticsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Run an estimate of the number of emails and documents in the eDiscovery search. To learn more about searches in eDiscovery, see Collect data for a case in eDiscovery (Premium). This API is available in the following national cloud deployments.
+        Run an estimate of the number of emails and documents in the eDiscovery search. To learn more about searches in eDiscovery, see Collect data for a case in eDiscovery (Premium).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverysearch-estimatestatistics?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class MicrosoftGraphSecurityEstimateStatisticsRequestBuilder(BaseRequestBuilder)
     
     def to_post_request_information(self,request_configuration: Optional[MicrosoftGraphSecurityEstimateStatisticsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Run an estimate of the number of emails and documents in the eDiscovery search. To learn more about searches in eDiscovery, see Collect data for a case in eDiscovery (Premium). This API is available in the following national cloud deployments.
+        Run an estimate of the number of emails and documents in the eDiscovery search. To learn more about searches in eDiscovery, see Collect data for a case in eDiscovery (Premium).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -58,7 +58,7 @@ class MicrosoftGraphSecurityEstimateStatisticsRequestBuilder(BaseRequestBuilder)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> MicrosoftGraphSecurityEstimateStatisticsRequestBuilder:

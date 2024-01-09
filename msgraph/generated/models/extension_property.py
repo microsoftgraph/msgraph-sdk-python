@@ -14,9 +14,9 @@ class ExtensionProperty(DirectoryObject):
     odata_type: Optional[str] = "#microsoft.graph.extensionProperty"
     # Display name of the application object on which this extension property is defined. Read-only.
     app_display_name: Optional[str] = None
-    # Specifies the data type of the value the extension property can hold. Following values are supported. Not nullable. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximum
+    # Specifies the data type of the value the extension property can hold. Following values are supported. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximumNot nullable. For multivalued directory extensions, these limits apply per value in the collection.
     data_type: Optional[str] = None
-    # The isMultiValued property
+    # Defines the directory extension as a multi-valued property. When true, the directory extension property can store a collection of objects of the dataType; for example, a collection of string types such as 'extensionb7b1c57b532f40b8b5ed4b7a7ba67401jobGroupTracker': ['String 1', 'String 2']. The default value is false. Supports $filter (eq).
     is_multi_valued: Optional[bool] = None
     # Indicates if this extension property was synced from on-premises active directory using Microsoft Entra Connect. Read-only.
     is_synced_from_on_premises: Optional[bool] = None

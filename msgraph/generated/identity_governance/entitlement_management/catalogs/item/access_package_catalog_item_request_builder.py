@@ -33,7 +33,7 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an accessPackageCatalog. This API is available in the following national cloud deployments.
+        Delete an accessPackageCatalog.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-1.0
@@ -53,7 +53,7 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageCatalog]:
         """
-        Retrieve the properties and relationships of an accessPackageCatalog object. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of an accessPackageCatalog object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageCatalog]
         Find more info here: https://learn.microsoft.com/graph/api/accesspackagecatalog-get?view=graph-rest-1.0
@@ -75,7 +75,7 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[AccessPackageCatalog] = None, request_configuration: Optional[AccessPackageCatalogItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AccessPackageCatalog]:
         """
-        Update an existing accessPackageCatalog object to change one or more of its properties, such as the display name or description. This API is available in the following national cloud deployments.
+        Update an existing accessPackageCatalog object to change one or more of its properties, such as the display name or description.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageCatalog]
@@ -100,7 +100,7 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an accessPackageCatalog. This API is available in the following national cloud deployments.
+        Delete an accessPackageCatalog.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,12 +111,12 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an accessPackageCatalog object. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of an accessPackageCatalog object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -128,12 +128,12 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[AccessPackageCatalog] = None, request_configuration: Optional[AccessPackageCatalogItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update an existing accessPackageCatalog object to change one or more of its properties, such as the display name or description. This API is available in the following national cloud deployments.
+        Update an existing accessPackageCatalog object to change one or more of its properties, such as the display name or description.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +147,7 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -219,7 +219,7 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessPackageCatalogItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an accessPackageCatalog object. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of an accessPackageCatalog object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

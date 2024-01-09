@@ -21,7 +21,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
     edge: Optional[Edge] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The people property
+    # Represents a setting to control people-related admin settings in the tenant.
     people: Optional[PeopleAdminSettings] = None
     # A container for service communications resources. Read-only.
     service_announcement: Optional[ServiceAnnouncement] = None

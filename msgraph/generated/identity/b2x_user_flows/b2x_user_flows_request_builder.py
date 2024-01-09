@@ -45,7 +45,7 @@ class B2xUserFlowsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[B2xUserFlowsRequestBuilderGetRequestConfiguration] = None) -> Optional[B2xIdentityUserFlowCollectionResponse]:
         """
-        Retrieve a list of b2xIdentityUserFlow objects. This API is available in the following national cloud deployments.
+        Retrieve a list of b2xIdentityUserFlow objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[B2xIdentityUserFlowCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/identitycontainer-list-b2xuserflows?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class B2xUserFlowsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[B2xIdentityUserFlow] = None, request_configuration: Optional[B2xUserFlowsRequestBuilderPostRequestConfiguration] = None) -> Optional[B2xIdentityUserFlow]:
         """
-        Create a new b2xIdentityUserFlow object. This API is available in the following national cloud deployments.
+        Create a new b2xIdentityUserFlow object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[B2xIdentityUserFlow]
@@ -92,7 +92,7 @@ class B2xUserFlowsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[B2xUserFlowsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of b2xIdentityUserFlow objects. This API is available in the following national cloud deployments.
+        Retrieve a list of b2xIdentityUserFlow objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class B2xUserFlowsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[B2xIdentityUserFlow] = None, request_configuration: Optional[B2xUserFlowsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new b2xIdentityUserFlow object. This API is available in the following national cloud deployments.
+        Create a new b2xIdentityUserFlow object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class B2xUserFlowsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class B2xUserFlowsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class B2xUserFlowsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of b2xIdentityUserFlow objects. This API is available in the following national cloud deployments.
+        Retrieve a list of b2xIdentityUserFlow objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

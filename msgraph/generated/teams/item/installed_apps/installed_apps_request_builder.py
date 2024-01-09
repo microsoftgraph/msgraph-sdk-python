@@ -45,7 +45,7 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsAppInstallationCollectionResponse]:
         """
-        Retrieve a list of apps installed in the specified team. This API is available in the following national cloud deployments.
+        Retrieve a list of apps installed in the specified team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppInstallationCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/team-list-installedapps?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[TeamsAppInstallation]:
         """
-        Install an app to the specified team. This API is available in the following national cloud deployments.
+        Install an app to the specified team.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppInstallation]
@@ -92,7 +92,7 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of apps installed in the specified team. This API is available in the following national cloud deployments.
+        Retrieve a list of apps installed in the specified team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[TeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Install an app to the specified team. This API is available in the following national cloud deployments.
+        Install an app to the specified team.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class InstalledAppsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of apps installed in the specified team. This API is available in the following national cloud deployments.
+        Retrieve a list of apps installed in the specified team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

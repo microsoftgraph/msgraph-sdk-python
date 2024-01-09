@@ -45,7 +45,7 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ReviewSetsRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryReviewSetCollectionResponse]:
         """
-        Get a list of ediscoveryReviewSet objects associated with an eDiscovery case. This API is available in the following national cloud deployments.
+        Get a list of ediscoveryReviewSet objects associated with an eDiscovery case.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewSetCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycase-list-reviewsets?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[EdiscoveryReviewSet] = None, request_configuration: Optional[ReviewSetsRequestBuilderPostRequestConfiguration] = None) -> Optional[EdiscoveryReviewSet]:
         """
-        Create a new ediscoveryReviewSet object. This API is available in the following national cloud deployments.
+        Create a new ediscoveryReviewSet object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewSet]
@@ -92,7 +92,7 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ReviewSetsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of ediscoveryReviewSet objects associated with an eDiscovery case. This API is available in the following national cloud deployments.
+        Get a list of ediscoveryReviewSet objects associated with an eDiscovery case.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[EdiscoveryReviewSet] = None, request_configuration: Optional[ReviewSetsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new ediscoveryReviewSet object. This API is available in the following national cloud deployments.
+        Create a new ediscoveryReviewSet object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class ReviewSetsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ReviewSetsRequestBuilderGetQueryParameters():
         """
-        Get a list of ediscoveryReviewSet objects associated with an eDiscovery case. This API is available in the following national cloud deployments.
+        Get a list of ediscoveryReviewSet objects associated with an eDiscovery case.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

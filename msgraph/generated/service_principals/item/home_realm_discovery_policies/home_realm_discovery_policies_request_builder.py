@@ -32,7 +32,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder(BaseRequestBuilder):
     def by_home_realm_discovery_policy_id(self,home_realm_discovery_policy_id: str) -> HomeRealmDiscoveryPolicyItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.servicePrincipals.item.homeRealmDiscoveryPolicies.item collection
-        param home_realm_discovery_policy_id: Unique identifier of the item
+        param home_realm_discovery_policy_id: The unique identifier of homeRealmDiscoveryPolicy
         Returns: HomeRealmDiscoveryPolicyItemRequestBuilder
         """
         if not home_realm_discovery_policy_id:
@@ -45,7 +45,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[HomeRealmDiscoveryPolicyCollectionResponse]:
         """
-        List the homeRealmDiscoveryPolicy objects that are assigned to a servicePrincipal. This API is available in the following national cloud deployments.
+        List the homeRealmDiscoveryPolicy objects that are assigned to a servicePrincipal.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HomeRealmDiscoveryPolicyCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-list-homerealmdiscoverypolicies?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List the homeRealmDiscoveryPolicy objects that are assigned to a servicePrincipal. This API is available in the following national cloud deployments.
+        List the homeRealmDiscoveryPolicy objects that are assigned to a servicePrincipal.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -79,7 +79,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> HomeRealmDiscoveryPoliciesRequestBuilder:
@@ -113,7 +113,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HomeRealmDiscoveryPoliciesRequestBuilderGetQueryParameters():
         """
-        List the homeRealmDiscoveryPolicy objects that are assigned to a servicePrincipal. This API is available in the following national cloud deployments.
+        List the homeRealmDiscoveryPolicy objects that are assigned to a servicePrincipal.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

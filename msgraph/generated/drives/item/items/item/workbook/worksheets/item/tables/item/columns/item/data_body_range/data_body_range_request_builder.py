@@ -28,7 +28,7 @@ class DataBodyRangeRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DataBodyRangeRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookRange]:
         """
-        Gets the range object associated with the data body of the column. This API is available in the following national cloud deployments.
+        Gets the range object associated with the data body of the column.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookRange]
         Find more info here: https://learn.microsoft.com/graph/api/tablecolumn-databodyrange?view=graph-rest-1.0
@@ -50,7 +50,7 @@ class DataBodyRangeRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DataBodyRangeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Gets the range object associated with the data body of the column. This API is available in the following national cloud deployments.
+        Gets the range object associated with the data body of the column.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -61,7 +61,7 @@ class DataBodyRangeRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> DataBodyRangeRequestBuilder:

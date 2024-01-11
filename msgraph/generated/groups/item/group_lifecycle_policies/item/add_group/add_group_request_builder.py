@@ -29,7 +29,7 @@ class AddGroupRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AddGroupPostRequestBody] = None, request_configuration: Optional[AddGroupRequestBuilderPostRequestConfiguration] = None) -> Optional[AddGroupPostResponse]:
         """
-        Adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected. This API is available in the following national cloud deployments.
+        Adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AddGroupPostResponse]
@@ -54,7 +54,7 @@ class AddGroupRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AddGroupPostRequestBody] = None, request_configuration: Optional[AddGroupRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected. This API is available in the following national cloud deployments.
+        Adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -68,7 +68,7 @@ class AddGroupRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

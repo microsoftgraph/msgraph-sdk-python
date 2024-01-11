@@ -47,7 +47,7 @@ class BotRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[BotRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamworkBot]:
         """
-        Get the bot associated with a specific definition of the  TeamsApp. This API is available in the following national cloud deployments.
+        Get the bot associated with a specific definition of the  TeamsApp.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamworkBot]
         Find more info here: https://learn.microsoft.com/graph/api/teamworkbot-get?view=graph-rest-1.0
@@ -104,12 +104,12 @@ class BotRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[BotRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the bot associated with a specific definition of the  TeamsApp. This API is available in the following national cloud deployments.
+        Get the bot associated with a specific definition of the  TeamsApp.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -121,7 +121,7 @@ class BotRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[TeamworkBot] = None, request_configuration: Optional[BotRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -140,7 +140,7 @@ class BotRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -167,7 +167,7 @@ class BotRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BotRequestBuilderGetQueryParameters():
         """
-        Get the bot associated with a specific definition of the  TeamsApp. This API is available in the following national cloud deployments.
+        Get the bot associated with a specific definition of the  TeamsApp.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

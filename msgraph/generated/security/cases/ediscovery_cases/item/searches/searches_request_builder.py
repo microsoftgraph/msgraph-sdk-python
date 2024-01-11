@@ -45,7 +45,7 @@ class SearchesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[SearchesRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoverySearchCollectionResponse]:
         """
-        Get the list of ediscoverySearch resources from an eDiscoveryCase object. This API is available in the following national cloud deployments.
+        Get the list of ediscoverySearch resources from an eDiscoveryCase object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoverySearchCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycase-list-searches?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class SearchesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[EdiscoverySearch] = None, request_configuration: Optional[SearchesRequestBuilderPostRequestConfiguration] = None) -> Optional[EdiscoverySearch]:
         """
-        Create a new ediscoverySearch object. This API is available in the following national cloud deployments.
+        Create a new ediscoverySearch object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoverySearch]
@@ -92,7 +92,7 @@ class SearchesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[SearchesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of ediscoverySearch resources from an eDiscoveryCase object. This API is available in the following national cloud deployments.
+        Get the list of ediscoverySearch resources from an eDiscoveryCase object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,12 +104,12 @@ class SearchesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[EdiscoverySearch] = None, request_configuration: Optional[SearchesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new ediscoverySearch object. This API is available in the following national cloud deployments.
+        Create a new ediscoverySearch object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class SearchesRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class SearchesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SearchesRequestBuilderGetQueryParameters():
         """
-        Get the list of ediscoverySearch resources from an eDiscoveryCase object. This API is available in the following national cloud deployments.
+        Get the list of ediscoverySearch resources from an eDiscoveryCase object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

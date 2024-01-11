@@ -29,7 +29,7 @@ class ParseExpressionRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ParseExpressionPostRequestBody] = None, request_configuration: Optional[ParseExpressionRequestBuilderPostRequestConfiguration] = None) -> Optional[ParseExpressionResponse]:
         """
-        Parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID. This API is available in the following national cloud deployments.
+        Parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ParseExpressionResponse]
@@ -54,7 +54,7 @@ class ParseExpressionRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ParseExpressionPostRequestBody] = None, request_configuration: Optional[ParseExpressionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID. This API is available in the following national cloud deployments.
+        Parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Microsoft Entra ID.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -68,7 +68,7 @@ class ParseExpressionRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     

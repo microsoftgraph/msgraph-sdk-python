@@ -27,7 +27,7 @@ class UnsubscribeByMailRequestBuilder(BaseRequestBuilder):
     
     async def post(self,request_configuration: Optional[UnsubscribeByMailRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Calling this method prevents the current user from receiving email notifications for this group about new posts, events, and files in that group. Supported for Microsoft 365 groups only. This API is available in the following national cloud deployments.
+        Calling this method prevents the current user from receiving email notifications for this group about new posts, events, and files in that group. Supported for Microsoft 365 groups only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/group-unsubscribebymail?view=graph-rest-1.0
@@ -47,7 +47,7 @@ class UnsubscribeByMailRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,request_configuration: Optional[UnsubscribeByMailRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Calling this method prevents the current user from receiving email notifications for this group about new posts, events, and files in that group. Supported for Microsoft 365 groups only. This API is available in the following national cloud deployments.
+        Calling this method prevents the current user from receiving email notifications for this group about new posts, events, and files in that group. Supported for Microsoft 365 groups only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -58,7 +58,7 @@ class UnsubscribeByMailRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> UnsubscribeByMailRequestBuilder:

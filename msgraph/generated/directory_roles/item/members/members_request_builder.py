@@ -38,7 +38,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     def by_directory_object_id(self,directory_object_id: str) -> DirectoryObjectItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.directoryRoles.item.members.item collection
-        param directory_object_id: Unique identifier of the item
+        param directory_object_id: The unique identifier of directoryObject
         Returns: DirectoryObjectItemRequestBuilder
         """
         if not directory_object_id:
@@ -85,7 +85,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def with_url(self,raw_url: Optional[str] = None) -> MembersRequestBuilder:

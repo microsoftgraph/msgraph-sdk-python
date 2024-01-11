@@ -14,9 +14,9 @@ class ProfileCardAnnotation(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The displayName property
+    # If present, the value of this field is used by the profile card as the default property label in the experience (for example, 'Cost Center').
     display_name: Optional[str] = None
-    # The localizations property
+    # Each resource in this collection represents the localized value of the attribute name for a given language, used as the default label for that locale. For example, a user with a nb-NO client gets 'Kostnadssenter' as the attribute label, rather than 'Cost Center.'
     localizations: Optional[List[DisplayNameLocalization]] = None
     # The OdataType property
     odata_type: Optional[str] = None

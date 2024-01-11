@@ -26,6 +26,7 @@ if TYPE_CHECKING:
     from .record_response.record_response_request_builder import RecordResponseRequestBuilder
     from .redirect.redirect_request_builder import RedirectRequestBuilder
     from .reject.reject_request_builder import RejectRequestBuilder
+    from .send_dtmf_tones.send_dtmf_tones_request_builder import SendDtmfTonesRequestBuilder
     from .subscribe_to_tone.subscribe_to_tone_request_builder import SubscribeToToneRequestBuilder
     from .transfer.transfer_request_builder import TransferRequestBuilder
     from .unmute.unmute_request_builder import UnmuteRequestBuilder
@@ -46,7 +47,7 @@ class CallItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[CallItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete or hang up an active call. For group calls, this will only delete your call leg and the underlying group call will still continue. This API is available in the following national cloud deployments.
+        Delete or hang up an active call. For group calls, this will only delete your call leg and the underlying group call will still continue.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/call-delete?view=graph-rest-1.0
@@ -66,7 +67,7 @@ class CallItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CallItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Call]:
         """
-        Retrieve the properties and relationships of a call object. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a call object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Call]
         Find more info here: https://learn.microsoft.com/graph/api/call-get?view=graph-rest-1.0
@@ -112,7 +113,7 @@ class CallItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[CallItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete or hang up an active call. For group calls, this will only delete your call leg and the underlying group call will still continue. This API is available in the following national cloud deployments.
+        Delete or hang up an active call. For group calls, this will only delete your call leg and the underlying group call will still continue.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -123,12 +124,12 @@ class CallItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json, application/json")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_get_request_information(self,request_configuration: Optional[CallItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a call object. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a call object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -140,7 +141,7 @@ class CallItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_patch_request_information(self,body: Optional[Call] = None, request_configuration: Optional[CallItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
@@ -159,7 +160,7 @@ class CallItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers.try_add("Accept", "application/json;q=1")
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -300,6 +301,15 @@ class CallItemRequestBuilder(BaseRequestBuilder):
         return RejectRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def send_dtmf_tones(self) -> SendDtmfTonesRequestBuilder:
+        """
+        Provides operations to call the sendDtmfTones method.
+        """
+        from .send_dtmf_tones.send_dtmf_tones_request_builder import SendDtmfTonesRequestBuilder
+
+        return SendDtmfTonesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def subscribe_to_tone(self) -> SubscribeToToneRequestBuilder:
         """
         Provides operations to call the subscribeToTone method.
@@ -348,7 +358,7 @@ class CallItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CallItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a call object. This API is available in the following national cloud deployments.
+        Retrieve the properties and relationships of a call object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

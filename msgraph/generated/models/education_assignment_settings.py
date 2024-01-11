@@ -4,12 +4,15 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .education_grading_category import EducationGradingCategory
     from .entity import Entity
 
 from .entity import Entity
 
 @dataclass
 class EducationAssignmentSettings(Entity):
+    # The gradingCategories property
+    grading_categories: Optional[List[EducationGradingCategory]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Indicates whether turn-in celebration animation is shown. A value of true indicates that the animation isn't shown. Default value is false.
@@ -31,11 +34,14 @@ class EducationAssignmentSettings(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .education_grading_category import EducationGradingCategory
         from .entity import Entity
 
+        from .education_grading_category import EducationGradingCategory
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "gradingCategories": lambda n : setattr(self, 'grading_categories', n.get_collection_of_object_values(EducationGradingCategory)),
             "submissionAnimationDisabled": lambda n : setattr(self, 'submission_animation_disabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -51,6 +57,7 @@ class EducationAssignmentSettings(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("gradingCategories", self.grading_categories)
         writer.write_bool_value("submissionAnimationDisabled", self.submission_animation_disabled)
     
 

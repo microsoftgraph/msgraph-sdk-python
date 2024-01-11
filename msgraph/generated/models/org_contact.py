@@ -49,7 +49,7 @@ class OrgContact(DirectoryObject):
     phones: Optional[List[Phone]] = None
     # For example: 'SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com'. The any operator is required for filter expressions on multi-valued properties. Supports $filter (eq, not, ge, le, startsWith, /$count eq 0, /$count ne 0).
     proxy_addresses: Optional[List[str]] = None
-    # The serviceProvisioningErrors property
+    # Errors published by a federated service describing a non-transient, service-specific error regarding the properties or link from an organizational contact object .  Supports $filter (eq, not, for isResolved and serviceInstance).
     service_provisioning_errors: Optional[List[ServiceProvisioningError]] = None
     # Last name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
     surname: Optional[str] = None

@@ -14,7 +14,7 @@ class PublicationFacet(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # User who has checked out the file.
+    # The user who checked out the file.
     checked_out_by: Optional[IdentitySet] = None
     # The state of publication for this document. Either published or checkout. Read-only.
     level: Optional[str] = None

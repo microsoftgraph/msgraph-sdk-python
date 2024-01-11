@@ -5,6 +5,9 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFactorySingleton
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+if TYPE_CHECKING:
+    from ......models.drive_recipient import DriveRecipient
+
 @dataclass
 class CreateLinkPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     # Stores model information.
@@ -18,10 +21,14 @@ class CreateLinkPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
     message: Optional[str] = None
     # The password property
     password: Optional[str] = None
+    # The recipients property
+    recipients: Optional[List[DriveRecipient]] = None
     # The retainInheritedPermissions property
     retain_inherited_permissions: Optional[bool] = None
     # The scope property
     scope: Optional[str] = None
+    # The sendNotification property
+    send_notification: Optional[bool] = None
     # The type property
     type: Optional[str] = None
     
@@ -41,12 +48,18 @@ class CreateLinkPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from ......models.drive_recipient import DriveRecipient
+
+        from ......models.drive_recipient import DriveRecipient
+
         fields: Dict[str, Callable[[Any], None]] = {
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "password": lambda n : setattr(self, 'password', n.get_str_value()),
+            "recipients": lambda n : setattr(self, 'recipients', n.get_collection_of_object_values(DriveRecipient)),
             "retainInheritedPermissions": lambda n : setattr(self, 'retain_inherited_permissions', n.get_bool_value()),
             "scope": lambda n : setattr(self, 'scope', n.get_str_value()),
+            "sendNotification": lambda n : setattr(self, 'send_notification', n.get_bool_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         return fields
@@ -62,8 +75,10 @@ class CreateLinkPostRequestBody(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_str_value("message", self.message)
         writer.write_str_value("password", self.password)
+        writer.write_collection_of_object_values("recipients", self.recipients)
         writer.write_bool_value("retainInheritedPermissions", self.retain_inherited_permissions)
         writer.write_str_value("scope", self.scope)
+        writer.write_bool_value("sendNotification", self.send_notification)
         writer.write_str_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
     

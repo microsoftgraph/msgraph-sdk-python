@@ -7,4 +7,8 @@ class AppliedConditionalAccessPolicyResult(str, Enum):
     NotEnabled = "notEnabled",
     Unknown = "unknown",
     UnknownFutureValue = "unknownFutureValue",
+    ReportOnlySuccess = "reportOnlySuccess",
+    ReportOnlyFailure = "reportOnlyFailure",
+    ReportOnlyNotApplied = "reportOnlyNotApplied",
+    ReportOnlyInterrupted = "reportOnlyInterrupted",
 

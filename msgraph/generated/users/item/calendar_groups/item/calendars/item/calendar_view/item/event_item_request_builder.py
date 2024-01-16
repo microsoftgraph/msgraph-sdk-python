@@ -35,7 +35,7 @@ class EventItemRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}/calendars/{calendar%2Did}/calendarView/{event%2Did}{?%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}/calendars/{calendar%2Did}/calendarView/{event%2Did}{?startDateTime*,endDateTime*,%24select}", path_parameters)
     
     async def get(self,request_configuration: Optional[EventItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Event]:
         """
@@ -197,12 +197,22 @@ class EventItemRequestBuilder(BaseRequestBuilder):
             """
             if not original_name:
                 raise TypeError("original_name cannot be null.")
+            if original_name == "end_date_time":
+                return "endDateTime"
             if original_name == "select":
                 return "%24select"
+            if original_name == "start_date_time":
+                return "startDateTime"
             return original_name
         
+        # The end date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T20:00:00-08:00
+        end_date_time: Optional[str] = None
+
         # Select properties to be returned
         select: Optional[List[str]] = None
+
+        # The start date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T19:00:00-08:00
+        start_date_time: Optional[str] = None
 
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

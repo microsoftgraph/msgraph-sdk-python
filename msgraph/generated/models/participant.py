@@ -29,11 +29,11 @@ class Participant(Entity):
     odata_type: Optional[str] = None
     # Information about whether the participant has recording capability.
     recording_info: Optional[RecordingInfo] = None
-    # The removedState property
+    # Indicates the reason why the participant was removed from the roster.
     removed_state: Optional[RemovedState] = None
     # Indicates the reason or reasons media content from this participant is restricted.
     restricted_experience: Optional[OnlineMeetingRestricted] = None
-    # The rosterSequenceNumber property
+    # Indicates the roster sequence number in which the participant was last updated.
     roster_sequence_number: Optional[int] = None
     
     @staticmethod

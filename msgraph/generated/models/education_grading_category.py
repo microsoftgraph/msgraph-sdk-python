@@ -10,11 +10,11 @@ from .entity import Entity
 
 @dataclass
 class EducationGradingCategory(Entity):
-    # The displayName property
+    # The name of the grading category.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The percentageWeight property
+    # The weight of the category; an integer between 0 and 100.
     percentage_weight: Optional[int] = None
     
     @staticmethod

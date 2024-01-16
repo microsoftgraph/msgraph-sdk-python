@@ -27,7 +27,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}/calendars/{calendar%2Did}/calendarView{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}/calendars/{calendar%2Did}/calendarView{?startDateTime*,endDateTime*,%24top,%24skip,%24filter,%24count,%24orderby,%24select}", path_parameters)
     
     def by_event_id(self,event_id: str) -> EventItemRequestBuilder:
         """
@@ -45,7 +45,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> Optional[EventCollectionResponse]:
         """
-        Get the occurrences, exceptions and single instances of events in a calendar view defined by a time range,from a user's default calendar (../me/calendarView) or some other calendar of the user's.
+        The calendar view for the calendar. Navigation property. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EventCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/calendar-list-calendarview?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the occurrences, exceptions and single instances of events in a calendar view defined by a time range,from a user's default calendar (../me/calendarView) or some other calendar of the user's.
+        The calendar view for the calendar. Navigation property. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,7 +113,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CalendarViewRequestBuilderGetQueryParameters():
         """
-        Get the occurrences, exceptions and single instances of events in a calendar view defined by a time range,from a user's default calendar (../me/calendarView) or some other calendar of the user's.
+        The calendar view for the calendar. Navigation property. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -125,6 +125,8 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
+            if original_name == "end_date_time":
+                return "endDateTime"
             if original_name == "filter":
                 return "%24filter"
             if original_name == "orderby":
@@ -133,12 +135,17 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
                 return "%24select"
             if original_name == "skip":
                 return "%24skip"
+            if original_name == "start_date_time":
+                return "startDateTime"
             if original_name == "top":
                 return "%24top"
             return original_name
         
         # Include count of items
         count: Optional[bool] = None
+
+        # The end date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T20:00:00-08:00
+        end_date_time: Optional[str] = None
 
         # Filter items by property values
         filter: Optional[str] = None
@@ -151,6 +158,9 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
 
         # Skip the first n items
         skip: Optional[int] = None
+
+        # The start date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T19:00:00-08:00
+        start_date_time: Optional[str] = None
 
         # Show only the first n items
         top: Optional[int] = None

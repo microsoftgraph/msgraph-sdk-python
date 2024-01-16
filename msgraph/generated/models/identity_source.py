@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from .cross_cloud_azure_active_directory_tenant import CrossCloudAzureActiveDirectoryTenant
     from .domain_identity_source import DomainIdentitySource
     from .external_domain_federation import ExternalDomainFederation
+    from .social_identity_source import SocialIdentitySource
 
 @dataclass
 class IdentitySource(AdditionalDataHolder, BackedModel, Parsable):
@@ -49,6 +50,10 @@ class IdentitySource(AdditionalDataHolder, BackedModel, Parsable):
             from .external_domain_federation import ExternalDomainFederation
 
             return ExternalDomainFederation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.socialIdentitySource".casefold():
+            from .social_identity_source import SocialIdentitySource
+
+            return SocialIdentitySource()
         return IdentitySource()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -60,11 +65,13 @@ class IdentitySource(AdditionalDataHolder, BackedModel, Parsable):
         from .cross_cloud_azure_active_directory_tenant import CrossCloudAzureActiveDirectoryTenant
         from .domain_identity_source import DomainIdentitySource
         from .external_domain_federation import ExternalDomainFederation
+        from .social_identity_source import SocialIdentitySource
 
         from .azure_active_directory_tenant import AzureActiveDirectoryTenant
         from .cross_cloud_azure_active_directory_tenant import CrossCloudAzureActiveDirectoryTenant
         from .domain_identity_source import DomainIdentitySource
         from .external_domain_federation import ExternalDomainFederation
+        from .social_identity_source import SocialIdentitySource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

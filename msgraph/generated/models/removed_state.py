@@ -13,7 +13,7 @@ class RemovedState(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
-    # The reason property
+    # The removal reason for the participant resource.
     reason: Optional[str] = None
     
     @staticmethod

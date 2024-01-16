@@ -23,9 +23,9 @@ from .entity import Entity
 
 @dataclass
 class EducationAssignment(Entity):
-    # Optional field to control the assignment behavior  for adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
+    # Optional field to control the assignment behavior  for adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. You must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
     add_to_calendar_action: Optional[EducationAddToCalendarOptions] = None
-    # Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
+    # Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment shouldn't be assigned to new students.
     added_student_action: Optional[EducationAddedStudentAction] = None
     # Identifies whether students can submit after the due date. If this property isn't specified during create, it defaults to true.
     allow_late_submissions: Optional[bool] = None
@@ -39,9 +39,9 @@ class EducationAssignment(Entity):
     assigned_date_time: Optional[datetime.datetime] = None
     # When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
     categories: Optional[List[EducationCategory]] = None
-    # Class which this assignment belongs.
+    # Class to which this assignment belongs.
     class_id: Optional[str] = None
-    # Date when the assignment will be closed for submissions. This is an optional field that can be null if the assignment does not allowLateSubmissions or when the closeDateTime is the same as the dueDateTime. But if specified, then the closeDateTime must be greater than or equal to the dueDateTime. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    # Date when the assignment will be closed for submissions. This is an optional field that can be null if the assignment doesn't allowLateSubmissions or when the closeDateTime is the same as the dueDateTime. But if specified, then the closeDateTime must be greater than or equal to the dueDateTime. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     close_date_time: Optional[datetime.datetime] = None
     # Who created the assignment.
     created_by: Optional[IdentitySet] = None
@@ -55,9 +55,9 @@ class EducationAssignment(Entity):
     feedback_resources_folder_url: Optional[str] = None
     # How the assignment will be graded.
     grading: Optional[EducationAssignmentGradeType] = None
-    # The gradingCategory property
+    # When set, enables users to weight assignments differently when computing a class average grade.
     grading_category: Optional[EducationGradingCategory] = None
-    # Instructions for the assignment.  This along with the display name tell the student what to do.
+    # Instructions for the assignment.  The instructsions and the display name tell the student what to do.
     instructions: Optional[EducationItemBody] = None
     # Who last modified the assignment.
     last_modified_by: Optional[IdentitySet] = None
@@ -75,7 +75,7 @@ class EducationAssignment(Entity):
     rubric: Optional[EducationRubric] = None
     # Status of the Assignment.  You can't PATCH this value.  Possible values are: draft, scheduled, published, assigned.
     status: Optional[EducationAssignmentStatus] = None
-    # Once published, there is a submission object for each student representing their work and grade.  Read-only. Nullable.
+    # Once published, there's a submission object for each student representing their work and grade.  Read-only. Nullable.
     submissions: Optional[List[EducationSubmission]] = None
     # The deep link URL for the given assignment.
     web_url: Optional[str] = None

@@ -20,7 +20,12 @@ if TYPE_CHECKING:
     from .evidence_role import EvidenceRole
     from .evidence_verdict import EvidenceVerdict
     from .file_evidence import FileEvidence
+    from .git_hub_organization_evidence import GitHubOrganizationEvidence
+    from .git_hub_repo_evidence import GitHubRepoEvidence
+    from .git_hub_user_evidence import GitHubUserEvidence
     from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
+    from .host_logon_session_evidence import HostLogonSessionEvidence
+    from .io_t_device_evidence import IoTDeviceEvidence
     from .ip_evidence import IpEvidence
     from .kubernetes_cluster_evidence import KubernetesClusterEvidence
     from .kubernetes_controller_evidence import KubernetesControllerEvidence
@@ -31,11 +36,17 @@ if TYPE_CHECKING:
     from .kubernetes_service_evidence import KubernetesServiceEvidence
     from .mailbox_evidence import MailboxEvidence
     from .mail_cluster_evidence import MailClusterEvidence
+    from .malware_evidence import MalwareEvidence
+    from .network_connection_evidence import NetworkConnectionEvidence
+    from .nic_evidence import NicEvidence
     from .oauth_application_evidence import OauthApplicationEvidence
     from .process_evidence import ProcessEvidence
     from .registry_key_evidence import RegistryKeyEvidence
     from .registry_value_evidence import RegistryValueEvidence
+    from .sas_token_evidence import SasTokenEvidence
     from .security_group_evidence import SecurityGroupEvidence
+    from .service_principal_evidence import ServicePrincipalEvidence
+    from .submission_mail_evidence import SubmissionMailEvidence
     from .url_evidence import UrlEvidence
     from .user_evidence import UserEvidence
 
@@ -120,10 +131,30 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
             from .file_evidence import FileEvidence
 
             return FileEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.gitHubOrganizationEvidence".casefold():
+            from .git_hub_organization_evidence import GitHubOrganizationEvidence
+
+            return GitHubOrganizationEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.gitHubRepoEvidence".casefold():
+            from .git_hub_repo_evidence import GitHubRepoEvidence
+
+            return GitHubRepoEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.gitHubUserEvidence".casefold():
+            from .git_hub_user_evidence import GitHubUserEvidence
+
+            return GitHubUserEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.googleCloudResourceEvidence".casefold():
             from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
 
             return GoogleCloudResourceEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.hostLogonSessionEvidence".casefold():
+            from .host_logon_session_evidence import HostLogonSessionEvidence
+
+            return HostLogonSessionEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ioTDeviceEvidence".casefold():
+            from .io_t_device_evidence import IoTDeviceEvidence
+
+            return IoTDeviceEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ipEvidence".casefold():
             from .ip_evidence import IpEvidence
 
@@ -164,6 +195,18 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
             from .mail_cluster_evidence import MailClusterEvidence
 
             return MailClusterEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.malwareEvidence".casefold():
+            from .malware_evidence import MalwareEvidence
+
+            return MalwareEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.networkConnectionEvidence".casefold():
+            from .network_connection_evidence import NetworkConnectionEvidence
+
+            return NetworkConnectionEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.nicEvidence".casefold():
+            from .nic_evidence import NicEvidence
+
+            return NicEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.oauthApplicationEvidence".casefold():
             from .oauth_application_evidence import OauthApplicationEvidence
 
@@ -180,10 +223,22 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
             from .registry_value_evidence import RegistryValueEvidence
 
             return RegistryValueEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.sasTokenEvidence".casefold():
+            from .sas_token_evidence import SasTokenEvidence
+
+            return SasTokenEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.securityGroupEvidence".casefold():
             from .security_group_evidence import SecurityGroupEvidence
 
             return SecurityGroupEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.servicePrincipalEvidence".casefold():
+            from .service_principal_evidence import ServicePrincipalEvidence
+
+            return ServicePrincipalEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.submissionMailEvidence".casefold():
+            from .submission_mail_evidence import SubmissionMailEvidence
+
+            return SubmissionMailEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.urlEvidence".casefold():
             from .url_evidence import UrlEvidence
 
@@ -213,7 +268,12 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .evidence_role import EvidenceRole
         from .evidence_verdict import EvidenceVerdict
         from .file_evidence import FileEvidence
+        from .git_hub_organization_evidence import GitHubOrganizationEvidence
+        from .git_hub_repo_evidence import GitHubRepoEvidence
+        from .git_hub_user_evidence import GitHubUserEvidence
         from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
+        from .host_logon_session_evidence import HostLogonSessionEvidence
+        from .io_t_device_evidence import IoTDeviceEvidence
         from .ip_evidence import IpEvidence
         from .kubernetes_cluster_evidence import KubernetesClusterEvidence
         from .kubernetes_controller_evidence import KubernetesControllerEvidence
@@ -224,11 +284,17 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .kubernetes_service_evidence import KubernetesServiceEvidence
         from .mailbox_evidence import MailboxEvidence
         from .mail_cluster_evidence import MailClusterEvidence
+        from .malware_evidence import MalwareEvidence
+        from .network_connection_evidence import NetworkConnectionEvidence
+        from .nic_evidence import NicEvidence
         from .oauth_application_evidence import OauthApplicationEvidence
         from .process_evidence import ProcessEvidence
         from .registry_key_evidence import RegistryKeyEvidence
         from .registry_value_evidence import RegistryValueEvidence
+        from .sas_token_evidence import SasTokenEvidence
         from .security_group_evidence import SecurityGroupEvidence
+        from .service_principal_evidence import ServicePrincipalEvidence
+        from .submission_mail_evidence import SubmissionMailEvidence
         from .url_evidence import UrlEvidence
         from .user_evidence import UserEvidence
 
@@ -246,7 +312,12 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .evidence_role import EvidenceRole
         from .evidence_verdict import EvidenceVerdict
         from .file_evidence import FileEvidence
+        from .git_hub_organization_evidence import GitHubOrganizationEvidence
+        from .git_hub_repo_evidence import GitHubRepoEvidence
+        from .git_hub_user_evidence import GitHubUserEvidence
         from .google_cloud_resource_evidence import GoogleCloudResourceEvidence
+        from .host_logon_session_evidence import HostLogonSessionEvidence
+        from .io_t_device_evidence import IoTDeviceEvidence
         from .ip_evidence import IpEvidence
         from .kubernetes_cluster_evidence import KubernetesClusterEvidence
         from .kubernetes_controller_evidence import KubernetesControllerEvidence
@@ -257,11 +328,17 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .kubernetes_service_evidence import KubernetesServiceEvidence
         from .mailbox_evidence import MailboxEvidence
         from .mail_cluster_evidence import MailClusterEvidence
+        from .malware_evidence import MalwareEvidence
+        from .network_connection_evidence import NetworkConnectionEvidence
+        from .nic_evidence import NicEvidence
         from .oauth_application_evidence import OauthApplicationEvidence
         from .process_evidence import ProcessEvidence
         from .registry_key_evidence import RegistryKeyEvidence
         from .registry_value_evidence import RegistryValueEvidence
+        from .sas_token_evidence import SasTokenEvidence
         from .security_group_evidence import SecurityGroupEvidence
+        from .service_principal_evidence import ServicePrincipalEvidence
+        from .submission_mail_evidence import SubmissionMailEvidence
         from .url_evidence import UrlEvidence
         from .user_evidence import UserEvidence
 

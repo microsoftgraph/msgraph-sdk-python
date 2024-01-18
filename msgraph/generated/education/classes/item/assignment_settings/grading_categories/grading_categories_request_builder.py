@@ -45,7 +45,7 @@ class GradingCategoriesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[GradingCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationGradingCategoryCollectionResponse]:
         """
-        Get gradingCategories from education
+        When set, enables users to weight assignments differently when computing a class average grade.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationGradingCategoryCollectionResponse]
         """
@@ -90,7 +90,7 @@ class GradingCategoriesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[GradingCategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get gradingCategories from education
+        When set, enables users to weight assignments differently when computing a class average grade.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +147,7 @@ class GradingCategoriesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GradingCategoriesRequestBuilderGetQueryParameters():
         """
-        Get gradingCategories from education
+        When set, enables users to weight assignments differently when computing a class average grade.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

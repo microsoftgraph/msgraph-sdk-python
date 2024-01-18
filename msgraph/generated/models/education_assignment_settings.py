@@ -11,11 +11,11 @@ from .entity import Entity
 
 @dataclass
 class EducationAssignmentSettings(Entity):
-    # The gradingCategories property
+    # When set, enables users to weight assignments differently when computing a class average grade.
     grading_categories: Optional[List[EducationGradingCategory]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Indicates whether turn-in celebration animation is shown. A value of true indicates that the animation isn't shown. Default value is false.
+    # Indicates whether to show the turn-in celebration animation. If true, indicates to skip the animation. The default value is false.
     submission_animation_disabled: Optional[bool] = None
     
     @staticmethod

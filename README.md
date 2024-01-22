@@ -165,6 +165,24 @@ async def get_user():
 asyncio.run(get_user())
 ```
 
+### 3.2 Pagination 
+By default a maximum of 100 rows are returned but in the response if odata_next_link is present, it can be used to fetch the next batch of max 100 rows. Here's an example to fetch the initial rows of members in a group, then iterate over the pages of rows using the odata_next_link
+```py
+        # get group members
+        members = await client.groups.by_group_id(id).members.get()
+        if members:
+            print(f"########## Members:")
+            for i in range(len(members.value)):
+                print(f"display_name: {members.value[i].display_name}, mail: {members.value[i].mail}, id: {members.value[i].id}")
+
+        # iterate over result batches > 100 rows
+        while members is not None and members.odata_next_link is not None:
+            members = await client.groups.by_group_id(id).members.with_url(members.odata_next_link).get()
+            if members:
+                print(f"########## Members:")
+                for i in range(len(members.value)):
+                    print(f"display_name: {members.value[i].display_name}, mail: {members.value[i].mail}, id: {members.value[i].id}")
+```
 
 ## Documentation and resources
 

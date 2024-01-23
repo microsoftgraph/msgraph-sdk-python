@@ -13,9 +13,9 @@ from .entity import Entity
 class DeltaParticipants(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The participants property
+    # The collection of participants that were updated since the last roster update.
     participants: Optional[List[Participant]] = None
-    # The sequenceNumber property
+    # The sequence number for the roster update that is used to identify the notification order.
     sequence_number: Optional[int] = None
     
     @staticmethod

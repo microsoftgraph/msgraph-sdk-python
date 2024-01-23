@@ -26,9 +26,29 @@ class GradingCategoryRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/education/classes/{educationClass%2Did}/assignments/{educationAssignment%2Did}/gradingCategory{?%24select,%24expand}", path_parameters)
     
+    async def delete(self,request_configuration: Optional[GradingCategoryRequestBuilderDeleteRequestConfiguration] = None) -> None:
+        """
+        Remove a gradingCategory from an educationAssignment. Only teachers can perform this operation.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-delete-gradingcategory?view=graph-rest-1.0
+        """
+        request_info = self.to_delete_request_information(
+            request_configuration
+        )
+        from .......models.o_data_errors.o_data_error import ODataError
+
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": ODataError,
+            "5XX": ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+    
     async def get(self,request_configuration: Optional[GradingCategoryRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationGradingCategory]:
         """
-        Get gradingCategory from education
+        When set, enables users to weight assignments differently when computing a class average grade.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationGradingCategory]
         """
@@ -47,9 +67,25 @@ class GradingCategoryRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationGradingCategory, error_mapping)
     
+    def to_delete_request_information(self,request_configuration: Optional[GradingCategoryRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+        """
+        Remove a gradingCategory from an educationAssignment. Only teachers can perform this operation.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.DELETE
+        request_info.headers.try_add("Accept", "application/json")
+        return request_info
+    
     def to_get_request_information(self,request_configuration: Optional[GradingCategoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get gradingCategory from education
+        When set, enables users to weight assignments differently when computing a class average grade.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,10 +110,20 @@ class GradingCategoryRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return GradingCategoryRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GradingCategoryRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class GradingCategoryRequestBuilderGetQueryParameters():
         """
-        Get gradingCategory from education
+        When set, enables users to weight assignments differently when computing a class average grade.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

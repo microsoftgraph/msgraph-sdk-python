@@ -45,10 +45,10 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfigurationCollectionResponse]:
         """
-        List properties and relationships of the windows10TeamGeneralConfiguration objects.
+        List properties and relationships of the sharedPCConfiguration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows10teamgeneralconfiguration-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-sharedpcconfiguration-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +67,11 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Create a new iosDeviceFeaturesConfiguration object.
+        Create a new sharedPCConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-iosdevicefeaturesconfiguration-create?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-sharedpcconfiguration-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +92,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the windows10TeamGeneralConfiguration objects.
+        List properties and relationships of the sharedPCConfiguration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new iosDeviceFeaturesConfiguration object.
+        Create a new sharedPCConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the windows10TeamGeneralConfiguration objects.
+        List properties and relationships of the sharedPCConfiguration objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

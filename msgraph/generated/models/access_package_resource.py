@@ -5,6 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .access_package_resource_attribute import AccessPackageResourceAttribute
     from .access_package_resource_environment import AccessPackageResourceEnvironment
     from .access_package_resource_role import AccessPackageResourceRole
     from .access_package_resource_scope import AccessPackageResourceScope
@@ -14,6 +15,8 @@ from .entity import Entity
 
 @dataclass
 class AccessPackageResource(Entity):
+    # The attributes property
+    attributes: Optional[List[AccessPackageResourceAttribute]] = None
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # A description for the resource.
@@ -51,17 +54,20 @@ class AccessPackageResource(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .access_package_resource_attribute import AccessPackageResourceAttribute
         from .access_package_resource_environment import AccessPackageResourceEnvironment
         from .access_package_resource_role import AccessPackageResourceRole
         from .access_package_resource_scope import AccessPackageResourceScope
         from .entity import Entity
 
+        from .access_package_resource_attribute import AccessPackageResourceAttribute
         from .access_package_resource_environment import AccessPackageResourceEnvironment
         from .access_package_resource_role import AccessPackageResourceRole
         from .access_package_resource_scope import AccessPackageResourceScope
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "attributes": lambda n : setattr(self, 'attributes', n.get_collection_of_object_values(AccessPackageResourceAttribute)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -85,6 +91,7 @@ class AccessPackageResource(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("attributes", self.attributes)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

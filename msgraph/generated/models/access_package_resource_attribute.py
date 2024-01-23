@@ -15,13 +15,13 @@ class AccessPackageResourceAttribute(AdditionalDataHolder, BackedModel, Parsable
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The destination property
+    # Information about how to set the attribute, currently a accessPackageUserDirectoryAttributeStore type.
     destination: Optional[AccessPackageResourceAttributeDestination] = None
-    # The name property
+    # The name of the attribute in the end system. If the destination is accessPackageUserDirectoryAttributeStore, then a user property such as jobTitle or a directory schema extension for the user object type, such as extension2b676109c7c74ae2b41549205f1947edpersonalTitle.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The source property
+    # Information about how to populate the attribute value when an accessPackageAssignmentRequest is being fulfilled, currently a accessPackageResourceAttributeQuestion type.
     source: Optional[AccessPackageResourceAttributeSource] = None
     
     @staticmethod

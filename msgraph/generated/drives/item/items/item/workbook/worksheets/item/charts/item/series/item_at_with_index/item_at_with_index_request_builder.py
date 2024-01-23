@@ -12,6 +12,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ............models.o_data_errors.o_data_error import ODataError
     from ............models.workbook_chart_series import WorkbookChartSeries
+    from .format.format_request_builder import FormatRequestBuilder
+    from .points.points_request_builder import PointsRequestBuilder
 
 class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
     """
@@ -75,6 +77,24 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return ItemAtWithIndexRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def format(self) -> FormatRequestBuilder:
+        """
+        Provides operations to manage the format property of the microsoft.graph.workbookChartSeries entity.
+        """
+        from .format.format_request_builder import FormatRequestBuilder
+
+        return FormatRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def points(self) -> PointsRequestBuilder:
+        """
+        Provides operations to manage the points property of the microsoft.graph.workbookChartSeries entity.
+        """
+        from .points.points_request_builder import PointsRequestBuilder
+
+        return PointsRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

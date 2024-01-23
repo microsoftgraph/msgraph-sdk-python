@@ -12,6 +12,17 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..........models.o_data_errors.o_data_error import ODataError
     from ..........models.workbook_table import WorkbookTable
+    from .clear_filters.clear_filters_request_builder import ClearFiltersRequestBuilder
+    from .columns.columns_request_builder import ColumnsRequestBuilder
+    from .convert_to_range.convert_to_range_request_builder import ConvertToRangeRequestBuilder
+    from .data_body_range.data_body_range_request_builder import DataBodyRangeRequestBuilder
+    from .header_row_range.header_row_range_request_builder import HeaderRowRangeRequestBuilder
+    from .range.range_request_builder import RangeRequestBuilder
+    from .reapply_filters.reapply_filters_request_builder import ReapplyFiltersRequestBuilder
+    from .rows.rows_request_builder import RowsRequestBuilder
+    from .sort.sort_request_builder import SortRequestBuilder
+    from .total_row_range.total_row_range_request_builder import TotalRowRangeRequestBuilder
+    from .worksheet.worksheet_request_builder import WorksheetRequestBuilder
 
 class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
     """
@@ -75,6 +86,105 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return ItemAtWithIndexRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def clear_filters(self) -> ClearFiltersRequestBuilder:
+        """
+        Provides operations to call the clearFilters method.
+        """
+        from .clear_filters.clear_filters_request_builder import ClearFiltersRequestBuilder
+
+        return ClearFiltersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def columns(self) -> ColumnsRequestBuilder:
+        """
+        Provides operations to manage the columns property of the microsoft.graph.workbookTable entity.
+        """
+        from .columns.columns_request_builder import ColumnsRequestBuilder
+
+        return ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def convert_to_range(self) -> ConvertToRangeRequestBuilder:
+        """
+        Provides operations to call the convertToRange method.
+        """
+        from .convert_to_range.convert_to_range_request_builder import ConvertToRangeRequestBuilder
+
+        return ConvertToRangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def data_body_range(self) -> DataBodyRangeRequestBuilder:
+        """
+        Provides operations to call the dataBodyRange method.
+        """
+        from .data_body_range.data_body_range_request_builder import DataBodyRangeRequestBuilder
+
+        return DataBodyRangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def header_row_range(self) -> HeaderRowRangeRequestBuilder:
+        """
+        Provides operations to call the headerRowRange method.
+        """
+        from .header_row_range.header_row_range_request_builder import HeaderRowRangeRequestBuilder
+
+        return HeaderRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def range(self) -> RangeRequestBuilder:
+        """
+        Provides operations to call the range method.
+        """
+        from .range.range_request_builder import RangeRequestBuilder
+
+        return RangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def reapply_filters(self) -> ReapplyFiltersRequestBuilder:
+        """
+        Provides operations to call the reapplyFilters method.
+        """
+        from .reapply_filters.reapply_filters_request_builder import ReapplyFiltersRequestBuilder
+
+        return ReapplyFiltersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def rows(self) -> RowsRequestBuilder:
+        """
+        Provides operations to manage the rows property of the microsoft.graph.workbookTable entity.
+        """
+        from .rows.rows_request_builder import RowsRequestBuilder
+
+        return RowsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def sort(self) -> SortRequestBuilder:
+        """
+        Provides operations to manage the sort property of the microsoft.graph.workbookTable entity.
+        """
+        from .sort.sort_request_builder import SortRequestBuilder
+
+        return SortRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def total_row_range(self) -> TotalRowRangeRequestBuilder:
+        """
+        Provides operations to call the totalRowRange method.
+        """
+        from .total_row_range.total_row_range_request_builder import TotalRowRangeRequestBuilder
+
+        return TotalRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def worksheet(self) -> WorksheetRequestBuilder:
+        """
+        Provides operations to manage the worksheet property of the microsoft.graph.workbookTable entity.
+        """
+        from .worksheet.worksheet_request_builder import WorksheetRequestBuilder
+
+        return WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

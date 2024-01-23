@@ -11,8 +11,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .....models.o_data_errors.o_data_error import ODataError
-    from .....models.synchronization_secret_key_string_value_pair import SynchronizationSecretKeyStringValuePair
     from .count.count_request_builder import CountRequestBuilder
+    from .secrets_put_request_body import SecretsPutRequestBody
+    from .secrets_put_response import SecretsPutResponse
 
 class SecretsRequestBuilder(BaseRequestBuilder):
     """
@@ -27,12 +28,12 @@ class SecretsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/applications/{application%2Did}/synchronization/secrets", path_parameters)
     
-    async def put(self,body: Optional[List[SynchronizationSecretKeyStringValuePair]] = None, request_configuration: Optional[SecretsRequestBuilderPutRequestConfiguration] = None) -> Optional[List[SynchronizationSecretKeyStringValuePair]]:
+    async def put(self,body: Optional[SecretsPutRequestBody] = None, request_configuration: Optional[SecretsRequestBuilderPutRequestConfiguration] = None) -> Optional[SecretsPutResponse]:
         """
         Update property secrets value.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[List[SynchronizationSecretKeyStringValuePair]]
+        Returns: Optional[SecretsPutResponse]
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -47,11 +48,11 @@ class SecretsRequestBuilder(BaseRequestBuilder):
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models.synchronization_secret_key_string_value_pair import SynchronizationSecretKeyStringValuePair
+        from .secrets_put_response import SecretsPutResponse
 
-        return await self.request_adapter.send_collection_async(request_info, SynchronizationSecretKeyStringValuePair, error_mapping)
+        return await self.request_adapter.send_async(request_info, SecretsPutResponse, error_mapping)
     
-    def to_put_request_information(self,body: Optional[List[SynchronizationSecretKeyStringValuePair]] = None, request_configuration: Optional[SecretsRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: Optional[SecretsPutRequestBody] = None, request_configuration: Optional[SecretsRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         Update property secrets value.
         param body: The request body

@@ -67,11 +67,11 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceCompliancePolicy]:
         """
-        Create a new androidWorkProfileCompliancePolicy object.
+        Create a new windows81CompliancePolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-androidworkprofilecompliancepolicy-create?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows81compliancepolicy-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -109,7 +109,7 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new androidWorkProfileCompliancePolicy object.
+        Create a new windows81CompliancePolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

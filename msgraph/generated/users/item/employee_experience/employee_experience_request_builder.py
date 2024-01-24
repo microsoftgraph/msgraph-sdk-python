@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models.employee_experience_user import EmployeeExperienceUser
     from ....models.o_data_errors.o_data_error import ODataError
     from .learning_course_activities.learning_course_activities_request_builder import LearningCourseActivitiesRequestBuilder
+    from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_request_builder import LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
 
 class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
     """
@@ -66,6 +67,18 @@ class EmployeeExperienceRequestBuilder(BaseRequestBuilder):
         from ....models.employee_experience_user import EmployeeExperienceUser
 
         return await self.request_adapter.send_async(request_info, EmployeeExperienceUser, error_mapping)
+    
+    def learning_course_activities_with_externalcourse_activity_id(self,externalcourse_activity_id: Optional[str] = None) -> LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder:
+        """
+        Provides operations to manage the learningCourseActivities property of the microsoft.graph.employeeExperienceUser entity.
+        param externalcourse_activity_id: Alternate key of learningCourseActivity
+        Returns: LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+        """
+        if not externalcourse_activity_id:
+            raise TypeError("externalcourse_activity_id cannot be null.")
+        from .learning_course_activities_with_externalcourse_activity_id.learning_course_activities_with_externalcourse_activity_id_request_builder import LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder
+
+        return LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(self.request_adapter, self.path_parameters, externalcourse_activity_id)
     
     async def patch(self,body: Optional[EmployeeExperienceUser] = None, request_configuration: Optional[EmployeeExperienceRequestBuilderPatchRequestConfiguration] = None) -> Optional[EmployeeExperienceUser]:
         """

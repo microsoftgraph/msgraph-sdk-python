@@ -12,6 +12,11 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..........models.o_data_errors.o_data_error import ODataError
     from ..........models.workbook_table_column import WorkbookTableColumn
+    from .data_body_range.data_body_range_request_builder import DataBodyRangeRequestBuilder
+    from .filter.filter_request_builder import FilterRequestBuilder
+    from .header_row_range.header_row_range_request_builder import HeaderRowRangeRequestBuilder
+    from .range.range_request_builder import RangeRequestBuilder
+    from .total_row_range.total_row_range_request_builder import TotalRowRangeRequestBuilder
 
 class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
     """
@@ -75,6 +80,51 @@ class ItemAtWithIndexRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return ItemAtWithIndexRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def data_body_range(self) -> DataBodyRangeRequestBuilder:
+        """
+        Provides operations to call the dataBodyRange method.
+        """
+        from .data_body_range.data_body_range_request_builder import DataBodyRangeRequestBuilder
+
+        return DataBodyRangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def filter(self) -> FilterRequestBuilder:
+        """
+        Provides operations to manage the filter property of the microsoft.graph.workbookTableColumn entity.
+        """
+        from .filter.filter_request_builder import FilterRequestBuilder
+
+        return FilterRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def header_row_range(self) -> HeaderRowRangeRequestBuilder:
+        """
+        Provides operations to call the headerRowRange method.
+        """
+        from .header_row_range.header_row_range_request_builder import HeaderRowRangeRequestBuilder
+
+        return HeaderRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def range(self) -> RangeRequestBuilder:
+        """
+        Provides operations to call the range method.
+        """
+        from .range.range_request_builder import RangeRequestBuilder
+
+        return RangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def total_row_range(self) -> TotalRowRangeRequestBuilder:
+        """
+        Provides operations to call the totalRowRange method.
+        """
+        from .total_row_range.total_row_range_request_builder import TotalRowRangeRequestBuilder
+
+        return TotalRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

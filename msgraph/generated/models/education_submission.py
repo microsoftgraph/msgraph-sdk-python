@@ -46,6 +46,8 @@ class EducationSubmission(Entity):
     unsubmitted_by: Optional[IdentitySet] = None
     # Moment in time when the submission was moved from submitted into the working state. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     unsubmitted_date_time: Optional[datetime.datetime] = None
+    # The webUrl property
+    web_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationSubmission:
@@ -92,6 +94,7 @@ class EducationSubmission(Entity):
             "submittedResources": lambda n : setattr(self, 'submitted_resources', n.get_collection_of_object_values(EducationSubmissionResource)),
             "unsubmittedBy": lambda n : setattr(self, 'unsubmitted_by', n.get_object_value(IdentitySet)),
             "unsubmittedDateTime": lambda n : setattr(self, 'unsubmitted_date_time', n.get_datetime_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

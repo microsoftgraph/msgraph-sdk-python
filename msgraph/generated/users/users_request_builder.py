@@ -52,7 +52,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
         List properties and relationships of the user objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-user-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,11 +71,11 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[User] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None) -> Optional[User]:
         """
-        Create a new user object.
+        Create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-user-create?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -113,7 +113,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[User] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new user object.
+        Create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

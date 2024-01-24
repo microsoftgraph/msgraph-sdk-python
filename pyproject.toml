@@ -1,6 +1,6 @@
 [build-system]
-requires = ["flit_core >=3.2,<4"]
-build-backend = "flit_core.buildapi"
+requires = ["setuptools>=65.5.0", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "msgraph-sdk"
@@ -58,7 +58,7 @@ pythonpath = [
 ]
 
 [tool.bumpver]
-current_version = "1.1.0"
+current_version = "1..0"
 version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = true

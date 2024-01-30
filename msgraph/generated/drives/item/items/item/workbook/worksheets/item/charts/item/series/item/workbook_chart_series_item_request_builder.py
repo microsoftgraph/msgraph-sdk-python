@@ -71,7 +71,7 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChartSeries]:
         """
-        Update the properties of chartseries object.
+        Update the properties of chartSeries object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartSeries]
@@ -129,7 +129,7 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of chartseries object.
+        Update the properties of chartSeries object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

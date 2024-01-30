@@ -8,6 +8,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
@@ -32,6 +33,7 @@ class AvailableProviderTypesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AvailableProviderTypesGetResponse]
         """
+        warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider", DeprecationWarning)
         request_info = self.to_get_request_information(
             request_configuration
         )
@@ -53,6 +55,7 @@ class AvailableProviderTypesRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
+        warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider", DeprecationWarning)
         request_info = RequestInformation()
         if request_configuration:
             request_info.headers.add_all(request_configuration.headers)
@@ -70,6 +73,7 @@ class AvailableProviderTypesRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: AvailableProviderTypesRequestBuilder
         """
+        warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider", DeprecationWarning)
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AvailableProviderTypesRequestBuilder(self.request_adapter, raw_url)

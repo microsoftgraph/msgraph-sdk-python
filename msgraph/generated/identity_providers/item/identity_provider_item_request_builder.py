@@ -8,6 +8,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ...models.identity_provider import IdentityProvider
@@ -33,6 +34,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
         Returns: None
         Find more info here: https://learn.microsoft.com/graph/api/identityprovider-delete?view=graph-rest-1.0
         """
+        warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider", DeprecationWarning)
         request_info = self.to_delete_request_information(
             request_configuration
         )
@@ -53,6 +55,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
         Returns: Optional[IdentityProvider]
         Find more info here: https://learn.microsoft.com/graph/api/identityprovider-get?view=graph-rest-1.0
         """
+        warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider", DeprecationWarning)
         request_info = self.to_get_request_information(
             request_configuration
         )
@@ -76,6 +79,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
         Returns: Optional[IdentityProvider]
         Find more info here: https://learn.microsoft.com/graph/api/identityprovider-update?view=graph-rest-1.0
         """
+        warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider", DeprecationWarning)
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
@@ -99,6 +103,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
+        warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider", DeprecationWarning)
         request_info = RequestInformation()
         if request_configuration:
             request_info.headers.add_all(request_configuration.headers)
@@ -115,6 +120,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
+        warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider", DeprecationWarning)
         request_info = RequestInformation()
         if request_configuration:
             request_info.headers.add_all(request_configuration.headers)
@@ -133,6 +139,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
+        warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider", DeprecationWarning)
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
@@ -152,6 +159,7 @@ class IdentityProviderItemRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: IdentityProviderItemRequestBuilder
         """
+        warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider", DeprecationWarning)
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return IdentityProviderItemRequestBuilder(self.request_adapter, raw_url)

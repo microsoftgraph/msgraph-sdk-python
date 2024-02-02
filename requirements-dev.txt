@@ -70,7 +70,7 @@ azure-core==1.30.0 ; python_version >= '3.7'
 
 azure-identity==1.15.0
 
-certifi==2023.11.17 ; python_version >= '3.6'
+certifi==2024.2.2 ; python_version >= '3.6'
 
 cffi==1.16.0
 

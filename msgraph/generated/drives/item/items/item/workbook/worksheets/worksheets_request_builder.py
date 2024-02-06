@@ -21,14 +21,14 @@ class WorksheetsRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the worksheets property of the microsoft.graph.workbook entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new WorksheetsRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_workbook_worksheet_id(self,workbook_worksheet_id: str) -> WorkbookWorksheetItemRequestBuilder:
         """
@@ -49,7 +49,7 @@ class WorksheetsRequestBuilder(BaseRequestBuilder):
         Retrieve a list of worksheet objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookWorksheetCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/worksheet-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/workbook-list-worksheets?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

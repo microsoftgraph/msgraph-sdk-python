@@ -20,14 +20,14 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the deviceConfigurations property of the microsoft.graph.deviceManagement entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new DeviceConfigurationsRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/deviceManagement/deviceConfigurations{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/deviceManagement/deviceConfigurations{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_device_configuration_id(self,device_configuration_id: str) -> DeviceConfigurationItemRequestBuilder:
         """
@@ -45,10 +45,10 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[DeviceConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfigurationCollectionResponse]:
         """
-        List properties and relationships of the iosCertificateProfile objects.
+        List properties and relationships of the androidWorkProfileCustomConfiguration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-ioscertificateprofile-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-androidworkprofilecustomconfiguration-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +67,11 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Create a new windowsPhone81CustomConfiguration object.
+        Create a new macOSGeneralDeviceConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windowsphone81customconfiguration-create?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-macosgeneraldeviceconfiguration-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +92,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[DeviceConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the iosCertificateProfile objects.
+        List properties and relationships of the androidWorkProfileCustomConfiguration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +109,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new windowsPhone81CustomConfiguration object.
+        Create a new macOSGeneralDeviceConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +149,7 @@ class DeviceConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the iosCertificateProfile objects.
+        List properties and relationships of the androidWorkProfileCustomConfiguration objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

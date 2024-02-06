@@ -17,17 +17,17 @@ class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(BaseReq
     """
     Provides operations to manage the learningCourseActivities property of the microsoft.graph.learningProvider entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, externalcourse_activity_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], externalcourse_activity_id: Optional[str] = None) -> None:
         """
         Instantiates a new LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder and sets the default values.
         param externalcourse_activity_id: Alternate key of learningCourseActivity
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
         if isinstance(path_parameters, dict):
             path_parameters['externalcourseActivityId'] = str(externalcourse_activity_id)
-        super().__init__(request_adapter, "{+baseurl}/employeeExperience/learningProviders/{learningProvider%2Did}/learningCourseActivities(externalcourseActivityId='{externalcourseActivityId}'){?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/employeeExperience/learningProviders/{learningProvider%2Did}/learningCourseActivities(externalcourseActivityId='{externalcourseActivityId}'){?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

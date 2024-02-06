@@ -16,10 +16,10 @@ class GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder(Bas
     """
     Provides operations to call the getSkypeForBusinessOrganizerActivityUserCounts method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, period: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], period: Optional[str] = None) -> None:
         """
         Instantiates a new GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param period: Usage: period='{period}'
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None

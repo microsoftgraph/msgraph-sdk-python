@@ -41,7 +41,7 @@ class Site(BaseItem):
     error: Optional[PublicError] = None
     # The externalColumns property
     external_columns: Optional[List[ColumnDefinition]] = None
-    # The isPersonalSite property
+    # Identifies whether the site is personal or not. Read-only.
     is_personal_site: Optional[bool] = None
     # Used to address any item contained in this site. This collection can't be enumerated.
     items: Optional[List[BaseItem]] = None

@@ -6,9 +6,11 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .education_channel_resource import EducationChannelResource
     from .education_excel_resource import EducationExcelResource
     from .education_external_resource import EducationExternalResource
     from .education_file_resource import EducationFileResource
+    from .education_linked_assignment_resource import EducationLinkedAssignmentResource
     from .education_link_resource import EducationLinkResource
     from .education_media_resource import EducationMediaResource
     from .education_power_point_resource import EducationPowerPointResource
@@ -49,6 +51,10 @@ class EducationResource(AdditionalDataHolder, BackedModel, Parsable):
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationChannelResource".casefold():
+            from .education_channel_resource import EducationChannelResource
+
+            return EducationChannelResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationExcelResource".casefold():
             from .education_excel_resource import EducationExcelResource
 
@@ -61,6 +67,10 @@ class EducationResource(AdditionalDataHolder, BackedModel, Parsable):
             from .education_file_resource import EducationFileResource
 
             return EducationFileResource()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationLinkedAssignmentResource".casefold():
+            from .education_linked_assignment_resource import EducationLinkedAssignmentResource
+
+            return EducationLinkedAssignmentResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationLinkResource".casefold():
             from .education_link_resource import EducationLinkResource
 
@@ -88,9 +98,11 @@ class EducationResource(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .education_channel_resource import EducationChannelResource
         from .education_excel_resource import EducationExcelResource
         from .education_external_resource import EducationExternalResource
         from .education_file_resource import EducationFileResource
+        from .education_linked_assignment_resource import EducationLinkedAssignmentResource
         from .education_link_resource import EducationLinkResource
         from .education_media_resource import EducationMediaResource
         from .education_power_point_resource import EducationPowerPointResource
@@ -98,9 +110,11 @@ class EducationResource(AdditionalDataHolder, BackedModel, Parsable):
         from .education_word_resource import EducationWordResource
         from .identity_set import IdentitySet
 
+        from .education_channel_resource import EducationChannelResource
         from .education_excel_resource import EducationExcelResource
         from .education_external_resource import EducationExternalResource
         from .education_file_resource import EducationFileResource
+        from .education_linked_assignment_resource import EducationLinkedAssignmentResource
         from .education_link_resource import EducationLinkResource
         from .education_media_resource import EducationMediaResource
         from .education_power_point_resource import EducationPowerPointResource

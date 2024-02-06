@@ -33,11 +33,11 @@ class GetByPathWithPath1RequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the getByPath method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, path1: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], path1: Optional[str] = None) -> None:
         """
         Instantiates a new GetByPathWithPath1RequestBuilder and sets the default values.
         param path1: Usage: path='{path1}'
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """

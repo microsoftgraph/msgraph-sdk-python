@@ -120,8 +120,8 @@ This sample sends an email. The request body is constructed using the provided m
 Ensure you have the [right permissions](https://docs.microsoft.com/en-us/graph/api/user-sendmail?view=graph-rest-1.0&tabs=http#permissions).
 
 Setup includes:
-1. "App Registration > Authentication > Platform: Mobile and desktop applications" with redirect_uri specified as http://localhost
-2. "Mail.Send" permissions, potentially requiring admin consent
+1. App Registration > Authentication > `Platform: Mobile and desktop applications` with `redirect_uri` specified as `http://localhost` and **public client flow** enabled.
+2. App Registration > API permissions > `Mail.Send` permissions, potentially requiring admin consent.
 
 
 ```py

@@ -206,7 +206,7 @@ credential = InteractiveBrowserCredential(
     client_id,
     authority, # e.g. https://login.microsoftonline.com/ for public Azure cloud
     tenant_id,
-    redirect_uri # as configured in your App Registration > Authentication > Platofrm: Mobile and desktop applications
+    redirect_uri # as configured in your App Registration > Authentication > Platform: Mobile and desktop applications
 )
 scopes = ["Mail.Send.Shared"]
 

@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from .assignment_settings.assignment_settings_request_builder import AssignmentSettingsRequestBuilder
     from .group.group_request_builder import GroupRequestBuilder
     from .members.members_request_builder import MembersRequestBuilder
+    from .modules.modules_request_builder import ModulesRequestBuilder
     from .schools.schools_request_builder import SchoolsRequestBuilder
     from .teachers.teachers_request_builder import TeachersRequestBuilder
 
@@ -25,14 +26,14 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the classes property of the microsoft.graph.educationRoot entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new EducationClassItemRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/education/classes/{educationClass%2Did}{?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/education/classes/{educationClass%2Did}{?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[EducationClassItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -217,6 +218,15 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
         from .members.members_request_builder import MembersRequestBuilder
 
         return MembersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def modules(self) -> ModulesRequestBuilder:
+        """
+        Provides operations to manage the modules property of the microsoft.graph.educationClass entity.
+        """
+        from .modules.modules_request_builder import ModulesRequestBuilder
+
+        return ModulesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def schools(self) -> SchoolsRequestBuilder:

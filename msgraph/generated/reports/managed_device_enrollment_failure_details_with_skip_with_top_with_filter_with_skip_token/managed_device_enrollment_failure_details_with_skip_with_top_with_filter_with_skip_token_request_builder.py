@@ -17,11 +17,11 @@ class ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipToke
     """
     Provides operations to call the managedDeviceEnrollmentFailureDetails method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, filter: Optional[str] = None, skip: Optional[int] = None, skip_token: Optional[str] = None, top: Optional[int] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], filter: Optional[str] = None, skip: Optional[int] = None, skip_token: Optional[str] = None, top: Optional[int] = None) -> None:
         """
         Instantiates a new ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder and sets the default values.
         param filter: Usage: filter='{filter}'
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         param skip: Usage: skip={skip}
         param skip_token: Usage: skipToken='{skipToken}'

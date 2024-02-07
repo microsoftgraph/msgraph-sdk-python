@@ -8,6 +8,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ......models.authored_note import AuthoredNote
@@ -17,14 +18,14 @@ class AuthoredNoteItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the notes property of the microsoft.graph.subjectRightsRequest entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new AuthoredNoteItemRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/privacy/subjectRightsRequests/{subjectRightsRequest%2Did}/notes/{authoredNote%2Did}{?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/privacy/subjectRightsRequests/{subjectRightsRequest%2Did}/notes/{authoredNote%2Did}{?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[AuthoredNoteItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -32,6 +33,7 @@ class AuthoredNoteItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
         """
+        warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
         request_info = self.to_delete_request_information(
             request_configuration
         )
@@ -51,6 +53,7 @@ class AuthoredNoteItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthoredNote]
         """
+        warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
         request_info = self.to_get_request_information(
             request_configuration
         )
@@ -73,6 +76,7 @@ class AuthoredNoteItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthoredNote]
         """
+        warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
@@ -96,6 +100,7 @@ class AuthoredNoteItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
+        warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
         request_info = RequestInformation()
         if request_configuration:
             request_info.headers.add_all(request_configuration.headers)
@@ -112,6 +117,7 @@ class AuthoredNoteItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
+        warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
         request_info = RequestInformation()
         if request_configuration:
             request_info.headers.add_all(request_configuration.headers)
@@ -130,6 +136,7 @@ class AuthoredNoteItemRequestBuilder(BaseRequestBuilder):
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
+        warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
@@ -149,6 +156,7 @@ class AuthoredNoteItemRequestBuilder(BaseRequestBuilder):
         param raw_url: The raw URL to use for the request builder.
         Returns: AuthoredNoteItemRequestBuilder
         """
+        warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AuthoredNoteItemRequestBuilder(self.request_adapter, raw_url)

@@ -17,17 +17,17 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder(BaseRequestBuilde
     """
     Provides operations to call the getApplicableContentTypesForList method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, list_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], list_id: Optional[str] = None) -> None:
         """
         Instantiates a new GetApplicableContentTypesForListWithListIdRequestBuilder and sets the default values.
         param list_id: Usage: listId='{listId}'
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
         if isinstance(path_parameters, dict):
             path_parameters['listId'] = str(list_id)
-        super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/getApplicableContentTypesForList(listId='{listId}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/getApplicableContentTypesForList(listId='{listId}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[GetApplicableContentTypesForListWithListIdRequestBuilderGetRequestConfiguration] = None) -> Optional[GetApplicableContentTypesForListWithListIdGetResponse]:
         """
@@ -92,6 +92,8 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder(BaseRequestBuilde
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
+            if original_name == "expand":
+                return "%24expand"
             if original_name == "filter":
                 return "%24filter"
             if original_name == "orderby":
@@ -108,6 +110,9 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder(BaseRequestBuilde
         
         # Include count of items
         count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
 
         # Filter items by property values
         filter: Optional[str] = None

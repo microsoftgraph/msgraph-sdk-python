@@ -19,14 +19,14 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the tokenLifetimePolicies property of the microsoft.graph.servicePrincipal entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new TokenLifetimePoliciesRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/tokenLifetimePolicies{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/tokenLifetimePolicies{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_token_lifetime_policy_id(self,token_lifetime_policy_id: str) -> TokenLifetimePolicyItemRequestBuilder:
         """
@@ -44,9 +44,10 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[TokenLifetimePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[TokenLifetimePolicyCollectionResponse]:
         """
-        The tokenLifetimePolicies assigned to this service principal.
+        List the tokenLifetimePolicy objects that are assigned to a servicePrincipal. Only one object is returned in the collection because only one tokenLifetimePolicy can be assigned to a service principal.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TokenLifetimePolicyCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-list-tokenlifetimepolicies?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +66,7 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[TokenLifetimePoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The tokenLifetimePolicies assigned to this service principal.
+        List the tokenLifetimePolicy objects that are assigned to a servicePrincipal. Only one object is returned in the collection because only one tokenLifetimePolicy can be assigned to a service principal.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +103,7 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TokenLifetimePoliciesRequestBuilderGetQueryParameters():
         """
-        The tokenLifetimePolicies assigned to this service principal.
+        List the tokenLifetimePolicy objects that are assigned to a servicePrincipal. Only one object is returned in the collection because only one tokenLifetimePolicy can be assigned to a service principal.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

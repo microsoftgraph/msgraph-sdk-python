@@ -25,14 +25,14 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the lists property of the microsoft.graph.site entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new ListItemRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/lists/{list%2Did}{?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/lists/{list%2Did}{?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ListItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -55,10 +55,10 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ListItemRequestBuilderGetRequestConfiguration] = None) -> Optional[List_]:
         """
-        Returns the metadata for a [list][].
+        Get a list of rich long-running operations associated with a list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[List_]
-        Find more info here: https://learn.microsoft.com/graph/api/list-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/list-list-operations?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -117,7 +117,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ListItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Returns the metadata for a [list][].
+        Get a list of rich long-running operations associated with a list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -247,7 +247,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ListItemRequestBuilderGetQueryParameters():
         """
-        Returns the metadata for a [list][].
+        Get a list of rich long-running operations associated with a list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

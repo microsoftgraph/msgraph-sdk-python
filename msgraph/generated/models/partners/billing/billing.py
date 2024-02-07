@@ -1,0 +1,73 @@
+from __future__ import annotations
+from dataclasses import dataclass, field
+from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+
+if TYPE_CHECKING:
+    from ...entity import Entity
+    from .azure_usage import AzureUsage
+    from .manifest import Manifest
+    from .operation import Operation
+
+from ...entity import Entity
+
+@dataclass
+class Billing(Entity):
+    # Represents metadata for the exported data.
+    manifests: Optional[List[Manifest]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Represents an operation to export the billing data of a partner.
+    operations: Optional[List[Operation]] = None
+    # The usage property
+    usage: Optional[AzureUsage] = None
+    
+    @staticmethod
+    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Billing:
+        """
+        Creates a new instance of the appropriate class based on discriminator value
+        param parse_node: The parse node to use to read the discriminator value and create the object
+        Returns: Billing
+        """
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
+        return Billing()
+    
+    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+        """
+        The deserialization information for the current model
+        Returns: Dict[str, Callable[[ParseNode], None]]
+        """
+        from ...entity import Entity
+        from .azure_usage import AzureUsage
+        from .manifest import Manifest
+        from .operation import Operation
+
+        from ...entity import Entity
+        from .azure_usage import AzureUsage
+        from .manifest import Manifest
+        from .operation import Operation
+
+        fields: Dict[str, Callable[[Any], None]] = {
+            "manifests": lambda n : setattr(self, 'manifests', n.get_collection_of_object_values(Manifest)),
+            "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(Operation)),
+            "usage": lambda n : setattr(self, 'usage', n.get_object_value(AzureUsage)),
+        }
+        super_fields = super().get_field_deserializers()
+        fields.update(super_fields)
+        return fields
+    
+    def serialize(self,writer: SerializationWriter) -> None:
+        """
+        Serializes information the current object
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
+        """
+        if not writer:
+            raise TypeError("writer cannot be null.")
+        super().serialize(writer)
+        writer.write_collection_of_object_values("manifests", self.manifests)
+        writer.write_collection_of_object_values("operations", self.operations)
+        writer.write_object_value("usage", self.usage)
+    
+

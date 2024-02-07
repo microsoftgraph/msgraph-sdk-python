@@ -13,7 +13,7 @@ class RiskDetail(str, Enum):
     Hidden = "hidden",
     AdminConfirmedUserCompromised = "adminConfirmedUserCompromised",
     UnknownFutureValue = "unknownFutureValue",
+    M365DAdminDismissedDetection = "m365DAdminDismissedDetection",
     AdminConfirmedServicePrincipalCompromised = "adminConfirmedServicePrincipalCompromised",
     AdminDismissedAllRiskForServicePrincipal = "adminDismissedAllRiskForServicePrincipal",
-    M365DAdminDismissedDetection = "m365DAdminDismissedDetection",
 

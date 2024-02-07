@@ -17,10 +17,10 @@ class SendActivityNotificationRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the sendActivityNotification method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new SendActivityNotificationRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
@@ -28,7 +28,7 @@ class SendActivityNotificationRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SendActivityNotificationPostRequestBody] = None, request_configuration: Optional[SendActivityNotificationRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Send an activity feed notification in the scope of a team. For more details about sending notifications and the requirements for doing so, seesending Teams activity notifications.
+        Send an activity feed notification in the scope of a team. For more information about sending notifications and the requirements for doing so, seesending Teams activity notifications.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
@@ -51,7 +51,7 @@ class SendActivityNotificationRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SendActivityNotificationPostRequestBody] = None, request_configuration: Optional[SendActivityNotificationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Send an activity feed notification in the scope of a team. For more details about sending notifications and the requirements for doing so, seesending Teams activity notifications.
+        Send an activity feed notification in the scope of a team. For more information about sending notifications and the requirements for doing so, seesending Teams activity notifications.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

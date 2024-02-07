@@ -17,17 +17,17 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(BaseRequestBu
     """
     Provides operations to call the getRecentNotebooks method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, include_personal_notebooks: Optional[bool] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], include_personal_notebooks: Optional[bool] = None) -> None:
         """
         Instantiates a new GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder and sets the default values.
         param include_personal_notebooks: Usage: includePersonalNotebooks={includePersonalNotebooks}
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
         if isinstance(path_parameters, dict):
             path_parameters['includePersonalNotebooks'] = str(include_personal_notebooks)
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/onenote/notebooks/getRecentNotebooks(includePersonalNotebooks={includePersonalNotebooks}){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/onenote/notebooks/getRecentNotebooks(includePersonalNotebooks={includePersonalNotebooks}){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetRequestConfiguration] = None) -> Optional[GetRecentNotebooksWithIncludePersonalNotebooksGetResponse]:
         """

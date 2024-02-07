@@ -29,14 +29,14 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the messages property of the microsoft.graph.user entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new MessageItemRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?includeHiddenMessages*,%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24expand,%24select,includeHiddenMessages*}", path_parameters)
     
     async def delete(self,request_configuration: Optional[MessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -63,7 +63,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
         The messages in a mailbox or folder. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Message]
-        Find more info here: https://learn.microsoft.com/graph/api/message-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

@@ -20,14 +20,14 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the managedAppPolicies property of the microsoft.graph.deviceAppManagement entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new ManagedAppPoliciesRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/managedAppPolicies{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/managedAppPolicies{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_managed_app_policy_id(self,managed_app_policy_id: str) -> ManagedAppPolicyItemRequestBuilder:
         """
@@ -45,10 +45,10 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppPolicyCollectionResponse]:
         """
-        List properties and relationships of the managedAppProtection objects.
+        List properties and relationships of the managedAppConfiguration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappprotection-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappconfiguration-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -91,7 +91,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedAppProtection objects.
+        List properties and relationships of the managedAppConfiguration objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppPoliciesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedAppProtection objects.
+        List properties and relationships of the managedAppConfiguration objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

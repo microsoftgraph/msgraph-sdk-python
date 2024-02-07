@@ -18,14 +18,14 @@ class UserFlowLanguagePageItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the defaultPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new UserFlowLanguagePageItemRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/identity/b2xUserFlows/{b2xIdentityUserFlow%2Did}/languages/{userFlowLanguageConfiguration%2Did}/defaultPages/{userFlowLanguagePage%2Did}{?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/identity/b2xUserFlows/{b2xIdentityUserFlow%2Did}/languages/{userFlowLanguageConfiguration%2Did}/defaultPages/{userFlowLanguagePage%2Did}{?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[UserFlowLanguagePageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

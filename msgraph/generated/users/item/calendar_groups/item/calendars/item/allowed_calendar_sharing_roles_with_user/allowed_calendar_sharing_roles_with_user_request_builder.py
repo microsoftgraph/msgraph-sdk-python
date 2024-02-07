@@ -17,17 +17,17 @@ class AllowedCalendarSharingRolesWithUserRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the allowedCalendarSharingRoles method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, user: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], user: Optional[str] = None) -> None:
         """
         Instantiates a new AllowedCalendarSharingRolesWithUserRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         param user: Usage: User='{User}'
         Returns: None
         """
         if isinstance(path_parameters, dict):
             path_parameters['User'] = str(user)
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}/calendars/{calendar%2Did}/allowedCalendarSharingRoles(User='{User}'){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}/calendars/{calendar%2Did}/allowedCalendarSharingRoles(User='{User}'){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[AllowedCalendarSharingRolesWithUserRequestBuilderGetRequestConfiguration] = None) -> Optional[AllowedCalendarSharingRolesWithUserGetResponse]:
         """

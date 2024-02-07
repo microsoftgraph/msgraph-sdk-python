@@ -17,17 +17,17 @@ class GetEffectivePermissionsWithScopeRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the getEffectivePermissions method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, scope: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], scope: Optional[str] = None) -> None:
         """
         Instantiates a new GetEffectivePermissionsWithScopeRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         param scope: Usage: scope='{scope}'
         Returns: None
         """
         if isinstance(path_parameters, dict):
             path_parameters['scope'] = str(scope)
-        super().__init__(request_adapter, "{+baseurl}/deviceManagement/getEffectivePermissions(scope='{scope}'){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/deviceManagement/getEffectivePermissions(scope='{scope}'){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[GetEffectivePermissionsWithScopeRequestBuilderGetRequestConfiguration] = None) -> Optional[GetEffectivePermissionsWithScopeGetResponse]:
         """

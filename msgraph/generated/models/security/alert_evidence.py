@@ -16,10 +16,12 @@ if TYPE_CHECKING:
     from .container_image_evidence import ContainerImageEvidence
     from .container_registry_evidence import ContainerRegistryEvidence
     from .device_evidence import DeviceEvidence
+    from .dns_evidence import DnsEvidence
     from .evidence_remediation_status import EvidenceRemediationStatus
     from .evidence_role import EvidenceRole
     from .evidence_verdict import EvidenceVerdict
     from .file_evidence import FileEvidence
+    from .file_hash_evidence import FileHashEvidence
     from .git_hub_organization_evidence import GitHubOrganizationEvidence
     from .git_hub_repo_evidence import GitHubRepoEvidence
     from .git_hub_user_evidence import GitHubUserEvidence
@@ -127,10 +129,18 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
             from .device_evidence import DeviceEvidence
 
             return DeviceEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.dnsEvidence".casefold():
+            from .dns_evidence import DnsEvidence
+
+            return DnsEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.fileEvidence".casefold():
             from .file_evidence import FileEvidence
 
             return FileEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.fileHashEvidence".casefold():
+            from .file_hash_evidence import FileHashEvidence
+
+            return FileHashEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.gitHubOrganizationEvidence".casefold():
             from .git_hub_organization_evidence import GitHubOrganizationEvidence
 
@@ -264,10 +274,12 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .container_image_evidence import ContainerImageEvidence
         from .container_registry_evidence import ContainerRegistryEvidence
         from .device_evidence import DeviceEvidence
+        from .dns_evidence import DnsEvidence
         from .evidence_remediation_status import EvidenceRemediationStatus
         from .evidence_role import EvidenceRole
         from .evidence_verdict import EvidenceVerdict
         from .file_evidence import FileEvidence
+        from .file_hash_evidence import FileHashEvidence
         from .git_hub_organization_evidence import GitHubOrganizationEvidence
         from .git_hub_repo_evidence import GitHubRepoEvidence
         from .git_hub_user_evidence import GitHubUserEvidence
@@ -308,10 +320,12 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .container_image_evidence import ContainerImageEvidence
         from .container_registry_evidence import ContainerRegistryEvidence
         from .device_evidence import DeviceEvidence
+        from .dns_evidence import DnsEvidence
         from .evidence_remediation_status import EvidenceRemediationStatus
         from .evidence_role import EvidenceRole
         from .evidence_verdict import EvidenceVerdict
         from .file_evidence import FileEvidence
+        from .file_hash_evidence import FileHashEvidence
         from .git_hub_organization_evidence import GitHubOrganizationEvidence
         from .git_hub_repo_evidence import GitHubRepoEvidence
         from .git_hub_user_evidence import GitHubUserEvidence

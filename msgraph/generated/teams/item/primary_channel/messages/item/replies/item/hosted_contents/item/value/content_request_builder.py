@@ -16,14 +16,14 @@ class ContentRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the media for the team entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new ContentRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/teams/{team%2Did}/primaryChannel/messages/{chatMessage%2Did}/replies/{chatMessage%2Did1}/hostedContents/{chatMessageHostedContent%2Did}/$value", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/teams/{team%2Did}/primaryChannel/messages/{chatMessage%2Did}/replies/{chatMessage%2Did1}/hostedContents/{chatMessageHostedContent%2Did}/$value{?%24format*}", path_parameters)
     
     async def get(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
@@ -76,6 +76,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
         request_info = RequestInformation()
         if request_configuration:
             request_info.headers.add_all(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -113,6 +114,27 @@ class ContentRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return ContentRequestBuilder(self.request_adapter, raw_url)
     
+    @dataclass
+    class ContentRequestBuilderGetQueryParameters():
+        """
+        Get media content for the navigation property hostedContents from teams
+        """
+        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+            """
+            Maps the query parameters names to their encoded names for the URI template parsing.
+            param original_name: The original query parameter name in the class.
+            Returns: str
+            """
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
+            if original_name == "format":
+                return "%24format"
+            return original_name
+        
+        # Format of the content
+        format: Optional[str] = None
+
+    
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 
     @dataclass
@@ -122,6 +144,9 @@ class ContentRequestBuilder(BaseRequestBuilder):
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
+        # Request query parameters
+        query_parameters: Optional[ContentRequestBuilder.ContentRequestBuilderGetQueryParameters] = None
+
     
     from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
 

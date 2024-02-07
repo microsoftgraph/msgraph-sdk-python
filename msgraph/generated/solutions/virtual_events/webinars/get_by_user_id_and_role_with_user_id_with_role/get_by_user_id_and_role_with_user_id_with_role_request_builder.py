@@ -17,10 +17,10 @@ class GetByUserIdAndRoleWithUserIdWithRoleRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the getByUserIdAndRole method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, role: Optional[str] = None, user_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], role: Optional[str] = None, user_id: Optional[str] = None) -> None:
         """
         Instantiates a new GetByUserIdAndRoleWithUserIdWithRoleRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         param role: Usage: role='{role}'
         param user_id: Usage: userId='{userId}'
@@ -29,7 +29,7 @@ class GetByUserIdAndRoleWithUserIdWithRoleRequestBuilder(BaseRequestBuilder):
         if isinstance(path_parameters, dict):
             path_parameters['role'] = str(role)
             path_parameters['userId'] = str(user_id)
-        super().__init__(request_adapter, "{+baseurl}/solutions/virtualEvents/webinars/getByUserIdAndRole(userId='{userId}',role='{role}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/solutions/virtualEvents/webinars/getByUserIdAndRole(userId='{userId}',role='{role}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[GetByUserIdAndRoleWithUserIdWithRoleRequestBuilderGetRequestConfiguration] = None) -> Optional[GetByUserIdAndRoleWithUserIdWithRoleGetResponse]:
         """
@@ -94,6 +94,8 @@ class GetByUserIdAndRoleWithUserIdWithRoleRequestBuilder(BaseRequestBuilder):
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
+            if original_name == "expand":
+                return "%24expand"
             if original_name == "filter":
                 return "%24filter"
             if original_name == "orderby":
@@ -110,6 +112,9 @@ class GetByUserIdAndRoleWithUserIdWithRoleRequestBuilder(BaseRequestBuilder):
         
         # Include count of items
         count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
 
         # Filter items by property values
         filter: Optional[str] = None

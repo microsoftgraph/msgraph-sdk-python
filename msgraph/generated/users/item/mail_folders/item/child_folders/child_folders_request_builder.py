@@ -21,14 +21,14 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the childFolders property of the microsoft.graph.mailFolder entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new ChildFoldersRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?includeHiddenFolders*,%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top,includeHiddenFolders*}", path_parameters)
     
     def by_mail_folder_id1(self,mail_folder_id1: str) -> MailFolderItemRequestBuilder:
         """
@@ -68,11 +68,11 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MailFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[MailFolder]:
         """
-        Create a new mailSearchFolder in the specified user's mailbox.
+        Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolder]
-        Find more info here: https://learn.microsoft.com/graph/api/mailsearchfolder-post?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/mailfolder-post-childfolders?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -110,7 +110,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[MailFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new mailSearchFolder in the specified user's mailbox.
+        Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from .education_category import EducationCategory
     from .education_course import EducationCourse
     from .education_external_source import EducationExternalSource
+    from .education_module import EducationModule
     from .education_school import EducationSchool
     from .education_term import EducationTerm
     from .education_user import EducationUser
@@ -55,6 +56,8 @@ class EducationClass(Entity):
     mail_nickname: Optional[str] = None
     # All users in the class. Nullable.
     members: Optional[List[EducationUser]] = None
+    # The modules property
+    modules: Optional[List[EducationModule]] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # All schools that this class is associated with. Nullable.
@@ -86,6 +89,7 @@ class EducationClass(Entity):
         from .education_category import EducationCategory
         from .education_course import EducationCourse
         from .education_external_source import EducationExternalSource
+        from .education_module import EducationModule
         from .education_school import EducationSchool
         from .education_term import EducationTerm
         from .education_user import EducationUser
@@ -99,6 +103,7 @@ class EducationClass(Entity):
         from .education_category import EducationCategory
         from .education_course import EducationCourse
         from .education_external_source import EducationExternalSource
+        from .education_module import EducationModule
         from .education_school import EducationSchool
         from .education_term import EducationTerm
         from .education_user import EducationUser
@@ -124,6 +129,7 @@ class EducationClass(Entity):
             "group": lambda n : setattr(self, 'group', n.get_object_value(Group)),
             "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(EducationUser)),
+            "modules": lambda n : setattr(self, 'modules', n.get_collection_of_object_values(EducationModule)),
             "schools": lambda n : setattr(self, 'schools', n.get_collection_of_object_values(EducationSchool)),
             "teachers": lambda n : setattr(self, 'teachers', n.get_collection_of_object_values(EducationUser)),
             "term": lambda n : setattr(self, 'term', n.get_object_value(EducationTerm)),
@@ -158,6 +164,7 @@ class EducationClass(Entity):
         writer.write_object_value("group", self.group)
         writer.write_str_value("mailNickname", self.mail_nickname)
         writer.write_collection_of_object_values("members", self.members)
+        writer.write_collection_of_object_values("modules", self.modules)
         writer.write_collection_of_object_values("schools", self.schools)
         writer.write_collection_of_object_values("teachers", self.teachers)
         writer.write_object_value("term", self.term)

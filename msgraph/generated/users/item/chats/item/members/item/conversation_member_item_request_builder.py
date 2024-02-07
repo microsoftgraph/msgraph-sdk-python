@@ -17,14 +17,14 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the members property of the microsoft.graph.chat entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new ConversationMemberItemRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/chats/{chat%2Did}/members/{conversationMember%2Did}{?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/chats/{chat%2Did}/members/{conversationMember%2Did}{?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ConversationMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -48,10 +48,10 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ConversationMemberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ConversationMember]:
         """
-        Retrieve a conversationMember from a chat or channel.
+        Retrieve a conversationMember from a chat.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationMember]
-        Find more info here: https://learn.microsoft.com/graph/api/conversationmember-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/chat-get-members?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -110,7 +110,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ConversationMemberItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a conversationMember from a chat or channel.
+        Retrieve a conversationMember from a chat.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -168,7 +168,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConversationMemberItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a conversationMember from a chat or channel.
+        Retrieve a conversationMember from a chat.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -16,20 +16,22 @@ if TYPE_CHECKING:
     from .attendee_report.attendee_report_request_builder import AttendeeReportRequestBuilder
     from .get_virtual_appointment_join_web_url.get_virtual_appointment_join_web_url_request_builder import GetVirtualAppointmentJoinWebUrlRequestBuilder
     from .recordings.recordings_request_builder import RecordingsRequestBuilder
+    from .send_virtual_appointment_reminder_sms.send_virtual_appointment_reminder_sms_request_builder import SendVirtualAppointmentReminderSmsRequestBuilder
+    from .send_virtual_appointment_sms.send_virtual_appointment_sms_request_builder import SendVirtualAppointmentSmsRequestBuilder
     from .transcripts.transcripts_request_builder import TranscriptsRequestBuilder
 
 class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the onlineMeetings property of the microsoft.graph.cloudCommunications entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new OnlineMeetingItemRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/communications/onlineMeetings/{onlineMeeting%2Did}{?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/communications/onlineMeetings/{onlineMeeting%2Did}{?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -193,6 +195,24 @@ class OnlineMeetingItemRequestBuilder(BaseRequestBuilder):
         from .recordings.recordings_request_builder import RecordingsRequestBuilder
 
         return RecordingsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def send_virtual_appointment_reminder_sms(self) -> SendVirtualAppointmentReminderSmsRequestBuilder:
+        """
+        Provides operations to call the sendVirtualAppointmentReminderSms method.
+        """
+        from .send_virtual_appointment_reminder_sms.send_virtual_appointment_reminder_sms_request_builder import SendVirtualAppointmentReminderSmsRequestBuilder
+
+        return SendVirtualAppointmentReminderSmsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def send_virtual_appointment_sms(self) -> SendVirtualAppointmentSmsRequestBuilder:
+        """
+        Provides operations to call the sendVirtualAppointmentSms method.
+        """
+        from .send_virtual_appointment_sms.send_virtual_appointment_sms_request_builder import SendVirtualAppointmentSmsRequestBuilder
+
+        return SendVirtualAppointmentSmsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def transcripts(self) -> TranscriptsRequestBuilder:

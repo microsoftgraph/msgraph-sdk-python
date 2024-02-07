@@ -18,11 +18,11 @@ class MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequest
     """
     Provides operations to call the getPstnCalls method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, from_date_time: Optional[datetime.datetime] = None, to_date_time: Optional[datetime.datetime] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], from_date_time: Optional[datetime.datetime] = None, to_date_time: Optional[datetime.datetime] = None) -> None:
         """
         Instantiates a new MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder and sets the default values.
         param from_date_time: Usage: fromDateTime={fromDateTime}
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         param to_date_time: Usage: toDateTime={toDateTime}
         Returns: None
@@ -30,7 +30,7 @@ class MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequest
         if isinstance(path_parameters, dict):
             path_parameters['fromDateTime'] = str(from_date_time)
             path_parameters['toDateTime'] = str(to_date_time)
-        super().__init__(request_adapter, "{+baseurl}/communications/callRecords/microsoft.graph.callRecords.getPstnCalls(fromDateTime={fromDateTime},toDateTime={toDateTime}){?%24top,%24skip,%24search,%24filter,%24count}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/communications/callRecords/microsoft.graph.callRecords.getPstnCalls(fromDateTime={fromDateTime},toDateTime={toDateTime}){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[MicrosoftGraphCallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetRequestConfiguration] = None) -> Optional[GetPstnCallsWithFromDateTimeWithToDateTimeGetResponse]:
         """

@@ -22,7 +22,7 @@ class EducationSubmission(Entity):
     outcomes: Optional[List[EducationOutcome]] = None
     # User who moved the status of this submission to reassigned.
     reassigned_by: Optional[IdentitySet] = None
-    # Moment in time when the submission was reassigned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    # Moment in time when the submission was reassigned. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     reassigned_date_time: Optional[datetime.datetime] = None
     # Who this submission is assigned to.
     recipient: Optional[EducationSubmissionRecipient] = None
@@ -32,21 +32,21 @@ class EducationSubmission(Entity):
     resources_folder_url: Optional[str] = None
     # User who moved the status of this submission to returned.
     returned_by: Optional[IdentitySet] = None
-    # Moment in time when the submission was returned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    # Moment in time when the submission was returned. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     returned_date_time: Optional[datetime.datetime] = None
     # Read-only. Possible values are: working, submitted, returned, and reassigned. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: reassigned.
     status: Optional[EducationSubmissionStatus] = None
     # User who moved the resource into the submitted state.
     submitted_by: Optional[IdentitySet] = None
-    # Moment in time when the submission was moved into the submitted state. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    # Moment in time when the submission was moved into the submitted state. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     submitted_date_time: Optional[datetime.datetime] = None
     # The submittedResources property
     submitted_resources: Optional[List[EducationSubmissionResource]] = None
     # User who moved the resource from submitted into the working state.
     unsubmitted_by: Optional[IdentitySet] = None
-    # Moment in time when the submission was moved from submitted into the working state. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    # Moment in time when the submission was moved from submitted into the working state. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     unsubmitted_date_time: Optional[datetime.datetime] = None
-    # The webUrl property
+    # The deep link URL for the given submission.
     web_url: Optional[str] = None
     
     @staticmethod

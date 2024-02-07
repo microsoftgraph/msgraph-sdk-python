@@ -17,11 +17,11 @@ class ImageWithWidthWithHeightRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the image method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, height: Optional[int] = None, width: Optional[int] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], height: Optional[int] = None, width: Optional[int] = None) -> None:
         """
         Instantiates a new ImageWithWidthWithHeightRequestBuilder and sets the default values.
         param height: Usage: height={height}
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         param width: Usage: width={width}
         Returns: None

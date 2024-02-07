@@ -18,14 +18,14 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the managedAppPolicies property of the microsoft.graph.deviceAppManagement entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new ManagedAppPolicyItemRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/managedAppPolicies/{managedAppPolicy%2Did}{?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/managedAppPolicies/{managedAppPolicy%2Did}{?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[ManagedAppPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -48,10 +48,10 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[ManagedAppPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppPolicy]:
         """
-        Read properties and relationships of the managedAppProtection object.
+        Read properties and relationships of the windowsInformationProtection object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappprotection-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-windowsinformationprotection-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -110,7 +110,7 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedAppProtection object.
+        Read properties and relationships of the windowsInformationProtection object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -177,7 +177,7 @@ class ManagedAppPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppPolicyItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedAppProtection object.
+        Read properties and relationships of the windowsInformationProtection object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

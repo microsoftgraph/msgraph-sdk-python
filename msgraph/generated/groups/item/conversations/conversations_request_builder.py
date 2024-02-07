@@ -20,14 +20,14 @@ class ConversationsRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the conversations property of the microsoft.graph.group entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new ConversationsRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/conversations{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/conversations{?%24count,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     def by_conversation_id(self,conversation_id: str) -> ConversationItemRequestBuilder:
         """
@@ -67,11 +67,11 @@ class ConversationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Conversation] = None, request_configuration: Optional[ConversationsRequestBuilderPostRequestConfiguration] = None) -> Optional[Conversation]:
         """
-        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
+        Use reply thread or reply post to further post to that conversation.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Conversation]
-        Find more info here: https://learn.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/group-post-conversations?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -109,7 +109,7 @@ class ConversationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Conversation] = None, request_configuration: Optional[ConversationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
+        Use reply thread or reply post to further post to that conversation.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

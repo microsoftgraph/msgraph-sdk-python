@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .authentication_methods_root import AuthenticationMethodsRoot
+    from .partners.partners import Partners
     from .print_usage_by_printer import PrintUsageByPrinter
     from .print_usage_by_user import PrintUsageByUser
     from .security_reports_root import SecurityReportsRoot
@@ -29,6 +30,8 @@ class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
     monthly_print_usage_by_user: Optional[List[PrintUsageByUser]] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # Represents billing details for a Microsoft direct partner.
+    partners: Optional[Partners] = None
     # Represents an abstract type that contains resources for attack simulation and training reports.
     security: Optional[SecurityReportsRoot] = None
     
@@ -49,11 +52,13 @@ class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .authentication_methods_root import AuthenticationMethodsRoot
+        from .partners.partners import Partners
         from .print_usage_by_printer import PrintUsageByPrinter
         from .print_usage_by_user import PrintUsageByUser
         from .security_reports_root import SecurityReportsRoot
 
         from .authentication_methods_root import AuthenticationMethodsRoot
+        from .partners.partners import Partners
         from .print_usage_by_printer import PrintUsageByPrinter
         from .print_usage_by_user import PrintUsageByUser
         from .security_reports_root import SecurityReportsRoot
@@ -65,6 +70,7 @@ class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
             "monthlyPrintUsageByPrinter": lambda n : setattr(self, 'monthly_print_usage_by_printer', n.get_collection_of_object_values(PrintUsageByPrinter)),
             "monthlyPrintUsageByUser": lambda n : setattr(self, 'monthly_print_usage_by_user', n.get_collection_of_object_values(PrintUsageByUser)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "partners": lambda n : setattr(self, 'partners', n.get_object_value(Partners)),
             "security": lambda n : setattr(self, 'security', n.get_object_value(SecurityReportsRoot)),
         }
         return fields
@@ -83,6 +89,7 @@ class ReportRoot(AdditionalDataHolder, BackedModel, Parsable):
         writer.write_collection_of_object_values("monthlyPrintUsageByPrinter", self.monthly_print_usage_by_printer)
         writer.write_collection_of_object_values("monthlyPrintUsageByUser", self.monthly_print_usage_by_user)
         writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_object_value("partners", self.partners)
         writer.write_object_value("security", self.security)
         writer.write_additional_data_value(self.additional_data)
     

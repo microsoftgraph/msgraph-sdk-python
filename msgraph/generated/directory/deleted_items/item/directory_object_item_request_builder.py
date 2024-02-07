@@ -28,34 +28,14 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new DirectoryObjectItemRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/directory/deletedItems/{directoryObject%2Did}{?%24select,%24expand}", path_parameters)
-    
-    async def delete(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
-        """
-        Permanently delete a recently deleted application, group, servicePrincipal, or user object from deleted items. After an item is permanently deleted, it cannot be restored. Administrative units cannot be permanently deleted by using the deletedItems API. Soft-deleted administrative units will be permanently deleted 30 days after initial deletion unless they are restored.
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/directory-deleteditems-delete?view=graph-rest-1.0
-        """
-        request_info = self.to_delete_request_information(
-            request_configuration
-        )
-        from ....models.o_data_errors.o_data_error import ODataError
-
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        super().__init__(request_adapter, "{+baseurl}/directory/deletedItems/{directoryObject%2Did}{?%24expand,%24select}", path_parameters)
     
     async def get(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryObject]:
         """
@@ -78,22 +58,6 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
         from ....models.directory_object import DirectoryObject
 
         return await self.request_adapter.send_async(request_info, DirectoryObject, error_mapping)
-    
-    def to_delete_request_information(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
-        """
-        Permanently delete a recently deleted application, group, servicePrincipal, or user object from deleted items. After an item is permanently deleted, it cannot be restored. Administrative units cannot be permanently deleted by using the deletedItems API. Soft-deleted administrative units will be permanently deleted 30 days after initial deletion unless they are restored.
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json")
-        return request_info
     
     def to_get_request_information(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -220,16 +184,6 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
         from .restore.restore_request_builder import RestoreRequestBuilder
 
         return RestoreRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DirectoryObjectItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
     @dataclass
     class DirectoryObjectItemRequestBuilderGetQueryParameters():

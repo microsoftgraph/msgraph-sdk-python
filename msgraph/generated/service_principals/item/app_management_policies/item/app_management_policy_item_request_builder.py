@@ -17,34 +17,14 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the appManagementPolicies property of the microsoft.graph.servicePrincipal entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new AppManagementPolicyItemRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/appManagementPolicies/{appManagementPolicy%2Did}{?%24select,%24expand}", path_parameters)
-    
-    async def delete(self,request_configuration: Optional[AppManagementPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
-        """
-        Remove an appManagementPolicy policy object from an application or service principal object. When you remove the appManagementPolicy, the application or service principal adopts the tenant-wide tenantAppManagementPolicy setting. 
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/appmanagementpolicy-delete-appliesto?view=graph-rest-1.0
-        """
-        request_info = self.to_delete_request_information(
-            request_configuration
-        )
-        from .....models.o_data_errors.o_data_error import ODataError
-
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/appManagementPolicies/{appManagementPolicy%2Did}{?%24expand,%24select}", path_parameters)
     
     async def get(self,request_configuration: Optional[AppManagementPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AppManagementPolicy]:
         """
@@ -66,22 +46,6 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
         from .....models.app_management_policy import AppManagementPolicy
 
         return await self.request_adapter.send_async(request_info, AppManagementPolicy, error_mapping)
-    
-    def to_delete_request_information(self,request_configuration: Optional[AppManagementPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
-        """
-        Remove an appManagementPolicy policy object from an application or service principal object. When you remove the appManagementPolicy, the application or service principal adopts the tenant-wide tenantAppManagementPolicy setting. 
-        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.DELETE
-        request_info.headers.try_add("Accept", "application/json")
-        return request_info
     
     def to_get_request_information(self,request_configuration: Optional[AppManagementPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -109,16 +73,6 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AppManagementPolicyItemRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AppManagementPolicyItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
     @dataclass
     class AppManagementPolicyItemRequestBuilderGetQueryParameters():

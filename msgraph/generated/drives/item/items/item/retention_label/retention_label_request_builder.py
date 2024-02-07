@@ -17,14 +17,14 @@ class RetentionLabelRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the retentionLabel property of the microsoft.graph.driveItem entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new RetentionLabelRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/retentionLabel{?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/retentionLabel{?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[RetentionLabelRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -69,11 +69,11 @@ class RetentionLabelRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ItemRetentionLabel] = None, request_configuration: Optional[RetentionLabelRequestBuilderPatchRequestConfiguration] = None) -> Optional[ItemRetentionLabel]:
         """
-        Apply (set) a retention label on a driveItem (files and folders). Retention labels don't need to be published in a retention label policy to be applied using this method. When a retention label is applied to a folder, all the items in the folder are tagged with the same retention label. For information about conflict resolution for retention labels, see Will an existing label be overridden or removed. For information about retention labels from an administrator's perspective, see Use retention labels to manage the lifecycle of documents stored in SharePoint.
+        Lock or unlock a retention label on a driveItem that classifies content as records. For information about retention labels from an administrator's perspective, see Use retention labels to manage the lifecycle of documents stored in SharePoint. For more information about how you can lock and unlock retention labels, see Use record versioning to update records stored in SharePoint or OneDrive.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ItemRetentionLabel]
-        Find more info here: https://learn.microsoft.com/graph/api/driveitem-setretentionlabel?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/driveitem-lockorunlockrecord?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -127,7 +127,7 @@ class RetentionLabelRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ItemRetentionLabel] = None, request_configuration: Optional[RetentionLabelRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Apply (set) a retention label on a driveItem (files and folders). Retention labels don't need to be published in a retention label policy to be applied using this method. When a retention label is applied to a folder, all the items in the folder are tagged with the same retention label. For information about conflict resolution for retention labels, see Will an existing label be overridden or removed. For information about retention labels from an administrator's perspective, see Use retention labels to manage the lifecycle of documents stored in SharePoint.
+        Lock or unlock a retention label on a driveItem that classifies content as records. For information about retention labels from an administrator's perspective, see Use retention labels to manage the lifecycle of documents stored in SharePoint. For more information about how you can lock and unlock retention labels, see Use record versioning to update records stored in SharePoint or OneDrive.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

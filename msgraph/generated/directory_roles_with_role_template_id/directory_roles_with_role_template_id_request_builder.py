@@ -17,17 +17,17 @@ class DirectoryRolesWithRoleTemplateIdRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the collection of directoryRole entities.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, role_template_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], role_template_id: Optional[str] = None) -> None:
         """
         Instantiates a new DirectoryRolesWithRoleTemplateIdRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         param role_template_id: Alternate key of directoryRole
         Returns: None
         """
         if isinstance(path_parameters, dict):
             path_parameters['roleTemplateId'] = str(role_template_id)
-        super().__init__(request_adapter, "{+baseurl}/directoryRoles(roleTemplateId='{roleTemplateId}'){?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/directoryRoles(roleTemplateId='{roleTemplateId}'){?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[DirectoryRolesWithRoleTemplateIdRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

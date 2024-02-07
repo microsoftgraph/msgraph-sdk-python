@@ -63,6 +63,8 @@ class EducationAssignment(Entity):
     last_modified_by: Optional[IdentitySet] = None
     # Moment when the assignment was last modified.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     last_modified_date_time: Optional[datetime.datetime] = None
+    # The moduleUrl property
+    module_url: Optional[str] = None
     # Optional field to specify the URL of the channel to post the assignment publish notification. If not specified or null, defaults to the General channel. This field only applies to assignments where the assignTo value is educationAssignmentClassRecipient. Updating the notificationChannelUrl isn't allowed after the assignment has been published.
     notification_channel_url: Optional[str] = None
     # The OdataType property
@@ -145,6 +147,7 @@ class EducationAssignment(Entity):
             "instructions": lambda n : setattr(self, 'instructions', n.get_object_value(EducationItemBody)),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "moduleUrl": lambda n : setattr(self, 'module_url', n.get_str_value()),
             "notificationChannelUrl": lambda n : setattr(self, 'notification_channel_url', n.get_str_value()),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(EducationAssignmentResource)),
             "resourcesFolderUrl": lambda n : setattr(self, 'resources_folder_url', n.get_str_value()),
@@ -179,6 +182,7 @@ class EducationAssignment(Entity):
         writer.write_object_value("grading", self.grading)
         writer.write_object_value("gradingCategory", self.grading_category)
         writer.write_object_value("instructions", self.instructions)
+        writer.write_str_value("moduleUrl", self.module_url)
         writer.write_str_value("notificationChannelUrl", self.notification_channel_url)
         writer.write_collection_of_object_values("resources", self.resources)
         writer.write_object_value("rubric", self.rubric)

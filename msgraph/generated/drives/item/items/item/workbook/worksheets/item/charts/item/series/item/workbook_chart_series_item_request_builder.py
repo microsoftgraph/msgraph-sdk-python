@@ -19,14 +19,14 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the series property of the microsoft.graph.workbookChart entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new WorkbookChartSeriesItemRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}/series/{workbookChartSeries%2Did}{?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}/series/{workbookChartSeries%2Did}{?%24expand,%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -71,7 +71,7 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChartSeries]:
         """
-        Update the properties of chartseries object.
+        Update the properties of chartSeries object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartSeries]
@@ -129,7 +129,7 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of chartseries object.
+        Update the properties of chartSeries object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

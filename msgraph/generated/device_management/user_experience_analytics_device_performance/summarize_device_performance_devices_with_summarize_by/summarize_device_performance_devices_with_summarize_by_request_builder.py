@@ -17,17 +17,17 @@ class SummarizeDevicePerformanceDevicesWithSummarizeByRequestBuilder(BaseRequest
     """
     Provides operations to call the summarizeDevicePerformanceDevices method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, summarize_by: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], summarize_by: Optional[str] = None) -> None:
         """
         Instantiates a new SummarizeDevicePerformanceDevicesWithSummarizeByRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         param summarize_by: Usage: summarizeBy='{summarizeBy}'
         Returns: None
         """
         if isinstance(path_parameters, dict):
             path_parameters['summarizeBy'] = str(summarize_by)
-        super().__init__(request_adapter, "{+baseurl}/deviceManagement/userExperienceAnalyticsDevicePerformance/summarizeDevicePerformanceDevices(summarizeBy='{summarizeBy}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/deviceManagement/userExperienceAnalyticsDevicePerformance/summarizeDevicePerformanceDevices(summarizeBy='{summarizeBy}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
     async def get(self,request_configuration: Optional[SummarizeDevicePerformanceDevicesWithSummarizeByRequestBuilderGetRequestConfiguration] = None) -> Optional[SummarizeDevicePerformanceDevicesWithSummarizeByGetResponse]:
         """
@@ -92,6 +92,8 @@ class SummarizeDevicePerformanceDevicesWithSummarizeByRequestBuilder(BaseRequest
                 raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
+            if original_name == "expand":
+                return "%24expand"
             if original_name == "filter":
                 return "%24filter"
             if original_name == "orderby":
@@ -108,6 +110,9 @@ class SummarizeDevicePerformanceDevicesWithSummarizeByRequestBuilder(BaseRequest
         
         # Include count of items
         count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
 
         # Filter items by property values
         filter: Optional[str] = None

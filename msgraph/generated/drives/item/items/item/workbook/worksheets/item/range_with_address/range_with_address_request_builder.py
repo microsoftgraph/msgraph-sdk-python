@@ -17,11 +17,11 @@ class RangeWithAddressRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the range method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, address: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], address: Optional[str] = None) -> None:
         """
         Instantiates a new RangeWithAddressRequestBuilder and sets the default values.
         param address: Usage: address='{address}'
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """

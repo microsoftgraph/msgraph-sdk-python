@@ -49,6 +49,8 @@ class Device(DirectoryObject):
     member_of: Optional[List[DirectoryObject]] = None
     # The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).
     on_premises_last_sync_date_time: Optional[datetime.datetime] = None
+    # The onPremisesSecurityIdentifier property
+    on_premises_security_identifier: Optional[str] = None
     # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
     on_premises_sync_enabled: Optional[bool] = None
     # The type of operating system on the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
@@ -114,6 +116,7 @@ class Device(DirectoryObject):
             "mdmAppId": lambda n : setattr(self, 'mdm_app_id', n.get_str_value()),
             "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
             "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
+            "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
             "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
             "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),
             "operatingSystemVersion": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
@@ -156,6 +159,7 @@ class Device(DirectoryObject):
         writer.write_str_value("mdmAppId", self.mdm_app_id)
         writer.write_collection_of_object_values("memberOf", self.member_of)
         writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
+        writer.write_str_value("onPremisesSecurityIdentifier", self.on_premises_security_identifier)
         writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
         writer.write_str_value("operatingSystem", self.operating_system)
         writer.write_str_value("operatingSystemVersion", self.operating_system_version)

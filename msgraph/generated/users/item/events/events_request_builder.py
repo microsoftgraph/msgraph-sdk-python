@@ -21,14 +21,14 @@ class EventsRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the events property of the microsoft.graph.user entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new EventsRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/events{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/events{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top}", path_parameters)
     
     def by_event_id(self,event_id: str) -> EventItemRequestBuilder:
         """
@@ -68,11 +68,11 @@ class EventsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Event] = None, request_configuration: Optional[EventsRequestBuilderPostRequestConfiguration] = None) -> Optional[Event]:
         """
-        Create one or more single-value extended properties in a new or existing instance of a resource. The following user resources are supported: The following group resources: See Extended properties overview for more information about when to useopen extensions or extended properties, and how to specify extended properties.
+        Create one or more multi-value extended properties in a new or existing instance of a resource. The following user resources are supported: The following group resources are supported: See Extended properties overview for more information about when to useopen extensions or extended properties, and how to specify extended properties.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Event]
-        Find more info here: https://learn.microsoft.com/graph/api/singlevaluelegacyextendedproperty-post-singlevalueextendedproperties?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/multivaluelegacyextendedproperty-post-multivalueextendedproperties?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -110,7 +110,7 @@ class EventsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Event] = None, request_configuration: Optional[EventsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create one or more single-value extended properties in a new or existing instance of a resource. The following user resources are supported: The following group resources: See Extended properties overview for more information about when to useopen extensions or extended properties, and how to specify extended properties.
+        Create one or more multi-value extended properties in a new or existing instance of a resource. The following user resources are supported: The following group resources are supported: See Extended properties overview for more information about when to useopen extensions or extended properties, and how to specify extended properties.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -17,11 +17,11 @@ class TableRowOperationResultWithKeyRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the tableRowOperationResult method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, key: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], key: Optional[str] = None) -> None:
         """
         Instantiates a new TableRowOperationResultWithKeyRequestBuilder and sets the default values.
         param key: Usage: key='{key}'
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """

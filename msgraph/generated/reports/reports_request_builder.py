@@ -119,20 +119,21 @@ if TYPE_CHECKING:
     from .managed_device_enrollment_top_failures_with_period.managed_device_enrollment_top_failures_with_period_request_builder import ManagedDeviceEnrollmentTopFailuresWithPeriodRequestBuilder
     from .monthly_print_usage_by_printer.monthly_print_usage_by_printer_request_builder import MonthlyPrintUsageByPrinterRequestBuilder
     from .monthly_print_usage_by_user.monthly_print_usage_by_user_request_builder import MonthlyPrintUsageByUserRequestBuilder
+    from .partners.partners_request_builder import PartnersRequestBuilder
     from .security.security_request_builder import SecurityRequestBuilder
 
 class ReportsRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to manage the reportRoot singleton.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new ReportsRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/reports{?%24select,%24expand}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/reports{?%24expand,%24select}", path_parameters)
     
     async def get(self,request_configuration: Optional[ReportsRequestBuilderGetRequestConfiguration] = None) -> Optional[ReportRoot]:
         """
@@ -1490,6 +1491,15 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         from .monthly_print_usage_by_user.monthly_print_usage_by_user_request_builder import MonthlyPrintUsageByUserRequestBuilder
 
         return MonthlyPrintUsageByUserRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def partners(self) -> PartnersRequestBuilder:
+        """
+        Provides operations to manage the partners property of the microsoft.graph.reportRoot entity.
+        """
+        from .partners.partners_request_builder import PartnersRequestBuilder
+
+        return PartnersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def security(self) -> SecurityRequestBuilder:

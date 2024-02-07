@@ -236,6 +236,8 @@ if TYPE_CHECKING:
     from .education_feedback_outcome import EducationFeedbackOutcome
     from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
     from .education_grading_category import EducationGradingCategory
+    from .education_module import EducationModule
+    from .education_module_resource import EducationModuleResource
     from .education_organization import EducationOrganization
     from .education_outcome import EducationOutcome
     from .education_points_outcome import EducationPointsOutcome
@@ -446,6 +448,16 @@ if TYPE_CHECKING:
     from .participant import Participant
     from .participant_joining_notification import ParticipantJoiningNotification
     from .participant_left_notification import ParticipantLeftNotification
+    from .partners.billing.azure_usage import AzureUsage
+    from .partners.billing.billed_usage import BilledUsage
+    from .partners.billing.billing import Billing
+    from .partners.billing.export_success_operation import ExportSuccessOperation
+    from .partners.billing.failed_operation import FailedOperation
+    from .partners.billing.manifest import Manifest
+    from .partners.billing.operation import Operation
+    from .partners.billing.running_operation import RunningOperation
+    from .partners.billing.unbilled_usage import UnbilledUsage
+    from .partners.partners import Partners
     from .password_authentication_method import PasswordAuthenticationMethod
     from .payload import Payload
     from .people_admin_settings import PeopleAdminSettings
@@ -1786,6 +1798,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .education_grading_category import EducationGradingCategory
 
             return EducationGradingCategory()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationModule".casefold():
+            from .education_module import EducationModule
+
+            return EducationModule()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationModuleResource".casefold():
+            from .education_module_resource import EducationModuleResource
+
+            return EducationModuleResource()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationOrganization".casefold():
             from .education_organization import EducationOrganization
 
@@ -2577,6 +2597,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             return OpenTypeExtension()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.operation".casefold():
             from .operation import Operation
+            from .partners.billing.operation import Operation
 
             return Operation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.organization".casefold():
@@ -2623,6 +2644,47 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .participant_left_notification import ParticipantLeftNotification
 
             return ParticipantLeftNotification()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners".casefold():
+            from .partners.partners import Partners
+
+            return Partners()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.azureUsage".casefold():
+            from .partners.billing.azure_usage import AzureUsage
+
+            return AzureUsage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.billedUsage".casefold():
+            from .partners.billing.billed_usage import BilledUsage
+
+            return BilledUsage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.billing".casefold():
+            from .partners.billing.billing import Billing
+
+            return Billing()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.exportSuccessOperation".casefold():
+            from .partners.billing.export_success_operation import ExportSuccessOperation
+
+            return ExportSuccessOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.failedOperation".casefold():
+            from .partners.billing.failed_operation import FailedOperation
+
+            return FailedOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.manifest".casefold():
+            from .partners.billing.manifest import Manifest
+
+            return Manifest()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.operation".casefold():
+            from .operation import Operation
+            from .partners.billing.operation import Operation
+
+            return Operation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.runningOperation".casefold():
+            from .partners.billing.running_operation import RunningOperation
+
+            return RunningOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.unbilledUsage".casefold():
+            from .partners.billing.unbilled_usage import UnbilledUsage
+
+            return UnbilledUsage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.passwordAuthenticationMethod".casefold():
             from .password_authentication_method import PasswordAuthenticationMethod
 
@@ -4403,6 +4465,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .education_feedback_outcome import EducationFeedbackOutcome
         from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
         from .education_grading_category import EducationGradingCategory
+        from .education_module import EducationModule
+        from .education_module_resource import EducationModuleResource
         from .education_organization import EducationOrganization
         from .education_outcome import EducationOutcome
         from .education_points_outcome import EducationPointsOutcome
@@ -4613,6 +4677,16 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .participant import Participant
         from .participant_joining_notification import ParticipantJoiningNotification
         from .participant_left_notification import ParticipantLeftNotification
+        from .partners.billing.azure_usage import AzureUsage
+        from .partners.billing.billed_usage import BilledUsage
+        from .partners.billing.billing import Billing
+        from .partners.billing.export_success_operation import ExportSuccessOperation
+        from .partners.billing.failed_operation import FailedOperation
+        from .partners.billing.manifest import Manifest
+        from .partners.billing.operation import Operation
+        from .partners.billing.running_operation import RunningOperation
+        from .partners.billing.unbilled_usage import UnbilledUsage
+        from .partners.partners import Partners
         from .password_authentication_method import PasswordAuthenticationMethod
         from .payload import Payload
         from .people_admin_settings import PeopleAdminSettings
@@ -5230,6 +5304,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .education_feedback_outcome import EducationFeedbackOutcome
         from .education_feedback_resource_outcome import EducationFeedbackResourceOutcome
         from .education_grading_category import EducationGradingCategory
+        from .education_module import EducationModule
+        from .education_module_resource import EducationModuleResource
         from .education_organization import EducationOrganization
         from .education_outcome import EducationOutcome
         from .education_points_outcome import EducationPointsOutcome
@@ -5440,6 +5516,16 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .participant import Participant
         from .participant_joining_notification import ParticipantJoiningNotification
         from .participant_left_notification import ParticipantLeftNotification
+        from .partners.billing.azure_usage import AzureUsage
+        from .partners.billing.billed_usage import BilledUsage
+        from .partners.billing.billing import Billing
+        from .partners.billing.export_success_operation import ExportSuccessOperation
+        from .partners.billing.failed_operation import FailedOperation
+        from .partners.billing.manifest import Manifest
+        from .partners.billing.operation import Operation
+        from .partners.billing.running_operation import RunningOperation
+        from .partners.billing.unbilled_usage import UnbilledUsage
+        from .partners.partners import Partners
         from .password_authentication_method import PasswordAuthenticationMethod
         from .payload import Payload
         from .people_admin_settings import PeopleAdminSettings

@@ -17,10 +17,10 @@ class UsedRangeWithValuesOnlyRequestBuilder(BaseRequestBuilder):
     """
     Provides operations to call the usedRange method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, values_only: Optional[bool] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]], values_only: Optional[bool] = None) -> None:
         """
         Instantiates a new UsedRangeWithValuesOnlyRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         param values_only: Usage: valuesOnly={valuesOnly}
         Returns: None

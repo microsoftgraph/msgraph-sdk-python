@@ -114,15 +114,21 @@ async def get_user_messages():
 asyncio.run(get_user())
 ```
 
-## 8. Post Request
+## 8. Send Mail with User's delegation
 
 This sample sends an email. The request body is constructed using the provided models.
 Ensure you have the [right permissions](https://docs.microsoft.com/en-us/graph/api/user-sendmail?view=graph-rest-1.0&tabs=http#permissions).
 
+Setup includes:
+1. App Registration > Authentication > `Platform: Mobile and desktop applications` with `redirect_uri` specified as `http://localhost` and **public client flow** enabled.
+2. App Registration > API permissions > `Mail.Send` permissions, potentially requiring admin consent.
+
+
 ```py
+import asyncio
 from msgraph import GraphServiceClient
 
-from msgraph.generated.me.send_mail.send_mail_post_request_body import SendMailPostRequestBody
+from msgraph.generated.users.item.send_mail.send_mail_post_request_body import SendMailPostRequestBody
 from msgraph.generated.models.body_type import BodyType
 from msgraph.generated.models.message import Message
 from msgraph.generated.models.email_address import EmailAddress
@@ -131,46 +137,120 @@ from msgraph.generated.models.item_body import ItemBody
 from msgraph.generated.models.recipient import Recipient
 from msgraph.generated.users.item.messages.messages_request_builder import MessagesRequestBuilder
 
+from azure.identity import InteractiveBrowserCredential
 
-
-credential = ClientSecretCredential(
-    'tenant_id',
-    'client_id',
-    'client_secret'
+credential = InteractiveBrowserCredential(
+    client_id,
+    authority,
+    tenant_id,
+    redirect_uri
 )
 scopes = ['Mail.Send']
+# alternatively, use "Mail.Send.Shared" for a shared mailbox.
+
 client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 async def send_mail():
-    try:
-        sender = EmailAddress()
-        sender.address = 'john.doe@outlook.com'
-        sender.name = 'John Doe'
-        
-        from_recipient = Recipient()
-        from_recipient.email_address = sender
-        recipients = []
+    
+    sender = EmailAddress()
+    sender.address = 'john.doe@outlook.com'
+    sender.name = 'John Doe'
+    
+    from_recipient = Recipient()
+    from_recipient.email_address = sender
+    recipients = []
 
-        recipient_email = EmailAddress()
-        recipient_email.address = 'jane.doe@outlook.com'
-        recipient_email.name = 'Jane Doe'
-        
-        to_recipient = Recipient()
-        to_recipient.email_address = recipient_email
-        recipients.append(to_recipient) 
+    recipient_email = EmailAddress()
+    recipient_email.address = 'jane.doe@outlook.com'
+    recipient_email.name = 'Jane Doe'
+    
+    to_recipient = Recipient()
+    to_recipient.email_address = recipient_email
+    recipients.append(to_recipient) 
 
-        email_body = ItemBody()
-        email_body.content = 'Dummy content'
-        email_body.content_type = BodyType.Text
-        
-        message = Message()
-        message.subject = 'Test Email'
-        message.from_escaped = from_recipient
-        message.to_recipients = recipients
-        message.body = email_body
-        
-        request_body = SendMailPostRequestBody()
-        request_body.message = message
-        response = await client.me.send_mail.post(request_body)
+    email_body = ItemBody()
+    email_body.content = 'Dummy content'
+    email_body.content_type = BodyType.Text
+    
+    message = Message()
+    message.subject = 'Test Email'
+    message.from_escaped = from_recipient
+    message.to_recipients = recipients
+    message.body = email_body
+    
+    request_body = SendMailPostRequestBody()
+    request_body.message = message
+    response = await client.me.send_mail.post(request_body)
+asyncio.run(send_mail())
+```
+## 8.1 Send Mail with Shared Mailbox and "Public Client" setup
+To use a shared mailbox (From) to which user (Sender) has access, the "From" recipient has to be additionally. Resulting in the following code.
+
+Note that you require **Mail.Send.Shared** permissions to send from shared mailboxes.
+
+```py
+import asyncio
+from msgraph import GraphServiceClient
+
+from msgraph.generated.models.body_type import BodyType
+from msgraph.generated.models.message import Message
+from msgraph.generated.models.email_address import EmailAddress
+from msgraph.generated.models.item_body import ItemBody
+from msgraph.generated.models.recipient import Recipient
+from msgraph.generated.users.item.send_mail.send_mail_post_request_body import SendMailPostRequestBody
+
+from azure.identity import InteractiveBrowserCredential
+
+# Create a credential object. Used to authenticate requests
+credential = InteractiveBrowserCredential(
+    client_id,
+    authority, # e.g. https://login.microsoftonline.com/ for public Azure cloud
+    tenant_id,
+    redirect_uri # as configured in your App Registration > Authentication > Platform: Mobile and desktop applications
+)
+scopes = ["Mail.Send.Shared"]
+
+# Create an API client with the credentials and scopes.
+client = GraphServiceClient(credentials=credential, scopes=scopes)
+
+
+async def send_mail():
+    sender = EmailAddress()
+    sender.address = 'john.doe@outlook.com'
+    sender.name = 'John Doe' # skip to use default
+
+    sender_recipient = Recipient()
+    sender_recipient.email_address = sender
+
+    from_mailbox = EmailAddress()
+    from_mailbox.address = 'your-shared-mailbox@outlook.com'
+    # skip from_mailbox.name = ... to use the default display name of the shared mailbox
+
+    from_recipient = Recipient()
+    from_recipient.email_address = from_mailbox
+
+    recipients = []
+    recipient_email = EmailAddress()
+    recipient_email.address = 'jane.doe@outlook.com'
+    recipient_email.name = 'Jane Doe'
+
+    to_recipient = Recipient()
+    to_recipient.email_address = recipient_email
+    recipients.append(to_recipient)
+
+    email_body = ItemBody()
+    email_body.content = 'Dummy content'
+    email_body.content_type = BodyType.Text
+
+    message = Message()
+    message.subject = 'Test Email'
+    message.sender = sender_recipient
+    message.from_ = from_recipient
+    message.to_recipients = recipients
+    message.body = email_body
+
+    request_body = SendMailPostRequestBody()
+    request_body.message = message
+    response = await client.me.send_mail.post(request_body)
 asyncio.run(send_mail())
 ```

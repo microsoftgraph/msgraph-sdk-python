@@ -6,12 +6,15 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .access_package_resource import AccessPackageResource
+    from .connection_info import ConnectionInfo
     from .entity import Entity
 
 from .entity import Entity
 
 @dataclass
 class AccessPackageResourceEnvironment(Entity):
+    # The connectionInfo property
+    connection_info: Optional[ConnectionInfo] = None
     # The date and time that this object was created. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
     # The description of this object.
@@ -48,12 +51,15 @@ class AccessPackageResourceEnvironment(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .access_package_resource import AccessPackageResource
+        from .connection_info import ConnectionInfo
         from .entity import Entity
 
         from .access_package_resource import AccessPackageResource
+        from .connection_info import ConnectionInfo
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "connectionInfo": lambda n : setattr(self, 'connection_info', n.get_object_value(ConnectionInfo)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -76,6 +82,7 @@ class AccessPackageResourceEnvironment(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("connectionInfo", self.connection_info)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

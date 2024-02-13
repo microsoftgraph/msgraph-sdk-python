@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from .agreement_acceptances.agreement_acceptances_request_builder import AgreementAcceptancesRequestBuilder
     from .applications.applications_request_builder import ApplicationsRequestBuilder
     from .applications_with_app_id.applications_with_app_id_request_builder import ApplicationsWithAppIdRequestBuilder
+    from .applications_with_unique_name.applications_with_unique_name_request_builder import ApplicationsWithUniqueNameRequestBuilder
     from .application_templates.application_templates_request_builder import ApplicationTemplatesRequestBuilder
     from .app_catalogs.app_catalogs_request_builder import AppCatalogsRequestBuilder
     from .audit_logs.audit_logs_request_builder import AuditLogsRequestBuilder
@@ -48,6 +49,7 @@ if TYPE_CHECKING:
     from .filter_operators.filter_operators_request_builder import FilterOperatorsRequestBuilder
     from .functions.functions_request_builder import FunctionsRequestBuilder
     from .groups.groups_request_builder import GroupsRequestBuilder
+    from .groups_with_unique_name.groups_with_unique_name_request_builder import GroupsWithUniqueNameRequestBuilder
     from .group_lifecycle_policies.group_lifecycle_policies_request_builder import GroupLifecyclePoliciesRequestBuilder
     from .group_settings.group_settings_request_builder import GroupSettingsRequestBuilder
     from .group_setting_templates.group_setting_templates_request_builder import GroupSettingTemplatesRequestBuilder
@@ -119,6 +121,18 @@ class BaseGraphServiceClient(BaseRequestBuilder):
 
         return ApplicationsWithAppIdRequestBuilder(self.request_adapter, self.path_parameters, app_id)
     
+    def applications_with_unique_name(self,unique_name: Optional[str] = None) -> ApplicationsWithUniqueNameRequestBuilder:
+        """
+        Provides operations to manage the collection of application entities.
+        param unique_name: Alternate key of application
+        Returns: ApplicationsWithUniqueNameRequestBuilder
+        """
+        if not unique_name:
+            raise TypeError("unique_name cannot be null.")
+        from .applications_with_unique_name.applications_with_unique_name_request_builder import ApplicationsWithUniqueNameRequestBuilder
+
+        return ApplicationsWithUniqueNameRequestBuilder(self.request_adapter, self.path_parameters, unique_name)
+    
     def devices_with_device_id(self,device_id: Optional[str] = None) -> DevicesWithDeviceIdRequestBuilder:
         """
         Provides operations to manage the collection of device entities.
@@ -142,6 +156,18 @@ class BaseGraphServiceClient(BaseRequestBuilder):
         from .directory_roles_with_role_template_id.directory_roles_with_role_template_id_request_builder import DirectoryRolesWithRoleTemplateIdRequestBuilder
 
         return DirectoryRolesWithRoleTemplateIdRequestBuilder(self.request_adapter, self.path_parameters, role_template_id)
+    
+    def groups_with_unique_name(self,unique_name: Optional[str] = None) -> GroupsWithUniqueNameRequestBuilder:
+        """
+        Provides operations to manage the collection of group entities.
+        param unique_name: Alternate key of group
+        Returns: GroupsWithUniqueNameRequestBuilder
+        """
+        if not unique_name:
+            raise TypeError("unique_name cannot be null.")
+        from .groups_with_unique_name.groups_with_unique_name_request_builder import GroupsWithUniqueNameRequestBuilder
+
+        return GroupsWithUniqueNameRequestBuilder(self.request_adapter, self.path_parameters, unique_name)
     
     def service_principals_with_app_id(self,app_id: Optional[str] = None) -> ServicePrincipalsWithAppIdRequestBuilder:
         """

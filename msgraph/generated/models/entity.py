@@ -114,6 +114,7 @@ if TYPE_CHECKING:
     from .browser_site import BrowserSite
     from .browser_site_list import BrowserSiteList
     from .built_in_identity_provider import BuiltInIdentityProvider
+    from .bulk_upload import BulkUpload
     from .calendar import Calendar
     from .calendar_group import CalendarGroup
     from .calendar_permission import CalendarPermission
@@ -1306,6 +1307,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .built_in_identity_provider import BuiltInIdentityProvider
 
             return BuiltInIdentityProvider()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.bulkUpload".casefold():
+            from .bulk_upload import BulkUpload
+
+            return BulkUpload()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.calendar".casefold():
             from .calendar import Calendar
 
@@ -4343,6 +4348,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .browser_site import BrowserSite
         from .browser_site_list import BrowserSiteList
         from .built_in_identity_provider import BuiltInIdentityProvider
+        from .bulk_upload import BulkUpload
         from .calendar import Calendar
         from .calendar_group import CalendarGroup
         from .calendar_permission import CalendarPermission
@@ -5182,6 +5188,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .browser_site import BrowserSite
         from .browser_site_list import BrowserSiteList
         from .built_in_identity_provider import BuiltInIdentityProvider
+        from .bulk_upload import BulkUpload
         from .calendar import Calendar
         from .calendar_group import CalendarGroup
         from .calendar_permission import CalendarPermission

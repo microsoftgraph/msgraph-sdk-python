@@ -13,7 +13,7 @@ from .entity import Entity
 class EducationModuleResource(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The resource property
+    # Resource object that is with this module.
     resource: Optional[EducationResource] = None
     
     @staticmethod

@@ -4,6 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .bulk_upload import BulkUpload
     from .entity import Entity
     from .key_value_pair import KeyValuePair
     from .synchronization_schedule import SynchronizationSchedule
@@ -14,6 +15,8 @@ from .entity import Entity
 
 @dataclass
 class SynchronizationJob(Entity):
+    # The bulkUpload property
+    bulk_upload: Optional[BulkUpload] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Schedule used to run the job. Read-only.
@@ -43,12 +46,14 @@ class SynchronizationJob(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .bulk_upload import BulkUpload
         from .entity import Entity
         from .key_value_pair import KeyValuePair
         from .synchronization_schedule import SynchronizationSchedule
         from .synchronization_schema import SynchronizationSchema
         from .synchronization_status import SynchronizationStatus
 
+        from .bulk_upload import BulkUpload
         from .entity import Entity
         from .key_value_pair import KeyValuePair
         from .synchronization_schedule import SynchronizationSchedule
@@ -56,6 +61,7 @@ class SynchronizationJob(Entity):
         from .synchronization_status import SynchronizationStatus
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "bulkUpload": lambda n : setattr(self, 'bulk_upload', n.get_object_value(BulkUpload)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(SynchronizationSchedule)),
             "schema": lambda n : setattr(self, 'schema', n.get_object_value(SynchronizationSchema)),
             "status": lambda n : setattr(self, 'status', n.get_object_value(SynchronizationStatus)),
@@ -75,6 +81,7 @@ class SynchronizationJob(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_object_value("bulkUpload", self.bulk_upload)
         writer.write_object_value("schedule", self.schedule)
         writer.write_object_value("schema", self.schema)
         writer.write_object_value("status", self.status)

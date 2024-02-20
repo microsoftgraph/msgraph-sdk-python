@@ -89,7 +89,7 @@ class Group(DirectoryObject):
     is_subscribed_by_mail: Optional[bool] = None
     # Indicates the status of the group license assignment to all group members. The default value is false. Read-only. Possible values: QueuedForProcessing, ProcessingInProgress, and ProcessingComplete.Returned only on $select. Read-only.
     license_processing_state: Optional[LicenseProcessingState] = None
-    # The SMTP address for the group, for example, 'serviceadmins@contoso.onmicrosoft.com'. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+    # The SMTP address for the group, for example, 'serviceadmins@contoso.com'. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     mail: Optional[str] = None
     # Specifies whether the group is mail-enabled. Required. Returned by default. Supports $filter (eq, ne, not).
     mail_enabled: Optional[bool] = None
@@ -161,6 +161,8 @@ class Group(DirectoryObject):
     transitive_member_of: Optional[List[DirectoryObject]] = None
     # The direct and transitive members of a group. Nullable.
     transitive_members: Optional[List[DirectoryObject]] = None
+    # The uniqueName property
+    unique_name: Optional[str] = None
     # Count of conversations that have received new posts since the signed-in user last visited the group. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
     unseen_count: Optional[int] = None
     # Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or HiddenMembership. HiddenMembership can be set only for Microsoft 365 groups when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value is not specified during group creation on Microsoft Graph, a security group is created as Private by default, and the Microsoft 365 group is Public. Groups assignable to roles are always Private. To learn more, see group visibility options. Returned by default. Nullable.
@@ -291,6 +293,7 @@ class Group(DirectoryObject):
             "threads": lambda n : setattr(self, 'threads', n.get_collection_of_object_values(ConversationThread)),
             "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(DirectoryObject)),
             "transitiveMembers": lambda n : setattr(self, 'transitive_members', n.get_collection_of_object_values(DirectoryObject)),
+            "uniqueName": lambda n : setattr(self, 'unique_name', n.get_str_value()),
             "unseenCount": lambda n : setattr(self, 'unseen_count', n.get_int_value()),
             "visibility": lambda n : setattr(self, 'visibility', n.get_str_value()),
         }
@@ -371,6 +374,7 @@ class Group(DirectoryObject):
         writer.write_collection_of_object_values("threads", self.threads)
         writer.write_collection_of_object_values("transitiveMemberOf", self.transitive_member_of)
         writer.write_collection_of_object_values("transitiveMembers", self.transitive_members)
+        writer.write_str_value("uniqueName", self.unique_name)
         writer.write_int_value("unseenCount", self.unseen_count)
         writer.write_str_value("visibility", self.visibility)
     

@@ -46,7 +46,7 @@ class EducationClass(Entity):
     external_name: Optional[str] = None
     # How this class was created. Possible values are: sis, manual.
     external_source: Optional[EducationExternalSource] = None
-    # The name of the external source this resources was generated from.
+    # The name of the external source this resource was generated from.
     external_source_detail: Optional[str] = None
     # Grade level of the class.
     grade: Optional[str] = None
@@ -56,7 +56,7 @@ class EducationClass(Entity):
     mail_nickname: Optional[str] = None
     # All users in the class. Nullable.
     members: Optional[List[EducationUser]] = None
-    # The modules property
+    # All modules in the class. Nullable.
     modules: Optional[List[EducationModule]] = None
     # The OdataType property
     odata_type: Optional[str] = None

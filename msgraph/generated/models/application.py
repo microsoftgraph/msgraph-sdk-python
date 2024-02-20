@@ -123,6 +123,8 @@ class Application(DirectoryObject):
     token_issuance_policies: Optional[List[TokenIssuancePolicy]] = None
     # The tokenLifetimePolicies property
     token_lifetime_policies: Optional[List[TokenLifetimePolicy]] = None
+    # The uniqueName property
+    unique_name: Optional[str] = None
     # Specifies the verified publisher of the application. For more information about how publisher verification helps support application security, trustworthiness, and compliance, see Publisher verification.
     verified_publisher: Optional[VerifiedPublisher] = None
     # Specifies settings for a web application.
@@ -238,6 +240,7 @@ class Application(DirectoryObject):
             "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_uuid_value()),
             "tokenIssuancePolicies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(TokenIssuancePolicy)),
             "tokenLifetimePolicies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(TokenLifetimePolicy)),
+            "uniqueName": lambda n : setattr(self, 'unique_name', n.get_str_value()),
             "verifiedPublisher": lambda n : setattr(self, 'verified_publisher', n.get_object_value(VerifiedPublisher)),
             "web": lambda n : setattr(self, 'web', n.get_object_value(WebApplication)),
         }
@@ -297,6 +300,7 @@ class Application(DirectoryObject):
         writer.write_uuid_value("tokenEncryptionKeyId", self.token_encryption_key_id)
         writer.write_collection_of_object_values("tokenIssuancePolicies", self.token_issuance_policies)
         writer.write_collection_of_object_values("tokenLifetimePolicies", self.token_lifetime_policies)
+        writer.write_str_value("uniqueName", self.unique_name)
         writer.write_object_value("verifiedPublisher", self.verified_publisher)
         writer.write_object_value("web", self.web)
     

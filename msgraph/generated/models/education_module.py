@@ -14,27 +14,27 @@ from .entity import Entity
 
 @dataclass
 class EducationModule(Entity):
-    # The createdBy property
+    # The display name of the user that created the module.
     created_by: Optional[IdentitySet] = None
-    # The createdDateTime property
+    # Date time the module was created. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014, is 2014-01-01T00:00:00Z
     created_date_time: Optional[datetime.datetime] = None
-    # The description property
+    # Description of the module.
     description: Optional[str] = None
-    # The displayName property
+    # Name of the module.
     display_name: Optional[str] = None
-    # The isPinned property
+    # Indicates whether the module is pinned or not.
     is_pinned: Optional[bool] = None
-    # The lastModifiedBy property
+    # The last user that modified the module.
     last_modified_by: Optional[IdentitySet] = None
-    # The lastModifiedDateTime property
+    # Date time the module was last modified. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014, is 2014-01-01T00:00:00Z
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The resources property
+    # Learning objects that are associated with this module. Only teachers can modify this list. Nullable.
     resources: Optional[List[EducationModuleResource]] = None
-    # The resourcesFolderUrl property
+    # Folder URL where all the file resources for this module are stored.
     resources_folder_url: Optional[str] = None
-    # The status property
+    # Status of the module. You can't use a PATCH operation to update this value. Possible values are: draft and published.
     status: Optional[EducationModuleStatus] = None
     
     @staticmethod

@@ -12,7 +12,7 @@ from .education_resource import EducationResource
 class EducationLinkedAssignmentResource(EducationResource):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationLinkedAssignmentResource"
-    # The url property
+    # URL of the actual assignment.
     url: Optional[str] = None
     
     @staticmethod

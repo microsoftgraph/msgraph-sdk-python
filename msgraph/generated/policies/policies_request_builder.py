@@ -24,6 +24,7 @@ if TYPE_CHECKING:
     from .conditional_access_policies.conditional_access_policies_request_builder import ConditionalAccessPoliciesRequestBuilder
     from .cross_tenant_access_policy.cross_tenant_access_policy_request_builder import CrossTenantAccessPolicyRequestBuilder
     from .default_app_management_policy.default_app_management_policy_request_builder import DefaultAppManagementPolicyRequestBuilder
+    from .device_registration_policy.device_registration_policy_request_builder import DeviceRegistrationPolicyRequestBuilder
     from .feature_rollout_policies.feature_rollout_policies_request_builder import FeatureRolloutPoliciesRequestBuilder
     from .home_realm_discovery_policies.home_realm_discovery_policies_request_builder import HomeRealmDiscoveryPoliciesRequestBuilder
     from .identity_security_defaults_enforcement_policy.identity_security_defaults_enforcement_policy_request_builder import IdentitySecurityDefaultsEnforcementPolicyRequestBuilder
@@ -223,6 +224,15 @@ class PoliciesRequestBuilder(BaseRequestBuilder):
         from .default_app_management_policy.default_app_management_policy_request_builder import DefaultAppManagementPolicyRequestBuilder
 
         return DefaultAppManagementPolicyRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_registration_policy(self) -> DeviceRegistrationPolicyRequestBuilder:
+        """
+        Provides operations to manage the deviceRegistrationPolicy property of the microsoft.graph.policyRoot entity.
+        """
+        from .device_registration_policy.device_registration_policy_request_builder import DeviceRegistrationPolicyRequestBuilder
+
+        return DeviceRegistrationPolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def feature_rollout_policies(self) -> FeatureRolloutPoliciesRequestBuilder:

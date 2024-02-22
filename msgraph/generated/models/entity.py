@@ -208,6 +208,7 @@ if TYPE_CHECKING:
     from .device_management_partner import DeviceManagementPartner
     from .device_management_reports import DeviceManagementReports
     from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+    from .device_registration_policy import DeviceRegistrationPolicy
     from .directory import Directory
     from .directory_audit import DirectoryAudit
     from .directory_definition import DirectoryDefinition
@@ -519,6 +520,7 @@ if TYPE_CHECKING:
     from .rbac_application import RbacApplication
     from .record_operation import RecordOperation
     from .reference_attachment import ReferenceAttachment
+    from .relying_party_detailed_summary import RelyingPartyDetailedSummary
     from .remote_assistance_partner import RemoteAssistancePartner
     from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
     from .request import Request
@@ -1683,6 +1685,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
 
             return DeviceManagementTroubleshootingEvent()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceRegistrationPolicy".casefold():
+            from .device_registration_policy import DeviceRegistrationPolicy
+
+            return DeviceRegistrationPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.directory".casefold():
             from .directory import Directory
 
@@ -2930,6 +2936,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .reference_attachment import ReferenceAttachment
 
             return ReferenceAttachment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.relyingPartyDetailedSummary".casefold():
+            from .relying_party_detailed_summary import RelyingPartyDetailedSummary
+
+            return RelyingPartyDetailedSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.remoteAssistancePartner".casefold():
             from .remote_assistance_partner import RemoteAssistancePartner
 
@@ -4442,6 +4452,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .device_management_partner import DeviceManagementPartner
         from .device_management_reports import DeviceManagementReports
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+        from .device_registration_policy import DeviceRegistrationPolicy
         from .directory import Directory
         from .directory_audit import DirectoryAudit
         from .directory_definition import DirectoryDefinition
@@ -4753,6 +4764,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .rbac_application import RbacApplication
         from .record_operation import RecordOperation
         from .reference_attachment import ReferenceAttachment
+        from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
         from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
         from .request import Request
@@ -5282,6 +5294,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .device_management_partner import DeviceManagementPartner
         from .device_management_reports import DeviceManagementReports
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+        from .device_registration_policy import DeviceRegistrationPolicy
         from .directory import Directory
         from .directory_audit import DirectoryAudit
         from .directory_definition import DirectoryDefinition
@@ -5593,6 +5606,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .rbac_application import RbacApplication
         from .record_operation import RecordOperation
         from .reference_attachment import ReferenceAttachment
+        from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
         from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
         from .request import Request

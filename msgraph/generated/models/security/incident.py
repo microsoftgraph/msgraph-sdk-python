@@ -29,7 +29,7 @@ class Incident(Entity):
     created_date_time: Optional[datetime.datetime] = None
     # Array of custom tags associated with an incident.
     custom_tags: Optional[List[str]] = None
-    # A rich text string describing the incident
+    # Description of the incident.
     description: Optional[str] = None
     # Specifies the determination of the incident. Possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
     determination: Optional[AlertDetermination] = None
@@ -37,19 +37,19 @@ class Incident(Entity):
     display_name: Optional[str] = None
     # The URL for the incident page in the Microsoft 365 Defender portal.
     incident_web_url: Optional[str] = None
-    # The lastModifiedBy property
+    # The identity that last modified the incident.
     last_modified_by: Optional[str] = None
     # Time when the incident was last updated.
     last_update_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # Only populated in case an incident is grouped together with another incident, as part of the logic that processes incidents. In such a case, the status property is redirected.
+    # Only populated in case an incident is grouped with another incident, as part of the logic that processes incidents. In such a case, the status property is redirected.
     redirect_incident_id: Optional[str] = None
     # The severity property
     severity: Optional[AlertSeverity] = None
     # The status property
     status: Optional[IncidentStatus] = None
-    # The system tags associated with the incident
+    # The system tags associated with the incident.
     system_tags: Optional[List[str]] = None
     # The Microsoft Entra tenant in which the alert was created.
     tenant_id: Optional[str] = None

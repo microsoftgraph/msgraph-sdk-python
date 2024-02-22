@@ -60,6 +60,7 @@ if TYPE_CHECKING:
     from .get_one_drive_usage_file_counts_with_period.get_one_drive_usage_file_counts_with_period_request_builder import GetOneDriveUsageFileCountsWithPeriodRequestBuilder
     from .get_one_drive_usage_storage_with_period.get_one_drive_usage_storage_with_period_request_builder import GetOneDriveUsageStorageWithPeriodRequestBuilder
     from .get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time.get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_request_builder import GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder
+    from .get_relying_party_detailed_summary_with_period.get_relying_party_detailed_summary_with_period_request_builder import GetRelyingPartyDetailedSummaryWithPeriodRequestBuilder
     from .get_share_point_activity_file_counts_with_period.get_share_point_activity_file_counts_with_period_request_builder import GetSharePointActivityFileCountsWithPeriodRequestBuilder
     from .get_share_point_activity_pages_with_period.get_share_point_activity_pages_with_period_request_builder import GetSharePointActivityPagesWithPeriodRequestBuilder
     from .get_share_point_activity_user_counts_with_period.get_share_point_activity_user_counts_with_period_request_builder import GetSharePointActivityUserCountsWithPeriodRequestBuilder
@@ -624,6 +625,18 @@ class ReportsRequestBuilder(BaseRequestBuilder):
         from .get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time.get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_request_builder import GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder
 
         return GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, printer_id, start_date_time)
+    
+    def get_relying_party_detailed_summary_with_period(self,period: Optional[str] = None) -> GetRelyingPartyDetailedSummaryWithPeriodRequestBuilder:
+        """
+        Provides operations to call the getRelyingPartyDetailedSummary method.
+        param period: Usage: period='{period}'
+        Returns: GetRelyingPartyDetailedSummaryWithPeriodRequestBuilder
+        """
+        if not period:
+            raise TypeError("period cannot be null.")
+        from .get_relying_party_detailed_summary_with_period.get_relying_party_detailed_summary_with_period_request_builder import GetRelyingPartyDetailedSummaryWithPeriodRequestBuilder
+
+        return GetRelyingPartyDetailedSummaryWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
     def get_share_point_activity_file_counts_with_period(self,period: Optional[str] = None) -> GetSharePointActivityFileCountsWithPeriodRequestBuilder:
         """

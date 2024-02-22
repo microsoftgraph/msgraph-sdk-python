@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -31,7 +32,7 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}{?%24expand,%24select,includeHiddenFolders*}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[MailFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,14 +45,13 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
         from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
+            "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[MailFolderItemRequestBuilderGetRequestConfiguration] = None) -> Optional[MailFolder]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[MailFolder]:
         """
         The user's mail folders. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,8 +64,7 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
         from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
+            "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -73,13 +72,13 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, MailFolder, error_mapping)
     
-    async def patch(self,body: Optional[MailFolder] = None, request_configuration: Optional[MailFolderItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[MailFolder]:
+    async def patch(self,body: Optional[MailFolder] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[MailFolder]:
         """
-        Update the writable properties of a mailSearchFolder object.
+        Update the properties of mailfolder object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolder]
-        Find more info here: https://learn.microsoft.com/graph/api/mailsearchfolder-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/mailfolder-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,8 +88,7 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
         from .....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
+            "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -98,55 +96,39 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, MailFolder, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[MailFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.DELETE
+        request_info = RequestInformation(Method.DELETE, '{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}', self.path_parameters)
+        request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[MailFolderItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The user's mail folders. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
+        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[MailFolder] = None, request_configuration: Optional[MailFolderItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[MailFolder] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the writable properties of a mailSearchFolder object.
+        Update the properties of mailfolder object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
+        request_info = RequestInformation(Method.PATCH, '{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}', self.path_parameters)
+        request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
@@ -206,16 +188,6 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
 
         return MoveRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class MailFolderItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class MailFolderItemRequestBuilderGetQueryParameters():
         """
@@ -246,28 +218,5 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class MailFolderItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[MailFolderItemRequestBuilder.MailFolderItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class MailFolderItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

@@ -15,9 +15,9 @@ from .conditional_access_session_control import ConditionalAccessSessionControl
 class SignInFrequencySessionControl(ConditionalAccessSessionControl):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.signInFrequencySessionControl"
-    # The possible values are primaryAndSecondaryAuthentication, secondaryAuthentication, unknownFutureValue.
+    # The possible values are primaryAndSecondaryAuthentication, secondaryAuthentication, unknownFutureValue. This property isn't required when using frequencyInterval with the value of timeBased.
     authentication_type: Optional[SignInFrequencyAuthenticationType] = None
-    # The possible values are timeBased, everyTime, unknownFutureValue.
+    # The possible values are timeBased, everyTime, unknownFutureValue. Sign-in frequency of everyTime is available for risky users, risky sign-ins, and Intune device enrollment. For more information, see Require reauthentication every time.
     frequency_interval: Optional[SignInFrequencyInterval] = None
     # Possible values are: days, hours.
     type: Optional[SigninFrequencyType] = None

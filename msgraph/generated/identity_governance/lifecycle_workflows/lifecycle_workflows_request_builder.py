@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -32,7 +33,7 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[LifecycleWorkflowsRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property lifecycleWorkflows for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,14 +45,13 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
         from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
+            "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[LifecycleWorkflowsRequestBuilderGetRequestConfiguration] = None) -> Optional[LifecycleWorkflowsContainer]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LifecycleWorkflowsContainer]:
         """
         Get lifecycleWorkflows from identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,8 +63,7 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
         from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
+            "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -72,7 +71,7 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LifecycleWorkflowsContainer, error_mapping)
     
-    async def patch(self,body: Optional[LifecycleWorkflowsContainer] = None, request_configuration: Optional[LifecycleWorkflowsRequestBuilderPatchRequestConfiguration] = None) -> Optional[LifecycleWorkflowsContainer]:
+    async def patch(self,body: Optional[LifecycleWorkflowsContainer] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LifecycleWorkflowsContainer]:
         """
         Update the navigation property lifecycleWorkflows in identityGovernance
         param body: The request body
@@ -87,8 +86,7 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
         from ...models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
+            "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -96,40 +94,29 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LifecycleWorkflowsContainer, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[LifecycleWorkflowsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property lifecycleWorkflows for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.DELETE
+        request_info = RequestInformation(Method.DELETE, '{+baseurl}/identityGovernance/lifecycleWorkflows', self.path_parameters)
+        request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[LifecycleWorkflowsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get lifecycleWorkflows from identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
+        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[LifecycleWorkflowsContainer] = None, request_configuration: Optional[LifecycleWorkflowsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[LifecycleWorkflowsContainer] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property lifecycleWorkflows in identityGovernance
         param body: The request body
@@ -138,13 +125,8 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
+        request_info = RequestInformation(Method.PATCH, '{+baseurl}/identityGovernance/lifecycleWorkflows', self.path_parameters)
+        request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
@@ -213,16 +195,6 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
 
         return WorkflowsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class LifecycleWorkflowsRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class LifecycleWorkflowsRequestBuilderGetQueryParameters():
         """
@@ -248,28 +220,5 @@ class LifecycleWorkflowsRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class LifecycleWorkflowsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[LifecycleWorkflowsRequestBuilder.LifecycleWorkflowsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class LifecycleWorkflowsRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

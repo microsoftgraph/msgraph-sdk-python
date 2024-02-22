@@ -17,7 +17,7 @@ class VerifiedDomain(AdditionalDataHolder, BackedModel, Parsable):
     is_default: Optional[bool] = None
     # true if this is the initial domain associated with the tenant; otherwise, false.
     is_initial: Optional[bool] = None
-    # The domain name; for example, contoso.onmicrosoft.com.
+    # The domain name; for example, contoso.com`.
     name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

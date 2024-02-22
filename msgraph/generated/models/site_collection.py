@@ -14,7 +14,7 @@ class SiteCollection(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The geographic region code for where this site collection resides. Read-only.
+    # The geographic region code for where this site collection resides. Only present for multi-geo tenants. Read-only.
     data_location_code: Optional[str] = None
     # The hostname for the site collection. Read-only.
     hostname: Optional[str] = None

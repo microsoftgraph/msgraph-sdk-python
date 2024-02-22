@@ -29,7 +29,7 @@ class Incident(Entity):
     created_date_time: Optional[datetime.datetime] = None
     # Array of custom tags associated with an incident.
     custom_tags: Optional[List[str]] = None
-    # The description property
+    # A rich text string describing the incident
     description: Optional[str] = None
     # Specifies the determination of the incident. Possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
     determination: Optional[AlertDetermination] = None
@@ -49,7 +49,7 @@ class Incident(Entity):
     severity: Optional[AlertSeverity] = None
     # The status property
     status: Optional[IncidentStatus] = None
-    # The systemTags property
+    # The system tags associated with the incident
     system_tags: Optional[List[str]] = None
     # The Microsoft Entra tenant in which the alert was created.
     tenant_id: Optional[str] = None

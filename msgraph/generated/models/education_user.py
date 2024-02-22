@@ -52,7 +52,7 @@ class EducationUser(Entity):
     external_source_detail: Optional[str] = None
     # The given name (first name) of the user. Supports $filter.
     given_name: Optional[str] = None
-    # The SMTP address for the user, for example, jeff@contoso.onmicrosoft.com. Read-Only. Supports $filter.
+    # The SMTP address for the user, for example, jeff@contoso.com. Read-Only. Supports $filter.
     mail: Optional[str] = None
     # The mail alias for the user. This property must be specified when a user is created. Supports $filter.
     mail_nickname: Optional[str] = None

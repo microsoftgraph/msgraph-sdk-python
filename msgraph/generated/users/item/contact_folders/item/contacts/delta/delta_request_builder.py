@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/contactFolders/{contactFolder%2Did}/contacts/delta(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[DeltaRequestBuilderGetRequestConfiguration] = None) -> Optional[DeltaGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeltaGetResponse]:
         """
         Get a set of contacts that have been added, deleted, or updated in a specified folder. A delta function call for contacts in a folder is similar to a GET request, except that by appropriately applying state tokens in one or more of these calls, you can query for incremental changes in the contacts in that folder. This allows you to maintain and synchronize a local store of a user's contacts without having to fetch the entire set of contacts from the server every time.  
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -39,8 +40,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         from .......models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
+            "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -48,20 +48,14 @@ class DeltaRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeltaGetResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[DeltaRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get a set of contacts that have been added, deleted, or updated in a specified folder. A delta function call for contacts in a folder is similar to a GET request, except that by appropriately applying state tokens in one or more of these calls, you can query for incremental changes in the contacts in that folder. This allows you to maintain and synchronize a local store of a user's contacts without having to fetch the entire set of contacts from the server every time.  
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
+        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
@@ -129,19 +123,6 @@ class DeltaRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DeltaRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[DeltaRequestBuilder.DeltaRequestBuilderGetQueryParameters] = None
 
     
 

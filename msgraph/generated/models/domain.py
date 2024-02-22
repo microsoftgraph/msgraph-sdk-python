@@ -26,7 +26,7 @@ class Domain(Entity):
     is_admin_managed: Optional[bool] = None
     # true if this is the default domain that is used for user creation. There is only one default domain per company. Not nullable
     is_default: Optional[bool] = None
-    # true if this is the initial domain created by Microsoft Online Services (companyname.onmicrosoft.com). There is only one initial domain per company. Not nullable
+    # true if this is the initial domain created by Microsoft Online Services (contoso.com). There is only one initial domain per company. Not nullable
     is_initial: Optional[bool] = None
     # true if the domain is a verified root domain. Otherwise, false if the domain is a subdomain or unverified. Not nullable
     is_root: Optional[bool] = None

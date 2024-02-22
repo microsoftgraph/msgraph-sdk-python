@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class ResourceRequestsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["accessPackageResourceRequest%2Did"] = access_package_resource_request_id
         return AccessPackageResourceRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ResourceRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageResourceRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessPackageResourceRequestCollectionResponse]:
         """
         Retrieve a list of accessPackageResourceRequest objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -56,8 +57,7 @@ class ResourceRequestsRequestBuilder(BaseRequestBuilder):
         from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
+            "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -65,7 +65,7 @@ class ResourceRequestsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessPackageResourceRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AccessPackageResourceRequest] = None, request_configuration: Optional[ResourceRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessPackageResourceRequest]:
+    async def post(self,body: Optional[AccessPackageResourceRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessPackageResourceRequest]:
         """
         Create a new accessPackageResourceRequest object to request the addition of a resource to an access package catalog, update of a resource, or the removal of a resource from a catalog.  A resource must be included in an access package catalog before a role of that resource can be added to an access package.
         param body: The request body
@@ -81,8 +81,7 @@ class ResourceRequestsRequestBuilder(BaseRequestBuilder):
         from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
+            "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -90,24 +89,18 @@ class ResourceRequestsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessPackageResourceRequest, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ResourceRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of accessPackageResourceRequest objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
+        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AccessPackageResourceRequest] = None, request_configuration: Optional[ResourceRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AccessPackageResourceRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new accessPackageResourceRequest object to request the addition of a resource to an access package catalog, update of a resource, or the removal of a resource from a catalog.  A resource must be included in an access package catalog before a role of that resource can be added to an access package.
         param body: The request body
@@ -116,13 +109,8 @@ class ResourceRequestsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
+        request_info = RequestInformation(Method.POST, '{+baseurl}/identityGovernance/entitlementManagement/resourceRequests', self.path_parameters)
+        request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
@@ -201,28 +189,5 @@ class ResourceRequestsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ResourceRequestsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ResourceRequestsRequestBuilder.ResourceRequestsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ResourceRequestsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

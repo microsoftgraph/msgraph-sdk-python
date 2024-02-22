@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["domainDnsRecord%2Did"] = domain_dns_record_id
         return DomainDnsRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[VerificationDnsRecordsRequestBuilderGetRequestConfiguration] = None) -> Optional[DomainDnsRecordCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DomainDnsRecordCollectionResponse]:
         """
         Retrieve a list of domainDnsRecord objects. You cannot use an associated domain with your Microsoft Entra tenant until ownership is verified. To verify the ownership of the domain, retrieve the domain verification records and add the details to the zone file of the domain. This can be done through the domain registrar or DNS server configuration. Root domains require verification. For example, contoso.com requires verification. If a root domain is verified, subdomains of the root domain are automatically verified. For example, subdomain.contoso.com is automatically be verified if contoso.com has been verified.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -56,8 +57,7 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
         from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
+            "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -65,7 +65,7 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DomainDnsRecordCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DomainDnsRecord] = None, request_configuration: Optional[VerificationDnsRecordsRequestBuilderPostRequestConfiguration] = None) -> Optional[DomainDnsRecord]:
+    async def post(self,body: Optional[DomainDnsRecord] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DomainDnsRecord]:
         """
         Create new navigation property to verificationDnsRecords for domains
         param body: The request body
@@ -80,8 +80,7 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
         from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
+            "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -89,24 +88,18 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DomainDnsRecord, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[VerificationDnsRecordsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of domainDnsRecord objects. You cannot use an associated domain with your Microsoft Entra tenant until ownership is verified. To verify the ownership of the domain, retrieve the domain verification records and add the details to the zone file of the domain. This can be done through the domain registrar or DNS server configuration. Root domains require verification. For example, contoso.com requires verification. If a root domain is verified, subdomains of the root domain are automatically verified. For example, subdomain.contoso.com is automatically be verified if contoso.com has been verified.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
+        request_info = RequestInformation(Method.GET, self.url_template, self.path_parameters)
+        request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DomainDnsRecord] = None, request_configuration: Optional[VerificationDnsRecordsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DomainDnsRecord] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to verificationDnsRecords for domains
         param body: The request body
@@ -115,13 +108,8 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation()
-        if request_configuration:
-            request_info.headers.add_all(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
+        request_info = RequestInformation(Method.POST, '{+baseurl}/domains/{domain%2Did}/verificationDnsRecords', self.path_parameters)
+        request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
@@ -200,28 +188,5 @@ class VerificationDnsRecordsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class VerificationDnsRecordsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[VerificationDnsRecordsRequestBuilder.VerificationDnsRecordsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class VerificationDnsRecordsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

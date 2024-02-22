@@ -12,7 +12,7 @@ from .education_resource import EducationResource
 class EducationChannelResource(EducationResource):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.educationChannelResource"
-    # The url property
+    # URL of the channel resource.
     url: Optional[str] = None
     
     @staticmethod

@@ -135,6 +135,8 @@ if TYPE_CHECKING:
     from .chat_message_info import ChatMessageInfo
     from .checklist_item import ChecklistItem
     from .claims_mapping_policy import ClaimsMappingPolicy
+    from .cloud_clipboard_item import CloudClipboardItem
+    from .cloud_clipboard_root import CloudClipboardRoot
     from .column_definition import ColumnDefinition
     from .column_link import ColumnLink
     from .comms_operation import CommsOperation
@@ -166,6 +168,7 @@ if TYPE_CHECKING:
     from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
     from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
     from .delegated_permission_classification import DelegatedPermissionClassification
+    from .deleted_chat import DeletedChat
     from .deleted_item_container import DeletedItemContainer
     from .deleted_team import DeletedTeam
     from .delta_participants import DeltaParticipants
@@ -208,6 +211,7 @@ if TYPE_CHECKING:
     from .device_management_partner import DeviceManagementPartner
     from .device_management_reports import DeviceManagementReports
     from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+    from .device_registration_policy import DeviceRegistrationPolicy
     from .directory import Directory
     from .directory_audit import DirectoryAudit
     from .directory_definition import DirectoryDefinition
@@ -519,6 +523,7 @@ if TYPE_CHECKING:
     from .rbac_application import RbacApplication
     from .record_operation import RecordOperation
     from .reference_attachment import ReferenceAttachment
+    from .relying_party_detailed_summary import RelyingPartyDetailedSummary
     from .remote_assistance_partner import RemoteAssistancePartner
     from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
     from .request import Request
@@ -792,6 +797,8 @@ if TYPE_CHECKING:
     from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
     from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
     from .windows_protection_state import WindowsProtectionState
+    from .windows_setting import WindowsSetting
+    from .windows_setting_instance import WindowsSettingInstance
     from .windows_universal_app_x import WindowsUniversalAppX
     from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
     from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration
@@ -1391,6 +1398,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .claims_mapping_policy import ClaimsMappingPolicy
 
             return ClaimsMappingPolicy()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudClipboardItem".casefold():
+            from .cloud_clipboard_item import CloudClipboardItem
+
+            return CloudClipboardItem()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudClipboardRoot".casefold():
+            from .cloud_clipboard_root import CloudClipboardRoot
+
+            return CloudClipboardRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.columnDefinition".casefold():
             from .column_definition import ColumnDefinition
 
@@ -1515,6 +1530,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .delegated_permission_classification import DelegatedPermissionClassification
 
             return DelegatedPermissionClassification()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deletedChat".casefold():
+            from .deleted_chat import DeletedChat
+
+            return DeletedChat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deletedItemContainer".casefold():
             from .deleted_item_container import DeletedItemContainer
 
@@ -1683,6 +1702,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
 
             return DeviceManagementTroubleshootingEvent()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceRegistrationPolicy".casefold():
+            from .device_registration_policy import DeviceRegistrationPolicy
+
+            return DeviceRegistrationPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.directory".casefold():
             from .directory import Directory
 
@@ -2930,6 +2953,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .reference_attachment import ReferenceAttachment
 
             return ReferenceAttachment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.relyingPartyDetailedSummary".casefold():
+            from .relying_party_detailed_summary import RelyingPartyDetailedSummary
+
+            return RelyingPartyDetailedSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.remoteAssistancePartner".casefold():
             from .remote_assistance_partner import RemoteAssistancePartner
 
@@ -4024,6 +4051,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .windows_protection_state import WindowsProtectionState
 
             return WindowsProtectionState()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsSetting".casefold():
+            from .windows_setting import WindowsSetting
+
+            return WindowsSetting()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsSettingInstance".casefold():
+            from .windows_setting_instance import WindowsSettingInstance
+
+            return WindowsSettingInstance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsUniversalAppX".casefold():
             from .windows_universal_app_x import WindowsUniversalAppX
 
@@ -4369,6 +4404,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .chat_message_info import ChatMessageInfo
         from .checklist_item import ChecklistItem
         from .claims_mapping_policy import ClaimsMappingPolicy
+        from .cloud_clipboard_item import CloudClipboardItem
+        from .cloud_clipboard_root import CloudClipboardRoot
         from .column_definition import ColumnDefinition
         from .column_link import ColumnLink
         from .comms_operation import CommsOperation
@@ -4400,6 +4437,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
         from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
         from .delegated_permission_classification import DelegatedPermissionClassification
+        from .deleted_chat import DeletedChat
         from .deleted_item_container import DeletedItemContainer
         from .deleted_team import DeletedTeam
         from .delta_participants import DeltaParticipants
@@ -4442,6 +4480,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .device_management_partner import DeviceManagementPartner
         from .device_management_reports import DeviceManagementReports
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+        from .device_registration_policy import DeviceRegistrationPolicy
         from .directory import Directory
         from .directory_audit import DirectoryAudit
         from .directory_definition import DirectoryDefinition
@@ -4753,6 +4792,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .rbac_application import RbacApplication
         from .record_operation import RecordOperation
         from .reference_attachment import ReferenceAttachment
+        from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
         from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
         from .request import Request
@@ -5026,6 +5066,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
         from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
         from .windows_protection_state import WindowsProtectionState
+        from .windows_setting import WindowsSetting
+        from .windows_setting_instance import WindowsSettingInstance
         from .windows_universal_app_x import WindowsUniversalAppX
         from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
         from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration
@@ -5209,6 +5251,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .chat_message_info import ChatMessageInfo
         from .checklist_item import ChecklistItem
         from .claims_mapping_policy import ClaimsMappingPolicy
+        from .cloud_clipboard_item import CloudClipboardItem
+        from .cloud_clipboard_root import CloudClipboardRoot
         from .column_definition import ColumnDefinition
         from .column_link import ColumnLink
         from .comms_operation import CommsOperation
@@ -5240,6 +5284,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
         from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
         from .delegated_permission_classification import DelegatedPermissionClassification
+        from .deleted_chat import DeletedChat
         from .deleted_item_container import DeletedItemContainer
         from .deleted_team import DeletedTeam
         from .delta_participants import DeltaParticipants
@@ -5282,6 +5327,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .device_management_partner import DeviceManagementPartner
         from .device_management_reports import DeviceManagementReports
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+        from .device_registration_policy import DeviceRegistrationPolicy
         from .directory import Directory
         from .directory_audit import DirectoryAudit
         from .directory_definition import DirectoryDefinition
@@ -5593,6 +5639,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .rbac_application import RbacApplication
         from .record_operation import RecordOperation
         from .reference_attachment import ReferenceAttachment
+        from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
         from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
         from .request import Request
@@ -5866,6 +5913,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
         from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
         from .windows_protection_state import WindowsProtectionState
+        from .windows_setting import WindowsSetting
+        from .windows_setting_instance import WindowsSettingInstance
         from .windows_universal_app_x import WindowsUniversalAppX
         from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
         from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration

@@ -13,9 +13,9 @@ class AttendeeNotificationInfo(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The OdataType property
     odata_type: Optional[str] = None
-    # The phoneNumber property
+    # The phone number of the external attendee. Required.
     phone_number: Optional[str] = None
-    # The timeZone property
+    # The time zone of the external attendee. The timeZone property can be set to any of the time zones currently supported by Windows. Required.
     time_zone: Optional[str] = None
     
     @staticmethod

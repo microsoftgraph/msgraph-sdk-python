@@ -68,11 +68,11 @@ class MessagesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ChatMessage] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ChatMessage]:
         """
-        Send a new chatMessage in the specified channel or a chat.
+        Send a new chatMessage in the specified channel.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChatMessage]
-        Find more info here: https://learn.microsoft.com/graph/api/chatmessage-post?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/channel-post-messages?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +103,7 @@ class MessagesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ChatMessage] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Send a new chatMessage in the specified channel or a chat.
+        Send a new chatMessage in the specified channel.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

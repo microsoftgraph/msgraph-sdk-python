@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .entity import Entity
     from .shift_preferences import ShiftPreferences
+    from .windows_setting import WindowsSetting
 
 from .entity import Entity
 
@@ -19,6 +20,8 @@ class UserSettings(Entity):
     odata_type: Optional[str] = None
     # The shiftPreferences property
     shift_preferences: Optional[ShiftPreferences] = None
+    # The windows property
+    windows: Optional[List[WindowsSetting]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserSettings:
@@ -38,14 +41,17 @@ class UserSettings(Entity):
         """
         from .entity import Entity
         from .shift_preferences import ShiftPreferences
+        from .windows_setting import WindowsSetting
 
         from .entity import Entity
         from .shift_preferences import ShiftPreferences
+        from .windows_setting import WindowsSetting
 
         fields: Dict[str, Callable[[Any], None]] = {
             "contributionToContentDiscoveryAsOrganizationDisabled": lambda n : setattr(self, 'contribution_to_content_discovery_as_organization_disabled', n.get_bool_value()),
             "contributionToContentDiscoveryDisabled": lambda n : setattr(self, 'contribution_to_content_discovery_disabled', n.get_bool_value()),
             "shiftPreferences": lambda n : setattr(self, 'shift_preferences', n.get_object_value(ShiftPreferences)),
+            "windows": lambda n : setattr(self, 'windows', n.get_collection_of_object_values(WindowsSetting)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,5 +69,6 @@ class UserSettings(Entity):
         writer.write_bool_value("contributionToContentDiscoveryAsOrganizationDisabled", self.contribution_to_content_discovery_as_organization_disabled)
         writer.write_bool_value("contributionToContentDiscoveryDisabled", self.contribution_to_content_discovery_disabled)
         writer.write_object_value("shiftPreferences", self.shift_preferences)
+        writer.write_collection_of_object_values("windows", self.windows)
     
 

@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .calendar import Calendar
     from .calendar_group import CalendarGroup
     from .chat import Chat
+    from .cloud_clipboard_root import CloudClipboardRoot
     from .contact import Contact
     from .contact_folder import ContactFolder
     from .custom_security_attribute_value import CustomSecurityAttributeValue
@@ -100,6 +101,8 @@ class User(DirectoryObject):
     chats: Optional[List[Chat]] = None
     # The city where the user is located. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     city: Optional[str] = None
+    # The cloudClipboard property
+    cloud_clipboard: Optional[CloudClipboardRoot] = None
     # The name of the company that the user is associated with. This property can be useful for describing the company that an external user comes from. The maximum length is 64 characters.Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     company_name: Optional[str] = None
     # Sets whether consent was obtained for minors. Allowed values: null, Granted, Denied and NotRequired. Refer to the legal age group property definitions for further information. Returned only on $select. Supports $filter (eq, ne, not, and in).
@@ -340,6 +343,7 @@ class User(DirectoryObject):
         from .calendar import Calendar
         from .calendar_group import CalendarGroup
         from .chat import Chat
+        from .cloud_clipboard_root import CloudClipboardRoot
         from .contact import Contact
         from .contact_folder import ContactFolder
         from .custom_security_attribute_value import CustomSecurityAttributeValue
@@ -393,6 +397,7 @@ class User(DirectoryObject):
         from .calendar import Calendar
         from .calendar_group import CalendarGroup
         from .chat import Chat
+        from .cloud_clipboard_root import CloudClipboardRoot
         from .contact import Contact
         from .contact_folder import ContactFolder
         from .custom_security_attribute_value import CustomSecurityAttributeValue
@@ -456,6 +461,7 @@ class User(DirectoryObject):
             "calendars": lambda n : setattr(self, 'calendars', n.get_collection_of_object_values(Calendar)),
             "chats": lambda n : setattr(self, 'chats', n.get_collection_of_object_values(Chat)),
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
+            "cloudClipboard": lambda n : setattr(self, 'cloud_clipboard', n.get_object_value(CloudClipboardRoot)),
             "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
             "consentProvidedForMinor": lambda n : setattr(self, 'consent_provided_for_minor', n.get_str_value()),
             "contactFolders": lambda n : setattr(self, 'contact_folders', n.get_collection_of_object_values(ContactFolder)),
@@ -595,6 +601,7 @@ class User(DirectoryObject):
         writer.write_collection_of_object_values("calendars", self.calendars)
         writer.write_collection_of_object_values("chats", self.chats)
         writer.write_str_value("city", self.city)
+        writer.write_object_value("cloudClipboard", self.cloud_clipboard)
         writer.write_str_value("companyName", self.company_name)
         writer.write_str_value("consentProvidedForMinor", self.consent_provided_for_minor)
         writer.write_collection_of_object_values("contactFolders", self.contact_folders)

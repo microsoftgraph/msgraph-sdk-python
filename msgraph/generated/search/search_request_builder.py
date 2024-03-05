@@ -13,6 +13,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..models.o_data_errors.o_data_error import ODataError
     from ..models.search_entity import SearchEntity
+    from .acronyms.acronyms_request_builder import AcronymsRequestBuilder
+    from .bookmarks.bookmarks_request_builder import BookmarksRequestBuilder
+    from .qnas.qnas_request_builder import QnasRequestBuilder
     from .query.query_request_builder import QueryRequestBuilder
 
 class SearchRequestBuilder(BaseRequestBuilder):
@@ -106,6 +109,33 @@ class SearchRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return SearchRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def acronyms(self) -> AcronymsRequestBuilder:
+        """
+        Provides operations to manage the acronyms property of the microsoft.graph.searchEntity entity.
+        """
+        from .acronyms.acronyms_request_builder import AcronymsRequestBuilder
+
+        return AcronymsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def bookmarks(self) -> BookmarksRequestBuilder:
+        """
+        Provides operations to manage the bookmarks property of the microsoft.graph.searchEntity entity.
+        """
+        from .bookmarks.bookmarks_request_builder import BookmarksRequestBuilder
+
+        return BookmarksRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def qnas(self) -> QnasRequestBuilder:
+        """
+        Provides operations to manage the qnas property of the microsoft.graph.searchEntity entity.
+        """
+        from .qnas.qnas_request_builder import QnasRequestBuilder
+
+        return QnasRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def query(self) -> QueryRequestBuilder:

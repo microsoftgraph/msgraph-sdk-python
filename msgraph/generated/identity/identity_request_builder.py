@@ -132,7 +132,7 @@ class IdentityRequestBuilder(BaseRequestBuilder):
     @property
     def conditional_access(self) -> ConditionalAccessRequestBuilder:
         """
-        Provides operations to manage the conditionalAccess property of the microsoft.graph.identityContainer entity.
+        The conditionalAccess property
         """
         from .conditional_access.conditional_access_request_builder import ConditionalAccessRequestBuilder
 

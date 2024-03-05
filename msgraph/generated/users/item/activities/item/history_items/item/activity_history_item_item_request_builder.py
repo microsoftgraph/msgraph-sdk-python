@@ -68,11 +68,11 @@ class ActivityHistoryItemItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ActivityHistoryItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ActivityHistoryItem]:
         """
-        Create a new or replace an existing history item for an existing user activity.
+        Delete an existing history item for an existing user activity.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ActivityHistoryItem]
-        Find more info here: https://learn.microsoft.com/graph/api/projectrome-put-historyitem?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/projectrome-delete-historyitem?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -114,7 +114,7 @@ class ActivityHistoryItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ActivityHistoryItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new or replace an existing history item for an existing user activity.
+        Delete an existing history item for an existing user activity.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

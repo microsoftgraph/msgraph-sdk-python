@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.user_settings import UserSettings
     from .shift_preferences.shift_preferences_request_builder import ShiftPreferencesRequestBuilder
+    from .windows.windows_request_builder import WindowsRequestBuilder
 
 class SettingsRequestBuilder(BaseRequestBuilder):
     """
@@ -146,6 +147,15 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         from .shift_preferences.shift_preferences_request_builder import ShiftPreferencesRequestBuilder
 
         return ShiftPreferencesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def windows(self) -> WindowsRequestBuilder:
+        """
+        Provides operations to manage the windows property of the microsoft.graph.userSettings entity.
+        """
+        from .windows.windows_request_builder import WindowsRequestBuilder
+
+        return WindowsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SettingsRequestBuilderGetQueryParameters():

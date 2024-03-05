@@ -13,6 +13,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.virtual_endpoint import VirtualEndpoint
+    from .audit_events.audit_events_request_builder import AuditEventsRequestBuilder
+    from .provisioning_policies.provisioning_policies_request_builder import ProvisioningPoliciesRequestBuilder
+    from .user_settings.user_settings_request_builder import UserSettingsRequestBuilder
 
 class VirtualEndpointRequestBuilder(BaseRequestBuilder):
     """
@@ -134,6 +137,33 @@ class VirtualEndpointRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return VirtualEndpointRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def audit_events(self) -> AuditEventsRequestBuilder:
+        """
+        Provides operations to manage the auditEvents property of the microsoft.graph.virtualEndpoint entity.
+        """
+        from .audit_events.audit_events_request_builder import AuditEventsRequestBuilder
+
+        return AuditEventsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def provisioning_policies(self) -> ProvisioningPoliciesRequestBuilder:
+        """
+        Provides operations to manage the provisioningPolicies property of the microsoft.graph.virtualEndpoint entity.
+        """
+        from .provisioning_policies.provisioning_policies_request_builder import ProvisioningPoliciesRequestBuilder
+
+        return ProvisioningPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def user_settings(self) -> UserSettingsRequestBuilder:
+        """
+        Provides operations to manage the userSettings property of the microsoft.graph.virtualEndpoint entity.
+        """
+        from .user_settings.user_settings_request_builder import UserSettingsRequestBuilder
+
+        return UserSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class VirtualEndpointRequestBuilderGetQueryParameters():

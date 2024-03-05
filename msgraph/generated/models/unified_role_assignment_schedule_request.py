@@ -20,7 +20,7 @@ from .request import Request
 class UnifiedRoleAssignmentScheduleRequest(Request):
     # Represents the type of the operation on the role assignment request. The possible values are: adminAssign, adminUpdate, adminRemove, selfActivate, selfDeactivate, adminExtend, adminRenew, selfExtend, selfRenew, unknownFutureValue. adminAssign: For administrators to assign roles to principals.adminRemove: For administrators to remove principals from roles. adminUpdate: For administrators to change existing role assignments.adminExtend: For administrators to extend expiring assignments.adminRenew: For administrators to renew expired assignments.selfActivate: For principals to activate their assignments.selfDeactivate: For principals to deactivate their active assignments.selfExtend: For principals to request to extend their expiring assignments.selfRenew: For principals to request to renew their expired assignments.
     action: Optional[UnifiedRoleScheduleRequestActions] = None
-    # If the request is from an eligible administrator to activate a role, this parameter will show the related eligible assignment for that activation. Otherwise, it's null. Supports $expand.
+    # If the request is from an eligible administrator to activate a role, this parameter will show the related eligible assignment for that activation. Otherwise, it's null. Supports $expand and $select nested in $expand.
     activated_using: Optional[UnifiedRoleEligibilitySchedule] = None
     # Read-only property with details of the app-specific scope when the assignment is scoped to an app. Nullable. Supports $expand.
     app_scope: Optional[AppScope] = None
@@ -36,17 +36,17 @@ class UnifiedRoleAssignmentScheduleRequest(Request):
     justification: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The principal that's getting a role assignment through the request. Supports $expand.
+    # The principal that's getting a role assignment through the request. Supports $expand and $select nested in $expand for id only.
     principal: Optional[DirectoryObject] = None
     # Identifier of the principal that has been granted the assignment. Can be a user, role-assignable group, or a service principal. Supports $filter (eq, ne).
     principal_id: Optional[str] = None
-    # Detailed information for the unifiedRoleDefinition object that is referenced through the roleDefinitionId property. Supports $expand.
+    # Detailed information for the unifiedRoleDefinition object that is referenced through the roleDefinitionId property. Supports $expand and $select nested in $expand.
     role_definition: Optional[UnifiedRoleDefinition] = None
     # Identifier of the unifiedRoleDefinition object that is being assigned to the principal. Supports $filter (eq, ne).
     role_definition_id: Optional[str] = None
     # The period of the role assignment. Recurring schedules are currently unsupported.
     schedule_info: Optional[RequestSchedule] = None
-    # The schedule for an eligible role assignment that is referenced through the targetScheduleId property. Supports $expand.
+    # The schedule for an eligible role assignment that is referenced through the targetScheduleId property. Supports $expand and $select nested in $expand.
     target_schedule: Optional[UnifiedRoleAssignmentSchedule] = None
     # Identifier of the schedule object that's linked to the assignment request. Supports $filter (eq, ne).
     target_schedule_id: Optional[str] = None

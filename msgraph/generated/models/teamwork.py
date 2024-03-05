@@ -4,6 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .deleted_chat import DeletedChat
     from .deleted_team import DeletedTeam
     from .entity import Entity
     from .teams_app_settings import TeamsAppSettings
@@ -13,6 +14,8 @@ from .entity import Entity
 
 @dataclass
 class Teamwork(Entity):
+    # The deletedChats property
+    deleted_chats: Optional[List[DeletedChat]] = None
     # The deleted team.
     deleted_teams: Optional[List[DeletedTeam]] = None
     # The OdataType property
@@ -38,17 +41,20 @@ class Teamwork(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .deleted_chat import DeletedChat
         from .deleted_team import DeletedTeam
         from .entity import Entity
         from .teams_app_settings import TeamsAppSettings
         from .workforce_integration import WorkforceIntegration
 
+        from .deleted_chat import DeletedChat
         from .deleted_team import DeletedTeam
         from .entity import Entity
         from .teams_app_settings import TeamsAppSettings
         from .workforce_integration import WorkforceIntegration
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "deletedChats": lambda n : setattr(self, 'deleted_chats', n.get_collection_of_object_values(DeletedChat)),
             "deletedTeams": lambda n : setattr(self, 'deleted_teams', n.get_collection_of_object_values(DeletedTeam)),
             "teamsAppSettings": lambda n : setattr(self, 'teams_app_settings', n.get_object_value(TeamsAppSettings)),
             "workforceIntegrations": lambda n : setattr(self, 'workforce_integrations', n.get_collection_of_object_values(WorkforceIntegration)),
@@ -66,6 +72,7 @@ class Teamwork(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("deletedChats", self.deleted_chats)
         writer.write_collection_of_object_values("deletedTeams", self.deleted_teams)
         writer.write_object_value("teamsAppSettings", self.teams_app_settings)
         writer.write_collection_of_object_values("workforceIntegrations", self.workforce_integrations)

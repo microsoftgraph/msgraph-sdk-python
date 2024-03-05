@@ -4,14 +4,23 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .cloud_pc_audit_event import CloudPcAuditEvent
+    from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
+    from .cloud_pc_user_setting import CloudPcUserSetting
     from .entity import Entity
 
 from .entity import Entity
 
 @dataclass
 class VirtualEndpoint(Entity):
+    # The auditEvents property
+    audit_events: Optional[List[CloudPcAuditEvent]] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The provisioningPolicies property
+    provisioning_policies: Optional[List[CloudPcProvisioningPolicy]] = None
+    # The userSettings property
+    user_settings: Optional[List[CloudPcUserSetting]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> VirtualEndpoint:
@@ -29,11 +38,20 @@ class VirtualEndpoint(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .cloud_pc_audit_event import CloudPcAuditEvent
+        from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
+        from .cloud_pc_user_setting import CloudPcUserSetting
         from .entity import Entity
 
+        from .cloud_pc_audit_event import CloudPcAuditEvent
+        from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
+        from .cloud_pc_user_setting import CloudPcUserSetting
         from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "auditEvents": lambda n : setattr(self, 'audit_events', n.get_collection_of_object_values(CloudPcAuditEvent)),
+            "provisioningPolicies": lambda n : setattr(self, 'provisioning_policies', n.get_collection_of_object_values(CloudPcProvisioningPolicy)),
+            "userSettings": lambda n : setattr(self, 'user_settings', n.get_collection_of_object_values(CloudPcUserSetting)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -48,5 +66,8 @@ class VirtualEndpoint(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_collection_of_object_values("auditEvents", self.audit_events)
+        writer.write_collection_of_object_values("provisioningPolicies", self.provisioning_policies)
+        writer.write_collection_of_object_values("userSettings", self.user_settings)
     
 

@@ -11,7 +11,7 @@ from .entity import Entity
 
 @dataclass
 class DelegatedPermissionClassification(Entity):
-    # The classification value being given. Possible value: low. Doesn't support $filter.
+    # The classification value. Possible values: low, medium (preview), high (preview). Doesn't support $filter.
     classification: Optional[PermissionClassificationType] = None
     # The OdataType property
     odata_type: Optional[str] = None

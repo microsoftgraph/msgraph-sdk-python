@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .base_item import BaseItem
+    from .base_site_page import BaseSitePage
     from .column_definition import ColumnDefinition
     from .content_type import ContentType
     from .drive import Drive
@@ -51,6 +52,8 @@ class Site(BaseItem):
     onenote: Optional[Onenote] = None
     # The collection of long-running operations on the site.
     operations: Optional[List[RichLongRunningOperation]] = None
+    # The pages property
+    pages: Optional[List[BaseSitePage]] = None
     # The permissions associated with the site. Nullable.
     permissions: Optional[List[Permission]] = None
     # If present, indicates that this is the root site in the site collection. Read-only.
@@ -83,6 +86,7 @@ class Site(BaseItem):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .base_item import BaseItem
+        from .base_site_page import BaseSitePage
         from .column_definition import ColumnDefinition
         from .content_type import ContentType
         from .drive import Drive
@@ -98,6 +102,7 @@ class Site(BaseItem):
         from .term_store.store import Store
 
         from .base_item import BaseItem
+        from .base_site_page import BaseSitePage
         from .column_definition import ColumnDefinition
         from .content_type import ContentType
         from .drive import Drive
@@ -126,6 +131,7 @@ class Site(BaseItem):
             "lists": lambda n : setattr(self, 'lists', n.get_collection_of_object_values(List_)),
             "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(Onenote)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(RichLongRunningOperation)),
+            "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(BaseSitePage)),
             "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_object_values(Permission)),
             "root": lambda n : setattr(self, 'root', n.get_object_value(Root)),
             "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(SharepointIds)),
@@ -160,6 +166,7 @@ class Site(BaseItem):
         writer.write_collection_of_object_values("lists", self.lists)
         writer.write_object_value("onenote", self.onenote)
         writer.write_collection_of_object_values("operations", self.operations)
+        writer.write_collection_of_object_values("pages", self.pages)
         writer.write_collection_of_object_values("permissions", self.permissions)
         writer.write_object_value("root", self.root)
         writer.write_object_value("sharepointIds", self.sharepoint_ids)

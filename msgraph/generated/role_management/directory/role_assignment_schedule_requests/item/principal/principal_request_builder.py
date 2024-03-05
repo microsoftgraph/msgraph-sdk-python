@@ -29,7 +29,7 @@ class PrincipalRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryObject]:
         """
-        The principal that's getting a role assignment through the request. Supports $expand.
+        The principal that's getting a role assignment through the request. Supports $expand and $select nested in $expand for id only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObject]
         """
@@ -49,7 +49,7 @@ class PrincipalRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        The principal that's getting a role assignment through the request. Supports $expand.
+        The principal that's getting a role assignment through the request. Supports $expand and $select nested in $expand for id only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -71,7 +71,7 @@ class PrincipalRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PrincipalRequestBuilderGetQueryParameters():
         """
-        The principal that's getting a role assignment through the request. Supports $expand.
+        The principal that's getting a role assignment through the request. Supports $expand and $select nested in $expand for id only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -30,7 +30,7 @@ class GroupRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Group]:
         """
-        References the group that is the scope of the membership or ownership assignment request through PIM for groups. Supports $expand.
+        References the group that is the scope of the membership or ownership assignment request through PIM for groups. Supports $expand and $select nested in $expand for select properties like id, displayName, and mail.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Group]
         """
@@ -50,7 +50,7 @@ class GroupRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        References the group that is the scope of the membership or ownership assignment request through PIM for groups. Supports $expand.
+        References the group that is the scope of the membership or ownership assignment request through PIM for groups. Supports $expand and $select nested in $expand for select properties like id, displayName, and mail.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -81,7 +81,7 @@ class GroupRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GroupRequestBuilderGetQueryParameters():
         """
-        References the group that is the scope of the membership or ownership assignment request through PIM for groups. Supports $expand.
+        References the group that is the scope of the membership or ownership assignment request through PIM for groups. Supports $expand and $select nested in $expand for select properties like id, displayName, and mail.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

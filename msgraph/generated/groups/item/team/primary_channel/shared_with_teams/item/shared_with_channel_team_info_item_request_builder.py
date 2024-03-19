@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +28,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/team/primaryChannel/sharedWithTeams/{sharedWithChannelTeamInfo%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Unshare a channel with a team by deleting the corresponding sharedWithChannelTeamInfo resource. This operation is allowed only for channels with a membershipType value of shared.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -48,7 +47,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SharedWithChannelTeamInfo]:
+    async def get(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SharedWithChannelTeamInfo]:
         """
         Get a team that has been shared with a specified channel. This operation is allowed only for channels with a membershipType value of shared.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -69,7 +68,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SharedWithChannelTeamInfo, error_mapping)
     
-    async def patch(self,body: Optional[SharedWithChannelTeamInfo] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SharedWithChannelTeamInfo]:
+    async def patch(self,body: Optional[SharedWithChannelTeamInfo] = None, request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[SharedWithChannelTeamInfo]:
         """
         Update the navigation property sharedWithTeams in groups
         param body: The request body
@@ -92,7 +91,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SharedWithChannelTeamInfo, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Unshare a channel with a team by deleting the corresponding sharedWithChannelTeamInfo resource. This operation is allowed only for channels with a membershipType value of shared.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +102,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a team that has been shared with a specified channel. This operation is allowed only for channels with a membershipType value of shared.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -114,7 +113,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[SharedWithChannelTeamInfo] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[SharedWithChannelTeamInfo] = None, request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property sharedWithTeams in groups
         param body: The request body
@@ -157,6 +156,16 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
 
         return TeamRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class SharedWithChannelTeamInfoItemRequestBuilderGetQueryParameters():
         """
@@ -182,5 +191,28 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SharedWithChannelTeamInfoItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[SharedWithChannelTeamInfoItemRequestBuilder.SharedWithChannelTeamInfoItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SharedWithChannelTeamInfoItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

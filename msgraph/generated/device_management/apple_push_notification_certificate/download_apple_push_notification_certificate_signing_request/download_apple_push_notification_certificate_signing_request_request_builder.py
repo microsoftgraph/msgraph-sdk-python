@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +26,7 @@ class DownloadApplePushNotificationCertificateSigningRequestRequestBuilder(BaseR
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/applePushNotificationCertificate/downloadApplePushNotificationCertificateSigningRequest()", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DownloadApplePushNotificationCertificateSigningRequestGetResponse]:
+    async def get(self,request_configuration: Optional[DownloadApplePushNotificationCertificateSigningRequestRequestBuilderGetRequestConfiguration] = None) -> Optional[DownloadApplePushNotificationCertificateSigningRequestGetResponse]:
         """
         Download Apple push notification certificate signing request
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +46,7 @@ class DownloadApplePushNotificationCertificateSigningRequestRequestBuilder(BaseR
 
         return await self.request_adapter.send_async(request_info, DownloadApplePushNotificationCertificateSigningRequestGetResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DownloadApplePushNotificationCertificateSigningRequestRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Download Apple push notification certificate signing request
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,5 +66,15 @@ class DownloadApplePushNotificationCertificateSigningRequestRequestBuilder(BaseR
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return DownloadApplePushNotificationCertificateSigningRequestRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DownloadApplePushNotificationCertificateSigningRequestRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class SessionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["session%2Did"] = session_id
         return SessionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SessionCollectionResponse]:
+    async def get(self,request_configuration: Optional[SessionsRequestBuilderGetRequestConfiguration] = None) -> Optional[SessionCollectionResponse]:
         """
         Retrieve the list of sessions associated with a callRecord object. If the sessions list is truncated, a sessions@odata.nextLink value will be provided to retrieve the next page of sessions. The maximum page size for sessions is 60 entries.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class SessionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SessionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Session] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Session]:
+    async def post(self,body: Optional[Session] = None, request_configuration: Optional[SessionsRequestBuilderPostRequestConfiguration] = None) -> Optional[Session]:
         """
         Create new navigation property to sessions for communications
         param body: The request body
@@ -88,7 +87,7 @@ class SessionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Session, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[SessionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the list of sessions associated with a callRecord object. If the sessions list is truncated, a sessions@odata.nextLink value will be provided to retrieve the next page of sessions. The maximum page size for sessions is 60 entries.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +98,7 @@ class SessionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Session] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Session] = None, request_configuration: Optional[SessionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to sessions for communications
         param body: The request body
@@ -188,5 +187,28 @@ class SessionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SessionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[SessionsRequestBuilder.SessionsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SessionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

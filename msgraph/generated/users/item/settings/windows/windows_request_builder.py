@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class WindowsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["windowsSetting%2Did"] = windows_setting_id
         return WindowsSettingItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WindowsSettingCollectionResponse]:
+    async def get(self,request_configuration: Optional[WindowsRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsSettingCollectionResponse]:
         """
         Get a list of windowsSetting objects and their properties for the signed in user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class WindowsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WindowsSettingCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[WindowsSetting] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WindowsSetting]:
+    async def post(self,body: Optional[WindowsSetting] = None, request_configuration: Optional[WindowsRequestBuilderPostRequestConfiguration] = None) -> Optional[WindowsSetting]:
         """
         Create new navigation property to windows for users
         param body: The request body
@@ -88,7 +87,7 @@ class WindowsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WindowsSetting, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[WindowsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of windowsSetting objects and their properties for the signed in user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +98,7 @@ class WindowsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[WindowsSetting] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WindowsSetting] = None, request_configuration: Optional[WindowsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to windows for users
         param body: The request body
@@ -188,5 +187,28 @@ class WindowsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WindowsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[WindowsRequestBuilder.WindowsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WindowsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

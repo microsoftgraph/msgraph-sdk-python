@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["calendarPermission%2Did"] = calendar_permission_id
         return CalendarPermissionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CalendarPermissionCollectionResponse]:
+    async def get(self,request_configuration: Optional[CalendarPermissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[CalendarPermissionCollectionResponse]:
         """
         Get a collection of calendarPermission resources that describe the identity and roles of users with whom the specified calendar has been shared or delegated. Here, the calendar can be a user calendar or group calendar.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CalendarPermissionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[CalendarPermission] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CalendarPermission]:
+    async def post(self,body: Optional[CalendarPermission] = None, request_configuration: Optional[CalendarPermissionsRequestBuilderPostRequestConfiguration] = None) -> Optional[CalendarPermission]:
         """
         Create a calendarPermission resource to specify the identity and role of the user with whom the specified calendar is being shared or delegated.
         param body: The request body
@@ -89,7 +88,7 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CalendarPermission, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[CalendarPermissionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a collection of calendarPermission resources that describe the identity and roles of users with whom the specified calendar has been shared or delegated. Here, the calendar can be a user calendar or group calendar.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[CalendarPermission] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CalendarPermission] = None, request_configuration: Optional[CalendarPermissionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a calendarPermission resource to specify the identity and role of the user with whom the specified calendar is being shared or delegated.
         param body: The request body
@@ -179,5 +178,28 @@ class CalendarPermissionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CalendarPermissionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[CalendarPermissionsRequestBuilder.CalendarPermissionsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CalendarPermissionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

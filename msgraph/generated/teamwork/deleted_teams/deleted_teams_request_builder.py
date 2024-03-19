@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -45,7 +44,7 @@ class DeletedTeamsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["deletedTeam%2Did"] = deleted_team_id
         return DeletedTeamItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeletedTeamCollectionResponse]:
+    async def get(self,request_configuration: Optional[DeletedTeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeletedTeamCollectionResponse]:
         """
         Get a list of the deletedTeam objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +65,7 @@ class DeletedTeamsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeletedTeamCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DeletedTeam] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeletedTeam]:
+    async def post(self,body: Optional[DeletedTeam] = None, request_configuration: Optional[DeletedTeamsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeletedTeam]:
         """
         Create new navigation property to deletedTeams for teamwork
         param body: The request body
@@ -89,7 +88,7 @@ class DeletedTeamsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeletedTeam, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DeletedTeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of the deletedTeam objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class DeletedTeamsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DeletedTeam] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeletedTeam] = None, request_configuration: Optional[DeletedTeamsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to deletedTeams for teamwork
         param body: The request body
@@ -198,5 +197,28 @@ class DeletedTeamsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeletedTeamsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DeletedTeamsRequestBuilder.DeletedTeamsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeletedTeamsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

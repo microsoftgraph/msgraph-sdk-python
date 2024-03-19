@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +27,7 @@ class GraphOrgContactRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/contacts/{orgContact%2Did}/directReports/graph.orgContact{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OrgContactCollectionResponse]:
+    async def get(self,request_configuration: Optional[GraphOrgContactRequestBuilderGetRequestConfiguration] = None) -> Optional[OrgContactCollectionResponse]:
         """
         Get the items of type microsoft.graph.orgContact in the microsoft.graph.directoryObject collection
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -48,7 +47,7 @@ class GraphOrgContactRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OrgContactCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GraphOrgContactRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the items of type microsoft.graph.orgContact in the microsoft.graph.directoryObject collection
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -132,6 +131,19 @@ class GraphOrgContactRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GraphOrgContactRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[GraphOrgContactRequestBuilder.GraphOrgContactRequestBuilderGetQueryParameters] = None
 
     
 

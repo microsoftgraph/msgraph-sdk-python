@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +27,7 @@ class CloudPcProvisioningPolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy%2Did}/assignments/{cloudPcProvisioningPolicyAssignment%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[CloudPcProvisioningPolicyAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property assignments for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +45,7 @@ class CloudPcProvisioningPolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CloudPcProvisioningPolicyAssignment]:
+    async def get(self,request_configuration: Optional[CloudPcProvisioningPolicyAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CloudPcProvisioningPolicyAssignment]:
         """
         Get assignments from deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +65,7 @@ class CloudPcProvisioningPolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CloudPcProvisioningPolicyAssignment, error_mapping)
     
-    async def patch(self,body: Optional[CloudPcProvisioningPolicyAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CloudPcProvisioningPolicyAssignment]:
+    async def patch(self,body: Optional[CloudPcProvisioningPolicyAssignment] = None, request_configuration: Optional[CloudPcProvisioningPolicyAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[CloudPcProvisioningPolicyAssignment]:
         """
         Update the navigation property assignments in deviceManagement
         param body: The request body
@@ -89,7 +88,7 @@ class CloudPcProvisioningPolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CloudPcProvisioningPolicyAssignment, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[CloudPcProvisioningPolicyAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property assignments for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class CloudPcProvisioningPolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[CloudPcProvisioningPolicyAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get assignments from deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +110,7 @@ class CloudPcProvisioningPolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[CloudPcProvisioningPolicyAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[CloudPcProvisioningPolicyAssignment] = None, request_configuration: Optional[CloudPcProvisioningPolicyAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property assignments in deviceManagement
         param body: The request body
@@ -145,6 +144,16 @@ class CloudPcProvisioningPolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
 
         return AssignedUsersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CloudPcProvisioningPolicyAssignmentItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class CloudPcProvisioningPolicyAssignmentItemRequestBuilderGetQueryParameters():
         """
@@ -170,5 +179,28 @@ class CloudPcProvisioningPolicyAssignmentItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CloudPcProvisioningPolicyAssignmentItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[CloudPcProvisioningPolicyAssignmentItemRequestBuilder.CloudPcProvisioningPolicyAssignmentItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CloudPcProvisioningPolicyAssignmentItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

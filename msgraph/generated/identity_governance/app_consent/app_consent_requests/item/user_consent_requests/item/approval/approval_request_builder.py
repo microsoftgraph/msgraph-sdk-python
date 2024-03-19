@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +27,7 @@ class ApprovalRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/appConsent/appConsentRequests/{appConsentRequest%2Did}/userConsentRequests/{userConsentRequest%2Did}/approval{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ApprovalRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property approval for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +45,7 @@ class ApprovalRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Approval]:
+    async def get(self,request_configuration: Optional[ApprovalRequestBuilderGetRequestConfiguration] = None) -> Optional[Approval]:
         """
         Approval decisions associated with a request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +65,7 @@ class ApprovalRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Approval, error_mapping)
     
-    async def patch(self,body: Optional[Approval] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Approval]:
+    async def patch(self,body: Optional[Approval] = None, request_configuration: Optional[ApprovalRequestBuilderPatchRequestConfiguration] = None) -> Optional[Approval]:
         """
         Update the navigation property approval in identityGovernance
         param body: The request body
@@ -89,7 +88,7 @@ class ApprovalRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Approval, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[ApprovalRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property approval for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class ApprovalRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ApprovalRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Approval decisions associated with a request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +110,7 @@ class ApprovalRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Approval] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Approval] = None, request_configuration: Optional[ApprovalRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property approval in identityGovernance
         param body: The request body
@@ -145,6 +144,16 @@ class ApprovalRequestBuilder(BaseRequestBuilder):
 
         return StagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ApprovalRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class ApprovalRequestBuilderGetQueryParameters():
         """
@@ -170,5 +179,28 @@ class ApprovalRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ApprovalRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ApprovalRequestBuilder.ApprovalRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ApprovalRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

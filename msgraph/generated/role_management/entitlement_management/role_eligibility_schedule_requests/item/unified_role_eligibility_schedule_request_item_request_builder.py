@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -33,7 +32,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
         """
         super().__init__(request_adapter, "{+baseurl}/roleManagement/entitlementManagement/roleEligibilityScheduleRequests/{unifiedRoleEligibilityScheduleRequest%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[UnifiedRoleEligibilityScheduleRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property roleEligibilityScheduleRequests for roleManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -51,7 +50,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleEligibilityScheduleRequest]:
+    async def get(self,request_configuration: Optional[UnifiedRoleEligibilityScheduleRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleEligibilityScheduleRequest]:
         """
         In PIM, read the details of a request for for a role eligibility request made through the unifiedRoleEligibilityScheduleRequest object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -72,7 +71,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleEligibilityScheduleRequest, error_mapping)
     
-    async def patch(self,body: Optional[UnifiedRoleEligibilityScheduleRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleEligibilityScheduleRequest]:
+    async def patch(self,body: Optional[UnifiedRoleEligibilityScheduleRequest] = None, request_configuration: Optional[UnifiedRoleEligibilityScheduleRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UnifiedRoleEligibilityScheduleRequest]:
         """
         Update the navigation property roleEligibilityScheduleRequests in roleManagement
         param body: The request body
@@ -95,7 +94,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleEligibilityScheduleRequest, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[UnifiedRoleEligibilityScheduleRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property roleEligibilityScheduleRequests for roleManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +105,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UnifiedRoleEligibilityScheduleRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         In PIM, read the details of a request for for a role eligibility request made through the unifiedRoleEligibilityScheduleRequest object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -117,7 +116,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[UnifiedRoleEligibilityScheduleRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UnifiedRoleEligibilityScheduleRequest] = None, request_configuration: Optional[UnifiedRoleEligibilityScheduleRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property roleEligibilityScheduleRequests in roleManagement
         param body: The request body
@@ -196,6 +195,16 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
 
         return TargetScheduleRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UnifiedRoleEligibilityScheduleRequestItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class UnifiedRoleEligibilityScheduleRequestItemRequestBuilderGetQueryParameters():
         """
@@ -221,5 +230,28 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UnifiedRoleEligibilityScheduleRequestItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UnifiedRoleEligibilityScheduleRequestItemRequestBuilder.UnifiedRoleEligibilityScheduleRequestItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UnifiedRoleEligibilityScheduleRequestItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

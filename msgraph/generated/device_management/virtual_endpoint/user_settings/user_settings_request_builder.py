@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class UserSettingsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["cloudPcUserSetting%2Did"] = cloud_pc_user_setting_id
         return CloudPcUserSettingItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CloudPcUserSettingCollectionResponse]:
+    async def get(self,request_configuration: Optional[UserSettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[CloudPcUserSettingCollectionResponse]:
         """
         Get userSettings from deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +63,7 @@ class UserSettingsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CloudPcUserSettingCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[CloudPcUserSetting] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CloudPcUserSetting]:
+    async def post(self,body: Optional[CloudPcUserSetting] = None, request_configuration: Optional[UserSettingsRequestBuilderPostRequestConfiguration] = None) -> Optional[CloudPcUserSetting]:
         """
         Create new navigation property to userSettings for deviceManagement
         param body: The request body
@@ -87,7 +86,7 @@ class UserSettingsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CloudPcUserSetting, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UserSettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get userSettings from deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +97,7 @@ class UserSettingsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[CloudPcUserSetting] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CloudPcUserSetting] = None, request_configuration: Optional[UserSettingsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to userSettings for deviceManagement
         param body: The request body
@@ -187,5 +186,28 @@ class UserSettingsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserSettingsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UserSettingsRequestBuilder.UserSettingsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserSettingsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

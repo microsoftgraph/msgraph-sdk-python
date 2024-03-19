@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -30,7 +29,7 @@ class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(BaseReq
             path_parameters['externalcourseActivityId'] = str(externalcourse_activity_id)
         super().__init__(request_adapter, "{+baseurl}/employeeExperience/learningCourseActivities(externalcourseActivityId='{externalcourseActivityId}'){?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property learningCourseActivities for employeeExperience
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -48,7 +47,7 @@ class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(BaseReq
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningCourseActivity]:
+    async def get(self,request_configuration: Optional[LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilderGetRequestConfiguration] = None) -> Optional[LearningCourseActivity]:
         """
         Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -69,7 +68,7 @@ class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(BaseReq
 
         return await self.request_adapter.send_async(request_info, LearningCourseActivity, error_mapping)
     
-    async def patch(self,body: Optional[LearningCourseActivity] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningCourseActivity]:
+    async def patch(self,body: Optional[LearningCourseActivity] = None, request_configuration: Optional[LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilderPatchRequestConfiguration] = None) -> Optional[LearningCourseActivity]:
         """
         Update the navigation property learningCourseActivities in employeeExperience
         param body: The request body
@@ -92,7 +91,7 @@ class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(BaseReq
 
         return await self.request_adapter.send_async(request_info, LearningCourseActivity, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property learningCourseActivities for employeeExperience
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +102,7 @@ class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(BaseReq
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -114,7 +113,7 @@ class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(BaseReq
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[LearningCourseActivity] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[LearningCourseActivity] = None, request_configuration: Optional[LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property learningCourseActivities in employeeExperience
         param body: The request body
@@ -138,6 +137,16 @@ class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(BaseReq
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilderGetQueryParameters():
@@ -164,5 +173,28 @@ class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(BaseReq
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder.LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

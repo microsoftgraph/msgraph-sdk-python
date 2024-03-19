@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class PassiveDnsRecordsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["passiveDnsRecord%2Did"] = passive_dns_record_id
         return PassiveDnsRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PassiveDnsRecordCollectionResponse]:
+    async def get(self,request_configuration: Optional[PassiveDnsRecordsRequestBuilderGetRequestConfiguration] = None) -> Optional[PassiveDnsRecordCollectionResponse]:
         """
         Read the properties and relationships of a passiveDnsRecord object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +63,7 @@ class PassiveDnsRecordsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PassiveDnsRecordCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[PassiveDnsRecord] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PassiveDnsRecord]:
+    async def post(self,body: Optional[PassiveDnsRecord] = None, request_configuration: Optional[PassiveDnsRecordsRequestBuilderPostRequestConfiguration] = None) -> Optional[PassiveDnsRecord]:
         """
         Create new navigation property to passiveDnsRecords for security
         param body: The request body
@@ -87,7 +86,7 @@ class PassiveDnsRecordsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PassiveDnsRecord, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[PassiveDnsRecordsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of a passiveDnsRecord object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +97,7 @@ class PassiveDnsRecordsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[PassiveDnsRecord] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PassiveDnsRecord] = None, request_configuration: Optional[PassiveDnsRecordsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to passiveDnsRecords for security
         param body: The request body
@@ -187,5 +186,28 @@ class PassiveDnsRecordsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PassiveDnsRecordsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[PassiveDnsRecordsRequestBuilder.PassiveDnsRecordsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PassiveDnsRecordsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

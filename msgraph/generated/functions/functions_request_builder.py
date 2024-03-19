@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class FunctionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["attributeMappingFunctionSchema%2Did"] = attribute_mapping_function_schema_id
         return AttributeMappingFunctionSchemaItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AttributeMappingFunctionSchemaCollectionResponse]:
+    async def get(self,request_configuration: Optional[FunctionsRequestBuilderGetRequestConfiguration] = None) -> Optional[AttributeMappingFunctionSchemaCollectionResponse]:
         """
         Get entities from functions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +63,7 @@ class FunctionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AttributeMappingFunctionSchemaCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AttributeMappingFunctionSchema] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AttributeMappingFunctionSchema]:
+    async def post(self,body: Optional[AttributeMappingFunctionSchema] = None, request_configuration: Optional[FunctionsRequestBuilderPostRequestConfiguration] = None) -> Optional[AttributeMappingFunctionSchema]:
         """
         Add new entity to functions
         param body: The request body
@@ -87,7 +86,7 @@ class FunctionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AttributeMappingFunctionSchema, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[FunctionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get entities from functions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +97,7 @@ class FunctionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AttributeMappingFunctionSchema] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AttributeMappingFunctionSchema] = None, request_configuration: Optional[FunctionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add new entity to functions
         param body: The request body
@@ -187,5 +186,28 @@ class FunctionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FunctionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[FunctionsRequestBuilder.FunctionsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FunctionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

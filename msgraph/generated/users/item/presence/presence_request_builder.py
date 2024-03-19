@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -32,7 +31,7 @@ class PresenceRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/presence{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[PresenceRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property presence for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -50,7 +49,7 @@ class PresenceRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Presence]:
+    async def get(self,request_configuration: Optional[PresenceRequestBuilderGetRequestConfiguration] = None) -> Optional[Presence]:
         """
         Set a presence status message for a user. An optional expiration date and time can be supplied.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -71,7 +70,7 @@ class PresenceRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Presence, error_mapping)
     
-    async def patch(self,body: Optional[Presence] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Presence]:
+    async def patch(self,body: Optional[Presence] = None, request_configuration: Optional[PresenceRequestBuilderPatchRequestConfiguration] = None) -> Optional[Presence]:
         """
         Update the navigation property presence in users
         param body: The request body
@@ -94,7 +93,7 @@ class PresenceRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Presence, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[PresenceRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property presence for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -105,7 +104,7 @@ class PresenceRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[PresenceRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Set a presence status message for a user. An optional expiration date and time can be supplied.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -116,7 +115,7 @@ class PresenceRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Presence] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Presence] = None, request_configuration: Optional[PresenceRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property presence in users
         param body: The request body
@@ -186,6 +185,16 @@ class PresenceRequestBuilder(BaseRequestBuilder):
 
         return SetUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PresenceRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class PresenceRequestBuilderGetQueryParameters():
         """
@@ -211,5 +220,28 @@ class PresenceRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PresenceRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[PresenceRequestBuilder.PresenceRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PresenceRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

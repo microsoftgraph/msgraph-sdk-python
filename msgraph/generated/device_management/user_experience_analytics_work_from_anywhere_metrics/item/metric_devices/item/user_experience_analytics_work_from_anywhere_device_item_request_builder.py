@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder(BaseReques
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/userExperienceAnalyticsWorkFromAnywhereMetrics/{userExperienceAnalyticsWorkFromAnywhereMetric%2Did}/metricDevices/{userExperienceAnalyticsWorkFromAnywhereDevice%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property metricDevices for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +44,7 @@ class UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder(BaseReques
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereDevice]:
+    async def get(self,request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereDevice]:
         """
         The work from anywhere metric devices. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder(BaseReques
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsWorkFromAnywhereDevice, error_mapping)
     
-    async def patch(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereDevice] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereDevice]:
+    async def patch(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereDevice] = None, request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereDevice]:
         """
         Update the navigation property metricDevices in deviceManagement
         param body: The request body
@@ -88,7 +87,7 @@ class UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder(BaseReques
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsWorkFromAnywhereDevice, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property metricDevices for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +98,7 @@ class UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder(BaseReques
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The work from anywhere metric devices. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +109,7 @@ class UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder(BaseReques
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereDevice] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereDevice] = None, request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property metricDevices in deviceManagement
         param body: The request body
@@ -134,6 +133,16 @@ class UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder(BaseReques
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilderGetQueryParameters():
@@ -160,5 +169,28 @@ class UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder(BaseReques
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder.UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

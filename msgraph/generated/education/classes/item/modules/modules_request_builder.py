@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class ModulesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["educationModule%2Did"] = education_module_id
         return EducationModuleItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationModuleCollectionResponse]:
+    async def get(self,request_configuration: Optional[ModulesRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationModuleCollectionResponse]:
         """
         Retrieve a list of module objects. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application with application permissions can see all module objects for the class. Students can only see published modules.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class ModulesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationModuleCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[EducationModule] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationModule]:
+    async def post(self,body: Optional[EducationModule] = None, request_configuration: Optional[ModulesRequestBuilderPostRequestConfiguration] = None) -> Optional[EducationModule]:
         """
         Create a new module in a class. Only teachers in a class can create a module. Modules start in the draft state, which means that students can't see the modules until publication.
         param body: The request body
@@ -89,7 +88,7 @@ class ModulesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationModule, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ModulesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of module objects. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application with application permissions can see all module objects for the class. Students can only see published modules.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class ModulesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[EducationModule] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[EducationModule] = None, request_configuration: Optional[ModulesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new module in a class. Only teachers in a class can create a module. Modules start in the draft state, which means that students can't see the modules until publication.
         param body: The request body
@@ -189,5 +188,28 @@ class ModulesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ModulesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ModulesRequestBuilder.ModulesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ModulesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

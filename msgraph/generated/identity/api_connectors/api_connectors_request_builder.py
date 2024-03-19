@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class ApiConnectorsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["identityApiConnector%2Did"] = identity_api_connector_id
         return IdentityApiConnectorItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityApiConnectorCollectionResponse]:
+    async def get(self,request_configuration: Optional[ApiConnectorsRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityApiConnectorCollectionResponse]:
         """
         Read the properties of an identityApiConnector object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class ApiConnectorsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IdentityApiConnectorCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[IdentityApiConnector] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityApiConnector]:
+    async def post(self,body: Optional[IdentityApiConnector] = None, request_configuration: Optional[ApiConnectorsRequestBuilderPostRequestConfiguration] = None) -> Optional[IdentityApiConnector]:
         """
         Create a new identityApiConnector object.
         param body: The request body
@@ -89,7 +88,7 @@ class ApiConnectorsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IdentityApiConnector, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ApiConnectorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties of an identityApiConnector object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class ApiConnectorsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[IdentityApiConnector] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[IdentityApiConnector] = None, request_configuration: Optional[ApiConnectorsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new identityApiConnector object.
         param body: The request body
@@ -189,5 +188,28 @@ class ApiConnectorsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ApiConnectorsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ApiConnectorsRequestBuilder.ApiConnectorsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ApiConnectorsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

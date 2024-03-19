@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -45,7 +44,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["oAuth2PermissionGrant%2Did"] = o_auth2_permission_grant_id
         return OAuth2PermissionGrantItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OAuth2PermissionGrantCollectionResponse]:
+    async def get(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> Optional[OAuth2PermissionGrantCollectionResponse]:
         """
         Retrieve a list of oAuth2PermissionGrant objects, representing delegated permissions which have been granted for client applications to access APIs on behalf of signed-in users.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +65,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OAuth2PermissionGrantCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[OAuth2PermissionGrant] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[OAuth2PermissionGrant]:
+    async def post(self,body: Optional[OAuth2PermissionGrant] = None, request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderPostRequestConfiguration] = None) -> Optional[OAuth2PermissionGrant]:
         """
         Create a delegated permission grant represented by an oAuth2PermissionGrant object. A delegated permission grant authorizes a client service principal (representing a client application) to access a resource service principal (representing an API), on behalf of a signed-in user, for the level of access limited by the delegated permissions which were granted.
         param body: The request body
@@ -90,7 +89,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OAuth2PermissionGrant, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of oAuth2PermissionGrant objects, representing delegated permissions which have been granted for client applications to access APIs on behalf of signed-in users.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +100,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[OAuth2PermissionGrant] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[OAuth2PermissionGrant] = None, request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a delegated permission grant represented by an oAuth2PermissionGrant object. A delegated permission grant authorizes a client service principal (representing a client application) to access a resource service principal (representing an API), on behalf of a signed-in user, for the level of access limited by the delegated permissions which were granted.
         param body: The request body
@@ -199,5 +198,28 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[Oauth2PermissionGrantsRequestBuilder.Oauth2PermissionGrantsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class Oauth2PermissionGrantsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

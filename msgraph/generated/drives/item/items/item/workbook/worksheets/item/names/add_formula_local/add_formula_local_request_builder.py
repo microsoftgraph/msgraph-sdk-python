@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class AddFormulaLocalRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/names/addFormulaLocal", path_parameters)
     
-    async def post(self,body: Optional[AddFormulaLocalPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookNamedItem]:
+    async def post(self,body: Optional[AddFormulaLocalPostRequestBody] = None, request_configuration: Optional[AddFormulaLocalRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookNamedItem]:
         """
         Adds a new name to the collection of the given scope using the user's locale for the formula.
         param body: The request body
@@ -51,7 +51,7 @@ class AddFormulaLocalRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookNamedItem, error_mapping)
     
-    def to_post_request_information(self,body: Optional[AddFormulaLocalPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AddFormulaLocalPostRequestBody] = None, request_configuration: Optional[AddFormulaLocalRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Adds a new name to the collection of the given scope using the user's locale for the formula.
         param body: The request body
@@ -75,5 +75,15 @@ class AddFormulaLocalRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AddFormulaLocalRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AddFormulaLocalRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

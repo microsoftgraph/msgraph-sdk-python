@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class ExtensionPropertyItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/applications/{application%2Did}/extensionProperties/{extensionProperty%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete a directory extension definition represented by an extensionProperty object. You can delete only directory extensions that aren't synced from on-premises active directory (AD).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +45,7 @@ class ExtensionPropertyItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ExtensionProperty]:
+    async def get(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ExtensionProperty]:
         """
         Read a directory extension definition represented by an extensionProperty object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +66,7 @@ class ExtensionPropertyItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ExtensionProperty, error_mapping)
     
-    async def patch(self,body: Optional[ExtensionProperty] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ExtensionProperty]:
+    async def patch(self,body: Optional[ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ExtensionProperty]:
         """
         Update the navigation property extensionProperties in applications
         param body: The request body
@@ -90,7 +89,7 @@ class ExtensionPropertyItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ExtensionProperty, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete a directory extension definition represented by an extensionProperty object. You can delete only directory extensions that aren't synced from on-premises active directory (AD).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +100,7 @@ class ExtensionPropertyItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read a directory extension definition represented by an extensionProperty object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +111,7 @@ class ExtensionPropertyItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ExtensionProperty] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property extensionProperties in applications
         param body: The request body
@@ -136,6 +135,16 @@ class ExtensionPropertyItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return ExtensionPropertyItemRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ExtensionPropertyItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class ExtensionPropertyItemRequestBuilderGetQueryParameters():
@@ -162,5 +171,28 @@ class ExtensionPropertyItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ExtensionPropertyItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ExtensionPropertyItemRequestBuilder.ExtensionPropertyItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ExtensionPropertyItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

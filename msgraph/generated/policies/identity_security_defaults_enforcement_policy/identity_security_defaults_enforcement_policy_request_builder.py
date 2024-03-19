@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder(BaseRequestBuilder
         """
         super().__init__(request_adapter, "{+baseurl}/policies/identitySecurityDefaultsEnforcementPolicy{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[IdentitySecurityDefaultsEnforcementPolicyRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property identitySecurityDefaultsEnforcementPolicy for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +44,7 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder(BaseRequestBuilder
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentitySecurityDefaultsEnforcementPolicy]:
+    async def get(self,request_configuration: Optional[IdentitySecurityDefaultsEnforcementPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentitySecurityDefaultsEnforcementPolicy]:
         """
         Retrieve the properties of an identitySecurityDefaultsEnforcementPolicy object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +65,7 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder(BaseRequestBuilder
 
         return await self.request_adapter.send_async(request_info, IdentitySecurityDefaultsEnforcementPolicy, error_mapping)
     
-    async def patch(self,body: Optional[IdentitySecurityDefaultsEnforcementPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentitySecurityDefaultsEnforcementPolicy]:
+    async def patch(self,body: Optional[IdentitySecurityDefaultsEnforcementPolicy] = None, request_configuration: Optional[IdentitySecurityDefaultsEnforcementPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[IdentitySecurityDefaultsEnforcementPolicy]:
         """
         Update the properties of an identitySecurityDefaultsEnforcementPolicy object.
         param body: The request body
@@ -90,7 +89,7 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder(BaseRequestBuilder
 
         return await self.request_adapter.send_async(request_info, IdentitySecurityDefaultsEnforcementPolicy, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[IdentitySecurityDefaultsEnforcementPolicyRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property identitySecurityDefaultsEnforcementPolicy for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +100,7 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder(BaseRequestBuilder
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[IdentitySecurityDefaultsEnforcementPolicyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties of an identitySecurityDefaultsEnforcementPolicy object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +111,7 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder(BaseRequestBuilder
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[IdentitySecurityDefaultsEnforcementPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[IdentitySecurityDefaultsEnforcementPolicy] = None, request_configuration: Optional[IdentitySecurityDefaultsEnforcementPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an identitySecurityDefaultsEnforcementPolicy object.
         param body: The request body
@@ -136,6 +135,16 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder(BaseRequestBuilder
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return IdentitySecurityDefaultsEnforcementPolicyRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IdentitySecurityDefaultsEnforcementPolicyRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class IdentitySecurityDefaultsEnforcementPolicyRequestBuilderGetQueryParameters():
@@ -162,5 +171,28 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder(BaseRequestBuilder
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IdentitySecurityDefaultsEnforcementPolicyRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[IdentitySecurityDefaultsEnforcementPolicyRequestBuilder.IdentitySecurityDefaultsEnforcementPolicyRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IdentitySecurityDefaultsEnforcementPolicyRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

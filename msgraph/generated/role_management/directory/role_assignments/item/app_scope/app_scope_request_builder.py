@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class AppScopeRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/roleManagement/directory/roleAssignments/{unifiedRoleAssignment%2Did}/appScope{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[AppScopeRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property appScope for roleManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +44,7 @@ class AppScopeRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppScope]:
+    async def get(self,request_configuration: Optional[AppScopeRequestBuilderGetRequestConfiguration] = None) -> Optional[AppScope]:
         """
         Read-only property with details of the app specific scope when the assignment scope is app specific. Containment entity. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class AppScopeRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppScope, error_mapping)
     
-    async def patch(self,body: Optional[AppScope] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppScope]:
+    async def patch(self,body: Optional[AppScope] = None, request_configuration: Optional[AppScopeRequestBuilderPatchRequestConfiguration] = None) -> Optional[AppScope]:
         """
         Update the navigation property appScope in roleManagement
         param body: The request body
@@ -88,7 +87,7 @@ class AppScopeRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppScope, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[AppScopeRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property appScope for roleManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +98,7 @@ class AppScopeRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AppScopeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read-only property with details of the app specific scope when the assignment scope is app specific. Containment entity. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +109,7 @@ class AppScopeRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AppScope] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AppScope] = None, request_configuration: Optional[AppScopeRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property appScope in roleManagement
         param body: The request body
@@ -134,6 +133,16 @@ class AppScopeRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AppScopeRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AppScopeRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class AppScopeRequestBuilderGetQueryParameters():
@@ -160,5 +169,28 @@ class AppScopeRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AppScopeRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AppScopeRequestBuilder.AppScopeRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AppScopeRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -65,6 +65,5 @@ class AndroidStoreApp(MobileApp):
         super().serialize(writer)
         writer.write_str_value("appStoreUrl", self.app_store_url)
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
-        writer.write_str_value("packageId", self.package_id)
     
 

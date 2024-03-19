@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...entity import Entity
     from .azure_usage import AzureUsage
+    from .billing_reconciliation import BillingReconciliation
     from .manifest import Manifest
     from .operation import Operation
 
@@ -19,6 +20,8 @@ class Billing(Entity):
     odata_type: Optional[str] = None
     # Represents an operation to export the billing data of a partner.
     operations: Optional[List[Operation]] = None
+    # The reconciliation property
+    reconciliation: Optional[BillingReconciliation] = None
     # The usage property
     usage: Optional[AzureUsage] = None
     
@@ -40,17 +43,20 @@ class Billing(Entity):
         """
         from ...entity import Entity
         from .azure_usage import AzureUsage
+        from .billing_reconciliation import BillingReconciliation
         from .manifest import Manifest
         from .operation import Operation
 
         from ...entity import Entity
         from .azure_usage import AzureUsage
+        from .billing_reconciliation import BillingReconciliation
         from .manifest import Manifest
         from .operation import Operation
 
         fields: Dict[str, Callable[[Any], None]] = {
             "manifests": lambda n : setattr(self, 'manifests', n.get_collection_of_object_values(Manifest)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(Operation)),
+            "reconciliation": lambda n : setattr(self, 'reconciliation', n.get_object_value(BillingReconciliation)),
             "usage": lambda n : setattr(self, 'usage', n.get_object_value(AzureUsage)),
         }
         super_fields = super().get_field_deserializers()
@@ -68,6 +74,7 @@ class Billing(Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("manifests", self.manifests)
         writer.write_collection_of_object_values("operations", self.operations)
+        writer.write_object_value("reconciliation", self.reconciliation)
         writer.write_object_value("usage", self.usage)
     
 

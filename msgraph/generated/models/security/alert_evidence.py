@@ -36,6 +36,7 @@ if TYPE_CHECKING:
     from .kubernetes_secret_evidence import KubernetesSecretEvidence
     from .kubernetes_service_account_evidence import KubernetesServiceAccountEvidence
     from .kubernetes_service_evidence import KubernetesServiceEvidence
+    from .mailbox_configuration_evidence import MailboxConfigurationEvidence
     from .mailbox_evidence import MailboxEvidence
     from .mail_cluster_evidence import MailClusterEvidence
     from .malware_evidence import MalwareEvidence
@@ -197,6 +198,10 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
             from .kubernetes_service_evidence import KubernetesServiceEvidence
 
             return KubernetesServiceEvidence()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.mailboxConfigurationEvidence".casefold():
+            from .mailbox_configuration_evidence import MailboxConfigurationEvidence
+
+            return MailboxConfigurationEvidence()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.mailboxEvidence".casefold():
             from .mailbox_evidence import MailboxEvidence
 
@@ -294,6 +299,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .kubernetes_secret_evidence import KubernetesSecretEvidence
         from .kubernetes_service_account_evidence import KubernetesServiceAccountEvidence
         from .kubernetes_service_evidence import KubernetesServiceEvidence
+        from .mailbox_configuration_evidence import MailboxConfigurationEvidence
         from .mailbox_evidence import MailboxEvidence
         from .mail_cluster_evidence import MailClusterEvidence
         from .malware_evidence import MalwareEvidence
@@ -340,6 +346,7 @@ class AlertEvidence(AdditionalDataHolder, BackedModel, Parsable):
         from .kubernetes_secret_evidence import KubernetesSecretEvidence
         from .kubernetes_service_account_evidence import KubernetesServiceAccountEvidence
         from .kubernetes_service_evidence import KubernetesServiceEvidence
+        from .mailbox_configuration_evidence import MailboxConfigurationEvidence
         from .mailbox_evidence import MailboxEvidence
         from .mail_cluster_evidence import MailClusterEvidence
         from .malware_evidence import MalwareEvidence

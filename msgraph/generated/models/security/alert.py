@@ -21,11 +21,11 @@ from ..entity import Entity
 class Alert(Entity):
     # The adversary or activity group that is associated with this alert.
     actor_display_name: Optional[str] = None
-    # The additionalDataProperty property
+    # A collection of other alert properties, including user-defined properties. Any custom details defined in the alert, and any dynamic content in the alert details, are stored here.
     additional_data: Optional[Dictionary] = None
-    # The alertPolicyId property
+    # The ID of the policy that generated the alert, and populated when there is a specific policy that generated the alert, whether configured by a customer or a built-in policy.
     alert_policy_id: Optional[str] = None
-    # URL for the alert page in the Microsoft 365 Defender portal.
+    # The alertWebUrl property
     alert_web_url: Optional[str] = None
     # Owner of the alert, or null if no owner is assigned.
     assigned_to: Optional[str] = None
@@ -39,7 +39,7 @@ class Alert(Entity):
     created_date_time: Optional[datetime.datetime] = None
     # String value describing each alert.
     description: Optional[str] = None
-    # Detection technology or sensor that identified the notable component or activity. Possible values are: unknown, microsoftDefenderForEndpoint, antivirus, smartScreen, customTi, microsoftDefenderForOffice365, automatedInvestigation, microsoftThreatExperts, customDetection, microsoftDefenderForIdentity, cloudAppSecurity, microsoft365Defender, azureAdIdentityProtection, manual, microsoftDataLossPrevention, appGovernancePolicy, appGovernanceDetection, unknownFutureValue, microsoftDefenderForCloud, microsoftDefenderForIoT, microsoftDefenderForServers, microsoftDefenderForStorage, microsoftDefenderForDNS, microsoftDefenderForDatabases, microsoftDefenderForContainers, microsoftDefenderForNetwork, microsoftDefenderForAppService, microsoftDefenderForKeyVault, microsoftDefenderForResourceManager, microsoftDefenderForApiManagement. You must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: microsoftDefenderForCloud, microsoftDefenderForIoT, microsoftDefenderForServers, microsoftDefenderForStorage, microsoftDefenderForDNS, microsoftDefenderForDatabases, microsoftDefenderForContainers, microsoftDefenderForNetwork, microsoftDefenderForAppService, microsoftDefenderForKeyVault, microsoftDefenderForResourceManager, microsoftDefenderForApiManagement.
+    # Detection technology or sensor that identified the notable component or activity. Possible values are: unknown, microsoftDefenderForEndpoint, antivirus, smartScreen, customTi, microsoftDefenderForOffice365, automatedInvestigation, microsoftThreatExperts, customDetection, microsoftDefenderForIdentity, cloudAppSecurity, microsoft365Defender, azureAdIdentityProtection, manual, microsoftDataLossPrevention, appGovernancePolicy, appGovernanceDetection, unknownFutureValue, microsoftDefenderForCloud, microsoftDefenderForIoT, microsoftDefenderForServers, microsoftDefenderForStorage, microsoftDefenderForDNS, microsoftDefenderForDatabases, microsoftDefenderForContainers, microsoftDefenderForNetwork, microsoftDefenderForAppService, microsoftDefenderForKeyVault, microsoftDefenderForResourceManager, microsoftDefenderForApiManagement, microsoftSentinel, nrtAlerts, scheduledAlerts, microsoftDefenderThreatIntelligenceAnalytics, builtInMl. You must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: microsoftDefenderForCloud, microsoftDefenderForIoT, microsoftDefenderForServers, microsoftDefenderForStorage, microsoftDefenderForDNS, microsoftDefenderForDatabases, microsoftDefenderForContainers, microsoftDefenderForNetwork, microsoftDefenderForAppService, microsoftDefenderForKeyVault, microsoftDefenderForResourceManager, microsoftDefenderForApiManagement, microsoftSentinel, nrtAlerts, scheduledAlerts, microsoftDefenderThreatIntelligenceAnalytics, builtInMl.
     detection_source: Optional[DetectionSource] = None
     # The ID of the detector that triggered the alert.
     detector_id: Optional[str] = None
@@ -75,6 +75,8 @@ class Alert(Entity):
     severity: Optional[AlertSeverity] = None
     # The status property
     status: Optional[AlertStatus] = None
+    # The system tags associated with the alert.
+    system_tags: Optional[List[str]] = None
     # The Microsoft Entra tenant the alert was created in.
     tenant_id: Optional[str] = None
     # The threat associated with this alert.
@@ -147,6 +149,7 @@ class Alert(Entity):
             "serviceSource": lambda n : setattr(self, 'service_source', n.get_enum_value(ServiceSource)),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(AlertSeverity)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(AlertStatus)),
+            "systemTags": lambda n : setattr(self, 'system_tags', n.get_collection_of_primitive_values(str)),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "threatDisplayName": lambda n : setattr(self, 'threat_display_name', n.get_str_value()),
             "threatFamilyName": lambda n : setattr(self, 'threat_family_name', n.get_str_value()),
@@ -191,6 +194,7 @@ class Alert(Entity):
         writer.write_enum_value("serviceSource", self.service_source)
         writer.write_enum_value("severity", self.severity)
         writer.write_enum_value("status", self.status)
+        writer.write_collection_of_primitive_values("systemTags", self.system_tags)
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_str_value("threatDisplayName", self.threat_display_name)
         writer.write_str_value("threatFamilyName", self.threat_family_name)

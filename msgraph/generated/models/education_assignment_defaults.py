@@ -19,7 +19,7 @@ class EducationAssignmentDefaults(Entity):
     added_student_action: Optional[EducationAddedStudentAction] = None
     # Class-level default value for due time field. Default value is 23:59:00.
     due_time: Optional[datetime.time] = None
-    # Default Teams channel to which notifications will be sent. Default value is null.
+    # Default Teams channel to which notifications are sent. Default value is null.
     notification_channel_url: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None

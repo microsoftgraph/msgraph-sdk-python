@@ -29,6 +29,7 @@ if TYPE_CHECKING:
     from .lists.lists_request_builder import ListsRequestBuilder
     from .onenote.onenote_request_builder import OnenoteRequestBuilder
     from .operations.operations_request_builder import OperationsRequestBuilder
+    from .pages.pages_request_builder import PagesRequestBuilder
     from .permissions.permissions_request_builder import PermissionsRequestBuilder
     from .sites.sites_request_builder import SitesRequestBuilder
     from .term_store.term_store_request_builder import TermStoreRequestBuilder
@@ -284,6 +285,15 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         from .operations.operations_request_builder import OperationsRequestBuilder
 
         return OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def pages(self) -> PagesRequestBuilder:
+        """
+        Provides operations to manage the pages property of the microsoft.graph.site entity.
+        """
+        from .pages.pages_request_builder import PagesRequestBuilder
+
+        return PagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def permissions(self) -> PermissionsRequestBuilder:

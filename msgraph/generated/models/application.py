@@ -37,7 +37,7 @@ from .directory_object import DirectoryObject
 class Application(DirectoryObject):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.application"
-    # Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Office 365 call the application in the context of a document the user is working on.
+    # Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams can set the addIns property for its 'FileHandler' functionality. This lets services like Microsoft 365 call the application in the context of a document the user is working on.
     add_ins: Optional[List[AddIn]] = None
     # Specifies settings for an application that implements a web API.
     api: Optional[ApiApplication] = None
@@ -47,7 +47,7 @@ class Application(DirectoryObject):
     app_management_policies: Optional[List[AppManagementPolicy]] = None
     # The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
     app_roles: Optional[List[AppRole]] = None
-    # Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne).
+    # Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne). Read-only. null if the app wasn't created from an application template.
     application_template_id: Optional[str] = None
     # Specifies the certification status of the application.
     certification: Optional[Certification] = None
@@ -57,9 +57,9 @@ class Application(DirectoryObject):
     created_on_behalf_of: Optional[DirectoryObject] = None
     # The defaultRedirectUri property
     default_redirect_uri: Optional[str] = None
-    # Free text field to provide a description of the application object to end users. The maximum allowed size is 1024 characters. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
+    # Free text field to provide a description of the application object to end users. The maximum allowed size is 1,024 characters. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
     description: Optional[str] = None
-    # Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, not).
+    # Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, not).
     disabled_by_microsoft_status: Optional[str] = None
     # The display name for the application. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
     display_name: Optional[str] = None
@@ -71,13 +71,13 @@ class Application(DirectoryObject):
     group_membership_claims: Optional[str] = None
     # The homeRealmDiscoveryPolicies property
     home_realm_discovery_policies: Optional[List[HomeRealmDiscoveryPolicy]] = None
-    # Also known as App ID URI, this value is set when an application is used as a resource app. The identifierUris acts as the prefix for the scopes you'll reference in your API's code, and it must be globally unique. You can use the default value provided, which is in the form api://<application-client-id>, or specify a more readable URI like https://contoso.com/api. For more information on valid identifierUris patterns and best practices, see Microsoft Entra application registration security best practices. Not nullable. Supports $filter (eq, ne, ge, le, startsWith).
+    # Also known as App ID URI, this value is set when an application is used as a resource app. The identifierUris acts as the prefix for the scopes you reference in your API's code, and it must be globally unique. You can use the default value provided, which is in the form api://<application-client-id>, or specify a more readable URI like https://contoso.com/api. For more information on valid identifierUris patterns and best practices, see Microsoft Entra application registration security best practices. Not nullable. Supports $filter (eq, ne, ge, le, startsWith).
     identifier_uris: Optional[List[str]] = None
     # Basic profile information of the application such as  app's marketing, support, terms of service and privacy statement URLs. The terms of service and privacy statement are surfaced to users through the user consent experience. For more info, see How to: Add Terms of service and privacy statement for registered Microsoft Entra apps. Supports $filter (eq, ne, not, ge, le, and eq on null values).
     info: Optional[InformationalUrl] = None
     # Specifies whether this application supports device authentication without a user. The default is false.
     is_device_only_auth_supported: Optional[bool] = None
-    # Specifies the fallback application type as public client, such as an installed application running on a mobile device. The default value is false which means the fallback application type is confidential client such as a web app. There are certain scenarios where Microsoft Entra ID cannot determine the client application type. For example, the ROPC flow where it is configured without specifying a redirect URI. In those cases Microsoft Entra ID interprets the application type based on the value of this property.
+    # Specifies the fallback application type as public client, such as an installed application running on a mobile device. The default value is false, which means the fallback application type is confidential client such as a web app. There are certain scenarios where Microsoft Entra ID can't determine the client application type. For example, the ROPC flow where it's configured without specifying a redirect URI. In those cases, Microsoft Entra ID interprets the application type based on the value of this property.
     is_fallback_public_client: Optional[bool] = None
     # The collection of key credentials associated with the application. Not nullable. Supports $filter (eq, not, ge, le).
     key_credentials: Optional[List[KeyCredential]] = None
@@ -107,9 +107,9 @@ class Application(DirectoryObject):
     saml_metadata_url: Optional[str] = None
     # References application or service contact information from a Service or Asset Management database. Nullable.
     service_management_reference: Optional[str] = None
-    # Specifies whether sensitive properties of a multi-tenant application should be locked for editing after the application is provisioned in a tenant. Nullable. null by default.
+    # Specifies whether sensitive properties of a multitenant application should be locked for editing after the application is provisioned in a tenant. Nullable. null by default.
     service_principal_lock_configuration: Optional[ServicePrincipalLockConfiguration] = None
-    # Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. The value for this property has implications on other app object properties. As a result, if you change this property, you may need to change other properties first. For more information, see Validation differences for signInAudience.Supports $filter (eq, ne, not).
+    # Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. The value for this property has implications on other app object properties. As a result, if you change this property, you might need to change other properties first. For more information, see Validation differences for signInAudience.Supports $filter (eq, ne, not).
     sign_in_audience: Optional[str] = None
     # Specifies settings for a single-page application, including sign out URLs and redirect URIs for authorization codes and access tokens.
     spa: Optional[SpaApplication] = None

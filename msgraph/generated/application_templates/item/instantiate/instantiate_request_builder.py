@@ -29,7 +29,7 @@ class InstantiateRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[InstantiatePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ApplicationServicePrincipal]:
         """
-        Add an instance of an application from the Microsoft Entra application gallery into your directory. You can also use this API to instantiate non-gallery apps. Use the following ID for the applicationTemplate object: 8adf8e6e-67b2-4cf2-a259-e3dc5476c621.
+        Add an instance of an application from the Microsoft Entra application gallery into your directory. The application template with ID 8adf8e6e-67b2-4cf2-a259-e3dc5476c621 can be used to add a non-gallery app that you can configure different single-sign on (SSO) modes like SAML SSO and password-based SSO.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ApplicationServicePrincipal]
@@ -53,7 +53,7 @@ class InstantiateRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[InstantiatePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Add an instance of an application from the Microsoft Entra application gallery into your directory. You can also use this API to instantiate non-gallery apps. Use the following ID for the applicationTemplate object: 8adf8e6e-67b2-4cf2-a259-e3dc5476c621.
+        Add an instance of an application from the Microsoft Entra application gallery into your directory. The application template with ID 8adf8e6e-67b2-4cf2-a259-e3dc5476c621 can be used to add a non-gallery app that you can configure different single-sign on (SSO) modes like SAML SSO and password-based SSO.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

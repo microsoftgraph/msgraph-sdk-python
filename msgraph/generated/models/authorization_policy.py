@@ -17,19 +17,19 @@ class AuthorizationPolicy(PolicyBase):
     odata_type: Optional[str] = "#microsoft.graph.authorizationPolicy"
     # Indicates whether a user can join the tenant by email validation.
     allow_email_verified_users_to_join_organization: Optional[bool] = None
-    # Indicates who can invite external users to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. For more information, see allowInvitesFrom values.
+    # Indicates who can invite guests to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. For more information, see allowInvitesFrom values.
     allow_invites_from: Optional[AllowInvitesFrom] = None
     # Indicates whether user consent for risky apps is allowed. We recommend keeping allowUserConsentForRiskyApps as false. Default value is false.
     allow_user_consent_for_risky_apps: Optional[bool] = None
     # Indicates whether users can sign up for email based subscriptions.
     allowed_to_sign_up_email_based_subscriptions: Optional[bool] = None
-    # Indicates whether users can use the Self-Service Password Reset feature on the tenant.
+    # Indicates whether administrators of the tenant can use the Self-Service Password Reset (SSPR). For more information, see Self-service password reset for administrators.
     allowed_to_use_s_s_p_r: Optional[bool] = None
     # To disable the use of MSOL PowerShell, set this property to true. This also disables user-based access to the legacy service endpoint used by MSOL PowerShell. This doesn't affect Microsoft Entra Connect or Microsoft Graph.
     block_msol_power_shell: Optional[bool] = None
     # The defaultUserRolePermissions property
     default_user_role_permissions: Optional[DefaultUserRolePermissions] = None
-    # Represents role templateId for the role that should be granted to guest user. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
+    # Represents role templateId for the role that should be granted to guests. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
     guest_user_role_id: Optional[UUID] = None
     
     @staticmethod

@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
+    from .stream import Stream
 
 from .alert_evidence import AlertEvidence
 
@@ -16,6 +17,8 @@ class IpEvidence(AlertEvidence):
     country_letter_code: Optional[str] = None
     # The value of the IP Address, can be either in V4 address or V6 address format.
     ip_address: Optional[str] = None
+    # The stream property
+    stream: Optional[Stream] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IpEvidence:
@@ -34,12 +37,15 @@ class IpEvidence(AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
+        from .stream import Stream
 
         from .alert_evidence import AlertEvidence
+        from .stream import Stream
 
         fields: Dict[str, Callable[[Any], None]] = {
             "countryLetterCode": lambda n : setattr(self, 'country_letter_code', n.get_str_value()),
             "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "stream": lambda n : setattr(self, 'stream', n.get_object_value(Stream)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -56,5 +62,6 @@ class IpEvidence(AlertEvidence):
         super().serialize(writer)
         writer.write_str_value("countryLetterCode", self.country_letter_code)
         writer.write_str_value("ipAddress", self.ip_address)
+        writer.write_object_value("stream", self.stream)
     
 

@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
     from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
     from .entity import Entity
+    from .windows10_enrollment_completion_page_configuration import Windows10EnrollmentCompletionPageConfiguration
 
 from .entity import Entity
 
@@ -60,6 +61,10 @@ class DeviceEnrollmentConfiguration(Entity):
             from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
 
             return DeviceEnrollmentWindowsHelloForBusinessConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10EnrollmentCompletionPageConfiguration".casefold():
+            from .windows10_enrollment_completion_page_configuration import Windows10EnrollmentCompletionPageConfiguration
+
+            return Windows10EnrollmentCompletionPageConfiguration()
         return DeviceEnrollmentConfiguration()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -72,12 +77,14 @@ class DeviceEnrollmentConfiguration(Entity):
         from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
         from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
         from .entity import Entity
+        from .windows10_enrollment_completion_page_configuration import Windows10EnrollmentCompletionPageConfiguration
 
         from .device_enrollment_limit_configuration import DeviceEnrollmentLimitConfiguration
         from .device_enrollment_platform_restrictions_configuration import DeviceEnrollmentPlatformRestrictionsConfiguration
         from .device_enrollment_windows_hello_for_business_configuration import DeviceEnrollmentWindowsHelloForBusinessConfiguration
         from .enrollment_configuration_assignment import EnrollmentConfigurationAssignment
         from .entity import Entity
+        from .windows10_enrollment_completion_page_configuration import Windows10EnrollmentCompletionPageConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(EnrollmentConfigurationAssignment)),

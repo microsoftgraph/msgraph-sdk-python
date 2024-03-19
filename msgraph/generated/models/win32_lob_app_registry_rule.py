@@ -23,7 +23,7 @@ class Win32LobAppRegistryRule(Win32LobAppRule):
     comparison_value: Optional[str] = None
     # The full path of the registry entry containing the value to detect.
     key_path: Optional[str] = None
-    # Contains all supported registry data detection type.
+    # A list of possible operations for rules used to make determinations about an application based on registry keys or values. Unless noted, the values can be used with either detection or requirement rules.
     operation_type: Optional[Win32LobAppRegistryRuleOperationType] = None
     # Contains properties for detection operator.
     operator: Optional[Win32LobAppRuleOperator] = None

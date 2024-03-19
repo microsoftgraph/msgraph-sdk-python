@@ -15,9 +15,9 @@ class ChecklistItem(Entity):
     checked_date_time: Optional[datetime.datetime] = None
     # The date and time when the checklistItem was created.
     created_date_time: Optional[datetime.datetime] = None
-    # Field indicating the title of checklistItem.
+    # Indicates the title of the checklistItem.
     display_name: Optional[str] = None
-    # State indicating whether the item is checked off or not.
+    # State that indicates whether the item is checked off or not.
     is_checked: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None

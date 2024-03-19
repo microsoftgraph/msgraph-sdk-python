@@ -18,19 +18,19 @@ from .privileged_access_schedule import PrivilegedAccessSchedule
 class PrivilegedAccessGroupAssignmentSchedule(PrivilegedAccessSchedule):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.privilegedAccessGroupAssignmentSchedule"
-    # The identifier of the membership or ownership assignment to the group that is governed by PIM. Required. The possible values are: owner, member, unknownFutureValue. Supports $filter (eq).
+    # The identifier of the membership or ownership assignment to the group that is governed through PIM. Required. The possible values are: owner, member, unknownFutureValue. Supports $filter (eq).
     access_id: Optional[PrivilegedAccessGroupRelationships] = None
-    # When the request activates an ownership or membership assignment in PIM for groups, this object represents the eligibility relationship. Otherwise, it is null. Supports $expand.
+    # When the request activates an ownership or membership assignment in PIM for groups, this object represents the eligibility relationship. Otherwise, it's null. Supports $expand.
     activated_using: Optional[PrivilegedAccessGroupEligibilitySchedule] = None
     # Indicates whether the membership or ownership assignment for the principal is granted through activation or direct assignment. Required. The possible values are: assigned, activated, unknownFutureValue. Supports $filter (eq).
     assignment_type: Optional[PrivilegedAccessGroupAssignmentType] = None
-    # References the group that is the scope of the membership or ownership assignment through PIM for groups. Supports $expand.
+    # References the group that is the scope of the membership or ownership assignment through PIM for groups. Supports $expand and $select nested in $expand for select properties like id, displayName, and mail.
     group: Optional[Group] = None
     # The identifier of the group representing the scope of the membership or ownership assignment through PIM for groups. Required. Supports $filter (eq).
     group_id: Optional[str] = None
     # Indicates whether the assignment is derived from a direct group assignment or through a transitive assignment. The possible values are: direct, group, unknownFutureValue. Supports $filter (eq).
     member_type: Optional[PrivilegedAccessGroupMemberType] = None
-    # References the principal that's in the scope of this membership or ownership assignment request to the group that's governed by PIM. Supports $expand.
+    # References the principal that's in the scope of this membership or ownership assignment request to the group that's governed through PIM. Supports $expand and $select nested in $expand for id only.
     principal: Optional[DirectoryObject] = None
     # The identifier of the principal whose membership or ownership assignment is granted through PIM for groups. Required. Supports $filter (eq).
     principal_id: Optional[str] = None

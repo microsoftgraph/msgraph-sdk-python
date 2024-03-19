@@ -9,4 +9,6 @@ class MobileThreatPartnerTenantState(str, Enum):
     Enabled = "enabled",
     # Partner is unresponsive.
     Unresponsive = "unresponsive",
+    # Evolvable enumeration sentinel value. Do not use.
+    UnknownFutureValue = "unknownFutureValue",
 

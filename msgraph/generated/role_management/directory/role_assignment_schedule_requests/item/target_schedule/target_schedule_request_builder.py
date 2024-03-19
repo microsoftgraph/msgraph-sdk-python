@@ -29,7 +29,7 @@ class TargetScheduleRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentSchedule]:
         """
-        The schedule for an eligible role assignment that is referenced through the targetScheduleId property. Supports $expand.
+        The schedule for an eligible role assignment that is referenced through the targetScheduleId property. Supports $expand and $select nested in $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleAssignmentSchedule]
         """
@@ -49,7 +49,7 @@ class TargetScheduleRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        The schedule for an eligible role assignment that is referenced through the targetScheduleId property. Supports $expand.
+        The schedule for an eligible role assignment that is referenced through the targetScheduleId property. Supports $expand and $select nested in $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -71,7 +71,7 @@ class TargetScheduleRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TargetScheduleRequestBuilderGetQueryParameters():
         """
-        The schedule for an eligible role assignment that is referenced through the targetScheduleId property. Supports $expand.
+        The schedule for an eligible role assignment that is referenced through the targetScheduleId property. Supports $expand and $select nested in $expand.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

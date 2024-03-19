@@ -29,7 +29,7 @@ class MicrosoftGraphPartnersBillingExportRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ExportPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Operation]:
         """
-        Export the unbilled Azure usage data for a specific billing period and a given currency.
+        Export unbilled Azure usage data for a specific billing period and currency.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Operation]
@@ -53,7 +53,7 @@ class MicrosoftGraphPartnersBillingExportRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ExportPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Export the unbilled Azure usage data for a specific billing period and a given currency.
+        Export unbilled Azure usage data for a specific billing period and currency.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

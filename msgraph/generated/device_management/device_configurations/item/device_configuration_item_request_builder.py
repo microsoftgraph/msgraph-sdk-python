@@ -37,10 +37,10 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a windowsUpdateForBusinessConfiguration.
+        Deletes a windows10TeamGeneralConfiguration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windowsupdateforbusinessconfiguration-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows10teamgeneralconfiguration-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -56,10 +56,10 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Read properties and relationships of the iosCustomConfiguration object.
+        Read properties and relationships of the windowsUpdateForBusinessConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-ioscustomconfiguration-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windowsupdateforbusinessconfiguration-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -89,11 +89,11 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Update the properties of a macOSCustomConfiguration object.
+        Update the properties of a windows10CustomConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-macoscustomconfiguration-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows10customconfiguration-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -113,7 +113,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a windowsUpdateForBusinessConfiguration.
+        Deletes a windows10TeamGeneralConfiguration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -124,7 +124,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the iosCustomConfiguration object.
+        Read properties and relationships of the windowsUpdateForBusinessConfiguration object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -135,7 +135,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a macOSCustomConfiguration object.
+        Update the properties of a windows10CustomConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -224,7 +224,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the iosCustomConfiguration object.
+        Read properties and relationships of the windowsUpdateForBusinessConfiguration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

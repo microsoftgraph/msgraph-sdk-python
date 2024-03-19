@@ -5,6 +5,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .base_site_page import BaseSitePage
     from .drive import Drive
     from .drive_item import DriveItem
     from .entity import Entity
@@ -14,6 +15,7 @@ if TYPE_CHECKING:
     from .list_item import ListItem
     from .shared_drive_item import SharedDriveItem
     from .site import Site
+    from .site_page import SitePage
     from .user import User
 
 from .entity import Entity
@@ -58,6 +60,10 @@ class BaseItem(Entity):
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.baseSitePage".casefold():
+            from .base_site_page import BaseSitePage
+
+            return BaseSitePage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.drive".casefold():
             from .drive import Drive
 
@@ -82,6 +88,10 @@ class BaseItem(Entity):
             from .site import Site
 
             return Site()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sitePage".casefold():
+            from .site_page import SitePage
+
+            return SitePage()
         return BaseItem()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -89,6 +99,7 @@ class BaseItem(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .base_site_page import BaseSitePage
         from .drive import Drive
         from .drive_item import DriveItem
         from .entity import Entity
@@ -98,8 +109,10 @@ class BaseItem(Entity):
         from .list_item import ListItem
         from .shared_drive_item import SharedDriveItem
         from .site import Site
+        from .site_page import SitePage
         from .user import User
 
+        from .base_site_page import BaseSitePage
         from .drive import Drive
         from .drive_item import DriveItem
         from .entity import Entity
@@ -109,6 +122,7 @@ class BaseItem(Entity):
         from .list_item import ListItem
         from .shared_drive_item import SharedDriveItem
         from .site import Site
+        from .site_page import SitePage
         from .user import User
 
         fields: Dict[str, Callable[[Any], None]] = {

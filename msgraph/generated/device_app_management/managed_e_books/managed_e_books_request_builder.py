@@ -46,10 +46,10 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedEBookCollectionResponse]:
         """
-        List properties and relationships of the managedEBook objects.
+        List properties and relationships of the iosVppEBook objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBookCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-managedebook-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-books-iosvppebook-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -91,7 +91,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedEBook objects.
+        List properties and relationships of the iosVppEBook objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -137,7 +137,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedEBooksRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedEBook objects.
+        List properties and relationships of the iosVppEBook objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

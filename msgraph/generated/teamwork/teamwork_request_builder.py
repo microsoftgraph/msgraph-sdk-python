@@ -13,6 +13,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..models.o_data_errors.o_data_error import ODataError
     from ..models.teamwork import Teamwork
+    from .deleted_chats.deleted_chats_request_builder import DeletedChatsRequestBuilder
     from .deleted_teams.deleted_teams_request_builder import DeletedTeamsRequestBuilder
     from .send_activity_notification_to_recipients.send_activity_notification_to_recipients_request_builder import SendActivityNotificationToRecipientsRequestBuilder
     from .teams_app_settings.teams_app_settings_request_builder import TeamsAppSettingsRequestBuilder
@@ -109,6 +110,15 @@ class TeamworkRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return TeamworkRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def deleted_chats(self) -> DeletedChatsRequestBuilder:
+        """
+        Provides operations to manage the deletedChats property of the microsoft.graph.teamwork entity.
+        """
+        from .deleted_chats.deleted_chats_request_builder import DeletedChatsRequestBuilder
+
+        return DeletedChatsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def deleted_teams(self) -> DeletedTeamsRequestBuilder:

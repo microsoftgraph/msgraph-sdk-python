@@ -48,7 +48,7 @@ class BulkUploadRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BulkUpload]:
         """
-        Get bulkUpload from servicePrincipals
+        The bulk upload operation for the job.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BulkUpload]
         """
@@ -102,7 +102,7 @@ class BulkUploadRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get bulkUpload from servicePrincipals
+        The bulk upload operation for the job.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -148,7 +148,7 @@ class BulkUploadRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BulkUploadRequestBuilderGetQueryParameters():
         """
-        Get bulkUpload from servicePrincipals
+        The bulk upload operation for the job.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

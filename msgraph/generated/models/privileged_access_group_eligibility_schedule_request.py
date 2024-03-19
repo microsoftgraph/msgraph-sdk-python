@@ -18,11 +18,11 @@ class PrivilegedAccessGroupEligibilityScheduleRequest(PrivilegedAccessScheduleRe
     odata_type: Optional[str] = "#microsoft.graph.privilegedAccessGroupEligibilityScheduleRequest"
     # The identifier of membership or ownership eligibility relationship to the group. Required. The possible values are: owner, member, unknownFutureValue.
     access_id: Optional[PrivilegedAccessGroupRelationships] = None
-    # References the group that is the scope of the membership or ownership eligibility request through PIM for groups. Supports $expand.
+    # References the group that is the scope of the membership or ownership eligibility request through PIM for groups. Supports $expand and $select nested in $expand for select properties like id, displayName, and mail.
     group: Optional[Group] = None
     # The identifier of the group representing the scope of the membership and ownership eligibility through PIM for groups. Required.
     group_id: Optional[str] = None
-    # References the principal that's in the scope of the membership or ownership eligibility request through the group that's governed by PIM. Supports $expand.
+    # References the principal that's in the scope of the membership or ownership eligibility request through the group that's governed by PIM. Supports $expand and $select nested in $expand for id only.
     principal: Optional[DirectoryObject] = None
     # The identifier of the principal whose membership or ownership eligibility to the group is managed through PIM for groups. Required.
     principal_id: Optional[str] = None

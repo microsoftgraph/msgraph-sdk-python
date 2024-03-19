@@ -15,7 +15,7 @@ from .entity import Entity
 
 @dataclass
 class SynchronizationJob(Entity):
-    # The bulkUpload property
+    # The bulk upload operation for the job.
     bulk_upload: Optional[BulkUpload] = None
     # The OdataType property
     odata_type: Optional[str] = None

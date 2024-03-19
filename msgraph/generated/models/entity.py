@@ -36,6 +36,7 @@ if TYPE_CHECKING:
     from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
     from .administrative_unit import AdministrativeUnit
     from .admin_consent_request_policy import AdminConsentRequestPolicy
+    from .admin_microsoft365_apps import AdminMicrosoft365Apps
     from .agreement import Agreement
     from .agreement_acceptance import AgreementAcceptance
     from .agreement_file import AgreementFile
@@ -99,6 +100,7 @@ if TYPE_CHECKING:
     from .b2x_identity_user_flow import B2xIdentityUserFlow
     from .base_item import BaseItem
     from .base_item_version import BaseItemVersion
+    from .base_site_page import BaseSitePage
     from .bitlocker import Bitlocker
     from .bitlocker_recovery_key import BitlockerRecoveryKey
     from .booking_appointment import BookingAppointment
@@ -126,6 +128,7 @@ if TYPE_CHECKING:
     from .call_records.session import Session
     from .call_transcript import CallTranscript
     from .cancel_media_processing_operation import CancelMediaProcessingOperation
+    from .canvas_layout import CanvasLayout
     from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
     from .change_tracked_entity import ChangeTrackedEntity
     from .channel import Channel
@@ -135,6 +138,17 @@ if TYPE_CHECKING:
     from .chat_message_info import ChatMessageInfo
     from .checklist_item import ChecklistItem
     from .claims_mapping_policy import ClaimsMappingPolicy
+    from .cloud_clipboard_item import CloudClipboardItem
+    from .cloud_clipboard_root import CloudClipboardRoot
+    from .cloud_pc_audit_event import CloudPcAuditEvent
+    from .cloud_pc_device_image import CloudPcDeviceImage
+    from .cloud_pc_gallery_image import CloudPcGalleryImage
+    from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
+    from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
+    from .cloud_pc_provisioning_policy_assignment import CloudPcProvisioningPolicyAssignment
+    from .cloud_pc_user_setting import CloudPcUserSetting
+    from .cloud_pc_user_setting_assignment import CloudPcUserSettingAssignment
+    from .cloud_p_c import CloudPC
     from .column_definition import ColumnDefinition
     from .column_link import ColumnLink
     from .comms_operation import CommsOperation
@@ -166,6 +180,7 @@ if TYPE_CHECKING:
     from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
     from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
     from .delegated_permission_classification import DelegatedPermissionClassification
+    from .deleted_chat import DeletedChat
     from .deleted_item_container import DeletedItemContainer
     from .deleted_team import DeletedTeam
     from .delta_participants import DeltaParticipants
@@ -203,11 +218,13 @@ if TYPE_CHECKING:
     from .device_local_credential_info import DeviceLocalCredentialInfo
     from .device_log_collection_response import DeviceLogCollectionResponse
     from .device_management import DeviceManagement
+    from .device_management_cached_report_configuration import DeviceManagementCachedReportConfiguration
     from .device_management_exchange_connector import DeviceManagementExchangeConnector
     from .device_management_export_job import DeviceManagementExportJob
     from .device_management_partner import DeviceManagementPartner
     from .device_management_reports import DeviceManagementReports
     from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+    from .device_registration_policy import DeviceRegistrationPolicy
     from .directory import Directory
     from .directory_audit import DirectoryAudit
     from .directory_definition import DirectoryDefinition
@@ -291,6 +308,8 @@ if TYPE_CHECKING:
     from .group_setting import GroupSetting
     from .group_setting_template import GroupSettingTemplate
     from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+    from .horizontal_section import HorizontalSection
+    from .horizontal_section_column import HorizontalSectionColumn
     from .identity_api_connector import IdentityApiConnector
     from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
     from .identity_container import IdentityContainer
@@ -357,6 +376,7 @@ if TYPE_CHECKING:
     from .localized_notification_message import LocalizedNotificationMessage
     from .login_page import LoginPage
     from .long_running_operation import LongRunningOperation
+    from .m365_apps_installation_options import M365AppsInstallationOptions
     from .mac_o_s_compliance_policy import MacOSCompliancePolicy
     from .mac_o_s_custom_configuration import MacOSCustomConfiguration
     from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
@@ -450,8 +470,10 @@ if TYPE_CHECKING:
     from .participant_joining_notification import ParticipantJoiningNotification
     from .participant_left_notification import ParticipantLeftNotification
     from .partners.billing.azure_usage import AzureUsage
+    from .partners.billing.billed_reconciliation import BilledReconciliation
     from .partners.billing.billed_usage import BilledUsage
     from .partners.billing.billing import Billing
+    from .partners.billing.billing_reconciliation import BillingReconciliation
     from .partners.billing.export_success_operation import ExportSuccessOperation
     from .partners.billing.failed_operation import FailedOperation
     from .partners.billing.manifest import Manifest
@@ -519,6 +541,7 @@ if TYPE_CHECKING:
     from .rbac_application import RbacApplication
     from .record_operation import RecordOperation
     from .reference_attachment import ReferenceAttachment
+    from .relying_party_detailed_summary import RelyingPartyDetailedSummary
     from .remote_assistance_partner import RemoteAssistancePartner
     from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
     from .request import Request
@@ -542,6 +565,10 @@ if TYPE_CHECKING:
     from .scheduling_group import SchedulingGroup
     from .schema_extension import SchemaExtension
     from .scoped_role_membership import ScopedRoleMembership
+    from .search.acronym import Acronym
+    from .search.bookmark import Bookmark
+    from .search.qna import Qna
+    from .search.search_answer import SearchAnswer
     from .search_entity import SearchEntity
     from .section_group import SectionGroup
     from .secure_score import SecureScore
@@ -630,6 +657,7 @@ if TYPE_CHECKING:
     from .simulation_automation_run import SimulationAutomationRun
     from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
     from .site import Site
+    from .site_page import SitePage
     from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
     from .skype_user_conversation_member import SkypeUserConversationMember
     from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
@@ -638,6 +666,7 @@ if TYPE_CHECKING:
     from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
     from .software_oath_authentication_method_configuration import SoftwareOathAuthenticationMethodConfiguration
     from .software_update_status_summary import SoftwareUpdateStatusSummary
+    from .standard_web_part import StandardWebPart
     from .start_hold_music_operation import StartHoldMusicOperation
     from .stop_hold_music_operation import StopHoldMusicOperation
     from .sts_policy import StsPolicy
@@ -682,6 +711,7 @@ if TYPE_CHECKING:
     from .term_store.set import Set
     from .term_store.store import Store
     from .term_store.term import Term
+    from .text_web_part import TextWebPart
     from .threat_assessment_request import ThreatAssessmentRequest
     from .threat_assessment_result import ThreatAssessmentResult
     from .thumbnail_set import ThumbnailSet
@@ -755,6 +785,7 @@ if TYPE_CHECKING:
     from .user_settings import UserSettings
     from .user_sign_in_insight import UserSignInInsight
     from .user_teamwork import UserTeamwork
+    from .vertical_section import VerticalSection
     from .virtual_endpoint import VirtualEndpoint
     from .virtual_event import VirtualEvent
     from .virtual_events_root import VirtualEventsRoot
@@ -764,10 +795,12 @@ if TYPE_CHECKING:
     from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
     from .vpp_token import VppToken
     from .web_app import WebApp
+    from .web_part import WebPart
     from .win32_lob_app import Win32LobApp
     from .windows10_compliance_policy import Windows10CompliancePolicy
     from .windows10_custom_configuration import Windows10CustomConfiguration
     from .windows10_endpoint_protection_configuration import Windows10EndpointProtectionConfiguration
+    from .windows10_enrollment_completion_page_configuration import Windows10EnrollmentCompletionPageConfiguration
     from .windows10_enterprise_modern_app_management_configuration import Windows10EnterpriseModernAppManagementConfiguration
     from .windows10_general_configuration import Windows10GeneralConfiguration
     from .windows10_mobile_compliance_policy import Windows10MobileCompliancePolicy
@@ -792,6 +825,8 @@ if TYPE_CHECKING:
     from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
     from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
     from .windows_protection_state import WindowsProtectionState
+    from .windows_setting import WindowsSetting
+    from .windows_setting_instance import WindowsSettingInstance
     from .windows_universal_app_x import WindowsUniversalAppX
     from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
     from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration
@@ -994,6 +1029,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .administrative_unit import AdministrativeUnit
 
             return AdministrativeUnit()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.adminMicrosoft365Apps".casefold():
+            from .admin_microsoft365_apps import AdminMicrosoft365Apps
+
+            return AdminMicrosoft365Apps()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.agreement".casefold():
             from .agreement import Agreement
 
@@ -1247,6 +1286,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .base_item_version import BaseItemVersion
 
             return BaseItemVersion()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.baseSitePage".casefold():
+            from .base_site_page import BaseSitePage
+
+            return BaseSitePage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.bitlocker".casefold():
             from .bitlocker import Bitlocker
 
@@ -1355,6 +1398,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .cancel_media_processing_operation import CancelMediaProcessingOperation
 
             return CancelMediaProcessingOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.canvasLayout".casefold():
+            from .canvas_layout import CanvasLayout
+
+            return CanvasLayout()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.certificateBasedAuthConfiguration".casefold():
             from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
 
@@ -1391,6 +1438,50 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .claims_mapping_policy import ClaimsMappingPolicy
 
             return ClaimsMappingPolicy()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudClipboardItem".casefold():
+            from .cloud_clipboard_item import CloudClipboardItem
+
+            return CloudClipboardItem()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudClipboardRoot".casefold():
+            from .cloud_clipboard_root import CloudClipboardRoot
+
+            return CloudClipboardRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPC".casefold():
+            from .cloud_p_c import CloudPC
+
+            return CloudPC()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPcAuditEvent".casefold():
+            from .cloud_pc_audit_event import CloudPcAuditEvent
+
+            return CloudPcAuditEvent()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPcDeviceImage".casefold():
+            from .cloud_pc_device_image import CloudPcDeviceImage
+
+            return CloudPcDeviceImage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPcGalleryImage".casefold():
+            from .cloud_pc_gallery_image import CloudPcGalleryImage
+
+            return CloudPcGalleryImage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPcOnPremisesConnection".casefold():
+            from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
+
+            return CloudPcOnPremisesConnection()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPcProvisioningPolicy".casefold():
+            from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
+
+            return CloudPcProvisioningPolicy()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPcProvisioningPolicyAssignment".casefold():
+            from .cloud_pc_provisioning_policy_assignment import CloudPcProvisioningPolicyAssignment
+
+            return CloudPcProvisioningPolicyAssignment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPcUserSetting".casefold():
+            from .cloud_pc_user_setting import CloudPcUserSetting
+
+            return CloudPcUserSetting()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.cloudPcUserSettingAssignment".casefold():
+            from .cloud_pc_user_setting_assignment import CloudPcUserSettingAssignment
+
+            return CloudPcUserSettingAssignment()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.columnDefinition".casefold():
             from .column_definition import ColumnDefinition
 
@@ -1515,6 +1606,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .delegated_permission_classification import DelegatedPermissionClassification
 
             return DelegatedPermissionClassification()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deletedChat".casefold():
+            from .deleted_chat import DeletedChat
+
+            return DeletedChat()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deletedItemContainer".casefold():
             from .deleted_item_container import DeletedItemContainer
 
@@ -1663,6 +1758,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .device_management import DeviceManagement
 
             return DeviceManagement()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceManagementCachedReportConfiguration".casefold():
+            from .device_management_cached_report_configuration import DeviceManagementCachedReportConfiguration
+
+            return DeviceManagementCachedReportConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceManagementExchangeConnector".casefold():
             from .device_management_exchange_connector import DeviceManagementExchangeConnector
 
@@ -1683,6 +1782,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
 
             return DeviceManagementTroubleshootingEvent()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.deviceRegistrationPolicy".casefold():
+            from .device_registration_policy import DeviceRegistrationPolicy
+
+            return DeviceRegistrationPolicy()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.directory".casefold():
             from .directory import Directory
 
@@ -2016,6 +2119,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
 
             return HomeRealmDiscoveryPolicy()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.horizontalSection".casefold():
+            from .horizontal_section import HorizontalSection
+
+            return HorizontalSection()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.horizontalSectionColumn".casefold():
+            from .horizontal_section_column import HorizontalSectionColumn
+
+            return HorizontalSectionColumn()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.identityApiConnector".casefold():
             from .identity_api_connector import IdentityApiConnector
 
@@ -2280,6 +2391,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .long_running_operation import LongRunningOperation
 
             return LongRunningOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.m365AppsInstallationOptions".casefold():
+            from .m365_apps_installation_options import M365AppsInstallationOptions
+
+            return M365AppsInstallationOptions()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.macOSCompliancePolicy".casefold():
             from .mac_o_s_compliance_policy import MacOSCompliancePolicy
 
@@ -2657,6 +2772,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .partners.billing.azure_usage import AzureUsage
 
             return AzureUsage()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.billedReconciliation".casefold():
+            from .partners.billing.billed_reconciliation import BilledReconciliation
+
+            return BilledReconciliation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.billedUsage".casefold():
             from .partners.billing.billed_usage import BilledUsage
 
@@ -2665,6 +2784,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .partners.billing.billing import Billing
 
             return Billing()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.billingReconciliation".casefold():
+            from .partners.billing.billing_reconciliation import BillingReconciliation
+
+            return BillingReconciliation()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.partners.billing.exportSuccessOperation".casefold():
             from .partners.billing.export_success_operation import ExportSuccessOperation
 
@@ -2930,6 +3053,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .reference_attachment import ReferenceAttachment
 
             return ReferenceAttachment()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.relyingPartyDetailedSummary".casefold():
+            from .relying_party_detailed_summary import RelyingPartyDetailedSummary
+
+            return RelyingPartyDetailedSummary()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.remoteAssistancePartner".casefold():
             from .remote_assistance_partner import RemoteAssistancePartner
 
@@ -3022,6 +3149,22 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .scoped_role_membership import ScopedRoleMembership
 
             return ScopedRoleMembership()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.search.acronym".casefold():
+            from .search.acronym import Acronym
+
+            return Acronym()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.search.bookmark".casefold():
+            from .search.bookmark import Bookmark
+
+            return Bookmark()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.search.qna".casefold():
+            from .search.qna import Qna
+
+            return Qna()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.search.searchAnswer".casefold():
+            from .search.search_answer import SearchAnswer
+
+            return SearchAnswer()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.searchEntity".casefold():
             from .search_entity import SearchEntity
 
@@ -3375,6 +3518,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .site import Site
 
             return Site()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.sitePage".casefold():
+            from .site_page import SitePage
+
+            return SitePage()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.skypeForBusinessUserConversationMember".casefold():
             from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
 
@@ -3407,6 +3554,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .software_update_status_summary import SoftwareUpdateStatusSummary
 
             return SoftwareUpdateStatusSummary()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.standardWebPart".casefold():
+            from .standard_web_part import StandardWebPart
+
+            return StandardWebPart()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.startHoldMusicOperation".casefold():
             from .start_hold_music_operation import StartHoldMusicOperation
 
@@ -3584,6 +3735,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .term_store.term import Term
 
             return Term()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.textWebPart".casefold():
+            from .text_web_part import TextWebPart
+
+            return TextWebPart()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.threatAssessmentRequest".casefold():
             from .threat_assessment_request import ThreatAssessmentRequest
 
@@ -3876,6 +4031,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .user_teamwork import UserTeamwork
 
             return UserTeamwork()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.verticalSection".casefold():
+            from .vertical_section import VerticalSection
+
+            return VerticalSection()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.virtualEndpoint".casefold():
             from .virtual_endpoint import VirtualEndpoint
 
@@ -3912,6 +4071,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .web_app import WebApp
 
             return WebApp()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.webPart".casefold():
+            from .web_part import WebPart
+
+            return WebPart()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.win32LobApp".casefold():
             from .win32_lob_app import Win32LobApp
 
@@ -3928,6 +4091,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .windows10_endpoint_protection_configuration import Windows10EndpointProtectionConfiguration
 
             return Windows10EndpointProtectionConfiguration()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10EnrollmentCompletionPageConfiguration".casefold():
+            from .windows10_enrollment_completion_page_configuration import Windows10EnrollmentCompletionPageConfiguration
+
+            return Windows10EnrollmentCompletionPageConfiguration()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windows10EnterpriseModernAppManagementConfiguration".casefold():
             from .windows10_enterprise_modern_app_management_configuration import Windows10EnterpriseModernAppManagementConfiguration
 
@@ -4024,6 +4191,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .windows_protection_state import WindowsProtectionState
 
             return WindowsProtectionState()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsSetting".casefold():
+            from .windows_setting import WindowsSetting
+
+            return WindowsSetting()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsSettingInstance".casefold():
+            from .windows_setting_instance import WindowsSettingInstance
+
+            return WindowsSettingInstance()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.windowsUniversalAppX".casefold():
             from .windows_universal_app_x import WindowsUniversalAppX
 
@@ -4270,6 +4445,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
         from .administrative_unit import AdministrativeUnit
         from .admin_consent_request_policy import AdminConsentRequestPolicy
+        from .admin_microsoft365_apps import AdminMicrosoft365Apps
         from .agreement import Agreement
         from .agreement_acceptance import AgreementAcceptance
         from .agreement_file import AgreementFile
@@ -4333,6 +4509,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .b2x_identity_user_flow import B2xIdentityUserFlow
         from .base_item import BaseItem
         from .base_item_version import BaseItemVersion
+        from .base_site_page import BaseSitePage
         from .bitlocker import Bitlocker
         from .bitlocker_recovery_key import BitlockerRecoveryKey
         from .booking_appointment import BookingAppointment
@@ -4360,6 +4537,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .call_records.session import Session
         from .call_transcript import CallTranscript
         from .cancel_media_processing_operation import CancelMediaProcessingOperation
+        from .canvas_layout import CanvasLayout
         from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
         from .change_tracked_entity import ChangeTrackedEntity
         from .channel import Channel
@@ -4369,6 +4547,17 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .chat_message_info import ChatMessageInfo
         from .checklist_item import ChecklistItem
         from .claims_mapping_policy import ClaimsMappingPolicy
+        from .cloud_clipboard_item import CloudClipboardItem
+        from .cloud_clipboard_root import CloudClipboardRoot
+        from .cloud_pc_audit_event import CloudPcAuditEvent
+        from .cloud_pc_device_image import CloudPcDeviceImage
+        from .cloud_pc_gallery_image import CloudPcGalleryImage
+        from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
+        from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
+        from .cloud_pc_provisioning_policy_assignment import CloudPcProvisioningPolicyAssignment
+        from .cloud_pc_user_setting import CloudPcUserSetting
+        from .cloud_pc_user_setting_assignment import CloudPcUserSettingAssignment
+        from .cloud_p_c import CloudPC
         from .column_definition import ColumnDefinition
         from .column_link import ColumnLink
         from .comms_operation import CommsOperation
@@ -4400,6 +4589,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
         from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
         from .delegated_permission_classification import DelegatedPermissionClassification
+        from .deleted_chat import DeletedChat
         from .deleted_item_container import DeletedItemContainer
         from .deleted_team import DeletedTeam
         from .delta_participants import DeltaParticipants
@@ -4437,11 +4627,13 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .device_local_credential_info import DeviceLocalCredentialInfo
         from .device_log_collection_response import DeviceLogCollectionResponse
         from .device_management import DeviceManagement
+        from .device_management_cached_report_configuration import DeviceManagementCachedReportConfiguration
         from .device_management_exchange_connector import DeviceManagementExchangeConnector
         from .device_management_export_job import DeviceManagementExportJob
         from .device_management_partner import DeviceManagementPartner
         from .device_management_reports import DeviceManagementReports
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+        from .device_registration_policy import DeviceRegistrationPolicy
         from .directory import Directory
         from .directory_audit import DirectoryAudit
         from .directory_definition import DirectoryDefinition
@@ -4525,6 +4717,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .group_setting import GroupSetting
         from .group_setting_template import GroupSettingTemplate
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .horizontal_section import HorizontalSection
+        from .horizontal_section_column import HorizontalSectionColumn
         from .identity_api_connector import IdentityApiConnector
         from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
         from .identity_container import IdentityContainer
@@ -4591,6 +4785,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .localized_notification_message import LocalizedNotificationMessage
         from .login_page import LoginPage
         from .long_running_operation import LongRunningOperation
+        from .m365_apps_installation_options import M365AppsInstallationOptions
         from .mac_o_s_compliance_policy import MacOSCompliancePolicy
         from .mac_o_s_custom_configuration import MacOSCustomConfiguration
         from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
@@ -4684,8 +4879,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .participant_joining_notification import ParticipantJoiningNotification
         from .participant_left_notification import ParticipantLeftNotification
         from .partners.billing.azure_usage import AzureUsage
+        from .partners.billing.billed_reconciliation import BilledReconciliation
         from .partners.billing.billed_usage import BilledUsage
         from .partners.billing.billing import Billing
+        from .partners.billing.billing_reconciliation import BillingReconciliation
         from .partners.billing.export_success_operation import ExportSuccessOperation
         from .partners.billing.failed_operation import FailedOperation
         from .partners.billing.manifest import Manifest
@@ -4753,6 +4950,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .rbac_application import RbacApplication
         from .record_operation import RecordOperation
         from .reference_attachment import ReferenceAttachment
+        from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
         from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
         from .request import Request
@@ -4776,6 +4974,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .scheduling_group import SchedulingGroup
         from .schema_extension import SchemaExtension
         from .scoped_role_membership import ScopedRoleMembership
+        from .search.acronym import Acronym
+        from .search.bookmark import Bookmark
+        from .search.qna import Qna
+        from .search.search_answer import SearchAnswer
         from .search_entity import SearchEntity
         from .section_group import SectionGroup
         from .secure_score import SecureScore
@@ -4864,6 +5066,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .simulation_automation_run import SimulationAutomationRun
         from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
         from .site import Site
+        from .site_page import SitePage
         from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
         from .skype_user_conversation_member import SkypeUserConversationMember
         from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
@@ -4872,6 +5075,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
         from .software_oath_authentication_method_configuration import SoftwareOathAuthenticationMethodConfiguration
         from .software_update_status_summary import SoftwareUpdateStatusSummary
+        from .standard_web_part import StandardWebPart
         from .start_hold_music_operation import StartHoldMusicOperation
         from .stop_hold_music_operation import StopHoldMusicOperation
         from .sts_policy import StsPolicy
@@ -4916,6 +5120,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .term_store.set import Set
         from .term_store.store import Store
         from .term_store.term import Term
+        from .text_web_part import TextWebPart
         from .threat_assessment_request import ThreatAssessmentRequest
         from .threat_assessment_result import ThreatAssessmentResult
         from .thumbnail_set import ThumbnailSet
@@ -4989,6 +5194,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_settings import UserSettings
         from .user_sign_in_insight import UserSignInInsight
         from .user_teamwork import UserTeamwork
+        from .vertical_section import VerticalSection
         from .virtual_endpoint import VirtualEndpoint
         from .virtual_event import VirtualEvent
         from .virtual_events_root import VirtualEventsRoot
@@ -4998,10 +5204,12 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
         from .vpp_token import VppToken
         from .web_app import WebApp
+        from .web_part import WebPart
         from .win32_lob_app import Win32LobApp
         from .windows10_compliance_policy import Windows10CompliancePolicy
         from .windows10_custom_configuration import Windows10CustomConfiguration
         from .windows10_endpoint_protection_configuration import Windows10EndpointProtectionConfiguration
+        from .windows10_enrollment_completion_page_configuration import Windows10EnrollmentCompletionPageConfiguration
         from .windows10_enterprise_modern_app_management_configuration import Windows10EnterpriseModernAppManagementConfiguration
         from .windows10_general_configuration import Windows10GeneralConfiguration
         from .windows10_mobile_compliance_policy import Windows10MobileCompliancePolicy
@@ -5026,6 +5234,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
         from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
         from .windows_protection_state import WindowsProtectionState
+        from .windows_setting import WindowsSetting
+        from .windows_setting_instance import WindowsSettingInstance
         from .windows_universal_app_x import WindowsUniversalAppX
         from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
         from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration
@@ -5110,6 +5320,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .add_large_gallery_view_operation import AddLargeGalleryViewOperation
         from .administrative_unit import AdministrativeUnit
         from .admin_consent_request_policy import AdminConsentRequestPolicy
+        from .admin_microsoft365_apps import AdminMicrosoft365Apps
         from .agreement import Agreement
         from .agreement_acceptance import AgreementAcceptance
         from .agreement_file import AgreementFile
@@ -5173,6 +5384,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .b2x_identity_user_flow import B2xIdentityUserFlow
         from .base_item import BaseItem
         from .base_item_version import BaseItemVersion
+        from .base_site_page import BaseSitePage
         from .bitlocker import Bitlocker
         from .bitlocker_recovery_key import BitlockerRecoveryKey
         from .booking_appointment import BookingAppointment
@@ -5200,6 +5412,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .call_records.session import Session
         from .call_transcript import CallTranscript
         from .cancel_media_processing_operation import CancelMediaProcessingOperation
+        from .canvas_layout import CanvasLayout
         from .certificate_based_auth_configuration import CertificateBasedAuthConfiguration
         from .change_tracked_entity import ChangeTrackedEntity
         from .channel import Channel
@@ -5209,6 +5422,17 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .chat_message_info import ChatMessageInfo
         from .checklist_item import ChecklistItem
         from .claims_mapping_policy import ClaimsMappingPolicy
+        from .cloud_clipboard_item import CloudClipboardItem
+        from .cloud_clipboard_root import CloudClipboardRoot
+        from .cloud_pc_audit_event import CloudPcAuditEvent
+        from .cloud_pc_device_image import CloudPcDeviceImage
+        from .cloud_pc_gallery_image import CloudPcGalleryImage
+        from .cloud_pc_on_premises_connection import CloudPcOnPremisesConnection
+        from .cloud_pc_provisioning_policy import CloudPcProvisioningPolicy
+        from .cloud_pc_provisioning_policy_assignment import CloudPcProvisioningPolicyAssignment
+        from .cloud_pc_user_setting import CloudPcUserSetting
+        from .cloud_pc_user_setting_assignment import CloudPcUserSettingAssignment
+        from .cloud_p_c import CloudPC
         from .column_definition import ColumnDefinition
         from .column_link import ColumnLink
         from .comms_operation import CommsOperation
@@ -5240,6 +5464,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .delegated_admin_relationship_request import DelegatedAdminRelationshipRequest
         from .delegated_admin_service_management_detail import DelegatedAdminServiceManagementDetail
         from .delegated_permission_classification import DelegatedPermissionClassification
+        from .deleted_chat import DeletedChat
         from .deleted_item_container import DeletedItemContainer
         from .deleted_team import DeletedTeam
         from .delta_participants import DeltaParticipants
@@ -5277,11 +5502,13 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .device_local_credential_info import DeviceLocalCredentialInfo
         from .device_log_collection_response import DeviceLogCollectionResponse
         from .device_management import DeviceManagement
+        from .device_management_cached_report_configuration import DeviceManagementCachedReportConfiguration
         from .device_management_exchange_connector import DeviceManagementExchangeConnector
         from .device_management_export_job import DeviceManagementExportJob
         from .device_management_partner import DeviceManagementPartner
         from .device_management_reports import DeviceManagementReports
         from .device_management_troubleshooting_event import DeviceManagementTroubleshootingEvent
+        from .device_registration_policy import DeviceRegistrationPolicy
         from .directory import Directory
         from .directory_audit import DirectoryAudit
         from .directory_definition import DirectoryDefinition
@@ -5365,6 +5592,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .group_setting import GroupSetting
         from .group_setting_template import GroupSettingTemplate
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
+        from .horizontal_section import HorizontalSection
+        from .horizontal_section_column import HorizontalSectionColumn
         from .identity_api_connector import IdentityApiConnector
         from .identity_built_in_user_flow_attribute import IdentityBuiltInUserFlowAttribute
         from .identity_container import IdentityContainer
@@ -5431,6 +5660,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .localized_notification_message import LocalizedNotificationMessage
         from .login_page import LoginPage
         from .long_running_operation import LongRunningOperation
+        from .m365_apps_installation_options import M365AppsInstallationOptions
         from .mac_o_s_compliance_policy import MacOSCompliancePolicy
         from .mac_o_s_custom_configuration import MacOSCustomConfiguration
         from .mac_o_s_device_features_configuration import MacOSDeviceFeaturesConfiguration
@@ -5524,8 +5754,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .participant_joining_notification import ParticipantJoiningNotification
         from .participant_left_notification import ParticipantLeftNotification
         from .partners.billing.azure_usage import AzureUsage
+        from .partners.billing.billed_reconciliation import BilledReconciliation
         from .partners.billing.billed_usage import BilledUsage
         from .partners.billing.billing import Billing
+        from .partners.billing.billing_reconciliation import BillingReconciliation
         from .partners.billing.export_success_operation import ExportSuccessOperation
         from .partners.billing.failed_operation import FailedOperation
         from .partners.billing.manifest import Manifest
@@ -5593,6 +5825,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .rbac_application import RbacApplication
         from .record_operation import RecordOperation
         from .reference_attachment import ReferenceAttachment
+        from .relying_party_detailed_summary import RelyingPartyDetailedSummary
         from .remote_assistance_partner import RemoteAssistancePartner
         from .remote_desktop_security_configuration import RemoteDesktopSecurityConfiguration
         from .request import Request
@@ -5616,6 +5849,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .scheduling_group import SchedulingGroup
         from .schema_extension import SchemaExtension
         from .scoped_role_membership import ScopedRoleMembership
+        from .search.acronym import Acronym
+        from .search.bookmark import Bookmark
+        from .search.qna import Qna
+        from .search.search_answer import SearchAnswer
         from .search_entity import SearchEntity
         from .section_group import SectionGroup
         from .secure_score import SecureScore
@@ -5704,6 +5941,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .simulation_automation_run import SimulationAutomationRun
         from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
         from .site import Site
+        from .site_page import SitePage
         from .skype_for_business_user_conversation_member import SkypeForBusinessUserConversationMember
         from .skype_user_conversation_member import SkypeUserConversationMember
         from .sms_authentication_method_configuration import SmsAuthenticationMethodConfiguration
@@ -5712,6 +5950,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .software_oath_authentication_method import SoftwareOathAuthenticationMethod
         from .software_oath_authentication_method_configuration import SoftwareOathAuthenticationMethodConfiguration
         from .software_update_status_summary import SoftwareUpdateStatusSummary
+        from .standard_web_part import StandardWebPart
         from .start_hold_music_operation import StartHoldMusicOperation
         from .stop_hold_music_operation import StopHoldMusicOperation
         from .sts_policy import StsPolicy
@@ -5756,6 +5995,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .term_store.set import Set
         from .term_store.store import Store
         from .term_store.term import Term
+        from .text_web_part import TextWebPart
         from .threat_assessment_request import ThreatAssessmentRequest
         from .threat_assessment_result import ThreatAssessmentResult
         from .thumbnail_set import ThumbnailSet
@@ -5829,6 +6069,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .user_settings import UserSettings
         from .user_sign_in_insight import UserSignInInsight
         from .user_teamwork import UserTeamwork
+        from .vertical_section import VerticalSection
         from .virtual_endpoint import VirtualEndpoint
         from .virtual_event import VirtualEvent
         from .virtual_events_root import VirtualEventsRoot
@@ -5838,10 +6079,12 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .voice_authentication_method_configuration import VoiceAuthenticationMethodConfiguration
         from .vpp_token import VppToken
         from .web_app import WebApp
+        from .web_part import WebPart
         from .win32_lob_app import Win32LobApp
         from .windows10_compliance_policy import Windows10CompliancePolicy
         from .windows10_custom_configuration import Windows10CustomConfiguration
         from .windows10_endpoint_protection_configuration import Windows10EndpointProtectionConfiguration
+        from .windows10_enrollment_completion_page_configuration import Windows10EnrollmentCompletionPageConfiguration
         from .windows10_enterprise_modern_app_management_configuration import Windows10EnterpriseModernAppManagementConfiguration
         from .windows10_general_configuration import Windows10GeneralConfiguration
         from .windows10_mobile_compliance_policy import Windows10MobileCompliancePolicy
@@ -5866,6 +6109,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .windows_phone81_custom_configuration import WindowsPhone81CustomConfiguration
         from .windows_phone81_general_configuration import WindowsPhone81GeneralConfiguration
         from .windows_protection_state import WindowsProtectionState
+        from .windows_setting import WindowsSetting
+        from .windows_setting_instance import WindowsSettingInstance
         from .windows_universal_app_x import WindowsUniversalAppX
         from .windows_universal_app_x_contained_app import WindowsUniversalAppXContainedApp
         from .windows_update_for_business_configuration import WindowsUpdateForBusinessConfiguration

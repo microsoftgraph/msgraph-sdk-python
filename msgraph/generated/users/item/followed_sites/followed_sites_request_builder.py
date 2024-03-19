@@ -13,8 +13,10 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models.o_data_errors.o_data_error import ODataError
     from ....models.site_collection_response import SiteCollectionResponse
+    from .add.add_request_builder import AddRequestBuilder
     from .count.count_request_builder import CountRequestBuilder
     from .item.site_item_request_builder import SiteItemRequestBuilder
+    from .remove.remove_request_builder import RemoveRequestBuilder
 
 class FollowedSitesRequestBuilder(BaseRequestBuilder):
     """
@@ -86,6 +88,15 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
         return FollowedSitesRequestBuilder(self.request_adapter, raw_url)
     
     @property
+    def add(self) -> AddRequestBuilder:
+        """
+        Provides operations to call the add method.
+        """
+        from .add.add_request_builder import AddRequestBuilder
+
+        return AddRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def count(self) -> CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -93,6 +104,15 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def remove(self) -> RemoveRequestBuilder:
+        """
+        Provides operations to call the remove method.
+        """
+        from .remove.remove_request_builder import RemoveRequestBuilder
+
+        return RemoveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class FollowedSitesRequestBuilderGetQueryParameters():

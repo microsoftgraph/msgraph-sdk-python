@@ -27,9 +27,9 @@ class Chat(Entity):
     created_date_time: Optional[datetime.datetime] = None
     # A collection of all the apps in the chat. Nullable.
     installed_apps: Optional[List[TeamsAppInstallation]] = None
-    # Preview of the last message sent in the chat. Null if no messages have been sent in the chat. Currently, only the list chats operation supports this property.
+    # Preview of the last message sent in the chat. Null if no messages were sent in the chat. Currently, only the list chats operation supports this property.
     last_message_preview: Optional[ChatMessageInfo] = None
-    # Date and time at which the chat was renamed or list of members were last changed. Read-only.
+    # Date and time at which the chat was renamed or the list of members was last changed. Read-only.
     last_updated_date_time: Optional[datetime.datetime] = None
     # A collection of all the members in the chat. Nullable.
     members: Optional[List[ConversationMember]] = None
@@ -49,7 +49,7 @@ class Chat(Entity):
     tenant_id: Optional[str] = None
     # (Optional) Subject or topic for the chat. Only available for group chats.
     topic: Optional[str] = None
-    # Represents caller-specific information about the chat, such as last message read date and time. This property is populated only when the request is made in a delegated context.
+    # Represents caller-specific information about the chat, such as the last message read date and time. This property is populated only when the request is made in a delegated context.
     viewpoint: Optional[ChatViewpoint] = None
     # The URL for the chat in Microsoft Teams. The URL should be treated as an opaque blob, and not parsed. Read-only.
     web_url: Optional[str] = None

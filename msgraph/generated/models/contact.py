@@ -51,47 +51,47 @@ class Contact(OutlookItem):
     home_address: Optional[PhysicalAddress] = None
     # The contact's home phone numbers.
     home_phones: Optional[List[str]] = None
-    # The imAddresses property
+    # The contact's instant messaging (IM) addresses.
     im_addresses: Optional[List[str]] = None
-    # The initials property
+    # The contact's initials.
     initials: Optional[str] = None
-    # The jobTitle property
+    # The contact’s job title.
     job_title: Optional[str] = None
-    # The manager property
+    # The name of the contact's manager.
     manager: Optional[str] = None
-    # The middleName property
+    # The contact's middle name.
     middle_name: Optional[str] = None
-    # The mobilePhone property
+    # The contact's mobile phone number.
     mobile_phone: Optional[str] = None
     # The collection of multi-value extended properties defined for the contact. Read-only. Nullable.
     multi_value_extended_properties: Optional[List[MultiValueLegacyExtendedProperty]] = None
-    # The nickName property
+    # The contact's nickname.
     nick_name: Optional[str] = None
-    # The officeLocation property
+    # The location of the contact's office.
     office_location: Optional[str] = None
-    # The otherAddress property
+    # Other addresses for the contact.
     other_address: Optional[PhysicalAddress] = None
-    # The parentFolderId property
+    # The ID of the contact's parent folder.
     parent_folder_id: Optional[str] = None
-    # The personalNotes property
+    # The user's notes about the contact.
     personal_notes: Optional[str] = None
     # Optional contact picture. You can get or set a photo for a contact.
     photo: Optional[ProfilePhoto] = None
-    # The profession property
+    # The contact's profession.
     profession: Optional[str] = None
     # The collection of single-value extended properties defined for the contact. Read-only. Nullable.
     single_value_extended_properties: Optional[List[SingleValueLegacyExtendedProperty]] = None
-    # The spouseName property
+    # The name of the contact's spouse/partner.
     spouse_name: Optional[str] = None
-    # The surname property
+    # The contact's surname.
     surname: Optional[str] = None
-    # The title property
+    # The contact's title.
     title: Optional[str] = None
-    # The yomiCompanyName property
+    # The phonetic Japanese company name of the contact.
     yomi_company_name: Optional[str] = None
-    # The yomiGivenName property
+    # The phonetic Japanese given name (first name) of the contact.
     yomi_given_name: Optional[str] = None
-    # The yomiSurname property
+    # The phonetic Japanese surname (last name)  of the contact.
     yomi_surname: Optional[str] = None
     
     @staticmethod

@@ -37,16 +37,26 @@ class Device(DirectoryObject):
     display_name: Optional[str] = None
     # Enrollment profile applied to the device. For example, Apple Device Enrollment Profile, Device enrollment - Corporate device identifiers, or Windows Autopilot profile name. This property is set by Intune.
     enrollment_profile_name: Optional[str] = None
+    # The enrollmentType property
+    enrollment_type: Optional[str] = None
     # The collection of open extensions defined for the device. Read-only. Nullable.
     extensions: Optional[List[Extension]] = None
     # true if the device complies with Mobile Device Management (MDM) policies; otherwise, false. Read-only. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
     is_compliant: Optional[bool] = None
     # true if the device is managed by a Mobile Device Management (MDM) app; otherwise, false. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
     is_managed: Optional[bool] = None
+    # The isRooted property
+    is_rooted: Optional[bool] = None
+    # The managementType property
+    management_type: Optional[str] = None
+    # Manufacturer of the device. Read-only.
+    manufacturer: Optional[str] = None
     # Application identifier used to register device into MDM. Read-only. Supports $filter (eq, ne, not, startsWith).
     mdm_app_id: Optional[str] = None
     # Groups and administrative units that this device is a member of. Read-only. Nullable. Supports $expand.
     member_of: Optional[List[DirectoryObject]] = None
+    # Model of the device. Read-only.
+    model: Optional[str] = None
     # The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).
     on_premises_last_sync_date_time: Optional[datetime.datetime] = None
     # The onPremisesSecurityIdentifier property
@@ -110,11 +120,16 @@ class Device(DirectoryObject):
             "deviceVersion": lambda n : setattr(self, 'device_version', n.get_int_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "enrollmentProfileName": lambda n : setattr(self, 'enrollment_profile_name', n.get_str_value()),
+            "enrollmentType": lambda n : setattr(self, 'enrollment_type', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(Extension)),
             "isCompliant": lambda n : setattr(self, 'is_compliant', n.get_bool_value()),
             "isManaged": lambda n : setattr(self, 'is_managed', n.get_bool_value()),
+            "isRooted": lambda n : setattr(self, 'is_rooted', n.get_bool_value()),
+            "managementType": lambda n : setattr(self, 'management_type', n.get_str_value()),
+            "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "mdmAppId": lambda n : setattr(self, 'mdm_app_id', n.get_str_value()),
             "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(DirectoryObject)),
+            "model": lambda n : setattr(self, 'model', n.get_str_value()),
             "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
             "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
             "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
@@ -153,11 +168,16 @@ class Device(DirectoryObject):
         writer.write_int_value("deviceVersion", self.device_version)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("enrollmentProfileName", self.enrollment_profile_name)
+        writer.write_str_value("enrollmentType", self.enrollment_type)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_bool_value("isCompliant", self.is_compliant)
         writer.write_bool_value("isManaged", self.is_managed)
+        writer.write_bool_value("isRooted", self.is_rooted)
+        writer.write_str_value("managementType", self.management_type)
+        writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("mdmAppId", self.mdm_app_id)
         writer.write_collection_of_object_values("memberOf", self.member_of)
+        writer.write_str_value("model", self.model)
         writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
         writer.write_str_value("onPremisesSecurityIdentifier", self.on_premises_security_identifier)
         writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)

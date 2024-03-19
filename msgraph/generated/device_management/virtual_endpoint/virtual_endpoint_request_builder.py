@@ -13,6 +13,13 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...models.o_data_errors.o_data_error import ODataError
     from ...models.virtual_endpoint import VirtualEndpoint
+    from .audit_events.audit_events_request_builder import AuditEventsRequestBuilder
+    from .cloud_p_cs.cloud_p_cs_request_builder import CloudPCsRequestBuilder
+    from .device_images.device_images_request_builder import DeviceImagesRequestBuilder
+    from .gallery_images.gallery_images_request_builder import GalleryImagesRequestBuilder
+    from .on_premises_connections.on_premises_connections_request_builder import OnPremisesConnectionsRequestBuilder
+    from .provisioning_policies.provisioning_policies_request_builder import ProvisioningPoliciesRequestBuilder
+    from .user_settings.user_settings_request_builder import UserSettingsRequestBuilder
 
 class VirtualEndpointRequestBuilder(BaseRequestBuilder):
     """
@@ -134,6 +141,69 @@ class VirtualEndpointRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return VirtualEndpointRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def audit_events(self) -> AuditEventsRequestBuilder:
+        """
+        Provides operations to manage the auditEvents property of the microsoft.graph.virtualEndpoint entity.
+        """
+        from .audit_events.audit_events_request_builder import AuditEventsRequestBuilder
+
+        return AuditEventsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def cloud_p_cs(self) -> CloudPCsRequestBuilder:
+        """
+        Provides operations to manage the cloudPCs property of the microsoft.graph.virtualEndpoint entity.
+        """
+        from .cloud_p_cs.cloud_p_cs_request_builder import CloudPCsRequestBuilder
+
+        return CloudPCsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_images(self) -> DeviceImagesRequestBuilder:
+        """
+        Provides operations to manage the deviceImages property of the microsoft.graph.virtualEndpoint entity.
+        """
+        from .device_images.device_images_request_builder import DeviceImagesRequestBuilder
+
+        return DeviceImagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def gallery_images(self) -> GalleryImagesRequestBuilder:
+        """
+        Provides operations to manage the galleryImages property of the microsoft.graph.virtualEndpoint entity.
+        """
+        from .gallery_images.gallery_images_request_builder import GalleryImagesRequestBuilder
+
+        return GalleryImagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def on_premises_connections(self) -> OnPremisesConnectionsRequestBuilder:
+        """
+        Provides operations to manage the onPremisesConnections property of the microsoft.graph.virtualEndpoint entity.
+        """
+        from .on_premises_connections.on_premises_connections_request_builder import OnPremisesConnectionsRequestBuilder
+
+        return OnPremisesConnectionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def provisioning_policies(self) -> ProvisioningPoliciesRequestBuilder:
+        """
+        Provides operations to manage the provisioningPolicies property of the microsoft.graph.virtualEndpoint entity.
+        """
+        from .provisioning_policies.provisioning_policies_request_builder import ProvisioningPoliciesRequestBuilder
+
+        return ProvisioningPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def user_settings(self) -> UserSettingsRequestBuilder:
+        """
+        Provides operations to manage the userSettings property of the microsoft.graph.virtualEndpoint entity.
+        """
+        from .user_settings.user_settings_request_builder import UserSettingsRequestBuilder
+
+        return UserSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class VirtualEndpointRequestBuilderGetQueryParameters():

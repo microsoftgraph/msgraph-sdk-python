@@ -87,6 +87,5 @@ class ManagedMobileLobApp(ManagedApp):
         writer.write_str_value("committedContentVersion", self.committed_content_version)
         writer.write_collection_of_object_values("contentVersions", self.content_versions)
         writer.write_str_value("fileName", self.file_name)
-        writer.write_int_value("size", self.size)
     
 

@@ -67,11 +67,11 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceEnrollmentConfiguration]:
         """
-        Create a new deviceEnrollmentWindowsHelloForBusinessConfiguration object.
+        Create a new deviceEnrollmentLimitConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceEnrollmentConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentwindowshelloforbusinessconfiguration-create?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-deviceenrollmentlimitconfiguration-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -102,7 +102,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DeviceEnrollmentConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceEnrollmentWindowsHelloForBusinessConfiguration object.
+        Create a new deviceEnrollmentLimitConfiguration object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

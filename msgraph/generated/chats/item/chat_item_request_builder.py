@@ -41,9 +41,10 @@ class ChatItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete entity from chats
+        Soft-delete a chat. When invoked with delegated permissions, this operation only works for tenant admins and Teams service admins.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/chat-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -104,7 +105,7 @@ class ChatItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from chats
+        Soft-delete a chat. When invoked with delegated permissions, this operation only works for tenant admins and Teams service admins.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

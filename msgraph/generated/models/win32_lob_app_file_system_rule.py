@@ -23,7 +23,7 @@ class Win32LobAppFileSystemRule(Win32LobAppRule):
     comparison_value: Optional[str] = None
     # The file or folder name to look up.
     file_or_folder_name: Optional[str] = None
-    # Contains all supported file system detection type.
+    # A list of possible operations for rules used to make determinations about an application based on files or folders. Unless noted, can be used with either detection or requirement rules.
     operation_type: Optional[Win32LobAppFileSystemOperationType] = None
     # Contains properties for detection operator.
     operator: Optional[Win32LobAppRuleOperator] = None

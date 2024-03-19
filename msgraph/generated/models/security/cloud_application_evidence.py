@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .alert_evidence import AlertEvidence
+    from .stream import Stream
 
 from .alert_evidence import AlertEvidence
 
@@ -22,6 +23,8 @@ class CloudApplicationEvidence(AlertEvidence):
     instance_name: Optional[str] = None
     # The identifier of the SaaS application.
     saas_app_id: Optional[int] = None
+    # The stream property
+    stream: Optional[Stream] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CloudApplicationEvidence:
@@ -40,8 +43,10 @@ class CloudApplicationEvidence(AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .alert_evidence import AlertEvidence
+        from .stream import Stream
 
         from .alert_evidence import AlertEvidence
+        from .stream import Stream
 
         fields: Dict[str, Callable[[Any], None]] = {
             "appId": lambda n : setattr(self, 'app_id', n.get_int_value()),
@@ -49,6 +54,7 @@ class CloudApplicationEvidence(AlertEvidence):
             "instanceId": lambda n : setattr(self, 'instance_id', n.get_int_value()),
             "instanceName": lambda n : setattr(self, 'instance_name', n.get_str_value()),
             "saasAppId": lambda n : setattr(self, 'saas_app_id', n.get_int_value()),
+            "stream": lambda n : setattr(self, 'stream', n.get_object_value(Stream)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -68,5 +74,6 @@ class CloudApplicationEvidence(AlertEvidence):
         writer.write_int_value("instanceId", self.instance_id)
         writer.write_str_value("instanceName", self.instance_name)
         writer.write_int_value("saasAppId", self.saas_app_id)
+        writer.write_object_value("stream", self.stream)
     
 

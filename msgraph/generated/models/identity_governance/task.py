@@ -17,19 +17,19 @@ class Task(Entity):
     arguments: Optional[List[KeyValuePair]] = None
     # The category property
     category: Optional[LifecycleTaskCategory] = None
-    # A boolean value that specifies whether, if this task fails, the workflow will stop, and subsequent tasks will not run. Optional.
+    # A boolean value that specifies whether, if this task fails, the workflow stops, and subsequent tasks aren't run. Optional.
     continue_on_error: Optional[bool] = None
     # A string that describes the purpose of the task for administrative use. Optional.
     description: Optional[str] = None
     # A unique string that identifies the task. Required.Supports $filter(eq, ne) and orderBy.
     display_name: Optional[str] = None
-    # An integer that states in what order the task will run in a workflow.Supports $orderby.
+    # An integer that states in what order the task runs in a workflow.Supports $orderby.
     execution_sequence: Optional[int] = None
     # A boolean value that denotes whether the task is set to run or not. Optional.Supports $filter(eq, ne) and orderBy.
     is_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # A unique template identifier for the task. For more information about the tasks that Lifecycle Workflows currently supports and their unique identifiers, see supported tasks. Required.Supports $filter(eq, ne).
+    # A unique template identifier for the task. For more information about the tasks that Lifecycle Workflows currently supports and their unique identifiers, see Configure the arguments for built-in Lifecycle Workflow tasks. Required.Supports $filter(eq, ne).
     task_definition_id: Optional[str] = None
     # The result of processing the task.
     task_processing_results: Optional[List[TaskProcessingResult]] = None

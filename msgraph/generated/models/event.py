@@ -53,67 +53,67 @@ class Event(OutlookItem):
     hide_attendees: Optional[bool] = None
     # A unique identifier for an event across calendars. This ID is different for each occurrence in a recurring series. Read-only.
     i_cal_u_id: Optional[str] = None
-    # The importance property
+    # The importance of the event. The possible values are: low, normal, high.
     importance: Optional[Importance] = None
     # The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.
     instances: Optional[List[Event]] = None
-    # The isAllDay property
+    # Set to true if the event lasts all day. If true, regardless of whether it's a single-day or multi-day event, start and end time must be set to midnight and be in the same time zone.
     is_all_day: Optional[bool] = None
-    # The isCancelled property
+    # Set to true if the event has been canceled.
     is_cancelled: Optional[bool] = None
-    # The isDraft property
+    # Set to true if the user has updated the meeting in Outlook but has not sent the updates to attendees. Set to false if all changes have been sent, or if the event is an appointment without any attendees.
     is_draft: Optional[bool] = None
-    # The isOnlineMeeting property
+    # True if this event has online meeting information (that is, onlineMeeting points to an onlineMeetingInfo resource), false otherwise. Default is false (onlineMeeting is null). Optional.  After you set isOnlineMeeting to true, Microsoft Graph initializes onlineMeeting. Subsequently Outlook ignores any further changes to isOnlineMeeting, and the meeting remains available online.
     is_online_meeting: Optional[bool] = None
-    # The isOrganizer property
+    # Set to true if the calendar owner (specified by the owner property of the calendar) is the organizer of the event (specified by the organizer property of the event). This also applies if a delegate organized the event on behalf of the owner.
     is_organizer: Optional[bool] = None
-    # The isReminderOn property
+    # Set to true if an alert is set to remind the user of the event.
     is_reminder_on: Optional[bool] = None
-    # The location property
+    # The location of the event.
     location: Optional[Location] = None
-    # The locations property
+    # The locations where the event is held or attended from. The location and locations properties always correspond with each other. If you update the location property, any prior locations in the locations collection would be removed and replaced by the new location value.
     locations: Optional[List[Location]] = None
     # The collection of multi-value extended properties defined for the event. Read-only. Nullable.
     multi_value_extended_properties: Optional[List[MultiValueLegacyExtendedProperty]] = None
-    # The onlineMeeting property
+    # Details for an attendee to join the meeting online. Default is null. Read-only. After you set the isOnlineMeeting and onlineMeetingProvider properties to enable a meeting online, Microsoft Graph initializes onlineMeeting. When set, the meeting remains available online, and you cannot change the isOnlineMeeting, onlineMeetingProvider, and onlneMeeting properties again.
     online_meeting: Optional[OnlineMeetingInfo] = None
-    # The onlineMeetingProvider property
+    # Represents the online meeting service provider. By default, onlineMeetingProvider is unknown. The possible values are unknown, teamsForBusiness, skypeForBusiness, and skypeForConsumer. Optional.  After you set onlineMeetingProvider, Microsoft Graph initializes onlineMeeting. Subsequently you cannot change onlineMeetingProvider again, and the meeting remains available online.
     online_meeting_provider: Optional[OnlineMeetingProviderType] = None
-    # The onlineMeetingUrl property
+    # A URL for an online meeting. The property is set only when an organizer specifies in Outlook that an event is an online meeting such as Skype. Read-only.To access the URL to join an online meeting, use joinUrl which is exposed via the onlineMeeting property of the event. The onlineMeetingUrl property will be deprecated in the future.
     online_meeting_url: Optional[str] = None
-    # The organizer property
+    # The organizer of the event.
     organizer: Optional[Recipient] = None
-    # The originalEndTimeZone property
+    # The end time zone that was set when the event was created. A value of tzone://Microsoft/Custom indicates that a legacy custom time zone was set in desktop Outlook.
     original_end_time_zone: Optional[str] = None
-    # The originalStart property
+    # Represents the start time of an event when it is initially created as an occurrence or exception in a recurring series. This property is not returned for events that are single instances. Its date and time information is expressed in ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     original_start: Optional[datetime.datetime] = None
-    # The originalStartTimeZone property
+    # The start time zone that was set when the event was created. A value of tzone://Microsoft/Custom indicates that a legacy custom time zone was set in desktop Outlook.
     original_start_time_zone: Optional[str] = None
-    # The recurrence property
+    # The recurrence pattern for the event.
     recurrence: Optional[PatternedRecurrence] = None
-    # The reminderMinutesBeforeStart property
+    # The number of minutes before the event start time that the reminder alert occurs.
     reminder_minutes_before_start: Optional[int] = None
-    # The responseRequested property
+    # Default is true, which represents the organizer would like an invitee to send a response to the event.
     response_requested: Optional[bool] = None
-    # The responseStatus property
+    # Indicates the type of response sent in response to an event message.
     response_status: Optional[ResponseStatus] = None
-    # The sensitivity property
+    # Possible values are: normal, personal, private, confidential.
     sensitivity: Optional[Sensitivity] = None
-    # The seriesMasterId property
+    # The ID for the recurring series master item, if this event is part of a recurring series.
     series_master_id: Optional[str] = None
-    # The showAs property
+    # The status to show. Possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
     show_as: Optional[FreeBusyStatus] = None
     # The collection of single-value extended properties defined for the event. Read-only. Nullable.
     single_value_extended_properties: Optional[List[SingleValueLegacyExtendedProperty]] = None
-    # The start property
+    # The start date, time, and time zone of the event. By default, the start time is in UTC.
     start: Optional[DateTimeTimeZone] = None
-    # The subject property
+    # The text of the event's subject line.
     subject: Optional[str] = None
-    # The transactionId property
+    # A custom identifier specified by a client app for the server to avoid redundant POST operations in case of client retries to create the same event. This is useful when low network connectivity causes the client to time out before receiving a response from the server for the client's prior create-event request. After you set transactionId when creating an event, you cannot change transactionId in a subsequent update. This property is only returned in a response payload if an app has set it. Optional.
     transaction_id: Optional[str] = None
-    # The type property
+    # The event type. Possible values are: singleInstance, occurrence, exception, seriesMaster. Read-only
     type: Optional[EventType] = None
-    # The webLink property
+    # The URL to open the event in Outlook on the web.Outlook on the web opens the event in the browser if you are signed in to your mailbox. Otherwise, Outlook on the web prompts you to sign in.This URL cannot be accessed from within an iFrame.
     web_link: Optional[str] = None
     
     @staticmethod

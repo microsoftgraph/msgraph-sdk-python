@@ -70,7 +70,7 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TeamsTab] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsTab]:
         """
-        Update the properties of the specified tab.This can be used to configure the content of the tab.
+        Update the properties of the specified tab.This API can be used to configure the content of the tab.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsTab]
@@ -116,7 +116,7 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TeamsTab] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of the specified tab.This can be used to configure the content of the tab.
+        Update the properties of the specified tab.This API can be used to configure the content of the tab.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

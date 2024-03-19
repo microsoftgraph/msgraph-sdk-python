@@ -35,11 +35,11 @@ from .directory_object import DirectoryObject
 class ServicePrincipal(DirectoryObject):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.servicePrincipal"
-    # true if the service principal account is enabled; otherwise, false. If set to false, then no users will be able to sign in to this app, even if they are assigned to it. Supports $filter (eq, ne, not, in).
+    # true if the service principal account is enabled; otherwise, false. If set to false, then no users are able to sign in to this app, even if they're assigned to it. Supports $filter (eq, ne, not, in).
     account_enabled: Optional[bool] = None
-    # Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Microsoft 365 call the application in the context of a document the user is working on.
+    # Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This lets services like Microsoft 365 call the application in the context of a document the user is working on.
     add_ins: Optional[List[AddIn]] = None
-    # Used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities. Supports $filter (eq, not, ge, le, startsWith).
+    # Used to retrieve service principals by subscription, identify resource group and full resource IDs for managed identities. Supports $filter (eq, not, ge, le, startsWith).
     alternative_names: Optional[List[str]] = None
     # The description exposed by the associated application.
     app_description: Optional[str] = None
@@ -49,7 +49,7 @@ class ServicePrincipal(DirectoryObject):
     app_id: Optional[str] = None
     # The appManagementPolicy applied to this application.
     app_management_policies: Optional[List[AppManagementPolicy]] = None
-    # Contains the tenant id where the application is registered. This is applicable only to service principals backed by applications. Supports $filter (eq, ne, NOT, ge, le).
+    # Contains the tenant ID where the application is registered. This is applicable only to service principals backed by applications. Supports $filter (eq, ne, NOT, ge, le).
     app_owner_organization_id: Optional[UUID] = None
     # App role assignments for this app or service, granted to users, groups, and other service principals. Supports $expand.
     app_role_assigned_to: Optional[List[AppRoleAssignment]] = None
@@ -57,9 +57,9 @@ class ServicePrincipal(DirectoryObject):
     app_role_assignment_required: Optional[bool] = None
     # App role assignment for another app or service, granted to this service principal. Supports $expand.
     app_role_assignments: Optional[List[AppRoleAssignment]] = None
-    # The roles exposed by the application which this service principal represents. For more information see the appRoles property definition on the application entity. Not nullable.
+    # The roles exposed by the application that's linked to this service principal. For more information, see the appRoles property definition on the application entity. Not nullable.
     app_roles: Optional[List[AppRole]] = None
-    # Unique identifier of the applicationTemplate that the servicePrincipal was created from. Read-only. Supports $filter (eq, ne, NOT, startsWith).
+    # Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne). Read-only. null if the service principal wasn't created from an application template.
     application_template_id: Optional[str] = None
     # The claimsMappingPolicies assigned to this service principal. Supports $expand.
     claims_mapping_policies: Optional[List[ClaimsMappingPolicy]] = None
@@ -69,9 +69,9 @@ class ServicePrincipal(DirectoryObject):
     custom_security_attributes: Optional[CustomSecurityAttributeValue] = None
     # The delegatedPermissionClassifications property
     delegated_permission_classifications: Optional[List[DelegatedPermissionClassification]] = None
-    # Free text field to provide an internal end-user facing description of the service principal. End-user portals such MyApps will display the application description in this field. The maximum allowed size is 1024 characters. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
+    # Free text field to provide an internal end-user facing description of the service principal. End-user portals such MyApps displays the application description in this field. The maximum allowed size is 1,024 characters. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
     description: Optional[str] = None
-    # Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, not).
+    # Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, not).
     disabled_by_microsoft_status: Optional[str] = None
     # The display name for the service principal. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
     display_name: Optional[str] = None
@@ -89,27 +89,27 @@ class ServicePrincipal(DirectoryObject):
     key_credentials: Optional[List[KeyCredential]] = None
     # Specifies the URL where the service provider redirects the user to Microsoft Entra ID to authenticate. Microsoft Entra ID uses the URL to launch the application from Microsoft 365 or the Microsoft Entra My Apps. When blank, Microsoft Entra ID performs IdP-initiated sign-on for applications configured with SAML-based single sign-on. The user launches the application from Microsoft 365, the Microsoft Entra My Apps, or the Microsoft Entra SSO URL.
     login_url: Optional[str] = None
-    # Specifies the URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols.
+    # Specifies the URL that the Microsoft's authorization service uses to sign out a user using OpenID Connect front-channel, back-channel, or SAML sign out protocols.
     logout_url: Optional[str] = None
     # Roles that this service principal is a member of. HTTP Methods: GET Read-only. Nullable. Supports $expand.
     member_of: Optional[List[DirectoryObject]] = None
-    # Free text field to capture information about the service principal, typically used for operational purposes. Maximum allowed size is 1024 characters.
+    # Free text field to capture information about the service principal, typically used for operational purposes. Maximum allowed size is 1,024 characters.
     notes: Optional[str] = None
     # Specifies the list of email addresses where Microsoft Entra ID sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Microsoft Entra Gallery applications.
     notification_email_addresses: Optional[List[str]] = None
     # Delegated permission grants authorizing this service principal to access an API on behalf of a signed-in user. Read-only. Nullable.
     oauth2_permission_grants: Optional[List[OAuth2PermissionGrant]] = None
-    # The delegated permissions exposed by the application. For more information see the oauth2PermissionScopes property on the application entity's api property. Not nullable.
+    # The delegated permissions exposed by the application. For more information, see the oauth2PermissionScopes property on the application entity's api property. Not nullable.
     oauth2_permission_scopes: Optional[List[PermissionScope]] = None
-    # Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+    # Directory objects that this service principal owns. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
     owned_objects: Optional[List[DirectoryObject]] = None
-    # Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
+    # Directory objects that are owners of this servicePrincipal. The owners are a set of nonadmin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
     owners: Optional[List[DirectoryObject]] = None
     # The collection of password credentials associated with the application. Not nullable.
     password_credentials: Optional[List[PasswordCredential]] = None
     # Specifies the single sign-on mode configured for this application. Microsoft Entra ID uses the preferred single sign-on mode to launch the application from Microsoft 365 or the My Apps portal. The supported values are password, saml, notSupported, and oidc.
     preferred_single_sign_on_mode: Optional[str] = None
-    # This property can be used on SAML applications (apps that have preferredSingleSignOnMode set to saml) to control which certificate is used to sign the SAML responses. For applications that are not SAML, do not write or otherwise rely on this property.
+    # This property can be used on SAML applications (apps that have preferredSingleSignOnMode set to saml) to control which certificate is used to sign the SAML responses. For applications that aren't SAML, don't write or otherwise rely on this property.
     preferred_token_signing_key_thumbprint: Optional[str] = None
     # The remoteDesktopSecurityConfiguration object applied to this service principal. Supports $filter (eq) for isRemoteDesktopProtocolEnabled property.
     remote_desktop_security_configuration: Optional[RemoteDesktopSecurityConfiguration] = None
@@ -119,11 +119,11 @@ class ServicePrincipal(DirectoryObject):
     resource_specific_application_permissions: Optional[List[ResourceSpecificPermission]] = None
     # The collection for settings related to saml single sign-on.
     saml_single_sign_on_settings: Optional[SamlSingleSignOnSettings] = None
-    # Contains the list of identifiersUris, copied over from the associated application. Additional values can be added to hybrid applications. These values can be used to identify the permissions exposed by this app within Microsoft Entra ID. For example,Client apps can specify a resource URI which is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties. Not nullable.  Supports $filter (eq, not, ge, le, startsWith).
+    # Contains the list of identifiersUris, copied over from the associated application. Additional values can be added to hybrid applications. These values can be used to identify the permissions exposed by this app within Microsoft Entra ID. For example,Client apps can specify a resource URI that is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties. Not nullable.  Supports $filter (eq, not, ge, le, startsWith).
     service_principal_names: Optional[List[str]] = None
-    # Identifies whether the service principal represents an application, a managed identity, or a legacy application. This is set by Microsoft Entra ID internally. The servicePrincipalType property can be set to three different values: Application - A service principal that represents an application or service. The appId property identifies the associated app registration, and matches the appId of an application, possibly from a different tenant. If the associated app registration is missing, tokens are not issued for the service principal.ManagedIdentity - A service principal that represents a managed identity. Service principals representing managed identities can be granted access and permissions, but cannot be updated or modified directly.Legacy - A service principal that represents an app created before app registrations, or through legacy experiences. Legacy service principal can have credentials, service principal names, reply URLs, and other properties which are editable by an authorized user, but does not have an associated app registration. The appId value does not associate the service principal with an app registration. The service principal can only be used in the tenant where it was created.SocialIdp - For internal use.
+    # Identifies whether the service principal represents an application, a managed identity, or a legacy application. This is set by Microsoft Entra ID internally. The servicePrincipalType property can be set to three different values: Application - A service principal that represents an application or service. The appId property identifies the associated app registration, and matches the appId of an application, possibly from a different tenant. If the associated app registration is missing, tokens aren't issued for the service principal.ManagedIdentity - A service principal that represents a managed identity. Service principals representing managed identities can be granted access and permissions, but can't be updated or modified directly.Legacy - A service principal that represents an app created before app registrations, or through legacy experiences. A legacy service principal can have credentials, service principal names, reply URLs, and other properties that are editable by an authorized user, but doesn't have an associated app registration. The appId value doesn't associate the service principal with an app registration. The service principal can only be used in the tenant where it was created.SocialIdp - For internal use.
     service_principal_type: Optional[str] = None
-    # Specifies the Microsoft accounts that are supported for the current application. Read-only. Supported values are:AzureADMyOrg: Users with a Microsoft work or school account in my organization's Microsoft Entra tenant (single-tenant).AzureADMultipleOrgs: Users with a Microsoft work or school account in any organization's Microsoft Entra tenant (multi-tenant).AzureADandPersonalMicrosoftAccount: Users with a personal Microsoft account, or a work or school account in any organization's Microsoft Entra tenant.PersonalMicrosoftAccount: Users with a personal Microsoft account only.
+    # Specifies the Microsoft accounts that are supported for the current application. Read-only. Supported values are:AzureADMyOrg: Users with a Microsoft work or school account in my organization's Microsoft Entra tenant (single-tenant).AzureADMultipleOrgs: Users with a Microsoft work or school account in any organization's Microsoft Entra tenant (multitenant).AzureADandPersonalMicrosoftAccount: Users with a personal Microsoft account, or a work or school account in any organization's Microsoft Entra tenant.PersonalMicrosoftAccount: Users with a personal Microsoft account only.
     sign_in_audience: Optional[str] = None
     # Represents the capability for Microsoft Entra identity synchronization through the Microsoft Graph API.
     synchronization: Optional[Synchronization] = None
@@ -137,7 +137,7 @@ class ServicePrincipal(DirectoryObject):
     token_lifetime_policies: Optional[List[TokenLifetimePolicy]] = None
     # The transitiveMemberOf property
     transitive_member_of: Optional[List[DirectoryObject]] = None
-    # Specifies the verified publisher of the application which this service principal represents.
+    # Specifies the verified publisher of the application that's linked to this service principal.
     verified_publisher: Optional[VerifiedPublisher] = None
     
     @staticmethod

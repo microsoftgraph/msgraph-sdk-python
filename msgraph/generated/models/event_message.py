@@ -26,13 +26,13 @@ class EventMessage(Message):
     event: Optional[Event] = None
     # The isAllDay property
     is_all_day: Optional[bool] = None
-    # The isDelegated property
+    # True if this meeting request is accessible to a delegate, false otherwise. Default is false.
     is_delegated: Optional[bool] = None
     # The isOutOfDate property
     is_out_of_date: Optional[bool] = None
     # The location property
     location: Optional[Location] = None
-    # The meetingMessageType property
+    # The type of event message: none, meetingRequest, meetingCancelled, meetingAccepted, meetingTenativelyAccepted, meetingDeclined.
     meeting_message_type: Optional[MeetingMessageType] = None
     # The recurrence property
     recurrence: Optional[PatternedRecurrence] = None

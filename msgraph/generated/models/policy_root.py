@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .claims_mapping_policy import ClaimsMappingPolicy
     from .conditional_access_policy import ConditionalAccessPolicy
     from .cross_tenant_access_policy import CrossTenantAccessPolicy
+    from .device_registration_policy import DeviceRegistrationPolicy
     from .entity import Entity
     from .feature_rollout_policy import FeatureRolloutPolicy
     from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
@@ -51,6 +52,8 @@ class PolicyRoot(Entity):
     cross_tenant_access_policy: Optional[CrossTenantAccessPolicy] = None
     # The tenant-wide policy that enforces app management restrictions for all applications and service principals.
     default_app_management_policy: Optional[TenantAppManagementPolicy] = None
+    # The deviceRegistrationPolicy property
+    device_registration_policy: Optional[DeviceRegistrationPolicy] = None
     # The feature rollout policy associated with a directory object.
     feature_rollout_policies: Optional[List[FeatureRolloutPolicy]] = None
     # The policy to control Microsoft Entra authentication behavior for federated users.
@@ -96,6 +99,7 @@ class PolicyRoot(Entity):
         from .claims_mapping_policy import ClaimsMappingPolicy
         from .conditional_access_policy import ConditionalAccessPolicy
         from .cross_tenant_access_policy import CrossTenantAccessPolicy
+        from .device_registration_policy import DeviceRegistrationPolicy
         from .entity import Entity
         from .feature_rollout_policy import FeatureRolloutPolicy
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
@@ -117,6 +121,7 @@ class PolicyRoot(Entity):
         from .claims_mapping_policy import ClaimsMappingPolicy
         from .conditional_access_policy import ConditionalAccessPolicy
         from .cross_tenant_access_policy import CrossTenantAccessPolicy
+        from .device_registration_policy import DeviceRegistrationPolicy
         from .entity import Entity
         from .feature_rollout_policy import FeatureRolloutPolicy
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
@@ -140,6 +145,7 @@ class PolicyRoot(Entity):
             "conditionalAccessPolicies": lambda n : setattr(self, 'conditional_access_policies', n.get_collection_of_object_values(ConditionalAccessPolicy)),
             "crossTenantAccessPolicy": lambda n : setattr(self, 'cross_tenant_access_policy', n.get_object_value(CrossTenantAccessPolicy)),
             "defaultAppManagementPolicy": lambda n : setattr(self, 'default_app_management_policy', n.get_object_value(TenantAppManagementPolicy)),
+            "deviceRegistrationPolicy": lambda n : setattr(self, 'device_registration_policy', n.get_object_value(DeviceRegistrationPolicy)),
             "featureRolloutPolicies": lambda n : setattr(self, 'feature_rollout_policies', n.get_collection_of_object_values(FeatureRolloutPolicy)),
             "homeRealmDiscoveryPolicies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(HomeRealmDiscoveryPolicy)),
             "identitySecurityDefaultsEnforcementPolicy": lambda n : setattr(self, 'identity_security_defaults_enforcement_policy', n.get_object_value(IdentitySecurityDefaultsEnforcementPolicy)),
@@ -173,6 +179,7 @@ class PolicyRoot(Entity):
         writer.write_collection_of_object_values("conditionalAccessPolicies", self.conditional_access_policies)
         writer.write_object_value("crossTenantAccessPolicy", self.cross_tenant_access_policy)
         writer.write_object_value("defaultAppManagementPolicy", self.default_app_management_policy)
+        writer.write_object_value("deviceRegistrationPolicy", self.device_registration_policy)
         writer.write_collection_of_object_values("featureRolloutPolicies", self.feature_rollout_policies)
         writer.write_collection_of_object_values("homeRealmDiscoveryPolicies", self.home_realm_discovery_policies)
         writer.write_object_value("identitySecurityDefaultsEnforcementPolicy", self.identity_security_defaults_enforcement_policy)

@@ -5,6 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .admin_microsoft365_apps import AdminMicrosoft365Apps
     from .edge import Edge
     from .people_admin_settings import PeopleAdminSettings
     from .service_announcement import ServiceAnnouncement
@@ -19,6 +20,8 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # A container for Microsoft Edge resources. Read-only.
     edge: Optional[Edge] = None
+    # A container for the Microsoft 365 apps admin functionality.
+    microsoft365_apps: Optional[AdminMicrosoft365Apps] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Represents a setting to control people-related admin settings in the tenant.
@@ -44,11 +47,13 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .admin_microsoft365_apps import AdminMicrosoft365Apps
         from .edge import Edge
         from .people_admin_settings import PeopleAdminSettings
         from .service_announcement import ServiceAnnouncement
         from .sharepoint import Sharepoint
 
+        from .admin_microsoft365_apps import AdminMicrosoft365Apps
         from .edge import Edge
         from .people_admin_settings import PeopleAdminSettings
         from .service_announcement import ServiceAnnouncement
@@ -56,6 +61,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "edge": lambda n : setattr(self, 'edge', n.get_object_value(Edge)),
+            "microsoft365Apps": lambda n : setattr(self, 'microsoft365_apps', n.get_object_value(AdminMicrosoft365Apps)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "people": lambda n : setattr(self, 'people', n.get_object_value(PeopleAdminSettings)),
             "serviceAnnouncement": lambda n : setattr(self, 'service_announcement', n.get_object_value(ServiceAnnouncement)),
@@ -72,6 +78,7 @@ class Admin(AdditionalDataHolder, BackedModel, Parsable):
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("edge", self.edge)
+        writer.write_object_value("microsoft365Apps", self.microsoft365_apps)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("people", self.people)
         writer.write_object_value("serviceAnnouncement", self.service_announcement)

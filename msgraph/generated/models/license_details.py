@@ -14,11 +14,11 @@ from .entity import Entity
 class LicenseDetails(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
-    # Information about the service plans assigned with the license. Read-only, Not nullable
+    # Information about the service plans assigned with the license. Read-only. Not nullable.
     service_plans: Optional[List[ServicePlanInfo]] = None
-    # Unique identifier (GUID) for the service SKU. Equal to the skuId property on the related SubscribedSku object. Read-only
+    # Unique identifier (GUID) for the service SKU. Equal to the skuId property on the related subscribedSku object. Read-only.
     sku_id: Optional[UUID] = None
-    # Unique SKU display name. Equal to the skuPartNumber on the related SubscribedSku object; for example: 'AAD_Premium'. Read-only
+    # Unique SKU display name. Equal to the skuPartNumber on the related subscribedSku object; for example, AAD_Premium. Read-only.
     sku_part_number: Optional[str] = None
     
     @staticmethod

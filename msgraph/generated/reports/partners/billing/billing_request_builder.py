@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from ....models.partners.billing.billing import Billing
     from .manifests.manifests_request_builder import ManifestsRequestBuilder
     from .operations.operations_request_builder import OperationsRequestBuilder
+    from .reconciliation.reconciliation_request_builder import ReconciliationRequestBuilder
     from .usage.usage_request_builder import UsageRequestBuilder
 
 class BillingRequestBuilder(BaseRequestBuilder):
@@ -155,6 +156,15 @@ class BillingRequestBuilder(BaseRequestBuilder):
         from .operations.operations_request_builder import OperationsRequestBuilder
 
         return OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def reconciliation(self) -> ReconciliationRequestBuilder:
+        """
+        Provides operations to manage the reconciliation property of the microsoft.graph.partners.billing.billing entity.
+        """
+        from .reconciliation.reconciliation_request_builder import ReconciliationRequestBuilder
+
+        return ReconciliationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def usage(self) -> UsageRequestBuilder:

@@ -28,13 +28,13 @@ class DirectRoutingLogRow(AdditionalDataHolder, BackedModel, Parsable):
     end_date_time: Optional[datetime.datetime] = None
     # Only exists for failed (not fully established) calls.
     failure_date_time: Optional[datetime.datetime] = None
-    # The code with which the call ended. For more information, see RFC 3261.
+    # The final response code with which the call ended. For more information, see RFC 3261.
     final_sip_code: Optional[int] = None
     # Description of the SIP code and Microsoft subcode.
     final_sip_code_phrase: Optional[str] = None
     # Unique call identifier. GUID.
     id: Optional[str] = None
-    # When the initial invite was sent.
+    # The date and time when the initial invite was sent.
     invite_date_time: Optional[datetime.datetime] = None
     # Indicates whether the trunk was enabled for media bypass.
     media_bypass_enabled: Optional[bool] = None
@@ -44,7 +44,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, BackedModel, Parsable):
     odata_type: Optional[str] = None
     # The datacenter used for signaling for both bypass and nonbypass calls.
     signaling_location: Optional[str] = None
-    # Call start time.For failed and unanswered calls, this can be equal to the invite or failure time.
+    # Call start time.For failed and unanswered calls, this value can be equal to the invite or failure time.
     start_date_time: Optional[datetime.datetime] = None
     # Success or attempt.
     successful_call: Optional[bool] = None
@@ -54,7 +54,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, BackedModel, Parsable):
     user_display_name: Optional[str] = None
     # Calling user's ID in Microsoft Graph. This and other user information is null/empty for bot call types. GUID.
     user_id: Optional[str] = None
-    # UserPrincipalName (sign-in name) in Microsoft Entra ID. This is usually the same as the user's SIP Address, and can be the same as the user's email address.
+    # UserPrincipalName (sign-in name) in Microsoft Entra ID. This value is usually the same as the user's SIP Address, and can be the same as the user's email address.
     user_principal_name: Optional[str] = None
     
     @staticmethod

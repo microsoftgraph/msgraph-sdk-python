@@ -15,15 +15,15 @@ from .entity import Entity
 @dataclass
 class DeviceManagementExportJob(Entity):
     """
-    Entity representing a job to export a report
+    Entity representing a job to export a report.
     """
     # Time that the exported report expires
     expiration_date_time: Optional[datetime.datetime] = None
     # Filters applied on the report
     filter: Optional[str] = None
-    # Possible values for the file format of a report
+    # Possible values for the file format of a report.
     format: Optional[DeviceManagementReportFileFormat] = None
-    # Configures how the requested export job is localized
+    # Configures how the requested export job is localized.
     localization_type: Optional[DeviceManagementExportJobLocalizationType] = None
     # The OdataType property
     odata_type: Optional[str] = None
@@ -35,7 +35,7 @@ class DeviceManagementExportJob(Entity):
     select: Optional[List[str]] = None
     # A snapshot is an identifiable subset of the dataset represented by the ReportName. A sessionId or CachedReportConfiguration id can be used here. If a sessionId is specified, Filter, Select, and OrderBy are applied to the data represented by the sessionId. Filter, Select, and OrderBy cannot be specified together with a CachedReportConfiguration id.
     snapshot_id: Optional[str] = None
-    # Possible statuses associated with a generated report
+    # Possible statuses associated with a generated report.
     status: Optional[DeviceManagementReportStatus] = None
     # Temporary location of the exported report
     url: Optional[str] = None

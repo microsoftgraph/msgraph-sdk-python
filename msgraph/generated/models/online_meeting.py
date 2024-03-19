@@ -23,17 +23,17 @@ class OnlineMeeting(OnlineMeetingBase):
     broadcast_settings: Optional[BroadcastMeetingSettings] = None
     # The meeting creation time in UTC. Read-only.
     creation_date_time: Optional[datetime.datetime] = None
-    # The meeting end time in UTC.
+    # The meeting end time in UTC. Required when you create an online meeting.
     end_date_time: Optional[datetime.datetime] = None
     # The externalId property
     external_id: Optional[str] = None
     # The isBroadcast property
     is_broadcast: Optional[bool] = None
-    # The participants associated with the online meeting, including the organizer and the attendees.
+    # The participants associated with the online meeting.  This includes the organizer and the attendees.
     participants: Optional[MeetingParticipants] = None
     # The recordings of an online meeting. Read-only.
     recordings: Optional[List[CallRecording]] = None
-    # The meeting start time in UTC.
+    # The meeting start time in UTC. Required when you create an online meeting.
     start_date_time: Optional[datetime.datetime] = None
     # The transcripts of an online meeting. Read-only.
     transcripts: Optional[List[CallTranscript]] = None

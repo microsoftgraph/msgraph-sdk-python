@@ -16,4 +16,7 @@ class RiskDetail(str, Enum):
     M365DAdminDismissedDetection = "m365DAdminDismissedDetection",
     AdminConfirmedServicePrincipalCompromised = "adminConfirmedServicePrincipalCompromised",
     AdminDismissedAllRiskForServicePrincipal = "adminDismissedAllRiskForServicePrincipal",
+    UserChangedPasswordOnPremises = "userChangedPasswordOnPremises",
+    AdminDismissedRiskForSignIn = "adminDismissedRiskForSignIn",
+    AdminConfirmedAccountSafe = "adminConfirmedAccountSafe",
 

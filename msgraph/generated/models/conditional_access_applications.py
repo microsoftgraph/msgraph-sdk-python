@@ -16,9 +16,9 @@ class ConditionalAccessApplications(AdditionalDataHolder, BackedModel, Parsable)
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The applicationFilter property
     application_filter: Optional[ConditionalAccessFilter] = None
-    # Can be one of the following:  The list of client IDs (appId) explicitly excluded from the policy. Office365 - For the list of apps included in Office365, see Apps included in Conditional Access Office 365 app suite
+    # Can be one of the following:  The list of client IDs (appId) explicitly excluded from the policy. Office365 - For the list of apps included in Office365, see Apps included in Conditional Access Office 365 app suite  MicrosoftAdminPortals - For more information, see Conditional Access Target resources: Microsoft Admin Portals
     exclude_applications: Optional[List[str]] = None
-    # Can be one of the following:  The list of client IDs (appId) the policy applies to, unless explicitly excluded (in excludeApplications)  All  Office365 - For the list of apps included in Office365, see Apps included in Conditional Access Office 365 app suite
+    # Can be one of the following:  The list of client IDs (appId) the policy applies to, unless explicitly excluded (in excludeApplications)  All  Office365 - For the list of apps included in Office365, see Apps included in Conditional Access Office 365 app suite  MicrosoftAdminPortals - For more information, see Conditional Access Target resources: Microsoft Admin Portals
     include_applications: Optional[List[str]] = None
     # The includeAuthenticationContextClassReferences property
     include_authentication_context_class_references: Optional[List[str]] = None

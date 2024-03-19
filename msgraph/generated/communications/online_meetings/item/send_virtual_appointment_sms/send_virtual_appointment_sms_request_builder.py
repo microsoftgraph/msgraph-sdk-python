@@ -28,10 +28,11 @@ class SendVirtualAppointmentSmsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SendVirtualAppointmentSmsPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Invoke action sendVirtualAppointmentSms
+        Send an SMS notification to external attendees when a Teams virtual appointment is confirmed, rescheduled, or canceled. This feature requires Teams premium. Attendees must have a valid United States phone number to receive these SMS notifications.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
+        Find more info here: https://learn.microsoft.com/graph/api/virtualappointment-sendvirtualappointmentsms?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -49,7 +50,7 @@ class SendVirtualAppointmentSmsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SendVirtualAppointmentSmsPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action sendVirtualAppointmentSms
+        Send an SMS notification to external attendees when a Teams virtual appointment is confirmed, rescheduled, or canceled. This feature requires Teams premium. Attendees must have a valid United States phone number to receive these SMS notifications.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

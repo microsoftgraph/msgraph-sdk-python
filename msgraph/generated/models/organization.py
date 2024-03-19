@@ -26,17 +26,17 @@ class Organization(DirectoryObject):
     assigned_plans: Optional[List[AssignedPlan]] = None
     # Branding for the organization. Nullable.
     branding: Optional[OrganizationalBranding] = None
-    # Telephone number for the organization. Although this is a string collection, only one number can be set for this property.
+    # Telephone number for the organization. Although this property is a string collection, only one number can be set.
     business_phones: Optional[List[str]] = None
     # Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
     certificate_based_auth_configuration: Optional[List[CertificateBasedAuthConfiguration]] = None
     # City name of the address for the organization.
     city: Optional[str] = None
-    # Country/region name of the address for the organization.
+    # Country or region name of the address for the organization.
     country: Optional[str] = None
     # Country or region abbreviation for the organization in ISO 3166-2 format.
     country_letter_code: Optional[str] = None
-    # Timestamp of when the organization was created. The value cannot be modified and is automatically populated when the organization is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+    # Timestamp of when the organization was created. The value can't be modified and is automatically populated when the organization is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     created_date_time: Optional[datetime.datetime] = None
     # Two-letter ISO 3166 country code indicating the default service usage location of an organization.
     default_usage_location: Optional[str] = None
@@ -50,7 +50,7 @@ class Organization(DirectoryObject):
     mobile_device_management_authority: Optional[MdmAuthority] = None
     # The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     on_premises_last_sync_date_time: Optional[datetime.datetime] = None
-    # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
+    # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object isn't synced from on-premises active directory (default).
     on_premises_sync_enabled: Optional[bool] = None
     # The type of partnership this tenant has with Microsoft. The possible values are: microsoftSupport, syndicatePartner, breadthPartner, breadthPartnerDelegatedAdmin, resellerPartnerDelegatedAdmin, valueAddedResellerPartnerDelegatedAdmin, unknownFutureValue. Nullable. For more information about the possible types, see partnerTenantType values.
     partner_tenant_type: Optional[PartnerTenantType] = None
@@ -72,7 +72,7 @@ class Organization(DirectoryObject):
     street: Optional[str] = None
     # Not nullable.
     technical_notification_mails: Optional[List[str]] = None
-    # Not nullable. The tenant type option that was selected when the tenant was created. The possible values are:  AAD - An enterprise identity access management (IAM) service that serves business-to-employee and business-to-business (B2B) scenarios.  AAD B2C A customer identity access management (CIAM) service that serves business-to-consumer (B2C) scenarios.
+    # Not nullable. Can be one of the following types:  AAD - An enterprise identity access management (IAM) service that serves business-to-employee and business-to-business (B2B) scenarios.  AAD B2C An identity access management (IAM) service that serves business-to-consumer (B2C) scenarios.   CIAM - A customer identity & access management (CIAM) solution that provides an integrated platform to serve consumers, partners, and citizen scenarios.
     tenant_type: Optional[str] = None
     # The collection of domains associated with this tenant. Not nullable.
     verified_domains: Optional[List[VerifiedDomain]] = None

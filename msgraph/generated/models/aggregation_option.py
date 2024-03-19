@@ -16,11 +16,11 @@ class AggregationOption(AdditionalDataHolder, BackedModel, Parsable):
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The bucketDefinition property
     bucket_definition: Optional[BucketAggregationDefinition] = None
-    # Computes aggregation on the field while the field exists in current entity type. Required.
+    # Computes aggregation on the field while the field exists in the current entity type. Required.
     field: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The number of searchBucket resources to be returned. This isn't required when the range is provided manually in the search request. Optional.
+    # The number of searchBucket resources to be returned. This isn't required when the range is provided manually in the search request. The minimum accepted size is 1, and the maximum is 65535. Optional.
     size: Optional[int] = None
     
     @staticmethod

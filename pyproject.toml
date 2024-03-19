@@ -13,6 +13,8 @@ dependencies = [
     "microsoft-kiota-authentication-azure >=1.0.0,<2.0.0",
     "microsoft-kiota-serialization-json >=1.0.0,<2.0.0",
     "microsoft-kiota-serialization-text >=1.0.0,<2.0.0",
+    "microsoft-kiota-serialization-form >=0.1.0",
+    "microsoft-kiota-serialization-multipart >=0.1.0",
     "microsoft-kiota-http >=1.0.0,<2.0.0",
     "msgraph_core >=1.0.0"
 
@@ -27,6 +29,7 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
 ]
 

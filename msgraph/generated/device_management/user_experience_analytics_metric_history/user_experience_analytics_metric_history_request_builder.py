@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class UserExperienceAnalyticsMetricHistoryRequestBuilder(BaseRequestBuilder):
         url_tpl_params["userExperienceAnalyticsMetricHistory%2Did"] = user_experience_analytics_metric_history_id
         return UserExperienceAnalyticsMetricHistoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsMetricHistoryCollectionResponse]:
+    async def get(self,request_configuration: Optional[UserExperienceAnalyticsMetricHistoryRequestBuilderGetRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsMetricHistoryCollectionResponse]:
         """
         User experience analytics metric history
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +63,7 @@ class UserExperienceAnalyticsMetricHistoryRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsMetricHistoryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UserExperienceAnalyticsMetricHistory] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsMetricHistory]:
+    async def post(self,body: Optional[UserExperienceAnalyticsMetricHistory] = None, request_configuration: Optional[UserExperienceAnalyticsMetricHistoryRequestBuilderPostRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsMetricHistory]:
         """
         Create new navigation property to userExperienceAnalyticsMetricHistory for deviceManagement
         param body: The request body
@@ -87,7 +86,7 @@ class UserExperienceAnalyticsMetricHistoryRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsMetricHistory, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UserExperienceAnalyticsMetricHistoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         User experience analytics metric history
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +97,7 @@ class UserExperienceAnalyticsMetricHistoryRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UserExperienceAnalyticsMetricHistory] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserExperienceAnalyticsMetricHistory] = None, request_configuration: Optional[UserExperienceAnalyticsMetricHistoryRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to userExperienceAnalyticsMetricHistory for deviceManagement
         param body: The request body
@@ -187,5 +186,28 @@ class UserExperienceAnalyticsMetricHistoryRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserExperienceAnalyticsMetricHistoryRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UserExperienceAnalyticsMetricHistoryRequestBuilder.UserExperienceAnalyticsMetricHistoryRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserExperienceAnalyticsMetricHistoryRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

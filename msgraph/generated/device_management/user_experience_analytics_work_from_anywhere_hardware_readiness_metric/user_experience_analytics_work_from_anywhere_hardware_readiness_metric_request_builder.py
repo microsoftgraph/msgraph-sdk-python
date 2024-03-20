@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuild
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/userExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property userExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +44,7 @@ class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuild
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric]:
+    async def get(self,request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuilderGetRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric]:
         """
         User experience analytics work from anywhere hardware readiness metrics.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuild
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric, error_mapping)
     
-    async def patch(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric]:
+    async def patch(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric] = None, request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuilderPatchRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric]:
         """
         Update the navigation property userExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric in deviceManagement
         param body: The request body
@@ -88,7 +87,7 @@ class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuild
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property userExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +98,7 @@ class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuild
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         User experience analytics work from anywhere hardware readiness metrics.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +109,7 @@ class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuild
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric] = None, request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property userExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetric in deviceManagement
         param body: The request body
@@ -134,6 +133,16 @@ class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuild
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuilderGetQueryParameters():
@@ -160,5 +169,28 @@ class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuild
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuilder.UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserExperienceAnalyticsWorkFromAnywhereHardwareReadinessMetricRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

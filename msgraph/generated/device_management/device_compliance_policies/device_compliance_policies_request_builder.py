@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,12 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["deviceCompliancePolicy%2Did"] = device_compliance_policy_id
         return DeviceCompliancePolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceCompliancePolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[DeviceCompliancePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyCollectionResponse]:
         """
-        List properties and relationships of the windowsPhone81CompliancePolicy objects.
+        List properties and relationships of the windows10MobileCompliancePolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windowsphone81compliancepolicy-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows10mobilecompliancepolicy-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +64,13 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceCompliancePolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DeviceCompliancePolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceCompliancePolicy]:
+    async def post(self,body: Optional[DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceCompliancePolicy]:
         """
-        Create a new windows10MobileCompliancePolicy object.
+        Create a new windowsPhone81CompliancePolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCompliancePolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windows10mobilecompliancepolicy-create?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windowsphone81compliancepolicy-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +88,9 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceCompliancePolicy, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DeviceCompliancePoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the windowsPhone81CompliancePolicy objects.
+        List properties and relationships of the windows10MobileCompliancePolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +99,9 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DeviceCompliancePolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new windows10MobileCompliancePolicy object.
+        Create a new windowsPhone81CompliancePolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +136,7 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceCompliancePoliciesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the windowsPhone81CompliancePolicy objects.
+        List properties and relationships of the windows10MobileCompliancePolicy objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +188,28 @@ class DeviceCompliancePoliciesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceCompliancePoliciesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DeviceCompliancePoliciesRequestBuilder.DeviceCompliancePoliciesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceCompliancePoliciesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

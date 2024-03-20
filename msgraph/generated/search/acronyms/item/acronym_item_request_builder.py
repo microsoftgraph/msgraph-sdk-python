@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/search/acronyms/{acronym%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[AcronymItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete an acronym object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +45,7 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Acronym]:
+    async def get(self,request_configuration: Optional[AcronymItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Acronym]:
         """
         Read the properties and relationships of an acronym object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +66,7 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Acronym, error_mapping)
     
-    async def patch(self,body: Optional[Acronym] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Acronym]:
+    async def patch(self,body: Optional[Acronym] = None, request_configuration: Optional[AcronymItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Acronym]:
         """
         Update the properties of an acronym object.
         param body: The request body
@@ -91,7 +90,7 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Acronym, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[AcronymItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete an acronym object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +101,7 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AcronymItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of an acronym object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -113,7 +112,7 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Acronym] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Acronym] = None, request_configuration: Optional[AcronymItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an acronym object.
         param body: The request body
@@ -137,6 +136,16 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AcronymItemRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AcronymItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class AcronymItemRequestBuilderGetQueryParameters():
@@ -163,5 +172,28 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AcronymItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AcronymItemRequestBuilder.AcronymItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AcronymItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

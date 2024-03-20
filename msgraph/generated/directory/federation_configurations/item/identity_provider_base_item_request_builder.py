@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class IdentityProviderBaseItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/directory/federationConfigurations/{identityProviderBase%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[IdentityProviderBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete a samlOrWsFedExternalDomainFederation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +45,7 @@ class IdentityProviderBaseItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityProviderBase]:
+    async def get(self,request_configuration: Optional[IdentityProviderBaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityProviderBase]:
         """
         Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +65,7 @@ class IdentityProviderBaseItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IdentityProviderBase, error_mapping)
     
-    async def patch(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityProviderBase]:
+    async def patch(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[IdentityProviderBaseItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[IdentityProviderBase]:
         """
         Update the navigation property federationConfigurations in directory
         param body: The request body
@@ -89,7 +88,7 @@ class IdentityProviderBaseItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IdentityProviderBase, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[IdentityProviderBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete a samlOrWsFedExternalDomainFederation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class IdentityProviderBaseItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[IdentityProviderBaseItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +110,7 @@ class IdentityProviderBaseItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[IdentityProviderBaseItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property federationConfigurations in directory
         param body: The request body
@@ -135,6 +134,16 @@ class IdentityProviderBaseItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return IdentityProviderBaseItemRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IdentityProviderBaseItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class IdentityProviderBaseItemRequestBuilderGetQueryParameters():
@@ -161,5 +170,28 @@ class IdentityProviderBaseItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IdentityProviderBaseItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[IdentityProviderBaseItemRequestBuilder.IdentityProviderBaseItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IdentityProviderBaseItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

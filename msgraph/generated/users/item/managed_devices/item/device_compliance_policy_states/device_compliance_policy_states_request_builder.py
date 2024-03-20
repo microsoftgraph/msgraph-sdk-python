@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class DeviceCompliancePolicyStatesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["deviceCompliancePolicyState%2Did"] = device_compliance_policy_state_id
         return DeviceCompliancePolicyStateItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceCompliancePolicyStateCollectionResponse]:
+    async def get(self,request_configuration: Optional[DeviceCompliancePolicyStatesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyStateCollectionResponse]:
         """
         Device compliance policy states for this device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +63,7 @@ class DeviceCompliancePolicyStatesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceCompliancePolicyStateCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DeviceCompliancePolicyState] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceCompliancePolicyState]:
+    async def post(self,body: Optional[DeviceCompliancePolicyState] = None, request_configuration: Optional[DeviceCompliancePolicyStatesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyState]:
         """
         Create new navigation property to deviceCompliancePolicyStates for users
         param body: The request body
@@ -87,7 +86,7 @@ class DeviceCompliancePolicyStatesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceCompliancePolicyState, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DeviceCompliancePolicyStatesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Device compliance policy states for this device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +97,7 @@ class DeviceCompliancePolicyStatesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DeviceCompliancePolicyState] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceCompliancePolicyState] = None, request_configuration: Optional[DeviceCompliancePolicyStatesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to deviceCompliancePolicyStates for users
         param body: The request body
@@ -187,5 +186,28 @@ class DeviceCompliancePolicyStatesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceCompliancePolicyStatesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DeviceCompliancePolicyStatesRequestBuilder.DeviceCompliancePolicyStatesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceCompliancePolicyStatesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

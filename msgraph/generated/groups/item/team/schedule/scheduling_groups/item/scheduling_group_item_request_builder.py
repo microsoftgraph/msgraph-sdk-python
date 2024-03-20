@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/team/schedule/schedulingGroups/{schedulingGroup%2Did}{?%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Mark a schedulingGroup as inactive by setting its isActive property.This method does not remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +45,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SchedulingGroup]:
+    async def get(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SchedulingGroup]:
         """
         Retrieve the properties and relationships of a schedulingGroup by ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +66,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SchedulingGroup, error_mapping)
     
-    async def patch(self,body: Optional[SchedulingGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SchedulingGroup]:
+    async def patch(self,body: Optional[SchedulingGroup] = None, request_configuration: Optional[SchedulingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[SchedulingGroup]:
         """
         Replace an existing schedulingGroup. If the specified schedulingGroup doesn't exist, this method returns 404 Not found.
         param body: The request body
@@ -91,7 +90,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SchedulingGroup, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Mark a schedulingGroup as inactive by setting its isActive property.This method does not remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +101,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of a schedulingGroup by ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -113,7 +112,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[SchedulingGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[SchedulingGroup] = None, request_configuration: Optional[SchedulingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Replace an existing schedulingGroup. If the specified schedulingGroup doesn't exist, this method returns 404 Not found.
         param body: The request body
@@ -138,6 +137,16 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return SchedulingGroupItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SchedulingGroupItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class SchedulingGroupItemRequestBuilderGetQueryParameters():
         """
@@ -158,5 +167,28 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SchedulingGroupItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[SchedulingGroupItemRequestBuilder.SchedulingGroupItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SchedulingGroupItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

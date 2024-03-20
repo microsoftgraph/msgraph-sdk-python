@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class TeamworkTagMemberItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/tags/{teamworkTag%2Did}/members/{teamworkTagMember%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete a member from a standard tag in a team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +45,7 @@ class TeamworkTagMemberItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamworkTagMember]:
+    async def get(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamworkTagMember]:
         """
         Get the properties and relationships of a member of a standard tag in a team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +66,7 @@ class TeamworkTagMemberItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamworkTagMember, error_mapping)
     
-    async def patch(self,body: Optional[TeamworkTagMember] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamworkTagMember]:
+    async def patch(self,body: Optional[TeamworkTagMember] = None, request_configuration: Optional[TeamworkTagMemberItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TeamworkTagMember]:
         """
         Update the navigation property members in users
         param body: The request body
@@ -90,7 +89,7 @@ class TeamworkTagMemberItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamworkTagMember, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete a member from a standard tag in a team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +100,7 @@ class TeamworkTagMemberItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the properties and relationships of a member of a standard tag in a team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +111,7 @@ class TeamworkTagMemberItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[TeamworkTagMember] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TeamworkTagMember] = None, request_configuration: Optional[TeamworkTagMemberItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property members in users
         param body: The request body
@@ -136,6 +135,16 @@ class TeamworkTagMemberItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return TeamworkTagMemberItemRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TeamworkTagMemberItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class TeamworkTagMemberItemRequestBuilderGetQueryParameters():
@@ -162,5 +171,28 @@ class TeamworkTagMemberItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TeamworkTagMemberItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[TeamworkTagMemberItemRequestBuilder.TeamworkTagMemberItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TeamworkTagMemberItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -46,7 +45,7 @@ class WebinarsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["virtualEventWebinar%2Did"] = virtual_event_webinar_id
         return VirtualEventWebinarItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[VirtualEventWebinarCollectionResponse]:
+    async def get(self,request_configuration: Optional[WebinarsRequestBuilderGetRequestConfiguration] = None) -> Optional[VirtualEventWebinarCollectionResponse]:
         """
         Get the list of all virtualEventWebinar objects created in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +93,7 @@ class WebinarsRequestBuilder(BaseRequestBuilder):
 
         return GetByUserRoleWithRoleRequestBuilder(self.request_adapter, self.path_parameters, role)
     
-    async def post(self,body: Optional[VirtualEventWebinar] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[VirtualEventWebinar]:
+    async def post(self,body: Optional[VirtualEventWebinar] = None, request_configuration: Optional[WebinarsRequestBuilderPostRequestConfiguration] = None) -> Optional[VirtualEventWebinar]:
         """
         Create new navigation property to webinars for solutions
         param body: The request body
@@ -117,7 +116,7 @@ class WebinarsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, VirtualEventWebinar, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[WebinarsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the list of all virtualEventWebinar objects created in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -128,7 +127,7 @@ class WebinarsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[VirtualEventWebinar] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[VirtualEventWebinar] = None, request_configuration: Optional[WebinarsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to webinars for solutions
         param body: The request body
@@ -217,5 +216,28 @@ class WebinarsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WebinarsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[WebinarsRequestBuilder.WebinarsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WebinarsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +28,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/termStores/{store%2Did}/sets/{set%2Did}/parentGroup/sets/{set%2Did1}/children/{term%2Did}/children/{term%2Did1}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[TermItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property children for sites
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,7 +46,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Term]:
+    async def get(self,request_configuration: Optional[TermItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Term]:
         """
         Children of current term.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +66,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Term, error_mapping)
     
-    async def patch(self,body: Optional[Term] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Term]:
+    async def patch(self,body: Optional[Term] = None, request_configuration: Optional[TermItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Term]:
         """
         Update the navigation property children in sites
         param body: The request body
@@ -90,7 +89,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Term, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[TermItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property children for sites
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +100,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[TermItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Children of current term.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +111,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Term] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Term] = None, request_configuration: Optional[TermItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property children in sites
         param body: The request body
@@ -155,6 +154,16 @@ class TermItemRequestBuilder(BaseRequestBuilder):
 
         return SetRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TermItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class TermItemRequestBuilderGetQueryParameters():
         """
@@ -180,5 +189,28 @@ class TermItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TermItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[TermItemRequestBuilder.TermItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TermItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

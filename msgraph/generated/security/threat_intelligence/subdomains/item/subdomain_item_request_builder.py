@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +27,7 @@ class SubdomainItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/threatIntelligence/subdomains/{subdomain%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[SubdomainItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property subdomains for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +45,7 @@ class SubdomainItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Subdomain]:
+    async def get(self,request_configuration: Optional[SubdomainItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Subdomain]:
         """
         Read the properties and relationships of a subdomain object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +66,7 @@ class SubdomainItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Subdomain, error_mapping)
     
-    async def patch(self,body: Optional[Subdomain] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Subdomain]:
+    async def patch(self,body: Optional[Subdomain] = None, request_configuration: Optional[SubdomainItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Subdomain]:
         """
         Update the navigation property subdomains in security
         param body: The request body
@@ -90,7 +89,7 @@ class SubdomainItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Subdomain, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[SubdomainItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property subdomains for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +100,7 @@ class SubdomainItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[SubdomainItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of a subdomain object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +111,7 @@ class SubdomainItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Subdomain] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Subdomain] = None, request_configuration: Optional[SubdomainItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property subdomains in security
         param body: The request body
@@ -146,6 +145,16 @@ class SubdomainItemRequestBuilder(BaseRequestBuilder):
 
         return HostRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SubdomainItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class SubdomainItemRequestBuilderGetQueryParameters():
         """
@@ -171,5 +180,28 @@ class SubdomainItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SubdomainItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[SubdomainItemRequestBuilder.SubdomainItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SubdomainItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

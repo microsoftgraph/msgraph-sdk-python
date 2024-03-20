@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -57,7 +56,7 @@ class RoleAssignmentSchedulesRequestBuilder(BaseRequestBuilder):
 
         return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentScheduleCollectionResponse]:
+    async def get(self,request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentScheduleCollectionResponse]:
         """
         Get the schedules for active role assignment operations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -78,7 +77,7 @@ class RoleAssignmentSchedulesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleAssignmentScheduleCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UnifiedRoleAssignmentSchedule] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentSchedule]:
+    async def post(self,body: Optional[UnifiedRoleAssignmentSchedule] = None, request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderPostRequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentSchedule]:
         """
         Create new navigation property to roleAssignmentSchedules for roleManagement
         param body: The request body
@@ -101,7 +100,7 @@ class RoleAssignmentSchedulesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleAssignmentSchedule, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the schedules for active role assignment operations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +111,7 @@ class RoleAssignmentSchedulesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UnifiedRoleAssignmentSchedule] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UnifiedRoleAssignmentSchedule] = None, request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to roleAssignmentSchedules for roleManagement
         param body: The request body
@@ -201,5 +200,28 @@ class RoleAssignmentSchedulesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RoleAssignmentSchedulesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[RoleAssignmentSchedulesRequestBuilder.RoleAssignmentSchedulesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RoleAssignmentSchedulesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

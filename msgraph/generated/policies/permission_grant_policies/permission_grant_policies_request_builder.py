@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class PermissionGrantPoliciesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["permissionGrantPolicy%2Did"] = permission_grant_policy_id
         return PermissionGrantPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PermissionGrantPolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[PermissionGrantPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[PermissionGrantPolicyCollectionResponse]:
         """
         Retrieve the list of permissionGrantPolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class PermissionGrantPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PermissionGrantPolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[PermissionGrantPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PermissionGrantPolicy]:
+    async def post(self,body: Optional[PermissionGrantPolicy] = None, request_configuration: Optional[PermissionGrantPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[PermissionGrantPolicy]:
         """
         Creates a permissionGrantPolicy. A permission grant policy is used to describe the conditions under which permissions can be granted (for example, during application consent). After creating the permission grant policy, you can add include condition sets to add matching rules, and add exclude condition sets to add exclusion rules.
         param body: The request body
@@ -89,7 +88,7 @@ class PermissionGrantPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PermissionGrantPolicy, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[PermissionGrantPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the list of permissionGrantPolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class PermissionGrantPoliciesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[PermissionGrantPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PermissionGrantPolicy] = None, request_configuration: Optional[PermissionGrantPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Creates a permissionGrantPolicy. A permission grant policy is used to describe the conditions under which permissions can be granted (for example, during application consent). After creating the permission grant policy, you can add include condition sets to add matching rules, and add exclude condition sets to add exclusion rules.
         param body: The request body
@@ -189,5 +188,28 @@ class PermissionGrantPoliciesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PermissionGrantPoliciesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[PermissionGrantPoliciesRequestBuilder.PermissionGrantPoliciesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PermissionGrantPoliciesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

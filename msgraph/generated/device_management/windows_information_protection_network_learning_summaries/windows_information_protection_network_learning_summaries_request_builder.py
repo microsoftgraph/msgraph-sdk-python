@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(BaseReq
         url_tpl_params["windowsInformationProtectionNetworkLearningSummary%2Did"] = windows_information_protection_network_learning_summary_id
         return WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WindowsInformationProtectionNetworkLearningSummaryCollectionResponse]:
+    async def get(self,request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummariesRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsInformationProtectionNetworkLearningSummaryCollectionResponse]:
         """
         List properties and relationships of the windowsInformationProtectionNetworkLearningSummary objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(BaseReq
 
         return await self.request_adapter.send_async(request_info, WindowsInformationProtectionNetworkLearningSummaryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[WindowsInformationProtectionNetworkLearningSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WindowsInformationProtectionNetworkLearningSummary]:
+    async def post(self,body: Optional[WindowsInformationProtectionNetworkLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummariesRequestBuilderPostRequestConfiguration] = None) -> Optional[WindowsInformationProtectionNetworkLearningSummary]:
         """
         Create a new windowsInformationProtectionNetworkLearningSummary object.
         param body: The request body
@@ -89,7 +88,7 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(BaseReq
 
         return await self.request_adapter.send_async(request_info, WindowsInformationProtectionNetworkLearningSummary, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummariesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         List properties and relationships of the windowsInformationProtectionNetworkLearningSummary objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(BaseReq
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[WindowsInformationProtectionNetworkLearningSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WindowsInformationProtectionNetworkLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummariesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new windowsInformationProtectionNetworkLearningSummary object.
         param body: The request body
@@ -189,5 +188,28 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(BaseReq
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WindowsInformationProtectionNetworkLearningSummariesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[WindowsInformationProtectionNetworkLearningSummariesRequestBuilder.WindowsInformationProtectionNetworkLearningSummariesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WindowsInformationProtectionNetworkLearningSummariesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -45,7 +44,7 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["channel%2Did"] = channel_id
         return ChannelItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ChannelCollectionResponse]:
+    async def get(self,request_configuration: Optional[ChannelsRequestBuilderGetRequestConfiguration] = None) -> Optional[ChannelCollectionResponse]:
         """
         Retrieve the list of channels in this team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +65,7 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ChannelCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Channel] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Channel]:
+    async def post(self,body: Optional[Channel] = None, request_configuration: Optional[ChannelsRequestBuilderPostRequestConfiguration] = None) -> Optional[Channel]:
         """
         Create a new channel in a team, as specified in the request body.  When you create a channel, the maximum length of the channel's displayName is 50 characters. This is the name that appears to the user in Microsoft Teams. If you're creating a private channel, you can add a maximum of 200 members.
         param body: The request body
@@ -90,7 +89,7 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Channel, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ChannelsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the list of channels in this team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +100,7 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Channel] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Channel] = None, request_configuration: Optional[ChannelsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new channel in a team, as specified in the request body.  When you create a channel, the maximum length of the channel's displayName is 50 characters. This is the name that appears to the user in Microsoft Teams. If you're creating a private channel, you can add a maximum of 200 members.
         param body: The request body
@@ -199,5 +198,28 @@ class ChannelsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ChannelsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ChannelsRequestBuilder.ChannelsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ChannelsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

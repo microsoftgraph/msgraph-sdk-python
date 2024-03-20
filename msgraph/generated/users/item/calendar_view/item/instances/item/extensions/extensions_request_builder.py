@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class ExtensionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["extension%2Did"] = extension_id
         return ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ExtensionCollectionResponse]:
+    async def get(self,request_configuration: Optional[ExtensionsRequestBuilderGetRequestConfiguration] = None) -> Optional[ExtensionCollectionResponse]:
         """
         Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +63,7 @@ class ExtensionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ExtensionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Extension] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Extension]:
+    async def post(self,body: Optional[Extension] = None, request_configuration: Optional[ExtensionsRequestBuilderPostRequestConfiguration] = None) -> Optional[Extension]:
         """
         Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
         param body: The request body
@@ -88,7 +87,7 @@ class ExtensionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Extension, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ExtensionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +98,7 @@ class ExtensionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Extension] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Extension] = None, request_configuration: Optional[ExtensionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
         param body: The request body
@@ -183,5 +182,28 @@ class ExtensionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ExtensionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ExtensionsRequestBuilder.ExtensionsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ExtensionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["deviceComplianceUserStatus%2Did"] = device_compliance_user_status_id
         return DeviceComplianceUserStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceComplianceUserStatusCollectionResponse]:
+    async def get(self,request_configuration: Optional[UserStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceComplianceUserStatusCollectionResponse]:
         """
         List properties and relationships of the deviceComplianceUserStatus objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceComplianceUserStatusCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DeviceComplianceUserStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceComplianceUserStatus]:
+    async def post(self,body: Optional[DeviceComplianceUserStatus] = None, request_configuration: Optional[UserStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceComplianceUserStatus]:
         """
         Create a new deviceComplianceUserStatus object.
         param body: The request body
@@ -89,7 +88,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceComplianceUserStatus, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UserStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         List properties and relationships of the deviceComplianceUserStatus objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DeviceComplianceUserStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceComplianceUserStatus] = None, request_configuration: Optional[UserStatusesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new deviceComplianceUserStatus object.
         param body: The request body
@@ -189,5 +188,28 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserStatusesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UserStatusesRequestBuilder.UserStatusesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserStatusesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

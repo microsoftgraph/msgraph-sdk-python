@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class MobileAppTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["mobileAppTroubleshootingEvent%2Did"] = mobile_app_troubleshooting_event_id
         return MobileAppTroubleshootingEventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[MobileAppTroubleshootingEventCollectionResponse]:
+    async def get(self,request_configuration: Optional[MobileAppTroubleshootingEventsRequestBuilderGetRequestConfiguration] = None) -> Optional[MobileAppTroubleshootingEventCollectionResponse]:
         """
         List properties and relationships of the mobileAppTroubleshootingEvent objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class MobileAppTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, MobileAppTroubleshootingEventCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[MobileAppTroubleshootingEvent] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[MobileAppTroubleshootingEvent]:
+    async def post(self,body: Optional[MobileAppTroubleshootingEvent] = None, request_configuration: Optional[MobileAppTroubleshootingEventsRequestBuilderPostRequestConfiguration] = None) -> Optional[MobileAppTroubleshootingEvent]:
         """
         Create a new mobileAppTroubleshootingEvent object.
         param body: The request body
@@ -89,7 +88,7 @@ class MobileAppTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, MobileAppTroubleshootingEvent, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[MobileAppTroubleshootingEventsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         List properties and relationships of the mobileAppTroubleshootingEvent objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class MobileAppTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[MobileAppTroubleshootingEvent] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[MobileAppTroubleshootingEvent] = None, request_configuration: Optional[MobileAppTroubleshootingEventsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new mobileAppTroubleshootingEvent object.
         param body: The request body
@@ -189,5 +188,28 @@ class MobileAppTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MobileAppTroubleshootingEventsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[MobileAppTroubleshootingEventsRequestBuilder.MobileAppTroubleshootingEventsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MobileAppTroubleshootingEventsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

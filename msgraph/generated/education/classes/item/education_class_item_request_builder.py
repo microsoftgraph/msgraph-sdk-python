@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -36,7 +35,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/education/classes/{educationClass%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[EducationClassItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete an educationClass. Because a class is also a universal group, deleting a class deletes the group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -55,7 +54,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationClass]:
+    async def get(self,request_configuration: Optional[EducationClassItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationClass]:
         """
         Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -76,7 +75,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationClass, error_mapping)
     
-    async def patch(self,body: Optional[EducationClass] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationClass]:
+    async def patch(self,body: Optional[EducationClass] = None, request_configuration: Optional[EducationClassItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationClass]:
         """
         Update the properties of an educationClass object.
         param body: The request body
@@ -100,7 +99,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationClass, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[EducationClassItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete an educationClass. Because a class is also a universal group, deleting a class deletes the group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +110,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[EducationClassItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -122,7 +121,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[EducationClass] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EducationClass] = None, request_configuration: Optional[EducationClassItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an educationClass object.
         param body: The request body
@@ -228,6 +227,16 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
 
         return TeachersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EducationClassItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class EducationClassItemRequestBuilderGetQueryParameters():
         """
@@ -253,5 +262,28 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EducationClassItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[EducationClassItemRequestBuilder.EducationClassItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EducationClassItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

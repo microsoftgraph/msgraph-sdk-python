@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +26,7 @@ class CopyToDefaultContentLocationRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/contentTypes/{contentType%2Did}/copyToDefaultContentLocation", path_parameters)
     
-    async def post(self,body: Optional[CopyToDefaultContentLocationPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def post(self,body: Optional[CopyToDefaultContentLocationPostRequestBody] = None, request_configuration: Optional[CopyToDefaultContentLocationRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Copy a file to a default content location in a [content type][contentType]. The file can then be added as a default file or template via a POST operation.
         param body: The request body
@@ -48,7 +48,7 @@ class CopyToDefaultContentLocationRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_post_request_information(self,body: Optional[CopyToDefaultContentLocationPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CopyToDefaultContentLocationPostRequestBody] = None, request_configuration: Optional[CopyToDefaultContentLocationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Copy a file to a default content location in a [content type][contentType]. The file can then be added as a default file or template via a POST operation.
         param body: The request body
@@ -72,5 +72,15 @@ class CopyToDefaultContentLocationRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return CopyToDefaultContentLocationRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CopyToDefaultContentLocationRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

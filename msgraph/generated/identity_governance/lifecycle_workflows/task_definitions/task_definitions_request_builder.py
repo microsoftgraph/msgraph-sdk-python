@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +42,7 @@ class TaskDefinitionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["taskDefinition%2Did"] = task_definition_id
         return TaskDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TaskDefinitionCollectionResponse]:
+    async def get(self,request_configuration: Optional[TaskDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[TaskDefinitionCollectionResponse]:
         """
         Get a list of the taskDefinition objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +63,7 @@ class TaskDefinitionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TaskDefinitionCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[TaskDefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of the taskDefinition objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -148,6 +147,19 @@ class TaskDefinitionsRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TaskDefinitionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[TaskDefinitionsRequestBuilder.TaskDefinitionsRequestBuilderGetQueryParameters] = None
 
     
 

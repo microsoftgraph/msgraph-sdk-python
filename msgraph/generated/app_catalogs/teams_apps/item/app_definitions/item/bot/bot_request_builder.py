@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class BotRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/appCatalogs/teamsApps/{teamsApp%2Did}/appDefinitions/{teamsAppDefinition%2Did}/bot{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[BotRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property bot for appCatalogs
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +44,7 @@ class BotRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamworkBot]:
+    async def get(self,request_configuration: Optional[BotRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamworkBot]:
         """
         Get the bot associated with a specific definition of the  TeamsApp.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +65,7 @@ class BotRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamworkBot, error_mapping)
     
-    async def patch(self,body: Optional[TeamworkBot] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamworkBot]:
+    async def patch(self,body: Optional[TeamworkBot] = None, request_configuration: Optional[BotRequestBuilderPatchRequestConfiguration] = None) -> Optional[TeamworkBot]:
         """
         Update the navigation property bot in appCatalogs
         param body: The request body
@@ -89,7 +88,7 @@ class BotRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamworkBot, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[BotRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property bot for appCatalogs
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class BotRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[BotRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the bot associated with a specific definition of the  TeamsApp.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +110,7 @@ class BotRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[TeamworkBot] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TeamworkBot] = None, request_configuration: Optional[BotRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property bot in appCatalogs
         param body: The request body
@@ -135,6 +134,16 @@ class BotRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return BotRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class BotRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class BotRequestBuilderGetQueryParameters():
@@ -161,5 +170,28 @@ class BotRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class BotRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[BotRequestBuilder.BotRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class BotRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

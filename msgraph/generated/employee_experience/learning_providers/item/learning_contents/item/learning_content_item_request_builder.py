@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class LearningContentItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/employeeExperience/learningProviders/{learningProvider%2Did}/learningContents/{learningContent%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[LearningContentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete the specified learningContent resource that represents the metadata of the specified provider's ingested content.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +45,7 @@ class LearningContentItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningContent]:
+    async def get(self,request_configuration: Optional[LearningContentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[LearningContent]:
         """
         Get the specified learningContent resource which represents the metadata of the specified provider's ingested content.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +66,7 @@ class LearningContentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LearningContent, error_mapping)
     
-    async def patch(self,body: Optional[LearningContent] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningContent]:
+    async def patch(self,body: Optional[LearningContent] = None, request_configuration: Optional[LearningContentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[LearningContent]:
         """
         Update the navigation property learningContents in employeeExperience
         param body: The request body
@@ -90,7 +89,7 @@ class LearningContentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LearningContent, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[LearningContentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete the specified learningContent resource that represents the metadata of the specified provider's ingested content.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +100,7 @@ class LearningContentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[LearningContentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the specified learningContent resource which represents the metadata of the specified provider's ingested content.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +111,7 @@ class LearningContentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[LearningContent] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[LearningContent] = None, request_configuration: Optional[LearningContentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property learningContents in employeeExperience
         param body: The request body
@@ -136,6 +135,16 @@ class LearningContentItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return LearningContentItemRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LearningContentItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class LearningContentItemRequestBuilderGetQueryParameters():
@@ -162,5 +171,28 @@ class LearningContentItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LearningContentItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[LearningContentItemRequestBuilder.LearningContentItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LearningContentItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

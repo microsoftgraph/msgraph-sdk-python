@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class ResultsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["threatAssessmentResult%2Did"] = threat_assessment_result_id
         return ThreatAssessmentResultItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ThreatAssessmentResultCollectionResponse]:
+    async def get(self,request_configuration: Optional[ResultsRequestBuilderGetRequestConfiguration] = None) -> Optional[ThreatAssessmentResultCollectionResponse]:
         """
         A collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +63,7 @@ class ResultsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ThreatAssessmentResultCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ThreatAssessmentResult] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ThreatAssessmentResult]:
+    async def post(self,body: Optional[ThreatAssessmentResult] = None, request_configuration: Optional[ResultsRequestBuilderPostRequestConfiguration] = None) -> Optional[ThreatAssessmentResult]:
         """
         Create new navigation property to results for informationProtection
         param body: The request body
@@ -87,7 +86,7 @@ class ResultsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ThreatAssessmentResult, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ResultsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         A collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +97,7 @@ class ResultsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ThreatAssessmentResult] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ThreatAssessmentResult] = None, request_configuration: Optional[ResultsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to results for informationProtection
         param body: The request body
@@ -187,5 +186,28 @@ class ResultsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ResultsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ResultsRequestBuilder.ResultsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ResultsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

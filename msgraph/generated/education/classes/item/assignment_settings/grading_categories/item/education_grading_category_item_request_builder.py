@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class EducationGradingCategoryItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/education/classes/{educationClass%2Did}/assignmentSettings/gradingCategories/{educationGradingCategory%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[EducationGradingCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property gradingCategories for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +44,7 @@ class EducationGradingCategoryItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationGradingCategory]:
+    async def get(self,request_configuration: Optional[EducationGradingCategoryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationGradingCategory]:
         """
         When set, enables users to weight assignments differently when computing a class average grade.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class EducationGradingCategoryItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationGradingCategory, error_mapping)
     
-    async def patch(self,body: Optional[EducationGradingCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationGradingCategory]:
+    async def patch(self,body: Optional[EducationGradingCategory] = None, request_configuration: Optional[EducationGradingCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationGradingCategory]:
         """
         Update a single gradingCategory on the educationAssignmentSettings. Only teachers can perform this operation.
         param body: The request body
@@ -89,7 +88,7 @@ class EducationGradingCategoryItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationGradingCategory, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[EducationGradingCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property gradingCategories for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class EducationGradingCategoryItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[EducationGradingCategoryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         When set, enables users to weight assignments differently when computing a class average grade.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +110,7 @@ class EducationGradingCategoryItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[EducationGradingCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EducationGradingCategory] = None, request_configuration: Optional[EducationGradingCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update a single gradingCategory on the educationAssignmentSettings. Only teachers can perform this operation.
         param body: The request body
@@ -135,6 +134,16 @@ class EducationGradingCategoryItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return EducationGradingCategoryItemRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EducationGradingCategoryItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class EducationGradingCategoryItemRequestBuilderGetQueryParameters():
@@ -161,5 +170,28 @@ class EducationGradingCategoryItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EducationGradingCategoryItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[EducationGradingCategoryItemRequestBuilder.EducationGradingCategoryItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EducationGradingCategoryItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +28,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/accessPackages/{accessPackage%2Did}/resourceRoleScopes/{accessPackageResourceRoleScope%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[AccessPackageResourceRoleScopeItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Remove a accessPackageResourceRoleScope from an accessPackage list of resource role scopes.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -48,7 +47,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessPackageResourceRoleScope]:
+    async def get(self,request_configuration: Optional[AccessPackageResourceRoleScopeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageResourceRoleScope]:
         """
         The resource roles and scopes in this access package.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -68,7 +67,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessPackageResourceRoleScope, error_mapping)
     
-    async def patch(self,body: Optional[AccessPackageResourceRoleScope] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessPackageResourceRoleScope]:
+    async def patch(self,body: Optional[AccessPackageResourceRoleScope] = None, request_configuration: Optional[AccessPackageResourceRoleScopeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AccessPackageResourceRoleScope]:
         """
         Update the navigation property resourceRoleScopes in identityGovernance
         param body: The request body
@@ -91,7 +90,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessPackageResourceRoleScope, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[AccessPackageResourceRoleScopeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Remove a accessPackageResourceRoleScope from an accessPackage list of resource role scopes.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +101,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AccessPackageResourceRoleScopeItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The resource roles and scopes in this access package.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -113,7 +112,7 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AccessPackageResourceRoleScope] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AccessPackageResourceRoleScope] = None, request_configuration: Optional[AccessPackageResourceRoleScopeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property resourceRoleScopes in identityGovernance
         param body: The request body
@@ -156,6 +155,16 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
 
         return ScopeRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AccessPackageResourceRoleScopeItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class AccessPackageResourceRoleScopeItemRequestBuilderGetQueryParameters():
         """
@@ -181,5 +190,28 @@ class AccessPackageResourceRoleScopeItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AccessPackageResourceRoleScopeItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AccessPackageResourceRoleScopeItemRequestBuilder.AccessPackageResourceRoleScopeItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AccessPackageResourceRoleScopeItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

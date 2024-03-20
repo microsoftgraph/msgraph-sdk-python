@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +28,7 @@ class SecretsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/synchronization/secrets", path_parameters)
     
-    async def put(self,body: Optional[SecretsPutRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SecretsPutResponse]:
+    async def put(self,body: Optional[SecretsPutRequestBody] = None, request_configuration: Optional[SecretsRequestBuilderPutRequestConfiguration] = None) -> Optional[SecretsPutResponse]:
         """
         Update property secrets value.
         param body: The request body
@@ -51,7 +51,7 @@ class SecretsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SecretsPutResponse, error_mapping)
     
-    def to_put_request_information(self,body: Optional[SecretsPutRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: Optional[SecretsPutRequestBody] = None, request_configuration: Optional[SecretsRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         Update property secrets value.
         param body: The request body
@@ -84,5 +84,15 @@ class SecretsRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SecretsRequestBuilderPutRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

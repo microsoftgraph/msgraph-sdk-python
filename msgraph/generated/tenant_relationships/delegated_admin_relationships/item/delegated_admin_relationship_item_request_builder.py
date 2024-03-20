@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -30,7 +29,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/tenantRelationships/delegatedAdminRelationships/{delegatedAdminRelationship%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete a delegatedAdminRelationship object. A relationship can only be deleted if it's in the 'created' status. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -49,7 +48,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
+    async def get(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
         """
         Read the properties of a delegatedAdminRelationship object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -70,7 +69,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminRelationship, error_mapping)
     
-    async def patch(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
+    async def patch(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
         """
         Update the properties of a delegatedAdminRelationship object. You can only update a relationship when it's in the created status. However, you can update the autoExtendDuration property when the relationship is in either the created or active status.
         param body: The request body
@@ -94,7 +93,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminRelationship, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete a delegatedAdminRelationship object. A relationship can only be deleted if it's in the 'created' status. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -105,7 +104,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties of a delegatedAdminRelationship object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -116,7 +115,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a delegatedAdminRelationship object. You can only update a relationship when it's in the created status. However, you can update the autoExtendDuration property when the relationship is in either the created or active status.
         param body: The request body
@@ -168,6 +167,16 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
 
         return RequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DelegatedAdminRelationshipItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class DelegatedAdminRelationshipItemRequestBuilderGetQueryParameters():
         """
@@ -193,5 +202,28 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DelegatedAdminRelationshipItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DelegatedAdminRelationshipItemRequestBuilder.DelegatedAdminRelationshipItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

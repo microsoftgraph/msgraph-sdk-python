@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class EdiscoveryCasesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["ediscoveryCase%2Did"] = ediscovery_case_id
         return EdiscoveryCaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EdiscoveryCaseCollectionResponse]:
+    async def get(self,request_configuration: Optional[EdiscoveryCasesRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryCaseCollectionResponse]:
         """
         Get a list of the ediscoveryCase objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class EdiscoveryCasesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EdiscoveryCaseCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[EdiscoveryCase] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EdiscoveryCase]:
+    async def post(self,body: Optional[EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCasesRequestBuilderPostRequestConfiguration] = None) -> Optional[EdiscoveryCase]:
         """
         Create a new ediscoveryCase object.
         param body: The request body
@@ -89,7 +88,7 @@ class EdiscoveryCasesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EdiscoveryCase, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[EdiscoveryCasesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of the ediscoveryCase objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class EdiscoveryCasesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[EdiscoveryCase] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCasesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new ediscoveryCase object.
         param body: The request body
@@ -189,5 +188,28 @@ class EdiscoveryCasesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EdiscoveryCasesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[EdiscoveryCasesRequestBuilder.EdiscoveryCasesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EdiscoveryCasesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

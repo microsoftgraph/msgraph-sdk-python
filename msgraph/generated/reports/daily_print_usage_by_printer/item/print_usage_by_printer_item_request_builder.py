@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class PrintUsageByPrinterItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/reports/dailyPrintUsageByPrinter/{printUsageByPrinter%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[PrintUsageByPrinterItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property dailyPrintUsageByPrinter for reports
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +44,7 @@ class PrintUsageByPrinterItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintUsageByPrinter]:
+    async def get(self,request_configuration: Optional[PrintUsageByPrinterItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintUsageByPrinter]:
         """
         Retrieve a usage summary for a printer for a particular time period. For descriptions of each of the endpoints, see printUsageByPrinter.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +65,7 @@ class PrintUsageByPrinterItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrintUsageByPrinter, error_mapping)
     
-    async def patch(self,body: Optional[PrintUsageByPrinter] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintUsageByPrinter]:
+    async def patch(self,body: Optional[PrintUsageByPrinter] = None, request_configuration: Optional[PrintUsageByPrinterItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PrintUsageByPrinter]:
         """
         Update the navigation property dailyPrintUsageByPrinter in reports
         param body: The request body
@@ -89,7 +88,7 @@ class PrintUsageByPrinterItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrintUsageByPrinter, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[PrintUsageByPrinterItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property dailyPrintUsageByPrinter for reports
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class PrintUsageByPrinterItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[PrintUsageByPrinterItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a usage summary for a printer for a particular time period. For descriptions of each of the endpoints, see printUsageByPrinter.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +110,7 @@ class PrintUsageByPrinterItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[PrintUsageByPrinter] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PrintUsageByPrinter] = None, request_configuration: Optional[PrintUsageByPrinterItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property dailyPrintUsageByPrinter in reports
         param body: The request body
@@ -135,6 +134,16 @@ class PrintUsageByPrinterItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return PrintUsageByPrinterItemRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PrintUsageByPrinterItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class PrintUsageByPrinterItemRequestBuilderGetQueryParameters():
@@ -161,5 +170,28 @@ class PrintUsageByPrinterItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PrintUsageByPrinterItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[PrintUsageByPrinterItemRequestBuilder.PrintUsageByPrinterItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PrintUsageByPrinterItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

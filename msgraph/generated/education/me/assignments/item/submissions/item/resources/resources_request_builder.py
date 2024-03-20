@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["educationSubmissionResource%2Did"] = education_submission_resource_id
         return EducationSubmissionResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationSubmissionResourceCollectionResponse]:
+    async def get(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationSubmissionResourceCollectionResponse]:
         """
         List the resources associated with a submission. Only teachers, students, and applications with application permissions can perform this operation. The educationSubmissionResource object is a wrapper around the actual resource object the student is working on. The wrapper also includes a pointer to the resources on the assignment if this resource was copied from the assignment during the assign process. These resources are the working copy of the assignment. The submittedResources are the resources that were officially submitted for grading.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationSubmissionResourceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[EducationSubmissionResource] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationSubmissionResource]:
+    async def post(self,body: Optional[EducationSubmissionResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[EducationSubmissionResource]:
         """
         Add an educationSubmissionResource to a submission resource list. Only teachers and students can perform this operation. The operation will not succeed if the allowStudentsToAddResources flag is not set to true. To create a new file-based resource, upload the file to the resources folder associated with the submission. If the file doesn't exist or is not in that folder, the POST request will fail.
         param body: The request body
@@ -89,7 +88,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationSubmissionResource, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         List the resources associated with a submission. Only teachers, students, and applications with application permissions can perform this operation. The educationSubmissionResource object is a wrapper around the actual resource object the student is working on. The wrapper also includes a pointer to the resources on the assignment if this resource was copied from the assignment during the assign process. These resources are the working copy of the assignment. The submittedResources are the resources that were officially submitted for grading.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[EducationSubmissionResource] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[EducationSubmissionResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add an educationSubmissionResource to a submission resource list. Only teachers and students can perform this operation. The operation will not succeed if the allowStudentsToAddResources flag is not set to true. To create a new file-based resource, upload the file to the resources folder associated with the submission. If the file doesn't exist or is not in that folder, the POST request will fail.
         param body: The request body
@@ -189,5 +188,28 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ResourcesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ResourcesRequestBuilder.ResourcesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ResourcesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +28,7 @@ class ListItemVersionItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}/items/{listItem%2Did}/versions/{listItemVersion%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ListItemVersionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property versions for sites
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,7 +46,7 @@ class ListItemVersionItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ListItemVersion]:
+    async def get(self,request_configuration: Optional[ListItemVersionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ListItemVersion]:
         """
         Retrieve the metadata for a specific version of a ListItem.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -68,7 +67,7 @@ class ListItemVersionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ListItemVersion, error_mapping)
     
-    async def patch(self,body: Optional[ListItemVersion] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ListItemVersion]:
+    async def patch(self,body: Optional[ListItemVersion] = None, request_configuration: Optional[ListItemVersionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ListItemVersion]:
         """
         Update the navigation property versions in sites
         param body: The request body
@@ -91,7 +90,7 @@ class ListItemVersionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ListItemVersion, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[ListItemVersionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property versions for sites
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +101,7 @@ class ListItemVersionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ListItemVersionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the metadata for a specific version of a ListItem.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -113,7 +112,7 @@ class ListItemVersionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ListItemVersion] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ListItemVersion] = None, request_configuration: Optional[ListItemVersionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property versions in sites
         param body: The request body
@@ -156,6 +155,16 @@ class ListItemVersionItemRequestBuilder(BaseRequestBuilder):
 
         return RestoreVersionRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ListItemVersionItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class ListItemVersionItemRequestBuilderGetQueryParameters():
         """
@@ -181,5 +190,28 @@ class ListItemVersionItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ListItemVersionItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ListItemVersionItemRequestBuilder.ListItemVersionItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ListItemVersionItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

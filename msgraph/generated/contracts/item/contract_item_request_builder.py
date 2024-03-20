@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -32,7 +31,7 @@ class ContractItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/contracts/{contract%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ContractItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete entity from contracts
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -50,7 +49,7 @@ class ContractItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Contract]:
+    async def get(self,request_configuration: Optional[ContractItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Contract]:
         """
         Retrieve the properties and relationships of contract object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -71,7 +70,7 @@ class ContractItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Contract, error_mapping)
     
-    async def patch(self,body: Optional[Contract] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Contract]:
+    async def patch(self,body: Optional[Contract] = None, request_configuration: Optional[ContractItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Contract]:
         """
         Update entity in contracts
         param body: The request body
@@ -94,7 +93,7 @@ class ContractItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Contract, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[ContractItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete entity from contracts
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -105,7 +104,7 @@ class ContractItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ContractItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of contract object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -116,7 +115,7 @@ class ContractItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Contract] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Contract] = None, request_configuration: Optional[ContractItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update entity in contracts
         param body: The request body
@@ -186,6 +185,16 @@ class ContractItemRequestBuilder(BaseRequestBuilder):
 
         return RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ContractItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class ContractItemRequestBuilderGetQueryParameters():
         """
@@ -211,5 +220,28 @@ class ContractItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ContractItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ContractItemRequestBuilder.ContractItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ContractItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

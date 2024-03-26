@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class EffectiveRulesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["unifiedRoleManagementPolicyRule%2Did"] = unified_role_management_policy_rule_id
         return UnifiedRoleManagementPolicyRuleItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[EffectiveRulesRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyRuleCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyRuleCollectionResponse]:
         """
         The list of effective rules like approval rules and expiration rules evaluated based on inherited referenced rules. For example, if there is a tenant-wide policy to enforce enabling an approval rule, the effective rule will be to enable approval even if the policy has a rule to disable approval. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class EffectiveRulesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleManagementPolicyRuleCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[EffectiveRulesRequestBuilderPostRequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyRule]:
+    async def post(self,body: Optional[UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyRule]:
         """
         Create new navigation property to effectiveRules for policies
         param body: The request body
@@ -86,7 +87,7 @@ class EffectiveRulesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleManagementPolicyRule, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[EffectiveRulesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The list of effective rules like approval rules and expiration rules evaluated based on inherited referenced rules. For example, if there is a tenant-wide policy to enforce enabling an approval rule, the effective rule will be to enable approval even if the policy has a rule to disable approval. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +98,7 @@ class EffectiveRulesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[EffectiveRulesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to effectiveRules for policies
         param body: The request body
@@ -186,28 +187,5 @@ class EffectiveRulesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class EffectiveRulesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[EffectiveRulesRequestBuilder.EffectiveRulesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class EffectiveRulesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

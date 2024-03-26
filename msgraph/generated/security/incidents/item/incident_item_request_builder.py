@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +28,7 @@ class IncidentItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/incidents/{incident%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[IncidentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property incidents for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +46,7 @@ class IncidentItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[IncidentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Incident]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Incident]:
         """
         Retrieve the properties and relationships of an incident object. Attacks are typically inflicted on different types of entities, such as devices, users, and mailboxes, resulting in multiple alert objects. Microsoft 365 Defender correlates alerts with the same attack techniques or the same attacker into an incident.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +67,7 @@ class IncidentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Incident, error_mapping)
     
-    async def patch(self,body: Optional[Incident] = None, request_configuration: Optional[IncidentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Incident]:
+    async def patch(self,body: Optional[Incident] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Incident]:
         """
         Update the properties of an incident object.
         param body: The request body
@@ -90,7 +91,7 @@ class IncidentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Incident, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[IncidentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property incidents for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +102,7 @@ class IncidentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[IncidentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of an incident object. Attacks are typically inflicted on different types of entities, such as devices, users, and mailboxes, resulting in multiple alert objects. Microsoft 365 Defender correlates alerts with the same attack techniques or the same attacker into an incident.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +113,7 @@ class IncidentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Incident] = None, request_configuration: Optional[IncidentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Incident] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an incident object.
         param body: The request body
@@ -146,16 +147,6 @@ class IncidentItemRequestBuilder(BaseRequestBuilder):
 
         return AlertsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class IncidentItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class IncidentItemRequestBuilderGetQueryParameters():
         """
@@ -181,28 +172,5 @@ class IncidentItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class IncidentItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[IncidentItemRequestBuilder.IncidentItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class IncidentItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

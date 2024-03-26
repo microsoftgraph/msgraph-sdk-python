@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +30,7 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/iosManagedAppProtections/{iosManagedAppProtection%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Deletes a iosManagedAppProtection.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -48,7 +49,7 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[IosManagedAppProtection]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IosManagedAppProtection]:
         """
         Read properties and relationships of the iosManagedAppProtection object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -69,7 +70,7 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IosManagedAppProtection, error_mapping)
     
-    async def patch(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[IosManagedAppProtection]:
+    async def patch(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[IosManagedAppProtection]:
         """
         Update the properties of a iosManagedAppProtection object.
         param body: The request body
@@ -93,7 +94,7 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IosManagedAppProtection, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Deletes a iosManagedAppProtection.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +105,7 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Read properties and relationships of the iosManagedAppProtection object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -115,7 +116,7 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a iosManagedAppProtection object.
         param body: The request body
@@ -167,16 +168,6 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
 
         return DeploymentSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class IosManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class IosManagedAppProtectionItemRequestBuilderGetQueryParameters():
         """
@@ -202,28 +193,5 @@ class IosManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class IosManagedAppProtectionItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[IosManagedAppProtectionItemRequestBuilder.IosManagedAppProtectionItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class IosManagedAppProtectionItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

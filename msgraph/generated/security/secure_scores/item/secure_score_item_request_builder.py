@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class SecureScoreItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/secureScores/{secureScore%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[SecureScoreItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property secureScores for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +45,7 @@ class SecureScoreItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SecureScoreItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SecureScore]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SecureScore]:
         """
         Retrieve the properties and relationships of a secureScore object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +66,7 @@ class SecureScoreItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SecureScore, error_mapping)
     
-    async def patch(self,body: Optional[SecureScore] = None, request_configuration: Optional[SecureScoreItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[SecureScore]:
+    async def patch(self,body: Optional[SecureScore] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SecureScore]:
         """
         Update the navigation property secureScores in security
         param body: The request body
@@ -88,7 +89,7 @@ class SecureScoreItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SecureScore, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[SecureScoreItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property secureScores for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class SecureScoreItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[SecureScoreItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of a secureScore object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +111,7 @@ class SecureScoreItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[SecureScore] = None, request_configuration: Optional[SecureScoreItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[SecureScore] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property secureScores in security
         param body: The request body
@@ -134,16 +135,6 @@ class SecureScoreItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return SecureScoreItemRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class SecureScoreItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
     @dataclass
     class SecureScoreItemRequestBuilderGetQueryParameters():
@@ -170,28 +161,5 @@ class SecureScoreItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class SecureScoreItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[SecureScoreItemRequestBuilder.SecureScoreItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class SecureScoreItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

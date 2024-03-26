@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -38,7 +39,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[MessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property messages for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -56,7 +57,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[MessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Message]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Message]:
         """
         The collection of messages in the mailFolder.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -76,7 +77,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Message, error_mapping)
     
-    async def patch(self,body: Optional[Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Message]:
+    async def patch(self,body: Optional[Message] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Message]:
         """
         Update the navigation property messages in users
         param body: The request body
@@ -99,7 +100,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Message, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[MessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property messages for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +111,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[MessageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The collection of messages in the mailFolder.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -121,7 +122,7 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Message] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property messages in users
         param body: The request body
@@ -254,16 +255,6 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
 
         return SendRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class MessageItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class MessageItemRequestBuilderGetQueryParameters():
         """
@@ -289,28 +280,5 @@ class MessageItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class MessageItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[MessageItemRequestBuilder.MessageItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class MessageItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/education/schools/{educationSchool%2Did}/administrativeUnit{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[AdministrativeUnitRequestBuilderGetRequestConfiguration] = None) -> Optional[AdministrativeUnit]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AdministrativeUnit]:
         """
         Get a list of administrativeUnits associated with an educationSchool object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,7 +48,7 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AdministrativeUnit, error_mapping)
     
-    async def patch(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitRequestBuilderPatchRequestConfiguration] = None) -> Optional[AdministrativeUnit]:
+    async def patch(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AdministrativeUnit]:
         """
         Update the navigation property administrativeUnit in education
         param body: The request body
@@ -70,7 +71,7 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AdministrativeUnit, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[AdministrativeUnitRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of administrativeUnits associated with an educationSchool object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -81,7 +82,7 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property administrativeUnit in education
         param body: The request body
@@ -131,28 +132,5 @@ class AdministrativeUnitRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AdministrativeUnitRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[AdministrativeUnitRequestBuilder.AdministrativeUnitRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AdministrativeUnitRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

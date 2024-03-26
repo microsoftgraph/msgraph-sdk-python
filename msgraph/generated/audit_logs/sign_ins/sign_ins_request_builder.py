@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class SignInsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["signIn%2Did"] = sign_in_id
         return SignInItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SignInsRequestBuilderGetRequestConfiguration] = None) -> Optional[SignInCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SignInCollectionResponse]:
         """
         Retrieve the Microsoft Entra user sign-ins for your tenant. Sign-ins that are interactive in nature (where a username/password is passed as part of auth token) and successful federated sign-ins are currently included in the sign-in logs.  The maximum and default page size is 1,000 objects and by default, the most recent sign-ins are returned first. Only sign-in events that occurred within the Microsoft Entra ID default retention period are available.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class SignInsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SignInCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[SignIn] = None, request_configuration: Optional[SignInsRequestBuilderPostRequestConfiguration] = None) -> Optional[SignIn]:
+    async def post(self,body: Optional[SignIn] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SignIn]:
         """
         Create new navigation property to signIns for auditLogs
         param body: The request body
@@ -87,7 +88,7 @@ class SignInsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SignIn, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[SignInsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the Microsoft Entra user sign-ins for your tenant. Sign-ins that are interactive in nature (where a username/password is passed as part of auth token) and successful federated sign-ins are currently included in the sign-in logs.  The maximum and default page size is 1,000 objects and by default, the most recent sign-ins are returned first. Only sign-in events that occurred within the Microsoft Entra ID default retention period are available.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +99,7 @@ class SignInsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[SignIn] = None, request_configuration: Optional[SignInsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SignIn] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to signIns for auditLogs
         param body: The request body
@@ -187,28 +188,5 @@ class SignInsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class SignInsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[SignInsRequestBuilder.SignInsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class SignInsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

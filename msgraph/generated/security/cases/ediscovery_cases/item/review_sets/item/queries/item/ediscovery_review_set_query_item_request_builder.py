@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +29,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/reviewSets/{ediscoveryReviewSet%2Did}/queries/{ediscoveryReviewSetQuery%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete an ediscoveryReviewSetQuery object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,7 +48,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryReviewSetQuery]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EdiscoveryReviewSetQuery]:
         """
         Read the properties and relationships of an ediscoveryReviewSetQuery object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -68,7 +69,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EdiscoveryReviewSetQuery, error_mapping)
     
-    async def patch(self,body: Optional[EdiscoveryReviewSetQuery] = None, request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EdiscoveryReviewSetQuery]:
+    async def patch(self,body: Optional[EdiscoveryReviewSetQuery] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EdiscoveryReviewSetQuery]:
         """
         Update the properties of an ediscoveryReviewSetQuery object.
         param body: The request body
@@ -92,7 +93,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EdiscoveryReviewSetQuery, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete an ediscoveryReviewSetQuery object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +104,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of an ediscoveryReviewSetQuery object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -114,7 +115,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[EdiscoveryReviewSetQuery] = None, request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EdiscoveryReviewSetQuery] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an ediscoveryReviewSetQuery object.
         param body: The request body
@@ -157,16 +158,6 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
 
         return MicrosoftGraphSecurityExportRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class EdiscoveryReviewSetQueryItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class EdiscoveryReviewSetQueryItemRequestBuilderGetQueryParameters():
         """
@@ -192,28 +183,5 @@ class EdiscoveryReviewSetQueryItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class EdiscoveryReviewSetQueryItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[EdiscoveryReviewSetQueryItemRequestBuilder.EdiscoveryReviewSetQueryItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class EdiscoveryReviewSetQueryItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

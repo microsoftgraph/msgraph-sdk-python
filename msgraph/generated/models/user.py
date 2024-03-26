@@ -299,6 +299,8 @@ class User(DirectoryObject):
     sign_in_sessions_valid_from_date_time: Optional[datetime.datetime] = None
     # A list for the user to enumerate their skills. Returned only on $select.
     skills: Optional[List[str]] = None
+    # The sponsors property
+    sponsors: Optional[List[DirectoryObject]] = None
     # The state or province in the user's address. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
     state: Optional[str] = None
     # The street address of the user's place of business. Maximum length is 1024 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
@@ -560,6 +562,7 @@ class User(DirectoryObject):
             "signInActivity": lambda n : setattr(self, 'sign_in_activity', n.get_object_value(SignInActivity)),
             "signInSessionsValidFromDateTime": lambda n : setattr(self, 'sign_in_sessions_valid_from_date_time', n.get_datetime_value()),
             "skills": lambda n : setattr(self, 'skills', n.get_collection_of_primitive_values(str)),
+            "sponsors": lambda n : setattr(self, 'sponsors', n.get_collection_of_object_values(DirectoryObject)),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
             "streetAddress": lambda n : setattr(self, 'street_address', n.get_str_value()),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
@@ -700,6 +703,7 @@ class User(DirectoryObject):
         writer.write_object_value("signInActivity", self.sign_in_activity)
         writer.write_datetime_value("signInSessionsValidFromDateTime", self.sign_in_sessions_valid_from_date_time)
         writer.write_collection_of_primitive_values("skills", self.skills)
+        writer.write_collection_of_object_values("sponsors", self.sponsors)
         writer.write_str_value("state", self.state)
         writer.write_str_value("streetAddress", self.street_address)
         writer.write_str_value("surname", self.surname)

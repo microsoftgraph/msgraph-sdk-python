@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["resourceOperation%2Did"] = resource_operation_id
         return ResourceOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ResourceOperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[ResourceOperationCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ResourceOperationCollectionResponse]:
         """
         List properties and relationships of the resourceOperation objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ResourceOperationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[ResourceOperationsRequestBuilderPostRequestConfiguration] = None) -> Optional[ResourceOperation]:
+    async def post(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ResourceOperation]:
         """
         Create a new resourceOperation object.
         param body: The request body
@@ -88,7 +89,7 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ResourceOperation, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ResourceOperationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         List properties and relationships of the resourceOperation objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[ResourceOperationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new resourceOperation object.
         param body: The request body
@@ -188,28 +189,5 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ResourceOperationsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ResourceOperationsRequestBuilder.ResourceOperationsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ResourceOperationsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

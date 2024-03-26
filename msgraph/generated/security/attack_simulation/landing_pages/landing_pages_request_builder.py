@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class LandingPagesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["landingPage%2Did"] = landing_page_id
         return LandingPageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[LandingPagesRequestBuilderGetRequestConfiguration] = None) -> Optional[LandingPageCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LandingPageCollectionResponse]:
         """
         Get a list of the landingPage objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class LandingPagesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LandingPageCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[LandingPage] = None, request_configuration: Optional[LandingPagesRequestBuilderPostRequestConfiguration] = None) -> Optional[LandingPage]:
+    async def post(self,body: Optional[LandingPage] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LandingPage]:
         """
         Create new navigation property to landingPages for security
         param body: The request body
@@ -87,7 +88,7 @@ class LandingPagesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LandingPage, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[LandingPagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of the landingPage objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +99,7 @@ class LandingPagesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[LandingPage] = None, request_configuration: Optional[LandingPagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[LandingPage] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to landingPages for security
         param body: The request body
@@ -187,28 +188,5 @@ class LandingPagesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class LandingPagesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[LandingPagesRequestBuilder.LandingPagesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class LandingPagesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

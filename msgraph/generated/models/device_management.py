@@ -197,7 +197,7 @@ class DeviceManagement(Entity):
     user_experience_analytics_work_from_anywhere_metrics: Optional[List[UserExperienceAnalyticsWorkFromAnywhereMetric]] = None
     # The user experience analytics work from anywhere model performance
     user_experience_analytics_work_from_anywhere_model_performance: Optional[List[UserExperienceAnalyticsWorkFromAnywhereModelPerformance]] = None
-    # The virtualEndpoint property
+    # Virtual endpoint
     virtual_endpoint: Optional[VirtualEndpoint] = None
     # The Windows autopilot device identities contained collection.
     windows_autopilot_device_identities: Optional[List[WindowsAutopilotDeviceIdentity]] = None

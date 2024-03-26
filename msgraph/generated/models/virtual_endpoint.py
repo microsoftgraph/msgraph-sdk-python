@@ -17,21 +17,21 @@ from .entity import Entity
 
 @dataclass
 class VirtualEndpoint(Entity):
-    # The auditEvents property
+    # A collection of Cloud PC audit events.
     audit_events: Optional[List[CloudPcAuditEvent]] = None
-    # The cloudPCs property
+    # A collection of cloud-managed virtual desktops.
     cloud_p_cs: Optional[List[CloudPC]] = None
-    # The deviceImages property
+    # A collection of device image resources on Cloud PC.
     device_images: Optional[List[CloudPcDeviceImage]] = None
-    # The galleryImages property
+    # A collection of gallery image resources on Cloud PC.
     gallery_images: Optional[List[CloudPcGalleryImage]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The onPremisesConnections property
+    # A defined collection of Azure resource information that can be used to establish Azure network connections for Cloud PCs.
     on_premises_connections: Optional[List[CloudPcOnPremisesConnection]] = None
-    # The provisioningPolicies property
+    # A collection of Cloud PC provisioning policies.
     provisioning_policies: Optional[List[CloudPcProvisioningPolicy]] = None
-    # The userSettings property
+    # A collection of Cloud PC user settings.
     user_settings: Optional[List[CloudPcUserSetting]] = None
     
     @staticmethod

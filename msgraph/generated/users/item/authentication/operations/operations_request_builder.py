@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["longRunningOperation%2Did"] = long_running_operation_id
         return LongRunningOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[LongRunningOperationCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LongRunningOperationCollectionResponse]:
         """
         Retrieve the status of a long-running operation, represented by a longRunningOperation object. A long-running operation is initiated when you reset a user's password. This resource type is also the base type for the richLongRunningOperation object that represents the status of a long-running operation on a site or a list. The possible states of the long-running operation are notStarted, running, succeeded, failed, unknownFutureValue where succeeded and failed are terminal states.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LongRunningOperationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[LongRunningOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None) -> Optional[LongRunningOperation]:
+    async def post(self,body: Optional[LongRunningOperation] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LongRunningOperation]:
         """
         Create new navigation property to operations for users
         param body: The request body
@@ -86,7 +87,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LongRunningOperation, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the status of a long-running operation, represented by a longRunningOperation object. A long-running operation is initiated when you reset a user's password. This resource type is also the base type for the richLongRunningOperation object that represents the status of a long-running operation on a site or a list. The possible states of the long-running operation are notStarted, running, succeeded, failed, unknownFutureValue where succeeded and failed are terminal states.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +98,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[LongRunningOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[LongRunningOperation] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to operations for users
         param body: The request body
@@ -186,28 +187,5 @@ class OperationsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class OperationsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[OperationsRequestBuilder.OperationsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class OperationsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

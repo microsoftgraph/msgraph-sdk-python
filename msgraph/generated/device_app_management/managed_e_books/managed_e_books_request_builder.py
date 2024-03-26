@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,12 +44,12 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
         url_tpl_params["managedEBook%2Did"] = managed_e_book_id
         return ManagedEBookItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ManagedEBooksRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedEBookCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedEBookCollectionResponse]:
         """
-        List properties and relationships of the iosVppEBook objects.
+        List properties and relationships of the managedEBook objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBookCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-iosvppebook-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-books-managedebook-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -64,7 +65,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ManagedEBookCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ManagedEBook] = None, request_configuration: Optional[ManagedEBooksRequestBuilderPostRequestConfiguration] = None) -> Optional[ManagedEBook]:
+    async def post(self,body: Optional[ManagedEBook] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedEBook]:
         """
         Create a new iosVppEBook object.
         param body: The request body
@@ -88,9 +89,9 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ManagedEBook, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ManagedEBooksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the iosVppEBook objects.
+        List properties and relationships of the managedEBook objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +100,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ManagedEBook] = None, request_configuration: Optional[ManagedEBooksRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ManagedEBook] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new iosVppEBook object.
         param body: The request body
@@ -136,7 +137,7 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedEBooksRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the iosVppEBook objects.
+        List properties and relationships of the managedEBook objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,28 +189,5 @@ class ManagedEBooksRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ManagedEBooksRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ManagedEBooksRequestBuilder.ManagedEBooksRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ManagedEBooksRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

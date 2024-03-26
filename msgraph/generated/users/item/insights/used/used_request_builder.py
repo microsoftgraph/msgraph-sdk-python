@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class UsedRequestBuilder(BaseRequestBuilder):
         url_tpl_params["usedInsight%2Did"] = used_insight_id
         return UsedInsightItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[UsedRequestBuilderGetRequestConfiguration] = None) -> Optional[UsedInsightCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UsedInsightCollectionResponse]:
         """
         Calculate and list the documents that a user has viewed or modified.  For the signed-in user:- This method includes documents that the user has modified; see example 1. - Using an $orderby query parameter on the lastAccessedDateTime property returns the most recently viewed documents that the user might or might not not have modified; see example 2. For other users, this method includes only documents that the user has modified.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class UsedRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UsedInsightCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UsedInsight] = None, request_configuration: Optional[UsedRequestBuilderPostRequestConfiguration] = None) -> Optional[UsedInsight]:
+    async def post(self,body: Optional[UsedInsight] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UsedInsight]:
         """
         Create new navigation property to used for users
         param body: The request body
@@ -87,7 +88,7 @@ class UsedRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UsedInsight, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[UsedRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Calculate and list the documents that a user has viewed or modified.  For the signed-in user:- This method includes documents that the user has modified; see example 1. - Using an $orderby query parameter on the lastAccessedDateTime property returns the most recently viewed documents that the user might or might not not have modified; see example 2. For other users, this method includes only documents that the user has modified.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +99,7 @@ class UsedRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UsedInsight] = None, request_configuration: Optional[UsedRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UsedInsight] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to used for users
         param body: The request body
@@ -187,28 +188,5 @@ class UsedRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UsedRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[UsedRequestBuilder.UsedRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UsedRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

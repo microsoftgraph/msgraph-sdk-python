@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -25,7 +25,7 @@ class AttachmentsArchiveRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/serviceAnnouncement/messages/{serviceUpdateMessage%2Did}/attachmentsArchive", path_parameters)
     
-    async def get(self,request_configuration: Optional[AttachmentsArchiveRequestBuilderGetRequestConfiguration] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
         """
         The zip file that contains all attachments for a message.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +44,7 @@ class AttachmentsArchiveRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    async def put(self,body: bytes, request_configuration: Optional[AttachmentsArchiveRequestBuilderPutRequestConfiguration] = None) -> bytes:
+    async def put(self,body: bytes, request_configuration: Optional[RequestConfiguration] = None) -> bytes:
         """
         The zip file that contains all attachments for a message.
         param body: Binary request body
@@ -65,7 +65,7 @@ class AttachmentsArchiveRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[AttachmentsArchiveRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The zip file that contains all attachments for a message.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -76,7 +76,7 @@ class AttachmentsArchiveRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/octet-stream, application/json")
         return request_info
     
-    def to_put_request_information(self,body: bytes, request_configuration: Optional[AttachmentsArchiveRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: bytes, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The zip file that contains all attachments for a message.
         param body: Binary request body
@@ -100,25 +100,5 @@ class AttachmentsArchiveRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AttachmentsArchiveRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AttachmentsArchiveRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AttachmentsArchiveRequestBuilderPutRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

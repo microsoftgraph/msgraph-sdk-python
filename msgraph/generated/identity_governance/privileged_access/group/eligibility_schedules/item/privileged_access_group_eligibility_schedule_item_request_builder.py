@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +29,7 @@ class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilder(BaseRequestBuil
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/privilegedAccess/group/eligibilitySchedules/{privilegedAccessGroupEligibilitySchedule%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[PrivilegedAccessGroupEligibilityScheduleItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property eligibilitySchedules for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +47,7 @@ class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilder(BaseRequestBuil
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PrivilegedAccessGroupEligibilityScheduleItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PrivilegedAccessGroupEligibilitySchedule]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupEligibilitySchedule]:
         """
         Read the properties and relationships of a privilegedAccessGroupEligibilitySchedule object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +68,7 @@ class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilder(BaseRequestBuil
 
         return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupEligibilitySchedule, error_mapping)
     
-    async def patch(self,body: Optional[PrivilegedAccessGroupEligibilitySchedule] = None, request_configuration: Optional[PrivilegedAccessGroupEligibilityScheduleItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PrivilegedAccessGroupEligibilitySchedule]:
+    async def patch(self,body: Optional[PrivilegedAccessGroupEligibilitySchedule] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupEligibilitySchedule]:
         """
         Update the navigation property eligibilitySchedules in identityGovernance
         param body: The request body
@@ -90,7 +91,7 @@ class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilder(BaseRequestBuil
 
         return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupEligibilitySchedule, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[PrivilegedAccessGroupEligibilityScheduleItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property eligibilitySchedules for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +102,7 @@ class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilder(BaseRequestBuil
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[PrivilegedAccessGroupEligibilityScheduleItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of a privilegedAccessGroupEligibilitySchedule object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +113,7 @@ class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilder(BaseRequestBuil
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[PrivilegedAccessGroupEligibilitySchedule] = None, request_configuration: Optional[PrivilegedAccessGroupEligibilityScheduleItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PrivilegedAccessGroupEligibilitySchedule] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property eligibilitySchedules in identityGovernance
         param body: The request body
@@ -155,16 +156,6 @@ class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilder(BaseRequestBuil
 
         return PrincipalRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilderGetQueryParameters():
         """
@@ -190,28 +181,5 @@ class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilder(BaseRequestBuil
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[PrivilegedAccessGroupEligibilityScheduleItemRequestBuilder.PrivilegedAccessGroupEligibilityScheduleItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

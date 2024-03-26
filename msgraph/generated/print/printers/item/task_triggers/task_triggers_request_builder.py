@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class TaskTriggersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["printTaskTrigger%2Did"] = print_task_trigger_id
         return PrintTaskTriggerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[TaskTriggersRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintTaskTriggerCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintTaskTriggerCollectionResponse]:
         """
         Retrieve a list of task triggers associated with the printer. The list of task triggers defines which tasks will be triggered as a result of events that occur during printing. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class TaskTriggersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrintTaskTriggerCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[PrintTaskTrigger] = None, request_configuration: Optional[TaskTriggersRequestBuilderPostRequestConfiguration] = None) -> Optional[PrintTaskTrigger]:
+    async def post(self,body: Optional[PrintTaskTrigger] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintTaskTrigger]:
         """
         Create a new task trigger on the specified printer. Currently, only one task trigger can be specified per printer, but this limit might be removed in the future. 
         param body: The request body
@@ -88,7 +89,7 @@ class TaskTriggersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrintTaskTrigger, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[TaskTriggersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of task triggers associated with the printer. The list of task triggers defines which tasks will be triggered as a result of events that occur during printing. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class TaskTriggersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[PrintTaskTrigger] = None, request_configuration: Optional[TaskTriggersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PrintTaskTrigger] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new task trigger on the specified printer. Currently, only one task trigger can be specified per printer, but this limit might be removed in the future. 
         param body: The request body
@@ -188,28 +189,5 @@ class TaskTriggersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TaskTriggersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[TaskTriggersRequestBuilder.TaskTriggersRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TaskTriggersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

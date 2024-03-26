@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["groupSetting%2Did"] = group_setting_id
         return GroupSettingItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[GroupSettingCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[GroupSettingCollectionResponse]:
         """
         Retrieve a list of tenant-level or group-specific group settings objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, GroupSettingCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[GroupSetting] = None, request_configuration: Optional[SettingsRequestBuilderPostRequestConfiguration] = None) -> Optional[GroupSetting]:
+    async def post(self,body: Optional[GroupSetting] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[GroupSetting]:
         """
         Create a new setting based on the templates available in groupSettingTemplates. These settings can be at the tenant-level or at the group level. Group settings apply to only Microsoft 365 groups. The template named Group.Unified can be used to configure tenant-wide Microsoft 365 group settings, while the template named Group.Unified.Guest can be used to configure group-specific settings.
         param body: The request body
@@ -88,7 +89,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, GroupSetting, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of tenant-level or group-specific group settings objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[GroupSetting] = None, request_configuration: Optional[SettingsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[GroupSetting] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new setting based on the templates available in groupSettingTemplates. These settings can be at the tenant-level or at the group level. Group settings apply to only Microsoft 365 groups. The template named Group.Unified can be used to configure tenant-wide Microsoft 365 group settings, while the template named Group.Unified.Guest can be used to configure group-specific settings.
         param body: The request body
@@ -188,28 +189,5 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class SettingsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[SettingsRequestBuilder.SettingsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class SettingsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +30,7 @@ class RelationItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/termStores/{store%2Did}/groups/{group%2Did1}/sets/{set%2Did}/children/{term%2Did}/relations/{relation%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RelationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property relations for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,7 +48,7 @@ class RelationItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RelationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Relation]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Relation]:
         """
         To indicate which terms are related to the current term as either pinned or reused.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +68,7 @@ class RelationItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Relation, error_mapping)
     
-    async def patch(self,body: Optional[Relation] = None, request_configuration: Optional[RelationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Relation]:
+    async def patch(self,body: Optional[Relation] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Relation]:
         """
         Update the navigation property relations in groups
         param body: The request body
@@ -90,7 +91,7 @@ class RelationItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Relation, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RelationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property relations for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +102,7 @@ class RelationItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RelationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         To indicate which terms are related to the current term as either pinned or reused.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +113,7 @@ class RelationItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Relation] = None, request_configuration: Optional[RelationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Relation] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property relations in groups
         param body: The request body
@@ -164,16 +165,6 @@ class RelationItemRequestBuilder(BaseRequestBuilder):
 
         return ToTermRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RelationItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class RelationItemRequestBuilderGetQueryParameters():
         """
@@ -199,28 +190,5 @@ class RelationItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RelationItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[RelationItemRequestBuilder.RelationItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RelationItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["appManagementPolicy%2Did"] = app_management_policy_id
         return AppManagementPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AppManagementPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[AppManagementPolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppManagementPolicyCollectionResponse]:
         """
         Retrieve a list of appManagementPolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppManagementPolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[AppManagementPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[AppManagementPolicy]:
+    async def post(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppManagementPolicy]:
         """
         Create an appManagementPolicy object.
         param body: The request body
@@ -88,7 +89,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppManagementPolicy, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[AppManagementPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of appManagementPolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[AppManagementPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create an appManagementPolicy object.
         param body: The request body
@@ -188,28 +189,5 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AppManagementPoliciesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[AppManagementPoliciesRequestBuilder.AppManagementPoliciesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AppManagementPoliciesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class AppLogCollectionRequestsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["appLogCollectionRequest%2Did"] = app_log_collection_request_id
         return AppLogCollectionRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AppLogCollectionRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[AppLogCollectionRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppLogCollectionRequestCollectionResponse]:
         """
         List properties and relationships of the appLogCollectionRequest objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class AppLogCollectionRequestsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppLogCollectionRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AppLogCollectionRequest] = None, request_configuration: Optional[AppLogCollectionRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[AppLogCollectionRequest]:
+    async def post(self,body: Optional[AppLogCollectionRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppLogCollectionRequest]:
         """
         Create a new appLogCollectionRequest object.
         param body: The request body
@@ -88,7 +89,7 @@ class AppLogCollectionRequestsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppLogCollectionRequest, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[AppLogCollectionRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         List properties and relationships of the appLogCollectionRequest objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class AppLogCollectionRequestsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AppLogCollectionRequest] = None, request_configuration: Optional[AppLogCollectionRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AppLogCollectionRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new appLogCollectionRequest object.
         param body: The request body
@@ -188,28 +189,5 @@ class AppLogCollectionRequestsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AppLogCollectionRequestsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[AppLogCollectionRequestsRequestBuilder.AppLogCollectionRequestsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AppLogCollectionRequestsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

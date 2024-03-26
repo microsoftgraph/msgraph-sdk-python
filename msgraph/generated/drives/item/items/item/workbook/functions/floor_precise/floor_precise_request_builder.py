@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class Floor_PreciseRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/functions/floor_Precise", path_parameters)
     
-    async def post(self,body: Optional[Floor_PrecisePostRequestBody] = None, request_configuration: Optional[Floor_PreciseRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookFunctionResult]:
+    async def post(self,body: Optional[Floor_PrecisePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookFunctionResult]:
         """
         Invoke action floor_Precise
         param body: The request body
@@ -50,7 +50,7 @@ class Floor_PreciseRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookFunctionResult, error_mapping)
     
-    def to_post_request_information(self,body: Optional[Floor_PrecisePostRequestBody] = None, request_configuration: Optional[Floor_PreciseRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Floor_PrecisePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Invoke action floor_Precise
         param body: The request body
@@ -74,15 +74,5 @@ class Floor_PreciseRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return Floor_PreciseRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class Floor_PreciseRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

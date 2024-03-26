@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +45,7 @@ class EventsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["event%2Did"] = event_id
         return EventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[EventsRequestBuilderGetRequestConfiguration] = None) -> Optional[EventCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EventCollectionResponse]:
         """
         Get a list of event objects in the user's mailbox. The list contains singleinstance meetings and series masters. To get expanded event instances, you can get the calendar view, orget the instances of an event. Currently, this operation returns event bodies in only HTML format. There are two scenarios where an app can get events in another user's calendar:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,13 +66,13 @@ class EventsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EventCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Event] = None, request_configuration: Optional[EventsRequestBuilderPostRequestConfiguration] = None) -> Optional[Event]:
+    async def post(self,body: Optional[Event] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Event]:
         """
-        Create one or more single-value extended properties in a new or existing instance of a resource. The following user resources are supported: The following group resources: See Extended properties overview for more information about when to useopen extensions or extended properties, and how to specify extended properties.
+        Create one or more multi-value extended properties in a new or existing instance of a resource. The following user resources are supported: The following group resources are supported: See Extended properties overview for more information about when to useopen extensions or extended properties, and how to specify extended properties.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Event]
-        Find more info here: https://learn.microsoft.com/graph/api/singlevaluelegacyextendedproperty-post-singlevalueextendedproperties?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/multivaluelegacyextendedproperty-post-multivalueextendedproperties?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,7 +90,7 @@ class EventsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Event, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[EventsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of event objects in the user's mailbox. The list contains singleinstance meetings and series masters. To get expanded event instances, you can get the calendar view, orget the instances of an event. Currently, this operation returns event bodies in only HTML format. There are two scenarios where an app can get events in another user's calendar:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,9 +101,9 @@ class EventsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Event] = None, request_configuration: Optional[EventsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Event] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create one or more single-value extended properties in a new or existing instance of a resource. The following user resources are supported: The following group resources: See Extended properties overview for more information about when to useopen extensions or extended properties, and how to specify extended properties.
+        Create one or more multi-value extended properties in a new or existing instance of a resource. The following user resources are supported: The following group resources are supported: See Extended properties overview for more information about when to useopen extensions or extended properties, and how to specify extended properties.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -193,28 +194,5 @@ class EventsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class EventsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[EventsRequestBuilder.EventsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class EventsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

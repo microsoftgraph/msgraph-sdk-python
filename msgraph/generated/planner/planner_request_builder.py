@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +30,7 @@ class PlannerRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/planner{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[PlannerRequestBuilderGetRequestConfiguration] = None) -> Optional[Planner]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Planner]:
         """
         Get planner
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -49,7 +50,7 @@ class PlannerRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Planner, error_mapping)
     
-    async def patch(self,body: Optional[Planner] = None, request_configuration: Optional[PlannerRequestBuilderPatchRequestConfiguration] = None) -> Optional[Planner]:
+    async def patch(self,body: Optional[Planner] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Planner]:
         """
         Update planner
         param body: The request body
@@ -72,7 +73,7 @@ class PlannerRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Planner, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[PlannerRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get planner
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -83,7 +84,7 @@ class PlannerRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Planner] = None, request_configuration: Optional[PlannerRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Planner] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update planner
         param body: The request body
@@ -160,28 +161,5 @@ class PlannerRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PlannerRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[PlannerRequestBuilder.PlannerRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PlannerRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

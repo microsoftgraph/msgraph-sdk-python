@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["tokenIssuancePolicy%2Did"] = token_issuance_policy_id
         return TokenIssuancePolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[TokenIssuancePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[TokenIssuancePolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TokenIssuancePolicyCollectionResponse]:
         """
         Get a list of tokenIssuancePolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TokenIssuancePolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[TokenIssuancePolicy] = None, request_configuration: Optional[TokenIssuancePoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[TokenIssuancePolicy]:
+    async def post(self,body: Optional[TokenIssuancePolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TokenIssuancePolicy]:
         """
         Create a new tokenIssuancePolicy object.
         param body: The request body
@@ -88,7 +89,7 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TokenIssuancePolicy, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[TokenIssuancePoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of tokenIssuancePolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[TokenIssuancePolicy] = None, request_configuration: Optional[TokenIssuancePoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[TokenIssuancePolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new tokenIssuancePolicy object.
         param body: The request body
@@ -188,28 +189,5 @@ class TokenIssuancePoliciesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TokenIssuancePoliciesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[TokenIssuancePoliciesRequestBuilder.TokenIssuancePoliciesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TokenIssuancePoliciesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

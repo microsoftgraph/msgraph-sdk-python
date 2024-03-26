@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +28,7 @@ class UserConsentRequestItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/appConsent/appConsentRequests/{appConsentRequest%2Did}/userConsentRequests/{userConsentRequest%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[UserConsentRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property userConsentRequests for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +46,7 @@ class UserConsentRequestItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[UserConsentRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UserConsentRequest]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserConsentRequest]:
         """
         Read the properties and relationships of a userConsentRequest object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +67,7 @@ class UserConsentRequestItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserConsentRequest, error_mapping)
     
-    async def patch(self,body: Optional[UserConsentRequest] = None, request_configuration: Optional[UserConsentRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UserConsentRequest]:
+    async def patch(self,body: Optional[UserConsentRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserConsentRequest]:
         """
         Update the navigation property userConsentRequests in identityGovernance
         param body: The request body
@@ -89,7 +90,7 @@ class UserConsentRequestItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserConsentRequest, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[UserConsentRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property userConsentRequests for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +101,7 @@ class UserConsentRequestItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[UserConsentRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of a userConsentRequest object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +112,7 @@ class UserConsentRequestItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[UserConsentRequest] = None, request_configuration: Optional[UserConsentRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UserConsentRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property userConsentRequests in identityGovernance
         param body: The request body
@@ -145,16 +146,6 @@ class UserConsentRequestItemRequestBuilder(BaseRequestBuilder):
 
         return ApprovalRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UserConsentRequestItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class UserConsentRequestItemRequestBuilderGetQueryParameters():
         """
@@ -180,28 +171,5 @@ class UserConsentRequestItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UserConsentRequestItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[UserConsentRequestItemRequestBuilder.UserConsentRequestItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UserConsentRequestItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

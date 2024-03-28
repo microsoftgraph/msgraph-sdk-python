@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class DirectoryScopeRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/roleManagement/directory/roleAssignmentScheduleRequests/{unifiedRoleAssignmentScheduleRequest%2Did}/directoryScope{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[DirectoryScopeRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryObject]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryObject]:
         """
         The directory object that is the scope of the assignment. Read-only. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +47,7 @@ class DirectoryScopeRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DirectoryObject, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[DirectoryScopeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The directory object that is the scope of the assignment. Read-only. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -91,19 +92,6 @@ class DirectoryScopeRequestBuilder(BaseRequestBuilder):
 
         # Select properties to be returned
         select: Optional[List[str]] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DirectoryScopeRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[DirectoryScopeRequestBuilder.DirectoryScopeRequestBuilderGetQueryParameters] = None
 
     
 

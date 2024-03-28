@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/education/me/assignments/{educationAssignment%2Did}/submissions/{educationSubmission%2Did}/submittedResources/{educationSubmissionResource%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property submittedResources for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +45,7 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationSubmissionResource]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationSubmissionResource]:
         """
         Retrieve a submitted resource. Only teachers, students, and applications with application permissions can perform this operation. Resources are available to a teacher or an application with application permissions after a student submits it, and are available to the student after the teacher returns the submission. Teachers can leave notes in some resources.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +66,7 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationSubmissionResource, error_mapping)
     
-    async def patch(self,body: Optional[EducationSubmissionResource] = None, request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationSubmissionResource]:
+    async def patch(self,body: Optional[EducationSubmissionResource] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationSubmissionResource]:
         """
         Update the navigation property submittedResources in education
         param body: The request body
@@ -88,7 +89,7 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationSubmissionResource, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property submittedResources for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a submitted resource. Only teachers, students, and applications with application permissions can perform this operation. Resources are available to a teacher or an application with application permissions after a student submits it, and are available to the student after the teacher returns the submission. Teachers can leave notes in some resources.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +111,7 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[EducationSubmissionResource] = None, request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EducationSubmissionResource] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property submittedResources in education
         param body: The request body
@@ -134,16 +135,6 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return EducationSubmissionResourceItemRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class EducationSubmissionResourceItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
     @dataclass
     class EducationSubmissionResourceItemRequestBuilderGetQueryParameters():
@@ -170,28 +161,5 @@ class EducationSubmissionResourceItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class EducationSubmissionResourceItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[EducationSubmissionResourceItemRequestBuilder.EducationSubmissionResourceItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class EducationSubmissionResourceItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

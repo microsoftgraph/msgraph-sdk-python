@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +26,7 @@ class MicrosoftGraphSecurityAddToReviewSetRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/reviewSets/{ediscoveryReviewSet%2Did}/microsoft.graph.security.addToReviewSet", path_parameters)
     
-    async def post(self,body: Optional[AddToReviewSetPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityAddToReviewSetRequestBuilderPostRequestConfiguration] = None) -> None:
+    async def post(self,body: Optional[AddToReviewSetPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Start the process of adding a collection from Microsoft 365 services to a review set. After the operation is created, you can get the status of the operation by retrieving the Location parameter from the response headers. The location provides a URL that will return a Add to review set operation.
         param body: The request body
@@ -48,7 +48,7 @@ class MicrosoftGraphSecurityAddToReviewSetRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_post_request_information(self,body: Optional[AddToReviewSetPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityAddToReviewSetRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AddToReviewSetPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Start the process of adding a collection from Microsoft 365 services to a review set. After the operation is created, you can get the status of the operation by retrieving the Location parameter from the response headers. The location provides a URL that will return a Add to review set operation.
         param body: The request body
@@ -72,15 +72,5 @@ class MicrosoftGraphSecurityAddToReviewSetRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return MicrosoftGraphSecurityAddToReviewSetRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class MicrosoftGraphSecurityAddToReviewSetRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +26,7 @@ class RevokeSignInSessionsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/revokeSignInSessions", path_parameters)
     
-    async def post(self,request_configuration: Optional[RevokeSignInSessionsRequestBuilderPostRequestConfiguration] = None) -> Optional[RevokeSignInSessionsPostResponse]:
+    async def post(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RevokeSignInSessionsPostResponse]:
         """
         Invalidates all the refresh tokens issued to applications for a user (as well as session cookies in a user's browser), by resetting the signInSessionsValidFromDateTime user property to the current date-time. Typically, this operation is performed (by the user or an administrator) if the user has a lost or stolen device. This operation prevents access to the organization's data through applications on the device by requiring the user to sign in again to all applications that they have previously consented to, independent of device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,7 +47,7 @@ class RevokeSignInSessionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RevokeSignInSessionsPostResponse, error_mapping)
     
-    def to_post_request_information(self,request_configuration: Optional[RevokeSignInSessionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Invalidates all the refresh tokens issued to applications for a user (as well as session cookies in a user's browser), by resetting the signInSessionsValidFromDateTime user property to the current date-time. Typically, this operation is performed (by the user or an administrator) if the user has a lost or stolen device. This operation prevents access to the organization's data through applications on the device by requiring the user to sign in again to all applications that they have previously consented to, independent of device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,15 +67,5 @@ class RevokeSignInSessionsRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return RevokeSignInSessionsRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RevokeSignInSessionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -25,7 +26,7 @@ class CountRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}/calendars/{calendar%2Did}/calendarView/{event%2Did}/instances/{event%2Did1}/attachments/$count{?%24filter}", path_parameters)
     
-    async def get(self,request_configuration: Optional[CountRequestBuilderGetRequestConfiguration] = None) -> Optional[int]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[int]:
         """
         Get the number of the resource
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -43,7 +44,7 @@ class CountRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "int", error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[CountRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get the number of the resource
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -83,19 +84,6 @@ class CountRequestBuilder(BaseRequestBuilder):
         
         # Filter items by property values
         filter: Optional[str] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class CountRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[CountRequestBuilder.CountRequestBuilderGetQueryParameters] = None
 
     
 

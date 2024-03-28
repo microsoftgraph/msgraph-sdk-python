@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +45,7 @@ class FederationConfigurationsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["identityProviderBase%2Did"] = identity_provider_base_id
         return IdentityProviderBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[FederationConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityProviderBaseCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityProviderBaseCollectionResponse]:
         """
         Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class FederationConfigurationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IdentityProviderBaseCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[FederationConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[IdentityProviderBase]:
+    async def post(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityProviderBase]:
         """
         Create new navigation property to federationConfigurations for directory
         param body: The request body
@@ -87,7 +88,7 @@ class FederationConfigurationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IdentityProviderBase, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[FederationConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +99,7 @@ class FederationConfigurationsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[FederationConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to federationConfigurations for directory
         param body: The request body
@@ -196,28 +197,5 @@ class FederationConfigurationsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class FederationConfigurationsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[FederationConfigurationsRequestBuilder.FederationConfigurationsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class FederationConfigurationsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

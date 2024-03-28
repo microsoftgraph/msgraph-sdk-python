@@ -59,7 +59,7 @@ class Device(DirectoryObject):
     model: Optional[str] = None
     # The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).
     on_premises_last_sync_date_time: Optional[datetime.datetime] = None
-    # The onPremisesSecurityIdentifier property
+    # The on-premises security identifier (SID) for the user who was synchronized from on-premises to the cloud. Read-only. Returned only on $select. Supports $filter (eq).
     on_premises_security_identifier: Optional[str] = None
     # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
     on_premises_sync_enabled: Optional[bool] = None

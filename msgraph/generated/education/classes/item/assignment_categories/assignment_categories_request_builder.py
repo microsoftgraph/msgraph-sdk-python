@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +45,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["educationCategory%2Did"] = education_category_id
         return EducationCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AssignmentCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationCategoryCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationCategoryCollectionResponse]:
         """
         Retrieve a list of educationCategory objects. Only teachers can perform this operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +66,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationCategoryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[EducationCategory] = None, request_configuration: Optional[AssignmentCategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[EducationCategory]:
+    async def post(self,body: Optional[EducationCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationCategory]:
         """
         Create a new educationCategory on an educationClass. Only teachers can perform this operation.
         param body: The request body
@@ -89,7 +90,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationCategory, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[AssignmentCategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of educationCategory objects. Only teachers can perform this operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +101,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[EducationCategory] = None, request_configuration: Optional[AssignmentCategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[EducationCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new educationCategory on an educationClass. Only teachers can perform this operation.
         param body: The request body
@@ -198,28 +199,5 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AssignmentCategoriesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[AssignmentCategoriesRequestBuilder.AssignmentCategoriesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AssignmentCategoriesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

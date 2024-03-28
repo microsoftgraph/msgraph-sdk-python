@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class AgreementFileVersionItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/termsOfUse/agreements/{agreement%2Did}/file/localizations/{agreementFileLocalization%2Did}/versions/{agreementFileVersion%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[AgreementFileVersionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property versions for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +45,7 @@ class AgreementFileVersionItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AgreementFileVersionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AgreementFileVersion]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AgreementFileVersion]:
         """
         Read-only. Customized versions of the terms of use agreement in the Microsoft Entra tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class AgreementFileVersionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AgreementFileVersion, error_mapping)
     
-    async def patch(self,body: Optional[AgreementFileVersion] = None, request_configuration: Optional[AgreementFileVersionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AgreementFileVersion]:
+    async def patch(self,body: Optional[AgreementFileVersion] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AgreementFileVersion]:
         """
         Update the navigation property versions in identityGovernance
         param body: The request body
@@ -87,7 +88,7 @@ class AgreementFileVersionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AgreementFileVersion, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[AgreementFileVersionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property versions for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +99,7 @@ class AgreementFileVersionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[AgreementFileVersionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Read-only. Customized versions of the terms of use agreement in the Microsoft Entra tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -109,7 +110,7 @@ class AgreementFileVersionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AgreementFileVersion] = None, request_configuration: Optional[AgreementFileVersionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AgreementFileVersion] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property versions in identityGovernance
         param body: The request body
@@ -133,16 +134,6 @@ class AgreementFileVersionItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AgreementFileVersionItemRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AgreementFileVersionItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
     @dataclass
     class AgreementFileVersionItemRequestBuilderGetQueryParameters():
@@ -169,28 +160,5 @@ class AgreementFileVersionItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AgreementFileVersionItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[AgreementFileVersionItemRequestBuilder.AgreementFileVersionItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AgreementFileVersionItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

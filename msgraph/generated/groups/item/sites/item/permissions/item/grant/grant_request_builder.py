@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class GrantRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/permissions/{permission%2Did}/grant", path_parameters)
     
-    async def post(self,body: Optional[GrantPostRequestBody] = None, request_configuration: Optional[GrantRequestBuilderPostRequestConfiguration] = None) -> Optional[GrantPostResponse]:
+    async def post(self,body: Optional[GrantPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[GrantPostResponse]:
         """
         Grant users access to a link represented by a [permission][].
         param body: The request body
@@ -51,7 +51,7 @@ class GrantRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, GrantPostResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[GrantPostRequestBody] = None, request_configuration: Optional[GrantRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[GrantPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Grant users access to a link represented by a [permission][].
         param body: The request body
@@ -75,15 +75,5 @@ class GrantRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GrantRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class GrantRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

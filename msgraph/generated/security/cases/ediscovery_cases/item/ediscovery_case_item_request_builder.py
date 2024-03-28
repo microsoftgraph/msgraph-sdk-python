@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -35,7 +36,7 @@ class EdiscoveryCaseItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete an ediscoveryCase object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -54,7 +55,7 @@ class EdiscoveryCaseItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryCase]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EdiscoveryCase]:
         """
         Read the properties and relationships of an ediscoveryCase object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -75,7 +76,7 @@ class EdiscoveryCaseItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EdiscoveryCase, error_mapping)
     
-    async def patch(self,body: Optional[EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCaseItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EdiscoveryCase]:
+    async def patch(self,body: Optional[EdiscoveryCase] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EdiscoveryCase]:
         """
         Update the properties of an ediscoveryCase object.
         param body: The request body
@@ -99,7 +100,7 @@ class EdiscoveryCaseItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EdiscoveryCase, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete an ediscoveryCase object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +111,7 @@ class EdiscoveryCaseItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of an ediscoveryCase object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -121,7 +122,7 @@ class EdiscoveryCaseItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCaseItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EdiscoveryCase] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an ediscoveryCase object.
         param body: The request body
@@ -227,16 +228,6 @@ class EdiscoveryCaseItemRequestBuilder(BaseRequestBuilder):
 
         return TagsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class EdiscoveryCaseItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class EdiscoveryCaseItemRequestBuilderGetQueryParameters():
         """
@@ -262,28 +253,5 @@ class EdiscoveryCaseItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class EdiscoveryCaseItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[EdiscoveryCaseItemRequestBuilder.EdiscoveryCaseItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class EdiscoveryCaseItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

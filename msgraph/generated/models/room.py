@@ -35,7 +35,7 @@ class Room(Place):
     label: Optional[str] = None
     # Specifies a nickname for the room, for example, 'conf room'.
     nickname: Optional[str] = None
-    # Specifies additional features of the room, for example, details like the type of view or furniture type.
+    # Specifies other features of the room, for example, details like the type of view or furniture type.
     tags: Optional[List[str]] = None
     # Specifies the name of the video device in the room.
     video_device_name: Optional[str] = None

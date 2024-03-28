@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +45,7 @@ class UserExperienceAnalyticsDevicePerformanceRequestBuilder(BaseRequestBuilder)
         url_tpl_params["userExperienceAnalyticsDevicePerformance%2Did"] = user_experience_analytics_device_performance_id
         return UserExperienceAnalyticsDevicePerformanceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[UserExperienceAnalyticsDevicePerformanceRequestBuilderGetRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsDevicePerformanceCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsDevicePerformanceCollectionResponse]:
         """
         User experience analytics device performance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class UserExperienceAnalyticsDevicePerformanceRequestBuilder(BaseRequestBuilder)
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsDevicePerformanceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UserExperienceAnalyticsDevicePerformance] = None, request_configuration: Optional[UserExperienceAnalyticsDevicePerformanceRequestBuilderPostRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsDevicePerformance]:
+    async def post(self,body: Optional[UserExperienceAnalyticsDevicePerformance] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsDevicePerformance]:
         """
         Create new navigation property to userExperienceAnalyticsDevicePerformance for deviceManagement
         param body: The request body
@@ -99,7 +100,7 @@ class UserExperienceAnalyticsDevicePerformanceRequestBuilder(BaseRequestBuilder)
 
         return SummarizeDevicePerformanceDevicesWithSummarizeByRequestBuilder(self.request_adapter, self.path_parameters, summarize_by)
     
-    def to_get_request_information(self,request_configuration: Optional[UserExperienceAnalyticsDevicePerformanceRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         User experience analytics device performance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +111,7 @@ class UserExperienceAnalyticsDevicePerformanceRequestBuilder(BaseRequestBuilder)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UserExperienceAnalyticsDevicePerformance] = None, request_configuration: Optional[UserExperienceAnalyticsDevicePerformanceRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserExperienceAnalyticsDevicePerformance] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to userExperienceAnalyticsDevicePerformance for deviceManagement
         param body: The request body
@@ -199,28 +200,5 @@ class UserExperienceAnalyticsDevicePerformanceRequestBuilder(BaseRequestBuilder)
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UserExperienceAnalyticsDevicePerformanceRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsDevicePerformanceRequestBuilder.UserExperienceAnalyticsDevicePerformanceRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UserExperienceAnalyticsDevicePerformanceRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

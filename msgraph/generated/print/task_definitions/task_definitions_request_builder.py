@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class TaskDefinitionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["printTaskDefinition%2Did"] = print_task_definition_id
         return PrintTaskDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[TaskDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintTaskDefinitionCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintTaskDefinitionCollectionResponse]:
         """
         Retrieve a list of task definitions that the requesting app defined in the tenant. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class TaskDefinitionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrintTaskDefinitionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[PrintTaskDefinition] = None, request_configuration: Optional[TaskDefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[PrintTaskDefinition]:
+    async def post(self,body: Optional[PrintTaskDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintTaskDefinition]:
         """
         Create a new task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         param body: The request body
@@ -88,7 +89,7 @@ class TaskDefinitionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrintTaskDefinition, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[TaskDefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of task definitions that the requesting app defined in the tenant. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class TaskDefinitionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[PrintTaskDefinition] = None, request_configuration: Optional[TaskDefinitionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PrintTaskDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         param body: The request body
@@ -188,28 +189,5 @@ class TaskDefinitionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TaskDefinitionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[TaskDefinitionsRequestBuilder.TaskDefinitionsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TaskDefinitionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

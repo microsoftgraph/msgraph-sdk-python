@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,9 +29,9 @@ class UserItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/virtualEndpoint/provisioningPolicies/{cloudPcProvisioningPolicy%2Did}/assignments/{cloudPcProvisioningPolicyAssignment%2Did}/assignedUsers/{user%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[UserItemRequestBuilderGetRequestConfiguration] = None) -> Optional[User]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[User]:
         """
-        Get assignedUsers from deviceManagement
+        The assignment targeted users for the provisioning policy. This list of users is computed based on assignments, licenses, group memberships, and policies. Read-only. Supports$expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[User]
         """
@@ -48,9 +49,9 @@ class UserItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, User, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[UserItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get assignedUsers from deviceManagement
+        The assignment targeted users for the provisioning policy. This list of users is computed based on assignments, licenses, group memberships, and policies. Read-only. Supports$expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -90,7 +91,7 @@ class UserItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserItemRequestBuilderGetQueryParameters():
         """
-        Get assignedUsers from deviceManagement
+        The assignment targeted users for the provisioning policy. This list of users is computed based on assignments, licenses, group memberships, and policies. Read-only. Supports$expand.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -111,19 +112,6 @@ class UserItemRequestBuilder(BaseRequestBuilder):
 
         # Select properties to be returned
         select: Optional[List[str]] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UserItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[UserItemRequestBuilder.UserItemRequestBuilderGetQueryParameters] = None
 
     
 

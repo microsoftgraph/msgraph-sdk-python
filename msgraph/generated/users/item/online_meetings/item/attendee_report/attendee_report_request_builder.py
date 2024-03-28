@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -25,7 +25,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/onlineMeetings/{onlineMeeting%2Did}/attendeeReport", path_parameters)
     
-    async def get(self,request_configuration: Optional[AttendeeReportRequestBuilderGetRequestConfiguration] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
         """
         Get attendeeReport for the navigation property onlineMeetings from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +44,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    async def put(self,body: bytes, request_configuration: Optional[AttendeeReportRequestBuilderPutRequestConfiguration] = None) -> bytes:
+    async def put(self,body: bytes, request_configuration: Optional[RequestConfiguration] = None) -> bytes:
         """
         Update attendeeReport for the navigation property onlineMeetings in users
         param body: Binary request body
@@ -65,7 +65,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[AttendeeReportRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get attendeeReport for the navigation property onlineMeetings from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -76,7 +76,7 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/octet-stream, application/json")
         return request_info
     
-    def to_put_request_information(self,body: bytes, request_configuration: Optional[AttendeeReportRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: bytes, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update attendeeReport for the navigation property onlineMeetings in users
         param body: Binary request body
@@ -100,25 +100,5 @@ class AttendeeReportRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AttendeeReportRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AttendeeReportRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AttendeeReportRequestBuilderPutRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

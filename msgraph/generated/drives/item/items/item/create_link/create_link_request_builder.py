@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class CreateLinkRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/createLink", path_parameters)
     
-    async def post(self,body: Optional[CreateLinkPostRequestBody] = None, request_configuration: Optional[CreateLinkRequestBuilderPostRequestConfiguration] = None) -> Optional[Permission]:
+    async def post(self,body: Optional[CreateLinkPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Permission]:
         """
         You can use createLink action to share a DriveItem via a sharing link. The createLink action will create a new sharing link if the specified link type doesn't already exist for the calling application.If a sharing link of the specified type already exists for the app, the existing sharing link will be returned. DriveItem resources inherit sharing permissions from their ancestors.
         param body: The request body
@@ -51,7 +51,7 @@ class CreateLinkRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Permission, error_mapping)
     
-    def to_post_request_information(self,body: Optional[CreateLinkPostRequestBody] = None, request_configuration: Optional[CreateLinkRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CreateLinkPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         You can use createLink action to share a DriveItem via a sharing link. The createLink action will create a new sharing link if the specified link type doesn't already exist for the calling application.If a sharing link of the specified type already exists for the app, the existing sharing link will be returned. DriveItem resources inherit sharing permissions from their ancestors.
         param body: The request body
@@ -75,15 +75,5 @@ class CreateLinkRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return CreateLinkRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class CreateLinkRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

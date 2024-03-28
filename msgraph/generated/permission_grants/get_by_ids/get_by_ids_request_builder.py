@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class GetByIdsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/permissionGrants/getByIds", path_parameters)
     
-    async def post(self,body: Optional[GetByIdsPostRequestBody] = None, request_configuration: Optional[GetByIdsRequestBuilderPostRequestConfiguration] = None) -> Optional[GetByIdsPostResponse]:
+    async def post(self,body: Optional[GetByIdsPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[GetByIdsPostResponse]:
         """
         Return the directory objects specified in a list of IDs. Only a subset of user properties are returned by default in v1.0. Some common uses for this function are to:
         param body: The request body
@@ -51,7 +51,7 @@ class GetByIdsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, GetByIdsPostResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[GetByIdsPostRequestBody] = None, request_configuration: Optional[GetByIdsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[GetByIdsPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Return the directory objects specified in a list of IDs. Only a subset of user properties are returned by default in v1.0. Some common uses for this function are to:
         param body: The request body
@@ -75,15 +75,5 @@ class GetByIdsRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GetByIdsRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class GetByIdsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +28,7 @@ class RemoteDesktopSecurityConfigurationRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/remoteDesktopSecurityConfiguration{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RemoteDesktopSecurityConfigurationRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete a remoteDesktopSecurityConfiguration object on a servicePrincipal. Removing remoteDesktopSecurityConfiguration object on the servicePrincipal disables the Microsoft Entra ID Remote Desktop Services (RDS) authentication protocol to authenticate a user to Microsoft Entra joined or Microsoft Entra hybrid joined devices, and removes any target device groups that you configured for SSO.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +47,7 @@ class RemoteDesktopSecurityConfigurationRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RemoteDesktopSecurityConfigurationRequestBuilderGetRequestConfiguration] = None) -> Optional[RemoteDesktopSecurityConfiguration]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RemoteDesktopSecurityConfiguration]:
         """
         Read the properties and relationships of a remoteDesktopSecurityConfiguration object on a servicePrincipal. Use this configuration to view the Microsoft Entra ID Remote Desktop Services (RDS) authentication protocol to authenticate a user to Microsoft Entra joined or Microsoft Entra hybrid joined devices. Additionally you can view any targetDeviceGroups that have been configured for SSO.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +68,7 @@ class RemoteDesktopSecurityConfigurationRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RemoteDesktopSecurityConfiguration, error_mapping)
     
-    async def patch(self,body: Optional[RemoteDesktopSecurityConfiguration] = None, request_configuration: Optional[RemoteDesktopSecurityConfigurationRequestBuilderPatchRequestConfiguration] = None) -> Optional[RemoteDesktopSecurityConfiguration]:
+    async def patch(self,body: Optional[RemoteDesktopSecurityConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[RemoteDesktopSecurityConfiguration]:
         """
         Update the properties of a remoteDesktopSecurityConfiguration object on the servicePrincipal. Use this configuration to enable or disable the Microsoft Entra ID Remote Desktop Services (RDS) authentication protocol to authenticate a user to Microsoft Entra joined or Microsoft Entra hybrid joined devices.
         param body: The request body
@@ -91,7 +92,7 @@ class RemoteDesktopSecurityConfigurationRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RemoteDesktopSecurityConfiguration, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RemoteDesktopSecurityConfigurationRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete a remoteDesktopSecurityConfiguration object on a servicePrincipal. Removing remoteDesktopSecurityConfiguration object on the servicePrincipal disables the Microsoft Entra ID Remote Desktop Services (RDS) authentication protocol to authenticate a user to Microsoft Entra joined or Microsoft Entra hybrid joined devices, and removes any target device groups that you configured for SSO.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +103,7 @@ class RemoteDesktopSecurityConfigurationRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RemoteDesktopSecurityConfigurationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of a remoteDesktopSecurityConfiguration object on a servicePrincipal. Use this configuration to view the Microsoft Entra ID Remote Desktop Services (RDS) authentication protocol to authenticate a user to Microsoft Entra joined or Microsoft Entra hybrid joined devices. Additionally you can view any targetDeviceGroups that have been configured for SSO.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -113,7 +114,7 @@ class RemoteDesktopSecurityConfigurationRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[RemoteDesktopSecurityConfiguration] = None, request_configuration: Optional[RemoteDesktopSecurityConfigurationRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[RemoteDesktopSecurityConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a remoteDesktopSecurityConfiguration object on the servicePrincipal. Use this configuration to enable or disable the Microsoft Entra ID Remote Desktop Services (RDS) authentication protocol to authenticate a user to Microsoft Entra joined or Microsoft Entra hybrid joined devices.
         param body: The request body
@@ -147,16 +148,6 @@ class RemoteDesktopSecurityConfigurationRequestBuilder(BaseRequestBuilder):
 
         return TargetDeviceGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RemoteDesktopSecurityConfigurationRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class RemoteDesktopSecurityConfigurationRequestBuilderGetQueryParameters():
         """
@@ -182,28 +173,5 @@ class RemoteDesktopSecurityConfigurationRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RemoteDesktopSecurityConfigurationRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[RemoteDesktopSecurityConfigurationRequestBuilder.RemoteDesktopSecurityConfigurationRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RemoteDesktopSecurityConfigurationRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

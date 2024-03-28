@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class DeviceCompliancePolicyStateItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/managedDevices/{managedDevice%2Did}/deviceCompliancePolicyStates/{deviceCompliancePolicyState%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[DeviceCompliancePolicyStateItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property deviceCompliancePolicyStates for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +45,7 @@ class DeviceCompliancePolicyStateItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DeviceCompliancePolicyStateItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyState]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceCompliancePolicyState]:
         """
         Device compliance policy states for this device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class DeviceCompliancePolicyStateItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceCompliancePolicyState, error_mapping)
     
-    async def patch(self,body: Optional[DeviceCompliancePolicyState] = None, request_configuration: Optional[DeviceCompliancePolicyStateItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceCompliancePolicyState]:
+    async def patch(self,body: Optional[DeviceCompliancePolicyState] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceCompliancePolicyState]:
         """
         Update the navigation property deviceCompliancePolicyStates in users
         param body: The request body
@@ -87,7 +88,7 @@ class DeviceCompliancePolicyStateItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceCompliancePolicyState, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[DeviceCompliancePolicyStateItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property deviceCompliancePolicyStates for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +99,7 @@ class DeviceCompliancePolicyStateItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[DeviceCompliancePolicyStateItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Device compliance policy states for this device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -109,7 +110,7 @@ class DeviceCompliancePolicyStateItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[DeviceCompliancePolicyState] = None, request_configuration: Optional[DeviceCompliancePolicyStateItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceCompliancePolicyState] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property deviceCompliancePolicyStates in users
         param body: The request body
@@ -133,16 +134,6 @@ class DeviceCompliancePolicyStateItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return DeviceCompliancePolicyStateItemRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DeviceCompliancePolicyStateItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
     @dataclass
     class DeviceCompliancePolicyStateItemRequestBuilderGetQueryParameters():
@@ -169,28 +160,5 @@ class DeviceCompliancePolicyStateItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DeviceCompliancePolicyStateItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[DeviceCompliancePolicyStateItemRequestBuilder.DeviceCompliancePolicyStateItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DeviceCompliancePolicyStateItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

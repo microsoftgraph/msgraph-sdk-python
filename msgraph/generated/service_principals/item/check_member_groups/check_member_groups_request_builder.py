@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class CheckMemberGroupsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/checkMemberGroups", path_parameters)
     
-    async def post(self,body: Optional[CheckMemberGroupsPostRequestBody] = None, request_configuration: Optional[CheckMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[CheckMemberGroupsPostResponse]:
+    async def post(self,body: Optional[CheckMemberGroupsPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CheckMemberGroupsPostResponse]:
         """
         Check for membership in a specified list of group IDs, and return from that list those groups (identified by IDs) of which the specified user, group, service principal, organizational contact, device, or directory object is a member. This function is transitive. You can check up to a maximum of 20 groups per request. This function supports all groups provisioned in Microsoft Entra ID. Because Microsoft 365 groups cannot contain other groups, membership in a Microsoft 365 group is always direct.
         param body: The request body
@@ -51,7 +51,7 @@ class CheckMemberGroupsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CheckMemberGroupsPostResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[CheckMemberGroupsPostRequestBody] = None, request_configuration: Optional[CheckMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CheckMemberGroupsPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Check for membership in a specified list of group IDs, and return from that list those groups (identified by IDs) of which the specified user, group, service principal, organizational contact, device, or directory object is a member. This function is transitive. You can check up to a maximum of 20 groups per request. This function supports all groups provisioned in Microsoft Entra ID. Because Microsoft 365 groups cannot contain other groups, membership in a Microsoft 365 group is always direct.
         param body: The request body
@@ -75,15 +75,5 @@ class CheckMemberGroupsRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return CheckMemberGroupsRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class CheckMemberGroupsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

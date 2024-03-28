@@ -23,7 +23,7 @@ class DocumentSetVersion(ListItemVersion):
     created_date_time: Optional[datetime.datetime] = None
     # Items within the document set that are captured as part of this version.
     items: Optional[List[DocumentSetVersionItem]] = None
-    # If true, minor versions of items are also captured; otherwise, only major versions will be captured. Default value is false.
+    # If true, minor versions of items are also captured; otherwise, only major versions are captured. The default value is false.
     should_capture_minor_version: Optional[bool] = None
     
     @staticmethod

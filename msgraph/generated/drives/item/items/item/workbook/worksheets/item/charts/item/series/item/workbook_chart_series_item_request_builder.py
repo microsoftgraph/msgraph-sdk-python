@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +29,7 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}/series/{workbookChartSeries%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property series for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +47,7 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartSeries]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartSeries]:
         """
         Retrieve the properties and relationships of chartseries object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +68,7 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookChartSeries, error_mapping)
     
-    async def patch(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChartSeries]:
+    async def patch(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartSeries]:
         """
         Update the properties of chartSeries object.
         param body: The request body
@@ -91,7 +92,7 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookChartSeries, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property series for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +103,7 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of chartseries object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -113,7 +114,7 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of chartSeries object.
         param body: The request body
@@ -156,16 +157,6 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
 
         return PointsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class WorkbookChartSeriesItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class WorkbookChartSeriesItemRequestBuilderGetQueryParameters():
         """
@@ -191,28 +182,5 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class WorkbookChartSeriesItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[WorkbookChartSeriesItemRequestBuilder.WorkbookChartSeriesItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class WorkbookChartSeriesItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

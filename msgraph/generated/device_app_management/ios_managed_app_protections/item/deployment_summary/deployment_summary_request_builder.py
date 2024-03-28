@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/iosManagedAppProtections/{iosManagedAppProtection%2Did}/deploymentSummary{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[DeploymentSummaryRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property deploymentSummary for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +45,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DeploymentSummaryRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppPolicyDeploymentSummary]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedAppPolicyDeploymentSummary]:
         """
         Read properties and relationships of the managedAppPolicyDeploymentSummary object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +66,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ManagedAppPolicyDeploymentSummary, error_mapping)
     
-    async def patch(self,body: Optional[ManagedAppPolicyDeploymentSummary] = None, request_configuration: Optional[DeploymentSummaryRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedAppPolicyDeploymentSummary]:
+    async def patch(self,body: Optional[ManagedAppPolicyDeploymentSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedAppPolicyDeploymentSummary]:
         """
         Update the properties of a managedAppPolicyDeploymentSummary object.
         param body: The request body
@@ -89,7 +90,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ManagedAppPolicyDeploymentSummary, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[DeploymentSummaryRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property deploymentSummary for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +101,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[DeploymentSummaryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Read properties and relationships of the managedAppPolicyDeploymentSummary object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +112,7 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ManagedAppPolicyDeploymentSummary] = None, request_configuration: Optional[DeploymentSummaryRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ManagedAppPolicyDeploymentSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a managedAppPolicyDeploymentSummary object.
         param body: The request body
@@ -135,16 +136,6 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return DeploymentSummaryRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DeploymentSummaryRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
     @dataclass
     class DeploymentSummaryRequestBuilderGetQueryParameters():
@@ -171,28 +162,5 @@ class DeploymentSummaryRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DeploymentSummaryRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[DeploymentSummaryRequestBuilder.DeploymentSummaryRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DeploymentSummaryRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

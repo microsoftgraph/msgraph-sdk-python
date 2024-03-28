@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +28,7 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/connections/{externalConnection%2Did}/groups/{externalGroup%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[ExternalGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete an externalGroup object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +47,7 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ExternalGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ExternalGroup]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ExternalGroup]:
         """
         Get an externalGroup object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +68,7 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ExternalGroup, error_mapping)
     
-    async def patch(self,body: Optional[ExternalGroup] = None, request_configuration: Optional[ExternalGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ExternalGroup]:
+    async def patch(self,body: Optional[ExternalGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ExternalGroup]:
         """
         Update the properties of an externalGroup object.
         param body: The request body
@@ -91,7 +92,7 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ExternalGroup, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[ExternalGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete an externalGroup object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +103,7 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[ExternalGroupItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get an externalGroup object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -113,7 +114,7 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ExternalGroup] = None, request_configuration: Optional[ExternalGroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ExternalGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of an externalGroup object.
         param body: The request body
@@ -147,16 +148,6 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
 
         return MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ExternalGroupItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class ExternalGroupItemRequestBuilderGetQueryParameters():
         """
@@ -182,28 +173,5 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ExternalGroupItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ExternalGroupItemRequestBuilder.ExternalGroupItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ExternalGroupItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

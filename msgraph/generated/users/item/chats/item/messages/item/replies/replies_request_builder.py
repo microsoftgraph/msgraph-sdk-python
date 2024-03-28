@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +45,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["chatMessage%2Did1"] = chat_message_id1
         return ChatMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None) -> Optional[ChatMessageCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ChatMessageCollectionResponse]:
         """
         List all the replies to a message in a channel of a team. This method lists only the replies of the specified message, if any. To get the message itself, call get channel message.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +66,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ChatMessageCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ChatMessage] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None) -> Optional[ChatMessage]:
+    async def post(self,body: Optional[ChatMessage] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ChatMessage]:
         """
         Create a new reply to a chatMessage in a specified channel.
         param body: The request body
@@ -89,7 +90,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ChatMessage, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         List all the replies to a message in a channel of a team. This method lists only the replies of the specified message, if any. To get the message itself, call get channel message.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +101,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ChatMessage] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ChatMessage] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new reply to a chatMessage in a specified channel.
         param body: The request body
@@ -198,28 +199,5 @@ class RepliesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RepliesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[RepliesRequestBuilder.RepliesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RepliesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +28,7 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/policies/appManagementPolicies/{appManagementPolicy%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[AppManagementPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete an appManagementPolicy object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +47,7 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AppManagementPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AppManagementPolicy]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppManagementPolicy]:
         """
         Read the properties of an appManagementPolicy object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +68,7 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppManagementPolicy, error_mapping)
     
-    async def patch(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[AppManagementPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AppManagementPolicy]:
+    async def patch(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppManagementPolicy]:
         """
         Update an appManagementPolicy object.
         param body: The request body
@@ -91,7 +92,7 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppManagementPolicy, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[AppManagementPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete an appManagementPolicy object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +103,7 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[AppManagementPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties of an appManagementPolicy object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -113,7 +114,7 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[AppManagementPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update an appManagementPolicy object.
         param body: The request body
@@ -147,16 +148,6 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
 
         return AppliesToRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AppManagementPolicyItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class AppManagementPolicyItemRequestBuilderGetQueryParameters():
         """
@@ -182,28 +173,5 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AppManagementPolicyItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[AppManagementPolicyItemRequestBuilder.AppManagementPolicyItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AppManagementPolicyItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

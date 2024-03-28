@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class UnmuteRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/communications/calls/{call%2Did}/unmute", path_parameters)
     
-    async def post(self,body: Optional[UnmutePostRequestBody] = None, request_configuration: Optional[UnmuteRequestBuilderPostRequestConfiguration] = None) -> Optional[UnmuteParticipantOperation]:
+    async def post(self,body: Optional[UnmutePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnmuteParticipantOperation]:
         """
         Allow the application to unmute itself. This is a server unmute, meaning that the server will start sending audio packets for this participant to other participants again. For more information about how to handle unmute operations, see unmuteParticipantOperation.
         param body: The request body
@@ -51,7 +51,7 @@ class UnmuteRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UnmuteParticipantOperation, error_mapping)
     
-    def to_post_request_information(self,body: Optional[UnmutePostRequestBody] = None, request_configuration: Optional[UnmuteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UnmutePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Allow the application to unmute itself. This is a server unmute, meaning that the server will start sending audio packets for this participant to other participants again. For more information about how to handle unmute operations, see unmuteParticipantOperation.
         param body: The request body
@@ -75,15 +75,5 @@ class UnmuteRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return UnmuteRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UnmuteRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

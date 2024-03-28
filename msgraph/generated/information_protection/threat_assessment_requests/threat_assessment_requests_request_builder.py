@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class ThreatAssessmentRequestsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["threatAssessmentRequest%2Did"] = threat_assessment_request_id
         return ThreatAssessmentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[ThreatAssessmentRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ThreatAssessmentRequestCollectionResponse]:
         """
         Retrieve a list of threatAssessmentRequest objects. A threat assessment request can be one of the following types:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class ThreatAssessmentRequestsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ThreatAssessmentRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ThreatAssessmentRequest] = None, request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[ThreatAssessmentRequest]:
+    async def post(self,body: Optional[ThreatAssessmentRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ThreatAssessmentRequest]:
         """
         Create a new threat assessment request. A threat assessment request can be one of the following types:
         param body: The request body
@@ -88,7 +89,7 @@ class ThreatAssessmentRequestsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ThreatAssessmentRequest, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of threatAssessmentRequest objects. A threat assessment request can be one of the following types:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class ThreatAssessmentRequestsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ThreatAssessmentRequest] = None, request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ThreatAssessmentRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new threat assessment request. A threat assessment request can be one of the following types:
         param body: The request body
@@ -188,28 +189,5 @@ class ThreatAssessmentRequestsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ThreatAssessmentRequestsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ThreatAssessmentRequestsRequestBuilder.ThreatAssessmentRequestsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ThreatAssessmentRequestsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

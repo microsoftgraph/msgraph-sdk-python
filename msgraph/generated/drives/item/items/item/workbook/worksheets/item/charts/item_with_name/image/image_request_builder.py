@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +26,7 @@ class ImageRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/item(name='{name}')/image()", path_parameters)
     
-    async def get(self,request_configuration: Optional[ImageRequestBuilderGetRequestConfiguration] = None) -> Optional[ImageGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ImageGetResponse]:
         """
         Invoke function image
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +46,7 @@ class ImageRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ImageGetResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ImageRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function image
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,15 +66,5 @@ class ImageRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return ImageRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ImageRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

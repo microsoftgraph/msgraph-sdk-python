@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class AgreementAcceptanceItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/agreementAcceptances/{agreementAcceptance%2Did}{?%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[AgreementAcceptanceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete entity from agreementAcceptances
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +45,7 @@ class AgreementAcceptanceItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AgreementAcceptanceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AgreementAcceptance]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AgreementAcceptance]:
         """
         Get entity from agreementAcceptances by key
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class AgreementAcceptanceItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AgreementAcceptance, error_mapping)
     
-    async def patch(self,body: Optional[AgreementAcceptance] = None, request_configuration: Optional[AgreementAcceptanceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AgreementAcceptance]:
+    async def patch(self,body: Optional[AgreementAcceptance] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AgreementAcceptance]:
         """
         Update entity in agreementAcceptances
         param body: The request body
@@ -87,7 +88,7 @@ class AgreementAcceptanceItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AgreementAcceptance, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[AgreementAcceptanceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete entity from agreementAcceptances
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +99,7 @@ class AgreementAcceptanceItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[AgreementAcceptanceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get entity from agreementAcceptances by key
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -109,7 +110,7 @@ class AgreementAcceptanceItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AgreementAcceptance] = None, request_configuration: Optional[AgreementAcceptanceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AgreementAcceptance] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update entity in agreementAcceptances
         param body: The request body
@@ -134,16 +135,6 @@ class AgreementAcceptanceItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return AgreementAcceptanceItemRequestBuilder(self.request_adapter, raw_url)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AgreementAcceptanceItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class AgreementAcceptanceItemRequestBuilderGetQueryParameters():
         """
@@ -164,28 +155,5 @@ class AgreementAcceptanceItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AgreementAcceptanceItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[AgreementAcceptanceItemRequestBuilder.AgreementAcceptanceItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AgreementAcceptanceItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

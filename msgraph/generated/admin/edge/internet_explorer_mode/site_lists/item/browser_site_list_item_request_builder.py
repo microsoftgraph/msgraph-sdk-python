@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +30,7 @@ class BrowserSiteListItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/edge/internetExplorerMode/siteLists/{browserSiteList%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[BrowserSiteListItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete a browserSiteList object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -48,7 +49,7 @@ class BrowserSiteListItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[BrowserSiteListItemRequestBuilderGetRequestConfiguration] = None) -> Optional[BrowserSiteList]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BrowserSiteList]:
         """
         Get a browserSiteList that contains browserSite and browserSharedCookie resources.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -69,7 +70,7 @@ class BrowserSiteListItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, BrowserSiteList, error_mapping)
     
-    async def patch(self,body: Optional[BrowserSiteList] = None, request_configuration: Optional[BrowserSiteListItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[BrowserSiteList]:
+    async def patch(self,body: Optional[BrowserSiteList] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[BrowserSiteList]:
         """
         Update the properties of a browserSiteList object.
         param body: The request body
@@ -93,7 +94,7 @@ class BrowserSiteListItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, BrowserSiteList, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[BrowserSiteListItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete a browserSiteList object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +105,7 @@ class BrowserSiteListItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[BrowserSiteListItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get a browserSiteList that contains browserSite and browserSharedCookie resources.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -115,7 +116,7 @@ class BrowserSiteListItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[BrowserSiteList] = None, request_configuration: Optional[BrowserSiteListItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[BrowserSiteList] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a browserSiteList object.
         param body: The request body
@@ -167,16 +168,6 @@ class BrowserSiteListItemRequestBuilder(BaseRequestBuilder):
 
         return SitesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class BrowserSiteListItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class BrowserSiteListItemRequestBuilderGetQueryParameters():
         """
@@ -202,28 +193,5 @@ class BrowserSiteListItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class BrowserSiteListItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[BrowserSiteListItemRequestBuilder.BrowserSiteListItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class BrowserSiteListItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

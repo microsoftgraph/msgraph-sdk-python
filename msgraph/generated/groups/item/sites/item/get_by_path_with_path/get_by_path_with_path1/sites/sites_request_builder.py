@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/getByPath(path='{path}')/getByPath(path='{path1}')/sites{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> Optional[SiteCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SiteCollectionResponse]:
         """
         Get a collection of subsites defined for a [site][].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,7 +48,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SiteCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get a collection of subsites defined for a [site][].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -122,19 +123,6 @@ class SitesRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class SitesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[SitesRequestBuilder.SitesRequestBuilderGetQueryParameters] = None
 
     
 

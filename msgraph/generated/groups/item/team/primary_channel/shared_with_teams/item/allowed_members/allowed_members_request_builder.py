@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -42,7 +43,7 @@ class AllowedMembersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["conversationMember%2Did"] = conversation_member_id
         return ConversationMemberItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AllowedMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[ConversationMemberCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConversationMemberCollectionResponse]:
         """
         Get the list of conversationMembers who can access a shared channel. This method does not return the following conversationMembers from the team:- Users with Guest role- Users who are externally authenticated in the tenant
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class AllowedMembersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ConversationMemberCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[AllowedMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get the list of conversationMembers who can access a shared channel. This method does not return the following conversationMembers from the team:- Users with Guest role- Users who are externally authenticated in the tenant
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -147,19 +148,6 @@ class AllowedMembersRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AllowedMembersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[AllowedMembersRequestBuilder.AllowedMembersRequestBuilderGetQueryParameters] = None
 
     
 

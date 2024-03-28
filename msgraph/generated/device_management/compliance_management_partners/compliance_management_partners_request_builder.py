@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class ComplianceManagementPartnersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["complianceManagementPartner%2Did"] = compliance_management_partner_id
         return ComplianceManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ComplianceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[ComplianceManagementPartnerCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ComplianceManagementPartnerCollectionResponse]:
         """
         List properties and relationships of the complianceManagementPartner objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class ComplianceManagementPartnersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ComplianceManagementPartnerCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> Optional[ComplianceManagementPartner]:
+    async def post(self,body: Optional[ComplianceManagementPartner] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ComplianceManagementPartner]:
         """
         Create a new complianceManagementPartner object.
         param body: The request body
@@ -88,7 +89,7 @@ class ComplianceManagementPartnersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ComplianceManagementPartner, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ComplianceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         List properties and relationships of the complianceManagementPartner objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class ComplianceManagementPartnersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ComplianceManagementPartner] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new complianceManagementPartner object.
         param body: The request body
@@ -188,28 +189,5 @@ class ComplianceManagementPartnersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ComplianceManagementPartnersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ComplianceManagementPartnersRequestBuilder.ComplianceManagementPartnersRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ComplianceManagementPartnersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

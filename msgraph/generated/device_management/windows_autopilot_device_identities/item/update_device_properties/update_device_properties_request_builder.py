@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +26,7 @@ class UpdateDevicePropertiesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/windowsAutopilotDeviceIdentities/{windowsAutopilotDeviceIdentity%2Did}/updateDeviceProperties", path_parameters)
     
-    async def post(self,body: Optional[UpdateDevicePropertiesPostRequestBody] = None, request_configuration: Optional[UpdateDevicePropertiesRequestBuilderPostRequestConfiguration] = None) -> None:
+    async def post(self,body: Optional[UpdateDevicePropertiesPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Updates properties on Autopilot devices.
         param body: The request body
@@ -48,7 +48,7 @@ class UpdateDevicePropertiesRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_post_request_information(self,body: Optional[UpdateDevicePropertiesPostRequestBody] = None, request_configuration: Optional[UpdateDevicePropertiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UpdateDevicePropertiesPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Updates properties on Autopilot devices.
         param body: The request body
@@ -72,15 +72,5 @@ class UpdateDevicePropertiesRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return UpdateDevicePropertiesRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UpdateDevicePropertiesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

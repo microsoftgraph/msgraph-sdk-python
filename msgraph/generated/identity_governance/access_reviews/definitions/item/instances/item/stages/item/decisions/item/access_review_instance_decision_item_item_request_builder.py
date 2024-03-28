@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +28,7 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition%2Did}/instances/{accessReviewInstance%2Did}/stages/{accessReviewStage%2Did}/decisions/{accessReviewInstanceDecisionItem%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[AccessReviewInstanceDecisionItemItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property decisions for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +46,7 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AccessReviewInstanceDecisionItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessReviewInstanceDecisionItem]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessReviewInstanceDecisionItem]:
         """
         Read the properties and relationships of an accessReviewInstanceDecisionItem object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +67,7 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessReviewInstanceDecisionItem, error_mapping)
     
-    async def patch(self,body: Optional[AccessReviewInstanceDecisionItem] = None, request_configuration: Optional[AccessReviewInstanceDecisionItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AccessReviewInstanceDecisionItem]:
+    async def patch(self,body: Optional[AccessReviewInstanceDecisionItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessReviewInstanceDecisionItem]:
         """
         Update access decisions, known as accessReviewInstanceDecisionItems, for which the user is the reviewer.
         param body: The request body
@@ -90,7 +91,7 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessReviewInstanceDecisionItem, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[AccessReviewInstanceDecisionItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property decisions for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +102,7 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[AccessReviewInstanceDecisionItemItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of an accessReviewInstanceDecisionItem object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +113,7 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AccessReviewInstanceDecisionItem] = None, request_configuration: Optional[AccessReviewInstanceDecisionItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AccessReviewInstanceDecisionItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update access decisions, known as accessReviewInstanceDecisionItems, for which the user is the reviewer.
         param body: The request body
@@ -146,16 +147,6 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder(BaseRequestBuilder):
 
         return InsightsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AccessReviewInstanceDecisionItemItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class AccessReviewInstanceDecisionItemItemRequestBuilderGetQueryParameters():
         """
@@ -181,28 +172,5 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AccessReviewInstanceDecisionItemItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[AccessReviewInstanceDecisionItemItemRequestBuilder.AccessReviewInstanceDecisionItemItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AccessReviewInstanceDecisionItemItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

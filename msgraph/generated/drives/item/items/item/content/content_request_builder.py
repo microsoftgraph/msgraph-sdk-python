@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/content{?%24format*}", path_parameters)
     
-    async def get(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None) -> bytes:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
         """
         The content stream, if the item represents a file.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +45,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    async def put(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> Optional[DriveItem]:
+    async def put(self,body: bytes, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DriveItem]:
         """
         The content stream, if the item represents a file.
         param body: Binary request body
@@ -67,7 +68,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DriveItem, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The content stream, if the item represents a file.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -78,7 +79,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/octet-stream, application/json")
         return request_info
     
-    def to_put_request_information(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: bytes, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The content stream, if the item represents a file.
         param body: Binary request body
@@ -123,28 +124,5 @@ class ContentRequestBuilder(BaseRequestBuilder):
         # Format of the content
         format: Optional[str] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ContentRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ContentRequestBuilder.ContentRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ContentRequestBuilderPutRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

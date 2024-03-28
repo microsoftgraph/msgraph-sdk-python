@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class BaseItemItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/items/{baseItem%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[BaseItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[BaseItem]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BaseItem]:
         """
         Used to address any item contained in this site. This collection can't be enumerated.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +47,7 @@ class BaseItemItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, BaseItem, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[BaseItemItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Used to address any item contained in this site. This collection can't be enumerated.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -91,19 +92,6 @@ class BaseItemItemRequestBuilder(BaseRequestBuilder):
 
         # Select properties to be returned
         select: Optional[List[str]] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class BaseItemItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[BaseItemItemRequestBuilder.BaseItemItemRequestBuilderGetQueryParameters] = None
 
     
 

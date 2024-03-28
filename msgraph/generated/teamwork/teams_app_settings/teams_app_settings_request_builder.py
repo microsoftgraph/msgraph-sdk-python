@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/teamwork/teamsAppSettings{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[TeamsAppSettingsRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property teamsAppSettings for teamwork
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +45,7 @@ class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TeamsAppSettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsAppSettings]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsAppSettings]:
         """
         Get the tenant-wide teamsAppSettings for all Teams apps in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +66,7 @@ class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamsAppSettings, error_mapping)
     
-    async def patch(self,body: Optional[TeamsAppSettings] = None, request_configuration: Optional[TeamsAppSettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[TeamsAppSettings]:
+    async def patch(self,body: Optional[TeamsAppSettings] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsAppSettings]:
         """
         Update the tenant-wide teamsAppSettings for all Teams apps in the tenant.
         param body: The request body
@@ -89,7 +90,7 @@ class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamsAppSettings, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[TeamsAppSettingsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property teamsAppSettings for teamwork
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +101,7 @@ class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[TeamsAppSettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get the tenant-wide teamsAppSettings for all Teams apps in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +112,7 @@ class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[TeamsAppSettings] = None, request_configuration: Optional[TeamsAppSettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TeamsAppSettings] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the tenant-wide teamsAppSettings for all Teams apps in the tenant.
         param body: The request body
@@ -135,16 +136,6 @@ class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return TeamsAppSettingsRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TeamsAppSettingsRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
     @dataclass
     class TeamsAppSettingsRequestBuilderGetQueryParameters():
@@ -171,28 +162,5 @@ class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TeamsAppSettingsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[TeamsAppSettingsRequestBuilder.TeamsAppSettingsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TeamsAppSettingsRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

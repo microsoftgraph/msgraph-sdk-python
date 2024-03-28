@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class UpdateRecordingStatusRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/communications/calls/{call%2Did}/updateRecordingStatus", path_parameters)
     
-    async def post(self,body: Optional[UpdateRecordingStatusPostRequestBody] = None, request_configuration: Optional[UpdateRecordingStatusRequestBuilderPostRequestConfiguration] = None) -> Optional[UpdateRecordingStatusOperation]:
+    async def post(self,body: Optional[UpdateRecordingStatusPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UpdateRecordingStatusOperation]:
         """
         Update the application's recording status associated with a call. This requires the use of the Teams policy-based recording solution.
         param body: The request body
@@ -51,7 +51,7 @@ class UpdateRecordingStatusRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UpdateRecordingStatusOperation, error_mapping)
     
-    def to_post_request_information(self,body: Optional[UpdateRecordingStatusPostRequestBody] = None, request_configuration: Optional[UpdateRecordingStatusRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UpdateRecordingStatusPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the application's recording status associated with a call. This requires the use of the Teams policy-based recording solution.
         param body: The request body
@@ -75,15 +75,5 @@ class UpdateRecordingStatusRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return UpdateRecordingStatusRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UpdateRecordingStatusRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

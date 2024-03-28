@@ -14,27 +14,27 @@ class CloudPcAuditActor(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The applicationDisplayName property
+    # Name of the application.
     application_display_name: Optional[str] = None
-    # The applicationId property
+    # Microsoft Entra application ID.
     application_id: Optional[str] = None
-    # The ipAddress property
+    # IP address.
     ip_address: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The remoteTenantId property
+    # The delegated partner tenant ID.
     remote_tenant_id: Optional[str] = None
-    # The remoteUserId property
+    # The delegated partner user ID.
     remote_user_id: Optional[str] = None
-    # The servicePrincipalName property
+    # Service Principal Name (SPN).
     service_principal_name: Optional[str] = None
-    # The userId property
+    # Microsoft Entra user ID.
     user_id: Optional[str] = None
-    # The userPermissions property
+    # List of user permissions and application permissions when the audit event was performed.
     user_permissions: Optional[List[str]] = None
-    # The userPrincipalName property
+    # User Principal Name (UPN).
     user_principal_name: Optional[str] = None
-    # The userRoleScopeTags property
+    # List of role scope tags.
     user_role_scope_tags: Optional[List[CloudPcUserRoleScopeTagInfo]] = None
     
     @staticmethod

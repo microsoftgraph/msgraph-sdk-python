@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["onenoteResource%2Did"] = onenote_resource_id
         return OnenoteResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[OnenoteResourceCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OnenoteResourceCollectionResponse]:
         """
         The image and other file resources in OneNote pages. Getting a resources collection isn't supported, but you can get the binary content of a specific resource. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OnenoteResourceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[OnenoteResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[OnenoteResource]:
+    async def post(self,body: Optional[OnenoteResource] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[OnenoteResource]:
         """
         Create new navigation property to resources for sites
         param body: The request body
@@ -86,7 +87,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OnenoteResource, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The image and other file resources in OneNote pages. Getting a resources collection isn't supported, but you can get the binary content of a specific resource. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +98,7 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[OnenoteResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[OnenoteResource] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to resources for sites
         param body: The request body
@@ -186,28 +187,5 @@ class ResourcesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ResourcesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ResourcesRequestBuilder.ResourcesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ResourcesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

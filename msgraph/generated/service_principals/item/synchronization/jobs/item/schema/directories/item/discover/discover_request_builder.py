@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +26,7 @@ class DiscoverRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/synchronization/jobs/{synchronizationJob%2Did}/schema/directories/{directoryDefinition%2Did}/discover", path_parameters)
     
-    async def post(self,request_configuration: Optional[DiscoverRequestBuilderPostRequestConfiguration] = None) -> Optional[DirectoryDefinition]:
+    async def post(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryDefinition]:
         """
         Discover the latest schema definition for provisioning to an application. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,7 +47,7 @@ class DiscoverRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DirectoryDefinition, error_mapping)
     
-    def to_post_request_information(self,request_configuration: Optional[DiscoverRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Discover the latest schema definition for provisioning to an application. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,15 +67,5 @@ class DiscoverRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return DiscoverRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DiscoverRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

@@ -12,9 +12,9 @@ from .cloud_pc_management_assignment_target import CloudPcManagementAssignmentTa
 class CloudPcManagementGroupAssignmentTarget(CloudPcManagementAssignmentTarget):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.cloudPcManagementGroupAssignmentTarget"
-    # The groupId property
+    # The ID of the target group for the assignment.
     group_id: Optional[str] = None
-    # The servicePlanId property
+    # The unique identifier for the service plan that indicates which size of the Cloud PC to provision for the user. Use a null value, when the provisioningType is dedicated.
     service_plan_id: Optional[str] = None
     
     @staticmethod

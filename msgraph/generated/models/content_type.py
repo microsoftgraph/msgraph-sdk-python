@@ -16,7 +16,7 @@ from .entity import Entity
 
 @dataclass
 class ContentType(Entity):
-    # List of canonical URLs for hub sites with which this content type is associated to. This will contain all hub sites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type will be applied to the lists in the enforced sites.
+    # List of canonical URLs for hub sites with which this content type is associated to. This will contain all hub sites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type is applied to the lists in the enforced sites.
     associated_hubs_urls: Optional[List[str]] = None
     # Parent contentType from which this content type is derived.
     base: Optional[ContentType] = None
@@ -26,7 +26,7 @@ class ContentType(Entity):
     column_links: Optional[List[ColumnLink]] = None
     # Column order information in a content type.
     column_positions: Optional[List[ColumnDefinition]] = None
-    # The collection of column definitions for this contentType.
+    # The collection of column definitions for this content type.
     columns: Optional[List[ColumnDefinition]] = None
     # The descriptive text for the item.
     description: Optional[str] = None
@@ -50,7 +50,7 @@ class ContentType(Entity):
     order: Optional[ContentTypeOrder] = None
     # The unique identifier of the content type.
     parent_id: Optional[str] = None
-    # If true, any changes made to the content type will be pushed to inherited content types and lists that implement the content type.
+    # If true, any changes made to the content type are pushed to inherited content types and lists that implement the content type.
     propagate_changes: Optional[bool] = None
     # If true, the content type can't be modified unless this value is first set to false.
     read_only: Optional[bool] = None

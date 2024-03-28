@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +30,7 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(BaseRequestBu
             path_parameters['includePersonalNotebooks'] = str(include_personal_notebooks)
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/onenote/notebooks/getRecentNotebooks(includePersonalNotebooks={includePersonalNotebooks}){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetRequestConfiguration] = None) -> Optional[GetRecentNotebooksWithIncludePersonalNotebooksGetResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[GetRecentNotebooksWithIncludePersonalNotebooksGetResponse]:
         """
         Invoke function getRecentNotebooks
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -49,7 +50,7 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(BaseRequestBu
 
         return await self.request_adapter.send_async(request_info, GetRecentNotebooksWithIncludePersonalNotebooksGetResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function getRecentNotebooks
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -109,19 +110,6 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(BaseRequestBu
 
         # Show only the first n items
         top: Optional[int] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder.GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetQueryParameters] = None
 
     
 

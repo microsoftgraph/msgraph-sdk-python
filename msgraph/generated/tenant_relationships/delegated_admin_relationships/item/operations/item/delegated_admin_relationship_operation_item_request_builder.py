@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class DelegatedAdminRelationshipOperationItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/tenantRelationships/delegatedAdminRelationships/{delegatedAdminRelationship%2Did}/operations/{delegatedAdminRelationshipOperation%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[DelegatedAdminRelationshipOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property operations for tenantRelationships
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +45,7 @@ class DelegatedAdminRelationshipOperationItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DelegatedAdminRelationshipOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminRelationshipOperation]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminRelationshipOperation]:
         """
         Read the properties of a delegatedAdminRelationshipOperation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +66,7 @@ class DelegatedAdminRelationshipOperationItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminRelationshipOperation, error_mapping)
     
-    async def patch(self,body: Optional[DelegatedAdminRelationshipOperation] = None, request_configuration: Optional[DelegatedAdminRelationshipOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DelegatedAdminRelationshipOperation]:
+    async def patch(self,body: Optional[DelegatedAdminRelationshipOperation] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminRelationshipOperation]:
         """
         Update the navigation property operations in tenantRelationships
         param body: The request body
@@ -88,7 +89,7 @@ class DelegatedAdminRelationshipOperationItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminRelationshipOperation, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property operations for tenantRelationships
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class DelegatedAdminRelationshipOperationItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipOperationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties of a delegatedAdminRelationshipOperation object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +111,7 @@ class DelegatedAdminRelationshipOperationItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[DelegatedAdminRelationshipOperation] = None, request_configuration: Optional[DelegatedAdminRelationshipOperationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DelegatedAdminRelationshipOperation] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property operations in tenantRelationships
         param body: The request body
@@ -134,16 +135,6 @@ class DelegatedAdminRelationshipOperationItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return DelegatedAdminRelationshipOperationItemRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DelegatedAdminRelationshipOperationItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
     @dataclass
     class DelegatedAdminRelationshipOperationItemRequestBuilderGetQueryParameters():
@@ -170,28 +161,5 @@ class DelegatedAdminRelationshipOperationItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DelegatedAdminRelationshipOperationItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[DelegatedAdminRelationshipOperationItemRequestBuilder.DelegatedAdminRelationshipOperationItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DelegatedAdminRelationshipOperationItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

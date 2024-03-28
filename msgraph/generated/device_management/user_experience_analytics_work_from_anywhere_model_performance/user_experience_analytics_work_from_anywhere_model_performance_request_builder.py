@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class UserExperienceAnalyticsWorkFromAnywhereModelPerformanceRequestBuilder(Base
         url_tpl_params["userExperienceAnalyticsWorkFromAnywhereModelPerformance%2Did"] = user_experience_analytics_work_from_anywhere_model_performance_id
         return UserExperienceAnalyticsWorkFromAnywhereModelPerformanceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereModelPerformanceRequestBuilderGetRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereModelPerformanceCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereModelPerformanceCollectionResponse]:
         """
         The user experience analytics work from anywhere model performance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class UserExperienceAnalyticsWorkFromAnywhereModelPerformanceRequestBuilder(Base
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsWorkFromAnywhereModelPerformanceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereModelPerformance] = None, request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereModelPerformanceRequestBuilderPostRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereModelPerformance]:
+    async def post(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereModelPerformance] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereModelPerformance]:
         """
         Create new navigation property to userExperienceAnalyticsWorkFromAnywhereModelPerformance for deviceManagement
         param body: The request body
@@ -86,7 +87,7 @@ class UserExperienceAnalyticsWorkFromAnywhereModelPerformanceRequestBuilder(Base
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsWorkFromAnywhereModelPerformance, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereModelPerformanceRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The user experience analytics work from anywhere model performance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +98,7 @@ class UserExperienceAnalyticsWorkFromAnywhereModelPerformanceRequestBuilder(Base
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereModelPerformance] = None, request_configuration: Optional[UserExperienceAnalyticsWorkFromAnywhereModelPerformanceRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereModelPerformance] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to userExperienceAnalyticsWorkFromAnywhereModelPerformance for deviceManagement
         param body: The request body
@@ -186,28 +187,5 @@ class UserExperienceAnalyticsWorkFromAnywhereModelPerformanceRequestBuilder(Base
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UserExperienceAnalyticsWorkFromAnywhereModelPerformanceRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsWorkFromAnywhereModelPerformanceRequestBuilder.UserExperienceAnalyticsWorkFromAnywhereModelPerformanceRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UserExperienceAnalyticsWorkFromAnywhereModelPerformanceRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

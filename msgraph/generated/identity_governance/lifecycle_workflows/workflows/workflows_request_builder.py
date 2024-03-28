@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class WorkflowsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["workflow%2Did"] = workflow_id
         return WorkflowItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[WorkflowsRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkflowCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkflowCollectionResponse]:
         """
         Get a list of workflow resources that are associated with lifecycle workflows.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class WorkflowsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkflowCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Workflow] = None, request_configuration: Optional[WorkflowsRequestBuilderPostRequestConfiguration] = None) -> Optional[Workflow]:
+    async def post(self,body: Optional[Workflow] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Workflow]:
         """
         Create a new workflow object. You can create up to 50 workflows in a tenant.
         param body: The request body
@@ -88,7 +89,7 @@ class WorkflowsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Workflow, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[WorkflowsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of workflow resources that are associated with lifecycle workflows.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class WorkflowsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Workflow] = None, request_configuration: Optional[WorkflowsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Workflow] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new workflow object. You can create up to 50 workflows in a tenant.
         param body: The request body
@@ -188,28 +189,5 @@ class WorkflowsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class WorkflowsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[WorkflowsRequestBuilder.WorkflowsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class WorkflowsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

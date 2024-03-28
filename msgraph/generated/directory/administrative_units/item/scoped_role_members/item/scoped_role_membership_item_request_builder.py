@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/directory/administrativeUnits/{administrativeUnit%2Did}/scopedRoleMembers/{scopedRoleMembership%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Remove a Microsoft Entra role assignment with administrative unit scope.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +46,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ScopedRoleMembership]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ScopedRoleMembership]:
         """
         Get a Microsoft Entra role assignment with administrative unit scope.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +67,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ScopedRoleMembership, error_mapping)
     
-    async def patch(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ScopedRoleMembership]:
+    async def patch(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ScopedRoleMembership]:
         """
         Update the navigation property scopedRoleMembers in directory
         param body: The request body
@@ -89,7 +90,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ScopedRoleMembership, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Remove a Microsoft Entra role assignment with administrative unit scope.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +101,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get a Microsoft Entra role assignment with administrative unit scope.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +112,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property scopedRoleMembers in directory
         param body: The request body
@@ -135,16 +136,6 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return ScopedRoleMembershipItemRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ScopedRoleMembershipItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
     @dataclass
     class ScopedRoleMembershipItemRequestBuilderGetQueryParameters():
@@ -171,28 +162,5 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ScopedRoleMembershipItemRequestBuilder.ScopedRoleMembershipItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ScopedRoleMembershipItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

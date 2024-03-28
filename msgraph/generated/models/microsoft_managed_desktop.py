@@ -14,11 +14,11 @@ class MicrosoftManagedDesktop(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The managedType property
+    # Indicates the provisioning policy associated with Microsoft Managed Desktop settings. Possible values are: notManaged, premiumManaged, standardManaged, starterManaged, unknownFutureValue. The default is notManaged.
     managed_type: Optional[MicrosoftManagedDesktopType] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The profile property
+    # The name of the Microsoft Managed Desktop profile that the Windows 365 Cloud PC is associated with.
     profile: Optional[str] = None
     
     @staticmethod

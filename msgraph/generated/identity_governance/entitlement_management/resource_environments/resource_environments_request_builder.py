@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class ResourceEnvironmentsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["accessPackageResourceEnvironment%2Did"] = access_package_resource_environment_id
         return AccessPackageResourceEnvironmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ResourceEnvironmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageResourceEnvironmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessPackageResourceEnvironmentCollectionResponse]:
         """
         Retrieve a list of accessPackageResourceEnvironment objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class ResourceEnvironmentsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessPackageResourceEnvironmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AccessPackageResourceEnvironment] = None, request_configuration: Optional[ResourceEnvironmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessPackageResourceEnvironment]:
+    async def post(self,body: Optional[AccessPackageResourceEnvironment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessPackageResourceEnvironment]:
         """
         Create new navigation property to resourceEnvironments for identityGovernance
         param body: The request body
@@ -87,7 +88,7 @@ class ResourceEnvironmentsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessPackageResourceEnvironment, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ResourceEnvironmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of accessPackageResourceEnvironment objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +99,7 @@ class ResourceEnvironmentsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AccessPackageResourceEnvironment] = None, request_configuration: Optional[ResourceEnvironmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AccessPackageResourceEnvironment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to resourceEnvironments for identityGovernance
         param body: The request body
@@ -187,28 +188,5 @@ class ResourceEnvironmentsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ResourceEnvironmentsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ResourceEnvironmentsRequestBuilder.ResourceEnvironmentsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ResourceEnvironmentsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

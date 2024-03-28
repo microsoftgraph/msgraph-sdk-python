@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -30,7 +31,7 @@ class SetItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/termStores/{store%2Did}/groups/{group%2Did1}/sets/{set%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[SetItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property sets for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -48,7 +49,7 @@ class SetItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Set]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Set]:
         """
         All sets under the group in a term [store].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -68,7 +69,7 @@ class SetItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Set, error_mapping)
     
-    async def patch(self,body: Optional[Set] = None, request_configuration: Optional[SetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Set]:
+    async def patch(self,body: Optional[Set] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Set]:
         """
         Update the navigation property sets in groups
         param body: The request body
@@ -91,7 +92,7 @@ class SetItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Set, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[SetItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property sets for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +103,7 @@ class SetItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[SetItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         All sets under the group in a term [store].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -113,7 +114,7 @@ class SetItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Set] = None, request_configuration: Optional[SetItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Set] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property sets in groups
         param body: The request body
@@ -174,16 +175,6 @@ class SetItemRequestBuilder(BaseRequestBuilder):
 
         return TermsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class SetItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class SetItemRequestBuilderGetQueryParameters():
         """
@@ -209,28 +200,5 @@ class SetItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class SetItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[SetItemRequestBuilder.SetItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class SetItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

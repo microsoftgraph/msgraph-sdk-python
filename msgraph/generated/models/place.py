@@ -18,7 +18,7 @@ class Place(Entity):
     address: Optional[PhysicalAddress] = None
     # The name associated with the place.
     display_name: Optional[str] = None
-    # Specifies the place location in latitude, longitude and (optionally) altitude coordinates.
+    # Specifies the place location in latitude, longitude, and (optionally) altitude coordinates.
     geo_coordinates: Optional[OutlookGeoCoordinates] = None
     # The OdataType property
     odata_type: Optional[str] = None

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .alert_severity import AlertSeverity
     from .alert_status import AlertStatus
     from .detection_source import DetectionSource
+    from .dictionary import Dictionary
     from .service_source import ServiceSource
 
 from ..entity import Entity
@@ -22,7 +23,7 @@ class Alert(Entity):
     # The adversary or activity group that is associated with this alert.
     actor_display_name: Optional[str] = None
     # A collection of other alert properties, including user-defined properties. Any custom details defined in the alert, and any dynamic content in the alert details, are stored here.
-    additional_data: Optional[Dictionary] = None
+    additional_data_property: Optional[Dictionary] = None
     # The ID of the policy that generated the alert, and populated when there is a specific policy that generated the alert, whether configured by a customer or a built-in policy.
     alert_policy_id: Optional[str] = None
     # The alertWebUrl property
@@ -110,6 +111,7 @@ class Alert(Entity):
         from .alert_severity import AlertSeverity
         from .alert_status import AlertStatus
         from .detection_source import DetectionSource
+        from .dictionary import Dictionary
         from .service_source import ServiceSource
 
         from ..entity import Entity
@@ -120,10 +122,12 @@ class Alert(Entity):
         from .alert_severity import AlertSeverity
         from .alert_status import AlertStatus
         from .detection_source import DetectionSource
+        from .dictionary import Dictionary
         from .service_source import ServiceSource
 
         fields: Dict[str, Callable[[Any], None]] = {
             "actorDisplayName": lambda n : setattr(self, 'actor_display_name', n.get_str_value()),
+            "additionalData": lambda n : setattr(self, 'additional_data_property', n.get_object_value(Dictionary)),
             "alertPolicyId": lambda n : setattr(self, 'alert_policy_id', n.get_str_value()),
             "alertWebUrl": lambda n : setattr(self, 'alert_web_url', n.get_str_value()),
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
@@ -169,6 +173,7 @@ class Alert(Entity):
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("actorDisplayName", self.actor_display_name)
+        writer.write_object_value("additionalData", self.additional_data_property)
         writer.write_str_value("alertPolicyId", self.alert_policy_id)
         writer.write_str_value("alertWebUrl", self.alert_web_url)
         writer.write_str_value("assignedTo", self.assigned_to)

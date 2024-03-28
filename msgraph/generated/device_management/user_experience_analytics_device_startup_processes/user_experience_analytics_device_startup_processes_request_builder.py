@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder(BaseRequestBui
         url_tpl_params["userExperienceAnalyticsDeviceStartupProcess%2Did"] = user_experience_analytics_device_startup_process_id
         return UserExperienceAnalyticsDeviceStartupProcessItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[UserExperienceAnalyticsDeviceStartupProcessesRequestBuilderGetRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsDeviceStartupProcessCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsDeviceStartupProcessCollectionResponse]:
         """
         User experience analytics device Startup Processes
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder(BaseRequestBui
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsDeviceStartupProcessCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UserExperienceAnalyticsDeviceStartupProcess] = None, request_configuration: Optional[UserExperienceAnalyticsDeviceStartupProcessesRequestBuilderPostRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsDeviceStartupProcess]:
+    async def post(self,body: Optional[UserExperienceAnalyticsDeviceStartupProcess] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsDeviceStartupProcess]:
         """
         Create new navigation property to userExperienceAnalyticsDeviceStartupProcesses for deviceManagement
         param body: The request body
@@ -86,7 +87,7 @@ class UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder(BaseRequestBui
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsDeviceStartupProcess, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[UserExperienceAnalyticsDeviceStartupProcessesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         User experience analytics device Startup Processes
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +98,7 @@ class UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder(BaseRequestBui
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UserExperienceAnalyticsDeviceStartupProcess] = None, request_configuration: Optional[UserExperienceAnalyticsDeviceStartupProcessesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserExperienceAnalyticsDeviceStartupProcess] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to userExperienceAnalyticsDeviceStartupProcesses for deviceManagement
         param body: The request body
@@ -186,28 +187,5 @@ class UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder(BaseRequestBui
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UserExperienceAnalyticsDeviceStartupProcessesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[UserExperienceAnalyticsDeviceStartupProcessesRequestBuilder.UserExperienceAnalyticsDeviceStartupProcessesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UserExperienceAnalyticsDeviceStartupProcessesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

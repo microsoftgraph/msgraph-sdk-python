@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -49,7 +50,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["directoryObject%2Did"] = directory_object_id
         return DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryObjectCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryObjectCollectionResponse]:
         """
         The members of this group, who can be users, devices, other groups, or service principals. Supports the List members, Add member, and Remove member operations. Nullable. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=members($select=id,userPrincipalName,displayName).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -70,7 +71,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DirectoryObjectCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The members of this group, who can be users, devices, other groups, or service principals. Supports the List members, Add member, and Remove member operations. Nullable. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=members($select=id,userPrincipalName,displayName).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -217,19 +218,6 @@ class MembersRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class MembersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[MembersRequestBuilder.MembersRequestBuilderGetQueryParameters] = None
 
     
 

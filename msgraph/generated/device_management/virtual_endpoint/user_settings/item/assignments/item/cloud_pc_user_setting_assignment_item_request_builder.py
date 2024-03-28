@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class CloudPcUserSettingAssignmentItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/virtualEndpoint/userSettings/{cloudPcUserSetting%2Did}/assignments/{cloudPcUserSettingAssignment%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[CloudPcUserSettingAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property assignments for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,9 +45,9 @@ class CloudPcUserSettingAssignmentItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[CloudPcUserSettingAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CloudPcUserSettingAssignment]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CloudPcUserSettingAssignment]:
         """
-        Get assignments from deviceManagement
+        Represents the set of Microsoft 365 groups and security groups in Microsoft Entra ID that have cloudPCUserSetting assigned. Returned only on $expand. For an example, see Get cloudPcUserSetting.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CloudPcUserSettingAssignment]
         """
@@ -64,7 +65,7 @@ class CloudPcUserSettingAssignmentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CloudPcUserSettingAssignment, error_mapping)
     
-    async def patch(self,body: Optional[CloudPcUserSettingAssignment] = None, request_configuration: Optional[CloudPcUserSettingAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[CloudPcUserSettingAssignment]:
+    async def patch(self,body: Optional[CloudPcUserSettingAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CloudPcUserSettingAssignment]:
         """
         Update the navigation property assignments in deviceManagement
         param body: The request body
@@ -87,7 +88,7 @@ class CloudPcUserSettingAssignmentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CloudPcUserSettingAssignment, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[CloudPcUserSettingAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property assignments for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,9 +99,9 @@ class CloudPcUserSettingAssignmentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[CloudPcUserSettingAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get assignments from deviceManagement
+        Represents the set of Microsoft 365 groups and security groups in Microsoft Entra ID that have cloudPCUserSetting assigned. Returned only on $expand. For an example, see Get cloudPcUserSetting.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +110,7 @@ class CloudPcUserSettingAssignmentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[CloudPcUserSettingAssignment] = None, request_configuration: Optional[CloudPcUserSettingAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[CloudPcUserSettingAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property assignments in deviceManagement
         param body: The request body
@@ -134,20 +135,10 @@ class CloudPcUserSettingAssignmentItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return CloudPcUserSettingAssignmentItemRequestBuilder(self.request_adapter, raw_url)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class CloudPcUserSettingAssignmentItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class CloudPcUserSettingAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Get assignments from deviceManagement
+        Represents the set of Microsoft 365 groups and security groups in Microsoft Entra ID that have cloudPCUserSetting assigned. Returned only on $expand. For an example, see Get cloudPcUserSetting.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -169,28 +160,5 @@ class CloudPcUserSettingAssignmentItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class CloudPcUserSettingAssignmentItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[CloudPcUserSettingAssignmentItemRequestBuilder.CloudPcUserSettingAssignmentItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class CloudPcUserSettingAssignmentItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

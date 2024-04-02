@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +28,7 @@ class TeamsAppDefinitionItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/appCatalogs/teamsApps/{teamsApp%2Did}/appDefinitions/{teamsAppDefinition%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property appDefinitions for appCatalogs
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +46,7 @@ class TeamsAppDefinitionItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsAppDefinition]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsAppDefinition]:
         """
         The details for each version of the app.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +66,7 @@ class TeamsAppDefinitionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamsAppDefinition, error_mapping)
     
-    async def patch(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TeamsAppDefinition]:
+    async def patch(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsAppDefinition]:
         """
         Publish an app to the Microsoft Teams app catalog.Specifically, this API publishes the app to your organization's catalog (the tenant app catalog);the created resource has a distributionMethod property value of organization. The requiresReview property allows any user to submit an app for review by an administrator. Admins can approve or reject these apps via this API or the Microsoft Teams admin center.
         param body: The request body
@@ -89,7 +90,7 @@ class TeamsAppDefinitionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamsAppDefinition, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property appDefinitions for appCatalogs
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +101,7 @@ class TeamsAppDefinitionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The details for each version of the app.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +112,7 @@ class TeamsAppDefinitionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Publish an app to the Microsoft Teams app catalog.Specifically, this API publishes the app to your organization's catalog (the tenant app catalog);the created resource has a distributionMethod property value of organization. The requiresReview property allows any user to submit an app for review by an administrator. Admins can approve or reject these apps via this API or the Microsoft Teams admin center.
         param body: The request body
@@ -145,16 +146,6 @@ class TeamsAppDefinitionItemRequestBuilder(BaseRequestBuilder):
 
         return BotRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TeamsAppDefinitionItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class TeamsAppDefinitionItemRequestBuilderGetQueryParameters():
         """
@@ -180,28 +171,5 @@ class TeamsAppDefinitionItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TeamsAppDefinitionItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[TeamsAppDefinitionItemRequestBuilder.TeamsAppDefinitionItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TeamsAppDefinitionItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

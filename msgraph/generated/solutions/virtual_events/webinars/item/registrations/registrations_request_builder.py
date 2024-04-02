@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["virtualEventRegistration%2Did"] = virtual_event_registration_id
         return VirtualEventRegistrationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RegistrationsRequestBuilderGetRequestConfiguration] = None) -> Optional[VirtualEventRegistrationCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[VirtualEventRegistrationCollectionResponse]:
         """
         Get a list of all registration records of a webinar.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, VirtualEventRegistrationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[VirtualEventRegistration] = None, request_configuration: Optional[RegistrationsRequestBuilderPostRequestConfiguration] = None) -> Optional[VirtualEventRegistration]:
+    async def post(self,body: Optional[VirtualEventRegistration] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[VirtualEventRegistration]:
         """
         Create new navigation property to registrations for solutions
         param body: The request body
@@ -87,7 +88,7 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, VirtualEventRegistration, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RegistrationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of all registration records of a webinar.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +99,7 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[VirtualEventRegistration] = None, request_configuration: Optional[RegistrationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[VirtualEventRegistration] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to registrations for solutions
         param body: The request body
@@ -187,28 +188,5 @@ class RegistrationsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RegistrationsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[RegistrationsRequestBuilder.RegistrationsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RegistrationsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

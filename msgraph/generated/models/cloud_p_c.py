@@ -12,35 +12,35 @@ from .entity import Entity
 
 @dataclass
 class CloudPC(Entity):
-    # The aadDeviceId property
+    # The Microsoft Entra device ID for the Cloud PC, also known as the Azure Active Directory (Azure AD) device ID, that consists of 32 characters in a GUID format. Generated on a VM joined to Microsoft Entra ID. Read-only.
     aad_device_id: Optional[str] = None
-    # The displayName property
+    # The display name for the Cloud PC. Maximum length is 64 characters. Read-only. You can use the cloudPC: rename API to modify the Cloud PC name.
     display_name: Optional[str] = None
-    # The gracePeriodEndDateTime property
+    # The date and time when the grace period ends and reprovisioning or deprovisioning happen. Required only if the status is inGracePeriod. The timestamp is shown in ISO 8601 format and Coordinated Universal Time (UTC). For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     grace_period_end_date_time: Optional[datetime.datetime] = None
-    # The imageDisplayName property
+    # The name of the operating system image used for the Cloud PC. Maximum length is 50 characters. Only letters (A-Z, a-z), numbers (0-9), and special characters (-,,.) are allowed for this property. The property value can't begin or end with an underscore. Read-only.
     image_display_name: Optional[str] = None
-    # The lastModifiedDateTime property
+    # The last modified date and time of the Cloud PC. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_modified_date_time: Optional[datetime.datetime] = None
-    # The managedDeviceId property
+    # The Intune enrolled device ID for the Cloud PC that consists of 32 characters in a GUID format. The managedDeviceId property of Windows 365 Business Cloud PCs is always null as Windows 365 Business Cloud PCs aren't Intune-enrolled automatically by Windows 365. Read-only.
     managed_device_id: Optional[str] = None
-    # The managedDeviceName property
+    # The Intune enrolled device name for the Cloud PC. The managedDeviceName property of Windows 365 Business Cloud PCs is always null as Windows 365 Business Cloud PCs aren't Intune-enrolled automatically by Windows 365. Read-only.
     managed_device_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The onPremisesConnectionName property
+    # The on-premises connection that applied during the provisioning of Cloud PCs. Read-only.
     on_premises_connection_name: Optional[str] = None
-    # The provisioningPolicyId property
+    # The provisioning policy ID for the Cloud PC that consists of 32 characters in a GUID format. A policy defines the type of Cloud PC the user wants to create. Read-only.
     provisioning_policy_id: Optional[str] = None
-    # The provisioningPolicyName property
+    # The provisioning policy that applied during the provisioning of Cloud PCs. Maximum length is 120 characters. Read-only.
     provisioning_policy_name: Optional[str] = None
-    # The provisioningType property
+    # The type of licenses to be used when provisioning Cloud PCs using this policy. Possible values are: dedicated, shared, unknownFutureValue. The default value is dedicated.
     provisioning_type: Optional[CloudPcProvisioningType] = None
-    # The servicePlanId property
+    # The service plan ID for the Cloud PC that consists of 32 characters in a GUID format. For more information about service plans, see Product names and service plan identifiers for licensing. Read-only.
     service_plan_id: Optional[str] = None
-    # The servicePlanName property
+    # The service plan name for the customer-facing Cloud PC entity. Read-only.
     service_plan_name: Optional[str] = None
-    # The userPrincipalName property
+    # The user principal name (UPN) of the user assigned to the Cloud PC. Maximum length is 113 characters. For more information on username policies, see Password policies and account restrictions in Microsoft Entra ID. Read-only.
     user_principal_name: Optional[str] = None
     
     @staticmethod

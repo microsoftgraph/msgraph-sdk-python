@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +45,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["workbookChartPoint%2Did"] = workbook_chart_point_id
         return WorkbookChartPointItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[PointsRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartPointCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartPointCollectionResponse]:
         """
         Retrieve a list of chartpoints objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -77,7 +78,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
 
         return ItemAtWithIndexRequestBuilder(self.request_adapter, self.path_parameters, index)
     
-    async def post(self,body: Optional[WorkbookChartPoint] = None, request_configuration: Optional[PointsRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookChartPoint]:
+    async def post(self,body: Optional[WorkbookChartPoint] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartPoint]:
         """
         Use this API to create a new ChartPoints.
         param body: The request body
@@ -101,7 +102,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookChartPoint, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[PointsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of chartpoints objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +113,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[WorkbookChartPoint] = None, request_configuration: Optional[PointsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WorkbookChartPoint] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Use this API to create a new ChartPoints.
         param body: The request body
@@ -201,28 +202,5 @@ class PointsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PointsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[PointsRequestBuilder.PointsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PointsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

@@ -13,21 +13,21 @@ from .entity import Entity
 
 @dataclass
 class CloudPcUserSetting(Entity):
-    # The assignments property
+    # Represents the set of Microsoft 365 groups and security groups in Microsoft Entra ID that have cloudPCUserSetting assigned. Returned only on $expand. For an example, see Get cloudPcUserSetting.
     assignments: Optional[List[CloudPcUserSettingAssignment]] = None
-    # The createdDateTime property
+    # The date and time when the setting was created. The timestamp type represents the date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     created_date_time: Optional[datetime.datetime] = None
-    # The displayName property
+    # The setting name displayed in the user interface.
     display_name: Optional[str] = None
-    # The lastModifiedDateTime property
+    # The date and time when the setting was last modified. The timestamp type represents the date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     last_modified_date_time: Optional[datetime.datetime] = None
-    # The localAdminEnabled property
+    # Indicates whether the local admin option is enabled. The default value is false. To enable the local admin option, change the setting to true. If the local admin option is enabled, the end user can be an admin of the Cloud PC device.
     local_admin_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The resetEnabled property
+    # Indicates whether an end user is allowed to reset their Cloud PC. When true, the user is allowed to reset their Cloud PC. When false, end-user initiated reset is not allowed. The default value is false.
     reset_enabled: Optional[bool] = None
-    # The restorePointSetting property
+    # Defines how frequently a restore point is created that is, a snapshot is taken) for users' provisioned Cloud PCs (default is 12 hours), and whether the user is allowed to restore their own Cloud PCs to a backup made at a specific point in time.
     restore_point_setting: Optional[CloudPcRestorePointSetting] = None
     
     @staticmethod

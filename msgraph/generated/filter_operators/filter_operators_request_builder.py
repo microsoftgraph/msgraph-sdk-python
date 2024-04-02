@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class FilterOperatorsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["filterOperatorSchema%2Did"] = filter_operator_schema_id
         return FilterOperatorSchemaItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[FilterOperatorsRequestBuilderGetRequestConfiguration] = None) -> Optional[FilterOperatorSchemaCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[FilterOperatorSchemaCollectionResponse]:
         """
         Get entities from filterOperators
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class FilterOperatorsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, FilterOperatorSchemaCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[FilterOperatorSchema] = None, request_configuration: Optional[FilterOperatorsRequestBuilderPostRequestConfiguration] = None) -> Optional[FilterOperatorSchema]:
+    async def post(self,body: Optional[FilterOperatorSchema] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[FilterOperatorSchema]:
         """
         Add new entity to filterOperators
         param body: The request body
@@ -86,7 +87,7 @@ class FilterOperatorsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, FilterOperatorSchema, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[FilterOperatorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get entities from filterOperators
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +98,7 @@ class FilterOperatorsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[FilterOperatorSchema] = None, request_configuration: Optional[FilterOperatorsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[FilterOperatorSchema] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Add new entity to filterOperators
         param body: The request body
@@ -186,28 +187,5 @@ class FilterOperatorsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class FilterOperatorsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[FilterOperatorsRequestBuilder.FilterOperatorsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class FilterOperatorsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

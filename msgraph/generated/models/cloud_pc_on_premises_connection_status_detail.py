@@ -15,13 +15,13 @@ class CloudPcOnPremisesConnectionStatusDetail(AdditionalDataHolder, BackedModel,
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The endDateTime property
+    # The end time of the connection health check. The Timestamp  is shown in ISO 8601 format and Coordinated Universal Time (UTC). For example, midnight UTC on Jan 1, 2014 appears as 2014-01-01T00:00:00Z. Read-Only.
     end_date_time: Optional[datetime.datetime] = None
-    # The healthChecks property
+    # A list of all checks that have been run on the connection. Read-Only.
     health_checks: Optional[List[CloudPcOnPremisesConnectionHealthCheck]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The startDateTime property
+    # The start time of the health check. The timestamp is shown in ISO 8601 format and Coordinated Universal Time (UTC). For example, midnight UTC on Jan 1, 2014 appear as 2014-01-01T00:00:00Z. Read-Only.
     start_date_time: Optional[datetime.datetime] = None
     
     @staticmethod

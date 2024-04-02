@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +30,7 @@ class GroupsWithUniqueNameRequestBuilder(BaseRequestBuilder):
             path_parameters['uniqueName'] = str(unique_name)
         super().__init__(request_adapter, "{+baseurl}/groups(uniqueName='{uniqueName}'){?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[GroupsWithUniqueNameRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete group. When deleted, Microsoft 365 groups are moved to a temporary container and can be restored within 30 days. After that time, they're permanently deleted. This isn't applicable to Security groups and Distribution groups which are permanently deleted immediately. To learn more, see deletedItems.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -48,7 +49,7 @@ class GroupsWithUniqueNameRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[GroupsWithUniqueNameRequestBuilderGetRequestConfiguration] = None) -> Optional[Group]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Group]:
         """
         Get the properties and relationships of a group object. This operation returns by default only a subset of all the available properties, as noted in the Properties section. To get properties that aren't_ returned by default, specify them in a $select OData query option. The hasMembersWithLicenseErrors and isArchived properties are an exception and aren't returned in the $select query.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -69,13 +70,13 @@ class GroupsWithUniqueNameRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Group, error_mapping)
     
-    async def patch(self,body: Optional[Group] = None, request_configuration: Optional[GroupsWithUniqueNameRequestBuilderPatchRequestConfiguration] = None) -> Optional[Group]:
+    async def patch(self,body: Optional[Group] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Group]:
         """
-        Update the properties of a group object.
+        Add a member to a security or Microsoft 365 group through the members navigation property. The following table shows the types of members that can be added to either security groups or Microsoft 365 groups.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Group]
-        Find more info here: https://learn.microsoft.com/graph/api/group-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +94,7 @@ class GroupsWithUniqueNameRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Group, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[GroupsWithUniqueNameRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete group. When deleted, Microsoft 365 groups are moved to a temporary container and can be restored within 30 days. After that time, they're permanently deleted. This isn't applicable to Security groups and Distribution groups which are permanently deleted immediately. To learn more, see deletedItems.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +105,7 @@ class GroupsWithUniqueNameRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[GroupsWithUniqueNameRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get the properties and relationships of a group object. This operation returns by default only a subset of all the available properties, as noted in the Properties section. To get properties that aren't_ returned by default, specify them in a $select OData query option. The hasMembersWithLicenseErrors and isArchived properties are an exception and aren't returned in the $select query.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -115,9 +116,9 @@ class GroupsWithUniqueNameRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Group] = None, request_configuration: Optional[GroupsWithUniqueNameRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Group] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a group object.
+        Add a member to a security or Microsoft 365 group through the members navigation property. The following table shows the types of members that can be added to either security groups or Microsoft 365 groups.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -139,16 +140,6 @@ class GroupsWithUniqueNameRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GroupsWithUniqueNameRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class GroupsWithUniqueNameRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
     @dataclass
     class GroupsWithUniqueNameRequestBuilderGetQueryParameters():
@@ -175,28 +166,5 @@ class GroupsWithUniqueNameRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class GroupsWithUniqueNameRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[GroupsWithUniqueNameRequestBuilder.GroupsWithUniqueNameRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class GroupsWithUniqueNameRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

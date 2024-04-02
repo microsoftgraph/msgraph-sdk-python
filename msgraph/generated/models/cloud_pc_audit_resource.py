@@ -14,13 +14,13 @@ class CloudPcAuditResource(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The displayName property
+    # The display name of the modified resource entity.
     display_name: Optional[str] = None
-    # The modifiedProperties property
+    # The list of modified properties.
     modified_properties: Optional[List[CloudPcAuditProperty]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The resourceId property
+    # The unique identifier of the modified resource entity.
     resource_id: Optional[str] = None
     
     @staticmethod

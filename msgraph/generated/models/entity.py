@@ -577,12 +577,16 @@ if TYPE_CHECKING:
     from .security.article import Article
     from .security.article_indicator import ArticleIndicator
     from .security.artifact import Artifact
+    from .security.authority_template import AuthorityTemplate
     from .security.case import Case
     from .security.cases_root import CasesRoot
     from .security.case_operation import CaseOperation
+    from .security.category_template import CategoryTemplate
+    from .security.citation_template import CitationTemplate
     from .security.data_set import DataSet
     from .security.data_source import DataSource
     from .security.data_source_container import DataSourceContainer
+    from .security.department_template import DepartmentTemplate
     from .security.ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
     from .security.ediscovery_case import EdiscoveryCase
     from .security.ediscovery_case_settings import EdiscoveryCaseSettings
@@ -598,6 +602,9 @@ if TYPE_CHECKING:
     from .security.ediscovery_review_tag import EdiscoveryReviewTag
     from .security.ediscovery_search import EdiscoverySearch
     from .security.ediscovery_tag_operation import EdiscoveryTagOperation
+    from .security.file_plan_descriptor import FilePlanDescriptor
+    from .security.file_plan_descriptor_template import FilePlanDescriptorTemplate
+    from .security.file_plan_reference_template import FilePlanReferenceTemplate
     from .security.host import Host
     from .security.hostname import Hostname
     from .security.host_component import HostComponent
@@ -612,13 +619,16 @@ if TYPE_CHECKING:
     from .security.intelligence_profile import IntelligenceProfile
     from .security.intelligence_profile_indicator import IntelligenceProfileIndicator
     from .security.ip_address import IpAddress
+    from .security.labels_root import LabelsRoot
     from .security.passive_dns_record import PassiveDnsRecord
     from .security.retention_event import RetentionEvent
     from .security.retention_event_type import RetentionEventType
+    from .security.retention_label import RetentionLabel
     from .security.search import Search
     from .security.security import Security
     from .security.site_source import SiteSource
     from .security.ssl_certificate import SslCertificate
+    from .security.subcategory_template import SubcategoryTemplate
     from .security.subdomain import Subdomain
     from .security.tag import Tag
     from .security.threat_intelligence import ThreatIntelligence
@@ -3202,6 +3212,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.artifact import Artifact
 
             return Artifact()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.authorityTemplate".casefold():
+            from .security.authority_template import AuthorityTemplate
+
+            return AuthorityTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.case".casefold():
             from .security.case import Case
 
@@ -3214,6 +3228,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.cases_root import CasesRoot
 
             return CasesRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.categoryTemplate".casefold():
+            from .security.category_template import CategoryTemplate
+
+            return CategoryTemplate()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.citationTemplate".casefold():
+            from .security.citation_template import CitationTemplate
+
+            return CitationTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.dataSet".casefold():
             from .security.data_set import DataSet
 
@@ -3226,6 +3248,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.data_source_container import DataSourceContainer
 
             return DataSourceContainer()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.departmentTemplate".casefold():
+            from .security.department_template import DepartmentTemplate
+
+            return DepartmentTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.ediscoveryAddToReviewSetOperation".casefold():
             from .security.ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
 
@@ -3286,6 +3312,18 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.ediscovery_tag_operation import EdiscoveryTagOperation
 
             return EdiscoveryTagOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.filePlanDescriptor".casefold():
+            from .security.file_plan_descriptor import FilePlanDescriptor
+
+            return FilePlanDescriptor()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.filePlanDescriptorTemplate".casefold():
+            from .security.file_plan_descriptor_template import FilePlanDescriptorTemplate
+
+            return FilePlanDescriptorTemplate()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.filePlanReferenceTemplate".casefold():
+            from .security.file_plan_reference_template import FilePlanReferenceTemplate
+
+            return FilePlanReferenceTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.host".casefold():
             from .security.host import Host
 
@@ -3342,6 +3380,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.ip_address import IpAddress
 
             return IpAddress()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.labelsRoot".casefold():
+            from .security.labels_root import LabelsRoot
+
+            return LabelsRoot()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.passiveDnsRecord".casefold():
             from .security.passive_dns_record import PassiveDnsRecord
 
@@ -3354,6 +3396,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.retention_event_type import RetentionEventType
 
             return RetentionEventType()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.retentionLabel".casefold():
+            from .security.retention_label import RetentionLabel
+
+            return RetentionLabel()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.search".casefold():
             from .security.search import Search
 
@@ -3366,6 +3412,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .security.ssl_certificate import SslCertificate
 
             return SslCertificate()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.subcategoryTemplate".casefold():
+            from .security.subcategory_template import SubcategoryTemplate
+
+            return SubcategoryTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.security.subdomain".casefold():
             from .security.subdomain import Subdomain
 
@@ -4986,12 +5036,16 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.article import Article
         from .security.article_indicator import ArticleIndicator
         from .security.artifact import Artifact
+        from .security.authority_template import AuthorityTemplate
         from .security.case import Case
         from .security.cases_root import CasesRoot
         from .security.case_operation import CaseOperation
+        from .security.category_template import CategoryTemplate
+        from .security.citation_template import CitationTemplate
         from .security.data_set import DataSet
         from .security.data_source import DataSource
         from .security.data_source_container import DataSourceContainer
+        from .security.department_template import DepartmentTemplate
         from .security.ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
         from .security.ediscovery_case import EdiscoveryCase
         from .security.ediscovery_case_settings import EdiscoveryCaseSettings
@@ -5007,6 +5061,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.ediscovery_review_tag import EdiscoveryReviewTag
         from .security.ediscovery_search import EdiscoverySearch
         from .security.ediscovery_tag_operation import EdiscoveryTagOperation
+        from .security.file_plan_descriptor import FilePlanDescriptor
+        from .security.file_plan_descriptor_template import FilePlanDescriptorTemplate
+        from .security.file_plan_reference_template import FilePlanReferenceTemplate
         from .security.host import Host
         from .security.hostname import Hostname
         from .security.host_component import HostComponent
@@ -5021,13 +5078,16 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.intelligence_profile import IntelligenceProfile
         from .security.intelligence_profile_indicator import IntelligenceProfileIndicator
         from .security.ip_address import IpAddress
+        from .security.labels_root import LabelsRoot
         from .security.passive_dns_record import PassiveDnsRecord
         from .security.retention_event import RetentionEvent
         from .security.retention_event_type import RetentionEventType
+        from .security.retention_label import RetentionLabel
         from .security.search import Search
         from .security.security import Security
         from .security.site_source import SiteSource
         from .security.ssl_certificate import SslCertificate
+        from .security.subcategory_template import SubcategoryTemplate
         from .security.subdomain import Subdomain
         from .security.tag import Tag
         from .security.threat_intelligence import ThreatIntelligence
@@ -5861,12 +5921,16 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.article import Article
         from .security.article_indicator import ArticleIndicator
         from .security.artifact import Artifact
+        from .security.authority_template import AuthorityTemplate
         from .security.case import Case
         from .security.cases_root import CasesRoot
         from .security.case_operation import CaseOperation
+        from .security.category_template import CategoryTemplate
+        from .security.citation_template import CitationTemplate
         from .security.data_set import DataSet
         from .security.data_source import DataSource
         from .security.data_source_container import DataSourceContainer
+        from .security.department_template import DepartmentTemplate
         from .security.ediscovery_add_to_review_set_operation import EdiscoveryAddToReviewSetOperation
         from .security.ediscovery_case import EdiscoveryCase
         from .security.ediscovery_case_settings import EdiscoveryCaseSettings
@@ -5882,6 +5946,9 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.ediscovery_review_tag import EdiscoveryReviewTag
         from .security.ediscovery_search import EdiscoverySearch
         from .security.ediscovery_tag_operation import EdiscoveryTagOperation
+        from .security.file_plan_descriptor import FilePlanDescriptor
+        from .security.file_plan_descriptor_template import FilePlanDescriptorTemplate
+        from .security.file_plan_reference_template import FilePlanReferenceTemplate
         from .security.host import Host
         from .security.hostname import Hostname
         from .security.host_component import HostComponent
@@ -5896,13 +5963,16 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .security.intelligence_profile import IntelligenceProfile
         from .security.intelligence_profile_indicator import IntelligenceProfileIndicator
         from .security.ip_address import IpAddress
+        from .security.labels_root import LabelsRoot
         from .security.passive_dns_record import PassiveDnsRecord
         from .security.retention_event import RetentionEvent
         from .security.retention_event_type import RetentionEventType
+        from .security.retention_label import RetentionLabel
         from .security.search import Search
         from .security.security import Security
         from .security.site_source import SiteSource
         from .security.ssl_certificate import SslCertificate
+        from .security.subcategory_template import SubcategoryTemplate
         from .security.subdomain import Subdomain
         from .security.tag import Tag
         from .security.threat_intelligence import ThreatIntelligence

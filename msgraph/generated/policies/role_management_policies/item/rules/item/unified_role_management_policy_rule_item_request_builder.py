@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/policies/roleManagementPolicies/{unifiedRoleManagementPolicy%2Did}/rules/{unifiedRoleManagementPolicyRule%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property rules for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -44,7 +45,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyRule]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyRule]:
         """
         Retrieve a rule or settings defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +66,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleManagementPolicyRule, error_mapping)
     
-    async def patch(self,body: Optional[UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyRule]:
+    async def patch(self,body: Optional[UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyRule]:
         """
         Update a rule defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object: For more information about rules for Microsoft Entra roles and examples of updating rules, see the following articles:
         param body: The request body
@@ -89,7 +90,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleManagementPolicyRule, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property rules for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +101,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a rule or settings defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object:
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +112,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update a rule defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object: For more information about rules for Microsoft Entra roles and examples of updating rules, see the following articles:
         param body: The request body
@@ -135,16 +136,6 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return UnifiedRoleManagementPolicyRuleItemRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UnifiedRoleManagementPolicyRuleItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
     @dataclass
     class UnifiedRoleManagementPolicyRuleItemRequestBuilderGetQueryParameters():
@@ -171,28 +162,5 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UnifiedRoleManagementPolicyRuleItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilder.UnifiedRoleManagementPolicyRuleItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UnifiedRoleManagementPolicyRuleItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

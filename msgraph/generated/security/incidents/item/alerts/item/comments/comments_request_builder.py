@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class CommentsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/incidents/{incident%2Did}/alerts/{alert%2Did}/comments", path_parameters)
     
-    async def post(self,body: Optional[List[AlertComment]] = None, request_configuration: Optional[CommentsRequestBuilderPostRequestConfiguration] = None) -> Optional[List[AlertComment]]:
+    async def post(self,body: Optional[List[AlertComment]] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[List[AlertComment]]:
         """
         Sets a new value for the collection of alertComment.
         param body: The request body
@@ -50,7 +50,7 @@ class CommentsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_collection_async(request_info, AlertComment, error_mapping)
     
-    def to_post_request_information(self,body: Optional[List[AlertComment]] = None, request_configuration: Optional[CommentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[List[AlertComment]] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Sets a new value for the collection of alertComment.
         param body: The request body
@@ -83,15 +83,5 @@ class CommentsRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class CommentsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

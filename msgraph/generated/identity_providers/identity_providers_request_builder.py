@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -46,7 +47,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["identityProvider%2Did"] = identity_provider_id
         return IdentityProviderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityProviderCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityProviderCollectionResponse]:
         """
         Retrieve all identityProviders in the directory.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -68,7 +69,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IdentityProviderCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[IdentityProvider] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None) -> Optional[IdentityProvider]:
+    async def post(self,body: Optional[IdentityProvider] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityProvider]:
         """
         Create a new identityProvider by specifying display name, identityProvider type, client ID, and client secret.
         param body: The request body
@@ -93,7 +94,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IdentityProvider, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve all identityProviders in the directory.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -105,7 +106,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[IdentityProvider] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[IdentityProvider] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new identityProvider by specifying display name, identityProvider type, client ID, and client secret.
         param body: The request body
@@ -205,28 +206,5 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class IdentityProvidersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[IdentityProvidersRequestBuilder.IdentityProvidersRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class IdentityProvidersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

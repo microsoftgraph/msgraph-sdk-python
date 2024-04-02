@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class AssignLicenseRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/assignLicense", path_parameters)
     
-    async def post(self,body: Optional[AssignLicensePostRequestBody] = None, request_configuration: Optional[AssignLicenseRequestBuilderPostRequestConfiguration] = None) -> Optional[Group]:
+    async def post(self,body: Optional[AssignLicensePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Group]:
         """
         Add or remove licenses on the group. Licenses assigned to the group will be assigned to all users in the group. To learn more about group-based licensing, see What is group-based licensing in Microsoft Entra ID. To get the subscriptions available in the directory, perform a GET subscribedSkus request.
         param body: The request body
@@ -51,7 +51,7 @@ class AssignLicenseRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Group, error_mapping)
     
-    def to_post_request_information(self,body: Optional[AssignLicensePostRequestBody] = None, request_configuration: Optional[AssignLicenseRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AssignLicensePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Add or remove licenses on the group. Licenses assigned to the group will be assigned to all users in the group. To learn more about group-based licensing, see What is group-based licensing in Microsoft Entra ID. To get the subscriptions available in the directory, perform a GET subscribedSkus request.
         param body: The request body
@@ -75,15 +75,5 @@ class AssignLicenseRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AssignLicenseRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AssignLicenseRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

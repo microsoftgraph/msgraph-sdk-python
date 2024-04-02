@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,12 +27,12 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/managedEBooks/{managedEBook%2Did}/assignments/{managedEBookAssignment%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a iosVppEBookAssignment.
+        Deletes a managedEBookAssignment.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-iosvppebookassignment-delete?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-books-managedebookassignment-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -45,12 +46,12 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedEBookAssignment]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedEBookAssignment]:
         """
-        Read properties and relationships of the iosVppEBookAssignment object.
+        Read properties and relationships of the managedEBookAssignment object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedEBookAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-iosvppebookassignment-get?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-books-managedebookassignment-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +67,7 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ManagedEBookAssignment, error_mapping)
     
-    async def patch(self,body: Optional[ManagedEBookAssignment] = None, request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ManagedEBookAssignment]:
+    async def patch(self,body: Optional[ManagedEBookAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedEBookAssignment]:
         """
         Update the properties of a iosVppEBookAssignment object.
         param body: The request body
@@ -90,9 +91,9 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ManagedEBookAssignment, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a iosVppEBookAssignment.
+        Deletes a managedEBookAssignment.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,9 +102,9 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the iosVppEBookAssignment object.
+        Read properties and relationships of the managedEBookAssignment object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +113,7 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ManagedEBookAssignment] = None, request_configuration: Optional[ManagedEBookAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ManagedEBookAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a iosVppEBookAssignment object.
         param body: The request body
@@ -137,20 +138,10 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return ManagedEBookAssignmentItemRequestBuilder(self.request_adapter, raw_url)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ManagedEBookAssignmentItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class ManagedEBookAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the iosVppEBookAssignment object.
+        Read properties and relationships of the managedEBookAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -172,28 +163,5 @@ class ManagedEBookAssignmentItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ManagedEBookAssignmentItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ManagedEBookAssignmentItemRequestBuilder.ManagedEBookAssignmentItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ManagedEBookAssignmentItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

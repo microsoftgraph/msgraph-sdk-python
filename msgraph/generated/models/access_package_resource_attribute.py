@@ -17,6 +17,10 @@ class AccessPackageResourceAttribute(AdditionalDataHolder, BackedModel, Parsable
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # Information about how to set the attribute, currently a accessPackageUserDirectoryAttributeStore type.
     destination: Optional[AccessPackageResourceAttributeDestination] = None
+    # The isEditable property
+    is_editable: Optional[bool] = None
+    # The isPersistedOnAssignmentRemoval property
+    is_persisted_on_assignment_removal: Optional[bool] = None
     # The name of the attribute in the end system. If the destination is accessPackageUserDirectoryAttributeStore, then a user property such as jobTitle or a directory schema extension for the user object type, such as extension2b676109c7c74ae2b41549205f1947edpersonalTitle.
     name: Optional[str] = None
     # The OdataType property
@@ -48,6 +52,8 @@ class AccessPackageResourceAttribute(AdditionalDataHolder, BackedModel, Parsable
 
         fields: Dict[str, Callable[[Any], None]] = {
             "destination": lambda n : setattr(self, 'destination', n.get_object_value(AccessPackageResourceAttributeDestination)),
+            "isEditable": lambda n : setattr(self, 'is_editable', n.get_bool_value()),
+            "isPersistedOnAssignmentRemoval": lambda n : setattr(self, 'is_persisted_on_assignment_removal', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "source": lambda n : setattr(self, 'source', n.get_object_value(AccessPackageResourceAttributeSource)),
@@ -63,6 +69,8 @@ class AccessPackageResourceAttribute(AdditionalDataHolder, BackedModel, Parsable
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("destination", self.destination)
+        writer.write_bool_value("isEditable", self.is_editable)
+        writer.write_bool_value("isPersistedOnAssignmentRemoval", self.is_persisted_on_assignment_removal)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("source", self.source)

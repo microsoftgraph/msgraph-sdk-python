@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -31,7 +32,7 @@ class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilder(BaseReque
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/privilegedAccess/group/assignmentScheduleRequests/{privilegedAccessGroupAssignmentScheduleRequest%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property assignmentScheduleRequests for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -49,7 +50,7 @@ class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilder(BaseReque
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleRequest]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleRequest]:
         """
         Read the properties and relationships of a privilegedAccessGroupAssignmentScheduleRequest object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -70,7 +71,7 @@ class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilder(BaseReque
 
         return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupAssignmentScheduleRequest, error_mapping)
     
-    async def patch(self,body: Optional[PrivilegedAccessGroupAssignmentScheduleRequest] = None, request_configuration: Optional[PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleRequest]:
+    async def patch(self,body: Optional[PrivilegedAccessGroupAssignmentScheduleRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleRequest]:
         """
         Update the navigation property assignmentScheduleRequests in identityGovernance
         param body: The request body
@@ -93,7 +94,7 @@ class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilder(BaseReque
 
         return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupAssignmentScheduleRequest, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property assignmentScheduleRequests for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +105,7 @@ class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilder(BaseReque
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of a privilegedAccessGroupAssignmentScheduleRequest object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -115,7 +116,7 @@ class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilder(BaseReque
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[PrivilegedAccessGroupAssignmentScheduleRequest] = None, request_configuration: Optional[PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PrivilegedAccessGroupAssignmentScheduleRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property assignmentScheduleRequests in identityGovernance
         param body: The request body
@@ -185,16 +186,6 @@ class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilder(BaseReque
 
         return TargetScheduleRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilderGetQueryParameters():
         """
@@ -220,28 +211,5 @@ class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilder(BaseReque
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilder.PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

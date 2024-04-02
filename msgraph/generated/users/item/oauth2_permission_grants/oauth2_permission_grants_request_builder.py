@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -42,7 +43,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["oAuth2PermissionGrant%2Did"] = o_auth2_permission_grant_id
         return OAuth2PermissionGrantItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> Optional[OAuth2PermissionGrantCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OAuth2PermissionGrantCollectionResponse]:
         """
         Retrieve a list of oAuth2PermissionGrant entities, which represent delegated permissions granted to enable a client application to access an API on behalf of the user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OAuth2PermissionGrantCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of oAuth2PermissionGrant entities, which represent delegated permissions granted to enable a client application to access an API on behalf of the user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -147,19 +148,6 @@ class Oauth2PermissionGrantsRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[Oauth2PermissionGrantsRequestBuilder.Oauth2PermissionGrantsRequestBuilderGetQueryParameters] = None
 
     
 

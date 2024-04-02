@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +28,7 @@ class WhoisHistoryRecordItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/threatIntelligence/whoisHistoryRecords/{whoisHistoryRecord%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[WhoisHistoryRecordItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property whoisHistoryRecords for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +46,7 @@ class WhoisHistoryRecordItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WhoisHistoryRecordItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WhoisHistoryRecord]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WhoisHistoryRecord]:
         """
         Retrieve details about whoisHistoryRecord objects.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +66,7 @@ class WhoisHistoryRecordItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WhoisHistoryRecord, error_mapping)
     
-    async def patch(self,body: Optional[WhoisHistoryRecord] = None, request_configuration: Optional[WhoisHistoryRecordItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WhoisHistoryRecord]:
+    async def patch(self,body: Optional[WhoisHistoryRecord] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WhoisHistoryRecord]:
         """
         Update the navigation property whoisHistoryRecords in security
         param body: The request body
@@ -88,7 +89,7 @@ class WhoisHistoryRecordItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WhoisHistoryRecord, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[WhoisHistoryRecordItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property whoisHistoryRecords for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class WhoisHistoryRecordItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[WhoisHistoryRecordItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve details about whoisHistoryRecord objects.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +111,7 @@ class WhoisHistoryRecordItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[WhoisHistoryRecord] = None, request_configuration: Optional[WhoisHistoryRecordItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WhoisHistoryRecord] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property whoisHistoryRecords in security
         param body: The request body
@@ -144,16 +145,6 @@ class WhoisHistoryRecordItemRequestBuilder(BaseRequestBuilder):
 
         return HostRequestBuilder(self.request_adapter, self.path_parameters)
     
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class WhoisHistoryRecordItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-    
     @dataclass
     class WhoisHistoryRecordItemRequestBuilderGetQueryParameters():
         """
@@ -179,28 +170,5 @@ class WhoisHistoryRecordItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class WhoisHistoryRecordItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[WhoisHistoryRecordItemRequestBuilder.WhoisHistoryRecordItemRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class WhoisHistoryRecordItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

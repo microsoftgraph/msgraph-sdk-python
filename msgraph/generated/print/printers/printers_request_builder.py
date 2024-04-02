@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +45,7 @@ class PrintersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["printer%2Did"] = printer_id
         return PrinterItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[PrintersRequestBuilderGetRequestConfiguration] = None) -> Optional[PrinterCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrinterCollectionResponse]:
         """
         Retrieve the list of printers that are registered in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +66,7 @@ class PrintersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrinterCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Printer] = None, request_configuration: Optional[PrintersRequestBuilderPostRequestConfiguration] = None) -> Optional[Printer]:
+    async def post(self,body: Optional[Printer] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Printer]:
         """
         Create new navigation property to printers for print
         param body: The request body
@@ -88,7 +89,7 @@ class PrintersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Printer, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[PrintersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the list of printers that are registered in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class PrintersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Printer] = None, request_configuration: Optional[PrintersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Printer] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to printers for print
         param body: The request body
@@ -197,28 +198,5 @@ class PrintersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PrintersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[PrintersRequestBuilder.PrintersRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PrintersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

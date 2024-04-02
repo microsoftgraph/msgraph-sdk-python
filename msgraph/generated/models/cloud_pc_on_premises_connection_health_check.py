@@ -16,21 +16,21 @@ class CloudPcOnPremisesConnectionHealthCheck(AdditionalDataHolder, BackedModel, 
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The additionalDetail property
+    # Additional details about the health check or the recommended action. For exmaple, the string value can be download.microsoft.com:443;software-download.microsoft.com:443; Read-only.
     additional_detail: Optional[str] = None
-    # The correlationId property
+    # The unique identifier of the health check item-related activities. This identifier can be useful in troubleshooting.
     correlation_id: Optional[str] = None
-    # The displayName property
+    # The display name for this health check item.
     display_name: Optional[str] = None
-    # The endDateTime property
+    # The value cannot be modified and is automatically populated when the health check ends. The Timestamp type represents date and time information using ISO 8601 format and is in Coordinated Universal Time (UTC). For example, midnight UTC on Jan 1, 2024 would look like this: '2024-01-01T00:00:00Z'. Returned by default. Read-only.
     end_date_time: Optional[datetime.datetime] = None
-    # The errorType property
+    # The type of error that occurred during this health check. Possible values are: endpointConnectivityCheckCloudPcUrlNotAllowListed, endpointConnectivityCheckWVDUrlNotAllowListed, etc. (The all possible values can refer to cloudPcOnPremisesConnectionHealthCheckErrorType) Read-Only.
     error_type: Optional[CloudPcOnPremisesConnectionHealthCheckErrorType] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The recommendedAction property
+    # The recommended action to fix the corresponding error. For example, The Active Directory domain join check failed because the password of the domain join user has expired. Read-Only.
     recommended_action: Optional[str] = None
-    # The startDateTime property
+    # The value cannot be modified and is automatically populated when the health check starts. The Timestamp type represents date and time information using ISO 8601 format and is in  Coordinated Universal Time (UTC). For example, midnight UTC on Jan 1, 2024 would look like this: '2024-01-01T00:00:00Z'. Returned by default. Read-only.
     start_date_time: Optional[datetime.datetime] = None
     # The status property
     status: Optional[CloudPcOnPremisesConnectionStatus] = None

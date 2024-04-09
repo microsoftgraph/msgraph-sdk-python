@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class AddPasswordRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/applications/{application%2Did}/addPassword", path_parameters)
     
-    async def post(self,body: Optional[AddPasswordPostRequestBody] = None, request_configuration: Optional[AddPasswordRequestBuilderPostRequestConfiguration] = None) -> Optional[PasswordCredential]:
+    async def post(self,body: Optional[AddPasswordPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PasswordCredential]:
         """
         Adds a strong password or secret to an application.
         param body: The request body
@@ -51,7 +51,7 @@ class AddPasswordRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PasswordCredential, error_mapping)
     
-    def to_post_request_information(self,body: Optional[AddPasswordPostRequestBody] = None, request_configuration: Optional[AddPasswordRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AddPasswordPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Adds a strong password or secret to an application.
         param body: The request body
@@ -75,15 +75,5 @@ class AddPasswordRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AddPasswordRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AddPasswordRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

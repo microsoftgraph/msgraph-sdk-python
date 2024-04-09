@@ -34,7 +34,7 @@ class EducationSubmission(Entity):
     returned_by: Optional[IdentitySet] = None
     # Moment in time when the submission was returned. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     returned_date_time: Optional[datetime.datetime] = None
-    # Read-only. Possible values are: working, submitted, returned, and reassigned. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: reassigned.
+    # Read-only. Possible values are: working, submitted, returned, and reassigned. Note that you must use the Prefer: include-unknown-enum-members request header to get the following values in this evolvable enum: reassigned.
     status: Optional[EducationSubmissionStatus] = None
     # User who moved the resource into the submitted state.
     submitted_by: Optional[IdentitySet] = None

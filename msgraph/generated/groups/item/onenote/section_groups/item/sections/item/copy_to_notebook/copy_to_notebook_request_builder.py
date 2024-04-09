@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class CopyToNotebookRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/onenote/sectionGroups/{sectionGroup%2Did}/sections/{onenoteSection%2Did}/copyToNotebook", path_parameters)
     
-    async def post(self,body: Optional[CopyToNotebookPostRequestBody] = None, request_configuration: Optional[CopyToNotebookRequestBuilderPostRequestConfiguration] = None) -> Optional[OnenoteOperation]:
+    async def post(self,body: Optional[CopyToNotebookPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[OnenoteOperation]:
         """
         For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
         param body: The request body
@@ -51,7 +51,7 @@ class CopyToNotebookRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OnenoteOperation, error_mapping)
     
-    def to_post_request_information(self,body: Optional[CopyToNotebookPostRequestBody] = None, request_configuration: Optional[CopyToNotebookRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CopyToNotebookPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
         param body: The request body
@@ -75,15 +75,5 @@ class CopyToNotebookRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return CopyToNotebookRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class CopyToNotebookRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

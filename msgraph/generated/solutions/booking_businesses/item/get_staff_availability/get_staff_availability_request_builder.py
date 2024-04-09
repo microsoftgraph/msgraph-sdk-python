@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class GetStaffAvailabilityRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/getStaffAvailability", path_parameters)
     
-    async def post(self,body: Optional[GetStaffAvailabilityPostRequestBody] = None, request_configuration: Optional[GetStaffAvailabilityRequestBuilderPostRequestConfiguration] = None) -> Optional[GetStaffAvailabilityPostResponse]:
+    async def post(self,body: Optional[GetStaffAvailabilityPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[GetStaffAvailabilityPostResponse]:
         """
         Get the availability information of staff members of a Microsoft Bookings calendar.
         param body: The request body
@@ -51,7 +51,7 @@ class GetStaffAvailabilityRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, GetStaffAvailabilityPostResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[GetStaffAvailabilityPostRequestBody] = None, request_configuration: Optional[GetStaffAvailabilityRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[GetStaffAvailabilityPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get the availability information of staff members of a Microsoft Bookings calendar.
         param body: The request body
@@ -75,15 +75,5 @@ class GetStaffAvailabilityRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GetStaffAvailabilityRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class GetStaffAvailabilityRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

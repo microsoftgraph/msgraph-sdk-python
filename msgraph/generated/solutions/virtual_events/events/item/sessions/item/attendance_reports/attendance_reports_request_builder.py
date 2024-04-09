@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["meetingAttendanceReport%2Did"] = meeting_attendance_report_id
         return MeetingAttendanceReportItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AttendanceReportsRequestBuilderGetRequestConfiguration] = None) -> Optional[MeetingAttendanceReportCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[MeetingAttendanceReportCollectionResponse]:
         """
         The attendance reports of an online meeting. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, MeetingAttendanceReportCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[MeetingAttendanceReport] = None, request_configuration: Optional[AttendanceReportsRequestBuilderPostRequestConfiguration] = None) -> Optional[MeetingAttendanceReport]:
+    async def post(self,body: Optional[MeetingAttendanceReport] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[MeetingAttendanceReport]:
         """
         Create new navigation property to attendanceReports for solutions
         param body: The request body
@@ -86,7 +87,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, MeetingAttendanceReport, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[AttendanceReportsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The attendance reports of an online meeting. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +98,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[MeetingAttendanceReport] = None, request_configuration: Optional[AttendanceReportsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[MeetingAttendanceReport] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to attendanceReports for solutions
         param body: The request body
@@ -106,7 +107,7 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/solutions/virtualEvents/events/{virtualEvent%2Did}/sessions/{virtualEventSession%2Did}/attendanceReports', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -186,28 +187,5 @@ class AttendanceReportsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AttendanceReportsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[AttendanceReportsRequestBuilder.AttendanceReportsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AttendanceReportsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

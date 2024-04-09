@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class UnarchiveRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/serviceAnnouncement/messages/unarchive", path_parameters)
     
-    async def post(self,body: Optional[UnarchivePostRequestBody] = None, request_configuration: Optional[UnarchiveRequestBuilderPostRequestConfiguration] = None) -> Optional[UnarchivePostResponse]:
+    async def post(self,body: Optional[UnarchivePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnarchivePostResponse]:
         """
         Unarchive a list of serviceUpdateMessages for the signed in user.
         param body: The request body
@@ -51,7 +51,7 @@ class UnarchiveRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UnarchivePostResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[UnarchivePostRequestBody] = None, request_configuration: Optional[UnarchiveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UnarchivePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Unarchive a list of serviceUpdateMessages for the signed in user.
         param body: The request body
@@ -75,15 +75,5 @@ class UnarchiveRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return UnarchiveRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class UnarchiveRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

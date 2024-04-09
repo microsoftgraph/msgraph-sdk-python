@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class SecureScoreControlProfilesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["secureScoreControlProfile%2Did"] = secure_score_control_profile_id
         return SecureScoreControlProfileItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SecureScoreControlProfilesRequestBuilderGetRequestConfiguration] = None) -> Optional[SecureScoreControlProfileCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SecureScoreControlProfileCollectionResponse]:
         """
         Retrieve the properties and relationships of a secureScoreControlProfiles object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class SecureScoreControlProfilesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SecureScoreControlProfileCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[SecureScoreControlProfile] = None, request_configuration: Optional[SecureScoreControlProfilesRequestBuilderPostRequestConfiguration] = None) -> Optional[SecureScoreControlProfile]:
+    async def post(self,body: Optional[SecureScoreControlProfile] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SecureScoreControlProfile]:
         """
         Create new navigation property to secureScoreControlProfiles for security
         param body: The request body
@@ -87,7 +88,7 @@ class SecureScoreControlProfilesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SecureScoreControlProfile, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[SecureScoreControlProfilesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of a secureScoreControlProfiles object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +99,7 @@ class SecureScoreControlProfilesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[SecureScoreControlProfile] = None, request_configuration: Optional[SecureScoreControlProfilesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SecureScoreControlProfile] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to secureScoreControlProfiles for security
         param body: The request body
@@ -107,7 +108,7 @@ class SecureScoreControlProfilesRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/security/secureScoreControlProfiles', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -187,28 +188,5 @@ class SecureScoreControlProfilesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class SecureScoreControlProfilesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[SecureScoreControlProfilesRequestBuilder.SecureScoreControlProfilesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class SecureScoreControlProfilesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

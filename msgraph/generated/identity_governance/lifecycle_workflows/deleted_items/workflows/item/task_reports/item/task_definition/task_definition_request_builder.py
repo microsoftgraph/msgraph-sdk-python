@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +27,7 @@ class TaskDefinitionRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/deletedItems/workflows/{workflow%2Did}/taskReports/{taskReport%2Did}/taskDefinition{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[TaskDefinitionRequestBuilderGetRequestConfiguration] = None) -> Optional[TaskDefinition]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TaskDefinition]:
         """
         The taskDefinition associated with the related lifecycle workflow task.Supports $filter(eq, ne) and $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +47,7 @@ class TaskDefinitionRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TaskDefinition, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[TaskDefinitionRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The taskDefinition associated with the related lifecycle workflow task.Supports $filter(eq, ne) and $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -91,19 +92,6 @@ class TaskDefinitionRequestBuilder(BaseRequestBuilder):
 
         # Select properties to be returned
         select: Optional[List[str]] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TaskDefinitionRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[TaskDefinitionRequestBuilder.TaskDefinitionRequestBuilderGetQueryParameters] = None
 
     
 

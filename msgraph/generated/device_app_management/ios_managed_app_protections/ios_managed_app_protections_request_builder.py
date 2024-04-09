@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["iosManagedAppProtection%2Did"] = ios_managed_app_protection_id
         return IosManagedAppProtectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[IosManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[IosManagedAppProtectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IosManagedAppProtectionCollectionResponse]:
         """
         List properties and relationships of the iosManagedAppProtection objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IosManagedAppProtectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[IosManagedAppProtection]:
+    async def post(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[IosManagedAppProtection]:
         """
         Create a new iosManagedAppProtection object.
         param body: The request body
@@ -88,7 +89,7 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IosManagedAppProtection, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[IosManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         List properties and relationships of the iosManagedAppProtection objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[IosManagedAppProtection] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new iosManagedAppProtection object.
         param body: The request body
@@ -108,7 +109,7 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/deviceAppManagement/iosManagedAppProtections', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -188,28 +189,5 @@ class IosManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class IosManagedAppProtectionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[IosManagedAppProtectionsRequestBuilder.IosManagedAppProtectionsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class IosManagedAppProtectionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

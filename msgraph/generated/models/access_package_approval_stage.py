@@ -31,7 +31,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, BackedModel, Parsable):
     is_escalation_enabled: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The subjects, typically users, who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors or externalSponsors.
+    # The subjects, typically users, who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors, externalSponsors, or targetUserSponsors.
     primary_approvers: Optional[List[SubjectSet]] = None
     
     @staticmethod

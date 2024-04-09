@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class ProtectedAppLockerFilesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["windowsInformationProtectionAppLockerFile%2Did"] = windows_information_protection_app_locker_file_id
         return WindowsInformationProtectionAppLockerFileItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ProtectedAppLockerFilesRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLockerFileCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLockerFileCollectionResponse]:
         """
         Another way to input protected apps through xml files
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class ProtectedAppLockerFilesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WindowsInformationProtectionAppLockerFileCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[WindowsInformationProtectionAppLockerFile] = None, request_configuration: Optional[ProtectedAppLockerFilesRequestBuilderPostRequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLockerFile]:
+    async def post(self,body: Optional[WindowsInformationProtectionAppLockerFile] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLockerFile]:
         """
         Create new navigation property to protectedAppLockerFiles for deviceAppManagement
         param body: The request body
@@ -86,7 +87,7 @@ class ProtectedAppLockerFilesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WindowsInformationProtectionAppLockerFile, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ProtectedAppLockerFilesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Another way to input protected apps through xml files
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +98,7 @@ class ProtectedAppLockerFilesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[WindowsInformationProtectionAppLockerFile] = None, request_configuration: Optional[ProtectedAppLockerFilesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WindowsInformationProtectionAppLockerFile] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to protectedAppLockerFiles for deviceAppManagement
         param body: The request body
@@ -106,7 +107,7 @@ class ProtectedAppLockerFilesRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/deviceAppManagement/mdmWindowsInformationProtectionPolicies/{mdmWindowsInformationProtectionPolicy%2Did}/protectedAppLockerFiles', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -186,28 +187,5 @@ class ProtectedAppLockerFilesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ProtectedAppLockerFilesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ProtectedAppLockerFilesRequestBuilder.ProtectedAppLockerFilesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ProtectedAppLockerFilesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

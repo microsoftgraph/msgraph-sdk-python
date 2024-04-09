@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class ContentSharingSessionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["contentSharingSession%2Did"] = content_sharing_session_id
         return ContentSharingSessionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ContentSharingSessionsRequestBuilderGetRequestConfiguration] = None) -> Optional[ContentSharingSessionCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ContentSharingSessionCollectionResponse]:
         """
         Retrieve a list of contentSharingSession objects in a call.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class ContentSharingSessionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ContentSharingSessionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ContentSharingSession] = None, request_configuration: Optional[ContentSharingSessionsRequestBuilderPostRequestConfiguration] = None) -> Optional[ContentSharingSession]:
+    async def post(self,body: Optional[ContentSharingSession] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ContentSharingSession]:
         """
         Create new navigation property to contentSharingSessions for communications
         param body: The request body
@@ -87,7 +88,7 @@ class ContentSharingSessionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ContentSharingSession, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ContentSharingSessionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of contentSharingSession objects in a call.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +99,7 @@ class ContentSharingSessionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ContentSharingSession] = None, request_configuration: Optional[ContentSharingSessionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ContentSharingSession] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to contentSharingSessions for communications
         param body: The request body
@@ -107,7 +108,7 @@ class ContentSharingSessionsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/communications/calls/{call%2Did}/contentSharingSessions', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -187,28 +188,5 @@ class ContentSharingSessionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ContentSharingSessionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ContentSharingSessionsRequestBuilder.ContentSharingSessionsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ContentSharingSessionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

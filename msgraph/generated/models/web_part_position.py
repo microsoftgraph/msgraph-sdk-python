@@ -11,15 +11,15 @@ class WebPartPosition(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The columnId property
+    # Indicates the identifier of the column where the web part is located.
     column_id: Optional[float] = None
-    # The horizontalSectionId property
+    # Indicates the horizontal section where the web part is located.
     horizontal_section_id: Optional[float] = None
-    # The isInVerticalSection property
+    # Indicates whether the web part is located in the vertical section.
     is_in_vertical_section: Optional[bool] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The webPartIndex property
+    # Index of the current web part. Represents the order of the web part in this column or section.
     web_part_index: Optional[float] = None
     
     @staticmethod

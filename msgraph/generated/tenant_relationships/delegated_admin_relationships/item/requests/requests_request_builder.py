@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class RequestsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["delegatedAdminRelationshipRequest%2Did"] = delegated_admin_relationship_request_id
         return DelegatedAdminRelationshipRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminRelationshipRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminRelationshipRequestCollectionResponse]:
         """
         Get a list of the delegatedAdminRelationshipRequest objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class RequestsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminRelationshipRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[RequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[DelegatedAdminRelationshipRequest]:
+    async def post(self,body: Optional[DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminRelationshipRequest]:
         """
         Create a new delegatedAdminRelationshipRequest object.
         param body: The request body
@@ -88,7 +89,7 @@ class RequestsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminRelationshipRequest, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of the delegatedAdminRelationshipRequest objects and their properties.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class RequestsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[RequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new delegatedAdminRelationshipRequest object.
         param body: The request body
@@ -108,7 +109,7 @@ class RequestsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/tenantRelationships/delegatedAdminRelationships/{delegatedAdminRelationship%2Did}/requests', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -188,28 +189,5 @@ class RequestsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RequestsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[RequestsRequestBuilder.RequestsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RequestsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

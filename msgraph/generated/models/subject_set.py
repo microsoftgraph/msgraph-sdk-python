@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .single_user import SingleUser
     from .target_application_owners import TargetApplicationOwners
     from .target_manager import TargetManager
+    from .target_user_sponsors import TargetUserSponsors
 
 @dataclass
 class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
@@ -84,6 +85,10 @@ class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
             from .target_manager import TargetManager
 
             return TargetManager()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetUserSponsors".casefold():
+            from .target_user_sponsors import TargetUserSponsors
+
+            return TargetUserSponsors()
         return SubjectSet()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -102,6 +107,7 @@ class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
         from .single_user import SingleUser
         from .target_application_owners import TargetApplicationOwners
         from .target_manager import TargetManager
+        from .target_user_sponsors import TargetUserSponsors
 
         from .attribute_rule_members import AttributeRuleMembers
         from .connected_organization_members import ConnectedOrganizationMembers
@@ -114,6 +120,7 @@ class SubjectSet(AdditionalDataHolder, BackedModel, Parsable):
         from .single_user import SingleUser
         from .target_application_owners import TargetApplicationOwners
         from .target_manager import TargetManager
+        from .target_user_sponsors import TargetUserSponsors
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

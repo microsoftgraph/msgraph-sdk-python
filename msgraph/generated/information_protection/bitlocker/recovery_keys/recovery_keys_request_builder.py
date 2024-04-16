@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -42,7 +43,7 @@ class RecoveryKeysRequestBuilder(BaseRequestBuilder):
         url_tpl_params["bitlockerRecoveryKey%2Did"] = bitlocker_recovery_key_id
         return BitlockerRecoveryKeyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RecoveryKeysRequestBuilderGetRequestConfiguration] = None) -> Optional[BitlockerRecoveryKeyCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BitlockerRecoveryKeyCollectionResponse]:
         """
         Get a list of the bitlockerRecoveryKey objects and their properties.  This operation does not return the key property. For information about how to read the key property, see Get bitlockerRecoveryKey.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class RecoveryKeysRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, BitlockerRecoveryKeyCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RecoveryKeysRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of the bitlockerRecoveryKey objects and their properties.  This operation does not return the key property. For information about how to read the key property, see Get bitlockerRecoveryKey.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -147,19 +148,6 @@ class RecoveryKeysRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RecoveryKeysRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[RecoveryKeysRequestBuilder.RecoveryKeysRequestBuilderGetQueryParameters] = None
 
     
 

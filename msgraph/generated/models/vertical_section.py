@@ -12,11 +12,11 @@ from .entity import Entity
 
 @dataclass
 class VerticalSection(Entity):
-    # The emphasis property
+    # Enumeration value that indicates the emphasis of the section background. The possible values are: none, netural, soft, strong, unknownFutureValue.
     emphasis: Optional[SectionEmphasisType] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The webparts property
+    # The set of web parts in this section.
     webparts: Optional[List[WebPart]] = None
     
     @staticmethod

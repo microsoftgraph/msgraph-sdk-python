@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class WindowsInformationProtectionPoliciesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["windowsInformationProtectionPolicy%2Did"] = windows_information_protection_policy_id
         return WindowsInformationProtectionPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[WindowsInformationProtectionPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsInformationProtectionPolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WindowsInformationProtectionPolicyCollectionResponse]:
         """
         List properties and relationships of the windowsInformationProtectionPolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class WindowsInformationProtectionPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WindowsInformationProtectionPolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[WindowsInformationProtectionPolicy] = None, request_configuration: Optional[WindowsInformationProtectionPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[WindowsInformationProtectionPolicy]:
+    async def post(self,body: Optional[WindowsInformationProtectionPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WindowsInformationProtectionPolicy]:
         """
         Create a new windowsInformationProtectionPolicy object.
         param body: The request body
@@ -88,7 +89,7 @@ class WindowsInformationProtectionPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WindowsInformationProtectionPolicy, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[WindowsInformationProtectionPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         List properties and relationships of the windowsInformationProtectionPolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class WindowsInformationProtectionPoliciesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[WindowsInformationProtectionPolicy] = None, request_configuration: Optional[WindowsInformationProtectionPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WindowsInformationProtectionPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new windowsInformationProtectionPolicy object.
         param body: The request body
@@ -108,7 +109,7 @@ class WindowsInformationProtectionPoliciesRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/deviceAppManagement/windowsInformationProtectionPolicies', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -188,28 +189,5 @@ class WindowsInformationProtectionPoliciesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class WindowsInformationProtectionPoliciesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[WindowsInformationProtectionPoliciesRequestBuilder.WindowsInformationProtectionPoliciesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class WindowsInformationProtectionPoliciesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

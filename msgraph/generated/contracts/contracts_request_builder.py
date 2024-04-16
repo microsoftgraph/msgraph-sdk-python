@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -47,7 +48,7 @@ class ContractsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["contract%2Did"] = contract_id
         return ContractItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ContractsRequestBuilderGetRequestConfiguration] = None) -> Optional[ContractCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ContractCollectionResponse]:
         """
         Retrieve a list of contract objects associated to a partner tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -68,7 +69,7 @@ class ContractsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ContractCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Contract] = None, request_configuration: Optional[ContractsRequestBuilderPostRequestConfiguration] = None) -> Optional[Contract]:
+    async def post(self,body: Optional[Contract] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Contract]:
         """
         Add new entity to contracts
         param body: The request body
@@ -91,7 +92,7 @@ class ContractsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Contract, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ContractsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of contract objects associated to a partner tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +103,7 @@ class ContractsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Contract] = None, request_configuration: Optional[ContractsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Contract] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Add new entity to contracts
         param body: The request body
@@ -111,7 +112,7 @@ class ContractsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/contracts', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -227,28 +228,5 @@ class ContractsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ContractsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ContractsRequestBuilder.ContractsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ContractsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

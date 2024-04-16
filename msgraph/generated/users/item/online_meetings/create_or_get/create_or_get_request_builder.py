@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class CreateOrGetRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/onlineMeetings/createOrGet", path_parameters)
     
-    async def post(self,body: Optional[CreateOrGetPostRequestBody] = None, request_configuration: Optional[CreateOrGetRequestBuilderPostRequestConfiguration] = None) -> Optional[OnlineMeeting]:
+    async def post(self,body: Optional[CreateOrGetPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[OnlineMeeting]:
         """
         Create an onlineMeeting object with a custom specified external ID. If the external ID already exists, this API will return the onlineMeeting object with that external ID. 
         param body: The request body
@@ -51,7 +51,7 @@ class CreateOrGetRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OnlineMeeting, error_mapping)
     
-    def to_post_request_information(self,body: Optional[CreateOrGetPostRequestBody] = None, request_configuration: Optional[CreateOrGetRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CreateOrGetPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create an onlineMeeting object with a custom specified external ID. If the external ID already exists, this API will return the onlineMeeting object with that external ID. 
         param body: The request body
@@ -75,15 +75,5 @@ class CreateOrGetRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return CreateOrGetRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class CreateOrGetRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

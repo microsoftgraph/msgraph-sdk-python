@@ -13,11 +13,11 @@ from .web_part import WebPart
 class StandardWebPart(WebPart):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.standardWebPart"
-    # The containerTextWebPartId property
+    # The instance identifier of the container text webPart. It only works for inline standard webPart in rich text webParts.
     container_text_web_part_id: Optional[str] = None
-    # The data property
+    # Data of the webPart.
     data: Optional[WebPartData] = None
-    # The webPartType property
+    # A Guid that indicates the webPart type.
     web_part_type: Optional[str] = None
     
     @staticmethod

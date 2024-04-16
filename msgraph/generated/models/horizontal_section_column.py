@@ -13,9 +13,9 @@ from .entity import Entity
 class HorizontalSectionColumn(Entity):
     # The OdataType property
     odata_type: Optional[str] = None
-    # The webparts property
+    # The collection of WebParts in this column.
     webparts: Optional[List[WebPart]] = None
-    # The width property
+    # Width of the column. A horizontal section is divided into 12 grids. A column should have a value of 1-12 to represent its range spans. For example, there can be two columns both have a width of 6 in a section.
     width: Optional[int] = None
     
     @staticmethod

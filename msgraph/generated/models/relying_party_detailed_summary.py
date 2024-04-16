@@ -12,29 +12,29 @@ from .entity import Entity
 
 @dataclass
 class RelyingPartyDetailedSummary(Entity):
-    # The failedSignInCount property
+    # Number of failed sign ins on AD FS in the period specified. Supports $orderby, $filter (eq).
     failed_sign_in_count: Optional[int] = None
     # The migrationStatus property
     migration_status: Optional[MigrationStatus] = None
-    # The migrationValidationDetails property
+    # Specifies all the validations checks done on applications config details.
     migration_validation_details: Optional[List[KeyValuePair]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The relyingPartyId property
+    # Identifies the relying party to this federation service. It's used when issuing claims to the relying party. Supports $orderby, $filter (eq).
     relying_party_id: Optional[str] = None
-    # The relyingPartyName property
+    # Name of the relying party's website or other entity on the Internet that uses an identity provider to authenticate a user who wants to log in. Supports $orderby, $filter (eq).
     relying_party_name: Optional[str] = None
-    # The replyUrls property
+    # Specifies where the relying party expects to receive the token.
     reply_urls: Optional[List[str]] = None
-    # The serviceId property
+    # Uniquely identifies the Active Directory forest. Supports $orderby, $filter (eq).
     service_id: Optional[str] = None
-    # The signInSuccessRate property
+    # Calculated as Number of successful / (Number of successful + Number of failed sign ins) or successfulSignInCount / totalSignInCount on AD FS in the period specified. Supports $orderby, $filter (eq).
     sign_in_success_rate: Optional[float] = None
-    # The successfulSignInCount property
+    # Number of successful sign ins on AD FS. Supports $orderby, $filter (eq).
     successful_sign_in_count: Optional[int] = None
-    # The totalSignInCount property
+    # Number of successful + failed sign ins on AD FS in the period specified. Supports $orderby, $filter (eq).
     total_sign_in_count: Optional[int] = None
-    # The uniqueUserCount property
+    # Number of unique users that signed into the application. Supports $orderby, $filter (eq).
     unique_user_count: Optional[int] = None
     
     @staticmethod

@@ -16,27 +16,27 @@ class TitleArea(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The alternativeText property
+    # Alternative text on the title area.
     alternative_text: Optional[str] = None
-    # The enableGradientEffect property
+    # Indicates whether the title area has a gradient effect enabled.
     enable_gradient_effect: Optional[bool] = None
-    # The imageWebUrl property
+    # URL of the image in the title area.
     image_web_url: Optional[str] = None
-    # The layout property
+    # Enumeration value that indicates the layout of the title area. The possible values are: imageAndTitle, plain, colorBlock, overlap, unknownFutureValue.
     layout: Optional[TitleAreaLayoutType] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The serverProcessedContent property
+    # Contains collections of data that can be processed by server side services like search index and link fixup.
     server_processed_content: Optional[ServerProcessedContent] = None
-    # The showAuthor property
+    # Indicates whether the author should be shown in title area.
     show_author: Optional[bool] = None
-    # The showPublishedDate property
+    # Indicates whether the published date should be shown in title area.
     show_published_date: Optional[bool] = None
-    # The showTextBlockAboveTitle property
+    # Indicates whether the text block above title should be shown in title area.
     show_text_block_above_title: Optional[bool] = None
-    # The textAboveTitle property
+    # The text above title line.
     text_above_title: Optional[str] = None
-    # The textAlignment property
+    # Enumeration value that indicates the text alignment of the title area. The possible values are: left, center, unknownFutureValue.
     text_alignment: Optional[TitleAreaTextAlignmentType] = None
     
     @staticmethod

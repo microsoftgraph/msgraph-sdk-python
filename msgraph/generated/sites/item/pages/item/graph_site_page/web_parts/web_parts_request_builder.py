@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,9 +44,9 @@ class WebPartsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["webPart%2Did"] = web_part_id
         return WebPartItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[WebPartsRequestBuilderGetRequestConfiguration] = None) -> Optional[WebPartCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WebPartCollectionResponse]:
         """
-        Get webParts from sites
+        Collection of webparts on the SharePoint page.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WebPartCollectionResponse]
         """
@@ -63,7 +64,7 @@ class WebPartsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WebPartCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[WebPart] = None, request_configuration: Optional[WebPartsRequestBuilderPostRequestConfiguration] = None) -> Optional[WebPart]:
+    async def post(self,body: Optional[WebPart] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WebPart]:
         """
         Create new navigation property to webParts for sites
         param body: The request body
@@ -86,9 +87,9 @@ class WebPartsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WebPart, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[WebPartsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get webParts from sites
+        Collection of webparts on the SharePoint page.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +98,7 @@ class WebPartsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[WebPart] = None, request_configuration: Optional[WebPartsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WebPart] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to webParts for sites
         param body: The request body
@@ -106,7 +107,7 @@ class WebPartsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/sites/{site%2Did}/pages/{baseSitePage%2Did}/graph.sitePage/webParts', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -134,7 +135,7 @@ class WebPartsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WebPartsRequestBuilderGetQueryParameters():
         """
-        Get webParts from sites
+        Collection of webparts on the SharePoint page.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -186,28 +187,5 @@ class WebPartsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class WebPartsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[WebPartsRequestBuilder.WebPartsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class WebPartsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

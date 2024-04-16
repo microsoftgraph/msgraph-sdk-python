@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class InheritsPermissionsFromRequestBuilder(BaseRequestBuilder):
         url_tpl_params["unifiedRoleDefinition%2Did1"] = unified_role_definition_id1
         return UnifiedRoleDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[InheritsPermissionsFromRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleDefinitionCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleDefinitionCollectionResponse]:
         """
         Read-only collection of role definitions that the given role definition inherits from. Only Microsoft Entra built-in roles (isBuiltIn is true) support this attribute. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class InheritsPermissionsFromRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleDefinitionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UnifiedRoleDefinition] = None, request_configuration: Optional[InheritsPermissionsFromRequestBuilderPostRequestConfiguration] = None) -> Optional[UnifiedRoleDefinition]:
+    async def post(self,body: Optional[UnifiedRoleDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleDefinition]:
         """
         Create new navigation property to inheritsPermissionsFrom for roleManagement
         param body: The request body
@@ -86,7 +87,7 @@ class InheritsPermissionsFromRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleDefinition, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[InheritsPermissionsFromRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Read-only collection of role definitions that the given role definition inherits from. Only Microsoft Entra built-in roles (isBuiltIn is true) support this attribute. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +98,7 @@ class InheritsPermissionsFromRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UnifiedRoleDefinition] = None, request_configuration: Optional[InheritsPermissionsFromRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UnifiedRoleDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to inheritsPermissionsFrom for roleManagement
         param body: The request body
@@ -106,7 +107,7 @@ class InheritsPermissionsFromRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/roleManagement/directory/roleDefinitions/{unifiedRoleDefinition%2Did}/inheritsPermissionsFrom', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -186,28 +187,5 @@ class InheritsPermissionsFromRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class InheritsPermissionsFromRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[InheritsPermissionsFromRequestBuilder.InheritsPermissionsFromRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class InheritsPermissionsFromRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

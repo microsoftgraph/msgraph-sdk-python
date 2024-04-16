@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class DeviceManagementTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["deviceManagementTroubleshootingEvent%2Did"] = device_management_troubleshooting_event_id
         return DeviceManagementTroubleshootingEventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[DeviceManagementTroubleshootingEventsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagementTroubleshootingEventCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceManagementTroubleshootingEventCollectionResponse]:
         """
         The list of troubleshooting events for this user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class DeviceManagementTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceManagementTroubleshootingEventCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DeviceManagementTroubleshootingEvent] = None, request_configuration: Optional[DeviceManagementTroubleshootingEventsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceManagementTroubleshootingEvent]:
+    async def post(self,body: Optional[DeviceManagementTroubleshootingEvent] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceManagementTroubleshootingEvent]:
         """
         Create new navigation property to deviceManagementTroubleshootingEvents for users
         param body: The request body
@@ -86,7 +87,7 @@ class DeviceManagementTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceManagementTroubleshootingEvent, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[DeviceManagementTroubleshootingEventsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         The list of troubleshooting events for this user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +98,7 @@ class DeviceManagementTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DeviceManagementTroubleshootingEvent] = None, request_configuration: Optional[DeviceManagementTroubleshootingEventsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceManagementTroubleshootingEvent] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to deviceManagementTroubleshootingEvents for users
         param body: The request body
@@ -106,7 +107,7 @@ class DeviceManagementTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/users/{user%2Did}/deviceManagementTroubleshootingEvents', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -186,28 +187,5 @@ class DeviceManagementTroubleshootingEventsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DeviceManagementTroubleshootingEventsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[DeviceManagementTroubleshootingEventsRequestBuilder.DeviceManagementTroubleshootingEventsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DeviceManagementTroubleshootingEventsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

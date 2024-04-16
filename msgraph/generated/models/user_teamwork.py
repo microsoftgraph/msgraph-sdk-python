@@ -16,8 +16,12 @@ class UserTeamwork(Entity):
     associated_teams: Optional[List[AssociatedTeamInfo]] = None
     # The apps installed in the personal scope of this user.
     installed_apps: Optional[List[UserScopeTeamsAppInstallation]] = None
+    # The chosen locale of a user in Microsoft Teams.
+    locale: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
+    # The region of the user in Microsoft Teams.
+    region: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTeamwork:
@@ -46,6 +50,8 @@ class UserTeamwork(Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "associatedTeams": lambda n : setattr(self, 'associated_teams', n.get_collection_of_object_values(AssociatedTeamInfo)),
             "installedApps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(UserScopeTeamsAppInstallation)),
+            "locale": lambda n : setattr(self, 'locale', n.get_str_value()),
+            "region": lambda n : setattr(self, 'region', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -62,5 +68,7 @@ class UserTeamwork(Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("associatedTeams", self.associated_teams)
         writer.write_collection_of_object_values("installedApps", self.installed_apps)
+        writer.write_str_value("locale", self.locale)
+        writer.write_str_value("region", self.region)
     
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class DetailsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["endUserNotificationDetail%2Did"] = end_user_notification_detail_id
         return EndUserNotificationDetailItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[DetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[EndUserNotificationDetailCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EndUserNotificationDetailCollectionResponse]:
         """
         Get details from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class DetailsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EndUserNotificationDetailCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[EndUserNotificationDetail] = None, request_configuration: Optional[DetailsRequestBuilderPostRequestConfiguration] = None) -> Optional[EndUserNotificationDetail]:
+    async def post(self,body: Optional[EndUserNotificationDetail] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EndUserNotificationDetail]:
         """
         Create new navigation property to details for security
         param body: The request body
@@ -86,7 +87,7 @@ class DetailsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EndUserNotificationDetail, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[DetailsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get details from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -97,7 +98,7 @@ class DetailsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[EndUserNotificationDetail] = None, request_configuration: Optional[DetailsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[EndUserNotificationDetail] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to details for security
         param body: The request body
@@ -106,7 +107,7 @@ class DetailsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/security/attackSimulation/endUserNotifications/{endUserNotification%2Did}/details', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -186,28 +187,5 @@ class DetailsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DetailsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[DetailsRequestBuilder.DetailsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class DetailsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

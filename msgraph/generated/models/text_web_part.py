@@ -12,7 +12,7 @@ from .web_part import WebPart
 class TextWebPart(WebPart):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.textWebPart"
-    # The innerHtml property
+    # The HTML string in text web part.
     inner_html: Optional[str] = None
     
     @staticmethod

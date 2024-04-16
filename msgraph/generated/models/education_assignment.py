@@ -61,7 +61,7 @@ class EducationAssignment(Entity):
     instructions: Optional[EducationItemBody] = None
     # Who last modified the assignment.
     last_modified_by: Optional[IdentitySet] = None
-    # Moment when the assignment was last modified. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    # The date and time on which the assignment was modified. A student submission doesn't modify the assignment; only teachers can update assignments. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     last_modified_date_time: Optional[datetime.datetime] = None
     # The URL of the module from which to access the assignment.
     module_url: Optional[str] = None

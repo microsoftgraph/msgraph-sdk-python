@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +28,7 @@ class TriggerTypesRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/triggerTypes{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[TriggerTypesRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
         Delete navigation property triggerTypes for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +46,7 @@ class TriggerTypesRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TriggerTypesRequestBuilderGetRequestConfiguration] = None) -> Optional[TriggerTypesRoot]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TriggerTypesRoot]:
         """
         Get triggerTypes from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +66,7 @@ class TriggerTypesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TriggerTypesRoot, error_mapping)
     
-    async def patch(self,body: Optional[TriggerTypesRoot] = None, request_configuration: Optional[TriggerTypesRequestBuilderPatchRequestConfiguration] = None) -> Optional[TriggerTypesRoot]:
+    async def patch(self,body: Optional[TriggerTypesRoot] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TriggerTypesRoot]:
         """
         Update the navigation property triggerTypes in security
         param body: The request body
@@ -88,18 +89,18 @@ class TriggerTypesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TriggerTypesRoot, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[TriggerTypesRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property triggerTypes for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        request_info = RequestInformation(Method.DELETE, '{+baseurl}/security/triggerTypes', self.path_parameters)
+        request_info = RequestInformation(Method.DELETE, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[TriggerTypesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get triggerTypes from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +111,7 @@ class TriggerTypesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[TriggerTypesRoot] = None, request_configuration: Optional[TriggerTypesRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TriggerTypesRoot] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property triggerTypes in security
         param body: The request body
@@ -119,7 +120,7 @@ class TriggerTypesRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.PATCH, '{+baseurl}/security/triggerTypes', self.path_parameters)
+        request_info = RequestInformation(Method.PATCH, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -143,16 +144,6 @@ class TriggerTypesRequestBuilder(BaseRequestBuilder):
         from .retention_event_types.retention_event_types_request_builder import RetentionEventTypesRequestBuilder
 
         return RetentionEventTypesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TriggerTypesRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
     @dataclass
     class TriggerTypesRequestBuilderGetQueryParameters():
@@ -179,28 +170,5 @@ class TriggerTypesRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TriggerTypesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[TriggerTypesRequestBuilder.TriggerTypesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class TriggerTypesRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

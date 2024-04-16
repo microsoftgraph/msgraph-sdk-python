@@ -22,13 +22,13 @@ class VirtualEvent(Entity):
     description: Optional[ItemBody] = None
     # Display name of the virtual event.
     display_name: Optional[str] = None
-    # End time of the virtual event. The timeZone property can be set to any of the time zones currently supported by Windows.
+    # End time of the virtual event. The timeZone property can be set to any of the time zones currently supported by Windows. For details on how to get all available time zones using PowerShell, see Get-TimeZone.
     end_date_time: Optional[DateTimeTimeZone] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Sessions for the virtual event.
     sessions: Optional[List[VirtualEventSession]] = None
-    # Start time of the virtual event. The timeZone property can be set to any of the time zones currently supported by Windows.
+    # Start time of the virtual event. The timeZone property can be set to any of the time zones currently supported by Windows. For details on how to get all available time zones using PowerShell, see Get-TimeZone.
     start_date_time: Optional[DateTimeTimeZone] = None
     # Status of the virtual event. The possible values are: draft, published, canceled, unknownFutureValue.
     status: Optional[VirtualEventStatus] = None

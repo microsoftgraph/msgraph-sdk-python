@@ -16,29 +16,29 @@ from .entity import Entity
 
 @dataclass
 class CloudPcAuditEvent(Entity):
-    # The activity property
+    # The friendly name of the audit activity.
     activity: Optional[str] = None
-    # The activityDateTime property
+    # The date time in UTC when the activity was performed. Read-only.
     activity_date_time: Optional[datetime.datetime] = None
     # The activityOperationType property
     activity_operation_type: Optional[CloudPcAuditActivityOperationType] = None
     # The activityResult property
     activity_result: Optional[CloudPcAuditActivityResult] = None
-    # The activityType property
+    # The type of activity that was performed. Read-only.
     activity_type: Optional[str] = None
     # The actor property
     actor: Optional[CloudPcAuditActor] = None
     # The category property
     category: Optional[CloudPcAuditCategory] = None
-    # The componentName property
+    # The component name for the audit event. Read-only.
     component_name: Optional[str] = None
-    # The correlationId property
+    # The client request ID that is used to correlate activity within the system. Read-only.
     correlation_id: Optional[str] = None
-    # The displayName property
+    # The display name for the audit event. Read-only.
     display_name: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The resources property
+    # The list of cloudPcAuditResource objects. Read-only.
     resources: Optional[List[CloudPcAuditResource]] = None
     
     @staticmethod

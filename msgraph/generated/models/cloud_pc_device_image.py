@@ -14,27 +14,27 @@ from .entity import Entity
 
 @dataclass
 class CloudPcDeviceImage(Entity):
-    # The displayName property
+    # The display name of the associated device image. The device image display name and the version are used to uniquely identify the Cloud PC device image. Read-only.
     display_name: Optional[str] = None
-    # The errorCode property
+    # The error code of the status of the image that indicates why the upload failed, if applicable. Possible values are: internalServerError, sourceImageNotFound, osVersionNotSupported, sourceImageInvalid, sourceImageNotGeneralized, unknownFutureValue, vmAlreadyAzureAdJoined, paidSourceImageNotSupport, sourceImageNotSupportCustomizeVMName, sourceImageSizeExceedsLimitation. Note that you must use the Prefer: include-unknown-enum-members request header to get the following values from this evolvable enum: vmAlreadyAzureAdJoined, paidSourceImageNotSupport, sourceImageNotSupportCustomizeVMName, sourceImageSizeExceedsLimitation. Read-only.
     error_code: Optional[CloudPcDeviceImageErrorCode] = None
-    # The expirationDate property
+    # The date when the image became unavailable. Read-only.
     expiration_date: Optional[datetime.date] = None
-    # The lastModifiedDateTime property
+    # The data and time when the image was last modified. The timestamp represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     last_modified_date_time: Optional[datetime.datetime] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The operatingSystem property
+    # The operating system (OS) of the image. For example, Windows 10 Enterprise. Read-only.
     operating_system: Optional[str] = None
-    # The osBuildNumber property
+    # The OS build version of the image. For example, 1909. Read-only.
     os_build_number: Optional[str] = None
-    # The osStatus property
+    # The OS status of this image. Possible values are: supported, supportedWithWarning, unknown, unknownFutureValue. The default value is unknown. Read-only.
     os_status: Optional[CloudPcDeviceImageOsStatus] = None
-    # The sourceImageResourceId property
+    # The unique identifier (ID) of the source image resource on Azure. The required ID format is: '/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}'. Read-only.
     source_image_resource_id: Optional[str] = None
-    # The status property
+    # The status of the image on the Cloud PC. Possible values are: pending, ready, failed, unknownFutureValue. Read-only.
     status: Optional[CloudPcDeviceImageStatus] = None
-    # The version property
+    # The image version. For example, 0.0.1 and 1.5.13. Read-only.
     version: Optional[str] = None
     
     @staticmethod

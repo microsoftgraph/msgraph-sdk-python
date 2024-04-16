@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -13,6 +14,8 @@ if TYPE_CHECKING:
     from ........models.list_item import ListItem
     from ........models.list_item_collection_response import ListItemCollectionResponse
     from ........models.o_data_errors.o_data_error import ODataError
+    from .delta.delta_request_builder import DeltaRequestBuilder
+    from .delta_with_token.delta_with_token_request_builder import DeltaWithTokenRequestBuilder
     from .item.list_item_item_request_builder import ListItemItemRequestBuilder
 
 class ItemsRequestBuilder(BaseRequestBuilder):
@@ -42,7 +45,19 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["listItem%2Did"] = list_item_id
         return ListItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[ListItemCollectionResponse]:
+    def delta_with_token(self,token: Optional[str] = None) -> DeltaWithTokenRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        param token: Usage: token='{token}'
+        Returns: DeltaWithTokenRequestBuilder
+        """
+        if not token:
+            raise TypeError("token cannot be null.")
+        from .delta_with_token.delta_with_token_request_builder import DeltaWithTokenRequestBuilder
+
+        return DeltaWithTokenRequestBuilder(self.request_adapter, self.path_parameters, token)
+    
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ListItemCollectionResponse]:
         """
         Get the collection of [items][item] in a [list][].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +78,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ListItemCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None) -> Optional[ListItem]:
+    async def post(self,body: Optional[ListItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ListItem]:
         """
         Create a new [listItem][] in a [list][].
         param body: The request body
@@ -87,7 +102,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ListItem, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get the collection of [items][item] in a [list][].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +113,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ListItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new [listItem][] in a [list][].
         param body: The request body
@@ -107,7 +122,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/lists/{list%2Did}/items', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -122,6 +137,15 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return ItemsRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def delta(self) -> DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        from .delta.delta_request_builder import DeltaRequestBuilder
+
+        return DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ItemsRequestBuilderGetQueryParameters():
@@ -173,28 +197,5 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ItemsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ItemsRequestBuilder.ItemsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ItemsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

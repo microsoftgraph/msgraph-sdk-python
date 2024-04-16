@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,12 +44,12 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["managedAppPolicy%2Did"] = managed_app_policy_id
         return ManagedAppPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[ManagedAppPolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedAppPolicyCollectionResponse]:
         """
-        List properties and relationships of the managedAppConfiguration objects.
+        List properties and relationships of the targetedManagedAppProtection objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedAppPolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappconfiguration-list?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-targetedmanagedappprotection-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -64,7 +65,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ManagedAppPolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ManagedAppPolicy] = None, request_configuration: Optional[ManagedAppPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[ManagedAppPolicy]:
+    async def post(self,body: Optional[ManagedAppPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedAppPolicy]:
         """
         Create new navigation property to managedAppPolicies for deviceAppManagement
         param body: The request body
@@ -87,9 +88,9 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ManagedAppPolicy, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedAppConfiguration objects.
+        List properties and relationships of the targetedManagedAppProtection objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -98,7 +99,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ManagedAppPolicy] = None, request_configuration: Optional[ManagedAppPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ManagedAppPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to managedAppPolicies for deviceAppManagement
         param body: The request body
@@ -107,7 +108,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/deviceAppManagement/managedAppPolicies', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -135,7 +136,7 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedAppPoliciesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedAppConfiguration objects.
+        List properties and relationships of the targetedManagedAppProtection objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -187,28 +188,5 @@ class ManagedAppPoliciesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ManagedAppPoliciesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ManagedAppPoliciesRequestBuilder.ManagedAppPoliciesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ManagedAppPoliciesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

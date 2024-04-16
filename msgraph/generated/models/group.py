@@ -161,7 +161,7 @@ class Group(DirectoryObject):
     transitive_member_of: Optional[List[DirectoryObject]] = None
     # The direct and transitive members of a group. Nullable.
     transitive_members: Optional[List[DirectoryObject]] = None
-    # The uniqueName property
+    # The unique identifier that can be assigned to a group and used as an alternate key. Immutable. Read-only.
     unique_name: Optional[str] = None
     # Count of conversations that have received new posts since the signed-in user last visited the group. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
     unseen_count: Optional[int] = None

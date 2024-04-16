@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class RestoreRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/restore", path_parameters)
     
-    async def post(self,body: Optional[RestorePostRequestBody] = None, request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> Optional[DriveItem]:
+    async def post(self,body: Optional[RestorePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DriveItem]:
         """
         Restore a driveItem that has been deleted and is currently in the recycle bin. NOTE: This functionality is currently only available for OneDrive Personal.
         param body: The request body
@@ -51,7 +51,7 @@ class RestoreRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DriveItem, error_mapping)
     
-    def to_post_request_information(self,body: Optional[RestorePostRequestBody] = None, request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[RestorePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Restore a driveItem that has been deleted and is currently in the recycle bin. NOTE: This functionality is currently only available for OneDrive Personal.
         param body: The request body
@@ -75,15 +75,5 @@ class RestoreRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return RestoreRequestBuilder(self.request_adapter, raw_url)
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class RestoreRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

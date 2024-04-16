@@ -14,7 +14,7 @@ from .entity import Entity
 class MessageRule(Entity):
     # Actions to be taken on a message when the corresponding conditions are fulfilled.
     actions: Optional[MessageRuleActions] = None
-    # Conditions that when fulfilled, will trigger the corresponding actions for that rule.
+    # Conditions that when fulfilled trigger the corresponding actions for that rule.
     conditions: Optional[MessageRulePredicates] = None
     # The display name of the rule.
     display_name: Optional[str] = None

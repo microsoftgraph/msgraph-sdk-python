@@ -14,15 +14,15 @@ class ServerProcessedContent(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The htmlStrings property
+    # A key-value map where keys are string identifiers and values are rich text with HTML format. SharePoint servers treat the values as HTML content and run services like safety checks, search index and link fixup on them.
     html_strings: Optional[List[MetaDataKeyStringPair]] = None
-    # The imageSources property
+    # A key-value map where keys are string identifiers and values are image sources. SharePoint servers treat the values as image sources and run services like search index and link fixup on them.
     image_sources: Optional[List[MetaDataKeyStringPair]] = None
-    # The links property
+    # A key-value map where keys are string identifiers and values are links. SharePoint servers treat the values as links and run services like link fixup on them.
     links: Optional[List[MetaDataKeyStringPair]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The searchablePlainTexts property
+    # A key-value map where keys are string identifiers and values are strings that should be search indexed.
     searchable_plain_texts: Optional[List[MetaDataKeyStringPair]] = None
     
     @staticmethod

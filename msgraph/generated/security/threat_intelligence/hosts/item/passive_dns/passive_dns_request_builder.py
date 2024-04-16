@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -42,7 +43,7 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["passiveDnsRecord%2Did"] = passive_dns_record_id
         return PassiveDnsRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[PassiveDnsRequestBuilderGetRequestConfiguration] = None) -> Optional[PassiveDnsRecordCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PassiveDnsRecordCollectionResponse]:
         """
         Get a list of passiveDnsRecord resources associated with a host. This is a forward DNS lookup which queries the IP address of the specified host using its hostname. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +64,7 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PassiveDnsRecordCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[PassiveDnsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of passiveDnsRecord resources associated with a host. This is a forward DNS lookup which queries the IP address of the specified host using its hostname. 
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -147,19 +148,6 @@ class PassiveDnsRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class PassiveDnsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[PassiveDnsRequestBuilder.PassiveDnsRequestBuilderGetQueryParameters] = None
 
     
 

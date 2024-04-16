@@ -4,6 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .directory_object import DirectoryObject
     from .entity import Entity
     from .invited_user_message_info import InvitedUserMessageInfo
     from .user import User
@@ -20,10 +21,12 @@ class Invitation(Entity):
     invited_user: Optional[User] = None
     # The display name of the user being invited.
     invited_user_display_name: Optional[str] = None
-    # The email address of the user being invited. Required. The following special characters aren't permitted in the email address:Tilde (~)Exclamation point (!)Number sign (#)Dollar sign ($)Percent (%)Circumflex (^)Ampersand (&)Asterisk (*)Parentheses (( ))Plus sign (+)Equal sign (=)Brackets ([ ])Braces ({ })Backslash (/)Slash mark (/)Pipe (/|)Semicolon (;)Colon (:)Quotation marks (')Angle brackets (< >)Question mark (?)Comma (,)However, the following exceptions apply:A period (.) or a hyphen (-) is permitted anywhere in the user name, except at the beginning or end of the name.An underscore (_) is permitted anywhere in the user name. This includes at the beginning or end of the name.
+    # The email address of the user being invited. Required. The following special characters aren't permitted in the email address:Tilde (~)Exclamation point (!)Number sign (#)Dollar sign ($)Percent (%)Circumflex (^)Ampersand (&)Asterisk (*)Parentheses (( ))Plus sign (+)Equal sign (=)Brackets ([ ])Braces ({ })Backslash (/)Slash mark (/)Pipe (/|)Semicolon (;)Colon (:)Quotation marks (')Angle brackets (< >)Question mark (?)Comma (,)However, the following exceptions apply:A period (.) or a hyphen (-) is permitted anywhere in the user name, except at the beginning or end of the name.An underscore (_) is permitted anywhere in the user name, including at the beginning or end of the name.
     invited_user_email_address: Optional[str] = None
-    # Additional configuration for the message being sent to the invited user, including customizing message text, language and cc recipient list.
+    # Additional configuration for the message being sent to the invited user, including customizing message text, language, and cc recipient list.
     invited_user_message_info: Optional[InvitedUserMessageInfo] = None
+    # The users or groups who are sponsors of the invited user. Sponsors are users and groups that are responsible for guest users' privileges in the tenant and for keeping the guest users' information and access up to date.
+    invited_user_sponsors: Optional[List[DirectoryObject]] = None
     # The userType of the user being invited. By default, this is Guest. You can invite as Member if you're a company administrator.
     invited_user_type: Optional[str] = None
     # The OdataType property
@@ -51,10 +54,12 @@ class Invitation(Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .directory_object import DirectoryObject
         from .entity import Entity
         from .invited_user_message_info import InvitedUserMessageInfo
         from .user import User
 
+        from .directory_object import DirectoryObject
         from .entity import Entity
         from .invited_user_message_info import InvitedUserMessageInfo
         from .user import User
@@ -66,6 +71,7 @@ class Invitation(Entity):
             "invitedUserDisplayName": lambda n : setattr(self, 'invited_user_display_name', n.get_str_value()),
             "invitedUserEmailAddress": lambda n : setattr(self, 'invited_user_email_address', n.get_str_value()),
             "invitedUserMessageInfo": lambda n : setattr(self, 'invited_user_message_info', n.get_object_value(InvitedUserMessageInfo)),
+            "invitedUserSponsors": lambda n : setattr(self, 'invited_user_sponsors', n.get_collection_of_object_values(DirectoryObject)),
             "invitedUserType": lambda n : setattr(self, 'invited_user_type', n.get_str_value()),
             "resetRedemption": lambda n : setattr(self, 'reset_redemption', n.get_bool_value()),
             "sendInvitationMessage": lambda n : setattr(self, 'send_invitation_message', n.get_bool_value()),
@@ -90,6 +96,7 @@ class Invitation(Entity):
         writer.write_str_value("invitedUserDisplayName", self.invited_user_display_name)
         writer.write_str_value("invitedUserEmailAddress", self.invited_user_email_address)
         writer.write_object_value("invitedUserMessageInfo", self.invited_user_message_info)
+        writer.write_collection_of_object_values("invitedUserSponsors", self.invited_user_sponsors)
         writer.write_str_value("invitedUserType", self.invited_user_type)
         writer.write_bool_value("resetRedemption", self.reset_redemption)
         writer.write_bool_value("sendInvitationMessage", self.send_invitation_message)

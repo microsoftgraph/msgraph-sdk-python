@@ -1,6 +1,6 @@
 Push-Location -Path (Join-Path -Path $PSScriptRoot -ChildPath "..")
-$versionFileContent = Get-Content -Path "msgraph/_version.py"
-$version = $versionFileContent -replace "VERSION: str = '", '' -replace "'", ''
+$versionFileContent = Get-Content -Path "msgraph/_version.py" -Raw
+$version = $versionFileContent.Split("`r`n")[0] -replace "VERSION: str = '", '' -replace "'", ''
 $versionParts = $version -split "\."
 $versionParts[1] = [int]$versionParts[1] + 1
 $versionParts[2] = 0

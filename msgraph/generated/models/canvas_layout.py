@@ -12,11 +12,11 @@ from .entity import Entity
 
 @dataclass
 class CanvasLayout(Entity):
-    # The horizontalSections property
+    # Collection of horizontal sections on the SharePoint page.
     horizontal_sections: Optional[List[HorizontalSection]] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The verticalSection property
+    # Vertical section on the SharePoint page.
     vertical_section: Optional[VerticalSection] = None
     
     @staticmethod

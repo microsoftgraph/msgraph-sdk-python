@@ -31,6 +31,10 @@ class DeviceEvidence(AlertEvidence):
     health_status: Optional[DeviceHealthStatus] = None
     # Ip interfaces of the device during the time of the alert.
     ip_interfaces: Optional[List[str]] = None
+    # The lastExternalIpAddress property
+    last_external_ip_address: Optional[str] = None
+    # The lastIpAddress property
+    last_ip_address: Optional[str] = None
     # Users that were logged on the machine during the time of the alert.
     logged_on_users: Optional[List[LoggedOnUser]] = None
     # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
@@ -91,6 +95,8 @@ class DeviceEvidence(AlertEvidence):
             "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
             "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(DeviceHealthStatus)),
             "ipInterfaces": lambda n : setattr(self, 'ip_interfaces', n.get_collection_of_primitive_values(str)),
+            "lastExternalIpAddress": lambda n : setattr(self, 'last_external_ip_address', n.get_str_value()),
+            "lastIpAddress": lambda n : setattr(self, 'last_ip_address', n.get_str_value()),
             "loggedOnUsers": lambda n : setattr(self, 'logged_on_users', n.get_collection_of_object_values(LoggedOnUser)),
             "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
             "onboardingStatus": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(OnboardingStatus)),
@@ -121,6 +127,8 @@ class DeviceEvidence(AlertEvidence):
         writer.write_datetime_value("firstSeenDateTime", self.first_seen_date_time)
         writer.write_enum_value("healthStatus", self.health_status)
         writer.write_collection_of_primitive_values("ipInterfaces", self.ip_interfaces)
+        writer.write_str_value("lastExternalIpAddress", self.last_external_ip_address)
+        writer.write_str_value("lastIpAddress", self.last_ip_address)
         writer.write_collection_of_object_values("loggedOnUsers", self.logged_on_users)
         writer.write_str_value("mdeDeviceId", self.mde_device_id)
         writer.write_enum_value("onboardingStatus", self.onboarding_status)

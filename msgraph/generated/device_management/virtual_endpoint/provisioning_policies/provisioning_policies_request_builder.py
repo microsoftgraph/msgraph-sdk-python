@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,11 +44,12 @@ class ProvisioningPoliciesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["cloudPcProvisioningPolicy%2Did"] = cloud_pc_provisioning_policy_id
         return CloudPcProvisioningPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ProvisioningPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[CloudPcProvisioningPolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CloudPcProvisioningPolicyCollectionResponse]:
         """
-        Get provisioningPolicies from deviceManagement
+        List properties and relationships of the cloudPcProvisioningPolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CloudPcProvisioningPolicyCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/virtualendpoint-list-provisioningpolicies?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -63,12 +65,13 @@ class ProvisioningPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CloudPcProvisioningPolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[CloudPcProvisioningPolicy] = None, request_configuration: Optional[ProvisioningPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[CloudPcProvisioningPolicy]:
+    async def post(self,body: Optional[CloudPcProvisioningPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CloudPcProvisioningPolicy]:
         """
-        Create new navigation property to provisioningPolicies for deviceManagement
+        Create a new cloudPcProvisioningPolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CloudPcProvisioningPolicy]
+        Find more info here: https://learn.microsoft.com/graph/api/virtualendpoint-post-provisioningpolicies?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -86,9 +89,9 @@ class ProvisioningPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CloudPcProvisioningPolicy, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[ProvisioningPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get provisioningPolicies from deviceManagement
+        List properties and relationships of the cloudPcProvisioningPolicy objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,16 +100,16 @@ class ProvisioningPoliciesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[CloudPcProvisioningPolicy] = None, request_configuration: Optional[ProvisioningPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CloudPcProvisioningPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to provisioningPolicies for deviceManagement
+        Create a new cloudPcProvisioningPolicy object.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/deviceManagement/virtualEndpoint/provisioningPolicies', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -134,7 +137,7 @@ class ProvisioningPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ProvisioningPoliciesRequestBuilderGetQueryParameters():
         """
-        Get provisioningPolicies from deviceManagement
+        List properties and relationships of the cloudPcProvisioningPolicy objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -186,28 +189,5 @@ class ProvisioningPoliciesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ProvisioningPoliciesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[ProvisioningPoliciesRequestBuilder.ProvisioningPoliciesRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class ProvisioningPoliciesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

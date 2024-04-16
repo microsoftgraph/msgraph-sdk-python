@@ -13,11 +13,11 @@ from .entity import Entity
 
 @dataclass
 class HorizontalSection(Entity):
-    # The columns property
+    # The set of vertical columns in this section.
     columns: Optional[List[HorizontalSectionColumn]] = None
-    # The emphasis property
+    # Enumeration value that indicates the emphasis of the section background. The possible values are: none, netural, soft, strong, unknownFutureValue.
     emphasis: Optional[SectionEmphasisType] = None
-    # The layout property
+    # Layout type of the section. The possible values are: none, oneColumn, twoColumns, threeColumns, oneThirdLeftColumn, oneThirdRightColumn, fullWidth, unknownFutureValue.
     layout: Optional[HorizontalSectionLayoutType] = None
     # The OdataType property
     odata_type: Optional[str] = None

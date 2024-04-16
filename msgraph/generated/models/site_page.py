@@ -15,23 +15,23 @@ from .base_site_page import BaseSitePage
 
 @dataclass
 class SitePage(BaseSitePage):
-    # The canvasLayout property
+    # Indicates the layout of the content in a given SharePoint page, including horizontal sections and vertical sections.
     canvas_layout: Optional[CanvasLayout] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The promotionKind property
+    # Indicates the promotion kind of the sitePage. The possible values are: microsoftReserved, page, newsPost, unknownFutureValue.
     promotion_kind: Optional[PagePromotionType] = None
-    # The reactions property
+    # Reactions information for the page.
     reactions: Optional[ReactionsFacet] = None
-    # The showComments property
+    # Determines whether or not to show comments at the bottom of the page.
     show_comments: Optional[bool] = None
-    # The showRecommendedPages property
+    # Determines whether or not to show recommended pages at the bottom of the page.
     show_recommended_pages: Optional[bool] = None
-    # The thumbnailWebUrl property
+    # Url of the sitePage's thumbnail image
     thumbnail_web_url: Optional[str] = None
-    # The titleArea property
+    # Title area on the SharePoint page.
     title_area: Optional[TitleArea] = None
-    # The webParts property
+    # Collection of webparts on the SharePoint page.
     web_parts: Optional[List[WebPart]] = None
     
     @staticmethod

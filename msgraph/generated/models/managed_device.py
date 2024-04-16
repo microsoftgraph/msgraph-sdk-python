@@ -73,6 +73,8 @@ class ManagedDevice(Entity):
     email_address: Optional[str] = None
     # Enrollment time of the device. Supports $filter operator 'lt' and 'gt'. This property is read-only.
     enrolled_date_time: Optional[datetime.datetime] = None
+    # Name of the enrollment profile assigned to the device. Default value is empty string, indicating no enrollment profile was assgined. This property is read-only.
+    enrollment_profile_name: Optional[str] = None
     # Indicates Ethernet MAC Address of the device. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity. Individual get call with select query options is needed to retrieve actual values. Example: deviceManagement/managedDevices({managedDeviceId})?$select=ethernetMacAddress Supports: $select. $Search is not supported. Read-only. This property is read-only.
     ethernet_mac_address: Optional[str] = None
     # Device Exchange Access State.
@@ -228,6 +230,7 @@ class ManagedDevice(Entity):
             "easDeviceId": lambda n : setattr(self, 'eas_device_id', n.get_str_value()),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "enrolledDateTime": lambda n : setattr(self, 'enrolled_date_time', n.get_datetime_value()),
+            "enrollmentProfileName": lambda n : setattr(self, 'enrollment_profile_name', n.get_str_value()),
             "ethernetMacAddress": lambda n : setattr(self, 'ethernet_mac_address', n.get_str_value()),
             "exchangeAccessState": lambda n : setattr(self, 'exchange_access_state', n.get_enum_value(DeviceManagementExchangeAccessState)),
             "exchangeAccessStateReason": lambda n : setattr(self, 'exchange_access_state_reason', n.get_enum_value(DeviceManagementExchangeAccessStateReason)),

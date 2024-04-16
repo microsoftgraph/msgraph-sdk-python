@@ -26,7 +26,7 @@ from .base_item import BaseItem
 class Site(BaseItem):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.site"
-    # Analytics about the view activities that took place in this site.
+    # Analytics about the view activities that took place on this site.
     analytics: Optional[ItemAnalytics] = None
     # The collection of column definitions reusable across lists under this site.
     columns: Optional[List[ColumnDefinition]] = None
@@ -52,11 +52,11 @@ class Site(BaseItem):
     onenote: Optional[Onenote] = None
     # The collection of long-running operations on the site.
     operations: Optional[List[RichLongRunningOperation]] = None
-    # The pages property
+    # The collection of pages in the baseSitePages list in this site.
     pages: Optional[List[BaseSitePage]] = None
     # The permissions associated with the site. Nullable.
     permissions: Optional[List[Permission]] = None
-    # If present, indicates that this is the root site in the site collection. Read-only.
+    # If present, provides the root site in the site collection. Read-only.
     root: Optional[Root] = None
     # Returns identifiers useful for SharePoint REST compatibility. Read-only.
     sharepoint_ids: Optional[SharepointIds] = None

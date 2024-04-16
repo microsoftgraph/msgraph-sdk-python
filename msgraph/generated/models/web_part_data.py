@@ -15,17 +15,17 @@ class WebPartData(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # The dataVersion property
+    # Data version of the web part. The value is defined by the web part developer. Different dataVersions usually refers to a different property structure.
     data_version: Optional[str] = None
-    # The description property
+    # Description of the web part.
     description: Optional[str] = None
     # The OdataType property
     odata_type: Optional[str] = None
-    # The properties property
+    # Properties bag of the web part.
     properties: Optional[Json] = None
-    # The serverProcessedContent property
+    # Contains collections of data that can be processed by server side services like search index and link fixup.
     server_processed_content: Optional[ServerProcessedContent] = None
-    # The title property
+    # Title of the web part.
     title: Optional[str] = None
     
     @staticmethod

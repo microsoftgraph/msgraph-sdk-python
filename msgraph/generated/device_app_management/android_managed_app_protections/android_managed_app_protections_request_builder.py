@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,7 +44,7 @@ class AndroidManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["androidManagedAppProtection%2Did"] = android_managed_app_protection_id
         return AndroidManagedAppProtectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AndroidManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[AndroidManagedAppProtectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AndroidManagedAppProtectionCollectionResponse]:
         """
         List properties and relationships of the androidManagedAppProtection objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +65,7 @@ class AndroidManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AndroidManagedAppProtectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AndroidManagedAppProtection] = None, request_configuration: Optional[AndroidManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[AndroidManagedAppProtection]:
+    async def post(self,body: Optional[AndroidManagedAppProtection] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AndroidManagedAppProtection]:
         """
         Create a new androidManagedAppProtection object.
         param body: The request body
@@ -88,7 +89,7 @@ class AndroidManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AndroidManagedAppProtection, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[AndroidManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         List properties and relationships of the androidManagedAppProtection objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +100,7 @@ class AndroidManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AndroidManagedAppProtection] = None, request_configuration: Optional[AndroidManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AndroidManagedAppProtection] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create a new androidManagedAppProtection object.
         param body: The request body
@@ -108,7 +109,7 @@ class AndroidManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/deviceAppManagement/androidManagedAppProtections', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -188,28 +189,5 @@ class AndroidManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AndroidManagedAppProtectionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[AndroidManagedAppProtectionsRequestBuilder.AndroidManagedAppProtectionsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class AndroidManagedAppProtectionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

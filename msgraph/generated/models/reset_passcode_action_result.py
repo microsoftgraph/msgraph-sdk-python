@@ -13,6 +13,8 @@ class ResetPasscodeActionResult(DeviceActionResult):
     """
     Reset passcode action result
     """
+    # RotateBitLockerKeys action error code. Valid values 0 to 2147483647
+    error_code: Optional[int] = None
     # The OdataType property
     odata_type: Optional[str] = None
     # Newly generated passcode for the device
@@ -39,6 +41,7 @@ class ResetPasscodeActionResult(DeviceActionResult):
         from .device_action_result import DeviceActionResult
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "errorCode": lambda n : setattr(self, 'error_code', n.get_int_value()),
             "passcode": lambda n : setattr(self, 'passcode', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -54,6 +57,7 @@ class ResetPasscodeActionResult(DeviceActionResult):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_int_value("errorCode", self.error_code)
         writer.write_str_value("passcode", self.passcode)
     
 

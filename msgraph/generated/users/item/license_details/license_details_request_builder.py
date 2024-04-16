@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
+from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -14,6 +15,7 @@ if TYPE_CHECKING:
     from ....models.license_details_collection_response import LicenseDetailsCollectionResponse
     from ....models.o_data_errors.o_data_error import ODataError
     from .count.count_request_builder import CountRequestBuilder
+    from .get_teams_licensing_details.get_teams_licensing_details_request_builder import GetTeamsLicensingDetailsRequestBuilder
     from .item.license_details_item_request_builder import LicenseDetailsItemRequestBuilder
 
 class LicenseDetailsRequestBuilder(BaseRequestBuilder):
@@ -43,7 +45,7 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["licenseDetails%2Did"] = license_details_id
         return LicenseDetailsItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[LicenseDetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[LicenseDetailsCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LicenseDetailsCollectionResponse]:
         """
         Retrieve a list of licenseDetails objects for enterprise users. This API returns details for licenses that are directly assigned and those transitively assigned through memberships in licensed groups.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +66,7 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LicenseDetailsCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[LicenseDetails] = None, request_configuration: Optional[LicenseDetailsRequestBuilderPostRequestConfiguration] = None) -> Optional[LicenseDetails]:
+    async def post(self,body: Optional[LicenseDetails] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LicenseDetails]:
         """
         Create new navigation property to licenseDetails for users
         param body: The request body
@@ -87,7 +89,7 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LicenseDetails, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[LicenseDetailsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of licenseDetails objects for enterprise users. This API returns details for licenses that are directly assigned and those transitively assigned through memberships in licensed groups.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +100,7 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[LicenseDetails] = None, request_configuration: Optional[LicenseDetailsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[LicenseDetails] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to licenseDetails for users
         param body: The request body
@@ -107,7 +109,7 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/users/{user%2Did}/licenseDetails', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
@@ -131,6 +133,15 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
         from .count.count_request_builder import CountRequestBuilder
 
         return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_teams_licensing_details(self) -> GetTeamsLicensingDetailsRequestBuilder:
+        """
+        Provides operations to call the getTeamsLicensingDetails method.
+        """
+        from .get_teams_licensing_details.get_teams_licensing_details_request_builder import GetTeamsLicensingDetailsRequestBuilder
+
+        return GetTeamsLicensingDetailsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class LicenseDetailsRequestBuilderGetQueryParameters():
@@ -187,28 +198,5 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class LicenseDetailsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request query parameters
-        query_parameters: Optional[LicenseDetailsRequestBuilder.LicenseDetailsRequestBuilderGetQueryParameters] = None
-
-    
-    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-    @dataclass
-    class LicenseDetailsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
-        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
-
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
     
 

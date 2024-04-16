@@ -5,4 +5,5 @@ class EducationAssignmentStatus(str, Enum):
     Published = "published",
     Assigned = "assigned",
     UnknownFutureValue = "unknownFutureValue",
+    Inactive = "inactive",
 

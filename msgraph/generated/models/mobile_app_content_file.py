@@ -23,6 +23,8 @@ class MobileAppContentFile(Entity):
     created_date_time: Optional[datetime.datetime] = None
     # A value indicating whether the file is committed.
     is_committed: Optional[bool] = None
+    # Indicates whether this content file is a dependency for the main content file. TRUE means that the content file is a dependency, FALSE means that the content file is not a dependency and is the main content file. Defaults to FALSE.
+    is_dependency: Optional[bool] = None
     # The manifest information.
     manifest: Optional[bytes] = None
     # the file name.
@@ -63,6 +65,7 @@ class MobileAppContentFile(Entity):
             "azureStorageUriExpirationDateTime": lambda n : setattr(self, 'azure_storage_uri_expiration_date_time', n.get_datetime_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "isCommitted": lambda n : setattr(self, 'is_committed', n.get_bool_value()),
+            "isDependency": lambda n : setattr(self, 'is_dependency', n.get_bool_value()),
             "manifest": lambda n : setattr(self, 'manifest', n.get_bytes_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
@@ -82,6 +85,7 @@ class MobileAppContentFile(Entity):
         if not writer:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_bool_value("isDependency", self.is_dependency)
         writer.write_bytes_value("manifest", self.manifest)
         writer.write_str_value("name", self.name)
         writer.write_int_value("size", self.size)

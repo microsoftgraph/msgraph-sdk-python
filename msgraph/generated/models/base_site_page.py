@@ -15,11 +15,11 @@ from .base_item import BaseItem
 class BaseSitePage(BaseItem):
     # The OdataType property
     odata_type: Optional[str] = "#microsoft.graph.baseSitePage"
-    # The pageLayout property
+    # The name of the page layout of the page. The possible values are: microsoftReserved, article, home, unknownFutureValue.
     page_layout: Optional[PageLayoutType] = None
-    # The publishingState property
+    # The publishing status and the MM.mm version of the page.
     publishing_state: Optional[PublicationFacet] = None
-    # The title property
+    # Title of the sitePage.
     title: Optional[str] = None
     
     @staticmethod

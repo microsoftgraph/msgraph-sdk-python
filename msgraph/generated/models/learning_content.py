@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
+    from .level import Level
 
 from .entity import Entity
 
@@ -37,6 +38,8 @@ class LearningContent(Entity):
     language_tag: Optional[str] = None
     # The date and time when the learning content was last modified. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
     last_modified_date_time: Optional[datetime.datetime] = None
+    # The level property
+    level: Optional[Level] = None
     # The number of pages of the learning content, for example, 9. Optional.
     number_of_pages: Optional[int] = None
     # The OdataType property
@@ -67,8 +70,10 @@ class LearningContent(Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
+        from .level import Level
 
         from .entity import Entity
+        from .level import Level
 
         fields: Dict[str, Callable[[Any], None]] = {
             "additionalTags": lambda n : setattr(self, 'additional_tags', n.get_collection_of_primitive_values(str)),
@@ -84,6 +89,7 @@ class LearningContent(Entity):
             "isSearchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
             "languageTag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "level": lambda n : setattr(self, 'level', n.get_enum_value(Level)),
             "numberOfPages": lambda n : setattr(self, 'number_of_pages', n.get_int_value()),
             "skillTags": lambda n : setattr(self, 'skill_tags', n.get_collection_of_primitive_values(str)),
             "sourceName": lambda n : setattr(self, 'source_name', n.get_str_value()),
@@ -116,6 +122,7 @@ class LearningContent(Entity):
         writer.write_bool_value("isSearchable", self.is_searchable)
         writer.write_str_value("languageTag", self.language_tag)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
+        writer.write_enum_value("level", self.level)
         writer.write_int_value("numberOfPages", self.number_of_pages)
         writer.write_collection_of_primitive_values("skillTags", self.skill_tags)
         writer.write_str_value("sourceName", self.source_name)

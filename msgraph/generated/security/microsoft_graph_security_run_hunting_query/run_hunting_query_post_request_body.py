@@ -13,6 +13,8 @@ class RunHuntingQueryPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
     additional_data: Dict[str, Any] = field(default_factory=dict)
     # The query property
     query: Optional[str] = None
+    # The timespan property
+    timespan: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RunHuntingQueryPostRequestBody:
@@ -32,6 +34,7 @@ class RunHuntingQueryPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "query": lambda n : setattr(self, 'query', n.get_str_value()),
+            "timespan": lambda n : setattr(self, 'timespan', n.get_str_value()),
         }
         return fields
     
@@ -44,6 +47,7 @@ class RunHuntingQueryPostRequestBody(AdditionalDataHolder, BackedModel, Parsable
         if not writer:
             raise TypeError("writer cannot be null.")
         writer.write_str_value("query", self.query)
+        writer.write_str_value("timespan", self.timespan)
         writer.write_additional_data_value(self.additional_data)
     
 

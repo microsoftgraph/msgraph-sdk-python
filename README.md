@@ -65,7 +65,7 @@ from azure.identity import DeviceCodeCredential
 
 credential = DeviceCodeCredential("client_id",
                                   "tenant_id")
-graph_scopes = ['User.Read', 'Calendars.ReadWrite.Shared']
+scopes = ['https://graph.microsoft.com/.default']
 ```
 
 ### 2.3 Initialize a GraphServiceClient object
@@ -97,7 +97,7 @@ credentials = DeviceCodeCredential(
     'CLIENT_ID',
     'TENANT_ID',
 )
-scopes = ['User.Read', 'Mail.Read']
+scopes = ['https://graph.microsoft.com/.default']
 client = GraphServiceClient(credentials=credentials, scopes=scopes)
 ```
 
@@ -140,7 +140,7 @@ from azure.identity import InteractiveBrowserCredential
 from msgraph import GraphServiceClient
 
 credential = InteractiveBrowserCredential()
-scopes=['User.Read']
+scopes = ['https://graph.microsoft.com/.default']
 client = GraphServiceClient(credentials=credential, scopes=scopes,)
 
 # GET /me

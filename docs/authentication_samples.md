@@ -14,7 +14,7 @@ credential = DeviceCodeCredential(
     tenant_id='TENANT_ID',
     )
 
-scopes = ["User.Read"]
+scopes = ['https://graph.microsoft.com/.default']
 
 # Create an API client with the credentials and scopes.
 client = GraphServiceClient(credentials=credential, scopes=scopes)
@@ -36,7 +36,7 @@ from msgraph import GraphServiceClient
 
 # Create a credential object. Used to authenticate requests 
 credential = InteractiveBrowserCredential()
-scopes = ["User.Read"]
+scopes = ['https://graph.microsoft.com/.default']
 
 # Create an API client with the credentials and scopes.
 client = GraphServiceClient(credentials=credential, scopes=scopes)

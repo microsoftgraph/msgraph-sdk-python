@@ -14,7 +14,7 @@ credential = DeviceCodeCredential(
     tenant_id='TENANT_ID',
     )
 
-scopes = ["User.ReadWrite"]
+scopes = ["User.Read"]
 
 # Create an API client with the credentials and scopes.
 client = GraphServiceClient(credentials=credential, scopes=scopes)
@@ -40,7 +40,7 @@ credentials = InteractiveBrowserCredential(
     tenant_id=os.getenv('tenant_id'),
 )
 
-scopes = ["User.ReadWrite"]
+scopes = ["User.Read"]
 
 # Create an API client with the credentials and scopes.
 client = GraphServiceClient(credentials=credential, scopes=scopes)

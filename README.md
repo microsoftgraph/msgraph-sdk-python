@@ -121,7 +121,7 @@ credential = ClientSecretCredential(
     'client_id',
     'client_secret'
 )
-scopes = ["User.ReadWrite"]
+scopes = ["User.Read"]
 client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET /users/{id | userPrincipalName}
@@ -143,7 +143,7 @@ credential = InteractiveBrowserCredential(
     client_id=os.getenv('client_id'),
     tenant_id=os.getenv('tenant_id'),
 )
-scopes = ["User.ReadWrite"]
+scopes = ["User.Read"]
 client = GraphServiceClient(credentials=credential, scopes=scopes,)
 
 # GET /me

@@ -48,10 +48,9 @@ class CallRecordItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CallRecord]:
         """
-        Retrieve the properties and relationships of a callRecord object. There are two ways to get the id of a callRecord: You can use the $expand query parameter to optionally include session and segment details, as shown in the Get full details example. When you expand session details, the maximum page size is 60 sessions.
+        Get callRecords from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CallRecord]
-        Find more info here: https://learn.microsoft.com/graph/api/callrecords-callrecord-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -103,7 +102,7 @@ class CallRecordItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a callRecord object. There are two ways to get the id of a callRecord: You can use the $expand query parameter to optionally include session and segment details, as shown in the Get full details example. When you expand session details, the maximum page size is 60 sessions.
+        Get callRecords from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -149,7 +148,7 @@ class CallRecordItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CallRecordItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a callRecord object. There are two ways to get the id of a callRecord: You can use the $expand query parameter to optionally include session and segment details, as shown in the Get full details example. When you expand session details, the maximum page size is 60 sessions.
+        Get callRecords from communications
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

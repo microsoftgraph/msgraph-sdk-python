@@ -28,9 +28,10 @@ class GetFinalReportRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
         """
-        Invoke function getFinalReport
+        Get the final report for a subject rights request. The report is a text file that contains information about the files that were included by the privacy administrator.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/subjectrightsrequest-getfinalreport?view=graph-rest-1.0
         """
         warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
         request_info = self.to_get_request_information(
@@ -47,7 +48,7 @@ class GetFinalReportRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getFinalReport
+        Get the final report for a subject rights request. The report is a text file that contains information about the files that were included by the privacy administrator.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

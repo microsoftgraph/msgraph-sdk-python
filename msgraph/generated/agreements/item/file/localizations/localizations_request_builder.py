@@ -46,10 +46,9 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AgreementFileLocalizationCollectionResponse]:
         """
-        Get a list of the default and localized agreement files.
+        The localized version of the terms of use agreement files attached to the agreement.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AgreementFileLocalizationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/agreementfile-list-localizations?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the default and localized agreement files.
+        The localized version of the terms of use agreement files attached to the agreement.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class LocalizationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LocalizationsRequestBuilderGetQueryParameters():
         """
-        Get a list of the default and localized agreement files.
+        The localized version of the terms of use agreement files attached to the agreement.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

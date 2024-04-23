@@ -29,10 +29,9 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete the profileCardProperty object specified by its directoryPropertyName from the organization's profile card, and remove any localized customizations for that property.
+        Delete navigation property profileCardProperties for admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/profilecardproperty-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ProfileCardProperty]:
         """
-        Retrieve the properties of a profileCardProperty entity. The profileCardProperty is identified by its directoryPropertyName property.
+        Contains a collection of the properties an administrator has defined as visible on the Microsoft 365 profile card.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProfileCardProperty]
-        Find more info here: https://learn.microsoft.com/graph/api/profilecardproperty-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ProfileCardProperty] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ProfileCardProperty]:
         """
-        Update the properties of a profileCardProperty object, identified by its directoryPropertyName property.
+        Update the navigation property profileCardProperties in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProfileCardProperty]
-        Find more info here: https://learn.microsoft.com/graph/api/profilecardproperty-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete the profileCardProperty object specified by its directoryPropertyName from the organization's profile card, and remove any localized customizations for that property.
+        Delete navigation property profileCardProperties for admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of a profileCardProperty entity. The profileCardProperty is identified by its directoryPropertyName property.
+        Contains a collection of the properties an administrator has defined as visible on the Microsoft 365 profile card.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ProfileCardProperty] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a profileCardProperty object, identified by its directoryPropertyName property.
+        Update the navigation property profileCardProperties in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ProfileCardPropertyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of a profileCardProperty entity. The profileCardProperty is identified by its directoryPropertyName property.
+        Contains a collection of the properties an administrator has defined as visible on the Microsoft 365 profile card.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

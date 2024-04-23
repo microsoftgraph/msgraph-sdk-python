@@ -29,10 +29,9 @@ class ConditionalAccessTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConditionalAccessTemplate]:
         """
-        Read the properties and relationships of a conditionalAccessTemplate object.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConditionalAccessTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/conditionalaccesstemplate-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -50,7 +49,7 @@ class ConditionalAccessTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a conditionalAccessTemplate object.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -72,7 +71,7 @@ class ConditionalAccessTemplateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConditionalAccessTemplateItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a conditionalAccessTemplate object.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -46,7 +46,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CommsOperationCollectionResponse]:
         """
-        Get the status of an operation that adds the large gallery view to a call.
+        Get operations from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CommsOperationCollectionResponse]
         """
@@ -89,7 +89,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the status of an operation that adds the large gallery view to a call.
+        Get operations from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -135,7 +135,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OperationsRequestBuilderGetQueryParameters():
         """
-        Get the status of an operation that adds the large gallery view to a call.
+        Get operations from communications
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

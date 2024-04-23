@@ -30,10 +30,9 @@ class AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthenticationMethod]:
         """
-        Retrieve the properties and relationships of an authenticationMethod object.
+        Represents all authentication methods registered to a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethod]
-        Find more info here: https://learn.microsoft.com/graph/api/authenticationmethod-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -74,7 +73,7 @@ class AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an authenticationMethod object.
+        Represents all authentication methods registered to a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +119,7 @@ class AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an authenticationMethod object.
+        Represents all authentication methods registered to a user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

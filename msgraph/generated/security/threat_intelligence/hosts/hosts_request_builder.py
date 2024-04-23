@@ -46,7 +46,7 @@ class HostsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[HostCollectionResponse]:
         """
-        Read the properties and relationships of a host object. The host resource is the abstract base type that returns an implementation. A host can be of one of the following types:
+        Refers to host objects that Microsoft Threat Intelligence has observed.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostCollectionResponse]
         """
@@ -89,7 +89,7 @@ class HostsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a host object. The host resource is the abstract base type that returns an implementation. A host can be of one of the following types:
+        Refers to host objects that Microsoft Threat Intelligence has observed.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -135,7 +135,7 @@ class HostsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HostsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a host object. The host resource is the abstract base type that returns an implementation. A host can be of one of the following types:
+        Refers to host objects that Microsoft Threat Intelligence has observed.Note: List retrieval is not yet supported.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

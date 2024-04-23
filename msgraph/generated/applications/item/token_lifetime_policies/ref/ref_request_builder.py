@@ -30,10 +30,9 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Remove a tokenLifetimePolicy from an application.
+        Delete ref of navigation property tokenLifetimePolicies for applications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/application-delete-tokenlifetimepolicies?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[StringCollectionResponse]:
         """
-        List the tokenLifetimePolicy objects that are assigned to an application. Only one object is returned in the collection because only one tokenLifetimePolicy can be assigned to an application.
+        Get ref of tokenLifetimePolicies from applications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[StringCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/application-list-tokenlifetimepolicies?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Assign a tokenLifetimePolicy to an application. You can have multiple tokenLifetimePolicy policies in a tenant but can assign only one tokenLifetimePolicy per application.
+        Create new navigation property ref to tokenLifetimePolicies for applications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/application-post-tokenlifetimepolicies?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +89,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a tokenLifetimePolicy from an application.
+        Delete ref of navigation property tokenLifetimePolicies for applications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +100,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List the tokenLifetimePolicy objects that are assigned to an application. Only one object is returned in the collection because only one tokenLifetimePolicy can be assigned to an application.
+        Get ref of tokenLifetimePolicies from applications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +111,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Assign a tokenLifetimePolicy to an application. You can have multiple tokenLifetimePolicy policies in a tenant but can assign only one tokenLifetimePolicy per application.
+        Create new navigation property ref to tokenLifetimePolicies for applications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +137,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():
         """
-        Remove a tokenLifetimePolicy from an application.
+        Delete ref of navigation property tokenLifetimePolicies for applications
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -161,7 +158,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderGetQueryParameters():
         """
-        List the tokenLifetimePolicy objects that are assigned to an application. Only one object is returned in the collection because only one tokenLifetimePolicy can be assigned to an application.
+        Get ref of tokenLifetimePolicies from applications
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

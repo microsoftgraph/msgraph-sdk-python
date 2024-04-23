@@ -46,10 +46,9 @@ class RelationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RelationCollectionResponse]:
         """
-        Get the different relation of a [term] or [set] from the relations navigation property.
+        Indicates which terms have been pinned or reused directly under the set.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RelationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/termstore-term-list-relations?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class RelationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the different relation of a [term] or [set] from the relations navigation property.
+        Indicates which terms have been pinned or reused directly under the set.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class RelationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RelationsRequestBuilderGetQueryParameters():
         """
-        Get the different relation of a [term] or [set] from the relations navigation property.
+        Indicates which terms have been pinned or reused directly under the set.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

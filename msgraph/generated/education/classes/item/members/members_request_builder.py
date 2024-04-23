@@ -46,10 +46,9 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationUserCollectionResponse]:
         """
-        Retrieves the educationUser members of an educationClass.
+        All users in the class. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationUserCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-list-members?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +66,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieves the educationUser members of an educationClass.
+        All users in the class. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +106,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MembersRequestBuilderGetQueryParameters():
         """
-        Retrieves the educationUser members of an educationClass.
+        All users in the class. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

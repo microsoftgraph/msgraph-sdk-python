@@ -46,10 +46,9 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DetectedAppCollectionResponse]:
         """
-        List properties and relationships of the detectedApp objects.
+        The list of detected apps associated with a device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DetectedAppCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-detectedapp-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DetectedApp] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DetectedApp]:
         """
-        Create a new detectedApp object.
+        Create new navigation property to detectedApps for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DetectedApp]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-detectedapp-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the detectedApp objects.
+        The list of detected apps associated with a device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DetectedApp] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new detectedApp object.
+        Create new navigation property to detectedApps for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class DetectedAppsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DetectedAppsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the detectedApp objects.
+        The list of detected apps associated with a device.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

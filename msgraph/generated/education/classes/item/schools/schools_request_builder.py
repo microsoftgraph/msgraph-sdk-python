@@ -45,10 +45,9 @@ class SchoolsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationSchoolCollectionResponse]:
         """
-        Retrieve a list of schools in which the class is taught.
+        All schools that this class is associated with. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationSchoolCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-list-schools?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +65,7 @@ class SchoolsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of schools in which the class is taught.
+        All schools that this class is associated with. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +96,7 @@ class SchoolsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SchoolsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of schools in which the class is taught.
+        All schools that this class is associated with. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

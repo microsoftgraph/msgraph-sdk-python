@@ -47,10 +47,9 @@ class ApprovalStageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ApprovalStage]:
         """
-        Retrieve the properties of an approvalStage object. An approval stage is contained within an approval object.
+        A collection of stages in the approval decision.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ApprovalStage]
-        Find more info here: https://learn.microsoft.com/graph/api/approvalstage-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class ApprovalStageItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ApprovalStage] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ApprovalStage]:
         """
-        Approve or deny an approvalStage object in an approval.
+        Update the navigation property stages in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ApprovalStage]
-        Find more info here: https://learn.microsoft.com/graph/api/approvalstage-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +101,7 @@ class ApprovalStageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of an approvalStage object. An approval stage is contained within an approval object.
+        A collection of stages in the approval decision.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +112,7 @@ class ApprovalStageItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ApprovalStage] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Approve or deny an approvalStage object in an approval.
+        Update the navigation property stages in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class ApprovalStageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ApprovalStageItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of an approvalStage object. An approval stage is contained within an approval object.
+        A collection of stages in the approval decision.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -30,10 +30,9 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a calendar group other than the default calendar group.
+        Delete navigation property calendarGroups for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/calendargroup-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CalendarGroup]:
         """
-        Retrieve the properties and relationships of a calendar group object.
+        The user's calendar groups. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CalendarGroup]
-        Find more info here: https://learn.microsoft.com/graph/api/calendargroup-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[CalendarGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CalendarGroup]:
         """
-        Update the properties of calendargroup object.
+        Update the navigation property calendarGroups in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CalendarGroup]
-        Find more info here: https://learn.microsoft.com/graph/api/calendargroup-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a calendar group other than the default calendar group.
+        Delete navigation property calendarGroups for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a calendar group object.
+        The user's calendar groups. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[CalendarGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of calendargroup object.
+        Update the navigation property calendarGroups in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class CalendarGroupItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CalendarGroupItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a calendar group object.
+        The user's calendar groups. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

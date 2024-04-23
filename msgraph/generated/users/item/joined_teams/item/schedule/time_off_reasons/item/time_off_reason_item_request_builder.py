@@ -29,10 +29,9 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Mark a timeOffReason as inactive by setting the isActive property. Every team must include at least one timeoff reason. This method doesn't remove the specified timeOffReason instance. timeOffItem instances that have been assigned this reason remain assigned to this reason.
+        Delete navigation property timeOffReasons for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/timeoffreason-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TimeOffReason]:
         """
-        Retrieve the properties and relationships of a timeOffReason object by ID.
+        The set of reasons for a time off in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TimeOffReason]
-        Find more info here: https://learn.microsoft.com/graph/api/timeoffreason-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TimeOffReason] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TimeOffReason]:
         """
-        Replace an existing timeOffReason. If the specified timeOffReason doesn't exist, this method returns 404 Not found.
+        Update the navigation property timeOffReasons in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TimeOffReason]
-        Find more info here: https://learn.microsoft.com/graph/api/timeoffreason-put?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Mark a timeOffReason as inactive by setting the isActive property. Every team must include at least one timeoff reason. This method doesn't remove the specified timeOffReason instance. timeOffItem instances that have been assigned this reason remain assigned to this reason.
+        Delete navigation property timeOffReasons for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a timeOffReason object by ID.
+        The set of reasons for a time off in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TimeOffReason] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Replace an existing timeOffReason. If the specified timeOffReason doesn't exist, this method returns 404 Not found.
+        Update the navigation property timeOffReasons in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class TimeOffReasonItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TimeOffReasonItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a timeOffReason object by ID.
+        The set of reasons for a time off in the schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

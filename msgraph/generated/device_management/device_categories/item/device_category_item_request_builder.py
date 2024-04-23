@@ -29,10 +29,9 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a deviceCategory.
+        Delete navigation property deviceCategories for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicecategory-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceCategory]:
         """
-        Read properties and relationships of the deviceCategory object.
+        The list of device categories with the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicecategory-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceCategory]:
         """
-        Update the properties of a deviceCategory object.
+        Update the navigation property deviceCategories in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicecategory-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a deviceCategory.
+        Delete navigation property deviceCategories for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceCategory object.
+        The list of device categories with the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceCategory object.
+        Update the navigation property deviceCategories in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class DeviceCategoryItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceCategoryItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceCategory object.
+        The list of device categories with the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

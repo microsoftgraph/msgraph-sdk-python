@@ -46,10 +46,9 @@ class ProvisioningPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CloudPcProvisioningPolicyCollectionResponse]:
         """
-        List properties and relationships of the cloudPcProvisioningPolicy objects.
+        A collection of Cloud PC provisioning policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CloudPcProvisioningPolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/virtualendpoint-list-provisioningpolicies?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class ProvisioningPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CloudPcProvisioningPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CloudPcProvisioningPolicy]:
         """
-        Create a new cloudPcProvisioningPolicy object.
+        Create new navigation property to provisioningPolicies for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CloudPcProvisioningPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/virtualendpoint-post-provisioningpolicies?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class ProvisioningPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the cloudPcProvisioningPolicy objects.
+        A collection of Cloud PC provisioning policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class ProvisioningPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CloudPcProvisioningPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new cloudPcProvisioningPolicy object.
+        Create new navigation property to provisioningPolicies for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class ProvisioningPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ProvisioningPoliciesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the cloudPcProvisioningPolicy objects.
+        A collection of Cloud PC provisioning policies.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

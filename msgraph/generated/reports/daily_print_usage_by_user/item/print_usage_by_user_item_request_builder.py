@@ -47,10 +47,9 @@ class PrintUsageByUserItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintUsageByUser]:
         """
-        Retrieve a user's usage summary for a particular time period. For descriptions of each endpoint, see printUsageByUser.
+        Retrieve a list of daily print usage summaries, grouped by user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintUsageByUser]
-        Find more info here: https://learn.microsoft.com/graph/api/printusagebyuser-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -102,7 +101,7 @@ class PrintUsageByUserItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a user's usage summary for a particular time period. For descriptions of each endpoint, see printUsageByUser.
+        Retrieve a list of daily print usage summaries, grouped by user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +138,7 @@ class PrintUsageByUserItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PrintUsageByUserItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a user's usage summary for a particular time period. For descriptions of each endpoint, see printUsageByUser.
+        Retrieve a list of daily print usage summaries, grouped by user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

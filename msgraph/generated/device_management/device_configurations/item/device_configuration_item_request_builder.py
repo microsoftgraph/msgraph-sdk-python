@@ -37,10 +37,9 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a editionUpgradeConfiguration.
+        Delete navigation property deviceConfigurations for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-editionupgradeconfiguration-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -56,10 +55,9 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Read properties and relationships of the windowsDefenderAdvancedThreatProtectionConfiguration object.
+        The device configurations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windowsdefenderadvancedthreatprotectionconfiguration-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -89,11 +87,10 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceConfiguration]:
         """
-        Update the properties of a windowsPhone81CustomConfiguration object.
+        Update the navigation property deviceConfigurations in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-windowsphone81customconfiguration-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -113,7 +110,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a editionUpgradeConfiguration.
+        Delete navigation property deviceConfigurations for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -124,7 +121,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the windowsDefenderAdvancedThreatProtectionConfiguration object.
+        The device configurations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -135,7 +132,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a windowsPhone81CustomConfiguration object.
+        Update the navigation property deviceConfigurations in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -224,7 +221,7 @@ class DeviceConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the windowsDefenderAdvancedThreatProtectionConfiguration object.
+        The device configurations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

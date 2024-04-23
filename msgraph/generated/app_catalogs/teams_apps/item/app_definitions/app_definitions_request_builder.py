@@ -66,11 +66,10 @@ class AppDefinitionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsAppDefinition]:
         """
-        Update an app previously published to the Microsoft Teams app catalog. To update an app, the distributionMethod property for the app must be set to organization. This API specifically updates an app published to your organization's app catalog (the tenant app catalog).
+        Create new navigation property to appDefinitions for appCatalogs
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/teamsapp-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -101,7 +100,7 @@ class AppDefinitionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update an app previously published to the Microsoft Teams app catalog. To update an app, the distributionMethod property for the app must be set to organization. This API specifically updates an app published to your organization's app catalog (the tenant app catalog).
+        Create new navigation property to appDefinitions for appCatalogs
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

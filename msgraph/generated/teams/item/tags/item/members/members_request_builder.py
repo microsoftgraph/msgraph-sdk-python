@@ -46,10 +46,9 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamworkTagMemberCollectionResponse]:
         """
-        Get a list of the members of a standard tag in a team and their properties.
+        Users assigned to the tag.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamworkTagMemberCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/teamworktagmember-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TeamworkTagMember] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamworkTagMember]:
         """
-        Create a new teamworkTagMember object in a team.
+        Create new navigation property to members for teams
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamworkTagMember]
-        Find more info here: https://learn.microsoft.com/graph/api/teamworktagmember-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the members of a standard tag in a team and their properties.
+        Users assigned to the tag.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[TeamworkTagMember] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new teamworkTagMember object in a team.
+        Create new navigation property to members for teams
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MembersRequestBuilderGetQueryParameters():
         """
-        Get a list of the members of a standard tag in a team and their properties.
+        Users assigned to the tag.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

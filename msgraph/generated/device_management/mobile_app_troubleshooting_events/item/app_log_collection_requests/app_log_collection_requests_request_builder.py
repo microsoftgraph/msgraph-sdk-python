@@ -46,10 +46,9 @@ class AppLogCollectionRequestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppLogCollectionRequestCollectionResponse]:
         """
-        List properties and relationships of the appLogCollectionRequest objects.
+        Indicates collection of App Log Upload Request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppLogCollectionRequestCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-applogcollectionrequest-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class AppLogCollectionRequestsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AppLogCollectionRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppLogCollectionRequest]:
         """
-        Create a new appLogCollectionRequest object.
+        Create new navigation property to appLogCollectionRequests for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppLogCollectionRequest]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-applogcollectionrequest-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class AppLogCollectionRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the appLogCollectionRequest objects.
+        Indicates collection of App Log Upload Request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class AppLogCollectionRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AppLogCollectionRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new appLogCollectionRequest object.
+        Create new navigation property to appLogCollectionRequests for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class AppLogCollectionRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AppLogCollectionRequestsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the appLogCollectionRequest objects.
+        Indicates collection of App Log Upload Request.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

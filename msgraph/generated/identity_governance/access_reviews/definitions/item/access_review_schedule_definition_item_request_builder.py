@@ -31,10 +31,9 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes an accessReviewScheduleDefinition object.
+        Delete navigation property definitions for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/accessreviewscheduledefinition-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,10 +49,9 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessReviewScheduleDefinition]:
         """
-        Read the properties and relationships of an accessReviewScheduleDefinition object. To retrieve the instances of the access review series, use the list accessReviewInstance API.
+        Represents the template and scheduling for an access review.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewScheduleDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/accessreviewscheduledefinition-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -94,7 +92,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes an accessReviewScheduleDefinition object.
+        Delete navigation property definitions for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +103,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an accessReviewScheduleDefinition object. To retrieve the instances of the access review series, use the list accessReviewInstance API.
+        Represents the template and scheduling for an access review.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -160,7 +158,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessReviewScheduleDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an accessReviewScheduleDefinition object. To retrieve the instances of the access review series, use the list accessReviewInstance API.
+        Represents the template and scheduling for an access review.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

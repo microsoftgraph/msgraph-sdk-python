@@ -46,10 +46,9 @@ class StagesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ApprovalStageCollectionResponse]:
         """
-        List the approvalStage objects associated with an approval. This API request is made by an approver in the following scenarios: In Microsoft Entra entitlement management, providing the identifier of the access package assignment request.In PIM for groups, providing the identifier of the assignment schedule request.
+        A collection of stages in the approval decision.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ApprovalStageCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/approval-list-stages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List the approvalStage objects associated with an approval. This API request is made by an approver in the following scenarios: In Microsoft Entra entitlement management, providing the identifier of the access package assignment request.In PIM for groups, providing the identifier of the assignment schedule request.
+        A collection of stages in the approval decision.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class StagesRequestBuilderGetQueryParameters():
         """
-        List the approvalStage objects associated with an approval. This API request is made by an approver in the following scenarios: In Microsoft Entra entitlement management, providing the identifier of the access package assignment request.In PIM for groups, providing the identifier of the assignment schedule request.
+        A collection of stages in the approval decision.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

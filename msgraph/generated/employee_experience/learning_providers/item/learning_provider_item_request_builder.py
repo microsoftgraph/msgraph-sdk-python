@@ -33,10 +33,9 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a learningProvider resource and remove its registration in Viva Learning for a tenant.
+        Delete navigation property learningProviders for employeeExperience
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/employeeexperience-delete-learningproviders?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -52,10 +51,9 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningProvider]:
         """
-        Read the properties and relationships of a learningProvider object.
+        A collection of learning providers.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningProvider]
-        Find more info here: https://learn.microsoft.com/graph/api/learningprovider-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -97,11 +95,10 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[LearningProvider] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningProvider]:
         """
-        Update the properties of a learningProvider object.
+        Update the navigation property learningProviders in employeeExperience
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningProvider]
-        Find more info here: https://learn.microsoft.com/graph/api/learningprovider-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -121,7 +118,7 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a learningProvider resource and remove its registration in Viva Learning for a tenant.
+        Delete navigation property learningProviders for employeeExperience
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -132,7 +129,7 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a learningProvider object.
+        A collection of learning providers.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -143,7 +140,7 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[LearningProvider] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a learningProvider object.
+        Update the navigation property learningProviders in employeeExperience
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -187,7 +184,7 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LearningProviderItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a learningProvider object.
+        A collection of learning providers.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

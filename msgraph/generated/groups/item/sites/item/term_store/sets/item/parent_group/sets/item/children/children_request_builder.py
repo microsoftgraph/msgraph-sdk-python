@@ -46,10 +46,9 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TermCollectionResponse]:
         """
-        Get the first level children of a [set] or [term] resource using the children navigation property.
+        Children terms of set in term [store].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/termstore-term-list-children?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Term] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Term]:
         """
-        Create a new term object.
+        Create new navigation property to children for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Term]
-        Find more info here: https://learn.microsoft.com/graph/api/termstore-term-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the first level children of a [set] or [term] resource using the children navigation property.
+        Children terms of set in term [store].
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Term] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new term object.
+        Create new navigation property to children for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class ChildrenRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ChildrenRequestBuilderGetQueryParameters():
         """
-        Get the first level children of a [set] or [term] resource using the children navigation property.
+        Children terms of set in term [store].
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

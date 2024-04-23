@@ -46,10 +46,9 @@ class ResourceRolesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessPackageResourceRoleCollectionResponse]:
         """
-        Retrieve a list of accessPackageResourceRole objects of an accessPackageResource in an accessPackageCatalog. The resource should have been added to the catalog by creating an accessPackageResourceRequest. This list of roles can then be used by the caller to select a role, which is needed when subsequently creating an accessPackageResourceRoleScope.
+        Get resourceRoles from identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageResourceRoleCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/accesspackagecatalog-list-resourceroles?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class ResourceRolesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of accessPackageResourceRole objects of an accessPackageResource in an accessPackageCatalog. The resource should have been added to the catalog by creating an accessPackageResourceRequest. This list of roles can then be used by the caller to select a role, which is needed when subsequently creating an accessPackageResourceRoleScope.
+        Get resourceRoles from identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class ResourceRolesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ResourceRolesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of accessPackageResourceRole objects of an accessPackageResource in an accessPackageCatalog. The resource should have been added to the catalog by creating an accessPackageResourceRequest. This list of roles can then be used by the caller to select a role, which is needed when subsequently creating an accessPackageResourceRoleScope.
+        Get resourceRoles from identityGovernance
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

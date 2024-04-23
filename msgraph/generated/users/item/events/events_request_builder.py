@@ -47,10 +47,9 @@ class EventsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EventCollectionResponse]:
         """
-        Get a list of event objects in the user's mailbox. The list contains singleinstance meetings and series masters. To get expanded event instances, you can get the calendar view, orget the instances of an event. Currently, this operation returns event bodies in only HTML format. There are two scenarios where an app can get events in another user's calendar:
+        The user's events. Default is to show Events under the Default Calendar. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EventCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-events?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class EventsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Event] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Event]:
         """
-        Create one or more single-value extended properties in a new or existing instance of a resource. The following user resources are supported: The following group resources: See Extended properties overview for more information about when to useopen extensions or extended properties, and how to specify extended properties.
+        Create new navigation property to events for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Event]
-        Find more info here: https://learn.microsoft.com/graph/api/singlevaluelegacyextendedproperty-post-singlevalueextendedproperties?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +90,7 @@ class EventsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of event objects in the user's mailbox. The list contains singleinstance meetings and series masters. To get expanded event instances, you can get the calendar view, orget the instances of an event. Currently, this operation returns event bodies in only HTML format. There are two scenarios where an app can get events in another user's calendar:
+        The user's events. Default is to show Events under the Default Calendar. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class EventsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Event] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create one or more single-value extended properties in a new or existing instance of a resource. The following user resources are supported: The following group resources: See Extended properties overview for more information about when to useopen extensions or extended properties, and how to specify extended properties.
+        Create new navigation property to events for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +145,7 @@ class EventsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EventsRequestBuilderGetQueryParameters():
         """
-        Get a list of event objects in the user's mailbox. The list contains singleinstance meetings and series masters. To get expanded event instances, you can get the calendar view, orget the instances of an event. Currently, this operation returns event bodies in only HTML format. There are two scenarios where an app can get events in another user's calendar:
+        The user's events. Default is to show Events under the Default Calendar. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

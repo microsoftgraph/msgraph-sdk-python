@@ -30,10 +30,9 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Remove a member from a group via the members navigation property. You can't remove a member from groups with dynamic memberships.
+        Delete ref of navigation property members for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/group-delete-members?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -52,7 +51,6 @@ class RefRequestBuilder(BaseRequestBuilder):
         The members of this group, who can be users, devices, other groups, or service principals. Supports the List members, Add member, and Remove member operations. Nullable. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=members($select=id,userPrincipalName,displayName).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[StringCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/group-list-members?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Add a member to a security or Microsoft 365 group through the members navigation property. The following table shows the types of members that can be added to either security groups or Microsoft 365 groups.
+        Create new navigation property ref to members for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/group-post-members?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +89,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a member from a group via the members navigation property. You can't remove a member from groups with dynamic memberships.
+        Delete ref of navigation property members for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +111,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Add a member to a security or Microsoft 365 group through the members navigation property. The following table shows the types of members that can be added to either security groups or Microsoft 365 groups.
+        Create new navigation property ref to members for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +137,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():
         """
-        Remove a member from a group via the members navigation property. You can't remove a member from groups with dynamic memberships.
+        Delete ref of navigation property members for groups
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

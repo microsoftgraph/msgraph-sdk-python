@@ -47,10 +47,9 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConversationMemberCollectionResponse]:
         """
-        Get the conversationMember collection of a team. The membership IDs returned by the server must be treated as opaque strings. The client should not try to parse or make assumptions about these resource IDs. In the future, membership results may include users from various tenants, as indicated in the response. Clients should avoid assuming that all members exclusively belong to the current tenant.
+        Members and owners of the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationMemberCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/team-list-members?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ConversationMember] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConversationMember]:
         """
-        Add a new conversationMember to a team.
+        Create new navigation property to members for teams
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationMember]
-        Find more info here: https://learn.microsoft.com/graph/api/team-post-members?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +90,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the conversationMember collection of a team. The membership IDs returned by the server must be treated as opaque strings. The client should not try to parse or make assumptions about these resource IDs. In the future, membership results may include users from various tenants, as indicated in the response. Clients should avoid assuming that all members exclusively belong to the current tenant.
+        Members and owners of the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ConversationMember] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Add a new conversationMember to a team.
+        Create new navigation property to members for teams
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +145,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MembersRequestBuilderGetQueryParameters():
         """
-        Get the conversationMember collection of a team. The membership IDs returned by the server must be treated as opaque strings. The client should not try to parse or make assumptions about these resource IDs. In the future, membership results may include users from various tenants, as indicated in the response. Clients should avoid assuming that all members exclusively belong to the current tenant.
+        Members and owners of the team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,10 +29,9 @@ class ShiftItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a shift from the schedule.
+        Delete navigation property shifts for teams
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/shift-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class ShiftItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Shift]:
         """
-        Retrieve the properties and relationships of a shift object by ID.
+        The shifts in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Shift]
-        Find more info here: https://learn.microsoft.com/graph/api/shift-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class ShiftItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Shift] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Shift]:
         """
-        Replace an existing shift. If the specified shift doesn't exist, this method returns 404 Not found. The duration of a shift can't be less than 1 minute or longer than 24 hours.
+        Update the navigation property shifts in teams
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Shift]
-        Find more info here: https://learn.microsoft.com/graph/api/shift-put?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class ShiftItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a shift from the schedule.
+        Delete navigation property shifts for teams
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class ShiftItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a shift object by ID.
+        The shifts in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class ShiftItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Shift] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Replace an existing shift. If the specified shift doesn't exist, this method returns 404 Not found. The duration of a shift can't be less than 1 minute or longer than 24 hours.
+        Update the navigation property shifts in teams
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class ShiftItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ShiftItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a shift object by ID.
+        The shifts in the schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,10 +29,9 @@ class RetentionLabelRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Remove a retention label from a driveItem. For information about retention labels from an administrator's perspective, see Use retention labels to manage the lifecycle of documents stored in SharePoint.
+        Delete navigation property retentionLabel for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/driveitem-removeretentionlabel?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class RetentionLabelRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ItemRetentionLabel] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ItemRetentionLabel]:
         """
-        Lock or unlock a retention label on a driveItem that classifies content as records. For information about retention labels from an administrator's perspective, see Use retention labels to manage the lifecycle of documents stored in SharePoint. For more information about how you can lock and unlock retention labels, see Use record versioning to update records stored in SharePoint or OneDrive.
+        Update the navigation property retentionLabel in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ItemRetentionLabel]
-        Find more info here: https://learn.microsoft.com/graph/api/driveitem-lockorunlockrecord?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +90,7 @@ class RetentionLabelRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a retention label from a driveItem. For information about retention labels from an administrator's perspective, see Use retention labels to manage the lifecycle of documents stored in SharePoint.
+        Delete navigation property retentionLabel for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +112,7 @@ class RetentionLabelRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ItemRetentionLabel] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Lock or unlock a retention label on a driveItem that classifies content as records. For information about retention labels from an administrator's perspective, see Use retention labels to manage the lifecycle of documents stored in SharePoint. For more information about how you can lock and unlock retention labels, see Use record versioning to update records stored in SharePoint or OneDrive.
+        Update the navigation property retentionLabel in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

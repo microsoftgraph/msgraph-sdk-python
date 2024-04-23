@@ -39,10 +39,9 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Remove a [content type][contentType] from a [list][] or a [site][].
+        Delete navigation property contentTypes for sites
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/contenttype-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -58,10 +57,9 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ContentType]:
         """
-        Retrieve the metadata for a [content type][contentType] in a [site][] or a [list][].
+        The collection of content types defined for this site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContentType]
-        Find more info here: https://learn.microsoft.com/graph/api/contenttype-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -79,11 +77,10 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ContentType] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ContentType]:
         """
-        Update a [content type][contentType].
+        Update the navigation property contentTypes in sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContentType]
-        Find more info here: https://learn.microsoft.com/graph/api/contenttype-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +100,7 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a [content type][contentType] from a [list][] or a [site][].
+        Delete navigation property contentTypes for sites
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +111,7 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the metadata for a [content type][contentType] in a [site][] or a [list][].
+        The collection of content types defined for this site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -125,7 +122,7 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ContentType] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update a [content type][contentType].
+        Update the navigation property contentTypes in sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -241,7 +238,7 @@ class ContentTypeItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ContentTypeItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the metadata for a [content type][contentType] in a [site][] or a [list][].
+        The collection of content types defined for this site.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

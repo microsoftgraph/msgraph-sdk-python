@@ -46,10 +46,9 @@ class MobileThreatDefenseConnectorsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[MobileThreatDefenseConnectorCollectionResponse]:
         """
-        List properties and relationships of the mobileThreatDefenseConnector objects.
+        The list of Mobile threat Defense connectors configured by the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileThreatDefenseConnectorCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-mobilethreatdefenseconnector-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class MobileThreatDefenseConnectorsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MobileThreatDefenseConnector] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[MobileThreatDefenseConnector]:
         """
-        Create a new mobileThreatDefenseConnector object.
+        Create new navigation property to mobileThreatDefenseConnectors for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MobileThreatDefenseConnector]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-mobilethreatdefenseconnector-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class MobileThreatDefenseConnectorsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the mobileThreatDefenseConnector objects.
+        The list of Mobile threat Defense connectors configured by the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class MobileThreatDefenseConnectorsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[MobileThreatDefenseConnector] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new mobileThreatDefenseConnector object.
+        Create new navigation property to mobileThreatDefenseConnectors for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class MobileThreatDefenseConnectorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MobileThreatDefenseConnectorsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the mobileThreatDefenseConnector objects.
+        The list of Mobile threat Defense connectors configured by the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

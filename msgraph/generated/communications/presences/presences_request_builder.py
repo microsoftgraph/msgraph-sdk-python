@@ -46,7 +46,7 @@ class PresencesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PresenceCollectionResponse]:
         """
-        Get a user's presence information.
+        Get presences from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PresenceCollectionResponse]
         """
@@ -89,7 +89,7 @@ class PresencesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a user's presence information.
+        Get presences from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -135,7 +135,7 @@ class PresencesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PresencesRequestBuilderGetQueryParameters():
         """
-        Get a user's presence information.
+        Get presences from communications
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -46,7 +46,7 @@ class HostPortsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[HostPortCollectionResponse]:
         """
-        Read the properties and relationships of a hostPort object.
+        Retrieve details about hostPort objects.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostPortCollectionResponse]
         """
@@ -89,7 +89,7 @@ class HostPortsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a hostPort object.
+        Retrieve details about hostPort objects.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -135,7 +135,7 @@ class HostPortsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HostPortsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a hostPort object.
+        Retrieve details about hostPort objects.Note: List retrieval is not yet supported.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

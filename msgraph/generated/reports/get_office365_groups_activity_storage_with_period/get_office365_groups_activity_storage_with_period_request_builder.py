@@ -30,9 +30,10 @@ class GetOffice365GroupsActivityStorageWithPeriodRequestBuilder(BaseRequestBuild
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
         """
-        Invoke function getOffice365GroupsActivityStorage
+        Get the total storage used across all group mailboxes and group sites.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getoffice365groupsactivitystorage?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,7 +49,7 @@ class GetOffice365GroupsActivityStorageWithPeriodRequestBuilder(BaseRequestBuild
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getOffice365GroupsActivityStorage
+        Get the total storage used across all group mailboxes and group sites.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

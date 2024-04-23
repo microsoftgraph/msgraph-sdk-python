@@ -53,10 +53,9 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleEligibilityScheduleRequest]:
         """
-        In PIM, read the details of a request for for a role eligibility request made through the unifiedRoleEligibilityScheduleRequest object.
+        Requests for role eligibilities for principals through PIM.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleEligibilityScheduleRequest]
-        Find more info here: https://learn.microsoft.com/graph/api/unifiedroleeligibilityschedulerequest-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -108,7 +107,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        In PIM, read the details of a request for for a role eligibility request made through the unifiedRoleEligibilityScheduleRequest object.
+        Requests for role eligibilities for principals through PIM.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -199,7 +198,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(BaseRequestBuilder
     @dataclass
     class UnifiedRoleEligibilityScheduleRequestItemRequestBuilderGetQueryParameters():
         """
-        In PIM, read the details of a request for for a role eligibility request made through the unifiedRoleEligibilityScheduleRequest object.
+        Requests for role eligibilities for principals through PIM.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

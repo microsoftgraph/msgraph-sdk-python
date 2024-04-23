@@ -46,10 +46,9 @@ class SharedWithTeamsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SharedWithChannelTeamInfoCollectionResponse]:
         """
-        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a membershipType value of shared.
+        A collection of teams with which a channel is shared.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharedWithChannelTeamInfoCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/sharedwithchannelteaminfo-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class SharedWithTeamsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a membershipType value of shared.
+        A collection of teams with which a channel is shared.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class SharedWithTeamsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SharedWithTeamsRequestBuilderGetQueryParameters():
         """
-        Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a membershipType value of shared.
+        A collection of teams with which a channel is shared.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -37,9 +37,10 @@ class GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeReques
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeGetResponse]:
         """
-        Invoke function getGroupArchivedPrintJobs
+        Get a list of archived print jobs for a particular group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/reports-getgrouparchivedprintjobs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -57,7 +58,7 @@ class GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeReques
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getGroupArchivedPrintJobs
+        Get a list of archived print jobs for a particular group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -79,7 +80,7 @@ class GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeReques
     @dataclass
     class GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilderGetQueryParameters():
         """
-        Invoke function getGroupArchivedPrintJobs
+        Get a list of archived print jobs for a particular group.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

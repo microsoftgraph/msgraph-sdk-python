@@ -29,10 +29,9 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Mark a schedulingGroup as inactive by setting its isActive property.This method does not remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group.
+        Delete navigation property schedulingGroups for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/schedulinggroup-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SchedulingGroup]:
         """
-        Retrieve the properties and relationships of a schedulingGroup by ID.
+        The logical grouping of users in the schedule (usually by role).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SchedulingGroup]
-        Find more info here: https://learn.microsoft.com/graph/api/schedulinggroup-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[SchedulingGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SchedulingGroup]:
         """
-        Replace an existing schedulingGroup. If the specified schedulingGroup doesn't exist, this method returns 404 Not found.
+        Update the navigation property schedulingGroups in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SchedulingGroup]
-        Find more info here: https://learn.microsoft.com/graph/api/schedulinggroup-put?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Mark a schedulingGroup as inactive by setting its isActive property.This method does not remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group.
+        Delete navigation property schedulingGroups for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a schedulingGroup by ID.
+        The logical grouping of users in the schedule (usually by role).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[SchedulingGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Replace an existing schedulingGroup. If the specified schedulingGroup doesn't exist, this method returns 404 Not found.
+        Update the navigation property schedulingGroups in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class SchedulingGroupItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SchedulingGroupItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a schedulingGroup by ID.
+        The logical grouping of users in the schedule (usually by role).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

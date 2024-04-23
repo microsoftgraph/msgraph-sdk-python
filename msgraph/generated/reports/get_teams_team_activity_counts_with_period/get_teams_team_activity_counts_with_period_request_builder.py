@@ -30,9 +30,10 @@ class GetTeamsTeamActivityCountsWithPeriodRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
         """
-        Invoke function getTeamsTeamActivityCounts
+        Get the number of team activities across Microsoft Teams. The activity types are related to meetings and messages.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getteamsteamactivitycounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,7 +49,7 @@ class GetTeamsTeamActivityCountsWithPeriodRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getTeamsTeamActivityCounts
+        Get the number of team activities across Microsoft Teams. The activity types are related to meetings and messages.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -46,10 +46,9 @@ class PagesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OnenotePageCollectionResponse]:
         """
-        Retrieve a list of page objects from the specified section.
+        The collection of pages in the section.  Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenotePageCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/section-list-pages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class PagesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[OnenotePage] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[OnenotePage]:
         """
-        Create a new page in the specified section.
+        Create new navigation property to pages for sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenotePage]
-        Find more info here: https://learn.microsoft.com/graph/api/section-post-pages?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class PagesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of page objects from the specified section.
+        The collection of pages in the section.  Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class PagesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[OnenotePage] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new page in the specified section.
+        Create new navigation property to pages for sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class PagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PagesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of page objects from the specified section.
+        The collection of pages in the section.  Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

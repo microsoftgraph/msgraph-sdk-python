@@ -32,10 +32,9 @@ class TermItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a term object.
+        Delete navigation property terms for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/termstore-term-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class TermItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Term]:
         """
-        Read the properties and relationships of a term object.
+        All the terms under the set.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Term]
-        Find more info here: https://learn.microsoft.com/graph/api/termstore-term-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +70,10 @@ class TermItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Term] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Term]:
         """
-        Update the properties of a term object.
+        Update the navigation property terms in groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Term]
-        Find more info here: https://learn.microsoft.com/graph/api/termstore-term-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,7 +93,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a term object.
+        Delete navigation property terms for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +104,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a term object.
+        All the terms under the set.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +115,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Term] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a term object.
+        Update the navigation property terms in groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +168,7 @@ class TermItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TermItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a term object.
+        All the terms under the set.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

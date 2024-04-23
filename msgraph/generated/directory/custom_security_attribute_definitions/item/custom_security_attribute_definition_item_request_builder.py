@@ -48,10 +48,9 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CustomSecurityAttributeDefinition]:
         """
-        Read the properties and relationships of a customSecurityAttributeDefinition object.
+        Schema of a custom security attributes (key-value pairs).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomSecurityAttributeDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/customsecurityattributedefinition-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +68,10 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[CustomSecurityAttributeDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CustomSecurityAttributeDefinition]:
         """
-        Update the properties of a customSecurityAttributeDefinition object.
+        Update the navigation property customSecurityAttributeDefinitions in directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomSecurityAttributeDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/customsecurityattributedefinition-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -104,7 +102,7 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a customSecurityAttributeDefinition object.
+        Schema of a custom security attributes (key-value pairs).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +113,7 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[CustomSecurityAttributeDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a customSecurityAttributeDefinition object.
+        Update the navigation property customSecurityAttributeDefinitions in directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +148,7 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CustomSecurityAttributeDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a customSecurityAttributeDefinition object.
+        Schema of a custom security attributes (key-value pairs).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

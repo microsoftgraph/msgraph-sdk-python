@@ -52,10 +52,9 @@ class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilder(BaseReque
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleRequest]:
         """
-        Read the properties and relationships of a privilegedAccessGroupAssignmentScheduleRequest object.
+        The schedule requests for operations to create, update, delete, extend, and renew an assignment.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrivilegedAccessGroupAssignmentScheduleRequest]
-        Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroupassignmentschedulerequest-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -107,7 +106,7 @@ class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilder(BaseReque
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a privilegedAccessGroupAssignmentScheduleRequest object.
+        The schedule requests for operations to create, update, delete, extend, and renew an assignment.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -189,7 +188,7 @@ class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilder(BaseReque
     @dataclass
     class PrivilegedAccessGroupAssignmentScheduleRequestItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a privilegedAccessGroupAssignmentScheduleRequest object.
+        The schedule requests for operations to create, update, delete, extend, and renew an assignment.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

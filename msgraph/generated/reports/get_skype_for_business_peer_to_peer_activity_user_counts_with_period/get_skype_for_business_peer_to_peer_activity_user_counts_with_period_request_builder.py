@@ -30,9 +30,10 @@ class GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder(Ba
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
         """
-        Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts
+        Get usage trends on the number of unique users and type of peer-to-peer sessions held in your organization. Types of sessions include IM, audio, video, application sharing, and file transfers in peer-to-peer sessions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getskypeforbusinesspeertopeeractivityusercounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,7 +49,7 @@ class GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder(Ba
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts
+        Get usage trends on the number of unique users and type of peer-to-peer sessions held in your organization. Types of sessions include IM, audio, video, application sharing, and file transfers in peer-to-peer sessions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

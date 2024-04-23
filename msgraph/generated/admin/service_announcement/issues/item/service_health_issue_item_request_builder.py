@@ -48,10 +48,9 @@ class ServiceHealthIssueItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ServiceHealthIssue]:
         """
-        Retrieve the properties and relationships of a serviceHealthIssue object. This operation retrieves a specified service health issue for tenant. The operation returns an error if the issue does not exist for the tenant.
+        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServiceHealthIssue]
-        Find more info here: https://learn.microsoft.com/graph/api/servicehealthissue-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -103,7 +102,7 @@ class ServiceHealthIssueItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a serviceHealthIssue object. This operation retrieves a specified service health issue for tenant. The operation returns an error if the issue does not exist for the tenant.
+        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -149,7 +148,7 @@ class ServiceHealthIssueItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ServiceHealthIssueItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a serviceHealthIssue object. This operation retrieves a specified service health issue for tenant. The operation returns an error if the issue does not exist for the tenant.
+        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

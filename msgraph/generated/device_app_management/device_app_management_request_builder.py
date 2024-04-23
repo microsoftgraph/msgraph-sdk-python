@@ -69,7 +69,7 @@ class DeviceAppManagementRequestBuilder(BaseRequestBuilder):
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceAppManagement]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-deviceappmanagement-update?view=graph-rest-1.0
+        Find more info here: https://learn.microsoft.com/graph/api/intune-policyset-deviceappmanagement-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")

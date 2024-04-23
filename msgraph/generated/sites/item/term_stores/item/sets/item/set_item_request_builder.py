@@ -33,10 +33,9 @@ class SetItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a set object.
+        Delete navigation property sets for sites
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/termstore-set-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -52,10 +51,9 @@ class SetItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Set]:
         """
-        Read the properties and relationships of a set object.
+        Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Set]
-        Find more info here: https://learn.microsoft.com/graph/api/termstore-set-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -73,11 +71,10 @@ class SetItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Set] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Set]:
         """
-        Update the properties of a set object.
+        Update the navigation property sets in sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Set]
-        Find more info here: https://learn.microsoft.com/graph/api/termstore-set-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -97,7 +94,7 @@ class SetItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a set object.
+        Delete navigation property sets for sites
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,7 +105,7 @@ class SetItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a set object.
+        Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -119,7 +116,7 @@ class SetItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Set] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a set object.
+        Update the navigation property sets in sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +178,7 @@ class SetItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SetItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a set object.
+        Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

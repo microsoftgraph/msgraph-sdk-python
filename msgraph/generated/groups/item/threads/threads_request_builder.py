@@ -46,10 +46,9 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConversationThreadCollectionResponse]:
         """
-        Get all the threads of a group.
+        The group's conversation threads. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationThreadCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/group-list-threads?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ConversationThread] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConversationThread]:
         """
-        Start a new group conversation by first creating a thread. A new conversation, conversation thread, and post are created in the group.Use reply thread or reply post to further post to that thread. Note: You can also start a new thread in an existing conversation.
+        Create new navigation property to threads for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationThread]
-        Find more info here: https://learn.microsoft.com/graph/api/group-post-threads?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get all the threads of a group.
+        The group's conversation threads. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ConversationThread] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Start a new group conversation by first creating a thread. A new conversation, conversation thread, and post are created in the group.Use reply thread or reply post to further post to that thread. Note: You can also start a new thread in an existing conversation.
+        Create new navigation property to threads for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ThreadsRequestBuilderGetQueryParameters():
         """
-        Get all the threads of a group.
+        The group's conversation threads. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

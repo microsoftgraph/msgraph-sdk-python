@@ -39,10 +39,9 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Removes an item from a [list][].
+        Delete navigation property items for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/listitem-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -58,10 +57,9 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ListItem]:
         """
-        Returns the metadata for an [item][] in a [list][].
+        All items contained in the list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ListItem]
-        Find more info here: https://learn.microsoft.com/graph/api/listitem-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -120,7 +118,7 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Removes an item from a [list][].
+        Delete navigation property items for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -131,7 +129,7 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Returns the metadata for an [item][] in a [list][].
+        All items contained in the list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -249,7 +247,7 @@ class ListItemItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ListItemItemRequestBuilderGetQueryParameters():
         """
-        Returns the metadata for an [item][] in a [list][].
+        All items contained in the list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

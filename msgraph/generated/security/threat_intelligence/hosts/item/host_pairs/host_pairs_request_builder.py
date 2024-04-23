@@ -45,10 +45,9 @@ class HostPairsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[HostPairCollectionResponse]:
         """
-        Get the list of hostPair resources associated with a host, where that host is *either* the *parent* or the *child*.
+        The hostPairs that are associated with this host, where this host is either the parentHost or childHost.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostPairCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-host-list-hostpairs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +65,7 @@ class HostPairsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of hostPair resources associated with a host, where that host is *either* the *parent* or the *child*.
+        The hostPairs that are associated with this host, where this host is either the parentHost or childHost.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +96,7 @@ class HostPairsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HostPairsRequestBuilderGetQueryParameters():
         """
-        Get the list of hostPair resources associated with a host, where that host is *either* the *parent* or the *child*.
+        The hostPairs that are associated with this host, where this host is either the parentHost or childHost.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

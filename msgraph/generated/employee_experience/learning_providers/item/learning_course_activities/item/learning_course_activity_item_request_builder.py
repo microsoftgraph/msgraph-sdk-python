@@ -29,10 +29,9 @@ class LearningCourseActivityItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a learningCourseActivity object using the course activity ID of either an assignment or a self-initiated activity.
+        Delete navigation property learningCourseActivities for employeeExperience
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/learningcourseactivity-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class LearningCourseActivityItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[LearningCourseActivity] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningCourseActivity]:
         """
-        Update the properties of a learningCourseActivity object. 
+        Update the navigation property learningCourseActivities in employeeExperience
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningCourseActivity]
-        Find more info here: https://learn.microsoft.com/graph/api/learningcourseactivity-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +90,7 @@ class LearningCourseActivityItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a learningCourseActivity object using the course activity ID of either an assignment or a self-initiated activity.
+        Delete navigation property learningCourseActivities for employeeExperience
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +112,7 @@ class LearningCourseActivityItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[LearningCourseActivity] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a learningCourseActivity object. 
+        Update the navigation property learningCourseActivities in employeeExperience
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

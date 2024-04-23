@@ -46,10 +46,9 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SwapShiftsChangeRequestCollectionResponse]:
         """
-        Retrieve a list of swapShiftsChangeRequest objects in the team.
+        The swap requests for shifts in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SwapShiftsChangeRequestCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/swapshiftschangerequest-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SwapShiftsChangeRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SwapShiftsChangeRequest]:
         """
-        Create an instance of a swapShiftsChangeRequest object.
+        Create new navigation property to swapShiftsChangeRequests for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SwapShiftsChangeRequest]
-        Find more info here: https://learn.microsoft.com/graph/api/swapshiftschangerequest-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of swapShiftsChangeRequest objects in the team.
+        The swap requests for shifts in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SwapShiftsChangeRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create an instance of a swapShiftsChangeRequest object.
+        Create new navigation property to swapShiftsChangeRequests for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class SwapShiftsChangeRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SwapShiftsChangeRequestsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of swapShiftsChangeRequest objects in the team.
+        The swap requests for shifts in the schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,10 +29,9 @@ class CloudPcDeviceImageItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a cloudPcDeviceImage object.
+        Delete navigation property deviceImages for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/cloudpcdeviceimage-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class CloudPcDeviceImageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CloudPcDeviceImage]:
         """
-        Read the properties and relationships of a specific cloudPcDeviceImage object.
+        A collection of device image resources on Cloud PC.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CloudPcDeviceImage]
-        Find more info here: https://learn.microsoft.com/graph/api/cloudpcdeviceimage-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +90,7 @@ class CloudPcDeviceImageItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a cloudPcDeviceImage object.
+        Delete navigation property deviceImages for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class CloudPcDeviceImageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a specific cloudPcDeviceImage object.
+        A collection of device image resources on Cloud PC.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -140,7 +138,7 @@ class CloudPcDeviceImageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CloudPcDeviceImageItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a specific cloudPcDeviceImage object.
+        A collection of device image resources on Cloud PC.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

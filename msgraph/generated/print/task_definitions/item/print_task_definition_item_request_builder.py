@@ -30,10 +30,9 @@ class PrintTaskDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a taskDefinition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        Delete navigation property taskDefinitions for print
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/print-delete-taskdefinition?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class PrintTaskDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintTaskDefinition]:
         """
-        Get details about a task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        List of abstract definition for a task that can be triggered when various events occur within Universal Print.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintTaskDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/printtaskdefinition-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class PrintTaskDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[PrintTaskDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintTaskDefinition]:
         """
-        Update a task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        Update the navigation property taskDefinitions in print
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintTaskDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/print-update-taskdefinition?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class PrintTaskDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a taskDefinition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        Delete navigation property taskDefinitions for print
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class PrintTaskDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get details about a task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        List of abstract definition for a task that can be triggered when various events occur within Universal Print.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class PrintTaskDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[PrintTaskDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update a task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        Update the navigation property taskDefinitions in print
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class PrintTaskDefinitionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PrintTaskDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Get details about a task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        List of abstract definition for a task that can be triggered when various events occur within Universal Print.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

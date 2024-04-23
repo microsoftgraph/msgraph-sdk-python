@@ -46,10 +46,9 @@ class HealthOverviewsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ServiceHealthCollectionResponse]:
         """
-        Retrieve the serviceHealth resources from the healthOverviews navigation property. This operation provides the health report of all subscribed services for a tenant.
+        A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServiceHealthCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/serviceannouncement-list-healthoverviews?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class HealthOverviewsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the serviceHealth resources from the healthOverviews navigation property. This operation provides the health report of all subscribed services for a tenant.
+        A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class HealthOverviewsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HealthOverviewsRequestBuilderGetQueryParameters():
         """
-        Retrieve the serviceHealth resources from the healthOverviews navigation property. This operation provides the health report of all subscribed services for a tenant.
+        A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

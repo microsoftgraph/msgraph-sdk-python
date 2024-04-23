@@ -30,10 +30,9 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(BaseRe
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a partner-specific configuration in a cross-tenant access policy. If a configuration includes a user synchronization policy, you must first delete the user synchronization policy before you can delete the partner-specific configuration.
+        Delete navigation property partners for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicyconfigurationpartner-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(BaseRe
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CrossTenantAccessPolicyConfigurationPartner]:
         """
-        Read the properties and relationships of a partner-specific configuration.
+        Defines partner-specific configurations for external Microsoft Entra organizations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicyConfigurationPartner]
-        Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicyconfigurationpartner-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(BaseRe
     
     async def patch(self,body: Optional[CrossTenantAccessPolicyConfigurationPartner] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CrossTenantAccessPolicyConfigurationPartner]:
         """
-        Update the properties of a partner-specific configuration.
+        Update the navigation property partners in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicyConfigurationPartner]
-        Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicyconfigurationpartner-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(BaseRe
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a partner-specific configuration in a cross-tenant access policy. If a configuration includes a user synchronization policy, you must first delete the user synchronization policy before you can delete the partner-specific configuration.
+        Delete navigation property partners for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(BaseRe
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a partner-specific configuration.
+        Defines partner-specific configurations for external Microsoft Entra organizations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(BaseRe
     
     def to_patch_request_information(self,body: Optional[CrossTenantAccessPolicyConfigurationPartner] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a partner-specific configuration.
+        Update the navigation property partners in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(BaseRe
     @dataclass
     class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a partner-specific configuration.
+        Defines partner-specific configurations for external Microsoft Entra organizations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

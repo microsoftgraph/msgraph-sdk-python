@@ -31,10 +31,9 @@ class CloudPcUserSettingItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a cloudPcUserSetting object.
+        Delete navigation property userSettings for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/cloudpcusersetting-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,10 +49,9 @@ class CloudPcUserSettingItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CloudPcUserSetting]:
         """
-        Read the properties and relationships of a cloudPcUserSetting object.
+        A collection of Cloud PC user settings.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CloudPcUserSetting]
-        Find more info here: https://learn.microsoft.com/graph/api/cloudpcusersetting-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,11 +69,10 @@ class CloudPcUserSettingItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[CloudPcUserSetting] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CloudPcUserSetting]:
         """
-        Update the properties of a cloudPcUserSetting object.
+        Update the navigation property userSettings in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CloudPcUserSetting]
-        Find more info here: https://learn.microsoft.com/graph/api/cloudpcusersetting-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -95,7 +92,7 @@ class CloudPcUserSettingItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a cloudPcUserSetting object.
+        Delete navigation property userSettings for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -106,7 +103,7 @@ class CloudPcUserSettingItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a cloudPcUserSetting object.
+        A collection of Cloud PC user settings.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +114,7 @@ class CloudPcUserSettingItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[CloudPcUserSetting] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a cloudPcUserSetting object.
+        Update the navigation property userSettings in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +158,7 @@ class CloudPcUserSettingItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CloudPcUserSettingItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a cloudPcUserSetting object.
+        A collection of Cloud PC user settings.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

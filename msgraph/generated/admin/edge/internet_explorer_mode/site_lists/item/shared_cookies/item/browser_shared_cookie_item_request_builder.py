@@ -29,10 +29,9 @@ class BrowserSharedCookieItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a browserSharedCookie from a browserSiteList.
+        Delete navigation property sharedCookies for admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/browsersitelist-delete-sharedcookies?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class BrowserSharedCookieItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BrowserSharedCookie]:
         """
-        Get a session cookie that can be shared between a Microsoft Edge process and an Internet Explorer process, while using Internet Explorer mode.
+        A collection of shared cookies defined for the site list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowserSharedCookie]
-        Find more info here: https://learn.microsoft.com/graph/api/browsersharedcookie-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class BrowserSharedCookieItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[BrowserSharedCookie] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[BrowserSharedCookie]:
         """
-        Update the properties of a browserSharedCookie object.
+        Update the navigation property sharedCookies in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowserSharedCookie]
-        Find more info here: https://learn.microsoft.com/graph/api/browsersharedcookie-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class BrowserSharedCookieItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a browserSharedCookie from a browserSiteList.
+        Delete navigation property sharedCookies for admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class BrowserSharedCookieItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a session cookie that can be shared between a Microsoft Edge process and an Internet Explorer process, while using Internet Explorer mode.
+        A collection of shared cookies defined for the site list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class BrowserSharedCookieItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[BrowserSharedCookie] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a browserSharedCookie object.
+        Update the navigation property sharedCookies in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class BrowserSharedCookieItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BrowserSharedCookieItemRequestBuilderGetQueryParameters():
         """
-        Get a session cookie that can be shared between a Microsoft Edge process and an Internet Explorer process, while using Internet Explorer mode.
+        A collection of shared cookies defined for the site list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

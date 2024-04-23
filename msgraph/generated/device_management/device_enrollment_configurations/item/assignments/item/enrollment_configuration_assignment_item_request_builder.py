@@ -29,10 +29,9 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a enrollmentConfigurationAssignment.
+        Delete navigation property assignments for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-enrollmentconfigurationassignment-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EnrollmentConfigurationAssignment]:
         """
-        Read properties and relationships of the enrollmentConfigurationAssignment object.
+        The list of group assignments for the device configuration profile
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EnrollmentConfigurationAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-enrollmentconfigurationassignment-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EnrollmentConfigurationAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EnrollmentConfigurationAssignment]:
         """
-        Update the properties of a enrollmentConfigurationAssignment object.
+        Update the navigation property assignments in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EnrollmentConfigurationAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-enrollmentconfigurationassignment-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a enrollmentConfigurationAssignment.
+        Delete navigation property assignments for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the enrollmentConfigurationAssignment object.
+        The list of group assignments for the device configuration profile
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EnrollmentConfigurationAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a enrollmentConfigurationAssignment object.
+        Update the navigation property assignments in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EnrollmentConfigurationAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the enrollmentConfigurationAssignment object.
+        The list of group assignments for the device configuration profile
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

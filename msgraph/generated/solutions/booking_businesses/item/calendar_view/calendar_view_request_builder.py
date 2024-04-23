@@ -49,7 +49,6 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         The set of appointments of this business in a specified date range. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingAppointmentCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-list-calendarview?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

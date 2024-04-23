@@ -49,10 +49,9 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CrossTenantAccessPolicy]:
         """
-        Read the properties and relationships of a crossTenantAccessPolicy object.
+        The custom rules that define an access scenario when interacting with external Microsoft Entra tenants.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[CrossTenantAccessPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CrossTenantAccessPolicy]:
         """
-        Update the properties of a cross-tenant access policy.
+        Update the navigation property crossTenantAccessPolicy in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -105,7 +103,7 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a crossTenantAccessPolicy object.
+        The custom rules that define an access scenario when interacting with external Microsoft Entra tenants.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +114,7 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[CrossTenantAccessPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a cross-tenant access policy.
+        Update the navigation property crossTenantAccessPolicy in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +158,7 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CrossTenantAccessPolicyRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a crossTenantAccessPolicy object.
+        The custom rules that define an access scenario when interacting with external Microsoft Entra tenants.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

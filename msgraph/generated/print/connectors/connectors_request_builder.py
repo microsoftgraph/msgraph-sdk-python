@@ -46,10 +46,9 @@ class ConnectorsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintConnectorCollectionResponse]:
         """
-        Retrieve a list of print connectors.
+        The list of available print connectors.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintConnectorCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/print-list-connectors?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class ConnectorsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of print connectors.
+        The list of available print connectors.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class ConnectorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConnectorsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of print connectors.
+        The list of available print connectors.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

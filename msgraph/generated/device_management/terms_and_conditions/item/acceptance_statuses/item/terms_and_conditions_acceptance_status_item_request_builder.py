@@ -30,10 +30,9 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a termsAndConditionsAcceptanceStatus.
+        Delete navigation property acceptanceStatuses for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-termsandconditionsacceptancestatus-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TermsAndConditionsAcceptanceStatus]:
         """
-        Read properties and relationships of the termsAndConditionsAcceptanceStatus object.
+        The list of acceptance statuses for this T&C policy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditionsAcceptanceStatus]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-termsandconditionsacceptancestatus-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TermsAndConditionsAcceptanceStatus]:
         """
-        Update the properties of a termsAndConditionsAcceptanceStatus object.
+        Update the navigation property acceptanceStatuses in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditionsAcceptanceStatus]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-termsandconditionsacceptancestatus-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a termsAndConditionsAcceptanceStatus.
+        Delete navigation property acceptanceStatuses for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the termsAndConditionsAcceptanceStatus object.
+        The list of acceptance statuses for this T&C policy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a termsAndConditionsAcceptanceStatus object.
+        Update the navigation property acceptanceStatuses in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class TermsAndConditionsAcceptanceStatusItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TermsAndConditionsAcceptanceStatusItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the termsAndConditionsAcceptanceStatus object.
+        The list of acceptance statuses for this T&C policy.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

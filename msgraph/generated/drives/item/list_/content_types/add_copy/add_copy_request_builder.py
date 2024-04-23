@@ -29,7 +29,7 @@ class AddCopyRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AddCopyPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ContentType]:
         """
-        Add a copy of a [content type][contentType] from a [site][site] to a [list][list].
+        Add a copy of a content type from a site to a list.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContentType]
@@ -53,7 +53,7 @@ class AddCopyRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AddCopyPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Add a copy of a [content type][contentType] from a [site][site] to a [list][list].
+        Add a copy of a content type from a site to a list.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

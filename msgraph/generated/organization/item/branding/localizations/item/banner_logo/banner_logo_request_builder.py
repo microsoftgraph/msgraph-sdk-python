@@ -30,7 +30,6 @@ class BannerLogoRequestBuilder(BaseRequestBuilder):
         A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG not larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
-        Find more info here: https://learn.microsoft.com/graph/api/organizationalbranding-list-localizations?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

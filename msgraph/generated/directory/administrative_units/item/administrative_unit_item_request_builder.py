@@ -32,10 +32,9 @@ class AdministrativeUnitItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete an administrativeUnit.
+        Delete navigation property administrativeUnits for directory
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class AdministrativeUnitItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AdministrativeUnit]:
         """
-        Retrieve the properties and relationships of an administrativeUnit object.
+        Conceptual container for user and group directory objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AdministrativeUnit]
-        Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +70,10 @@ class AdministrativeUnitItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AdministrativeUnit]:
         """
-        Update the properties of an administrativeUnit object.
+        Update the navigation property administrativeUnits in directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AdministrativeUnit]
-        Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,7 +93,7 @@ class AdministrativeUnitItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an administrativeUnit.
+        Delete navigation property administrativeUnits for directory
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +104,7 @@ class AdministrativeUnitItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an administrativeUnit object.
+        Conceptual container for user and group directory objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +115,7 @@ class AdministrativeUnitItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[AdministrativeUnit] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an administrativeUnit object.
+        Update the navigation property administrativeUnits in directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +168,7 @@ class AdministrativeUnitItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AdministrativeUnitItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an administrativeUnit object.
+        Conceptual container for user and group directory objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

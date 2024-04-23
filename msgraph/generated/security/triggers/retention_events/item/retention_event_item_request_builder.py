@@ -30,10 +30,9 @@ class RetentionEventItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a retentionEvent object.
+        Delete navigation property retentionEvents for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/security-retentionevent-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class RetentionEventItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RetentionEvent]:
         """
-        Read the properties and relationships of a retentionEvent object.
+        Get retentionEvents from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RetentionEvent]
-        Find more info here: https://learn.microsoft.com/graph/api/security-retentionevent-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -93,7 +91,7 @@ class RetentionEventItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a retentionEvent object.
+        Delete navigation property retentionEvents for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +102,7 @@ class RetentionEventItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a retentionEvent object.
+        Get retentionEvents from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -150,7 +148,7 @@ class RetentionEventItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RetentionEventItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a retentionEvent object.
+        Get retentionEvents from security
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

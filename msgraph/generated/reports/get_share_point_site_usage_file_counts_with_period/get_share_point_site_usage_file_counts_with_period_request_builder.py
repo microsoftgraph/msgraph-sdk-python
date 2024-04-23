@@ -30,9 +30,10 @@ class GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder(BaseRequestBuilde
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
         """
-        Invoke function getSharePointSiteUsageFileCounts
+        Get the total number of files across all sites and the number of active files. A file (user or system) is considered active if it has been saved, synced, modified, or shared within the specified time period.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getsharepointsiteusagefilecounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,7 +49,7 @@ class GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder(BaseRequestBuilde
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getSharePointSiteUsageFileCounts
+        Get the total number of files across all sites and the number of active files. A file (user or system) is considered active if it has been saved, synced, modified, or shared within the specified time period.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

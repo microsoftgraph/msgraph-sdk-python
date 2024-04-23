@@ -30,10 +30,9 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Remove a user or a group from the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
+        Delete ref of navigation property internalSponsors for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/connectedorganization-delete-internalsponsors?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[StringCollectionResponse]:
         """
-        Retrieve a list of a connectedOrganization's internal sponsors.  The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
+        Get ref of internalSponsors from identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[StringCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/connectedorganization-list-internalsponsors?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Add a user or a group to the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
+        Create new navigation property ref to internalSponsors for identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/connectedorganization-post-internalsponsors?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +89,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a user or a group from the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
+        Delete ref of navigation property internalSponsors for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +100,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of a connectedOrganization's internal sponsors.  The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
+        Get ref of internalSponsors from identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +111,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Add a user or a group to the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
+        Create new navigation property ref to internalSponsors for identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +137,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():
         """
-        Remove a user or a group from the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
+        Delete ref of navigation property internalSponsors for identityGovernance
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -161,7 +158,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of a connectedOrganization's internal sponsors.  The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
+        Get ref of internalSponsors from identityGovernance
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

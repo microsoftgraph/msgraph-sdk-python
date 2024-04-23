@@ -59,10 +59,9 @@ class RoleAssignmentScheduleRequestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentScheduleRequestCollectionResponse]:
         """
-        Retrieve the requests for active role assignments to principals. The active assignments include those made through assignments and activation requests, and directly through the role assignments API. The role assignments can be permanently active with or without an expiry date, or temporarily active after user activation of eligible assignments.
+        Requests for active role assignments to principals through PIM.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleAssignmentScheduleRequestCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/rbacapplication-list-roleassignmentschedulerequests?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -80,11 +79,10 @@ class RoleAssignmentScheduleRequestsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[UnifiedRoleAssignmentScheduleRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentScheduleRequest]:
         """
-        In PIM, carry out the following operations through the unifiedRoleAssignmentScheduleRequest object: To call this API to update, renew, and extend assignments for yourself, you must have multifactor authentication (MFA) enforced, and running the query in a session in which they were challenged for MFA. See Enable per-user Microsoft Entra multifactor authentication to secure sign-in events.
+        Create new navigation property to roleAssignmentScheduleRequests for roleManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleAssignmentScheduleRequest]
-        Find more info here: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignmentschedulerequests?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -104,7 +102,7 @@ class RoleAssignmentScheduleRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the requests for active role assignments to principals. The active assignments include those made through assignments and activation requests, and directly through the role assignments API. The role assignments can be permanently active with or without an expiry date, or temporarily active after user activation of eligible assignments.
+        Requests for active role assignments to principals through PIM.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +113,7 @@ class RoleAssignmentScheduleRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[UnifiedRoleAssignmentScheduleRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        In PIM, carry out the following operations through the unifiedRoleAssignmentScheduleRequest object: To call this API to update, renew, and extend assignments for yourself, you must have multifactor authentication (MFA) enforced, and running the query in a session in which they were challenged for MFA. See Enable per-user Microsoft Entra multifactor authentication to secure sign-in events.
+        Create new navigation property to roleAssignmentScheduleRequests for roleManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +148,7 @@ class RoleAssignmentScheduleRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleAssignmentScheduleRequestsRequestBuilderGetQueryParameters():
         """
-        Retrieve the requests for active role assignments to principals. The active assignments include those made through assignments and activation requests, and directly through the role assignments API. The role assignments can be permanently active with or without an expiry date, or temporarily active after user activation of eligible assignments.
+        Requests for active role assignments to principals through PIM.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

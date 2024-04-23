@@ -49,7 +49,6 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
         App role assignment for another app or service, granted to this service principal. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignmentCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-list-approleassignments?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppRoleAssignment]:
         """
-        Assign an app role to a client service principal. App roles that are assigned to service principals are also known as application permissions. Application permissions can be granted directly with app role assignments, or through a consent experience. To grant an app role assignment to a client service principal, you need three identifiers:
+        Create new navigation property to appRoleAssignments for servicePrincipals
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignments?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -102,7 +100,7 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Assign an app role to a client service principal. App roles that are assigned to service principals are also known as application permissions. Application permissions can be granted directly with app role assignments, or through a consent experience. To grant an app role assignment to a client service principal, you need three identifiers:
+        Create new navigation property to appRoleAssignments for servicePrincipals
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

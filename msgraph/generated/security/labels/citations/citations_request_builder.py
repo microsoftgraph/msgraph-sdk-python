@@ -46,10 +46,9 @@ class CitationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CitationTemplateCollectionResponse]:
         """
-        Get a list of the citationTemplate objects and their properties.
+        The specific rule or regulation created by a jurisdiction used to determine whether certain labels and content should be retained or deleted.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CitationTemplateCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-list-citations?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class CitationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CitationTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CitationTemplate]:
         """
-        Create a new citationTemplate object.
+        Create new navigation property to citations for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CitationTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-post-citations?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class CitationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the citationTemplate objects and their properties.
+        The specific rule or regulation created by a jurisdiction used to determine whether certain labels and content should be retained or deleted.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class CitationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CitationTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new citationTemplate object.
+        Create new navigation property to citations for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class CitationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CitationsRequestBuilderGetQueryParameters():
         """
-        Get a list of the citationTemplate objects and their properties.
+        The specific rule or regulation created by a jurisdiction used to determine whether certain labels and content should be retained or deleted.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

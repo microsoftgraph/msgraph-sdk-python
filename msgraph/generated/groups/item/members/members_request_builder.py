@@ -55,7 +55,6 @@ class MembersRequestBuilder(BaseRequestBuilder):
         The members of this group, who can be users, devices, other groups, or service principals. Supports the List members, Add member, and Remove member operations. Nullable. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=members($select=id,userPrincipalName,displayName).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/group-list-members?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

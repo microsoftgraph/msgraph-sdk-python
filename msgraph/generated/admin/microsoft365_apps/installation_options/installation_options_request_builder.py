@@ -47,10 +47,9 @@ class InstallationOptionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[M365AppsInstallationOptions]:
         """
-        Read the properties and relationships of an m365AppsInstallationOptions object.
+        A container for tenant-level settings for Microsoft 365 applications.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[M365AppsInstallationOptions]
-        Find more info here: https://learn.microsoft.com/graph/api/m365appsinstallationoptions-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class InstallationOptionsRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[M365AppsInstallationOptions] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[M365AppsInstallationOptions]:
         """
-        Update the properties of an m365AppsInstallationOptions object.
+        Update the navigation property installationOptions in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[M365AppsInstallationOptions]
-        Find more info here: https://learn.microsoft.com/graph/api/m365appsinstallationoptions-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +101,7 @@ class InstallationOptionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an m365AppsInstallationOptions object.
+        A container for tenant-level settings for Microsoft 365 applications.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +112,7 @@ class InstallationOptionsRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[M365AppsInstallationOptions] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an m365AppsInstallationOptions object.
+        Update the navigation property installationOptions in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class InstallationOptionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class InstallationOptionsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an m365AppsInstallationOptions object.
+        A container for tenant-level settings for Microsoft 365 applications.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -50,7 +50,6 @@ class TransitiveMemberOfRequestBuilder(BaseRequestBuilder):
         Groups and administrative units that the device is a member of. This operation is transitive. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/device-list-transitivememberof?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

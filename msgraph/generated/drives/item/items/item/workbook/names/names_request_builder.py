@@ -48,10 +48,9 @@ class NamesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookNamedItemCollectionResponse]:
         """
-        Retrieve a list of nameditem objects.
+        Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookNamedItemCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/nameditem-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +91,7 @@ class NamesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of nameditem objects.
+        Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -156,7 +155,7 @@ class NamesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class NamesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of nameditem objects.
+        Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

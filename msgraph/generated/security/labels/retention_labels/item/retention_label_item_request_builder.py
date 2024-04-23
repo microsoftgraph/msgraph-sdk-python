@@ -32,10 +32,9 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a retentionLabel object.
+        Delete navigation property retentionLabels for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/security-retentionlabel-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -71,11 +70,10 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[RetentionLabel] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[RetentionLabel]:
         """
-        Update the properties of a retentionLabel object. To update a disposition review stage, include the actionAfterRetentionPeriod property in the request body with one of the possible values specified.
+        Update the navigation property retentionLabels in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RetentionLabel]
-        Find more info here: https://learn.microsoft.com/graph/api/security-retentionlabel-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -95,7 +93,7 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a retentionLabel object.
+        Delete navigation property retentionLabels for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +115,7 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[RetentionLabel] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a retentionLabel object. To update a disposition review stage, include the actionAfterRetentionPeriod property in the request body with one of the possible values specified.
+        Update the navigation property retentionLabels in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

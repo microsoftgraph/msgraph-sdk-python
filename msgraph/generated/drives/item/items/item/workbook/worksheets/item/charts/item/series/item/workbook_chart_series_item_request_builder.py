@@ -49,10 +49,9 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartSeries]:
         """
-        Retrieve the properties and relationships of chartseries object.
+        Represents either a single series or collection of series in the chart. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartSeries]
-        Find more info here: https://learn.microsoft.com/graph/api/chartseries-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartSeries]:
         """
-        Update the properties of chartSeries object.
+        Update the navigation property series in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartSeries]
-        Find more info here: https://learn.microsoft.com/graph/api/chartseries-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -105,7 +103,7 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of chartseries object.
+        Represents either a single series or collection of series in the chart. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +114,7 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of chartSeries object.
+        Update the navigation property series in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +158,7 @@ class WorkbookChartSeriesItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkbookChartSeriesItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of chartseries object.
+        Represents either a single series or collection of series in the chart. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

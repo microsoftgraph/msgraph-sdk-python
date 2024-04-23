@@ -47,10 +47,9 @@ class RiskDetectionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RiskDetection]:
         """
-        Read the properties and relationships of a riskDetection object.
+        Risk detection in Microsoft Entra ID Protection and the associated information about the detection.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RiskDetection]
-        Find more info here: https://learn.microsoft.com/graph/api/riskdetection-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -102,7 +101,7 @@ class RiskDetectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a riskDetection object.
+        Risk detection in Microsoft Entra ID Protection and the associated information about the detection.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +138,7 @@ class RiskDetectionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RiskDetectionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a riskDetection object.
+        Risk detection in Microsoft Entra ID Protection and the associated information about the detection.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

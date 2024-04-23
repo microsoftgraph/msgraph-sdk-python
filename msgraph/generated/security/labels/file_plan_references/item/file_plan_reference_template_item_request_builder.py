@@ -29,10 +29,9 @@ class FilePlanReferenceTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a filePlanReferenceTemplate object.
+        Delete navigation property filePlanReferences for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-delete-fileplanreferences?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class FilePlanReferenceTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[FilePlanReferenceTemplate]:
         """
-        Read the properties and relationships of a filePlanReferenceTemplate object.
+        Specifies a unique alpha-numeric identifier for an organization’s retention schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FilePlanReferenceTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/security-fileplanreferencetemplate-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +90,7 @@ class FilePlanReferenceTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a filePlanReferenceTemplate object.
+        Delete navigation property filePlanReferences for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class FilePlanReferenceTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a filePlanReferenceTemplate object.
+        Specifies a unique alpha-numeric identifier for an organization’s retention schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -140,7 +138,7 @@ class FilePlanReferenceTemplateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FilePlanReferenceTemplateItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a filePlanReferenceTemplate object.
+        Specifies a unique alpha-numeric identifier for an organization’s retention schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

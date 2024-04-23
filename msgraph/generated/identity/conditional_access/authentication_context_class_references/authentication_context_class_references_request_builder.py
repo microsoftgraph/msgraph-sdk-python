@@ -46,10 +46,9 @@ class AuthenticationContextClassReferencesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthenticationContextClassReferenceCollectionResponse]:
         """
-        Retrieve a list of authenticationContextClassReference objects.
+        Read-only. Nullable. Returns a collection of the specified authentication context class references.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationContextClassReferenceCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/conditionalaccessroot-list-authenticationcontextclassreferences?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class AuthenticationContextClassReferencesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of authenticationContextClassReference objects.
+        Read-only. Nullable. Returns a collection of the specified authentication context class references.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class AuthenticationContextClassReferencesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthenticationContextClassReferencesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of authenticationContextClassReference objects.
+        Read-only. Nullable. Returns a collection of the specified authentication context class references.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

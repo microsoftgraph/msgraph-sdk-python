@@ -51,7 +51,6 @@ class TransitiveMemberOfRequestBuilder(BaseRequestBuilder):
         The groups, including nested groups, and directory roles that a user is a member of. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-transitivememberof?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

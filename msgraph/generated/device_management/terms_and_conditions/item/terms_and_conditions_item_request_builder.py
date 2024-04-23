@@ -31,10 +31,9 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a termsAndConditions.
+        Delete navigation property termsAndConditions for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-termsandconditions-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,10 +49,9 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TermsAndConditions]:
         """
-        Read properties and relationships of the termsAndConditions object.
+        The terms and conditions associated with device management of the company.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditions]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-termsandconditions-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,11 +69,10 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TermsAndConditions] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TermsAndConditions]:
         """
-        Update the properties of a termsAndConditions object.
+        Update the navigation property termsAndConditions in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditions]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-termsandconditions-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -95,7 +92,7 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a termsAndConditions.
+        Delete navigation property termsAndConditions for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -106,7 +103,7 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the termsAndConditions object.
+        The terms and conditions associated with device management of the company.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +114,7 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TermsAndConditions] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a termsAndConditions object.
+        Update the navigation property termsAndConditions in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +158,7 @@ class TermsAndConditionsItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TermsAndConditionsItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the termsAndConditions object.
+        The terms and conditions associated with device management of the company.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

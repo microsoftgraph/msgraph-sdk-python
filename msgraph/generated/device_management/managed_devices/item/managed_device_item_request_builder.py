@@ -53,10 +53,9 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a managedDevice.
+        Delete navigation property managedDevices for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -72,10 +71,9 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedDevice]:
         """
-        Read properties and relationships of the managedDevice object.
+        The list of managed devices.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDevice]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -93,11 +91,10 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ManagedDevice] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedDevice]:
         """
-        Update the properties of a managedDevice object.
+        Update the navigation property managedDevices in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDevice]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -117,7 +114,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a managedDevice.
+        Delete navigation property managedDevices for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -128,7 +125,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedDevice object.
+        The list of managed devices.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +136,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ManagedDevice] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a managedDevice object.
+        Update the navigation property managedDevices in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -381,7 +378,7 @@ class ManagedDeviceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedDeviceItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedDevice object.
+        The list of managed devices.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

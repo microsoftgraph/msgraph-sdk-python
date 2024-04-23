@@ -30,9 +30,10 @@ class GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder(BaseReq
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
         """
-        Invoke function getSkypeForBusinessOrganizerActivityCounts
+        Get usage trends on the number and type of conference sessions held and organized by users in your organization. Types of conference sessions include IM, audio/video, application sharing, web, dial-in/out - third party, and Dial-in/out Microsoft.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getskypeforbusinessorganizeractivitycounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,7 +49,7 @@ class GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder(BaseReq
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getSkypeForBusinessOrganizerActivityCounts
+        Get usage trends on the number and type of conference sessions held and organized by users in your organization. Types of conference sessions include IM, audio/video, application sharing, web, dial-in/out - third party, and Dial-in/out Microsoft.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

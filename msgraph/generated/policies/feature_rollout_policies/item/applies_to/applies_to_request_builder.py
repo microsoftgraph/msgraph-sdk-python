@@ -67,11 +67,10 @@ class AppliesToRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DirectoryObject] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryObject]:
         """
-        Add an appliesTo on a featureRolloutPolicy object to specify the directoryObject to which the featureRolloutPolicy should be applied.
+        Create new navigation property to appliesTo for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObject]
-        Find more info here: https://learn.microsoft.com/graph/api/featurerolloutpolicy-post-appliesto?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -102,7 +101,7 @@ class AppliesToRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DirectoryObject] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Add an appliesTo on a featureRolloutPolicy object to specify the directoryObject to which the featureRolloutPolicy should be applied.
+        Create new navigation property to appliesTo for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

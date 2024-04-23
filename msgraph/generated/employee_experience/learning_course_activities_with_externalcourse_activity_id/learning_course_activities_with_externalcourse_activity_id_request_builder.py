@@ -50,10 +50,9 @@ class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(BaseReq
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningCourseActivity]:
         """
-        Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user.
+        Get learningCourseActivities from employeeExperience
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningCourseActivity]
-        Find more info here: https://learn.microsoft.com/graph/api/learningcourseactivity-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -105,7 +104,7 @@ class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(BaseReq
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user.
+        Get learningCourseActivities from employeeExperience
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -142,7 +141,7 @@ class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(BaseReq
     @dataclass
     class LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilderGetQueryParameters():
         """
-        Get the specified learningCourseActivity object using either an ID or an externalCourseActivityId of the learning provider, or a courseActivityId of a user.
+        Get learningCourseActivities from employeeExperience
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

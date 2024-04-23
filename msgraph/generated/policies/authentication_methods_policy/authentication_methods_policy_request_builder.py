@@ -48,10 +48,9 @@ class AuthenticationMethodsPolicyRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthenticationMethodsPolicy]:
         """
-        Read the properties and relationships of an authenticationMethodsPolicy object.
+        The authentication methods and the users that are allowed to use them to sign in and perform multifactor authentication (MFA) in Microsoft Entra ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethodsPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/authenticationmethodspolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +68,10 @@ class AuthenticationMethodsPolicyRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[AuthenticationMethodsPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthenticationMethodsPolicy]:
         """
-        Update the properties of an authenticationMethodsPolicy object.
+        Update the navigation property authenticationMethodsPolicy in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethodsPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/authenticationmethodspolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -104,7 +102,7 @@ class AuthenticationMethodsPolicyRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an authenticationMethodsPolicy object.
+        The authentication methods and the users that are allowed to use them to sign in and perform multifactor authentication (MFA) in Microsoft Entra ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +113,7 @@ class AuthenticationMethodsPolicyRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[AuthenticationMethodsPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an authenticationMethodsPolicy object.
+        Update the navigation property authenticationMethodsPolicy in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +148,7 @@ class AuthenticationMethodsPolicyRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthenticationMethodsPolicyRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an authenticationMethodsPolicy object.
+        The authentication methods and the users that are allowed to use them to sign in and perform multifactor authentication (MFA) in Microsoft Entra ID.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

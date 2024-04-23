@@ -53,7 +53,6 @@ class OwnersRequestBuilder(BaseRequestBuilder):
         Directory objects that are owners of the application. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/application-list-owners?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

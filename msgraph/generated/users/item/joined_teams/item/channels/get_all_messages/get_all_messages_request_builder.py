@@ -29,9 +29,10 @@ class GetAllMessagesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[GetAllMessagesGetResponse]:
         """
-        Invoke function getAllMessages
+        Retrieve messages across all channels in a team, including text, audio, and video conversations. To learn more about how to use the Microsoft Teams export APIs to export content, see Export content with the Microsoft Teams export APIs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetAllMessagesGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/channel-getallmessages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,7 +50,7 @@ class GetAllMessagesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getAllMessages
+        Retrieve messages across all channels in a team, including text, audio, and video conversations. To learn more about how to use the Microsoft Teams export APIs to export content, see Export content with the Microsoft Teams export APIs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -71,7 +72,7 @@ class GetAllMessagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GetAllMessagesRequestBuilderGetQueryParameters():
         """
-        Invoke function getAllMessages
+        Retrieve messages across all channels in a team, including text, audio, and video conversations. To learn more about how to use the Microsoft Teams export APIs to export content, see Export content with the Microsoft Teams export APIs.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -30,10 +30,9 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a featureRolloutPolicy object.
+        Delete navigation property featureRolloutPolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/featurerolloutpolicy-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[FeatureRolloutPolicy]:
         """
-        Retrieve the properties and relationships of a featureRolloutPolicy object.
+        The feature rollout policy associated with a directory object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FeatureRolloutPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/featurerolloutpolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[FeatureRolloutPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[FeatureRolloutPolicy]:
         """
-        Update the properties of featureRolloutPolicy object.
+        Update the navigation property featureRolloutPolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FeatureRolloutPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/featurerolloutpolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a featureRolloutPolicy object.
+        Delete navigation property featureRolloutPolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a featureRolloutPolicy object.
+        The feature rollout policy associated with a directory object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[FeatureRolloutPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of featureRolloutPolicy object.
+        Update the navigation property featureRolloutPolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FeatureRolloutPolicyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a featureRolloutPolicy object.
+        The feature rollout policy associated with a directory object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

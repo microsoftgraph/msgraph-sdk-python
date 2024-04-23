@@ -29,7 +29,7 @@ class InviteRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[InvitePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[InvitePostResponse]:
         """
-        Sends a sharing invitation for a driveItem.A sharing invitation provides permissions to the recipients and optionally sends them an email with a [sharing link][].
+        Sends a sharing invitation for a driveItem.A sharing invitation provides permissions to the recipients and optionally sends them an email with a sharing link.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[InvitePostResponse]
@@ -53,7 +53,7 @@ class InviteRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[InvitePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Sends a sharing invitation for a driveItem.A sharing invitation provides permissions to the recipients and optionally sends them an email with a [sharing link][].
+        Sends a sharing invitation for a driveItem.A sharing invitation provides permissions to the recipients and optionally sends them an email with a sharing link.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

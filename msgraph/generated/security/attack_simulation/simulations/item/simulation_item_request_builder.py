@@ -32,10 +32,9 @@ class SimulationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete an attack simulation campaign for a tenant.
+        Delete navigation property simulations for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/simulation-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class SimulationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Simulation]:
         """
-        Get an attack simulation campaign for a tenant.
+        Represents an attack simulation training campaign in a tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Simulation]
-        Find more info here: https://learn.microsoft.com/graph/api/simulation-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +70,10 @@ class SimulationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Simulation] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Simulation]:
         """
-        Update an attack simulation campaign for a tenant.
+        Update the navigation property simulations in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Simulation]
-        Find more info here: https://learn.microsoft.com/graph/api/simulation-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,7 +93,7 @@ class SimulationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an attack simulation campaign for a tenant.
+        Delete navigation property simulations for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +104,7 @@ class SimulationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get an attack simulation campaign for a tenant.
+        Represents an attack simulation training campaign in a tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +115,7 @@ class SimulationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Simulation] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update an attack simulation campaign for a tenant.
+        Update the navigation property simulations in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +168,7 @@ class SimulationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SimulationItemRequestBuilderGetQueryParameters():
         """
-        Get an attack simulation campaign for a tenant.
+        Represents an attack simulation training campaign in a tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

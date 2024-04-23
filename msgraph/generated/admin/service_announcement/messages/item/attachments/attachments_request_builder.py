@@ -46,10 +46,9 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ServiceAnnouncementAttachmentCollectionResponse]:
         """
-        Get the list of attachments associated with a service message.
+        A collection of serviceAnnouncementAttachments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServiceAnnouncementAttachmentCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/serviceupdatemessage-list-attachments?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of attachments associated with a service message.
+        A collection of serviceAnnouncementAttachments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class AttachmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttachmentsRequestBuilderGetQueryParameters():
         """
-        Get the list of attachments associated with a service message.
+        A collection of serviceAnnouncementAttachments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

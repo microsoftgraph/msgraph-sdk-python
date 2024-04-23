@@ -30,10 +30,9 @@ class RoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a roleAssignment.
+        Delete navigation property roleAssignments for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-roleassignment-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class RoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RoleAssignment]:
         """
-        Read properties and relationships of the roleAssignment object.
+        List of Role assignments for this role definition.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-roleassignment-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class RoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[RoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[RoleAssignment]:
         """
-        Update the properties of a roleAssignment object.
+        Update the navigation property roleAssignments in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-roleassignment-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class RoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a roleAssignment.
+        Delete navigation property roleAssignments for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class RoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the roleAssignment object.
+        List of Role assignments for this role definition.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class RoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[RoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a roleAssignment object.
+        Update the navigation property roleAssignments in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class RoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the roleAssignment object.
+        List of Role assignments for this role definition.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

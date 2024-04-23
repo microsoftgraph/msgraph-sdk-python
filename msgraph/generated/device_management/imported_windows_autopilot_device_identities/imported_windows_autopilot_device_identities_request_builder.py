@@ -47,10 +47,9 @@ class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder)
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ImportedWindowsAutopilotDeviceIdentityCollectionResponse]:
         """
-        List properties and relationships of the importedWindowsAutopilotDeviceIdentity objects.
+        Collection of imported Windows autopilot devices.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ImportedWindowsAutopilotDeviceIdentityCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-enrollment-importedwindowsautopilotdeviceidentity-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder)
     
     async def post(self,body: Optional[ImportedWindowsAutopilotDeviceIdentity] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ImportedWindowsAutopilotDeviceIdentity]:
         """
-        Create a new importedWindowsAutopilotDeviceIdentity object.
+        Create new navigation property to importedWindowsAutopilotDeviceIdentities for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ImportedWindowsAutopilotDeviceIdentity]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-enrollment-importedwindowsautopilotdeviceidentity-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +90,7 @@ class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the importedWindowsAutopilotDeviceIdentity objects.
+        Collection of imported Windows autopilot devices.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder)
     
     def to_post_request_information(self,body: Optional[ImportedWindowsAutopilotDeviceIdentity] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new importedWindowsAutopilotDeviceIdentity object.
+        Create new navigation property to importedWindowsAutopilotDeviceIdentities for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +145,7 @@ class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder(BaseRequestBuilder)
     @dataclass
     class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the importedWindowsAutopilotDeviceIdentity objects.
+        Collection of imported Windows autopilot devices.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

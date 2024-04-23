@@ -46,10 +46,9 @@ class MethodsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthenticationMethodCollectionResponse]:
         """
-        Retrieve a list of authentication methods registered to a user. The authentication methods are defined by the types derived from the authenticationMethod resource type, and only the methods supported on this API version. See Microsoft Entra authentication methods API overview for a list of currently supported methods. We don't recommend using the authentication methods APIs for scenarios where you need to iterate over your entire user population for auditing or security check purposes. For these types of scenarios, we recommend using the authentication method registration and usage reporting APIs (available on the beta endpoint only).
+        Represents all authentication methods registered to a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethodCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/authentication-list-methods?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class MethodsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of authentication methods registered to a user. The authentication methods are defined by the types derived from the authenticationMethod resource type, and only the methods supported on this API version. See Microsoft Entra authentication methods API overview for a list of currently supported methods. We don't recommend using the authentication methods APIs for scenarios where you need to iterate over your entire user population for auditing or security check purposes. For these types of scenarios, we recommend using the authentication method registration and usage reporting APIs (available on the beta endpoint only).
+        Represents all authentication methods registered to a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class MethodsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MethodsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of authentication methods registered to a user. The authentication methods are defined by the types derived from the authenticationMethod resource type, and only the methods supported on this API version. See Microsoft Entra authentication methods API overview for a list of currently supported methods. We don't recommend using the authentication methods APIs for scenarios where you need to iterate over your entire user population for auditing or security check purposes. For these types of scenarios, we recommend using the authentication method registration and usage reporting APIs (available on the beta endpoint only).
+        Represents all authentication methods registered to a user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

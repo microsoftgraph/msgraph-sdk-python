@@ -34,10 +34,9 @@ class EducationModuleItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete an existing module in a class. Only teachers within a class can delete modules.
+        Delete navigation property modules for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/educationmodule-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -53,10 +52,9 @@ class EducationModuleItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationModule]:
         """
-        Get the properties and relationships of a module. Only teachers, students, and applications with application permissions can perform this operation. Students can only see published modules; teachers and applications with application permissions can see all modules in a class.
+        All modules in the class. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationModule]
-        Find more info here: https://learn.microsoft.com/graph/api/educationmodule-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -74,11 +72,10 @@ class EducationModuleItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EducationModule] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationModule]:
         """
-        Update an educationModule object in a class. Only teachers in the class can perform this operation. You can't use a PATCH request to change the status of a module. Use the publish action to change the module status.
+        Update the navigation property modules in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationModule]
-        Find more info here: https://learn.microsoft.com/graph/api/educationmodule-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -98,7 +95,7 @@ class EducationModuleItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an existing module in a class. Only teachers within a class can delete modules.
+        Delete navigation property modules for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +106,7 @@ class EducationModuleItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a module. Only teachers, students, and applications with application permissions can perform this operation. Students can only see published modules; teachers and applications with application permissions can see all modules in a class.
+        All modules in the class. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +117,7 @@ class EducationModuleItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EducationModule] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update an educationModule object in a class. Only teachers in the class can perform this operation. You can't use a PATCH request to change the status of a module. Use the publish action to change the module status.
+        Update the navigation property modules in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +188,7 @@ class EducationModuleItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EducationModuleItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a module. Only teachers, students, and applications with application permissions can perform this operation. Students can only see published modules; teachers and applications with application permissions can see all modules in a class.
+        All modules in the class. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

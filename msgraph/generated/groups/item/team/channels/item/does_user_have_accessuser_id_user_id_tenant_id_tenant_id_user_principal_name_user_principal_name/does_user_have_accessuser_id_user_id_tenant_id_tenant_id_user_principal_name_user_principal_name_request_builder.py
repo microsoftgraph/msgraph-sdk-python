@@ -29,9 +29,10 @@ class DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincip
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameGetResponse]:
         """
-        Invoke function doesUserHaveAccess
+        Determine whether a user has access to a shared channel.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/channel-doesuserhaveaccess?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,7 +50,7 @@ class DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincip
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function doesUserHaveAccess
+        Determine whether a user has access to a shared channel.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -71,7 +72,7 @@ class DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincip
     @dataclass
     class DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilderGetQueryParameters():
         """
-        Invoke function doesUserHaveAccess
+        Determine whether a user has access to a shared channel.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -30,9 +30,10 @@ class GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(BaseRequ
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
         """
-        Invoke function getTeamsDeviceUsageDistributionUserCounts
+        Get the number of Microsoft Teams unique users by device type over the selected time period.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getteamsdeviceusagedistributionusercounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,7 +49,7 @@ class GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(BaseRequ
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getTeamsDeviceUsageDistributionUserCounts
+        Get the number of Microsoft Teams unique users by device type over the selected time period.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

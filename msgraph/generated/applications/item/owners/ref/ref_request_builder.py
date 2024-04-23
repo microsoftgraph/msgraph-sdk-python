@@ -30,10 +30,9 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Remove an owner from an application. As a recommended best practice, apps should have at least two owners.
+        Delete ref of navigation property owners for applications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/application-delete-owners?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -52,7 +51,6 @@ class RefRequestBuilder(BaseRequestBuilder):
         Directory objects that are owners of the application. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[StringCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/application-list-owners?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Add an owner to an application by posting to the owners collection.
+        Create new navigation property ref to owners for applications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/application-post-owners?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +89,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Remove an owner from an application. As a recommended best practice, apps should have at least two owners.
+        Delete ref of navigation property owners for applications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +111,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Add an owner to an application by posting to the owners collection.
+        Create new navigation property ref to owners for applications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +137,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():
         """
-        Remove an owner from an application. As a recommended best practice, apps should have at least two owners.
+        Delete ref of navigation property owners for applications
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

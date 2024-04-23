@@ -46,10 +46,9 @@ class PartnersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CrossTenantAccessPolicyConfigurationPartnerCollectionResponse]:
         """
-        Get a list of all partner configurations within a cross-tenant access policy. You can also use the $expand parameter to list the user synchronization policy for all partner configurations.
+        Defines partner-specific configurations for external Microsoft Entra organizations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicyConfigurationPartnerCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicy-list-partners?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class PartnersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[CrossTenantAccessPolicyConfigurationPartner] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CrossTenantAccessPolicyConfigurationPartner]:
         """
-        Create a new partner configuration in a cross-tenant access policy.
+        Create new navigation property to partners for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicyConfigurationPartner]
-        Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicy-post-partners?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class PartnersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of all partner configurations within a cross-tenant access policy. You can also use the $expand parameter to list the user synchronization policy for all partner configurations.
+        Defines partner-specific configurations for external Microsoft Entra organizations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class PartnersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[CrossTenantAccessPolicyConfigurationPartner] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new partner configuration in a cross-tenant access policy.
+        Create new navigation property to partners for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class PartnersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PartnersRequestBuilderGetQueryParameters():
         """
-        Get a list of all partner configurations within a cross-tenant access policy. You can also use the $expand parameter to list the user synchronization policy for all partner configurations.
+        Defines partner-specific configurations for external Microsoft Entra organizations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

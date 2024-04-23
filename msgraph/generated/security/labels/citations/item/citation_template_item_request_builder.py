@@ -29,10 +29,9 @@ class CitationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a citationTemplate object.
+        Delete navigation property citations for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-delete-citations?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class CitationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CitationTemplate]:
         """
-        Read the properties and relationships of a citationTemplate object.
+        The specific rule or regulation created by a jurisdiction used to determine whether certain labels and content should be retained or deleted.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CitationTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/security-citationtemplate-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +90,7 @@ class CitationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a citationTemplate object.
+        Delete navigation property citations for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class CitationTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a citationTemplate object.
+        The specific rule or regulation created by a jurisdiction used to determine whether certain labels and content should be retained or deleted.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -140,7 +138,7 @@ class CitationTemplateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CitationTemplateItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a citationTemplate object.
+        The specific rule or regulation created by a jurisdiction used to determine whether certain labels and content should be retained or deleted.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -46,10 +46,9 @@ class DelegatedAdminRelationshipsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminRelationshipCollectionResponse]:
         """
-        Get a list of the delegatedAdminRelationship objects and their properties.
+        The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminRelationshipCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/tenantrelationship-list-delegatedadminrelationships?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class DelegatedAdminRelationshipsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
         """
-        Create a new delegatedAdminRelationship object.
+        Create new navigation property to delegatedAdminRelationships for tenantRelationships
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminRelationship]
-        Find more info here: https://learn.microsoft.com/graph/api/tenantrelationship-post-delegatedadminrelationships?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class DelegatedAdminRelationshipsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the delegatedAdminRelationship objects and their properties.
+        The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class DelegatedAdminRelationshipsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new delegatedAdminRelationship object.
+        Create new navigation property to delegatedAdminRelationships for tenantRelationships
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class DelegatedAdminRelationshipsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DelegatedAdminRelationshipsRequestBuilderGetQueryParameters():
         """
-        Get a list of the delegatedAdminRelationship objects and their properties.
+        The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

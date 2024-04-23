@@ -29,10 +29,9 @@ class AllTimeRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ItemActivityStat]:
         """
-        Get [itemAnalytics][] about the views that took place under this resource.The itemAnalytics resource is a convenient way to get activity stats for allTime and the lastSevenDays.For a custom time range or interval, use the [getActivitiesByInterval][] API.
+        Get allTime from sites
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ItemActivityStat]
-        Find more info here: https://learn.microsoft.com/graph/api/itemanalytics-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -50,7 +49,7 @@ class AllTimeRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get [itemAnalytics][] about the views that took place under this resource.The itemAnalytics resource is a convenient way to get activity stats for allTime and the lastSevenDays.For a custom time range or interval, use the [getActivitiesByInterval][] API.
+        Get allTime from sites
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -72,7 +71,7 @@ class AllTimeRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AllTimeRequestBuilderGetQueryParameters():
         """
-        Get [itemAnalytics][] about the views that took place under this resource.The itemAnalytics resource is a convenient way to get activity stats for allTime and the lastSevenDays.For a custom time range or interval, use the [getActivitiesByInterval][] API.
+        Get allTime from sites
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

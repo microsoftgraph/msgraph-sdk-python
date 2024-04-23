@@ -43,7 +43,6 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
         Delete navigation property deletedItems for directory
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/directory-deleteditems-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -59,10 +58,9 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryObject]:
         """
-        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items.
+        Recently deleted items. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObject]
-        Find more info here: https://learn.microsoft.com/graph/api/directory-deleteditems-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -91,7 +89,7 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items.
+        Recently deleted items. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -212,7 +210,7 @@ class DirectoryObjectItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DirectoryObjectItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items.
+        Recently deleted items. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

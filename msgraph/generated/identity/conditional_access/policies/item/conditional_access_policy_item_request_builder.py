@@ -29,10 +29,9 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a conditionalAccessPolicy object.
+        Delete navigation property policies for identity
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/conditionalaccesspolicy-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConditionalAccessPolicy]:
         """
-        Retrieve the properties and relationships of a conditionalAccessPolicy object.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConditionalAccessPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/conditionalaccesspolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ConditionalAccessPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConditionalAccessPolicy]:
         """
-        Update the properties of a conditionalAccessPolicy object.
+        Update the navigation property policies in identity
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConditionalAccessPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/conditionalaccesspolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a conditionalAccessPolicy object.
+        Delete navigation property policies for identity
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a conditionalAccessPolicy object.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ConditionalAccessPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a conditionalAccessPolicy object.
+        Update the navigation property policies in identity
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConditionalAccessPolicyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a conditionalAccessPolicy object.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

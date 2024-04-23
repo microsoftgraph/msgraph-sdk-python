@@ -46,7 +46,7 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[HostCookieCollectionResponse]:
         """
-        Read the properties and relationships of a hostCookie object.
+        Retrieve details about hostCookie objects.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostCookieCollectionResponse]
         """
@@ -89,7 +89,7 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a hostCookie object.
+        Retrieve details about hostCookie objects.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -135,7 +135,7 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HostCookiesRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a hostCookie object.
+        Retrieve details about hostCookie objects.Note: List retrieval is not yet supported.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,10 +29,9 @@ class BookingStaffMemberBaseItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a bookingStaffMember in the specified bookingBusiness.
+        Delete navigation property staffMembers for solutions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/bookingstaffmember-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class BookingStaffMemberBaseItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingStaffMemberBase]:
         """
-        Get the properties and relationships of a bookingStaffMember in the specified bookingBusiness.
+        All the staff members that provide services in this business. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingStaffMemberBase]
-        Find more info here: https://learn.microsoft.com/graph/api/bookingstaffmember-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class BookingStaffMemberBaseItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[BookingStaffMemberBase] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingStaffMemberBase]:
         """
-        Update the properties of a bookingStaffMember in the specified bookingBusiness.
+        Update the navigation property staffMembers in solutions
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingStaffMemberBase]
-        Find more info here: https://learn.microsoft.com/graph/api/bookingstaffmember-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class BookingStaffMemberBaseItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a bookingStaffMember in the specified bookingBusiness.
+        Delete navigation property staffMembers for solutions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class BookingStaffMemberBaseItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a bookingStaffMember in the specified bookingBusiness.
+        All the staff members that provide services in this business. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class BookingStaffMemberBaseItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[BookingStaffMemberBase] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a bookingStaffMember in the specified bookingBusiness.
+        Update the navigation property staffMembers in solutions
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class BookingStaffMemberBaseItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BookingStaffMemberBaseItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a bookingStaffMember in the specified bookingBusiness.
+        All the staff members that provide services in this business. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

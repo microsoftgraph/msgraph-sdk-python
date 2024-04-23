@@ -51,10 +51,9 @@ class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder(BaseRequ
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupEligibilityScheduleRequest]:
         """
-        Read the properties and relationships of a privilegedAccessGroupEligibilityScheduleRequest object.
+        The schedule requests for operations to create, update, delete, extend, and renew an eligibility.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrivilegedAccessGroupEligibilityScheduleRequest]
-        Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroupeligibilityschedulerequest-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -106,7 +105,7 @@ class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder(BaseRequ
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a privilegedAccessGroupEligibilityScheduleRequest object.
+        The schedule requests for operations to create, update, delete, extend, and renew an eligibility.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -179,7 +178,7 @@ class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder(BaseRequ
     @dataclass
     class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a privilegedAccessGroupEligibilityScheduleRequest object.
+        The schedule requests for operations to create, update, delete, extend, and renew an eligibility.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

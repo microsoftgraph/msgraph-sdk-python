@@ -45,10 +45,9 @@ class SoftwareOathMethodsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SoftwareOathAuthenticationMethodCollectionResponse]:
         """
-        Retrieve a list of a user's software OATH token authentication method objects and their properties.
+        The software OATH TOTP applications registered to a user for authentication.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SoftwareOathAuthenticationMethodCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/authentication-list-softwareoathmethods?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +65,7 @@ class SoftwareOathMethodsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of a user's software OATH token authentication method objects and their properties.
+        The software OATH TOTP applications registered to a user for authentication.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +96,7 @@ class SoftwareOathMethodsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SoftwareOathMethodsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of a user's software OATH token authentication method objects and their properties.
+        The software OATH TOTP applications registered to a user for authentication.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

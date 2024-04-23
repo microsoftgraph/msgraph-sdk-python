@@ -46,10 +46,9 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ScopedRoleMembershipCollectionResponse]:
         """
-        List Microsoft Entra role assignments with administrative unit scope.
+        Scoped-role members of this administrative unit.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ScopedRoleMembershipCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-list-scopedrolemembers?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ScopedRoleMembership]:
         """
-        Assign a Microsoft Entra role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Microsoft Entra roles with administrative unit scope.
+        Create new navigation property to scopedRoleMembers for directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ScopedRoleMembership]
-        Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-post-scopedrolemembers?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List Microsoft Entra role assignments with administrative unit scope.
+        Scoped-role members of this administrative unit.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Assign a Microsoft Entra role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Microsoft Entra roles with administrative unit scope.
+        Create new navigation property to scopedRoleMembers for directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ScopedRoleMembersRequestBuilderGetQueryParameters():
         """
-        List Microsoft Entra role assignments with administrative unit scope.
+        Scoped-role members of this administrative unit.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -47,10 +47,9 @@ class AssignmentDefaultsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationAssignmentDefaults]:
         """
-        Read the properties and relationships of an educationAssignmentDefaults object.  These are the class-level assignment defaults respected by new assignments created in the class. Callers can continue to specify custom values on each assignment creation if they don't want the default behaviors. Only teachers can perform this operation.
+        Specifies class-level defaults respected by new assignments created in the class.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationAssignmentDefaults]
-        Find more info here: https://learn.microsoft.com/graph/api/educationassignmentdefaults-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class AssignmentDefaultsRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EducationAssignmentDefaults] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationAssignmentDefaults]:
         """
-        Update the properties of an educationAssignmentDefaults object. Only teachers can update these settings.
+        Update the navigation property assignmentDefaults in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationAssignmentDefaults]
-        Find more info here: https://learn.microsoft.com/graph/api/educationassignmentdefaults-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +101,7 @@ class AssignmentDefaultsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an educationAssignmentDefaults object.  These are the class-level assignment defaults respected by new assignments created in the class. Callers can continue to specify custom values on each assignment creation if they don't want the default behaviors. Only teachers can perform this operation.
+        Specifies class-level defaults respected by new assignments created in the class.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +112,7 @@ class AssignmentDefaultsRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EducationAssignmentDefaults] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an educationAssignmentDefaults object. Only teachers can update these settings.
+        Update the navigation property assignmentDefaults in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class AssignmentDefaultsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AssignmentDefaultsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an educationAssignmentDefaults object.  These are the class-level assignment defaults respected by new assignments created in the class. Callers can continue to specify custom values on each assignment creation if they don't want the default behaviors. Only teachers can perform this operation.
+        Specifies class-level defaults respected by new assignments created in the class.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

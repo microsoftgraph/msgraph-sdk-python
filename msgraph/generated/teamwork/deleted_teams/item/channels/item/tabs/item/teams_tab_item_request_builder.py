@@ -30,10 +30,9 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Removes (unpins) a tab from the specified channel within a team. 
+        Delete navigation property tabs for teamwork
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/channel-delete-tabs?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsTab]:
         """
-        Retrieve the properties and relationships of the specified tab in a channel within a team. 
+        A collection of all the tabs in the channel. A navigation property.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsTab]
-        Find more info here: https://learn.microsoft.com/graph/api/channel-get-tabs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TeamsTab] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsTab]:
         """
-        Update the properties of the specified tab.This API can be used to configure the content of the tab.
+        Update the navigation property tabs in teamwork
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsTab]
-        Find more info here: https://learn.microsoft.com/graph/api/channel-patch-tabs?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Removes (unpins) a tab from the specified channel within a team. 
+        Delete navigation property tabs for teamwork
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of the specified tab in a channel within a team. 
+        A collection of all the tabs in the channel. A navigation property.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TeamsTab] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of the specified tab.This API can be used to configure the content of the tab.
+        Update the navigation property tabs in teamwork
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class TeamsTabItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TeamsTabItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of the specified tab in a channel within a team. 
+        A collection of all the tabs in the channel. A navigation property.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

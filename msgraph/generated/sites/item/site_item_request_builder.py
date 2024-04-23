@@ -50,7 +50,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Site]:
         """
-        Retrieve properties and relationships for a [site][] resource.A site resource represents a team site in SharePoint.
+        Retrieve properties and relationships for a site resource.A site resource represents a team site in SharePoint.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Site]
         Find more info here: https://learn.microsoft.com/graph/api/site-get?view=graph-rest-1.0
@@ -136,7 +136,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve properties and relationships for a [site][] resource.A site resource represents a team site in SharePoint.
+        Retrieve properties and relationships for a site resource.A site resource represents a team site in SharePoint.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -335,7 +335,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SiteItemRequestBuilderGetQueryParameters():
         """
-        Retrieve properties and relationships for a [site][] resource.A site resource represents a team site in SharePoint.
+        Retrieve properties and relationships for a site resource.A site resource represents a team site in SharePoint.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

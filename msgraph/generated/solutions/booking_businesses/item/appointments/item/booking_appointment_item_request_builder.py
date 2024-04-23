@@ -30,10 +30,9 @@ class BookingAppointmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a bookingAppointment in the specified bookingBusiness.
+        Delete navigation property appointments for solutions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/bookingappointment-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class BookingAppointmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingAppointment]:
         """
-        Get the properties and relationships of a bookingAppointment object in the specified bookingBusiness. The startDateTime and endDateTime properties are always returned in UTC.
+        All the appointments of this business. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingAppointment]
-        Find more info here: https://learn.microsoft.com/graph/api/bookingappointment-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class BookingAppointmentItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[BookingAppointment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingAppointment]:
         """
-        Update the properties of a bookingAppointment object in the specified bookingBusiness.
+        Update the navigation property appointments in solutions
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingAppointment]
-        Find more info here: https://learn.microsoft.com/graph/api/bookingappointment-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class BookingAppointmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a bookingAppointment in the specified bookingBusiness.
+        Delete navigation property appointments for solutions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class BookingAppointmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a bookingAppointment object in the specified bookingBusiness. The startDateTime and endDateTime properties are always returned in UTC.
+        All the appointments of this business. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class BookingAppointmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[BookingAppointment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a bookingAppointment object in the specified bookingBusiness.
+        Update the navigation property appointments in solutions
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class BookingAppointmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BookingAppointmentItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a bookingAppointment object in the specified bookingBusiness. The startDateTime and endDateTime properties are always returned in UTC.
+        All the appointments of this business. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

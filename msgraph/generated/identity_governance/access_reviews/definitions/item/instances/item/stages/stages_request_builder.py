@@ -59,10 +59,9 @@ class StagesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessReviewStageCollectionResponse]:
         """
-        Retrieve the stages in a multi-stage access review instance.
+        If the instance has multiple stages, this returns the collection of stages. A new stage will only be created when the previous stage ends. The existence, number, and settings of stages on a review instance are created based on the accessReviewStageSettings on the parent accessReviewScheduleDefinition.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewStageCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/accessreviewinstance-list-stages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -103,7 +102,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the stages in a multi-stage access review instance.
+        If the instance has multiple stages, this returns the collection of stages. A new stage will only be created when the previous stage ends. The existence, number, and settings of stages on a review instance are created based on the accessReviewStageSettings on the parent accessReviewScheduleDefinition.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -149,7 +148,7 @@ class StagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class StagesRequestBuilderGetQueryParameters():
         """
-        Retrieve the stages in a multi-stage access review instance.
+        If the instance has multiple stages, this returns the collection of stages. A new stage will only be created when the previous stage ends. The existence, number, and settings of stages on a review instance are created based on the accessReviewStageSettings on the parent accessReviewScheduleDefinition.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

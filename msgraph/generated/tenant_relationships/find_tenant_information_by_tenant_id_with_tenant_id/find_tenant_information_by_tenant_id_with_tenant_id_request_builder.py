@@ -31,9 +31,10 @@ class FindTenantInformationByTenantIdWithTenantIdRequestBuilder(BaseRequestBuild
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TenantInformation]:
         """
-        Invoke function findTenantInformationByTenantId
+        Given a tenant ID, search for a tenant and read its tenantInformation. You can use this API to validate tenant information and use the tenantId to configure cross-tenant cross-tenant access settings between you and the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TenantInformation]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantrelationship-findtenantinformationbytenantid?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -51,7 +52,7 @@ class FindTenantInformationByTenantIdWithTenantIdRequestBuilder(BaseRequestBuild
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function findTenantInformationByTenantId
+        Given a tenant ID, search for a tenant and read its tenantInformation. You can use this API to validate tenant information and use the tenantId to configure cross-tenant cross-tenant access settings between you and the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

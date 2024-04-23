@@ -59,10 +59,9 @@ class ItemsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ListItemCollectionResponse]:
         """
-        Get the collection of [items][item] in a [list][].
+        All items contained in the list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ListItemCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/listitem-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -80,11 +79,10 @@ class ItemsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ListItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ListItem]:
         """
-        Create a new [listItem][] in a [list][].
+        Create new navigation property to items for shares
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ListItem]
-        Find more info here: https://learn.microsoft.com/graph/api/listitem-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -104,7 +102,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the collection of [items][item] in a [list][].
+        All items contained in the list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +113,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ListItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new [listItem][] in a [list][].
+        Create new navigation property to items for shares
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +148,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ItemsRequestBuilderGetQueryParameters():
         """
-        Get the collection of [items][item] in a [list][].
+        All items contained in the list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

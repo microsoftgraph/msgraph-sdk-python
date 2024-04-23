@@ -49,10 +49,9 @@ class HostPortItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[HostPort]:
         """
-        Read the properties and relationships of a hostPort object.
+        Retrieve details about hostPort objects.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostPort]
-        Find more info here: https://learn.microsoft.com/graph/api/security-hostport-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -104,7 +103,7 @@ class HostPortItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a hostPort object.
+        Retrieve details about hostPort objects.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +158,7 @@ class HostPortItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HostPortItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a hostPort object.
+        Retrieve details about hostPort objects.Note: List retrieval is not yet supported.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

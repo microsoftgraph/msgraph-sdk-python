@@ -45,10 +45,9 @@ class RecoveryKeysRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BitlockerRecoveryKeyCollectionResponse]:
         """
-        Get a list of the bitlockerRecoveryKey objects and their properties.  This operation does not return the key property. For information about how to read the key property, see Get bitlockerRecoveryKey.
+        The recovery keys associated with the bitlocker entity.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BitlockerRecoveryKeyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/bitlocker-list-recoverykeys?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +65,7 @@ class RecoveryKeysRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the bitlockerRecoveryKey objects and their properties.  This operation does not return the key property. For information about how to read the key property, see Get bitlockerRecoveryKey.
+        The recovery keys associated with the bitlocker entity.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +96,7 @@ class RecoveryKeysRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RecoveryKeysRequestBuilderGetQueryParameters():
         """
-        Get a list of the bitlockerRecoveryKey objects and their properties.  This operation does not return the key property. For information about how to read the key property, see Get bitlockerRecoveryKey.
+        The recovery keys associated with the bitlocker entity.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

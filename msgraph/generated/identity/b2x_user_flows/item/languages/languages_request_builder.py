@@ -46,10 +46,9 @@ class LanguagesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserFlowLanguageConfigurationCollectionResponse]:
         """
-        Retrieve a list of languages supported for customization in a B2X user flow.
+        The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You can't create custom languages in self-service sign-up user flows.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserFlowLanguageConfigurationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/b2xidentityuserflow-list-languages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class LanguagesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of languages supported for customization in a B2X user flow.
+        The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You can't create custom languages in self-service sign-up user flows.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class LanguagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LanguagesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of languages supported for customization in a B2X user flow.
+        The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You can't create custom languages in self-service sign-up user flows.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

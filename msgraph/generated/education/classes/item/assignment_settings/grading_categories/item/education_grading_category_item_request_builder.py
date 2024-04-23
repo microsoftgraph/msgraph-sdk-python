@@ -67,11 +67,10 @@ class EducationGradingCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EducationGradingCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationGradingCategory]:
         """
-        Update a single gradingCategory on the educationAssignmentSettings. Only teachers can perform this operation.
+        Update the navigation property gradingCategories in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationGradingCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/educationgradingcategory-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -113,7 +112,7 @@ class EducationGradingCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EducationGradingCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update a single gradingCategory on the educationAssignmentSettings. Only teachers can perform this operation.
+        Update the navigation property gradingCategories in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

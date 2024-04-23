@@ -50,7 +50,6 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         The user's mail folders. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolderCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-mailfolders?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MailFolder] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[MailFolder]:
         """
-        Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+        Create new navigation property to mailFolders for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolder]
-        Find more info here: https://learn.microsoft.com/graph/api/user-post-mailfolders?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +101,7 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[MailFolder] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+        Create new navigation property to mailFolders for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

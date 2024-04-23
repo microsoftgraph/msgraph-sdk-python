@@ -29,10 +29,9 @@ class TimeOffItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a timeOff instance from a schedule.
+        Delete navigation property timesOff for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/timeoff-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class TimeOffItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TimeOff]:
         """
-        Retrieve the properties and relationships of a timeOff object by ID.
+        The instances of times off in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TimeOff]
-        Find more info here: https://learn.microsoft.com/graph/api/timeoff-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class TimeOffItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TimeOff] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TimeOff]:
         """
-        Replace an existing timeOff object. If the specified timeOff object doesn't exist, this method returns 404 Not found.
+        Update the navigation property timesOff in groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TimeOff]
-        Find more info here: https://learn.microsoft.com/graph/api/timeoff-put?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class TimeOffItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a timeOff instance from a schedule.
+        Delete navigation property timesOff for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class TimeOffItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a timeOff object by ID.
+        The instances of times off in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class TimeOffItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TimeOff] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Replace an existing timeOff object. If the specified timeOff object doesn't exist, this method returns 404 Not found.
+        Update the navigation property timesOff in groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class TimeOffItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TimeOffItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a timeOff object by ID.
+        The instances of times off in the schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

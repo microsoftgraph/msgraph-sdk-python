@@ -29,10 +29,9 @@ class SchemaRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Schema]:
         """
-        Read the properties and relationships of a schema object.
+        Get schema from external
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Schema]
-        Find more info here: https://learn.microsoft.com/graph/api/externalconnectors-schema-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -50,11 +49,10 @@ class SchemaRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Schema] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Schema]:
         """
-        Create a new schema object.
+        Update the navigation property schema in external
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Schema]
-        Find more info here: https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-patch-schema?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -74,7 +72,7 @@ class SchemaRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a schema object.
+        Get schema from external
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -85,7 +83,7 @@ class SchemaRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Schema] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new schema object.
+        Update the navigation property schema in external
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +109,7 @@ class SchemaRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SchemaRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a schema object.
+        Get schema from external
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

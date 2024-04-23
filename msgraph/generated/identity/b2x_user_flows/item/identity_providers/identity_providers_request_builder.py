@@ -47,10 +47,9 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityProviderCollectionResponse]:
         """
-        Get the identity providers in a b2xIdentityUserFlow object.
+        The identity providers included in the user flow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityProviderCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/b2xidentityuserflow-list-identityproviders?view=graph-rest-1.0
         """
         warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider", DeprecationWarning)
         request_info = self.to_get_request_information(
@@ -69,7 +68,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the identity providers in a b2xIdentityUserFlow object.
+        The identity providers included in the user flow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +101,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IdentityProvidersRequestBuilderGetQueryParameters():
         """
-        Get the identity providers in a b2xIdentityUserFlow object.
+        The identity providers included in the user flow.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

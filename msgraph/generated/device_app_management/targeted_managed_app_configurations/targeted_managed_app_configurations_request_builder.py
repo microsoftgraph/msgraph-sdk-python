@@ -46,10 +46,9 @@ class TargetedManagedAppConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TargetedManagedAppConfigurationCollectionResponse]:
         """
-        List properties and relationships of the targetedManagedAppConfiguration objects.
+        Targeted managed app configurations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TargetedManagedAppConfigurationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-targetedmanagedappconfiguration-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class TargetedManagedAppConfigurationsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TargetedManagedAppConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TargetedManagedAppConfiguration]:
         """
-        Create a new targetedManagedAppConfiguration object.
+        Create new navigation property to targetedManagedAppConfigurations for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TargetedManagedAppConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-targetedmanagedappconfiguration-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class TargetedManagedAppConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the targetedManagedAppConfiguration objects.
+        Targeted managed app configurations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class TargetedManagedAppConfigurationsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[TargetedManagedAppConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new targetedManagedAppConfiguration object.
+        Create new navigation property to targetedManagedAppConfigurations for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class TargetedManagedAppConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TargetedManagedAppConfigurationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the targetedManagedAppConfiguration objects.
+        Targeted managed app configurations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

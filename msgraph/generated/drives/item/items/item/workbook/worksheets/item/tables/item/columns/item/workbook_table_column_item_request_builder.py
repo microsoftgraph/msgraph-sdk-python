@@ -34,10 +34,9 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes the column from the table.
+        Delete navigation property columns for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/tablecolumn-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -53,10 +52,9 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookTableColumn]:
         """
-        Retrieve the properties and relationships of tablecolumn object.
+        Represents a collection of all the columns in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumn]
-        Find more info here: https://learn.microsoft.com/graph/api/tablecolumn-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -74,11 +72,10 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkbookTableColumn] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookTableColumn]:
         """
-        Update the properties of tablecolumn object.
+        Update the navigation property columns in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableColumn]
-        Find more info here: https://learn.microsoft.com/graph/api/tablecolumn-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -98,7 +95,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes the column from the table.
+        Delete navigation property columns for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +106,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of tablecolumn object.
+        Represents a collection of all the columns in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +117,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkbookTableColumn] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of tablecolumn object.
+        Update the navigation property columns in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +188,7 @@ class WorkbookTableColumnItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkbookTableColumnItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of tablecolumn object.
+        Represents a collection of all the columns in the table. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

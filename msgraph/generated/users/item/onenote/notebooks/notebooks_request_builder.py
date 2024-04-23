@@ -48,10 +48,9 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[NotebookCollectionResponse]:
         """
-        Retrieve a list of notebook objects.
+        The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[NotebookCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/onenote-list-notebooks?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -81,11 +80,10 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Notebook] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Notebook]:
         """
-        Create a new OneNote notebook.
+        Create new navigation property to notebooks for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Notebook]
-        Find more info here: https://learn.microsoft.com/graph/api/onenote-post-notebooks?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -105,7 +103,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of notebook objects.
+        The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +114,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Notebook] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new OneNote notebook.
+        Create new navigation property to notebooks for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +158,7 @@ class NotebooksRequestBuilder(BaseRequestBuilder):
     @dataclass
     class NotebooksRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of notebook objects.
+        The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -30,10 +30,9 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Remove an educationUser from an educationClass.
+        Delete ref of navigation property members for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-delete-members?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[StringCollectionResponse]:
         """
-        Retrieves the educationUser members of an educationClass.
+        All users in the class. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[StringCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-list-members?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Add an educationUser member to an educationClass.
+        Create new navigation property ref to members for education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-post-members?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +89,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Remove an educationUser from an educationClass.
+        Delete ref of navigation property members for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +100,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieves the educationUser members of an educationClass.
+        All users in the class. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +111,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ReferenceCreate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Add an educationUser member to an educationClass.
+        Create new navigation property ref to members for education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +137,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():
         """
-        Remove an educationUser from an educationClass.
+        Delete ref of navigation property members for education
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -161,7 +158,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RefRequestBuilderGetQueryParameters():
         """
-        Retrieves the educationUser members of an educationClass.
+        All users in the class. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

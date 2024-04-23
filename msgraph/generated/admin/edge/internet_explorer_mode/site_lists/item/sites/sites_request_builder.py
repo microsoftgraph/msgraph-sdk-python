@@ -46,10 +46,9 @@ class SitesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BrowserSiteCollectionResponse]:
         """
-        Get a list of the browserSite objects and their properties.
+        A collection of sites defined for the site list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowserSiteCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/browsersitelist-list-sites?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class SitesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[BrowserSite] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[BrowserSite]:
         """
-        Create a new browserSite object in a browserSiteList.
+        Create new navigation property to sites for admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowserSite]
-        Find more info here: https://learn.microsoft.com/graph/api/browsersitelist-post-sites?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the browserSite objects and their properties.
+        A collection of sites defined for the site list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[BrowserSite] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new browserSite object in a browserSiteList.
+        Create new navigation property to sites for admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SitesRequestBuilderGetQueryParameters():
         """
-        Get a list of the browserSite objects and their properties.
+        A collection of sites defined for the site list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -53,7 +53,6 @@ class RegisteredUsersRequestBuilder(BaseRequestBuilder):
         Collection of registered users of the device. For cloud joined devices and registered personal devices, registered users are set to the same value as registered owners at the time of registration. Read-only. Nullable. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/device-list-registeredusers?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

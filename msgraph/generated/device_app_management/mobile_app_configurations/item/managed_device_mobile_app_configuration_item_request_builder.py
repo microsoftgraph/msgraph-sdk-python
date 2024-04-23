@@ -35,10 +35,9 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a iosMobileAppConfiguration.
+        Delete navigation property mobileAppConfigurations for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-iosmobileappconfiguration-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -54,10 +53,9 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfiguration]:
         """
-        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
+        The Managed Device Mobile Application Configurations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-manageddevicemobileappconfiguration-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -75,11 +73,10 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ManagedDeviceMobileAppConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfiguration]:
         """
-        Update the properties of a iosMobileAppConfiguration object.
+        Update the navigation property mobileAppConfigurations in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfiguration]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-iosmobileappconfiguration-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -99,7 +96,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a iosMobileAppConfiguration.
+        Delete navigation property mobileAppConfigurations for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +107,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
+        The Managed Device Mobile Application Configurations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -121,7 +118,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ManagedDeviceMobileAppConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a iosMobileAppConfiguration object.
+        Update the navigation property mobileAppConfigurations in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -201,7 +198,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagedDeviceMobileAppConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the managedDeviceMobileAppConfiguration object.
+        The Managed Device Mobile Application Configurations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

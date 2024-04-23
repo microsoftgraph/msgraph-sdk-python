@@ -46,10 +46,9 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationAssignmentCollectionResponse]:
         """
-        List properties and relationships of the managedDeviceMobileAppConfigurationAssignment objects.
+        The list of group assignemenets for app configration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfigurationAssignmentCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-manageddevicemobileappconfigurationassignment-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ManagedDeviceMobileAppConfigurationAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationAssignment]:
         """
-        Create a new managedDeviceMobileAppConfigurationAssignment object.
+        Create new navigation property to assignments for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfigurationAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-manageddevicemobileappconfigurationassignment-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedDeviceMobileAppConfigurationAssignment objects.
+        The list of group assignemenets for app configration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ManagedDeviceMobileAppConfigurationAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new managedDeviceMobileAppConfigurationAssignment object.
+        Create new navigation property to assignments for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class AssignmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AssignmentsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedDeviceMobileAppConfigurationAssignment objects.
+        The list of group assignemenets for app configration.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

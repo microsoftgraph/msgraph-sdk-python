@@ -29,9 +29,10 @@ class DeltaRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeltaGetResponse]:
         """
-        Invoke function delta
+        Get newly created, updated, or deleted organizational contacts without having to perform a full read of the entire collection. See change tracking for details.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeltaGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/orgcontact-delta?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,7 +50,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function delta
+        Get newly created, updated, or deleted organizational contacts without having to perform a full read of the entire collection. See change tracking for details.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -71,7 +72,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeltaRequestBuilderGetQueryParameters():
         """
-        Invoke function delta
+        Get newly created, updated, or deleted organizational contacts without having to perform a full read of the entire collection. See change tracking for details.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

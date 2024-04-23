@@ -48,10 +48,9 @@ class DefaultRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CrossTenantAccessPolicyConfigurationDefault]:
         """
-        Read the default configuration of a cross-tenant access policy. This default configuration may be the service default assigned by Microsoft Entra ID (isServiceDefault is true) or may be customized in your tenant (isServiceDefault is false).
+        Defines the default configuration for how your organization interacts with external Microsoft Entra organizations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicyConfigurationDefault]
-        Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicyconfigurationdefault-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +68,10 @@ class DefaultRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[CrossTenantAccessPolicyConfigurationDefault] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CrossTenantAccessPolicyConfigurationDefault]:
         """
-        Update the default configuration of a cross-tenant access policy.
+        Update the navigation property default in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicyConfigurationDefault]
-        Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicyconfigurationdefault-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -104,7 +102,7 @@ class DefaultRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the default configuration of a cross-tenant access policy. This default configuration may be the service default assigned by Microsoft Entra ID (isServiceDefault is true) or may be customized in your tenant (isServiceDefault is false).
+        Defines the default configuration for how your organization interacts with external Microsoft Entra organizations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +113,7 @@ class DefaultRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[CrossTenantAccessPolicyConfigurationDefault] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the default configuration of a cross-tenant access policy.
+        Update the navigation property default in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +148,7 @@ class DefaultRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DefaultRequestBuilderGetQueryParameters():
         """
-        Read the default configuration of a cross-tenant access policy. This default configuration may be the service default assigned by Microsoft Entra ID (isServiceDefault is true) or may be customized in your tenant (isServiceDefault is false).
+        Defines the default configuration for how your organization interacts with external Microsoft Entra organizations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

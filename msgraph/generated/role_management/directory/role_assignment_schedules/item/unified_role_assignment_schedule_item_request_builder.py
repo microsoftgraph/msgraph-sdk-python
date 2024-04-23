@@ -52,10 +52,9 @@ class UnifiedRoleAssignmentScheduleItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentSchedule]:
         """
-        Retrieve the schedule for an active role assignment operation.
+        Schedules for active role assignment operations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleAssignmentSchedule]
-        Find more info here: https://learn.microsoft.com/graph/api/unifiedroleassignmentschedule-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -107,7 +106,7 @@ class UnifiedRoleAssignmentScheduleItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the schedule for an active role assignment operation.
+        Schedules for active role assignment operations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -189,7 +188,7 @@ class UnifiedRoleAssignmentScheduleItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UnifiedRoleAssignmentScheduleItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the schedule for an active role assignment operation.
+        Schedules for active role assignment operations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -47,10 +47,9 @@ class PagesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BaseSitePageCollectionResponse]:
         """
-        Get the collection of [baseSitePage][] objects from the site pages [list][] in a [site][]. All pages in the site are returned (with pagination). Sort alphabetically by name in ascending order. The following table lists the available subtypes.
+        The collection of pages in the baseSitePages list in this site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BaseSitePageCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/basesitepage-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class PagesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[BaseSitePage] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[BaseSitePage]:
         """
-        Create a new [sitePage][] in the site pages [list][] in a [site][].
+        Create new navigation property to pages for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BaseSitePage]
-        Find more info here: https://learn.microsoft.com/graph/api/sitepage-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +90,7 @@ class PagesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the collection of [baseSitePage][] objects from the site pages [list][] in a [site][]. All pages in the site are returned (with pagination). Sort alphabetically by name in ascending order. The following table lists the available subtypes.
+        The collection of pages in the baseSitePages list in this site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class PagesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[BaseSitePage] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new [sitePage][] in the site pages [list][] in a [site][].
+        Create new navigation property to pages for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +145,7 @@ class PagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PagesRequestBuilderGetQueryParameters():
         """
-        Get the collection of [baseSitePage][] objects from the site pages [list][] in a [site][]. All pages in the site are returned (with pagination). Sort alphabetically by name in ascending order. The following table lists the available subtypes.
+        The collection of pages in the baseSitePages list in this site.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

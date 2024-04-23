@@ -47,10 +47,9 @@ class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsAppSettings]:
         """
-        Get the tenant-wide teamsAppSettings for all Teams apps in the tenant.
+        Represents tenant-wide settings for all Teams apps in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppSettings]
-        Find more info here: https://learn.microsoft.com/graph/api/teamsappsettings-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TeamsAppSettings] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsAppSettings]:
         """
-        Update the tenant-wide teamsAppSettings for all Teams apps in the tenant.
+        Update the navigation property teamsAppSettings in teamwork
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppSettings]
-        Find more info here: https://learn.microsoft.com/graph/api/teamsappsettings-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +101,7 @@ class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the tenant-wide teamsAppSettings for all Teams apps in the tenant.
+        Represents tenant-wide settings for all Teams apps in the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +112,7 @@ class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TeamsAppSettings] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the tenant-wide teamsAppSettings for all Teams apps in the tenant.
+        Update the navigation property teamsAppSettings in teamwork
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class TeamsAppSettingsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TeamsAppSettingsRequestBuilderGetQueryParameters():
         """
-        Get the tenant-wide teamsAppSettings for all Teams apps in the tenant.
+        Represents tenant-wide settings for all Teams apps in the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

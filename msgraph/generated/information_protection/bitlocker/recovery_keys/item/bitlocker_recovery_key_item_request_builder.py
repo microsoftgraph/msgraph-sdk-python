@@ -29,10 +29,9 @@ class BitlockerRecoveryKeyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BitlockerRecoveryKey]:
         """
-        Retrieve the properties and relationships of a bitlockerRecoveryKey object.  By default, this operation doesn't return the key property that represents the actual recovery key. To include the key property in the response, use the $select OData query parameter. Including the $select query parameter triggers a Microsoft Entra audit of the operation and generates an audit log. For more information on audit logs for bitlocker recovery keys, see the KeyManagement category filter of Microsoft Entra audit logs.
+        The recovery keys associated with the bitlocker entity.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BitlockerRecoveryKey]
-        Find more info here: https://learn.microsoft.com/graph/api/bitlockerrecoverykey-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -50,7 +49,7 @@ class BitlockerRecoveryKeyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a bitlockerRecoveryKey object.  By default, this operation doesn't return the key property that represents the actual recovery key. To include the key property in the response, use the $select OData query parameter. Including the $select query parameter triggers a Microsoft Entra audit of the operation and generates an audit log. For more information on audit logs for bitlocker recovery keys, see the KeyManagement category filter of Microsoft Entra audit logs.
+        The recovery keys associated with the bitlocker entity.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -72,7 +71,7 @@ class BitlockerRecoveryKeyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BitlockerRecoveryKeyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a bitlockerRecoveryKey object.  By default, this operation doesn't return the key property that represents the actual recovery key. To include the key property in the response, use the $select OData query parameter. Including the $select query parameter triggers a Microsoft Entra audit of the operation and generates an audit log. For more information on audit logs for bitlocker recovery keys, see the KeyManagement category filter of Microsoft Entra audit logs.
+        The recovery keys associated with the bitlocker entity.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

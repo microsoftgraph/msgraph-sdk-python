@@ -29,10 +29,9 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete an acronym object.
+        Delete navigation property acronyms for search
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/search-acronym-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Acronym]:
         """
-        Read the properties and relationships of an acronym object.
+        Administrative answer in Microsoft Search results to define common acronyms in an organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Acronym]
-        Find more info here: https://learn.microsoft.com/graph/api/search-acronym-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Acronym] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Acronym]:
         """
-        Update the properties of an acronym object.
+        Update the navigation property acronyms in search
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Acronym]
-        Find more info here: https://learn.microsoft.com/graph/api/search-acronym-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an acronym object.
+        Delete navigation property acronyms for search
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an acronym object.
+        Administrative answer in Microsoft Search results to define common acronyms in an organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Acronym] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an acronym object.
+        Update the navigation property acronyms in search
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class AcronymItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AcronymItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an acronym object.
+        Administrative answer in Microsoft Search results to define common acronyms in an organization.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

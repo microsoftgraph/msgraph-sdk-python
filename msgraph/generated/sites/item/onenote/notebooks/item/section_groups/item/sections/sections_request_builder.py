@@ -46,10 +46,9 @@ class SectionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OnenoteSectionCollectionResponse]:
         """
-        Retrieve a list of onenoteSection objects from the specified section group.
+        The sections in the section group. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenoteSectionCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/sectiongroup-list-sections?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class SectionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[OnenoteSection] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[OnenoteSection]:
         """
-        Create a new onenoteSection in the specified section group.
+        Create new navigation property to sections for sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenoteSection]
-        Find more info here: https://learn.microsoft.com/graph/api/sectiongroup-post-sections?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class SectionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of onenoteSection objects from the specified section group.
+        The sections in the section group. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class SectionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[OnenoteSection] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new onenoteSection in the specified section group.
+        Create new navigation property to sections for sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class SectionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SectionsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of onenoteSection objects from the specified section group.
+        The sections in the section group. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

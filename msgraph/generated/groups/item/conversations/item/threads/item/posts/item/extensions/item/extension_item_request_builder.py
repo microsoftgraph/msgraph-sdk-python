@@ -47,10 +47,9 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Extension]:
         """
-        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
+        The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Extension]
-        Find more info here: https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Extension] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Extension]:
         """
-        Update an open extension (openTypeExtension object) with the properties in the request body: The data in an extension can be primitive types, or arrays of primitive types. See the table in the Permissions section for the list of resources that support open extensions.
+        Update the navigation property extensions in groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Extension]
-        Find more info here: https://learn.microsoft.com/graph/api/opentypeextension-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +101,7 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
+        The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +112,7 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Extension] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update an open extension (openTypeExtension object) with the properties in the request body: The data in an extension can be primitive types, or arrays of primitive types. See the table in the Permissions section for the list of resources that support open extensions.
+        Update the navigation property extensions in groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExtensionItemRequestBuilderGetQueryParameters():
         """
-        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
+        The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

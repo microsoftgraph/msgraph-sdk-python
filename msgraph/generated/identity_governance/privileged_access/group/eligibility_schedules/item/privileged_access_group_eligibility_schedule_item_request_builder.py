@@ -49,10 +49,9 @@ class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilder(BaseRequestBuil
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupEligibilitySchedule]:
         """
-        Read the properties and relationships of a privilegedAccessGroupEligibilitySchedule object.
+        The eligibility schedules to activate a just-in-time access.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrivilegedAccessGroupEligibilitySchedule]
-        Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroupeligibilityschedule-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -104,7 +103,7 @@ class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilder(BaseRequestBuil
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a privilegedAccessGroupEligibilitySchedule object.
+        The eligibility schedules to activate a just-in-time access.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +158,7 @@ class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilder(BaseRequestBuil
     @dataclass
     class PrivilegedAccessGroupEligibilityScheduleItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a privilegedAccessGroupEligibilitySchedule object.
+        The eligibility schedules to activate a just-in-time access.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

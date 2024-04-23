@@ -46,10 +46,9 @@ class ServicesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintServiceCollectionResponse]:
         """
-        Retrieve a list of printService objects that represent the services available to your tenant.
+        The list of available Universal Print service endpoints.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintServiceCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/print-list-services?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class ServicesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of printService objects that represent the services available to your tenant.
+        The list of available Universal Print service endpoints.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class ServicesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ServicesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of printService objects that represent the services available to your tenant.
+        The list of available Universal Print service endpoints.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

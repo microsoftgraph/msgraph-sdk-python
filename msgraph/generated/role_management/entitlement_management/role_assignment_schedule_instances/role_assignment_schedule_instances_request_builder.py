@@ -59,10 +59,9 @@ class RoleAssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentScheduleInstanceCollectionResponse]:
         """
-        Get the instances of active role assignments in your tenant. The active assignments include those made through assignments and activation requests, and directly through the role assignments API.
+        Instances for active role assignments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleAssignmentScheduleInstanceCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/rbacapplication-list-roleassignmentscheduleinstances?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -103,7 +102,7 @@ class RoleAssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the instances of active role assignments in your tenant. The active assignments include those made through assignments and activation requests, and directly through the role assignments API.
+        Instances for active role assignments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -149,7 +148,7 @@ class RoleAssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleAssignmentScheduleInstancesRequestBuilderGetQueryParameters():
         """
-        Get the instances of active role assignments in your tenant. The active assignments include those made through assignments and activation requests, and directly through the role assignments API.
+        Instances for active role assignments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -47,10 +47,9 @@ class SeriesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartSeriesCollectionResponse]:
         """
-        Retrieve a list of chartseries objects.
+        Represents either a single series or collection of series in the chart. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartSeriesCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/chart-list-series?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -80,11 +79,10 @@ class SeriesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartSeries]:
         """
-        Use this API to create a new ChartSeries.
+        Create new navigation property to series for drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartSeries]
-        Find more info here: https://learn.microsoft.com/graph/api/chart-post-series?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -104,7 +102,7 @@ class SeriesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of chartseries objects.
+        Represents either a single series or collection of series in the chart. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +113,7 @@ class SeriesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[WorkbookChartSeries] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new ChartSeries.
+        Create new navigation property to series for drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +148,7 @@ class SeriesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SeriesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of chartseries objects.
+        Represents either a single series or collection of series in the chart. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

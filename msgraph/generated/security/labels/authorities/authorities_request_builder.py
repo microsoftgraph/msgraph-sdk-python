@@ -46,10 +46,9 @@ class AuthoritiesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthorityTemplateCollectionResponse]:
         """
-        Get a list of the authorityTemplate objects and their properties.
+        Specifies the underlying authority that describes the type of content to be retained and its retention schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthorityTemplateCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-list-authorities?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class AuthoritiesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AuthorityTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthorityTemplate]:
         """
-        Create a new authorityTemplate object.
+        Create new navigation property to authorities for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthorityTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-post-authorities?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class AuthoritiesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the authorityTemplate objects and their properties.
+        Specifies the underlying authority that describes the type of content to be retained and its retention schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class AuthoritiesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AuthorityTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new authorityTemplate object.
+        Create new navigation property to authorities for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class AuthoritiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthoritiesRequestBuilderGetQueryParameters():
         """
-        Get a list of the authorityTemplate objects and their properties.
+        Specifies the underlying authority that describes the type of content to be retained and its retention schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

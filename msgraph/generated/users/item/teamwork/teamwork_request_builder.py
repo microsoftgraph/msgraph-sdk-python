@@ -50,10 +50,9 @@ class TeamworkRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserTeamwork]:
         """
-        Get the userTeamwork settings for a specified user, which includes the Microsoft Teams region and the locale chosen by the user.
+        A container for Microsoft Teams features available for the user. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserTeamwork]
-        Find more info here: https://learn.microsoft.com/graph/api/userteamwork-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -105,7 +104,7 @@ class TeamworkRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the userTeamwork settings for a specified user, which includes the Microsoft Teams region and the locale chosen by the user.
+        A container for Microsoft Teams features available for the user. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -169,7 +168,7 @@ class TeamworkRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TeamworkRequestBuilderGetQueryParameters():
         """
-        Get the userTeamwork settings for a specified user, which includes the Microsoft Teams region and the locale chosen by the user.
+        A container for Microsoft Teams features available for the user. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

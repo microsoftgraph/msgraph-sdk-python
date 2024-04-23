@@ -30,10 +30,9 @@ class UnifiedRoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a unifiedRoleDefinition object. You can't delete built-in roles. This feature requires a Microsoft Entra ID P1 or P2 license.
+        Delete navigation property roleDefinitions for roleManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/unifiedroledefinition-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class UnifiedRoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleDefinition]:
         """
-        Read the properties and relationships of a unifiedRoleDefinition object. The following role-based access control (RBAC) providers are currently supported:
+        Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/unifiedroledefinition-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class UnifiedRoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[UnifiedRoleDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleDefinition]:
         """
-        Update the properties of a unifiedRoleDefinition object. You cannot update built-in roles. This feature requires a Microsoft Entra ID P1 or P2 license.
+        Update the navigation property roleDefinitions in roleManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/unifiedroledefinition-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class UnifiedRoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a unifiedRoleDefinition object. You can't delete built-in roles. This feature requires a Microsoft Entra ID P1 or P2 license.
+        Delete navigation property roleDefinitions for roleManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class UnifiedRoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a unifiedRoleDefinition object. The following role-based access control (RBAC) providers are currently supported:
+        Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class UnifiedRoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[UnifiedRoleDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a unifiedRoleDefinition object. You cannot update built-in roles. This feature requires a Microsoft Entra ID P1 or P2 license.
+        Update the navigation property roleDefinitions in roleManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class UnifiedRoleDefinitionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UnifiedRoleDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a unifiedRoleDefinition object. The following role-based access control (RBAC) providers are currently supported:
+        Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

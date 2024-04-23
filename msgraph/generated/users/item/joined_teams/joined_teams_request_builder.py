@@ -47,10 +47,9 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamCollectionResponse]:
         """
-        Get the teams in Microsoft Teams that the user is a direct member of.
+        Get joinedTeams from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-joinedteams?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -91,7 +90,7 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the teams in Microsoft Teams that the user is a direct member of.
+        Get joinedTeams from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -146,7 +145,7 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class JoinedTeamsRequestBuilderGetQueryParameters():
         """
-        Get the teams in Microsoft Teams that the user is a direct member of.
+        Get joinedTeams from users
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

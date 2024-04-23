@@ -29,10 +29,9 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete (unregister) a printConnector.
+        Delete navigation property connectors for print
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/printconnector-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintConnector]:
         """
-        Retrieve the properties and relationships of a printConnector object.
+        The list of available print connectors.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintConnector]
-        Find more info here: https://learn.microsoft.com/graph/api/printconnector-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[PrintConnector] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintConnector]:
         """
-        Update the properties of a printConnector object.
+        Update the navigation property connectors in print
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintConnector]
-        Find more info here: https://learn.microsoft.com/graph/api/printconnector-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete (unregister) a printConnector.
+        Delete navigation property connectors for print
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a printConnector object.
+        The list of available print connectors.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[PrintConnector] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a printConnector object.
+        Update the navigation property connectors in print
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PrintConnectorItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a printConnector object.
+        The list of available print connectors.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

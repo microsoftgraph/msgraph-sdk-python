@@ -49,7 +49,6 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
         Represents the app roles a user has been granted for an application. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignmentCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-approleassignments?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppRoleAssignment]:
         """
-        Use this API to assign an app role to a user. To grant an app role assignment to a user, you need three identifiers:
+        Create new navigation property to appRoleAssignments for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/user-post-approleassignments?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -102,7 +100,7 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to assign an app role to a user. To grant an app role assignment to a user, you need three identifiers:
+        Create new navigation property to appRoleAssignments for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

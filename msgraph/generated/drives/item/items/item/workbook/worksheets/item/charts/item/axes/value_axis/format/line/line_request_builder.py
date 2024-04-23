@@ -48,10 +48,9 @@ class LineRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartLineFormat]:
         """
-        Retrieve the properties and relationships of chartlineformat object.
+        Represents chart line formatting. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartLineFormat]
-        Find more info here: https://learn.microsoft.com/graph/api/chartlineformat-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +68,10 @@ class LineRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkbookChartLineFormat] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartLineFormat]:
         """
-        Update the properties of chartlineformat object.
+        Update the navigation property line in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartLineFormat]
-        Find more info here: https://learn.microsoft.com/graph/api/chartlineformat-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -104,7 +102,7 @@ class LineRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of chartlineformat object.
+        Represents chart line formatting. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +113,7 @@ class LineRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkbookChartLineFormat] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of chartlineformat object.
+        Update the navigation property line in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +148,7 @@ class LineRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LineRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of chartlineformat object.
+        Represents chart line formatting. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

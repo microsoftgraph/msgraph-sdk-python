@@ -121,7 +121,7 @@ credential = ClientSecretCredential(
     'client_id',
     'client_secret'
 )
-scopes = ['https://graph.microsoft.com/.default']
+scopes = ["User.ReadWrite"]
 client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET /users/{id | userPrincipalName}
@@ -139,8 +139,11 @@ import asyncio
 from azure.identity import InteractiveBrowserCredential
 from msgraph import GraphServiceClient
 
-credential = InteractiveBrowserCredential()
-scopes = ['https://graph.microsoft.com/.default']
+credential = InteractiveBrowserCredential(
+    client_id=os.getenv('client_id'),
+    tenant_id=os.getenv('tenant_id'),
+)
+scopes = ["User.ReadWrite"]
 client = GraphServiceClient(credentials=credential, scopes=scopes,)
 
 # GET /me

@@ -35,7 +35,11 @@ from azure.identity import InteractiveBrowserCredential
 from msgraph import GraphServiceClient
 
 # Create a credential object. Used to authenticate requests 
-credential = InteractiveBrowserCredential()
+credentials = InteractiveBrowserCredential(
+    client_id=os.getenv('client_id'),
+    tenant_id=os.getenv('tenant_id'),
+)
+
 scopes = ["User.Read"]
 
 # Create an API client with the credentials and scopes.

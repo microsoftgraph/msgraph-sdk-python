@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class IssuesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["serviceHealthIssue%2Did"] = service_health_issue_id
         return ServiceHealthIssueItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ServiceHealthIssueCollectionResponse]:
+    async def get(self,request_configuration: Optional[IssuesRequestBuilderGetRequestConfiguration] = None) -> Optional[ServiceHealthIssueCollectionResponse]:
         """
-        Retrieve serviceHealthIssue resources from the issues navigation property. This operation retrieves information about all service health issues that exist for the tenant.
+        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServiceHealthIssueCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/serviceannouncement-list-issues?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class IssuesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ServiceHealthIssueCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ServiceHealthIssue] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ServiceHealthIssue]:
+    async def post(self,body: Optional[ServiceHealthIssue] = None, request_configuration: Optional[IssuesRequestBuilderPostRequestConfiguration] = None) -> Optional[ServiceHealthIssue]:
         """
         Create new navigation property to issues for admin
         param body: The request body
@@ -88,9 +86,9 @@ class IssuesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ServiceHealthIssue, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[IssuesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve serviceHealthIssue resources from the issues navigation property. This operation retrieves information about all service health issues that exist for the tenant.
+        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class IssuesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ServiceHealthIssue] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ServiceHealthIssue] = None, request_configuration: Optional[IssuesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to issues for admin
         param body: The request body
@@ -136,7 +134,7 @@ class IssuesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IssuesRequestBuilderGetQueryParameters():
         """
-        Retrieve serviceHealthIssue resources from the issues navigation property. This operation retrieves information about all service health issues that exist for the tenant.
+        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class IssuesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IssuesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[IssuesRequestBuilder.IssuesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IssuesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

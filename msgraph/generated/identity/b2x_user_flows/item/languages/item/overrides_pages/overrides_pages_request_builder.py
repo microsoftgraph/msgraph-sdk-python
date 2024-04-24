@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["userFlowLanguagePage%2Did"] = user_flow_language_page_id
         return UserFlowLanguagePageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserFlowLanguagePageCollectionResponse]:
+    async def get(self,request_configuration: Optional[OverridesPagesRequestBuilderGetRequestConfiguration] = None) -> Optional[UserFlowLanguagePageCollectionResponse]:
         """
-        Get the userFlowLanguagePage resources from the overridesPages navigation property. These pages are used to customize the values shown to the user during a user journey in a user flow.
+        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows you to modify the content of the page, any other modification isn't allowed (creation or deletion of pages).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserFlowLanguagePageCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/userflowlanguageconfiguration-list-overridespages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserFlowLanguagePageCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UserFlowLanguagePage] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserFlowLanguagePage]:
+    async def post(self,body: Optional[UserFlowLanguagePage] = None, request_configuration: Optional[OverridesPagesRequestBuilderPostRequestConfiguration] = None) -> Optional[UserFlowLanguagePage]:
         """
         Create new navigation property to overridesPages for identity
         param body: The request body
@@ -88,9 +86,9 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserFlowLanguagePage, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[OverridesPagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the userFlowLanguagePage resources from the overridesPages navigation property. These pages are used to customize the values shown to the user during a user journey in a user flow.
+        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows you to modify the content of the page, any other modification isn't allowed (creation or deletion of pages).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UserFlowLanguagePage] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserFlowLanguagePage] = None, request_configuration: Optional[OverridesPagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to overridesPages for identity
         param body: The request body
@@ -136,7 +134,7 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OverridesPagesRequestBuilderGetQueryParameters():
         """
-        Get the userFlowLanguagePage resources from the overridesPages navigation property. These pages are used to customize the values shown to the user during a user journey in a user flow.
+        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows you to modify the content of the page, any other modification isn't allowed (creation or deletion of pages).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class OverridesPagesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class OverridesPagesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[OverridesPagesRequestBuilder.OverridesPagesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class OverridesPagesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

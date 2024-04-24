@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,12 +27,11 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/deviceManagementPartners/{deviceManagementPartner%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a deviceManagementPartner.
+        Delete navigation property deviceManagementPartners for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicemanagementpartner-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -47,12 +45,11 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceManagementPartner]:
+    async def get(self,request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagementPartner]:
         """
-        Read properties and relationships of the deviceManagementPartner object.
+        The list of Device Management Partners configured by the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagementPartner]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicemanagementpartner-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,13 +65,12 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceManagementPartner, error_mapping)
     
-    async def patch(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceManagementPartner]:
+    async def patch(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceManagementPartner]:
         """
-        Update the properties of a deviceManagementPartner object.
+        Update the navigation property deviceManagementPartners in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagementPartner]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicemanagementpartner-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,9 +88,9 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceManagementPartner, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a deviceManagementPartner.
+        Delete navigation property deviceManagementPartners for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,9 +99,9 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceManagementPartner object.
+        The list of Device Management Partners configured by the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,9 +110,9 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceManagementPartner object.
+        Update the navigation property deviceManagementPartners in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -148,10 +144,20 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
 
         return TerminateRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceManagementPartnerItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class DeviceManagementPartnerItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceManagementPartner object.
+        The list of Device Management Partners configured by the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -173,5 +179,28 @@ class DeviceManagementPartnerItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceManagementPartnerItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DeviceManagementPartnerItemRequestBuilder.DeviceManagementPartnerItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceManagementPartnerItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

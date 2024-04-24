@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class AppRoleAssignedToRequestBuilder(BaseRequestBuilder):
         url_tpl_params["appRoleAssignment%2Did"] = app_role_assignment_id
         return AppRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppRoleAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[AppRoleAssignedToRequestBuilderGetRequestConfiguration] = None) -> Optional[AppRoleAssignmentCollectionResponse]:
         """
-        Retrieve a list of appRoleAssignment that users, groups, or client service principals have been granted for the given resource service principal. For example, if the resource service principal is the service principal for the Microsoft Graph API, this will return all service principals that have been granted any app-only permissions to Microsoft Graph. If the resource service principal is an application that has app roles granted to users and groups, this will return all the users and groups assigned app roles for this application.
+        App role assignments for this app or service, granted to users, groups, and other service principals. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignmentCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-list-approleassignedto?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class AppRoleAssignedToRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppRoleAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppRoleAssignment]:
+    async def post(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignedToRequestBuilderPostRequestConfiguration] = None) -> Optional[AppRoleAssignment]:
         """
-        Assign an app role for a resource service principal, to a user, group, or client service principal. App roles that are assigned to service principals are also known as application permissions. Application permissions can be granted directly with app role assignments, or through a consent experience. To grant an app role assignment, you need three identifiers:
+        Create new navigation property to appRoleAssignedTo for servicePrincipals
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignedto?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class AppRoleAssignedToRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppRoleAssignment, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AppRoleAssignedToRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of appRoleAssignment that users, groups, or client service principals have been granted for the given resource service principal. For example, if the resource service principal is the service principal for the Microsoft Graph API, this will return all service principals that have been granted any app-only permissions to Microsoft Graph. If the resource service principal is an application that has app roles granted to users and groups, this will return all the users and groups assigned app roles for this application.
+        App role assignments for this app or service, granted to users, groups, and other service principals. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class AppRoleAssignedToRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignedToRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Assign an app role for a resource service principal, to a user, group, or client service principal. App roles that are assigned to service principals are also known as application permissions. Application permissions can be granted directly with app role assignments, or through a consent experience. To grant an app role assignment, you need three identifiers:
+        Create new navigation property to appRoleAssignedTo for servicePrincipals
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class AppRoleAssignedToRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AppRoleAssignedToRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of appRoleAssignment that users, groups, or client service principals have been granted for the given resource service principal. For example, if the resource service principal is the service principal for the Microsoft Graph API, this will return all service principals that have been granted any app-only permissions to Microsoft Graph. If the resource service principal is an application that has app roles granted to users and groups, this will return all the users and groups assigned app roles for this application.
+        App role assignments for this app or service, granted to users, groups, and other service principals. Supports $expand.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class AppRoleAssignedToRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AppRoleAssignedToRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AppRoleAssignedToRequestBuilder.AppRoleAssignedToRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AppRoleAssignedToRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

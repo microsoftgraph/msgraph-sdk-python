@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -45,12 +44,11 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["identityProvider%2Did"] = identity_provider_id
         return IdentityProviderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityProviderCollectionResponse]:
+    async def get(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityProviderCollectionResponse]:
         """
-        Get the identity providers in a b2xIdentityUserFlow object.
+        The identity providers included in the user flow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityProviderCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/b2xidentityuserflow-list-identityproviders?view=graph-rest-1.0
         """
         warn("The identityProvider API is deprecated and will stop returning data on March 2023. Please use the new identityProviderBase API. as of 2021-05/identityProvider", DeprecationWarning)
         request_info = self.to_get_request_information(
@@ -67,9 +65,9 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IdentityProviderCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the identity providers in a b2xIdentityUserFlow object.
+        The identity providers included in the user flow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IdentityProvidersRequestBuilderGetQueryParameters():
         """
-        Get the identity providers in a b2xIdentityUserFlow object.
+        The identity providers included in the user flow.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -153,6 +151,19 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IdentityProvidersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[IdentityProvidersRequestBuilder.IdentityProvidersRequestBuilderGetQueryParameters] = None
 
     
 

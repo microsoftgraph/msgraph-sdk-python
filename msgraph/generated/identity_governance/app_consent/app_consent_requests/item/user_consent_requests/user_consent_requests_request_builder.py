@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -57,12 +56,11 @@ class UserConsentRequestsRequestBuilder(BaseRequestBuilder):
 
         return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserConsentRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[UserConsentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[UserConsentRequestCollectionResponse]:
         """
-        Retrieve a collection of userConsentRequest objects and their properties.
+        A list of pending user consent requests. Supports $filter (eq).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserConsentRequestCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/appconsentrequest-list-userconsentrequests?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -78,7 +76,7 @@ class UserConsentRequestsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserConsentRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UserConsentRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserConsentRequest]:
+    async def post(self,body: Optional[UserConsentRequest] = None, request_configuration: Optional[UserConsentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[UserConsentRequest]:
         """
         Create new navigation property to userConsentRequests for identityGovernance
         param body: The request body
@@ -101,9 +99,9 @@ class UserConsentRequestsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserConsentRequest, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UserConsentRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a collection of userConsentRequest objects and their properties.
+        A list of pending user consent requests. Supports $filter (eq).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +110,7 @@ class UserConsentRequestsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UserConsentRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserConsentRequest] = None, request_configuration: Optional[UserConsentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to userConsentRequests for identityGovernance
         param body: The request body
@@ -149,7 +147,7 @@ class UserConsentRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserConsentRequestsRequestBuilderGetQueryParameters():
         """
-        Retrieve a collection of userConsentRequest objects and their properties.
+        A list of pending user consent requests. Supports $filter (eq).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -201,5 +199,28 @@ class UserConsentRequestsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserConsentRequestsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UserConsentRequestsRequestBuilder.UserConsentRequestsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserConsentRequestsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/planner/plans/{plannerPlan%2Did}/tasks/{plannerTask%2Did}/assignedToTaskBoardFormat{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[AssignedToTaskBoardFormatRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property assignedToTaskBoardFormat for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,12 +44,11 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PlannerAssignedToTaskBoardTaskFormat]:
+    async def get(self,request_configuration: Optional[AssignedToTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerAssignedToTaskBoardTaskFormat]:
         """
-        Retrieve the properties and relationships of a plannerAssignedToTaskBoardTaskFormat object.
+        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerAssignedToTaskBoardTaskFormat]
-        Find more info here: https://learn.microsoft.com/graph/api/plannerassignedtotaskboardtaskformat-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +64,12 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PlannerAssignedToTaskBoardTaskFormat, error_mapping)
     
-    async def patch(self,body: Optional[PlannerAssignedToTaskBoardTaskFormat] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PlannerAssignedToTaskBoardTaskFormat]:
+    async def patch(self,body: Optional[PlannerAssignedToTaskBoardTaskFormat] = None, request_configuration: Optional[AssignedToTaskBoardFormatRequestBuilderPatchRequestConfiguration] = None) -> Optional[PlannerAssignedToTaskBoardTaskFormat]:
         """
         Update the navigation property assignedToTaskBoardFormat in groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerAssignedToTaskBoardTaskFormat]
-        Find more info here: https://learn.microsoft.com/graph/api/plannerassignedtotaskboardtaskformat-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,7 +87,7 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PlannerAssignedToTaskBoardTaskFormat, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[AssignedToTaskBoardFormatRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property assignedToTaskBoardFormat for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +98,9 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AssignedToTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a plannerAssignedToTaskBoardTaskFormat object.
+        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +109,7 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[PlannerAssignedToTaskBoardTaskFormat] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PlannerAssignedToTaskBoardTaskFormat] = None, request_configuration: Optional[AssignedToTaskBoardFormatRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property assignedToTaskBoardFormat in groups
         param body: The request body
@@ -137,10 +134,20 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return AssignedToTaskBoardFormatRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AssignedToTaskBoardFormatRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class AssignedToTaskBoardFormatRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a plannerAssignedToTaskBoardTaskFormat object.
+        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -162,5 +169,28 @@ class AssignedToTaskBoardFormatRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AssignedToTaskBoardFormatRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AssignedToTaskBoardFormatRequestBuilder.AssignedToTaskBoardFormatRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AssignedToTaskBoardFormatRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

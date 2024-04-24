@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class UserStateSummaryRequestBuilder(BaseRequestBuilder):
         url_tpl_params["userInstallStateSummary%2Did"] = user_install_state_summary_id
         return UserInstallStateSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserInstallStateSummaryCollectionResponse]:
+    async def get(self,request_configuration: Optional[UserStateSummaryRequestBuilderGetRequestConfiguration] = None) -> Optional[UserInstallStateSummaryCollectionResponse]:
         """
-        List properties and relationships of the userInstallStateSummary objects.
+        The list of installation states for this eBook.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserInstallStateSummaryCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-userinstallstatesummary-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class UserStateSummaryRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserInstallStateSummaryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UserInstallStateSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserInstallStateSummary]:
+    async def post(self,body: Optional[UserInstallStateSummary] = None, request_configuration: Optional[UserStateSummaryRequestBuilderPostRequestConfiguration] = None) -> Optional[UserInstallStateSummary]:
         """
-        Create a new userInstallStateSummary object.
+        Create new navigation property to userStateSummary for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserInstallStateSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-userinstallstatesummary-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class UserStateSummaryRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserInstallStateSummary, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UserStateSummaryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the userInstallStateSummary objects.
+        The list of installation states for this eBook.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class UserStateSummaryRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UserInstallStateSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserInstallStateSummary] = None, request_configuration: Optional[UserStateSummaryRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new userInstallStateSummary object.
+        Create new navigation property to userStateSummary for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class UserStateSummaryRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserStateSummaryRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the userInstallStateSummary objects.
+        The list of installation states for this eBook.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class UserStateSummaryRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserStateSummaryRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UserStateSummaryRequestBuilder.UserStateSummaryRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserStateSummaryRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

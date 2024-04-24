@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/chats/{chat%2Did}/members/{conversationMember%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ConversationMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove a conversationMember from a chat.
+        Delete navigation property members for chats
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/chat-delete-members?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -46,12 +44,11 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConversationMember]:
+    async def get(self,request_configuration: Optional[ConversationMemberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ConversationMember]:
         """
-        Retrieve a conversationMember from a chat or channel.
+        A collection of all the members in the chat. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationMember]
-        Find more info here: https://learn.microsoft.com/graph/api/conversationmember-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +64,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ConversationMember, error_mapping)
     
-    async def patch(self,body: Optional[ConversationMember] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConversationMember]:
+    async def patch(self,body: Optional[ConversationMember] = None, request_configuration: Optional[ConversationMemberItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ConversationMember]:
         """
         Update the navigation property members in chats
         param body: The request body
@@ -90,9 +87,9 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ConversationMember, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[ConversationMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a conversationMember from a chat.
+        Delete navigation property members for chats
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,9 +98,9 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ConversationMemberItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a conversationMember from a chat or channel.
+        A collection of all the members in the chat. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +109,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ConversationMember] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ConversationMember] = None, request_configuration: Optional[ConversationMemberItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property members in chats
         param body: The request body
@@ -137,10 +134,20 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return ConversationMemberItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ConversationMemberItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class ConversationMemberItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a conversationMember from a chat or channel.
+        A collection of all the members in the chat. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -162,5 +169,28 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ConversationMemberItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ConversationMemberItemRequestBuilder.ConversationMemberItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ConversationMemberItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

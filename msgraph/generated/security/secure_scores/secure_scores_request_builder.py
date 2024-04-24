@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class SecureScoresRequestBuilder(BaseRequestBuilder):
         url_tpl_params["secureScore%2Did"] = secure_score_id
         return SecureScoreItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SecureScoreCollectionResponse]:
+    async def get(self,request_configuration: Optional[SecureScoresRequestBuilderGetRequestConfiguration] = None) -> Optional[SecureScoreCollectionResponse]:
         """
-        Retrieve a list of secureScore objects.
+        Get secureScores from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SecureScoreCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-list-securescores?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class SecureScoresRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SecureScoreCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[SecureScore] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SecureScore]:
+    async def post(self,body: Optional[SecureScore] = None, request_configuration: Optional[SecureScoresRequestBuilderPostRequestConfiguration] = None) -> Optional[SecureScore]:
         """
         Create new navigation property to secureScores for security
         param body: The request body
@@ -88,9 +86,9 @@ class SecureScoresRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SecureScore, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[SecureScoresRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of secureScore objects.
+        Get secureScores from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class SecureScoresRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[SecureScore] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[SecureScore] = None, request_configuration: Optional[SecureScoresRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to secureScores for security
         param body: The request body
@@ -136,7 +134,7 @@ class SecureScoresRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SecureScoresRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of secureScore objects.
+        Get secureScores from security
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class SecureScoresRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SecureScoresRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[SecureScoresRequestBuilder.SecureScoresRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SecureScoresRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

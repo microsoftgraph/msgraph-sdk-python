@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class WhoisRecordsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["whoisRecord%2Did"] = whois_record_id
         return WhoisRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WhoisRecordCollectionResponse]:
+    async def get(self,request_configuration: Optional[WhoisRecordsRequestBuilderGetRequestConfiguration] = None) -> Optional[WhoisRecordCollectionResponse]:
         """
-        Get a list of whoisRecord objects.
+        A list of whoisRecord objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WhoisRecordCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-threatintelligence-list-whoisrecords?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class WhoisRecordsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WhoisRecordCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[WhoisRecord] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WhoisRecord]:
+    async def post(self,body: Optional[WhoisRecord] = None, request_configuration: Optional[WhoisRecordsRequestBuilderPostRequestConfiguration] = None) -> Optional[WhoisRecord]:
         """
         Create new navigation property to whoisRecords for security
         param body: The request body
@@ -88,9 +86,9 @@ class WhoisRecordsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WhoisRecord, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[WhoisRecordsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of whoisRecord objects.
+        A list of whoisRecord objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class WhoisRecordsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[WhoisRecord] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WhoisRecord] = None, request_configuration: Optional[WhoisRecordsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to whoisRecords for security
         param body: The request body
@@ -136,7 +134,7 @@ class WhoisRecordsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WhoisRecordsRequestBuilderGetQueryParameters():
         """
-        Get a list of whoisRecord objects.
+        A list of whoisRecord objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class WhoisRecordsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WhoisRecordsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[WhoisRecordsRequestBuilder.WhoisRecordsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WhoisRecordsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

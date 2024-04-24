@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identity/conditionalAccess/policies/{conditionalAccessPolicy%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a conditionalAccessPolicy object.
+        Delete navigation property policies for identity
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/conditionalaccesspolicy-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -46,12 +44,11 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConditionalAccessPolicy]:
+    async def get(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ConditionalAccessPolicy]:
         """
-        Retrieve the properties and relationships of a conditionalAccessPolicy object.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConditionalAccessPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/conditionalaccesspolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,13 +64,12 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ConditionalAccessPolicy, error_mapping)
     
-    async def patch(self,body: Optional[ConditionalAccessPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConditionalAccessPolicy]:
+    async def patch(self,body: Optional[ConditionalAccessPolicy] = None, request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ConditionalAccessPolicy]:
         """
-        Update the properties of a conditionalAccessPolicy object.
+        Update the navigation property policies in identity
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConditionalAccessPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/conditionalaccesspolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,9 +87,9 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ConditionalAccessPolicy, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a conditionalAccessPolicy object.
+        Delete navigation property policies for identity
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,9 +98,9 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a conditionalAccessPolicy object.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,9 +109,9 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ConditionalAccessPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ConditionalAccessPolicy] = None, request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a conditionalAccessPolicy object.
+        Update the navigation property policies in identity
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,10 +134,20 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return ConditionalAccessPolicyItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ConditionalAccessPolicyItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class ConditionalAccessPolicyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a conditionalAccessPolicy object.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -163,5 +169,28 @@ class ConditionalAccessPolicyItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ConditionalAccessPolicyItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ConditionalAccessPolicyItemRequestBuilder.ConditionalAccessPolicyItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ConditionalAccessPolicyItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

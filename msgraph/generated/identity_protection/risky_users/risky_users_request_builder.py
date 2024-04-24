@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -46,12 +45,11 @@ class RiskyUsersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["riskyUser%2Did"] = risky_user_id
         return RiskyUserItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RiskyUserCollectionResponse]:
+    async def get(self,request_configuration: Optional[RiskyUsersRequestBuilderGetRequestConfiguration] = None) -> Optional[RiskyUserCollectionResponse]:
         """
-        Get a list of the riskyUser objects and their properties.
+        Users that are flagged as at-risk by Microsoft Entra ID Protection.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RiskyUserCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/riskyuser-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +65,7 @@ class RiskyUsersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RiskyUserCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[RiskyUser] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[RiskyUser]:
+    async def post(self,body: Optional[RiskyUser] = None, request_configuration: Optional[RiskyUsersRequestBuilderPostRequestConfiguration] = None) -> Optional[RiskyUser]:
         """
         Create new navigation property to riskyUsers for identityProtection
         param body: The request body
@@ -90,9 +88,9 @@ class RiskyUsersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RiskyUser, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RiskyUsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the riskyUser objects and their properties.
+        Users that are flagged as at-risk by Microsoft Entra ID Protection.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,7 +99,7 @@ class RiskyUsersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[RiskyUser] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[RiskyUser] = None, request_configuration: Optional[RiskyUsersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to riskyUsers for identityProtection
         param body: The request body
@@ -156,7 +154,7 @@ class RiskyUsersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RiskyUsersRequestBuilderGetQueryParameters():
         """
-        Get a list of the riskyUser objects and their properties.
+        Users that are flagged as at-risk by Microsoft Entra ID Protection.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -208,5 +206,28 @@ class RiskyUsersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RiskyUsersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[RiskyUsersRequestBuilder.RiskyUsersRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RiskyUsersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

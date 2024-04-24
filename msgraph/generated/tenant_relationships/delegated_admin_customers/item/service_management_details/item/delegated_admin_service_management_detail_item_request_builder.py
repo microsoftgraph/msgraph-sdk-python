@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class DelegatedAdminServiceManagementDetailItemRequestBuilder(BaseRequestBuilder
         """
         super().__init__(request_adapter, "{+baseurl}/tenantRelationships/delegatedAdminCustomers/{delegatedAdminCustomer%2Did}/serviceManagementDetails/{delegatedAdminServiceManagementDetail%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property serviceManagementDetails for tenantRelationships
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +44,7 @@ class DelegatedAdminServiceManagementDetailItemRequestBuilder(BaseRequestBuilder
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminServiceManagementDetail]:
+    async def get(self,request_configuration: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminServiceManagementDetail]:
         """
         Contains the management details of a service in the customer tenant that's managed by delegated administration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class DelegatedAdminServiceManagementDetailItemRequestBuilder(BaseRequestBuilder
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminServiceManagementDetail, error_mapping)
     
-    async def patch(self,body: Optional[DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminServiceManagementDetail]:
+    async def patch(self,body: Optional[DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DelegatedAdminServiceManagementDetail]:
         """
         Update the navigation property serviceManagementDetails in tenantRelationships
         param body: The request body
@@ -88,7 +87,7 @@ class DelegatedAdminServiceManagementDetailItemRequestBuilder(BaseRequestBuilder
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminServiceManagementDetail, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property serviceManagementDetails for tenantRelationships
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +98,7 @@ class DelegatedAdminServiceManagementDetailItemRequestBuilder(BaseRequestBuilder
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Contains the management details of a service in the customer tenant that's managed by delegated administration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +109,7 @@ class DelegatedAdminServiceManagementDetailItemRequestBuilder(BaseRequestBuilder
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property serviceManagementDetails in tenantRelationships
         param body: The request body
@@ -134,6 +133,16 @@ class DelegatedAdminServiceManagementDetailItemRequestBuilder(BaseRequestBuilder
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return DelegatedAdminServiceManagementDetailItemRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DelegatedAdminServiceManagementDetailItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class DelegatedAdminServiceManagementDetailItemRequestBuilderGetQueryParameters():
@@ -160,5 +169,28 @@ class DelegatedAdminServiceManagementDetailItemRequestBuilder(BaseRequestBuilder
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DelegatedAdminServiceManagementDetailItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DelegatedAdminServiceManagementDetailItemRequestBuilder.DelegatedAdminServiceManagementDetailItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DelegatedAdminServiceManagementDetailItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

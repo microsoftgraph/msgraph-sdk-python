@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class DetailsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/planner/buckets/{plannerBucket%2Did}/tasks/{plannerTask%2Did}/details{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[DetailsRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property details for planner
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,12 +44,11 @@ class DetailsRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PlannerTaskDetails]:
+    async def get(self,request_configuration: Optional[DetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerTaskDetails]:
         """
-        Retrieve the properties and relationships of a plannerTaskDetails object.
+        Read-only. Nullable. More details about the task.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerTaskDetails]
-        Find more info here: https://learn.microsoft.com/graph/api/plannertaskdetails-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +64,12 @@ class DetailsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PlannerTaskDetails, error_mapping)
     
-    async def patch(self,body: Optional[PlannerTaskDetails] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PlannerTaskDetails]:
+    async def patch(self,body: Optional[PlannerTaskDetails] = None, request_configuration: Optional[DetailsRequestBuilderPatchRequestConfiguration] = None) -> Optional[PlannerTaskDetails]:
         """
         Update the navigation property details in planner
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerTaskDetails]
-        Find more info here: https://learn.microsoft.com/graph/api/plannertaskdetails-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,7 +87,7 @@ class DetailsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PlannerTaskDetails, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[DetailsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property details for planner
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +98,9 @@ class DetailsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DetailsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a plannerTaskDetails object.
+        Read-only. Nullable. More details about the task.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +109,7 @@ class DetailsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[PlannerTaskDetails] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PlannerTaskDetails] = None, request_configuration: Optional[DetailsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property details in planner
         param body: The request body
@@ -137,10 +134,20 @@ class DetailsRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return DetailsRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DetailsRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class DetailsRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a plannerTaskDetails object.
+        Read-only. Nullable. More details about the task.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -162,5 +169,28 @@ class DetailsRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DetailsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DetailsRequestBuilder.DetailsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DetailsRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

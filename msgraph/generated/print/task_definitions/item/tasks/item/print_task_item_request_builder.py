@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +28,7 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/print/taskDefinitions/{printTaskDefinition%2Did}/tasks/{printTask%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[PrintTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property tasks for print
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,12 +46,11 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintTask]:
+    async def get(self,request_configuration: Optional[PrintTaskItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintTask]:
         """
-        Get details about a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        A list of tasks that have been created based on this definition. The list includes currently running tasks and recently completed tasks. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintTask]
-        Find more info here: https://learn.microsoft.com/graph/api/printtask-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,13 +66,12 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrintTask, error_mapping)
     
-    async def patch(self,body: Optional[PrintTask] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintTask]:
+    async def patch(self,body: Optional[PrintTask] = None, request_configuration: Optional[PrintTaskItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PrintTask]:
         """
-        Update a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        Update the navigation property tasks in print
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintTask]
-        Find more info here: https://learn.microsoft.com/graph/api/printtaskdefinition-update-task?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +89,7 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrintTask, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[PrintTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property tasks for print
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,9 +100,9 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[PrintTaskItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get details about a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        A list of tasks that have been created based on this definition. The list includes currently running tasks and recently completed tasks. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,9 +111,9 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[PrintTask] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PrintTask] = None, request_configuration: Optional[PrintTaskItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        Update the navigation property tasks in print
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -157,10 +154,20 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
 
         return TriggerRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PrintTaskItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class PrintTaskItemRequestBuilderGetQueryParameters():
         """
-        Get details about a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        A list of tasks that have been created based on this definition. The list includes currently running tasks and recently completed tasks. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -182,5 +189,28 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PrintTaskItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[PrintTaskItemRequestBuilder.PrintTaskItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PrintTaskItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

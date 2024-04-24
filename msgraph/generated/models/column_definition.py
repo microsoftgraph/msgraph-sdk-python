@@ -66,7 +66,7 @@ class ColumnDefinition(Entity):
     is_sealed: Optional[bool] = None
     # This column's data is looked up from another source in the site.
     lookup: Optional[LookupColumn] = None
-    # The API-facing name of the column as it appears in the [fields][] on a [listItem][]. For the user-facing name, see displayName.
+    # The API-facing name of the column as it appears in the fields on a listItem. For the user-facing name, see displayName.
     name: Optional[str] = None
     # This column stores number values.
     number: Optional[NumberColumn] = None

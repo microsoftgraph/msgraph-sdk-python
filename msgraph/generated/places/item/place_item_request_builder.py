@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +28,7 @@ class PlaceItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/places/{place%2Did}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[PlaceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete entity from places
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +46,7 @@ class PlaceItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def patch(self,body: Optional[Place] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Place]:
+    async def patch(self,body: Optional[Place] = None, request_configuration: Optional[PlaceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Place]:
         """
         Update the properties of place object, which can be a room or roomList. You can identify the room or roomList by specifying the id or emailAddress property.
         param body: The request body
@@ -70,7 +70,7 @@ class PlaceItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Place, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[PlaceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete entity from places
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -81,7 +81,7 @@ class PlaceItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Place] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Place] = None, request_configuration: Optional[PlaceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of place object, which can be a room or roomList. You can identify the room or roomList by specifying the id or emailAddress property.
         param body: The request body
@@ -123,5 +123,25 @@ class PlaceItemRequestBuilder(BaseRequestBuilder):
         from .graph_room_list.graph_room_list_request_builder import GraphRoomListRequestBuilder
 
         return GraphRoomListRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PlaceItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PlaceItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

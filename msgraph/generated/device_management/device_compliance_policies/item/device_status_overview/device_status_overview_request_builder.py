@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class DeviceStatusOverviewRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicy%2Did}/deviceStatusOverview{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[DeviceStatusOverviewRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property deviceStatusOverview for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,12 +44,11 @@ class DeviceStatusOverviewRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceComplianceDeviceOverview]:
+    async def get(self,request_configuration: Optional[DeviceStatusOverviewRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceComplianceDeviceOverview]:
         """
-        Read properties and relationships of the deviceComplianceDeviceOverview object.
+        Device compliance devices status overview
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceDeviceOverview]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancedeviceoverview-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +64,12 @@ class DeviceStatusOverviewRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceComplianceDeviceOverview, error_mapping)
     
-    async def patch(self,body: Optional[DeviceComplianceDeviceOverview] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceComplianceDeviceOverview]:
+    async def patch(self,body: Optional[DeviceComplianceDeviceOverview] = None, request_configuration: Optional[DeviceStatusOverviewRequestBuilderPatchRequestConfiguration] = None) -> Optional[DeviceComplianceDeviceOverview]:
         """
-        Update the properties of a deviceComplianceDeviceOverview object.
+        Update the navigation property deviceStatusOverview in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceDeviceOverview]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancedeviceoverview-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,7 +87,7 @@ class DeviceStatusOverviewRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceComplianceDeviceOverview, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[DeviceStatusOverviewRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property deviceStatusOverview for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +98,9 @@ class DeviceStatusOverviewRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DeviceStatusOverviewRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceComplianceDeviceOverview object.
+        Device compliance devices status overview
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,9 +109,9 @@ class DeviceStatusOverviewRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[DeviceComplianceDeviceOverview] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DeviceComplianceDeviceOverview] = None, request_configuration: Optional[DeviceStatusOverviewRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceComplianceDeviceOverview object.
+        Update the navigation property deviceStatusOverview in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,10 +134,20 @@ class DeviceStatusOverviewRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return DeviceStatusOverviewRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceStatusOverviewRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class DeviceStatusOverviewRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceComplianceDeviceOverview object.
+        Device compliance devices status overview
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -162,5 +169,28 @@ class DeviceStatusOverviewRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceStatusOverviewRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DeviceStatusOverviewRequestBuilder.DeviceStatusOverviewRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceStatusOverviewRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class AddGroupRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/groupLifecyclePolicies/{groupLifecyclePolicy%2Did}/addGroup", path_parameters)
     
-    async def post(self,body: Optional[AddGroupPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AddGroupPostResponse]:
+    async def post(self,body: Optional[AddGroupPostRequestBody] = None, request_configuration: Optional[AddGroupRequestBuilderPostRequestConfiguration] = None) -> Optional[AddGroupPostResponse]:
         """
         Adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected.
         param body: The request body
@@ -51,7 +51,7 @@ class AddGroupRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AddGroupPostResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[AddGroupPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AddGroupPostRequestBody] = None, request_configuration: Optional[AddGroupRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected.
         param body: The request body
@@ -75,5 +75,15 @@ class AddGroupRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AddGroupRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AddGroupRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

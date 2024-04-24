@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +27,7 @@ class PermissionRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/shares/{sharedDriveItem%2Did}/permission{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[PermissionRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property permission for shares
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,7 +45,7 @@ class PermissionRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Permission]:
+    async def get(self,request_configuration: Optional[PermissionRequestBuilderGetRequestConfiguration] = None) -> Optional[Permission]:
         """
         Used to access the permission representing the underlying sharing link
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,7 +65,7 @@ class PermissionRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Permission, error_mapping)
     
-    async def patch(self,body: Optional[Permission] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Permission]:
+    async def patch(self,body: Optional[Permission] = None, request_configuration: Optional[PermissionRequestBuilderPatchRequestConfiguration] = None) -> Optional[Permission]:
         """
         Update the navigation property permission in shares
         param body: The request body
@@ -89,7 +88,7 @@ class PermissionRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Permission, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[PermissionRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property permission for shares
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,7 +99,7 @@ class PermissionRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[PermissionRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Used to access the permission representing the underlying sharing link
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +110,7 @@ class PermissionRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Permission] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Permission] = None, request_configuration: Optional[PermissionRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property permission in shares
         param body: The request body
@@ -145,6 +144,16 @@ class PermissionRequestBuilder(BaseRequestBuilder):
 
         return GrantRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PermissionRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class PermissionRequestBuilderGetQueryParameters():
         """
@@ -170,5 +179,28 @@ class PermissionRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PermissionRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[PermissionRequestBuilder.PermissionRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PermissionRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

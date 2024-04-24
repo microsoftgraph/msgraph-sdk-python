@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class RemoveRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/remove", path_parameters)
     
-    async def post(self,body: Optional[RemovePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[RemovePostResponse]:
+    async def post(self,body: Optional[RemovePostRequestBody] = None, request_configuration: Optional[RemoveRequestBuilderPostRequestConfiguration] = None) -> Optional[RemovePostResponse]:
         """
         Unfollow a user's site or multiple sites.
         param body: The request body
@@ -51,7 +51,7 @@ class RemoveRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RemovePostResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[RemovePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[RemovePostRequestBody] = None, request_configuration: Optional[RemoveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Unfollow a user's site or multiple sites.
         param body: The request body
@@ -75,5 +75,15 @@ class RemoveRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return RemoveRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RemoveRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

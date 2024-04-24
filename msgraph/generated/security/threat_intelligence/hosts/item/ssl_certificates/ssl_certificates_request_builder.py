@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,12 +42,11 @@ class SslCertificatesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["hostSslCertificate%2Did"] = host_ssl_certificate_id
         return HostSslCertificateItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[HostSslCertificateCollectionResponse]:
+    async def get(self,request_configuration: Optional[SslCertificatesRequestBuilderGetRequestConfiguration] = None) -> Optional[HostSslCertificateCollectionResponse]:
         """
-        Get a list of hostSslCertificate objects from the host navigation property.
+        The hostSslCertificates that are associated with this host.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostSslCertificateCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-host-list-sslcertificates?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -64,9 +62,9 @@ class SslCertificatesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, HostSslCertificateCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[SslCertificatesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of hostSslCertificate objects from the host navigation property.
+        The hostSslCertificates that are associated with this host.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +95,7 @@ class SslCertificatesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SslCertificatesRequestBuilderGetQueryParameters():
         """
-        Get a list of hostSslCertificate objects from the host navigation property.
+        The hostSslCertificates that are associated with this host.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -148,6 +146,19 @@ class SslCertificatesRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SslCertificatesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[SslCertificatesRequestBuilder.SslCertificatesRequestBuilderGetQueryParameters] = None
 
     
 

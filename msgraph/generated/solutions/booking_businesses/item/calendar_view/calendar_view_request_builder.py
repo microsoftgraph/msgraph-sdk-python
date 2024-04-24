@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         url_tpl_params["bookingAppointment%2Did"] = booking_appointment_id
         return BookingAppointmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingAppointmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingAppointmentCollectionResponse]:
         """
         The set of appointments of this business in a specified date range. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingAppointmentCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-list-calendarview?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, BookingAppointmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[BookingAppointment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingAppointment]:
+    async def post(self,body: Optional[BookingAppointment] = None, request_configuration: Optional[CalendarViewRequestBuilderPostRequestConfiguration] = None) -> Optional[BookingAppointment]:
         """
         Create new navigation property to calendarView for solutions
         param body: The request body
@@ -88,7 +86,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, BookingAppointment, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The set of appointments of this business in a specified date range. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +97,7 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[BookingAppointment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[BookingAppointment] = None, request_configuration: Optional[CalendarViewRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to calendarView for solutions
         param body: The request body
@@ -198,5 +196,28 @@ class CalendarViewRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CalendarViewRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[CalendarViewRequestBuilder.CalendarViewRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CalendarViewRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

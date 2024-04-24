@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ShiftsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["shift%2Did"] = shift_id
         return ShiftItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ShiftCollectionResponse]:
+    async def get(self,request_configuration: Optional[ShiftsRequestBuilderGetRequestConfiguration] = None) -> Optional[ShiftCollectionResponse]:
         """
-        Get the list of shift instances in a schedule.
+        The shifts in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ShiftCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/schedule-list-shifts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class ShiftsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ShiftCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Shift] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Shift]:
+    async def post(self,body: Optional[Shift] = None, request_configuration: Optional[ShiftsRequestBuilderPostRequestConfiguration] = None) -> Optional[Shift]:
         """
-        Create a new shift instance in a schedule. The duration of a shift cannot be less than 1 minute or longer than 24 hours.
+        Create new navigation property to shifts for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Shift]
-        Find more info here: https://learn.microsoft.com/graph/api/schedule-post-shifts?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class ShiftsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Shift, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ShiftsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of shift instances in a schedule.
+        The shifts in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class ShiftsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Shift] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Shift] = None, request_configuration: Optional[ShiftsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new shift instance in a schedule. The duration of a shift cannot be less than 1 minute or longer than 24 hours.
+        Create new navigation property to shifts for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class ShiftsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ShiftsRequestBuilderGetQueryParameters():
         """
-        Get the list of shift instances in a schedule.
+        The shifts in the schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -184,5 +181,28 @@ class ShiftsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ShiftsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ShiftsRequestBuilder.ShiftsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ShiftsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -46,12 +45,11 @@ class RegisteredDevicesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["directoryObject%2Did"] = directory_object_id
         return DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryObjectCollectionResponse]:
+    async def get(self,request_configuration: Optional[RegisteredDevicesRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryObjectCollectionResponse]:
         """
         Devices that are registered for the user. Read-only. Nullable. Supports $expand and returns up to 100 objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-registereddevices?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +65,7 @@ class RegisteredDevicesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DirectoryObjectCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RegisteredDevicesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Devices that are registered for the user. Read-only. Nullable. Supports $expand and returns up to 100 objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -178,6 +176,19 @@ class RegisteredDevicesRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RegisteredDevicesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[RegisteredDevicesRequestBuilder.RegisteredDevicesRequestBuilderGetQueryParameters] = None
 
     
 

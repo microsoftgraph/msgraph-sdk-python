@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class FilePlanReferenceTemplateRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/labels/retentionLabels/{retentionLabel%2Did}/descriptors/filePlanReferenceTemplate{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[FilePlanReferenceTemplate]:
+    async def get(self,request_configuration: Optional[FilePlanReferenceTemplateRequestBuilderGetRequestConfiguration] = None) -> Optional[FilePlanReferenceTemplate]:
         """
         Specifies a unique alpha-numeric identifier for an organization’s retention schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,7 +46,7 @@ class FilePlanReferenceTemplateRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, FilePlanReferenceTemplate, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[FilePlanReferenceTemplateRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Specifies a unique alpha-numeric identifier for an organization’s retention schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -92,6 +91,19 @@ class FilePlanReferenceTemplateRequestBuilder(BaseRequestBuilder):
 
         # Select properties to be returned
         select: Optional[List[str]] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FilePlanReferenceTemplateRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[FilePlanReferenceTemplateRequestBuilder.FilePlanReferenceTemplateRequestBuilderGetQueryParameters] = None
 
     
 

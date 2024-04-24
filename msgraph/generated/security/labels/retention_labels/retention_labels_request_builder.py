@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class RetentionLabelsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["retentionLabel%2Did"] = retention_label_id
         return RetentionLabelItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RetentionLabelCollectionResponse]:
+    async def get(self,request_configuration: Optional[RetentionLabelsRequestBuilderGetRequestConfiguration] = None) -> Optional[RetentionLabelCollectionResponse]:
         """
-        Get a list of the retentionLabel objects and their properties.
+        Represents how customers can manage their data, whether and for how long to retain or delete it.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RetentionLabelCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-list-retentionlabel?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class RetentionLabelsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RetentionLabelCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[RetentionLabel] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[RetentionLabel]:
+    async def post(self,body: Optional[RetentionLabel] = None, request_configuration: Optional[RetentionLabelsRequestBuilderPostRequestConfiguration] = None) -> Optional[RetentionLabel]:
         """
-        Create a new retentionLabel object. To create a disposition review stage, include the actionAfterRetentionPeriod property in the request body with one of the possible values specified.
+        Create new navigation property to retentionLabels for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RetentionLabel]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-post-retentionlabel?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class RetentionLabelsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RetentionLabel, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RetentionLabelsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the retentionLabel objects and their properties.
+        Represents how customers can manage their data, whether and for how long to retain or delete it.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class RetentionLabelsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[RetentionLabel] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[RetentionLabel] = None, request_configuration: Optional[RetentionLabelsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new retentionLabel object. To create a disposition review stage, include the actionAfterRetentionPeriod property in the request body with one of the possible values specified.
+        Create new navigation property to retentionLabels for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class RetentionLabelsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RetentionLabelsRequestBuilderGetQueryParameters():
         """
-        Get a list of the retentionLabel objects and their properties.
+        Represents how customers can manage their data, whether and for how long to retain or delete it.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class RetentionLabelsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RetentionLabelsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[RetentionLabelsRequestBuilder.RetentionLabelsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RetentionLabelsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

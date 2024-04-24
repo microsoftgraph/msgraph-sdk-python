@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class FederationConfigurationRequestBuilder(BaseRequestBuilder):
         url_tpl_params["internalDomainFederation%2Did"] = internal_domain_federation_id
         return InternalDomainFederationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[InternalDomainFederationCollectionResponse]:
+    async def get(self,request_configuration: Optional[FederationConfigurationRequestBuilderGetRequestConfiguration] = None) -> Optional[InternalDomainFederationCollectionResponse]:
         """
-        Read the properties of the internalDomainFederation objects for the domain. This API returns only one object in the collection.
+        Domain settings configured by a customer when federated with Microsoft Entra ID. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[InternalDomainFederationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/domain-list-federationconfiguration?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class FederationConfigurationRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, InternalDomainFederationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[InternalDomainFederation] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[InternalDomainFederation]:
+    async def post(self,body: Optional[InternalDomainFederation] = None, request_configuration: Optional[FederationConfigurationRequestBuilderPostRequestConfiguration] = None) -> Optional[InternalDomainFederation]:
         """
-        Create a new internalDomainFederation object.
+        Create new navigation property to federationConfiguration for domains
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[InternalDomainFederation]
-        Find more info here: https://learn.microsoft.com/graph/api/domain-post-federationconfiguration?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class FederationConfigurationRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, InternalDomainFederation, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[FederationConfigurationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties of the internalDomainFederation objects for the domain. This API returns only one object in the collection.
+        Domain settings configured by a customer when federated with Microsoft Entra ID. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class FederationConfigurationRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[InternalDomainFederation] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[InternalDomainFederation] = None, request_configuration: Optional[FederationConfigurationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new internalDomainFederation object.
+        Create new navigation property to federationConfiguration for domains
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class FederationConfigurationRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FederationConfigurationRequestBuilderGetQueryParameters():
         """
-        Read the properties of the internalDomainFederation objects for the domain. This API returns only one object in the collection.
+        Domain settings configured by a customer when federated with Microsoft Entra ID. Supports $expand.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class FederationConfigurationRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FederationConfigurationRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[FederationConfigurationRequestBuilder.FederationConfigurationRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FederationConfigurationRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

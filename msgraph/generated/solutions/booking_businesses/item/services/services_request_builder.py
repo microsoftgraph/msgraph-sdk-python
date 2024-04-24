@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ServicesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["bookingService%2Did"] = booking_service_id
         return BookingServiceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingServiceCollectionResponse]:
+    async def get(self,request_configuration: Optional[ServicesRequestBuilderGetRequestConfiguration] = None) -> Optional[BookingServiceCollectionResponse]:
         """
-        Get a list of bookingService objects in the specified bookingBusiness.
+        All the services offered by this business. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingServiceCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-list-services?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class ServicesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, BookingServiceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[BookingService] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingService]:
+    async def post(self,body: Optional[BookingService] = None, request_configuration: Optional[ServicesRequestBuilderPostRequestConfiguration] = None) -> Optional[BookingService]:
         """
-        Create a new bookingService for the specified bookingBusiness.
+        Create new navigation property to services for solutions
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingService]
-        Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-post-services?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class ServicesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, BookingService, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ServicesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of bookingService objects in the specified bookingBusiness.
+        All the services offered by this business. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class ServicesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[BookingService] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[BookingService] = None, request_configuration: Optional[ServicesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new bookingService for the specified bookingBusiness.
+        Create new navigation property to services for solutions
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class ServicesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ServicesRequestBuilderGetQueryParameters():
         """
-        Get a list of bookingService objects in the specified bookingBusiness.
+        All the services offered by this business. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class ServicesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ServicesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ServicesRequestBuilder.ServicesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ServicesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

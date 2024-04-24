@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["scopedRoleMembership%2Did"] = scoped_role_membership_id
         return ScopedRoleMembershipItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ScopedRoleMembershipCollectionResponse]:
+    async def get(self,request_configuration: Optional[ScopedRoleMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[ScopedRoleMembershipCollectionResponse]:
         """
-        List Microsoft Entra role assignments with administrative unit scope.
+        Scoped-role members of this administrative unit.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ScopedRoleMembershipCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-list-scopedrolemembers?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ScopedRoleMembershipCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ScopedRoleMembership]:
+    async def post(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembersRequestBuilderPostRequestConfiguration] = None) -> Optional[ScopedRoleMembership]:
         """
-        Assign a Microsoft Entra role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Microsoft Entra roles with administrative unit scope.
+        Create new navigation property to scopedRoleMembers for directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ScopedRoleMembership]
-        Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-post-scopedrolemembers?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ScopedRoleMembership, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ScopedRoleMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List Microsoft Entra role assignments with administrative unit scope.
+        Scoped-role members of this administrative unit.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Assign a Microsoft Entra role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Microsoft Entra roles with administrative unit scope.
+        Create new navigation property to scopedRoleMembers for directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ScopedRoleMembersRequestBuilderGetQueryParameters():
         """
-        List Microsoft Entra role assignments with administrative unit scope.
+        Scoped-role members of this administrative unit.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class ScopedRoleMembersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ScopedRoleMembersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ScopedRoleMembersRequestBuilder.ScopedRoleMembersRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ScopedRoleMembersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

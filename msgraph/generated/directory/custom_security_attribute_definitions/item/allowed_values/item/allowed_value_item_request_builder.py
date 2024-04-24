@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/directory/customSecurityAttributeDefinitions/{customSecurityAttributeDefinition%2Did}/allowedValues/{allowedValue%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[AllowedValueItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property allowedValues for directory
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,12 +44,11 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AllowedValue]:
+    async def get(self,request_configuration: Optional[AllowedValueItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AllowedValue]:
         """
-        Read the properties and relationships of an allowedValue object.
+        Values that are predefined for this custom security attribute. This navigation property is not returned by default and must be specified in an $expand query. For example, /directory/customSecurityAttributeDefinitions?$expand=allowedValues.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AllowedValue]
-        Find more info here: https://learn.microsoft.com/graph/api/allowedvalue-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +64,12 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AllowedValue, error_mapping)
     
-    async def patch(self,body: Optional[AllowedValue] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AllowedValue]:
+    async def patch(self,body: Optional[AllowedValue] = None, request_configuration: Optional[AllowedValueItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AllowedValue]:
         """
-        Update the properties of an allowedValue object.
+        Update the navigation property allowedValues in directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AllowedValue]
-        Find more info here: https://learn.microsoft.com/graph/api/allowedvalue-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,7 +87,7 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AllowedValue, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[AllowedValueItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property allowedValues for directory
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +98,9 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AllowedValueItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an allowedValue object.
+        Values that are predefined for this custom security attribute. This navigation property is not returned by default and must be specified in an $expand query. For example, /directory/customSecurityAttributeDefinitions?$expand=allowedValues.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,9 +109,9 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AllowedValue] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AllowedValue] = None, request_configuration: Optional[AllowedValueItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an allowedValue object.
+        Update the navigation property allowedValues in directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,10 +134,20 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return AllowedValueItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AllowedValueItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class AllowedValueItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an allowedValue object.
+        Values that are predefined for this custom security attribute. This navigation property is not returned by default and must be specified in an $expand query. For example, /directory/customSecurityAttributeDefinitions?$expand=allowedValues.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -162,5 +169,28 @@ class AllowedValueItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AllowedValueItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AllowedValueItemRequestBuilder.AllowedValueItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AllowedValueItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

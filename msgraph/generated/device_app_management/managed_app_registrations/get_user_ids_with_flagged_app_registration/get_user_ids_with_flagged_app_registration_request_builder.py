@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,11 +26,12 @@ class GetUserIdsWithFlaggedAppRegistrationRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/managedAppRegistrations/getUserIdsWithFlaggedAppRegistration(){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[GetUserIdsWithFlaggedAppRegistrationGetResponse]:
+    async def get(self,request_configuration: Optional[GetUserIdsWithFlaggedAppRegistrationRequestBuilderGetRequestConfiguration] = None) -> Optional[GetUserIdsWithFlaggedAppRegistrationGetResponse]:
         """
-        Invoke function getUserIdsWithFlaggedAppRegistration
+        Not yet documented
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetUserIdsWithFlaggedAppRegistrationGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-managedappregistration-getuseridswithflaggedappregistration?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -47,9 +47,9 @@ class GetUserIdsWithFlaggedAppRegistrationRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, GetUserIdsWithFlaggedAppRegistrationGetResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GetUserIdsWithFlaggedAppRegistrationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getUserIdsWithFlaggedAppRegistration
+        Not yet documented
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -71,7 +71,7 @@ class GetUserIdsWithFlaggedAppRegistrationRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GetUserIdsWithFlaggedAppRegistrationRequestBuilderGetQueryParameters():
         """
-        Invoke function getUserIdsWithFlaggedAppRegistration
+        Not yet documented
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -107,6 +107,19 @@ class GetUserIdsWithFlaggedAppRegistrationRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GetUserIdsWithFlaggedAppRegistrationRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[GetUserIdsWithFlaggedAppRegistrationRequestBuilder.GetUserIdsWithFlaggedAppRegistrationRequestBuilderGetQueryParameters] = None
 
     
 

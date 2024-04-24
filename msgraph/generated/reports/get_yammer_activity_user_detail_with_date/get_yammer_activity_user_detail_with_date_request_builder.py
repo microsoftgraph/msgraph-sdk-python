@@ -1,7 +1,7 @@
 from __future__ import annotations
 import datetime
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,11 +29,12 @@ class GetYammerActivityUserDetailWithDateRequestBuilder(BaseRequestBuilder):
             path_parameters['date'] = str(date)
         super().__init__(request_adapter, "{+baseurl}/reports/getYammerActivityUserDetail(date={date})", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
+    async def get(self,request_configuration: Optional[GetYammerActivityUserDetailWithDateRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
-        Invoke function getYammerActivityUserDetail
+        Get details about Yammer activity by user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getyammeractivityuserdetail?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -47,9 +48,9 @@ class GetYammerActivityUserDetailWithDateRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GetYammerActivityUserDetailWithDateRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getYammerActivityUserDetail
+        Get details about Yammer activity by user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -67,5 +68,15 @@ class GetYammerActivityUserDetailWithDateRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GetYammerActivityUserDetailWithDateRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GetYammerActivityUserDetailWithDateRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

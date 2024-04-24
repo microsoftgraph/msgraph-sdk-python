@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +27,7 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/directory/customSecurityAttributeDefinitions/{customSecurityAttributeDefinition%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[CustomSecurityAttributeDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property customSecurityAttributeDefinitions for directory
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,12 +45,11 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CustomSecurityAttributeDefinition]:
+    async def get(self,request_configuration: Optional[CustomSecurityAttributeDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CustomSecurityAttributeDefinition]:
         """
-        Read the properties and relationships of a customSecurityAttributeDefinition object.
+        Schema of a custom security attributes (key-value pairs).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomSecurityAttributeDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/customsecurityattributedefinition-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,13 +65,12 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CustomSecurityAttributeDefinition, error_mapping)
     
-    async def patch(self,body: Optional[CustomSecurityAttributeDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CustomSecurityAttributeDefinition]:
+    async def patch(self,body: Optional[CustomSecurityAttributeDefinition] = None, request_configuration: Optional[CustomSecurityAttributeDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[CustomSecurityAttributeDefinition]:
         """
-        Update the properties of a customSecurityAttributeDefinition object.
+        Update the navigation property customSecurityAttributeDefinitions in directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomSecurityAttributeDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/customsecurityattributedefinition-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +88,7 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CustomSecurityAttributeDefinition, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[CustomSecurityAttributeDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property customSecurityAttributeDefinitions for directory
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,9 +99,9 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[CustomSecurityAttributeDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a customSecurityAttributeDefinition object.
+        Schema of a custom security attributes (key-value pairs).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,9 +110,9 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[CustomSecurityAttributeDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[CustomSecurityAttributeDefinition] = None, request_configuration: Optional[CustomSecurityAttributeDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a customSecurityAttributeDefinition object.
+        Update the navigation property customSecurityAttributeDefinitions in directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,10 +144,20 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder(BaseRequestBuilder):
 
         return AllowedValuesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CustomSecurityAttributeDefinitionItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class CustomSecurityAttributeDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a customSecurityAttributeDefinition object.
+        Schema of a custom security attributes (key-value pairs).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -172,5 +179,28 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CustomSecurityAttributeDefinitionItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[CustomSecurityAttributeDefinitionItemRequestBuilder.CustomSecurityAttributeDefinitionItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CustomSecurityAttributeDefinitionItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

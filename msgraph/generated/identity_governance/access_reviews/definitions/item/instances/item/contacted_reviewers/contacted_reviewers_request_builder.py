@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ContactedReviewersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["accessReviewReviewer%2Did"] = access_review_reviewer_id
         return AccessReviewReviewerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessReviewReviewerCollectionResponse]:
+    async def get(self,request_configuration: Optional[ContactedReviewersRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessReviewReviewerCollectionResponse]:
         """
-        Get the reviewers for an access review instance, irrespective of whether or not they have received a notification. The reviewers are represented by an accessReviewReviewer object. A list of zero or more objects are returned, including all of their nested properties.
+        Returns the collection of reviewers who were contacted to complete this review. While the reviewers and fallbackReviewers properties of the accessReviewScheduleDefinition might specify group owners or managers as reviewers, contactedReviewers returns their individual identities. Supports $select. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessReviewReviewerCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/accessreviewinstance-list-contactedreviewers?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class ContactedReviewersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessReviewReviewerCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AccessReviewReviewer] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessReviewReviewer]:
+    async def post(self,body: Optional[AccessReviewReviewer] = None, request_configuration: Optional[ContactedReviewersRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessReviewReviewer]:
         """
         Create new navigation property to contactedReviewers for identityGovernance
         param body: The request body
@@ -88,9 +86,9 @@ class ContactedReviewersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessReviewReviewer, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ContactedReviewersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the reviewers for an access review instance, irrespective of whether or not they have received a notification. The reviewers are represented by an accessReviewReviewer object. A list of zero or more objects are returned, including all of their nested properties.
+        Returns the collection of reviewers who were contacted to complete this review. While the reviewers and fallbackReviewers properties of the accessReviewScheduleDefinition might specify group owners or managers as reviewers, contactedReviewers returns their individual identities. Supports $select. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class ContactedReviewersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AccessReviewReviewer] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AccessReviewReviewer] = None, request_configuration: Optional[ContactedReviewersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to contactedReviewers for identityGovernance
         param body: The request body
@@ -136,7 +134,7 @@ class ContactedReviewersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ContactedReviewersRequestBuilderGetQueryParameters():
         """
-        Get the reviewers for an access review instance, irrespective of whether or not they have received a notification. The reviewers are represented by an accessReviewReviewer object. A list of zero or more objects are returned, including all of their nested properties.
+        Returns the collection of reviewers who were contacted to complete this review. While the reviewers and fallbackReviewers properties of the accessReviewScheduleDefinition might specify group owners or managers as reviewers, contactedReviewers returns their individual identities. Supports $select. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class ContactedReviewersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ContactedReviewersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ContactedReviewersRequestBuilder.ContactedReviewersRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ContactedReviewersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

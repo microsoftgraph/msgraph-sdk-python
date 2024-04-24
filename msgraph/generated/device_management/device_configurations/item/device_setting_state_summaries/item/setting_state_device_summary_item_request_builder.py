@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/deviceConfigurations/{deviceConfiguration%2Did}/deviceSettingStateSummaries/{settingStateDeviceSummary%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[SettingStateDeviceSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a settingStateDeviceSummary.
+        Delete navigation property deviceSettingStateSummaries for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-settingstatedevicesummary-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -46,12 +44,11 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SettingStateDeviceSummary]:
+    async def get(self,request_configuration: Optional[SettingStateDeviceSummaryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SettingStateDeviceSummary]:
         """
-        Read properties and relationships of the settingStateDeviceSummary object.
+        Device Configuration Setting State Device Summary
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SettingStateDeviceSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-settingstatedevicesummary-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,13 +64,12 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SettingStateDeviceSummary, error_mapping)
     
-    async def patch(self,body: Optional[SettingStateDeviceSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SettingStateDeviceSummary]:
+    async def patch(self,body: Optional[SettingStateDeviceSummary] = None, request_configuration: Optional[SettingStateDeviceSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[SettingStateDeviceSummary]:
         """
-        Update the properties of a settingStateDeviceSummary object.
+        Update the navigation property deviceSettingStateSummaries in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SettingStateDeviceSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-settingstatedevicesummary-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,9 +87,9 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SettingStateDeviceSummary, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[SettingStateDeviceSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a settingStateDeviceSummary.
+        Delete navigation property deviceSettingStateSummaries for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,9 +98,9 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[SettingStateDeviceSummaryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the settingStateDeviceSummary object.
+        Device Configuration Setting State Device Summary
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,9 +109,9 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[SettingStateDeviceSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[SettingStateDeviceSummary] = None, request_configuration: Optional[SettingStateDeviceSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a settingStateDeviceSummary object.
+        Update the navigation property deviceSettingStateSummaries in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,10 +134,20 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return SettingStateDeviceSummaryItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SettingStateDeviceSummaryItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class SettingStateDeviceSummaryItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the settingStateDeviceSummary object.
+        Device Configuration Setting State Device Summary
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -163,5 +169,28 @@ class SettingStateDeviceSummaryItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SettingStateDeviceSummaryItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[SettingStateDeviceSummaryItemRequestBuilder.SettingStateDeviceSummaryItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SettingStateDeviceSummaryItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

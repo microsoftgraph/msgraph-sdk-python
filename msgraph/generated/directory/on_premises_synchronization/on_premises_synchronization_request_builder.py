@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,9 +43,9 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
         url_tpl_params["onPremisesDirectorySynchronization%2Did"] = on_premises_directory_synchronization_id
         return OnPremisesDirectorySynchronizationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OnPremisesDirectorySynchronizationCollectionResponse]:
+    async def get(self,request_configuration: Optional[OnPremisesSynchronizationRequestBuilderGetRequestConfiguration] = None) -> Optional[OnPremisesDirectorySynchronizationCollectionResponse]:
         """
-        Read the properties and relationships of an onPremisesDirectorySynchronization object.
+        A container for on-premises directory synchronization functionalities that are available for the organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnPremisesDirectorySynchronizationCollectionResponse]
         """
@@ -64,7 +63,7 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OnPremisesDirectorySynchronizationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[OnPremisesDirectorySynchronization] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[OnPremisesDirectorySynchronization]:
+    async def post(self,body: Optional[OnPremisesDirectorySynchronization] = None, request_configuration: Optional[OnPremisesSynchronizationRequestBuilderPostRequestConfiguration] = None) -> Optional[OnPremisesDirectorySynchronization]:
         """
         Create new navigation property to onPremisesSynchronization for directory
         param body: The request body
@@ -87,9 +86,9 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OnPremisesDirectorySynchronization, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[OnPremisesSynchronizationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an onPremisesDirectorySynchronization object.
+        A container for on-premises directory synchronization functionalities that are available for the organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -98,7 +97,7 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[OnPremisesDirectorySynchronization] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[OnPremisesDirectorySynchronization] = None, request_configuration: Optional[OnPremisesSynchronizationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to onPremisesSynchronization for directory
         param body: The request body
@@ -135,7 +134,7 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OnPremisesSynchronizationRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an onPremisesDirectorySynchronization object.
+        A container for on-premises directory synchronization functionalities that are available for the organization.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -187,5 +186,28 @@ class OnPremisesSynchronizationRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class OnPremisesSynchronizationRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[OnPremisesSynchronizationRequestBuilder.OnPremisesSynchronizationRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class OnPremisesSynchronizationRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

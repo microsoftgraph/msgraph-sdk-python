@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class IncludesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["permissionGrantConditionSet%2Did"] = permission_grant_condition_set_id
         return PermissionGrantConditionSetItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PermissionGrantConditionSetCollectionResponse]:
+    async def get(self,request_configuration: Optional[IncludesRequestBuilderGetRequestConfiguration] = None) -> Optional[PermissionGrantConditionSetCollectionResponse]:
         """
-        Retrieve the condition sets which are *included* in a permissionGrantPolicy.
+        Condition sets that are included in this permission grant policy. Automatically expanded on GET.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PermissionGrantConditionSetCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/permissiongrantpolicy-list-includes?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class IncludesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PermissionGrantConditionSetCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PermissionGrantConditionSet]:
+    async def post(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[IncludesRequestBuilderPostRequestConfiguration] = None) -> Optional[PermissionGrantConditionSet]:
         """
-        Add conditions under which a permission grant event is *included* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the includes collection of a  permissionGrantPolicy.
+        Create new navigation property to includes for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PermissionGrantConditionSet]
-        Find more info here: https://learn.microsoft.com/graph/api/permissiongrantpolicy-post-includes?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class IncludesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PermissionGrantConditionSet, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[IncludesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the condition sets which are *included* in a permissionGrantPolicy.
+        Condition sets that are included in this permission grant policy. Automatically expanded on GET.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class IncludesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PermissionGrantConditionSet] = None, request_configuration: Optional[IncludesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add conditions under which a permission grant event is *included* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the includes collection of a  permissionGrantPolicy.
+        Create new navigation property to includes for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class IncludesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IncludesRequestBuilderGetQueryParameters():
         """
-        Retrieve the condition sets which are *included* in a permissionGrantPolicy.
+        Condition sets that are included in this permission grant policy. Automatically expanded on GET.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class IncludesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IncludesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[IncludesRequestBuilder.IncludesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IncludesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

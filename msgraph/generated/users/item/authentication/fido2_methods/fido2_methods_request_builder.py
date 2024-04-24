@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,12 +42,11 @@ class Fido2MethodsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["fido2AuthenticationMethod%2Did"] = fido2_authentication_method_id
         return Fido2AuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Fido2AuthenticationMethodCollectionResponse]:
+    async def get(self,request_configuration: Optional[Fido2MethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[Fido2AuthenticationMethodCollectionResponse]:
         """
-        Retrieve a list of a user's FIDO2 Security Key Authentication Method objects and their properties.
+        Represents the FIDO2 security keys registered to a user for authentication.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Fido2AuthenticationMethodCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/fido2authenticationmethod-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -64,9 +62,9 @@ class Fido2MethodsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Fido2AuthenticationMethodCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[Fido2MethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of a user's FIDO2 Security Key Authentication Method objects and their properties.
+        Represents the FIDO2 security keys registered to a user for authentication.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +95,7 @@ class Fido2MethodsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class Fido2MethodsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of a user's FIDO2 Security Key Authentication Method objects and their properties.
+        Represents the FIDO2 security keys registered to a user for authentication.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -148,6 +146,19 @@ class Fido2MethodsRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class Fido2MethodsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[Fido2MethodsRequestBuilder.Fido2MethodsRequestBuilderGetQueryParameters] = None
 
     
 

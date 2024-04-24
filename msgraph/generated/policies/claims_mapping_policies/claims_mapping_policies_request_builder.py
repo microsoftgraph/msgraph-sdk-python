@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["claimsMappingPolicy%2Did"] = claims_mapping_policy_id
         return ClaimsMappingPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ClaimsMappingPolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[ClaimsMappingPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[ClaimsMappingPolicyCollectionResponse]:
         """
-        Get a list of claimsMappingPolicy objects.
+        The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ClaimsMappingPolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/claimsmappingpolicy-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ClaimsMappingPolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ClaimsMappingPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ClaimsMappingPolicy]:
+    async def post(self,body: Optional[ClaimsMappingPolicy] = None, request_configuration: Optional[ClaimsMappingPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[ClaimsMappingPolicy]:
         """
-        Create a new claimsMappingPolicy object.
+        Create new navigation property to claimsMappingPolicies for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ClaimsMappingPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/claimsmappingpolicy-post-claimsmappingpolicies?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ClaimsMappingPolicy, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ClaimsMappingPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of claimsMappingPolicy objects.
+        The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ClaimsMappingPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ClaimsMappingPolicy] = None, request_configuration: Optional[ClaimsMappingPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new claimsMappingPolicy object.
+        Create new navigation property to claimsMappingPolicies for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ClaimsMappingPoliciesRequestBuilderGetQueryParameters():
         """
-        Get a list of claimsMappingPolicy objects.
+        The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ClaimsMappingPoliciesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ClaimsMappingPoliciesRequestBuilder.ClaimsMappingPoliciesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ClaimsMappingPoliciesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

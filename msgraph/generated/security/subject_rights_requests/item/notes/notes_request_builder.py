@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class NotesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["authoredNote%2Did"] = authored_note_id
         return AuthoredNoteItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthoredNoteCollectionResponse]:
+    async def get(self,request_configuration: Optional[NotesRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthoredNoteCollectionResponse]:
         """
-        Get the list of authored notes assoicated with a subject rights request. 
+        List of notes associated with the request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthoredNoteCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/subjectrightsrequest-list-notes?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class NotesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AuthoredNoteCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AuthoredNote] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthoredNote]:
+    async def post(self,body: Optional[AuthoredNote] = None, request_configuration: Optional[NotesRequestBuilderPostRequestConfiguration] = None) -> Optional[AuthoredNote]:
         """
-        Create a new authoredNote object.
+        Create new navigation property to notes for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthoredNote]
-        Find more info here: https://learn.microsoft.com/graph/api/subjectrightsrequest-post-notes?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class NotesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AuthoredNote, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[NotesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of authored notes assoicated with a subject rights request. 
+        List of notes associated with the request.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class NotesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AuthoredNote] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AuthoredNote] = None, request_configuration: Optional[NotesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new authoredNote object.
+        Create new navigation property to notes for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class NotesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class NotesRequestBuilderGetQueryParameters():
         """
-        Get the list of authored notes assoicated with a subject rights request. 
+        List of notes associated with the request.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class NotesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class NotesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[NotesRequestBuilder.NotesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class NotesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

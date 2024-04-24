@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -31,7 +30,7 @@ class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder(BaseRequ
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/privilegedAccess/group/eligibilityScheduleRequests/{privilegedAccessGroupEligibilityScheduleRequest%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property eligibilityScheduleRequests for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -49,12 +48,11 @@ class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder(BaseRequ
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupEligibilityScheduleRequest]:
+    async def get(self,request_configuration: Optional[PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PrivilegedAccessGroupEligibilityScheduleRequest]:
         """
-        Read the properties and relationships of a privilegedAccessGroupEligibilityScheduleRequest object.
+        The schedule requests for operations to create, update, delete, extend, and renew an eligibility.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrivilegedAccessGroupEligibilityScheduleRequest]
-        Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroupeligibilityschedulerequest-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,7 +68,7 @@ class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder(BaseRequ
 
         return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupEligibilityScheduleRequest, error_mapping)
     
-    async def patch(self,body: Optional[PrivilegedAccessGroupEligibilityScheduleRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupEligibilityScheduleRequest]:
+    async def patch(self,body: Optional[PrivilegedAccessGroupEligibilityScheduleRequest] = None, request_configuration: Optional[PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PrivilegedAccessGroupEligibilityScheduleRequest]:
         """
         Update the navigation property eligibilityScheduleRequests in identityGovernance
         param body: The request body
@@ -93,7 +91,7 @@ class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder(BaseRequ
 
         return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupEligibilityScheduleRequest, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property eligibilityScheduleRequests for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,9 +102,9 @@ class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder(BaseRequ
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a privilegedAccessGroupEligibilityScheduleRequest object.
+        The schedule requests for operations to create, update, delete, extend, and renew an eligibility.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +113,7 @@ class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder(BaseRequ
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[PrivilegedAccessGroupEligibilityScheduleRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PrivilegedAccessGroupEligibilityScheduleRequest] = None, request_configuration: Optional[PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property eligibilityScheduleRequests in identityGovernance
         param body: The request body
@@ -176,10 +174,20 @@ class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder(BaseRequ
 
         return TargetScheduleRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a privilegedAccessGroupEligibilityScheduleRequest object.
+        The schedule requests for operations to create, update, delete, extend, and renew an eligibility.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -201,5 +209,28 @@ class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder(BaseRequ
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilder.PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PrivilegedAccessGroupEligibilityScheduleRequestItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

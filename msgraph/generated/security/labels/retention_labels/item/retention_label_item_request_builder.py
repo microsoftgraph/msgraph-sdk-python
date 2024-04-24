@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -30,12 +29,11 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/labels/retentionLabels/{retentionLabel%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RetentionLabelItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a retentionLabel object.
+        Delete navigation property retentionLabels for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/security-retentionlabel-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,7 +47,7 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RetentionLabel]:
+    async def get(self,request_configuration: Optional[RetentionLabelItemRequestBuilderGetRequestConfiguration] = None) -> Optional[RetentionLabel]:
         """
         Represents how customers can manage their data, whether and for how long to retain or delete it.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -69,13 +67,12 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RetentionLabel, error_mapping)
     
-    async def patch(self,body: Optional[RetentionLabel] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[RetentionLabel]:
+    async def patch(self,body: Optional[RetentionLabel] = None, request_configuration: Optional[RetentionLabelItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[RetentionLabel]:
         """
-        Update the properties of a retentionLabel object. To update a disposition review stage, include the actionAfterRetentionPeriod property in the request body with one of the possible values specified.
+        Update the navigation property retentionLabels in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RetentionLabel]
-        Find more info here: https://learn.microsoft.com/graph/api/security-retentionlabel-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,9 +90,9 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RetentionLabel, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RetentionLabelItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a retentionLabel object.
+        Delete navigation property retentionLabels for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RetentionLabelItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Represents how customers can manage their data, whether and for how long to retain or delete it.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -115,9 +112,9 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[RetentionLabel] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[RetentionLabel] = None, request_configuration: Optional[RetentionLabelItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a retentionLabel object. To update a disposition review stage, include the actionAfterRetentionPeriod property in the request body with one of the possible values specified.
+        Update the navigation property retentionLabels in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -167,6 +164,16 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
 
         return RetentionEventTypeRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RetentionLabelItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class RetentionLabelItemRequestBuilderGetQueryParameters():
         """
@@ -192,5 +199,28 @@ class RetentionLabelItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RetentionLabelItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[RetentionLabelItemRequestBuilder.RetentionLabelItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RetentionLabelItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

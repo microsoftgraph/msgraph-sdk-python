@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["deviceConfigurationUserStatus%2Did"] = device_configuration_user_status_id
         return DeviceConfigurationUserStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceConfigurationUserStatusCollectionResponse]:
+    async def get(self,request_configuration: Optional[UserStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceConfigurationUserStatusCollectionResponse]:
         """
-        List properties and relationships of the deviceConfigurationUserStatus objects.
+        Device configuration installation status by user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationUserStatusCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-deviceconfigurationuserstatus-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceConfigurationUserStatusCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DeviceConfigurationUserStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceConfigurationUserStatus]:
+    async def post(self,body: Optional[DeviceConfigurationUserStatus] = None, request_configuration: Optional[UserStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceConfigurationUserStatus]:
         """
-        Create a new deviceConfigurationUserStatus object.
+        Create new navigation property to userStatuses for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationUserStatus]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-deviceconfigurationuserstatus-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceConfigurationUserStatus, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UserStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceConfigurationUserStatus objects.
+        Device configuration installation status by user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DeviceConfigurationUserStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceConfigurationUserStatus] = None, request_configuration: Optional[UserStatusesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceConfigurationUserStatus object.
+        Create new navigation property to userStatuses for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserStatusesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceConfigurationUserStatus objects.
+        Device configuration installation status by user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserStatusesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UserStatusesRequestBuilder.UserStatusesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserStatusesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

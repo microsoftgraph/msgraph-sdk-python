@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class GroupLifecyclePoliciesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["groupLifecyclePolicy%2Did"] = group_lifecycle_policy_id
         return GroupLifecyclePolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[GroupLifecyclePolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[GroupLifecyclePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[GroupLifecyclePolicyCollectionResponse]:
         """
-        Retrieves a list of groupLifecyclePolicy objects to which a group belongs.
+        The collection of lifecycle policies for this group. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GroupLifecyclePolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/group-list-grouplifecyclepolicies?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class GroupLifecyclePoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, GroupLifecyclePolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[GroupLifecyclePolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[GroupLifecyclePolicy]:
+    async def post(self,body: Optional[GroupLifecyclePolicy] = None, request_configuration: Optional[GroupLifecyclePoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[GroupLifecyclePolicy]:
         """
         Create new navigation property to groupLifecyclePolicies for groups
         param body: The request body
@@ -88,9 +86,9 @@ class GroupLifecyclePoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, GroupLifecyclePolicy, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GroupLifecyclePoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieves a list of groupLifecyclePolicy objects to which a group belongs.
+        The collection of lifecycle policies for this group. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class GroupLifecyclePoliciesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[GroupLifecyclePolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[GroupLifecyclePolicy] = None, request_configuration: Optional[GroupLifecyclePoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to groupLifecyclePolicies for groups
         param body: The request body
@@ -136,7 +134,7 @@ class GroupLifecyclePoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GroupLifecyclePoliciesRequestBuilderGetQueryParameters():
         """
-        Retrieves a list of groupLifecyclePolicy objects to which a group belongs.
+        The collection of lifecycle policies for this group. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class GroupLifecyclePoliciesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GroupLifecyclePoliciesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[GroupLifecyclePoliciesRequestBuilder.GroupLifecyclePoliciesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GroupLifecyclePoliciesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

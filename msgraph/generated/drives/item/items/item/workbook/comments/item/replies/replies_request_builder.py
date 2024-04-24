@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,9 +43,9 @@ class RepliesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["workbookCommentReply%2Did"] = workbook_comment_reply_id
         return WorkbookCommentReplyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookCommentReplyCollectionResponse]:
+    async def get(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookCommentReplyCollectionResponse]:
         """
-        Retrieve the properties and relationships of workbookCommentReply object.
+        Get replies from drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookCommentReplyCollectionResponse]
         """
@@ -64,7 +63,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookCommentReplyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[WorkbookCommentReply] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookCommentReply]:
+    async def post(self,body: Optional[WorkbookCommentReply] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookCommentReply]:
         """
         Create new navigation property to replies for drives
         param body: The request body
@@ -87,9 +86,9 @@ class RepliesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookCommentReply, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of workbookCommentReply object.
+        Get replies from drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -98,7 +97,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[WorkbookCommentReply] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WorkbookCommentReply] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to replies for drives
         param body: The request body
@@ -135,7 +134,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RepliesRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of workbookCommentReply object.
+        Get replies from drives
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -187,5 +186,28 @@ class RepliesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RepliesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[RepliesRequestBuilder.RepliesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RepliesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

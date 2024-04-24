@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ServiceManagementDetailsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["delegatedAdminServiceManagementDetail%2Did"] = delegated_admin_service_management_detail_id
         return DelegatedAdminServiceManagementDetailItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminServiceManagementDetailCollectionResponse]:
+    async def get(self,request_configuration: Optional[ServiceManagementDetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminServiceManagementDetailCollectionResponse]:
         """
-        Get a list of the delegatedAdminServiceManagementDetail objects and their properties.
+        Contains the management details of a service in the customer tenant that's managed by delegated administration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminServiceManagementDetailCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/delegatedadmincustomer-list-servicemanagementdetails?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class ServiceManagementDetailsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminServiceManagementDetailCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminServiceManagementDetail]:
+    async def post(self,body: Optional[DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[ServiceManagementDetailsRequestBuilderPostRequestConfiguration] = None) -> Optional[DelegatedAdminServiceManagementDetail]:
         """
         Create new navigation property to serviceManagementDetails for tenantRelationships
         param body: The request body
@@ -88,9 +86,9 @@ class ServiceManagementDetailsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminServiceManagementDetail, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ServiceManagementDetailsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the delegatedAdminServiceManagementDetail objects and their properties.
+        Contains the management details of a service in the customer tenant that's managed by delegated administration.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class ServiceManagementDetailsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DelegatedAdminServiceManagementDetail] = None, request_configuration: Optional[ServiceManagementDetailsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to serviceManagementDetails for tenantRelationships
         param body: The request body
@@ -136,7 +134,7 @@ class ServiceManagementDetailsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ServiceManagementDetailsRequestBuilderGetQueryParameters():
         """
-        Get a list of the delegatedAdminServiceManagementDetail objects and their properties.
+        Contains the management details of a service in the customer tenant that's managed by delegated administration.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class ServiceManagementDetailsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ServiceManagementDetailsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ServiceManagementDetailsRequestBuilder.ServiceManagementDetailsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ServiceManagementDetailsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

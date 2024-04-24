@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,12 +27,11 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(BaseRequestBu
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/authentication/microsoftAuthenticatorMethods/{microsoftAuthenticatorAuthenticationMethod%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a microsoftAuthenticatorAuthenticationMethod object.
+        Delete navigation property microsoftAuthenticatorMethods for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/microsoftauthenticatorauthenticationmethod-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -47,12 +45,11 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(BaseRequestBu
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[MicrosoftAuthenticatorAuthenticationMethod]:
+    async def get(self,request_configuration: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[MicrosoftAuthenticatorAuthenticationMethod]:
         """
-        Read the properties and relationships of a microsoftAuthenticatorAuthenticationMethod object.
+        The details of the Microsoft Authenticator app registered to a user for authentication.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MicrosoftAuthenticatorAuthenticationMethod]
-        Find more info here: https://learn.microsoft.com/graph/api/microsoftauthenticatorauthenticationmethod-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,9 +65,9 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(BaseRequestBu
 
         return await self.request_adapter.send_async(request_info, MicrosoftAuthenticatorAuthenticationMethod, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a microsoftAuthenticatorAuthenticationMethod object.
+        Delete navigation property microsoftAuthenticatorMethods for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -79,9 +76,9 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(BaseRequestBu
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a microsoftAuthenticatorAuthenticationMethod object.
+        The details of the Microsoft Authenticator app registered to a user for authentication.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,10 +106,20 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(BaseRequestBu
 
         return DeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a microsoftAuthenticatorAuthenticationMethod object.
+        The details of the Microsoft Authenticator app registered to a user for authentication.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -133,6 +140,19 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(BaseRequestBu
 
         # Select properties to be returned
         select: Optional[List[str]] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder.MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderGetQueryParameters] = None
 
     
 

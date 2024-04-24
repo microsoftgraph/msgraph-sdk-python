@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -32,12 +31,11 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/entitlementManagement/catalogs/{accessPackageCatalog%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete an accessPackageCatalog.
+        Delete navigation property catalogs for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,12 +49,11 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessPackageCatalog]:
+    async def get(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageCatalog]:
         """
-        Retrieve the properties and relationships of an accessPackageCatalog object.
+        A container for access packages.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageCatalog]
-        Find more info here: https://learn.microsoft.com/graph/api/accesspackagecatalog-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,13 +69,12 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessPackageCatalog, error_mapping)
     
-    async def patch(self,body: Optional[AccessPackageCatalog] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessPackageCatalog]:
+    async def patch(self,body: Optional[AccessPackageCatalog] = None, request_configuration: Optional[AccessPackageCatalogItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AccessPackageCatalog]:
         """
-        Update an existing accessPackageCatalog object to change one or more of its properties, such as the display name or description.
+        Update the navigation property catalogs in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AccessPackageCatalog]
-        Find more info here: https://learn.microsoft.com/graph/api/accesspackagecatalog-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,9 +92,9 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessPackageCatalog, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an accessPackageCatalog.
+        Delete navigation property catalogs for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,9 +103,9 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an accessPackageCatalog object.
+        A container for access packages.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,9 +114,9 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AccessPackageCatalog] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AccessPackageCatalog] = None, request_configuration: Optional[AccessPackageCatalogItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update an existing accessPackageCatalog object to change one or more of its properties, such as the display name or description.
+        Update the navigation property catalogs in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -188,10 +184,20 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
 
         return ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class AccessPackageCatalogItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an accessPackageCatalog object.
+        A container for access packages.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -213,5 +219,28 @@ class AccessPackageCatalogItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AccessPackageCatalogItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AccessPackageCatalogItemRequestBuilder.AccessPackageCatalogItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AccessPackageCatalogItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

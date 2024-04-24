@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class AccessAssignmentsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["delegatedAdminAccessAssignment%2Did"] = delegated_admin_access_assignment_id
         return DelegatedAdminAccessAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminAccessAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[AccessAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminAccessAssignmentCollectionResponse]:
         """
-        Get a list of the delegatedAdminAccessAssignment objects and their properties.
+        The access assignments associated with the delegated admin relationship.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminAccessAssignmentCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/delegatedadminrelationship-list-accessassignments?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class AccessAssignmentsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminAccessAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DelegatedAdminAccessAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminAccessAssignment]:
+    async def post(self,body: Optional[DelegatedAdminAccessAssignment] = None, request_configuration: Optional[AccessAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[DelegatedAdminAccessAssignment]:
         """
-        Create a new delegatedAdminAccessAssignment object.
+        Create new navigation property to accessAssignments for tenantRelationships
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminAccessAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/delegatedadminrelationship-post-accessassignments?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class AccessAssignmentsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminAccessAssignment, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AccessAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the delegatedAdminAccessAssignment objects and their properties.
+        The access assignments associated with the delegated admin relationship.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class AccessAssignmentsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DelegatedAdminAccessAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DelegatedAdminAccessAssignment] = None, request_configuration: Optional[AccessAssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new delegatedAdminAccessAssignment object.
+        Create new navigation property to accessAssignments for tenantRelationships
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class AccessAssignmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessAssignmentsRequestBuilderGetQueryParameters():
         """
-        Get a list of the delegatedAdminAccessAssignment objects and their properties.
+        The access assignments associated with the delegated admin relationship.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class AccessAssignmentsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AccessAssignmentsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AccessAssignmentsRequestBuilder.AccessAssignmentsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AccessAssignmentsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

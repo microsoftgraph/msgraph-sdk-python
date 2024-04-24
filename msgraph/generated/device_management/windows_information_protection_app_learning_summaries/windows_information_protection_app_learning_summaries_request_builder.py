@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class WindowsInformationProtectionAppLearningSummariesRequestBuilder(BaseRequest
         url_tpl_params["windowsInformationProtectionAppLearningSummary%2Did"] = windows_information_protection_app_learning_summary_id
         return WindowsInformationProtectionAppLearningSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLearningSummaryCollectionResponse]:
+    async def get(self,request_configuration: Optional[WindowsInformationProtectionAppLearningSummariesRequestBuilderGetRequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLearningSummaryCollectionResponse]:
         """
-        List properties and relationships of the windowsInformationProtectionAppLearningSummary objects.
+        The windows information protection app learning summaries.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsInformationProtectionAppLearningSummaryCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-wip-windowsinformationprotectionapplearningsummary-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class WindowsInformationProtectionAppLearningSummariesRequestBuilder(BaseRequest
 
         return await self.request_adapter.send_async(request_info, WindowsInformationProtectionAppLearningSummaryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[WindowsInformationProtectionAppLearningSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLearningSummary]:
+    async def post(self,body: Optional[WindowsInformationProtectionAppLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionAppLearningSummariesRequestBuilderPostRequestConfiguration] = None) -> Optional[WindowsInformationProtectionAppLearningSummary]:
         """
-        Create a new windowsInformationProtectionAppLearningSummary object.
+        Create new navigation property to windowsInformationProtectionAppLearningSummaries for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WindowsInformationProtectionAppLearningSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-wip-windowsinformationprotectionapplearningsummary-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class WindowsInformationProtectionAppLearningSummariesRequestBuilder(BaseRequest
 
         return await self.request_adapter.send_async(request_info, WindowsInformationProtectionAppLearningSummary, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[WindowsInformationProtectionAppLearningSummariesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the windowsInformationProtectionAppLearningSummary objects.
+        The windows information protection app learning summaries.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class WindowsInformationProtectionAppLearningSummariesRequestBuilder(BaseRequest
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[WindowsInformationProtectionAppLearningSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WindowsInformationProtectionAppLearningSummary] = None, request_configuration: Optional[WindowsInformationProtectionAppLearningSummariesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new windowsInformationProtectionAppLearningSummary object.
+        Create new navigation property to windowsInformationProtectionAppLearningSummaries for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class WindowsInformationProtectionAppLearningSummariesRequestBuilder(BaseRequest
     @dataclass
     class WindowsInformationProtectionAppLearningSummariesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the windowsInformationProtectionAppLearningSummary objects.
+        The windows information protection app learning summaries.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class WindowsInformationProtectionAppLearningSummariesRequestBuilder(BaseRequest
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WindowsInformationProtectionAppLearningSummariesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[WindowsInformationProtectionAppLearningSummariesRequestBuilder.WindowsInformationProtectionAppLearningSummariesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WindowsInformationProtectionAppLearningSummariesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

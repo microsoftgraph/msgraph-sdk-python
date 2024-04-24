@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -57,12 +56,11 @@ class AssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
 
         return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleInstanceCollectionResponse]:
+    async def get(self,request_configuration: Optional[AssignmentScheduleInstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleInstanceCollectionResponse]:
         """
-        Get a list of the privilegedAccessGroupAssignmentScheduleInstance objects and their properties.
+        The instances of assignment schedules to activate a just-in-time access.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrivilegedAccessGroupAssignmentScheduleInstanceCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroup-list-assignmentscheduleinstances?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -78,7 +76,7 @@ class AssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupAssignmentScheduleInstanceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[PrivilegedAccessGroupAssignmentScheduleInstance] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleInstance]:
+    async def post(self,body: Optional[PrivilegedAccessGroupAssignmentScheduleInstance] = None, request_configuration: Optional[AssignmentScheduleInstancesRequestBuilderPostRequestConfiguration] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleInstance]:
         """
         Create new navigation property to assignmentScheduleInstances for identityGovernance
         param body: The request body
@@ -101,9 +99,9 @@ class AssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrivilegedAccessGroupAssignmentScheduleInstance, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AssignmentScheduleInstancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the privilegedAccessGroupAssignmentScheduleInstance objects and their properties.
+        The instances of assignment schedules to activate a just-in-time access.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +110,7 @@ class AssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[PrivilegedAccessGroupAssignmentScheduleInstance] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PrivilegedAccessGroupAssignmentScheduleInstance] = None, request_configuration: Optional[AssignmentScheduleInstancesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to assignmentScheduleInstances for identityGovernance
         param body: The request body
@@ -149,7 +147,7 @@ class AssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AssignmentScheduleInstancesRequestBuilderGetQueryParameters():
         """
-        Get a list of the privilegedAccessGroupAssignmentScheduleInstance objects and their properties.
+        The instances of assignment schedules to activate a just-in-time access.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -201,5 +199,28 @@ class AssignmentScheduleInstancesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AssignmentScheduleInstancesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AssignmentScheduleInstancesRequestBuilder.AssignmentScheduleInstancesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AssignmentScheduleInstancesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

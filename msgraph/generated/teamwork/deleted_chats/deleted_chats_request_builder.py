@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,9 +43,9 @@ class DeletedChatsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["deletedChat%2Did"] = deleted_chat_id
         return DeletedChatItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeletedChatCollectionResponse]:
+    async def get(self,request_configuration: Optional[DeletedChatsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeletedChatCollectionResponse]:
         """
-        Read the properties and relationships of a deletedChat object.
+        A collection of deleted chats.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeletedChatCollectionResponse]
         """
@@ -64,7 +63,7 @@ class DeletedChatsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeletedChatCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DeletedChat] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeletedChat]:
+    async def post(self,body: Optional[DeletedChat] = None, request_configuration: Optional[DeletedChatsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeletedChat]:
         """
         Create new navigation property to deletedChats for teamwork
         param body: The request body
@@ -87,9 +86,9 @@ class DeletedChatsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeletedChat, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DeletedChatsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a deletedChat object.
+        A collection of deleted chats.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -98,7 +97,7 @@ class DeletedChatsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DeletedChat] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeletedChat] = None, request_configuration: Optional[DeletedChatsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to deletedChats for teamwork
         param body: The request body
@@ -135,7 +134,7 @@ class DeletedChatsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeletedChatsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a deletedChat object.
+        A collection of deleted chats.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -187,5 +186,28 @@ class DeletedChatsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeletedChatsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DeletedChatsRequestBuilder.DeletedChatsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeletedChatsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

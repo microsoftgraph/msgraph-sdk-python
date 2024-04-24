@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +26,7 @@ class GenerateDownloadUriRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/accessReviews/historyDefinitions/{accessReviewHistoryDefinition%2Did}/instances/{accessReviewHistoryInstance%2Did}/generateDownloadUri", path_parameters)
     
-    async def post(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessReviewHistoryInstance]:
+    async def post(self,request_configuration: Optional[GenerateDownloadUriRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessReviewHistoryInstance]:
         """
         Generates a URI for an accessReviewHistoryInstance object the status for which is done. Each URI can be used to retrieve the instance's review history data. Each URI is valid for 24 hours and can be retrieved by fetching the downloadUri property from the accessReviewHistoryInstance object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,7 +47,7 @@ class GenerateDownloadUriRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessReviewHistoryInstance, error_mapping)
     
-    def to_post_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,request_configuration: Optional[GenerateDownloadUriRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Generates a URI for an accessReviewHistoryInstance object the status for which is done. Each URI can be used to retrieve the instance's review history data. Each URI is valid for 24 hours and can be retrieved by fetching the downloadUri property from the accessReviewHistoryInstance object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,5 +67,15 @@ class GenerateDownloadUriRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GenerateDownloadUriRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GenerateDownloadUriRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

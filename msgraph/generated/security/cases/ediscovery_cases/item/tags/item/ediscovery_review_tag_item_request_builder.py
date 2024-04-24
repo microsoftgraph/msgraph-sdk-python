@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,12 +28,11 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/tags/{ediscoveryReviewTag%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove an ediscoveryReviewTag object.
+        Delete navigation property tags for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycase-delete-tags?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,12 +46,11 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EdiscoveryReviewTag]:
+    async def get(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryReviewTag]:
         """
-        Read the properties and relationships of an ediscoveryReviewTag object.
+        Returns a list of ediscoveryReviewTag objects associated to this case.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewTag]
-        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoveryreviewtag-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,13 +66,12 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EdiscoveryReviewTag, error_mapping)
     
-    async def patch(self,body: Optional[EdiscoveryReviewTag] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EdiscoveryReviewTag]:
+    async def patch(self,body: Optional[EdiscoveryReviewTag] = None, request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EdiscoveryReviewTag]:
         """
-        Update the properties of an ediscoveryReviewTag object.
+        Update the navigation property tags in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewTag]
-        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoveryreviewtag-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,9 +89,9 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EdiscoveryReviewTag, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove an ediscoveryReviewTag object.
+        Delete navigation property tags for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,9 +100,9 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an ediscoveryReviewTag object.
+        Returns a list of ediscoveryReviewTag objects associated to this case.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,9 +111,9 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[EdiscoveryReviewTag] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EdiscoveryReviewTag] = None, request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an ediscoveryReviewTag object.
+        Update the navigation property tags in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -158,10 +154,20 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
 
         return ParentRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EdiscoveryReviewTagItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class EdiscoveryReviewTagItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an ediscoveryReviewTag object.
+        Returns a list of ediscoveryReviewTag objects associated to this case.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -183,5 +189,28 @@ class EdiscoveryReviewTagItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EdiscoveryReviewTagItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[EdiscoveryReviewTagItemRequestBuilder.EdiscoveryReviewTagItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EdiscoveryReviewTagItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

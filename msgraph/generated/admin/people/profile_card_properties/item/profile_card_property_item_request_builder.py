@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/people/profileCardProperties/{profileCardProperty%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ProfileCardPropertyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete the profileCardProperty object specified by its directoryPropertyName from the organization's profile card, and remove any localized customizations for that property.
+        Delete navigation property profileCardProperties for admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/profilecardproperty-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -46,12 +44,11 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ProfileCardProperty]:
+    async def get(self,request_configuration: Optional[ProfileCardPropertyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ProfileCardProperty]:
         """
-        Retrieve the properties of a profileCardProperty entity. The profileCardProperty is identified by its directoryPropertyName property.
+        Contains a collection of the properties an administrator has defined as visible on the Microsoft 365 profile card.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProfileCardProperty]
-        Find more info here: https://learn.microsoft.com/graph/api/profilecardproperty-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,13 +64,12 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ProfileCardProperty, error_mapping)
     
-    async def patch(self,body: Optional[ProfileCardProperty] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ProfileCardProperty]:
+    async def patch(self,body: Optional[ProfileCardProperty] = None, request_configuration: Optional[ProfileCardPropertyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ProfileCardProperty]:
         """
-        Update the properties of a profileCardProperty object, identified by its directoryPropertyName property.
+        Update the navigation property profileCardProperties in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProfileCardProperty]
-        Find more info here: https://learn.microsoft.com/graph/api/profilecardproperty-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,9 +87,9 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ProfileCardProperty, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[ProfileCardPropertyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete the profileCardProperty object specified by its directoryPropertyName from the organization's profile card, and remove any localized customizations for that property.
+        Delete navigation property profileCardProperties for admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,9 +98,9 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ProfileCardPropertyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of a profileCardProperty entity. The profileCardProperty is identified by its directoryPropertyName property.
+        Contains a collection of the properties an administrator has defined as visible on the Microsoft 365 profile card.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,9 +109,9 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ProfileCardProperty] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ProfileCardProperty] = None, request_configuration: Optional[ProfileCardPropertyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a profileCardProperty object, identified by its directoryPropertyName property.
+        Update the navigation property profileCardProperties in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,10 +134,20 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return ProfileCardPropertyItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ProfileCardPropertyItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class ProfileCardPropertyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of a profileCardProperty entity. The profileCardProperty is identified by its directoryPropertyName property.
+        Contains a collection of the properties an administrator has defined as visible on the Microsoft 365 profile card.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -163,5 +169,28 @@ class ProfileCardPropertyItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ProfileCardPropertyItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ProfileCardPropertyItemRequestBuilder.ProfileCardPropertyItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ProfileCardPropertyItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

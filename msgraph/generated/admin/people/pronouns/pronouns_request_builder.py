@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class PronounsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/people/pronouns{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PronounsSettings]:
+    async def get(self,request_configuration: Optional[PronounsRequestBuilderGetRequestConfiguration] = None) -> Optional[PronounsSettings]:
         """
-        Get the properties of the pronounsSettings resource for an organization.  For more information on settings to manage pronouns support, see Manage pronouns settings for an organization using the Microsoft Graph API.
+        Represents administrator settings that manage the support of pronouns in an organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PronounsSettings]
-        Find more info here: https://learn.microsoft.com/graph/api/peopleadminsettings-list-pronouns?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,13 +46,12 @@ class PronounsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PronounsSettings, error_mapping)
     
-    async def patch(self,body: Optional[PronounsSettings] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PronounsSettings]:
+    async def patch(self,body: Optional[PronounsSettings] = None, request_configuration: Optional[PronounsRequestBuilderPatchRequestConfiguration] = None) -> Optional[PronounsSettings]:
         """
-        Update the properties of a pronounsSettings object in an organization. For more information on settings to manage pronouns support, see Manage pronouns settings for an organization using the Microsoft Graph API.
+        Update the navigation property pronouns in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PronounsSettings]
-        Find more info here: https://learn.microsoft.com/graph/api/pronounssettings-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -72,9 +69,9 @@ class PronounsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PronounsSettings, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[PronounsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties of the pronounsSettings resource for an organization.  For more information on settings to manage pronouns support, see Manage pronouns settings for an organization using the Microsoft Graph API.
+        Represents administrator settings that manage the support of pronouns in an organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -83,9 +80,9 @@ class PronounsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[PronounsSettings] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PronounsSettings] = None, request_configuration: Optional[PronounsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a pronounsSettings object in an organization. For more information on settings to manage pronouns support, see Manage pronouns settings for an organization using the Microsoft Graph API.
+        Update the navigation property pronouns in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +108,7 @@ class PronounsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PronounsRequestBuilderGetQueryParameters():
         """
-        Get the properties of the pronounsSettings resource for an organization.  For more information on settings to manage pronouns support, see Manage pronouns settings for an organization using the Microsoft Graph API.
+        Represents administrator settings that manage the support of pronouns in an organization.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -133,5 +130,28 @@ class PronounsRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PronounsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[PronounsRequestBuilder.PronounsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PronounsRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

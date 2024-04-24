@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class CommsOperationItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/communications/calls/{call%2Did}/operations/{commsOperation%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[CommsOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property operations for communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,12 +44,11 @@ class CommsOperationItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CommsOperation]:
+    async def get(self,request_configuration: Optional[CommsOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CommsOperation]:
         """
-        Get the status of an operation that adds the large gallery view to a call.
+        Get operations from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CommsOperation]
-        Find more info here: https://learn.microsoft.com/graph/api/addlargegalleryviewoperation-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +64,7 @@ class CommsOperationItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CommsOperation, error_mapping)
     
-    async def patch(self,body: Optional[CommsOperation] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CommsOperation]:
+    async def patch(self,body: Optional[CommsOperation] = None, request_configuration: Optional[CommsOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[CommsOperation]:
         """
         Update the navigation property operations in communications
         param body: The request body
@@ -89,7 +87,7 @@ class CommsOperationItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CommsOperation, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[CommsOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property operations for communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,9 +98,9 @@ class CommsOperationItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[CommsOperationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the status of an operation that adds the large gallery view to a call.
+        Get operations from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +109,7 @@ class CommsOperationItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[CommsOperation] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[CommsOperation] = None, request_configuration: Optional[CommsOperationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property operations in communications
         param body: The request body
@@ -136,10 +134,20 @@ class CommsOperationItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return CommsOperationItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CommsOperationItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class CommsOperationItemRequestBuilderGetQueryParameters():
         """
-        Get the status of an operation that adds the large gallery view to a call.
+        Get operations from communications
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -161,5 +169,28 @@ class CommsOperationItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CommsOperationItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[CommsOperationItemRequestBuilder.CommsOperationItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CommsOperationItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

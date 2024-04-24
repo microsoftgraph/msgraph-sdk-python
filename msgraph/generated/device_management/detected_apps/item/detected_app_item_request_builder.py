@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,12 +27,11 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/detectedApps/{detectedApp%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[DetectedAppItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a detectedApp.
+        Delete navigation property detectedApps for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-detectedapp-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -47,12 +45,11 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DetectedApp]:
+    async def get(self,request_configuration: Optional[DetectedAppItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DetectedApp]:
         """
-        Read properties and relationships of the detectedApp object.
+        The list of detected apps associated with a device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DetectedApp]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-detectedapp-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,13 +65,12 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DetectedApp, error_mapping)
     
-    async def patch(self,body: Optional[DetectedApp] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DetectedApp]:
+    async def patch(self,body: Optional[DetectedApp] = None, request_configuration: Optional[DetectedAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DetectedApp]:
         """
-        Update the properties of a detectedApp object.
+        Update the navigation property detectedApps in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DetectedApp]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-detectedapp-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,9 +88,9 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DetectedApp, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[DetectedAppItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a detectedApp.
+        Delete navigation property detectedApps for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,9 +99,9 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DetectedAppItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the detectedApp object.
+        The list of detected apps associated with a device.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,9 +110,9 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[DetectedApp] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DetectedApp] = None, request_configuration: Optional[DetectedAppItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a detectedApp object.
+        Update the navigation property detectedApps in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -148,10 +144,20 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
 
         return ManagedDevicesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DetectedAppItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class DetectedAppItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the detectedApp object.
+        The list of detected apps associated with a device.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -173,5 +179,28 @@ class DetectedAppItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DetectedAppItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DetectedAppItemRequestBuilder.DetectedAppItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DetectedAppItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

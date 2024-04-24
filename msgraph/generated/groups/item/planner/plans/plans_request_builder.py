@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class PlansRequestBuilder(BaseRequestBuilder):
         url_tpl_params["plannerPlan%2Did"] = planner_plan_id
         return PlannerPlanItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PlannerPlanCollectionResponse]:
+    async def get(self,request_configuration: Optional[PlansRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerPlanCollectionResponse]:
         """
-        Retrieve a list of plannerPlan objects owned by a group object.
+        Read-only. Nullable. Returns the plannerPlans owned by the group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerPlanCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/plannergroup-list-plans?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class PlansRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PlannerPlanCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[PlannerPlan] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PlannerPlan]:
+    async def post(self,body: Optional[PlannerPlan] = None, request_configuration: Optional[PlansRequestBuilderPostRequestConfiguration] = None) -> Optional[PlannerPlan]:
         """
         Create new navigation property to plans for groups
         param body: The request body
@@ -88,9 +86,9 @@ class PlansRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PlannerPlan, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[PlansRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of plannerPlan objects owned by a group object.
+        Read-only. Nullable. Returns the plannerPlans owned by the group.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class PlansRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[PlannerPlan] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PlannerPlan] = None, request_configuration: Optional[PlansRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to plans for groups
         param body: The request body
@@ -136,7 +134,7 @@ class PlansRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PlansRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of plannerPlan objects owned by a group object.
+        Read-only. Nullable. Returns the plannerPlans owned by the group.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class PlansRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PlansRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[PlansRequestBuilder.PlansRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PlansRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

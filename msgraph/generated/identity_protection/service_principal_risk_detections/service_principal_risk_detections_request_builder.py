@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ServicePrincipalRiskDetectionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["servicePrincipalRiskDetection%2Did"] = service_principal_risk_detection_id
         return ServicePrincipalRiskDetectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ServicePrincipalRiskDetectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[ServicePrincipalRiskDetectionCollectionResponse]:
         """
-        Retrieve the properties of a collection of servicePrincipalRiskDetection objects.
+        Represents information about detected at-risk service principals in a Microsoft Entra tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServicePrincipalRiskDetectionCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/identityprotectionroot-list-serviceprincipalriskdetections?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class ServicePrincipalRiskDetectionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ServicePrincipalRiskDetectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ServicePrincipalRiskDetection] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ServicePrincipalRiskDetection]:
+    async def post(self,body: Optional[ServicePrincipalRiskDetection] = None, request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[ServicePrincipalRiskDetection]:
         """
         Create new navigation property to servicePrincipalRiskDetections for identityProtection
         param body: The request body
@@ -88,9 +86,9 @@ class ServicePrincipalRiskDetectionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ServicePrincipalRiskDetection, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of a collection of servicePrincipalRiskDetection objects.
+        Represents information about detected at-risk service principals in a Microsoft Entra tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class ServicePrincipalRiskDetectionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ServicePrincipalRiskDetection] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ServicePrincipalRiskDetection] = None, request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to servicePrincipalRiskDetections for identityProtection
         param body: The request body
@@ -136,7 +134,7 @@ class ServicePrincipalRiskDetectionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ServicePrincipalRiskDetectionsRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of a collection of servicePrincipalRiskDetection objects.
+        Represents information about detected at-risk service principals in a Microsoft Entra tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class ServicePrincipalRiskDetectionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ServicePrincipalRiskDetectionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ServicePrincipalRiskDetectionsRequestBuilder.ServicePrincipalRiskDetectionsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ServicePrincipalRiskDetectionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

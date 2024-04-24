@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -45,12 +44,11 @@ class MembersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["conversationMember%2Did"] = conversation_member_id
         return ConversationMemberItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConversationMemberCollectionResponse]:
+    async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> Optional[ConversationMemberCollectionResponse]:
         """
-        Get the conversationMember collection of a team. The membership IDs returned by the server must be treated as opaque strings. The client should not try to parse or make assumptions about these resource IDs. In the future, membership results may include users from various tenants, as indicated in the response. Clients should avoid assuming that all members exclusively belong to the current tenant.
+        Members and owners of the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationMemberCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/team-list-members?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +64,12 @@ class MembersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ConversationMemberCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ConversationMember] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConversationMember]:
+    async def post(self,body: Optional[ConversationMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> Optional[ConversationMember]:
         """
-        Add a new conversationMember to a team.
+        Create new navigation property to members for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationMember]
-        Find more info here: https://learn.microsoft.com/graph/api/team-post-members?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,9 +87,9 @@ class MembersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ConversationMember, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the conversationMember collection of a team. The membership IDs returned by the server must be treated as opaque strings. The client should not try to parse or make assumptions about these resource IDs. In the future, membership results may include users from various tenants, as indicated in the response. Clients should avoid assuming that all members exclusively belong to the current tenant.
+        Members and owners of the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,9 +98,9 @@ class MembersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ConversationMember] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ConversationMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add a new conversationMember to a team.
+        Create new navigation property to members for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +144,7 @@ class MembersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MembersRequestBuilderGetQueryParameters():
         """
-        Get the conversationMember collection of a team. The membership IDs returned by the server must be treated as opaque strings. The client should not try to parse or make assumptions about these resource IDs. In the future, membership results may include users from various tenants, as indicated in the response. Clients should avoid assuming that all members exclusively belong to the current tenant.
+        Members and owners of the team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -199,5 +196,28 @@ class MembersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MembersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[MembersRequestBuilder.MembersRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MembersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

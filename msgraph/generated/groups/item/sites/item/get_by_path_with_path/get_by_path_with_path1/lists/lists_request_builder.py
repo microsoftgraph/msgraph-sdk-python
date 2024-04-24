@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,12 +27,11 @@ class ListsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/getByPath(path='{path}')/getByPath(path='{path1}')/lists{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ListCollectionResponse]:
+    async def get(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> Optional[ListCollectionResponse]:
         """
-        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement.
+        The collection of lists under this site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ListCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/list-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,13 +47,12 @@ class ListsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ListCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[List_] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[List_]:
+    async def post(self,body: Optional[List_] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> Optional[List_]:
         """
-        Create a new [list][] in a [site][].
+        Create new navigation property to lists for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[List_]
-        Find more info here: https://learn.microsoft.com/graph/api/list-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -73,9 +70,9 @@ class ListsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, List_, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement.
+        The collection of lists under this site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -84,9 +81,9 @@ class ListsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[List_] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[List_] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new [list][] in a [site][].
+        Create new navigation property to lists for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +109,7 @@ class ListsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ListsRequestBuilderGetQueryParameters():
         """
-        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include system in your $select statement.
+        The collection of lists under this site.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -164,5 +161,28 @@ class ListsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ListsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ListsRequestBuilder.ListsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ListsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

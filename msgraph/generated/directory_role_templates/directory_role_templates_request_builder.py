@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -48,7 +47,7 @@ class DirectoryRoleTemplatesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["directoryRoleTemplate%2Did"] = directory_role_template_id
         return DirectoryRoleTemplateItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryRoleTemplateCollectionResponse]:
+    async def get(self,request_configuration: Optional[DirectoryRoleTemplatesRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryRoleTemplateCollectionResponse]:
         """
         Retrieve a list of directoryRoleTemplate objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -69,7 +68,7 @@ class DirectoryRoleTemplatesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DirectoryRoleTemplateCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DirectoryRoleTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryRoleTemplate]:
+    async def post(self,body: Optional[DirectoryRoleTemplate] = None, request_configuration: Optional[DirectoryRoleTemplatesRequestBuilderPostRequestConfiguration] = None) -> Optional[DirectoryRoleTemplate]:
         """
         Add new entity to directoryRoleTemplates
         param body: The request body
@@ -92,7 +91,7 @@ class DirectoryRoleTemplatesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DirectoryRoleTemplate, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DirectoryRoleTemplatesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of directoryRoleTemplate objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +102,7 @@ class DirectoryRoleTemplatesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DirectoryRoleTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DirectoryRoleTemplate] = None, request_configuration: Optional[DirectoryRoleTemplatesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add new entity to directoryRoleTemplates
         param body: The request body
@@ -223,5 +222,28 @@ class DirectoryRoleTemplatesRequestBuilder(BaseRequestBuilder):
         # Skip the first n items
         skip: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DirectoryRoleTemplatesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DirectoryRoleTemplatesRequestBuilder.DirectoryRoleTemplatesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DirectoryRoleTemplatesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,7 +26,7 @@ class GetHistoricalReportRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/reports/getHistoricalReport", path_parameters)
     
-    async def post(self,body: Optional[GetHistoricalReportPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> bytes:
+    async def post(self,body: Optional[GetHistoricalReportPostRequestBody] = None, request_configuration: Optional[GetHistoricalReportRequestBuilderPostRequestConfiguration] = None) -> bytes:
         """
         Not yet documented
         param body: The request body
@@ -48,7 +48,7 @@ class GetHistoricalReportRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    def to_post_request_information(self,body: Optional[GetHistoricalReportPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[GetHistoricalReportPostRequestBody] = None, request_configuration: Optional[GetHistoricalReportRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Not yet documented
         param body: The request body
@@ -72,5 +72,15 @@ class GetHistoricalReportRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GetHistoricalReportRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GetHistoricalReportRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

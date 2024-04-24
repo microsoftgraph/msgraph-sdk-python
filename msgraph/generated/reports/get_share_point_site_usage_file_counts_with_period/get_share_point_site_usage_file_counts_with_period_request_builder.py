@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,11 +28,12 @@ class GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder(BaseRequestBuilde
             path_parameters['period'] = str(period)
         super().__init__(request_adapter, "{+baseurl}/reports/getSharePointSiteUsageFileCounts(period='{period}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
+    async def get(self,request_configuration: Optional[GetSharePointSiteUsageFileCountsWithPeriodRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
-        Invoke function getSharePointSiteUsageFileCounts
+        Get the total number of files across all sites and the number of active files. A file (user or system) is considered active if it has been saved, synced, modified, or shared within the specified time period.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getsharepointsiteusagefilecounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -46,9 +47,9 @@ class GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder(BaseRequestBuilde
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GetSharePointSiteUsageFileCountsWithPeriodRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getSharePointSiteUsageFileCounts
+        Get the total number of files across all sites and the number of active files. A file (user or system) is considered active if it has been saved, synced, modified, or shared within the specified time period.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -66,5 +67,15 @@ class GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder(BaseRequestBuilde
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GetSharePointSiteUsageFileCountsWithPeriodRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

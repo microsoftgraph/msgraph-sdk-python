@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -38,12 +37,11 @@ class WorkbookTableItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/tables/{workbookTable%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[WorkbookTableItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes the table.
+        Delete navigation property tables for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/table-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -57,12 +55,11 @@ class WorkbookTableItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookTable]:
+    async def get(self,request_configuration: Optional[WorkbookTableItemRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookTable]:
         """
-        Retrieve the properties and relationships of table object.
+        Represents a collection of tables associated with the workbook. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTable]
-        Find more info here: https://learn.microsoft.com/graph/api/table-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -78,13 +75,12 @@ class WorkbookTableItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookTable, error_mapping)
     
-    async def patch(self,body: Optional[WorkbookTable] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookTable]:
+    async def patch(self,body: Optional[WorkbookTable] = None, request_configuration: Optional[WorkbookTableItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookTable]:
         """
-        Update the properties of table object.
+        Update the navigation property tables in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTable]
-        Find more info here: https://learn.microsoft.com/graph/api/table-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -102,9 +98,9 @@ class WorkbookTableItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookTable, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[WorkbookTableItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes the table.
+        Delete navigation property tables for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,9 +109,9 @@ class WorkbookTableItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[WorkbookTableItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of table object.
+        Represents a collection of tables associated with the workbook. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -124,9 +120,9 @@ class WorkbookTableItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[WorkbookTable] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookTable] = None, request_configuration: Optional[WorkbookTableItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of table object.
+        Update the navigation property tables in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -248,10 +244,20 @@ class WorkbookTableItemRequestBuilder(BaseRequestBuilder):
 
         return WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WorkbookTableItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class WorkbookTableItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of table object.
+        Represents a collection of tables associated with the workbook. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -273,5 +279,28 @@ class WorkbookTableItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WorkbookTableItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[WorkbookTableItemRequestBuilder.WorkbookTableItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WorkbookTableItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

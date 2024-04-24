@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -45,12 +44,11 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["site%2Did"] = site_id
         return SiteItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SiteCollectionResponse]:
+    async def get(self,request_configuration: Optional[FollowedSitesRequestBuilderGetRequestConfiguration] = None) -> Optional[SiteCollectionResponse]:
         """
-        List the sites that have been followed by the signed in user.
+        Get followedSites from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SiteCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/sites-list-followed?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,9 +64,9 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SiteCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[FollowedSitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List the sites that have been followed by the signed in user.
+        Get followedSites from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +115,7 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FollowedSitesRequestBuilderGetQueryParameters():
         """
-        List the sites that have been followed by the signed in user.
+        Get followedSites from users
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -168,6 +166,19 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FollowedSitesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[FollowedSitesRequestBuilder.FollowedSitesRequestBuilderGetQueryParameters] = None
 
     
 

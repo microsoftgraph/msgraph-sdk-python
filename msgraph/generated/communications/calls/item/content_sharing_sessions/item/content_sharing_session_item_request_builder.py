@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class ContentSharingSessionItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/communications/calls/{call%2Did}/contentSharingSessions/{contentSharingSession%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ContentSharingSessionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property contentSharingSessions for communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,12 +44,11 @@ class ContentSharingSessionItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ContentSharingSession]:
+    async def get(self,request_configuration: Optional[ContentSharingSessionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ContentSharingSession]:
         """
-        Retrieve the properties of a contentSharingSession object in a call.
+        Get contentSharingSessions from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContentSharingSession]
-        Find more info here: https://learn.microsoft.com/graph/api/contentsharingsession-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +64,7 @@ class ContentSharingSessionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ContentSharingSession, error_mapping)
     
-    async def patch(self,body: Optional[ContentSharingSession] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ContentSharingSession]:
+    async def patch(self,body: Optional[ContentSharingSession] = None, request_configuration: Optional[ContentSharingSessionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ContentSharingSession]:
         """
         Update the navigation property contentSharingSessions in communications
         param body: The request body
@@ -89,7 +87,7 @@ class ContentSharingSessionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ContentSharingSession, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[ContentSharingSessionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property contentSharingSessions for communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,9 +98,9 @@ class ContentSharingSessionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ContentSharingSessionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of a contentSharingSession object in a call.
+        Get contentSharingSessions from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +109,7 @@ class ContentSharingSessionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ContentSharingSession] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ContentSharingSession] = None, request_configuration: Optional[ContentSharingSessionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property contentSharingSessions in communications
         param body: The request body
@@ -136,10 +134,20 @@ class ContentSharingSessionItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return ContentSharingSessionItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ContentSharingSessionItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class ContentSharingSessionItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of a contentSharingSession object in a call.
+        Get contentSharingSessions from communications
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -161,5 +169,28 @@ class ContentSharingSessionItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ContentSharingSessionItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ContentSharingSessionItemRequestBuilder.ContentSharingSessionItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ContentSharingSessionItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

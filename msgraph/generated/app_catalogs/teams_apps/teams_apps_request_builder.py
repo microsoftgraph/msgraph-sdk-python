@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class TeamsAppsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["teamsApp%2Did"] = teams_app_id
         return TeamsAppItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsAppCollectionResponse]:
+    async def get(self,request_configuration: Optional[TeamsAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsAppCollectionResponse]:
         """
-        List apps from the Microsoft Teams app catalog.This includes apps from the Microsoft Teams store and apps from your organization's app catalog (the tenant app catalog). To get apps from your organization's app catalog only, specify organization as the distributionMethod in the request.
+        Get teamsApps from appCatalogs
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/appcatalogs-list-teamsapps?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class TeamsAppsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamsAppCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[TeamsApp] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsApp]:
+    async def post(self,body: Optional[TeamsApp] = None, request_configuration: Optional[TeamsAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[TeamsApp]:
         """
-        Publish an app to the Microsoft Teams app catalog.Specifically, this API publishes the app to your organization's catalog (the tenant app catalog);the created resource has a distributionMethod property value of organization. The requiresReview property allows any user to submit an app for review by an administrator. Admins can approve or reject these apps via this API or the Microsoft Teams admin center.
+        Create new navigation property to teamsApps for appCatalogs
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsApp]
-        Find more info here: https://learn.microsoft.com/graph/api/teamsapp-publish?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class TeamsAppsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamsApp, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[TeamsAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List apps from the Microsoft Teams app catalog.This includes apps from the Microsoft Teams store and apps from your organization's app catalog (the tenant app catalog). To get apps from your organization's app catalog only, specify organization as the distributionMethod in the request.
+        Get teamsApps from appCatalogs
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class TeamsAppsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[TeamsApp] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[TeamsApp] = None, request_configuration: Optional[TeamsAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Publish an app to the Microsoft Teams app catalog.Specifically, this API publishes the app to your organization's catalog (the tenant app catalog);the created resource has a distributionMethod property value of organization. The requiresReview property allows any user to submit an app for review by an administrator. Admins can approve or reject these apps via this API or the Microsoft Teams admin center.
+        Create new navigation property to teamsApps for appCatalogs
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class TeamsAppsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TeamsAppsRequestBuilderGetQueryParameters():
         """
-        List apps from the Microsoft Teams app catalog.This includes apps from the Microsoft Teams store and apps from your organization's app catalog (the tenant app catalog). To get apps from your organization's app catalog only, specify organization as the distributionMethod in the request.
+        Get teamsApps from appCatalogs
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class TeamsAppsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TeamsAppsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[TeamsAppsRequestBuilder.TeamsAppsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TeamsAppsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

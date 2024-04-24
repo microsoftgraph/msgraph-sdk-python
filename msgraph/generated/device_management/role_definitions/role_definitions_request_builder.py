@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["roleDefinition%2Did"] = role_definition_id
         return RoleDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RoleDefinitionCollectionResponse]:
+    async def get(self,request_configuration: Optional[RoleDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[RoleDefinitionCollectionResponse]:
         """
-        List properties and relationships of the deviceAndAppManagementRoleDefinition objects.
+        The Role Definitions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleDefinitionCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-deviceandappmanagementroledefinition-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RoleDefinitionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[RoleDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[RoleDefinition]:
+    async def post(self,body: Optional[RoleDefinition] = None, request_configuration: Optional[RoleDefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[RoleDefinition]:
         """
-        Create a new deviceAndAppManagementRoleDefinition object.
+        Create new navigation property to roleDefinitions for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RoleDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-deviceandappmanagementroledefinition-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RoleDefinition, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RoleDefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceAndAppManagementRoleDefinition objects.
+        The Role Definitions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[RoleDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[RoleDefinition] = None, request_configuration: Optional[RoleDefinitionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceAndAppManagementRoleDefinition object.
+        Create new navigation property to roleDefinitions for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleDefinitionsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceAndAppManagementRoleDefinition objects.
+        The Role Definitions.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class RoleDefinitionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RoleDefinitionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[RoleDefinitionsRequestBuilder.RoleDefinitionsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RoleDefinitionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

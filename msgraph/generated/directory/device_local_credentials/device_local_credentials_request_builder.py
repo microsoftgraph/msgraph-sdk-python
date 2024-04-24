@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class DeviceLocalCredentialsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["deviceLocalCredentialInfo%2Did"] = device_local_credential_info_id
         return DeviceLocalCredentialInfoItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceLocalCredentialInfoCollectionResponse]:
+    async def get(self,request_configuration: Optional[DeviceLocalCredentialsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceLocalCredentialInfoCollectionResponse]:
         """
-        Get a list of the deviceLocalCredentialInfo objects and their properties, excluding the credentials property. 
+        The credentials of the device's local administrator account backed up to Microsoft Entra ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceLocalCredentialInfoCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/directory-list-devicelocalcredentials?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class DeviceLocalCredentialsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceLocalCredentialInfoCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DeviceLocalCredentialInfo] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceLocalCredentialInfo]:
+    async def post(self,body: Optional[DeviceLocalCredentialInfo] = None, request_configuration: Optional[DeviceLocalCredentialsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceLocalCredentialInfo]:
         """
         Create new navigation property to deviceLocalCredentials for directory
         param body: The request body
@@ -88,9 +86,9 @@ class DeviceLocalCredentialsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceLocalCredentialInfo, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DeviceLocalCredentialsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the deviceLocalCredentialInfo objects and their properties, excluding the credentials property. 
+        The credentials of the device's local administrator account backed up to Microsoft Entra ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class DeviceLocalCredentialsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DeviceLocalCredentialInfo] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceLocalCredentialInfo] = None, request_configuration: Optional[DeviceLocalCredentialsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to deviceLocalCredentials for directory
         param body: The request body
@@ -136,7 +134,7 @@ class DeviceLocalCredentialsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceLocalCredentialsRequestBuilderGetQueryParameters():
         """
-        Get a list of the deviceLocalCredentialInfo objects and their properties, excluding the credentials property. 
+        The credentials of the device's local administrator account backed up to Microsoft Entra ID.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -178,5 +176,28 @@ class DeviceLocalCredentialsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceLocalCredentialsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DeviceLocalCredentialsRequestBuilder.DeviceLocalCredentialsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceLocalCredentialsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

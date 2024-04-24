@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceManagement/deviceEnrollmentConfigurations/{deviceEnrollmentConfiguration%2Did}/assignments/{enrollmentConfigurationAssignment%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[EnrollmentConfigurationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a enrollmentConfigurationAssignment.
+        Delete navigation property assignments for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-enrollmentconfigurationassignment-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -46,12 +44,11 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EnrollmentConfigurationAssignment]:
+    async def get(self,request_configuration: Optional[EnrollmentConfigurationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EnrollmentConfigurationAssignment]:
         """
-        Read properties and relationships of the enrollmentConfigurationAssignment object.
+        The list of group assignments for the device configuration profile
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EnrollmentConfigurationAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-enrollmentconfigurationassignment-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,13 +64,12 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EnrollmentConfigurationAssignment, error_mapping)
     
-    async def patch(self,body: Optional[EnrollmentConfigurationAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EnrollmentConfigurationAssignment]:
+    async def patch(self,body: Optional[EnrollmentConfigurationAssignment] = None, request_configuration: Optional[EnrollmentConfigurationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EnrollmentConfigurationAssignment]:
         """
-        Update the properties of a enrollmentConfigurationAssignment object.
+        Update the navigation property assignments in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EnrollmentConfigurationAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-enrollmentconfigurationassignment-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,9 +87,9 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EnrollmentConfigurationAssignment, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[EnrollmentConfigurationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a enrollmentConfigurationAssignment.
+        Delete navigation property assignments for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,9 +98,9 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[EnrollmentConfigurationAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the enrollmentConfigurationAssignment object.
+        The list of group assignments for the device configuration profile
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,9 +109,9 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[EnrollmentConfigurationAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EnrollmentConfigurationAssignment] = None, request_configuration: Optional[EnrollmentConfigurationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a enrollmentConfigurationAssignment object.
+        Update the navigation property assignments in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,10 +134,20 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return EnrollmentConfigurationAssignmentItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EnrollmentConfigurationAssignmentItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class EnrollmentConfigurationAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the enrollmentConfigurationAssignment object.
+        The list of group assignments for the device configuration profile
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -163,5 +169,28 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EnrollmentConfigurationAssignmentItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[EnrollmentConfigurationAssignmentItemRequestBuilder.EnrollmentConfigurationAssignmentItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EnrollmentConfigurationAssignmentItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

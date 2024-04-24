@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class SectionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["onenoteSection%2Did"] = onenote_section_id
         return OnenoteSectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OnenoteSectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[SectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[OnenoteSectionCollectionResponse]:
         """
-        Retrieve a list of onenoteSection objects from the specified notebook.
+        The sections in the notebook. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenoteSectionCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/notebook-list-sections?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class SectionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OnenoteSectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[OnenoteSection] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[OnenoteSection]:
+    async def post(self,body: Optional[OnenoteSection] = None, request_configuration: Optional[SectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[OnenoteSection]:
         """
-        Create a new onenoteSection in the specified notebook.
+        Create new navigation property to sections for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OnenoteSection]
-        Find more info here: https://learn.microsoft.com/graph/api/notebook-post-sections?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class SectionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OnenoteSection, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[SectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of onenoteSection objects from the specified notebook.
+        The sections in the notebook. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class SectionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[OnenoteSection] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[OnenoteSection] = None, request_configuration: Optional[SectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new onenoteSection in the specified notebook.
+        Create new navigation property to sections for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class SectionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SectionsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of onenoteSection objects from the specified notebook.
+        The sections in the notebook. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class SectionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SectionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[SectionsRequestBuilder.SectionsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SectionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

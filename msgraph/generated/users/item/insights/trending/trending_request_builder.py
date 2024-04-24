@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class TrendingRequestBuilder(BaseRequestBuilder):
         url_tpl_params["trending%2Did"] = trending_id
         return TrendingItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TrendingCollectionResponse]:
+    async def get(self,request_configuration: Optional[TrendingRequestBuilderGetRequestConfiguration] = None) -> Optional[TrendingCollectionResponse]:
         """
-        Calculated insight that includes a list of documents trending around the user.
+        Calculated relationship identifying documents trending around a user. Trending documents are calculated based on activity of the user's closest network of people and include files stored in OneDrive for Business and SharePoint. Trending insights help the user to discover potentially useful content that the user has access to, but has never viewed before.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TrendingCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/insights-list-trending?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class TrendingRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TrendingCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Trending] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Trending]:
+    async def post(self,body: Optional[Trending] = None, request_configuration: Optional[TrendingRequestBuilderPostRequestConfiguration] = None) -> Optional[Trending]:
         """
         Create new navigation property to trending for users
         param body: The request body
@@ -88,9 +86,9 @@ class TrendingRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Trending, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[TrendingRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Calculated insight that includes a list of documents trending around the user.
+        Calculated relationship identifying documents trending around a user. Trending documents are calculated based on activity of the user's closest network of people and include files stored in OneDrive for Business and SharePoint. Trending insights help the user to discover potentially useful content that the user has access to, but has never viewed before.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class TrendingRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Trending] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Trending] = None, request_configuration: Optional[TrendingRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to trending for users
         param body: The request body
@@ -136,7 +134,7 @@ class TrendingRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TrendingRequestBuilderGetQueryParameters():
         """
-        Calculated insight that includes a list of documents trending around the user.
+        Calculated relationship identifying documents trending around a user. Trending documents are calculated based on activity of the user's closest network of people and include files stored in OneDrive for Business and SharePoint. Trending insights help the user to discover potentially useful content that the user has access to, but has never viewed before.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class TrendingRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TrendingRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[TrendingRequestBuilder.TrendingRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TrendingRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["calendar%2Did"] = calendar_id
         return CalendarItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CalendarCollectionResponse]:
+    async def get(self,request_configuration: Optional[CalendarsRequestBuilderGetRequestConfiguration] = None) -> Optional[CalendarCollectionResponse]:
         """
-        Retrieve a list of calendars belonging to a calendar group.
+        The calendars in the calendar group. Navigation property. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CalendarCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/calendargroup-list-calendars?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CalendarCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Calendar] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Calendar]:
+    async def post(self,body: Optional[Calendar] = None, request_configuration: Optional[CalendarsRequestBuilderPostRequestConfiguration] = None) -> Optional[Calendar]:
         """
-        Use this API to create a new calendar in a calendar group for a user.
+        Create new navigation property to calendars for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Calendar]
-        Find more info here: https://learn.microsoft.com/graph/api/calendargroup-post-calendars?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Calendar, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[CalendarsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of calendars belonging to a calendar group.
+        The calendars in the calendar group. Navigation property. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Calendar] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Calendar] = None, request_configuration: Optional[CalendarsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new calendar in a calendar group for a user.
+        Create new navigation property to calendars for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CalendarsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of calendars belonging to a calendar group.
+        The calendars in the calendar group. Navigation property. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -179,5 +176,28 @@ class CalendarsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CalendarsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[CalendarsRequestBuilder.CalendarsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CalendarsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

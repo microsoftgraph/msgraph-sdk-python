@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ActivityBasedTimeoutPoliciesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["activityBasedTimeoutPolicy%2Did"] = activity_based_timeout_policy_id
         return ActivityBasedTimeoutPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ActivityBasedTimeoutPolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[ActivityBasedTimeoutPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[ActivityBasedTimeoutPolicyCollectionResponse]:
         """
-        Get a list of activityBasedTimeoutPolicy objects.
+        The policy that controls the idle time out for web sessions for applications.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ActivityBasedTimeoutPolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/activitybasedtimeoutpolicy-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class ActivityBasedTimeoutPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ActivityBasedTimeoutPolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ActivityBasedTimeoutPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ActivityBasedTimeoutPolicy]:
+    async def post(self,body: Optional[ActivityBasedTimeoutPolicy] = None, request_configuration: Optional[ActivityBasedTimeoutPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[ActivityBasedTimeoutPolicy]:
         """
-        Create a new activityBasedTimeoutPolicy object.
+        Create new navigation property to activityBasedTimeoutPolicies for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ActivityBasedTimeoutPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/activitybasedtimeoutpolicy-post-activitybasedtimeoutpolicies?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class ActivityBasedTimeoutPoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ActivityBasedTimeoutPolicy, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ActivityBasedTimeoutPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of activityBasedTimeoutPolicy objects.
+        The policy that controls the idle time out for web sessions for applications.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class ActivityBasedTimeoutPoliciesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ActivityBasedTimeoutPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ActivityBasedTimeoutPolicy] = None, request_configuration: Optional[ActivityBasedTimeoutPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new activityBasedTimeoutPolicy object.
+        Create new navigation property to activityBasedTimeoutPolicies for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class ActivityBasedTimeoutPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ActivityBasedTimeoutPoliciesRequestBuilderGetQueryParameters():
         """
-        Get a list of activityBasedTimeoutPolicy objects.
+        The policy that controls the idle time out for web sessions for applications.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class ActivityBasedTimeoutPoliciesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ActivityBasedTimeoutPoliciesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ActivityBasedTimeoutPoliciesRequestBuilder.ActivityBasedTimeoutPoliciesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ActivityBasedTimeoutPoliciesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

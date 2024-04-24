@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,9 +43,9 @@ class ManifestsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["manifest%2Did"] = manifest_id
         return ManifestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManifestCollectionResponse]:
+    async def get(self,request_configuration: Optional[ManifestsRequestBuilderGetRequestConfiguration] = None) -> Optional[ManifestCollectionResponse]:
         """
-        Read the properties and relationships of a manifest object.
+        Represents metadata for the exported data.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManifestCollectionResponse]
         """
@@ -64,7 +63,7 @@ class ManifestsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ManifestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Manifest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Manifest]:
+    async def post(self,body: Optional[Manifest] = None, request_configuration: Optional[ManifestsRequestBuilderPostRequestConfiguration] = None) -> Optional[Manifest]:
         """
         Create new navigation property to manifests for reports
         param body: The request body
@@ -87,9 +86,9 @@ class ManifestsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Manifest, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ManifestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a manifest object.
+        Represents metadata for the exported data.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -98,7 +97,7 @@ class ManifestsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Manifest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Manifest] = None, request_configuration: Optional[ManifestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to manifests for reports
         param body: The request body
@@ -135,7 +134,7 @@ class ManifestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManifestsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a manifest object.
+        Represents metadata for the exported data.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -187,5 +186,28 @@ class ManifestsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ManifestsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ManifestsRequestBuilder.ManifestsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ManifestsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

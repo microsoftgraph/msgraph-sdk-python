@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +27,7 @@ class ChatMessageHostedContentItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/team/channels/{channel%2Did}/messages/{chatMessage%2Did}/replies/{chatMessage%2Did1}/hostedContents/{chatMessageHostedContent%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property hostedContents for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,12 +45,11 @@ class ChatMessageHostedContentItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ChatMessageHostedContent]:
+    async def get(self,request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ChatMessageHostedContent]:
         """
-        Retrieve the properties and relationships of chatMessageHostedContent object.
+        Content in a message hosted by Microsoft Teams - for example, images or code snippets.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChatMessageHostedContent]
-        Find more info here: https://learn.microsoft.com/graph/api/chatmessagehostedcontent-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +65,7 @@ class ChatMessageHostedContentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ChatMessageHostedContent, error_mapping)
     
-    async def patch(self,body: Optional[ChatMessageHostedContent] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ChatMessageHostedContent]:
+    async def patch(self,body: Optional[ChatMessageHostedContent] = None, request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ChatMessageHostedContent]:
         """
         Update the navigation property hostedContents in groups
         param body: The request body
@@ -90,7 +88,7 @@ class ChatMessageHostedContentItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ChatMessageHostedContent, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property hostedContents for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +99,9 @@ class ChatMessageHostedContentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of chatMessageHostedContent object.
+        Content in a message hosted by Microsoft Teams - for example, images or code snippets.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +110,7 @@ class ChatMessageHostedContentItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ChatMessageHostedContent] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ChatMessageHostedContent] = None, request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property hostedContents in groups
         param body: The request body
@@ -146,10 +144,20 @@ class ChatMessageHostedContentItemRequestBuilder(BaseRequestBuilder):
 
         return ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ChatMessageHostedContentItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class ChatMessageHostedContentItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of chatMessageHostedContent object.
+        Content in a message hosted by Microsoft Teams - for example, images or code snippets.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -171,5 +179,28 @@ class ChatMessageHostedContentItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ChatMessageHostedContentItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ChatMessageHostedContentItemRequestBuilder.ChatMessageHostedContentItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ChatMessageHostedContentItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

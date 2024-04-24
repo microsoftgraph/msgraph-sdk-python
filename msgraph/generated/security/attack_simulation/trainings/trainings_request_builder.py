@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class TrainingsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["training%2Did"] = training_id
         return TrainingItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TrainingCollectionResponse]:
+    async def get(self,request_configuration: Optional[TrainingsRequestBuilderGetRequestConfiguration] = None) -> Optional[TrainingCollectionResponse]:
         """
-        Get a list of the training objects and their properties.
+        Represents details about attack simulation trainings.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TrainingCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/attacksimulationroot-list-trainings?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class TrainingsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TrainingCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Training] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Training]:
+    async def post(self,body: Optional[Training] = None, request_configuration: Optional[TrainingsRequestBuilderPostRequestConfiguration] = None) -> Optional[Training]:
         """
         Create new navigation property to trainings for security
         param body: The request body
@@ -88,9 +86,9 @@ class TrainingsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Training, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[TrainingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the training objects and their properties.
+        Represents details about attack simulation trainings.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class TrainingsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Training] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Training] = None, request_configuration: Optional[TrainingsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to trainings for security
         param body: The request body
@@ -136,7 +134,7 @@ class TrainingsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TrainingsRequestBuilderGetQueryParameters():
         """
-        Get a list of the training objects and their properties.
+        Represents details about attack simulation trainings.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class TrainingsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TrainingsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[TrainingsRequestBuilder.TrainingsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TrainingsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

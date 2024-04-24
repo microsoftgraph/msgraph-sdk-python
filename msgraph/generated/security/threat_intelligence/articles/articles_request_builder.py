@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ArticlesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["article%2Did"] = article_id
         return ArticleItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ArticleCollectionResponse]:
+    async def get(self,request_configuration: Optional[ArticlesRequestBuilderGetRequestConfiguration] = None) -> Optional[ArticleCollectionResponse]:
         """
-        Get a list of article objects, including their properties and relationships.
+        A list of article objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ArticleCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-threatintelligence-list-articles?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class ArticlesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ArticleCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Article] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Article]:
+    async def post(self,body: Optional[Article] = None, request_configuration: Optional[ArticlesRequestBuilderPostRequestConfiguration] = None) -> Optional[Article]:
         """
         Create new navigation property to articles for security
         param body: The request body
@@ -88,9 +86,9 @@ class ArticlesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Article, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ArticlesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of article objects, including their properties and relationships.
+        A list of article objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class ArticlesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Article] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Article] = None, request_configuration: Optional[ArticlesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to articles for security
         param body: The request body
@@ -136,7 +134,7 @@ class ArticlesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ArticlesRequestBuilderGetQueryParameters():
         """
-        Get a list of article objects, including their properties and relationships.
+        A list of article objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class ArticlesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ArticlesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ArticlesRequestBuilder.ArticlesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ArticlesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

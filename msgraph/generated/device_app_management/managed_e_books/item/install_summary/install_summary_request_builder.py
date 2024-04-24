@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class InstallSummaryRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/managedEBooks/{managedEBook%2Did}/installSummary{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[InstallSummaryRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property installSummary for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,12 +44,11 @@ class InstallSummaryRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EBookInstallSummary]:
+    async def get(self,request_configuration: Optional[InstallSummaryRequestBuilderGetRequestConfiguration] = None) -> Optional[EBookInstallSummary]:
         """
-        Read properties and relationships of the eBookInstallSummary object.
+        Mobile App Install Summary.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EBookInstallSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-ebookinstallsummary-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +64,12 @@ class InstallSummaryRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EBookInstallSummary, error_mapping)
     
-    async def patch(self,body: Optional[EBookInstallSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EBookInstallSummary]:
+    async def patch(self,body: Optional[EBookInstallSummary] = None, request_configuration: Optional[InstallSummaryRequestBuilderPatchRequestConfiguration] = None) -> Optional[EBookInstallSummary]:
         """
-        Update the properties of a eBookInstallSummary object.
+        Update the navigation property installSummary in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EBookInstallSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-ebookinstallsummary-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,7 +87,7 @@ class InstallSummaryRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EBookInstallSummary, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[InstallSummaryRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property installSummary for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +98,9 @@ class InstallSummaryRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[InstallSummaryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the eBookInstallSummary object.
+        Mobile App Install Summary.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,9 +109,9 @@ class InstallSummaryRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[EBookInstallSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EBookInstallSummary] = None, request_configuration: Optional[InstallSummaryRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a eBookInstallSummary object.
+        Update the navigation property installSummary in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,10 +134,20 @@ class InstallSummaryRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return InstallSummaryRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class InstallSummaryRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class InstallSummaryRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the eBookInstallSummary object.
+        Mobile App Install Summary.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -162,5 +169,28 @@ class InstallSummaryRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class InstallSummaryRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[InstallSummaryRequestBuilder.InstallSummaryRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class InstallSummaryRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

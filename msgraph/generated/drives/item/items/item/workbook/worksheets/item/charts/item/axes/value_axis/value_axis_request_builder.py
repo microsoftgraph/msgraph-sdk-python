@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -31,7 +30,7 @@ class ValueAxisRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}/axes/valueAxis{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ValueAxisRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property valueAxis for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -49,12 +48,11 @@ class ValueAxisRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartAxis]:
+    async def get(self,request_configuration: Optional[ValueAxisRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartAxis]:
         """
-        Retrieve the properties and relationships of chartaxis object.
+        Represents the value axis in an axis. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartAxis]
-        Find more info here: https://learn.microsoft.com/graph/api/chartaxis-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,13 +68,12 @@ class ValueAxisRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookChartAxis, error_mapping)
     
-    async def patch(self,body: Optional[WorkbookChartAxis] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartAxis]:
+    async def patch(self,body: Optional[WorkbookChartAxis] = None, request_configuration: Optional[ValueAxisRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChartAxis]:
         """
-        Update the properties of chartaxis object.
+        Update the navigation property valueAxis in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartAxis]
-        Find more info here: https://learn.microsoft.com/graph/api/chartaxis-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class ValueAxisRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookChartAxis, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[ValueAxisRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property valueAxis for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -105,9 +102,9 @@ class ValueAxisRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ValueAxisRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of chartaxis object.
+        Represents the value axis in an axis. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,9 +113,9 @@ class ValueAxisRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[WorkbookChartAxis] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookChartAxis] = None, request_configuration: Optional[ValueAxisRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of chartaxis object.
+        Update the navigation property valueAxis in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -177,10 +174,20 @@ class ValueAxisRequestBuilder(BaseRequestBuilder):
 
         return TitleRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ValueAxisRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class ValueAxisRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of chartaxis object.
+        Represents the value axis in an axis. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -202,5 +209,28 @@ class ValueAxisRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ValueAxisRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ValueAxisRequestBuilder.ValueAxisRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ValueAxisRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

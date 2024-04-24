@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["resourceOperation%2Did"] = resource_operation_id
         return ResourceOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ResourceOperationCollectionResponse]:
+    async def get(self,request_configuration: Optional[ResourceOperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[ResourceOperationCollectionResponse]:
         """
-        List properties and relationships of the resourceOperation objects.
+        The Resource Operations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ResourceOperationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-resourceoperation-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ResourceOperationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ResourceOperation]:
+    async def post(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[ResourceOperationsRequestBuilderPostRequestConfiguration] = None) -> Optional[ResourceOperation]:
         """
-        Create a new resourceOperation object.
+        Create new navigation property to resourceOperations for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ResourceOperation]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-resourceoperation-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ResourceOperation, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ResourceOperationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the resourceOperation objects.
+        The Resource Operations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ResourceOperation] = None, request_configuration: Optional[ResourceOperationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new resourceOperation object.
+        Create new navigation property to resourceOperations for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ResourceOperationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the resourceOperation objects.
+        The Resource Operations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class ResourceOperationsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ResourceOperationsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ResourceOperationsRequestBuilder.ResourceOperationsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ResourceOperationsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

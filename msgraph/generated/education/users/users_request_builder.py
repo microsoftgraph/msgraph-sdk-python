@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -45,12 +44,11 @@ class UsersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["educationUser%2Did"] = education_user_id
         return EducationUserItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationUserCollectionResponse]:
+    async def get(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationUserCollectionResponse]:
         """
-        Get a list of the educationUser objects and their properties.
+        Get users from education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationUserCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/educationuser-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +64,12 @@ class UsersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationUserCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[EducationUser] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationUser]:
+    async def post(self,body: Optional[EducationUser] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None) -> Optional[EducationUser]:
         """
-        Create a new educationUser object.
+        Create new navigation property to users for education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationUser]
-        Find more info here: https://learn.microsoft.com/graph/api/educationuser-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,9 +87,9 @@ class UsersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationUser, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the educationUser objects and their properties.
+        Get users from education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,9 +98,9 @@ class UsersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[EducationUser] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[EducationUser] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new educationUser object.
+        Create new navigation property to users for education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +144,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UsersRequestBuilderGetQueryParameters():
         """
-        Get a list of the educationUser objects and their properties.
+        Get users from education
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -199,5 +196,28 @@ class UsersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UsersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UsersRequestBuilder.UsersRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UsersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

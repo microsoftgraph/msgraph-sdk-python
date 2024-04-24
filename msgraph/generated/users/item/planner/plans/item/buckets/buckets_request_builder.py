@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class BucketsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["plannerBucket%2Did"] = planner_bucket_id
         return PlannerBucketItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PlannerBucketCollectionResponse]:
+    async def get(self,request_configuration: Optional[BucketsRequestBuilderGetRequestConfiguration] = None) -> Optional[PlannerBucketCollectionResponse]:
         """
-        Retrieve a list of plannerBucket objects contained by a plannerPlan object.
+        Read-only. Nullable. Collection of buckets in the plan.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerBucketCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/plannerplan-list-buckets?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class BucketsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PlannerBucketCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[PlannerBucket] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PlannerBucket]:
+    async def post(self,body: Optional[PlannerBucket] = None, request_configuration: Optional[BucketsRequestBuilderPostRequestConfiguration] = None) -> Optional[PlannerBucket]:
         """
         Create new navigation property to buckets for users
         param body: The request body
@@ -88,9 +86,9 @@ class BucketsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PlannerBucket, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[BucketsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of plannerBucket objects contained by a plannerPlan object.
+        Read-only. Nullable. Collection of buckets in the plan.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class BucketsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[PlannerBucket] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[PlannerBucket] = None, request_configuration: Optional[BucketsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to buckets for users
         param body: The request body
@@ -136,7 +134,7 @@ class BucketsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BucketsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of plannerBucket objects contained by a plannerPlan object.
+        Read-only. Nullable. Collection of buckets in the plan.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class BucketsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class BucketsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[BucketsRequestBuilder.BucketsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class BucketsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

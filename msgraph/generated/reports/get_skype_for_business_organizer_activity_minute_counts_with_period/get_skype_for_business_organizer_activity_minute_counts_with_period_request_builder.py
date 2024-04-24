@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,11 +28,12 @@ class GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder(B
             path_parameters['period'] = str(period)
         super().__init__(request_adapter, "{+baseurl}/reports/getSkypeForBusinessOrganizerActivityMinuteCounts(period='{period}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
+    async def get(self,request_configuration: Optional[GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
-        Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts
+        Get usage trends on the length in minutes and type of conference sessions held and organized by users in your organization. Types of conference sessions include audio/video, and dial-in and dial-out - Microsoft.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getskypeforbusinessorganizeractivityminutecounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -46,9 +47,9 @@ class GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder(B
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts
+        Get usage trends on the length in minutes and type of conference sessions held and organized by users in your organization. Types of conference sessions include audio/video, and dial-in and dial-out - Microsoft.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -66,5 +67,15 @@ class GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder(B
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

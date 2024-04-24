@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +27,7 @@ class CallRecordingItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/onlineMeetings/{onlineMeeting%2Did}/recordings/{callRecording%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[CallRecordingItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property recordings for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,12 +45,11 @@ class CallRecordingItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CallRecording]:
+    async def get(self,request_configuration: Optional[CallRecordingItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CallRecording]:
         """
-        Get a callRecording object associated with a scheduled onlineMeeting. This API doesn't support getting call recordings from channel meetings. For a recording, this API returns the metadata of the single recording associated with the online meeting. For the content of a recording, this API returns the stream of bytes associated with the recording.
+        The recordings of an online meeting. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CallRecording]
-        Find more info here: https://learn.microsoft.com/graph/api/callrecording-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +65,7 @@ class CallRecordingItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CallRecording, error_mapping)
     
-    async def patch(self,body: Optional[CallRecording] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CallRecording]:
+    async def patch(self,body: Optional[CallRecording] = None, request_configuration: Optional[CallRecordingItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[CallRecording]:
         """
         Update the navigation property recordings in users
         param body: The request body
@@ -90,7 +88,7 @@ class CallRecordingItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CallRecording, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[CallRecordingItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property recordings for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +99,9 @@ class CallRecordingItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[CallRecordingItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a callRecording object associated with a scheduled onlineMeeting. This API doesn't support getting call recordings from channel meetings. For a recording, this API returns the metadata of the single recording associated with the online meeting. For the content of a recording, this API returns the stream of bytes associated with the recording.
+        The recordings of an online meeting. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +110,7 @@ class CallRecordingItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[CallRecording] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[CallRecording] = None, request_configuration: Optional[CallRecordingItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property recordings in users
         param body: The request body
@@ -146,10 +144,20 @@ class CallRecordingItemRequestBuilder(BaseRequestBuilder):
 
         return ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CallRecordingItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class CallRecordingItemRequestBuilderGetQueryParameters():
         """
-        Get a callRecording object associated with a scheduled onlineMeeting. This API doesn't support getting call recordings from channel meetings. For a recording, this API returns the metadata of the single recording associated with the online meeting. For the content of a recording, this API returns the stream of bytes associated with the recording.
+        The recordings of an online meeting. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -171,5 +179,28 @@ class CallRecordingItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CallRecordingItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[CallRecordingItemRequestBuilder.CallRecordingItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CallRecordingItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

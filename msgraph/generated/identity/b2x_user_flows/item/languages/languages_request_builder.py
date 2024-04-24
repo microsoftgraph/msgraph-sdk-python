@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class LanguagesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["userFlowLanguageConfiguration%2Did"] = user_flow_language_configuration_id
         return UserFlowLanguageConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserFlowLanguageConfigurationCollectionResponse]:
+    async def get(self,request_configuration: Optional[LanguagesRequestBuilderGetRequestConfiguration] = None) -> Optional[UserFlowLanguageConfigurationCollectionResponse]:
         """
-        Retrieve a list of languages supported for customization in a B2X user flow.
+        The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You can't create custom languages in self-service sign-up user flows.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserFlowLanguageConfigurationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/b2xidentityuserflow-list-languages?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class LanguagesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserFlowLanguageConfigurationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UserFlowLanguageConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserFlowLanguageConfiguration]:
+    async def post(self,body: Optional[UserFlowLanguageConfiguration] = None, request_configuration: Optional[LanguagesRequestBuilderPostRequestConfiguration] = None) -> Optional[UserFlowLanguageConfiguration]:
         """
         Create new navigation property to languages for identity
         param body: The request body
@@ -88,9 +86,9 @@ class LanguagesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserFlowLanguageConfiguration, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[LanguagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of languages supported for customization in a B2X user flow.
+        The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You can't create custom languages in self-service sign-up user flows.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class LanguagesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UserFlowLanguageConfiguration] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserFlowLanguageConfiguration] = None, request_configuration: Optional[LanguagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to languages for identity
         param body: The request body
@@ -136,7 +134,7 @@ class LanguagesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LanguagesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of languages supported for customization in a B2X user flow.
+        The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You can't create custom languages in self-service sign-up user flows.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class LanguagesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LanguagesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[LanguagesRequestBuilder.LanguagesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LanguagesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

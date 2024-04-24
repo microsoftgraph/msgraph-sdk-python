@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class LinkedResourcesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["linkedResource%2Did"] = linked_resource_id
         return LinkedResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LinkedResourceCollectionResponse]:
+    async def get(self,request_configuration: Optional[LinkedResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[LinkedResourceCollectionResponse]:
         """
-        Get information of one or more items in a partner application, based on which a specified task was created. The information is represented in a linkedResource object for each item. It includes an external ID for the item in the partner application, and if applicable, a deep link to that item in the application.
+        A collection of resources linked to the task.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LinkedResourceCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/todotask-list-linkedresources?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class LinkedResourcesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LinkedResourceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[LinkedResource] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LinkedResource]:
+    async def post(self,body: Optional[LinkedResource] = None, request_configuration: Optional[LinkedResourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[LinkedResource]:
         """
-        Create a linkedResource object to associate a specified task with an item in a partner application. For example, you can associate a task with an email item in Outlook that spurred the task, and you can create a linkedResource object to track its association. You can also create a linkedResource object while creating a task.
+        Create new navigation property to linkedResources for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LinkedResource]
-        Find more info here: https://learn.microsoft.com/graph/api/todotask-post-linkedresources?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class LinkedResourcesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LinkedResource, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[LinkedResourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get information of one or more items in a partner application, based on which a specified task was created. The information is represented in a linkedResource object for each item. It includes an external ID for the item in the partner application, and if applicable, a deep link to that item in the application.
+        A collection of resources linked to the task.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class LinkedResourcesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[LinkedResource] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[LinkedResource] = None, request_configuration: Optional[LinkedResourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a linkedResource object to associate a specified task with an item in a partner application. For example, you can associate a task with an email item in Outlook that spurred the task, and you can create a linkedResource object to track its association. You can also create a linkedResource object while creating a task.
+        Create new navigation property to linkedResources for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class LinkedResourcesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LinkedResourcesRequestBuilderGetQueryParameters():
         """
-        Get information of one or more items in a partner application, based on which a specified task was created. The information is represented in a linkedResource object for each item. It includes an external ID for the item in the partner application, and if applicable, a deep link to that item in the application.
+        A collection of resources linked to the task.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class LinkedResourcesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LinkedResourcesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[LinkedResourcesRequestBuilder.LinkedResourcesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LinkedResourcesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

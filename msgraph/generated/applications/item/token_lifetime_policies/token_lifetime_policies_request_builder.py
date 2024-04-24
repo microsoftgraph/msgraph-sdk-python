@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["tokenLifetimePolicy%2Did"] = token_lifetime_policy_id
         return TokenLifetimePolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TokenLifetimePolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[TokenLifetimePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[TokenLifetimePolicyCollectionResponse]:
         """
-        List the tokenLifetimePolicy objects that are assigned to an application. Only one object is returned in the collection because only one tokenLifetimePolicy can be assigned to an application.
+        Get tokenLifetimePolicies from applications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TokenLifetimePolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/application-list-tokenlifetimepolicies?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,9 +63,9 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TokenLifetimePolicyCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[TokenLifetimePoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List the tokenLifetimePolicy objects that are assigned to an application. Only one object is returned in the collection because only one tokenLifetimePolicy can be assigned to an application.
+        Get tokenLifetimePolicies from applications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +105,7 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TokenLifetimePoliciesRequestBuilderGetQueryParameters():
         """
-        List the tokenLifetimePolicy objects that are assigned to an application. Only one object is returned in the collection because only one tokenLifetimePolicy can be assigned to an application.
+        Get tokenLifetimePolicies from applications
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -158,6 +156,19 @@ class TokenLifetimePoliciesRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TokenLifetimePoliciesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[TokenLifetimePoliciesRequestBuilder.TokenLifetimePoliciesRequestBuilderGetQueryParameters] = None
 
     
 

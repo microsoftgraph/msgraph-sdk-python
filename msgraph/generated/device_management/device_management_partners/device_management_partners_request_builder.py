@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class DeviceManagementPartnersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["deviceManagementPartner%2Did"] = device_management_partner_id
         return DeviceManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceManagementPartnerCollectionResponse]:
+    async def get(self,request_configuration: Optional[DeviceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceManagementPartnerCollectionResponse]:
         """
-        List properties and relationships of the deviceManagementPartner objects.
+        The list of Device Management Partners configured by the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagementPartnerCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicemanagementpartner-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class DeviceManagementPartnersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceManagementPartnerCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceManagementPartner]:
+    async def post(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceManagementPartner]:
         """
-        Create a new deviceManagementPartner object.
+        Create new navigation property to deviceManagementPartners for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceManagementPartner]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-devicemanagementpartner-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class DeviceManagementPartnersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceManagementPartner, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DeviceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceManagementPartner objects.
+        The list of Device Management Partners configured by the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class DeviceManagementPartnersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceManagementPartner] = None, request_configuration: Optional[DeviceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceManagementPartner object.
+        Create new navigation property to deviceManagementPartners for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class DeviceManagementPartnersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceManagementPartnersRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceManagementPartner objects.
+        The list of Device Management Partners configured by the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class DeviceManagementPartnersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceManagementPartnersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DeviceManagementPartnersRequestBuilder.DeviceManagementPartnersRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceManagementPartnersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

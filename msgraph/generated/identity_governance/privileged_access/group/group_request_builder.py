@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -34,7 +33,7 @@ class GroupRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/privilegedAccess/group{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[GroupRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property group for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -52,7 +51,7 @@ class GroupRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroup]:
+    async def get(self,request_configuration: Optional[GroupRequestBuilderGetRequestConfiguration] = None) -> Optional[PrivilegedAccessGroup]:
         """
         A group that's governed through Privileged Identity Management (PIM).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -72,7 +71,7 @@ class GroupRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrivilegedAccessGroup, error_mapping)
     
-    async def patch(self,body: Optional[PrivilegedAccessGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroup]:
+    async def patch(self,body: Optional[PrivilegedAccessGroup] = None, request_configuration: Optional[GroupRequestBuilderPatchRequestConfiguration] = None) -> Optional[PrivilegedAccessGroup]:
         """
         Update the navigation property group in identityGovernance
         param body: The request body
@@ -95,7 +94,7 @@ class GroupRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrivilegedAccessGroup, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[GroupRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property group for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +105,7 @@ class GroupRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GroupRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         A group that's governed through Privileged Identity Management (PIM).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -117,7 +116,7 @@ class GroupRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[PrivilegedAccessGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PrivilegedAccessGroup] = None, request_configuration: Optional[GroupRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property group in identityGovernance
         param body: The request body
@@ -205,6 +204,16 @@ class GroupRequestBuilder(BaseRequestBuilder):
 
         return EligibilitySchedulesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GroupRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class GroupRequestBuilderGetQueryParameters():
         """
@@ -230,5 +239,28 @@ class GroupRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GroupRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[GroupRequestBuilder.GroupRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GroupRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

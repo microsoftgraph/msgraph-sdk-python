@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class CustomTaskExtensionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["customTaskExtension%2Did"] = custom_task_extension_id
         return CustomTaskExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CustomTaskExtensionCollectionResponse]:
+    async def get(self,request_configuration: Optional[CustomTaskExtensionsRequestBuilderGetRequestConfiguration] = None) -> Optional[CustomTaskExtensionCollectionResponse]:
         """
-        Get a list of the customTaskExtension objects and their properties.
+        The customTaskExtension instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomTaskExtensionCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-lifecycleworkflowscontainer-list-customtaskextensions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class CustomTaskExtensionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CustomTaskExtensionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[CustomTaskExtension] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CustomTaskExtension]:
+    async def post(self,body: Optional[CustomTaskExtension] = None, request_configuration: Optional[CustomTaskExtensionsRequestBuilderPostRequestConfiguration] = None) -> Optional[CustomTaskExtension]:
         """
-        Create a new customTaskExtension object.
+        Create new navigation property to customTaskExtensions for identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomTaskExtension]
-        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-lifecycleworkflowscontainer-post-customtaskextensions?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class CustomTaskExtensionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CustomTaskExtension, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[CustomTaskExtensionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the customTaskExtension objects and their properties.
+        The customTaskExtension instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class CustomTaskExtensionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[CustomTaskExtension] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CustomTaskExtension] = None, request_configuration: Optional[CustomTaskExtensionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new customTaskExtension object.
+        Create new navigation property to customTaskExtensions for identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class CustomTaskExtensionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CustomTaskExtensionsRequestBuilderGetQueryParameters():
         """
-        Get a list of the customTaskExtension objects and their properties.
+        The customTaskExtension instance.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class CustomTaskExtensionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CustomTaskExtensionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[CustomTaskExtensionsRequestBuilder.CustomTaskExtensionsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CustomTaskExtensionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

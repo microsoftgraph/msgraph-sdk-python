@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,12 +26,11 @@ class RefRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/manager/$ref", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Remove a user's manager.
+        Delete ref of navigation property manager for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/user-delete-manager?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -45,12 +44,11 @@ class RefRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[str]:
+    async def get(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> Optional[str]:
         """
-        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
+        The user or contact that is this user's manager. Read-only. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[str]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-manager?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -64,13 +62,12 @@ class RefRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "str", error_mapping)
     
-    async def put(self,body: Optional[ReferenceUpdate] = None, request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def put(self,body: Optional[ReferenceUpdate] = None, request_configuration: Optional[RefRequestBuilderPutRequestConfiguration] = None) -> None:
         """
-        Assign a user's manager.
+        Update the ref of navigation property manager in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/user-post-manager?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -86,9 +83,9 @@ class RefRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a user's manager.
+        Delete ref of navigation property manager for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,9 +94,9 @@ class RefRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
+        The user or contact that is this user's manager. Read-only. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -108,9 +105,9 @@ class RefRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_put_request_information(self,body: Optional[ReferenceUpdate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: Optional[ReferenceUpdate] = None, request_configuration: Optional[RefRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        Assign a user's manager.
+        Update the ref of navigation property manager in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -132,5 +129,35 @@ class RefRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return RefRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RefRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RefRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RefRequestBuilderPutRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

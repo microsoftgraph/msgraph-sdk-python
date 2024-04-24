@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["deviceComplianceDeviceStatus%2Did"] = device_compliance_device_status_id
         return DeviceComplianceDeviceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceComplianceDeviceStatusCollectionResponse]:
+    async def get(self,request_configuration: Optional[DeviceStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceComplianceDeviceStatusCollectionResponse]:
         """
-        List properties and relationships of the deviceComplianceDeviceStatus objects.
+        List of DeviceComplianceDeviceStatus.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceDeviceStatusCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancedevicestatus-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceComplianceDeviceStatusCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DeviceComplianceDeviceStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceComplianceDeviceStatus]:
+    async def post(self,body: Optional[DeviceComplianceDeviceStatus] = None, request_configuration: Optional[DeviceStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceComplianceDeviceStatus]:
         """
-        Create a new deviceComplianceDeviceStatus object.
+        Create new navigation property to deviceStatuses for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceDeviceStatus]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancedevicestatus-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceComplianceDeviceStatus, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DeviceStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceComplianceDeviceStatus objects.
+        List of DeviceComplianceDeviceStatus.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DeviceComplianceDeviceStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceComplianceDeviceStatus] = None, request_configuration: Optional[DeviceStatusesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceComplianceDeviceStatus object.
+        Create new navigation property to deviceStatuses for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceStatusesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceComplianceDeviceStatus objects.
+        List of DeviceComplianceDeviceStatus.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class DeviceStatusesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceStatusesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DeviceStatusesRequestBuilder.DeviceStatusesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeviceStatusesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

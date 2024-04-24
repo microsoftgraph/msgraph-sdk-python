@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ScheduledActionConfigurationsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["deviceComplianceActionItem%2Did"] = device_compliance_action_item_id
         return DeviceComplianceActionItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceComplianceActionItemCollectionResponse]:
+    async def get(self,request_configuration: Optional[ScheduledActionConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceComplianceActionItemCollectionResponse]:
         """
-        List properties and relationships of the deviceComplianceActionItem objects.
+        The list of scheduled action configurations for this compliance policy. Compliance policy must have one and only one block scheduled action.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceActionItemCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecomplianceactionitem-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class ScheduledActionConfigurationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceComplianceActionItemCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DeviceComplianceActionItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceComplianceActionItem]:
+    async def post(self,body: Optional[DeviceComplianceActionItem] = None, request_configuration: Optional[ScheduledActionConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceComplianceActionItem]:
         """
-        Create a new deviceComplianceActionItem object.
+        Create new navigation property to scheduledActionConfigurations for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceComplianceActionItem]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-devicecomplianceactionitem-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class ScheduledActionConfigurationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceComplianceActionItem, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ScheduledActionConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceComplianceActionItem objects.
+        The list of scheduled action configurations for this compliance policy. Compliance policy must have one and only one block scheduled action.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class ScheduledActionConfigurationsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DeviceComplianceActionItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceComplianceActionItem] = None, request_configuration: Optional[ScheduledActionConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceComplianceActionItem object.
+        Create new navigation property to scheduledActionConfigurations for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class ScheduledActionConfigurationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ScheduledActionConfigurationsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceComplianceActionItem objects.
+        The list of scheduled action configurations for this compliance policy. Compliance policy must have one and only one block scheduled action.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class ScheduledActionConfigurationsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ScheduledActionConfigurationsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ScheduledActionConfigurationsRequestBuilder.ScheduledActionConfigurationsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ScheduledActionConfigurationsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

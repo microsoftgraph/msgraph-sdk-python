@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["deviceAndAppManagementRoleAssignment%2Did"] = device_and_app_management_role_assignment_id
         return DeviceAndAppManagementRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceAndAppManagementRoleAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[DeviceAndAppManagementRoleAssignmentCollectionResponse]:
         """
-        List properties and relationships of the deviceAndAppManagementRoleAssignment objects.
+        The Role Assignments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceAndAppManagementRoleAssignmentCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-deviceandappmanagementroleassignment-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceAndAppManagementRoleAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DeviceAndAppManagementRoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceAndAppManagementRoleAssignment]:
+    async def post(self,body: Optional[DeviceAndAppManagementRoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[DeviceAndAppManagementRoleAssignment]:
         """
-        Create a new deviceAndAppManagementRoleAssignment object.
+        Create new navigation property to roleAssignments for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceAndAppManagementRoleAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-rbac-deviceandappmanagementroleassignment-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeviceAndAppManagementRoleAssignment, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the deviceAndAppManagementRoleAssignment objects.
+        The Role Assignments.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DeviceAndAppManagementRoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DeviceAndAppManagementRoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new deviceAndAppManagementRoleAssignment object.
+        Create new navigation property to roleAssignments for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RoleAssignmentsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the deviceAndAppManagementRoleAssignment objects.
+        The Role Assignments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class RoleAssignmentsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RoleAssignmentsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[RoleAssignmentsRequestBuilder.RoleAssignmentsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RoleAssignmentsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

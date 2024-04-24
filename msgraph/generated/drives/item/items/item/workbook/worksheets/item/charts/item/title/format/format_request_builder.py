@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +28,7 @@ class FormatRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}/title/format{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[FormatRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property format for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,7 +46,7 @@ class FormatRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartTitleFormat]:
+    async def get(self,request_configuration: Optional[FormatRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartTitleFormat]:
         """
         Represents the formatting of a chart title, which includes fill and font formatting. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +66,7 @@ class FormatRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookChartTitleFormat, error_mapping)
     
-    async def patch(self,body: Optional[WorkbookChartTitleFormat] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartTitleFormat]:
+    async def patch(self,body: Optional[WorkbookChartTitleFormat] = None, request_configuration: Optional[FormatRequestBuilderPatchRequestConfiguration] = None) -> Optional[WorkbookChartTitleFormat]:
         """
         Update the navigation property format in drives
         param body: The request body
@@ -90,7 +89,7 @@ class FormatRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookChartTitleFormat, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[FormatRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property format for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +100,7 @@ class FormatRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[FormatRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Represents the formatting of a chart title, which includes fill and font formatting. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +111,7 @@ class FormatRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[WorkbookChartTitleFormat] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[WorkbookChartTitleFormat] = None, request_configuration: Optional[FormatRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property format in drives
         param body: The request body
@@ -155,6 +154,16 @@ class FormatRequestBuilder(BaseRequestBuilder):
 
         return FontRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FormatRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class FormatRequestBuilderGetQueryParameters():
         """
@@ -180,5 +189,28 @@ class FormatRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FormatRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[FormatRequestBuilder.FormatRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FormatRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

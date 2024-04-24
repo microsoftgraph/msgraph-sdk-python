@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -48,9 +47,9 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Site]:
+    async def get(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Site]:
         """
-        Retrieve properties and relationships for a [site][] resource.A site resource represents a team site in SharePoint.
+        Retrieve properties and relationships for a site resource.A site resource represents a team site in SharePoint.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Site]
         Find more info here: https://learn.microsoft.com/graph/api/site-get?view=graph-rest-1.0
@@ -111,7 +110,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
 
         return GetByPathWithPathRequestBuilder(self.request_adapter, self.path_parameters, path)
     
-    async def patch(self,body: Optional[Site] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Site]:
+    async def patch(self,body: Optional[Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Site]:
         """
         Update entity in sites
         param body: The request body
@@ -134,9 +133,9 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Site, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve properties and relationships for a [site][] resource.A site resource represents a team site in SharePoint.
+        Retrieve properties and relationships for a site resource.A site resource represents a team site in SharePoint.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -145,7 +144,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Site] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update entity in sites
         param body: The request body
@@ -335,7 +334,7 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SiteItemRequestBuilderGetQueryParameters():
         """
-        Retrieve properties and relationships for a [site][] resource.A site resource represents a team site in SharePoint.
+        Retrieve properties and relationships for a site resource.A site resource represents a team site in SharePoint.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -357,5 +356,28 @@ class SiteItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SiteItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[SiteItemRequestBuilder.SiteItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SiteItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

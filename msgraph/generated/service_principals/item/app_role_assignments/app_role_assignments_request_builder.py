@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["appRoleAssignment%2Did"] = app_role_assignment_id
         return AppRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppRoleAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[AppRoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[AppRoleAssignmentCollectionResponse]:
         """
         App role assignment for another app or service, granted to this service principal. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignmentCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-list-approleassignments?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppRoleAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppRoleAssignment]:
+    async def post(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[AppRoleAssignment]:
         """
-        Assign an app role to a client service principal. App roles that are assigned to service principals are also known as application permissions. Application permissions can be granted directly with app role assignments, or through a consent experience. To grant an app role assignment to a client service principal, you need three identifiers:
+        Create new navigation property to appRoleAssignments for servicePrincipals
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppRoleAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignments?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,7 +86,7 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AppRoleAssignment, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AppRoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         App role assignment for another app or service, granted to this service principal. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -100,9 +97,9 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Assign an app role to a client service principal. App roles that are assigned to service principals are also known as application permissions. Application permissions can be granted directly with app role assignments, or through a consent experience. To grant an app role assignment to a client service principal, you need three identifiers:
+        Create new navigation property to appRoleAssignments for servicePrincipals
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -189,5 +186,28 @@ class AppRoleAssignmentsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AppRoleAssignmentsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AppRoleAssignmentsRequestBuilder.AppRoleAssignmentsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AppRoleAssignmentsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -58,12 +57,11 @@ class ItemsRequestBuilder(BaseRequestBuilder):
 
         return DeltaWithTokenRequestBuilder(self.request_adapter, self.path_parameters, token)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ListItemCollectionResponse]:
+    async def get(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[ListItemCollectionResponse]:
         """
-        Get the collection of [items][item] in a [list][].
+        All items contained in the list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ListItemCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/listitem-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -79,13 +77,12 @@ class ItemsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ListItemCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ListItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ListItem]:
+    async def post(self,body: Optional[ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None) -> Optional[ListItem]:
         """
-        Create a new [listItem][] in a [list][].
+        Create new navigation property to items for drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ListItem]
-        Find more info here: https://learn.microsoft.com/graph/api/listitem-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,9 +100,9 @@ class ItemsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ListItem, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the collection of [items][item] in a [list][].
+        All items contained in the list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,9 +111,9 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ListItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new [listItem][] in a [list][].
+        Create new navigation property to items for drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +157,7 @@ class ItemsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ItemsRequestBuilderGetQueryParameters():
         """
-        Get the collection of [items][item] in a [list][].
+        All items contained in the list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -207,5 +204,28 @@ class ItemsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ItemsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ItemsRequestBuilder.ItemsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ItemsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

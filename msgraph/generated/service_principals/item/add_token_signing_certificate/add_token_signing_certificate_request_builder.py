@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class AddTokenSigningCertificateRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/addTokenSigningCertificate", path_parameters)
     
-    async def post(self,body: Optional[AddTokenSigningCertificatePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SelfSignedCertificate]:
+    async def post(self,body: Optional[AddTokenSigningCertificatePostRequestBody] = None, request_configuration: Optional[AddTokenSigningCertificateRequestBuilderPostRequestConfiguration] = None) -> Optional[SelfSignedCertificate]:
         """
         Create a self-signed signing certificate and return a selfSignedCertificate object, which is the public part of the generated certificate.  The self-signed signing certificate is composed of the following objects, which are added to the servicePrincipal: + The keyCredentials object with the following objects:    + A private key object with usage set to Sign.    + A public key object with usage set to Verify.+ The passwordCredentials object.  All the objects have the same value of customKeyIdentifier. The passwordCredential is used to open the PFX file (private key). It and the associated private key object have the same value of keyId. When set during creation through the displayName property, the subject of the certificate cannot be updated. The startDateTime is set to the same time the certificate is created using the action. The endDateTime can be up to three years after the certificate is created.
         param body: The request body
@@ -51,7 +51,7 @@ class AddTokenSigningCertificateRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SelfSignedCertificate, error_mapping)
     
-    def to_post_request_information(self,body: Optional[AddTokenSigningCertificatePostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AddTokenSigningCertificatePostRequestBody] = None, request_configuration: Optional[AddTokenSigningCertificateRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a self-signed signing certificate and return a selfSignedCertificate object, which is the public part of the generated certificate.  The self-signed signing certificate is composed of the following objects, which are added to the servicePrincipal: + The keyCredentials object with the following objects:    + A private key object with usage set to Sign.    + A public key object with usage set to Verify.+ The passwordCredentials object.  All the objects have the same value of customKeyIdentifier. The passwordCredential is used to open the PFX file (private key). It and the associated private key object have the same value of keyId. When set during creation through the displayName property, the subject of the certificate cannot be updated. The startDateTime is set to the same time the certificate is created using the action. The endDateTime can be up to three years after the certificate is created.
         param body: The request body
@@ -75,5 +75,15 @@ class AddTokenSigningCertificateRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return AddTokenSigningCertificateRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AddTokenSigningCertificateRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +27,7 @@ class ServiceHealthIssueItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/serviceAnnouncement/issues/{serviceHealthIssue%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ServiceHealthIssueItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property issues for admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,12 +45,11 @@ class ServiceHealthIssueItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ServiceHealthIssue]:
+    async def get(self,request_configuration: Optional[ServiceHealthIssueItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ServiceHealthIssue]:
         """
-        Retrieve the properties and relationships of a serviceHealthIssue object. This operation retrieves a specified service health issue for tenant. The operation returns an error if the issue does not exist for the tenant.
+        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServiceHealthIssue]
-        Find more info here: https://learn.microsoft.com/graph/api/servicehealthissue-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +65,7 @@ class ServiceHealthIssueItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ServiceHealthIssue, error_mapping)
     
-    async def patch(self,body: Optional[ServiceHealthIssue] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ServiceHealthIssue]:
+    async def patch(self,body: Optional[ServiceHealthIssue] = None, request_configuration: Optional[ServiceHealthIssueItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ServiceHealthIssue]:
         """
         Update the navigation property issues in admin
         param body: The request body
@@ -90,7 +88,7 @@ class ServiceHealthIssueItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ServiceHealthIssue, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[ServiceHealthIssueItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property issues for admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +99,9 @@ class ServiceHealthIssueItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ServiceHealthIssueItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a serviceHealthIssue object. This operation retrieves a specified service health issue for tenant. The operation returns an error if the issue does not exist for the tenant.
+        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +110,7 @@ class ServiceHealthIssueItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[ServiceHealthIssue] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[ServiceHealthIssue] = None, request_configuration: Optional[ServiceHealthIssueItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property issues in admin
         param body: The request body
@@ -146,10 +144,20 @@ class ServiceHealthIssueItemRequestBuilder(BaseRequestBuilder):
 
         return IncidentReportRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ServiceHealthIssueItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class ServiceHealthIssueItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a serviceHealthIssue object. This operation retrieves a specified service health issue for tenant. The operation returns an error if the issue does not exist for the tenant.
+        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -171,5 +179,28 @@ class ServiceHealthIssueItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ServiceHealthIssueItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ServiceHealthIssueItemRequestBuilder.ServiceHealthIssueItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ServiceHealthIssueItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

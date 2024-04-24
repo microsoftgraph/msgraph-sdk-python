@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["teamsAppInstallation%2Did"] = teams_app_installation_id
         return TeamsAppInstallationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsAppInstallationCollectionResponse]:
+    async def get(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsAppInstallationCollectionResponse]:
         """
-        Retrieve a list of apps installed in the specified team.
+        The apps installed in this team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppInstallationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/team-list-installedapps?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamsAppInstallationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[TeamsAppInstallation] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsAppInstallation]:
+    async def post(self,body: Optional[TeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[TeamsAppInstallation]:
         """
-        Install an app to the specified team.
+        Create new navigation property to installedApps for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppInstallation]
-        Find more info here: https://learn.microsoft.com/graph/api/team-post-installedapps?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamsAppInstallation, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of apps installed in the specified team.
+        The apps installed in this team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[TeamsAppInstallation] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[TeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Install an app to the specified team.
+        Create new navigation property to installedApps for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class InstalledAppsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of apps installed in the specified team.
+        The apps installed in this team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class InstalledAppsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[InstalledAppsRequestBuilder.InstalledAppsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class InstalledAppsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

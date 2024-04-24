@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class AttributeSetsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["attributeSet%2Did"] = attribute_set_id
         return AttributeSetItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AttributeSetCollectionResponse]:
+    async def get(self,request_configuration: Optional[AttributeSetsRequestBuilderGetRequestConfiguration] = None) -> Optional[AttributeSetCollectionResponse]:
         """
-        Get a list of the attributeSet objects and their properties.
+        Group of related custom security attribute definitions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttributeSetCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/directory-list-attributesets?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class AttributeSetsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AttributeSetCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AttributeSet] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AttributeSet]:
+    async def post(self,body: Optional[AttributeSet] = None, request_configuration: Optional[AttributeSetsRequestBuilderPostRequestConfiguration] = None) -> Optional[AttributeSet]:
         """
-        Create a new attributeSet object.
+        Create new navigation property to attributeSets for directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttributeSet]
-        Find more info here: https://learn.microsoft.com/graph/api/directory-post-attributesets?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class AttributeSetsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AttributeSet, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AttributeSetsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the attributeSet objects and their properties.
+        Group of related custom security attribute definitions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class AttributeSetsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AttributeSet] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AttributeSet] = None, request_configuration: Optional[AttributeSetsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new attributeSet object.
+        Create new navigation property to attributeSets for directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class AttributeSetsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttributeSetsRequestBuilderGetQueryParameters():
         """
-        Get a list of the attributeSet objects and their properties.
+        Group of related custom security attribute definitions.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class AttributeSetsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AttributeSetsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AttributeSetsRequestBuilder.AttributeSetsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AttributeSetsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

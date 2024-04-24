@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -30,12 +29,11 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/teamwork/installedApps/{userScopeTeamsAppInstallation%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Uninstall an app from the personal scope of the specified user.
+        Delete navigation property installedApps for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/userteamwork-delete-installedapps?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,12 +47,11 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserScopeTeamsAppInstallation]:
+    async def get(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UserScopeTeamsAppInstallation]:
         """
-        Retrieve the app installed in the personal scope of the specified user.
+        The apps installed in the personal scope of this user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserScopeTeamsAppInstallation]
-        Find more info here: https://learn.microsoft.com/graph/api/userteamwork-get-installedapps?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,7 +67,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserScopeTeamsAppInstallation, error_mapping)
     
-    async def patch(self,body: Optional[UserScopeTeamsAppInstallation] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserScopeTeamsAppInstallation]:
+    async def patch(self,body: Optional[UserScopeTeamsAppInstallation] = None, request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UserScopeTeamsAppInstallation]:
         """
         Update the navigation property installedApps in users
         param body: The request body
@@ -93,9 +90,9 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserScopeTeamsAppInstallation, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Uninstall an app from the personal scope of the specified user.
+        Delete navigation property installedApps for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,9 +101,9 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the app installed in the personal scope of the specified user.
+        The apps installed in the personal scope of this user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[UserScopeTeamsAppInstallation] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UserScopeTeamsAppInstallation] = None, request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property installedApps in users
         param body: The request body
@@ -167,10 +164,20 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
 
         return TeamsAppDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserScopeTeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class UserScopeTeamsAppInstallationItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the app installed in the personal scope of the specified user.
+        The apps installed in the personal scope of this user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -192,5 +199,28 @@ class UserScopeTeamsAppInstallationItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserScopeTeamsAppInstallationItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UserScopeTeamsAppInstallationItemRequestBuilder.UserScopeTeamsAppInstallationItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserScopeTeamsAppInstallationItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

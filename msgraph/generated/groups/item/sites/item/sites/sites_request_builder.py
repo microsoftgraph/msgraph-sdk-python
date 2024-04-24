@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,12 +42,11 @@ class SitesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["site%2Did1"] = site_id1
         return SiteItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SiteCollectionResponse]:
+    async def get(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> Optional[SiteCollectionResponse]:
         """
-        Get a collection of subsites defined for a [site][].
+        The collection of the sub-sites under this site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SiteCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/site-list-subsites?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -64,9 +62,9 @@ class SitesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SiteCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a collection of subsites defined for a [site][].
+        The collection of the sub-sites under this site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +95,7 @@ class SitesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SitesRequestBuilderGetQueryParameters():
         """
-        Get a collection of subsites defined for a [site][].
+        The collection of the sub-sites under this site.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -148,6 +146,19 @@ class SitesRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SitesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[SitesRequestBuilder.SitesRequestBuilderGetQueryParameters] = None
 
     
 

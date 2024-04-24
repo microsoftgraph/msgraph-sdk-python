@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["conversationThread%2Did"] = conversation_thread_id
         return ConversationThreadItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConversationThreadCollectionResponse]:
+    async def get(self,request_configuration: Optional[ThreadsRequestBuilderGetRequestConfiguration] = None) -> Optional[ConversationThreadCollectionResponse]:
         """
-        Get all the threads in a group conversation. Note: You can also get all the threads of a group.
+        A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationThreadCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/conversation-list-threads?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ConversationThreadCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ConversationThread] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConversationThread]:
+    async def post(self,body: Optional[ConversationThread] = None, request_configuration: Optional[ThreadsRequestBuilderPostRequestConfiguration] = None) -> Optional[ConversationThread]:
         """
-        Create a new thread in the specified conversation.  A thread and post are created as specified. Use reply thread to further post to that thread. Or, if you get the post ID, you can also reply to that post in that thread. Note: You can also start a new conversation by first creating a thread.
+        Create new navigation property to threads for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationThread]
-        Find more info here: https://learn.microsoft.com/graph/api/conversation-post-threads?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ConversationThread, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ThreadsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get all the threads in a group conversation. Note: You can also get all the threads of a group.
+        A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ConversationThread] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ConversationThread] = None, request_configuration: Optional[ThreadsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new thread in the specified conversation.  A thread and post are created as specified. Use reply thread to further post to that thread. Or, if you get the post ID, you can also reply to that post in that thread. Note: You can also start a new conversation by first creating a thread.
+        Create new navigation property to threads for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ThreadsRequestBuilderGetQueryParameters():
         """
-        Get all the threads in a group conversation. Note: You can also get all the threads of a group.
+        A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -184,5 +181,28 @@ class ThreadsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ThreadsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ThreadsRequestBuilder.ThreadsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ThreadsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

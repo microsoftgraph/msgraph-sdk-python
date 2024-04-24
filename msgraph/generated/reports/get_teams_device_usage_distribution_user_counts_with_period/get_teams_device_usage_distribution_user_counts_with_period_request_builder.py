@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,11 +28,12 @@ class GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(BaseRequ
             path_parameters['period'] = str(period)
         super().__init__(request_adapter, "{+baseurl}/reports/getTeamsDeviceUsageDistributionUserCounts(period='{period}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
+    async def get(self,request_configuration: Optional[GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
-        Invoke function getTeamsDeviceUsageDistributionUserCounts
+        Get the number of Microsoft Teams unique users by device type over the selected time period.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/reportroot-getteamsdeviceusagedistributionusercounts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -46,9 +47,9 @@ class GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(BaseRequ
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getTeamsDeviceUsageDistributionUserCounts
+        Get the number of Microsoft Teams unique users by device type over the selected time period.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -66,5 +67,15 @@ class GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(BaseRequ
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

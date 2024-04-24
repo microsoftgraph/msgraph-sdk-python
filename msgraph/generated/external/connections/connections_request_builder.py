@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ConnectionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["externalConnection%2Did"] = external_connection_id
         return ExternalConnectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ExternalConnectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[ConnectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[ExternalConnectionCollectionResponse]:
         """
-        Get a list of the externalConnection objects and their properties.
+        Get connections from external
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExternalConnectionCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/externalconnectors-externalconnection-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class ConnectionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ExternalConnectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ExternalConnection] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ExternalConnection]:
+    async def post(self,body: Optional[ExternalConnection] = None, request_configuration: Optional[ConnectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[ExternalConnection]:
         """
-        Create a new externalConnection object.
+        Create new navigation property to connections for external
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExternalConnection]
-        Find more info here: https://learn.microsoft.com/graph/api/externalconnectors-external-post-connections?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class ConnectionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ExternalConnection, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ConnectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the externalConnection objects and their properties.
+        Get connections from external
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class ConnectionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ExternalConnection] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ExternalConnection] = None, request_configuration: Optional[ConnectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new externalConnection object.
+        Create new navigation property to connections for external
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class ConnectionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConnectionsRequestBuilderGetQueryParameters():
         """
-        Get a list of the externalConnection objects and their properties.
+        Get connections from external
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class ConnectionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ConnectionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ConnectionsRequestBuilder.ConnectionsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ConnectionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

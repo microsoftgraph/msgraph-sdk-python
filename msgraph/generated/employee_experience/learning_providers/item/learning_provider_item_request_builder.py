@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -31,12 +30,11 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/employeeExperience/learningProviders/{learningProvider%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[LearningProviderItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a learningProvider resource and remove its registration in Viva Learning for a tenant.
+        Delete navigation property learningProviders for employeeExperience
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/employeeexperience-delete-learningproviders?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,12 +48,11 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningProvider]:
+    async def get(self,request_configuration: Optional[LearningProviderItemRequestBuilderGetRequestConfiguration] = None) -> Optional[LearningProvider]:
         """
-        Read the properties and relationships of a learningProvider object.
+        A collection of learning providers.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningProvider]
-        Find more info here: https://learn.microsoft.com/graph/api/learningprovider-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -95,13 +92,12 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
 
         return LearningCourseActivitiesWithExternalcourseActivityIdRequestBuilder(self.request_adapter, self.path_parameters, externalcourse_activity_id)
     
-    async def patch(self,body: Optional[LearningProvider] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningProvider]:
+    async def patch(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProviderItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[LearningProvider]:
         """
-        Update the properties of a learningProvider object.
+        Update the navigation property learningProviders in employeeExperience
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningProvider]
-        Find more info here: https://learn.microsoft.com/graph/api/learningprovider-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -119,9 +115,9 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LearningProvider, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[LearningProviderItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a learningProvider resource and remove its registration in Viva Learning for a tenant.
+        Delete navigation property learningProviders for employeeExperience
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -130,9 +126,9 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[LearningProviderItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a learningProvider object.
+        A collection of learning providers.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -141,9 +137,9 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[LearningProvider] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProviderItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a learningProvider object.
+        Update the navigation property learningProviders in employeeExperience
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -184,10 +180,20 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
 
         return LearningCourseActivitiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LearningProviderItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class LearningProviderItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a learningProvider object.
+        A collection of learning providers.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -209,5 +215,28 @@ class LearningProviderItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LearningProviderItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[LearningProviderItemRequestBuilder.LearningProviderItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LearningProviderItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

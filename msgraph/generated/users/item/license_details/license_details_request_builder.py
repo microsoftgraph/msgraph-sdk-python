@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -45,12 +44,11 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["licenseDetails%2Did"] = license_details_id
         return LicenseDetailsItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LicenseDetailsCollectionResponse]:
+    async def get(self,request_configuration: Optional[LicenseDetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[LicenseDetailsCollectionResponse]:
         """
-        Retrieve a list of licenseDetails objects for enterprise users. This API returns details for licenses that are directly assigned and those transitively assigned through memberships in licensed groups.
+        A collection of this user's license details. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LicenseDetailsCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-licensedetails?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +64,7 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LicenseDetailsCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[LicenseDetails] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LicenseDetails]:
+    async def post(self,body: Optional[LicenseDetails] = None, request_configuration: Optional[LicenseDetailsRequestBuilderPostRequestConfiguration] = None) -> Optional[LicenseDetails]:
         """
         Create new navigation property to licenseDetails for users
         param body: The request body
@@ -89,9 +87,9 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LicenseDetails, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[LicenseDetailsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of licenseDetails objects for enterprise users. This API returns details for licenses that are directly assigned and those transitively assigned through memberships in licensed groups.
+        A collection of this user's license details. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,7 +98,7 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[LicenseDetails] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[LicenseDetails] = None, request_configuration: Optional[LicenseDetailsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to licenseDetails for users
         param body: The request body
@@ -146,7 +144,7 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LicenseDetailsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of licenseDetails objects for enterprise users. This API returns details for licenses that are directly assigned and those transitively assigned through memberships in licensed groups.
+        A collection of this user's license details. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -198,5 +196,28 @@ class LicenseDetailsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LicenseDetailsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[LicenseDetailsRequestBuilder.LicenseDetailsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LicenseDetailsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

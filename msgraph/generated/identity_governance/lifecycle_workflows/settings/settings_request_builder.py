@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/settings{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LifecycleManagementSettings]:
+    async def get(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[LifecycleManagementSettings]:
         """
-        Read the properties and relationships of a lifecycleManagementSettings object.
+        The settings of the lifecycle workflows instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LifecycleManagementSettings]
-        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-lifecyclemanagementsettings-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,13 +46,12 @@ class SettingsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LifecycleManagementSettings, error_mapping)
     
-    async def patch(self,body: Optional[LifecycleManagementSettings] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LifecycleManagementSettings]:
+    async def patch(self,body: Optional[LifecycleManagementSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[LifecycleManagementSettings]:
         """
-        Update the properties of a lifecycleManagementSettings object.
+        Update the navigation property settings in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LifecycleManagementSettings]
-        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-lifecyclemanagementsettings-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -72,9 +69,9 @@ class SettingsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LifecycleManagementSettings, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a lifecycleManagementSettings object.
+        The settings of the lifecycle workflows instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -83,9 +80,9 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[LifecycleManagementSettings] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[LifecycleManagementSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a lifecycleManagementSettings object.
+        Update the navigation property settings in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -111,7 +108,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SettingsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a lifecycleManagementSettings object.
+        The settings of the lifecycle workflows instance.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -133,5 +130,28 @@ class SettingsRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SettingsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[SettingsRequestBuilder.SettingsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SettingsRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

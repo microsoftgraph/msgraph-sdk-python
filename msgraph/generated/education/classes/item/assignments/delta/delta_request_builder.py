@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,11 +26,12 @@ class DeltaRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/education/classes/{educationClass%2Did}/assignments/delta(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeltaGetResponse]:
+    async def get(self,request_configuration: Optional[DeltaRequestBuilderGetRequestConfiguration] = None) -> Optional[DeltaGetResponse]:
         """
-        Invoke function delta
+        Get a list of newly-created or updated assignments without reading the whole collection. A teacher or an application running with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeltaGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-delta?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -47,9 +47,9 @@ class DeltaRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DeltaGetResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DeltaRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function delta
+        Get a list of newly-created or updated assignments without reading the whole collection. A teacher or an application running with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -71,7 +71,7 @@ class DeltaRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeltaRequestBuilderGetQueryParameters():
         """
-        Invoke function delta
+        Get a list of newly-created or updated assignments without reading the whole collection. A teacher or an application running with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -122,6 +122,19 @@ class DeltaRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DeltaRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DeltaRequestBuilder.DeltaRequestBuilderGetQueryParameters] = None
 
     
 

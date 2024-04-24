@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class EducationOutcomeItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/education/classes/{educationClass%2Did}/assignments/{educationAssignment%2Did}/submissions/{educationSubmission%2Did}/outcomes/{educationOutcome%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[EducationOutcomeItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a feedback resource from a submission. This can only be done by a teacher.
+        Delete navigation property outcomes for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/educationfeedbackresourceoutcome-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -46,7 +44,7 @@ class EducationOutcomeItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationOutcome]:
+    async def get(self,request_configuration: Optional[EducationOutcomeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationOutcome]:
         """
         Get outcomes from education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -66,13 +64,12 @@ class EducationOutcomeItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationOutcome, error_mapping)
     
-    async def patch(self,body: Optional[EducationOutcome] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationOutcome]:
+    async def patch(self,body: Optional[EducationOutcome] = None, request_configuration: Optional[EducationOutcomeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationOutcome]:
         """
-        Update the properties of an educationOutcome object. Only teachers can perform this operation.
+        Update the navigation property outcomes in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationOutcome]
-        Find more info here: https://learn.microsoft.com/graph/api/educationoutcome-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,9 +87,9 @@ class EducationOutcomeItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationOutcome, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[EducationOutcomeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a feedback resource from a submission. This can only be done by a teacher.
+        Delete navigation property outcomes for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,7 +98,7 @@ class EducationOutcomeItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[EducationOutcomeItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get outcomes from education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,9 +109,9 @@ class EducationOutcomeItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[EducationOutcome] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EducationOutcome] = None, request_configuration: Optional[EducationOutcomeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an educationOutcome object. Only teachers can perform this operation.
+        Update the navigation property outcomes in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -136,6 +133,16 @@ class EducationOutcomeItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return EducationOutcomeItemRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EducationOutcomeItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class EducationOutcomeItemRequestBuilderGetQueryParameters():
@@ -162,5 +169,28 @@ class EducationOutcomeItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EducationOutcomeItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[EducationOutcomeItemRequestBuilder.EducationOutcomeItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class EducationOutcomeItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

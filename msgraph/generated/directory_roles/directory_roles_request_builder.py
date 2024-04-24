@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -48,7 +47,7 @@ class DirectoryRolesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["directoryRole%2Did"] = directory_role_id
         return DirectoryRoleItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryRoleCollectionResponse]:
+    async def get(self,request_configuration: Optional[DirectoryRolesRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryRoleCollectionResponse]:
         """
         List the directory roles that are activated in the tenant. This operation only returns roles that have been activated. A role becomes activated when an admin activates the role using the Activate directoryRole API. Not all built-in roles are initially activated.  When assigning a role using the Microsoft Entra admin center, the role activation step is implicitly done on the admin's behalf. To get the full list of roles that are available in Microsoft Entra ID, use List directoryRoleTemplates.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -69,7 +68,7 @@ class DirectoryRolesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DirectoryRoleCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DirectoryRole] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryRole]:
+    async def post(self,body: Optional[DirectoryRole] = None, request_configuration: Optional[DirectoryRolesRequestBuilderPostRequestConfiguration] = None) -> Optional[DirectoryRole]:
         """
         Activate a directory role. To read a directory role or update its members, it must first be activated in the tenant. The Company Administrators and the implicit user directory roles (User, Guest User, and Restricted Guest User roles) are activated by default. To access and assign members to other directory roles, you must first activate it with its corresponding directory role template ID.
         param body: The request body
@@ -93,7 +92,7 @@ class DirectoryRolesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DirectoryRole, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DirectoryRolesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         List the directory roles that are activated in the tenant. This operation only returns roles that have been activated. A role becomes activated when an admin activates the role using the Activate directoryRole API. Not all built-in roles are initially activated.  When assigning a role using the Microsoft Entra admin center, the role activation step is implicitly done on the admin's behalf. To get the full list of roles that are available in Microsoft Entra ID, use List directoryRoleTemplates.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +103,7 @@ class DirectoryRolesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DirectoryRole] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DirectoryRole] = None, request_configuration: Optional[DirectoryRolesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Activate a directory role. To read a directory role or update its members, it must first be activated in the tenant. The Company Administrators and the implicit user directory roles (User, Guest User, and Restricted Guest User roles) are activated by default. To access and assign members to other directory roles, you must first activate it with its corresponding directory role template ID.
         param body: The request body
@@ -224,5 +223,28 @@ class DirectoryRolesRequestBuilder(BaseRequestBuilder):
         # Skip the first n items
         skip: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DirectoryRolesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DirectoryRolesRequestBuilder.DirectoryRolesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DirectoryRolesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

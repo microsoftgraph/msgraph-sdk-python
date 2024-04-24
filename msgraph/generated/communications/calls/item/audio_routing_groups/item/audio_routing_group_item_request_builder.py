@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/communications/calls/{call%2Did}/audioRoutingGroups/{audioRoutingGroup%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[AudioRoutingGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete the specified audioRoutingGroup.
+        Delete navigation property audioRoutingGroups for communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/audioroutinggroup-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -46,12 +44,11 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AudioRoutingGroup]:
+    async def get(self,request_configuration: Optional[AudioRoutingGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AudioRoutingGroup]:
         """
-        Retrieve the properties and relationships of an audioRoutingGroup object.
+        Get audioRoutingGroups from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AudioRoutingGroup]
-        Find more info here: https://learn.microsoft.com/graph/api/audioroutinggroup-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,13 +64,12 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AudioRoutingGroup, error_mapping)
     
-    async def patch(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AudioRoutingGroup]:
+    async def patch(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AudioRoutingGroup]:
         """
-        Modify sources and receivers of an audioRoutingGroup.
+        Update the navigation property audioRoutingGroups in communications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AudioRoutingGroup]
-        Find more info here: https://learn.microsoft.com/graph/api/audioroutinggroup-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,9 +87,9 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AudioRoutingGroup, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[AudioRoutingGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete the specified audioRoutingGroup.
+        Delete navigation property audioRoutingGroups for communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,9 +98,9 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AudioRoutingGroupItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an audioRoutingGroup object.
+        Get audioRoutingGroups from communications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,9 +109,9 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Modify sources and receivers of an audioRoutingGroup.
+        Update the navigation property audioRoutingGroups in communications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,10 +134,20 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return AudioRoutingGroupItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AudioRoutingGroupItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class AudioRoutingGroupItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an audioRoutingGroup object.
+        Get audioRoutingGroups from communications
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -163,5 +169,28 @@ class AudioRoutingGroupItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AudioRoutingGroupItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AudioRoutingGroupItemRequestBuilder.AudioRoutingGroupItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AudioRoutingGroupItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

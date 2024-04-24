@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class ManagerRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/contacts/{orgContact%2Did}/manager{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryObject]:
+    async def get(self,request_configuration: Optional[ManagerRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryObject]:
         """
-        Get this organizational contact's manager.
+        The user or contact that is this contact's manager. Read-only. Supports $expand and $filter (eq) by id.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObject]
-        Find more info here: https://learn.microsoft.com/graph/api/orgcontact-get-manager?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,9 +46,9 @@ class ManagerRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DirectoryObject, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ManagerRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get this organizational contact's manager.
+        The user or contact that is this contact's manager. Read-only. Supports $expand and $filter (eq) by id.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -72,7 +70,7 @@ class ManagerRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManagerRequestBuilderGetQueryParameters():
         """
-        Get this organizational contact's manager.
+        The user or contact that is this contact's manager. Read-only. Supports $expand and $filter (eq) by id.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -93,6 +91,19 @@ class ManagerRequestBuilder(BaseRequestBuilder):
 
         # Select properties to be returned
         select: Optional[List[str]] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ManagerRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ManagerRequestBuilder.ManagerRequestBuilderGetQueryParameters] = None
 
     
 

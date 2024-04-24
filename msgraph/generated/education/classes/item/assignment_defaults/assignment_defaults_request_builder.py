@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class AssignmentDefaultsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/education/classes/{educationClass%2Did}/assignmentDefaults{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[AssignmentDefaultsRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property assignmentDefaults for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,12 +44,11 @@ class AssignmentDefaultsRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationAssignmentDefaults]:
+    async def get(self,request_configuration: Optional[AssignmentDefaultsRequestBuilderGetRequestConfiguration] = None) -> Optional[EducationAssignmentDefaults]:
         """
-        Read the properties and relationships of an educationAssignmentDefaults object.  These are the class-level assignment defaults respected by new assignments created in the class. Callers can continue to specify custom values on each assignment creation if they don't want the default behaviors. Only teachers can perform this operation.
+        Specifies class-level defaults respected by new assignments created in the class.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationAssignmentDefaults]
-        Find more info here: https://learn.microsoft.com/graph/api/educationassignmentdefaults-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +64,12 @@ class AssignmentDefaultsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationAssignmentDefaults, error_mapping)
     
-    async def patch(self,body: Optional[EducationAssignmentDefaults] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationAssignmentDefaults]:
+    async def patch(self,body: Optional[EducationAssignmentDefaults] = None, request_configuration: Optional[AssignmentDefaultsRequestBuilderPatchRequestConfiguration] = None) -> Optional[EducationAssignmentDefaults]:
         """
-        Update the properties of an educationAssignmentDefaults object. Only teachers can update these settings.
+        Update the navigation property assignmentDefaults in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationAssignmentDefaults]
-        Find more info here: https://learn.microsoft.com/graph/api/educationassignmentdefaults-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,7 +87,7 @@ class AssignmentDefaultsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EducationAssignmentDefaults, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[AssignmentDefaultsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property assignmentDefaults for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +98,9 @@ class AssignmentDefaultsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AssignmentDefaultsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an educationAssignmentDefaults object.  These are the class-level assignment defaults respected by new assignments created in the class. Callers can continue to specify custom values on each assignment creation if they don't want the default behaviors. Only teachers can perform this operation.
+        Specifies class-level defaults respected by new assignments created in the class.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,9 +109,9 @@ class AssignmentDefaultsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[EducationAssignmentDefaults] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[EducationAssignmentDefaults] = None, request_configuration: Optional[AssignmentDefaultsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an educationAssignmentDefaults object. Only teachers can update these settings.
+        Update the navigation property assignmentDefaults in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,10 +134,20 @@ class AssignmentDefaultsRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return AssignmentDefaultsRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AssignmentDefaultsRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class AssignmentDefaultsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an educationAssignmentDefaults object.  These are the class-level assignment defaults respected by new assignments created in the class. Callers can continue to specify custom values on each assignment creation if they don't want the default behaviors. Only teachers can perform this operation.
+        Specifies class-level defaults respected by new assignments created in the class.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -162,5 +169,28 @@ class AssignmentDefaultsRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AssignmentDefaultsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AssignmentDefaultsRequestBuilder.AssignmentDefaultsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AssignmentDefaultsRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

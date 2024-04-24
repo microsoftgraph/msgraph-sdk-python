@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class RolesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["accessPackageResourceRole%2Did1"] = access_package_resource_role_id1
         return AccessPackageResourceRoleItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessPackageResourceRoleCollectionResponse]:
+    async def get(self,request_configuration: Optional[RolesRequestBuilderGetRequestConfiguration] = None) -> Optional[AccessPackageResourceRoleCollectionResponse]:
         """
         Read-only. Nullable. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +63,7 @@ class RolesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessPackageResourceRoleCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AccessPackageResourceRole] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AccessPackageResourceRole]:
+    async def post(self,body: Optional[AccessPackageResourceRole] = None, request_configuration: Optional[RolesRequestBuilderPostRequestConfiguration] = None) -> Optional[AccessPackageResourceRole]:
         """
         Create new navigation property to roles for identityGovernance
         param body: The request body
@@ -87,7 +86,7 @@ class RolesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AccessPackageResourceRole, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RolesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read-only. Nullable. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +97,7 @@ class RolesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AccessPackageResourceRole] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AccessPackageResourceRole] = None, request_configuration: Optional[RolesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to roles for identityGovernance
         param body: The request body
@@ -187,5 +186,28 @@ class RolesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RolesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[RolesRequestBuilder.RolesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RolesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

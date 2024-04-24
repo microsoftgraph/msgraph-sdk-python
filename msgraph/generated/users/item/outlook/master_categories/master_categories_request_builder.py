@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class MasterCategoriesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["outlookCategory%2Did"] = outlook_category_id
         return OutlookCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OutlookCategoryCollectionResponse]:
+    async def get(self,request_configuration: Optional[MasterCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[OutlookCategoryCollectionResponse]:
         """
-        Get all the categories that have been defined for a user.
+        A list of categories defined for the user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OutlookCategoryCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/outlookuser-list-mastercategories?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class MasterCategoriesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OutlookCategoryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[OutlookCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[OutlookCategory]:
+    async def post(self,body: Optional[OutlookCategory] = None, request_configuration: Optional[MasterCategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[OutlookCategory]:
         """
-        Create an outlookCategory object in the user's master list of categories.
+        Create new navigation property to masterCategories for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OutlookCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/outlookuser-post-mastercategories?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class MasterCategoriesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OutlookCategory, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[MasterCategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get all the categories that have been defined for a user.
+        A list of categories defined for the user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class MasterCategoriesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[OutlookCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[OutlookCategory] = None, request_configuration: Optional[MasterCategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an outlookCategory object in the user's master list of categories.
+        Create new navigation property to masterCategories for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class MasterCategoriesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MasterCategoriesRequestBuilderGetQueryParameters():
         """
-        Get all the categories that have been defined for a user.
+        A list of categories defined for the user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -179,5 +176,28 @@ class MasterCategoriesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MasterCategoriesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[MasterCategoriesRequestBuilder.MasterCategoriesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MasterCategoriesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

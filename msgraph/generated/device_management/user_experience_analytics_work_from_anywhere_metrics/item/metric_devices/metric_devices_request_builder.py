@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class MetricDevicesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["userExperienceAnalyticsWorkFromAnywhereDevice%2Did"] = user_experience_analytics_work_from_anywhere_device_id
         return UserExperienceAnalyticsWorkFromAnywhereDeviceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereDeviceCollectionResponse]:
+    async def get(self,request_configuration: Optional[MetricDevicesRequestBuilderGetRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereDeviceCollectionResponse]:
         """
         The work from anywhere metric devices. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +63,7 @@ class MetricDevicesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsWorkFromAnywhereDeviceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereDevice] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereDevice]:
+    async def post(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereDevice] = None, request_configuration: Optional[MetricDevicesRequestBuilderPostRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsWorkFromAnywhereDevice]:
         """
         Create new navigation property to metricDevices for deviceManagement
         param body: The request body
@@ -87,7 +86,7 @@ class MetricDevicesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsWorkFromAnywhereDevice, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[MetricDevicesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The work from anywhere metric devices. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +97,7 @@ class MetricDevicesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereDevice] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserExperienceAnalyticsWorkFromAnywhereDevice] = None, request_configuration: Optional[MetricDevicesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to metricDevices for deviceManagement
         param body: The request body
@@ -187,5 +186,28 @@ class MetricDevicesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MetricDevicesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[MetricDevicesRequestBuilder.MetricDevicesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MetricDevicesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

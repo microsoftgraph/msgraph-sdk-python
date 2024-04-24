@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,9 +43,9 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["intelligenceProfileIndicator%2Did"] = intelligence_profile_indicator_id
         return IntelligenceProfileIndicatorItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IntelligenceProfileIndicatorCollectionResponse]:
+    async def get(self,request_configuration: Optional[IntelligenceProfileIndicatorsRequestBuilderGetRequestConfiguration] = None) -> Optional[IntelligenceProfileIndicatorCollectionResponse]:
         """
-        Read the properties and relationships of a intelligenceProfileIndicator object.
+        Get intelligenceProfileIndicators from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IntelligenceProfileIndicatorCollectionResponse]
         """
@@ -64,7 +63,7 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IntelligenceProfileIndicatorCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[IntelligenceProfileIndicator] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[IntelligenceProfileIndicator]:
+    async def post(self,body: Optional[IntelligenceProfileIndicator] = None, request_configuration: Optional[IntelligenceProfileIndicatorsRequestBuilderPostRequestConfiguration] = None) -> Optional[IntelligenceProfileIndicator]:
         """
         Create new navigation property to intelligenceProfileIndicators for security
         param body: The request body
@@ -87,9 +86,9 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IntelligenceProfileIndicator, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[IntelligenceProfileIndicatorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a intelligenceProfileIndicator object.
+        Get intelligenceProfileIndicators from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -98,7 +97,7 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[IntelligenceProfileIndicator] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[IntelligenceProfileIndicator] = None, request_configuration: Optional[IntelligenceProfileIndicatorsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to intelligenceProfileIndicators for security
         param body: The request body
@@ -135,7 +134,7 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IntelligenceProfileIndicatorsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a intelligenceProfileIndicator object.
+        Get intelligenceProfileIndicators from security
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -187,5 +186,28 @@ class IntelligenceProfileIndicatorsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IntelligenceProfileIndicatorsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[IntelligenceProfileIndicatorsRequestBuilder.IntelligenceProfileIndicatorsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IntelligenceProfileIndicatorsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

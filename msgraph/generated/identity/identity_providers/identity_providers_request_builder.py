@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -45,12 +44,11 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["identityProviderBase%2Did"] = identity_provider_base_id
         return IdentityProviderBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityProviderBaseCollectionResponse]:
+    async def get(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[IdentityProviderBaseCollectionResponse]:
         """
-        Get a collection of identity provider resources that are configured for a tenant, and that are derived from identityProviderBase. For a Microsoft Entra tenant, the providers can be socialIdentityProviders or builtinIdentityProviders objects. For an Azure AD B2C, the providers can be socialIdentityProvider, or appleManagedIdentityProvider objects.
+        Get identityProviders from identity
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityProviderBaseCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/identitycontainer-list-identityproviders?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +64,12 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IdentityProviderBaseCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityProviderBase]:
+    async def post(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None) -> Optional[IdentityProviderBase]:
         """
-        Create an identity provider object that is of the type specified in the request body. Among the types of providers derived from identityProviderBase, you can currently create a socialIdentityProvider resource in Microsoft Entra ID. In Azure AD B2C, this operation can currently create a socialIdentityProvider, or an appleManagedIdentityProvider resource.
+        Create new navigation property to identityProviders for identity
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityProviderBase]
-        Find more info here: https://learn.microsoft.com/graph/api/identitycontainer-post-identityproviders?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,9 +87,9 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IdentityProviderBase, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a collection of identity provider resources that are configured for a tenant, and that are derived from identityProviderBase. For a Microsoft Entra tenant, the providers can be socialIdentityProviders or builtinIdentityProviders objects. For an Azure AD B2C, the providers can be socialIdentityProvider, or appleManagedIdentityProvider objects.
+        Get identityProviders from identity
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,9 +98,9 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[IdentityProviderBase] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an identity provider object that is of the type specified in the request body. Among the types of providers derived from identityProviderBase, you can currently create a socialIdentityProvider resource in Microsoft Entra ID. In Azure AD B2C, this operation can currently create a socialIdentityProvider, or an appleManagedIdentityProvider resource.
+        Create new navigation property to identityProviders for identity
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +144,7 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IdentityProvidersRequestBuilderGetQueryParameters():
         """
-        Get a collection of identity provider resources that are configured for a tenant, and that are derived from identityProviderBase. For a Microsoft Entra tenant, the providers can be socialIdentityProviders or builtinIdentityProviders objects. For an Azure AD B2C, the providers can be socialIdentityProvider, or appleManagedIdentityProvider objects.
+        Get identityProviders from identity
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -199,5 +196,28 @@ class IdentityProvidersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IdentityProvidersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[IdentityProvidersRequestBuilder.IdentityProvidersRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IdentityProvidersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

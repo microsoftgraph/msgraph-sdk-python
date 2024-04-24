@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,12 +27,11 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/policies/homeRealmDiscoveryPolicies/{homeRealmDiscoveryPolicy%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a homeRealmDiscoveryPolicy object.
+        Delete navigation property homeRealmDiscoveryPolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/homerealmdiscoverypolicy-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -47,12 +45,11 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[HomeRealmDiscoveryPolicy]:
+    async def get(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[HomeRealmDiscoveryPolicy]:
         """
-        Retrieve the properties and relationships of a homeRealmDiscoveryPolicy object.
+        The policy to control Microsoft Entra authentication behavior for federated users.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HomeRealmDiscoveryPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/homerealmdiscoverypolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,13 +65,12 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, HomeRealmDiscoveryPolicy, error_mapping)
     
-    async def patch(self,body: Optional[HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[HomeRealmDiscoveryPolicy]:
+    async def patch(self,body: Optional[HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[HomeRealmDiscoveryPolicy]:
         """
-        Update the properties of a homeRealmDiscoveryPolicy object.
+        Update the navigation property homeRealmDiscoveryPolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HomeRealmDiscoveryPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/homerealmdiscoverypolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,9 +88,9 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, HomeRealmDiscoveryPolicy, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a homeRealmDiscoveryPolicy object.
+        Delete navigation property homeRealmDiscoveryPolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,9 +99,9 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a homeRealmDiscoveryPolicy object.
+        The policy to control Microsoft Entra authentication behavior for federated users.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,9 +110,9 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a homeRealmDiscoveryPolicy object.
+        Update the navigation property homeRealmDiscoveryPolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -148,10 +144,20 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
 
         return AppliesToRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class HomeRealmDiscoveryPolicyItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class HomeRealmDiscoveryPolicyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a homeRealmDiscoveryPolicy object.
+        The policy to control Microsoft Entra authentication behavior for federated users.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -173,5 +179,28 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class HomeRealmDiscoveryPolicyItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[HomeRealmDiscoveryPolicyItemRequestBuilder.HomeRealmDiscoveryPolicyItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class HomeRealmDiscoveryPolicyItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

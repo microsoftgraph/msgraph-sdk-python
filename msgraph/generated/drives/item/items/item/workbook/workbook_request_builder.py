@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -39,7 +38,7 @@ class WorkbookRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[WorkbookRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property workbook for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -57,7 +56,7 @@ class WorkbookRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Workbook]:
+    async def get(self,request_configuration: Optional[WorkbookRequestBuilderGetRequestConfiguration] = None) -> Optional[Workbook]:
         """
         For files that are Excel spreadsheets, access to the workbook API to work with the spreadsheet's contents. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -77,7 +76,7 @@ class WorkbookRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Workbook, error_mapping)
     
-    async def patch(self,body: Optional[Workbook] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Workbook]:
+    async def patch(self,body: Optional[Workbook] = None, request_configuration: Optional[WorkbookRequestBuilderPatchRequestConfiguration] = None) -> Optional[Workbook]:
         """
         Update the navigation property workbook in drives
         param body: The request body
@@ -124,7 +123,7 @@ class WorkbookRequestBuilder(BaseRequestBuilder):
 
         return TableRowOperationResultWithKeyRequestBuilder(self.request_adapter, self.path_parameters, key)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[WorkbookRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property workbook for drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -135,7 +134,7 @@ class WorkbookRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[WorkbookRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         For files that are Excel spreadsheets, access to the workbook API to work with the spreadsheet's contents. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -146,7 +145,7 @@ class WorkbookRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[Workbook] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Workbook] = None, request_configuration: Optional[WorkbookRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property workbook in drives
         param body: The request body
@@ -261,6 +260,16 @@ class WorkbookRequestBuilder(BaseRequestBuilder):
 
         return WorksheetsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WorkbookRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class WorkbookRequestBuilderGetQueryParameters():
         """
@@ -286,5 +295,28 @@ class WorkbookRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WorkbookRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[WorkbookRequestBuilder.WorkbookRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WorkbookRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

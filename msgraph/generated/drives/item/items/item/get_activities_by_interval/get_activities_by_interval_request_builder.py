@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,11 +26,12 @@ class GetActivitiesByIntervalRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/getActivitiesByInterval(){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[GetActivitiesByIntervalGetResponse]:
+    async def get(self,request_configuration: Optional[GetActivitiesByIntervalRequestBuilderGetRequestConfiguration] = None) -> Optional[GetActivitiesByIntervalGetResponse]:
         """
-        Invoke function getActivitiesByInterval
+        Get a collection of itemActivityStats resources for the activities that took place on this resource within the specified time interval. Analytics aggregates might not be available for all action types.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetActivitiesByIntervalGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/itemactivitystat-getactivitybyinterval?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -47,9 +47,9 @@ class GetActivitiesByIntervalRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, GetActivitiesByIntervalGetResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GetActivitiesByIntervalRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getActivitiesByInterval
+        Get a collection of itemActivityStats resources for the activities that took place on this resource within the specified time interval. Analytics aggregates might not be available for all action types.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -71,7 +71,7 @@ class GetActivitiesByIntervalRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GetActivitiesByIntervalRequestBuilderGetQueryParameters():
         """
-        Invoke function getActivitiesByInterval
+        Get a collection of itemActivityStats resources for the activities that took place on this resource within the specified time interval. Analytics aggregates might not be available for all action types.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -122,6 +122,19 @@ class GetActivitiesByIntervalRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GetActivitiesByIntervalRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[GetActivitiesByIntervalRequestBuilder.GetActivitiesByIntervalRequestBuilderGetQueryParameters] = None
 
     
 

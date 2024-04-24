@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -30,11 +29,12 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(BaseRequestBu
             path_parameters['includePersonalNotebooks'] = str(include_personal_notebooks)
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/onenote/notebooks/getRecentNotebooks(includePersonalNotebooks={includePersonalNotebooks}){?%24count,%24filter,%24search,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[GetRecentNotebooksWithIncludePersonalNotebooksGetResponse]:
+    async def get(self,request_configuration: Optional[GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetRequestConfiguration] = None) -> Optional[GetRecentNotebooksWithIncludePersonalNotebooksGetResponse]:
         """
-        Invoke function getRecentNotebooks
+        Get a list of recentNotebook instances that have been accessed by the signed-in user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetRecentNotebooksWithIncludePersonalNotebooksGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/notebook-getrecentnotebooks?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -50,9 +50,9 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(BaseRequestBu
 
         return await self.request_adapter.send_async(request_info, GetRecentNotebooksWithIncludePersonalNotebooksGetResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getRecentNotebooks
+        Get a list of recentNotebook instances that have been accessed by the signed-in user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -74,7 +74,7 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(BaseRequestBu
     @dataclass
     class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetQueryParameters():
         """
-        Invoke function getRecentNotebooks
+        Get a list of recentNotebook instances that have been accessed by the signed-in user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -110,6 +110,19 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(BaseRequestBu
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder.GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetQueryParameters] = None
 
     
 

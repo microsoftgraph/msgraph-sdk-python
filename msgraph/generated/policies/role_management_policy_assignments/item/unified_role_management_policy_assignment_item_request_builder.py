@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +27,7 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder(BaseRequestBuilder
         """
         super().__init__(request_adapter, "{+baseurl}/policies/roleManagementPolicyAssignments/{unifiedRoleManagementPolicyAssignment%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[UnifiedRoleManagementPolicyAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property roleManagementPolicyAssignments for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,12 +45,11 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder(BaseRequestBuilder
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyAssignment]:
+    async def get(self,request_configuration: Optional[UnifiedRoleManagementPolicyAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyAssignment]:
         """
-        Get the details of a policy assignment in PIM that's assigned to Microsoft Entra roles or group membership or ownership.
+        The assignment of a role management policy to a role definition object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleManagementPolicyAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/unifiedrolemanagementpolicyassignment-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +65,7 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder(BaseRequestBuilder
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleManagementPolicyAssignment, error_mapping)
     
-    async def patch(self,body: Optional[UnifiedRoleManagementPolicyAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyAssignment]:
+    async def patch(self,body: Optional[UnifiedRoleManagementPolicyAssignment] = None, request_configuration: Optional[UnifiedRoleManagementPolicyAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[UnifiedRoleManagementPolicyAssignment]:
         """
         Update the navigation property roleManagementPolicyAssignments in policies
         param body: The request body
@@ -90,7 +88,7 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder(BaseRequestBuilder
 
         return await self.request_adapter.send_async(request_info, UnifiedRoleManagementPolicyAssignment, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[UnifiedRoleManagementPolicyAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property roleManagementPolicyAssignments for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +99,9 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder(BaseRequestBuilder
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UnifiedRoleManagementPolicyAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the details of a policy assignment in PIM that's assigned to Microsoft Entra roles or group membership or ownership.
+        The assignment of a role management policy to a role definition object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +110,7 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder(BaseRequestBuilder
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[UnifiedRoleManagementPolicyAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[UnifiedRoleManagementPolicyAssignment] = None, request_configuration: Optional[UnifiedRoleManagementPolicyAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property roleManagementPolicyAssignments in policies
         param body: The request body
@@ -146,10 +144,20 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder(BaseRequestBuilder
 
         return PolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UnifiedRoleManagementPolicyAssignmentItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class UnifiedRoleManagementPolicyAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Get the details of a policy assignment in PIM that's assigned to Microsoft Entra roles or group membership or ownership.
+        The assignment of a role management policy to a role definition object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -171,5 +179,28 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder(BaseRequestBuilder
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UnifiedRoleManagementPolicyAssignmentItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UnifiedRoleManagementPolicyAssignmentItemRequestBuilder.UnifiedRoleManagementPolicyAssignmentItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UnifiedRoleManagementPolicyAssignmentItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

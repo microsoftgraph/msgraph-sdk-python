@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -30,12 +29,11 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
         """
         super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/mdmWindowsInformationProtectionPolicies/{mdmWindowsInformationProtectionPolicy%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a mdmWindowsInformationProtectionPolicy.
+        Delete navigation property mdmWindowsInformationProtectionPolicies for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-mdmwindowsinformationprotectionpolicy-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,12 +47,11 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[MdmWindowsInformationProtectionPolicy]:
+    async def get(self,request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[MdmWindowsInformationProtectionPolicy]:
         """
-        Read properties and relationships of the mdmWindowsInformationProtectionPolicy object.
+        Windows information protection for apps running on devices which are MDM enrolled.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MdmWindowsInformationProtectionPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-mdmwindowsinformationprotectionpolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,13 +67,12 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
 
         return await self.request_adapter.send_async(request_info, MdmWindowsInformationProtectionPolicy, error_mapping)
     
-    async def patch(self,body: Optional[MdmWindowsInformationProtectionPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[MdmWindowsInformationProtectionPolicy]:
+    async def patch(self,body: Optional[MdmWindowsInformationProtectionPolicy] = None, request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[MdmWindowsInformationProtectionPolicy]:
         """
-        Update the properties of a mdmWindowsInformationProtectionPolicy object.
+        Update the navigation property mdmWindowsInformationProtectionPolicies in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MdmWindowsInformationProtectionPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-mdmwindowsinformationprotectionpolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,9 +90,9 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
 
         return await self.request_adapter.send_async(request_info, MdmWindowsInformationProtectionPolicy, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a mdmWindowsInformationProtectionPolicy.
+        Delete navigation property mdmWindowsInformationProtectionPolicies for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,9 +101,9 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the mdmWindowsInformationProtectionPolicy object.
+        Windows information protection for apps running on devices which are MDM enrolled.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,9 +112,9 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[MdmWindowsInformationProtectionPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[MdmWindowsInformationProtectionPolicy] = None, request_configuration: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a mdmWindowsInformationProtectionPolicy object.
+        Update the navigation property mdmWindowsInformationProtectionPolicies in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,10 +164,20 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
 
         return ProtectedAppLockerFilesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MdmWindowsInformationProtectionPolicyItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class MdmWindowsInformationProtectionPolicyItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the mdmWindowsInformationProtectionPolicy object.
+        Windows information protection for apps running on devices which are MDM enrolled.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -193,5 +199,28 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder(BaseRequestBuilder
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MdmWindowsInformationProtectionPolicyItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[MdmWindowsInformationProtectionPolicyItemRequestBuilder.MdmWindowsInformationProtectionPolicyItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MdmWindowsInformationProtectionPolicyItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

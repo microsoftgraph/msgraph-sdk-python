@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +28,7 @@ class UsageRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/reports/partners/billing/usage{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[UsageRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property usage for reports
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,7 +46,7 @@ class UsageRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AzureUsage]:
+    async def get(self,request_configuration: Optional[UsageRequestBuilderGetRequestConfiguration] = None) -> Optional[AzureUsage]:
         """
         Represents details for billed and unbilled Azure usage data.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -67,7 +66,7 @@ class UsageRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AzureUsage, error_mapping)
     
-    async def patch(self,body: Optional[AzureUsage] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AzureUsage]:
+    async def patch(self,body: Optional[AzureUsage] = None, request_configuration: Optional[UsageRequestBuilderPatchRequestConfiguration] = None) -> Optional[AzureUsage]:
         """
         Update the navigation property usage in reports
         param body: The request body
@@ -90,7 +89,7 @@ class UsageRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AzureUsage, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[UsageRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property usage for reports
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +100,7 @@ class UsageRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UsageRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Represents details for billed and unbilled Azure usage data.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +111,7 @@ class UsageRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AzureUsage] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AzureUsage] = None, request_configuration: Optional[UsageRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property usage in reports
         param body: The request body
@@ -155,6 +154,16 @@ class UsageRequestBuilder(BaseRequestBuilder):
 
         return UnbilledRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UsageRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class UsageRequestBuilderGetQueryParameters():
         """
@@ -180,5 +189,28 @@ class UsageRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UsageRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UsageRequestBuilder.UsageRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UsageRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

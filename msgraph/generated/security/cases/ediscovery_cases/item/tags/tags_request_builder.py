@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -45,12 +44,11 @@ class TagsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["ediscoveryReviewTag%2Did"] = ediscovery_review_tag_id
         return EdiscoveryReviewTagItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EdiscoveryReviewTagCollectionResponse]:
+    async def get(self,request_configuration: Optional[TagsRequestBuilderGetRequestConfiguration] = None) -> Optional[EdiscoveryReviewTagCollectionResponse]:
         """
-        Get a list of eDiscoveryReviewTag objects and their properties.
+        Returns a list of ediscoveryReviewTag objects associated to this case.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewTagCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycase-list-tags?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +64,12 @@ class TagsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EdiscoveryReviewTagCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[EdiscoveryReviewTag] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EdiscoveryReviewTag]:
+    async def post(self,body: Optional[EdiscoveryReviewTag] = None, request_configuration: Optional[TagsRequestBuilderPostRequestConfiguration] = None) -> Optional[EdiscoveryReviewTag]:
         """
-        Create a new ediscoveryReviewTag object.
+        Create new navigation property to tags for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EdiscoveryReviewTag]
-        Find more info here: https://learn.microsoft.com/graph/api/security-ediscoverycase-post-tags?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,9 +87,9 @@ class TagsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, EdiscoveryReviewTag, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[TagsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of eDiscoveryReviewTag objects and their properties.
+        Returns a list of ediscoveryReviewTag objects associated to this case.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,9 +98,9 @@ class TagsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[EdiscoveryReviewTag] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[EdiscoveryReviewTag] = None, request_configuration: Optional[TagsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new ediscoveryReviewTag object.
+        Create new navigation property to tags for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +144,7 @@ class TagsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TagsRequestBuilderGetQueryParameters():
         """
-        Get a list of eDiscoveryReviewTag objects and their properties.
+        Returns a list of ediscoveryReviewTag objects associated to this case.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -199,5 +196,28 @@ class TagsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TagsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[TagsRequestBuilder.TagsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TagsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

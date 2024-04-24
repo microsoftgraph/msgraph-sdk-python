@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class SoftwareOathAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/authentication/softwareOathMethods/{softwareOathAuthenticationMethod%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[SoftwareOathAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a user's Software OATH token authentication method object.
+        Delete navigation property softwareOathMethods for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/softwareoathauthenticationmethod-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -46,12 +44,11 @@ class SoftwareOathAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SoftwareOathAuthenticationMethod]:
+    async def get(self,request_configuration: Optional[SoftwareOathAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[SoftwareOathAuthenticationMethod]:
         """
-        Retrieve a user's single Software OATH token authentication method object and its properties.
+        The software OATH TOTP applications registered to a user for authentication.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SoftwareOathAuthenticationMethod]
-        Find more info here: https://learn.microsoft.com/graph/api/softwareoathauthenticationmethod-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,9 +64,9 @@ class SoftwareOathAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, SoftwareOathAuthenticationMethod, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[SoftwareOathAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a user's Software OATH token authentication method object.
+        Delete navigation property softwareOathMethods for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -78,9 +75,9 @@ class SoftwareOathAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[SoftwareOathAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a user's single Software OATH token authentication method object and its properties.
+        The software OATH TOTP applications registered to a user for authentication.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,10 +96,20 @@ class SoftwareOathAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return SoftwareOathAuthenticationMethodItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SoftwareOathAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class SoftwareOathAuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a user's single Software OATH token authentication method object and its properties.
+        The software OATH TOTP applications registered to a user for authentication.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -123,6 +130,19 @@ class SoftwareOathAuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
 
         # Select properties to be returned
         select: Optional[List[str]] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class SoftwareOathAuthenticationMethodItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[SoftwareOathAuthenticationMethodItemRequestBuilder.SoftwareOathAuthenticationMethodItemRequestBuilderGetQueryParameters] = None
 
     
 

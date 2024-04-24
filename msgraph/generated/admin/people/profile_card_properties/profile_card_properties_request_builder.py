@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ProfileCardPropertiesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["profileCardProperty%2Did"] = profile_card_property_id
         return ProfileCardPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ProfileCardPropertyCollectionResponse]:
+    async def get(self,request_configuration: Optional[ProfileCardPropertiesRequestBuilderGetRequestConfiguration] = None) -> Optional[ProfileCardPropertyCollectionResponse]:
         """
-        Get a collection of profileCardProperty resources for an organization. Each resource is identified by its directoryPropertyName property.
+        Contains a collection of the properties an administrator has defined as visible on the Microsoft 365 profile card.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProfileCardPropertyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/peopleadminsettings-list-profilecardproperties?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class ProfileCardPropertiesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ProfileCardPropertyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ProfileCardProperty] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ProfileCardProperty]:
+    async def post(self,body: Optional[ProfileCardProperty] = None, request_configuration: Optional[ProfileCardPropertiesRequestBuilderPostRequestConfiguration] = None) -> Optional[ProfileCardProperty]:
         """
-        Create a new profileCardProperty for an organization. The new property is identified by its directoryPropertyName property. For more information about how to add properties to the profile card for an organization, see Add or remove custom attributes on a profile card using the profile card API.
+        Create new navigation property to profileCardProperties for admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProfileCardProperty]
-        Find more info here: https://learn.microsoft.com/graph/api/peopleadminsettings-post-profilecardproperties?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class ProfileCardPropertiesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ProfileCardProperty, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ProfileCardPropertiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a collection of profileCardProperty resources for an organization. Each resource is identified by its directoryPropertyName property.
+        Contains a collection of the properties an administrator has defined as visible on the Microsoft 365 profile card.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class ProfileCardPropertiesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ProfileCardProperty] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ProfileCardProperty] = None, request_configuration: Optional[ProfileCardPropertiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new profileCardProperty for an organization. The new property is identified by its directoryPropertyName property. For more information about how to add properties to the profile card for an organization, see Add or remove custom attributes on a profile card using the profile card API.
+        Create new navigation property to profileCardProperties for admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class ProfileCardPropertiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ProfileCardPropertiesRequestBuilderGetQueryParameters():
         """
-        Get a collection of profileCardProperty resources for an organization. Each resource is identified by its directoryPropertyName property.
+        Contains a collection of the properties an administrator has defined as visible on the Microsoft 365 profile card.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class ProfileCardPropertiesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ProfileCardPropertiesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ProfileCardPropertiesRequestBuilder.ProfileCardPropertiesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ProfileCardPropertiesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

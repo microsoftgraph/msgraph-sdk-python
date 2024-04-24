@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -30,12 +29,11 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/deviceAppManagement/androidManagedAppProtections/{androidManagedAppProtection%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Deletes a androidManagedAppProtection.
+        Delete navigation property androidManagedAppProtections for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-androidmanagedappprotection-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,12 +47,11 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AndroidManagedAppProtection]:
+    async def get(self,request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AndroidManagedAppProtection]:
         """
-        Read properties and relationships of the androidManagedAppProtection object.
+        Android managed app policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AndroidManagedAppProtection]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-androidmanagedappprotection-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,13 +67,12 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AndroidManagedAppProtection, error_mapping)
     
-    async def patch(self,body: Optional[AndroidManagedAppProtection] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AndroidManagedAppProtection]:
+    async def patch(self,body: Optional[AndroidManagedAppProtection] = None, request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AndroidManagedAppProtection]:
         """
-        Update the properties of a androidManagedAppProtection object.
+        Update the navigation property androidManagedAppProtections in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AndroidManagedAppProtection]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-androidmanagedappprotection-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,9 +90,9 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AndroidManagedAppProtection, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a androidManagedAppProtection.
+        Delete navigation property androidManagedAppProtections for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,9 +101,9 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the androidManagedAppProtection object.
+        Android managed app policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,9 +112,9 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AndroidManagedAppProtection] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AndroidManagedAppProtection] = None, request_configuration: Optional[AndroidManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a androidManagedAppProtection object.
+        Update the navigation property androidManagedAppProtections in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -168,10 +164,20 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
 
         return DeploymentSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AndroidManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class AndroidManagedAppProtectionItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the androidManagedAppProtection object.
+        Android managed app policies.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -193,5 +199,28 @@ class AndroidManagedAppProtectionItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AndroidManagedAppProtectionItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AndroidManagedAppProtectionItemRequestBuilder.AndroidManagedAppProtectionItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AndroidManagedAppProtectionItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

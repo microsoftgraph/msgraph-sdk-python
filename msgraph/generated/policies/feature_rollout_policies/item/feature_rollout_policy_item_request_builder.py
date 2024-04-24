@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,12 +27,11 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/policies/featureRolloutPolicies/{featureRolloutPolicy%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a featureRolloutPolicy object.
+        Delete navigation property featureRolloutPolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/featurerolloutpolicy-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -47,12 +45,11 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[FeatureRolloutPolicy]:
+    async def get(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[FeatureRolloutPolicy]:
         """
-        Retrieve the properties and relationships of a featureRolloutPolicy object.
+        The feature rollout policy associated with a directory object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FeatureRolloutPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/featurerolloutpolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,13 +65,12 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, FeatureRolloutPolicy, error_mapping)
     
-    async def patch(self,body: Optional[FeatureRolloutPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[FeatureRolloutPolicy]:
+    async def patch(self,body: Optional[FeatureRolloutPolicy] = None, request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[FeatureRolloutPolicy]:
         """
-        Update the properties of featureRolloutPolicy object.
+        Update the navigation property featureRolloutPolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FeatureRolloutPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/featurerolloutpolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,9 +88,9 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, FeatureRolloutPolicy, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a featureRolloutPolicy object.
+        Delete navigation property featureRolloutPolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,9 +99,9 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a featureRolloutPolicy object.
+        The feature rollout policy associated with a directory object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,9 +110,9 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[FeatureRolloutPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[FeatureRolloutPolicy] = None, request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of featureRolloutPolicy object.
+        Update the navigation property featureRolloutPolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -148,10 +144,20 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
 
         return AppliesToRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FeatureRolloutPolicyItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class FeatureRolloutPolicyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a featureRolloutPolicy object.
+        The feature rollout policy associated with a directory object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -173,5 +179,28 @@ class FeatureRolloutPolicyItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FeatureRolloutPolicyItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[FeatureRolloutPolicyItemRequestBuilder.FeatureRolloutPolicyItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FeatureRolloutPolicyItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

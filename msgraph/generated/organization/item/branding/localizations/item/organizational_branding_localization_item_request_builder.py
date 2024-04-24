@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -34,12 +33,11 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/organization/{organization%2Did}/branding/localizations/{organizationalBrandingLocalization%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a localized branding object. To delete the organizationalBrandingLocalization object, all images (Stream types) must first be removed from the object.
+        Delete navigation property localizations for organization
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/organizationalbrandinglocalization-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -53,12 +51,11 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OrganizationalBrandingLocalization]:
+    async def get(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OrganizationalBrandingLocalization]:
         """
-        Read the properties and relationships of an organizationalBrandingLocalization object. To retrieve a localization branding object, specify the value of id in the URL.
+        Add different branding based on a locale.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OrganizationalBrandingLocalization]
-        Find more info here: https://learn.microsoft.com/graph/api/organizationalbrandinglocalization-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -74,13 +71,12 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OrganizationalBrandingLocalization, error_mapping)
     
-    async def patch(self,body: Optional[OrganizationalBrandingLocalization] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[OrganizationalBrandingLocalization]:
+    async def patch(self,body: Optional[OrganizationalBrandingLocalization] = None, request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[OrganizationalBrandingLocalization]:
         """
-        Update the properties of an organizationalBrandingLocalization object for a specific localization.
+        Update the navigation property localizations in organization
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OrganizationalBrandingLocalization]
-        Find more info here: https://learn.microsoft.com/graph/api/organizationalbrandinglocalization-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -98,9 +94,9 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OrganizationalBrandingLocalization, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a localized branding object. To delete the organizationalBrandingLocalization object, all images (Stream types) must first be removed from the object.
+        Delete navigation property localizations for organization
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,9 +105,9 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an organizationalBrandingLocalization object. To retrieve a localization branding object, specify the value of id in the URL.
+        Add different branding based on a locale.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,9 +116,9 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[OrganizationalBrandingLocalization] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[OrganizationalBrandingLocalization] = None, request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an organizationalBrandingLocalization object for a specific localization.
+        Update the navigation property localizations in organization
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -208,10 +204,20 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
 
         return SquareLogoDarkRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class OrganizationalBrandingLocalizationItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an organizationalBrandingLocalization object. To retrieve a localization branding object, specify the value of id in the URL.
+        Add different branding based on a locale.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -233,5 +239,28 @@ class OrganizationalBrandingLocalizationItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[OrganizationalBrandingLocalizationItemRequestBuilder.OrganizationalBrandingLocalizationItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

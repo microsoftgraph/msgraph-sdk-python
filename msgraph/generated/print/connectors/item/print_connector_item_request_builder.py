@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/print/connectors/{printConnector%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[PrintConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete (unregister) a printConnector.
+        Delete navigation property connectors for print
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/printconnector-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -46,12 +44,11 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintConnector]:
+    async def get(self,request_configuration: Optional[PrintConnectorItemRequestBuilderGetRequestConfiguration] = None) -> Optional[PrintConnector]:
         """
-        Retrieve the properties and relationships of a printConnector object.
+        The list of available print connectors.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintConnector]
-        Find more info here: https://learn.microsoft.com/graph/api/printconnector-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,13 +64,12 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrintConnector, error_mapping)
     
-    async def patch(self,body: Optional[PrintConnector] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintConnector]:
+    async def patch(self,body: Optional[PrintConnector] = None, request_configuration: Optional[PrintConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[PrintConnector]:
         """
-        Update the properties of a printConnector object.
+        Update the navigation property connectors in print
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintConnector]
-        Find more info here: https://learn.microsoft.com/graph/api/printconnector-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,9 +87,9 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PrintConnector, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[PrintConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete (unregister) a printConnector.
+        Delete navigation property connectors for print
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,9 +98,9 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[PrintConnectorItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a printConnector object.
+        The list of available print connectors.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,9 +109,9 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[PrintConnector] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[PrintConnector] = None, request_configuration: Optional[PrintConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a printConnector object.
+        Update the navigation property connectors in print
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,10 +134,20 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return PrintConnectorItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PrintConnectorItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class PrintConnectorItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a printConnector object.
+        The list of available print connectors.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -163,5 +169,28 @@ class PrintConnectorItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PrintConnectorItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[PrintConnectorItemRequestBuilder.PrintConnectorItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PrintConnectorItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

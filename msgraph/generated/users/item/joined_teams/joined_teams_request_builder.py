@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -45,12 +44,11 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["team%2Did"] = team_id
         return TeamItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamCollectionResponse]:
+    async def get(self,request_configuration: Optional[JoinedTeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamCollectionResponse]:
         """
-        Get the teams in Microsoft Teams that the user is a direct member of.
+        Get joinedTeams from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-joinedteams?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +64,7 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Team] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Team]:
+    async def post(self,body: Optional[Team] = None, request_configuration: Optional[JoinedTeamsRequestBuilderPostRequestConfiguration] = None) -> Optional[Team]:
         """
         Create new navigation property to joinedTeams for users
         param body: The request body
@@ -89,9 +87,9 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Team, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[JoinedTeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the teams in Microsoft Teams that the user is a direct member of.
+        Get joinedTeams from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,7 +98,7 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Team] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Team] = None, request_configuration: Optional[JoinedTeamsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to joinedTeams for users
         param body: The request body
@@ -146,7 +144,7 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class JoinedTeamsRequestBuilderGetQueryParameters():
         """
-        Get the teams in Microsoft Teams that the user is a direct member of.
+        Get joinedTeams from users
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -198,5 +196,28 @@ class JoinedTeamsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class JoinedTeamsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[JoinedTeamsRequestBuilder.JoinedTeamsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class JoinedTeamsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

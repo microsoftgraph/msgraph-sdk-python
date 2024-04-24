@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilder(BaseR
         url_tpl_params["userExperienceAnalyticsAppHealthDeviceModelPerformance%2Did"] = user_experience_analytics_app_health_device_model_performance_id
         return UserExperienceAnalyticsAppHealthDeviceModelPerformanceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsAppHealthDeviceModelPerformanceCollectionResponse]:
+    async def get(self,request_configuration: Optional[UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilderGetRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsAppHealthDeviceModelPerformanceCollectionResponse]:
         """
         User experience analytics appHealth Model Performance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +63,7 @@ class UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilder(BaseR
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsAppHealthDeviceModelPerformanceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UserExperienceAnalyticsAppHealthDeviceModelPerformance] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserExperienceAnalyticsAppHealthDeviceModelPerformance]:
+    async def post(self,body: Optional[UserExperienceAnalyticsAppHealthDeviceModelPerformance] = None, request_configuration: Optional[UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilderPostRequestConfiguration] = None) -> Optional[UserExperienceAnalyticsAppHealthDeviceModelPerformance]:
         """
         Create new navigation property to userExperienceAnalyticsAppHealthDeviceModelPerformance for deviceManagement
         param body: The request body
@@ -87,7 +86,7 @@ class UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilder(BaseR
 
         return await self.request_adapter.send_async(request_info, UserExperienceAnalyticsAppHealthDeviceModelPerformance, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         User experience analytics appHealth Model Performance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +97,7 @@ class UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilder(BaseR
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UserExperienceAnalyticsAppHealthDeviceModelPerformance] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserExperienceAnalyticsAppHealthDeviceModelPerformance] = None, request_configuration: Optional[UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to userExperienceAnalyticsAppHealthDeviceModelPerformance for deviceManagement
         param body: The request body
@@ -187,5 +186,28 @@ class UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilder(BaseR
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilder.UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class UserExperienceAnalyticsAppHealthDeviceModelPerformanceRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

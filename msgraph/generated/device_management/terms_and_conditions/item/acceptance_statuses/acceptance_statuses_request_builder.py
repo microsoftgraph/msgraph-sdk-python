@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class AcceptanceStatusesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["termsAndConditionsAcceptanceStatus%2Did"] = terms_and_conditions_acceptance_status_id
         return TermsAndConditionsAcceptanceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TermsAndConditionsAcceptanceStatusCollectionResponse]:
+    async def get(self,request_configuration: Optional[AcceptanceStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[TermsAndConditionsAcceptanceStatusCollectionResponse]:
         """
-        List properties and relationships of the termsAndConditionsAcceptanceStatus objects.
+        The list of acceptance statuses for this T&C policy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditionsAcceptanceStatusCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-termsandconditionsacceptancestatus-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class AcceptanceStatusesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TermsAndConditionsAcceptanceStatusCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TermsAndConditionsAcceptanceStatus]:
+    async def post(self,body: Optional[TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[AcceptanceStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[TermsAndConditionsAcceptanceStatus]:
         """
-        Create a new termsAndConditionsAcceptanceStatus object.
+        Create new navigation property to acceptanceStatuses for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TermsAndConditionsAcceptanceStatus]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-companyterms-termsandconditionsacceptancestatus-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class AcceptanceStatusesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TermsAndConditionsAcceptanceStatus, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AcceptanceStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the termsAndConditionsAcceptanceStatus objects.
+        The list of acceptance statuses for this T&C policy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class AcceptanceStatusesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[AcceptanceStatusesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new termsAndConditionsAcceptanceStatus object.
+        Create new navigation property to acceptanceStatuses for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class AcceptanceStatusesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AcceptanceStatusesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the termsAndConditionsAcceptanceStatus objects.
+        The list of acceptance statuses for this T&C policy.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class AcceptanceStatusesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AcceptanceStatusesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AcceptanceStatusesRequestBuilder.AcceptanceStatusesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AcceptanceStatusesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

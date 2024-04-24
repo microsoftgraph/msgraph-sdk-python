@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["learningProvider%2Did"] = learning_provider_id
         return LearningProviderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningProviderCollectionResponse]:
+    async def get(self,request_configuration: Optional[LearningProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[LearningProviderCollectionResponse]:
         """
-        Get a list of the learningProvider resources registered in Viva Learning for a tenant.
+        A collection of learning providers.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningProviderCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/employeeexperience-list-learningproviders?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LearningProviderCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[LearningProvider] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LearningProvider]:
+    async def post(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProvidersRequestBuilderPostRequestConfiguration] = None) -> Optional[LearningProvider]:
         """
-        Create a new learningProvider object and register it with Viva Learning using the specified display name and logos for different themes.
+        Create new navigation property to learningProviders for employeeExperience
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LearningProvider]
-        Find more info here: https://learn.microsoft.com/graph/api/employeeexperience-post-learningproviders?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, LearningProvider, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[LearningProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the learningProvider resources registered in Viva Learning for a tenant.
+        A collection of learning providers.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[LearningProvider] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[LearningProvider] = None, request_configuration: Optional[LearningProvidersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new learningProvider object and register it with Viva Learning using the specified display name and logos for different themes.
+        Create new navigation property to learningProviders for employeeExperience
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LearningProvidersRequestBuilderGetQueryParameters():
         """
-        Get a list of the learningProvider resources registered in Viva Learning for a tenant.
+        A collection of learning providers.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class LearningProvidersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LearningProvidersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[LearningProvidersRequestBuilder.LearningProvidersRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class LearningProvidersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,12 +25,11 @@ class ContentRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/photo/$value{?%24format*}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> bytes:
+    async def get(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
         Get media content for the navigation property photo from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
-        Find more info here: https://learn.microsoft.com/graph/api/profilephoto-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -45,7 +43,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    async def put(self,body: bytes, request_configuration: Optional[RequestConfiguration] = None) -> bytes:
+    async def put(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
         Update media content for the navigation property photo in users
         param body: Binary request body
@@ -66,7 +64,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get media content for the navigation property photo from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -77,7 +75,7 @@ class ContentRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/octet-stream, application/json")
         return request_info
     
-    def to_put_request_information(self,body: bytes, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         Update media content for the navigation property photo in users
         param body: Binary request body
@@ -122,5 +120,28 @@ class ContentRequestBuilder(BaseRequestBuilder):
         # Format of the content
         format: Optional[str] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ContentRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ContentRequestBuilder.ContentRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ContentRequestBuilderPutRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

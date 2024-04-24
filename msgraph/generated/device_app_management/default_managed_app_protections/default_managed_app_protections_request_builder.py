@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["defaultManagedAppProtection%2Did"] = default_managed_app_protection_id
         return DefaultManagedAppProtectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DefaultManagedAppProtectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[DefaultManagedAppProtectionCollectionResponse]:
         """
-        List properties and relationships of the defaultManagedAppProtection objects.
+        Default managed app policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DefaultManagedAppProtectionCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-defaultmanagedappprotection-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DefaultManagedAppProtectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DefaultManagedAppProtection] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DefaultManagedAppProtection]:
+    async def post(self,body: Optional[DefaultManagedAppProtection] = None, request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[DefaultManagedAppProtection]:
         """
-        Create a new defaultManagedAppProtection object.
+        Create new navigation property to defaultManagedAppProtections for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DefaultManagedAppProtection]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-mam-defaultmanagedappprotection-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DefaultManagedAppProtection, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the defaultManagedAppProtection objects.
+        Default managed app policies.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DefaultManagedAppProtection] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DefaultManagedAppProtection] = None, request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new defaultManagedAppProtection object.
+        Create new navigation property to defaultManagedAppProtections for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DefaultManagedAppProtectionsRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the defaultManagedAppProtection objects.
+        Default managed app policies.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class DefaultManagedAppProtectionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DefaultManagedAppProtectionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DefaultManagedAppProtectionsRequestBuilder.DefaultManagedAppProtectionsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DefaultManagedAppProtectionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class ExtensionPropertiesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["extensionProperty%2Did"] = extension_property_id
         return ExtensionPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ExtensionPropertyCollectionResponse]:
+    async def get(self,request_configuration: Optional[ExtensionPropertiesRequestBuilderGetRequestConfiguration] = None) -> Optional[ExtensionPropertyCollectionResponse]:
         """
-        Retrieve the list of directory extension definitions, represented by extensionProperty objects on an application.
+        Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExtensionPropertyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/application-list-extensionproperty?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class ExtensionPropertiesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ExtensionPropertyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ExtensionProperty] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ExtensionProperty]:
+    async def post(self,body: Optional[ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertiesRequestBuilderPostRequestConfiguration] = None) -> Optional[ExtensionProperty]:
         """
-        Create a new directory extension definition, represented by an extensionProperty object.
+        Create new navigation property to extensionProperties for applications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExtensionProperty]
-        Find more info here: https://learn.microsoft.com/graph/api/application-post-extensionproperty?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class ExtensionPropertiesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ExtensionProperty, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ExtensionPropertiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of directory extension definitions, represented by extensionProperty objects on an application.
+        Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class ExtensionPropertiesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ExtensionProperty] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new directory extension definition, represented by an extensionProperty object.
+        Create new navigation property to extensionProperties for applications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class ExtensionPropertiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExtensionPropertiesRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of directory extension definitions, represented by extensionProperty objects on an application.
+        Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class ExtensionPropertiesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ExtensionPropertiesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ExtensionPropertiesRequestBuilder.ExtensionPropertiesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ExtensionPropertiesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

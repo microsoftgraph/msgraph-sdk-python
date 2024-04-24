@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class IosUpdateStatusesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["iosUpdateDeviceStatus%2Did"] = ios_update_device_status_id
         return IosUpdateDeviceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IosUpdateDeviceStatusCollectionResponse]:
+    async def get(self,request_configuration: Optional[IosUpdateStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[IosUpdateDeviceStatusCollectionResponse]:
         """
-        List properties and relationships of the iosUpdateDeviceStatus objects.
+        The IOS software update installation statuses for this account.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IosUpdateDeviceStatusCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-iosupdatedevicestatus-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class IosUpdateStatusesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IosUpdateDeviceStatusCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[IosUpdateDeviceStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[IosUpdateDeviceStatus]:
+    async def post(self,body: Optional[IosUpdateDeviceStatus] = None, request_configuration: Optional[IosUpdateStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[IosUpdateDeviceStatus]:
         """
-        Create a new iosUpdateDeviceStatus object.
+        Create new navigation property to iosUpdateStatuses for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IosUpdateDeviceStatus]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-iosupdatedevicestatus-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class IosUpdateStatusesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, IosUpdateDeviceStatus, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[IosUpdateStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the iosUpdateDeviceStatus objects.
+        The IOS software update installation statuses for this account.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class IosUpdateStatusesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[IosUpdateDeviceStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[IosUpdateDeviceStatus] = None, request_configuration: Optional[IosUpdateStatusesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new iosUpdateDeviceStatus object.
+        Create new navigation property to iosUpdateStatuses for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class IosUpdateStatusesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IosUpdateStatusesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the iosUpdateDeviceStatus objects.
+        The IOS software update installation statuses for this account.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class IosUpdateStatusesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IosUpdateStatusesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[IosUpdateStatusesRequestBuilder.IosUpdateStatusesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IosUpdateStatusesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

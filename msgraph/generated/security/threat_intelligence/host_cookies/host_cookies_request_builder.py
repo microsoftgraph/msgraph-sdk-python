@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,9 +43,9 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["hostCookie%2Did"] = host_cookie_id
         return HostCookieItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[HostCookieCollectionResponse]:
+    async def get(self,request_configuration: Optional[HostCookiesRequestBuilderGetRequestConfiguration] = None) -> Optional[HostCookieCollectionResponse]:
         """
-        Read the properties and relationships of a hostCookie object.
+        Retrieve details about hostCookie objects.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostCookieCollectionResponse]
         """
@@ -64,7 +63,7 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, HostCookieCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[HostCookie] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[HostCookie]:
+    async def post(self,body: Optional[HostCookie] = None, request_configuration: Optional[HostCookiesRequestBuilderPostRequestConfiguration] = None) -> Optional[HostCookie]:
         """
         Create new navigation property to hostCookies for security
         param body: The request body
@@ -87,9 +86,9 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, HostCookie, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[HostCookiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a hostCookie object.
+        Retrieve details about hostCookie objects.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -98,7 +97,7 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[HostCookie] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[HostCookie] = None, request_configuration: Optional[HostCookiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to hostCookies for security
         param body: The request body
@@ -135,7 +134,7 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HostCookiesRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a hostCookie object.
+        Retrieve details about hostCookie objects.Note: List retrieval is not yet supported.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -187,5 +186,28 @@ class HostCookiesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class HostCookiesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[HostCookiesRequestBuilder.HostCookiesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class HostCookiesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

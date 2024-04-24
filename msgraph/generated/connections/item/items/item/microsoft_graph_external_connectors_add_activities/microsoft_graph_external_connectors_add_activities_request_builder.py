@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder(BaseRequestBui
         """
         super().__init__(request_adapter, "{+baseurl}/connections/{externalConnection%2Did}/items/{externalItem%2Did}/microsoft.graph.externalConnectors.addActivities", path_parameters)
     
-    async def post(self,body: Optional[AddActivitiesPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AddActivitiesPostResponse]:
+    async def post(self,body: Optional[AddActivitiesPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilderPostRequestConfiguration] = None) -> Optional[AddActivitiesPostResponse]:
         """
         Invoke action addActivities
         param body: The request body
@@ -50,7 +50,7 @@ class MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder(BaseRequestBui
 
         return await self.request_adapter.send_async(request_info, AddActivitiesPostResponse, error_mapping)
     
-    def to_post_request_information(self,body: Optional[AddActivitiesPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AddActivitiesPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke action addActivities
         param body: The request body
@@ -74,5 +74,15 @@ class MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder(BaseRequestBui
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class MicrosoftGraphExternalConnectorsAddActivitiesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

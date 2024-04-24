@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class RetentionEventTypeItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/triggerTypes/retentionEventTypes/{retentionEventType%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RetentionEventTypeItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a retentionEventType object.
+        Delete navigation property retentionEventTypes for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/security-retentioneventtype-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -46,12 +44,11 @@ class RetentionEventTypeItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RetentionEventType]:
+    async def get(self,request_configuration: Optional[RetentionEventTypeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[RetentionEventType]:
         """
-        Read the properties and relationships of a retentionEventType object.
+        Get retentionEventTypes from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RetentionEventType]
-        Find more info here: https://learn.microsoft.com/graph/api/security-retentioneventtype-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +64,7 @@ class RetentionEventTypeItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RetentionEventType, error_mapping)
     
-    async def patch(self,body: Optional[RetentionEventType] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[RetentionEventType]:
+    async def patch(self,body: Optional[RetentionEventType] = None, request_configuration: Optional[RetentionEventTypeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[RetentionEventType]:
         """
         Update the navigation property retentionEventTypes in security
         param body: The request body
@@ -90,9 +87,9 @@ class RetentionEventTypeItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RetentionEventType, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RetentionEventTypeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a retentionEventType object.
+        Delete navigation property retentionEventTypes for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,9 +98,9 @@ class RetentionEventTypeItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RetentionEventTypeItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a retentionEventType object.
+        Get retentionEventTypes from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +109,7 @@ class RetentionEventTypeItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[RetentionEventType] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[RetentionEventType] = None, request_configuration: Optional[RetentionEventTypeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property retentionEventTypes in security
         param body: The request body
@@ -137,10 +134,20 @@ class RetentionEventTypeItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return RetentionEventTypeItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RetentionEventTypeItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class RetentionEventTypeItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a retentionEventType object.
+        Get retentionEventTypes from security
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -162,5 +169,28 @@ class RetentionEventTypeItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RetentionEventTypeItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[RetentionEventTypeItemRequestBuilder.RetentionEventTypeItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RetentionEventTypeItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

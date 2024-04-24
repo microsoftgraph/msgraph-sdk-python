@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,11 +26,12 @@ class GetVirtualAppointmentJoinWebUrlRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/onlineMeetings/{onlineMeeting%2Did}/getVirtualAppointmentJoinWebUrl()", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[GetVirtualAppointmentJoinWebUrlGetResponse]:
+    async def get(self,request_configuration: Optional[GetVirtualAppointmentJoinWebUrlRequestBuilderGetRequestConfiguration] = None) -> Optional[GetVirtualAppointmentJoinWebUrlGetResponse]:
         """
-        Invoke function getVirtualAppointmentJoinWebUrl
+        Get a join web URL for a Microsoft Virtual Appointment. This web URL includes enhanced business-to-customer experiences such as mobile browser join and virtual lobby rooms. With Teams Premium, you can configure a custom lobby room experience for attendees by adding your company logo and access the Virtual Appointments usage report for organizational analytics.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GetVirtualAppointmentJoinWebUrlGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/virtualappointment-getvirtualappointmentjoinweburl?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -46,9 +47,9 @@ class GetVirtualAppointmentJoinWebUrlRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, GetVirtualAppointmentJoinWebUrlGetResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GetVirtualAppointmentJoinWebUrlRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function getVirtualAppointmentJoinWebUrl
+        Get a join web URL for a Microsoft Virtual Appointment. This web URL includes enhanced business-to-customer experiences such as mobile browser join and virtual lobby rooms. With Teams Premium, you can configure a custom lobby room experience for attendees by adding your company logo and access the Virtual Appointments usage report for organizational analytics.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -66,5 +67,15 @@ class GetVirtualAppointmentJoinWebUrlRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return GetVirtualAppointmentJoinWebUrlRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GetVirtualAppointmentJoinWebUrlRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

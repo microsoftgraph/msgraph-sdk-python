@@ -21,13 +21,13 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
     audio_codec: Optional[AudioCodec] = None
     # Average Network Mean Opinion Score degradation for stream. Represents how much the network loss and jitter has impacted the quality of received audio.
     average_audio_degradation: Optional[float] = None
-    # Average jitter for the stream computed as specified in [RFC 3550][], denoted in [ISO 8601][] format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
+    # Average jitter for the stream computed as specified in RFC 3550, denoted in ISO 8601 format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
     average_audio_network_jitter: Optional[datetime.timedelta] = None
     # Average estimated bandwidth available between two endpoints in bits per second.
     average_bandwidth_estimate: Optional[int] = None
     # Average duration of the received freezing time in the video stream.
     average_freeze_duration: Optional[datetime.timedelta] = None
-    # Average jitter for the stream computed as specified in [RFC 3550][], denoted in [ISO 8601][] format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
+    # Average jitter for the stream computed as specified in RFC 3550, denoted in ISO 8601 format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
     average_jitter: Optional[datetime.timedelta] = None
     # Average packet loss rate for stream.
     average_packet_loss_rate: Optional[float] = None
@@ -35,13 +35,13 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
     average_ratio_of_concealed_samples: Optional[float] = None
     # Average frames per second received for all video streams computed over the duration of the session.
     average_received_frame_rate: Optional[float] = None
-    # Average network propagation round-trip time computed as specified in [RFC 3550][], denoted in [ISO 8601][] format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
+    # Average network propagation round-trip time computed as specified in RFC 3550, denoted in ISO 8601 format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
     average_round_trip_time: Optional[datetime.timedelta] = None
     # Average percentage of video frames lost as displayed to the user.
     average_video_frame_loss_percentage: Optional[float] = None
     # Average frames per second received for a video stream, computed over the duration of the session.
     average_video_frame_rate: Optional[float] = None
-    # Average fraction of packets lost, as specified in [RFC 3550][], computed over the duration of the session.
+    # Average fraction of packets lost, as specified in RFC 3550, computed over the duration of the session.
     average_video_packet_loss_rate: Optional[float] = None
     # UTC time when the stream ended. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. This field is only available for streams that use the SIP protocol.
     end_date_time: Optional[datetime.datetime] = None
@@ -51,15 +51,15 @@ class MediaStream(AdditionalDataHolder, BackedModel, Parsable):
     low_frame_rate_ratio: Optional[float] = None
     # Fraction of the call that the client is running less than 70% expected video processing capability.
     low_video_processing_capability_ratio: Optional[float] = None
-    # Maximum of audio network jitter computed over each of the 20 second windows during the session, denoted in [ISO 8601][] format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
+    # Maximum of audio network jitter computed over each of the 20 second windows during the session, denoted in ISO 8601 format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
     max_audio_network_jitter: Optional[datetime.timedelta] = None
-    # Maximum jitter for the stream computed as specified in RFC 3550, denoted in [ISO 8601][] format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
+    # Maximum jitter for the stream computed as specified in RFC 3550, denoted in ISO 8601 format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
     max_jitter: Optional[datetime.timedelta] = None
     # Maximum packet loss rate for the stream.
     max_packet_loss_rate: Optional[float] = None
     # Maximum ratio of packets concealed by the healer.
     max_ratio_of_concealed_samples: Optional[float] = None
-    # Maximum network propagation round-trip time computed as specified in [RFC 3550][], denoted in [ISO 8601][] format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
+    # Maximum network propagation round-trip time computed as specified in RFC 3550, denoted in ISO 8601 format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
     max_round_trip_time: Optional[datetime.timedelta] = None
     # The OdataType property
     odata_type: Optional[str] = None

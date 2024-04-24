@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -43,12 +42,11 @@ class IncomingChannelsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["channel%2Did"] = channel_id
         return ChannelItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ChannelCollectionResponse]:
+    async def get(self,request_configuration: Optional[IncomingChannelsRequestBuilderGetRequestConfiguration] = None) -> Optional[ChannelCollectionResponse]:
         """
-        Get the list of incoming channels (channels shared with a team).
+        List of channels shared with the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChannelCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/team-list-incomingchannels?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -64,9 +62,9 @@ class IncomingChannelsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ChannelCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[IncomingChannelsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of incoming channels (channels shared with a team).
+        List of channels shared with the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +95,7 @@ class IncomingChannelsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IncomingChannelsRequestBuilderGetQueryParameters():
         """
-        Get the list of incoming channels (channels shared with a team).
+        List of channels shared with the team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -148,6 +146,19 @@ class IncomingChannelsRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class IncomingChannelsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[IncomingChannelsRequestBuilder.IncomingChannelsRequestBuilderGetQueryParameters] = None
 
     
 

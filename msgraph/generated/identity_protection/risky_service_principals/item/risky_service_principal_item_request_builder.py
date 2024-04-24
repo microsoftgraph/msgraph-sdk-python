@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,7 +27,7 @@ class RiskyServicePrincipalItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityProtection/riskyServicePrincipals/{riskyServicePrincipal%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[RiskyServicePrincipalItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property riskyServicePrincipals for identityProtection
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -46,12 +45,11 @@ class RiskyServicePrincipalItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RiskyServicePrincipal]:
+    async def get(self,request_configuration: Optional[RiskyServicePrincipalItemRequestBuilderGetRequestConfiguration] = None) -> Optional[RiskyServicePrincipal]:
         """
-        Read the properties and relationships of a riskyServicePrincipal object.
+        Microsoft Entra service principals that are at risk.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RiskyServicePrincipal]
-        Find more info here: https://learn.microsoft.com/graph/api/riskyserviceprincipal-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +65,7 @@ class RiskyServicePrincipalItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RiskyServicePrincipal, error_mapping)
     
-    async def patch(self,body: Optional[RiskyServicePrincipal] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[RiskyServicePrincipal]:
+    async def patch(self,body: Optional[RiskyServicePrincipal] = None, request_configuration: Optional[RiskyServicePrincipalItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[RiskyServicePrincipal]:
         """
         Update the navigation property riskyServicePrincipals in identityProtection
         param body: The request body
@@ -90,7 +88,7 @@ class RiskyServicePrincipalItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, RiskyServicePrincipal, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[RiskyServicePrincipalItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property riskyServicePrincipals for identityProtection
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +99,9 @@ class RiskyServicePrincipalItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RiskyServicePrincipalItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a riskyServicePrincipal object.
+        Microsoft Entra service principals that are at risk.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +110,7 @@ class RiskyServicePrincipalItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[RiskyServicePrincipal] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[RiskyServicePrincipal] = None, request_configuration: Optional[RiskyServicePrincipalItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property riskyServicePrincipals in identityProtection
         param body: The request body
@@ -146,10 +144,20 @@ class RiskyServicePrincipalItemRequestBuilder(BaseRequestBuilder):
 
         return HistoryRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RiskyServicePrincipalItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class RiskyServicePrincipalItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a riskyServicePrincipal object.
+        Microsoft Entra service principals that are at risk.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -171,5 +179,28 @@ class RiskyServicePrincipalItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RiskyServicePrincipalItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[RiskyServicePrincipalItemRequestBuilder.RiskyServicePrincipalItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class RiskyServicePrincipalItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

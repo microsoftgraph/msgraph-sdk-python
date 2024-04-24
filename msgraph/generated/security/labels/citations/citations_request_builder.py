@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class CitationsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["citationTemplate%2Did"] = citation_template_id
         return CitationTemplateItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CitationTemplateCollectionResponse]:
+    async def get(self,request_configuration: Optional[CitationsRequestBuilderGetRequestConfiguration] = None) -> Optional[CitationTemplateCollectionResponse]:
         """
-        Get a list of the citationTemplate objects and their properties.
+        The specific rule or regulation created by a jurisdiction used to determine whether certain labels and content should be retained or deleted.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CitationTemplateCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-list-citations?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class CitationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CitationTemplateCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[CitationTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CitationTemplate]:
+    async def post(self,body: Optional[CitationTemplate] = None, request_configuration: Optional[CitationsRequestBuilderPostRequestConfiguration] = None) -> Optional[CitationTemplate]:
         """
-        Create a new citationTemplate object.
+        Create new navigation property to citations for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CitationTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-post-citations?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class CitationsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CitationTemplate, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[CitationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the citationTemplate objects and their properties.
+        The specific rule or regulation created by a jurisdiction used to determine whether certain labels and content should be retained or deleted.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class CitationsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[CitationTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[CitationTemplate] = None, request_configuration: Optional[CitationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new citationTemplate object.
+        Create new navigation property to citations for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class CitationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CitationsRequestBuilderGetQueryParameters():
         """
-        Get a list of the citationTemplate objects and their properties.
+        The specific rule or regulation created by a jurisdiction used to determine whether certain labels and content should be retained or deleted.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class CitationsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CitationsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[CitationsRequestBuilder.CitationsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CitationsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

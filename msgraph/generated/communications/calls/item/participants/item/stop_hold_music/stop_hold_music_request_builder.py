@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +27,7 @@ class StopHoldMusicRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/communications/calls/{call%2Did}/participants/{participant%2Did}/stopHoldMusic", path_parameters)
     
-    async def post(self,body: Optional[StopHoldMusicPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[StopHoldMusicOperation]:
+    async def post(self,body: Optional[StopHoldMusicPostRequestBody] = None, request_configuration: Optional[StopHoldMusicRequestBuilderPostRequestConfiguration] = None) -> Optional[StopHoldMusicOperation]:
         """
         Reincorporate a participant previously put on hold to the call.
         param body: The request body
@@ -51,7 +51,7 @@ class StopHoldMusicRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, StopHoldMusicOperation, error_mapping)
     
-    def to_post_request_information(self,body: Optional[StopHoldMusicPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[StopHoldMusicPostRequestBody] = None, request_configuration: Optional[StopHoldMusicRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Reincorporate a participant previously put on hold to the call.
         param body: The request body
@@ -75,5 +75,15 @@ class StopHoldMusicRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return StopHoldMusicRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class StopHoldMusicRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

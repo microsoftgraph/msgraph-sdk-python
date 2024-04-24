@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,7 +28,7 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/policies/crossTenantAccessPolicy{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property crossTenantAccessPolicy for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -47,12 +46,11 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CrossTenantAccessPolicy]:
+    async def get(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[CrossTenantAccessPolicy]:
         """
-        Read the properties and relationships of a crossTenantAccessPolicy object.
+        The custom rules that define an access scenario when interacting with external Microsoft Entra tenants.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,13 +66,12 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CrossTenantAccessPolicy, error_mapping)
     
-    async def patch(self,body: Optional[CrossTenantAccessPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CrossTenantAccessPolicy]:
+    async def patch(self,body: Optional[CrossTenantAccessPolicy] = None, request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[CrossTenantAccessPolicy]:
         """
-        Update the properties of a cross-tenant access policy.
+        Update the navigation property crossTenantAccessPolicy in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CrossTenantAccessPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/crosstenantaccesspolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +89,7 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CrossTenantAccessPolicy, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property crossTenantAccessPolicy for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,9 +100,9 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a crossTenantAccessPolicy object.
+        The custom rules that define an access scenario when interacting with external Microsoft Entra tenants.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,9 +111,9 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[CrossTenantAccessPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[CrossTenantAccessPolicy] = None, request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a cross-tenant access policy.
+        Update the navigation property crossTenantAccessPolicy in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -157,10 +154,20 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
 
         return PartnersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CrossTenantAccessPolicyRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class CrossTenantAccessPolicyRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a crossTenantAccessPolicy object.
+        The custom rules that define an access scenario when interacting with external Microsoft Entra tenants.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -182,5 +189,28 @@ class CrossTenantAccessPolicyRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CrossTenantAccessPolicyRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[CrossTenantAccessPolicyRequestBuilder.CrossTenantAccessPolicyRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,12 +27,11 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/sites/{site%2Did}/getByPath(path='{path}')/getByPath(path='{path1}')/columns{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ColumnDefinitionCollectionResponse]:
+    async def get(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> Optional[ColumnDefinitionCollectionResponse]:
         """
-        Get the collection of columns represented as [columnDefinition][columnDefinition] resources in a [site][site].
+        The collection of column definitions reusable across lists under this site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ColumnDefinitionCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/site-list-columns?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,13 +47,12 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ColumnDefinitionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ColumnDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ColumnDefinition]:
+    async def post(self,body: Optional[ColumnDefinition] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> Optional[ColumnDefinition]:
         """
-        Create a column for a [site][site] with a request that specifies a [columnDefinition][columnDefinition].
+        Create new navigation property to columns for sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ColumnDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/site-post-columns?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -73,9 +70,9 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ColumnDefinition, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the collection of columns represented as [columnDefinition][columnDefinition] resources in a [site][site].
+        The collection of column definitions reusable across lists under this site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -84,9 +81,9 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[ColumnDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[ColumnDefinition] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a column for a [site][site] with a request that specifies a [columnDefinition][columnDefinition].
+        Create new navigation property to columns for sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +109,7 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ColumnsRequestBuilderGetQueryParameters():
         """
-        Get the collection of columns represented as [columnDefinition][columnDefinition] resources in a [site][site].
+        The collection of column definitions reusable across lists under this site.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -164,5 +161,28 @@ class ColumnsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ColumnsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ColumnsRequestBuilder.ColumnsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ColumnsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

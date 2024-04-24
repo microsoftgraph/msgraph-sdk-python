@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,12 +28,11 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identityGovernance/lifecycleWorkflows/customTaskExtensions/{customTaskExtension%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[CustomTaskExtensionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a customTaskExtension object. A custom task extension  can only be deleted if it is not referenced in any task objects in a lifecycle workflow.
+        Delete navigation property customTaskExtensions for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-customtaskextension-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,12 +46,11 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CustomTaskExtension]:
+    async def get(self,request_configuration: Optional[CustomTaskExtensionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[CustomTaskExtension]:
         """
-        Read the properties and relationships of a customTaskExtension object.
+        The customTaskExtension instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomTaskExtension]
-        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-customtaskextension-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,13 +66,12 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CustomTaskExtension, error_mapping)
     
-    async def patch(self,body: Optional[CustomTaskExtension] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[CustomTaskExtension]:
+    async def patch(self,body: Optional[CustomTaskExtension] = None, request_configuration: Optional[CustomTaskExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[CustomTaskExtension]:
         """
-        Update the properties of a customTaskExtension object.
+        Update the navigation property customTaskExtensions in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CustomTaskExtension]
-        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-customtaskextension-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,9 +89,9 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, CustomTaskExtension, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[CustomTaskExtensionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a customTaskExtension object. A custom task extension  can only be deleted if it is not referenced in any task objects in a lifecycle workflow.
+        Delete navigation property customTaskExtensions for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,9 +100,9 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[CustomTaskExtensionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a customTaskExtension object.
+        The customTaskExtension instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,9 +111,9 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[CustomTaskExtension] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[CustomTaskExtension] = None, request_configuration: Optional[CustomTaskExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a customTaskExtension object.
+        Update the navigation property customTaskExtensions in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -158,10 +154,20 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
 
         return LastModifiedByRequestBuilder(self.request_adapter, self.path_parameters)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CustomTaskExtensionItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class CustomTaskExtensionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a customTaskExtension object.
+        The customTaskExtension instance.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -183,5 +189,28 @@ class CustomTaskExtensionItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CustomTaskExtensionItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[CustomTaskExtensionItemRequestBuilder.CustomTaskExtensionItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class CustomTaskExtensionItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

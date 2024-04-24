@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,12 +27,11 @@ class AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/authentication/methods/{authenticationMethod%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthenticationMethod]:
+    async def get(self,request_configuration: Optional[AuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationMethod]:
         """
-        Retrieve the properties and relationships of an authenticationMethod object.
+        Represents all authentication methods registered to a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethod]
-        Find more info here: https://learn.microsoft.com/graph/api/authenticationmethod-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,7 +47,7 @@ class AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AuthenticationMethod, error_mapping)
     
-    async def patch(self,body: Optional[AuthenticationMethod] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthenticationMethod]:
+    async def patch(self,body: Optional[AuthenticationMethod] = None, request_configuration: Optional[AuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[AuthenticationMethod]:
         """
         Update the navigation property methods in users
         param body: The request body
@@ -72,9 +70,9 @@ class AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AuthenticationMethod, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an authenticationMethod object.
+        Represents all authentication methods registered to a user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -83,7 +81,7 @@ class AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[AuthenticationMethod] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[AuthenticationMethod] = None, request_configuration: Optional[AuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property methods in users
         param body: The request body
@@ -120,7 +118,7 @@ class AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an authenticationMethod object.
+        Represents all authentication methods registered to a user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -142,5 +140,28 @@ class AuthenticationMethodItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AuthenticationMethodItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AuthenticationMethodItemRequestBuilder.AuthenticationMethodItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AuthenticationMethodItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

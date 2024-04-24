@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["userScopeTeamsAppInstallation%2Did"] = user_scope_teams_app_installation_id
         return UserScopeTeamsAppInstallationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserScopeTeamsAppInstallationCollectionResponse]:
+    async def get(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[UserScopeTeamsAppInstallationCollectionResponse]:
         """
-        Retrieve the list of apps installed in the personal scope of the specified user.
+        The apps installed in the personal scope of this user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserScopeTeamsAppInstallationCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/userteamwork-list-installedapps?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserScopeTeamsAppInstallationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[UserScopeTeamsAppInstallation] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserScopeTeamsAppInstallation]:
+    async def post(self,body: Optional[UserScopeTeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[UserScopeTeamsAppInstallation]:
         """
-        Install an app in the personal scope of the specified user.
+        Create new navigation property to installedApps for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserScopeTeamsAppInstallation]
-        Find more info here: https://learn.microsoft.com/graph/api/userteamwork-post-installedapps?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, UserScopeTeamsAppInstallation, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of apps installed in the personal scope of the specified user.
+        The apps installed in the personal scope of this user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[UserScopeTeamsAppInstallation] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[UserScopeTeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Install an app in the personal scope of the specified user.
+        Create new navigation property to installedApps for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class InstalledAppsRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of apps installed in the personal scope of the specified user.
+        The apps installed in the personal scope of this user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class InstalledAppsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class InstalledAppsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[InstalledAppsRequestBuilder.InstalledAppsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class InstalledAppsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

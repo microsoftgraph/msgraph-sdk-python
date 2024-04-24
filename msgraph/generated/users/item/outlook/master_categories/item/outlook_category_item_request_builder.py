@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/outlook/masterCategories/{outlookCategory%2Did}{?%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[OutlookCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete the specified outlookCategory object.
+        Delete navigation property masterCategories for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/outlookcategory-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -46,12 +44,11 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OutlookCategory]:
+    async def get(self,request_configuration: Optional[OutlookCategoryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[OutlookCategory]:
         """
-        Get the properties and relationships of the specified outlookCategory object.
+        A list of categories defined for the user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OutlookCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/outlookcategory-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,13 +64,12 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OutlookCategory, error_mapping)
     
-    async def patch(self,body: Optional[OutlookCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[OutlookCategory]:
+    async def patch(self,body: Optional[OutlookCategory] = None, request_configuration: Optional[OutlookCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[OutlookCategory]:
         """
-        Update the writable property, color, of the specified outlookCategory object. You can't modify the displayName property once you have created the category.
+        Update the navigation property masterCategories in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OutlookCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/outlookcategory-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,9 +87,9 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, OutlookCategory, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[OutlookCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete the specified outlookCategory object.
+        Delete navigation property masterCategories for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,9 +98,9 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[OutlookCategoryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of the specified outlookCategory object.
+        A list of categories defined for the user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,9 +109,9 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[OutlookCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[OutlookCategory] = None, request_configuration: Optional[OutlookCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the writable property, color, of the specified outlookCategory object. You can't modify the displayName property once you have created the category.
+        Update the navigation property masterCategories in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,10 +134,20 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return OutlookCategoryItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class OutlookCategoryItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class OutlookCategoryItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of the specified outlookCategory object.
+        A list of categories defined for the user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -158,5 +164,28 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class OutlookCategoryItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[OutlookCategoryItemRequestBuilder.OutlookCategoryItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class OutlookCategoryItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

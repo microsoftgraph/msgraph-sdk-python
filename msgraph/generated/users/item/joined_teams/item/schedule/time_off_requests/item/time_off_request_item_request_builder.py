@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class TimeOffRequestItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/schedule/timeOffRequests/{timeOffRequest%2Did}{?%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[TimeOffRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a timeOffRequest object.
+        Delete navigation property timeOffRequests for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/timeoffrequest-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -46,12 +44,11 @@ class TimeOffRequestItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TimeOffRequest]:
+    async def get(self,request_configuration: Optional[TimeOffRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[TimeOffRequest]:
         """
-        Retrieve the properties and relationships of a timeoffrequest object.
+        The time off requests in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TimeOffRequest]
-        Find more info here: https://learn.microsoft.com/graph/api/timeoffrequest-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +64,7 @@ class TimeOffRequestItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TimeOffRequest, error_mapping)
     
-    async def patch(self,body: Optional[TimeOffRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TimeOffRequest]:
+    async def patch(self,body: Optional[TimeOffRequest] = None, request_configuration: Optional[TimeOffRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[TimeOffRequest]:
         """
         Update the navigation property timeOffRequests in users
         param body: The request body
@@ -90,9 +87,9 @@ class TimeOffRequestItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TimeOffRequest, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[TimeOffRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a timeOffRequest object.
+        Delete navigation property timeOffRequests for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,9 +98,9 @@ class TimeOffRequestItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[TimeOffRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a timeoffrequest object.
+        The time off requests in the schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +109,7 @@ class TimeOffRequestItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[TimeOffRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[TimeOffRequest] = None, request_configuration: Optional[TimeOffRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property timeOffRequests in users
         param body: The request body
@@ -137,10 +134,20 @@ class TimeOffRequestItemRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return TimeOffRequestItemRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TimeOffRequestItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class TimeOffRequestItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a timeoffrequest object.
+        The time off requests in the schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -157,5 +164,28 @@ class TimeOffRequestItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TimeOffRequestItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[TimeOffRequestItemRequestBuilder.TimeOffRequestItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TimeOffRequestItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

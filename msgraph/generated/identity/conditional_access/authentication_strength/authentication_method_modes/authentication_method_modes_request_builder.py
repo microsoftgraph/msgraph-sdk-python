@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class AuthenticationMethodModesRequestBuilder(BaseRequestBuilder):
         url_tpl_params["authenticationMethodModeDetail%2Did"] = authentication_method_mode_detail_id
         return AuthenticationMethodModeDetailItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthenticationMethodModeDetailCollectionResponse]:
+    async def get(self,request_configuration: Optional[AuthenticationMethodModesRequestBuilderGetRequestConfiguration] = None) -> Optional[AuthenticationMethodModeDetailCollectionResponse]:
         """
-        Get a list of all supported authentication methods, or all supported authentication method combinations as a list of authenticationMethodModes objects and their properties.
+        Names and descriptions of all valid authentication method modes in the system.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthenticationMethodModeDetailCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/authenticationstrengthroot-list-authenticationmethodmodes?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class AuthenticationMethodModesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AuthenticationMethodModeDetailCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[AuthenticationMethodModeDetail] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthenticationMethodModeDetail]:
+    async def post(self,body: Optional[AuthenticationMethodModeDetail] = None, request_configuration: Optional[AuthenticationMethodModesRequestBuilderPostRequestConfiguration] = None) -> Optional[AuthenticationMethodModeDetail]:
         """
         Create new navigation property to authenticationMethodModes for identity
         param body: The request body
@@ -88,9 +86,9 @@ class AuthenticationMethodModesRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AuthenticationMethodModeDetail, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AuthenticationMethodModesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of all supported authentication methods, or all supported authentication method combinations as a list of authenticationMethodModes objects and their properties.
+        Names and descriptions of all valid authentication method modes in the system.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class AuthenticationMethodModesRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[AuthenticationMethodModeDetail] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[AuthenticationMethodModeDetail] = None, request_configuration: Optional[AuthenticationMethodModesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to authenticationMethodModes for identity
         param body: The request body
@@ -136,7 +134,7 @@ class AuthenticationMethodModesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthenticationMethodModesRequestBuilderGetQueryParameters():
         """
-        Get a list of all supported authentication methods, or all supported authentication method combinations as a list of authenticationMethodModes objects and their properties.
+        Names and descriptions of all valid authentication method modes in the system.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class AuthenticationMethodModesRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AuthenticationMethodModesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AuthenticationMethodModesRequestBuilder.AuthenticationMethodModesRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AuthenticationMethodModesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

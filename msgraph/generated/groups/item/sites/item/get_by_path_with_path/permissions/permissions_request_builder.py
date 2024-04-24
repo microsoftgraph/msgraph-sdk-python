@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,12 +27,11 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/getByPath(path='{path}')/permissions{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PermissionCollectionResponse]:
+    async def get(self,request_configuration: Optional[PermissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[PermissionCollectionResponse]:
         """
-        Get the permission resources from the permissions navigation property on a site.
+        The permissions associated with the site. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PermissionCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/site-list-permissions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,13 +47,12 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, PermissionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Permission] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Permission]:
+    async def post(self,body: Optional[Permission] = None, request_configuration: Optional[PermissionsRequestBuilderPostRequestConfiguration] = None) -> Optional[Permission]:
         """
-        Create a new permission object on a site. 
+        Create new navigation property to permissions for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Permission]
-        Find more info here: https://learn.microsoft.com/graph/api/site-post-permissions?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -73,9 +70,9 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Permission, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[PermissionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the permission resources from the permissions navigation property on a site.
+        The permissions associated with the site. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -84,9 +81,9 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Permission] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Permission] = None, request_configuration: Optional[PermissionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new permission object on a site. 
+        Create new navigation property to permissions for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +109,7 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PermissionsRequestBuilderGetQueryParameters():
         """
-        Get the permission resources from the permissions navigation property on a site.
+        The permissions associated with the site. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -164,5 +161,28 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PermissionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[PermissionsRequestBuilder.PermissionsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class PermissionsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

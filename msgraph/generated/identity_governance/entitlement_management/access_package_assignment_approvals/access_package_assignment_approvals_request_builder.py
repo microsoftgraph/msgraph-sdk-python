@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -57,9 +56,9 @@ class AccessPackageAssignmentApprovalsRequestBuilder(BaseRequestBuilder):
 
         return FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ApprovalCollectionResponse]:
+    async def get(self,request_configuration: Optional[AccessPackageAssignmentApprovalsRequestBuilderGetRequestConfiguration] = None) -> Optional[ApprovalCollectionResponse]:
         """
-        Retrieve the properties of an approval object. This API request is made by an approver in the following scenarios: In Microsoft Entra entitlement management, providing the identifier of the access package assignment request.In PIM for groups, providing the identifier of the assignment schedule request.
+        Approval stages for decisions associated with access package assignment requests.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ApprovalCollectionResponse]
         """
@@ -77,7 +76,7 @@ class AccessPackageAssignmentApprovalsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ApprovalCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Approval] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Approval]:
+    async def post(self,body: Optional[Approval] = None, request_configuration: Optional[AccessPackageAssignmentApprovalsRequestBuilderPostRequestConfiguration] = None) -> Optional[Approval]:
         """
         Create new navigation property to accessPackageAssignmentApprovals for identityGovernance
         param body: The request body
@@ -100,9 +99,9 @@ class AccessPackageAssignmentApprovalsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Approval, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AccessPackageAssignmentApprovalsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of an approval object. This API request is made by an approver in the following scenarios: In Microsoft Entra entitlement management, providing the identifier of the access package assignment request.In PIM for groups, providing the identifier of the assignment schedule request.
+        Approval stages for decisions associated with access package assignment requests.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +110,7 @@ class AccessPackageAssignmentApprovalsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Approval] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Approval] = None, request_configuration: Optional[AccessPackageAssignmentApprovalsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to accessPackageAssignmentApprovals for identityGovernance
         param body: The request body
@@ -148,7 +147,7 @@ class AccessPackageAssignmentApprovalsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AccessPackageAssignmentApprovalsRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of an approval object. This API request is made by an approver in the following scenarios: In Microsoft Entra entitlement management, providing the identifier of the access package assignment request.In PIM for groups, providing the identifier of the assignment schedule request.
+        Approval stages for decisions associated with access package assignment requests.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -200,5 +199,28 @@ class AccessPackageAssignmentApprovalsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AccessPackageAssignmentApprovalsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AccessPackageAssignmentApprovalsRequestBuilder.AccessPackageAssignmentApprovalsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AccessPackageAssignmentApprovalsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

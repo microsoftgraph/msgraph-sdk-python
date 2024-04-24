@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class DispositionReviewStageStageNumberItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/security/labels/retentionLabels/{retentionLabel%2Did}/dispositionReviewStages/{dispositionReviewStage%2DstageNumber}{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[DispositionReviewStageStageNumberItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property dispositionReviewStages for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +44,7 @@ class DispositionReviewStageStageNumberItemRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DispositionReviewStage]:
+    async def get(self,request_configuration: Optional[DispositionReviewStageStageNumberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[DispositionReviewStage]:
         """
         When action at the end of retention is chosen as 'dispositionReview', dispositionReviewStages specifies a sequential set of stages with at least one reviewer in each stage.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -65,7 +64,7 @@ class DispositionReviewStageStageNumberItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DispositionReviewStage, error_mapping)
     
-    async def patch(self,body: Optional[DispositionReviewStage] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DispositionReviewStage]:
+    async def patch(self,body: Optional[DispositionReviewStage] = None, request_configuration: Optional[DispositionReviewStageStageNumberItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[DispositionReviewStage]:
         """
         Update the navigation property dispositionReviewStages in security
         param body: The request body
@@ -88,7 +87,7 @@ class DispositionReviewStageStageNumberItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DispositionReviewStage, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[DispositionReviewStageStageNumberItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property dispositionReviewStages for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +98,7 @@ class DispositionReviewStageStageNumberItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DispositionReviewStageStageNumberItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         When action at the end of retention is chosen as 'dispositionReview', dispositionReviewStages specifies a sequential set of stages with at least one reviewer in each stage.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +109,7 @@ class DispositionReviewStageStageNumberItemRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[DispositionReviewStage] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DispositionReviewStage] = None, request_configuration: Optional[DispositionReviewStageStageNumberItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property dispositionReviewStages in security
         param body: The request body
@@ -134,6 +133,16 @@ class DispositionReviewStageStageNumberItemRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return DispositionReviewStageStageNumberItemRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DispositionReviewStageStageNumberItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class DispositionReviewStageStageNumberItemRequestBuilderGetQueryParameters():
@@ -160,5 +169,28 @@ class DispositionReviewStageStageNumberItemRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DispositionReviewStageStageNumberItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DispositionReviewStageStageNumberItemRequestBuilder.DispositionReviewStageStageNumberItemRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DispositionReviewStageStageNumberItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

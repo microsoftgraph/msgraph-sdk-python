@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -47,12 +46,11 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["workbookChart%2Did"] = workbook_chart_id
         return WorkbookChartItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartCollectionResponse]:
+    async def get(self,request_configuration: Optional[ChartsRequestBuilderGetRequestConfiguration] = None) -> Optional[WorkbookChartCollectionResponse]:
         """
-        Retrieve a list of chart objects.
+        Returns collection of charts that are part of the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/worksheet-list-charts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,13 +90,12 @@ class ChartsRequestBuilder(BaseRequestBuilder):
 
         return ItemWithNameRequestBuilder(self.request_adapter, self.path_parameters, name)
     
-    async def post(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChart]:
+    async def post(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[ChartsRequestBuilderPostRequestConfiguration] = None) -> Optional[WorkbookChart]:
         """
-        Use this API to create a new Chart.
+        Create new navigation property to charts for drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChart]
-        Find more info here: https://learn.microsoft.com/graph/api/worksheet-post-charts?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -116,9 +113,9 @@ class ChartsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WorkbookChart, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ChartsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of chart objects.
+        Returns collection of charts that are part of the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,9 +124,9 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[ChartsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new Chart.
+        Create new navigation property to charts for drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -173,7 +170,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ChartsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of chart objects.
+        Returns collection of charts that are part of the worksheet. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -225,5 +222,28 @@ class ChartsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ChartsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ChartsRequestBuilder.ChartsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ChartsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

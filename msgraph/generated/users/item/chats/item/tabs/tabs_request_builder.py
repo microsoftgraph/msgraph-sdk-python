@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class TabsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["teamsTab%2Did"] = teams_tab_id
         return TeamsTabItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsTabCollectionResponse]:
+    async def get(self,request_configuration: Optional[TabsRequestBuilderGetRequestConfiguration] = None) -> Optional[TeamsTabCollectionResponse]:
         """
-        Retrieve the list of tabs in the specified chat.
+        A collection of all the tabs in the chat. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsTabCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/chat-list-tabs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class TabsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamsTabCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[TeamsTab] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsTab]:
+    async def post(self,body: Optional[TeamsTab] = None, request_configuration: Optional[TabsRequestBuilderPostRequestConfiguration] = None) -> Optional[TeamsTab]:
         """
-        Add (pin) a tab to the specified chat. The corresponding app must already be installed in the chat.
+        Create new navigation property to tabs for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsTab]
-        Find more info here: https://learn.microsoft.com/graph/api/chat-post-tabs?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class TabsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, TeamsTab, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[TabsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of tabs in the specified chat.
+        A collection of all the tabs in the chat. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class TabsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[TeamsTab] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[TeamsTab] = None, request_configuration: Optional[TabsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add (pin) a tab to the specified chat. The corresponding app must already be installed in the chat.
+        Create new navigation property to tabs for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class TabsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TabsRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of tabs in the specified chat.
+        A collection of all the tabs in the chat. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class TabsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TabsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[TabsRequestBuilder.TabsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class TabsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class FederatedIdentityCredentialsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["federatedIdentityCredential%2Did"] = federated_identity_credential_id
         return FederatedIdentityCredentialItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[FederatedIdentityCredentialCollectionResponse]:
+    async def get(self,request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderGetRequestConfiguration] = None) -> Optional[FederatedIdentityCredentialCollectionResponse]:
         """
-        Get a list of the federatedIdentityCredential objects and their properties.
+        Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FederatedIdentityCredentialCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/application-list-federatedidentitycredentials?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class FederatedIdentityCredentialsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, FederatedIdentityCredentialCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[FederatedIdentityCredential] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[FederatedIdentityCredential]:
+    async def post(self,body: Optional[FederatedIdentityCredential] = None, request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderPostRequestConfiguration] = None) -> Optional[FederatedIdentityCredential]:
         """
-        Create a new federatedIdentityCredential object for an application. By configuring a trust relationship between your Microsoft Entra application registration and the identity provider for your compute platform, you can use tokens issued by that platform to authenticate with Microsoft identity platform and call APIs in the Microsoft ecosystem. Maximum of 20 objects can be added to an application.
+        Create new navigation property to federatedIdentityCredentials for applications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FederatedIdentityCredential]
-        Find more info here: https://learn.microsoft.com/graph/api/application-post-federatedidentitycredentials?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class FederatedIdentityCredentialsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, FederatedIdentityCredential, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the federatedIdentityCredential objects and their properties.
+        Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class FederatedIdentityCredentialsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[FederatedIdentityCredential] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[FederatedIdentityCredential] = None, request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new federatedIdentityCredential object for an application. By configuring a trust relationship between your Microsoft Entra application registration and the identity provider for your compute platform, you can use tokens issued by that platform to authenticate with Microsoft identity platform and call APIs in the Microsoft ecosystem. Maximum of 20 objects can be added to an application.
+        Create new navigation property to federatedIdentityCredentials for applications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class FederatedIdentityCredentialsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FederatedIdentityCredentialsRequestBuilderGetQueryParameters():
         """
-        Get a list of the federatedIdentityCredential objects and their properties.
+        Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class FederatedIdentityCredentialsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FederatedIdentityCredentialsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[FederatedIdentityCredentialsRequestBuilder.FederatedIdentityCredentialsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FederatedIdentityCredentialsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

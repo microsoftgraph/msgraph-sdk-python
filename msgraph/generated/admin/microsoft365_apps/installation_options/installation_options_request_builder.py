@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,7 +26,7 @@ class InstallationOptionsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/admin/microsoft365Apps/installationOptions{?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[InstallationOptionsRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property installationOptions for admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,12 +44,11 @@ class InstallationOptionsRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[M365AppsInstallationOptions]:
+    async def get(self,request_configuration: Optional[InstallationOptionsRequestBuilderGetRequestConfiguration] = None) -> Optional[M365AppsInstallationOptions]:
         """
-        Read the properties and relationships of an m365AppsInstallationOptions object.
+        A container for tenant-level settings for Microsoft 365 applications.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[M365AppsInstallationOptions]
-        Find more info here: https://learn.microsoft.com/graph/api/m365appsinstallationoptions-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,13 +64,12 @@ class InstallationOptionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, M365AppsInstallationOptions, error_mapping)
     
-    async def patch(self,body: Optional[M365AppsInstallationOptions] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[M365AppsInstallationOptions]:
+    async def patch(self,body: Optional[M365AppsInstallationOptions] = None, request_configuration: Optional[InstallationOptionsRequestBuilderPatchRequestConfiguration] = None) -> Optional[M365AppsInstallationOptions]:
         """
-        Update the properties of an m365AppsInstallationOptions object.
+        Update the navigation property installationOptions in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[M365AppsInstallationOptions]
-        Find more info here: https://learn.microsoft.com/graph/api/m365appsinstallationoptions-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,7 +87,7 @@ class InstallationOptionsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, M365AppsInstallationOptions, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[InstallationOptionsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property installationOptions for admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,9 +98,9 @@ class InstallationOptionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[InstallationOptionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an m365AppsInstallationOptions object.
+        A container for tenant-level settings for Microsoft 365 applications.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,9 +109,9 @@ class InstallationOptionsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[M365AppsInstallationOptions] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[M365AppsInstallationOptions] = None, request_configuration: Optional[InstallationOptionsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an m365AppsInstallationOptions object.
+        Update the navigation property installationOptions in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,10 +134,20 @@ class InstallationOptionsRequestBuilder(BaseRequestBuilder):
             raise TypeError("raw_url cannot be null.")
         return InstallationOptionsRequestBuilder(self.request_adapter, raw_url)
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class InstallationOptionsRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+    
     @dataclass
     class InstallationOptionsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an m365AppsInstallationOptions object.
+        A container for tenant-level settings for Microsoft 365 applications.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -162,5 +169,28 @@ class InstallationOptionsRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class InstallationOptionsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[InstallationOptionsRequestBuilder.InstallationOptionsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class InstallationOptionsRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

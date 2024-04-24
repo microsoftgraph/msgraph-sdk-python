@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -30,7 +29,7 @@ class DirectoryRolesWithRoleTemplateIdRequestBuilder(BaseRequestBuilder):
             path_parameters['roleTemplateId'] = str(role_template_id)
         super().__init__(request_adapter, "{+baseurl}/directoryRoles(roleTemplateId='{roleTemplateId}'){?%24expand,%24select}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[DirectoryRolesWithRoleTemplateIdRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete entity from directoryRoles by roleTemplateId
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -48,7 +47,7 @@ class DirectoryRolesWithRoleTemplateIdRequestBuilder(BaseRequestBuilder):
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryRole]:
+    async def get(self,request_configuration: Optional[DirectoryRolesWithRoleTemplateIdRequestBuilderGetRequestConfiguration] = None) -> Optional[DirectoryRole]:
         """
         Retrieve the properties of a directoryRole object. The role must be activated in tenant for a successful response. You can use both the object ID and template ID of the directoryRole with this API. The template ID of a built-in role is immutable and can be seen in the role description on the Microsoft Entra admin center. For details, see Role template IDs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -69,7 +68,7 @@ class DirectoryRolesWithRoleTemplateIdRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DirectoryRole, error_mapping)
     
-    async def patch(self,body: Optional[DirectoryRole] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DirectoryRole]:
+    async def patch(self,body: Optional[DirectoryRole] = None, request_configuration: Optional[DirectoryRolesWithRoleTemplateIdRequestBuilderPatchRequestConfiguration] = None) -> Optional[DirectoryRole]:
         """
         Update entity in directoryRoles by roleTemplateId
         param body: The request body
@@ -92,7 +91,7 @@ class DirectoryRolesWithRoleTemplateIdRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DirectoryRole, error_mapping)
     
-    def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[DirectoryRolesWithRoleTemplateIdRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete entity from directoryRoles by roleTemplateId
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +102,7 @@ class DirectoryRolesWithRoleTemplateIdRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DirectoryRolesWithRoleTemplateIdRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties of a directoryRole object. The role must be activated in tenant for a successful response. You can use both the object ID and template ID of the directoryRole with this API. The template ID of a built-in role is immutable and can be seen in the role description on the Microsoft Entra admin center. For details, see Role template IDs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -114,7 +113,7 @@ class DirectoryRolesWithRoleTemplateIdRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_patch_request_information(self,body: Optional[DirectoryRole] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[DirectoryRole] = None, request_configuration: Optional[DirectoryRolesWithRoleTemplateIdRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update entity in directoryRoles by roleTemplateId
         param body: The request body
@@ -138,6 +137,16 @@ class DirectoryRolesWithRoleTemplateIdRequestBuilder(BaseRequestBuilder):
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return DirectoryRolesWithRoleTemplateIdRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DirectoryRolesWithRoleTemplateIdRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
     @dataclass
     class DirectoryRolesWithRoleTemplateIdRequestBuilderGetQueryParameters():
@@ -164,5 +173,28 @@ class DirectoryRolesWithRoleTemplateIdRequestBuilder(BaseRequestBuilder):
         # Select properties to be returned
         select: Optional[List[str]] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DirectoryRolesWithRoleTemplateIdRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DirectoryRolesWithRoleTemplateIdRequestBuilder.DirectoryRolesWithRoleTemplateIdRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DirectoryRolesWithRoleTemplateIdRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

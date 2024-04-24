@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class AcronymsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["acronym%2Did"] = acronym_id
         return AcronymItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AcronymCollectionResponse]:
+    async def get(self,request_configuration: Optional[AcronymsRequestBuilderGetRequestConfiguration] = None) -> Optional[AcronymCollectionResponse]:
         """
-        Get a list of the acronym objects and their properties.
+        Administrative answer in Microsoft Search results to define common acronyms in an organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AcronymCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/search-searchentity-list-acronyms?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class AcronymsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, AcronymCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Acronym] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Acronym]:
+    async def post(self,body: Optional[Acronym] = None, request_configuration: Optional[AcronymsRequestBuilderPostRequestConfiguration] = None) -> Optional[Acronym]:
         """
-        Create a new acronym object.
+        Create new navigation property to acronyms for search
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Acronym]
-        Find more info here: https://learn.microsoft.com/graph/api/search-searchentity-post-acronyms?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class AcronymsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Acronym, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AcronymsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the acronym objects and their properties.
+        Administrative answer in Microsoft Search results to define common acronyms in an organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class AcronymsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Acronym] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Acronym] = None, request_configuration: Optional[AcronymsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new acronym object.
+        Create new navigation property to acronyms for search
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class AcronymsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AcronymsRequestBuilderGetQueryParameters():
         """
-        Get a list of the acronym objects and their properties.
+        Administrative answer in Microsoft Search results to define common acronyms in an organization.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class AcronymsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AcronymsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AcronymsRequestBuilder.AcronymsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AcronymsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class DelegatedAdminCustomersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["delegatedAdminCustomer%2Did"] = delegated_admin_customer_id
         return DelegatedAdminCustomerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminCustomerCollectionResponse]:
+    async def get(self,request_configuration: Optional[DelegatedAdminCustomersRequestBuilderGetRequestConfiguration] = None) -> Optional[DelegatedAdminCustomerCollectionResponse]:
         """
-        Get a list of the delegatedAdminCustomer objects and their properties.
+        The customer who has a delegated admin relationship with a Microsoft partner.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminCustomerCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/tenantrelationship-list-delegatedadmincustomers?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +63,7 @@ class DelegatedAdminCustomersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminCustomerCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[DelegatedAdminCustomer] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminCustomer]:
+    async def post(self,body: Optional[DelegatedAdminCustomer] = None, request_configuration: Optional[DelegatedAdminCustomersRequestBuilderPostRequestConfiguration] = None) -> Optional[DelegatedAdminCustomer]:
         """
         Create new navigation property to delegatedAdminCustomers for tenantRelationships
         param body: The request body
@@ -88,9 +86,9 @@ class DelegatedAdminCustomersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, DelegatedAdminCustomer, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[DelegatedAdminCustomersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the delegatedAdminCustomer objects and their properties.
+        The customer who has a delegated admin relationship with a Microsoft partner.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +97,7 @@ class DelegatedAdminCustomersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[DelegatedAdminCustomer] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[DelegatedAdminCustomer] = None, request_configuration: Optional[DelegatedAdminCustomersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to delegatedAdminCustomers for tenantRelationships
         param body: The request body
@@ -136,7 +134,7 @@ class DelegatedAdminCustomersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DelegatedAdminCustomersRequestBuilderGetQueryParameters():
         """
-        Get a list of the delegatedAdminCustomer objects and their properties.
+        The customer who has a delegated admin relationship with a Microsoft partner.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -188,5 +186,28 @@ class DelegatedAdminCustomersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DelegatedAdminCustomersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[DelegatedAdminCustomersRequestBuilder.DelegatedAdminCustomersRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class DelegatedAdminCustomersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

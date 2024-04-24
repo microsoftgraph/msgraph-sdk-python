@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -27,12 +26,11 @@ class ConditionalAccessTemplateItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/identity/conditionalAccess/templates/{conditionalAccessTemplate%2Did}{?%24expand,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConditionalAccessTemplate]:
+    async def get(self,request_configuration: Optional[ConditionalAccessTemplateItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ConditionalAccessTemplate]:
         """
-        Read the properties and relationships of a conditionalAccessTemplate object.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConditionalAccessTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/conditionalaccesstemplate-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,9 +46,9 @@ class ConditionalAccessTemplateItemRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, ConditionalAccessTemplate, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[ConditionalAccessTemplateItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a conditionalAccessTemplate object.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -72,7 +70,7 @@ class ConditionalAccessTemplateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConditionalAccessTemplateItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a conditionalAccessTemplate object.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -93,6 +91,19 @@ class ConditionalAccessTemplateItemRequestBuilder(BaseRequestBuilder):
 
         # Select properties to be returned
         select: Optional[List[str]] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class ConditionalAccessTemplateItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[ConditionalAccessTemplateItemRequestBuilder.ConditionalAccessTemplateItemRequestBuilderGetQueryParameters] = None
 
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class GroupsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["group%2Did1"] = group_id1
         return GroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[GroupCollectionResponse]:
+    async def get(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[GroupCollectionResponse]:
         """
-        Get a list of group objects in a term store.
+        Collection of all groups available in the term store.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GroupCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/termstore-list-groups?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,13 +63,12 @@ class GroupsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, GroupCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[Group] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Group]:
+    async def post(self,body: Optional[Group] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[Group]:
         """
-        Create a new group object in a term store.
+        Create new navigation property to groups for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Group]
-        Find more info here: https://learn.microsoft.com/graph/api/termstore-group-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -89,9 +86,9 @@ class GroupsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, Group, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of group objects in a term store.
+        Collection of all groups available in the term store.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -100,9 +97,9 @@ class GroupsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[Group] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[Group] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new group object in a term store.
+        Create new navigation property to groups for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +134,7 @@ class GroupsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class GroupsRequestBuilderGetQueryParameters():
         """
-        Get a list of group objects in a term store.
+        Collection of all groups available in the term store.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -189,5 +186,28 @@ class GroupsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GroupsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[GroupsRequestBuilder.GroupsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class GroupsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

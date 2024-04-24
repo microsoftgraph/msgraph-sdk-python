@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,7 +43,7 @@ class WebpartsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["webPart%2Did"] = web_part_id
         return WebPartItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WebPartCollectionResponse]:
+    async def get(self,request_configuration: Optional[WebpartsRequestBuilderGetRequestConfiguration] = None) -> Optional[WebPartCollectionResponse]:
         """
         The collection of WebParts in this column.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -64,7 +63,7 @@ class WebpartsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WebPartCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[WebPart] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WebPart]:
+    async def post(self,body: Optional[WebPart] = None, request_configuration: Optional[WebpartsRequestBuilderPostRequestConfiguration] = None) -> Optional[WebPart]:
         """
         Create new navigation property to webparts for sites
         param body: The request body
@@ -87,7 +86,7 @@ class WebpartsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, WebPart, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[WebpartsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The collection of WebParts in this column.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +97,7 @@ class WebpartsRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[WebPart] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[WebPart] = None, request_configuration: Optional[WebpartsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to webparts for sites
         param body: The request body
@@ -187,5 +186,28 @@ class WebpartsRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WebpartsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[WebpartsRequestBuilder.WebpartsRequestBuilderGetQueryParameters] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class WebpartsRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

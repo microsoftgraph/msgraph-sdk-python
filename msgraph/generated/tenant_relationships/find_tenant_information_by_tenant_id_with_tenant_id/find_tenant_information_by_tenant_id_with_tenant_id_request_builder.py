@@ -1,6 +1,6 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -29,11 +29,12 @@ class FindTenantInformationByTenantIdWithTenantIdRequestBuilder(BaseRequestBuild
             path_parameters['tenantId'] = str(tenant_id)
         super().__init__(request_adapter, "{+baseurl}/tenantRelationships/findTenantInformationByTenantId(tenantId='{tenantId}')", path_parameters)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TenantInformation]:
+    async def get(self,request_configuration: Optional[FindTenantInformationByTenantIdWithTenantIdRequestBuilderGetRequestConfiguration] = None) -> Optional[TenantInformation]:
         """
-        Invoke function findTenantInformationByTenantId
+        Given a tenant ID, search for a tenant and read its tenantInformation. You can use this API to validate tenant information and use the tenantId to configure cross-tenant cross-tenant access settings between you and the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TenantInformation]
+        Find more info here: https://learn.microsoft.com/graph/api/tenantrelationship-findtenantinformationbytenantid?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,9 +50,9 @@ class FindTenantInformationByTenantIdWithTenantIdRequestBuilder(BaseRequestBuild
 
         return await self.request_adapter.send_async(request_info, TenantInformation, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[FindTenantInformationByTenantIdWithTenantIdRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function findTenantInformationByTenantId
+        Given a tenant ID, search for a tenant and read its tenantInformation. You can use this API to validate tenant information and use the tenantId to configure cross-tenant cross-tenant access settings between you and the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -69,5 +70,15 @@ class FindTenantInformationByTenantIdWithTenantIdRequestBuilder(BaseRequestBuild
         if not raw_url:
             raise TypeError("raw_url cannot be null.")
         return FindTenantInformationByTenantIdWithTenantIdRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class FindTenantInformationByTenantIdWithTenantIdRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
     
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
-from kiota_abstractions.base_request_configuration import RequestConfiguration
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -44,12 +43,11 @@ class AllowedGroupsRequestBuilder(BaseRequestBuilder):
         url_tpl_params["group%2Did"] = group_id
         return GroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[GroupCollectionResponse]:
+    async def get(self,request_configuration: Optional[AllowedGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[GroupCollectionResponse]:
         """
-        Retrieve a list of groups that have been granted access to submit print jobs to the associated printerShare.
+        The groups whose users have access to print using the printer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GroupCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/printershare-list-allowedgroups?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,9 +63,9 @@ class AllowedGroupsRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, GroupCollectionResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[AllowedGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of groups that have been granted access to submit print jobs to the associated printerShare.
+        The groups whose users have access to print using the printer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +105,7 @@ class AllowedGroupsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AllowedGroupsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of groups that have been granted access to submit print jobs to the associated printerShare.
+        The groups whose users have access to print using the printer.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -158,6 +156,19 @@ class AllowedGroupsRequestBuilder(BaseRequestBuilder):
 
         # Show only the first n items
         top: Optional[int] = None
+
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+    @dataclass
+    class AllowedGroupsRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request query parameters
+        query_parameters: Optional[AllowedGroupsRequestBuilder.AllowedGroupsRequestBuilderGetQueryParameters] = None
 
     
 

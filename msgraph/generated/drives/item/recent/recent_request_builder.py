@@ -29,9 +29,10 @@ class RecentRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RecentGetResponse]:
         """
-        Invoke function recent
+        List a set of items that have been recently used by the signed in user.This collection includes items that are in the user's drive and items they have access to from other drives.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RecentGetResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/drive-recent?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -49,7 +50,7 @@ class RecentRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function recent
+        List a set of items that have been recently used by the signed in user.This collection includes items that are in the user's drive and items they have access to from other drives.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -71,7 +72,7 @@ class RecentRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RecentRequestBuilderGetQueryParameters():
         """
-        Invoke function recent
+        List a set of items that have been recently used by the signed in user.This collection includes items that are in the user's drive and items they have access to from other drives.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

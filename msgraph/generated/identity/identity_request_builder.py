@@ -14,8 +14,10 @@ if TYPE_CHECKING:
     from ..models.identity_container import IdentityContainer
     from ..models.o_data_errors.o_data_error import ODataError
     from .api_connectors.api_connectors_request_builder import ApiConnectorsRequestBuilder
+    from .authentication_event_listeners.authentication_event_listeners_request_builder import AuthenticationEventListenersRequestBuilder
     from .b2x_user_flows.b2x_user_flows_request_builder import B2xUserFlowsRequestBuilder
     from .conditional_access.conditional_access_request_builder import ConditionalAccessRequestBuilder
+    from .custom_authentication_extensions.custom_authentication_extensions_request_builder import CustomAuthenticationExtensionsRequestBuilder
     from .identity_providers.identity_providers_request_builder import IdentityProvidersRequestBuilder
     from .user_flow_attributes.user_flow_attributes_request_builder import UserFlowAttributesRequestBuilder
 
@@ -121,6 +123,15 @@ class IdentityRequestBuilder(BaseRequestBuilder):
         return ApiConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def authentication_event_listeners(self) -> AuthenticationEventListenersRequestBuilder:
+        """
+        Provides operations to manage the authenticationEventListeners property of the microsoft.graph.identityContainer entity.
+        """
+        from .authentication_event_listeners.authentication_event_listeners_request_builder import AuthenticationEventListenersRequestBuilder
+
+        return AuthenticationEventListenersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def b2x_user_flows(self) -> B2xUserFlowsRequestBuilder:
         """
         Provides operations to manage the b2xUserFlows property of the microsoft.graph.identityContainer entity.
@@ -137,6 +148,15 @@ class IdentityRequestBuilder(BaseRequestBuilder):
         from .conditional_access.conditional_access_request_builder import ConditionalAccessRequestBuilder
 
         return ConditionalAccessRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def custom_authentication_extensions(self) -> CustomAuthenticationExtensionsRequestBuilder:
+        """
+        Provides operations to manage the customAuthenticationExtensions property of the microsoft.graph.identityContainer entity.
+        """
+        from .custom_authentication_extensions.custom_authentication_extensions_request_builder import CustomAuthenticationExtensionsRequestBuilder
+
+        return CustomAuthenticationExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def identity_providers(self) -> IdentityProvidersRequestBuilder:

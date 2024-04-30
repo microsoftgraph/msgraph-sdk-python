@@ -28,10 +28,9 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Remove a user's manager.
+        Delete ref of navigation property manager for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/user-delete-manager?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -47,10 +46,9 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[str]:
         """
-        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
+        The user or contact that is this user's manager. Read-only. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[str]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-manager?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,11 +64,10 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     async def put(self,body: Optional[ReferenceUpdate] = None, request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Assign a user's manager.
+        Update the ref of navigation property manager in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/user-post-manager?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -88,7 +85,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a user's manager.
+        Delete ref of navigation property manager for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -99,7 +96,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
+        The user or contact that is this user's manager. Read-only. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +107,7 @@ class RefRequestBuilder(BaseRequestBuilder):
     
     def to_put_request_information(self,body: Optional[ReferenceUpdate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Assign a user's manager.
+        Update the ref of navigation property manager in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -38,10 +38,9 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a bookingBusiness object.
+        Delete navigation property bookingBusinesses for solutions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -57,10 +56,9 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingBusiness]:
         """
-        Get the properties and relationships of a bookingBusiness object.
+        Get bookingBusinesses from solutions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingBusiness]
-        Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -78,11 +76,10 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[BookingBusiness] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingBusiness]:
         """
-        Update the properties of a bookingBusiness object.
+        Update the navigation property bookingBusinesses in solutions
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingBusiness]
-        Find more info here: https://learn.microsoft.com/graph/api/bookingbusiness-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -102,7 +99,7 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a bookingBusiness object.
+        Delete navigation property bookingBusinesses for solutions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,7 +110,7 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a bookingBusiness object.
+        Get bookingBusinesses from solutions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -124,7 +121,7 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[BookingBusiness] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a bookingBusiness object.
+        Update the navigation property bookingBusinesses in solutions
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -231,7 +228,7 @@ class BookingBusinessItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BookingBusinessItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a bookingBusiness object.
+        Get bookingBusinesses from solutions
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

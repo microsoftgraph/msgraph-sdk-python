@@ -56,10 +56,9 @@ class PrimaryChannelRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Channel]:
         """
-        Get the default channel, General, of a team.
+        The general channel for the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Channel]
-        Find more info here: https://learn.microsoft.com/graph/api/team-get-primarychannel?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -111,7 +110,7 @@ class PrimaryChannelRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the default channel, General, of a team.
+        The general channel for the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -229,7 +228,7 @@ class PrimaryChannelRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PrimaryChannelRequestBuilderGetQueryParameters():
         """
-        Get the default channel, General, of a team.
+        The general channel for the team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

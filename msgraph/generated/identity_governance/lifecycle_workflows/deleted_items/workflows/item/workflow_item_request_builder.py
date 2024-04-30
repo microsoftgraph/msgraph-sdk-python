@@ -40,10 +40,9 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a workflow object.
+        Delete navigation property workflows for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-deletedItemcontainer-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -59,10 +58,9 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Workflow]:
         """
-        Retrieve a deleted workflow object.
+        Deleted workflows that end up in the deletedItemsContainer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Workflow]
-        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-deleteditemcontainer-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -80,7 +78,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a workflow object.
+        Delete navigation property workflows for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -91,7 +89,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a deleted workflow object.
+        Deleted workflows that end up in the deletedItemsContainer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -212,7 +210,7 @@ class WorkflowItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkflowItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a deleted workflow object.
+        Deleted workflows that end up in the deletedItemsContainer.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

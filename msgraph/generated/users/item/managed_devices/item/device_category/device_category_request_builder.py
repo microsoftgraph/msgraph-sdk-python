@@ -47,10 +47,9 @@ class DeviceCategoryRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceCategory]:
         """
-        Read properties and relationships of the deviceCategory object.
+        Device category
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-devicecategory-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class DeviceCategoryRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceCategory]:
         """
-        Update the properties of a deviceCategory object.
+        Update the navigation property deviceCategory in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-devices-devicecategory-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +101,7 @@ class DeviceCategoryRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceCategory object.
+        Device category
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +112,7 @@ class DeviceCategoryRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceCategory object.
+        Update the navigation property deviceCategory in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class DeviceCategoryRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceCategoryRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceCategory object.
+        Device category
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

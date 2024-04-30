@@ -45,10 +45,9 @@ class CookiesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[HostCookieCollectionResponse]:
         """
-        Get a list of hostCookie resources.
+        The hostCookies that are associated with this host.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostCookieCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-host-list-cookies?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +65,7 @@ class CookiesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of hostCookie resources.
+        The hostCookies that are associated with this host.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +96,7 @@ class CookiesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CookiesRequestBuilderGetQueryParameters():
         """
-        Get a list of hostCookie resources.
+        The hostCookies that are associated with this host.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

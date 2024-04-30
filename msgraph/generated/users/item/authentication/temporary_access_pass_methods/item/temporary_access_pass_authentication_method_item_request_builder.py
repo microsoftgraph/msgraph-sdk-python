@@ -29,10 +29,9 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder(BaseRequestBuild
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a users's temporaryAccessPassAuthenticationMethod object.
+        Delete navigation property temporaryAccessPassMethods for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/temporaryaccesspassauthenticationmethod-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder(BaseRequestBuild
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TemporaryAccessPassAuthenticationMethod]:
         """
-        Retrieve a user's single temporaryAccessPassAuthenticationMethod object.
+        Represents a Temporary Access Pass registered to a user for authentication through time-limited passcodes.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TemporaryAccessPassAuthenticationMethod]
-        Find more info here: https://learn.microsoft.com/graph/api/temporaryaccesspassauthenticationmethod-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,7 +67,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder(BaseRequestBuild
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a users's temporaryAccessPassAuthenticationMethod object.
+        Delete navigation property temporaryAccessPassMethods for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -80,7 +78,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder(BaseRequestBuild
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a user's single temporaryAccessPassAuthenticationMethod object.
+        Represents a Temporary Access Pass registered to a user for authentication through time-limited passcodes.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder(BaseRequestBuild
     @dataclass
     class TemporaryAccessPassAuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a user's single temporaryAccessPassAuthenticationMethod object.
+        Represents a Temporary Access Pass registered to a user for authentication through time-limited passcodes.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

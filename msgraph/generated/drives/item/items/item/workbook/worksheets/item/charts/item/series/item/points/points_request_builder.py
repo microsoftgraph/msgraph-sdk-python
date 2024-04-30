@@ -47,10 +47,9 @@ class PointsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartPointCollectionResponse]:
         """
-        Retrieve a list of chartpoints objects.
+        Represents a collection of all points in the series. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartPointCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/chartseries-list-points?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -80,11 +79,10 @@ class PointsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[WorkbookChartPoint] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartPoint]:
         """
-        Use this API to create a new ChartPoints.
+        Create new navigation property to points for drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartPoint]
-        Find more info here: https://learn.microsoft.com/graph/api/chartseries-post-points?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -104,7 +102,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of chartpoints objects.
+        Represents a collection of all points in the series. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +113,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[WorkbookChartPoint] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new ChartPoints.
+        Create new navigation property to points for drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +148,7 @@ class PointsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PointsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of chartpoints objects.
+        Represents a collection of all points in the series. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

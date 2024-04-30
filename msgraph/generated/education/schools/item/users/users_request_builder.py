@@ -46,10 +46,9 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationUserCollectionResponse]:
         """
-        Get the educationUser resources associated with an educationSchool.
+        Users in the school. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationUserCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/educationschool-list-users?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,7 +66,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the educationUser resources associated with an educationSchool.
+        Users in the school. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +106,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UsersRequestBuilderGetQueryParameters():
         """
-        Get the educationUser resources associated with an educationSchool.
+        Users in the school. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

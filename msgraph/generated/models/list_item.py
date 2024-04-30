@@ -25,7 +25,7 @@ class ListItem(BaseItem):
     content_type: Optional[ContentTypeInfo] = None
     # Version information for a document set version created by a user.
     document_set_versions: Optional[List[DocumentSetVersion]] = None
-    # For document libraries, the driveItem relationship exposes the listItem as a [driveItem][]
+    # For document libraries, the driveItem relationship exposes the listItem as a driveItem
     drive_item: Optional[DriveItem] = None
     # The values of the columns set on this list item.
     fields: Optional[FieldValueSet] = None

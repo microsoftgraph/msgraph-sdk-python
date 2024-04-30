@@ -46,10 +46,9 @@ class TabsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsTabCollectionResponse]:
         """
-        Retrieve the list of tabs in the specified chat.
+        A collection of all the tabs in the chat. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsTabCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/chat-list-tabs?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class TabsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TeamsTab] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsTab]:
         """
-        Add (pin) a tab to the specified chat. The corresponding app must already be installed in the chat.
+        Create new navigation property to tabs for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsTab]
-        Find more info here: https://learn.microsoft.com/graph/api/chat-post-tabs?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class TabsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of tabs in the specified chat.
+        A collection of all the tabs in the chat. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class TabsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[TeamsTab] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Add (pin) a tab to the specified chat. The corresponding app must already be installed in the chat.
+        Create new navigation property to tabs for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class TabsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TabsRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of tabs in the specified chat.
+        A collection of all the tabs in the chat. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

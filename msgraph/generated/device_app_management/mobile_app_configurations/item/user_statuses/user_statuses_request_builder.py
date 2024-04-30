@@ -46,10 +46,9 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationUserStatusCollectionResponse]:
         """
-        List properties and relationships of the managedDeviceMobileAppConfigurationUserStatus objects.
+        List of ManagedDeviceMobileAppConfigurationUserStatus.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfigurationUserStatusCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-manageddevicemobileappconfigurationuserstatus-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ManagedDeviceMobileAppConfigurationUserStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManagedDeviceMobileAppConfigurationUserStatus]:
         """
-        Create a new managedDeviceMobileAppConfigurationUserStatus object.
+        Create new navigation property to userStatuses for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManagedDeviceMobileAppConfigurationUserStatus]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-apps-manageddevicemobileappconfigurationuserstatus-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the managedDeviceMobileAppConfigurationUserStatus objects.
+        List of ManagedDeviceMobileAppConfigurationUserStatus.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ManagedDeviceMobileAppConfigurationUserStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new managedDeviceMobileAppConfigurationUserStatus object.
+        Create new navigation property to userStatuses for deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class UserStatusesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserStatusesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the managedDeviceMobileAppConfigurationUserStatus objects.
+        List of ManagedDeviceMobileAppConfigurationUserStatus.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -47,10 +47,9 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EntitlementManagementSettings]:
         """
-        Retrieve the properties of an entitlementManagementSettings object.
+        The settings that control the behavior of Microsoft Entra entitlement management.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EntitlementManagementSettings]
-        Find more info here: https://learn.microsoft.com/graph/api/entitlementmanagementsettings-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EntitlementManagementSettings] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EntitlementManagementSettings]:
         """
-        Update an existing entitlementManagementSettings object to change one or more of its properties.
+        Update the navigation property settings in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EntitlementManagementSettings]
-        Find more info here: https://learn.microsoft.com/graph/api/entitlementmanagementsettings-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +101,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of an entitlementManagementSettings object.
+        The settings that control the behavior of Microsoft Entra entitlement management.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +112,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EntitlementManagementSettings] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update an existing entitlementManagementSettings object to change one or more of its properties.
+        Update the navigation property settings in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SettingsRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of an entitlementManagementSettings object.
+        The settings that control the behavior of Microsoft Entra entitlement management.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

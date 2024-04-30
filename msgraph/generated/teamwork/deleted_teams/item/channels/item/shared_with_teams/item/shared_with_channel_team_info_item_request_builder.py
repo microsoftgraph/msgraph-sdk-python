@@ -31,10 +31,9 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Unshare a channel with a team by deleting the corresponding sharedWithChannelTeamInfo resource. This operation is allowed only for channels with a membershipType value of shared.
+        Delete navigation property sharedWithTeams for teamwork
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/sharedwithchannelteaminfo-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,10 +49,9 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SharedWithChannelTeamInfo]:
         """
-        Get a team that has been shared with a specified channel. This operation is allowed only for channels with a membershipType value of shared.
+        A collection of teams with which a channel is shared.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharedWithChannelTeamInfo]
-        Find more info here: https://learn.microsoft.com/graph/api/sharedwithchannelteaminfo-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -94,7 +92,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Unshare a channel with a team by deleting the corresponding sharedWithChannelTeamInfo resource. This operation is allowed only for channels with a membershipType value of shared.
+        Delete navigation property sharedWithTeams for teamwork
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +103,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a team that has been shared with a specified channel. This operation is allowed only for channels with a membershipType value of shared.
+        A collection of teams with which a channel is shared.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -160,7 +158,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SharedWithChannelTeamInfoItemRequestBuilderGetQueryParameters():
         """
-        Get a team that has been shared with a specified channel. This operation is allowed only for channels with a membershipType value of shared.
+        A collection of teams with which a channel is shared.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

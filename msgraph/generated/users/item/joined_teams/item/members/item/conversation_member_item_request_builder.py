@@ -29,10 +29,9 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Remove a conversationMember from a team.
+        Delete navigation property members for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/team-delete-members?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConversationMember]:
         """
-        Get a conversationMember from a team.
+        Members and owners of the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationMember]
-        Find more info here: https://learn.microsoft.com/graph/api/team-get-members?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ConversationMember] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConversationMember]:
         """
-        Update the role of a conversationMember in a team.
+        Update the navigation property members in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConversationMember]
-        Find more info here: https://learn.microsoft.com/graph/api/team-update-members?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a conversationMember from a team.
+        Delete navigation property members for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a conversationMember from a team.
+        Members and owners of the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ConversationMember] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the role of a conversationMember in a team.
+        Update the navigation property members in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class ConversationMemberItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConversationMemberItemRequestBuilderGetQueryParameters():
         """
-        Get a conversationMember from a team.
+        Members and owners of the team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

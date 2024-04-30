@@ -29,10 +29,9 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a linkedResource object.
+        Delete navigation property linkedResources for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/linkedresource-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[LinkedResource]:
         """
-        Read the properties and relationships of a linkedResource object.
+        A collection of resources linked to the task.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LinkedResource]
-        Find more info here: https://learn.microsoft.com/graph/api/linkedresource-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[LinkedResource] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[LinkedResource]:
         """
-        Update the properties of a linkedResource object.
+        Update the navigation property linkedResources in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[LinkedResource]
-        Find more info here: https://learn.microsoft.com/graph/api/linkedresource-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a linkedResource object.
+        Delete navigation property linkedResources for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a linkedResource object.
+        A collection of resources linked to the task.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[LinkedResource] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a linkedResource object.
+        Update the navigation property linkedResources in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class LinkedResourceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class LinkedResourceItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a linkedResource object.
+        A collection of resources linked to the task.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

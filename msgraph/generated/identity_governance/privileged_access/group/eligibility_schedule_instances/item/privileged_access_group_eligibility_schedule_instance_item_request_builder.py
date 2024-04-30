@@ -49,10 +49,9 @@ class PrivilegedAccessGroupEligibilityScheduleInstanceItemRequestBuilder(BaseReq
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupEligibilityScheduleInstance]:
         """
-        Read the properties and relationships of a privilegedAccessGroupEligibilityScheduleInstance object.
+        The instances of eligibility schedules to activate a just-in-time access.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrivilegedAccessGroupEligibilityScheduleInstance]
-        Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroupeligibilityscheduleinstance-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -104,7 +103,7 @@ class PrivilegedAccessGroupEligibilityScheduleInstanceItemRequestBuilder(BaseReq
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a privilegedAccessGroupEligibilityScheduleInstance object.
+        The instances of eligibility schedules to activate a just-in-time access.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +158,7 @@ class PrivilegedAccessGroupEligibilityScheduleInstanceItemRequestBuilder(BaseReq
     @dataclass
     class PrivilegedAccessGroupEligibilityScheduleInstanceItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a privilegedAccessGroupEligibilityScheduleInstance object.
+        The instances of eligibility schedules to activate a just-in-time access.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

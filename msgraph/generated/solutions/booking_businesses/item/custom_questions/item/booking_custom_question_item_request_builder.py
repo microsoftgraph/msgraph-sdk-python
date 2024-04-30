@@ -29,10 +29,9 @@ class BookingCustomQuestionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a bookingCustomQuestion object.
+        Delete navigation property customQuestions for solutions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/bookingcustomquestion-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class BookingCustomQuestionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingCustomQuestion]:
         """
-        Read the properties and relationships of a bookingCustomQuestion object.
+        All the custom questions of this business. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingCustomQuestion]
-        Find more info here: https://learn.microsoft.com/graph/api/bookingcustomquestion-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class BookingCustomQuestionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[BookingCustomQuestion] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingCustomQuestion]:
         """
-        Update the properties of a bookingCustomQuestion object.
+        Update the navigation property customQuestions in solutions
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingCustomQuestion]
-        Find more info here: https://learn.microsoft.com/graph/api/bookingcustomquestion-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class BookingCustomQuestionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a bookingCustomQuestion object.
+        Delete navigation property customQuestions for solutions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class BookingCustomQuestionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a bookingCustomQuestion object.
+        All the custom questions of this business. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class BookingCustomQuestionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[BookingCustomQuestion] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a bookingCustomQuestion object.
+        Update the navigation property customQuestions in solutions
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class BookingCustomQuestionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BookingCustomQuestionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a bookingCustomQuestion object.
+        All the custom questions of this business. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

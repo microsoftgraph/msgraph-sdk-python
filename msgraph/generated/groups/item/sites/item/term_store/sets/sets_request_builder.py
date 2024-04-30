@@ -46,7 +46,7 @@ class SetsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SetCollectionResponse]:
         """
-        Read the properties and relationships of a set object.
+        Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SetCollectionResponse]
         """
@@ -66,11 +66,10 @@ class SetsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Set] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Set]:
         """
-        Create a new set object.
+        Create new navigation property to sets for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Set]
-        Find more info here: https://learn.microsoft.com/graph/api/termstore-set-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -90,7 +89,7 @@ class SetsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a set object.
+        Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -101,7 +100,7 @@ class SetsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Set] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new set object.
+        Create new navigation property to sets for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -136,7 +135,7 @@ class SetsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SetsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a set object.
+        Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

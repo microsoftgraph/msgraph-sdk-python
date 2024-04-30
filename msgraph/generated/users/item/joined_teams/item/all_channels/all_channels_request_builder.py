@@ -45,10 +45,9 @@ class AllChannelsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ChannelCollectionResponse]:
         """
-        Get the list of channels either in this team or shared with this team (incoming channels).
+        List of channels either hosted in or shared with the team (incoming channels).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChannelCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/team-list-allchannels?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +65,7 @@ class AllChannelsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of channels either in this team or shared with this team (incoming channels).
+        List of channels either hosted in or shared with the team (incoming channels).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +96,7 @@ class AllChannelsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AllChannelsRequestBuilderGetQueryParameters():
         """
-        Get the list of channels either in this team or shared with this team (incoming channels).
+        List of channels either hosted in or shared with the team (incoming channels).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

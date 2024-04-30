@@ -51,7 +51,6 @@ class MemberOfRequestBuilder(BaseRequestBuilder):
         Roles that this service principal is a member of. HTTP Methods: GET Read-only. Nullable. Supports $expand.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DirectoryObjectCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-list-memberof?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

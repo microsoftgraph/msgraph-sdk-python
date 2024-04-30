@@ -29,10 +29,9 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a checklistItem object.
+        Delete navigation property checklistItems for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/checklistitem-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ChecklistItem]:
         """
-        Read the properties and relationships of a checklistItem object.
+        A collection of checklistItems linked to a task.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChecklistItem]
-        Find more info here: https://learn.microsoft.com/graph/api/checklistitem-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ChecklistItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ChecklistItem]:
         """
-        Update the properties of a checklistItem object.
+        Update the navigation property checklistItems in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChecklistItem]
-        Find more info here: https://learn.microsoft.com/graph/api/checklistitem-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a checklistItem object.
+        Delete navigation property checklistItems for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a checklistItem object.
+        A collection of checklistItems linked to a task.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ChecklistItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a checklistItem object.
+        Update the navigation property checklistItems in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class ChecklistItemItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ChecklistItemItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a checklistItem object.
+        A collection of checklistItems linked to a task.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

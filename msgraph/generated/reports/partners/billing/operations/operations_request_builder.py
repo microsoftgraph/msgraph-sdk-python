@@ -46,7 +46,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OperationCollectionResponse]:
         """
-        Read the properties and relationships of an operation object.
+        Represents an operation to export the billing data of a partner.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OperationCollectionResponse]
         """
@@ -89,7 +89,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an operation object.
+        Represents an operation to export the billing data of a partner.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -135,7 +135,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OperationsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an operation object.
+        Represents an operation to export the billing data of a partner.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

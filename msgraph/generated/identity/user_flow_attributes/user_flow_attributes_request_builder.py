@@ -46,10 +46,9 @@ class UserFlowAttributesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityUserFlowAttributeCollectionResponse]:
         """
-        Retrieve a list of identityUserFlowAttribute objects.
+        Represents entry point for identity userflow attributes.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityUserFlowAttributeCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/identityuserflowattribute-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class UserFlowAttributesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[IdentityUserFlowAttribute] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityUserFlowAttribute]:
         """
-        Create a new custom identityUserFlowAttribute object.
+        Create new navigation property to userFlowAttributes for identity
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityUserFlowAttribute]
-        Find more info here: https://learn.microsoft.com/graph/api/identityuserflowattribute-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class UserFlowAttributesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of identityUserFlowAttribute objects.
+        Represents entry point for identity userflow attributes.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class UserFlowAttributesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[IdentityUserFlowAttribute] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new custom identityUserFlowAttribute object.
+        Create new navigation property to userFlowAttributes for identity
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class UserFlowAttributesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserFlowAttributesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of identityUserFlowAttribute objects.
+        Represents entry point for identity userflow attributes.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

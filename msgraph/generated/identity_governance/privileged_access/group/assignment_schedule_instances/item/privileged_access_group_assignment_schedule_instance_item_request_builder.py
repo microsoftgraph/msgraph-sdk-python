@@ -50,10 +50,9 @@ class PrivilegedAccessGroupAssignmentScheduleInstanceItemRequestBuilder(BaseRequ
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleInstance]:
         """
-        Read the properties and relationships of a privilegedAccessGroupAssignmentScheduleInstance object.
+        The instances of assignment schedules to activate a just-in-time access.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrivilegedAccessGroupAssignmentScheduleInstance]
-        Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroupassignmentscheduleinstance-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -105,7 +104,7 @@ class PrivilegedAccessGroupAssignmentScheduleInstanceItemRequestBuilder(BaseRequ
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a privilegedAccessGroupAssignmentScheduleInstance object.
+        The instances of assignment schedules to activate a just-in-time access.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -169,7 +168,7 @@ class PrivilegedAccessGroupAssignmentScheduleInstanceItemRequestBuilder(BaseRequ
     @dataclass
     class PrivilegedAccessGroupAssignmentScheduleInstanceItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a privilegedAccessGroupAssignmentScheduleInstance object.
+        The instances of assignment schedules to activate a just-in-time access.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

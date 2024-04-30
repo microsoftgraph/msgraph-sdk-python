@@ -29,10 +29,9 @@ class ExtensionPropertyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a directory extension definition represented by an extensionProperty object. You can delete only directory extensions that aren't synced from on-premises active directory (AD).
+        Delete navigation property extensionProperties for applications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/extensionproperty-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class ExtensionPropertyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ExtensionProperty]:
         """
-        Read a directory extension definition represented by an extensionProperty object.
+        Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExtensionProperty]
-        Find more info here: https://learn.microsoft.com/graph/api/extensionproperty-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +90,7 @@ class ExtensionPropertyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a directory extension definition represented by an extensionProperty object. You can delete only directory extensions that aren't synced from on-premises active directory (AD).
+        Delete navigation property extensionProperties for applications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class ExtensionPropertyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read a directory extension definition represented by an extensionProperty object.
+        Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -140,7 +138,7 @@ class ExtensionPropertyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExtensionPropertyItemRequestBuilderGetQueryParameters():
         """
-        Read a directory extension definition represented by an extensionProperty object.
+        Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

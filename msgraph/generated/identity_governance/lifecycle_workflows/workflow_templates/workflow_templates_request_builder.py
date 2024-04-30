@@ -45,10 +45,9 @@ class WorkflowTemplatesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkflowTemplateCollectionResponse]:
         """
-        Get a list of the workflowTemplate objects and their properties.
+        The workflow templates in the lifecycle workflow instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkflowTemplateCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/identitygovernance-lifecycleworkflowscontainer-list-workflowtemplates?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +65,7 @@ class WorkflowTemplatesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the workflowTemplate objects and their properties.
+        The workflow templates in the lifecycle workflow instance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +96,7 @@ class WorkflowTemplatesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkflowTemplatesRequestBuilderGetQueryParameters():
         """
-        Get a list of the workflowTemplate objects and their properties.
+        The workflow templates in the lifecycle workflow instance.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

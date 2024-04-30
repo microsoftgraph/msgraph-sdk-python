@@ -46,10 +46,9 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ClaimsMappingPolicyCollectionResponse]:
         """
-        Get a list of claimsMappingPolicy objects.
+        The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ClaimsMappingPolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/claimsmappingpolicy-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ClaimsMappingPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ClaimsMappingPolicy]:
         """
-        Create a new claimsMappingPolicy object.
+        Create new navigation property to claimsMappingPolicies for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ClaimsMappingPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/claimsmappingpolicy-post-claimsmappingpolicies?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of claimsMappingPolicy objects.
+        The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ClaimsMappingPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new claimsMappingPolicy object.
+        Create new navigation property to claimsMappingPolicies for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class ClaimsMappingPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ClaimsMappingPoliciesRequestBuilderGetQueryParameters():
         """
-        Get a list of claimsMappingPolicy objects.
+        The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

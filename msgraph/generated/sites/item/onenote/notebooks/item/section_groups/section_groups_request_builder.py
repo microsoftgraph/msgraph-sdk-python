@@ -46,10 +46,9 @@ class SectionGroupsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SectionGroupCollectionResponse]:
         """
-        Retrieve a list of section groups from the specified notebook.
+        The section groups in the notebook. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SectionGroupCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/notebook-list-sectiongroups?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class SectionGroupsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SectionGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SectionGroup]:
         """
-        Create a new section group in the specified notebook.
+        Create new navigation property to sectionGroups for sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SectionGroup]
-        Find more info here: https://learn.microsoft.com/graph/api/notebook-post-sectiongroups?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class SectionGroupsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of section groups from the specified notebook.
+        The section groups in the notebook. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class SectionGroupsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SectionGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new section group in the specified notebook.
+        Create new navigation property to sectionGroups for sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class SectionGroupsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SectionGroupsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of section groups from the specified notebook.
+        The section groups in the notebook. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

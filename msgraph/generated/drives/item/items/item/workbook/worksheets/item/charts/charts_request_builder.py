@@ -49,10 +49,9 @@ class ChartsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartCollectionResponse]:
         """
-        Retrieve a list of chart objects.
+        Returns collection of charts that are part of the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/worksheet-list-charts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -94,11 +93,10 @@ class ChartsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChart]:
         """
-        Use this API to create a new Chart.
+        Create new navigation property to charts for drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChart]
-        Find more info here: https://learn.microsoft.com/graph/api/worksheet-post-charts?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -118,7 +116,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of chart objects.
+        Returns collection of charts that are part of the worksheet. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -129,7 +127,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[WorkbookChart] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new Chart.
+        Create new navigation property to charts for drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -173,7 +171,7 @@ class ChartsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ChartsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of chart objects.
+        Returns collection of charts that are part of the worksheet. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

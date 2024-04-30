@@ -29,7 +29,7 @@ class GrantRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[GrantPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[GrantPostResponse]:
         """
-        Grant users access to a link represented by a [permission][].
+        Grant users access to a link represented by a permission.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[GrantPostResponse]
@@ -53,7 +53,7 @@ class GrantRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[GrantPostRequestBody] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Grant users access to a link represented by a [permission][].
+        Grant users access to a link represented by a permission.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

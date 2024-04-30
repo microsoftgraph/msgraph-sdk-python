@@ -5,6 +5,7 @@ from kiota_abstractions.store import BackedModel, BackingStore, BackingStoreFact
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .http_request_endpoint import HttpRequestEndpoint
     from .logic_app_trigger_endpoint_configuration import LogicAppTriggerEndpointConfiguration
 
 @dataclass
@@ -30,6 +31,10 @@ class CustomExtensionEndpointConfiguration(AdditionalDataHolder, BackedModel, Pa
             mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
         except AttributeError:
             mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.httpRequestEndpoint".casefold():
+            from .http_request_endpoint import HttpRequestEndpoint
+
+            return HttpRequestEndpoint()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.logicAppTriggerEndpointConfiguration".casefold():
             from .logic_app_trigger_endpoint_configuration import LogicAppTriggerEndpointConfiguration
 
@@ -41,8 +46,10 @@ class CustomExtensionEndpointConfiguration(AdditionalDataHolder, BackedModel, Pa
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .http_request_endpoint import HttpRequestEndpoint
         from .logic_app_trigger_endpoint_configuration import LogicAppTriggerEndpointConfiguration
 
+        from .http_request_endpoint import HttpRequestEndpoint
         from .logic_app_trigger_endpoint_configuration import LogicAppTriggerEndpointConfiguration
 
         fields: Dict[str, Callable[[Any], None]] = {

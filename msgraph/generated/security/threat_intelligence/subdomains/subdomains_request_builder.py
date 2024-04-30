@@ -46,7 +46,7 @@ class SubdomainsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SubdomainCollectionResponse]:
         """
-        Read the properties and relationships of a subdomain object.
+        Retrieve details about the subdomain.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SubdomainCollectionResponse]
         """
@@ -89,7 +89,7 @@ class SubdomainsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a subdomain object.
+        Retrieve details about the subdomain.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -135,7 +135,7 @@ class SubdomainsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SubdomainsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a subdomain object.
+        Retrieve details about the subdomain.Note: List retrieval is not yet supported.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

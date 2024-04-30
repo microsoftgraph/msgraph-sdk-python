@@ -34,10 +34,9 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a todoTask object.
+        Delete navigation property tasks for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/todotask-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -53,10 +52,9 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TodoTask]:
         """
-        Read the properties and relationships of a todoTask object.
+        The tasks in this task list. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TodoTask]
-        Find more info here: https://learn.microsoft.com/graph/api/todotask-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -74,11 +72,10 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TodoTask] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TodoTask]:
         """
-        Update the properties of a todoTask object.
+        Update the navigation property tasks in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TodoTask]
-        Find more info here: https://learn.microsoft.com/graph/api/todotask-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -98,7 +95,7 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a todoTask object.
+        Delete navigation property tasks for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -109,7 +106,7 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a todoTask object.
+        The tasks in this task list. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +117,7 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TodoTask] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a todoTask object.
+        Update the navigation property tasks in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +188,7 @@ class TodoTaskItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TodoTaskItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a todoTask object.
+        The tasks in this task list. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

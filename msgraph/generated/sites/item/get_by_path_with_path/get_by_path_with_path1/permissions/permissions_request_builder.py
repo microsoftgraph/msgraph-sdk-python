@@ -30,10 +30,9 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PermissionCollectionResponse]:
         """
-        Get the permission resources from the permissions navigation property on a site.
+        The permissions associated with the site. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PermissionCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/site-list-permissions?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -51,11 +50,10 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Permission] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Permission]:
         """
-        Create a new permission object on a site. 
+        Create new navigation property to permissions for sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Permission]
-        Find more info here: https://learn.microsoft.com/graph/api/site-post-permissions?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -75,7 +73,7 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the permission resources from the permissions navigation property on a site.
+        The permissions associated with the site. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -86,7 +84,7 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Permission] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new permission object on a site. 
+        Create new navigation property to permissions for sites
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -112,7 +110,7 @@ class PermissionsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PermissionsRequestBuilderGetQueryParameters():
         """
-        Get the permission resources from the permissions navigation property on a site.
+        The permissions associated with the site. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,10 +29,9 @@ class EducationModuleResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a specific educationModuleResource attached to a module. Only teachers in the class can remove a resource.
+        Delete navigation property resources for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/educationmoduleresource-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class EducationModuleResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationModuleResource]:
         """
-        Get the properties of a resource associated with a module. Only teachers, students, and applications with application permissions can perform this operation.
+        Learning objects that are associated with this module. Only teachers can modify this list. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationModuleResource]
-        Find more info here: https://learn.microsoft.com/graph/api/educationmoduleresource-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class EducationModuleResourceItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EducationModuleResource] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationModuleResource]:
         """
-        Update a resource in a module. Only teachers can perform this operation. The only one property that can be updated is displayName, for all resource types.
+        Update the navigation property resources in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationModuleResource]
-        Find more info here: https://learn.microsoft.com/graph/api/educationmoduleresource-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class EducationModuleResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a specific educationModuleResource attached to a module. Only teachers in the class can remove a resource.
+        Delete navigation property resources for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class EducationModuleResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties of a resource associated with a module. Only teachers, students, and applications with application permissions can perform this operation.
+        Learning objects that are associated with this module. Only teachers can modify this list. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class EducationModuleResourceItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EducationModuleResource] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update a resource in a module. Only teachers can perform this operation. The only one property that can be updated is displayName, for all resource types.
+        Update the navigation property resources in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class EducationModuleResourceItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EducationModuleResourceItemRequestBuilderGetQueryParameters():
         """
-        Get the properties of a resource associated with a module. Only teachers, students, and applications with application permissions can perform this operation.
+        Learning objects that are associated with this module. Only teachers can modify this list. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

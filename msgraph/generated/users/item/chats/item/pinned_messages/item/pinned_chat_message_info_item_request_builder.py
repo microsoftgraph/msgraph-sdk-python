@@ -30,10 +30,9 @@ class PinnedChatMessageInfoItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Unpin a message from a chat.
+        Delete navigation property pinnedMessages for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/chat-delete-pinnedmessages?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -92,7 +91,7 @@ class PinnedChatMessageInfoItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Unpin a message from a chat.
+        Delete navigation property pinnedMessages for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

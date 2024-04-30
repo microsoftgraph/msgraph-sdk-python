@@ -32,10 +32,9 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a delegatedAdminRelationship object. A relationship can only be deleted if it's in the 'created' status. 
+        Delete navigation property delegatedAdminRelationships for tenantRelationships
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/delegatedadminrelationship-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
         """
-        Read the properties of a delegatedAdminRelationship object.
+        The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminRelationship]
-        Find more info here: https://learn.microsoft.com/graph/api/delegatedadminrelationship-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +70,10 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DelegatedAdminRelationship]:
         """
-        Update the properties of a delegatedAdminRelationship object. You can only update a relationship when it's in the created status. However, you can update the autoExtendDuration property when the relationship is in either the created or active status.
+        Update the navigation property delegatedAdminRelationships in tenantRelationships
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DelegatedAdminRelationship]
-        Find more info here: https://learn.microsoft.com/graph/api/delegatedadminrelationship-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,7 +93,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a delegatedAdminRelationship object. A relationship can only be deleted if it's in the 'created' status. 
+        Delete navigation property delegatedAdminRelationships for tenantRelationships
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +104,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties of a delegatedAdminRelationship object.
+        The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +115,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DelegatedAdminRelationship] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a delegatedAdminRelationship object. You can only update a relationship when it's in the created status. However, you can update the autoExtendDuration property when the relationship is in either the created or active status.
+        Update the navigation property delegatedAdminRelationships in tenantRelationships
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +168,7 @@ class DelegatedAdminRelationshipItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DelegatedAdminRelationshipItemRequestBuilderGetQueryParameters():
         """
-        Read the properties of a delegatedAdminRelationship object.
+        The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

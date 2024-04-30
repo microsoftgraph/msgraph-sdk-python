@@ -47,10 +47,9 @@ class EventsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EventCollectionResponse]:
         """
-        Retrieve a list of event objects.
+        The group's calendar events.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EventCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/group-list-events?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class EventsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Event] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Event]:
         """
-        Use this API to create a new event.
+        Create new navigation property to events for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Event]
-        Find more info here: https://learn.microsoft.com/graph/api/group-post-events?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +90,7 @@ class EventsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of event objects.
+        The group's calendar events.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class EventsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Event] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new event.
+        Create new navigation property to events for groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +145,7 @@ class EventsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EventsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of event objects.
+        The group's calendar events.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

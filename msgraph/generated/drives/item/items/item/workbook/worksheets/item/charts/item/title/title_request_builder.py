@@ -48,10 +48,9 @@ class TitleRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartTitle]:
         """
-        Retrieve the properties and relationships of charttitle object.
+        Represents the title of the specified chart, including the text, visibility, position and formating of the title. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartTitle]
-        Find more info here: https://learn.microsoft.com/graph/api/charttitle-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +68,10 @@ class TitleRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkbookChartTitle] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookChartTitle]:
         """
-        Update the properties of charttitle object.
+        Update the navigation property title in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookChartTitle]
-        Find more info here: https://learn.microsoft.com/graph/api/charttitle-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -104,7 +102,7 @@ class TitleRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of charttitle object.
+        Represents the title of the specified chart, including the text, visibility, position and formating of the title. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +113,7 @@ class TitleRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkbookChartTitle] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of charttitle object.
+        Update the navigation property title in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +148,7 @@ class TitleRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TitleRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of charttitle object.
+        Represents the title of the specified chart, including the text, visibility, position and formating of the title. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -47,10 +47,9 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationCategoryCollectionResponse]:
         """
-        Retrieve a list of educationCategory objects. Only teachers can perform this operation.
+        All categories associated with this class. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationCategoryCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-list-categories?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[EducationCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationCategory]:
         """
-        Create a new educationCategory on an educationClass. Only teachers can perform this operation.
+        Create new navigation property to assignmentCategories for education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-post-category?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +90,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of educationCategory objects. Only teachers can perform this operation.
+        All categories associated with this class. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[EducationCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new educationCategory on an educationClass. Only teachers can perform this operation.
+        Create new navigation property to assignmentCategories for education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +145,7 @@ class AssignmentCategoriesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AssignmentCategoriesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of educationCategory objects. Only teachers can perform this operation.
+        All categories associated with this class. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

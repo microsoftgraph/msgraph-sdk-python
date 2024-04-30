@@ -47,10 +47,9 @@ class AttributeSetItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AttributeSet]:
         """
-        Read the properties and relationships of an attributeSet object.
+        Group of related custom security attribute definitions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttributeSet]
-        Find more info here: https://learn.microsoft.com/graph/api/attributeset-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class AttributeSetItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[AttributeSet] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AttributeSet]:
         """
-        Update the properties of an attributeSet object.
+        Update the navigation property attributeSets in directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttributeSet]
-        Find more info here: https://learn.microsoft.com/graph/api/attributeset-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +101,7 @@ class AttributeSetItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an attributeSet object.
+        Group of related custom security attribute definitions.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +112,7 @@ class AttributeSetItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[AttributeSet] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an attributeSet object.
+        Update the navigation property attributeSets in directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class AttributeSetItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AttributeSetItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an attributeSet object.
+        Group of related custom security attribute definitions.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

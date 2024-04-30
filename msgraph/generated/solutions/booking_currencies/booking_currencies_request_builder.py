@@ -46,10 +46,9 @@ class BookingCurrenciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BookingCurrencyCollectionResponse]:
         """
-        Get a list of bookingCurrency objects available to a Microsoft Bookings business.
+        Get bookingCurrencies from solutions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BookingCurrencyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/bookingcurrency-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class BookingCurrenciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of bookingCurrency objects available to a Microsoft Bookings business.
+        Get bookingCurrencies from solutions
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class BookingCurrenciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BookingCurrenciesRequestBuilderGetQueryParameters():
         """
-        Get a list of bookingCurrency objects available to a Microsoft Bookings business.
+        Get bookingCurrencies from solutions
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

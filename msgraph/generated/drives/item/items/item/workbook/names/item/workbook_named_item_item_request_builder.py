@@ -49,10 +49,9 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookNamedItem]:
         """
-        Retrieve the properties and relationships of nameditem object.
+        Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookNamedItem]
-        Find more info here: https://learn.microsoft.com/graph/api/nameditem-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[WorkbookNamedItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookNamedItem]:
         """
-        Update the properties of nameditem object.
+        Update the navigation property names in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookNamedItem]
-        Find more info here: https://learn.microsoft.com/graph/api/nameditem-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -105,7 +103,7 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of nameditem object.
+        Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +114,7 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[WorkbookNamedItem] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of nameditem object.
+        Update the navigation property names in drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +158,7 @@ class WorkbookNamedItemItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class WorkbookNamedItemItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of nameditem object.
+        Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

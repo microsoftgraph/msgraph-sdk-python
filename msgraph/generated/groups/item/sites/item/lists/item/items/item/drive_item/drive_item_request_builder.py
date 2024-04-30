@@ -30,7 +30,7 @@ class DriveItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DriveItem]:
         """
-        For document libraries, the driveItem relationship exposes the listItem as a [driveItem][]
+        For document libraries, the driveItem relationship exposes the listItem as a driveItem
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DriveItem]
         """
@@ -50,7 +50,7 @@ class DriveItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        For document libraries, the driveItem relationship exposes the listItem as a [driveItem][]
+        For document libraries, the driveItem relationship exposes the listItem as a driveItem
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -81,7 +81,7 @@ class DriveItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DriveItemRequestBuilderGetQueryParameters():
         """
-        For document libraries, the driveItem relationship exposes the listItem as a [driveItem][]
+        For document libraries, the driveItem relationship exposes the listItem as a driveItem
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

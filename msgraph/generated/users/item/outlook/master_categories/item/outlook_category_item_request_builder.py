@@ -29,10 +29,9 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete the specified outlookCategory object.
+        Delete navigation property masterCategories for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/outlookcategory-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[OutlookCategory]:
         """
-        Get the properties and relationships of the specified outlookCategory object.
+        A list of categories defined for the user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OutlookCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/outlookcategory-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[OutlookCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[OutlookCategory]:
         """
-        Update the writable property, color, of the specified outlookCategory object. You can't modify the displayName property once you have created the category.
+        Update the navigation property masterCategories in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[OutlookCategory]
-        Find more info here: https://learn.microsoft.com/graph/api/outlookcategory-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete the specified outlookCategory object.
+        Delete navigation property masterCategories for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of the specified outlookCategory object.
+        A list of categories defined for the user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[OutlookCategory] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the writable property, color, of the specified outlookCategory object. You can't modify the displayName property once you have created the category.
+        Update the navigation property masterCategories in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class OutlookCategoryItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OutlookCategoryItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of the specified outlookCategory object.
+        A list of categories defined for the user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

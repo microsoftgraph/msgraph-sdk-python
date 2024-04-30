@@ -46,10 +46,9 @@ class FilePlanReferencesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[FilePlanReferenceTemplateCollectionResponse]:
         """
-        Get a list of the filePlanReferenceTemplate objects and their properties.
+        Specifies a unique alpha-numeric identifier for an organization’s retention schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FilePlanReferenceTemplateCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-list-fileplanreferences?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class FilePlanReferencesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[FilePlanReferenceTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[FilePlanReferenceTemplate]:
         """
-        Create a new filePlanReferenceTemplate object.
+        Create new navigation property to filePlanReferences for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FilePlanReferenceTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-post-fileplanreferences?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class FilePlanReferencesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the filePlanReferenceTemplate objects and their properties.
+        Specifies a unique alpha-numeric identifier for an organization’s retention schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class FilePlanReferencesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[FilePlanReferenceTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new filePlanReferenceTemplate object.
+        Create new navigation property to filePlanReferences for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class FilePlanReferencesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FilePlanReferencesRequestBuilderGetQueryParameters():
         """
-        Get a list of the filePlanReferenceTemplate objects and their properties.
+        Specifies a unique alpha-numeric identifier for an organization’s retention schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

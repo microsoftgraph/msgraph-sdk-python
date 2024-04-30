@@ -20,6 +20,8 @@ if TYPE_CHECKING:
     from .device_local_credentials.device_local_credentials_request_builder import DeviceLocalCredentialsRequestBuilder
     from .federation_configurations.federation_configurations_request_builder import FederationConfigurationsRequestBuilder
     from .on_premises_synchronization.on_premises_synchronization_request_builder import OnPremisesSynchronizationRequestBuilder
+    from .subscriptions.subscriptions_request_builder import SubscriptionsRequestBuilder
+    from .subscriptions_with_commerce_subscription_id.subscriptions_with_commerce_subscription_id_request_builder import SubscriptionsWithCommerceSubscriptionIdRequestBuilder
 
 class DirectoryRequestBuilder(BaseRequestBuilder):
     """
@@ -76,6 +78,18 @@ class DirectoryRequestBuilder(BaseRequestBuilder):
         from ..models.directory import Directory
 
         return await self.request_adapter.send_async(request_info, Directory, error_mapping)
+    
+    def subscriptions_with_commerce_subscription_id(self,commerce_subscription_id: Optional[str] = None) -> SubscriptionsWithCommerceSubscriptionIdRequestBuilder:
+        """
+        Provides operations to manage the subscriptions property of the microsoft.graph.directory entity.
+        param commerce_subscription_id: Alternate key of companySubscription
+        Returns: SubscriptionsWithCommerceSubscriptionIdRequestBuilder
+        """
+        if not commerce_subscription_id:
+            raise TypeError("commerce_subscription_id cannot be null.")
+        from .subscriptions_with_commerce_subscription_id.subscriptions_with_commerce_subscription_id_request_builder import SubscriptionsWithCommerceSubscriptionIdRequestBuilder
+
+        return SubscriptionsWithCommerceSubscriptionIdRequestBuilder(self.request_adapter, self.path_parameters, commerce_subscription_id)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
@@ -175,6 +189,15 @@ class DirectoryRequestBuilder(BaseRequestBuilder):
         from .on_premises_synchronization.on_premises_synchronization_request_builder import OnPremisesSynchronizationRequestBuilder
 
         return OnPremisesSynchronizationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def subscriptions(self) -> SubscriptionsRequestBuilder:
+        """
+        Provides operations to manage the subscriptions property of the microsoft.graph.directory entity.
+        """
+        from .subscriptions.subscriptions_request_builder import SubscriptionsRequestBuilder
+
+        return SubscriptionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DirectoryRequestBuilderGetQueryParameters():

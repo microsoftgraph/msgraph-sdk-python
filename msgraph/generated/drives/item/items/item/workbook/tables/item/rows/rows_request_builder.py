@@ -48,10 +48,9 @@ class RowsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookTableRowCollectionResponse]:
         """
-        Retrieve a list of tablerow objects.
+        Represents a collection of all the rows in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableRowCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/table-list-rows?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -81,11 +80,10 @@ class RowsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[WorkbookTableRow] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookTableRow]:
         """
-        Adds rows to the end of a table.  Note that this API can accept multiple rows of data. Adding one row at a time can affect performance. The recommended approach is to batch the rows together in a single call rather than inserting single rows. For best results, collect the rows to be inserted on the application side and perform a single row add operation. Experiment with the number of rows to determine the ideal number of rows to use in a single API call.  This request might occasionally result in a 504 HTTP error. The appropriate response to this error is to repeat the request.
+        Create new navigation property to rows for drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookTableRow]
-        Find more info here: https://learn.microsoft.com/graph/api/table-post-rows?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -105,7 +103,7 @@ class RowsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of tablerow objects.
+        Represents a collection of all the rows in the table. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +114,7 @@ class RowsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[WorkbookTableRow] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Adds rows to the end of a table.  Note that this API can accept multiple rows of data. Adding one row at a time can affect performance. The recommended approach is to batch the rows together in a single call rather than inserting single rows. For best results, collect the rows to be inserted on the application side and perform a single row add operation. Experiment with the number of rows to determine the ideal number of rows to use in a single API call.  This request might occasionally result in a 504 HTTP error. The appropriate response to this error is to repeat the request.
+        Create new navigation property to rows for drives
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +158,7 @@ class RowsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RowsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of tablerow objects.
+        Represents a collection of all the rows in the table. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

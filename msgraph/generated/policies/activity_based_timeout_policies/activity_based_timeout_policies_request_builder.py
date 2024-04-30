@@ -46,10 +46,9 @@ class ActivityBasedTimeoutPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ActivityBasedTimeoutPolicyCollectionResponse]:
         """
-        Get a list of activityBasedTimeoutPolicy objects.
+        The policy that controls the idle time out for web sessions for applications.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ActivityBasedTimeoutPolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/activitybasedtimeoutpolicy-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class ActivityBasedTimeoutPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ActivityBasedTimeoutPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ActivityBasedTimeoutPolicy]:
         """
-        Create a new activityBasedTimeoutPolicy object.
+        Create new navigation property to activityBasedTimeoutPolicies for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ActivityBasedTimeoutPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/activitybasedtimeoutpolicy-post-activitybasedtimeoutpolicies?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class ActivityBasedTimeoutPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of activityBasedTimeoutPolicy objects.
+        The policy that controls the idle time out for web sessions for applications.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class ActivityBasedTimeoutPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ActivityBasedTimeoutPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new activityBasedTimeoutPolicy object.
+        Create new navigation property to activityBasedTimeoutPolicies for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class ActivityBasedTimeoutPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ActivityBasedTimeoutPoliciesRequestBuilderGetQueryParameters():
         """
-        Get a list of activityBasedTimeoutPolicy objects.
+        The policy that controls the idle time out for web sessions for applications.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

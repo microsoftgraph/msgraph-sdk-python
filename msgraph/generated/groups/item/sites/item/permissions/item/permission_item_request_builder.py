@@ -30,10 +30,9 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a permission object on a site.
+        Delete navigation property permissions for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/site-delete-permission?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Permission]:
         """
-        Retrieve the properties and relationships of a permission object on a site.
+        The permissions associated with the site. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Permission]
-        Find more info here: https://learn.microsoft.com/graph/api/site-get-permission?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Permission] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Permission]:
         """
-        Update an application permission object on a site. 
+        Update the navigation property permissions in groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Permission]
-        Find more info here: https://learn.microsoft.com/graph/api/site-update-permission?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a permission object on a site.
+        Delete navigation property permissions for groups
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a permission object on a site.
+        The permissions associated with the site. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Permission] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update an application permission object on a site. 
+        Update the navigation property permissions in groups
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class PermissionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PermissionItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a permission object on a site.
+        The permissions associated with the site. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

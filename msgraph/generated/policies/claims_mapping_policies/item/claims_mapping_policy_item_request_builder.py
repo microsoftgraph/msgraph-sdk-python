@@ -30,10 +30,9 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a claimsMappingPolicy object.
+        Delete navigation property claimsMappingPolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/claimsmappingpolicy-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ClaimsMappingPolicy]:
         """
-        Retrieve the properties and relationships of a claimsMappingPolicy object.
+        The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ClaimsMappingPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/claimsmappingpolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ClaimsMappingPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ClaimsMappingPolicy]:
         """
-        Update the properties of a claimsMappingPolicy object.
+        Update the navigation property claimsMappingPolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ClaimsMappingPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/claimsmappingpolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a claimsMappingPolicy object.
+        Delete navigation property claimsMappingPolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a claimsMappingPolicy object.
+        The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ClaimsMappingPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a claimsMappingPolicy object.
+        Update the navigation property claimsMappingPolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class ClaimsMappingPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ClaimsMappingPolicyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a claimsMappingPolicy object.
+        The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

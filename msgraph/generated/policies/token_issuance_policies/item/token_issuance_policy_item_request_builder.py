@@ -30,10 +30,9 @@ class TokenIssuancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a tokenIssuancePolicy object.
+        Delete navigation property tokenIssuancePolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/tokenissuancepolicy-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -69,11 +68,10 @@ class TokenIssuancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TokenIssuancePolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TokenIssuancePolicy]:
         """
-        Update the properties of a tokenIssuancePolicy object.
+        Update the navigation property tokenIssuancePolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TokenIssuancePolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/tokenissuancepolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +91,7 @@ class TokenIssuancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a tokenIssuancePolicy object.
+        Delete navigation property tokenIssuancePolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +113,7 @@ class TokenIssuancePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TokenIssuancePolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a tokenIssuancePolicy object.
+        Update the navigation property tokenIssuancePolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

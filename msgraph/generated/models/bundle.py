@@ -14,7 +14,7 @@ class Bundle(AdditionalDataHolder, BackedModel, Parsable):
 
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additional_data: Dict[str, Any] = field(default_factory=dict)
-    # If the bundle is an [album][], then the album property is included
+    # If the bundle is an album, then the album property is included
     album: Optional[Album] = None
     # Number of children contained immediately within this container.
     child_count: Optional[int] = None

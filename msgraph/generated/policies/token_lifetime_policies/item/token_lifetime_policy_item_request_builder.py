@@ -30,10 +30,9 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a tokenLifetimePolicy object.
+        Delete navigation property tokenLifetimePolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/tokenlifetimepolicy-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TokenLifetimePolicy]:
         """
-        Retrieve the properties and relationships of a tokenLifetimePolicy object.
+        The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Microsoft Entra ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TokenLifetimePolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/tokenlifetimepolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TokenLifetimePolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TokenLifetimePolicy]:
         """
-        Update the properties of a tokenLifetimePolicy object.
+        Update the navigation property tokenLifetimePolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TokenLifetimePolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/tokenlifetimepolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a tokenLifetimePolicy object.
+        Delete navigation property tokenLifetimePolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a tokenLifetimePolicy object.
+        The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Microsoft Entra ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TokenLifetimePolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a tokenLifetimePolicy object.
+        Update the navigation property tokenLifetimePolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class TokenLifetimePolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TokenLifetimePolicyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a tokenLifetimePolicy object.
+        The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Microsoft Entra ID.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

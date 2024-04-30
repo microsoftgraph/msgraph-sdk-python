@@ -45,10 +45,9 @@ class HistoryRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WhoisHistoryRecordCollectionResponse]:
         """
-        Get the history for a whoisRecord, as represented by a collection of whoisHistoryRecord resources.
+        The collection of historical records associated to this WHOIS object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WhoisHistoryRecordCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-whoisrecord-list-history?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +65,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the history for a whoisRecord, as represented by a collection of whoisHistoryRecord resources.
+        The collection of historical records associated to this WHOIS object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +96,7 @@ class HistoryRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HistoryRequestBuilderGetQueryParameters():
         """
-        Get the history for a whoisRecord, as represented by a collection of whoisHistoryRecord resources.
+        The collection of historical records associated to this WHOIS object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,10 +29,9 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a deviceConfigurationUserStatus.
+        Delete navigation property userStatuses for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-deviceconfigurationuserstatus-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceConfigurationUserStatus]:
         """
-        Read properties and relationships of the deviceConfigurationUserStatus object.
+        Device configuration installation status by user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationUserStatus]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-deviceconfigurationuserstatus-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceConfigurationUserStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceConfigurationUserStatus]:
         """
-        Update the properties of a deviceConfigurationUserStatus object.
+        Update the navigation property userStatuses in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationUserStatus]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-deviceconfigurationuserstatus-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a deviceConfigurationUserStatus.
+        Delete navigation property userStatuses for deviceManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceConfigurationUserStatus object.
+        Device configuration installation status by user.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceConfigurationUserStatus] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceConfigurationUserStatus object.
+        Update the navigation property userStatuses in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceConfigurationUserStatusItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceConfigurationUserStatus object.
+        Device configuration installation status by user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,10 +29,9 @@ class QnaItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a qna object.
+        Delete navigation property qnas for search
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/search-qna-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class QnaItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Qna]:
         """
-        Read the properties and relationships of a qna object.
+        Administrative answer in Microsoft Search results that provide answers for specific search keywords in an organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Qna]
-        Find more info here: https://learn.microsoft.com/graph/api/search-qna-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class QnaItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Qna] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Qna]:
         """
-        Update the properties of a qna object.
+        Update the navigation property qnas in search
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Qna]
-        Find more info here: https://learn.microsoft.com/graph/api/search-qna-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class QnaItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a qna object.
+        Delete navigation property qnas for search
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class QnaItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a qna object.
+        Administrative answer in Microsoft Search results that provide answers for specific search keywords in an organization.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class QnaItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Qna] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a qna object.
+        Update the navigation property qnas in search
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class QnaItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class QnaItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a qna object.
+        Administrative answer in Microsoft Search results that provide answers for specific search keywords in an organization.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,10 +29,9 @@ class AuthorityTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a authorityTemplate object.
+        Delete navigation property authorities for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-delete-authorities?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class AuthorityTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AuthorityTemplate]:
         """
-        Read the properties and relationships of a authorityTemplate object.
+        Specifies the underlying authority that describes the type of content to be retained and its retention schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AuthorityTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/security-authoritytemplate-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +90,7 @@ class AuthorityTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a authorityTemplate object.
+        Delete navigation property authorities for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class AuthorityTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a authorityTemplate object.
+        Specifies the underlying authority that describes the type of content to be retained and its retention schedule.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -140,7 +138,7 @@ class AuthorityTemplateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AuthorityTemplateItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a authorityTemplate object.
+        Specifies the underlying authority that describes the type of content to be retained and its retention schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

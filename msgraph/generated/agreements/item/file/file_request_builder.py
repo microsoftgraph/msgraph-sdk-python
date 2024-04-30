@@ -48,10 +48,9 @@ class FileRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AgreementFile]:
         """
-        Retrieve the details of an agreement file, including the language and version information. The default file can have multiple versions, each with its own language, that can be retrieved by specifying the Accept-Language header.
+        Default PDF linked to this agreement.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AgreementFile]
-        Find more info here: https://learn.microsoft.com/graph/api/agreementfile-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -103,7 +102,7 @@ class FileRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the details of an agreement file, including the language and version information. The default file can have multiple versions, each with its own language, that can be retrieved by specifying the Accept-Language header.
+        Default PDF linked to this agreement.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -149,7 +148,7 @@ class FileRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FileRequestBuilderGetQueryParameters():
         """
-        Retrieve the details of an agreement file, including the language and version information. The default file can have multiple versions, each with its own language, that can be retrieved by specifying the Accept-Language header.
+        Default PDF linked to this agreement.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

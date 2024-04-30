@@ -46,10 +46,9 @@ class IntelProfilesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IntelligenceProfileCollectionResponse]:
         """
-        Get a list of the intelligenceProfile objects and their properties.
+        A list of intelligenceProfile objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IntelligenceProfileCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-threatintelligence-list-intelprofiles?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class IntelProfilesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the intelligenceProfile objects and their properties.
+        A list of intelligenceProfile objects.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class IntelProfilesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IntelProfilesRequestBuilderGetQueryParameters():
         """
-        Get a list of the intelligenceProfile objects and their properties.
+        A list of intelligenceProfile objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

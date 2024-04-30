@@ -29,10 +29,9 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a deviceInstallState.
+        Delete navigation property deviceStates for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-deviceinstallstate-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceInstallState]:
         """
-        Read properties and relationships of the deviceInstallState object.
+        The list of installation states for this eBook.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceInstallState]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-deviceinstallstate-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceInstallState] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceInstallState]:
         """
-        Update the properties of a deviceInstallState object.
+        Update the navigation property deviceStates in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceInstallState]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-deviceinstallstate-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a deviceInstallState.
+        Delete navigation property deviceStates for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceInstallState object.
+        The list of installation states for this eBook.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceInstallState] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceInstallState object.
+        Update the navigation property deviceStates in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class DeviceInstallStateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceInstallStateItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceInstallState object.
+        The list of installation states for this eBook.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,10 +29,9 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes an appRoleAssignment that a user, group, or client service principal has been granted for a resource service principal.
+        Delete navigation property appRoleAssignedTo for servicePrincipals
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/serviceprincipal-delete-approleassignedto?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -91,7 +90,7 @@ class AppRoleAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes an appRoleAssignment that a user, group, or client service principal has been granted for a resource service principal.
+        Delete navigation property appRoleAssignedTo for servicePrincipals
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

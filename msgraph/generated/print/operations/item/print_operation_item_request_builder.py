@@ -47,10 +47,9 @@ class PrintOperationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintOperation]:
         """
-        Retrieve the properties and relationships of a printOperation object.
+        The list of print long running operations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintOperation]
-        Find more info here: https://learn.microsoft.com/graph/api/printoperation-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -102,7 +101,7 @@ class PrintOperationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a printOperation object.
+        The list of print long running operations.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +138,7 @@ class PrintOperationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PrintOperationItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a printOperation object.
+        The list of print long running operations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

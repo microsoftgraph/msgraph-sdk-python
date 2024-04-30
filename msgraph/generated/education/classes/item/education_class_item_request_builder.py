@@ -38,10 +38,9 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete an educationClass. Because a class is also a universal group, deleting a class deletes the group.
+        Delete navigation property classes for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -57,10 +56,9 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationClass]:
         """
-        Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members.
+        Get classes from education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationClass]
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -78,11 +76,10 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EducationClass] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationClass]:
         """
-        Update the properties of an educationClass object.
+        Update the navigation property classes in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationClass]
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -102,7 +99,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an educationClass. Because a class is also a universal group, deleting a class deletes the group.
+        Delete navigation property classes for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,7 +110,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members.
+        Get classes from education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -124,7 +121,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EducationClass] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an educationClass object.
+        Update the navigation property classes in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -231,7 +228,7 @@ class EducationClassItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class EducationClassItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members.
+        Get classes from education
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

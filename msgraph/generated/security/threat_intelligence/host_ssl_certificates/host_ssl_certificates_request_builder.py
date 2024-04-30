@@ -46,7 +46,7 @@ class HostSslCertificatesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[HostSslCertificateCollectionResponse]:
         """
-        Get the properties and relationships of a hostSslCertificate object.
+        Retrieve details about hostSslCertificate objects.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostSslCertificateCollectionResponse]
         """
@@ -89,7 +89,7 @@ class HostSslCertificatesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a hostSslCertificate object.
+        Retrieve details about hostSslCertificate objects.Note: List retrieval is not yet supported.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -135,7 +135,7 @@ class HostSslCertificatesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class HostSslCertificatesRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a hostSslCertificate object.
+        Retrieve details about hostSslCertificate objects.Note: List retrieval is not yet supported.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

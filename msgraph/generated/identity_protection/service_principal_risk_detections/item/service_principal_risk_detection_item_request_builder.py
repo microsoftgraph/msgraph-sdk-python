@@ -47,10 +47,9 @@ class ServicePrincipalRiskDetectionItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ServicePrincipalRiskDetection]:
         """
-        Read the properties and relationships of a servicePrincipalRiskDetection object.
+        Represents information about detected at-risk service principals in a Microsoft Entra tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServicePrincipalRiskDetection]
-        Find more info here: https://learn.microsoft.com/graph/api/serviceprincipalriskdetection-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -102,7 +101,7 @@ class ServicePrincipalRiskDetectionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a servicePrincipalRiskDetection object.
+        Represents information about detected at-risk service principals in a Microsoft Entra tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +138,7 @@ class ServicePrincipalRiskDetectionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ServicePrincipalRiskDetectionItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a servicePrincipalRiskDetection object.
+        Represents information about detected at-risk service principals in a Microsoft Entra tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

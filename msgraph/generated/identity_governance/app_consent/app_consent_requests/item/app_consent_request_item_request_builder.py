@@ -48,10 +48,9 @@ class AppConsentRequestItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppConsentRequest]:
         """
-        Read the properties and relationships of an appConsentRequest object.
+        A collection of appConsentRequest objects representing apps for which admin consent has been requested by one or more users.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppConsentRequest]
-        Find more info here: https://learn.microsoft.com/graph/api/appconsentrequest-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -103,7 +102,7 @@ class AppConsentRequestItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an appConsentRequest object.
+        A collection of appConsentRequest objects representing apps for which admin consent has been requested by one or more users.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -149,7 +148,7 @@ class AppConsentRequestItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AppConsentRequestItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an appConsentRequest object.
+        A collection of appConsentRequest objects representing apps for which admin consent has been requested by one or more users.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

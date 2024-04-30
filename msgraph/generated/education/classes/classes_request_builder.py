@@ -47,10 +47,9 @@ class ClassesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationClassCollectionResponse]:
         """
-        Get a list of the educationClass objects and their properties.
+        Get classes from education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationClassCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class ClassesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[EducationClass] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationClass]:
         """
-        Create a new educationClass object.
+        Create new navigation property to classes for education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationClass]
-        Find more info here: https://learn.microsoft.com/graph/api/educationclass-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +90,7 @@ class ClassesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the educationClass objects and their properties.
+        Get classes from education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class ClassesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[EducationClass] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new educationClass object.
+        Create new navigation property to classes for education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +145,7 @@ class ClassesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ClassesRequestBuilderGetQueryParameters():
         """
-        Get a list of the educationClass objects and their properties.
+        Get classes from education
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

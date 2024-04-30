@@ -49,10 +49,9 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintTask]:
         """
-        Get details about a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        A list of tasks that have been created based on this definition. The list includes currently running tasks and recently completed tasks. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintTask]
-        Find more info here: https://learn.microsoft.com/graph/api/printtask-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +69,10 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[PrintTask] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrintTask]:
         """
-        Update a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        Update the navigation property tasks in print
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintTask]
-        Find more info here: https://learn.microsoft.com/graph/api/printtaskdefinition-update-task?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -105,7 +103,7 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get details about a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        A list of tasks that have been created based on this definition. The list includes currently running tasks and recently completed tasks. Read-only.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +114,7 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[PrintTask] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        Update the navigation property tasks in print
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +158,7 @@ class PrintTaskItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PrintTaskItemRequestBuilderGetQueryParameters():
         """
-        Get details about a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+        A list of tasks that have been created based on this definition. The list includes currently running tasks and recently completed tasks. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

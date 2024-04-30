@@ -44,10 +44,9 @@ class PhotosRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ProfilePhotoCollectionResponse]:
         """
-        Retrieve a list of profilePhoto objects.
+        The profile photos owned by the group. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ProfilePhotoCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/group-list-photos?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -65,7 +64,7 @@ class PhotosRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of profilePhoto objects.
+        The profile photos owned by the group. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -87,7 +86,7 @@ class PhotosRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PhotosRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of profilePhoto objects.
+        The profile photos owned by the group. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

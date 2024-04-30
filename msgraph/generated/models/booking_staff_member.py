@@ -4,6 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .booking_staff_membership_status import BookingStaffMembershipStatus
     from .booking_staff_member_base import BookingStaffMemberBase
     from .booking_staff_role import BookingStaffRole
     from .booking_work_hours import BookingWorkHours
@@ -25,6 +26,8 @@ class BookingStaffMember(BookingStaffMemberBase):
     email_address: Optional[str] = None
     # True indicates that a staff member will be notified via email when a booking assigned to them is created or changed.
     is_email_notification_enabled: Optional[bool] = None
+    # The membershipStatus property
+    membership_status: Optional[BookingStaffMembershipStatus] = None
     # The role property
     role: Optional[BookingStaffRole] = None
     # The time zone of the staff member. For a list of possible values, see dateTimeTimeZone.
@@ -50,10 +53,12 @@ class BookingStaffMember(BookingStaffMemberBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from .booking_staff_membership_status import BookingStaffMembershipStatus
         from .booking_staff_member_base import BookingStaffMemberBase
         from .booking_staff_role import BookingStaffRole
         from .booking_work_hours import BookingWorkHours
 
+        from .booking_staff_membership_status import BookingStaffMembershipStatus
         from .booking_staff_member_base import BookingStaffMemberBase
         from .booking_staff_role import BookingStaffRole
         from .booking_work_hours import BookingWorkHours
@@ -63,6 +68,7 @@ class BookingStaffMember(BookingStaffMemberBase):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "isEmailNotificationEnabled": lambda n : setattr(self, 'is_email_notification_enabled', n.get_bool_value()),
+            "membershipStatus": lambda n : setattr(self, 'membership_status', n.get_enum_value(BookingStaffMembershipStatus)),
             "role": lambda n : setattr(self, 'role', n.get_enum_value(BookingStaffRole)),
             "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
             "useBusinessHours": lambda n : setattr(self, 'use_business_hours', n.get_bool_value()),
@@ -85,6 +91,7 @@ class BookingStaffMember(BookingStaffMemberBase):
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("emailAddress", self.email_address)
         writer.write_bool_value("isEmailNotificationEnabled", self.is_email_notification_enabled)
+        writer.write_enum_value("membershipStatus", self.membership_status)
         writer.write_enum_value("role", self.role)
         writer.write_str_value("timeZone", self.time_zone)
         writer.write_bool_value("useBusinessHours", self.use_business_hours)

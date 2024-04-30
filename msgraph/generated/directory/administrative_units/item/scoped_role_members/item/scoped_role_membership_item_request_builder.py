@@ -29,10 +29,9 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Remove a Microsoft Entra role assignment with administrative unit scope.
+        Delete navigation property scopedRoleMembers for directory
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-delete-scopedrolemembers?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ScopedRoleMembership]:
         """
-        Get a Microsoft Entra role assignment with administrative unit scope.
+        Scoped-role members of this administrative unit.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ScopedRoleMembership]
-        Find more info here: https://learn.microsoft.com/graph/api/administrativeunit-get-scopedrolemembers?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -92,7 +90,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a Microsoft Entra role assignment with administrative unit scope.
+        Delete navigation property scopedRoleMembers for directory
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a Microsoft Entra role assignment with administrative unit scope.
+        Scoped-role members of this administrative unit.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -140,7 +138,7 @@ class ScopedRoleMembershipItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ScopedRoleMembershipItemRequestBuilderGetQueryParameters():
         """
-        Get a Microsoft Entra role assignment with administrative unit scope.
+        Scoped-role members of this administrative unit.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

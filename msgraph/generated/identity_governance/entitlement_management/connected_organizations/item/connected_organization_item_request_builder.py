@@ -31,10 +31,9 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a connectedOrganization object.
+        Delete navigation property connectedOrganizations for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/connectedorganization-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,10 +49,9 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConnectedOrganization]:
         """
-        Retrieve the properties and relationships of a connectedOrganization object.
+        References to a directory or domain of another organization whose users can request access.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConnectedOrganization]
-        Find more info here: https://learn.microsoft.com/graph/api/connectedorganization-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,11 +69,10 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ConnectedOrganization] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ConnectedOrganization]:
         """
-        Update a connectedOrganization object to change one or more of its properties.
+        Update the navigation property connectedOrganizations in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ConnectedOrganization]
-        Find more info here: https://learn.microsoft.com/graph/api/connectedorganization-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -95,7 +92,7 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a connectedOrganization object.
+        Delete navigation property connectedOrganizations for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -106,7 +103,7 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a connectedOrganization object.
+        References to a directory or domain of another organization whose users can request access.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +114,7 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ConnectedOrganization] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update a connectedOrganization object to change one or more of its properties.
+        Update the navigation property connectedOrganizations in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +158,7 @@ class ConnectedOrganizationItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ConnectedOrganizationItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a connectedOrganization object.
+        References to a directory or domain of another organization whose users can request access.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

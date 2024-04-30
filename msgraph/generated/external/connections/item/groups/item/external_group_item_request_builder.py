@@ -30,10 +30,9 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete an externalGroup object.
+        Delete navigation property groups for external
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/externalconnectors-externalgroup-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ExternalGroup]:
         """
-        Get an externalGroup object.
+        Get groups from external
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExternalGroup]
-        Find more info here: https://learn.microsoft.com/graph/api/externalconnectors-externalgroup-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[ExternalGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ExternalGroup]:
         """
-        Update the properties of an externalGroup object.
+        Update the navigation property groups in external
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ExternalGroup]
-        Find more info here: https://learn.microsoft.com/graph/api/externalconnectors-externalgroup-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an externalGroup object.
+        Delete navigation property groups for external
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get an externalGroup object.
+        Get groups from external
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[ExternalGroup] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an externalGroup object.
+        Update the navigation property groups in external
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class ExternalGroupItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExternalGroupItemRequestBuilderGetQueryParameters():
         """
-        Get an externalGroup object.
+        Get groups from external
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

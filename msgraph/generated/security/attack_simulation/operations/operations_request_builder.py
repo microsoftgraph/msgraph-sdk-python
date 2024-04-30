@@ -46,7 +46,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AttackSimulationOperationCollectionResponse]:
         """
-        Get an attack simulation operation to track a long-running operation request for a tenant.
+        Represents an attack simulation training operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AttackSimulationOperationCollectionResponse]
         """
@@ -89,7 +89,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get an attack simulation operation to track a long-running operation request for a tenant.
+        Represents an attack simulation training operation.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -135,7 +135,7 @@ class OperationsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class OperationsRequestBuilderGetQueryParameters():
         """
-        Get an attack simulation operation to track a long-running operation request for a tenant.
+        Represents an attack simulation training operation.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

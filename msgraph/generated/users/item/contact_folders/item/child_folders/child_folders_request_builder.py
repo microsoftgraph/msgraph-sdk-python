@@ -47,10 +47,9 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ContactFolderCollectionResponse]:
         """
-        Get a collection of child folders under the specified contact folder.
+        The collection of child folders in the folder. Navigation property. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContactFolderCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/contactfolder-list-childfolders?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ContactFolder] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ContactFolder]:
         """
-        Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder.
+        Create new navigation property to childFolders for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContactFolder]
-        Find more info here: https://learn.microsoft.com/graph/api/contactfolder-post-childfolders?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +90,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a collection of child folders under the specified contact folder.
+        The collection of child folders in the folder. Navigation property. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ContactFolder] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder.
+        Create new navigation property to childFolders for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +145,7 @@ class ChildFoldersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ChildFoldersRequestBuilderGetQueryParameters():
         """
-        Get a collection of child folders under the specified contact folder.
+        The collection of child folders in the folder. Navigation property. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

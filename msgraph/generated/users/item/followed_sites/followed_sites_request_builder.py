@@ -47,10 +47,9 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SiteCollectionResponse]:
         """
-        List the sites that have been followed by the signed in user.
+        Get followedSites from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SiteCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/sites-list-followed?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,7 +67,7 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List the sites that have been followed by the signed in user.
+        Get followedSites from users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +116,7 @@ class FollowedSitesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FollowedSitesRequestBuilderGetQueryParameters():
         """
-        List the sites that have been followed by the signed in user.
+        Get followedSites from users
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

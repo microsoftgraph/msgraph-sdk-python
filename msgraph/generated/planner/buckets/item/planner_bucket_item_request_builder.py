@@ -30,10 +30,9 @@ class PlannerBucketItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete plannerBucket.
+        Delete navigation property buckets for planner
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/plannerbucket-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class PlannerBucketItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PlannerBucket]:
         """
-        Retrieve the properties and relationships of a plannerBucket object.
+        Read-only. Nullable. Returns a collection of the specified buckets
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerBucket]
-        Find more info here: https://learn.microsoft.com/graph/api/plannerbucket-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -74,7 +72,6 @@ class PlannerBucketItemRequestBuilder(BaseRequestBuilder):
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerBucket]
-        Find more info here: https://learn.microsoft.com/graph/api/plannerbucket-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class PlannerBucketItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete plannerBucket.
+        Delete navigation property buckets for planner
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class PlannerBucketItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a plannerBucket object.
+        Read-only. Nullable. Returns a collection of the specified buckets
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -151,7 +148,7 @@ class PlannerBucketItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PlannerBucketItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a plannerBucket object.
+        Read-only. Nullable. Returns a collection of the specified buckets
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

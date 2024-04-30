@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .administrative_unit import AdministrativeUnit
     from .attribute_set import AttributeSet
+    from .company_subscription import CompanySubscription
     from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
     from .device_local_credential_info import DeviceLocalCredentialInfo
     from .directory_object import DirectoryObject
@@ -33,6 +34,8 @@ class Directory(Entity):
     odata_type: Optional[str] = None
     # A container for on-premises directory synchronization functionalities that are available for the organization.
     on_premises_synchronization: Optional[List[OnPremisesDirectorySynchronization]] = None
+    # The subscriptions property
+    subscriptions: Optional[List[CompanySubscription]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Directory:
@@ -52,6 +55,7 @@ class Directory(Entity):
         """
         from .administrative_unit import AdministrativeUnit
         from .attribute_set import AttributeSet
+        from .company_subscription import CompanySubscription
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
         from .device_local_credential_info import DeviceLocalCredentialInfo
         from .directory_object import DirectoryObject
@@ -61,6 +65,7 @@ class Directory(Entity):
 
         from .administrative_unit import AdministrativeUnit
         from .attribute_set import AttributeSet
+        from .company_subscription import CompanySubscription
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
         from .device_local_credential_info import DeviceLocalCredentialInfo
         from .directory_object import DirectoryObject
@@ -76,6 +81,7 @@ class Directory(Entity):
             "deviceLocalCredentials": lambda n : setattr(self, 'device_local_credentials', n.get_collection_of_object_values(DeviceLocalCredentialInfo)),
             "federationConfigurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(IdentityProviderBase)),
             "onPremisesSynchronization": lambda n : setattr(self, 'on_premises_synchronization', n.get_collection_of_object_values(OnPremisesDirectorySynchronization)),
+            "subscriptions": lambda n : setattr(self, 'subscriptions', n.get_collection_of_object_values(CompanySubscription)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -97,5 +103,6 @@ class Directory(Entity):
         writer.write_collection_of_object_values("deviceLocalCredentials", self.device_local_credentials)
         writer.write_collection_of_object_values("federationConfigurations", self.federation_configurations)
         writer.write_collection_of_object_values("onPremisesSynchronization", self.on_premises_synchronization)
+        writer.write_collection_of_object_values("subscriptions", self.subscriptions)
     
 

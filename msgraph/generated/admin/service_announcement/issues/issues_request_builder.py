@@ -46,10 +46,9 @@ class IssuesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ServiceHealthIssueCollectionResponse]:
         """
-        Retrieve serviceHealthIssue resources from the issues navigation property. This operation retrieves information about all service health issues that exist for the tenant.
+        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ServiceHealthIssueCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/serviceannouncement-list-issues?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class IssuesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve serviceHealthIssue resources from the issues navigation property. This operation retrieves information about all service health issues that exist for the tenant.
+        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -136,7 +135,7 @@ class IssuesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IssuesRequestBuilderGetQueryParameters():
         """
-        Retrieve serviceHealthIssue resources from the issues navigation property. This operation retrieves information about all service health issues that exist for the tenant.
+        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

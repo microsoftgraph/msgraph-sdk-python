@@ -59,10 +59,9 @@ class AssignmentScheduleRequestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleRequestCollectionResponse]:
         """
-        Get a list of the privilegedAccessGroupAssignmentScheduleRequest objects and their properties.
+        The schedule requests for operations to create, update, delete, extend, and renew an assignment.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrivilegedAccessGroupAssignmentScheduleRequestCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroup-list-assignmentschedulerequests?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -80,11 +79,10 @@ class AssignmentScheduleRequestsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[PrivilegedAccessGroupAssignmentScheduleRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PrivilegedAccessGroupAssignmentScheduleRequest]:
         """
-        Create a new privilegedAccessGroupAssignmentScheduleRequest object.
+        Create new navigation property to assignmentScheduleRequests for identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrivilegedAccessGroupAssignmentScheduleRequest]
-        Find more info here: https://learn.microsoft.com/graph/api/privilegedaccessgroup-post-assignmentschedulerequests?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -104,7 +102,7 @@ class AssignmentScheduleRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the privilegedAccessGroupAssignmentScheduleRequest objects and their properties.
+        The schedule requests for operations to create, update, delete, extend, and renew an assignment.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +113,7 @@ class AssignmentScheduleRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[PrivilegedAccessGroupAssignmentScheduleRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new privilegedAccessGroupAssignmentScheduleRequest object.
+        Create new navigation property to assignmentScheduleRequests for identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +148,7 @@ class AssignmentScheduleRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AssignmentScheduleRequestsRequestBuilderGetQueryParameters():
         """
-        Get a list of the privilegedAccessGroupAssignmentScheduleRequest objects and their properties.
+        The schedule requests for operations to create, update, delete, extend, and renew an assignment.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

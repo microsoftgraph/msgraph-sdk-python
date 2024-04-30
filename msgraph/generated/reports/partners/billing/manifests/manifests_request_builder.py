@@ -46,7 +46,7 @@ class ManifestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ManifestCollectionResponse]:
         """
-        Read the properties and relationships of a manifest object.
+        Represents metadata for the exported data.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ManifestCollectionResponse]
         """
@@ -89,7 +89,7 @@ class ManifestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a manifest object.
+        Represents metadata for the exported data.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -135,7 +135,7 @@ class ManifestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ManifestsRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a manifest object.
+        Represents metadata for the exported data.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

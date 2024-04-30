@@ -32,10 +32,9 @@ class FederatedIdentityCredentialsWithNameRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a federatedIdentityCredential object from an application.
+        Delete navigation property federatedIdentityCredentials for applications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/federatedidentitycredential-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class FederatedIdentityCredentialsWithNameRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[FederatedIdentityCredential]:
         """
-        Read the properties and relationships of a federatedIdentityCredential object.
+        Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FederatedIdentityCredential]
-        Find more info here: https://learn.microsoft.com/graph/api/federatedidentitycredential-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +70,10 @@ class FederatedIdentityCredentialsWithNameRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[FederatedIdentityCredential] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[FederatedIdentityCredential]:
         """
-        Update the properties of a federatedIdentityCredential object.
+        Update the navigation property federatedIdentityCredentials in applications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FederatedIdentityCredential]
-        Find more info here: https://learn.microsoft.com/graph/api/federatedidentitycredential-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,7 +93,7 @@ class FederatedIdentityCredentialsWithNameRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a federatedIdentityCredential object from an application.
+        Delete navigation property federatedIdentityCredentials for applications
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +104,7 @@ class FederatedIdentityCredentialsWithNameRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a federatedIdentityCredential object.
+        Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +115,7 @@ class FederatedIdentityCredentialsWithNameRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[FederatedIdentityCredential] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a federatedIdentityCredential object.
+        Update the navigation property federatedIdentityCredentials in applications
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -144,7 +141,7 @@ class FederatedIdentityCredentialsWithNameRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FederatedIdentityCredentialsWithNameRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a federatedIdentityCredential object.
+        Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

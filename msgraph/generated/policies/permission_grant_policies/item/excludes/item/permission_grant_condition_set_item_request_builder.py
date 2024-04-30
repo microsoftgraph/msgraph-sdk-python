@@ -29,10 +29,9 @@ class PermissionGrantConditionSetItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a permissionGrantConditionSet from the excludes collection of a permissionGrantPolicy.
+        Delete navigation property excludes for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/permissiongrantpolicy-delete-excludes?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,7 +47,7 @@ class PermissionGrantConditionSetItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PermissionGrantConditionSet]:
         """
-        Condition sets which are excluded in this permission grant policy. Automatically expanded on GET.
+        Condition sets that are excluded in this permission grant policy. Automatically expanded on GET.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PermissionGrantConditionSet]
         """
@@ -91,7 +90,7 @@ class PermissionGrantConditionSetItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a permissionGrantConditionSet from the excludes collection of a permissionGrantPolicy.
+        Delete navigation property excludes for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +101,7 @@ class PermissionGrantConditionSetItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Condition sets which are excluded in this permission grant policy. Automatically expanded on GET.
+        Condition sets that are excluded in this permission grant policy. Automatically expanded on GET.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +138,7 @@ class PermissionGrantConditionSetItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PermissionGrantConditionSetItemRequestBuilderGetQueryParameters():
         """
-        Condition sets which are excluded in this permission grant policy. Automatically expanded on GET.
+        Condition sets that are excluded in this permission grant policy. Automatically expanded on GET.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

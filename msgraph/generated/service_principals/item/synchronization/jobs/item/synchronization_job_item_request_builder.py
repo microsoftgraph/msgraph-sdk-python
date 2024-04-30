@@ -36,10 +36,9 @@ class SynchronizationJobItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Stop the synchronization job, and permanently delete all the state associated with it. Synchronized accounts are left as-is.
+        Delete navigation property jobs for servicePrincipals
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/synchronization-synchronizationjob-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -55,10 +54,9 @@ class SynchronizationJobItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SynchronizationJob]:
         """
-        Retrieve the existing synchronization job and its properties.
+        Performs synchronization by periodically running in the background, polling for changes in one directory, and pushing them to another directory.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SynchronizationJob]
-        Find more info here: https://learn.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -99,7 +97,7 @@ class SynchronizationJobItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Stop the synchronization job, and permanently delete all the state associated with it. Synchronized accounts are left as-is.
+        Delete navigation property jobs for servicePrincipals
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -110,7 +108,7 @@ class SynchronizationJobItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the existing synchronization job and its properties.
+        Performs synchronization by periodically running in the background, polling for changes in one directory, and pushing them to another directory.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -210,7 +208,7 @@ class SynchronizationJobItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SynchronizationJobItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the existing synchronization job and its properties.
+        Performs synchronization by periodically running in the background, polling for changes in one directory, and pushing them to another directory.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

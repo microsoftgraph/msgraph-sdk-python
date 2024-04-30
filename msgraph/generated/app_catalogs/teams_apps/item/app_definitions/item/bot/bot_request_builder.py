@@ -47,10 +47,9 @@ class BotRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamworkBot]:
         """
-        Get the bot associated with a specific definition of the  TeamsApp.
+        The details of the bot specified in the Teams app manifest.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamworkBot]
-        Find more info here: https://learn.microsoft.com/graph/api/teamworkbot-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -102,7 +101,7 @@ class BotRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the bot associated with a specific definition of the  TeamsApp.
+        The details of the bot specified in the Teams app manifest.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +138,7 @@ class BotRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BotRequestBuilderGetQueryParameters():
         """
-        Get the bot associated with a specific definition of the  TeamsApp.
+        The details of the bot specified in the Teams app manifest.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

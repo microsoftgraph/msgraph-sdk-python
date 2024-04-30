@@ -46,10 +46,9 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppManagementPolicyCollectionResponse]:
         """
-        Retrieve a list of appManagementPolicy objects.
+        The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppManagementPolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/appmanagementpolicy-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppManagementPolicy]:
         """
-        Create an appManagementPolicy object.
+        Create new navigation property to appManagementPolicies for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppManagementPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/appmanagementpolicy-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of appManagementPolicy objects.
+        The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create an appManagementPolicy object.
+        Create new navigation property to appManagementPolicies for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class AppManagementPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AppManagementPoliciesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of appManagementPolicy objects.
+        The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

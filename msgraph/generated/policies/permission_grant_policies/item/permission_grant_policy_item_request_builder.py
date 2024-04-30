@@ -31,10 +31,9 @@ class PermissionGrantPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a permissionGrantPolicy object.
+        Delete navigation property permissionGrantPolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/permissiongrantpolicy-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -50,10 +49,9 @@ class PermissionGrantPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PermissionGrantPolicy]:
         """
-        Retrieve a single permissionGrantPolicy object.
+        The policy that specifies the conditions under which consent can be granted.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PermissionGrantPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/permissiongrantpolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -71,11 +69,10 @@ class PermissionGrantPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[PermissionGrantPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[PermissionGrantPolicy]:
         """
-        Update properties of a  permissionGrantPolicy.
+        Update the navigation property permissionGrantPolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PermissionGrantPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/permissiongrantpolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -95,7 +92,7 @@ class PermissionGrantPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a permissionGrantPolicy object.
+        Delete navigation property permissionGrantPolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -106,7 +103,7 @@ class PermissionGrantPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a single permissionGrantPolicy object.
+        The policy that specifies the conditions under which consent can be granted.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +114,7 @@ class PermissionGrantPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[PermissionGrantPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update properties of a  permissionGrantPolicy.
+        Update the navigation property permissionGrantPolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +158,7 @@ class PermissionGrantPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PermissionGrantPolicyItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a single permissionGrantPolicy object.
+        The policy that specifies the conditions under which consent can be granted.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -46,10 +46,9 @@ class RetentionLabelsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RetentionLabelCollectionResponse]:
         """
-        Get a list of the retentionLabel objects and their properties.
+        Represents how customers can manage their data, whether and for how long to retain or delete it.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RetentionLabelCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-list-retentionlabel?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class RetentionLabelsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[RetentionLabel] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[RetentionLabel]:
         """
-        Create a new retentionLabel object. To create a disposition review stage, include the actionAfterRetentionPeriod property in the request body with one of the possible values specified.
+        Create new navigation property to retentionLabels for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RetentionLabel]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-post-retentionlabel?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class RetentionLabelsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the retentionLabel objects and their properties.
+        Represents how customers can manage their data, whether and for how long to retain or delete it.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class RetentionLabelsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[RetentionLabel] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new retentionLabel object. To create a disposition review stage, include the actionAfterRetentionPeriod property in the request body with one of the possible values specified.
+        Create new navigation property to retentionLabels for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class RetentionLabelsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RetentionLabelsRequestBuilderGetQueryParameters():
         """
-        Get a list of the retentionLabel objects and their properties.
+        Represents how customers can manage their data, whether and for how long to retain or delete it.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

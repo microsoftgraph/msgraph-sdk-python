@@ -30,10 +30,9 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Deletes a userInstallStateSummary.
+        Delete navigation property userStateSummary for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-userinstallstatesummary-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserInstallStateSummary]:
         """
-        Read properties and relationships of the userInstallStateSummary object.
+        The list of installation states for this eBook.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserInstallStateSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-userinstallstatesummary-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[UserInstallStateSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserInstallStateSummary]:
         """
-        Update the properties of a userInstallStateSummary object.
+        Update the navigation property userStateSummary in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserInstallStateSummary]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-books-userinstallstatesummary-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a userInstallStateSummary.
+        Delete navigation property userStateSummary for deviceAppManagement
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the userInstallStateSummary object.
+        The list of installation states for this eBook.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[UserInstallStateSummary] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a userInstallStateSummary object.
+        Update the navigation property userStateSummary in deviceAppManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class UserInstallStateSummaryItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class UserInstallStateSummaryItemRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the userInstallStateSummary object.
+        The list of installation states for this eBook.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -48,10 +48,9 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Alert]:
         """
-        Get the properties and relationships of an alert object.
+        A collection of alerts in Microsoft 365 Defender.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Alert]
-        Find more info here: https://learn.microsoft.com/graph/api/security-alert-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +68,10 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Alert] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Alert]:
         """
-        Update the properties of an alert object in an organization based on the specified alert id property.
+        Update the navigation property alerts_v2 in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Alert]
-        Find more info here: https://learn.microsoft.com/graph/api/security-alert-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -104,7 +102,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of an alert object.
+        A collection of alerts in Microsoft 365 Defender.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +113,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Alert] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an alert object in an organization based on the specified alert id property.
+        Update the navigation property alerts_v2 in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +148,7 @@ class AlertItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AlertItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of an alert object.
+        A collection of alerts in Microsoft 365 Defender.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

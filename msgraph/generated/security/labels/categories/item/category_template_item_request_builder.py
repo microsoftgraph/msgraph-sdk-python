@@ -30,10 +30,9 @@ class CategoryTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a categoryTemplate object.
+        Delete navigation property categories for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-delete-categories?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class CategoryTemplateItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[CategoryTemplate]:
         """
-        Read the properties and relationships of a categoryTemplate object.
+        Specifies a group of similar types of content in a particular department.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[CategoryTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/security-categorytemplate-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -93,7 +91,7 @@ class CategoryTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a categoryTemplate object.
+        Delete navigation property categories for security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +102,7 @@ class CategoryTemplateItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a categoryTemplate object.
+        Specifies a group of similar types of content in a particular department.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -150,7 +148,7 @@ class CategoryTemplateItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class CategoryTemplateItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a categoryTemplate object.
+        Specifies a group of similar types of content in a particular department.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

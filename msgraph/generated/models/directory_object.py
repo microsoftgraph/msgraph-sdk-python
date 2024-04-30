@@ -25,6 +25,7 @@ if TYPE_CHECKING:
     from .group_setting_template import GroupSettingTemplate
     from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
     from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+    from .multi_tenant_organization_member import MultiTenantOrganizationMember
     from .organization import Organization
     from .org_contact import OrgContact
     from .permission_grant_policy import PermissionGrantPolicy
@@ -135,6 +136,10 @@ class DirectoryObject(Entity):
             from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
 
             return IdentitySecurityDefaultsEnforcementPolicy()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantOrganizationMember".casefold():
+            from .multi_tenant_organization_member import MultiTenantOrganizationMember
+
+            return MultiTenantOrganizationMember()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.organization".casefold():
             from .organization import Organization
 
@@ -206,6 +211,7 @@ class DirectoryObject(Entity):
         from .group_setting_template import GroupSettingTemplate
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
         from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+        from .multi_tenant_organization_member import MultiTenantOrganizationMember
         from .organization import Organization
         from .org_contact import OrgContact
         from .permission_grant_policy import PermissionGrantPolicy
@@ -238,6 +244,7 @@ class DirectoryObject(Entity):
         from .group_setting_template import GroupSettingTemplate
         from .home_realm_discovery_policy import HomeRealmDiscoveryPolicy
         from .identity_security_defaults_enforcement_policy import IdentitySecurityDefaultsEnforcementPolicy
+        from .multi_tenant_organization_member import MultiTenantOrganizationMember
         from .organization import Organization
         from .org_contact import OrgContact
         from .permission_grant_policy import PermissionGrantPolicy

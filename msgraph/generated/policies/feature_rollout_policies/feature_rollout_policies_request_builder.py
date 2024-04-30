@@ -46,10 +46,9 @@ class FeatureRolloutPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[FeatureRolloutPolicyCollectionResponse]:
         """
-        Retrieve a list of featureRolloutPolicy objects.
+        The feature rollout policy associated with a directory object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FeatureRolloutPolicyCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/featurerolloutpolicies-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class FeatureRolloutPoliciesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[FeatureRolloutPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[FeatureRolloutPolicy]:
         """
-        Create a new featureRolloutPolicy object.
+        Create new navigation property to featureRolloutPolicies for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[FeatureRolloutPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/featurerolloutpolicies-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class FeatureRolloutPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of featureRolloutPolicy objects.
+        The feature rollout policy associated with a directory object.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class FeatureRolloutPoliciesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[FeatureRolloutPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new featureRolloutPolicy object.
+        Create new navigation property to featureRolloutPolicies for policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class FeatureRolloutPoliciesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class FeatureRolloutPoliciesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of featureRolloutPolicy objects.
+        The feature rollout policy associated with a directory object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

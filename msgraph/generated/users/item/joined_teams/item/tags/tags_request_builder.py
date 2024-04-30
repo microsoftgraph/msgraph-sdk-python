@@ -46,10 +46,9 @@ class TagsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamworkTagCollectionResponse]:
         """
-        Get a list of the tag objects and their properties.
+        The tags associated with the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamworkTagCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/teamworktag-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class TagsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[TeamworkTag] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamworkTag]:
         """
-        Create a standard tag for members in a team.
+        Create new navigation property to tags for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamworkTag]
-        Find more info here: https://learn.microsoft.com/graph/api/teamworktag-post?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class TagsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the tag objects and their properties.
+        The tags associated with the team.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class TagsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[TeamworkTag] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a standard tag for members in a team.
+        Create new navigation property to tags for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class TagsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class TagsRequestBuilderGetQueryParameters():
         """
-        Get a list of the tag objects and their properties.
+        The tags associated with the team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

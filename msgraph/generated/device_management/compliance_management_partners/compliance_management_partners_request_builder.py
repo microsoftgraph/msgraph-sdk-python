@@ -46,10 +46,9 @@ class ComplianceManagementPartnersRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ComplianceManagementPartnerCollectionResponse]:
         """
-        List properties and relationships of the complianceManagementPartner objects.
+        The list of Compliance Management Partners configured by the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ComplianceManagementPartnerCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-compliancemanagementpartner-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class ComplianceManagementPartnersRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ComplianceManagementPartner] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ComplianceManagementPartner]:
         """
-        Create a new complianceManagementPartner object.
+        Create new navigation property to complianceManagementPartners for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ComplianceManagementPartner]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-onboarding-compliancemanagementpartner-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class ComplianceManagementPartnersRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the complianceManagementPartner objects.
+        The list of Compliance Management Partners configured by the tenant.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class ComplianceManagementPartnersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ComplianceManagementPartner] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new complianceManagementPartner object.
+        Create new navigation property to complianceManagementPartners for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class ComplianceManagementPartnersRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ComplianceManagementPartnersRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the complianceManagementPartner objects.
+        The list of Compliance Management Partners configured by the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

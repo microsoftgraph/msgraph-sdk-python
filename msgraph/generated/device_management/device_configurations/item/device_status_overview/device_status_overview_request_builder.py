@@ -47,10 +47,9 @@ class DeviceStatusOverviewRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceConfigurationDeviceOverview]:
         """
-        Read properties and relationships of the deviceConfigurationDeviceOverview object.
+        Device Configuration devices status overview
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationDeviceOverview]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-deviceconfigurationdeviceoverview-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class DeviceStatusOverviewRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[DeviceConfigurationDeviceOverview] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceConfigurationDeviceOverview]:
         """
-        Update the properties of a deviceConfigurationDeviceOverview object.
+        Update the navigation property deviceStatusOverview in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceConfigurationDeviceOverview]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-deviceconfig-deviceconfigurationdeviceoverview-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +101,7 @@ class DeviceStatusOverviewRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read properties and relationships of the deviceConfigurationDeviceOverview object.
+        Device Configuration devices status overview
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +112,7 @@ class DeviceStatusOverviewRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[DeviceConfigurationDeviceOverview] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a deviceConfigurationDeviceOverview object.
+        Update the navigation property deviceStatusOverview in deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class DeviceStatusOverviewRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceStatusOverviewRequestBuilderGetQueryParameters():
         """
-        Read properties and relationships of the deviceConfigurationDeviceOverview object.
+        Device Configuration devices status overview
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

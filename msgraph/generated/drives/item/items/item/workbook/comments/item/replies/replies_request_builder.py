@@ -46,7 +46,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[WorkbookCommentReplyCollectionResponse]:
         """
-        Retrieve the properties and relationships of workbookCommentReply object.
+        Get replies from drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[WorkbookCommentReplyCollectionResponse]
         """
@@ -89,7 +89,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of workbookCommentReply object.
+        Get replies from drives
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -135,7 +135,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RepliesRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of workbookCommentReply object.
+        Get replies from drives
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -49,7 +49,6 @@ class MonthlyPrintUsageByPrinterRequestBuilder(BaseRequestBuilder):
         Retrieve a list of monthly print usage summaries, grouped by printer.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PrintUsageByPrinterCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/reportroot-list-monthlyprintusagebyprinter?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration

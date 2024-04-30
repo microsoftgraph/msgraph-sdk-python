@@ -30,10 +30,9 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete an identityUserFlowAttributeAssignment object.
+        Delete navigation property userAttributeAssignments for identity
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/identityuserflowattributeassignment-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityUserFlowAttributeAssignment]:
         """
-        Read the properties and relationships of an identityUserFlowAttributeAssignment object.
+        The user attribute assignments included in the user flow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityUserFlowAttributeAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/identityuserflowattributeassignment-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[IdentityUserFlowAttributeAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[IdentityUserFlowAttributeAssignment]:
         """
-        Update the properties of a identityUserFlowAttributeAssignment object.
+        Update the navigation property userAttributeAssignments in identity
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[IdentityUserFlowAttributeAssignment]
-        Find more info here: https://learn.microsoft.com/graph/api/identityuserflowattributeassignment-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an identityUserFlowAttributeAssignment object.
+        Delete navigation property userAttributeAssignments for identity
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an identityUserFlowAttributeAssignment object.
+        The user attribute assignments included in the user flow.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[IdentityUserFlowAttributeAssignment] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a identityUserFlowAttributeAssignment object.
+        Update the navigation property userAttributeAssignments in identity
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class IdentityUserFlowAttributeAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an identityUserFlowAttributeAssignment object.
+        The user attribute assignments included in the user flow.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

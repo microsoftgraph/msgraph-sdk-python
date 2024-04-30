@@ -55,10 +55,9 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[List_]:
         """
-        Returns the metadata for a [list][].
+        The collection of lists under this site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[List_]
-        Find more info here: https://learn.microsoft.com/graph/api/list-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -110,7 +109,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Returns the metadata for a [list][].
+        The collection of lists under this site.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -219,7 +218,7 @@ class ListItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ListItemRequestBuilderGetQueryParameters():
         """
-        Returns the metadata for a [list][].
+        The collection of lists under this site.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

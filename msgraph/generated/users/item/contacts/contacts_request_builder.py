@@ -47,10 +47,9 @@ class ContactsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ContactCollectionResponse]:
         """
-        Get a contact collection from the default contacts folder of the signed-in user. There are two scenarios where an app can get contacts in another user's contact folder:
+        The user's contacts. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ContactCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-contacts?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class ContactsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[Contact] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Contact]:
         """
-        Add a contact to the root Contacts folder or to the contacts endpoint of another contact folder.
+        Create new navigation property to contacts for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Contact]
-        Find more info here: https://learn.microsoft.com/graph/api/user-post-contacts?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +90,7 @@ class ContactsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a contact collection from the default contacts folder of the signed-in user. There are two scenarios where an app can get contacts in another user's contact folder:
+        The user's contacts. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class ContactsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[Contact] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Add a contact to the root Contacts folder or to the contacts endpoint of another contact folder.
+        Create new navigation property to contacts for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +145,7 @@ class ContactsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ContactsRequestBuilderGetQueryParameters():
         """
-        Get a contact collection from the default contacts folder of the signed-in user. There are two scenarios where an app can get contacts in another user's contact folder:
+        The user's contacts. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

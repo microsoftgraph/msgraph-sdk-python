@@ -46,10 +46,9 @@ class DepartmentsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DepartmentTemplateCollectionResponse]:
         """
-        Get a list of the departmentTemplate objects and their properties.
+        Specifies the department or business unit of an organization to which a label belongs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DepartmentTemplateCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-list-departments?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class DepartmentsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[DepartmentTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[DepartmentTemplate]:
         """
-        Create a new departmentTemplate object.
+        Create new navigation property to departments for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DepartmentTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/security-labelsroot-post-departments?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class DepartmentsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the departmentTemplate objects and their properties.
+        Specifies the department or business unit of an organization to which a label belongs.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class DepartmentsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[DepartmentTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new departmentTemplate object.
+        Create new navigation property to departments for security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class DepartmentsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DepartmentsRequestBuilderGetQueryParameters():
         """
-        Get a list of the departmentTemplate objects and their properties.
+        Specifies the department or business unit of an organization to which a label belongs.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -46,10 +46,9 @@ class NotificationMessageTemplatesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[NotificationMessageTemplateCollectionResponse]:
         """
-        List properties and relationships of the notificationMessageTemplate objects.
+        The Notification Message Templates.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[NotificationMessageTemplateCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-notificationmessagetemplate-list?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class NotificationMessageTemplatesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[NotificationMessageTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[NotificationMessageTemplate]:
         """
-        Create a new notificationMessageTemplate object.
+        Create new navigation property to notificationMessageTemplates for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[NotificationMessageTemplate]
-        Find more info here: https://learn.microsoft.com/graph/api/intune-notification-notificationmessagetemplate-create?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class NotificationMessageTemplatesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List properties and relationships of the notificationMessageTemplate objects.
+        The Notification Message Templates.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class NotificationMessageTemplatesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[NotificationMessageTemplate] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new notificationMessageTemplate object.
+        Create new navigation property to notificationMessageTemplates for deviceManagement
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class NotificationMessageTemplatesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class NotificationMessageTemplatesRequestBuilderGetQueryParameters():
         """
-        List properties and relationships of the notificationMessageTemplate objects.
+        The Notification Message Templates.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

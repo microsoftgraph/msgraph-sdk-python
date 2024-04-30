@@ -28,9 +28,10 @@ class UsersRegisteredByFeatureRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UserRegistrationFeatureSummary]:
         """
-        Invoke function usersRegisteredByFeature
+        Get the number of users capable of multi-factor authentication, self-service password reset, and passwordless authentication.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UserRegistrationFeatureSummary]
+        Find more info here: https://learn.microsoft.com/graph/api/authenticationmethodsroot-usersregisteredbyfeature?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -48,7 +49,7 @@ class UsersRegisteredByFeatureRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function usersRegisteredByFeature
+        Get the number of users capable of multi-factor authentication, self-service password reset, and passwordless authentication.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

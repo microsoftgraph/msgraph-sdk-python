@@ -30,10 +30,9 @@ class RubricRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Remove an educationRubric from an educationAssignment. This method doesn't delete the rubric itself and can only be performed by teachers.
+        Delete navigation property rubric for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-delete-rubric?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class RubricRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationRubric]:
         """
-        Get the educationRubric object attached to an educationAssignment, if one exists. Only teachers, students, and applications with application permissions can perform this operation.
+        When set, the grading rubric attached to this assignment.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationRubric]
-        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-get-rubric?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class RubricRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[EducationRubric] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[EducationRubric]:
         """
-        Attach an existing educationRubric object to an educationAssignment. Only teachers can perform this operation.
+        Update the navigation property rubric in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[EducationRubric]
-        Find more info here: https://learn.microsoft.com/graph/api/educationassignment-put-rubric?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class RubricRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Remove an educationRubric from an educationAssignment. This method doesn't delete the rubric itself and can only be performed by teachers.
+        Delete navigation property rubric for education
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class RubricRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the educationRubric object attached to an educationAssignment, if one exists. Only teachers, students, and applications with application permissions can perform this operation.
+        When set, the grading rubric attached to this assignment.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class RubricRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[EducationRubric] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Attach an existing educationRubric object to an educationAssignment. Only teachers can perform this operation.
+        Update the navigation property rubric in education
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class RubricRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RubricRequestBuilderGetQueryParameters():
         """
-        Get the educationRubric object attached to an educationAssignment, if one exists. Only teachers, students, and applications with application permissions can perform this operation.
+        When set, the grading rubric attached to this assignment.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

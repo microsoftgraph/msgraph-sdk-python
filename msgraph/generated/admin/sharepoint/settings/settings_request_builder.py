@@ -47,10 +47,9 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SharepointSettings]:
         """
-        Get the tenant-level settings for SharePoint and OneDrive.
+        Get settings from admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharepointSettings]
-        Find more info here: https://learn.microsoft.com/graph/api/sharepointsettings-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[SharepointSettings] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SharepointSettings]:
         """
-        Update one or more tenant-level settings for SharePoint and OneDrive.
+        Update the navigation property settings in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SharepointSettings]
-        Find more info here: https://learn.microsoft.com/graph/api/sharepointsettings-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +101,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the tenant-level settings for SharePoint and OneDrive.
+        Get settings from admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +112,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[SharepointSettings] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update one or more tenant-level settings for SharePoint and OneDrive.
+        Update the navigation property settings in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class SettingsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SettingsRequestBuilderGetQueryParameters():
         """
-        Get the tenant-level settings for SharePoint and OneDrive.
+        Get settings from admin
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

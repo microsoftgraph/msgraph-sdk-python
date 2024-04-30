@@ -47,10 +47,9 @@ class DetailsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[PlannerTaskDetails]:
         """
-        Retrieve the properties and relationships of a plannerTaskDetails object.
+        Read-only. Nullable. More details about the task.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerTaskDetails]
-        Find more info here: https://learn.microsoft.com/graph/api/plannertaskdetails-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,7 +71,6 @@ class DetailsRequestBuilder(BaseRequestBuilder):
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[PlannerTaskDetails]
-        Find more info here: https://learn.microsoft.com/graph/api/plannertaskdetails-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +101,7 @@ class DetailsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a plannerTaskDetails object.
+        Read-only. Nullable. More details about the task.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -140,7 +138,7 @@ class DetailsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DetailsRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a plannerTaskDetails object.
+        Read-only. Nullable. More details about the task.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

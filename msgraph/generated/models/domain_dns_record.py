@@ -15,7 +15,7 @@ from .entity import Entity
 
 @dataclass
 class DomainDnsRecord(Entity):
-    # If false, this record must be configured by the customer at the DNS host for Microsoft Online Services to operate correctly with the domain.
+    # If false, the customer must configure this record at the DNS host for Microsoft Online Services to operate correctly with the domain.
     is_optional: Optional[bool] = None
     # Value used when configuring the name of the DNS record at the DNS host.
     label: Optional[str] = None

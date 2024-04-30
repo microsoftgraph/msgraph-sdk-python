@@ -52,10 +52,9 @@ class ChatMessageItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ChatMessage]:
         """
-        Retrieve a single message or a message reply in a channel or a chat.
+        Replies for a specified message. Supports $expand for channel messages.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChatMessage]
-        Find more info here: https://learn.microsoft.com/graph/api/chatmessage-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -107,7 +106,7 @@ class ChatMessageItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a single message or a message reply in a channel or a chat.
+        Replies for a specified message. Supports $expand for channel messages.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -189,7 +188,7 @@ class ChatMessageItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ChatMessageItemRequestBuilderGetQueryParameters():
         """
-        Retrieve a single message or a message reply in a channel or a chat.
+        Replies for a specified message. Supports $expand for channel messages.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -32,10 +32,9 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete an agreement object.
+        Delete navigation property agreements for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/agreement-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,10 +50,9 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[Agreement]:
         """
-        Retrieve the properties and relationships of an agreement object.
+        Represents a tenant's customizable terms of use agreement that's created and managed with Microsoft Entra ID Governance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Agreement]
-        Find more info here: https://learn.microsoft.com/graph/api/agreement-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -72,11 +70,10 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[Agreement] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[Agreement]:
         """
-        Update the properties of an agreement object.
+        Update the navigation property agreements in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Agreement]
-        Find more info here: https://learn.microsoft.com/graph/api/agreement-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -96,7 +93,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an agreement object.
+        Delete navigation property agreements for identityGovernance
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +104,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an agreement object.
+        Represents a tenant's customizable terms of use agreement that's created and managed with Microsoft Entra ID Governance.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +115,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[Agreement] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an agreement object.
+        Update the navigation property agreements in identityGovernance
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +168,7 @@ class AgreementItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AgreementItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an agreement object.
+        Represents a tenant's customizable terms of use agreement that's created and managed with Microsoft Entra ID Governance.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

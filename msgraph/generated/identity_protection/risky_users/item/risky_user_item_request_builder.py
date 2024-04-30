@@ -48,10 +48,9 @@ class RiskyUserItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[RiskyUser]:
         """
-        Read the properties and relationships of a riskyUser object.
+        Users that are flagged as at-risk by Microsoft Entra ID Protection.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[RiskyUser]
-        Find more info here: https://learn.microsoft.com/graph/api/riskyuser-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -103,7 +102,7 @@ class RiskyUserItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a riskyUser object.
+        Users that are flagged as at-risk by Microsoft Entra ID Protection.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -149,7 +148,7 @@ class RiskyUserItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RiskyUserItemRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a riskyUser object.
+        Users that are flagged as at-risk by Microsoft Entra ID Protection.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

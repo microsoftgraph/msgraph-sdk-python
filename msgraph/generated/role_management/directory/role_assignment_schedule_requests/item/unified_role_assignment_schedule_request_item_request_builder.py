@@ -54,10 +54,9 @@ class UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(BaseRequestBuilder)
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[UnifiedRoleAssignmentScheduleRequest]:
         """
-        In PIM, read the details of a request for an active and persistent role assignment made through the unifiedRoleAssignmentScheduleRequest object.
+        Requests for active role assignments to principals through PIM.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[UnifiedRoleAssignmentScheduleRequest]
-        Find more info here: https://learn.microsoft.com/graph/api/unifiedroleassignmentschedulerequest-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -109,7 +108,7 @@ class UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(BaseRequestBuilder)
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        In PIM, read the details of a request for an active and persistent role assignment made through the unifiedRoleAssignmentScheduleRequest object.
+        Requests for active role assignments to principals through PIM.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -209,7 +208,7 @@ class UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(BaseRequestBuilder)
     @dataclass
     class UnifiedRoleAssignmentScheduleRequestItemRequestBuilderGetQueryParameters():
         """
-        In PIM, read the details of a request for an active and persistent role assignment made through the unifiedRoleAssignmentScheduleRequest object.
+        Requests for active role assignments to principals through PIM.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

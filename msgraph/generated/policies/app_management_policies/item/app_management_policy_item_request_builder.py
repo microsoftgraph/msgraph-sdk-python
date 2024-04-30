@@ -30,10 +30,9 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete an appManagementPolicy object.
+        Delete navigation property appManagementPolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/appmanagementpolicy-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -49,10 +48,9 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppManagementPolicy]:
         """
-        Read the properties of an appManagementPolicy object.
+        The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppManagementPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/appmanagementpolicy-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -70,11 +68,10 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AppManagementPolicy]:
         """
-        Update an appManagementPolicy object.
+        Update the navigation property appManagementPolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AppManagementPolicy]
-        Find more info here: https://learn.microsoft.com/graph/api/appmanagementpolicy-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -94,7 +91,7 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete an appManagementPolicy object.
+        Delete navigation property appManagementPolicies for policies
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +102,7 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties of an appManagementPolicy object.
+        The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -116,7 +113,7 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[AppManagementPolicy] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update an appManagementPolicy object.
+        Update the navigation property appManagementPolicies in policies
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,7 +148,7 @@ class AppManagementPolicyItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AppManagementPolicyItemRequestBuilderGetQueryParameters():
         """
-        Read the properties of an appManagementPolicy object.
+        The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

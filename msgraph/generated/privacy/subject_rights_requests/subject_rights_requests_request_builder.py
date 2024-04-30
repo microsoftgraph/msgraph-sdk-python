@@ -48,10 +48,9 @@ class SubjectRightsRequestsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SubjectRightsRequestCollectionResponse]:
         """
-        Get a list of subjectRightsRequest objects and their properties.
+        Get subjectRightsRequests from privacy
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SubjectRightsRequestCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/subjectrightsrequest-list?view=graph-rest-1.0
         """
         warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
         request_info = self.to_get_request_information(
@@ -70,11 +69,10 @@ class SubjectRightsRequestsRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[SubjectRightsRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SubjectRightsRequest]:
         """
-        Create a new subjectRightsRequest object.
+        Create new navigation property to subjectRightsRequests for privacy
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SubjectRightsRequest]
-        Find more info here: https://learn.microsoft.com/graph/api/subjectrightsrequest-post?view=graph-rest-1.0
         """
         warn("The subject rights request API under Privacy is deprecated and will stop working on  March 22, 2025. Please use the new API under Security. as of 2022-02/PrivacyDeprecate", DeprecationWarning)
         if not body:
@@ -95,7 +93,7 @@ class SubjectRightsRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of subjectRightsRequest objects and their properties.
+        Get subjectRightsRequests from privacy
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -107,7 +105,7 @@ class SubjectRightsRequestsRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[SubjectRightsRequest] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new subjectRightsRequest object.
+        Create new navigation property to subjectRightsRequests for privacy
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -144,7 +142,7 @@ class SubjectRightsRequestsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SubjectRightsRequestsRequestBuilderGetQueryParameters():
         """
-        Get a list of subjectRightsRequest objects and their properties.
+        Get subjectRightsRequests from privacy
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

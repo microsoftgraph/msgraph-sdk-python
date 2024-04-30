@@ -68,11 +68,10 @@ class TeamsAppDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[TeamsAppDefinition]:
         """
-        Publish an app to the Microsoft Teams app catalog.Specifically, this API publishes the app to your organization's catalog (the tenant app catalog);the created resource has a distributionMethod property value of organization. The requiresReview property allows any user to submit an app for review by an administrator. Admins can approve or reject these apps via this API or the Microsoft Teams admin center.
+        Update the navigation property appDefinitions in appCatalogs
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[TeamsAppDefinition]
-        Find more info here: https://learn.microsoft.com/graph/api/teamsapp-publish?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -114,7 +113,7 @@ class TeamsAppDefinitionItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[TeamsAppDefinition] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Publish an app to the Microsoft Teams app catalog.Specifically, this API publishes the app to your organization's catalog (the tenant app catalog);the created resource has a distributionMethod property value of organization. The requiresReview property allows any user to submit an app for review by an administrator. Admins can approve or reject these apps via this API or the Microsoft Teams admin center.
+        Update the navigation property appDefinitions in appCatalogs
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

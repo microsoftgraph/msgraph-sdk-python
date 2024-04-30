@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from .delegated_admin_relationships.delegated_admin_relationships_request_builder import DelegatedAdminRelationshipsRequestBuilder
     from .find_tenant_information_by_domain_name_with_domain_name.find_tenant_information_by_domain_name_with_domain_name_request_builder import FindTenantInformationByDomainNameWithDomainNameRequestBuilder
     from .find_tenant_information_by_tenant_id_with_tenant_id.find_tenant_information_by_tenant_id_with_tenant_id_request_builder import FindTenantInformationByTenantIdWithTenantIdRequestBuilder
+    from .multi_tenant_organization.multi_tenant_organization_request_builder import MultiTenantOrganizationRequestBuilder
 
 class TenantRelationshipsRequestBuilder(BaseRequestBuilder):
     """
@@ -151,6 +152,15 @@ class TenantRelationshipsRequestBuilder(BaseRequestBuilder):
         from .delegated_admin_relationships.delegated_admin_relationships_request_builder import DelegatedAdminRelationshipsRequestBuilder
 
         return DelegatedAdminRelationshipsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def multi_tenant_organization(self) -> MultiTenantOrganizationRequestBuilder:
+        """
+        Provides operations to manage the multiTenantOrganization property of the microsoft.graph.tenantRelationship entity.
+        """
+        from .multi_tenant_organization.multi_tenant_organization_request_builder import MultiTenantOrganizationRequestBuilder
+
+        return MultiTenantOrganizationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TenantRelationshipsRequestBuilderGetQueryParameters():

@@ -29,10 +29,9 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete a browserSite from a browserSiteList.
+        Delete navigation property sites for admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/browsersitelist-delete-sites?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[BrowserSite]:
         """
-        Get a browserSite that resides on a browserSiteList.
+        A collection of sites defined for the site list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowserSite]
-        Find more info here: https://learn.microsoft.com/graph/api/browsersite-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[BrowserSite] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[BrowserSite]:
         """
-        Update the properties of a browserSite object.
+        Update the navigation property sites in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[BrowserSite]
-        Find more info here: https://learn.microsoft.com/graph/api/browsersite-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a browserSite from a browserSiteList.
+        Delete navigation property sites for admin
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a browserSite that resides on a browserSiteList.
+        A collection of sites defined for the site list.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[BrowserSite] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a browserSite object.
+        Update the navigation property sites in admin
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class BrowserSiteItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class BrowserSiteItemRequestBuilderGetQueryParameters():
         """
-        Get a browserSite that resides on a browserSiteList.
+        A collection of sites defined for the site list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -51,10 +51,9 @@ class SectionGroupItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SectionGroup]:
         """
-        Retrieve the properties and relationships of a sectionGroup object.
+        The section groups in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SectionGroup]
-        Find more info here: https://learn.microsoft.com/graph/api/sectiongroup-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -106,7 +105,7 @@ class SectionGroupItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a sectionGroup object.
+        The section groups in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -179,7 +178,7 @@ class SectionGroupItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SectionGroupItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a sectionGroup object.
+        The section groups in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

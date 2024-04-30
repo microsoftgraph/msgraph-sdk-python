@@ -45,10 +45,9 @@ class PortsRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[HostPortCollectionResponse]:
         """
-        Get the list of hostPort resources associated with a host.
+        The hostPorts associated with a host.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[HostPortCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/security-host-list-ports?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -66,7 +65,7 @@ class PortsRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of hostPort resources associated with a host.
+        The hostPorts associated with a host.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -97,7 +96,7 @@ class PortsRequestBuilder(BaseRequestBuilder):
     @dataclass
     class PortsRequestBuilderGetQueryParameters():
         """
-        Get the list of hostPort resources associated with a host.
+        The hostPorts associated with a host.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

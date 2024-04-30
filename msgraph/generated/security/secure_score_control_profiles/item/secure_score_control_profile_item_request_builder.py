@@ -47,10 +47,9 @@ class SecureScoreControlProfileItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[SecureScoreControlProfile]:
         """
-        Retrieve the properties and relationships of an securescorecontrolprofile object.
+        Get secureScoreControlProfiles from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SecureScoreControlProfile]
-        Find more info here: https://learn.microsoft.com/graph/api/securescorecontrolprofile-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class SecureScoreControlProfileItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[SecureScoreControlProfile] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[SecureScoreControlProfile]:
         """
-        Update an editable secureScoreControlProfile object within any integrated solution to change various properties, such as assignedTo or tenantNote.
+        Update the navigation property secureScoreControlProfiles in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[SecureScoreControlProfile]
-        Find more info here: https://learn.microsoft.com/graph/api/securescorecontrolprofile-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -103,7 +101,7 @@ class SecureScoreControlProfileItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an securescorecontrolprofile object.
+        Get secureScoreControlProfiles from security
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -114,7 +112,7 @@ class SecureScoreControlProfileItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[SecureScoreControlProfile] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Update an editable secureScoreControlProfile object within any integrated solution to change various properties, such as assignedTo or tenantNote.
+        Update the navigation property secureScoreControlProfiles in security
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +138,7 @@ class SecureScoreControlProfileItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class SecureScoreControlProfileItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an securescorecontrolprofile object.
+        Get secureScoreControlProfiles from security
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

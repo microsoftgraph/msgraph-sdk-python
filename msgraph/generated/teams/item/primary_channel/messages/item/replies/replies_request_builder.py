@@ -47,10 +47,9 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[ChatMessageCollectionResponse]:
         """
-        List all the replies to a message in a channel of a team. This method lists only the replies of the specified message, if any. To get the message itself, call get channel message.
+        Replies for a specified message. Supports $expand for channel messages.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChatMessageCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/chatmessage-list-replies?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -68,11 +67,10 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[ChatMessage] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[ChatMessage]:
         """
-        Send a new reply to a chatMessage in a specified channel.
+        Create new navigation property to replies for teams
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ChatMessage]
-        Find more info here: https://learn.microsoft.com/graph/api/chatmessage-post-replies?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -92,7 +90,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        List all the replies to a message in a channel of a team. This method lists only the replies of the specified message, if any. To get the message itself, call get channel message.
+        Replies for a specified message. Supports $expand for channel messages.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -103,7 +101,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[ChatMessage] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Send a new reply to a chatMessage in a specified channel.
+        Create new navigation property to replies for teams
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +145,7 @@ class RepliesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class RepliesRequestBuilderGetQueryParameters():
         """
-        List all the replies to a message in a channel of a team. This method lists only the replies of the specified message, if any. To get the message itself, call get channel message.
+        Replies for a specified message. Supports $expand for channel messages.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

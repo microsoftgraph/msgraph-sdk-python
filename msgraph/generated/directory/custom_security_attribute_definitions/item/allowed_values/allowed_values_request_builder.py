@@ -46,10 +46,9 @@ class AllowedValuesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[AllowedValueCollectionResponse]:
         """
-        Get a list of the allowedValue objects and their properties.
+        Values that are predefined for this custom security attribute. This navigation property is not returned by default and must be specified in an $expand query. For example, /directory/customSecurityAttributeDefinitions?$expand=allowedValues.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AllowedValueCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/customsecurityattributedefinition-list-allowedvalues?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -67,11 +66,10 @@ class AllowedValuesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[AllowedValue] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[AllowedValue]:
         """
-        Create a new allowedValue object.
+        Create new navigation property to allowedValues for directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[AllowedValue]
-        Find more info here: https://learn.microsoft.com/graph/api/customsecurityattributedefinition-post-allowedvalues?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -91,7 +89,7 @@ class AllowedValuesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the allowedValue objects and their properties.
+        Values that are predefined for this custom security attribute. This navigation property is not returned by default and must be specified in an $expand query. For example, /directory/customSecurityAttributeDefinitions?$expand=allowedValues.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -102,7 +100,7 @@ class AllowedValuesRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[AllowedValue] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new allowedValue object.
+        Create new navigation property to allowedValues for directory
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +135,7 @@ class AllowedValuesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class AllowedValuesRequestBuilderGetQueryParameters():
         """
-        Get a list of the allowedValue objects and their properties.
+        Values that are predefined for this custom security attribute. This navigation property is not returned by default and must be specified in an $expand query. For example, /directory/customSecurityAttributeDefinitions?$expand=allowedValues.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

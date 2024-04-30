@@ -85,6 +85,7 @@ if TYPE_CHECKING:
     from .authentication import Authentication
     from .authentication_combination_configuration import AuthenticationCombinationConfiguration
     from .authentication_context_class_reference import AuthenticationContextClassReference
+    from .authentication_event_listener import AuthenticationEventListener
     from .authentication_flows_policy import AuthenticationFlowsPolicy
     from .authentication_method import AuthenticationMethod
     from .authentication_methods_policy import AuthenticationMethodsPolicy
@@ -152,6 +153,7 @@ if TYPE_CHECKING:
     from .column_definition import ColumnDefinition
     from .column_link import ColumnLink
     from .comms_operation import CommsOperation
+    from .company_subscription import CompanySubscription
     from .compliance_management_partner import ComplianceManagementPartner
     from .conditional_access_policy import ConditionalAccessPolicy
     from .conditional_access_root import ConditionalAccessRoot
@@ -168,6 +170,7 @@ if TYPE_CHECKING:
     from .country_named_location import CountryNamedLocation
     from .cross_tenant_access_policy import CrossTenantAccessPolicy
     from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
+    from .custom_authentication_extension import CustomAuthenticationExtension
     from .custom_callout_extension import CustomCalloutExtension
     from .custom_extension_stage_setting import CustomExtensionStageSetting
     from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
@@ -434,6 +437,11 @@ if TYPE_CHECKING:
     from .mobile_contained_app import MobileContainedApp
     from .mobile_lob_app import MobileLobApp
     from .mobile_threat_defense_connector import MobileThreatDefenseConnector
+    from .multi_tenant_organization import MultiTenantOrganization
+    from .multi_tenant_organization_identity_sync_policy_template import MultiTenantOrganizationIdentitySyncPolicyTemplate
+    from .multi_tenant_organization_join_request_record import MultiTenantOrganizationJoinRequestRecord
+    from .multi_tenant_organization_member import MultiTenantOrganizationMember
+    from .multi_tenant_organization_partner_configuration_template import MultiTenantOrganizationPartnerConfigurationTemplate
     from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
     from .mute_participant_operation import MuteParticipantOperation
     from .named_location import NamedLocation
@@ -453,6 +461,8 @@ if TYPE_CHECKING:
     from .online_meeting_base import OnlineMeetingBase
     from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
     from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+    from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
+    from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
     from .open_shift import OpenShift
     from .open_shift_change_request import OpenShiftChangeRequest
     from .open_type_extension import OpenTypeExtension
@@ -505,6 +515,7 @@ if TYPE_CHECKING:
     from .play_prompt_operation import PlayPromptOperation
     from .policy_base import PolicyBase
     from .policy_root import PolicyRoot
+    from .policy_template import PolicyTemplate
     from .post import Post
     from .presence import Presence
     from .printer import Printer
@@ -1237,6 +1248,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .authentication_context_class_reference import AuthenticationContextClassReference
 
             return AuthenticationContextClassReference()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationEventListener".casefold():
+            from .authentication_event_listener import AuthenticationEventListener
+
+            return AuthenticationEventListener()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.authenticationFlowsPolicy".casefold():
             from .authentication_flows_policy import AuthenticationFlowsPolicy
 
@@ -1505,6 +1520,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .comms_operation import CommsOperation
 
             return CommsOperation()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.companySubscription".casefold():
+            from .company_subscription import CompanySubscription
+
+            return CompanySubscription()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.complianceManagementPartner".casefold():
             from .compliance_management_partner import ComplianceManagementPartner
 
@@ -1569,6 +1588,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
 
             return CrossTenantAccessPolicyConfigurationDefault()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.customAuthenticationExtension".casefold():
+            from .custom_authentication_extension import CustomAuthenticationExtension
+
+            return CustomAuthenticationExtension()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.customCalloutExtension".casefold():
             from .custom_callout_extension import CustomCalloutExtension
 
@@ -2634,6 +2657,26 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .mobile_threat_defense_connector import MobileThreatDefenseConnector
 
             return MobileThreatDefenseConnector()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantOrganization".casefold():
+            from .multi_tenant_organization import MultiTenantOrganization
+
+            return MultiTenantOrganization()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantOrganizationIdentitySyncPolicyTemplate".casefold():
+            from .multi_tenant_organization_identity_sync_policy_template import MultiTenantOrganizationIdentitySyncPolicyTemplate
+
+            return MultiTenantOrganizationIdentitySyncPolicyTemplate()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantOrganizationJoinRequestRecord".casefold():
+            from .multi_tenant_organization_join_request_record import MultiTenantOrganizationJoinRequestRecord
+
+            return MultiTenantOrganizationJoinRequestRecord()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantOrganizationMember".casefold():
+            from .multi_tenant_organization_member import MultiTenantOrganizationMember
+
+            return MultiTenantOrganizationMember()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiTenantOrganizationPartnerConfigurationTemplate".casefold():
+            from .multi_tenant_organization_partner_configuration_template import MultiTenantOrganizationPartnerConfigurationTemplate
+
+            return MultiTenantOrganizationPartnerConfigurationTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.multiValueLegacyExtendedProperty".casefold():
             from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
 
@@ -2714,6 +2757,14 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
 
             return OnPremisesDirectorySynchronization()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onTokenIssuanceStartCustomExtension".casefold():
+            from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
+
+            return OnTokenIssuanceStartCustomExtension()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.onTokenIssuanceStartListener".casefold():
+            from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
+
+            return OnTokenIssuanceStartListener()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.openShift".casefold():
             from .open_shift import OpenShift
 
@@ -2920,6 +2971,10 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
             from .policy_root import PolicyRoot
 
             return PolicyRoot()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.policyTemplate".casefold():
+            from .policy_template import PolicyTemplate
+
+            return PolicyTemplate()
         if mapping_value and mapping_value.casefold() == "#microsoft.graph.post".casefold():
             from .post import Post
 
@@ -4549,6 +4604,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .authentication import Authentication
         from .authentication_combination_configuration import AuthenticationCombinationConfiguration
         from .authentication_context_class_reference import AuthenticationContextClassReference
+        from .authentication_event_listener import AuthenticationEventListener
         from .authentication_flows_policy import AuthenticationFlowsPolicy
         from .authentication_method import AuthenticationMethod
         from .authentication_methods_policy import AuthenticationMethodsPolicy
@@ -4616,6 +4672,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .column_definition import ColumnDefinition
         from .column_link import ColumnLink
         from .comms_operation import CommsOperation
+        from .company_subscription import CompanySubscription
         from .compliance_management_partner import ComplianceManagementPartner
         from .conditional_access_policy import ConditionalAccessPolicy
         from .conditional_access_root import ConditionalAccessRoot
@@ -4632,6 +4689,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .country_named_location import CountryNamedLocation
         from .cross_tenant_access_policy import CrossTenantAccessPolicy
         from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
+        from .custom_authentication_extension import CustomAuthenticationExtension
         from .custom_callout_extension import CustomCalloutExtension
         from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
@@ -4898,6 +4956,11 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .mobile_contained_app import MobileContainedApp
         from .mobile_lob_app import MobileLobApp
         from .mobile_threat_defense_connector import MobileThreatDefenseConnector
+        from .multi_tenant_organization import MultiTenantOrganization
+        from .multi_tenant_organization_identity_sync_policy_template import MultiTenantOrganizationIdentitySyncPolicyTemplate
+        from .multi_tenant_organization_join_request_record import MultiTenantOrganizationJoinRequestRecord
+        from .multi_tenant_organization_member import MultiTenantOrganizationMember
+        from .multi_tenant_organization_partner_configuration_template import MultiTenantOrganizationPartnerConfigurationTemplate
         from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
         from .mute_participant_operation import MuteParticipantOperation
         from .named_location import NamedLocation
@@ -4917,6 +4980,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .online_meeting_base import OnlineMeetingBase
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+        from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
+        from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
         from .open_shift import OpenShift
         from .open_shift_change_request import OpenShiftChangeRequest
         from .open_type_extension import OpenTypeExtension
@@ -4969,6 +5034,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .play_prompt_operation import PlayPromptOperation
         from .policy_base import PolicyBase
         from .policy_root import PolicyRoot
+        from .policy_template import PolicyTemplate
         from .post import Post
         from .presence import Presence
         from .printer import Printer
@@ -5435,6 +5501,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .authentication import Authentication
         from .authentication_combination_configuration import AuthenticationCombinationConfiguration
         from .authentication_context_class_reference import AuthenticationContextClassReference
+        from .authentication_event_listener import AuthenticationEventListener
         from .authentication_flows_policy import AuthenticationFlowsPolicy
         from .authentication_method import AuthenticationMethod
         from .authentication_methods_policy import AuthenticationMethodsPolicy
@@ -5502,6 +5569,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .column_definition import ColumnDefinition
         from .column_link import ColumnLink
         from .comms_operation import CommsOperation
+        from .company_subscription import CompanySubscription
         from .compliance_management_partner import ComplianceManagementPartner
         from .conditional_access_policy import ConditionalAccessPolicy
         from .conditional_access_root import ConditionalAccessRoot
@@ -5518,6 +5586,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .country_named_location import CountryNamedLocation
         from .cross_tenant_access_policy import CrossTenantAccessPolicy
         from .cross_tenant_access_policy_configuration_default import CrossTenantAccessPolicyConfigurationDefault
+        from .custom_authentication_extension import CustomAuthenticationExtension
         from .custom_callout_extension import CustomCalloutExtension
         from .custom_extension_stage_setting import CustomExtensionStageSetting
         from .custom_security_attribute_definition import CustomSecurityAttributeDefinition
@@ -5784,6 +5853,11 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .mobile_contained_app import MobileContainedApp
         from .mobile_lob_app import MobileLobApp
         from .mobile_threat_defense_connector import MobileThreatDefenseConnector
+        from .multi_tenant_organization import MultiTenantOrganization
+        from .multi_tenant_organization_identity_sync_policy_template import MultiTenantOrganizationIdentitySyncPolicyTemplate
+        from .multi_tenant_organization_join_request_record import MultiTenantOrganizationJoinRequestRecord
+        from .multi_tenant_organization_member import MultiTenantOrganizationMember
+        from .multi_tenant_organization_partner_configuration_template import MultiTenantOrganizationPartnerConfigurationTemplate
         from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
         from .mute_participant_operation import MuteParticipantOperation
         from .named_location import NamedLocation
@@ -5803,6 +5877,8 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .online_meeting_base import OnlineMeetingBase
         from .on_premises_conditional_access_settings import OnPremisesConditionalAccessSettings
         from .on_premises_directory_synchronization import OnPremisesDirectorySynchronization
+        from .on_token_issuance_start_custom_extension import OnTokenIssuanceStartCustomExtension
+        from .on_token_issuance_start_listener import OnTokenIssuanceStartListener
         from .open_shift import OpenShift
         from .open_shift_change_request import OpenShiftChangeRequest
         from .open_type_extension import OpenTypeExtension
@@ -5855,6 +5931,7 @@ class Entity(AdditionalDataHolder, BackedModel, Parsable):
         from .play_prompt_operation import PlayPromptOperation
         from .policy_base import PolicyBase
         from .policy_root import PolicyRoot
+        from .policy_template import PolicyTemplate
         from .post import Post
         from .presence import Presence
         from .printer import Printer

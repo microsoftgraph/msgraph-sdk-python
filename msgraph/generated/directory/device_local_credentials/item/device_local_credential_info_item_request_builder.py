@@ -47,10 +47,9 @@ class DeviceLocalCredentialInfoItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[DeviceLocalCredentialInfo]:
         """
-        Retrieve the properties of a deviceLocalCredentialInfo for a specified device object. 
+        The credentials of the device's local administrator account backed up to Microsoft Entra ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[DeviceLocalCredentialInfo]
-        Find more info here: https://learn.microsoft.com/graph/api/devicelocalcredentialinfo-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -102,7 +101,7 @@ class DeviceLocalCredentialInfoItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of a deviceLocalCredentialInfo for a specified device object. 
+        The credentials of the device's local administrator account backed up to Microsoft Entra ID.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +138,7 @@ class DeviceLocalCredentialInfoItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class DeviceLocalCredentialInfoItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of a deviceLocalCredentialInfo for a specified device object. 
+        The credentials of the device's local administrator account backed up to Microsoft Entra ID.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -29,10 +29,9 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     
     async def delete(self,request_configuration: Optional[RequestConfiguration] = None) -> None:
         """
-        Delete the specified messageRule object.
+        Delete navigation property messageRules for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: None
-        Find more info here: https://learn.microsoft.com/graph/api/messagerule-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -48,10 +47,9 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[MessageRule]:
         """
-        Get the properties and relationships of a messageRule object.
+        The collection of rules that apply to the user's Inbox folder.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MessageRule]
-        Find more info here: https://learn.microsoft.com/graph/api/messagerule-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -69,11 +67,10 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     
     async def patch(self,body: Optional[MessageRule] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[MessageRule]:
         """
-        Change writable properties on a messageRule object and save the changes.
+        Update the navigation property messageRules in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MessageRule]
-        Find more info here: https://learn.microsoft.com/graph/api/messagerule-update?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -93,7 +90,7 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     
     def to_delete_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Delete the specified messageRule object.
+        Delete navigation property messageRules for users
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -104,7 +101,7 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a messageRule object.
+        The collection of rules that apply to the user's Inbox folder.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -115,7 +112,7 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     
     def to_patch_request_information(self,body: Optional[MessageRule] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
         """
-        Change writable properties on a messageRule object and save the changes.
+        Update the navigation property messageRules in users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +138,7 @@ class MessageRuleItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MessageRuleItemRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a messageRule object.
+        The collection of rules that apply to the user's Inbox folder.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
